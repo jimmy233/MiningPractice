@@ -1,0 +1,87 @@
+int main(void)
+{
+   char string[256];
+
+   scanf("%s", string);
+   char substring[256];
+   scanf("%s", substring);
+   char replacement[256];
+   scanf("%s", replacement);
+   int Lsub = 0;
+   for ( int VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if ( substring[VAR__53647] == '\0' )
+      {
+         Lsub = VAR__53647;
+         break;
+      }
+   }
+
+   int Lrep = 0;
+   for ( int VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if ( replacement[VAR__53647] == '\0' )
+      {
+         Lrep = VAR__53647;
+         break;
+      }
+   }
+
+   int pBegin = check;
+   int judge  = 1;
+   for ( int VAR__53647 = 0; VAR__53647 < ( 256 - Lsub ); VAR__53647++ )
+   {
+      judge = 1;
+      for ( int VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + Lsub ); VAR__21230++ )
+      {
+         if (( string[VAR__21230] - substring[VAR__21230 - VAR__53647] ) != 0 )
+         {
+            judge = 0;
+            break;
+         }
+
+         if (( VAR__21230 - VAR__53647 ) == ( Lsub - 1 ))
+         {
+            break;
+         }
+      }
+
+      if ( judge == 1 )
+      {
+         pBegin = VAR__53647;
+         break;
+      }
+   }
+
+   if ( pBegin == check )
+   {
+      printf("%s", string);
+   }
+   else
+   {
+      char Ans[512];
+      for ( int VAR__53647 = 0; VAR__53647 < pBegin; VAR__53647++ )
+      {
+         Ans[VAR__53647] = string[VAR__53647];
+      }
+
+      for ( int VAR__53647 = pBegin; VAR__53647 < ( pBegin + Lrep ); VAR__53647++ )
+      {
+         Ans[VAR__53647] = replacement[VAR__53647 - pBegin];
+      }
+
+      for ( int VAR__53647 = pBegin + Lrep; ; VAR__53647++ )
+      {
+         Ans[VAR__53647] = string[(( VAR__53647 - ( pBegin + Lrep )) + pBegin ) + Lsub];
+
+         if ( Ans[VAR__53647] == '\0' )
+         {
+            break;
+         }
+      }
+
+      printf("%s", Ans);
+   }
+
+   return 0;
+}

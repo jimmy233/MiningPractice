@@ -1,0 +1,62 @@
+char input[150];
+char output[150];
+int main()
+{
+   int VAR_1238123;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      scanf("%s", input);
+      memset(output, 0, sizeof( output ));
+      int count1 = 0;
+      int count2 = 0;
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < strlen(input); ++VAR__53647 )
+      {
+         output[VAR__53647] = ' ';
+
+         if ( input[VAR__53647] == ')' )
+         {
+            if ( count1 <= 0 )
+            {
+               output[VAR__53647] = '?';
+            }
+            else
+            {
+               count1--;
+            }
+         }
+         else
+         if ( input[VAR__53647] == '(' )
+         {
+            count1++;
+         }
+      }
+
+      for ( VAR__53647 = strlen(input); VAR__53647 >= 0; --VAR__53647 )
+      {
+         if ( input[VAR__53647] == '(' )
+         {
+            if ( count2 <= 0 )
+            {
+               output[VAR__53647] = '$';
+            }
+            else
+            {
+               count2--;
+            }
+         }
+         else
+         if ( input[VAR__53647] == ')' )
+         {
+            count2++;
+         }
+      }
+
+      printf("%s\n%s\n", input, output);
+   }
+
+   return 0;
+}

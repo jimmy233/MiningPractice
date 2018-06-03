@@ -1,0 +1,58 @@
+int main()
+{
+   char sen[201];
+   char done[201];
+   int  pos[200];
+   int  left;
+   int  right;
+   int  VAR__53647;
+   int  VAR__COUNT;
+   int  LEN_OF_STH;
+
+   while ( cin.getline(sen, 200))
+   {
+      VAR__COUNT = 0;
+      left       = 0;
+      right      = 0;
+      for ( VAR__53647 = 0; VAR__53647 < 200; VAR__53647++ )
+      {
+         done[VAR__53647] = ' ';
+      }
+
+      LEN_OF_STH = strlen(sen);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( sen[VAR__53647] == '(' )
+         {
+            pos[VAR__COUNT]       = VAR__53647;
+            done[pos[VAR__COUNT]] = '$';
+            left++;
+            VAR__COUNT++;
+         }
+
+         if ( sen[VAR__53647] == ')' )
+         {
+            if ( left <= right )
+            {
+               done[VAR__53647] = '?';
+            }
+            else
+            {
+               right++;
+               done[pos[VAR__COUNT - 1]] = ' ';
+               VAR__COUNT--;
+            }
+         }
+      }
+
+      ( cout << sen ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << done[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

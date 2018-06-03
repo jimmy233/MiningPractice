@@ -1,0 +1,82 @@
+struct Letter
+{
+   char letter;
+   int  time;
+}
+Z[100];
+struct Letter
+{
+   char letter;
+   int  time;
+}
+S;
+int main()
+{
+   char A_STRING[300];
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__temp;
+   int  VAR_1238123;
+   int  VAR__1238129 = 0;
+   int  ge;
+
+   gets(A_STRING);
+   VAR_1238123 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      Z[VAR__53647].time = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__temp = 0; VAR__temp < 100; VAR__temp++ )
+      {
+         if ( A_STRING[VAR__53647] == Z[VAR__temp].letter )
+         {
+            Z[VAR__temp].time++;
+            VAR__1238129++;
+            break;
+         }
+      }
+
+      if (( VAR__1238129 == 0 ) && ((( A_STRING[VAR__53647] > 64 ) && ( A_STRING[VAR__53647] < 91 )) || (( A_STRING[VAR__53647] > 96 ) && ( A_STRING[VAR__53647] < 123 ))))
+      {
+         Z[VAR__21230].letter = A_STRING[VAR__53647];
+         Z[VAR__21230].time++;
+         VAR__21230++;
+      }
+      else
+      {
+         VAR__1238129 = 0;
+      }
+   }
+
+   ge = VAR__21230 - 1;
+
+   if ( ge == ( -1 ))
+   {
+      printf("No");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( ge - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( ge - VAR__53647 ); VAR__21230++ )
+         {
+            if ( Z[VAR__21230].letter > Z[VAR__21230 + 1].letter )
+            {
+               S                 = Z[VAR__21230];
+               Z[VAR__21230]     = Z[VAR__21230 + 1];
+               Z[VAR__21230 + 1] = S;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ge; VAR__53647++ )
+      {
+         printf("%c=%d\n", Z[VAR__53647].letter, Z[VAR__53647].time);
+      }
+   }
+
+   return 0;
+}

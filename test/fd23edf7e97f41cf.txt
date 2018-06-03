@@ -1,0 +1,50 @@
+int main()
+{
+   char *A_STRING;
+   char *VAR_233;
+   char *start;
+
+   A_STRING = (char *)calloc(1000, sizeof( char ));
+   for ( VAR_233 = A_STRING; ( *( VAR_233 - 1 )) != '\n'; VAR_233++ )
+   {
+      scanf("%c", VAR_233);
+   }
+
+   int countspace = 0;
+   start = A_STRING;
+   for ( VAR_233 = A_STRING; ( *VAR_233 ) != '\n'; VAR_233++ )
+   {
+      if (( *VAR_233 ) == ' ' )
+      {
+         if (( *( VAR_233 - 1 )) != ' ' )
+         {
+            start = VAR_233;
+         }
+
+         countspace++;
+
+         if (( *( VAR_233 + 1 )) != ' ' )
+         {
+            if ( countspace > 1 )
+            {
+               for ( VAR_233 = start + 1; ( *( VAR_233 - 1 )) != '\n'; VAR_233++ )
+               {
+                  *VAR_233 = *(( VAR_233 + countspace ) - 1 );
+               }
+            }
+
+
+            countspace = 0;
+            VAR_233    = start + 1;
+         }
+      }
+   }
+
+
+   for ( VAR_233 = A_STRING; ( *( VAR_233 - 1 )) != '\n'; VAR_233++ )
+   {
+      printf("%c", *VAR_233);
+   }
+
+   return 0;
+}

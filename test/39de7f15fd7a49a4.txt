@@ -1,0 +1,63 @@
+int main()
+{
+   char VAR_9494[120];
+
+   while ( cin >> VAR_9494 )
+   {
+      char res[120];
+      int  lens;
+      int  leftnum = 0;
+      int  left[120];
+      lens = strlen(VAR_9494);
+      for ( int VAR__53647 = 0; VAR__53647 < lens; VAR__53647++ )
+      {
+         res[VAR__53647] = ' ';
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 < 120; VAR__53647++ )
+      {
+         left[VAR__53647] = -1;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < lens; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            left[++leftnum] = VAR__53647;
+         }
+
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            if ( leftnum == 0 )
+            {
+               res[VAR__53647] = '?';
+            }
+            else
+            {
+               left[leftnum] = -1;
+               leftnum--;
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= leftnum; VAR__53647++ )
+      {
+         res[left[VAR__53647]] = '$';
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < lens; VAR__53647++ )
+      {
+         cout << VAR_9494[VAR__53647];
+      }
+
+      cout << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < lens; VAR__53647++ )
+      {
+         cout << res[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

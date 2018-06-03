@@ -1,0 +1,63 @@
+char minword[50] = "\0";
+char maxword[50] = "\0";
+void clear(int VAR__53647)
+{
+   int VAR__21230 = 0;
+
+   for ( VAR__21230 = 0; VAR__21230 < 50; VAR__21230++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         minword[VAR__21230] = 0;
+      }
+      else
+      {
+         maxword[VAR__21230] = 0;
+      }
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[1001];
+   char A_STRING[51];
+   int  VAR__MAX = 0;
+   int  VAR__MIN = 100;
+   int  VAR__53647;
+   int  LEN_OF_STH = 0;
+   int  VAR_1238123;
+
+   gets(VAR__819283);
+   VAR_1238123 = strlen(VAR__819283);
+   VAR__819283[VAR_1238123]     = ' ';
+   VAR__819283[VAR_1238123 + 1] = '\0';
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+   {
+      A_STRING[LEN_OF_STH] = VAR__819283[VAR__53647];
+      LEN_OF_STH++;
+
+      if ( VAR__819283[VAR__53647] == ' ' )
+      {
+         A_STRING[LEN_OF_STH - 1] = '\0';
+         LEN_OF_STH = 0;
+      }
+
+      if (( strlen(A_STRING) < VAR__MIN ) && ( !LEN_OF_STH ))
+      {
+         VAR__MIN = strlen(A_STRING);
+         clear(0);
+         strcpy(minword, A_STRING);
+      }
+
+      if (( strlen(A_STRING) > VAR__MAX ) && ( !LEN_OF_STH ))
+      {
+         VAR__MAX = strlen(A_STRING);
+         clear(1);
+         strcpy(maxword, A_STRING);
+      }
+   }
+
+   printf("%s\n%s", maxword, minword);
+   return 0;
+}

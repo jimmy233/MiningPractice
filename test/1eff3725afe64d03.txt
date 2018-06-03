@@ -1,0 +1,70 @@
+int main()
+{
+   char sentence[N * 31];
+   int  LEN_OF_STH;
+   int  wordlen[N];
+   int  max_wordlen;
+   int  min_wordlen;
+   int  VAR__MAX = 0;
+   int  VAR__MIN = 0;
+   int  point[N];
+   int  VAR__temp = 1;
+   int  VAR__53647;
+
+   gets(sentence);
+   LEN_OF_STH               = strlen(sentence);
+   sentence[LEN_OF_STH]     = ' ';
+   sentence[LEN_OF_STH + 1] = '\0';
+   LEN_OF_STH               = LEN_OF_STH + 1;
+   point[0] = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( sentence[VAR__53647] == ' ' )
+      {
+         point[VAR__temp]               = VAR__53647;
+         point[VAR__temp + 1]           = VAR__53647 + 1;
+         wordlen[( VAR__temp - 1 ) / 2] = point[VAR__temp] - point[VAR__temp - 1];
+         VAR__temp = VAR__temp + 2;
+      }
+      else
+      if ( sentence[VAR__53647] == ',' )
+      {
+         point[VAR__temp]               = VAR__53647;
+         point[VAR__temp + 1]           = VAR__53647 + 2;
+         wordlen[( VAR__temp - 1 ) / 2] = point[VAR__temp] - point[VAR__temp - 1];
+         VAR__temp = VAR__temp + 2;
+         VAR__53647++;
+      }
+   }
+
+   max_wordlen = wordlen[0];
+   min_wordlen = wordlen[0];
+   for ( VAR__53647 = 0; VAR__53647 <= (( VAR__temp - 3 ) / 2 ); VAR__53647++ )
+   {
+      if ( max_wordlen < wordlen[VAR__53647] )
+      {
+         max_wordlen = wordlen[VAR__53647];
+         VAR__MAX    = VAR__53647;
+      }
+
+      if ( min_wordlen > wordlen[VAR__53647] )
+      {
+         min_wordlen = wordlen[VAR__53647];
+         VAR__MIN    = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = point[VAR__MAX * 2]; VAR__53647 < point[( VAR__MAX * 2 ) + 1]; VAR__53647++ )
+   {
+      printf("%c", sentence[VAR__53647]);
+   }
+
+   printf("\n");
+   for ( VAR__53647 = point[VAR__MIN * 2]; VAR__53647 < point[( VAR__MIN * 2 ) + 1]; VAR__53647++ )
+   {
+      printf("%c", sentence[VAR__53647]);
+   }
+
+   printf("\n");
+   return 0;
+}

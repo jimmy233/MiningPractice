@@ -1,0 +1,98 @@
+int main()
+{
+   char A_STRING[200];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  ei;
+   int  bi;
+   int  VAR__1111;
+
+   while ( cin.getline(A_STRING, 150))
+   {
+      int strout[101] = { 0 };
+      VAR__1111 = strlen(A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            strout[VAR__53647] = -1;
+         }
+         else
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            strout[VAR__53647] = 1;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         if ( strout[VAR__53647] != ( -1 ))
+         {
+            continue;
+         }
+
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__1111; VAR__21230++ )
+         {
+            if ( strout[VAR__21230] != 1 )
+            {
+               continue;
+            }
+
+            for ( VAR__8444594 = VAR__21230; VAR__8444594 >= VAR__53647; VAR__8444594-- )
+            {
+               if ( strout[VAR__8444594] == ( -1 ))
+               {
+                  strout[VAR__8444594] = 0;
+                  strout[VAR__21230]   = 0;
+                  break;
+               }
+            }
+         }
+      }
+
+      ( cout << A_STRING ) << endl;
+      bi = VAR__1111 - 1;
+      ei = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         if ( strout[VAR__53647] != 0 )
+         {
+            bi = VAR__53647;
+            break;
+         }
+      }
+
+
+      for ( VAR__53647 = VAR__1111 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( strout[VAR__53647] != 0 )
+         {
+            ei = VAR__53647;
+            break;
+         }
+      }
+
+
+      for ( VAR__53647 = bi; VAR__53647 <= ei; VAR__53647++ )
+      {
+         if ( strout[VAR__53647] == 0 )
+         {
+            cout << ' ';
+         }
+         else
+         if ( strout[VAR__53647] == ( -1 ))
+         {
+            cout << '$';
+         }
+         else
+         {
+            cout << '?';
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

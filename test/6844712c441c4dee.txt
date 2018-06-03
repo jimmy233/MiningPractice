@@ -1,0 +1,38 @@
+int PlaceApple(int, int);
+
+int main()
+{
+   int Apple;
+   int Plate;
+   int VAR__temp;
+
+   cin >> VAR__temp;
+
+   while ( VAR__temp-- )
+   {
+      ( cin >> Apple ) >> Plate;
+      ( cout << PlaceApple(Apple, Plate)) << endl;
+   }
+}
+
+
+int PlaceApple(int AppleNumber, int PlateNumber)
+{
+   if (( AppleNumber < 0 ) || ( PlateNumber == 0 ))
+   {
+      return 0;
+   }
+
+   if ((( AppleNumber == 1 ) || ( AppleNumber == 0 )) || ( PlateNumber == 1 ))
+   {
+      return 1;
+   }
+
+   int VAR__SUM = 0;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( AppleNumber / PlateNumber ); VAR__53647++ )
+   {
+      VAR__SUM += PlaceApple(AppleNumber - ( PlateNumber * VAR__53647 ), PlateNumber - 1);
+   }
+
+   return VAR__SUM;
+}

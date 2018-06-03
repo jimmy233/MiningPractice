@@ -1,0 +1,85 @@
+int pp[120];
+void kuohao(char VAR__819283[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int LEN_OF_STH = strlen(VAR__819283);
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == ')' )
+      {
+         for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( VAR__819283[VAR__21230] == '(' )
+            {
+               pp[VAR__53647]          = 0;
+               pp[VAR__21230]          = 0;
+               VAR__819283[VAR__53647] = 'a';
+               VAR__819283[VAR__21230] = 'a';
+               break;
+            }
+
+            if ( VAR__21230 == 0 )
+            {
+               pp[VAR__53647] = 1;
+            }
+         }
+
+         VAR__819283[VAR__53647] = 'a';
+         kuohao(VAR__819283);
+      }
+
+      if ( VAR__53647 == ( LEN_OF_STH - 1 ))
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= ( LEN_OF_STH - 1 ); VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230] == '(' )
+            {
+               pp[VAR__21230] = -1;
+            }
+         }
+
+
+         return;
+      }
+   }
+}
+
+
+int main()
+{
+   char A_STRING[200];
+
+   while ( cin >> A_STRING )
+   {
+      ( cout << A_STRING ) << endl;
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 <= 119; VAR__53647++ )
+      {
+         pp[VAR__53647] = 0;
+      }
+
+      kuohao(A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 <= ( strlen(A_STRING) - 1 ); VAR__53647++ )
+      {
+         if ( pp[VAR__53647] == 0 )
+         {
+            cout << " ";
+         }
+         else
+         if ( pp[VAR__53647] == 1 )
+         {
+            cout << "?";
+         }
+         else
+         {
+            cout << "$";
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

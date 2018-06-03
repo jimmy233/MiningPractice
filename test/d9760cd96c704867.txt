@@ -1,0 +1,66 @@
+char VAR__7685[1010] = "";
+char tar[1010]       = "";
+int  LEN_OF_STH      = 0;
+int  ctr;
+void F(int VAR_9494)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = VAR_9494 + 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ((( VAR__7685[VAR__53647] == '(' ) && ( tar[VAR__53647] == '$' )) && ctr )
+      {
+         F(VAR__53647);
+      }
+
+      if (( VAR__7685[VAR__53647] == ')' ) && ( tar[VAR__53647] == '?' ))
+      {
+         tar[VAR_9494] = ( tar[VAR__53647] = ' ' );
+         ctr--;
+         return;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+
+   while ( cin >> VAR__7685 )
+   {
+      ctr = 0;
+      ( cout << VAR__7685 ) << endl;
+      LEN_OF_STH = strlen(VAR__7685);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( VAR__7685[VAR__53647] == '(' )
+         {
+            tar[VAR__53647] = '$';
+         }
+         else
+         if ( VAR__7685[VAR__53647] == ')' )
+         {
+            tar[VAR__53647] = '?';
+            ctr++;
+         }
+         else
+         {
+            tar[VAR__53647] = ' ';
+         }
+      }
+
+      tar[LEN_OF_STH] = '\0';
+      for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if ((( VAR__7685[VAR__53647] == '(' ) && ( tar[VAR__53647] == '$' )) && ctr )
+         {
+            F(VAR__53647);
+         }
+      }
+
+      ( cout << tar ) << endl;
+   }
+
+   return 0;
+}

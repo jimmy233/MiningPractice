@@ -1,0 +1,50 @@
+void times2(char *VAR__819283, int length)
+{
+   int VAR__53647;
+   int carry = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = (( VAR__819283[VAR__53647] * 2 ) + carry ) - '0';
+
+      if ( VAR__819283[VAR__53647] > '9' )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] - 10;
+         carry = 1;
+      }
+      else
+      {
+         carry = 0;
+      }
+   }
+
+   if ( carry == 1 )
+   {
+      VAR__819283[length] = '1';
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int length;
+
+   cin >> VAR_1238123;
+   char answer[100] = "1";
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      length = strlen(answer);
+      times2(answer, length);
+   }
+
+   length = strlen(answer);
+   for ( VAR__53647 = length - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << answer[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

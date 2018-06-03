@@ -1,0 +1,63 @@
+int main()
+{
+   char string[500];
+   char substring[500];
+   char replacement[500];
+   char VAR__TEMP;
+   char A_STRING[500];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__1111;
+   int  VAR__1238129;
+   int  len0;
+   int  len1;
+   int  len2;
+
+   gets(string);
+   gets(substring);
+   gets(replacement);
+   len1 = strlen(substring);
+   len2 = strlen(replacement);
+   len0 = strlen(string);
+   strcpy(A_STRING, string);
+   for ( VAR__53647 = 0; VAR__53647 < len0; VAR__53647++ )
+   {
+      if ( string[VAR__53647] == substring[0] )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < len1; VAR__21230++ )
+         {
+            if ( string[VAR__53647 + 1] == substring[VAR__21230] )
+            {
+               VAR__53647++;
+            }
+            else
+            {
+               VAR__21230 = 0;
+               break;
+            }
+         }
+
+         if ( VAR__21230 == len1 )
+         {
+            VAR__8444594 = VAR__53647;
+            for ( VAR__53647; VAR__53647 < (( len0 - len1 ) + len2 ); VAR__53647++ )
+            {
+               A_STRING[( VAR__53647 - len1 ) + len2] = string[VAR__53647];
+            }
+
+            for ( VAR__1111 = 0; VAR__1111 < len2; VAR__1111++ )
+            {
+               A_STRING[(( VAR__8444594 - len2 ) + 1 ) + VAR__1111] = replacement[VAR__1111];
+            }
+         }
+         else
+         {
+            VAR__1238129 = 0;
+         }
+      }
+   }
+
+   puts(A_STRING);
+   return 0;
+}

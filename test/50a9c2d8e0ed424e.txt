@@ -1,0 +1,62 @@
+int main()
+{
+   char *ANOTHER_POINTER;
+   char *YET_ANOTHER_POINTER;
+   char *p3;
+   char *q1;
+   char *q2;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_FLAG;
+
+   ANOTHER_POINTER     = (char *)malloc(( sizeof( char )) * 256);
+   YET_ANOTHER_POINTER = (char *)malloc(( sizeof( char )) * 256);
+   p3 = (char *)malloc(( sizeof( char )) * 256);
+   q1 = (char *)malloc(( sizeof( char )) * 256);
+   q2 = (char *)malloc(( sizeof( char )) * 256);
+   gets(ANOTHER_POINTER);
+   gets(YET_ANOTHER_POINTER);
+   gets(p3);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(ANOTHER_POINTER); VAR__53647++ )
+   {
+      VAR_FLAG = 1;
+      for ( VAR__21230 = 0; VAR__21230 < strlen(YET_ANOTHER_POINTER); VAR__21230++ )
+      {
+         if (( *(( ANOTHER_POINTER + VAR__53647 ) + VAR__21230 )) != ( *( YET_ANOTHER_POINTER + VAR__21230 )))
+         {
+            VAR_FLAG = 0;
+            break;
+         }
+      }
+
+
+      if ( VAR_FLAG )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR__53647; VAR__8444594++ )
+         {
+            *( q1 + VAR__8444594 ) = *( ANOTHER_POINTER + VAR__8444594 );
+         }
+
+         *( q1 + VAR__8444594 ) = '\0';
+         for ( VAR__8444594 = VAR__53647 + strlen(YET_ANOTHER_POINTER); VAR__8444594 < strlen(ANOTHER_POINTER); VAR__8444594++ )
+         {
+            *((( q2 + VAR__8444594 ) - VAR__53647 ) - strlen(YET_ANOTHER_POINTER)) = *( ANOTHER_POINTER + VAR__8444594 );
+         }
+
+         *((( q2 + VAR__8444594 ) - VAR__53647 ) - strlen(YET_ANOTHER_POINTER)) = '\0';
+         break;
+      }
+   }
+
+   if ( VAR_FLAG )
+   {
+      strcat(q1, p3);
+      strcat(q1, q2);
+      puts(q1);
+   }
+   else
+   {
+      puts(ANOTHER_POINTER);
+   }
+}

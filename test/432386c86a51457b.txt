@@ -1,0 +1,51 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_FLAG[101] = { 0 };
+   char A_STRING[101];
+
+   while ( cin >> A_STRING )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         cout << A_STRING[VAR__53647];
+
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if (( A_STRING[VAR__21230] == '(' ) && ( VAR_FLAG[VAR__21230] == 0 ))
+               {
+                  VAR_FLAG[VAR__53647] = 1;
+                  VAR_FLAG[VAR__21230] = 1;
+                  break;
+               }
+            }
+         }
+      }
+
+      cout << endl;
+      for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         if (( A_STRING[VAR__53647] == '(' ) && ( VAR_FLAG[VAR__53647] == 0 ))
+         {
+            cout << "$";
+         }
+         else
+         if (( A_STRING[VAR__53647] == ')' ) && ( VAR_FLAG[VAR__53647] == 0 ))
+         {
+            cout << "?";
+         }
+         else
+         {
+            cout << " ";
+         }
+      }
+
+      cout << endl;
+      memset(VAR_FLAG, 0, sizeof( VAR_FLAG ));
+   }
+
+   return 0;
+}

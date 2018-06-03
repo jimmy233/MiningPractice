@@ -1,0 +1,62 @@
+int main()
+{
+   char VAR__4857423;
+   char A_STRING[1000];
+   char word[20];
+   char longword[20];
+   char shortword[20];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  longlen  = 0;
+   int  shortlen = 20;
+
+   gets(A_STRING);
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+
+   while (( VAR__4857423 = A_STRING[VAR__53647] ) != '\0' )
+   {
+      if ( VAR__4857423 != ' ' )
+      {
+         word[VAR__21230++] = A_STRING[VAR__53647++];
+      }
+      else
+      {
+         VAR__53647++;
+         word[VAR__21230] = '\0';
+
+         if ( VAR__21230 > longlen )
+         {
+            longlen = VAR__21230;
+            strcpy(longword, word);
+         }
+
+         if ( VAR__21230 < shortlen )
+         {
+            shortlen = VAR__21230;
+            strcpy(shortword, word);
+         }
+
+         VAR__21230 = 0;
+      }
+   }
+
+
+   word[VAR__21230] = 0;
+
+   if ( VAR__21230 > longlen )
+   {
+      longlen = VAR__21230;
+      strcpy(longword, word);
+   }
+   else
+   if ( VAR__21230 < shortlen )
+   {
+      shortlen = VAR__21230;
+      strcpy(shortword, word);
+   }
+
+
+   puts(longword);
+   puts(shortword);
+}

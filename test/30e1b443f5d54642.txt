@@ -1,0 +1,55 @@
+int main()
+{
+   int  left[101];
+   int  LEN_OF_STH;
+   int  top = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   char A_STRING[101];
+
+   while ( gets(A_STRING))
+   {
+      top = 0;
+      puts(A_STRING);
+      LEN_OF_STH = strlen(A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            left[top] = VAR__53647;
+            top++;
+         }
+         else
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            if ( top )
+            {
+               A_STRING[VAR__53647]    = ' ';
+               A_STRING[left[top - 1]] = ' ';
+               top--;
+            }
+            else
+            {
+               A_STRING[VAR__53647] = '?';
+            }
+         }
+         else
+         {
+            A_STRING[VAR__53647] = ' ';
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( A_STRING[VAR__21230] == '(' )
+         {
+            A_STRING[VAR__21230] = '$';
+         }
+      }
+
+
+      puts(A_STRING);
+   }
+
+   return 0;
+}

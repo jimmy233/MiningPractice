@@ -1,0 +1,83 @@
+int main()
+{
+   while ( 1 )
+   {
+      char A_STRING[101];
+      int  final[101] = { 0 };
+      cin.getline(A_STRING, 101);
+
+      if ( A_STRING[0] == '\0' )
+      {
+         break;
+      }
+
+      int VAR__53647   = 0;
+      int VAR_233      = 0;
+      int VAR_666      = 0;
+      int VAR__8444594 = 0;
+      int VAR_FLAG     = 0;
+
+      while ( A_STRING[VAR__53647] != '\0' )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            final[VAR__53647] = 1;
+         }
+
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            final[VAR__53647] = 2;
+            for ( int VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( final[VAR__21230] == 1 )
+               {
+                  final[VAR__53647] = 0;
+                  final[VAR__21230] = 0;
+                  break;
+               }
+            }
+         }
+
+         VAR__53647++;
+      }
+
+      ( cout << A_STRING ) << endl;
+
+      while ( A_STRING[VAR__8444594] != '\0' )
+      {
+         if (( final[VAR__8444594] == 1 ) || ( final[VAR__8444594] == 2 ))
+         {
+            VAR_233 = VAR__8444594;
+
+            if ( VAR_FLAG == 0 )
+            {
+               VAR_666  = VAR__8444594;
+               VAR_FLAG = 1;
+            }
+         }
+
+         VAR__8444594++;
+      }
+
+      for ( int VAR__21230 = VAR_666; VAR__21230 <= VAR_233; VAR__21230++ )
+      {
+         if ( final[VAR__21230] == 1 )
+         {
+            cout << '$';
+         }
+         else
+         if ( final[VAR__21230] == 2 )
+         {
+            cout << '?';
+         }
+         else
+         {
+            cout << ' ';
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

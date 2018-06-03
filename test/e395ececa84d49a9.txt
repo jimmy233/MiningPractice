@@ -1,0 +1,89 @@
+void main(void)
+{
+   while ( 1 )
+   {
+      char ANOTHER_STRING[100];
+      char YET_ANOTHER_STRING[100];
+      gets(ANOTHER_STRING);
+
+      if ( feof(stdin))
+      {
+         break;
+      }
+
+      puts(ANOTHER_STRING);
+      int VAR__8444594;
+      int VAR_1238123 = strlen(ANOTHER_STRING);
+      int left[100];
+      int right[100];
+      int VAR__1111  = 0;
+      int VAR_129012 = 0;
+      for ( VAR__8444594 = 0; VAR__8444594 <= ( VAR_1238123 - 1 ); VAR__8444594++ )
+      {
+         if ( ANOTHER_STRING[VAR__8444594] == '(' )
+         {
+            left[VAR__1111] = VAR__8444594;
+            VAR__1111++;
+         }
+         else
+         if ( ANOTHER_STRING[VAR__8444594] == ')' )
+         {
+            right[VAR_129012] = VAR__8444594;
+            VAR_129012++;
+         }
+         else
+         {
+            YET_ANOTHER_STRING[VAR__8444594] = ' ';
+         }
+      }
+
+      left[VAR__1111]   = 100;
+      right[VAR_129012] = 100;
+      YET_ANOTHER_STRING[VAR_1238123] = '\0';
+      int VAR__53647;
+      int VAR__21230;
+      int VAR__7685    = 1;
+      int VAR__3918907 = 1;
+      for ( VAR__53647 = VAR__1111 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         int VAR_233 = 0;
+
+         while ( right[VAR_233] < left[VAR__53647] )
+         {
+            VAR_233++;
+         }
+
+         if ( VAR__7685 > ( VAR_129012 - VAR_233 ))
+         {
+            YET_ANOTHER_STRING[left[VAR__53647]] = '$';
+         }
+         else
+         {
+            YET_ANOTHER_STRING[left[VAR__53647]] = ' ';
+            VAR__7685++;
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_129012 - 1 ); VAR__21230++ )
+      {
+         int VAR_666 = 0;
+
+         while ( left[VAR_666] < right[VAR__21230] )
+         {
+            VAR_666++;
+         }
+
+         if ( VAR__3918907 > VAR_666 )
+         {
+            YET_ANOTHER_STRING[right[VAR__21230]] = '?';
+         }
+         else
+         {
+            YET_ANOTHER_STRING[right[VAR__21230]] = ' ';
+            VAR__3918907++;
+         }
+      }
+
+      puts(YET_ANOTHER_STRING);
+   }
+}

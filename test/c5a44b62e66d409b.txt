@@ -1,0 +1,65 @@
+void change(char A_STRING[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   VAR_1238123 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == '(' )
+      {
+         A_STRING[VAR__53647] = '$';
+      }
+      else
+      if ( A_STRING[VAR__53647] == ')' )
+      {
+         A_STRING[VAR__53647] = '?';
+      }
+      else
+      {
+         A_STRING[VAR__53647] = ' ';
+      }
+   }
+}
+
+
+void match(char A_STRING[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__8444594;
+
+   VAR_1238123 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == ')' )
+      {
+         for ( VAR__8444594 = VAR__53647; VAR__8444594 >= 0; VAR__8444594-- )
+         {
+            if ( A_STRING[VAR__8444594] == '(' )
+            {
+               A_STRING[VAR__8444594] = ' ';
+               A_STRING[VAR__53647]   = ' ';
+               VAR__8444594           = -1;
+            }
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   char VAR__819283;
+   char string[100];
+
+   while ( gets(string))
+   {
+      puts(string);
+      match(string);
+      change(string);
+      puts(string);
+   }
+
+   return 0;
+}

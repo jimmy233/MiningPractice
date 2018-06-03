@@ -1,0 +1,57 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__1238129 = 1; VAR__1238129 <= VAR_1238123; VAR__1238129++ )
+   {
+      char A_STRING[105];
+      char YET_ANOTHER_STRING[105];
+      cin >> A_STRING;
+      int stack[105];
+      int LEN_OF_STH   = strlen(A_STRING);
+      int VAR__8444594 = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         YET_ANOTHER_STRING[VAR__53647] = ' ';
+      }
+
+      YET_ANOTHER_STRING[LEN_OF_STH] = '\0';
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            if (( VAR__8444594 == 0 ) || ( stack[VAR__8444594 - 1] > 0 ))
+            {
+               stack[VAR__8444594++] = VAR__53647 + 1;
+            }
+            else
+            {
+               VAR__8444594--;
+            }
+         }
+         else
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            stack[VAR__8444594++] = ( -VAR__53647 ) - 1;
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if ( stack[VAR__53647] < 0 )
+         {
+            YET_ANOTHER_STRING[( -stack[VAR__53647] ) - 1] = '$';
+         }
+         else
+         {
+            YET_ANOTHER_STRING[stack[VAR__53647] - 1] = '?';
+         }
+      }
+
+      ( cout << A_STRING ) << endl;
+      ( cout << YET_ANOTHER_STRING ) << endl;
+   }
+
+   return 0;
+}

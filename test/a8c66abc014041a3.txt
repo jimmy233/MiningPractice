@@ -1,0 +1,83 @@
+int main()
+{
+   char VAR__9290[200000];
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  VAR__21230;
+   int  VAR__MIN;
+   int  VAR__MAX;
+   int  VAR__12302;
+   int  VAR__19328;
+   int  VAR__819283;
+   int  VAR_SIZE[200];
+   int  VAR__NUM;
+   int  VAR__7685;
+   int  VAR__3918907;
+   int  VAR_2890 = 0;
+   int  sx[200];
+
+   VAR__7685 = -1;
+   gets(VAR__9290);
+   VAR__819283 = strlen(VAR__9290);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__819283 - 1 ); VAR__53647++ )
+   {
+      if (( VAR__53647 == 0 ) && (( VAR__9290[VAR__53647] == ' ' ) || ( VAR__9290[VAR__53647] == ',' )))
+      {
+         continue;
+      }
+
+      if (((((( VAR__53647 == 0 ) && ( VAR__9290[VAR__53647] != ' ' )) && ( VAR__9290[VAR__53647] != ',' )) || (( VAR__53647 != 0 ) && (( VAR__9290[VAR__53647 - 1] == ' ' ) || ( VAR__9290[VAR__53647 - 1] == ',' )))) && ( VAR__9290[VAR__53647] != ',' )) && ( VAR__9290[VAR__53647] != ' ' ))
+      {
+         VAR__7685++;
+         VAR_SIZE[VAR__7685] = 1;
+         sx[VAR__7685]       = VAR__53647;
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( VAR__819283 - 1 ); VAR__21230++ )
+         {
+            if (( VAR__9290[VAR__21230] == ' ' ) || ( VAR__9290[VAR__21230] == ',' ))
+            {
+               break;
+            }
+
+            if (( VAR__9290[VAR__21230] != ' ' ) && ( VAR__9290[VAR__21230] != ',' ))
+            {
+               VAR_SIZE[VAR__7685]++;
+            }
+         }
+      }
+   }
+
+   VAR__MAX = 0;
+   VAR__MIN = 1000;
+   int maxindex;
+   int minindex;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__7685; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR_SIZE[VAR__53647] )
+      {
+         VAR__MAX = VAR_SIZE[VAR__53647];
+         maxindex = VAR__53647;
+      }
+
+      if ( VAR__MIN > VAR_SIZE[VAR__53647] )
+      {
+         VAR__MIN = VAR_SIZE[VAR__53647];
+         minindex = VAR__53647;
+      }
+   }
+
+   VAR__12302 = maxindex;
+   VAR__19328 = minindex;
+   for ( VAR__53647 = sx[VAR__12302]; VAR__53647 <= (( sx[VAR__12302] + VAR_SIZE[VAR__12302] ) - 1 ); VAR__53647++ )
+   {
+      printf("%c", VAR__9290[VAR__53647]);
+   }
+
+   printf("\n");
+   for ( VAR__53647 = sx[VAR__19328]; VAR__53647 <= (( sx[VAR__19328] + VAR_SIZE[VAR__19328] ) - 1 ); VAR__53647++ )
+   {
+      printf("%c", VAR__9290[VAR__53647]);
+   }
+
+   printf("\n");
+   return 0;
+}

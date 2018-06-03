@@ -1,0 +1,54 @@
+void main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  flu;
+   int  max_len = 0;
+   int  min_len = 100;
+   int  max_num;
+   int  min_num;
+   char ch[20000];
+   char A_STRING[200][100];
+
+   gets(ch);
+   for ( VAR__53647 = ( VAR__21230 = ( VAR__8444594 = ( flu = 0 ))); VAR__53647 < strlen(ch); VAR__53647++ )
+   {
+      if (( ch[VAR__53647] != ' ' ) && ( ch[VAR__53647] != ',' ))
+      {
+         flu = 1;
+         A_STRING[VAR__8444594][VAR__21230++] = ch[VAR__53647];
+      }
+      else
+      if ( flu == 1 )
+      {
+         A_STRING[VAR__8444594++][VAR__21230] = '\0';
+         VAR__21230 = ( flu = 0 );
+      }
+   }
+
+
+
+   if ( flu == 1 )
+   {
+      A_STRING[VAR__8444594++][VAR__21230] = '\0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( max_len < strlen(A_STRING[VAR__53647]))
+      {
+         max_len = strlen(A_STRING[VAR__53647]);
+         max_num = VAR__53647;
+      }
+
+      if ( min_len > strlen(A_STRING[VAR__53647]))
+      {
+         min_len = strlen(A_STRING[VAR__53647]);
+         min_num = VAR__53647;
+      }
+   }
+
+   printf("%s\n", A_STRING[max_num]);
+   printf("%s\n", A_STRING[min_num]);
+}

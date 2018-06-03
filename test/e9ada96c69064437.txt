@@ -1,0 +1,45 @@
+double dis(double VAR__819283, double VAR__19328, double VAR__4857423, double VAR__12302)
+{
+   double VAR__1111 = (( VAR__819283 - VAR__4857423 ) * ( VAR__819283 - VAR__4857423 )) + (( VAR__19328 - VAR__12302 ) * ( VAR__19328 - VAR__12302 ));
+
+   return VAR__1111;
+}
+
+
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__1238129 = 0;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    VAR_129012;
+   double VAR_233[10][2];
+   double res[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf", &VAR_233[VAR__53647][0]);
+      scanf("%lf", &VAR_233[VAR__53647][1]);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__8444594 = VAR__21230 + 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         res[VAR__1238129] = dis(VAR_233[VAR__21230][0], VAR_233[VAR__21230][1], VAR_233[VAR__8444594][0], VAR_233[VAR__8444594][1]);
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( res[VAR__53647] < res[VAR__53647 - 1] )
+      {
+         res[VAR__53647] = res[VAR__53647 - 1];
+      }
+   }
+
+   printf("%.4f", sqrt(res[VAR__1238129 - 1]));
+}

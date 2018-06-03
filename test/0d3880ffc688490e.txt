@@ -1,0 +1,56 @@
+char VAR_9494[200];
+char st[200];
+char sw[200];
+int  N;
+void multi(int VAR_1238123)
+{
+   if ( VAR_1238123 == N )
+   {
+      return;
+   }
+   else
+   {
+      st[0] = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(sw); VAR__53647++ )
+      {
+         st[VAR__53647 + 1]   = (( VAR_9494[VAR__53647] * 2 ) + st[VAR__53647] ) / 10;
+         VAR_9494[VAR__53647] = (( VAR_9494[VAR__53647] * 2 ) + st[VAR__53647] ) % 10;
+         sw[VAR__53647]       = 'x';
+      }
+
+      VAR_9494[strlen(sw)] = st[strlen(sw)];
+      sw[strlen(sw)]       = 'x';
+      multi(VAR_1238123 + 1);
+   }
+}
+
+
+int main()
+{
+   int VAR_233;
+
+   cin >> N;
+   VAR_9494[0] = 1;
+   st[0]       = 0;
+   sw[0]       = 'x';
+   multi(0);
+   for ( int VAR__53647 = strlen(sw); VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR_9494[VAR__53647] += '0';
+
+      if ( VAR_9494[VAR__53647] != '0' )
+      {
+         VAR_233 = VAR__53647;
+         break;
+      }
+   }
+
+   VAR_9494[VAR_233] -= '0';
+   for ( int VAR__53647 = VAR_233; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR_9494[VAR__53647] += '0';
+      cout << VAR_9494[VAR__53647];
+   }
+
+   return 0;
+}

@@ -1,0 +1,71 @@
+int main(void)
+{
+   char *exp = (char *)malloc(( sizeof( char )) * MAX_LEN);
+   int  *res = (int *)malloc(( sizeof( int )) * MAX_LEN);
+
+   while ( gets(exp))
+   {
+      int cur        = 0;
+      int pt         = 0;
+      int LEN_OF_STH = strlen(exp);
+      for ( int VAR__53647 = 0; VAR__53647 != MAX_LEN; ++VAR__53647 )
+      {
+         res[VAR__53647] = -1;
+      }
+
+      for ( ; cur != LEN_OF_STH; ++cur )
+      {
+         if (( exp[cur] != '(' ) && ( exp[cur] != ')' ))
+         {
+            res[cur] = 0;
+         }
+
+         if ( exp[cur] == ')' )
+         {
+            for ( pt = cur - 1; pt >= 0; --pt )
+            {
+               if (( exp[pt] == '(' ) && res[pt] )
+               {
+                  res[pt]  = 0;
+                  res[cur] = 0;
+                  break;
+               }
+            }
+         }
+      }
+
+      puts(exp);
+      for ( int VAR__53647 = 0; VAR__53647 != LEN_OF_STH; ++VAR__53647 )
+      {
+         if (( exp[VAR__53647] == '(' ) && ( res[VAR__53647] == ( -1 )))
+         {
+            res[VAR__53647] = 1;
+         }
+         else
+         if (( exp[VAR__53647] == ')' ) && ( res[VAR__53647] == ( -1 )))
+         {
+            res[VAR__53647] = 2;
+         }
+
+
+         switch ( res[VAR__53647] )
+         {
+         case 0:
+            putchar(' ');
+            break;
+
+         case 1:
+            putchar('$');
+            break;
+
+         case 2:
+            putchar('?');
+            break;
+         }
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

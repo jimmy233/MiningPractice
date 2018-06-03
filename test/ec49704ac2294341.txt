@@ -1,0 +1,57 @@
+int main()
+{
+   char VAR__NUM[101];
+   char VAR__temp[101];
+   int  VAR_9494[101];
+   int  VAR__8444594;
+   int  VAR__21230;
+   int  LEN_OF_STH;
+   int  aa;
+
+   while ( gets(VAR__NUM))
+   {
+      strcpy(VAR__temp, VAR__NUM);
+      LEN_OF_STH = strlen(VAR__NUM);
+      for ( VAR__8444594 = 0; VAR__8444594 < LEN_OF_STH; VAR__8444594++ )
+      {
+         VAR_9494[VAR__8444594] = 1;
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 < LEN_OF_STH; VAR__8444594++ )
+      {
+         if ( VAR__NUM[VAR__8444594] == ')' )
+         {
+            for ( VAR__21230 = VAR__8444594 - 1; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( VAR__NUM[VAR__21230] == '(' )
+               {
+                  VAR_9494[VAR__21230]   = 0;
+                  VAR_9494[VAR__8444594] = 0;
+                  VAR__NUM[VAR__21230]   = 0;
+                  break;
+               }
+            }
+         }
+      }
+
+      printf("%s\n", VAR__temp);
+      for ( aa = 0; aa < LEN_OF_STH; aa++ )
+      {
+         if (( VAR_9494[aa] == 1 ) && ( VAR__temp[aa] == '(' ))
+         {
+            printf("$");
+         }
+         else
+         if (( VAR_9494[aa] == 1 ) && ( VAR__temp[aa] == ')' ))
+         {
+            printf("?");
+         }
+         else
+         {
+            printf(" ");
+         }
+      }
+
+      printf("\n");
+   }
+}

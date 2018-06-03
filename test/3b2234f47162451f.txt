@@ -1,0 +1,84 @@
+int getstr(char A_STRING[], char VAR_9494[], int VAR__1238129, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230 = 0;
+
+   for ( VAR__53647 = VAR__1238129 + 1; VAR__53647 < VAR_1238123; VAR__53647++, VAR__21230++ )
+   {
+      VAR_9494[VAR__21230] = A_STRING[VAR__53647];
+   }
+
+   for ( VAR__53647 = VAR__21230; VAR__53647 < strlen(VAR_9494); VAR__53647++ )
+   {
+      VAR_9494[VAR__53647] = 0;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   char snt[300];
+   char word[49][20];
+   char *VAR_233;
+   char *VAR_666;
+   int  LEN_OF_STH;
+   int  label[50] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__8444594;
+   int  VAR__1111 = 0;
+
+   gets(snt);
+   LEN_OF_STH = strlen(snt);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( snt[VAR__53647] == ' ' )
+      {
+         label[VAR__21230++] = VAR__53647;
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      getstr(snt, word[VAR__53647], label[VAR__53647 - 1], label[VAR__53647]);
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < label[0]; VAR__8444594++ )
+   {
+      *( word[0] + VAR__8444594 ) = *( snt + VAR__8444594 );
+   }
+
+   *( word[0] + VAR__8444594 ) = '\0';
+   for ( VAR__8444594 = label[VAR__21230 - 1] + 1; VAR__8444594 < LEN_OF_STH; VAR__8444594++, VAR__1111++ )
+   {
+      *( word[VAR__21230] + VAR__1111 ) = *( snt + VAR__8444594 );
+   }
+
+   *( word[VAR__21230] + VAR__1111 ) = '\0';
+   VAR_233 = word[0];
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__21230; VAR__8444594++ )
+   {
+      if ( strlen(word[VAR__8444594 + 1]) > strlen(VAR_233))
+      {
+         VAR_233 = word[VAR__8444594 + 1];
+      }
+   }
+
+
+   printf("%s\n", VAR_233);
+   VAR_666 = word[0];
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__21230; VAR__8444594++ )
+   {
+      if ( strlen(word[VAR__8444594 + 1]) < strlen(VAR_666))
+      {
+         VAR_666 = word[VAR__8444594 + 1];
+      }
+   }
+
+
+   printf("%s\n", VAR_666);
+   return 0;
+}

@@ -1,0 +1,66 @@
+int main()
+{
+   char A_STRING[300];
+   char word[300];
+   char VAR_233;
+   int  VAR__53647;
+   int  VAR__8444594 = 0;
+   int  LEN_OF_STH;
+   int  VAR__NUM[300] = { 0 };
+   int  VAR__21230;
+   int  VAR__temp;
+   int  check = 0;
+
+   scanf("%s", A_STRING);
+   LEN_OF_STH = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= 'a' ) && ( A_STRING[VAR__53647] <= 'z' ))
+      {
+         word[VAR__8444594] = A_STRING[VAR__53647];
+         check = 1;
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+         {
+            if ( A_STRING[VAR__53647] == A_STRING[VAR__21230] )
+            {
+               A_STRING[VAR__21230]   = 0;
+               VAR__NUM[VAR__8444594] = VAR__NUM[VAR__8444594] + 1;
+            }
+         }
+
+
+         VAR__8444594++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( word[VAR__53647] > word[VAR__21230] )
+         {
+            VAR_233              = word[VAR__53647];
+            word[VAR__53647]     = word[VAR__21230];
+            word[VAR__21230]     = VAR_233;
+            VAR__temp            = VAR__NUM[VAR__53647];
+            VAR__NUM[VAR__53647] = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230] = VAR__temp;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%c=%d\n", word[VAR__53647], VAR__NUM[VAR__53647] + 1);
+   }
+
+   if ( check == 0 )
+   {
+      printf("No");
+   }
+
+   return 0;
+}

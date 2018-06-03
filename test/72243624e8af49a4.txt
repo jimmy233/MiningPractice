@@ -1,0 +1,74 @@
+int main()
+{
+   char array[101];
+   char ans[101];
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  left;
+   int  right;
+
+   while ( cin.getline(array, 101))
+   {
+      LEN_OF_STH = strlen(array);
+      left       = 0;
+      right      = 0;
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         ans[VAR__53647] = ' ';
+
+         if ( array[VAR__53647] == '(' )
+         {
+            left++;
+         }
+
+         if ( array[VAR__53647] == ')' )
+         {
+            right++;
+
+            if ( right > left )
+            {
+               left            = 0;
+               right           = 0;
+               ans[VAR__53647] = '?';
+            }
+         }
+      }
+
+      left  = 0;
+      right = 0;
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( array[VAR__53647] == '(' )
+         {
+            left++;
+
+            if ( left > right )
+            {
+               left            = 0;
+               right           = 0;
+               ans[VAR__53647] = '$';
+            }
+         }
+
+         if ( array[VAR__53647] == ')' )
+         {
+            right++;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << array[VAR__53647];
+      }
+
+      cout << endl;
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << ans[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

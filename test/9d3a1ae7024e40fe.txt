@@ -1,0 +1,66 @@
+int match(char *VAR__819283)
+{
+   int VAR__53647 = 1;
+
+   while ( VAR__819283[VAR__53647] != '\0' )
+   {
+      if ( VAR__819283[VAR__53647] == ')' )
+      {
+         VAR__819283[VAR__53647] = ' ';
+         VAR__819283[0]          = ' ';
+         return VAR__53647;
+      }
+      else
+      if ( VAR__819283[VAR__53647] == '(' )
+      {
+         VAR__819283[VAR__53647] = '$';
+         VAR__53647 += match(VAR__819283 + VAR__53647);
+      }
+      else
+      {
+         VAR__819283[VAR__53647] = ' ';
+      }
+
+
+      VAR__53647++;
+   }
+
+   return VAR__53647 - 1;
+}
+
+
+int main()
+{
+   while ( cin.peek() != EOF )
+   {
+      char ch[110];
+      cin.getline(ch, 110, '\n');
+      ( cout << ch ) << endl;
+      int VAR__53647 = 0;
+
+      while ( ch[VAR__53647] != '\0' )
+      {
+         if ( ch[VAR__53647] == '(' )
+         {
+            ch[VAR__53647] = '$';
+            VAR__53647    += match(ch + VAR__53647);
+         }
+         else
+         if ( ch[VAR__53647] == ')' )
+         {
+            ch[VAR__53647] = '?';
+         }
+         else
+         {
+            ch[VAR__53647] = ' ';
+         }
+
+
+         VAR__53647++;
+      }
+
+      ( cout << ch ) << endl;
+   }
+
+   return 0;
+}

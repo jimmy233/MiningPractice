@@ -1,0 +1,119 @@
+char VAR__819283[1000]  = { '0' };
+char VAR__4857423[1000] = { ' ' };
+int  qq;
+int  pp;
+int  VAR__temp = 0;
+int VAR__7685(int VAR__1238129)
+{
+   if ( qq <= ( VAR__1238129 - 1 ))
+   {
+      if ( VAR__819283[qq] == '(' )
+      {
+         qq++;
+         VAR__temp++;
+         VAR__7685(VAR__1238129);
+      }
+      else
+      if ( VAR__819283[qq] == ')' )
+      {
+         qq++;
+         VAR__temp--;
+
+         if ( VAR__temp == ( -1 ))
+         {
+            VAR__4857423[qq - 1] = '?';
+            VAR__temp            = 0;
+         }
+
+         VAR__7685(VAR__1238129);
+      }
+      else
+      if (( VAR__819283[qq] != '(' ) && ( VAR__819283[qq] != ')' ))
+      {
+         qq++;
+         VAR__7685(VAR__1238129);
+      }
+   }
+
+   VAR__temp = 0;
+   return 0;
+}
+
+
+int VAR__3918907(int VAR__1238129)
+{
+   if ( pp >= 0 )
+   {
+      if ( VAR__819283[pp] == ')' )
+      {
+         pp--;
+         VAR__temp++;
+         VAR__3918907(VAR__1238129);
+      }
+      else
+      if ( VAR__819283[pp] == '(' )
+      {
+         pp--;
+         VAR__temp--;
+
+         if ( VAR__temp == ( -1 ))
+         {
+            VAR__4857423[pp + 1] = '$';
+            VAR__temp            = 0;
+         }
+
+         VAR__3918907(VAR__1238129);
+      }
+      else
+      if (( VAR__819283[pp] != '(' ) && ( VAR__819283[pp] != ')' ))
+      {
+         pp--;
+         VAR__3918907(VAR__1238129);
+      }
+   }
+
+   VAR__temp = 0;
+   return 0;
+}
+
+
+int main()
+{
+   char VAR__19328;
+   int  VAR__53647 = 0;
+
+   while ( cin.get(VAR__19328))
+   {
+      if ( VAR__19328 != '\n' )
+      {
+         VAR__819283[VAR__53647++] = VAR__19328;
+      }
+      else
+      if ( VAR__19328 == '\n' )
+      {
+         for ( int j3 = 0; j3 <= ( VAR__53647 - 1 ); j3++ )
+         {
+            VAR__4857423[j3] = ' ';
+         }
+
+         ( cout << VAR__819283 ) << endl;
+         qq = 0;
+         VAR__7685(VAR__53647);
+         pp = VAR__53647 - 1;
+         VAR__3918907(VAR__53647);
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+         {
+            cout << VAR__4857423[VAR__21230];
+         }
+
+         cout << '\n';
+         for ( int j1 = 0; j1 <= ( VAR__53647 - 1 ); j1++ )
+         {
+            VAR__4857423[j1] = ' ';
+            VAR__819283[j1]  = '\0';
+         }
+
+         VAR__53647 = 0;
+      }
+   }
+}

@@ -1,0 +1,94 @@
+int  VAR__1238129 = 0;
+int  VAR__1111;
+int  VAR__temp;
+char VAR__19328[100];
+void ff(int VAR__7685)
+{
+   VAR__1238129 = VAR__7685;
+   for ( int VAR__21230 = VAR__7685 + 1; VAR__21230 < VAR__1111; VAR__21230++ )
+   {
+      if ( VAR__19328[VAR__21230] == '(' )
+      {
+         ff(VAR__21230);
+         break;
+      }
+
+      if ( VAR__19328[VAR__21230] == ')' )
+      {
+         VAR__19328[VAR__1238129] = ' ';
+         VAR__19328[VAR__21230]   = ' ';
+         VAR__temp = 1;
+         break;
+      }
+   }
+}
+
+
+void VAR__127322(int VAR__7685)
+{
+   VAR__1238129 = 0;
+   VAR__temp    = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      if (( VAR__19328[VAR__53647] != '(' ) && ( VAR__19328[VAR__53647] != ')' ))
+      {
+         VAR__19328[VAR__53647] = ' ';
+      }
+
+      if ( VAR__19328[VAR__53647] == '(' )
+      {
+         ff(VAR__53647);
+         break;
+      }
+   }
+
+   if ( VAR__temp == 1 )
+   {
+      VAR__127322(VAR__7685);
+      return;
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647] == '(' )
+         {
+            cout << "$";
+         }
+         else
+         if ( VAR__19328[VAR__53647] == ')' )
+         {
+            cout << "?";
+         }
+         else
+         {
+            cout << " ";
+         }
+      }
+
+      return;
+   }
+}
+
+
+int main()
+{
+   int VAR__8444594;
+   int VAR_2890;
+
+   for ( VAR_2890 = 0; VAR_2890 < 10; VAR_2890++ )
+   {
+      VAR__1111 = 0;
+      cin >> VAR__19328;
+      ( cout << VAR__19328 ) << endl;
+      VAR__1111 = strlen(VAR__19328);
+      VAR__127322(VAR__1111);
+      cout << endl;
+      for ( VAR__8444594 = 0; VAR__8444594 < 100; VAR__8444594++ )
+      {
+         VAR__19328[VAR__8444594] = '\0';
+      }
+   }
+
+   return 0;
+}

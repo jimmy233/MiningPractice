@@ -1,0 +1,55 @@
+int main()
+{
+   int **pp;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 0;
+   int VAR__temp    = 0;
+   int VAR__19328;
+   int VAR__4857423;
+   int area;
+
+   scanf("%d", &VAR_1238123);
+   pp = (int **)malloc(VAR_1238123 * ( sizeof( int * )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      pp[VAR__53647] = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &pp[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ((( pp[VAR__53647 - 1][VAR__21230] - pp[VAR__53647][VAR__21230] ) == 255 ) && (( pp[VAR__53647][VAR__21230 - 1] - pp[VAR__53647][VAR__21230] ) == 255 ))
+         {
+            VAR__8444594 = VAR__53647;
+            VAR__temp    = VAR__21230;
+         }
+
+         if ((( pp[VAR__53647][VAR__21230 + 1] - pp[VAR__53647][VAR__21230] ) == 255 ) && (( pp[VAR__53647 + 1][VAR__21230] - pp[VAR__53647][VAR__21230] ) == 255 ))
+         {
+            VAR__19328   = VAR__53647;
+            VAR__4857423 = VAR__21230;
+         }
+      }
+   }
+
+   area = (( VAR__19328 - VAR__8444594 ) - 1 ) * (( VAR__4857423 - VAR__temp ) - 1 );
+   printf("%d\n", area);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      free(pp[VAR__53647]);
+   }
+
+   free(pp);
+   return 0;
+}

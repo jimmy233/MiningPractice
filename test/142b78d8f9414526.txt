@@ -1,0 +1,43 @@
+int dp[100][11];
+int main(void)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR__1238129;
+   int VAR_1238123;
+
+   scanf("%d", &VAR__temp);
+   for ( VAR__53647 = 1; VAR__53647 <= 100; VAR__53647++ )
+   {
+      dp[VAR__53647][1] = 1;
+   }
+
+   for ( VAR__21230 = 2; VAR__21230 <= 10; VAR__21230++ )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= 100; VAR__53647++ )
+      {
+         if (( VAR__53647 - VAR__21230 ) > 0 )
+         {
+            dp[VAR__53647][VAR__21230] = dp[VAR__53647][VAR__21230 - 1] + dp[VAR__53647 - VAR__21230][VAR__21230];
+         }
+         else
+         if (( VAR__53647 - VAR__21230 ) == 0 )
+         {
+            dp[VAR__53647][VAR__21230] = dp[VAR__53647][VAR__21230 - 1] + 1;
+         }
+         else
+         {
+            dp[VAR__53647][VAR__21230] = dp[VAR__53647][VAR__21230 - 1];
+         }
+      }
+   }
+
+   while ( VAR__temp-- )
+   {
+      scanf("%d%d", &VAR__1238129, &VAR_1238123);
+      printf("%d\n", dp[VAR__1238129][VAR_1238123]);
+   }
+
+   return 0;
+}

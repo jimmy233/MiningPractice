@@ -1,0 +1,49 @@
+const int MAX_DIGIT = 10000;
+int main()
+{
+   int VAR__NUM[100];
+
+   VAR__NUM[0] = 1;
+   VAR__NUM[1] = 0;
+   int numDigits = 1;
+   int VAR_1238123;
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      int end = numDigits;
+      for ( int VAR__53647 = 0; VAR__53647 < end; ++VAR__53647 )
+      {
+         VAR__NUM[VAR__53647] *= 2;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < end; ++VAR__53647 )
+      {
+         if ( VAR__NUM[VAR__53647] >= MAX_DIGIT )
+         {
+            if ( VAR__53647 != ( numDigits - 1 ))
+            {
+               VAR__NUM[VAR__53647 + 1] += VAR__NUM[VAR__53647] / MAX_DIGIT;
+            }
+            else
+            {
+               VAR__NUM[numDigits] = VAR__NUM[VAR__53647] / MAX_DIGIT;
+               ++numDigits;
+            }
+         }
+
+         VAR__NUM[VAR__53647] = VAR__NUM[VAR__53647] % MAX_DIGIT;
+      }
+   }
+
+   for ( int VAR__53647 = numDigits - 1; VAR__53647 >= 0; --VAR__53647 )
+   {
+      if ( VAR__53647 != ( numDigits - 1 ))
+      {
+         ( cout << setfill('0')) << setw(4);
+      }
+
+      cout << VAR__NUM[VAR__53647];
+   }
+
+   cout << endl;
+}

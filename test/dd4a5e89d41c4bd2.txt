@@ -1,0 +1,87 @@
+int main()
+{
+   char ans[101];
+   char VAR__819283[101];
+   int  VAR_1238123;
+
+   scanf("%d\n", &VAR_1238123);
+
+   while ( VAR_1238123 > 0 )
+   {
+      gets(VAR__819283);
+      int ll      = strlen(VAR__819283);
+      int bb[101] = { 0 };
+      int be;
+      be = -1;
+      int VAR__53647 = 0;
+
+      while ( VAR__53647 < ll )
+      {
+         while (( VAR__819283[VAR__53647] != '(' ) && ( VAR__819283[VAR__53647] != ')' ))
+         {
+            ans[VAR__53647] = ' ';
+            VAR__53647++;
+
+            if ( VAR__53647 >= ll )
+            {
+               break;
+            }
+         }
+
+         if ( VAR__819283[VAR__53647] == '(' )
+         {
+            bb[VAR__53647 + 1] = be;
+            be = VAR__53647 + 1;
+         }
+
+         if ( VAR__819283[VAR__53647] == ')' )
+         {
+            if ( be < 0 )
+            {
+               ans[VAR__53647] = '?';
+            }
+            else
+            {
+               int VAR__temp;
+               VAR__temp       = bb[be];
+               bb[be]          = 0;
+               be              = VAR__temp;
+               ans[VAR__53647] = ' ';
+            }
+         }
+
+         VAR__53647++;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ll; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == '(' )
+         {
+            if ( bb[VAR__53647 + 1] == 0 )
+            {
+               ans[VAR__53647] = ' ';
+            }
+            else
+            {
+               ans[VAR__53647] = '$';
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ll; VAR__53647++ )
+      {
+         printf("%c", VAR__819283[VAR__53647]);
+      }
+
+      printf("\n");
+      for ( VAR__53647 = 0; VAR__53647 < ll; VAR__53647++ )
+      {
+         printf("%c", ans[VAR__53647]);
+      }
+
+      printf("\n");
+      VAR_1238123--;
+   }
+
+   return 0;
+}

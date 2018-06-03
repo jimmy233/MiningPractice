@@ -1,0 +1,91 @@
+int match(int);
+int VAR__COUNT(int);
+int match(int, int, int, int);
+
+char VAR__819283[50][105];
+char VAR__19328[50][105] = { 0 };
+int  VAR__NUM[50]        = { 0 };
+int main()
+{
+   for ( int VAR__53647 = 0; ; VAR__53647++ )
+   {
+      cin.getline(VAR__819283[VAR__53647], 101);
+      VAR__COUNT(VAR__53647);
+      match(VAR__53647);
+      ( cout << VAR__819283[VAR__53647] ) << endl;
+      ( cout << VAR__19328[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}
+
+
+int VAR__COUNT(int VAR__1238129)
+{
+   for ( int VAR__53647 = 0; VAR__819283[VAR__1238129][VAR__53647] != 0; VAR__53647++ )
+   {
+      VAR__NUM[VAR__1238129]++;
+   }
+
+   return 0;
+}
+
+
+int cur      = 0;
+int VAR_FLAG = 0;
+int match(int VAR__8444594)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM[VAR__8444594]; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__8444594][VAR__53647] == '(' )
+      {
+         VAR__19328[VAR__8444594][VAR__53647] = '$';
+      }
+      else
+      if ( VAR__819283[VAR__8444594][VAR__53647] == ')' )
+      {
+         VAR__19328[VAR__8444594][VAR__53647] = '?';
+      }
+      else
+      {
+         VAR__19328[VAR__8444594][VAR__53647] = ' ';
+      }
+   }
+
+   while ( 1 )
+   {
+      int VAR_FLAG = -1;
+      int judge    = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM[VAR__8444594]; VAR__53647++ )
+      {
+         if (( VAR__19328[VAR__8444594][VAR__53647] == '$' ) && ( VAR__19328[VAR__8444594][VAR__53647 + 1] == '?' ))
+         {
+            VAR__19328[VAR__8444594][VAR__53647]     = ' ';
+            VAR__19328[VAR__8444594][VAR__53647 + 1] = ' ';
+            judge = 1;
+            break;
+         }
+         else
+         if (( VAR__19328[VAR__8444594][VAR__53647] == '$' ) && ( VAR__19328[VAR__8444594][VAR__53647 + 1] == ' ' ))
+         {
+            VAR_FLAG = VAR__53647;
+         }
+         else
+         if (( VAR__19328[VAR__8444594][VAR__53647] == '?' ) && ( VAR_FLAG >= 0 ))
+         {
+            VAR__19328[VAR__8444594][VAR__53647] = ' ';
+            VAR__19328[VAR__8444594][VAR_FLAG]   = ' ';
+            VAR_FLAG = -1;
+            judge    = 1;
+            break;
+         }
+      }
+
+      if ( judge == 0 )
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

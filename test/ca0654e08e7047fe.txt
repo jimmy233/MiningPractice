@@ -1,0 +1,70 @@
+void pipei(char A_STRING[])
+{
+   int  VAR__53647;
+   int  la;
+   int  stack[100];
+   int  VAR__8444594 = 0;
+   char res[101];
+
+   la = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+   {
+      res[VAR__53647] = ' ';
+   }
+
+   res[la] = '\0';
+   for ( VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == ')' )
+      {
+         if (( VAR__8444594 == 0 ) || ( stack[VAR__8444594 - 1] > 0 ))
+         {
+            stack[VAR__8444594++] = VAR__53647 + 1;
+         }
+         else
+         {
+            VAR__8444594--;
+         }
+      }
+      else
+      if ( A_STRING[VAR__53647] == '(' )
+      {
+         stack[VAR__8444594++] = -( VAR__53647 + 1 );
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      int VAR__819283 = stack[VAR__53647];
+
+      if ( VAR__819283 < 0 )
+      {
+         res[( -VAR__819283 ) - 1] = '$';
+      }
+      else
+      {
+         res[VAR__819283 - 1] = '?';
+      }
+   }
+
+   ( cout << A_STRING ) << endl;
+   ( cout << res ) << endl;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   cin >> VAR_1238123;
+   cin.get();
+   char A_STRING[101];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin.getline(A_STRING, 101);
+      pipei(A_STRING);
+   }
+
+   return 0;
+}

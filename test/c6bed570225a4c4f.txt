@@ -1,0 +1,58 @@
+int judgerr(char *);
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   char VAR__819283[1000][81] = { 0 };
+
+   char (*VAR_233)[81];
+   char VAR__19328[10];
+   VAR_233 = VAR__819283;
+   cin >> VAR_1238123;
+   cin.getline(VAR__19328, 10);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin.getline(*VAR_233, 81);
+      VAR_233++;
+   }
+
+   VAR_233 = VAR__819283;
+
+   while ( VAR_233 < ( VAR__819283 + VAR_1238123 ))
+   {
+      int judgement = judgerr(*VAR_233);
+      ( cout << judgement ) << endl;
+      VAR_233++;
+   }
+
+   return 0;
+}
+
+
+int judgerr(char *ANOTHER_POINTER)
+{
+   int judger = 1;
+
+   if (((( *ANOTHER_POINTER ) < 65 ) || (((( *ANOTHER_POINTER ) > 'Z' ) && (( *ANOTHER_POINTER ) < 'a' )) && (( *ANOTHER_POINTER ) != '_' ))) || (( *ANOTHER_POINTER ) > 'z' ))
+   {
+      judger = 0;
+   }
+   else
+   {
+      ANOTHER_POINTER++;
+
+      while (( *ANOTHER_POINTER ) != '\0' )
+      {
+         if (((((( *ANOTHER_POINTER ) > '9' ) && (( *ANOTHER_POINTER ) < 64 )) || (((( *ANOTHER_POINTER ) > 'Z' ) && (( *ANOTHER_POINTER ) < 'a' )) && (( *ANOTHER_POINTER ) != '_' ))) || (( *ANOTHER_POINTER ) > 'z' )) || (( *ANOTHER_POINTER ) < '0' ))
+         {
+            judger = 0;
+            break;
+         }
+
+         ANOTHER_POINTER++;
+      }
+   }
+
+   return judger;
+}

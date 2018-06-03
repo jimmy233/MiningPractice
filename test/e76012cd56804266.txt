@@ -1,0 +1,66 @@
+void power(char A_STRING[35], int);
+
+int g_count = 0;
+int main()
+{
+   char A_STRING[35];
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__21230;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 <= 34; VAR__53647++ )
+   {
+      A_STRING[VAR__53647] = '0';
+   }
+
+   A_STRING[34] = '1';
+   power(A_STRING, VAR_1238123);
+   return 0;
+}
+
+
+void power(char A_STRING[35], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( g_count == VAR_1238123 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= 34; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] != '0' )
+         {
+            for ( VAR__21230 = VAR__53647; VAR__21230 <= 34; VAR__21230++ )
+            {
+               cout << A_STRING[VAR__21230];
+            }
+
+            return;
+         }
+      }
+   }
+
+   char line[35];
+   for ( VAR__53647 = 0; VAR__53647 <= 34; VAR__53647++ )
+   {
+      line[VAR__53647] = '0';
+   }
+
+   for ( VAR__53647 = 34; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ((( A_STRING[VAR__53647] - '0' ) * 2 ) > 9 )
+      {
+         line[VAR__53647 - 1]++;
+         line[VAR__53647] += (( A_STRING[VAR__53647] - '0' ) * 2 ) - 10;
+      }
+
+      if (((( A_STRING[VAR__53647] - '0' ) * 2 ) < 9 ) && ( A_STRING[VAR__53647] < '9' ))
+      {
+         line[VAR__53647] += ( A_STRING[VAR__53647] - '0' ) * 2;
+      }
+   }
+
+   g_count++;
+   power(line, VAR_1238123);
+}

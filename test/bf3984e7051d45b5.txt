@@ -1,0 +1,71 @@
+int FindAndExchange(int Matrix[5][5], int VAR_1238123, int VAR__1238129)
+{
+   int VAR__53647;
+   int *num_n;
+   int *num_m;
+
+   if ( !(((( VAR_1238123 >= 0 ) && ( VAR_1238123 <= 4 )) && ( VAR__1238129 >= 0 )) && ( VAR__1238129 <= 4 )))
+   {
+      return 0;
+   }
+
+   num_n = &Matrix[VAR_1238123][0];
+   num_m = &Matrix[VAR__1238129][0];
+   for ( VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      *num_n ^= *num_m;
+      *num_m ^= *num_n;
+      *num_n ^= *num_m;
+      num_n++;
+      num_m++;
+   }
+
+   return 1;
+}
+
+
+int main()
+{
+   int Matrix[5][5];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__1238129;
+
+   for ( VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 5; VAR__21230++ )
+      {
+         scanf("%d", &Matrix[VAR__53647][VAR__21230]);
+      }
+   }
+
+   scanf("%d %d", &VAR_1238123, &VAR__1238129);
+
+   if ( FindAndExchange(Matrix, VAR_1238123, VAR__1238129))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+      {
+         if ( VAR__53647 > 0 )
+         {
+            printf("\n");
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < 5; VAR__21230++ )
+         {
+            if ( VAR__21230 > 0 )
+            {
+               printf(" ");
+            }
+
+            printf("%d", Matrix[VAR__53647][VAR__21230]);
+         }
+      }
+   }
+   else
+   {
+      printf("error");
+   }
+
+   return 0;
+}

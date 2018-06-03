@@ -1,0 +1,54 @@
+int match(int VAR__53647, int VAR_1238123, char A_STRING[]);
+
+int main()
+{
+   char A_STRING[101];
+   int  VAR_1238123;
+
+   while ( cin >> A_STRING )
+   {
+      ( cout << A_STRING ) << endl;
+      VAR_1238123 = strlen(A_STRING);
+      match(0, VAR_1238123, A_STRING);
+      ( cout << A_STRING ) << endl;
+   }
+
+   return 0;
+}
+
+
+int match(int VAR__53647, int VAR_1238123, char A_STRING[])
+{
+   if ( VAR__53647 == VAR_1238123 )
+   {
+      return 0;
+   }
+   else
+   if ( A_STRING[VAR__53647] == ')' )
+   {
+      A_STRING[VAR__53647] = '?';
+      for ( int VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ( A_STRING[VAR__21230] == '$' )
+         {
+            A_STRING[VAR__21230] = ' ';
+            A_STRING[VAR__53647] = ' ';
+            break;
+         }
+      }
+   }
+   else
+   if ( A_STRING[VAR__53647] == '(' )
+   {
+      A_STRING[VAR__53647] = '$';
+   }
+   else
+   {
+      A_STRING[VAR__53647] = ' ';
+   }
+
+
+
+   match(VAR__53647 + 1, VAR_1238123, A_STRING);
+   return 0;
+}

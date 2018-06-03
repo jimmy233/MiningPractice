@@ -1,0 +1,77 @@
+int main()
+{
+   char danci[50][50];
+   char A_STRING[500];
+   char *VAR_233;
+   int  changdu[50];
+   int  VAR__112390;
+   int  VAR_1238123 = 0;
+   int  VAR__819283;
+   int  VAR__1111;
+   int  VAR__8444594;
+
+   gets(A_STRING);
+   VAR_233 = A_STRING;
+   for ( VAR__819283 = 0; VAR__819283 < 50; VAR__819283++ )
+   {
+      while (( *VAR_233 ) == ' ' )
+      {
+         VAR_233++;
+      }
+
+      VAR__8444594 = 0;
+
+      while ((( *VAR_233 ) != ' ' ) && (( *VAR_233 ) != '\0' ))
+      {
+         danci[VAR__819283][VAR__8444594] = *VAR_233;
+         VAR__8444594++;
+         VAR_233++;
+      }
+
+      danci[VAR__819283][VAR__8444594] = '\0';
+      changdu[VAR__819283]             = strlen(danci[VAR__819283]);
+
+      if (( *VAR_233 ) == '\0' )
+      {
+         break;
+      }
+   }
+
+   VAR_1238123 = VAR__819283 + 1;
+   for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( changdu[VAR__53647] > changdu[VAR__53647 + 1] )
+         {
+            VAR__112390             = changdu[VAR__53647 + 1];
+            changdu[VAR__53647 + 1] = changdu[VAR__53647];
+            changdu[VAR__53647]     = VAR__112390;
+         }
+      }
+   }
+
+   for ( int VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+   {
+      VAR__1111 = strlen(danci[VAR__temp]);
+
+      if ( changdu[VAR_1238123 - 1] == VAR__1111 )
+      {
+         printf("%s\n", danci[VAR__temp]);
+         break;
+      }
+   }
+
+   for ( int VAR_666 = 0; VAR_666 < VAR_1238123; VAR_666++ )
+   {
+      VAR__1111 = strlen(danci[VAR_666]);
+
+      if ( changdu[0] == VAR__1111 )
+      {
+         printf("%s\n", danci[VAR_666]);
+         break;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,93 @@
+char VAR__4857423[110];
+char ch;
+void PMP(char VAR__4857423[], int LEN_OF_STH)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      cout << VAR__4857423[VAR__53647];
+   }
+
+   cout << endl;
+   int VAR_FLAG = 1;
+
+   while ( VAR_FLAG )
+   {
+      VAR_FLAG = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if (( VAR__4857423[VAR__53647] != '(' ) && ( VAR__4857423[VAR__53647] != ')' ))
+         {
+            VAR__4857423[VAR__53647] = ' ';
+         }
+         else
+         if ( VAR__4857423[VAR__53647] == '(' )
+         {
+            for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+            {
+               if ( VAR__4857423[VAR__21230] == '(' )
+               {
+                  break;
+               }
+
+               if ( VAR__4857423[VAR__21230] == ')' )
+               {
+                  VAR__4857423[VAR__53647] = ' ';
+                  VAR__4857423[VAR__21230] = ' ';
+                  VAR_FLAG = 1;
+                  break;
+               }
+               else
+               if ( VAR__21230 == ( LEN_OF_STH - 1 ))
+               {
+                  VAR__4857423[VAR__53647] = '$';
+               }
+            }
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] == '(' )
+      {
+         VAR__4857423[VAR__53647] = '$';
+      }
+
+      if ( VAR__4857423[VAR__53647] == ')' )
+      {
+         VAR__4857423[VAR__53647] = '?';
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      cout << VAR__4857423[VAR__53647];
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   int LEN_OF_STH;
+
+   ch = getchar();
+
+   while ( ch != '~' )
+   {
+      LEN_OF_STH = 0;
+
+      while ( ch != '\n' )
+      {
+         VAR__4857423[LEN_OF_STH] = ch;
+         LEN_OF_STH++;
+         ch = getchar();
+      }
+
+      PMP(VAR__4857423, LEN_OF_STH);
+      ch = getchar();
+   }
+
+   return 0;
+}

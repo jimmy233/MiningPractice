@@ -1,0 +1,74 @@
+int match(char VAR_9494[], char VAR_129012[], int LEN_OF_STH)
+{
+   char stack[100];
+   char VAR__4857423;
+   int  top = 0;
+   int  pos;
+
+   for ( pos = 0; pos < LEN_OF_STH; ++pos )
+   {
+      VAR_129012[pos] = ' ';
+   }
+
+   VAR_129012[LEN_OF_STH] = '\0';
+   for ( pos = 0; pos < LEN_OF_STH; ++pos )
+   {
+      VAR__4857423 = VAR_9494[pos];
+
+      if ( VAR__4857423 == '(' )
+      {
+         stack[top++] = pos;
+      }
+      else
+      if ( VAR__4857423 == ')' )
+      {
+         if ( top > 0 )
+         {
+            top--;
+         }
+         else
+         {
+            VAR_129012[pos] = '?';
+         }
+      }
+   }
+
+   while ( top > 0 )
+   {
+      pos             = stack[--top];
+      VAR_129012[pos] = '$';
+   }
+}
+
+
+int outresult(char VAR_9494[], char VAR_129012[])
+{
+   puts(VAR_9494);
+   putchar('\n');
+   puts(VAR_129012);
+   putchar('\n');
+}
+
+
+int main()
+{
+   char line[101];
+   char result[101];
+   char ch;
+   int  pos = 0;
+
+   while (( ch = getchar()) != EOF )
+   {
+      if ( ch != '\n' )
+      {
+         line[pos++] = ch;
+      }
+      else
+      {
+         line[pos] = '\0';
+         match(line, result, pos);
+         outresult(line, result);
+         pos = 0;
+      }
+   }
+}

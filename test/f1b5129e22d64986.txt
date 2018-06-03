@@ -1,0 +1,51 @@
+int main()
+{
+   char A_STRING[2000];
+   int  maxLen  = 0;
+   int  minLen  = 100;
+   int  tempLen = 0;
+   int  VAR__53647;
+   int  LEN_OF_STH;
+   int  minStart;
+   int  maxStart;
+
+   cin.getline(A_STRING, 2000);
+   LEN_OF_STH = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] != ' ' ) && ( A_STRING[VAR__53647] != '\0' ))
+      {
+         tempLen++;
+      }
+      else
+      {
+         if ( tempLen < minLen )
+         {
+            minLen   = tempLen;
+            minStart = VAR__53647 - minLen;
+         }
+
+         if ( tempLen > maxLen )
+         {
+            maxLen   = tempLen;
+            maxStart = VAR__53647 - maxLen;
+         }
+
+         tempLen = 0;
+      }
+   }
+
+   for ( VAR__53647 = maxStart; VAR__53647 < ( maxStart + maxLen ); VAR__53647++ )
+   {
+      cout << A_STRING[VAR__53647];
+   }
+
+   cout << endl;
+   for ( VAR__53647 = minStart; VAR__53647 < ( minStart + minLen ); VAR__53647++ )
+   {
+      cout << A_STRING[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

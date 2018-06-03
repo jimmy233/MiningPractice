@@ -1,0 +1,54 @@
+int main()
+{
+   char line[101];
+   char label[101];
+   int  pos[101];
+   int  VAR_1238123;
+   int  VAR__21230;
+   int  left;
+
+   cin >> VAR_1238123;
+   cin.get();
+   for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+   {
+      left = 0;
+      cin.getline(line, 101);
+      int LEN_OF_STH = strlen(line);
+      for ( int VAR__53647 = 0; VAR__53647 <= 100; VAR__53647++ )
+      {
+         label[VAR__53647] = ' ';
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if ( line[VAR__53647] == '(' )
+         {
+            left++;
+            pos[left] = VAR__53647;
+         }
+
+         if ( line[VAR__53647] == ')' )
+         {
+            if ( left == 0 )
+            {
+               label[VAR__53647] = '?';
+            }
+            else
+            {
+               left--;
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= left; VAR__53647++ )
+      {
+         label[pos[VAR__53647]] = '$';
+      }
+
+      label[LEN_OF_STH] = '\0';
+      ( cout << line ) << endl;
+      ( cout << label ) << endl;
+   }
+
+   return 0;
+}

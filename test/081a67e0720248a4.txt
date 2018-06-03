@@ -1,0 +1,59 @@
+int main()
+{
+   char A_STRING[300];
+   char sub[300];
+   char rep[300];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  lenstr;
+   int  lensub;
+   int  judge;
+   int  state = 0;
+
+   fgets(A_STRING, 300, stdin);
+   fgets(sub, 300, stdin);
+   fgets(rep, 300, stdin);
+   lenstr = strlen(A_STRING) - 1;
+   lensub = strlen(sub) - 1;
+   for ( VAR__53647 = 0; VAR__53647 <= ( lenstr - lensub ); VAR__53647++ )
+   {
+      judge = 0;
+      for ( VAR__21230 = 0; VAR__21230 < lensub; VAR__21230++ )
+      {
+         judge = judge + (( A_STRING[VAR__53647 + VAR__21230] - sub[VAR__21230] ) * ( A_STRING[VAR__53647 + VAR__21230] - sub[VAR__21230] ));
+      }
+
+      if ( judge == 0 )
+      {
+         state = 1;
+         break;
+      }
+   }
+
+   if ( state == 1 )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         printf("%c", A_STRING[VAR__21230]);
+      }
+
+      for ( VAR__21230 = 0; rep[VAR__21230] != '\n'; VAR__21230++ )
+      {
+         printf("%c", rep[VAR__21230]);
+      }
+
+      for ( VAR__21230 = VAR__53647 + lensub; VAR__21230 <= ( lenstr - 1 ); VAR__21230++ )
+      {
+         printf("%c", A_STRING[VAR__21230]);
+      }
+   }
+   else
+   {
+      for ( VAR__21230 = 0; VAR__21230 < lenstr; VAR__21230++ )
+      {
+         printf("%c", A_STRING[VAR__21230]);
+      }
+   }
+
+   return 0;
+}

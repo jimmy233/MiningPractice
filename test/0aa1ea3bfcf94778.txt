@@ -1,0 +1,47 @@
+struct distant
+{
+   double cross;
+   double line;
+}
+point[1000];
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594   = 0;
+   double VAR_9494[1000] = { 0 };
+   double VAR__4857423;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf %lf", &point[VAR__53647].cross, &point[VAR__53647].line);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++, VAR__8444594++ )
+      {
+         VAR_9494[VAR__8444594] = sqrt((( point[VAR__53647].cross - point[VAR__21230].cross ) * ( point[VAR__53647].cross - point[VAR__21230].cross )) + (( point[VAR__53647].line - point[VAR__21230].line ) * ( point[VAR__53647].line - point[VAR__21230].line )));
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( VAR_9494[VAR__53647] < VAR_9494[VAR__21230] )
+         {
+            VAR__4857423         = VAR_9494[VAR__53647];
+            VAR_9494[VAR__53647] = VAR_9494[VAR__21230];
+            VAR_9494[VAR__21230] = VAR__4857423;
+         }
+      }
+
+      VAR__53647++;
+   }
+
+   printf("%.4lf\n", VAR_9494[0]);
+   return 0;
+}

@@ -1,0 +1,70 @@
+int left(int VAR__7685, char VAR_9494[], int VAR_1238123);
+
+int main()
+{
+   int  VAR__1111;
+   char VAR__4857423[101] = { 0 };
+
+   gets(VAR__4857423);
+   puts(VAR__4857423);
+   VAR__1111 = left(0, VAR__4857423, 0);
+   printf("%s", VAR__4857423);
+
+   while ( scanf("%s", VAR__4857423) != EOF )
+   {
+      printf("\n");
+      puts(VAR__4857423);
+      VAR__1111 = left(0, VAR__4857423, 0);
+      printf("%s", VAR__4857423);
+   }
+
+   return 0;
+}
+
+
+int left(int VAR__7685, char VAR_9494[], int VAR_1238123)
+{
+   int VAR__819283;
+
+   if ( VAR_9494[VAR_1238123] != '\0' )
+   {
+      if ( VAR_9494[VAR_1238123] == '(' )
+      {
+         VAR__819283 = left(VAR__7685 + 1, VAR_9494, VAR_1238123 + 1);
+
+         if ( VAR__819283 > 0 )
+         {
+            VAR_9494[VAR_1238123] = ' ';
+            return VAR__819283 - 1;
+         }
+         else
+         {
+            VAR_9494[VAR_1238123] = '$';
+            return 0;
+         }
+      }
+      else
+      if ( VAR_9494[VAR_1238123] == ')' )
+      {
+         if ( VAR__7685 > 0 )
+         {
+            VAR_9494[VAR_1238123] = ' ';
+            return left(VAR__7685 - 1, VAR_9494, VAR_1238123 + 1) + 1;
+         }
+         else
+         {
+            VAR_9494[VAR_1238123] = '?';
+            return left(0, VAR_9494, VAR_1238123 + 1) + 1;
+         }
+      }
+      else
+      {
+         VAR_9494[VAR_1238123] = ' ';
+         return left(VAR__7685, VAR_9494, VAR_1238123 + 1);
+      }
+   }
+   else
+   {
+      return 0;
+   }
+}

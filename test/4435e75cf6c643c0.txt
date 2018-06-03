@@ -1,0 +1,68 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int xueya[101][2];
+   int outcome[101];
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &xueya[VAR__53647][0], &xueya[VAR__53647][1]);
+
+      if (((( xueya[VAR__53647][0] >= 90 ) && ( xueya[VAR__53647][0] <= 140 )) && ( xueya[VAR__53647][1] >= 60 )) && ( xueya[VAR__53647][1] <= 90 ))
+      {
+         outcome[VAR__53647] = 1;
+      }
+      else
+      {
+         outcome[VAR__53647] = 0;
+      }
+   }
+
+   int VAR__21230   = 0;
+   int VAR__8444594 = 0;
+   int VAR__1238129;
+   int VAR__COUNT[101];
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+   {
+      if ( outcome[VAR__1238129] == 1 )
+      {
+         VAR__COUNT[VAR__1238129] = 1;
+      }
+      else
+      {
+         VAR__COUNT[VAR__1238129] = 0;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( outcome[VAR__21230] == 1 )
+      {
+         for ( VAR__8444594 = VAR__21230 + 1; ( VAR__8444594 < VAR_1238123 ) && ( outcome[VAR__8444594] == 1 ); VAR__8444594++ )
+         {
+            VAR__COUNT[VAR__21230]++;
+         }
+      }
+   }
+
+   int VAR_233;
+   int VAR_666;
+   int VAR__temp;
+   for ( VAR_233 = VAR_1238123 - 1; VAR_233 > 0; VAR_233-- )
+   {
+      for ( VAR_666 = 0; VAR_666 < VAR_233; VAR_666++ )
+      {
+         if ( VAR__COUNT[VAR_666] >= VAR__COUNT[VAR_666 + 1] )
+         {
+            VAR__temp               = VAR__COUNT[VAR_666];
+            VAR__COUNT[VAR_666]     = VAR__COUNT[VAR_666 + 1];
+            VAR__COUNT[VAR_666 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   printf("%d\n", VAR__COUNT[VAR_1238123 - 1]);
+   return 0;
+}

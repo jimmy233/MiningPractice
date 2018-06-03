@@ -1,0 +1,65 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int index = 0;
+
+   scanf("%d%*c", &VAR_1238123);
+   char **pS  = NULL;
+   char **pS2 = NULL;
+   char buffer[256];
+   char *VAR__TEMP = NULL;
+   pS  = (char **)malloc(( sizeof( char ** )) * VAR_1238123);
+   pS2 = (char **)malloc(( sizeof( char ** )) * VAR_1238123);
+   for ( index = 0; index < VAR_1238123; index++ )
+   {
+      VAR__TEMP = buffer;
+
+      while (( *( VAR__TEMP++ ) = getchar()) != ' ' )
+      {
+         if (( *( VAR__TEMP - 1 )) == '\n' )
+         {
+            break;
+         }
+      }
+
+      *( VAR__TEMP - 1 ) = '\0';
+      pS[index]          = (char *)malloc(VAR__TEMP - buffer);
+      pS2[index]         = (char *)malloc(VAR__TEMP - buffer);
+      strcpy(pS[index], buffer);
+      strcpy(pS2[index], buffer);
+   }
+
+   char *intermedia = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( strlen(pS[VAR__21230]) < strlen(pS[VAR__21230 + 1]))
+         {
+            intermedia         = pS[VAR__21230];
+            pS[VAR__21230]     = pS[VAR__21230 + 1];
+            pS[VAR__21230 + 1] = intermedia;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( strlen(pS2[VAR__21230]) > strlen(pS2[VAR__21230 + 1]))
+         {
+            intermedia          = pS2[VAR__21230];
+            pS2[VAR__21230]     = pS2[VAR__21230 + 1];
+            pS2[VAR__21230 + 1] = intermedia;
+         }
+      }
+   }
+
+
+   printf("%s\n%s", pS[0], pS2[0]);
+   return 0;
+}

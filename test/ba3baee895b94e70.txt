@@ -1,0 +1,70 @@
+int main()
+{
+   int  VAR__MIN         = INT_MAX;
+   int  VAR__MAX         = 0;
+   char A_STRING[100000] = { 0 };
+
+   cin.getline(A_STRING, 100000);
+   char *minstart;
+   char *minend;
+   char *maxstart;
+   char *maxend;
+   int  VAR__TEMP = 0;
+   char *VAR_233  = A_STRING;
+   for ( ; *VAR_233; VAR_233++ )
+   {
+      if (((( *VAR_233 ) >= 'a' ) && (( *VAR_233 ) <= 'z' )) || ((( *VAR_233 ) >= 'A' ) && (( *VAR_233 ) <= 'Z' )))
+      {
+         VAR__TEMP++;
+      }
+      else
+      {
+         if ( VAR__TEMP > 0 )
+         {
+            if ( VAR__TEMP < VAR__MIN )
+            {
+               minstart = VAR_233 - VAR__TEMP;
+               minend   = VAR_233 - 1;
+               VAR__MIN = VAR__TEMP;
+            }
+
+            if ( VAR__TEMP > VAR__MAX )
+            {
+               maxstart = VAR_233 - VAR__TEMP;
+               maxend   = VAR_233 - 1;
+               VAR__MAX = VAR__TEMP;
+            }
+
+            VAR__TEMP = 0;
+         }
+      }
+   }
+
+   if ( VAR__TEMP > 0 )
+   {
+      if ( VAR__TEMP < VAR__MIN )
+      {
+         minstart = VAR_233 - VAR__TEMP;
+         minend   = VAR_233 - 1;
+         VAR__MIN = VAR__TEMP;
+      }
+
+      if ( VAR__TEMP > VAR__MAX )
+      {
+         maxstart = VAR_233 - VAR__TEMP;
+         maxend   = VAR_233 - 1;
+         VAR__MAX = VAR__TEMP;
+      }
+   }
+
+   for ( ; maxstart <= maxend; maxstart++ )
+   {
+      cout << ( *maxstart );
+   }
+
+   cout << endl;
+   for ( ; minstart <= minend; minstart++ )
+   {
+      cout << ( *minstart );
+   }
+}

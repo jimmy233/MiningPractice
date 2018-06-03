@@ -1,0 +1,76 @@
+int main()
+{
+   char VAR__819283[1000] = { 0 };
+
+   cin.getline(VAR__819283, 1000);
+   int LEN_OF_STH;
+   int VAR__53647;
+   int longhead  = 0;
+   int longend   = 0;
+   int shorthead = 0;
+   int shortend  = 0;
+   int longlen   = 0;
+   int shortlen  = 100;
+   int templen   = 0;
+   int temphead  = 0;
+   LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647] != ' ' ) && ( VAR__819283[VAR__53647] != ',' ))
+      {
+         templen++;
+      }
+      else
+      {
+         if ( templen > longlen )
+         {
+            longlen  = templen;
+            longhead = temphead;
+            longend  = VAR__53647 - 1;
+         }
+
+         if ( templen < shortlen )
+         {
+            shortlen  = templen;
+            shorthead = temphead;
+            shortend  = VAR__53647 - 1;
+         }
+
+         temphead = VAR__53647 + 1;
+         templen  = 0;
+
+         if ( VAR__819283[VAR__53647] == ',' )
+         {
+            VAR__53647++;
+         }
+      }
+   }
+
+   if ( templen > longlen )
+   {
+      longlen  = templen;
+      longhead = temphead;
+      longend  = VAR__53647 - 1;
+   }
+
+   if ( templen < shortlen )
+   {
+      shortlen  = templen;
+      shorthead = temphead;
+      shortend  = VAR__53647 - 1;
+   }
+
+   for ( VAR__53647 = longhead; VAR__53647 <= longend; VAR__53647++ )
+   {
+      cout << VAR__819283[VAR__53647];
+   }
+
+   cout << endl;
+   for ( VAR__53647 = shorthead; VAR__53647 <= shortend; VAR__53647++ )
+   {
+      cout << VAR__819283[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

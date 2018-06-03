@@ -1,0 +1,44 @@
+void main()
+{
+   int  lenstr;
+   int  lensub;
+   int  lenrpl;
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR__TEMP[260];
+   char A_STRING[260];
+   char sub[260];
+   char rpl[260];
+
+   scanf("%s %s %s", &A_STRING, &sub, &rpl);
+   lenstr           = strlen(A_STRING);
+   lensub           = strlen(sub);
+   lenrpl           = strlen(rpl);
+   A_STRING[lenstr] = '\0';
+   sub[lensub]      = '\0';
+   rpl[lenrpl]      = '\0';
+   for ( VAR__53647 = 0; VAR__53647 < (( lenstr - lensub ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < lensub; VAR__21230++ )
+      {
+         VAR__TEMP[VAR__21230] = A_STRING[VAR__53647 + VAR__21230];
+      }
+
+      VAR__TEMP[VAR__21230] = '\0';
+
+      if ( strcmp(VAR__TEMP, sub) == 0 )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__53647 != (( lenstr - lensub ) + 1 ))
+   {
+      for ( VAR__21230 = 0; VAR__21230 < lenrpl; VAR__21230++ )
+      {
+         A_STRING[VAR__53647 + VAR__21230] = rpl[VAR__21230];
+      }
+   }
+
+   printf("%s\n", A_STRING);
+}

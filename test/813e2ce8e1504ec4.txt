@@ -1,0 +1,74 @@
+char VAR_9494[5000];
+char word[200][20];
+int checknum(int VAR__1238129)
+{
+   if (((( VAR_9494[VAR__1238129] != ' ' ) && ( VAR_9494[VAR__1238129] != ',' )) && ( VAR__1238129 < strlen(VAR_9494))) && ((( VAR_9494[VAR__1238129 - 1] == ' ' ) || ( VAR_9494[VAR__1238129 - 1] == ',' )) || (( VAR__1238129 - 1 ) < 0 )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int findlen(int VAR__19328)
+{
+   int VAR__53647;
+
+   VAR__53647 = 0;
+
+   while ((( VAR_9494[VAR__19328 + VAR__53647] != ' ' ) && ( VAR_9494[VAR__19328 + VAR__53647] != ',' )) && (( VAR__19328 + VAR__53647 ) < strlen(VAR_9494)))
+   {
+      VAR__53647++;
+   }
+
+   return VAR__53647;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__MAX;
+   int VAR__MIN;
+   int maxn;
+   int minn;
+
+   gets(VAR_9494);
+   VAR__8444594 = 0;
+   VAR__53647   = 0;
+   VAR__MAX     = 0;
+   VAR__MIN     = 20;
+
+   while ( VAR__53647 < strlen(VAR_9494))
+   {
+      if ( checknum(VAR__53647) == 1 )
+      {
+         strncpy(word[VAR__8444594], VAR_9494 + VAR__53647, findlen(VAR__53647));
+
+         if ( VAR__MAX < findlen(VAR__53647))
+         {
+            VAR__MAX = findlen(VAR__53647);
+            maxn     = VAR__8444594;
+         }
+
+         if ( VAR__MIN > findlen(VAR__53647))
+         {
+            VAR__MIN = findlen(VAR__53647);
+            minn     = VAR__8444594;
+         }
+
+         VAR__8444594++;
+      }
+
+      VAR__53647++;
+   }
+
+   printf("%s\n%s", word[maxn], word[minn]);
+   scanf("%d", &VAR__53647);
+   return 0;
+}

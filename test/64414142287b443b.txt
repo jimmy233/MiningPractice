@@ -1,0 +1,88 @@
+int main()
+{
+   char VAR_9494[200];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+
+   while ( gets(VAR_9494) != NULL )
+   {
+      int LEN_OF_STH;
+      LEN_OF_STH = strlen(VAR_9494);
+      printf("%s\n", VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         int zuo = 0;
+         int you = 0;
+
+         if (( VAR_9494[VAR__53647] != '(' ) && ( VAR_9494[VAR__53647] != ')' ))
+         {
+            printf(" ");
+         }
+         else
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= LEN_OF_STH; VAR__21230++ )
+            {
+               if ( VAR_9494[VAR__21230] == ')' )
+               {
+                  you++;
+
+                  if ( you > zuo )
+                  {
+                     printf(" ");
+                     break;
+                  }
+               }
+
+               if ( VAR_9494[VAR__21230] == '(' )
+               {
+                  zuo++;
+               }
+
+               if ( VAR__21230 == LEN_OF_STH )
+               {
+                  printf("$");
+                  break;
+               }
+            }
+         }
+         else
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            if ( VAR__53647 == 0 )
+            {
+               printf("?");
+            }
+
+            for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( VAR_9494[VAR__21230] == '(' )
+               {
+                  zuo++;
+
+                  if ( zuo > you )
+                  {
+                     printf(" ");
+                     break;
+                  }
+               }
+
+               if ( VAR_9494[VAR__21230] == ')' )
+               {
+                  you++;
+               }
+
+               if ( VAR__21230 == 0 )
+               {
+                  printf("?");
+               }
+            }
+         }
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

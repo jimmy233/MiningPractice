@@ -1,0 +1,55 @@
+char in[102];
+int  lenth;
+void match(int VAR_1238123)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < lenth; VAR__53647++ )
+   {
+      if (( in[VAR__53647] == '(' ) && ( in[VAR__53647 + VAR_1238123] == ')' ))
+      {
+         in[VAR__53647] = ' ';
+         in[VAR__53647 + VAR_1238123] = ' ';
+      }
+   }
+
+   if ( VAR_1238123 <= ( lenth - 2 ))
+   {
+      match(VAR_1238123 + 1);
+   }
+}
+
+
+void print(char in[])
+{
+   for ( int VAR__53647 = 0; VAR__53647 < lenth; VAR__53647++ )
+   {
+      if ( in[VAR__53647] == '(' )
+      {
+         in[VAR__53647] = '$';
+      }
+      else
+      if ( in[VAR__53647] == ')' )
+      {
+         in[VAR__53647] = '?';
+      }
+      else
+      {
+         in[VAR__53647] = ' ';
+      }
+   }
+
+   ( cout << in ) << endl;
+}
+
+
+int main()
+{
+   while ( cin >> in )
+   {
+      ( cout << in ) << endl;
+      lenth = strlen(in);
+      match(0);
+      print(in);
+   }
+
+   return 0;
+}

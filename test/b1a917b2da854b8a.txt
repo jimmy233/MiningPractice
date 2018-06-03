@@ -1,0 +1,51 @@
+int main()
+{
+   char ANOTHER_STRING[101];
+   char YET_ANOTHER_STRING[101];
+   int  VAR__53647;
+   int  figure = 0;
+   int  VAR__TEMP[100];
+
+   while ( cin >> ANOTHER_STRING )
+   {
+      memset(YET_ANOTHER_STRING, ' ', sizeof( YET_ANOTHER_STRING ));
+      for ( VAR__53647 = 0; VAR__53647 < strlen(ANOTHER_STRING); VAR__53647++ )
+      {
+         if ( ANOTHER_STRING[VAR__53647] == '(' )
+         {
+            YET_ANOTHER_STRING[VAR__53647] = '$';
+            VAR__TEMP[figure++]            = VAR__53647;
+         }
+
+         if ( ANOTHER_STRING[VAR__53647] == ')' )
+         {
+            if ( figure > 0 )
+            {
+               YET_ANOTHER_STRING[VAR__TEMP[figure - 1]] = ' ';
+               figure--;
+            }
+            else
+            {
+               YET_ANOTHER_STRING[VAR__53647] = '?';
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( strlen(ANOTHER_STRING) - 1 ); VAR__53647++ )
+      {
+         cout << ANOTHER_STRING[VAR__53647];
+      }
+
+      ( cout << ANOTHER_STRING[strlen(ANOTHER_STRING) - 1] ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < ( strlen(ANOTHER_STRING) - 1 ); VAR__53647++ )
+      {
+         cout << YET_ANOTHER_STRING[VAR__53647];
+      }
+
+      ( cout << YET_ANOTHER_STRING[strlen(ANOTHER_STRING) - 1] ) << endl;
+      figure = 0;
+      memset(ANOTHER_STRING, ' ', sizeof( ANOTHER_STRING ));
+   }
+
+   return 0;
+}

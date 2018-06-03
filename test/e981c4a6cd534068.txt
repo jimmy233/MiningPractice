@@ -1,0 +1,102 @@
+int pdshuzi(char zi)
+{
+   int zhi1;
+
+   if (( zi >= '0' ) && ( zi <= '9' ))
+   {
+      zhi1 = 1;
+   }
+   else
+   {
+      zhi1 = 0;
+   }
+
+   return zhi1;
+}
+
+
+int pdzimu(char zi)
+{
+   int zhi2;
+
+   if ((( zi >= 'a' ) && ( zi <= 'z' )) || (( zi >= 'A' ) && ( zi <= 'Z' )))
+   {
+      zhi2 = 1;
+   }
+   else
+   {
+      zhi2 = 0;
+   }
+
+   return zhi2;
+}
+
+
+int sort(char *VAR__HEAD)
+{
+   char *VAR__temp;
+   int  zhi;
+   int  VAR_FLAG = 1;
+
+   VAR__temp = VAR__HEAD;
+
+   if (( pdzimu(*VAR__temp) == 1 ) || (( *VAR__temp ) == '_' ))
+   {
+      zhi = 1;
+   }
+   else
+   {
+      zhi = 0;
+      return zhi;
+   }
+
+   VAR__temp++;
+   for ( ; ( *VAR__temp ) != '\0'; VAR__temp++ )
+   {
+      if ((( pdzimu(*VAR__temp) == 1 ) || ( pdshuzi(*VAR__temp) == 1 )) || (( *VAR__temp ) == '_' ))
+      {
+         VAR_FLAG = 1;
+      }
+      else
+      {
+         VAR_FLAG = 0;
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         return 0;
+
+         break;
+      }
+   }
+
+   if ( VAR_FLAG == 1 )
+   {
+      return 1;
+   }
+}
+
+
+void main()
+{
+   char *name[100];
+   char **VAR_233;
+   int  VAR_1238123;
+   int  VAR__53647;
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR_233 = name, VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++, VAR_233++ )
+   {
+      *VAR_233 = (char *)malloc(90 * ( sizeof( char )));
+   }
+
+   for ( VAR_233 = name; VAR_233 < ( name + VAR_1238123 ); VAR_233++ )
+   {
+      gets(*VAR_233);
+   }
+
+   for ( VAR_233 = name; VAR_233 < ( name + VAR_1238123 ); VAR_233++ )
+   {
+      printf("%d\n", sort(*VAR_233));
+   }
+}

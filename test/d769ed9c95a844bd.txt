@@ -1,0 +1,100 @@
+void main()
+{
+   char VAR_9494[256] = { 0 };
+   char subS[256]     = { 0 };
+   char re[256]       = { 0 };
+   char VAR__temp;
+   char s1[256] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  l1;
+   int  l2;
+   int  l3;
+   int  VAR__COUNT;
+   int  yes;
+
+   scanf("%s\0", VAR_9494);
+   scanf("%s\0", subS);
+   scanf("%s\0", re);
+   l1  = strlen(VAR_9494);
+   l2  = strlen(subS);
+   l3  = strlen(re);
+   yes = 0;
+   strcpy(s1, VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 <= ( l1 - l2 ); VAR__53647++ )
+   {
+      VAR__COUNT = 0;
+      for ( VAR__21230 = 0; VAR__21230 < l2; VAR__21230++ )
+      {
+         if ( subS[VAR__21230] != VAR_9494[VAR__53647 + VAR__21230] )
+         {
+            break;
+         }
+
+         if ( subS[VAR__21230] == VAR_9494[VAR__53647 + VAR__21230] )
+         {
+            VAR__COUNT++;
+         }
+      }
+
+      if ( VAR__COUNT == l2 )
+      {
+         yes = 1;
+
+         if ( l2 == l3 )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < l2; VAR__21230++ )
+            {
+               VAR_9494[VAR__53647 + VAR__21230] = re[VAR__21230];
+            }
+
+            printf("%s", VAR_9494);
+            break;
+         }
+
+         if ( l2 > l3 )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < l3; VAR__21230++ )
+            {
+               VAR_9494[VAR__53647 + VAR__21230] = re[VAR__21230];
+            }
+
+            for ( VAR__21230 = 0; VAR__21230 < (( l1 - VAR__53647 ) - l2 ); VAR__21230++ )
+            {
+               VAR_9494[( VAR__53647 + l3 ) + VAR__21230] = VAR_9494[( VAR__53647 + l2 ) + VAR__21230];
+            }
+
+            for ( VAR__21230 = 0; VAR__21230 < (( l1 + l3 ) - l2 ); VAR__21230++ )
+            {
+               printf("%c", VAR_9494[VAR__21230]);
+            }
+
+            break;
+         }
+
+         if ( l2 < l3 )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+            {
+               printf("%c", VAR_9494[VAR__21230]);
+            }
+
+            printf("%s", re);
+            for ( VAR__21230 = VAR__53647 + l2; VAR__21230 < l1; VAR__21230++ )
+            {
+               printf("%c", VAR_9494[VAR__21230]);
+            }
+
+            break;
+         }
+      }
+   }
+
+   if ( yes == 0 )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < l1; VAR__21230++ )
+      {
+         printf("%c", s1[VAR__21230]);
+      }
+   }
+}

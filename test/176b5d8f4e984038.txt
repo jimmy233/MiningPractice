@@ -1,0 +1,54 @@
+int total(int apple, int basket);
+int noempty(int apple, int basket);
+int withempty(int apple, int basket);
+
+int main()
+{
+   int VAR__temp;
+   int VAR__1238129;
+   int VAR_1238123;
+
+   cin >> VAR__temp;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR__temp; VAR__53647++ )
+   {
+      ( cin >> VAR__1238129 ) >> VAR_1238123;
+      ( cout << total(VAR__1238129, VAR_1238123)) << endl;
+   }
+}
+
+
+int total(int apple, int basket)
+{
+   return withempty(apple, basket) + noempty(apple, basket);
+}
+
+
+int noempty(int apple, int basket)
+{
+   if ( apple < basket )
+   {
+      return 0;
+   }
+   else
+   if ( apple == basket )
+   {
+      return 1;
+   }
+   else
+   {
+      return total(apple - basket, basket);
+   }
+}
+
+
+int withempty(int apple, int basket)
+{
+   if ( basket <= 1 )
+   {
+      return 0;
+   }
+   else
+   {
+      return total(apple, basket - 1);
+   }
+}

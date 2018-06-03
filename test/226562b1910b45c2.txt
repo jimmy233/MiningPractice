@@ -1,0 +1,92 @@
+char use[150];
+char rem[150];
+int  LEN_OF_STH;
+void rid(int begin, int end);
+
+int main()
+{
+   while ( 1 )
+   {
+      char VAR_9494;
+      int  VAR__53647 = 0;
+
+      while (( VAR_9494 = cin.get()) != '\n' )
+      {
+         use[VAR__53647] = VAR_9494;
+         rem[VAR__53647] = VAR_9494;
+         VAR__53647++;
+      }
+
+      LEN_OF_STH = VAR__53647 - 1;
+      rid(0, LEN_OF_STH);
+      for ( int VAR__21230 = 0; VAR__21230 <= LEN_OF_STH; VAR__21230++ )
+      {
+         if ( use[VAR__21230] == '(' )
+         {
+            use[VAR__21230] = '$';
+         }
+         else
+         if ( use[VAR__21230] == ')' )
+         {
+            use[VAR__21230] = '?';
+         }
+         else
+         if (( use[VAR__21230] != '?' ) && ( use[VAR__21230] != '$' ))
+         {
+            use[VAR__21230] = ' ';
+         }
+      }
+
+
+
+      for ( VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+      {
+         cout << rem[VAR__53647];
+      }
+
+      cout << endl;
+      for ( VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+      {
+         cout << use[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}
+
+
+void rid(int begin, int end)
+{
+   if ( begin <= end )
+   {
+      if ( use[begin] != ')' )
+      {
+         rid(begin + 1, end);
+      }
+      else
+      {
+         int VAR__53647 = begin;
+
+         while (( use[VAR__53647] != '(' ) && ( VAR__53647 >= 0 ))
+         {
+            VAR__53647--;
+         }
+
+         if ( VAR__53647 == ( -1 ))
+         {
+            use[begin] = '?';
+            rid(begin + 1, end);
+         }
+         else
+         {
+            for ( int VAR__21230 = VAR__53647; VAR__21230 <= begin; VAR__21230++ )
+            {
+               use[VAR__21230] = ' ';
+               rid(begin + 1, end);
+            }
+         }
+      }
+   }
+}

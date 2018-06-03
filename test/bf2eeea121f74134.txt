@@ -1,0 +1,137 @@
+char VAR__819283[150];
+int  LEN_OF_STH;
+int  VAR__NUM = 0;
+int f1(int VAR_1238123)
+{
+   if ( VAR_1238123 == ( LEN_OF_STH - 1 ))
+   {
+      if ( VAR__819283[VAR_1238123] == '(' )
+      {
+         VAR__NUM++;
+      }
+      else
+      if ( VAR__819283[VAR_1238123] == ')' )
+      {
+         VAR__NUM--;
+      }
+
+
+      return VAR__NUM;
+   }
+
+   if ( VAR__819283[VAR_1238123] == '(' )
+   {
+      VAR__NUM++;
+      return f1(VAR_1238123 + 1);
+   }
+
+   if ( VAR__819283[VAR_1238123] == ')' )
+   {
+      VAR__NUM--;
+
+      if ( VAR__NUM == 0 )
+      {
+         return 0;
+      }
+      else
+      {
+         return f1(VAR_1238123 + 1);
+      }
+   }
+   else
+   {
+      return f1(VAR_1238123 + 1);
+   }
+}
+
+
+int f2(int VAR_1238123)
+{
+   if ( VAR_1238123 == 0 )
+   {
+      if ( VAR__819283[VAR_1238123] == '(' )
+      {
+         VAR__NUM++;
+      }
+      else
+      if ( VAR__819283[VAR_1238123] == ')' )
+      {
+         VAR__NUM--;
+      }
+
+
+      return VAR__NUM;
+   }
+
+   if ( VAR__819283[VAR_1238123] == '(' )
+   {
+      VAR__NUM++;
+
+      if ( VAR__NUM == 0 )
+      {
+         return 0;
+      }
+      else
+      {
+         return f2(VAR_1238123 - 1);
+      }
+   }
+
+   if ( VAR__819283[VAR_1238123] == ')' )
+   {
+      VAR__NUM--;
+      return f2(VAR_1238123 - 1);
+   }
+   else
+   {
+      return f2(VAR_1238123 - 1);
+   }
+}
+
+
+int main()
+{
+   while ( cin >> VAR__819283 )
+   {
+      LEN_OF_STH = strlen(VAR__819283);
+      ( cout << VAR__819283 ) << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if (( VAR__819283[VAR__53647] != '(' ) && ( VAR__819283[VAR__53647] != ')' ))
+         {
+            cout << ' ';
+         }
+         else
+         if ( VAR__819283[VAR__53647] == '(' )
+         {
+            VAR__NUM = 0;
+
+            if ( f1(VAR__53647) > 0 )
+            {
+               cout << '$';
+            }
+            else
+            {
+               cout << ' ';
+            }
+         }
+         else
+         {
+            VAR__NUM = 0;
+
+            if ( f2(VAR__53647) < 0 )
+            {
+               cout << '?';
+            }
+            else
+            {
+               cout << ' ';
+            }
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

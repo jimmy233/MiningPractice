@@ -1,0 +1,72 @@
+int main()
+{
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  left  = 0;
+   int  right = 0;
+   char A_STRING[102];
+   char VAR__19328[102];
+
+   while ( cin.getline(A_STRING, 102))
+   {
+      LEN_OF_STH = strlen(A_STRING);
+      left       = 0;
+      right      = 0;
+      for ( VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = ' ';
+
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            left++;
+         }
+
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            if ( left <= 0 )
+            {
+               VAR__19328[VAR__53647] = '?';
+            }
+            else
+            {
+               left--;
+            }
+         }
+      }
+
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            right++;
+         }
+
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            if ( right <= 0 )
+            {
+               VAR__19328[VAR__53647] = '$';
+            }
+            else
+            {
+               right--;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << A_STRING[VAR__53647];
+      }
+
+      cout << endl;
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << VAR__19328[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

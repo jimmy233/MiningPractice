@@ -1,0 +1,69 @@
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1238129;
+   int VAR__1111;
+   int VAR_233;
+   int VAR_666;
+   int VAR__SUM = 0;
+   int VAR__819283[1000][1000];
+   int line[1000];
+   int dij[1000][1000];
+   int VAR__7685[1000][1000];
+
+   for ( VAR__8444594 = 0; VAR__8444594 < 1000; VAR__8444594++ )
+   {
+      line[VAR__8444594] = 0;
+      for ( VAR__1238129 = 0; VAR__1238129 < 1000; VAR__1238129++ )
+      {
+         dij[VAR__8444594][VAR__1238129] = 0;
+      }
+   }
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+
+         if ( VAR__819283[VAR__53647][VAR__21230] == 0 )
+         {
+            line[VAR__53647]            = line[VAR__53647] + 1;
+            dij[VAR__53647][VAR__21230] = VAR__21230;
+         }
+      }
+   }
+
+   for ( VAR__1111 = 0; VAR__1111 < VAR_1238123; VAR__1111++ )
+   {
+      if ( line[VAR__1111] == 2 )
+      {
+         for ( VAR_233 = 0; VAR_233 < VAR_1238123; VAR_233++ )
+         {
+            if ( dij[VAR__1111][VAR_233] > 0 )
+            {
+               VAR__7685[VAR__1111][VAR_233] = dij[VAR__1111][VAR_233];
+               break;
+            }
+         }
+
+         for ( VAR_666 = 0; VAR_666 < VAR_1238123; VAR_666++ )
+         {
+            if ( dij[VAR__1111][VAR_666] > VAR__7685[VAR__1111][VAR_233] )
+            {
+               VAR__7685[VAR__1111][VAR_666] = dij[VAR__1111][VAR_666];
+               break;
+            }
+         }
+
+         VAR__SUM = (( VAR__SUM + VAR__7685[VAR__1111][VAR_666] ) - VAR__7685[VAR__1111][VAR_233] ) - 1;
+      }
+   }
+
+   printf("%d", VAR__SUM);
+   return 0;
+}

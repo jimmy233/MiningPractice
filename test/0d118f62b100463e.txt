@@ -1,0 +1,69 @@
+int Ok(int VAR__819283, int VAR__19328);
+int VAR__MAX(int VAR__819283[], int VAR_1238123);
+
+int VAR_1238123;
+int high[100];
+int low[100];
+int length[100];
+int main()
+{
+   int VAR__53647;
+   int VAR__temp = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      length[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &high[VAR__53647], &low[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( Ok(high[VAR__53647], low[VAR__53647]) == 1 )
+      {
+         switch ( Ok(high[VAR__53647 + 1], low[VAR__53647 + 1]))
+         {
+         case 1:
+            length[VAR__temp] += 1;
+            break;
+
+         case 0:
+            length[VAR__temp++] += 1;
+         }
+      }
+   }
+
+
+
+   printf("%d", VAR__MAX(length, VAR__temp));
+   return 0;
+}
+
+
+int Ok(int VAR__819283, int VAR__19328)
+{
+   return ((( VAR__819283 >= 90 ) && ( VAR__819283 <= 140 )) && ( VAR__19328 >= 60 )) && ( VAR__19328 <= 90 );
+}
+
+
+int VAR__MAX(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int MAX;
+
+   MAX = *VAR__819283;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( MAX < ( *( VAR__819283 + VAR__53647 )))
+      {
+         MAX = *( VAR__819283 + VAR__53647 );
+      }
+   }
+
+
+   return MAX;
+}

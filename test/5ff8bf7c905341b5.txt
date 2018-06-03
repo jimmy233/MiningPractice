@@ -1,0 +1,68 @@
+void main()
+{
+   char VAR__819283[300];
+   char alph[26][300];
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__21230;
+   int  times;
+   int  VAR_FLAG = 0;
+   char VAR__19328;
+
+   gets(VAR__819283);
+   VAR_1238123 = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 300; VAR__21230++ )
+      {
+         alph[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647] >= 'a' ) && ( VAR__819283[VAR__53647] <= 'z' ))
+      {
+         times = 0;
+         VAR_FLAG++;
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if (( VAR__819283[VAR__53647] == VAR__819283[VAR__21230] ) && ( times == 0 ))
+            {
+               times++;
+               VAR__19328 = VAR__819283[VAR__53647];
+            }
+            else
+            if (( VAR__819283[VAR__53647] == VAR__819283[VAR__21230] ) && ( times >= 1 ))
+            {
+               times++;
+               VAR__819283[VAR__21230] = ' ';
+            }
+         }
+
+         alph[VAR__19328 - 97][times] = VAR__19328;
+      }
+   }
+
+   if ( VAR_FLAG > 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 300; VAR__21230++ )
+         {
+            if (( alph[VAR__53647][VAR__21230] >= 'a' ) && ( alph[VAR__53647][VAR__21230] <= 'z' ))
+            {
+               printf("%c=%d\n", alph[VAR__53647][VAR__21230], VAR__21230);
+            }
+         }
+      }
+   }
+
+
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("No\n");
+   }
+}

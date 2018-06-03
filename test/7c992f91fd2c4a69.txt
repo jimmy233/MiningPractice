@@ -1,0 +1,63 @@
+int DO(char *SPE, int length)
+{
+   int  k1 = 0;
+   char *ANOTHER_POINTER     = NULL;
+   char *YET_ANOTHER_POINTER = NULL;
+
+   for ( int VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if ( SPE[VAR__53647] == '$' )
+      {
+         k1++;
+         ANOTHER_POINTER = SPE + VAR__53647;
+      }
+      else
+      if ( SPE[VAR__53647] == '?' )
+      {
+         YET_ANOTHER_POINTER = SPE + VAR__53647;
+
+         if ( k1 != 0 )
+         {
+            *ANOTHER_POINTER     = ' ';
+            *YET_ANOTHER_POINTER = ' ';
+            return DO(SPE, length);
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+int main(void)
+{
+   char SPE[101];
+
+   while ( ~scanf("%s", SPE))
+   {
+      puts(SPE);
+      int length = strlen(SPE);
+      for ( int VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+      {
+         if (( SPE[VAR__53647] != '(' ) && ( SPE[VAR__53647] != ')' ))
+         {
+            SPE[VAR__53647] = ' ';
+         }
+         else
+         if ( SPE[VAR__53647] == '(' )
+         {
+            SPE[VAR__53647] = '$';
+         }
+         else
+         if ( SPE[VAR__53647] == ')' )
+         {
+            SPE[VAR__53647] = '?';
+         }
+      }
+
+      DO(SPE, length);
+      puts(SPE);
+   }
+
+   return 0;
+}

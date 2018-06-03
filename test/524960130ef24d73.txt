@@ -1,0 +1,103 @@
+int main()
+{
+   void kuo(char VAR__4857423[]);
+   void pipei(char VAR__4857423[], char VAR__819283[]);
+
+   int VAR_1238123;
+   int VAR__53647;
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      char VAR__4857423[200] = { '\0' };
+      char VAR__819283[200]  = { '\0' };
+      gets(VAR__4857423);
+      printf("%s\n", VAR__4857423);
+      kuo(VAR__4857423);
+      pipei(VAR__4857423, VAR__819283);
+   }
+
+   return 0;
+}
+
+
+void pipei(char VAR__4857423[], char VAR__819283[])
+{
+   char *VAR_233;
+   char *VAR_666;
+
+   for ( VAR_233 = VAR__4857423, VAR_666 = VAR__819283; ( *VAR_233 ) != '\0'; VAR_233++, VAR_666++ )
+   {
+      if ((( *VAR_233 ) != '(' ) && (( *VAR_233 ) != ')' ))
+      {
+         *VAR_666 = ' ';
+      }
+
+      if (( *VAR_233 ) == ')' )
+      {
+         *VAR_666 = '?';
+      }
+
+      if (( *VAR_233 ) == '(' )
+      {
+         *VAR_666 = '$';
+      }
+   }
+
+   *VAR_666 = *VAR_233;
+   printf("%s\n", VAR__819283);
+}
+
+
+void kuo(char VAR__4857423[])
+{
+   char *VAR_233;
+   char *VAR_666;
+   char *VAR__53647;
+   char *VAR__temp;
+   int  VAR_9494;
+
+   for ( ; ; )
+   {
+      VAR_9494 = 0;
+      for ( VAR__53647 = VAR__4857423; ( *VAR__53647 ) != '\0'; VAR__53647++ )
+      {
+         for ( VAR_233 = VAR__53647; ( *VAR_233 ) != '\0'; VAR_233++ )
+         {
+            if (( *VAR_233 ) == '(' )
+            {
+               for ( VAR_666 = VAR_233 + 1; ( *VAR_666 ) != '\0'; VAR_666++ )
+               {
+                  if (( *VAR_666 ) == '(' )
+                  {
+                     break;
+                  }
+                  else
+                  if (( *VAR_666 ) == ')' )
+                  {
+                     *VAR_233 = 'a';
+                     *VAR_666 = 'a';
+                     break;
+                  }
+               }
+            }
+         }
+      }
+
+
+      for ( VAR_666 = VAR__4857423; ( *VAR_666 ) != '\0'; VAR_666++ )
+      {
+         for ( VAR__temp = VAR_666; ( *VAR__temp ) != '\0'; VAR__temp++ )
+         {
+            if ((( *VAR_666 ) == '(' ) && (( *VAR__temp ) == ')' ))
+            {
+               VAR_9494 = 1;
+            }
+         }
+      }
+
+      if ( VAR_9494 == 0 )
+      {
+         break;
+      }
+   }
+}

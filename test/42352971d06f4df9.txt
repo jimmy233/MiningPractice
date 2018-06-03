@@ -1,0 +1,124 @@
+void main()
+{
+   char A_STRING[1000];
+
+   gets(A_STRING);
+   int LEN_OF_STH;
+   LEN_OF_STH = strlen(A_STRING);
+   int VAR__MAX = 0;
+   int VAR__MIN = 10000;
+   int VAR__53647;
+   int lenth = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] != ' ' )
+      {
+         lenth = lenth + 1;
+      }
+
+      if ( A_STRING[VAR__53647] == ' ' )
+      {
+         if ( lenth > VAR__MAX )
+         {
+            VAR__MAX = lenth;
+         }
+
+         if ( lenth < VAR__MIN )
+         {
+            VAR__MIN = lenth;
+         }
+
+         lenth = 0;
+      }
+
+      if ( A_STRING[VAR__53647 + 1] == '\0' )
+      {
+         if ( lenth > VAR__MAX )
+         {
+            VAR__MAX = lenth;
+         }
+
+         if ( lenth < VAR__MIN )
+         {
+            VAR__MIN = lenth;
+         }
+      }
+   }
+
+   lenth = 0;
+   int maxpostail;
+   int minpostail;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] != ' ' )
+      {
+         lenth = lenth + 1;
+      }
+
+      if ( A_STRING[VAR__53647] == ' ' )
+      {
+         if ( lenth == VAR__MAX )
+         {
+            maxpostail = VAR__53647 - 1;
+            break;
+         }
+
+         lenth = 0;
+      }
+
+      if ( A_STRING[VAR__53647 + 1] == '\0' )
+      {
+         if ( lenth == VAR__MAX )
+         {
+            maxpostail = VAR__53647;
+            break;
+         }
+      }
+   }
+
+   char maxlenword[100];
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__MAX - 1 ); VAR__53647++ )
+   {
+      maxlenword[VAR__53647] = A_STRING[( maxpostail - ( VAR__MAX - 1 )) + VAR__53647];
+   }
+
+   maxlenword[VAR__MAX] = '\0';
+   puts(maxlenword);
+   lenth = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] != ' ' )
+      {
+         lenth = lenth + 1;
+      }
+
+      if ( A_STRING[VAR__53647] == ' ' )
+      {
+         if ( lenth == VAR__MIN )
+         {
+            minpostail = VAR__53647 - 1;
+            break;
+         }
+
+         lenth = 0;
+      }
+
+      if ( A_STRING[VAR__53647 + 1] == '\0' )
+      {
+         if ( lenth == VAR__MIN )
+         {
+            minpostail = VAR__53647;
+            break;
+         }
+      }
+   }
+
+   char minlenword[100];
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__MIN - 1 ); VAR__53647++ )
+   {
+      minlenword[VAR__53647] = A_STRING[( minpostail - ( VAR__MIN - 1 )) + VAR__53647];
+   }
+
+   minlenword[VAR__MIN] = '\0';
+   puts(minlenword);
+}

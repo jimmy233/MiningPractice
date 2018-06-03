@@ -1,0 +1,41 @@
+void main()
+{
+   char VAR__819283[1000];
+   char VAR__19328[100][100] = { "" };
+   char longstr[100]         = { "" };
+   char shortstr[100]        = { "" };
+   int  VAR__53647;
+   int  VAR__8444594 = 0;
+   int  VAR__21230   = 0;
+
+   gets(VAR__819283);
+   for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      VAR__19328[VAR__8444594][VAR__21230] = VAR__819283[VAR__53647];
+      VAR__21230++;
+
+      if ( VAR__819283[VAR__53647] == 32 )
+      {
+         VAR__19328[VAR__8444594][VAR__21230 - 1] = '\0';
+         VAR__8444594 = VAR__8444594 + 1;
+         VAR__21230   = 0;
+      }
+   }
+
+   strcpy(longstr, VAR__19328[0]);
+   strcpy(shortstr, VAR__19328[0]);
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      if ( strlen(VAR__19328[VAR__53647]) > strlen(longstr))
+      {
+         strcpy(longstr, VAR__19328[VAR__53647]);
+      }
+
+      if ( strlen(VAR__19328[VAR__53647]) < strlen(shortstr))
+      {
+         strcpy(shortstr, VAR__19328[VAR__53647]);
+      }
+   }
+
+   printf("%s\n%s\n", longstr, shortstr);
+}

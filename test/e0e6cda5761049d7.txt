@@ -1,0 +1,47 @@
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__temp;
+   int opt[101][101];
+
+   memset(opt, 0, sizeof( opt ));
+   for ( int VAR__53647 = 0; VAR__53647 < 101; ++VAR__53647 )
+   {
+      opt[0][VAR__53647] = 1;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < 101; ++VAR__53647 )
+   {
+      opt[VAR__53647][1] = 1;
+   }
+
+   for ( int VAR__21230 = 1; VAR__21230 < 101; ++VAR__21230 )
+   {
+      opt[1][VAR__21230] = 1;
+   }
+
+   for ( int VAR__21230 = 2; VAR__21230 < 101; ++VAR__21230 )
+   {
+      for ( int VAR__53647 = 2; VAR__53647 < 101; ++VAR__53647 )
+      {
+         if ( VAR__53647 >= VAR__21230 )
+         {
+            opt[VAR__53647][VAR__21230] += opt[VAR__53647 - VAR__21230][VAR__21230];
+         }
+
+         opt[VAR__53647][VAR__21230] += opt[VAR__53647][VAR__21230 - 1];
+      }
+   }
+
+
+   cin >> VAR__temp;
+
+   while ( VAR__temp-- )
+   {
+      ( cin >> VAR__1238129 ) >> VAR_1238123;
+      ( cout << opt[VAR__1238129][VAR_1238123] ) << endl;
+   }
+
+   return 0;
+}

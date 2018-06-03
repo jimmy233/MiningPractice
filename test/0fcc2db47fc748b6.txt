@@ -1,0 +1,59 @@
+int main()
+{
+   char input[101] = { 0 };
+   char initial[101];
+   int  found = 0;
+
+   while ( cin.getline(input, 101))
+   {
+      strcpy(initial, input);
+      do
+      {
+         found = 0;
+         int VAR__53647 = 0;
+         int location   = -1;
+
+         while ( input[VAR__53647] )
+         {
+            if ( input[VAR__53647] == '(' )
+            {
+               location = VAR__53647;
+               found    = 1;
+            }
+
+            if ( input[VAR__53647] == ')' )
+            {
+               found = 1;
+
+               if ( location == ( -1 ))
+               {
+                  input[VAR__53647] = '?';
+               }
+               else
+               {
+                  input[location]   = ' ';
+                  input[VAR__53647] = ' ';
+                  location          = -1;
+                  break;
+               }
+            }
+
+            if (((( input[VAR__53647] != '?' ) && ( input[VAR__53647] != '$' )) && ( input[VAR__53647] != '(' )) && ( input[VAR__53647] != ')' ))
+            {
+               input[VAR__53647] = ' ';
+            }
+
+            VAR__53647++;
+         }
+
+         if ( location != ( -1 ))
+         {
+            input[location] = '$';
+            location        = -1;
+         }
+      } while ( found );
+      ((( cout << initial ) << endl ) << input ) << endl;
+   }
+
+   return 0;
+}

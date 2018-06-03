@@ -1,0 +1,72 @@
+char in[110];
+char work[110];
+char out[110];
+int  LEN_OF_STH;
+void pick(int L)
+{
+   for ( int VAR__53647 = L - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( work[VAR__53647] == '(' )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < ( L - VAR__53647 ); VAR__21230++ )
+         {
+            if ( work[VAR__53647 + VAR__21230] == ')' )
+            {
+               work[VAR__53647] = ' ';
+               work[VAR__53647 + VAR__21230] = ' ';
+               pick(LEN_OF_STH);
+               break;
+            }
+         }
+      }
+   }
+}
+
+
+void mark(int L)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < L; VAR__53647++ )
+   {
+      if ( work[VAR__53647] == '(' )
+      {
+         out[VAR__53647] = '$';
+      }
+
+      if ( work[VAR__53647] == ')' )
+      {
+         out[VAR__53647] = '?';
+      }
+   }
+}
+
+
+int main()
+{
+   while ( cin )
+   {
+      cin.getline(in, 110);
+      LEN_OF_STH = strlen(in);
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         out[VAR__53647]  = ' ';
+         work[VAR__53647] = in[VAR__53647];
+      }
+
+      pick(LEN_OF_STH);
+      mark(LEN_OF_STH);
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << in[VAR__53647];
+      }
+
+      cout << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << out[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

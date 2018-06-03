@@ -1,0 +1,110 @@
+void main()
+{
+   char VAR__4857423;
+   int  VAR__MAX;
+   int  VAR__MIN;
+
+   VAR__MAX = 0;
+   VAR__MIN = 0;
+   char *maxs;
+   char *mins;
+   char *VAR__TEMP;
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  VAR_233;
+   maxs         = (char *)malloc(1);
+   mins         = (char *)malloc(1);
+   VAR__53647   = 0;
+   VAR_233      = 0;
+   VAR__TEMP    = (char *)malloc(( sizeof( char )) * 30);
+   VAR__4857423 = getchar();
+
+   while ( VAR__4857423 != '\n' )
+   {
+      if ( VAR__4857423 != ' ' )
+      {
+         *( VAR__TEMP + VAR__53647 ) = VAR__4857423;
+         VAR__53647++;
+      }
+      else
+      {
+         if ( VAR_233 == 0 )
+         {
+            free(mins);
+            mins = (char *)malloc(( sizeof( char )) * ( VAR__53647 + 1 ));
+            for ( VAR__8444594 = 0; VAR__8444594 <= VAR__53647; VAR__8444594++ )
+            {
+               *( mins + VAR__8444594 ) = *( VAR__TEMP + VAR__8444594 );
+            }
+
+            VAR__MIN = VAR__53647;
+            VAR_233  = 1;
+         }
+
+         if ( VAR__53647 > VAR__MAX )
+         {
+            free(maxs);
+            maxs = (char *)malloc(( sizeof( char )) * ( VAR__53647 + 1 ));
+            for ( VAR__8444594 = 0; VAR__8444594 <= VAR__53647; VAR__8444594++ )
+            {
+               *( maxs + VAR__8444594 ) = *( VAR__TEMP + VAR__8444594 );
+            }
+
+            VAR__MAX = VAR__53647;
+         }
+
+         if ( VAR__53647 < VAR__MIN )
+         {
+            free(mins);
+            mins = (char *)malloc(( sizeof( char )) * ( VAR__53647 + 1 ));
+            for ( VAR__8444594 = 0; VAR__8444594 <= VAR__53647; VAR__8444594++ )
+            {
+               *( mins + VAR__8444594 ) = *( VAR__TEMP + VAR__8444594 );
+            }
+
+            VAR__MIN = VAR__53647;
+         }
+
+         VAR__53647 = 0;
+         free(VAR__TEMP);
+         VAR__TEMP = (char *)malloc(( sizeof( char )) * 30);
+      }
+
+      VAR__4857423 = getchar();
+   }
+
+   if ( VAR__53647 > VAR__MAX )
+   {
+      free(maxs);
+      maxs = (char *)malloc(( sizeof( char )) * ( VAR__53647 + 1 ));
+      for ( VAR__8444594 = 0; VAR__8444594 <= VAR__53647; VAR__8444594++ )
+      {
+         *( maxs + VAR__8444594 ) = *( VAR__TEMP + VAR__8444594 );
+      }
+
+      VAR__MAX = VAR__53647;
+   }
+
+   if ( VAR__53647 < VAR__MIN )
+   {
+      free(mins);
+      mins = (char *)malloc(( sizeof( char )) * ( VAR__53647 + 1 ));
+      for ( VAR__8444594 = 0; VAR__8444594 <= VAR__53647; VAR__8444594++ )
+      {
+         *( mins + VAR__8444594 ) = *( VAR__TEMP + VAR__8444594 );
+      }
+
+      VAR__MIN = VAR__53647;
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__MAX; VAR__8444594++ )
+   {
+      printf("%c", *( maxs + VAR__8444594 ));
+   }
+
+   printf("\n");
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__MIN; VAR__8444594++ )
+   {
+      printf("%c", *( mins + VAR__8444594 ));
+   }
+}

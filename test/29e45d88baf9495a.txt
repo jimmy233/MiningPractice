@@ -1,0 +1,83 @@
+int main()
+{
+   int  VAR__1111;
+   int  VAR_129012;
+   int  fl;
+   int  lenth;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   char A_STRING[100 + 10];
+   int  left[101];
+   int  right[101];
+   int  VAR_FLAG[100 + 10];
+
+   while ( cin.getline(A_STRING, 101))
+   {
+      VAR__1111  = 1;
+      VAR_129012 = 1;
+      for ( lenth = 0; A_STRING[lenth] != '\0'; lenth++ )
+      {
+         if ( A_STRING[lenth] == '(' )
+         {
+            VAR_FLAG[lenth]   = 1;
+            left[VAR__1111++] = lenth;
+         }
+         else
+         if ( A_STRING[lenth] == ')' )
+         {
+            VAR_FLAG[lenth]     = 2;
+            right[VAR_129012++] = lenth;
+         }
+         else
+         {
+            VAR_FLAG[lenth] = 0;
+         }
+      }
+
+      fl = lenth - 1;
+      for ( VAR__21230 = VAR__1111 - 1; VAR__21230 >= 1; VAR__21230-- )
+      {
+         for ( VAR__8444594 = 1; VAR__8444594 <= ( VAR_129012 - 1 ); VAR__8444594++ )
+         {
+            if ( right[VAR__8444594] > left[VAR__21230] )
+            {
+               VAR_FLAG[right[VAR__8444594]] = 0;
+               VAR_FLAG[left[VAR__21230]]    = 0;
+               right[VAR__8444594]           = -1;
+               break;
+            }
+         }
+      }
+
+
+      for ( lenth = 0; A_STRING[lenth] != '\0'; lenth++ )
+      {
+         printf("%c", A_STRING[lenth]);
+      }
+
+      printf("\n");
+      for ( lenth = 0; lenth <= fl; lenth++ )
+      {
+         if ( VAR_FLAG[lenth] == 0 )
+         {
+            printf(" ");
+         }
+         else
+         if ( VAR_FLAG[lenth] == 1 )
+         {
+            printf("$");
+         }
+         else
+         if ( VAR_FLAG[lenth] == 2 )
+         {
+            printf("?");
+         }
+      }
+
+      printf("\n");
+      memset(A_STRING, 0, sizeof( A_STRING ));
+   }
+
+   return 0;
+}

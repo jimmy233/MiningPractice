@@ -1,0 +1,58 @@
+int main()
+{
+   struct point
+   {
+      double VAR__7685;
+      double VAR__3918907;
+   }
+       point[10];
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf %lf", &point[VAR__53647].VAR__7685, &point[VAR__53647].VAR__3918907);
+   }
+
+   double VAR__MAX[10];
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      int    VAR__21230;
+      double dis[10];
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__21230 - 1] = sqrt((( point[VAR__53647].VAR__7685 - point[VAR__21230].VAR__7685 ) * ( point[VAR__53647].VAR__7685 - point[VAR__21230].VAR__7685 )) + (( point[VAR__53647].VAR__3918907 - point[VAR__21230].VAR__3918907 ) * ( point[VAR__53647].VAR__3918907 - point[VAR__21230].VAR__3918907 )));
+      }
+
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230 - 1] > dis[VAR__21230] )
+         {
+            VAR__MAX[VAR__53647] = dis[VAR__21230 - 1];
+            dis[VAR__21230]      = dis[VAR__21230 - 1];
+         }
+         else
+         {
+            VAR__MAX[VAR__53647] = dis[VAR__21230];
+         }
+      }
+   }
+
+   double M;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__MAX[VAR__53647] > VAR__MAX[VAR__53647 + 1] )
+      {
+         M = VAR__MAX[VAR__53647];
+         VAR__MAX[VAR__53647 + 1] = VAR__MAX[VAR__53647];
+      }
+      else
+      {
+         M = VAR__MAX[VAR__53647 + 1];
+      }
+   }
+
+   printf("%.4f", M);
+   return 0;
+}

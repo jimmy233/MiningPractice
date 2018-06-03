@@ -1,0 +1,78 @@
+int main()
+{
+   char A_STRING[256] = { 0 };
+   char subs[256]     = { 0 };
+   char rep[256]      = { 0 };
+   char front[256]    = { 0 };
+   char back[256]     = { 0 };
+   int  VAR__53647    = 0;
+   int  VAR__7685     = 0;
+   int  len1;
+   int  len2;
+   int  VAR_1238123      = 0;
+   int  VAR__1238129     = 0;
+   int  VAR__3918907     = 0;
+   int  VAR_FLAG         = 0;
+   char VAR__819283[256] = { 0 };
+   char VAR__19328[256]  = { 0 };
+
+   gets(A_STRING);
+   gets(subs);
+   gets(rep);
+   len1 = strlen(A_STRING);
+   len2 = strlen(subs);
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      strcpy(VAR__819283, VAR__19328);
+      VAR__7685 = 0;
+
+      if ( A_STRING[VAR__53647] == subs[0] )
+      {
+         VAR__1238129 = VAR__53647;
+         for ( int VAR__21230 = VAR__1238129; VAR__21230 < ( len2 + VAR__1238129 ); VAR__21230++ )
+         {
+            VAR__819283[VAR__7685] = A_STRING[VAR__21230];
+            VAR__7685++;
+         }
+
+         VAR__819283[VAR__7685] = '\0';
+      }
+
+      if ( strcmp(VAR__819283, subs) == 0 )
+      {
+         VAR_1238123 = VAR__53647;
+         VAR_FLAG    = 1;
+         break;
+      }
+   }
+
+   if ( VAR_FLAG == 1 )
+   {
+      if ( VAR_1238123 != 0 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            front[VAR__53647] = A_STRING[VAR__53647];
+         }
+      }
+
+      if ( VAR_1238123 != ( len1 - len2 ))
+      {
+         for ( VAR__53647 = VAR_1238123 + len2; VAR__53647 < len1; VAR__53647++ )
+         {
+            back[VAR__3918907] = A_STRING[VAR__53647];
+            VAR__3918907++;
+         }
+      }
+
+      printf("%s%s%s\n", front, rep, back);
+   }
+   else
+   if ( VAR_FLAG == 0 )
+   {
+      printf("%s", A_STRING);
+   }
+
+
+   return 0;
+}

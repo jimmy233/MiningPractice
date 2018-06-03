@@ -1,0 +1,46 @@
+double dis(double VAR__819283[2], double VAR__19328[2])
+{
+   double distance;
+
+   distance = sqrt((( VAR__819283[0] - VAR__19328[0] ) * ( VAR__819283[0] - VAR__19328[0] )) + (( VAR__819283[1] - VAR__19328[1] ) * ( VAR__819283[1] - VAR__19328[1] )));
+   return distance;
+}
+
+
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   double VAR__7685[100][2];
+   double VAR__12302[500];
+   double VAR__MAX;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf %lf", &VAR__7685[VAR__53647][0], &VAR__7685[VAR__53647][1]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__12302[VAR__53647 + VAR__21230] = dis(VAR__7685[VAR__53647], VAR__7685[VAR__21230]);
+      }
+   }
+
+
+   VAR__MAX = VAR__12302[1];
+   for ( VAR__8444594 = 2; VAR__8444594 <= (( 2 * VAR_1238123 ) - 3 ); VAR__8444594++ )
+   {
+      if ( VAR__12302[VAR__8444594] > VAR__MAX )
+      {
+         VAR__MAX = VAR__12302[VAR__8444594];
+      }
+   }
+
+
+   printf("%.4lf", VAR__MAX);
+}

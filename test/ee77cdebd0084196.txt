@@ -1,0 +1,64 @@
+char number[110] = { 0 };
+void fraction()
+{
+   int yushu = 0;
+
+   for ( int VAR__53647 = 100; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( number[VAR__53647] != '0' )
+      {
+         number[VAR__53647] = (( number[VAR__53647] * 2 ) - '0' ) + yushu;
+      }
+      else
+      {
+         number[VAR__53647] = number[VAR__53647] + yushu;
+         yushu = 0;
+      }
+
+      if ( number[VAR__53647] > '9' )
+      {
+         number[VAR__53647] = number[VAR__53647] - 10;
+         yushu = 1;
+      }
+      else
+      {
+         yushu = 0;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      number[VAR__53647] = '0';
+   }
+
+   number[100] = '1';
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      fraction();
+   }
+
+   int start = 0;
+   for ( int VAR__53647 = 0; VAR__53647 <= 100; VAR__53647++ )
+   {
+      if ( number[VAR__53647] != '0' )
+      {
+         start = VAR__53647;
+         break;
+      }
+   }
+
+
+   for ( int VAR__53647 = start; VAR__53647 <= 100; VAR__53647++ )
+   {
+      cout << number[VAR__53647];
+   }
+
+   return 0;
+}

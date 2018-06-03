@@ -1,0 +1,52 @@
+char VAR__819283[150];
+int find(int VAR__7685, int VAR__3918907)
+{
+   int VAR__19328;
+
+   if ( VAR__819283[VAR__7685] == '\0' )
+   {
+      return -1;
+   }
+
+   if ( VAR__819283[VAR__7685] == '(' )
+   {
+      VAR__19328             = find(VAR__7685 + 1, VAR__3918907 + 1);
+      VAR__819283[VAR__7685] = ( VAR__19328 == ( -1 )) ? ( '$' ) : ( ' ' );
+      return ( VAR__19328 == ( -1 )) ? ( -1 ) : ( find(VAR__19328 + 1, VAR__3918907));
+   }
+
+   if ( VAR__819283[VAR__7685] == ')' )
+   {
+      VAR__819283[VAR__7685] = ( VAR__3918907 == 0 ) ? ( '?' ) : ( ' ' );
+      return ( VAR__3918907 == 0 ) ? ( find(VAR__7685 + 1, VAR__3918907)) : ( VAR__7685 );
+   }
+   else
+   {
+      VAR__819283[VAR__7685] = ' ';
+      return find(VAR__7685 + 1, VAR__3918907);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123 = 1000;
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin.getline(VAR__819283, 150);
+
+      if ( VAR__819283[0] == '\0' )
+      {
+         break;
+      }
+      else
+      {
+         ( cout << VAR__819283 ) << endl;
+         find(0, 0);
+         ( cout << VAR__819283 ) << endl;
+      }
+   }
+
+   return 0;
+}

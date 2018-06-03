@@ -1,0 +1,59 @@
+int main()
+{
+   char A_STRING[300];
+   char strstr[300];
+   char repla[300];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+
+   cin.getline(A_STRING, 300);
+   cin.getline(strstr, 300);
+   cin.getline(repla, 300);
+   int sl1 = strlen(A_STRING);
+   int sl2 = strlen(strstr);
+   int sl3 = strlen(repla);
+   for ( VAR__53647 = 0; VAR__53647 < sl1; VAR__53647++ )
+   {
+      int VAR_FLAG = 1;
+
+      if ( A_STRING[VAR__53647] != strstr[0] )
+      {
+         continue;
+      }
+      else
+      {
+         for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + sl2 ); VAR__21230++ )
+         {
+            if ( A_STRING[VAR__21230] != strstr[VAR__21230 - VAR__53647] )
+            {
+               VAR_FLAG = 0;
+               break;
+            }
+         }
+
+         if ( VAR_FLAG == 0 )
+         {
+            continue;
+         }
+         else
+         {
+            int vec = sl3 - sl2;
+            for ( VAR__8444594 = sl1; VAR__8444594 >= ( VAR__53647 + sl2 ); VAR__8444594-- )
+            {
+               A_STRING[VAR__8444594 + vec] = A_STRING[VAR__8444594];
+            }
+
+            for ( VAR__8444594 = VAR__53647; VAR__8444594 < ( VAR__53647 + sl3 ); VAR__8444594++ )
+            {
+               A_STRING[VAR__8444594] = repla[VAR__8444594 - VAR__53647];
+            }
+
+            break;
+         }
+      }
+   }
+
+   ( cout << A_STRING ) << endl;
+   return 0;
+}

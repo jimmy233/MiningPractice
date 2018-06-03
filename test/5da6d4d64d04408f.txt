@@ -1,0 +1,79 @@
+int length(int ch[])
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 199; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( ch[VAR__53647] != 0 )
+      {
+         break;
+      }
+   }
+
+   return VAR__53647 + 1;
+}
+
+
+void multi(int ch[], int VAR__819283)
+{
+   int VAR__53647;
+   int VAR__MAX = length(ch);
+   int VAR__temp;
+   int ji[200] = { 0 };
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__MAX + 3 ); VAR__53647++ )
+   {
+      ji[VAR__53647]      = ch[VAR__53647] * VAR__819283;
+      ji[VAR__53647 + 1] += ch[VAR__53647] * VAR__819283;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__MAX + 3 ); VAR__53647++ )
+   {
+      VAR__temp           = ji[VAR__53647];
+      ji[VAR__53647]      = ji[VAR__53647] % 10;
+      ji[VAR__53647 + 1] += VAR__temp / 10;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__MAX + 5 ); VAR__53647++ )
+   {
+      ch[VAR__53647] = ji[VAR__53647];
+   }
+}
+
+
+void pow(int VAR_233, int VAR__21230, int chpow[])
+{
+   int VAR__53647;
+
+   if ( VAR__21230 == 0 )
+   {
+      chpow[0] = 1;
+   }
+   else
+   {
+      chpow[0] = 1;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR__21230; VAR__53647++ )
+      {
+         multi(chpow, VAR_233);
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int chpow[200] = { 0 };
+   int end;
+
+   cin >> VAR__53647;
+   pow(2, VAR__53647, chpow);
+   end = length(chpow);
+   for ( VAR__53647 = end - 1; VAR__53647 > ( -1 ); VAR__53647-- )
+   {
+      cout << chpow[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

@@ -1,0 +1,59 @@
+void multiply(char A_STRING[], int VAR_1238123);
+
+int main()
+{
+   int  N;
+   char A_STRING[200] = "1";
+
+   cin >> N;
+
+   while ( N > 0 )
+   {
+      multiply(A_STRING, 2);
+      N--;
+   }
+
+   ( cout << A_STRING ) << endl;
+   return 0;
+}
+
+
+void multiply(char A_STRING[], int VAR_1238123)
+{
+   int VAR__NUM[200];
+   int jump = 0;
+   int VAR__TEMP;
+
+   memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+   char *sPtr = ( A_STRING + strlen(A_STRING)) - 1;
+   int  *nPtr = VAR__NUM + 199;
+
+   while ( sPtr != ( A_STRING - 1 ))
+   {
+      *( nPtr-- ) = ( *( sPtr-- )) - '0';
+   }
+
+   nPtr = VAR__NUM + 199;
+
+   while ( nPtr != ( VAR__NUM - 1 ))
+   {
+      VAR__TEMP   = ((( *nPtr ) * VAR_1238123 ) % 10 ) + jump;
+      jump        = (( *nPtr ) * VAR_1238123 ) / 10;
+      *( nPtr-- ) = VAR__TEMP;
+   }
+
+   nPtr = VAR__NUM;
+   sPtr = A_STRING;
+
+   while (( *nPtr ) == 0 )
+   {
+      nPtr++;
+   }
+
+   while ( nPtr != ( VAR__NUM + 200 ))
+   {
+      *( sPtr++ ) = ( *( nPtr++ )) + '0';
+   }
+
+   *sPtr = 0;
+}

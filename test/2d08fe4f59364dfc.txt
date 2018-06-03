@@ -1,0 +1,75 @@
+void main()
+{
+   char VAR__4857423[1000];
+   int  VAR__53647;
+   int  VAR__COUNT = 0;
+   int  VAR__MAX;
+   int  VAR__MIN;
+   int  mark1;
+   int  mark2;
+   int  length;
+
+   gets(VAR__4857423);
+   length = strlen(VAR__4857423);
+   for ( VAR__53647 = 0; VAR__53647 < ( length + 1 ); VAR__53647++ )
+   {
+      if (( VAR__4857423[VAR__53647] != ' ' ) && ( VAR__4857423[VAR__53647] != '\0' ))
+      {
+         VAR__COUNT++;
+      }
+      else
+      {
+         if ( VAR__4857423[VAR__53647 - 1] == ',' )
+         {
+            VAR__COUNT--;
+         }
+
+         VAR__MAX   = ( VAR__MIN = VAR__COUNT );
+         VAR__COUNT = 0;
+         mark1      = ( mark2 = 0 );
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( length + 1 ); VAR__53647++ )
+   {
+      if (( VAR__4857423[VAR__53647] != ' ' ) && ( VAR__4857423[VAR__53647] != '\0' ))
+      {
+         VAR__COUNT++;
+      }
+      else
+      {
+         if ( VAR__4857423[VAR__53647 - 1] == ',' )
+         {
+            VAR__COUNT--;
+         }
+
+         if ( VAR__MAX < VAR__COUNT )
+         {
+            VAR__MAX = VAR__COUNT;
+            mark1    = VAR__53647 - VAR__MAX;
+         }
+
+         if ( VAR__MIN > VAR__COUNT )
+         {
+            VAR__MIN = VAR__COUNT;
+            mark2    = VAR__53647 - VAR__MIN;
+         }
+
+         VAR__COUNT = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      printf("%c", VAR__4857423[mark1 + VAR__53647]);
+   }
+
+   printf("\n");
+   for ( VAR__53647 = 0; VAR__53647 < VAR__MIN; VAR__53647++ )
+   {
+      printf("%c", VAR__4857423[mark2 + VAR__53647]);
+   }
+
+   printf("\n");
+}

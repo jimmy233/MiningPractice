@@ -1,0 +1,84 @@
+void Find(char *);
+
+int main()
+{
+   int  VAR__53647;
+   char A_STRING[101];
+   char mark[101];
+
+   while ( cin.getline(A_STRING, 101))
+   {
+      memset(mark, 0, sizeof( mark ));
+      for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            mark[VAR__53647] = '$';
+         }
+
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            mark[VAR__53647] = '?';
+         }
+
+         if (( A_STRING[VAR__53647] != '(' ) && ( A_STRING[VAR__53647] != ')' ))
+         {
+            mark[VAR__53647] = ' ';
+         }
+      }
+
+      Find(mark);
+      for ( VAR__53647 = strlen(mark) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( mark[VAR__53647] != ' ' )
+         {
+            mark[VAR__53647 + 1] = 0;
+            break;
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < strlen(mark); VAR__53647++ )
+      {
+         if ( mark[VAR__53647] != ' ' )
+         {
+            strcpy(mark, mark + VAR__53647);
+            break;
+         }
+      }
+
+
+      ((( cout << A_STRING ) << endl ) << mark ) << endl;
+   }
+}
+
+
+void Find(char mark[])
+{
+   int VAR__53647;
+   int VAR__21230 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(mark); VAR__53647++ )
+   {
+      if ( mark[VAR__53647] == '$' )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < strlen(mark); VAR__21230++ )
+         {
+            if ( mark[VAR__21230] == '$' )
+            {
+               break;
+            }
+            else
+            {
+               if ( mark[VAR__21230] == '?' )
+               {
+                  mark[VAR__21230] = ' ';
+                  mark[VAR__53647] = ' ';
+                  Find(mark);
+                  return;
+               }
+            }
+         }
+      }
+   }
+}

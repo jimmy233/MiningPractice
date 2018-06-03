@@ -1,0 +1,98 @@
+void main()
+{
+   int  VAR__53647;
+   int  ANOTHER_POINTER;
+   int  YET_ANOTHER_POINTER;
+   int  l1        = 0;
+   int  l2        = 0;
+   int  VAR__temp = 1;
+   int  a1        = 0;
+   int  a2        = 10;
+   char VAR_1238123[100];
+   char VAR_9494[200] = { " " };
+
+   gets(VAR_1238123);
+   for ( VAR__53647 = 0; VAR_1238123[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( VAR__temp == 1 ) && ( VAR_1238123[VAR__53647] != ' ' ))
+      {
+         l2++;
+      }
+
+      if (( VAR__temp == 1 ) && ( VAR_1238123[VAR__53647] == ' ' ))
+      {
+         VAR__temp = 0;
+
+         if ( l2 < a2 )
+         {
+            a2 = l2;
+            YET_ANOTHER_POINTER = VAR__53647;
+         }
+
+         l2 = 0;
+      }
+
+      if (( VAR_1238123[VAR__53647 + 1] == '\0' ) && ( l2 < a2 ))
+      {
+         a2 = l2 + 1;
+         YET_ANOTHER_POINTER = VAR__53647 + 1;
+      }
+
+      if (( VAR__temp == 0 ) && ( VAR_1238123[VAR__53647] != ' ' ))
+      {
+         VAR__temp = 1;
+         l2++;
+      }
+   }
+
+   strcat(VAR_9494, VAR_1238123);
+   VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR_9494[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( VAR__temp == 0 ) && ( VAR_9494[VAR__53647] == ' ' ))
+      {
+         l1 = 0;
+      }
+
+      if (( VAR__temp == 0 ) && ( VAR_9494[VAR__53647] != ' ' ))
+      {
+         VAR__temp = 1;
+         l1++;
+      }
+
+      if (( VAR__temp == 1 ) && ( VAR_9494[VAR__53647] != ' ' ))
+      {
+         l1++;
+      }
+
+      if (( VAR__temp == 1 ) && ( VAR_9494[VAR__53647] == ' ' ))
+      {
+         VAR__temp = 0;
+
+         if ( l1 > a1 )
+         {
+            a1 = l1;
+            ANOTHER_POINTER = VAR__53647;
+         }
+
+         l1 = 0;
+      }
+
+      if ((( VAR__temp == 1 ) && ( VAR_9494[VAR__53647 + 1] == '\0' )) && (( l1 + 1 ) > a1 ))
+      {
+         a1 = l1;
+         ANOTHER_POINTER = VAR__53647 + 1;
+      }
+   }
+
+   for ( VAR__53647 = ( ANOTHER_POINTER - a1 ) + 1; VAR__53647 < ANOTHER_POINTER; VAR__53647++ )
+   {
+      printf("%c", VAR_9494[VAR__53647]);
+   }
+
+   printf("\n");
+   for ( VAR__53647 = YET_ANOTHER_POINTER - a2; VAR__53647 < YET_ANOTHER_POINTER; VAR__53647++ )
+   {
+      printf("%c", VAR_1238123[VAR__53647]);
+   }
+}

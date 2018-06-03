@@ -1,0 +1,52 @@
+int main()
+{
+   int N;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__NUM[100];
+   int result[100];
+
+   cin >> N;
+   memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+   memset(result, 0, sizeof( result ));
+   result[0] = 1;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      VAR__21230 = 0;
+      for ( VAR__8444594 = 0; VAR__8444594 < 100; VAR__8444594++ )
+      {
+         VAR__NUM[VAR__21230++] = result[VAR__8444594];
+      }
+
+      memset(result, 0, sizeof( result ));
+      for ( VAR__21230 = 0; VAR__21230 < 100; VAR__21230++ )
+      {
+         result[VAR__21230] = 2 * VAR__NUM[VAR__21230];
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < 100; VAR__21230++ )
+      {
+         if ( result[VAR__21230] >= 10 )
+         {
+            result[VAR__21230 + 1] += result[VAR__21230] / 10;
+            result[VAR__21230]     %= 10;
+         }
+      }
+   }
+
+   VAR__21230 = 99;
+
+   while ( result[VAR__21230] == 0 )
+   {
+      VAR__21230--;
+   }
+
+   for ( ; VAR__21230 >= 0; VAR__21230-- )
+   {
+      cout << result[VAR__21230];
+   }
+
+   cout << endl;
+   return 0;
+}

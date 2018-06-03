@@ -1,0 +1,70 @@
+void adds(char *VAR__819283, char *VAR__19328);
+void addc(char *VAR__819283, char VAR__4857423);
+
+int main()
+{
+   char VAR_9494[256];
+   char subs[256];
+   char replace[256];
+   char result[1000] = "";
+
+   gets(VAR_9494);
+   gets(subs);
+   gets(replace);
+   int len_s       = strlen(VAR_9494);
+   int len_subs    = strlen(subs);
+   int len_replace = strlen(replace);
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int finish     = 0;
+   for ( VAR__53647 = 0; VAR__53647 < len_s; VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647] == subs[VAR__21230] ) && ( finish == 0 ))
+      {
+         if ( VAR__21230 == ( len_subs - 1 ))
+         {
+            adds(result, replace);
+            VAR__21230 = 0;
+            finish     = 1;
+         }
+         else
+         {
+            VAR__21230++;
+         }
+      }
+
+      else
+      {
+         VAR__53647 -= VAR__21230;
+         VAR__21230  = 0;
+         addc(result, VAR_9494[VAR__53647]);
+      }
+   }
+
+   printf("%s\n", result);
+   return 0;
+}
+
+
+void adds(char *VAR__819283, char *VAR__19328)
+{
+   int len_a = strlen(VAR__819283);
+   int len_b = strlen(VAR__19328);
+   int VAR__53647;
+
+   for ( VAR__53647 = len_a; VAR__53647 <= (( len_a + len_b ) - 1 ); VAR__53647++ )
+   {
+      *( VAR__819283 + VAR__53647 ) = *(( VAR__19328 + VAR__53647 ) - len_a );
+   }
+
+   *(( VAR__819283 + len_a ) + len_b ) = '\0';
+}
+
+
+void addc(char *VAR__819283, char VAR__4857423)
+{
+   int len_a = strlen(VAR__819283);
+
+   *( VAR__819283 + len_a )        = VAR__4857423;
+   *(( VAR__819283 + len_a ) + 1 ) = '\0';
+}

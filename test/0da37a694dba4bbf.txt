@@ -1,0 +1,85 @@
+int high(int VAR_2890, int VAR__53647, int VAR__21230);
+int away(int VAR__53647, int VAR__21230);
+
+int VAR__NUM[30][30];
+int VAR__1238129;
+int VAR_1238123;
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> VAR__NUM[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( high(VAR__NUM[VAR__53647][VAR__21230], VAR__53647, VAR__21230) == 1 )
+         {
+            ((( cout << VAR__53647 ) << " " ) << VAR__21230 ) << endl;
+         }
+      }
+   }
+
+
+
+   return 0;
+}
+
+
+int high(int VAR_2890, int VAR__53647, int VAR__21230)
+{
+   int count1 = 0;
+
+   if (( VAR__NUM[VAR__53647 - 1][VAR__21230] <= VAR_2890 ) || ( away(VAR__53647 - 1, VAR__21230) == 1 ))
+   {
+      count1++;
+   }
+
+   if (( VAR__NUM[VAR__53647 + 1][VAR__21230] <= VAR_2890 ) || ( away(VAR__53647 + 1, VAR__21230) == 1 ))
+   {
+      count1++;
+   }
+
+   if (( VAR__NUM[VAR__53647][VAR__21230 - 1] <= VAR_2890 ) || ( away(VAR__53647, VAR__21230 - 1) == 1 ))
+   {
+      count1++;
+   }
+
+   if (( VAR__NUM[VAR__53647][VAR__21230 + 1] <= VAR_2890 ) || ( away(VAR__53647, VAR__21230 + 1) == 1 ))
+   {
+      count1++;
+   }
+
+   if ( count1 == 4 )
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int away(int VAR__53647, int VAR__21230)
+{
+   if (( VAR__53647 < 0 ) || ( VAR__53647 >= VAR__1238129 ))
+   {
+      return 1;
+   }
+
+   if (( VAR__21230 < 0 ) || ( VAR__21230 >= VAR_1238123 ))
+   {
+      return 1;
+   }
+
+   return 0;
+}

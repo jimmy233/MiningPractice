@@ -1,0 +1,48 @@
+int main()
+{
+   char A_STRING[256];
+   char sub[256];
+   char rep[256];
+
+   scanf("%s%s%s", A_STRING, sub, rep);
+   char zfc[2][256] = { 0 };
+   int  VAR__819283 = strlen(A_STRING);
+   int  VAR__19328  = strlen(sub);
+   int  VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__819283 - VAR__19328 ); VAR__53647++ )
+   {
+      int VAR__21230;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + VAR__19328 ); VAR__21230++ )
+      {
+         if ( A_STRING[VAR__21230] != sub[VAR__21230 - VAR__53647] )
+         {
+            break;
+         }
+      }
+
+      if ( VAR__21230 == ( VAR__53647 + VAR__19328 ))
+      {
+         for ( int VAR__1238129 = 0; VAR__1238129 < VAR__53647; VAR__1238129++ )
+         {
+            zfc[0][VAR__1238129] = A_STRING[VAR__1238129];
+         }
+
+         for ( int VAR_1238123 = VAR__53647 + VAR__19328; VAR_1238123 < VAR__819283; VAR_1238123++ )
+         {
+            zfc[1][( VAR_1238123 - VAR__53647 ) - VAR__19328] = A_STRING[VAR_1238123];
+         }
+
+         strcat(zfc[0], rep);
+         strcat(zfc[0], zfc[1]);
+         printf("%s\n", zfc[0]);
+         break;
+      }
+   }
+
+   if ( VAR__53647 == (( VAR__819283 - VAR__19328 ) + 1 ))
+   {
+      printf("%s\n", A_STRING);
+   }
+
+   return 0;
+}

@@ -1,0 +1,39 @@
+int Arrange_Apple(int VAR_233, int dish, int apple)
+{
+   int VAR__SUM = 0;
+
+   if ( apple < VAR_233 )
+   {
+      return 0;
+   }
+
+   if (( dish == 1 ) && ( apple >= VAR_233 ))
+   {
+      return 1;
+   }
+
+   for ( int VAR__53647 = VAR_233; VAR__53647 <= ( apple / dish ); VAR__53647++ )
+   {
+      VAR__SUM += Arrange_Apple(VAR__53647, dish - 1, apple - VAR__53647);
+   }
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int dish  = 0;
+   int apple = 0;
+   int VAR__temp;
+   int VAR__53647;
+
+   cin >> VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      ( cin >> apple ) >> dish;
+      ( cout << Arrange_Apple(0, dish, apple)) << endl;
+   }
+
+   return 0;
+}

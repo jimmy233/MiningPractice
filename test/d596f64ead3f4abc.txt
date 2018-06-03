@@ -1,0 +1,65 @@
+int main()
+{
+   char word[105];
+   char sign[105];
+   int  VAR__NUM = 0;
+   int  VAR__53647;
+   int  LEN_OF_STH;
+
+   while ( cin.getline(word, 105))
+   {
+      VAR__NUM   = 0;
+      LEN_OF_STH = strlen(word);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         sign[VAR__53647] = ' ';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( word[VAR__53647] == '(' )
+         {
+            VAR__NUM++;
+         }
+
+         if ( word[VAR__53647] == ')' )
+         {
+            if ( VAR__NUM > 0 )
+            {
+               VAR__NUM--;
+            }
+            else
+            {
+               sign[VAR__53647] = '?';
+            }
+         }
+      }
+
+      VAR__NUM = 0;
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( word[VAR__53647] == ')' )
+         {
+            VAR__NUM++;
+         }
+
+         if ( word[VAR__53647] == '(' )
+         {
+            if ( VAR__NUM > 0 )
+            {
+               VAR__NUM--;
+            }
+            else
+            {
+               sign[VAR__53647] = '$';
+            }
+         }
+      }
+
+      sign[LEN_OF_STH] = '\0';
+      ( cout << word ) << endl;
+      ( cout << sign ) << endl;
+   }
+
+   return 0;
+}

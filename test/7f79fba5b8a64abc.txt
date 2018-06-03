@@ -1,0 +1,88 @@
+void compute(int VAR__7685, int time);
+
+char VAR__NUM[100];
+int  ad[100];
+int  N;
+int  LEN_OF_STH = 1;
+int main()
+{
+   int VAR__21230;
+   int VAR__8444594;
+
+   cin >> N;
+   for ( VAR__8444594 = 0; VAR__8444594 < 100; VAR__8444594++ )
+   {
+      VAR__NUM[VAR__8444594] = '0';
+      ad[VAR__8444594]       = 0;
+   }
+
+   if ( N == 0 )
+   {
+      cout << '1';
+      return 0;
+   }
+
+   VAR__NUM[0] = '2';
+   compute(1, N);
+   for ( VAR__21230 = LEN_OF_STH - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      cout << VAR__NUM[VAR__21230];
+   }
+
+   return 0;
+}
+
+
+void compute(int VAR__7685, int time)
+{
+   int VAR__53647;
+   int number;
+
+   if ( time == 1 )
+   {
+      return;
+   }
+   else
+   if ( VAR__7685 == time )
+   {
+      return;
+   }
+
+
+   VAR__7685++;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] != '0' )
+      {
+         number = VAR__NUM[VAR__53647] - '0';
+         number = number * 2;
+
+         if ( number >= 10 )
+         {
+            VAR__NUM[VAR__53647] = ( number - 10 ) + '0';
+            ad[VAR__53647 + 1]   = ad[VAR__53647 + 1] + 1;
+         }
+         else
+         {
+            VAR__NUM[VAR__53647] = number + '0';
+         }
+      }
+   }
+
+   for ( int VAR_9494 = 0; VAR_9494 < 100; VAR_9494++ )
+   {
+      VAR__NUM[VAR_9494] = VAR__NUM[VAR_9494] + ad[VAR_9494];
+   }
+
+   while ( VAR__NUM[LEN_OF_STH] != '0' )
+   {
+      LEN_OF_STH++;
+   }
+
+   for ( int VAR_129012 = 0; VAR_129012 < 100; VAR_129012++ )
+   {
+      ad[VAR_129012] = 0;
+   }
+
+   compute(VAR__7685, N);
+}

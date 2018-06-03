@@ -1,0 +1,65 @@
+int main()
+{
+   char zfc[LEN];
+   char dc[N][LEN];
+   int  VAR__53647;
+   int  LEN_OF_STH;
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__8444594;
+
+   gets(zfc);
+   LEN_OF_STH   = strlen(zfc);
+   VAR__1238129 = 0;
+   VAR_1238123  = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( zfc[VAR__53647] != ' ' ) && ( zfc[VAR__53647] != ',' ))
+      {
+         dc[VAR__1238129][VAR_1238123] = zfc[VAR__53647];
+         VAR_1238123++;
+      }
+      else
+      {
+         if (( zfc[VAR__53647 + 1] != ' ' ) && ( zfc[VAR__53647 + 1] != ',' ))
+         {
+            dc[VAR__1238129][VAR_1238123] = '\0';
+            VAR__1238129++;
+            VAR_1238123 = 0;
+         }
+      }
+   }
+
+   dc[VAR__1238129][VAR_1238123] = '\0';
+   for ( VAR__8444594 = 1; VAR__8444594 <= ( VAR__1238129 + 1 ); VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR__1238129 + 1 ) - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( strlen(dc[VAR__53647 + 1]) > strlen(dc[VAR__53647]))
+         {
+            char VAR__112390[LEN];
+            strcpy(VAR__112390, dc[VAR__53647 + 1]);
+            strcpy(dc[VAR__53647 + 1], dc[VAR__53647]);
+            strcpy(dc[VAR__53647], VAR__112390);
+         }
+      }
+   }
+
+   printf("%s\n", dc[0]);
+   for ( VAR__8444594 = 1; VAR__8444594 <= ( VAR__1238129 + 1 ); VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR__1238129 + 1 ) - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( strlen(dc[VAR__53647 + 1]) < strlen(dc[VAR__53647]))
+         {
+            char VAR__112390[LEN];
+            strcpy(VAR__112390, dc[VAR__53647 + 1]);
+            strcpy(dc[VAR__53647 + 1], dc[VAR__53647]);
+            strcpy(dc[VAR__53647], VAR__112390);
+         }
+      }
+   }
+
+   printf("%s\n", dc[0]);
+   return 0;
+}

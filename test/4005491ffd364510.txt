@@ -1,0 +1,104 @@
+int main()
+{
+   char ch[110];
+   int  note[110];
+   int  VAR__1111;
+   int  VAR_129012;
+
+   while ( cin >> ch )
+   {
+      memset(note, 0, sizeof( note ));
+      for ( int VAR__53647 = 0; ch[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         switch ( ch[VAR__53647] )
+         {
+         case '(':
+            VAR__1111        = 0;
+            VAR_129012       = 0;
+            note[VAR__53647] = 1;
+            for ( int VAR__21230 = VAR__53647; ch[VAR__21230] != '\0'; VAR__21230++ )
+            {
+               switch ( ch[VAR__21230] )
+               {
+               case '(':
+                  VAR__1111++;
+                  break;
+
+               case ')':
+                  VAR_129012++;
+                  break;
+
+               default:
+                  break;
+               }
+
+               if ( VAR__1111 == VAR_129012 )
+               {
+                  note[VAR__53647] = 0;
+                  break;
+               }
+            }
+
+            break;
+
+         case ')':
+            VAR__1111        = 0;
+            VAR_129012       = 0;
+            note[VAR__53647] = -1;
+            for ( int VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+            {
+               switch ( ch[VAR__21230] )
+               {
+               case '(':
+                  VAR__1111++;
+                  break;
+
+               case ')':
+                  VAR_129012++;
+                  break;
+
+               default:
+                  break;
+               }
+
+               if ( VAR__1111 == VAR_129012 )
+               {
+                  note[VAR__53647] = 0;
+                  break;
+               }
+            }
+
+            break;
+
+         default:
+            break;
+         }
+      }
+
+      ( cout << ch ) << endl;
+      for ( int VAR__53647 = 0; ch[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         switch ( note[VAR__53647] )
+         {
+         case 1:
+            cout << "$";
+            break;
+
+         case -1:
+            cout << "?";
+            break;
+
+         case 0:
+            cout << " ";
+            break;
+
+         default:
+            break;
+         }
+      }
+
+      cout << "\n";
+   }
+
+   return 0;
+}

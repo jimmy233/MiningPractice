@@ -1,0 +1,90 @@
+int    VAR__1238129;
+int    VAR_1238123;
+int    height[40][40];
+double average[40][40];
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   memset(average, 0, sizeof( average ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &height[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         int VAR__COUNT = 0;
+         int VAR__SUM   = 0;
+
+         if ( VAR__53647 > 0 )
+         {
+            VAR__SUM += height[VAR__53647 - 1][VAR__21230];
+            VAR__COUNT++;
+         }
+
+         if ( VAR__53647 < ( VAR__1238129 - 1 ))
+         {
+            VAR__SUM += height[VAR__53647 + 1][VAR__21230];
+            VAR__COUNT++;
+         }
+
+         if ( VAR__21230 > 0 )
+         {
+            VAR__SUM += height[VAR__53647][VAR__21230 - 1];
+            VAR__COUNT++;
+         }
+
+         if ( VAR__21230 < ( VAR_1238123 - 1 ))
+         {
+            VAR__SUM += height[VAR__53647][VAR__21230 + 1];
+            VAR__COUNT++;
+         }
+
+         average[VAR__53647][VAR__21230] = ((double)VAR__SUM ) / VAR__COUNT;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         double maxh;
+         maxh = height[VAR__53647][VAR__21230];
+
+         if (( VAR__53647 > 0 ) && ( height[VAR__53647 - 1][VAR__21230] > maxh ))
+         {
+            maxh = height[VAR__53647 - 1][VAR__21230];
+         }
+
+         if (( VAR__53647 < ( VAR__1238129 - 1 )) && ( height[VAR__53647 + 1][VAR__21230] > maxh ))
+         {
+            maxh = height[VAR__53647 + 1][VAR__21230];
+         }
+
+         if (( VAR__21230 > 0 ) && ( height[VAR__53647][VAR__21230 - 1] > maxh ))
+         {
+            maxh = height[VAR__53647][VAR__21230 - 1];
+         }
+
+         if (( VAR__21230 < ( VAR_1238123 - 1 )) && ( height[VAR__53647][VAR__21230 + 1] > maxh ))
+         {
+            maxh = height[VAR__53647][VAR__21230 + 1];
+         }
+
+         if ( abs(maxh - ((double)height[VAR__53647][VAR__21230] )) < 0.000001 )
+         {
+            printf("%d %d\n", VAR__53647, VAR__21230);
+         }
+      }
+   }
+
+   return 0;
+}

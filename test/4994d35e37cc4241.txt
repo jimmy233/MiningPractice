@@ -1,0 +1,77 @@
+int main()
+{
+   char VAR__819283[200];
+
+   while ( scanf("%s", VAR__819283) != EOF )
+   {
+      char al[200] = { '\0' };
+      int  VAR__53647;
+      for ( VAR__53647 = 0; VAR__819283[VAR__53647]; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == '(' )
+         {
+            al[VAR__53647] = '$';
+         }
+         else
+         if ( VAR__819283[VAR__53647] == ')' )
+         {
+            al[VAR__53647] = '?';
+         }
+         else
+         {
+            al[VAR__53647] = ' ';
+         }
+      }
+
+      void func(char VAR_9494[]);
+
+      func(al);
+      puts(VAR__819283);
+      puts(al);
+      strcpy(VAR__819283, "'\0'");
+   }
+
+   return 0;
+}
+
+
+void func(char VAR_9494[])
+{
+   int VAR__53647;
+   int t1          = 0;
+   int t2          = 0;
+   int VAR_1238123 = strlen(VAR_9494);
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_9494); VAR__53647++ )
+   {
+      while (( !(( VAR_9494[VAR__53647] == '$' ) || ( VAR_9494[VAR__53647] == '?' ))) && ( VAR_9494[VAR__53647] != '\0' ))
+      {
+         VAR__53647++;
+      }
+
+      t1         = VAR__53647;
+      VAR__53647 = VAR__53647 + 1;
+
+      while (( !(( VAR_9494[VAR__53647] == '$' ) || ( VAR_9494[VAR__53647] == '?' ))) && ( VAR_9494[VAR__53647] != '\0' ))
+      {
+         VAR__53647++;
+      }
+
+      if ( VAR_9494[VAR__53647] == '\0' )
+      {
+         break;
+      }
+
+      t2 = VAR__53647;
+
+      if (( VAR_9494[t1] == '$' ) && ( VAR_9494[t2] == '?' ))
+      {
+         VAR_9494[t1] = ' ';
+         VAR_9494[t2] = ' ';
+         VAR__53647   = -1;
+         continue;
+      }
+
+      VAR__53647 = t1;
+   }
+}

@@ -1,0 +1,69 @@
+struct point
+{
+   double VAR__7685;
+   double VAR__3918907;
+};
+struct point dian[101];
+double dis(struct point dian[], int VAR__53647, int VAR__21230)
+{
+   double VAR__7685    = dian[VAR__53647].VAR__7685 - dian[VAR__21230].VAR__7685;
+   double VAR__3918907 = dian[VAR__53647].VAR__3918907 - dian[VAR__21230].VAR__3918907;
+   double dis          = ( VAR__7685 * VAR__7685 ) + ( VAR__3918907 * VAR__3918907 );
+
+   return sqrt(dis);
+}
+
+
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__temp    = 0;
+   int    VAR__8444594 = 0;
+   double VAR__819283[102];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> dian[VAR__53647].VAR__7685 ) >> dian[VAR__53647].VAR__3918907;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; ++VAR__21230 )
+      {
+         int VAR__temp = 0;
+
+         while (( VAR__temp < ( VAR__8444594 + 1 )) && ( abs(VAR__819283[VAR__temp] - dis(dian, VAR__53647, VAR__21230)) > 1e-6 ))
+         {
+            VAR__temp++;
+         }
+
+         if ( VAR__temp == ( VAR__8444594 + 1 ))
+         {
+            VAR__819283[VAR__8444594] = dis(dian, VAR__53647, VAR__21230);
+            VAR__8444594++;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__8444594 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] )
+         {
+            double VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   ( cout << VAR__819283[0] ) << endl;
+   return 0;
+}

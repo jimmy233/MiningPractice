@@ -1,0 +1,84 @@
+void output(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      switch ( VAR__819283[VAR__53647] )
+      {
+      case 1:
+         printf("$");
+         break;
+
+      case 0:
+         printf(" ");
+         break;
+
+      case -1:
+         printf("?");
+         break;
+      }
+   }
+
+
+   printf("\n");
+}
+
+
+void trans(char VAR_9494[], int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR_233[200];
+   int VAR__8444594 = -1;
+
+   VAR_1238123 = strlen(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647] != '(' ) && ( VAR_9494[VAR__53647] != ')' ))
+      {
+         VAR__819283[VAR__53647] = 0;
+      }
+      else
+      if ( VAR_9494[VAR__53647] == '(' )
+      {
+         VAR__8444594++;
+         VAR_233[VAR__8444594]   = VAR__53647;
+         VAR__819283[VAR__53647] = 1;
+      }
+      else
+      {
+         if ( VAR__8444594 > ( -1 ))
+         {
+            VAR__819283[VAR_233[VAR__8444594]] = 0;
+            VAR__8444594--;
+            VAR__819283[VAR__53647] = 0;
+         }
+         else
+         {
+            VAR__819283[VAR__53647] = -1;
+         }
+      }
+   }
+}
+
+
+void input()
+{
+   char VAR_9494[200];
+   int  VAR__819283[200];
+   int  VAR_1238123;
+
+   while ( scanf("%s", VAR_9494) != EOF )
+   {
+      VAR_1238123 = strlen(VAR_9494);
+      puts(VAR_9494);
+      trans(VAR_9494, VAR__819283, VAR_1238123);
+      output(VAR__819283, VAR_1238123);
+   }
+}
+
+
+int main()
+{
+   input();
+}

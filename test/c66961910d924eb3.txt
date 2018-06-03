@@ -1,0 +1,98 @@
+int main()
+{
+   char VAR__819283[100];
+   char VAR_9494;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__1111;
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__temp;
+   int  VAR__19328[100];
+   int  VAR__4857423[100];
+
+   for ( ; ; )
+   {
+      gets(VAR__819283);
+
+      if ( VAR__819283[0] == '\n' )
+      {
+         break;
+      }
+
+      VAR_1238123 = strlen(VAR__819283);
+      for ( VAR__53647 = 0, VAR__21230 = 0, VAR__8444594 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == '(' )
+         {
+            VAR__19328[VAR__21230] = VAR__53647;
+            VAR__21230++;
+         }
+         else
+         if ( VAR__819283[VAR__53647] == ')' )
+         {
+            VAR__4857423[VAR__8444594] = VAR__53647;
+            VAR__8444594++;
+         }
+      }
+
+      for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         for ( VAR__1111 = VAR__21230 - 1; VAR__1111 >= 0; VAR__1111-- )
+         {
+            if ( VAR__19328[VAR__1111] == VAR__53647 )
+            {
+               for ( VAR__temp = 0; VAR__temp < VAR__8444594; VAR__temp++ )
+               {
+                  if ( VAR__4857423[VAR__temp] > VAR__53647 )
+                  {
+                     VAR__19328[VAR__1111]   = -1;
+                     VAR__4857423[VAR__temp] = -1;
+                     break;
+                  }
+               }
+
+               break;
+            }
+         }
+      }
+
+      printf("%s\n", VAR__819283);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__1111 = 0; VAR__1111 < VAR__21230; VAR__1111++ )
+         {
+            if ( VAR__19328[VAR__1111] == VAR__53647 )
+            {
+               printf("$");
+               break;
+            }
+         }
+
+         if ( VAR__1111 != VAR__21230 )
+         {
+            continue;
+         }
+
+         for ( VAR__temp = 0; VAR__temp < VAR__8444594; VAR__temp++ )
+         {
+            if ( VAR__4857423[VAR__temp] == VAR__53647 )
+            {
+               printf("?");
+               break;
+            }
+         }
+
+         if ( VAR__temp != VAR__8444594 )
+         {
+            continue;
+         }
+
+         printf(" ");
+      }
+
+      printf("\n");
+      VAR__819283[0] = '\n';
+   }
+}

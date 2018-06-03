@@ -1,0 +1,120 @@
+int main()
+{
+   char ANOTHER_STRING[200];
+   char YET_ANOTHER_STRING[200];
+   int  VAR__53647 = 0;
+   int  length;
+   int  sign;
+   int  VAR_FLAG;
+   char VAR__4857423;
+
+   scanf("%c", &VAR__4857423);
+
+   while ( VAR__4857423 != EOF )
+   {
+      VAR__53647 = 0;
+      sign       = -1;
+
+      while ( VAR__4857423 != '\n' )
+      {
+         ANOTHER_STRING[VAR__53647] = VAR__4857423;
+
+         if ((( VAR__4857423 >= 'A' ) && ( VAR__4857423 <= 'Z' )) || (( VAR__4857423 >= 'a' ) && ( VAR__4857423 <= 'z' )))
+         {
+            YET_ANOTHER_STRING[VAR__53647] = ' ';
+         }
+         else
+         {
+            YET_ANOTHER_STRING[VAR__53647] = VAR__4857423;
+         }
+
+         VAR__53647++;
+         scanf("%c", &VAR__4857423);
+      }
+
+      ANOTHER_STRING[VAR__53647]     = '\0';
+      YET_ANOTHER_STRING[VAR__53647] = '\0';
+      length     = strlen(YET_ANOTHER_STRING);
+      VAR__53647 = 0;
+      VAR_FLAG   = 0;
+
+      while ( VAR__53647 >= 0 )
+      {
+         if ( YET_ANOTHER_STRING[VAR__53647] == '(' )
+         {
+            sign = VAR__53647;
+         }
+
+         if ( YET_ANOTHER_STRING[VAR__53647] == ' ' )
+         {
+            if ( VAR__53647 == ( length - 1 ))
+            {
+               if ( VAR_FLAG == 1 )
+               {
+                  VAR_FLAG   = 0;
+                  VAR__53647 = -1;
+               }
+               else
+               {
+                  break;
+               }
+            }
+
+            VAR__53647++;
+            continue;
+         }
+
+         if (( YET_ANOTHER_STRING[VAR__53647] == ')' ) && ( sign >= 0 ))
+         {
+            YET_ANOTHER_STRING[sign]       = ' ';
+            YET_ANOTHER_STRING[VAR__53647] = ' ';
+            VAR_FLAG = 1;
+            sign     = -1;
+         }
+
+         if ( VAR__53647 == ( length - 1 ))
+         {
+            if ( VAR_FLAG == 1 )
+            {
+               VAR_FLAG   = 0;
+               VAR__53647 = -1;
+               sign       = -1;
+            }
+            else
+            {
+               break;
+            }
+         }
+
+         VAR__53647++;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+      {
+         if ( YET_ANOTHER_STRING[VAR__53647] == '(' )
+         {
+            YET_ANOTHER_STRING[VAR__53647] = '$';
+         }
+
+         if ( YET_ANOTHER_STRING[VAR__53647] == ')' )
+         {
+            YET_ANOTHER_STRING[VAR__53647] = '?';
+         }
+      }
+
+      printf("%s\n", ANOTHER_STRING);
+      printf("%s\n", YET_ANOTHER_STRING);
+      scanf("%c", &VAR__4857423);
+
+      if ((((( VAR__4857423 >= 'A' ) && ( VAR__4857423 <= 'Z' )) || (( VAR__4857423 >= 'a' ) && ( VAR__4857423 <= 'z' ))) || ( VAR__4857423 == '(' )) || ( VAR__4857423 == ')' ))
+      {
+         continue;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

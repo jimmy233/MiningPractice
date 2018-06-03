@@ -1,0 +1,104 @@
+int judgeletter(char);
+int judgeline(char);
+int judgenum(char);
+void emp(char *);
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  length;
+   char VAR_9494[81];
+
+   scanf("%d", &VAR_1238123);
+   gets(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      emp(VAR_9494);
+      gets(VAR_9494);
+      length = strlen(VAR_9494);
+
+      if ( length == 1 )
+      {
+         printf("%d\n", judgeletter(*VAR_9494) || judgeline(*VAR_9494));
+         continue;
+      }
+      else
+      {
+         if (( judgeletter(*VAR_9494) || judgeline(*VAR_9494)) == 0 )
+         {
+            printf("0\n");
+            continue;
+         }
+         else
+         {
+            for ( VAR__21230 = 1; *( VAR_9494 + VAR__21230 ); VAR__21230++ )
+            {
+               if ((( judgeletter(*( VAR_9494 + VAR__21230 )) || judgeline(*( VAR_9494 + VAR__21230 ))) || judgenum(*( VAR_9494 + VAR__21230 ))) == 0 )
+               {
+                  printf("0\n");
+                  break;
+               }
+            }
+
+            if ( VAR__21230 == length )
+            {
+               printf("1\n");
+            }
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+int judgeletter(char VAR__4857423)
+{
+   if ((( VAR__4857423 >= 'a' ) && ( VAR__4857423 <= 'z' )) || (( VAR__4857423 >= 'A' ) && ( VAR__4857423 <= 'Z' )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int judgeline(char VAR__4857423)
+{
+   if ( VAR__4857423 == '_' )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int judgenum(char VAR__4857423)
+{
+   if (( VAR__4857423 >= '0' ) && ( VAR__4857423 <= '9' ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void emp(char *VAR_9494)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; *( VAR_9494 + VAR__53647 ); VAR__53647++ )
+   {
+      *( VAR_9494 + VAR__53647 ) = '\0';
+   }
+}

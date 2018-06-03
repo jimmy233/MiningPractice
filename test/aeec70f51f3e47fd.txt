@@ -1,0 +1,82 @@
+int gedui(int zong, int duishu, int ini)
+{
+   int VAR_233;
+   int VAR__8444594 = 0;
+   int end;
+
+   end = zong / duishu;
+
+   if ( duishu > 2 )
+   {
+      for ( VAR_233 = ini; VAR_233 <= end; VAR_233++ )
+      {
+         VAR__8444594 += gedui(zong - VAR_233, duishu - 1, VAR_233);
+      }
+   }
+   else
+   if ( duishu == 2 )
+   {
+      VAR__8444594 = (( zong / 2 ) - ini ) + 1;
+   }
+   else
+   if ( duishu == 1 )
+   {
+      VAR__8444594 = 1;
+   }
+
+
+
+   return VAR__8444594;
+}
+
+
+int VAR_129012(int zong, int dui)
+{
+   int o;
+   int VAR__COUNT = 0;
+
+   for ( o = 1; o <= dui; o++ )
+   {
+      VAR__COUNT += gedui(zong, o, 1);
+   }
+
+   return VAR__COUNT;
+}
+
+
+int main()
+{
+   int VAR__8444594;
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int dui;
+   int u;
+
+   scanf("%d", &VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      u = 0;
+      scanf("%d%d", &VAR__1238129, &VAR_1238123);
+
+      if ( VAR__1238129 > VAR_1238123 )
+      {
+         dui = VAR_1238123;
+      }
+      else
+      {
+         dui = VAR__1238129;
+      }
+
+      u = VAR_129012(VAR__1238129, dui);
+
+      if ( VAR__53647 != 0 )
+      {
+         printf("\n");
+      }
+
+      printf("%d", u);
+   }
+
+   return 0;
+}

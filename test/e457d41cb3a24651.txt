@@ -1,0 +1,60 @@
+int zhongliu(int, int, int, int);
+
+int VAR__NUM[1001][1001];
+int VAR_1238123;
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int judge    = 0;
+   int VAR__SUM = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> VAR__NUM[VAR__53647][VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__53647][VAR__21230] == 255 )
+         {
+            judge = (( zhongliu(VAR__53647, VAR__21230, 0, 1) + zhongliu(VAR__53647, VAR__21230, 0, -1)) + zhongliu(VAR__53647, VAR__21230, 1, 0)) + zhongliu(VAR__53647, VAR__21230, -1, 0);
+         }
+
+         if ( judge == 4 )
+         {
+            VAR__SUM++;
+         }
+
+         judge = 0;
+      }
+   }
+
+   cout << VAR__SUM;
+   cin >> VAR__53647;
+   return 0;
+}
+
+
+int zhongliu(int VAR__7685, int VAR__3918907, int VAR__819283, int VAR__19328)
+{
+   if (((( VAR__7685 < 0 ) || ( VAR__3918907 < 0 )) || ( VAR__7685 >= VAR_1238123 )) || ( VAR__3918907 >= VAR_1238123 ))
+   {
+      return 0;
+   }
+
+   if ( VAR__NUM[VAR__7685][VAR__3918907] == 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      return zhongliu(VAR__7685 + VAR__819283, VAR__3918907 + VAR__19328, VAR__819283, VAR__19328);
+   }
+}

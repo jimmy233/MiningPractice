@@ -1,0 +1,62 @@
+int brackets_matching(char A_STRING[], char result[], int VAR_1238123, int VAR__21230)
+{
+   int VAR__53647;
+   int VAR_233;
+
+   for ( VAR__53647 = VAR__21230; A_STRING[VAR__53647]; VAR__53647++ )
+   {
+      switch ( A_STRING[VAR__53647] )
+      {
+      case '(':
+         VAR_233 = brackets_matching(A_STRING, result, VAR_1238123 + 1, VAR__53647 + 1);
+
+         if ( A_STRING[VAR_233] == ')' )
+         {
+            result[VAR__53647] = ' ';
+         }
+         else
+         {
+            result[VAR__53647] = '$';
+         }
+
+         VAR__53647 = VAR_233;
+         break;
+
+      case ')':
+
+         if ( !VAR_1238123 )
+         {
+            result[VAR__53647] = '?';
+         }
+         else
+         {
+            result[VAR__53647] = ' ';
+            return VAR__53647;
+         }
+
+         break;
+
+      default:
+         result[VAR__53647] = ' ';
+      }
+   }
+
+   result[VAR__53647] = 0;
+   return VAR__53647;
+}
+
+
+int main()
+{
+   char VAR__819283[MAXL];
+   char result[MAXL];
+
+   while ( cin >> VAR__819283 )
+   {
+      ( cout << VAR__819283 ) << endl;
+      brackets_matching(VAR__819283, result, 0, 0);
+      ( cout << result ) << endl;
+   }
+
+   return 0;
+}

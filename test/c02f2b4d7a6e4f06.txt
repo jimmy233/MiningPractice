@@ -1,0 +1,56 @@
+int main()
+{
+   char line[101];
+   char mark[101];
+   int  locate[101];
+   int  left       = 0;
+   int  right      = 0;
+   int  VAR__COUNT = -1;
+   int  LEN_OF_STH;
+   int  VAR__53647;
+
+   while ( cin.getline(line, 101))
+   {
+      VAR__COUNT = -1;
+      left       = 0;
+      right      = 0;
+      LEN_OF_STH = strlen(line);
+      memset(mark, ' ', sizeof( mark ));
+      memset(locate, 0, sizeof( locate ));
+      for ( VAR__53647 = 0; line[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( line[VAR__53647] == '(' )
+         {
+            left++;
+            locate[++VAR__COUNT] = VAR__53647;
+         }
+
+         if ( line[VAR__53647] == ')' )
+         {
+            if ( left <= right )
+            {
+               mark[VAR__53647] = '?';
+            }
+            else
+            {
+               right++;
+               VAR__COUNT--;
+            }
+         }
+      }
+
+      if ( VAR__COUNT >= 0 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+         {
+            mark[locate[VAR__53647]] = '$';
+         }
+      }
+
+      mark[LEN_OF_STH] = '\0';
+      ( cout << line ) << endl;
+      ( cout << mark ) << endl;
+   }
+
+   return 0;
+}

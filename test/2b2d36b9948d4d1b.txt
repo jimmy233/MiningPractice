@@ -1,0 +1,75 @@
+void del(char VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647 = 0;
+
+   while (( VAR__819283[VAR__53647] != ')' ) && ( VAR__53647 < VAR_1238123 ))
+   {
+      VAR__53647++;
+   }
+
+   int VAR__21230;
+   VAR__21230 = VAR__53647 - 1;
+
+   while (( VAR__819283[VAR__21230] != '(' ) && ( VAR__21230 >= 0 ))
+   {
+      VAR__21230--;
+   }
+
+   if (( VAR__53647 < VAR_1238123 ) && ( VAR__21230 >= 0 ))
+   {
+      VAR__819283[VAR__53647] = ' ';
+      VAR__819283[VAR__21230] = ' ';
+      del(VAR__819283, VAR_1238123);
+   }
+   else
+   {
+      if (( VAR__53647 >= VAR_1238123 ) && ( VAR__21230 >= 0 ))
+      {
+         VAR__819283[VAR__21230] = '$';
+      }
+
+      if (( VAR__21230 < 0 ) && ( VAR__53647 < VAR_1238123 ))
+      {
+         VAR__819283[VAR__53647] = '?';
+      }
+
+      if ( !(( VAR__53647 >= VAR_1238123 ) && ( VAR__21230 < 0 )))
+      {
+         del(VAR__819283, VAR_1238123);
+      }
+   }
+}
+
+
+int main()
+{
+   while ( !cin.eof())
+   {
+      char VAR__819283[101];
+      cin.getline(VAR__819283, 101);
+      ( cout << VAR__819283 ) << endl;
+      int VAR_1238123;
+      int VAR__53647;
+      VAR_1238123 = strlen(VAR__819283);
+      del(VAR__819283, VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         switch ( VAR__819283[VAR__53647] )
+         {
+         case '$':
+
+         case '?':
+            cout << VAR__819283[VAR__53647];
+            break;
+
+         default:
+            cout << ' ';
+         }
+      }
+
+
+      cout << endl;
+   }
+
+   return 0;
+}

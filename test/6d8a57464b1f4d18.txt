@@ -1,0 +1,68 @@
+void Cheng(char A_STRING[40], int N)
+{
+   if ( N == 1 )
+   {
+      cout << A_STRING;
+   }
+   else
+   if ( N > 1 )
+   {
+      int num1[40] = { 0 };
+      int num2[40];
+      int LEN_OF_STH   = 0;
+      int VAR__53647   = 0;
+      int VAR__8444594 = 40;
+      LEN_OF_STH = strlen(A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         num1[VAR__53647] = A_STRING[( LEN_OF_STH - 1 ) - VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 40; VAR__53647++ )
+      {
+         num2[VAR__53647] = num1[VAR__53647] * 2;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 40; VAR__53647++ )
+      {
+         if ( num2[VAR__53647] > 9 )
+         {
+            num2[VAR__53647]     -= 10;
+            num2[VAR__53647 + 1] += 1;
+         }
+      }
+
+      while ( num2[VAR__8444594 - 1] == 0 )
+      {
+         VAR__8444594--;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         A_STRING[VAR__53647] = num2[( VAR__8444594 - 1 ) - VAR__53647] + '0';
+      }
+
+      A_STRING[VAR__8444594] = '\0';
+      Cheng(A_STRING, N - 1);
+   }
+}
+
+
+int main()
+{
+   char A_STRING[40] = "2";
+   int  N;
+
+   cin >> N;
+
+   if ( N == 0 )
+   {
+      ( cout << "1" ) << endl;
+   }
+   else
+   {
+      Cheng(A_STRING, N);
+   }
+
+   return 0;
+}

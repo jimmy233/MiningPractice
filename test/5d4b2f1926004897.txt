@@ -1,0 +1,48 @@
+int NumOfChoices(int, int, int);
+
+int main()
+{
+   int cases;
+   int apples;
+   int plates;
+
+   cin >> cases;
+   for ( ; cases >= 1; cases-- )
+   {
+      ( cin >> apples ) >> plates;
+      ( cout << NumOfChoices(apples, plates, 0)) << endl;
+   }
+
+   return 0;
+}
+
+
+int NumOfChoices(int VAR__1238129, int VAR_1238123, int VAR__MIN)
+{
+   int apples;
+   int VAR__SUM = 0;
+
+   if ( VAR__1238129 == 0 )
+   {
+      return 0;
+   }
+
+   if ( VAR_1238123 == 1 )
+   {
+      if ( VAR__1238129 >= VAR__MIN )
+      {
+         return 1;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+
+   for ( apples = VAR__MIN; apples <= VAR__1238129; apples++ )
+   {
+      VAR__SUM += NumOfChoices(VAR__1238129 - apples, VAR_1238123 - 1, apples);
+   }
+
+   return VAR__SUM;
+}

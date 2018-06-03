@@ -1,0 +1,72 @@
+void VAR__127322(int);
+
+char mul[10000];
+int main()
+{
+   int VAR__8444594;
+   int LEN_OF_STH;
+   int VAR__53647;
+
+   cin >> VAR__8444594;
+   mul[0] = 2 + '0';
+
+   if ( VAR__8444594 == 0 )
+   {
+      cout << 1;
+      exit(1);
+   }
+
+   VAR__127322(VAR__8444594);
+   LEN_OF_STH = strlen(mul);
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << ( mul[VAR__53647] - '0' );
+   }
+
+   cout << endl;
+   return 0;
+}
+
+
+void VAR__127322(int VAR__8444594)
+{
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   char mul_save[10000] = { 0 };
+
+   if ( VAR__8444594 == 1 )
+   {
+      return;
+   }
+   else
+   {
+      LEN_OF_STH = strlen(mul);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         mul_save[VAR__53647] = (( mul[VAR__53647] - '0' ) * 2 ) + '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if (( mul_save[VAR__53647] >= ( 10 + '0' )) && ( VAR__53647 != ( LEN_OF_STH - 1 )))
+         {
+            mul_save[VAR__53647] -= 10;
+            mul_save[VAR__53647 + 1]++;
+         }
+         else
+         if ( mul_save[VAR__53647] >= ( 10 + '0' ))
+         {
+            mul_save[VAR__53647] -= 10;
+            mul_save[LEN_OF_STH]  = 1 + '0';
+         }
+      }
+
+      if ( mul_save[LEN_OF_STH] != 0 )
+      {
+         mul_save[LEN_OF_STH + 1] = 0;
+      }
+
+      strcpy(mul, mul_save);
+      VAR__127322(VAR__8444594 - 1);
+   }
+}

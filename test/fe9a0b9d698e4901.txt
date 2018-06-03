@@ -1,0 +1,56 @@
+int ans[101][101];
+int jisuan(int apple, int plate)
+{
+   int VAR__NUM;
+
+   if ( ans[apple][plate] == ( -1 ))
+   {
+      VAR__NUM = jisuan(apple, plate - 1);
+
+      if (( apple - plate ) >= 0 )
+      {
+         VAR__NUM = VAR__NUM + jisuan(apple - plate, plate);
+      }
+
+      return VAR__NUM;
+   }
+   else
+   {
+      return ans[apple][plate];
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR__8444594;
+   int apple;
+   int plate;
+
+   cin >> VAR__temp;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__temp; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 100; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 <= 100; VAR__8444594++ )
+         {
+            ans[VAR__21230][VAR__8444594] = -1;
+         }
+      }
+
+
+      for ( VAR__21230 = 0; VAR__21230 <= 100; VAR__21230++ )
+      {
+         ans[VAR__21230][1] = 1;
+         ans[0][VAR__21230] = 1;
+      }
+
+      ( cin >> apple ) >> plate;
+      ( cout << jisuan(apple, plate)) << endl;
+   }
+
+   return 0;
+}

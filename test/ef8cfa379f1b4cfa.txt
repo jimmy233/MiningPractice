@@ -1,0 +1,78 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230  = 0;
+   int  VAR__819283 = -1;
+   int  VAR__7685;
+   int  VAR_9494;
+   int  VAR__temp;
+   int  VAR__112390;
+   int  VAR_21983012;
+   int  VAR__3918907[100];
+   char v[100][20];
+   char A[20];
+   char VAR__9290[2000];
+
+   gets(VAR__9290);
+   VAR__7685 = strlen(VAR__9290);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      if ((( VAR__9290[VAR__53647] == ' ' ) && ( VAR__9290[VAR__53647 + 1] != ' ' )) || (( VAR__53647 == 0 ) && ( VAR__9290[VAR__53647] != ' ' )))
+      {
+         VAR__819283++;
+      }
+
+      if ( VAR__9290[VAR__53647] == ' ' )
+      {
+         VAR__21230 = 0;
+      }
+      else
+      {
+         VAR__21230++;
+         v[VAR__819283][VAR__21230 - 1] = VAR__9290[VAR__53647];
+         v[VAR__819283][VAR__21230]     = '\0';
+      }
+
+      if ((( VAR__9290[VAR__53647] != ' ' ) && ( VAR__9290[VAR__53647 + 1] == ' ' )) || ( VAR__9290[VAR__53647 + 1] == '\0' ))
+      {
+         VAR__3918907[VAR__819283] = VAR__21230;
+      }
+   }
+
+   VAR_21983012 = VAR__819283 + 1;
+   for ( VAR_9494 = 1; VAR_9494 <= VAR_21983012; VAR_9494++ )
+   {
+      for ( VAR__temp = 0; VAR__temp < ( VAR_21983012 - VAR_9494 ); VAR__temp++ )
+      {
+         if ( VAR__3918907[VAR__temp] < VAR__3918907[VAR__temp + 1] )
+         {
+            VAR__112390 = VAR__3918907[VAR__temp + 1];
+            VAR__3918907[VAR__temp + 1] = VAR__3918907[VAR__temp];
+            VAR__3918907[VAR__temp]     = VAR__112390;
+            strcpy(A, v[VAR__temp + 1]);
+            strcpy(v[VAR__temp + 1], v[VAR__temp]);
+            strcpy(v[VAR__temp], A);
+         }
+      }
+   }
+
+   printf("%s\n", v[0]);
+   for ( VAR_9494 = 1; VAR_9494 <= VAR_21983012; VAR_9494++ )
+   {
+      for ( VAR__temp = 0; VAR__temp < ( VAR_21983012 - VAR_9494 ); VAR__temp++ )
+      {
+         if ( VAR__3918907[VAR__temp] > VAR__3918907[VAR__temp + 1] )
+         {
+            VAR__112390 = VAR__3918907[VAR__temp + 1];
+            VAR__3918907[VAR__temp + 1] = VAR__3918907[VAR__temp];
+            VAR__3918907[VAR__temp]     = VAR__112390;
+            strcpy(A, v[VAR__temp + 1]);
+            strcpy(v[VAR__temp + 1], v[VAR__temp]);
+            strcpy(v[VAR__temp], A);
+         }
+      }
+   }
+
+   printf("%s", v[0]);
+   return 0;
+}

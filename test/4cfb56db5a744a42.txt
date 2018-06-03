@@ -1,0 +1,81 @@
+int find(char VAR_9494[], int pos)
+{
+   int VAR__53647;
+   int VAR_233 = 0;
+   int VAR_666 = 0;
+
+   if ( pos < 0 )
+   {
+      return 0;
+   }
+
+   if ( VAR_9494[pos] == ')' )
+   {
+      for ( VAR__53647 = pos - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            VAR_233++;
+         }
+
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            VAR_666++;
+         }
+
+         if (( VAR_9494[VAR__53647] == '(' ) && (( VAR_233 - VAR_666 ) == 1 ))
+         {
+            VAR_9494[VAR__53647] = ' ';
+            VAR_9494[pos]        = ' ';
+            break;
+         }
+      }
+   }
+
+
+   find(VAR_9494, pos - 1);
+   return 0;
+}
+
+
+int main()
+{
+   char VAR_9494[101];
+   char ss[101];
+   char ans[101];
+   int  VAR__53647;
+   int  VAR_1238123;
+
+   while ( true )
+   {
+      cin >> VAR_9494;
+
+      if ( !cin )
+      {
+         break;
+      }
+
+      strcpy(ss, VAR_9494);
+      memset(ans, ' ', sizeof( ans ));
+      VAR_1238123 = strlen(VAR_9494) - 1;
+      find(VAR_9494, VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            ans[VAR__53647] = '$';
+         }
+
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            ans[VAR__53647] = '?';
+         }
+      }
+
+      ans[VAR_1238123 + 1] = '\0';
+      ( cout << ss ) << endl;
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

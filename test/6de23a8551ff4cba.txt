@@ -1,0 +1,66 @@
+int main()
+{
+   char A_STRING[999];
+   char word[200][128]   = { "\0" };
+   int  VAR__819283[200] = { 0 };
+   int  VAR__53647       = 0;
+   int  VAR__21230       = 0;
+   int  VAR__8444594;
+   int  VAR__7685;
+   int  MAX = 0;
+   int  MIN = 0;
+
+   gets(A_STRING);
+   for ( VAR__8444594 = 0; A_STRING[VAR__8444594] != '\0'; VAR__8444594++ )
+   {
+      if (( A_STRING[VAR__8444594] == ' ' ) || ( A_STRING[VAR__8444594] == ',' ))
+      {
+         VAR__53647 = VAR__53647 + 1;
+         VAR__21230 = 0;
+      }
+      else
+      {
+         word[VAR__53647][VAR__21230] = A_STRING[VAR__8444594];
+         VAR__21230++;
+      }
+   }
+
+   VAR__7685 = VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__7685 + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; word[VAR__53647][VAR__21230] != '\0'; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      if ( VAR__819283[MAX] < VAR__819283[VAR__53647 + 1] )
+      {
+         MAX = VAR__53647 + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__819283[VAR__53647] == 0; VAR__53647++ )
+   {
+      MIN = VAR__53647 + 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647 + 1] != 0 )
+      {
+         if ( VAR__819283[MIN] > VAR__819283[VAR__53647 + 1] )
+         {
+            MIN = VAR__53647 + 1;
+         }
+      }
+   }
+
+
+   puts(word[MAX]);
+   printf("\n");
+   puts(word[MIN]);
+   return 0;
+}

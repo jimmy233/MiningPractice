@@ -1,0 +1,85 @@
+char A_STRING[101];
+char bracket[101];
+int  LEN_OF_STH;
+void match(int VAR__819283);
+
+int main()
+{
+   while ( cin.getline(A_STRING, 101))
+   {
+      LEN_OF_STH = strlen(A_STRING);
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            bracket[VAR__53647] = '$';
+         }
+         else
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            bracket[VAR__53647] = '?';
+         }
+         else
+         {
+            bracket[VAR__53647] = ' ';
+         }
+      }
+
+
+
+      match(1);
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << A_STRING[VAR__53647];
+      }
+
+      cout << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << bracket[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}
+
+
+void match(int VAR__819283)
+{
+   if ( VAR__819283 == LEN_OF_STH )
+   {
+      return;
+   }
+
+   int VAR__19328 = VAR__819283 - 1;
+
+   if ( bracket[VAR__819283] == '?' )
+   {
+      while ( bracket[VAR__19328] == ' ' )
+      {
+         if ( VAR__19328 == 0 )
+         {
+            match(VAR__819283 + 1);
+            return;
+         }
+
+         VAR__19328--;
+      }
+
+      if ( bracket[VAR__19328] == '?' )
+      {
+         match(VAR__819283 + 1);
+         return;
+      }
+
+      bracket[VAR__19328]  = ' ';
+      bracket[VAR__819283] = ' ';
+      match(VAR__819283 + 1);
+   }
+   else
+   {
+      match(VAR__819283 + 1);
+   }
+}

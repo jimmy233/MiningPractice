@@ -1,0 +1,82 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__temp;
+   int  VAR__1238129;
+   int  VAR_9494;
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  VAR__112390;
+   char ANOTHER_STRING[300];
+   char YET_ANOTHER_STRING[300];
+
+   gets(ANOTHER_STRING);
+   VAR_1238123 = strlen(ANOTHER_STRING);
+   for ( VAR__53647 = 0, VAR__temp = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((( ANOTHER_STRING[VAR__53647] >= 'A' ) && ( ANOTHER_STRING[VAR__53647] <= 'Z' )) || (( ANOTHER_STRING[VAR__53647] >= 'a' ) && ( ANOTHER_STRING[VAR__53647] <= 'z' )))
+      {
+         YET_ANOTHER_STRING[VAR__temp] = ANOTHER_STRING[VAR__53647];
+         VAR__temp++;
+      }
+   }
+
+   LEN_OF_STH = VAR__temp;
+
+   if ( LEN_OF_STH == 0 )
+   {
+      printf("No");
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         for ( VAR__temp = 0; VAR__temp < ( LEN_OF_STH - VAR__53647 ); VAR__temp++ )
+         {
+            if ( YET_ANOTHER_STRING[VAR__temp] > YET_ANOTHER_STRING[VAR__temp + 1] )
+            {
+               VAR__112390 = YET_ANOTHER_STRING[VAR__temp + 1];
+               YET_ANOTHER_STRING[VAR__temp + 1] = YET_ANOTHER_STRING[VAR__temp];
+               YET_ANOTHER_STRING[VAR__temp]     = VAR__112390;
+            }
+         }
+      }
+
+      if ( YET_ANOTHER_STRING[0] != YET_ANOTHER_STRING[1] )
+      {
+         printf("%c=1\n", YET_ANOTHER_STRING[0]);
+      }
+
+      for ( VAR_9494 = 0; VAR_9494 < ( LEN_OF_STH - 1 ); VAR_9494++ )
+      {
+         if ((( VAR_9494 == 0 ) || ( YET_ANOTHER_STRING[VAR_9494] != YET_ANOTHER_STRING[VAR_9494 - 1] )) && ( YET_ANOTHER_STRING[VAR_9494] == YET_ANOTHER_STRING[VAR_9494 + 1] ))
+         {
+            VAR__1238129 = VAR_9494 + 1;
+
+            while ( VAR__1238129 != ( LEN_OF_STH - 1 ))
+            {
+               if ( YET_ANOTHER_STRING[VAR__1238129] != YET_ANOTHER_STRING[VAR__1238129 + 1] )
+               {
+                  break;
+               }
+
+               VAR__1238129++;
+            }
+
+            printf("%c=%d\n", YET_ANOTHER_STRING[VAR_9494], ( VAR__1238129 - VAR_9494 ) + 1);
+         }
+         else
+         if ((( VAR_9494 != 0 ) && ( YET_ANOTHER_STRING[VAR_9494] != YET_ANOTHER_STRING[VAR_9494 - 1] )) && ( YET_ANOTHER_STRING[VAR_9494] != YET_ANOTHER_STRING[VAR_9494 + 1] ))
+         {
+            printf("%c=1\n", YET_ANOTHER_STRING[VAR_9494]);
+         }
+      }
+
+      if (( VAR_9494 = LEN_OF_STH - 1 ) && ( YET_ANOTHER_STRING[LEN_OF_STH - 1] != YET_ANOTHER_STRING[LEN_OF_STH - 2] ))
+      {
+         printf("%c=1\n", YET_ANOTHER_STRING[VAR_9494]);
+      }
+   }
+
+   return 0;
+}

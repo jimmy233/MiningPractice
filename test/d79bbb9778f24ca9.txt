@@ -1,0 +1,48 @@
+int main()
+{
+   double VAR__temp;
+   double VAR__819283[100][2];
+   double dd[100];
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    cnt = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf %lf", &VAR__819283[VAR__53647][0], &VAR__819283[VAR__53647][1]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__53647 < VAR__21230 )
+         {
+            cnt++;
+         }
+
+         dd[cnt] = pow(VAR__819283[VAR__53647][0] - VAR__819283[VAR__21230][0], 2) + pow(VAR__819283[VAR__53647][1] - VAR__819283[VAR__21230][1], 2);
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( cnt - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( cnt - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dd[VAR__21230] < dd[VAR__21230 + 1] )
+         {
+            VAR__temp          = dd[VAR__21230];
+            dd[VAR__21230]     = dd[VAR__21230 + 1];
+            dd[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+
+   printf("%.4lf", sqrt(dd[0]));
+   return 0;
+}

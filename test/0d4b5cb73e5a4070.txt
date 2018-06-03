@@ -1,0 +1,95 @@
+void find()
+{
+   char ch[101];
+
+   memset(ch, '\0', sizeof( ch ));
+
+   while ( cin.getline(ch, 1000, '\n'))
+   {
+      ( cout << ch ) << endl;
+      int VAR__53647 = 0;
+      int VAR__21230 = 0;
+      int VAR__NUM   = 0;
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         if ( ch[VAR__53647] == '(' )
+         {
+            VAR__NUM = 0;
+            for ( VAR__21230 = VAR__53647; VAR__21230 < 100; VAR__21230++ )
+            {
+               if ( ch[VAR__21230] == '(' )
+               {
+                  VAR__NUM++;
+               }
+
+               if ( ch[VAR__21230] == ')' )
+               {
+                  VAR__NUM--;
+               }
+
+               if ( VAR__NUM == 0 )
+               {
+                  break;
+               }
+            }
+
+            if ( VAR__NUM > 0 )
+            {
+               ch[VAR__53647] = '$';
+            }
+         }
+      }
+
+
+      for ( VAR__53647 = 99; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( ch[VAR__53647] == ')' )
+         {
+            VAR__NUM = 0;
+            for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( ch[VAR__21230] == '(' )
+               {
+                  VAR__NUM++;
+               }
+
+               if ( ch[VAR__21230] == ')' )
+               {
+                  VAR__NUM--;
+               }
+
+               if ( VAR__NUM == 0 )
+               {
+                  break;
+               }
+            }
+
+            if ( VAR__NUM < 0 )
+            {
+               ch[VAR__53647] = '?';
+            }
+         }
+      }
+
+
+      int LEN_OF_STH;
+      LEN_OF_STH = strlen(ch);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if (( ch[VAR__53647] != '$' ) && ( ch[VAR__53647] != '?' ))
+         {
+            ch[VAR__53647] = ' ';
+         }
+      }
+
+
+      ( cout << ch ) << endl;
+   }
+}
+
+
+int main()
+{
+   find();
+   return 0;
+}

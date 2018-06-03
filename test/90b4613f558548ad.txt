@@ -1,0 +1,69 @@
+int main()
+{
+   char ANOTHER_STRING[100][100];
+   char YET_ANOTHER_STRING[100][100] = { '\0' };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  l1;
+   int  l2;
+   int  VAR__temp[100];
+   int  VAR__1111;
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      scanf("%s", ANOTHER_STRING[VAR__53647]);
+      VAR__8444594 = strlen(ANOTHER_STRING[VAR__53647]);
+
+      if ( VAR__8444594 == 0 )
+      {
+         break;
+      }
+
+      puts(ANOTHER_STRING[VAR__53647]);
+      l1 = 0;
+      l2 = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( ANOTHER_STRING[VAR__53647][VAR__21230] == ')' )
+         {
+            VAR__temp[l2] = VAR__21230;
+            l2++;
+         }
+      }
+
+      for ( VAR__1111 = 0; VAR__1111 < l2; VAR__1111++ )
+      {
+         for ( VAR__21230 = VAR__temp[VAR__1111]; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( ANOTHER_STRING[VAR__53647][VAR__21230] == '(' )
+            {
+               ANOTHER_STRING[VAR__53647][VAR__temp[VAR__1111]] = 'A';
+               ANOTHER_STRING[VAR__53647][VAR__21230]           = 'A';
+               break;
+            }
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( ANOTHER_STRING[VAR__53647][VAR__21230] == '(' )
+         {
+            YET_ANOTHER_STRING[VAR__53647][VAR__21230] = '$';
+         }
+         else
+         if ( ANOTHER_STRING[VAR__53647][VAR__21230] == ')' )
+         {
+            YET_ANOTHER_STRING[VAR__53647][VAR__21230] = '?';
+         }
+         else
+         {
+            YET_ANOTHER_STRING[VAR__53647][VAR__21230] = ' ';
+         }
+      }
+
+      puts(YET_ANOTHER_STRING[VAR__53647]);
+   }
+
+   return 0;
+}

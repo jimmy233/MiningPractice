@@ -1,0 +1,94 @@
+int strnl(char *, char *);
+void replace(char *A_STRING, int len_ss, int start, char *rpl);
+
+int main()
+{
+   char A_STRING[256];
+   char substr[256];
+   char rpl[256];
+   int  start;
+
+   scanf("%s %s %s", A_STRING, substr, rpl);
+   start = strstr(A_STRING, substr);
+
+   if ( start )
+   {
+      replace(A_STRING, strlen(substr), ((char *)start ) - A_STRING, rpl);
+   }
+   else
+   {
+      printf("%s\n", A_STRING);
+   }
+
+   return 0;
+}
+
+
+int isstart(int VAR__53647, char *VAR_9494, char *subs)
+{
+   char VAR__TEMP[256];
+   char *VAR_233;
+   char *pt;
+
+   VAR_233 = VAR_9494 + VAR__53647;
+   pt      = VAR__TEMP;
+   int VAR__21230;
+   for ( VAR__21230 = 0; VAR__21230 < strlen(subs); VAR__21230++ )
+   {
+      *( pt++ ) = *( VAR_233++ );
+   }
+
+   *pt = 0;
+
+   if ( !strcmp(VAR__TEMP, subs))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int strnl(char *VAR_9494, char *subs)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(VAR_9494) - strlen(subs)); VAR__53647++ )
+   {
+      if ( isstart(VAR__53647, VAR_9494, subs))
+      {
+         return VAR__53647;
+      }
+   }
+
+
+   return -1;
+}
+
+
+void replace(char *A_STRING, int len_ss, int start, char *rpl)
+{
+   char VAR__TEMP[256];
+
+   strcpy(VAR__TEMP, A_STRING);
+   char *ptmp;
+   char *prpl;
+   ptmp = VAR__TEMP + start;
+   prpl = rpl;
+
+   while ( *prpl )
+   {
+      *( ptmp++ ) = *( prpl++ );
+   }
+
+   char *pstr = ( A_STRING + start ) + len_ss;
+
+   while ( *pstr )
+   {
+      *( ptmp++ ) = *( pstr++ );
+   }
+
+   *ptmp = 0;
+   strcpy(A_STRING, VAR__TEMP);
+   printf("%s\n", VAR__TEMP);
+}

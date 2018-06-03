@@ -1,0 +1,72 @@
+int main()
+{
+   char string[256];
+   char subString[256];
+   char replacement[256];
+   char result[256];
+   int  L1;
+   int  L2;
+   int  L3;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp = 1;
+   int  VAR_FLAG  = 0;
+   int  VAR__1111;
+   int  VAR__1238129;
+   int  VAR_1238123;
+
+   gets(string);
+   gets(subString);
+   gets(replacement);
+   L1 = strlen(string);
+   L2 = strlen(subString);
+   L3 = strlen(replacement);
+   for ( VAR__53647 = 0; VAR__53647 < L1; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < L2; VAR__21230++ )
+      {
+         if ( subString[VAR__21230] != string[VAR__21230 + VAR__53647] )
+         {
+            VAR__temp = 0;
+            break;
+         }
+      }
+
+      if ( VAR__temp == 1 )
+      {
+         for ( VAR__1111 = 0; VAR__1111 < VAR__53647; VAR__1111++ )
+         {
+            result[VAR__1111] = string[VAR__1111];
+         }
+
+         VAR__1238129 = 0;
+         for ( VAR__1111 = VAR__53647; VAR__1238129 < L3; VAR__1111++, VAR__1238129++ )
+         {
+            result[VAR__1111] = replacement[VAR__1238129];
+         }
+
+         for ( VAR_1238123 = VAR__53647 + L2; VAR_1238123 < L1; VAR_1238123++, VAR__1111++ )
+         {
+            result[VAR__1111] = string[VAR_1238123];
+         }
+
+         result[VAR__1111] = '\0';
+         VAR_FLAG          = 1;
+         break;
+      }
+
+      VAR__temp = 1;
+   }
+
+   if ( VAR_FLAG == 1 )
+   {
+      printf("%s", result);
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("%s", string);
+   }
+
+   return 0;
+}

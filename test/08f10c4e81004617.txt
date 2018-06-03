@@ -1,0 +1,71 @@
+int main()
+{
+   while ( !cin.eof())
+   {
+      char A_STRING[MAX];
+      char ans[MAX];
+      memset(A_STRING, 0, sizeof( A_STRING ));
+      memset(ans, 0, sizeof( ans ));
+      cin >> A_STRING;
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         ans[VAR__53647] = ' ';
+      }
+
+      int sign = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            sign++;
+            ans[VAR__53647] = sign + '0';
+         }
+         else
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            if ( sign > 0 )
+            {
+               ans[VAR__53647] = sign + '0';
+               sign--;
+            }
+            else
+            {
+               ans[VAR__53647] = '?';
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         if (( ans[VAR__53647] != ' ' ) && ( A_STRING[VAR__53647] == '(' ))
+         {
+            int ok = 0;
+            int VAR__21230;
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < strlen(A_STRING); VAR__21230++ )
+            {
+               if ( ans[VAR__21230] == ans[VAR__53647] )
+               {
+                  ok = 1;
+                  break;
+               }
+            }
+
+            if ( !ok )
+            {
+               ans[VAR__53647] = '$';
+            }
+            else
+            {
+               ans[VAR__53647] = ( ans[VAR__21230] = ' ' );
+            }
+         }
+      }
+
+      ans[strlen(A_STRING)] = '\0';
+      ( cout << A_STRING ) << endl;
+      cout << ans;
+      cout << endl;
+   }
+
+   return 0;
+}

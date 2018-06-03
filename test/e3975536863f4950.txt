@@ -1,0 +1,115 @@
+int store(char A_STRING[], char sto[], int LEN_OF_STH)
+{
+   int VAR__53647;
+   int VAR__1238129 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= 'a' ) && ( A_STRING[VAR__53647] <= 'z' ))
+      {
+         sto[VAR__1238129] = A_STRING[VAR__53647];
+         VAR__1238129++;
+      }
+   }
+
+
+   return VAR__1238129;
+}
+
+
+void sort(char sto[], int VAR__1238129)
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   char VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         if ( sto[VAR__21230] < sto[VAR__8444594] )
+         {
+            VAR__8444594 = VAR__21230;
+         }
+      }
+
+
+      if ( VAR__8444594 != VAR__53647 )
+      {
+         VAR__temp         = sto[VAR__53647];
+         sto[VAR__53647]   = sto[VAR__8444594];
+         sto[VAR__8444594] = VAR__temp;
+      }
+   }
+}
+
+
+int VAR__COUNT(char sto[], char newstr[26], int VAR__1238129, int time[100])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_FLAG;
+   int VAR__8444594 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR_FLAG = 1;
+      for ( VAR__21230 = 0; VAR__21230 <= VAR__8444594; VAR__21230++ )
+      {
+         if ( newstr[VAR__21230] == sto[VAR__53647] )
+         {
+            time[VAR__21230]++;
+            VAR_FLAG = 0;
+            break;
+         }
+      }
+
+      if ( VAR_FLAG )
+      {
+         newstr[VAR__8444594] = sto[VAR__53647];
+         time[VAR__8444594]++;
+         VAR__8444594++;
+      }
+   }
+
+   return VAR__8444594;
+}
+
+
+void output(char newstr[26], int time[100], int VAR__8444594)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%c=%d\n", newstr[VAR__53647], time[VAR__53647]);
+   }
+}
+
+
+void main()
+{
+   char A_STRING[300];
+   char sto[300]   = { '\0' };
+   char newstr[26] = { '\0' };
+   int  time[100]  = { 0 };
+   int  LEN_OF_STH;
+   int  VAR__TEMP;
+
+   gets(A_STRING);
+   LEN_OF_STH = strlen(A_STRING);
+   VAR__TEMP  = store(A_STRING, sto, LEN_OF_STH);
+
+   if ( VAR__TEMP == 0 )
+   {
+      printf("No\n");
+   }
+   else
+   {
+      sort(sto, VAR__TEMP);
+      VAR__TEMP = VAR__COUNT(sto, newstr, VAR__TEMP, time);
+      output(newstr, time, VAR__TEMP);
+   }
+}

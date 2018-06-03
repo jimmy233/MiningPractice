@@ -1,0 +1,52 @@
+int main()
+{
+   char VAR__7685[1000];
+
+   gets(VAR__7685);
+   int indexOfShort = 0;
+   int indexOfLong  = 0;
+   int lenOfShort   = 10000;
+   int lenOfLong    = 0;
+   int curLen       = 0;
+   int curIndex     = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__7685); ++VAR__53647 )
+   {
+      if ( VAR__7685[VAR__53647] != ' ' )
+      {
+         curLen++;
+
+         if ( VAR__53647 != ( strlen(VAR__7685) - 1 ))
+         {
+            continue;
+         }
+      }
+
+      if ( curLen < lenOfShort )
+      {
+         lenOfShort   = curLen;
+         indexOfShort = curIndex;
+      }
+
+      if ( curLen > lenOfLong )
+      {
+         lenOfLong   = curLen;
+         indexOfLong = curIndex;
+      }
+
+      curIndex = VAR__53647 + 1;
+      curLen   = 0;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 != lenOfLong; ++VAR__53647 )
+   {
+      printf("%c", VAR__7685[indexOfLong + VAR__53647]);
+   }
+
+   printf("\n");
+   for ( int VAR__53647 = 0; VAR__53647 != lenOfShort; ++VAR__53647 )
+   {
+      printf("%c", VAR__7685[indexOfShort + VAR__53647]);
+   }
+
+   return 0;
+}

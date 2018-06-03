@@ -1,0 +1,57 @@
+char A_STRING[100];
+void power(int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR_1238123 == 0 )
+   {
+      A_STRING[1] = '1';
+      A_STRING[0] = '0';
+   }
+   else
+   {
+      power(VAR_1238123 - 1);
+      int LEN_OF_STH = strlen(A_STRING);
+      int VAR__19328[100];
+      VAR__19328[LEN_OF_STH - 1] = 0;
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 1; VAR__53647-- )
+      {
+         if ((( 2 * ( A_STRING[VAR__53647] - '0' )) + VAR__19328[VAR__53647] ) < 10 )
+         {
+            A_STRING[VAR__53647]       = (( 2 * ( A_STRING[VAR__53647] - '0' )) + VAR__19328[VAR__53647] ) + '0';
+            VAR__19328[VAR__53647 - 1] = 0;
+         }
+         else
+         {
+            A_STRING[VAR__53647]       = ((( 2 * ( A_STRING[VAR__53647] - '0' )) + VAR__19328[VAR__53647] ) - 10 ) + '0';
+            VAR__19328[VAR__53647 - 1] = 1;
+         }
+      }
+
+      if ( VAR__19328[0] == 1 )
+      {
+         A_STRING[0] = '1';
+         for ( VAR__21230 = LEN_OF_STH; VAR__21230 >= 1; VAR__21230-- )
+         {
+            A_STRING[VAR__21230] = A_STRING[VAR__21230 - 1];
+         }
+      }
+
+      A_STRING[0] = '0';
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   cin >> VAR_1238123;
+   power(VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= ( strlen(A_STRING) - 1 ); VAR__53647++ )
+   {
+      cout << A_STRING[VAR__53647];
+   }
+}

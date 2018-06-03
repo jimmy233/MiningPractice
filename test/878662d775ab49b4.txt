@@ -1,0 +1,79 @@
+char A_STRING[120];
+int  VAR_1238123;
+void dispose(int VAR__7685)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 0;
+
+   for ( VAR__53647 = VAR__7685 + 1, VAR__8444594 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] == '(' ) && ( VAR__8444594 == 0 ))
+      {
+         dispose(VAR__53647);
+         VAR__8444594++;
+      }
+
+      if ( A_STRING[VAR__53647] == ')' )
+      {
+         A_STRING[VAR__53647] = ' ';
+         A_STRING[VAR__7685]  = ' ';
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( A_STRING[VAR__21230] == '(' )
+            {
+               dispose(VAR__21230);
+            }
+         }
+
+         break;
+      }
+   }
+}
+
+
+int main()
+{
+   int N;
+   int VAR__112390;
+
+   scanf("%d", &N);
+   for ( VAR__112390 = 0; VAR__112390 < N; VAR__112390++ )
+   {
+      scanf("%s", A_STRING);
+      printf("%s\n", A_STRING);
+      int VAR__53647;
+      int VAR__21230;
+      int VAR__8444594;
+      VAR_1238123 = strlen(A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            break;
+         }
+      }
+
+      dispose(VAR__53647);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            printf("$");
+         }
+         else
+         {
+            if ( A_STRING[VAR__53647] == ')' )
+            {
+               printf("?");
+            }
+            else
+            {
+               printf(" ");
+            }
+         }
+      }
+
+      printf("\n");
+   }
+}

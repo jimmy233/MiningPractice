@@ -1,0 +1,108 @@
+int VAR__127322[MAX_LEN];
+int kmp(char *VAR_233, char *VAR__temp)
+{
+   int cur_p = 0;
+   int cur_t = 0;
+   int len_p = strlen(VAR_233);
+   int len_t = strlen(VAR__temp);
+
+   while (( cur_p < len_p ) && ( cur_t < len_t ))
+   {
+      if ( VAR_233[cur_p] == VAR__temp[cur_t] )
+      {
+         cur_p++;
+         cur_t++;
+      }
+      else
+      {
+         if ( cur_p == 0 )
+         {
+            cur_t++;
+         }
+         else
+         {
+            cur_p = VAR__127322[cur_p - 1] + 1;
+         }
+      }
+   }
+
+   if ( cur_p == len_p )
+   {
+      return cur_t - len_p;
+   }
+   else
+   {
+      return -1;
+   }
+}
+
+
+void fail(char *VAR_233)
+{
+   int len_p = strlen(VAR_233);
+
+   VAR__127322[0] = -1;
+   for ( int VAR__53647 = 1; VAR__53647 < len_p; VAR__53647++ )
+   {
+      int VAR__21230 = VAR__127322[VAR__53647 - 1];
+
+      while (( VAR_233[VAR__53647] != VAR_233[VAR__21230 + 1] ) && ( VAR__21230 >= 0 ))
+      {
+         VAR__21230 = VAR__127322[VAR__21230];
+      }
+
+      if ( VAR_233[VAR__53647] == VAR_233[VAR__21230 + 1] )
+      {
+         VAR__127322[VAR__53647] = VAR__21230 + 1;
+      }
+      else
+      {
+         VAR__127322[VAR__53647] = -1;
+      }
+   }
+}
+
+
+int main()
+{
+   char string[257];
+   char subString[257];
+   char replacement[257];
+   char output[512];
+
+   scanf("%s%s%s", string, subString, replacement);
+   fail(subString);
+   int index = kmp(subString, string);
+
+   if ( index > ( -1 ))
+   {
+      int LEN_OF_STH = strlen(string);
+      int sub_len    = strlen(subString);
+      int rep_len    = strlen(replacement);
+      int VAR__21230 = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < index; VAR__53647++ )
+      {
+         output[VAR__21230] = string[VAR__53647];
+         VAR__21230++;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < rep_len; VAR__53647++ )
+      {
+         output[VAR__21230] = replacement[VAR__53647];
+         VAR__21230++;
+      }
+
+      for ( int VAR__53647 = index + sub_len; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         output[VAR__21230] = string[VAR__53647];
+         VAR__21230++;
+      }
+
+      output[VAR__21230] = '\0';
+      printf("%s", output);
+   }
+   else
+   {
+      printf("%s", string);
+   }
+}

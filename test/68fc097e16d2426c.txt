@@ -1,0 +1,89 @@
+int main()
+{
+   char word[200][20];
+   char sen[1000];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  LEN_OF_STH[200];
+   int  VAR__temp;
+   int  VAR__MAX;
+   int  VAR__MIN;
+   int  ANOTHER_POINTER;
+   int  YET_ANOTHER_POINTER;
+
+   VAR__53647 = 1;
+   gets(sen);
+   VAR__temp   = strlen(sen);
+   VAR_1238123 = 1;
+   VAR__21230  = 1;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      if (( sen[VAR__53647] != ' ' ) && ( sen[VAR__53647] != ',' ))
+      {
+         word[VAR_1238123][VAR__21230] = sen[VAR__53647];
+         VAR__21230++;
+      }
+
+      if (( sen[VAR__53647] == ' ' ) || ( sen[VAR__53647] == ',' ))
+      {
+         LEN_OF_STH[VAR_1238123] = VAR__21230 - 1;
+         VAR_1238123++;
+         VAR__21230 = 1;
+      }
+
+      if ( sen[VAR__53647] == ',' )
+      {
+         VAR__53647++;
+      }
+
+      if ( VAR__53647 == ( VAR__temp - 1 ))
+      {
+         LEN_OF_STH[VAR_1238123] = VAR__21230 - 1;
+      }
+   }
+
+   VAR__MAX = 0;
+   VAR__MIN = 50000;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( LEN_OF_STH[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX        = LEN_OF_STH[VAR__53647];
+         ANOTHER_POINTER = VAR__53647;
+      }
+
+      if ( LEN_OF_STH[VAR__53647] < VAR__MIN )
+      {
+         VAR__MIN            = LEN_OF_STH[VAR__53647];
+         YET_ANOTHER_POINTER = VAR__53647;
+      }
+   }
+
+   if ( VAR__MAX == VAR__MIN )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= LEN_OF_STH[1]; VAR__53647++ )
+      {
+         printf("%c", word[1][VAR__53647]);
+      }
+
+      printf("\n");
+      for ( VAR__53647 = 1; VAR__53647 <= LEN_OF_STH[1]; VAR__53647++ )
+      {
+         printf("%c", word[1][VAR__53647]);
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= LEN_OF_STH[ANOTHER_POINTER]; VAR__53647++ )
+      {
+         printf("%c", word[ANOTHER_POINTER][VAR__53647]);
+      }
+
+      printf("\n");
+      for ( VAR__53647 = 1; VAR__53647 <= LEN_OF_STH[YET_ANOTHER_POINTER]; VAR__53647++ )
+      {
+         printf("%c", word[YET_ANOTHER_POINTER][VAR__53647]);
+      }
+   }
+}

@@ -1,0 +1,68 @@
+char *strpos(char string[], char substring[])
+{
+   char *VAR_233   = string;
+   char *VAR__TEMP = NULL;
+
+   while (( *VAR_233 ) != '\0' )
+   {
+      if (( *VAR_233 ) == substring[0] )
+      {
+         VAR__TEMP = VAR_233;
+         VAR_233++;
+         int VAR__53647;
+         for ( VAR__53647 = 1; VAR__53647 < strlen(substring); VAR__53647++ )
+         {
+            if (( *VAR_233 ) != substring[VAR__53647] )
+            {
+               break;
+            }
+
+            VAR_233++;
+         }
+
+         if ( VAR__53647 == strlen(substring))
+         {
+            break;
+         }
+         else
+         {
+            VAR_233 = VAR__TEMP + 1;
+         }
+      }
+      else
+      {
+         VAR_233++;
+      }
+   }
+
+   return VAR__TEMP;
+}
+
+
+int main()
+{
+   char string[256];
+   char substring[256];
+   char replacement[256];
+
+   cin.getline(string, 257);
+   cin.getline(substring, 257);
+   cin.getline(replacement, 257);
+   char *VAR_233 = strpos(string, substring);
+
+   if ( VAR_233 != NULL )
+   {
+      int VAR__temp  = 0;
+      int VAR__COUNT = 0;
+
+      while ( VAR__COUNT != strlen(substring))
+      {
+         *VAR_233 = replacement[VAR__temp++];
+         VAR_233++;
+         VAR__COUNT++;
+      }
+   }
+
+   ( cout << string ) << endl;
+   return 0;
+}

@@ -1,0 +1,58 @@
+int main()
+{
+   char A_STRING[300];
+   char zf[53];
+   char VAR__112390[2];
+   int  VAR_SIZE[800];
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__8444594;
+
+   scanf("%s", A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < 800; VAR__53647++ )
+   {
+      VAR_SIZE[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ((( A_STRING[VAR__53647] >= 'a' ) && ( A_STRING[VAR__53647] <= 'z' )) || (( A_STRING[VAR__53647] >= 'A' ) && ( A_STRING[VAR__53647] <= 'Z' )))
+      {
+         zf[VAR__21230] = A_STRING[VAR__53647];
+         VAR_SIZE[A_STRING[VAR__53647]]++;
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR__21230; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( zf[VAR__53647] > zf[VAR__53647 + 1] )
+         {
+            VAR__112390[0]     = zf[VAR__53647 + 1];
+            zf[VAR__53647 + 1] = zf[VAR__53647];
+            zf[VAR__53647]     = VAR__112390[0];
+         }
+      }
+   }
+
+   if ( VAR__21230 == 0 )
+   {
+      printf("No\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+      {
+         if (( VAR__53647 != 0 ) && ( zf[VAR__53647 - 1] == zf[VAR__53647] ))
+         {
+            continue;
+         }
+
+         printf("%c=%d\n", zf[VAR__53647], VAR_SIZE[zf[VAR__53647]]);
+      }
+   }
+
+   return 0;
+}

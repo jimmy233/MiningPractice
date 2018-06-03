@@ -1,0 +1,118 @@
+int main()
+{
+   void match(char VAR__819283[]);
+
+   int  signal = 1;
+   int  VAR__53647;
+   char VAR_9494[101];
+   char s1[101] = "";
+   gets(VAR_9494);
+
+   while ( signal )
+   {
+      match(VAR_9494);
+      strcpy(s1, VAR_9494);
+      scanf("%s", VAR_9494);
+
+      if ( strcmp(VAR_9494, s1) == 0 )
+      {
+         signal = 0;
+      }
+   }
+
+   return 0;
+}
+
+
+void match(char VAR__819283[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int LEN_OF_STH;
+   int f1 = 0;
+   int f2 = 0;
+   int f3 = 1;
+
+   LEN_OF_STH = strlen(VAR__819283);
+
+   if ( LEN_OF_STH != 0 )
+   {
+      printf("%s\n", VAR__819283);
+   }
+
+   do
+   {
+      if ( LEN_OF_STH != 0 )
+      {
+         f1 = 0;
+         f2 = 0;
+         f3 = 1;
+         for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+         {
+            if ( VAR__819283[VAR__53647] == '(' )
+            {
+               f1 = 1;
+               for ( VAR__21230 = VAR__53647 + 1; VAR__819283[VAR__21230]; VAR__21230++ )
+               {
+                  if ( VAR__819283[VAR__21230] == ')' )
+                  {
+                     f2 = 1;
+                     VAR__819283[VAR__21230] = '0';
+                     VAR__819283[VAR__53647] = '0';
+                     break;
+                  }
+               }
+
+               if ( f2 == 0 )
+               {
+                  VAR__819283[VAR__53647] = '1';
+               }
+            }
+
+            if ( f1 == 1 )
+            {
+               break;
+            }
+         }
+
+         if ( f1 == 0 )
+         {
+            for ( VAR__53647 = 0; VAR__819283[VAR__53647]; VAR__53647++ )
+            {
+               if ( VAR__819283[VAR__53647] == ')' )
+               {
+                  VAR__819283[VAR__53647] = '2';
+               }
+            }
+         }
+
+         for ( VAR__53647 = 0; VAR__819283[VAR__53647]; VAR__53647++ )
+         {
+            if (( VAR__819283[VAR__53647] == '(' ) || ( VAR__819283[VAR__53647] == ')' ))
+            {
+               f3 = 0;
+               break;
+            }
+         }
+      }
+   } while ( f3 == 0 );
+   for ( VAR__53647 = 0; VAR__819283[VAR__53647]; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '1' )
+      {
+         printf("$");
+      }
+      else
+      if ( VAR__819283[VAR__53647] == '2' )
+      {
+         printf("?");
+      }
+      else
+      {
+         printf(" ");
+      }
+   }
+
+   printf("\n");
+}

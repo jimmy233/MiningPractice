@@ -1,0 +1,104 @@
+int getlength(char *VAR__819283)
+{
+   int VAR__53647 = 0;
+
+   while ( VAR__819283[VAR__53647] != '\0' )
+   {
+      VAR__53647++;
+   }
+
+   return VAR__53647;
+}
+
+
+void chuli(char ch[], int VAR__819283[], int VAR_1238123)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      switch ( ch[VAR__53647] )
+      {
+      case '(':
+         VAR__819283[VAR__53647] = 1;
+         break;
+
+      case ')':
+         VAR__819283[VAR__53647] = -1;
+         break;
+
+      default:
+         VAR__819283[VAR__53647] = 0;
+         break;
+      }
+   }
+}
+
+
+void pipei(int VAR__819283[], int VAR_1238123)
+{
+   for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( VAR__819283[VAR__8444594] == 1 )
+      {
+         int VAR_9494 = 0;
+         for ( int VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+         {
+            VAR_9494 += VAR__819283[VAR__53647];
+         }
+
+         for ( int VAR__53647 = VAR__8444594; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            if ( VAR__819283[VAR__53647] == ( -1 ))
+            {
+               int VAR__temp = 0;
+               for ( int VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+               {
+                  VAR__temp += VAR__819283[VAR__21230];
+               }
+
+               if ( VAR_9494 == ( VAR__temp - 1 ))
+               {
+                  VAR__819283[VAR__8444594] = 0;
+                  VAR__819283[VAR__53647]   = 0;
+                  break;
+               }
+            }
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   while ( cin.peek() != EOF )
+   {
+      char ch[110];
+      cin.getline(ch, 110, '\n');
+      int VAR__819283[110];
+      int VAR_1238123 = getlength(ch);
+      chuli(ch, VAR__819283, VAR_1238123);
+      pipei(VAR__819283, VAR_1238123);
+      ( cout << ch ) << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         switch ( VAR__819283[VAR__53647] )
+         {
+         case 1:
+            cout << '$';
+            break;
+
+         case -1:
+            cout << '?';
+            break;
+
+         case 0:
+            cout << ' ';
+            break;
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,52 @@
+int main()
+{
+   char string[260]     = { 0 };
+   char substring[50]   = { 0 };
+   char replacement[50] = { 0 };
+   char VAR__TEMP[50]   = { 0 };
+   char length;
+   char length_s;
+   char length_r;
+   char VAR__53647;
+   char VAR__21230;
+   char VAR__8444594 = 0;
+   char VAR__1238129;
+   char VAR_1238123;
+
+   (( cin >> string ) >> substring ) >> replacement;
+   length   = strlen(string);
+   length_s = strlen(substring);
+   length_r = strlen(replacement);
+   for ( VAR__53647 = 0; VAR__53647 <= ( length - length_s ); VAR__53647++ )
+   {
+      memset(VAR__TEMP, 0, sizeof( VAR__TEMP ));
+      VAR__8444594 = 0;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + length_s ); VAR__21230++ )
+      {
+         VAR__TEMP[VAR__8444594++] = string[VAR__21230];
+      }
+
+      if ( !strcmp(VAR__TEMP, substring))
+      {
+         if ( length_s != length_r )
+         {
+            VAR_1238123 = VAR__53647 + length_s;
+            for ( VAR__1238129 = VAR__53647 + length_r; VAR__1238129 < length; VAR__1238129++ )
+            {
+               string[VAR__1238129] = string[VAR_1238123++];
+            }
+         }
+
+         VAR_1238123 = 0;
+         for ( VAR__1238129 = VAR__53647; VAR__1238129 < ( VAR__53647 + length_r ); VAR__1238129++ )
+         {
+            string[VAR__1238129] = replacement[VAR_1238123++];
+         }
+
+         break;
+      }
+   }
+
+   ( cout << string ) << endl;
+   return 0;
+}

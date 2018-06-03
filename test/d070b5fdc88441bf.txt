@@ -1,0 +1,77 @@
+int check(int VAR__819283[5][5], int VAR_1238123, int VAR__1238129);
+
+int check(int VAR__819283[5][5], int VAR_1238123, int VAR__1238129)
+{
+   int row;
+   int col;
+   int indin = 0;
+   int indim = 0;
+   int indi;
+
+   for ( row = 0; row < 5; row++ )
+   {
+      for ( col = 0; col < 5; col++ )
+      {
+         if ( VAR__819283[row][col] == VAR_1238123 )
+         {
+            indin = 1;
+         }
+
+         if ( VAR__819283[row][col] == VAR__1238129 )
+         {
+            indim = 1;
+         }
+      }
+   }
+
+   indi = indin * indim;
+   return indi;
+}
+
+
+int main()
+{
+   int square[5][5];
+   int VAR_1238123;
+   int VAR__1238129;
+   int row;
+   int col;
+
+   for ( row = 0; row < 5; row++ )
+   {
+      for ( col = 0; col < 5; col++ )
+      {
+         scanf("%d", &square[row][col]);
+      }
+   }
+
+   scanf("%d%d", &VAR_1238123, &VAR__1238129);
+   int result;
+   int VAR__TEMP;
+   result = check(square, VAR_1238123, VAR__1238129);
+
+   if ((( result == 0 ) || ( VAR_1238123 > 4 )) || ( VAR__1238129 > 4 ))
+   {
+      printf("error");
+   }
+   else
+   {
+      for ( col = 0; col < 5; col++ )
+      {
+         VAR__TEMP = square[VAR_1238123][col];
+         square[VAR_1238123][col]  = square[VAR__1238129][col];
+         square[VAR__1238129][col] = VAR__TEMP;
+      }
+
+      for ( row = 0; row < 5; row++ )
+      {
+         printf("\n%d", square[row][0]);
+         for ( col = 1; col < 5; col++ )
+         {
+            printf(" %d", square[row][col]);
+         }
+      }
+   }
+
+   return 0;
+}

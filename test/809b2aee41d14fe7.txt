@@ -1,0 +1,52 @@
+int main()
+{
+   char word[201][100]  = { 0 };
+   int  LEN_OF_STH[201] = { 0 };
+   int  VAR__COUNT      = 0;
+   int  in           = 0;
+   char curword[100] = { 0 };
+   int  curlen       = 0;
+   int  maxindex     = -1;
+   int  minindex     = -1;
+
+   while ( 1 )
+   {
+      in = getchar();
+
+      if ((( in == ' ' ) || ( in == ',' )) || ( in == '\n' ))
+      {
+         if ( curlen > 0 )
+         {
+            curword[curlen] = '\0';
+            strcpy(word[VAR__COUNT], curword);
+            LEN_OF_STH[VAR__COUNT] = curlen;
+
+            if (( maxindex == ( -1 )) || ( curlen > LEN_OF_STH[maxindex] ))
+            {
+               maxindex = VAR__COUNT;
+            }
+
+            if (( minindex == ( -1 )) || ( curlen < LEN_OF_STH[minindex] ))
+            {
+               minindex = VAR__COUNT;
+            }
+
+            VAR__COUNT++;
+            curlen = 0;
+         }
+
+         if ( in == '\n' )
+         {
+            break;
+         }
+      }
+      else
+      {
+         curword[curlen++] = in;
+      }
+   }
+
+   printf("%s\n", word[maxindex]);
+   printf("%s", word[minindex]);
+   return 0;
+}

@@ -1,0 +1,61 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  VAR__819283;
+   int  VAR__21230;
+   int  VAR__4857423 = 0;
+   int  have[26];
+   char fh[300];
+   char xin[26];
+   char haha;
+
+   gets(fh);
+   VAR__8444594 = strlen(fh);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if (( fh[VAR__53647] >= 'a' ) && ( fh[VAR__53647] <= 'z' ))
+      {
+         xin[VAR__4857423] = fh[VAR__53647];
+         VAR__4857423     += 1;
+         VAR__819283       = 1;
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+         {
+            if ( fh[VAR__53647] == fh[VAR__21230] )
+            {
+               VAR__819283   += 1;
+               fh[VAR__21230] = '0';
+            }
+         }
+
+         have[VAR__4857423 - 1] = VAR__819283;
+      }
+   }
+
+   if ( VAR__4857423 == 0 )
+   {
+      printf("No\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__4857423; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__4857423; VAR__21230++ )
+         {
+            if ( xin[VAR__21230] < xin[VAR__53647] )
+            {
+               haha             = xin[VAR__53647];
+               xin[VAR__53647]  = xin[VAR__21230];
+               xin[VAR__21230]  = haha;
+               VAR__8444594     = have[VAR__53647];
+               have[VAR__53647] = have[VAR__21230];
+               have[VAR__21230] = VAR__8444594;
+            }
+         }
+
+         printf("%c=%d\n", xin[VAR__53647], have[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

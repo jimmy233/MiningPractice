@@ -1,0 +1,53 @@
+char VAR_9494[1000];
+void right(int VAR__53647, int VAR__21230)
+{
+   if ( VAR_9494[VAR__53647] == '\0' )
+   {
+   }
+   else
+   if ( VAR_9494[VAR__53647] == '(' )
+   {
+      VAR_9494[VAR__53647] = '$';
+      right(VAR__53647 + 1, VAR__21230 + 1);
+   }
+   else
+   if ( VAR_9494[VAR__53647] == ')' )
+   {
+      if ( VAR__21230 == 0 )
+      {
+         VAR_9494[VAR__53647] = '?';
+         right(VAR__53647 + 1, VAR__21230);
+      }
+      else
+      {
+         for ( int VAR__8444594 = VAR__53647; ; VAR__8444594-- )
+         {
+            if ( VAR_9494[VAR__8444594] == '$' )
+            {
+               VAR_9494[VAR__8444594] = ' ';
+               break;
+            }
+         }
+
+
+         VAR_9494[VAR__53647] = ' ';
+         right(VAR__53647 + 1, VAR__21230 - 1);
+      }
+   }
+   else
+   {
+      VAR_9494[VAR__53647] = ' ';
+      right(VAR__53647 + 1, VAR__21230);
+   }
+}
+
+
+int main()
+{
+   for ( ; cin >> VAR_9494; )
+   {
+      ( cout << VAR_9494 ) << endl;
+      right(0, 0);
+      ( cout << VAR_9494 ) << endl;
+   }
+}

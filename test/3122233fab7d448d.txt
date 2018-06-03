@@ -1,0 +1,93 @@
+int VAR__NUM;
+char right(char VAR__4857423)
+{
+   char ch;
+
+   if (( VAR__4857423 != '(' ) && ( VAR__4857423 != ')' ))
+   {
+      ch = ' ';
+   }
+   else
+   if ( VAR__4857423 == ')' )
+   {
+      if ( VAR__NUM == 0 )
+      {
+         ch = '?';
+      }
+      else
+      {
+         VAR__NUM--;
+         ch = ' ';
+      }
+   }
+   else
+   {
+      VAR__NUM++;
+      ch = VAR__4857423;
+   }
+
+
+   return ch;
+}
+
+
+char left(char VAR__4857423, char VAR__819283)
+{
+   char ch;
+
+   if (( VAR__819283 == ' ' ) || ( VAR__819283 == '?' ))
+   {
+      ch = VAR__819283;
+
+      if ( VAR__4857423 == ')' )
+      {
+         VAR__NUM++;
+      }
+   }
+   else
+   if ( VAR__NUM == 0 )
+   {
+      ch = '$';
+   }
+   else
+   {
+      VAR__NUM--;
+      ch = ' ';
+   }
+
+
+   return ch;
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   char VAR_9494[101];
+   char VAR__819283[101];
+
+   while ( gets(VAR_9494))
+   {
+      VAR__NUM = 0;
+      for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_9494); VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = right(VAR_9494[VAR__53647]);
+      }
+
+      VAR__NUM = 0;
+      for ( VAR__53647 = strlen(VAR_9494) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         VAR__819283[VAR__53647] = left(VAR_9494[VAR__53647], VAR__819283[VAR__53647]);
+      }
+
+      puts(VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_9494); VAR__53647++ )
+      {
+         printf("%c", VAR__819283[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

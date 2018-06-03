@@ -1,0 +1,59 @@
+int main()
+{
+   char zfc[300]    = { 0 };
+   char tar[300]    = { 0 };
+   char rep[300]    = { 0 };
+   char result[300] = { 0 };
+   int  len1;
+   int  len2;
+   int  ischange = 0;
+   int  index1   = 0;
+   int  VAR__53647;
+   int  index2 = 0;
+
+   gets(zfc);
+   gets(tar);
+   len1 = strlen(tar);
+   gets(rep);
+   len2 = strlen(rep);
+
+   while ( zfc[index1] != '\0' )
+   {
+      ischange = 1;
+      for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+      {
+         if ( zfc[index1 + VAR__53647] != tar[VAR__53647] )
+         {
+            ischange = 0;
+            break;
+         }
+      }
+
+      if ( ischange )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+         {
+            result[index2 + VAR__53647] = rep[VAR__53647];
+         }
+
+         index2 += len2;
+         index1 += len1;
+
+         while ( zfc[index1] != '\0' )
+         {
+            result[index2] = zfc[index1];
+            index2++;
+            index1++;
+         }
+
+         break;
+      }
+
+      result[index2] = zfc[index1];
+      index2++;
+      index1++;
+   }
+
+   printf("%s", result);
+   return 0;
+}

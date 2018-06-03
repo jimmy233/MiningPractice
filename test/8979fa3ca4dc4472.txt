@@ -1,0 +1,29 @@
+int main()
+{
+   char string[256];
+   char substring[256];
+   char replacement[256];
+   char buffer[256] = { 0 };
+   char result[256] = { 0 };
+
+   scanf("%s %s %s", string, substring, replacement);
+   int mainlen = strlen(string);
+   int sublen  = strlen(substring);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 <= ( mainlen - sublen ); VAR__53647++ )
+   {
+      strncpy(buffer, string + VAR__53647, sublen);
+
+      if ( !strcmp(buffer, substring))
+      {
+         strncpy(result, string, VAR__53647);
+         strcat(result, replacement);
+         strcat(result, ( string + VAR__53647 ) + sublen);
+         printf("%s", result);
+         return 0;
+      }
+   }
+
+   printf("%s", string);
+   return 0;
+}

@@ -1,0 +1,67 @@
+int f1(char zichuan[], int changdu)
+{
+   int VAR__53647;
+   int VAR_1238123;
+
+   for ( VAR__53647 = changdu - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( zichuan[VAR__53647] == '(' )
+      {
+         VAR_1238123 = VAR__53647 + 1;
+
+         while ( zichuan[VAR_1238123] != ')' )
+         {
+            VAR_1238123 = VAR_1238123 + 1;
+         }
+
+         if ( VAR_1238123 < changdu )
+         {
+            zichuan[VAR__53647]  = ' ';
+            zichuan[VAR_1238123] = ' ';
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int  VAR__53647 = 0;
+   int  changdu;
+   char VAR_9494[100];
+
+   while ( gets(VAR_9494))
+   {
+      changdu = strlen(VAR_9494);
+      printf("%s\n", VAR_9494);
+      f1(VAR_9494, changdu);
+      for ( VAR__53647 = 0; VAR__53647 < changdu; VAR__53647++ )
+      {
+         switch ( VAR_9494[VAR__53647] )
+         {
+         case '(':
+            VAR_9494[VAR__53647] = '$';
+            break;
+
+         case ')':
+            VAR_9494[VAR__53647] = '?';
+            break;
+
+         default:
+            VAR_9494[VAR__53647] = ' ';
+            break;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < changdu; VAR__53647++ )
+      {
+         printf("%c", VAR_9494[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

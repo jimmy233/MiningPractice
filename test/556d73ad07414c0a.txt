@@ -1,0 +1,123 @@
+char investigate(char VAR__819283[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_1238123;
+   int ANOTHER_POINTER     = 0;
+   int YET_ANOTHER_POINTER = 0;
+   int VAR_21983012;
+   int VAR__temp = 0;
+   int t1        = 0;
+
+   VAR_1238123 = strlen(VAR__819283);
+   char VAR__19328[100];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '(' )
+      {
+         ANOTHER_POINTER++;
+      }
+
+      if ( VAR__819283[VAR__53647] == ')' )
+      {
+         YET_ANOTHER_POINTER++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__53647 == ( VAR_1238123 - 1 )) && ( VAR__temp > t1 ))
+      {
+         VAR__53647 = -1;
+         t1         = VAR__temp;
+         goto loop;
+      }
+      else
+      if ( VAR__819283[VAR__53647] != '(' )
+      {
+         VAR__19328[VAR__53647] == ' ';
+         continue;
+      }
+      else
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230] == '(' )
+            {
+               VAR__53647 = VAR__21230 - 1;
+               break;
+            }
+            else
+            if ( VAR__819283[VAR__21230] == ')' )
+            {
+               VAR__819283[VAR__53647] = '[';
+               VAR__819283[VAR__21230] = ']';
+               VAR__temp++;
+               break;
+            }
+         }
+      }
+
+
+loop:
+      ;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '(' )
+      {
+         VAR__19328[VAR__53647] = '$';
+      }
+      else
+      if ( VAR__819283[VAR__53647] == ')' )
+      {
+         VAR__19328[VAR__53647] = '?';
+      }
+      else
+      {
+         VAR__19328[VAR__53647] = ' ';
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '[' )
+      {
+         VAR__819283[VAR__53647] = '(';
+      }
+
+      if ( VAR__819283[VAR__53647] == ']' )
+      {
+         VAR__819283[VAR__53647] = ')';
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%c", VAR__819283[VAR__53647]);
+   }
+
+   printf("\n");
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%c", VAR__19328[VAR__53647]);
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR__819283[100];
+
+   while ( gets(VAR__819283))
+   {
+      investigate(VAR__819283);
+      printf("\n");
+   }
+}

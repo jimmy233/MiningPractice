@@ -1,0 +1,83 @@
+char s1[10000];
+char s2[10000];
+char VAR_9494[10000];
+int Len(char *VAR_9494)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR_9494[VAR__53647]; VAR__53647++ )
+   {
+   }
+
+   return VAR__53647;
+}
+
+
+int Match(char *s1, char *s2)
+{
+   int VAR__53647;
+   int VAR__1111 = Len(s2);
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( s1[VAR__53647] != s2[VAR__53647] )
+      {
+         return 0;
+      }
+   }
+
+
+   return 1;
+}
+
+
+int Find(char *VAR_9494, char *s1)
+{
+   int VAR__53647;
+   int VAR__1111 = Len(VAR_9494);
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( Match(VAR_9494 + VAR__53647, s1))
+      {
+         return VAR__53647;
+      }
+   }
+
+
+   return VAR__1111;
+}
+
+
+int main()
+{
+   int VAR__1111;
+   int VAR__53647;
+   int VAR__temp;
+
+   scanf("%s%s%s", VAR_9494, s1, s2);
+   VAR__1111 = Len(VAR_9494);
+   VAR__temp = Find(VAR_9494, s1);
+
+   if ( VAR__temp == VAR__1111 )
+   {
+      printf("%s\n", VAR_9494);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+      {
+         printf("%1c", VAR_9494[VAR__53647]);
+      }
+
+      printf("%s", s2);
+      for ( VAR__53647 = Len(s1) + VAR__temp; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         printf("%1c", VAR_9494[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

@@ -1,0 +1,73 @@
+int main()
+{
+   char VAR_9494[2][101];
+   char VAR__4857423;
+   int  VAR__53647;
+   int  LEN_OF_STH;
+   int  VAR_FLAG   = 0;
+   int  VAR__COUNT = 0;
+
+   while ( scanf("%s", VAR_9494[0]) != EOF )
+   {
+      LEN_OF_STH = strlen(VAR_9494[0]);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR__4857423 = VAR_9494[0][VAR__53647];
+
+         if ( VAR__4857423 == '(' )
+         {
+            VAR_FLAG++;
+         }
+
+         if ( VAR__4857423 == ')' )
+         {
+            VAR_FLAG--;
+         }
+
+         if ( VAR_FLAG >= 0 )
+         {
+            VAR_9494[1][VAR__53647] = ' ';
+            continue;
+         }
+
+         if ( VAR_FLAG < 0 )
+         {
+            VAR_9494[1][VAR__53647] = '?';
+            VAR_FLAG = 0;
+         }
+      }
+
+      VAR_FLAG = 0;
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         VAR__4857423 = VAR_9494[0][VAR__53647];
+
+         if ( VAR__4857423 == ')' )
+         {
+            VAR_FLAG++;
+         }
+
+         if ( VAR__4857423 == '(' )
+         {
+            VAR_FLAG--;
+         }
+
+         if ( VAR_FLAG < 0 )
+         {
+            VAR_9494[1][VAR__53647] = '$';
+            VAR_FLAG = 0;
+         }
+      }
+
+      VAR_FLAG = 0;
+      VAR_9494[1][LEN_OF_STH] = '\0';
+      puts(VAR_9494[0]);
+      puts(VAR_9494[1]);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR_9494[0][VAR__53647] = ( VAR_9494[1][VAR__53647] = 0 );
+      }
+   }
+
+   return 0;
+}

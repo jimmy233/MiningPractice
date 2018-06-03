@@ -1,0 +1,71 @@
+int main()
+{
+   char ys[1000];
+   char re[1000];
+   char bt[1000];
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  ss = 0;
+   int  se = 0;
+
+   gets(ys);
+   gets(bt);
+   gets(re);
+   for ( VAR__53647 = 0; ys[VAR__53647] != 0; VAR__53647++ )
+   {
+      if ( ys[VAR__53647] == bt[0] )
+      {
+         for ( VAR__8444594 = VAR__53647 + 1, VAR__21230 = 1; ( ys[VAR__8444594] != 0 ) && ( bt[VAR__21230] != 0 ); VAR__8444594++, VAR__21230++ )
+         {
+            if ( ys[VAR__8444594] != bt[VAR__21230] )
+            {
+               break;
+            }
+         }
+
+         if ( bt[VAR__21230] == 0 )
+         {
+            ss = VAR__53647;
+            se = VAR__8444594;
+            break;
+         }
+      }
+   }
+
+   if ( ss < se )
+   {
+      if ( strlen(bt) <= strlen(re))
+      {
+         for ( VAR__53647 = ss, VAR__21230 = 0; re[VAR__21230] != 0; VAR__53647++, VAR__21230++ )
+         {
+            ys[VAR__53647] = re[VAR__21230];
+         }
+
+         for ( VAR__8444594 = se; ys[VAR__8444594] != 0; VAR__8444594++, VAR__53647++ )
+         {
+            ys[VAR__53647] = ys[VAR__8444594];
+         }
+
+         ys[VAR__53647] = 0;
+      }
+      else
+      {
+         VAR__53647 = ( strlen(ys) + strlen(re)) - strlen(bt);
+         for ( VAR__8444594 = strlen(ys); VAR__8444594 >= se; VAR__8444594--, VAR__53647-- )
+         {
+            ys[VAR__53647] = ys[VAR__8444594];
+         }
+
+         for ( VAR__53647 = ss, VAR__21230 = 0; re[VAR__21230] != 0; VAR__53647++, VAR__21230++ )
+         {
+            ys[VAR__53647] = re[VAR__21230];
+         }
+      }
+   }
+
+   printf(ys);
+   return 0;
+}

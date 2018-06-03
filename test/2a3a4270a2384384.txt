@@ -1,0 +1,100 @@
+void pro(char *VAR_9494)
+{
+   char VAR__819283[444];
+   char *VAR_233;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__temp;
+
+   VAR__53647 = -1;
+   VAR_233    = VAR_9494;
+
+   while (( *VAR_233 ) != '\0' )
+   {
+      if (( *VAR_233 ) == '(' )
+      {
+         VAR__53647++;
+         VAR__819283[VAR__53647] = *VAR_233;
+      }
+      else
+      if (( *VAR_233 ) == ')' )
+      {
+         VAR__21230 = VAR__53647;
+
+         while (( VAR__21230 >= 0 ) && ( VAR__819283[VAR__21230] != '(' ))
+         {
+            VAR__21230--;
+         }
+
+         if ( VAR__21230 == ( -1 ))
+         {
+            VAR__53647++;
+            VAR__819283[VAR__53647] = *VAR_233;
+         }
+         else
+         {
+            VAR__819283[VAR__21230] = ' ';
+            VAR__53647++;
+            VAR__819283[VAR__53647] = ' ';
+         }
+      }
+      else
+      {
+         VAR__53647++;
+         VAR__819283[VAR__53647] = ' ';
+      }
+
+
+      VAR_233++;
+   }
+
+   VAR__819283[VAR__53647 + 1] = '\0';
+   strcpy(VAR_9494, VAR__819283);
+}
+
+
+void print(char *VAR_9494)
+{
+   char *VAR_233;
+
+   VAR_233 = VAR_9494;
+
+   while (( *VAR_233 ) != '\0' )
+   {
+      if (( *VAR_233 ) == '(' )
+      {
+         *VAR_233 = '$';
+      }
+      else
+      if (( *VAR_233 ) == ')' )
+      {
+         *VAR_233 = '?';
+      }
+
+
+      VAR_233++;
+   }
+
+   puts(VAR_9494);
+}
+
+
+int main()
+{
+   int  VAR__1111;
+   char VAR_9494[323];
+
+   gets(VAR_9494);
+
+   while ( VAR_9494[0] != '\0' )
+   {
+      puts(VAR_9494);
+      pro(VAR_9494);
+      print(VAR_9494);
+      VAR_9494[0] = '\0';
+      gets(VAR_9494);
+   }
+
+   return 0;
+}

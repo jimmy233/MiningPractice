@@ -1,0 +1,57 @@
+int main()
+{
+   char line[101];
+   int  left[100]  = { 0 };
+   int  right[100] = { 0 };
+
+   while ( cin >> line )
+   {
+      int VAR__53647;
+      int k1 = 0;
+      int k2 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < strlen(line); VAR__53647++ )
+      {
+         if ( line[VAR__53647] == '(' )
+         {
+            left[k1] = VAR__53647;
+            k1++;
+         }
+
+         if ( line[VAR__53647] == ')' )
+         {
+            if ( k1 != 0 )
+            {
+               left[k1 - 1] = 0;
+               k1--;
+            }
+            else
+            {
+               right[k2] = VAR__53647;
+               k2++;
+            }
+         }
+      }
+
+      char ans[101];
+      for ( VAR__53647 = 0; VAR__53647 < strlen(line); VAR__53647++ )
+      {
+         ans[VAR__53647] = ' ';
+      }
+
+      ans[strlen(line)] = '\0';
+      for ( VAR__53647 = 0; VAR__53647 < k1; VAR__53647++ )
+      {
+         ans[left[VAR__53647]] = '$';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < k2; VAR__53647++ )
+      {
+         ans[right[VAR__53647]] = '?';
+      }
+
+      ( cout << line ) << endl;
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

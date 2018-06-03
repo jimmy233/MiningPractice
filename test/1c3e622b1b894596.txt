@@ -1,0 +1,88 @@
+char number[100];
+char transnum[100];
+void inttochar(int VAR__NUM)
+{
+   int  VAR__53647 = 0;
+   char VAR__TEMP[100];
+
+   do
+   {
+      VAR__TEMP[VAR__53647] = ( VAR__NUM % 10 ) + '0';
+      VAR__NUM = VAR__NUM / 10;
+      VAR__53647++;
+   } while ( VAR__NUM != 0 );
+   for ( int VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      number[( VAR__53647 - 1 ) - VAR__21230] = VAR__TEMP[VAR__21230];
+   }
+}
+
+
+void multiply(char number[], int VAR__8444594)
+{
+   int VAR__temp = 0;
+
+   for ( int VAR__21230 = strlen(number) - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      transnum[VAR__21230 + 1] = (((( number[VAR__21230] - '0' ) * VAR__8444594 ) + VAR__temp ) % 10 ) + '0';
+      VAR__temp = ((( number[VAR__21230] - '0' ) * VAR__8444594 ) + VAR__temp ) / 10;
+   }
+
+   transnum[0] = VAR__temp + '0';
+   strcpy(number, transnum);
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+
+   if ( VAR_1238123 < 31 )
+   {
+      ( cout << ((int)pow((double)2, VAR_1238123))) << endl;
+   }
+   else
+   {
+      int VAR__NUM = (int)pow((double)2, 30);
+      inttochar(VAR__NUM);
+      VAR_1238123 = VAR_1238123 - 30;
+
+      while ( VAR_1238123 != 0 )
+      {
+         if ( VAR_1238123 <= 3 )
+         {
+            int VAR__8444594 = (int)pow((double)2, VAR_1238123);
+            multiply(number, VAR__8444594);
+            VAR_1238123 = 0;
+         }
+         else
+         {
+            multiply(number, 8);
+            VAR_1238123 = VAR_1238123 - 3;
+         }
+      }
+
+      int VAR__53647 = 0;
+      do
+      {
+         if ( number[VAR__53647] != '0' )
+         {
+            break;
+         }
+         else
+         {
+            VAR__53647++;
+         }
+      } while ( 1 );
+      for ( int VAR__21230 = VAR__53647; VAR__21230 < strlen(number); VAR__21230++ )
+      {
+         cout << number[VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

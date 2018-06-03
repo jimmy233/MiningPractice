@@ -1,0 +1,43 @@
+int main()
+{
+   char allwords[WORD * LENGTH];
+   int  VAR__53647;
+   int  minPos = 0;
+   int  maxPos = 0;
+   int  tmpPos = 0;
+   int  minLen = LENGTH;
+   int  maxLen = 0;
+   int  tmpLen = 0;
+
+   gets(allwords);
+   int LEN_OF_STH = strlen(allwords);
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH + 1 ); VAR__53647++ )
+   {
+      if (( allwords[VAR__53647] == ' ' ) || ( allwords[VAR__53647] == '\0' ))
+      {
+         if ( tmpLen > maxLen )
+         {
+            maxPos = tmpPos;
+            maxLen = tmpLen;
+         }
+
+         if ( tmpLen < minLen )
+         {
+            minPos = tmpPos;
+            minLen = tmpLen;
+         }
+
+         allwords[VAR__53647] = '\0';
+         tmpLen = 0;
+         tmpPos = VAR__53647 + 1;
+      }
+      else
+      {
+         tmpLen++;
+      }
+   }
+
+   printf("%s\n", allwords + maxPos);
+   printf("%s\n", allwords + minPos);
+   return 0;
+}

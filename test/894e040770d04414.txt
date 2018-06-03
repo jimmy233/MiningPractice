@@ -1,0 +1,71 @@
+int main()
+{
+   char A_STRING[256];
+   char sub[256];
+   char replace[20];
+   char *VAR_233;
+   int  len1;
+   int  len2;
+   int  len3;
+   int  VAR__53647;
+   int  VAR__1238129;
+
+   cin >> A_STRING;
+   cin >> sub;
+   cin >> replace;
+   len1    = strlen(A_STRING);
+   len2    = strlen(sub);
+   len3    = strlen(replace);
+   VAR_233 = strstr(A_STRING, sub);
+
+   if ( VAR_233 != NULL )
+   {
+      if ( len2 > len3 )
+      {
+         VAR__1238129 = len2 - len3;
+         for ( VAR__53647 = 0; VAR__53647 < len3; VAR__53647++ )
+         {
+            *( VAR_233++ ) = replace[VAR__53647];
+         }
+
+         for ( VAR__53647 = 0; ( *(( VAR_233 + VAR__1238129 ) + VAR__53647 )) != A_STRING[len1 - 1]; VAR__53647++ )
+         {
+            *VAR_233 = *( VAR_233 + VAR__1238129 );
+         }
+
+         len1 -= VAR__1238129;
+      }
+
+      if ( len2 == len3 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < len3; VAR__53647++ )
+         {
+            *( VAR_233++ ) = replace[VAR__53647];
+         }
+      }
+
+      if ( len2 < len3 )
+      {
+         VAR__1238129 = len3 - len2;
+         for ( VAR__53647 = len1 - 1; A_STRING[VAR__53647] != ( *(( VAR_233 + VAR__1238129 ) - 1 )); VAR__53647-- )
+         {
+            A_STRING[VAR__53647 + VAR__1238129] = A_STRING[VAR__53647];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < len3; VAR__53647++ )
+         {
+            *( VAR_233++ ) = replace[VAR__53647];
+         }
+
+         len1 += VAR__1238129;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      cout << A_STRING[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

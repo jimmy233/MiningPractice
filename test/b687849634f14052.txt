@@ -1,0 +1,79 @@
+int main()
+{
+   char zfc[2000];
+
+   gets(zfc);
+   int VAR__4857423;
+   VAR__4857423 = strlen(zfc);
+   char tzfc[2000];
+   char hzfc[2000];
+   gets(tzfc);
+   gets(hzfc);
+   int ct;
+   int ch;
+   ct = strlen(tzfc);
+   ch = strlen(hzfc);
+   int VAR__53647;
+   int wei;
+   int an = 0;
+   int VAR__7685;
+   int deng = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__4857423; VAR__53647++ )
+   {
+      int VAR_FLAG = 0;
+      for ( VAR__7685 = VAR__53647; VAR__7685 < ( ct + VAR__53647 ); VAR__7685++ )
+      {
+         if ( zfc[VAR__7685] != tzfc[VAR__7685 - VAR__53647] )
+         {
+            VAR_FLAG = 1;
+         }
+
+         if ( VAR_FLAG == 1 )
+         {
+            break;
+         }
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         wei = VAR__53647;
+         an++;
+         deng = 1;
+      }
+
+      if ( an == 1 )
+      {
+         break;
+      }
+   }
+
+   if ( deng == 0 )
+   {
+      puts(zfc);
+   }
+   else
+   {
+      int xzfc[2000];
+      for ( VAR__53647 = 0; VAR__53647 < wei; VAR__53647++ )
+      {
+         xzfc[VAR__53647] = zfc[VAR__53647];
+      }
+
+      for ( VAR__53647 = wei; VAR__53647 < ( ch + wei ); VAR__53647++ )
+      {
+         xzfc[VAR__53647] = hzfc[VAR__53647 - wei];
+      }
+
+      for ( VAR__53647 = ch + wei; VAR__53647 < (( VAR__4857423 - ct ) + ch ); VAR__53647++ )
+      {
+         xzfc[VAR__53647] = zfc[VAR__53647 - ( ch - ct )];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR__4857423 - ct ) + ch ); VAR__53647++ )
+      {
+         printf("%c", xzfc[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

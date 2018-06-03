@@ -1,0 +1,38 @@
+int way(int app, int bas);
+
+int main()
+{
+   int VAR__temp;
+   int VAR__53647;
+
+   cin >> VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      int app = 0;
+      int bas = 0;
+      ( cin >> app ) >> bas;
+      ( cout << way(app, bas)) << endl;
+   }
+
+   return 0;
+}
+
+
+int way(int app, int bas)
+{
+   int VAR__COUNT = 0;
+
+   if (((( app == 1 ) || ( bas == 1 )) || (( app == 0 ) && ( bas > 0 ))) || (( bas == 0 ) && ( app > 0 )))
+   {
+      VAR__COUNT = 1;
+   }
+
+   if (( app > 1 ) && ( bas > 1 ))
+   {
+      int ap1 = app - bas;
+      int ba1 = bas - 1;
+      VAR__COUNT = way(app, ba1) + way(ap1, bas);
+   }
+
+   return VAR__COUNT;
+}

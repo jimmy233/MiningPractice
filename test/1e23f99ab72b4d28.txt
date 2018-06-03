@@ -1,0 +1,78 @@
+int main()
+{
+   char word[2000];
+   int  length[200] = { 0 };
+   int  location[200];
+   int  leap = 0;
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__MAX   = 0;
+   int  VAR__MIN   = 2000;
+   int  location1;
+   int  location2;
+
+   cin.getline(word, 2000);
+   for ( VAR__53647 = 0; VAR__53647 < 200; VAR__53647++ )
+   {
+      location[VAR__53647] = -1;
+   }
+
+   VAR__53647 = 0;
+
+   while ( word[VAR__53647] != '\0' )
+   {
+      if ((( word[VAR__53647] == ' ' ) || ( word[VAR__53647] == ',' )) && leap )
+      {
+         leap = 0;
+         VAR__21230++;
+      }
+      else
+      if ((( word[VAR__53647] != ' ' ) && ( word[VAR__53647] != ',' )) && ( !leap ))
+      {
+         leap = 1;
+         location[VAR__21230] = VAR__53647;
+         length[VAR__21230]++;
+      }
+      else
+      if ((( word[VAR__53647] != ' ' ) && ( word[VAR__53647] != ',' )) && leap )
+      {
+         length[VAR__21230]++;
+      }
+
+
+
+      VAR__53647++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 200; VAR__53647++ )
+   {
+      if (( length[VAR__53647] > 0 ) && ( location[VAR__53647] > ( -1 )))
+      {
+         if ( length[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX  = length[VAR__53647];
+            location1 = VAR__53647;
+         }
+
+         if ( length[VAR__53647] < VAR__MIN )
+         {
+            VAR__MIN  = length[VAR__53647];
+            location2 = VAR__53647;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = location[location1]; VAR__53647 < ( location[location1] + length[location1] ); VAR__53647++ )
+   {
+      cout << word[VAR__53647];
+   }
+
+   cout << endl;
+   for ( VAR__53647 = location[location2]; VAR__53647 < ( location[location2] + length[location2] ); VAR__53647++ )
+   {
+      cout << word[VAR__53647];
+   }
+
+   return 0;
+}

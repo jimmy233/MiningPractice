@@ -1,0 +1,67 @@
+int main()
+{
+   char mc[1000];
+   char zc[1000];
+   char huan[1000];
+   int  len1;
+   int  len2;
+   int  len3;
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__SUM   = 0;
+   int  ci         = 0;
+   int  loc;
+
+   scanf("%s%s%s", mc, zc, huan);
+   len1 = strlen(mc);
+   len2 = strlen(zc);
+   len3 = strlen(huan);
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      if ( mc[VAR__53647] == zc[0] )
+      {
+         VAR__SUM = 0;
+         for ( VAR__21230 = VAR__53647; VAR__21230 < len1; VAR__21230++ )
+         {
+            if ( mc[VAR__21230] == zc[VAR__21230 - VAR__53647] )
+            {
+               VAR__SUM++;
+            }
+            else
+            {
+               break;
+            }
+         }
+
+         loc = VAR__53647;
+
+         if ( VAR__SUM == len2 )
+         {
+            for ( VAR__53647 = 0; VAR__53647 < loc; VAR__53647++ )
+            {
+               printf("%c", mc[VAR__53647]);
+            }
+
+            for ( VAR__53647 = loc; VAR__53647 <= (( loc + len3 ) - 1 ); VAR__53647++ )
+            {
+               printf("%c", huan[VAR__53647 - loc]);
+            }
+
+            for ( VAR__53647 = loc + len3; VAR__53647 <= ((( len1 + len3 ) - len2 ) - 1 ); VAR__53647++ )
+            {
+               printf("%c", mc[VAR__53647]);
+            }
+
+            ci++;
+            break;
+         }
+      }
+   }
+
+   if ( ci == 0 )
+   {
+      printf("%s", mc);
+   }
+
+   return 0;
+}

@@ -1,0 +1,76 @@
+void VAR__127322(char VAR__4857423[], char VAR__819283[], int a1, int a2)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = a1; VAR__53647 <= a2; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647 - a1] = VAR__819283[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   int  VAR_1238123 = 0;
+   int  VAR__53647;
+   int  VAR__MAX;
+   int  VAR__MIN;
+   int  VAR__1111[200];
+   int  length;
+   int  VAR__12302[201] = { 0 };
+   char VAR__819283[10000];
+   char VAR__4857423[200][30] = { 0 };
+   char maxc[30] = { 0 };
+   char minc[30] = { 0 };
+
+   gets(VAR__819283);
+   length = strlen(VAR__819283);
+   for ( VAR__53647 = 1; VAR__53647 < length; VAR__53647++ )
+   {
+      if (((( VAR__819283[VAR__53647] == ' ' ) || ( VAR__819283[VAR__53647] == ',' )) && ( VAR__819283[VAR__53647 - 1] != ' ' )) && ( VAR__819283[VAR__53647 - 1] != ',' ))
+      {
+         VAR__12302[++VAR_1238123] = VAR__53647;
+      }
+   }
+
+   if ( VAR_1238123 == 0 )
+   {
+      VAR__127322(VAR__4857423[0], VAR__819283, 0, length - 1);
+   }
+   else
+   {
+      VAR__127322(VAR__4857423[0], VAR__819283, 0, VAR__12302[1] - 1);
+      for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__127322(VAR__4857423[VAR__53647], VAR__819283, VAR__12302[VAR__53647] + 1, VAR__12302[VAR__53647 + 1] - 1);
+      }
+
+      VAR__127322(VAR__4857423[VAR_1238123], VAR__819283, VAR__12302[VAR_1238123] + 1, length);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__1111[VAR__53647] = strlen(VAR__4857423[VAR__53647]);
+   }
+
+   VAR__MAX = VAR__1111[0];
+   VAR__MIN = VAR__1111[0];
+   strcpy(maxc, VAR__4857423[0]);
+   strcpy(minc, VAR__4857423[0]);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__1111[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__1111[VAR__53647];
+         strcpy(maxc, VAR__4857423[VAR__53647]);
+      }
+      else
+      if ( VAR__1111[VAR__53647] < VAR__MIN )
+      {
+         VAR__MIN = VAR__1111[VAR__53647];
+         strcpy(minc, VAR__4857423[VAR__53647]);
+      }
+   }
+
+   printf("%s\n%s\n", maxc, minc);
+}

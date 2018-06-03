@@ -1,0 +1,83 @@
+int main()
+{
+   int  VAR__53647;
+   int  LEN_OF_STH;
+   int  lnum;
+   int  VAR__NUM  = 0;
+   int  left[102] = { -1 };
+   int  fail[102] = { 0 };
+   int  VAR__temp = 0;
+   char s1[102];
+
+   while ( scanf("%s", s1) != EOF )
+   {
+      printf("%s\n", s1);
+      LEN_OF_STH = strlen(s1);
+      lnum       = 0;
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( s1[VAR__53647] == '(' )
+         {
+            lnum++;
+            left[lnum] = VAR__53647;
+         }
+
+         if ( s1[VAR__53647] == ')' )
+         {
+            if ( lnum == 0 )
+            {
+               fail[VAR__53647] = 2;
+            }
+            else
+            {
+               left[lnum] = -1;
+               lnum--;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= lnum; VAR__53647++ )
+      {
+         fail[left[VAR__53647]] = 1;
+         left[VAR__53647]       = -1;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( fail[VAR__53647] > 0 )
+         {
+            VAR__NUM++;
+         }
+      }
+
+
+      for ( VAR__53647 = 0; ( VAR__53647 < LEN_OF_STH ) && ( VAR__NUM > 0 ); VAR__53647++ )
+      {
+         if ( fail[VAR__53647] == 2 )
+         {
+            printf("?");
+            VAR__NUM--;
+            VAR__temp = 1;
+         }
+
+         if ( fail[VAR__53647] == 1 )
+         {
+            printf("$");
+            VAR__NUM--;
+            VAR__temp = 1;
+         }
+
+         if (( fail[VAR__53647] == 0 ) && ( VAR__temp == 1 ))
+         {
+            printf(" ");
+         }
+
+         fail[VAR__53647] = 0;
+      }
+
+      VAR__temp = 0;
+      printf("\n");
+   }
+
+   return 0;
+}

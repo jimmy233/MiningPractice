@@ -1,0 +1,97 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__8444594 = 1;
+   int  LEN_OF_STH;
+   int  VAR__MIN = 30;
+   int  VAR__MAX = 0;
+   int  v;
+   char VAR__819283[3200];
+   char *VAR_233[200];
+   char *te = NULL;
+   char *yu = NULL;
+   char *te1;
+   char *yu1;
+
+   VAR_233[0] = VAR__819283;
+   for ( VAR__53647 = 0; VAR__53647 < 3200; VAR__53647++ )
+   {
+      cin.get(VAR__819283[VAR__53647]);
+
+      if ( VAR__819283[VAR__53647] == '\n' )
+      {
+         VAR_233[VAR__8444594] = VAR__819283 + VAR__53647;
+         break;
+      }
+
+      if (( VAR__819283[VAR__53647] == ' ' ) && ( VAR__819283[VAR__53647 - 1] != ',' ))
+      {
+         VAR_233[VAR__8444594++] = VAR__819283 + VAR__53647;
+      }
+
+      if ( VAR__819283[VAR__53647] == ',' )
+      {
+         VAR_233[VAR__8444594++] = VAR__819283 + VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      v = 0;
+
+      if (( *VAR_233[VAR__53647 - 1] ) == ',' )
+      {
+         v = 1;
+      }
+
+      if ( VAR__53647 != 1 )
+      {
+         if (((( VAR_233[VAR__53647] - VAR_233[VAR__53647 - 1] ) - 1 ) - v ) > VAR__MAX )
+         {
+            VAR__MAX = ( VAR_233[VAR__53647] - VAR_233[VAR__53647 - 1] ) - 1;
+            te       = ( VAR_233[VAR__53647 - 1] + 1 ) + v;
+            te1      = VAR_233[VAR__53647];
+         }
+
+         if (((( VAR_233[VAR__53647] - VAR_233[VAR__53647 - 1] ) - 1 ) - v ) < VAR__MIN )
+         {
+            VAR__MIN = (( VAR_233[VAR__53647] - VAR_233[VAR__53647 - 1] ) - 1 ) - v;
+            yu       = ( VAR_233[VAR__53647 - 1] + 1 ) + v;
+            yu1      = VAR_233[VAR__53647];
+         }
+      }
+      else
+      {
+         if (( VAR_233[VAR__53647] - VAR_233[VAR__53647 - 1] ) > VAR__MAX )
+         {
+            VAR__MAX = VAR_233[VAR__53647] - VAR_233[VAR__53647 - 1];
+            te       = VAR_233[VAR__53647 - 1];
+            te1      = VAR_233[VAR__53647];
+         }
+
+         if (( VAR_233[VAR__53647] - VAR_233[VAR__53647 - 1] ) < VAR__MIN )
+         {
+            VAR__MIN = VAR_233[VAR__53647] - VAR_233[VAR__53647 - 1];
+            yu       = VAR_233[VAR__53647 - 1];
+            yu1      = VAR_233[VAR__53647];
+         }
+      }
+   }
+
+   while ( te != te1 )
+   {
+      cout << ( *te );
+      te++;
+   }
+
+   cout << endl;
+
+   while ( yu != yu1 )
+   {
+      cout << ( *yu );
+      yu++;
+   }
+
+   cin.get();
+   return 0;
+}

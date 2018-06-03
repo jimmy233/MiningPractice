@@ -1,0 +1,51 @@
+int main()
+{
+   int VAR_1238123;
+   int LEN_OF_STH   = 1;
+   int VAR__NUM[50] = { 0 };
+   int *VAR_233     = VAR__NUM;
+   int carry        = 0;
+
+   VAR__NUM[0] = 1;
+   cin >> VAR_1238123;
+
+   while ( VAR_1238123-- )
+   {
+      VAR_233 = VAR__NUM;
+      carry   = 0;
+
+      while ( VAR_233 < ( VAR__NUM + LEN_OF_STH ))
+      {
+         *VAR_233 *= 2;
+         *VAR_233 += carry;
+         carry     = 0;
+
+         while (( *VAR_233 ) > 9 )
+         {
+            carry++;
+            *VAR_233 -= 10;
+         }
+
+         VAR_233++;
+      }
+
+      if ( carry )
+      {
+         LEN_OF_STH++;
+         *VAR_233 = carry;
+      }
+   }
+
+   if (( *VAR_233 ) == 0 )
+   {
+      VAR_233--;
+   }
+
+   while ( VAR_233 >= VAR__NUM )
+   {
+      cout << ( *VAR_233 );
+      VAR_233--;
+   }
+
+   return 0;
+}

@@ -1,0 +1,55 @@
+int main()
+{
+   char VAR_9494[260];
+   char s1[260];
+   char s2[260];
+   char s3[260];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__1111;
+   int  VAR_2890;
+   int  LEN_OF_STH;
+   int  len1;
+   int  len2;
+
+   gets(VAR_9494);
+   gets(s1);
+   gets(s2);
+   LEN_OF_STH = strlen(VAR_9494);
+   len1       = strlen(s1);
+   len2       = strlen(s2);
+   for ( VAR__53647 = 0, VAR_2890 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++, VAR_2890++ )
+   {
+      s3[VAR_2890] = VAR_9494[VAR__53647];
+
+      if ( VAR_9494[VAR__53647] == s1[0] )
+      {
+         int VAR__112390 = 1;
+         for ( VAR__21230 = 0, VAR__8444594 = VAR__53647; VAR__21230 < len1; VAR__21230++, VAR__8444594++ )
+         {
+            if ( VAR_9494[VAR__8444594] != s1[VAR__21230] )
+            {
+               VAR__112390 = 0;
+               break;
+            }
+         }
+
+         if ( VAR__112390 )
+         {
+            for ( VAR__1111 = 0; VAR__1111 < len2; VAR__1111++, VAR_2890++ )
+            {
+               s3[VAR_2890] = s2[VAR__1111];
+            }
+
+            VAR_2890--;
+            VAR__53647 = ( VAR__53647 + len1 ) - 1;
+            s1[0]      = '.';
+         }
+      }
+   }
+
+   s3[( LEN_OF_STH - len1 ) + len2] = '\0';
+   printf("%s", s3);
+   return 0;
+}

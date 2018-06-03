@@ -1,0 +1,85 @@
+int amount(char VAR__4857423, char VAR__819283[101])
+{
+   int VAR__53647;
+   int amount = 0;
+
+   for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__4857423 )
+      {
+         amount = amount + 1;
+      }
+   }
+
+   return amount;
+}
+
+
+void match(char VAR__819283[101])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_233;
+   int VAR_666;
+
+   VAR_233 = amount('(', VAR__819283);
+   VAR_666 = amount(')', VAR__819283);
+   for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '(' )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__819283[VAR__21230] != '\0'; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230] == '(' )
+            {
+               break;
+            }
+            else
+            if ( VAR__819283[VAR__21230] == ')' )
+            {
+               VAR__819283[VAR__53647] = ' ';
+               VAR__819283[VAR__21230] = ' ';
+               break;
+            }
+         }
+      }
+   }
+
+   if (( amount('(', VAR__819283) < VAR_233 ) || ( amount(')', VAR__819283) < VAR_666 ))
+   {
+      return match(VAR__819283);
+   }
+}
+
+
+int main()
+{
+   char VAR_9494[101];
+   int  VAR__53647;
+
+   for ( ; scanf("%s", VAR_9494) != EOF; )
+   {
+      printf("%s\n", VAR_9494);
+      match(VAR_9494);
+      for ( VAR__53647 = 0; VAR_9494[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            printf("$");
+         }
+         else
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            printf("?");
+         }
+         else
+         {
+            printf(" ");
+         }
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

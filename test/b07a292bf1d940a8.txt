@@ -1,0 +1,90 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  left[102];
+   int  LEN_OF_STH;
+   int  VAR__21230;
+   int  VAR__8444594;
+   char *VAR_233 = NULL;
+   char A_STRING[102];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__8444594 = 0;
+      cin >> A_STRING;
+      ( cout << A_STRING ) << endl;
+      LEN_OF_STH = strlen(A_STRING);
+      VAR_233    = A_STRING;
+      for ( ; VAR_233 < ( A_STRING + LEN_OF_STH ); VAR_233++ )
+      {
+         if ((( *VAR_233 ) != '(' ) && (( *VAR_233 ) != ')' ))
+         {
+            *VAR_233 = ' ';
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( A_STRING[VAR__21230] == '(' )
+         {
+            VAR__8444594++;
+            left[VAR__8444594] = VAR__21230;
+         }
+
+         if ( A_STRING[VAR__21230] == ')' )
+         {
+            if ( VAR__8444594 == 0 )
+            {
+               A_STRING[VAR__21230] = '?';
+            }
+            else
+            {
+               left[VAR__8444594] = -1;
+               VAR__8444594--;
+            }
+         }
+      }
+
+      if ( VAR__8444594 == 0 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+         {
+            if ( A_STRING[VAR__21230] != '?' )
+            {
+               cout << " ";
+            }
+            else
+            {
+               cout << A_STRING[VAR__21230];
+            }
+         }
+
+         cout << endl;
+      }
+      else
+      {
+         for ( ; VAR__8444594 > 0; VAR__8444594-- )
+         {
+            A_STRING[left[VAR__8444594]] = '$';
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+         {
+            if (( A_STRING[VAR__21230] != '?' ) && ( A_STRING[VAR__21230] != '$' ))
+            {
+               cout << " ";
+            }
+            else
+            {
+               cout << A_STRING[VAR__21230];
+            }
+         }
+
+         cout << endl;
+      }
+   }
+
+   return 0;
+}

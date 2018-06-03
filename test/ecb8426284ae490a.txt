@@ -1,0 +1,58 @@
+int main()
+{
+   char sen[101];
+   char rsen[101];
+
+   while ( cin >> sen )
+   {
+      int pos[101];
+      int VAR__NUM = 0;
+      int VAR__53647;
+      int VAR__temp = 0;
+      ( cout << sen ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 <= ( strlen(sen) - 1 ); VAR__53647++ )
+      {
+         if ( sen[VAR__53647] == '(' )
+         {
+            VAR__NUM++;
+            pos[VAR__NUM]    = VAR__53647;
+            rsen[VAR__53647] = '$';
+         }
+         else
+         if ( sen[VAR__53647] == ')' )
+         {
+            if ( VAR__NUM > 0 )
+            {
+               rsen[pos[VAR__NUM]] = ' ';
+               rsen[VAR__53647]    = ' ';
+               VAR__NUM--;
+            }
+            else
+            {
+               rsen[VAR__53647] = '?';
+            }
+         }
+         else
+         {
+            rsen[VAR__53647] = ' ';
+         }
+      }
+
+      if ( VAR__NUM != 0 )
+      {
+         for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+         {
+            rsen[pos[VAR__NUM]] = '$';
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ( strlen(sen) - 2 ); VAR__53647++ )
+      {
+         cout << rsen[VAR__53647];
+      }
+
+      ( cout << rsen[strlen(sen) - 1] ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,57 @@
+int findRight(char VAR_9494[], int pos, int VAR__1111)
+{
+   int VAR__temp;
+
+   if ( VAR_9494[pos] == '\0' )
+   {
+      return -1;
+   }
+
+   if ( VAR_9494[pos] == '(' )
+   {
+      VAR__temp = findRight(VAR_9494, pos + 1, VAR__1111 + 1);
+
+      if ( VAR__temp == ( -1 ))
+      {
+         VAR_9494[pos] = '$';
+         return -1;
+      }
+      else
+      {
+         VAR_9494[pos] = ' ';
+         return findRight(VAR_9494, VAR__temp + 1, VAR__1111);
+      }
+   }
+   else
+   if ( VAR_9494[pos] == ')' )
+   {
+      if ( VAR__1111 == 0 )
+      {
+         VAR_9494[pos] = '?';
+         findRight(VAR_9494, pos + 1, VAR__1111);
+      }
+      else
+      {
+         VAR_9494[pos] = ' ';
+         return pos;
+      }
+   }
+   else
+   {
+      VAR_9494[pos] = ' ';
+      return findRight(VAR_9494, pos + 1, VAR__1111);
+   }
+}
+
+
+int main()
+{
+   char VAR_9494[1000];
+
+   for ( ; cin >> VAR_9494; )
+   {
+      ( cout << VAR_9494 ) << '\n';
+      findRight(VAR_9494, 0, 0);
+      ( cout << VAR_9494 ) << '\n';
+   }
+}

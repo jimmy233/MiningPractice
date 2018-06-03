@@ -1,0 +1,38 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   double VAR__temp;
+   double VAR_9494[1000][1000];
+   struct point
+   {
+      double VAR__7685;
+      double VAR__3918907;
+   }
+   place[10000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf %lf", &place[VAR__53647].VAR__7685, &place[VAR__53647].VAR__3918907);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR_9494[VAR__53647][VAR__21230] = sqrt((( place[VAR__21230].VAR__7685 - place[VAR__53647].VAR__7685 ) * ( place[VAR__21230].VAR__7685 - place[VAR__53647].VAR__7685 )) + (( place[VAR__21230].VAR__3918907 - place[VAR__53647].VAR__3918907 ) * ( place[VAR__21230].VAR__3918907 - place[VAR__53647].VAR__3918907 )));
+
+         if ( VAR_9494[VAR__53647][VAR__21230] > VAR_9494[0][0] )
+         {
+            VAR__temp      = VAR_9494[0][0];
+            VAR_9494[0][0] = VAR_9494[VAR__53647][VAR__21230];
+            VAR_9494[VAR__53647][VAR__21230] = VAR__temp;
+         }
+      }
+   }
+
+   printf("%.4lf\n", VAR_9494[0][0]);
+   return 0;
+}

@@ -1,0 +1,62 @@
+void Match(int input_len);
+
+char input[128];
+char tmp_input[128];
+int main()
+{
+   while ( scanf("%s", input) != EOF )
+   {
+      strcpy(tmp_input, input);
+      int input_len = strlen(input);
+      Match(input_len);
+      for ( int VAR__53647 = 0; VAR__53647 <= ( input_len - 1 ); VAR__53647++ )
+      {
+         if ( input[VAR__53647] == '(' )
+         {
+            input[VAR__53647] = '$';
+         }
+         else
+         if ( input[VAR__53647] == ')' )
+         {
+            input[VAR__53647] = '?';
+         }
+         else
+         {
+            input[VAR__53647] = ' ';
+         }
+      }
+
+      printf("%s\n", tmp_input);
+      printf("%s\n", input);
+   }
+
+   return 0;
+}
+
+
+void Match(int input_len)
+{
+   int cur_left  = -1;
+   int cur_right = -1;
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( input_len - 1 ); VAR__53647++ )
+   {
+      if ( input[VAR__53647] == '(' )
+      {
+         cur_left = VAR__53647;
+         continue;
+      }
+
+      if ( input[VAR__53647] == ')' )
+      {
+         if ( cur_left != ( -1 ))
+         {
+            input[cur_left]   = ' ';
+            input[VAR__53647] = ' ';
+            cur_left          = -1;
+            VAR__53647        = -1;
+            continue;
+         }
+      }
+   }
+}

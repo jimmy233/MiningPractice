@@ -1,0 +1,58 @@
+int main()
+{
+   char VAR_9494[101] = { 0 };
+
+   while ( scanf("%s", VAR_9494) != EOF )
+   {
+      int  VAR__53647;
+      int  VAR__21230;
+      int  you = 0;
+      int  l1  = strlen(VAR_9494);
+      char VAR__819283[101];
+      strcpy(VAR__819283, VAR_9494);
+      for ( VAR__53647 = l1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            you = 0;
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < l1; VAR__21230++ )
+            {
+               if ( VAR_9494[VAR__21230] == ')' )
+               {
+                  VAR_9494[VAR__53647] = ' ';
+                  VAR_9494[VAR__21230] = ' ';
+                  you = you + 1;
+                  break;
+               }
+            }
+
+            if ( you == 0 )
+            {
+               VAR_9494[VAR__53647] = '$';
+            }
+         }
+      }
+
+      puts(VAR__819283);
+      for ( VAR__53647 = 0; VAR__53647 < l1; VAR__53647++ )
+      {
+         if (( VAR_9494[VAR__53647] == '?' ) || ( VAR_9494[VAR__53647] == '$' ))
+         {
+            printf("%c", VAR_9494[VAR__53647]);
+         }
+         else
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            printf("?");
+         }
+         else
+         {
+            printf(" ");
+         }
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

@@ -1,0 +1,40 @@
+int N;
+void chenger(int depth, char *VAR__819283)
+{
+   if ( depth == N )
+   {
+      int LEN_OF_STH = strlen(VAR__819283) - 1;
+      for ( int VAR__53647 = LEN_OF_STH; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << VAR__819283[VAR__53647];
+      }
+   }
+   else
+   {
+      char VAR__19328[100] = { '\0' };
+      int  LEN_OF_STH      = strlen(VAR__819283);
+      int  VAR__TEMP[100]  = { 0 };
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR__19328[VAR__53647]    = (((( VAR__819283[VAR__53647] - '0' ) * 2 ) % 10 ) + VAR__TEMP[VAR__53647] ) + '0';
+         VAR__TEMP[VAR__53647 + 1] = (( VAR__819283[VAR__53647] - '0' ) * 2 ) / 10;
+      }
+
+      if ( VAR__TEMP[LEN_OF_STH] != 0 )
+      {
+         VAR__19328[LEN_OF_STH] = VAR__TEMP[LEN_OF_STH] + '0';
+      }
+
+      chenger(depth + 1, VAR__19328);
+   }
+}
+
+
+int main()
+{
+   cin >> N;
+   char VAR__NUM[100] = { '\0' };
+   VAR__NUM[0] = '1';
+   chenger(0, VAR__NUM);
+   return 0;
+}

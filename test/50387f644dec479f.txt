@@ -1,0 +1,83 @@
+int findl(int VAR__53647, char VAR__819283[102], int VAR_1238123);
+int find(int VAR__53647, char VAR__819283[102]);
+
+int main()
+{
+   char VAR__819283[102];
+
+   memset(VAR__819283, '\n', 102);
+
+   while ( cin >> VAR__819283 )
+   {
+      int VAR_1238123 = strlen(VAR__819283);
+      ( cout << VAR__819283 ) << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         int VAR__7685 = 0;
+
+         if (( VAR__819283[VAR__53647] == '(' ) && ( findl(VAR__53647, VAR__819283, VAR_1238123) > VAR_1238123 ))
+         {
+            cout << "$";
+         }
+         else
+         if (( VAR__819283[VAR__53647] == ')' ) && ( find(VAR__53647, VAR__819283) < 0 ))
+         {
+            cout << '?';
+         }
+         else
+         {
+            cout << " ";
+         }
+      }
+
+      cout << endl;
+   }
+}
+
+
+int findl(int VAR__53647, char VAR__819283[102], int VAR_1238123)
+{
+   int VAR__8444594 = VAR__53647 + 1;
+
+   while ( VAR__8444594 < VAR_1238123 )
+   {
+      if ( VAR__819283[VAR__8444594] == '(' )
+      {
+         VAR__8444594 = findl(VAR__8444594, VAR__819283, VAR_1238123);
+      }
+      else
+      if ( VAR__819283[VAR__8444594] == ')' )
+      {
+         return VAR__8444594;
+      }
+
+
+      VAR__8444594++;
+   }
+
+   return VAR_1238123 + 1;
+}
+
+
+int find(int VAR__53647, char VAR__819283[102])
+{
+   int VAR__8444594 = VAR__53647 - 1;
+
+   while ( VAR__8444594 >= 0 )
+   {
+      if ( VAR__819283[VAR__8444594] == ')' )
+      {
+         VAR__8444594 = find(VAR__8444594, VAR__819283);
+      }
+      else
+      if ( VAR__819283[VAR__8444594] == '(' )
+      {
+         return VAR__8444594;
+      }
+
+
+      VAR__8444594--;
+   }
+
+   return -1;
+}

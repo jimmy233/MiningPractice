@@ -1,0 +1,70 @@
+int main()
+{
+   char A_STRING[300];
+   char subString[300];
+   char replacement[300];
+   char *VAR_233;
+   char *VAR_666;
+   int  strLen;
+   int  subLen;
+   int  repLen;
+   int  move;
+   int  VAR__53647;
+
+   (( cin >> A_STRING ) >> subString ) >> replacement;
+   strLen  = strlen(A_STRING);
+   subLen  = strlen(subString);
+   repLen  = strlen(replacement);
+   VAR_233 = strstr(A_STRING, subString);
+
+   if ( VAR_233 == NULL )
+   {
+      cout << A_STRING;
+      return 0;
+   }
+
+   VAR_666 = replacement;
+
+   if ( repLen > subLen )
+   {
+      move = repLen - subLen;
+      for ( VAR_666 = ( A_STRING + strLen ) + move; VAR_666 >= ( VAR_233 + repLen ); VAR_666-- )
+      {
+         *VAR_666 = *( VAR_666 - move );
+      }
+
+      VAR__53647 = 0;
+      VAR_666    = replacement;
+
+      while ( VAR__53647 < repLen )
+      {
+         *( VAR_233++ ) = *( VAR_666++ );
+         VAR__53647++;
+      }
+   }
+   else
+   {
+      VAR__53647 = 0;
+
+      while ( VAR__53647 < repLen )
+      {
+         *( VAR_233++ ) = *( VAR_666++ );
+         VAR__53647++;
+      }
+
+      if ( repLen < subLen )
+      {
+         move = subLen - repLen;
+
+         while (( *( VAR_233 + move )) != '\0' )
+         {
+            *( VAR_233++ ) = *( VAR_233 + move );
+         }
+
+         *VAR_233 = '\0';
+      }
+   }
+
+   ( cout << A_STRING ) << endl;
+   return 0;
+}

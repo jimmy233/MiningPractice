@@ -1,0 +1,73 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  LEN_OF_STH = 0;
+   char VAR__819283[1000];
+   char VAR__19328[1000];
+
+   while ( gets(VAR__819283) != NULL )
+   {
+      LEN_OF_STH = strlen(VAR__819283);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = 'c';
+      }
+
+      VAR__19328[VAR__53647] = '\0';
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if (( VAR__819283[VAR__53647] != '(' ) && ( VAR__819283[VAR__53647] != ')' ))
+         {
+            VAR__19328[VAR__53647] = ' ';
+         }
+         else
+         if (( VAR__819283[VAR__53647] == ')' ) && ( VAR__19328[VAR__53647] != ' ' ))
+         {
+            VAR__19328[VAR__53647] = '?';
+         }
+         else
+         if ( VAR__819283[VAR__53647] == '(' )
+         {
+            if ( VAR__53647 == ( LEN_OF_STH - 1 ))
+            {
+               VAR__19328[VAR__53647] = '$';
+            }
+            else
+            {
+               for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+               {
+                  if (( VAR__819283[VAR__21230] == ')' ) && ( VAR__19328[VAR__21230] != ' ' ))
+                  {
+                     VAR__19328[VAR__21230] = ' ';
+                     VAR__19328[VAR__53647] = ' ';
+                     break;
+                  }
+               }
+
+               if ( VAR__21230 == LEN_OF_STH )
+               {
+                  VAR__19328[VAR__53647] = '$';
+               }
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         printf("%c", VAR__819283[VAR__53647]);
+      }
+
+      printf("\n");
+      for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         printf("%c", VAR__19328[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   getchar();
+   getchar();
+}

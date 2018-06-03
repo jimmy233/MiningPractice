@@ -1,0 +1,61 @@
+int main()
+{
+   char A_STRING[101];
+   char res[101];
+   int  VAR_1238123;
+   int  stack[100];
+   int  VAR__8444594;
+
+   cin >> VAR_1238123;
+
+   while ( VAR_1238123-- )
+   {
+      cin >> A_STRING;
+      int LEN_OF_STH = strlen(A_STRING);
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         res[VAR__53647] = ' ';
+      }
+
+      res[LEN_OF_STH] = '\0';
+      VAR__8444594    = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            if (( VAR__8444594 != 0 ) && ( stack[VAR__8444594 - 1] < 0 ))
+            {
+               VAR__8444594--;
+            }
+            else
+            {
+               stack[VAR__8444594++] = VAR__53647 + 1;
+            }
+         }
+         else
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            stack[VAR__8444594++] = -( VAR__53647 + 1 );
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         int index = stack[VAR__53647];
+
+         if ( index < 0 )
+         {
+            res[( -index ) - 1] = '$';
+         }
+         else
+         {
+            res[index - 1] = '?';
+         }
+      }
+
+      ( cout << A_STRING ) << endl;
+      ( cout << res ) << endl;
+   }
+
+   return 0;
+}

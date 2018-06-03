@@ -1,0 +1,53 @@
+struct point
+{
+   double VAR__7685;
+   double VAR__3918907;
+};
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct point *VAR_233;
+   VAR_233 = (struct point *)malloc(( sizeof( point )) * VAR_1238123);
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf %lf", &VAR_233[VAR__53647].VAR__7685, &VAR_233[VAR__53647].VAR__3918907);
+   }
+
+   double *VAR__12302 = (double *)malloc(( sizeof( double )) * ( VAR_1238123 - 1 ));
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__12302[VAR__53647] = 0.0;
+   }
+
+   double VAR__4857423;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__4857423 = sqrt((( VAR_233[VAR__53647].VAR__7685 - VAR_233[VAR__21230].VAR__7685 ) * ( VAR_233[VAR__53647].VAR__7685 - VAR_233[VAR__21230].VAR__7685 )) + (( VAR_233[VAR__53647].VAR__3918907 - VAR_233[VAR__21230].VAR__3918907 ) * ( VAR_233[VAR__53647].VAR__3918907 - VAR_233[VAR__21230].VAR__3918907 )));
+
+         if ( VAR__4857423 > VAR__12302[VAR__53647] )
+         {
+            VAR__12302[VAR__53647] = VAR__4857423;
+         }
+      }
+   }
+
+   double VAR__MAX = 0.0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__12302[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__12302[VAR__53647];
+      }
+   }
+
+   printf("%.4lf\n", VAR__MAX);
+   getchar();
+   getchar();
+   getchar();
+}

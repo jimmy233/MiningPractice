@@ -1,0 +1,49 @@
+int main()
+{
+   char A_STRING[N + 1];
+   char VAR_FLAG[N + 1];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  sstack[N + 1];
+
+   while ( scanf("%s", A_STRING) != EOF )
+   {
+      printf("%s\n", A_STRING);
+      VAR__21230 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            sstack[VAR__21230++] = VAR__53647;
+         }
+         else
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            if ( VAR__21230 <= 0 )
+            {
+               VAR_FLAG[VAR__53647] = '?';
+            }
+            else
+            {
+               VAR__21230--;
+               VAR_FLAG[sstack[VAR__21230]] = ' ';
+               VAR_FLAG[VAR__53647]         = ' ';
+            }
+         }
+         else
+         {
+            VAR_FLAG[VAR__53647] = ' ';
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+      {
+         VAR_FLAG[sstack[VAR__53647]] = '$';
+      }
+
+      VAR_FLAG[strlen(A_STRING)] = '\0';
+      printf("%s\n", VAR_FLAG);
+   }
+
+   return 0;
+}

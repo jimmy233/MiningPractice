@@ -1,0 +1,47 @@
+int main()
+{
+   char word[50][101];
+   char input[5001];
+   int  VAR__NUM = 0;
+
+   gets(input);
+   int LEN_OF_STH = strlen(input);
+   for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      int VAR__21230 = 0;
+
+      while (( VAR__53647 < LEN_OF_STH ) && ((( input[VAR__53647] >= 'a' ) && ( input[VAR__53647] <= 'z' )) || (( input[VAR__53647] >= 'A' ) && ( input[VAR__53647] <= 'Z' ))))
+      {
+         word[VAR__NUM][VAR__21230] = input[VAR__53647];
+         VAR__21230++;
+         VAR__53647++;
+      }
+
+      if ( VAR__21230 > 0 )
+      {
+         word[VAR__NUM][VAR__21230] = '\0';
+         VAR__NUM++;
+      }
+   }
+
+   int max_len   = strlen(word[0]);
+   int min_len   = max_len;
+   int max_index = 0;
+   int min_index = 0;
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( max_len < strlen(word[VAR__53647]))
+      {
+         max_index = VAR__53647;
+         max_len   = strlen(word[VAR__53647]);
+      }
+
+      if ( min_len > strlen(word[VAR__53647]))
+      {
+         min_index = VAR__53647;
+         min_len   = strlen(word[VAR__53647]);
+      }
+   }
+
+   printf("%s\n%s\n", word[max_index], word[min_index]);
+}

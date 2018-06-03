@@ -1,0 +1,65 @@
+char VAR__819283[2000];
+int  result[2000];
+int  VAR__TEMP[2000];
+void calculate()
+{
+   memset(result, 0, sizeof( result ));
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= 1900; VAR__53647++ )
+   {
+      result[VAR__53647] = ( VAR__TEMP[VAR__53647] * 2 ) + result[VAR__53647];
+
+      if ( result[VAR__53647] >= 10 )
+      {
+         result[VAR__53647 + 1] = ( result[VAR__53647] / 10 ) + result[VAR__53647 + 1];
+         result[VAR__53647]     = result[VAR__53647] % 10;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 1900; VAR__53647++ )
+   {
+      VAR__TEMP[VAR__53647] = result[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   memset(result, 0, sizeof( result ));
+   memset(VAR__TEMP, 0, sizeof( VAR__TEMP ));
+   VAR__TEMP[0] = 1;
+   int VAR_1238123 = 0;
+   int VAR__53647  = 0;
+   int VAR__21230  = 0;
+   cin >> VAR_1238123;
+
+   if ( VAR_1238123 == 0 )
+   {
+      ( cout << 1 ) << endl;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         calculate();
+      }
+
+      for ( VAR__53647 = 1900; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( result[VAR__53647] != 0 )
+         {
+            break;
+         }
+      }
+
+      for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+      {
+         cout << result[VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

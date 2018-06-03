@@ -1,0 +1,56 @@
+int match(char VAR__4857423[], int VAR_1238123)
+{
+   for ( int VAR__53647 = VAR_1238123 + 1; VAR__53647 < strlen(VAR__4857423); VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] == ')' )
+      {
+         VAR__4857423[VAR__53647]  = ' ';
+         VAR__4857423[VAR_1238123] = ' ';
+         return VAR__53647;
+      }
+      else
+      if ( VAR__4857423[VAR__53647] == '(' )
+      {
+         VAR__53647 = match(VAR__4857423, VAR__53647);
+      }
+   }
+
+   VAR__4857423[VAR_1238123] = '$';
+   return strlen(VAR__4857423) - 1;
+}
+
+
+int main()
+{
+   char ch[110];
+
+   while ( cin >> ch )
+   {
+      ( cout << ch ) << endl;
+      for ( int VAR__53647 = 0; ch[VAR__53647] != 0; VAR__53647++ )
+      {
+         if (( ch[VAR__53647] != '(' ) && ( ch[VAR__53647] != ')' ))
+         {
+            ch[VAR__53647] = ' ';
+         }
+      }
+
+
+      for ( int VAR__53647 = 0; ch[VAR__53647] != 0; VAR__53647++ )
+      {
+         if ( ch[VAR__53647] == '(' )
+         {
+            VAR__53647 = match(ch, VAR__53647);
+         }
+         else
+         if ( ch[VAR__53647] == ')' )
+         {
+            ch[VAR__53647] = '?';
+         }
+      }
+
+      ( cout << ch ) << endl;
+   }
+
+   return 0;
+}

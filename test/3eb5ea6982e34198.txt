@@ -1,0 +1,125 @@
+int dingwei(char duan[50], char chang[50])
+{
+   int VAR__53647;
+   int geshu1 = 0;
+   int geshu2 = 0;
+
+   for ( VAR__53647 = 0; duan[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      geshu1 += 1;
+   }
+
+   for ( VAR__53647 = 0; chang[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      geshu2 += 1;
+   }
+
+   int VAR__21230;
+   int cishu  = 0;
+   int weizhi = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( geshu2 - geshu1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < geshu1; VAR__21230++ )
+      {
+         if ( duan[VAR__21230] == chang[VAR__53647] )
+         {
+            cishu++;
+            VAR__53647++;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      if ( cishu == geshu1 )
+      {
+         weizhi = VAR__53647 - geshu1;
+         break;
+      }
+      else
+      {
+         cishu = 0;
+         continue;
+      }
+   }
+
+   if ( cishu == 0 )
+   {
+      return -1;
+   }
+   else
+   {
+      return weizhi;
+   }
+}
+
+
+int main()
+{
+   char zfc[300];
+   char beiti[256];
+   char ti[256];
+
+   scanf("%s%s%s", zfc, beiti, ti);
+   int lenzfc;
+   int lenbt;
+   int lent;
+   int weizhi;
+   int VAR__53647;
+   lenzfc = strlen(zfc);
+   lenbt  = strlen(beiti);
+   lent   = strlen(ti);
+   weizhi = dingwei(beiti, zfc);
+
+   if ( weizhi < 0 )
+   {
+      printf("%s\n", zfc);
+   }
+   else
+   {
+      if ( lenbt == lent )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < lenbt; VAR__53647++ )
+         {
+            zfc[weizhi + VAR__53647] = ti[VAR__53647];
+         }
+      }
+      else
+      if ( lenbt > lent )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < lent; VAR__53647++ )
+         {
+            zfc[weizhi + VAR__53647] = ti[VAR__53647];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < (( lenzfc - lenbt ) - weizhi ); VAR__53647++ )
+         {
+            zfc[( weizhi + lent ) + VAR__53647] = zfc[( weizhi + lenbt ) + VAR__53647];
+         }
+
+         zfc[( lenzfc - lenbt ) + lent] = '\0';
+      }
+      else
+      if ( lenbt < lent )
+      {
+         for ( VAR__53647 = lenzfc - 1; VAR__53647 >= ( weizhi + lenbt ); VAR__53647-- )
+         {
+            zfc[( VAR__53647 + lent ) - lenbt] = zfc[VAR__53647];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < lent; VAR__53647++ )
+         {
+            zfc[weizhi + VAR__53647] = ti[VAR__53647];
+         }
+
+         zfc[( lenzfc + lent ) - lenbt] = '\0';
+      }
+
+
+
+      printf("%s\n", zfc);
+   }
+
+   return 0;
+}

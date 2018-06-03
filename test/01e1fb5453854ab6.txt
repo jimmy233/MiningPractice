@@ -1,0 +1,85 @@
+int main()
+{
+   char VAR_9494[100];
+   int  chars[20] = { 0 };
+   int  loci[20]  = { 0 };
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__MAX;
+   int  maxi;
+   int  VAR__MIN;
+   int  mini;
+   int  preword = 0;
+   int  word    = 0;
+
+   gets(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 <= strlen(VAR_9494); VAR__53647++ )
+   {
+      if ( preword )
+      {
+         if ( isalpha(VAR_9494[VAR__53647]))
+         {
+            word = 1;
+            chars[VAR__21230]++;
+            preword = 1;
+         }
+         else
+         {
+            word    = 0;
+            preword = 0;
+            VAR__21230++;
+         }
+      }
+      else
+      {
+         if ( isalpha(VAR_9494[VAR__53647]))
+         {
+            word = 1;
+            chars[VAR__21230]++;
+            loci[VAR__21230] = VAR__53647;
+            preword          = 1;
+         }
+         else
+         {
+            word    = 0;
+            preword = 0;
+         }
+      }
+   }
+
+   VAR__MAX = chars[0];
+   maxi     = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      if ( VAR__MAX < chars[VAR__53647] )
+      {
+         VAR__MAX = chars[VAR__53647];
+         maxi     = VAR__53647;
+      }
+   }
+
+   VAR__MIN = chars[0];
+   mini     = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      if ( VAR__MIN > chars[VAR__53647] )
+      {
+         VAR__MIN = chars[VAR__53647];
+         mini     = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = loci[maxi]; VAR__53647 < ( loci[maxi] + VAR__MAX ); VAR__53647++ )
+   {
+      printf("%c", VAR_9494[VAR__53647]);
+   }
+
+   printf("\n");
+   for ( VAR__53647 = loci[mini]; VAR__53647 < ( loci[mini] + VAR__MIN ); VAR__53647++ )
+   {
+      printf("%c", VAR_9494[VAR__53647]);
+   }
+
+   printf("\n");
+   return 0;
+}

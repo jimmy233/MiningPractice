@@ -1,0 +1,65 @@
+int main()
+{
+   char A_STRING[101];
+   int  VAR__TEMP;
+
+   while ( cin.getline(A_STRING, 101, '\n'))
+   {
+      ( cout << A_STRING ) << endl;
+      int  VAR__8444594;
+      int  VAR__53647;
+      int  VAR_9494  = 0;
+      int  VAR__temp = 0;
+      char result[101];
+      int  left[101];
+      memset(result, ' ', sizeof( result ));
+      VAR__8444594 = strlen(A_STRING);
+      int VAR_233 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            VAR_233++;
+            left[VAR_9494] = VAR__53647;
+            VAR__TEMP      = VAR_9494;
+            VAR_9494++;
+         }
+
+         if (( A_STRING[VAR__53647] == ')' ) && ( VAR_233 == 0 ))
+         {
+            result[VAR__53647] = '?';
+         }
+
+         if (( A_STRING[VAR__53647] == ')' ) && ( VAR_233 != 0 ))
+         {
+            VAR_233--;
+            left[VAR__TEMP] = -1;
+            do
+            {
+               VAR__TEMP--;
+            } while ( left[VAR__TEMP] == ( -1 ));
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+      {
+         if ( left[VAR__53647] == ( -1 ))
+         {
+            continue;
+         }
+         else
+         {
+            result[left[VAR__53647]] = '$';
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         cout << result[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

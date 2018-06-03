@@ -1,0 +1,116 @@
+int shifouzimu(char VAR__4857423);
+int longl(char string[]);
+int shortl(char string[]);
+
+void main()
+{
+   int  VAR__53647;
+   char line[1000];
+
+   gets(line);
+   for ( VAR__53647 = longl(line); shifouzimu(line[VAR__53647]); VAR__53647++ )
+   {
+      printf("%c", line[VAR__53647]);
+   }
+
+   printf("\n");
+   for ( VAR__53647 = shortl(line); shifouzimu(line[VAR__53647]); VAR__53647++ )
+   {
+      printf("%c", line[VAR__53647]);
+   }
+}
+
+
+int shifouzimu(char VAR__4857423)
+{
+   if ((( VAR__4857423 >= 'a' ) && ( VAR__4857423 <= 'z' )) || (( VAR__4857423 >= 'A' ) && ( VAR__4857423 <= 'Z' )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int longl(char string[])
+{
+   int LEN_OF_STH = 0;
+   int VAR__53647;
+   int length   = 0;
+   int VAR_FLAG = 1;
+   int place    = 0;
+   int point;
+
+   for ( VAR__53647 = 0; VAR__53647 <= strlen(string); VAR__53647++ )
+   {
+      if ( shifouzimu(string[VAR__53647]))
+      {
+         if ( VAR_FLAG )
+         {
+            point    = VAR__53647;
+            VAR_FLAG = 0;
+         }
+         else
+         {
+            LEN_OF_STH++;
+         }
+      }
+      else
+      {
+         VAR_FLAG = 1;
+
+         if ( LEN_OF_STH > length )
+         {
+            length = LEN_OF_STH;
+            place  = point;
+         }
+
+         LEN_OF_STH = 0;
+      }
+   }
+
+   return place;
+}
+
+
+int shortl(char string[])
+{
+   int LEN_OF_STH = 0;
+   int VAR__53647;
+   int length   = 5;
+   int VAR_FLAG = 1;
+   int place    = 0;
+   int point;
+
+   for ( VAR__53647 = 0; VAR__53647 <= strlen(string); VAR__53647++ )
+   {
+      if ( shifouzimu(string[VAR__53647]))
+      {
+         if ( VAR_FLAG )
+         {
+            point    = VAR__53647;
+            VAR_FLAG = 0;
+         }
+         else
+         {
+            LEN_OF_STH++;
+         }
+      }
+      else
+      {
+         VAR_FLAG = 1;
+
+         if ( LEN_OF_STH < length )
+         {
+            length = LEN_OF_STH;
+            place  = point;
+         }
+
+         LEN_OF_STH = 0;
+      }
+   }
+
+   return place;
+}

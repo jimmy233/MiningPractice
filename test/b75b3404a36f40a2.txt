@@ -1,0 +1,88 @@
+int main()
+{
+   int VAR_1238123 = 0;
+
+   scanf("%d", &VAR_1238123);
+   int  VAR__53647 = 0;
+   char string[101];
+   char string_copy[101];
+   char string_check[101];
+   int  LEN_OF_STH   = 0;
+   int  index        = 0;
+   int  start        = 0;
+   int  turn         = 0;
+   char VAR__3918907 = 'n';
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      LEN_OF_STH = 0;
+      gets(string);
+
+      while ( string[LEN_OF_STH] )
+      {
+         LEN_OF_STH++;
+      }
+
+      strcpy(string_copy, string);
+      for ( index = 0; index < LEN_OF_STH; index++ )
+      {
+         if (( string_copy[index] != '(' ) && ( string_copy[index] != ')' ))
+         {
+            string_copy[index] = ' ';
+         }
+
+         if (( string[index] == '(' ) || ( string[index] == ')' ))
+         {
+            VAR__3918907 = 'y';
+         }
+      }
+
+      if ( VAR__3918907 == 'n' )
+      {
+         continue;
+      }
+
+      for ( turn = 0; turn <= ( LEN_OF_STH / 2 ); turn++ )
+      {
+         VAR__3918907 = 'n';
+         start        = 0;
+         for ( index = 0; index < LEN_OF_STH; index++ )
+         {
+            if ( string_copy[index] == '(' )
+            {
+               start = index;
+            }
+
+            if (( string_copy[index] == ')' ) && ( string_copy[start] == '(' ))
+            {
+               string_copy[index] = ' ';
+               string_copy[start] = ' ';
+            }
+         }
+      }
+
+      strcpy(string_check, string_copy);
+      for ( index = 0; index < LEN_OF_STH; index++ )
+      {
+         if ( string_copy[index] == '(' )
+         {
+            string_copy[index] = '$';
+         }
+
+         if ( string_copy[index] == ')' )
+         {
+            string_copy[index] = '?';
+         }
+      }
+
+      if ( strcmp(string_copy, string_check) != 0 )
+      {
+         printf("%s\n%s\n", string, string_copy);
+      }
+      else
+      {
+         printf("%s\n", string);
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,78 @@
+void bigmulti(char VAR__819283[], char VAR__19328[], char VAR__4857423[])
+{
+   int VAR__53647;
+   int tem[400];
+   int VAR__21230;
+   int VAR__8444594;
+   int la = strlen(VAR__819283);
+   int lb = strlen(VAR__19328);
+   int VAR__SUM[800];
+   int num1[400];
+   int num2[400];
+
+   memset(VAR__SUM, 0, sizeof( VAR__SUM ));
+   memset(num1, 0, sizeof( num1 ));
+   memset(num2, 0, sizeof( num2 ));
+   for ( VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+   {
+      num1[VAR__53647] = VAR__819283[( la - 1 ) - VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < lb; VAR__53647++ )
+   {
+      num2[VAR__53647] = VAR__19328[( lb - 1 ) - VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < lb; VAR__53647++ )
+   {
+      memset(tem, 0, sizeof( tem ));
+      tem[0] = num1[0] * num2[VAR__53647];
+      for ( VAR__21230 = 1; VAR__21230 <= la; VAR__21230++ )
+      {
+         tem[VAR__21230]      = ( num1[VAR__21230] * num2[VAR__53647] ) + ( tem[VAR__21230 - 1] / 10 );
+         tem[VAR__21230 - 1] %= 10;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= 200; VAR__21230++ )
+      {
+         if (( VAR__21230 == 0 ) && ( VAR__53647 == 0 ))
+         {
+            VAR__SUM[0] = tem[0];
+         }
+         else
+         {
+            VAR__SUM[VAR__53647 + VAR__21230]          = ( VAR__SUM[VAR__53647 + VAR__21230] + tem[VAR__21230] ) + ( VAR__SUM[( VAR__53647 + VAR__21230 ) - 1] / 10 );
+            VAR__SUM[( VAR__53647 + VAR__21230 ) - 1] %= 10;
+         }
+      }
+   }
+
+   for ( VAR__53647 = la + lb; ( VAR__53647 >= 0 ) && ( VAR__SUM[VAR__53647] == 0 ); VAR__53647-- )
+   {
+   }
+
+   VAR__4857423[VAR__53647 + 1] = '\0';
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+   {
+      VAR__4857423[VAR__53647 - VAR__21230] = VAR__SUM[VAR__21230] + '0';
+   }
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   char VAR_9494[1000] = "1";
+   char VAR__819283[1000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      bigmulti(VAR_9494, "2", VAR__819283);
+      strcpy(VAR_9494, VAR__819283);
+   }
+
+   printf("%s", VAR_9494);
+   return 0;
+}

@@ -1,0 +1,86 @@
+int pairs(int, int, char text[], char match[]);
+
+int main()
+{
+   for ( ; ; )
+   {
+      char text[101]  = { 0 };
+      char match[101] = { 0 };
+      int  lgth       = 0;
+      gets(text);
+
+      if ( text[0] == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < 101; VAR__53647++ )
+      {
+         if ( text[VAR__53647] != 0 )
+         {
+            if ( text[VAR__53647] == '(' )
+            {
+               match[VAR__53647] = '$';
+            }
+            else
+            if ( text[VAR__53647] == ')' )
+            {
+               match[VAR__53647] = '?';
+            }
+            else
+            {
+               match[VAR__53647] = ' ';
+            }
+         }
+         else
+         {
+            lgth = VAR__53647;
+            break;
+         }
+      }
+
+      pairs(0, 0, text, match);
+      ((( cout << text ) << endl ) << match ) << endl;
+   }
+
+   return 0;
+}
+
+
+int pairs(int VAR_1238123, int hemi, char text[], char match[])
+{
+   for ( ; ; )
+   {
+      char VAR__4857423 = text[VAR_1238123];
+
+      if ( VAR__4857423 == 0 )
+      {
+         return -1;
+      }
+
+      if ( VAR__4857423 == '(' )
+      {
+         int VAR__1111  = VAR_1238123;
+         int VAR_129012 = pairs(VAR_1238123 + 1, 1, text, match);
+
+         if ( VAR_129012 != ( -1 ))
+         {
+            match[VAR__1111] = ( match[VAR_129012] = ' ' );
+            VAR_1238123      = VAR_129012 + 1;
+         }
+         else
+         {
+            return -1;
+         }
+      }
+      else
+      if (( VAR__4857423 == ')' ) && ( hemi == 1 ))
+      {
+         return VAR_1238123;
+      }
+      else
+      {
+         VAR_1238123++;
+      }
+   }
+}

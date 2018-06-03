@@ -1,0 +1,62 @@
+int main()
+{
+   int N;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp = 0;
+   int exp[1000] = { 2, 0 };
+
+   cin >> N;
+
+   if ( N == 0 )
+   {
+      ( cout << 1 ) << endl;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < N; VAR__53647++ )
+      {
+         VAR__temp = 0;
+         for ( VAR__21230 = 0; ; VAR__21230++ )
+         {
+            if ((( exp[VAR__21230 + 1] == 0 ) && ( exp[VAR__21230 + 2] == 0 )) && ( exp[VAR__21230 + 3] == 0 ))
+            {
+               exp[VAR__21230]     = ( 2 * exp[VAR__21230] ) + VAR__temp;
+               VAR__temp           = exp[VAR__21230] / 10;
+               exp[VAR__21230]     = exp[VAR__21230] - ( 10 * VAR__temp );
+               exp[VAR__21230 + 1] = VAR__temp;
+               break;
+            }
+            else
+            {
+               if ( VAR__21230 == 0 )
+               {
+                  VAR__temp       = ( 2 * exp[VAR__21230] ) / 10;
+                  exp[VAR__21230] = ( 2 * exp[VAR__21230] ) - ( 10 * VAR__temp );
+               }
+               else
+               {
+                  exp[VAR__21230] = ( 2 * exp[VAR__21230] ) + VAR__temp;
+                  VAR__temp       = exp[VAR__21230] / 10;
+                  exp[VAR__21230] = exp[VAR__21230] - ( 10 * VAR__temp );
+               }
+            }
+         }
+      }
+
+      for ( VAR__53647 = 999; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( exp[VAR__53647] != 0 )
+         {
+            break;
+         }
+      }
+
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << exp[VAR__53647];
+      }
+   }
+
+   return 0;
+}

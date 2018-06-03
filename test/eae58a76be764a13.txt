@@ -1,0 +1,57 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int chuli(int *VAR_233, int VAR__53647)
+{
+   int VAR__COUNT = 0;
+
+   for ( int VAR_666 = 0; VAR_666 < VAR__53647; VAR_666++ )
+   {
+      if (( 2 * VAR_233[VAR_666] ) > VAR_233[VAR__53647 - 1] )
+      {
+         return VAR__COUNT;
+      }
+
+      for ( int VAR__21230 = VAR_666; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( VAR_233[VAR__21230] == ( 2 * VAR_233[VAR_666] ))
+         {
+            VAR__COUNT++;
+            break;
+         }
+
+         if ( VAR_233[VAR__21230] > ( 2 * VAR_233[VAR_666] ))
+         {
+            break;
+         }
+      }
+   }
+
+   return VAR__COUNT;
+}
+
+
+int main()
+{
+   int VAR__819283[20];
+   int VAR__NUM;
+
+   while (( cin >> VAR__819283[0] ) && ( VAR__819283[0] != ( -1 )))
+   {
+      int VAR__53647 = 1;
+
+      while (( cin >> VAR__819283[VAR__53647] ) && VAR__819283[VAR__53647] )
+      {
+         VAR__53647++;
+      }
+
+      qsort(VAR__819283, VAR__53647, sizeof( int ), cmp);
+      VAR__NUM = chuli(VAR__819283, VAR__53647);
+      ( cout << VAR__NUM ) << endl;
+   }
+
+   return 0;
+}

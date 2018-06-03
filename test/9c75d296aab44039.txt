@@ -1,0 +1,77 @@
+int  len1;
+int  len2;
+int  len3;
+char replacement[256];
+void answer(char A_STRING[260], char substr[256]);
+
+int main()
+{
+   char A_STRING[260];
+   char substr[256];
+
+   cin.getline(A_STRING, 260);
+   cin.getline(substr, 256);
+   cin.getline(replacement, 256);
+   len1 = strlen(A_STRING);
+   len2 = strlen(substr);
+   len3 = strlen(replacement);
+   answer(A_STRING, substr);
+   return 0;
+}
+
+
+void answer(char A_STRING[260], char substr[256])
+{
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__COUNT;
+   int VAR__NUM = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == substr[0] )
+      {
+         VAR__COUNT = 0;
+         for ( VAR__8444594 = VAR__53647; ; VAR__8444594++ )
+         {
+            if (( A_STRING[VAR__8444594] == substr[VAR__COUNT] ) && ( A_STRING[VAR__8444594] != '\0' ))
+            {
+               VAR__COUNT++;
+            }
+            else
+            {
+               break;
+            }
+         }
+
+         if ( VAR__COUNT == len2 )
+         {
+            VAR__NUM++;
+            for ( VAR__8444594 = 0; VAR__8444594 < VAR__53647; VAR__8444594++ )
+            {
+               cout << A_STRING[VAR__8444594];
+            }
+
+            for ( VAR__8444594 = 0; VAR__8444594 < len3; VAR__8444594++ )
+            {
+               cout << replacement[VAR__8444594];
+            }
+
+            for ( VAR__8444594 = VAR__53647 + len2; VAR__8444594 < len1; VAR__8444594++ )
+            {
+               cout << A_STRING[VAR__8444594];
+            }
+
+            break;
+         }
+      }
+   }
+
+   if ( VAR__NUM == 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+      {
+         cout << A_STRING[VAR__53647];
+      }
+   }
+}

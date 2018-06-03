@@ -1,0 +1,95 @@
+int main()
+{
+   int mount[22][22];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_9494 = 0;
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__TEMP;
+   int pr[400];
+   int pc[400];
+
+   for ( VAR__53647 = 0; VAR__53647 < 22; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 22; VAR__21230++ )
+      {
+         mount[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> mount[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( mount[VAR__53647][VAR__21230] >= mount[VAR__53647 - 1][VAR__21230] )
+         {
+            if ( mount[VAR__53647][VAR__21230] >= mount[VAR__53647 + 1][VAR__21230] )
+            {
+               if ( mount[VAR__53647][VAR__21230] >= mount[VAR__53647][VAR__21230 - 1] )
+               {
+                  if ( mount[VAR__53647][VAR__21230] >= mount[VAR__53647][VAR__21230 + 1] )
+                  {
+                     pr[VAR_9494] = VAR__53647 - 1;
+                     pc[VAR_9494] = VAR__21230 - 1;
+                     VAR_9494++;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_9494 - 1; VAR__21230 >= ( VAR__53647 + 1 ); VAR__21230-- )
+      {
+         if ( pr[VAR__21230 - 1] > pr[VAR__21230] )
+         {
+            VAR__TEMP          = pr[VAR__21230];
+            pr[VAR__21230]     = pr[VAR__21230 - 1];
+            pr[VAR__21230 - 1] = VAR__TEMP;
+            VAR__TEMP          = pc[VAR__21230];
+            pc[VAR__21230]     = pc[VAR__21230 - 1];
+            pc[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      if ( pr[VAR__53647] == pr[VAR__53647 + 1] )
+      {
+         if ( pc[VAR__53647] > pc[VAR__53647 + 1] )
+         {
+            VAR__TEMP          = pc[VAR__21230];
+            pc[VAR__21230]     = pc[VAR__21230 + 1];
+            pc[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      ((( cout << pr[VAR__53647] ) << " " ) << pc[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

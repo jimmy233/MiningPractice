@@ -1,0 +1,78 @@
+int main()
+{
+   char VAR__4857423[5000];
+   char VAR__TEMP[20] = { '\0' };
+   char VAR__MIN[20];
+   char VAR__MAX[20];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_FLAG = 0;
+
+   gets(VAR__4857423);
+   for ( VAR__53647 = 0; VAR__53647 <= 20; VAR__53647++ )
+   {
+      if ((( VAR__4857423[VAR__53647] == ' ' ) || ( VAR__4857423[VAR__53647] == ',' )) || ( VAR__4857423[VAR__53647] == '\0' ))
+      {
+         VAR__MIN[VAR__53647] = '\0';
+         VAR__MAX[VAR__53647] = '\0';
+         break;
+      }
+
+      VAR__MIN[VAR__53647] = VAR__4857423[VAR__53647];
+      VAR__MAX[VAR__53647] = VAR__4857423[VAR__53647];
+   }
+
+   VAR__53647++;
+
+   if ( VAR__4857423[VAR__53647 - 1] != '\0' )
+   {
+      for ( ; VAR__53647 <= 5000; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= 500; VAR__21230++ )
+         {
+            if (( VAR__21230 == 0 ) && ((( VAR__4857423[VAR__53647 + VAR__21230] == ' ' ) || ( VAR__4857423[VAR__53647 + VAR__21230] == ',' )) || ( VAR__4857423[VAR__53647 + VAR__21230] == '\0' )))
+            {
+               continue;
+            }
+
+            if ((( VAR__4857423[VAR__53647 + VAR__21230] == ' ' ) || ( VAR__4857423[VAR__53647 + VAR__21230] == ',' )) || ( VAR__4857423[VAR__53647 + VAR__21230] == '\0' ))
+            {
+               VAR__TEMP[VAR__21230] = '\0';
+
+               if ( strlen(VAR__TEMP) > strlen(VAR__MAX))
+               {
+                  strcpy(VAR__MAX, VAR__TEMP);
+               }
+               else
+               if ( strlen(VAR__TEMP) < strlen(VAR__MIN))
+               {
+                  strcpy(VAR__MIN, VAR__TEMP);
+               }
+
+
+               if ( VAR__4857423[VAR__53647 + VAR__21230] == '\0' )
+               {
+                  VAR_FLAG = 1;
+               }
+
+               VAR__53647 = VAR__53647 + VAR__21230;
+               break;
+            }
+            else
+            {
+               VAR__TEMP[VAR__21230] = VAR__4857423[VAR__53647 + VAR__21230];
+            }
+         }
+
+         if ( VAR_FLAG == 1 )
+         {
+            break;
+         }
+      }
+   }
+
+
+   printf("%s\n", VAR__MAX);
+   printf("%s", VAR__MIN);
+   return 0;
+}

@@ -1,0 +1,83 @@
+int main()
+{
+   char sen[101];
+   int  VAR_9Q8Q90[100] = { 0 };
+   int  left[100]       = { 0 };
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  VAR__SUM;
+
+   while ( cin.getline(sen, 101))
+   {
+      VAR_1238123  = strlen(sen);
+      VAR__8444594 = 0;
+      VAR__SUM     = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( sen[VAR__53647] == '(' )
+         {
+            VAR_9Q8Q90[VAR__53647] = 1;
+            VAR__SUM++;
+            left[VAR__8444594] = VAR__53647;
+            VAR__8444594++;
+         }
+         else
+         {
+            if ( sen[VAR__53647] == ')' )
+            {
+               if ( VAR__SUM > 0 )
+               {
+                  VAR__SUM--;
+                  VAR__8444594--;
+                  VAR_9Q8Q90[left[VAR__8444594]] = 0;
+                  VAR_9Q8Q90[VAR__53647]         = 0;
+               }
+               else
+               {
+                  VAR_9Q8Q90[VAR__53647] = -1;
+               }
+            }
+            else
+            {
+               VAR_9Q8Q90[VAR__53647] = 0;
+            }
+         }
+      }
+
+      for ( VAR__53647 = VAR_1238123 - 1; VAR_9Q8Q90[VAR__53647] == 0; VAR__53647-- )
+      {
+      }
+
+      VAR_1238123 = VAR__53647;
+      for ( VAR__53647 = 0; VAR_9Q8Q90[VAR__53647] == 0; VAR__53647++ )
+      {
+      }
+
+      VAR__1238129 = VAR__53647;
+      ( cout << sen ) << endl;
+      for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR_9Q8Q90[VAR__53647] == 1 )
+         {
+            cout << '$';
+         }
+         else
+         {
+            if ( VAR_9Q8Q90[VAR__53647] == ( -1 ))
+            {
+               cout << '?';
+            }
+            else
+            {
+               cout << ' ';
+            }
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

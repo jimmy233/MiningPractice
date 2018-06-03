@@ -1,0 +1,97 @@
+char VAR__819283[101];
+int  VAR__4857423[101];
+void match(int VAR__53647, int LEN_OF_STH)
+{
+   int VAR__8444594 = VAR__53647 + 1;
+
+   if ( VAR__4857423[VAR__53647] != 0 )
+   {
+      while ( VAR__8444594 < LEN_OF_STH )
+      {
+         if (( VAR__819283[VAR__8444594] == '(' ) && ( VAR__4857423[VAR__8444594] == 1 ))
+         {
+            match(VAR__8444594, LEN_OF_STH);
+         }
+
+         if ((( VAR__819283[VAR__8444594] == ')' ) && ( VAR__4857423[VAR__53647] == 1 )) && ( VAR__4857423[VAR__8444594] == ( -1 )))
+         {
+            VAR__4857423[VAR__53647]   = 0;
+            VAR__4857423[VAR__8444594] = 0;
+         }
+
+         VAR__8444594++;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", &VAR__819283);
+      int LEN_OF_STH = strlen(VAR__819283);
+      for ( int VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] == '(' )
+         {
+            VAR__4857423[VAR__21230] = 1;
+         }
+         else
+         if ( VAR__819283[VAR__21230] == ')' )
+         {
+            VAR__4857423[VAR__21230] = -1;
+         }
+         else
+         {
+            VAR__4857423[VAR__21230] = 0;
+         }
+      }
+
+      for ( int VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( VAR__4857423[VAR__21230] == 1 )
+         {
+            for ( int VAR__8444594 = VAR__21230 + 1; VAR__8444594 < LEN_OF_STH; VAR__8444594++ )
+            {
+               if ( VAR__4857423[VAR__8444594] == 1 )
+               {
+                  break;
+               }
+
+               if ( VAR__4857423[VAR__8444594] == ( -1 ))
+               {
+                  VAR__4857423[VAR__8444594] = 0;
+                  VAR__4857423[VAR__21230]   = 0;
+                  VAR__21230 = -1;
+                  break;
+               }
+            }
+         }
+      }
+
+      printf("%s\n", VAR__819283);
+      for ( int VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( VAR__4857423[VAR__21230] == 1 )
+         {
+            printf("$");
+         }
+
+         if ( VAR__4857423[VAR__21230] == ( -1 ))
+         {
+            printf("?");
+         }
+
+         if ( VAR__4857423[VAR__21230] == 0 )
+         {
+            printf(" ");
+         }
+      }
+
+      printf("\n");
+   }
+}

@@ -1,0 +1,86 @@
+int LEN_OF_STH(char VAR_9494[100])
+{
+   int VAR__1111;
+   int VAR__53647;
+
+   VAR__1111 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      if ((( VAR_9494[VAR__53647] > 96 ) && ( VAR_9494[VAR__53647] < 123 )) || (( VAR_9494[VAR__53647] > 64 ) && ( VAR_9494[VAR__53647] < 91 )))
+      {
+         VAR__1111++;
+      }
+   }
+
+
+   return VAR__1111;
+}
+
+
+void main()
+{
+   int  VAR__53647;
+   int  VAR_233;
+   int  VAR_1238123;
+   int  maxlen;
+   int  minlen;
+   int  maxnum;
+   int  minnum;
+   char VAR_9494[1000];
+   char VAR__4857423[50][100];
+
+   for ( VAR_233 = 0; VAR_233 < 50; VAR_233++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         VAR__4857423[VAR_233][VAR__53647] = 0;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      VAR_9494[VAR__53647] = 0;
+   }
+
+   gets(VAR_9494);
+   VAR__53647 = 0;
+   do
+   {
+      VAR__4857423[0][VAR__53647] = VAR_9494[VAR__53647];
+      VAR__53647++;
+   } while ((( VAR_9494[VAR__53647] > 96 ) && ( VAR_9494[VAR__53647] < 123 )) || (( VAR_9494[VAR__53647] > 64 ) && ( VAR_9494[VAR__53647] < 91 )));
+   for ( VAR_1238123 = 1; VAR_1238123 < 50; VAR_1238123++ )
+   {
+      VAR__53647++;
+      VAR_233 = 0;
+      do
+      {
+         VAR__4857423[VAR_1238123][VAR_233] = VAR_9494[VAR__53647];
+         VAR_233++;
+         VAR__53647++;
+      } while ((( VAR_9494[VAR__53647] > 96 ) && ( VAR_9494[VAR__53647] < 123 )) || (( VAR_9494[VAR__53647] > 64 ) && ( VAR_9494[VAR__53647] < 91 )));
+   }
+
+   maxlen = 0;
+   minlen = 100;
+   for ( VAR_1238123 = 0; VAR_1238123 < 50; VAR_1238123++ )
+   {
+      if ( VAR__4857423[VAR_1238123][0] > 0 )
+      {
+         if ( LEN_OF_STH(VAR__4857423[VAR_1238123]) > maxlen )
+         {
+            maxlen = LEN_OF_STH(VAR__4857423[VAR_1238123]);
+            maxnum = VAR_1238123;
+         }
+
+         if ( LEN_OF_STH(VAR__4857423[VAR_1238123]) < minlen )
+         {
+            minlen = LEN_OF_STH(VAR__4857423[VAR_1238123]);
+            minnum = VAR_1238123;
+         }
+      }
+   }
+
+   printf("%s\n%s", VAR__4857423[maxnum], VAR__4857423[minnum]);
+}

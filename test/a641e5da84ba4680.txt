@@ -1,0 +1,75 @@
+int main()
+{
+   char yuan[256];
+   char jiu[256];
+   char xin[256];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  LEN_OF_STH;
+   int  VAR_1238123 = 0;
+   int  len1;
+   int  u[256];
+   int  jishu[256] = { 0 };
+   int  len2;
+   int  VAR__8444594;
+   int  weizhi;
+   int  VAR__SUM = 0;
+
+   scanf("%s", yuan);
+   scanf("%s", jiu);
+   scanf("%s", xin);
+   len1 = strlen(yuan);
+   len2 = strlen(jiu);
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      if ( yuan[VAR__53647] == jiu[0] )
+      {
+         u[VAR_1238123] = VAR__53647;
+         VAR_1238123++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = u[VAR__53647], VAR__8444594 = 0; VAR__21230 < ( u[VAR__53647] + len2 ), VAR__8444594 < len2; VAR__21230++, VAR__8444594++ )
+      {
+         if ( yuan[VAR__21230] != jiu[VAR__8444594] )
+         {
+            jishu[VAR__53647]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( jishu[VAR__53647] == 0 )
+      {
+         VAR__SUM++;
+      }
+   }
+
+   if ( VAR__SUM == 0 )
+   {
+      printf("%s", yuan);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( jishu[VAR__53647] == 0 )
+         {
+            weizhi = u[VAR__53647];
+            break;
+         }
+      }
+
+      for ( VAR__53647 = weizhi, VAR__8444594 = 0; VAR__53647 < ( weizhi + len2 ), VAR__8444594 < len2; VAR__53647++, VAR__8444594++ )
+      {
+         yuan[VAR__53647] = xin[VAR__8444594];
+      }
+
+      printf("%s", yuan);
+   }
+
+   return 0;
+}

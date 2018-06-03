@@ -1,0 +1,59 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_FLAG;
+   int  VAR_666;
+   char A_STRING[101];
+   char note[101];
+
+   while ( scanf("%s", A_STRING) != EOF )
+   {
+      strcpy(note, A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 < strlen(note); VAR__53647++ )
+      {
+         if ((( note[VAR__53647] >= 'a' ) && ( note[VAR__53647] <= 'z' )) || (( note[VAR__53647] >= 'A' ) && ( note[VAR__53647] <= 'Z' )))
+         {
+            note[VAR__53647] = ' ';
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < strlen(note); VAR__53647++ )
+      {
+         VAR_FLAG = 0;
+
+         if ( note[VAR__53647] == ')' )
+         {
+            for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( note[VAR__21230] == '(' )
+               {
+                  VAR_FLAG         = 1;
+                  note[VAR__21230] = ' ';
+                  note[VAR__53647] = ' ';
+                  break;
+               }
+            }
+
+            if ( VAR_FLAG == 0 )
+            {
+               note[VAR__53647] = '?';
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < strlen(note); VAR__53647++ )
+      {
+         if ( note[VAR__53647] == '(' )
+         {
+            note[VAR__53647] = '$';
+         }
+      }
+
+      puts(A_STRING);
+      puts(note);
+   }
+
+   scanf("%d", &VAR_666);
+   return 0;
+}

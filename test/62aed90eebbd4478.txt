@@ -1,0 +1,80 @@
+int main()
+{
+   char A_STRING[300];
+   char VAR_9494[300];
+   char VAR__TEMP;
+   int  VAR__53647;
+   int  VAR__8444594 = 0;
+   int  VAR__21230   = 0;
+   int  VAR__1238129 = 0;
+   int  VAR_1238123  = 0;
+   int  VAR__COUNT   = 1;
+
+   scanf("%s", A_STRING);
+   VAR_1238123 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= 'a' ) && ( A_STRING[VAR__53647] <= 'z' ))
+      {
+         VAR_9494[VAR__8444594] = A_STRING[VAR__53647];
+         VAR__8444594           = VAR__8444594 + 1;
+      }
+   }
+
+   if ( VAR__8444594 == 0 )
+   {
+      printf("No");
+   }
+   else
+   if ( VAR__8444594 == 1 )
+   {
+      printf("%c=1", VAR_9494[0]);
+      printf("\n");
+   }
+   else
+   {
+      for ( VAR__53647 = VAR__8444594 - 1; VAR__53647 > 0; VAR__53647-- )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            if ( VAR_9494[VAR__21230 + 1] < VAR_9494[VAR__21230] )
+            {
+               VAR__TEMP = VAR_9494[VAR__21230 + 1];
+               VAR_9494[VAR__21230 + 1] = VAR_9494[VAR__21230];
+               VAR_9494[VAR__21230]     = VAR__TEMP;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == VAR_9494[VAR__53647 + 1] )
+         {
+            VAR__COUNT++;
+
+            if ( VAR__53647 == ( VAR__8444594 - 2 ))
+            {
+               printf("%c=%d", VAR_9494[VAR__53647], VAR__COUNT);
+            }
+         }
+
+         if (( VAR_9494[VAR__53647] < VAR_9494[VAR__53647 + 1] ) && ( VAR__53647 < ( VAR__8444594 - 2 )))
+         {
+            printf("%c=%d", VAR_9494[VAR__53647], VAR__COUNT);
+            printf("\n");
+            VAR__COUNT = 1;
+         }
+
+         if (( VAR_9494[VAR__53647] < VAR_9494[VAR__53647 + 1] ) && ( VAR__53647 == ( VAR__8444594 - 2 )))
+         {
+            printf("%c=%d", VAR_9494[VAR__53647], VAR__COUNT);
+            printf("\n");
+            printf("%c=1", VAR_9494[VAR__8444594 - 1]);
+            printf("\n");
+         }
+      }
+   }
+
+
+   return 0;
+}

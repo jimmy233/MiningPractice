@@ -1,0 +1,90 @@
+int judge(int VAR__53647, char VAR_9494[800], char sub[800])
+{
+   int VAR__21230;
+   int VAR__8444594;
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 <= (( VAR__53647 + strlen(sub)) - 1 ); VAR__21230++ )
+   {
+      if ( VAR_9494[VAR__21230] != sub[VAR__21230 - VAR__53647] )
+      {
+         break;
+      }
+   }
+
+
+   if ( VAR__21230 == ( VAR__53647 + strlen(sub)))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void change(int VAR__53647, char VAR_9494[800], char sub[800], char VAR_129012[800])
+{
+   int VAR__1111;
+   int ls;
+   int lr;
+   int VAR__21230;
+   int VAR__8444594;
+
+   VAR__1111 = strlen(VAR_9494);
+   ls        = strlen(sub);
+   lr        = strlen(VAR_129012);
+
+   if ( ls <= lr )
+   {
+      VAR__8444594 = lr - ls;
+      for ( VAR__21230 = ( VAR__1111 + VAR__8444594 ) + 1; VAR__21230 >= ( VAR__53647 + lr ); VAR__21230-- )
+      {
+         VAR_9494[VAR__21230] = VAR_9494[VAR__21230 - VAR__8444594];
+      }
+
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= (( VAR__53647 + lr ) - 1 ); VAR__21230++ )
+      {
+         VAR_9494[VAR__21230] = VAR_129012[VAR__21230 - VAR__53647];
+      }
+   }
+   else
+   {
+      VAR__8444594 = ls - lr;
+      for ( VAR__21230 = VAR__53647 + lr; VAR__21230 <= (( VAR__1111 - VAR__8444594 ) + 1 ); VAR__21230++ )
+      {
+         VAR_9494[VAR__21230] = VAR_9494[VAR__21230 + VAR__8444594];
+      }
+
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= (( VAR__53647 + lr ) - 1 ); VAR__21230++ )
+      {
+         VAR_9494[VAR__21230] = VAR_129012[VAR__21230 - VAR__53647];
+      }
+   }
+}
+
+
+int main()
+{
+   char VAR_9494[800];
+   char sub[800];
+   char VAR_129012[800];
+   int  VAR__1111;
+   int  VAR__53647;
+
+   scanf("%s", VAR_9494);
+   scanf("%s", sub);
+   scanf("%s", VAR_129012);
+   VAR__1111 = strlen(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647] == sub[0] ) && ( judge(VAR__53647, VAR_9494, sub) > 0 ))
+      {
+         change(VAR__53647, VAR_9494, sub, VAR_129012);
+         break;
+      }
+   }
+
+
+   puts(VAR_9494);
+}

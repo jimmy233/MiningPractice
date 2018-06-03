@@ -1,0 +1,72 @@
+char an[1000000];
+void Re(char VAR__819283[], char *a0)
+{
+   int LEN_OF_STH = strlen(VAR__819283);
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      *((( a0 + LEN_OF_STH ) - VAR__53647 ) - 1 ) = VAR__819283[VAR__53647];
+   }
+
+   *( a0 + LEN_OF_STH ) = '\0';
+}
+
+
+void Mul(char *VAR__819283)
+{
+   char a0[10000];
+   char re0[10000];
+   char re[10000];
+
+   Re(VAR__819283, a0);
+   int LEN_OF_STH = strlen(VAR__819283);
+   int VAR__temp  = 0;
+   int VAR__53647;
+   int VAR_233;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR_233         = VAR__temp + (( a0[VAR__53647] - '0' ) * 2 );
+      re0[VAR__53647] = ( VAR_233 % 10 ) + '0';
+      VAR__temp       = VAR_233 / 10;
+   }
+
+   re0[LEN_OF_STH]     = VAR__temp + '0';
+   re0[LEN_OF_STH + 1] = '\0';
+
+   if ( re0[LEN_OF_STH] == '0' )
+   {
+      re0[LEN_OF_STH] = '\0';
+   }
+
+   Re(re0, re);
+   strcpy(an, re);
+}
+
+
+int main()
+{
+   char VAR__819283[10000] = { '2' };
+   char a0[10000];
+   int  lena;
+   int  VAR_1238123;
+   int  VAR__53647;
+
+   cin >> VAR_1238123;
+   lena = strlen(VAR__819283);
+
+   if ( VAR_1238123 == 0 )
+   {
+      ( cout << 1 ) << endl;
+      return 0;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      Mul(VAR__819283);
+      strcpy(VAR__819283, an);
+   }
+
+   ( cout << VAR__819283 ) << endl;
+   return 0;
+}

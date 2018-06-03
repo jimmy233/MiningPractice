@@ -1,0 +1,68 @@
+void main()
+{
+   char A_STRING[600];
+   char sub[300];
+   char rep[300];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  sun00 = 0;
+   int  se    = 0;
+
+   gets(A_STRING);
+   gets(sub);
+   gets(rep);
+   for ( VAR__53647 = 0; A_STRING[VAR__53647] != 0; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == sub[0] )
+      {
+         for ( VAR__8444594 = VAR__53647 + 1, VAR__21230 = 1; ( A_STRING[VAR__8444594] != 0 ) && ( sub[VAR__21230] != 0 ); VAR__8444594++, VAR__21230++ )
+         {
+            if ( A_STRING[VAR__8444594] != sub[VAR__21230] )
+            {
+               break;
+            }
+         }
+
+         if ( sub[VAR__21230] == 0 )
+         {
+            sun00 = VAR__53647;
+            se    = VAR__8444594;
+            break;
+         }
+      }
+   }
+
+   if ( sun00 < se )
+   {
+      if ( strlen(sub) <= strlen(rep))
+      {
+         for ( VAR__53647 = sun00, VAR__21230 = 0; rep[VAR__21230] != 0; VAR__53647++, VAR__21230++ )
+         {
+            A_STRING[VAR__53647] = rep[VAR__21230];
+         }
+
+         for ( VAR__8444594 = se; A_STRING[VAR__8444594] != 0; VAR__8444594++, VAR__53647++ )
+         {
+            A_STRING[VAR__53647] = A_STRING[VAR__8444594];
+         }
+
+         A_STRING[VAR__53647] = 0;
+      }
+      else
+      {
+         VAR__53647 = ( strlen(A_STRING) + strlen(rep)) - strlen(sub);
+         for ( VAR__8444594 = strlen(A_STRING); VAR__8444594 >= se; VAR__8444594--, VAR__53647-- )
+         {
+            A_STRING[VAR__53647] = A_STRING[VAR__8444594];
+         }
+
+         for ( VAR__53647 = sun00, VAR__21230 = 0; rep[VAR__21230] != 0; VAR__53647++, VAR__21230++ )
+         {
+            A_STRING[VAR__53647] = rep[VAR__21230];
+         }
+      }
+   }
+
+   printf(A_STRING);
+}

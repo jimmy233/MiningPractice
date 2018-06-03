@@ -1,0 +1,85 @@
+int main()
+{
+   char string[101];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  lenth;
+   int  VAR_1238123;
+   int  VAR__temp;
+
+   while ( cin.getline(string, 101))
+   {
+      VAR_1238123 = 0;
+      lenth       = strlen(string);
+      ( cout << string ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < lenth; VAR__53647++ )
+      {
+         if ( string[VAR__53647] == '(' )
+         {
+            string[VAR__53647] = '$';
+         }
+         else
+         if ( string[VAR__53647] == ')' )
+         {
+            string[VAR__53647] = '?';
+         }
+         else
+         {
+            string[VAR__53647] = ' ';
+            VAR_1238123++;
+         }
+      }
+
+      VAR_1238123 = ( lenth - VAR_1238123 ) / 2;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < lenth; VAR__21230++ )
+         {
+            for ( VAR__temp = VAR__21230 + 1; VAR__temp < lenth; VAR__temp++ )
+            {
+               if (( string[VAR__21230] == '$' ) && ( string[VAR__temp] == '$' ))
+               {
+                  VAR__21230 = VAR__temp;
+                  continue;
+               }
+
+               if (( string[VAR__21230] == '$' ) && ( string[VAR__temp] == '?' ))
+               {
+                  string[VAR__21230] = ( string[VAR__temp] = ' ' );
+                  VAR__21230         = VAR__temp - 1;
+               }
+            }
+         }
+      }
+
+      for ( VAR__53647 = lenth - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( string[VAR__53647] != ' ' )
+         {
+            break;
+         }
+      }
+
+      string[VAR__53647 + 1] = '\0';
+      lenth = strlen(string);
+      int VAR__1238129 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < lenth; VAR__53647++ )
+      {
+         if ( string[VAR__53647] != ' ' )
+         {
+            break;
+         }
+
+         VAR__1238129++;
+      }
+
+      for ( VAR__53647 = VAR__1238129; VAR__53647 < lenth; VAR__53647++ )
+      {
+         cout << string[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

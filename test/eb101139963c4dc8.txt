@@ -1,0 +1,66 @@
+int main()
+{
+   char dc[10000];
+
+   gets(dc);
+   char fz[200][50];
+   int  LEN_OF_STH = strlen(dc);
+   int  VAR__53647;
+   int  VAR__8444594 = 0;
+   int  VAR__21230   = 0;
+   int  VAR__1111    = 0;
+   int  VAR__NUM     = 1;
+   int  cd[200]      = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( dc[VAR__53647] != 32 )
+      {
+         fz[VAR__8444594][VAR__21230] = dc[VAR__53647];
+         VAR__21230++;
+         cd[VAR__8444594]++;
+      }
+      else
+      {
+         VAR__NUM++;
+         VAR__8444594++;
+         VAR__21230 = 0;
+      }
+   }
+
+   char VAR__MAX[50];
+   char VAR__MIN[50];
+   strcpy(VAR__MAX, fz[0]);
+   strcpy(VAR__MIN, fz[0]);
+   int zc = cd[0];
+   int zd = cd[0];
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__NUM; VAR__8444594++ )
+   {
+      if ( cd[VAR__8444594] > zc )
+      {
+         strcpy(VAR__MAX, fz[VAR__8444594]);
+         zc = cd[VAR__8444594];
+      }
+
+      if ( cd[VAR__8444594] < zd )
+      {
+         strcpy(VAR__MIN, fz[VAR__8444594]);
+         zd = cd[VAR__8444594];
+      }
+
+      if (( cd[VAR__8444594] == zc ) && ( cd[VAR__8444594] == zd ))
+      {
+         VAR__1111++;
+      }
+   }
+
+   if ( VAR__1111 != VAR__NUM )
+   {
+      printf("%s\n%s\n", VAR__MAX, VAR__MIN);
+   }
+   else
+   {
+      printf("%s\n%s\n", fz[0], fz[0]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,60 @@
+char VAR__819283[101] = { 0 };
+int  zuo[101]         = { 0 };
+int  VAR_1238123      = 0;
+void change(int VAR__7685)
+{
+   if ( VAR__819283[VAR__7685] != 0 )
+   {
+      if ( VAR__819283[VAR__7685] == '(' )
+      {
+         zuo[++VAR_1238123] = VAR__7685;
+      }
+      else
+      if ( VAR__819283[VAR__7685] == ')' )
+      {
+         if ( VAR_1238123 > 0 )
+         {
+            VAR__819283[VAR__7685]          = ' ';
+            VAR__819283[zuo[VAR_1238123--]] = ' ';
+         }
+      }
+      else
+      {
+         VAR__819283[VAR__7685] = ' ';
+      }
+
+
+      change(VAR__7685 + 1);
+   }
+}
+
+
+int main()
+{
+   while ( cin >> VAR__819283 )
+   {
+      ( cout << VAR__819283 ) << endl;
+      VAR_1238123 = 0;
+      change(0);
+      for ( int VAR__53647 = 0; VAR__819283[VAR__53647] != 0; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == '(' )
+         {
+            cout << "$";
+         }
+         else
+         if ( VAR__819283[VAR__53647] == ')' )
+         {
+            cout << "?";
+         }
+         else
+         {
+            cout << VAR__819283[VAR__53647];
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

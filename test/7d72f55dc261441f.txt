@@ -1,0 +1,78 @@
+int main()
+{
+   char VAR_9494[101];
+   char ss[101];
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_666;
+   int  VAR_2890 = 0;
+
+   while ( gets(VAR_9494))
+   {
+      LEN_OF_STH = strlen(VAR_9494);
+      strcpy(ss, VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            VAR_2890 = VAR__53647;
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+            {
+               if ( VAR_9494[VAR__21230] == '(' )
+               {
+                  VAR__53647 = VAR__21230;
+               }
+               else
+               if ( VAR_9494[VAR__21230] == ')' )
+               {
+                  VAR_9494[VAR__53647] = ' ';
+                  VAR_9494[VAR__21230] = ' ';
+                  break;
+               }
+            }
+
+
+
+            if ( VAR__21230 == LEN_OF_STH )
+            {
+               break;
+            }
+
+            if ( VAR_2890 == VAR__53647 )
+            {
+               continue;
+            }
+            else
+            {
+               VAR__53647 = VAR_2890 - 1;
+            }
+         }
+      }
+
+
+      for ( VAR_666 = 0; VAR_666 < LEN_OF_STH; VAR_666++ )
+      {
+         if ( VAR_9494[VAR_666] == ')' )
+         {
+            VAR_9494[VAR_666] = '?';
+         }
+         else
+         if ( VAR_9494[VAR_666] == '(' )
+         {
+            VAR_9494[VAR_666] = '$';
+         }
+         else
+         {
+            VAR_9494[VAR_666] = ' ';
+         }
+      }
+
+
+
+      printf("%s\n", ss);
+      printf("%s\n", VAR_9494);
+   }
+
+   return 0;
+}

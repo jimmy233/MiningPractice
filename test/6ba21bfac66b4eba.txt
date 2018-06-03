@@ -1,0 +1,86 @@
+int main()
+{
+   int height;
+   int width;
+
+   ( cin >> height ) >> width;
+   int VAR__819283[height][width];
+   for ( int VAR__53647 = 0; VAR__53647 <= ( height - 1 ); ++VAR__53647 )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 <= ( width - 1 ); ++VAR__21230 )
+      {
+         cin >> VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   int mountain[100][2];
+   int VAR__SUM = 0;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( height - 1 ); ++VAR__53647 )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 <= ( width - 1 ); ++VAR__21230 )
+      {
+         if ( VAR__53647 <= ( height - 2 ))
+         {
+            if ( VAR__819283[VAR__53647][VAR__21230] < VAR__819283[VAR__53647 + 1][VAR__21230] )
+            {
+               continue;
+            }
+         }
+
+         if ( VAR__53647 >= 1 )
+         {
+            if ( VAR__819283[VAR__53647][VAR__21230] < VAR__819283[VAR__53647 - 1][VAR__21230] )
+            {
+               continue;
+            }
+         }
+
+         if ( VAR__21230 >= 1 )
+         {
+            if ( VAR__819283[VAR__53647][VAR__21230] < VAR__819283[VAR__53647][VAR__21230 - 1] )
+            {
+               continue;
+            }
+         }
+
+         if ( VAR__21230 <= ( width - 2 ))
+         {
+            if ( VAR__819283[VAR__53647][VAR__21230] < VAR__819283[VAR__53647][VAR__21230 + 1] )
+            {
+               continue;
+            }
+         }
+
+         mountain[VAR__SUM][0] = VAR__53647;
+         mountain[VAR__SUM][1] = VAR__21230;
+         ++VAR__SUM;
+      }
+   }
+
+
+   cout << endl;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR__SUM - 1 ); ++VAR__53647 )
+   {
+      for ( int VAR__21230 = VAR__53647; VAR__21230 <= ( VAR__SUM - 1 ); ++VAR__21230 )
+      {
+         if ( mountain[VAR__53647][0] > mountain[VAR__21230][0] )
+         {
+            int temp1 = mountain[VAR__53647][0];
+            int temp2 = mountain[VAR__53647][1];
+            mountain[VAR__53647][0] = mountain[VAR__21230][0];
+            mountain[VAR__53647][1] = mountain[VAR__21230][1];
+            mountain[VAR__21230][0] = temp1;
+            mountain[VAR__21230][1] = temp2;
+         }
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR__SUM - 1 ); ++VAR__53647 )
+   {
+      ((( cout << mountain[VAR__53647][0] ) << " " ) << mountain[VAR__53647][1] ) << endl;
+   }
+
+   return 0;
+}

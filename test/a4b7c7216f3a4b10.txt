@@ -1,0 +1,88 @@
+int function(char *out, int VAR__temp)
+{
+   int VAR__53647 = VAR__temp;
+
+   if ( out[VAR__53647] == '(' )
+   {
+      out[VAR__53647] = '$';
+      VAR__53647++;
+
+      while (( out[VAR__53647] != ')' ) && out[VAR__53647] )
+      {
+         if ( out[VAR__53647] == '(' )
+         {
+            VAR__53647 = function(out, VAR__53647) + 1;
+
+            if ( VAR__53647 == ( -1 ))
+            {
+               return -2;
+            }
+         }
+         else
+         {
+            out[VAR__53647] = ' ';
+            VAR__53647++;
+         }
+      }
+
+      if ( out[VAR__53647] == ')' )
+      {
+         out[VAR__temp] = ( out[VAR__53647] = ' ' );
+         return VAR__53647;
+      }
+      else
+      {
+         return -2;
+      }
+   }
+   else
+   {
+      while (( out[VAR__53647] != '(' ) && out[VAR__53647] )
+      {
+         if ( out[VAR__53647] == ')' )
+         {
+            out[VAR__53647] = '?';
+         }
+         else
+         {
+            out[VAR__53647] = ' ';
+         }
+
+         VAR__53647++;
+      }
+
+      if ( out[VAR__53647] == '(' )
+      {
+         return function(out, VAR__53647);
+      }
+      else
+      {
+         return -2;
+      }
+   }
+}
+
+
+int main()
+{
+   char out[101];
+   int  VAR_1238123 = -1;
+
+   cin.getline(out, 101);
+
+   while ( out[0] )
+   {
+      VAR_1238123 = -1;
+      ( cout << out ) << endl;
+
+      while ( VAR_1238123 != ( -2 ))
+      {
+         VAR_1238123 = function(out, VAR_1238123 + 1);
+      }
+
+      ( cout << out ) << endl;
+      cin.getline(out, 101);
+   }
+
+   return 0;
+}

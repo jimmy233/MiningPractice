@@ -1,0 +1,43 @@
+void main()
+{
+   char string1[256];
+   char string2[256];
+   char string3[256];
+
+   scanf("%s", string1);
+   scanf("%s", string2);
+   scanf("%s", string3);
+   int length1;
+   int length2;
+   int length3;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+   length1 = strlen(string1);
+   length2 = strlen(string2);
+   length3 = strlen(string3);
+   for ( VAR__53647 = 0; VAR__53647 <= ( length1 - length2 ); VAR__53647++ )
+   {
+      if ( string1[VAR__53647] == string2[0] )
+      {
+         VAR__21230 = 1;
+         VAR__TEMP  = VAR__53647 + 1;
+
+         while (( VAR__21230 < length2 ) && ( string1[VAR__TEMP] == string2[VAR__21230] ))
+         {
+            VAR__TEMP++;
+            VAR__21230++;
+         }
+
+         if ( VAR__21230 == length2 )
+         {
+            strcpy(string2, string1 + VAR__TEMP);
+            strcpy(string1 + VAR__53647, string3);
+            strcpy(( string1 + VAR__53647 ) + length3, string2);
+            break;
+         }
+      }
+   }
+
+   printf("%s\n", string1);
+}

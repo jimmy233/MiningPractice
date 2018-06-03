@@ -1,0 +1,70 @@
+void ride2(char *);
+void antitone(char *);
+
+void ride2(char *VAR_233)
+{
+   int VAR__53647;
+   int VAR__TEMP = 0;
+   int VAR__NUM;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if (( *( VAR_233 + VAR__53647 )) == '\0' )
+      {
+         if ( VAR__TEMP != 0 )
+         {
+            *( VAR_233 + VAR__53647 ) = VAR__TEMP + '0';
+         }
+
+         break;
+      }
+
+      VAR__NUM = ((( *( VAR_233 + VAR__53647 )) - '0' ) * 2 ) + VAR__TEMP;
+      *( VAR_233 + VAR__53647 ) = ( VAR__NUM % 10 ) + '0';
+      VAR__TEMP = VAR__NUM / 10;
+   }
+}
+
+
+void antitone(char *VAR_233)
+{
+   int  VAR__53647 = 0;
+   int  VAR__21230 = 0;
+   char VAR_666[100];
+
+   while (( *( VAR_233 + ( VAR__53647++ ))) != '\0' )
+   {
+   }
+
+   VAR__53647--;
+
+   while ( VAR__53647 >= 0 )
+   {
+      *( VAR_666 + ( VAR__21230++ )) = *( VAR_233 + ( --VAR__53647 ));
+   }
+
+   VAR__53647 = 0;
+
+   while (( *( VAR_233 + VAR__53647 )) != '\0' )
+   {
+      *( VAR_233 + VAR__53647 ) = *( VAR_666 + ( VAR__53647++ ));
+   }
+}
+
+
+int main()
+{
+   char VAR__NUM[100] = "1";
+   int  VAR__53647;
+   int  power;
+
+   cin >> power;
+   for ( VAR__53647 = 0; VAR__53647 < power; VAR__53647++ )
+   {
+      ride2(VAR__NUM);
+   }
+
+   antitone(VAR__NUM);
+   ( cout << VAR__NUM ) << endl;
+   return 0;
+}

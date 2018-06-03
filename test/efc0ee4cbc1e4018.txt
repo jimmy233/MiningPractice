@@ -1,0 +1,71 @@
+void main()
+{
+   char ch[500];
+   char *ANOTHER_POINTER     = ch;
+   char *YET_ANOTHER_POINTER = ch;
+   int  VAR__53647;
+   int  length   = 0;
+   int  VAR_FLAG = 1;
+   int  VAR__MAX = 0;
+   int  VAR__MIN = 500;
+
+   gets(ch);
+   for ( VAR__53647 = 0; ch[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( ch[VAR__53647] == ' ' )
+      {
+         if ( VAR_FLAG == 1 )
+         {
+            if ( length > VAR__MAX )
+            {
+               VAR__MAX        = length;
+               ANOTHER_POINTER = ( &ch[VAR__53647] ) - length;
+            }
+
+            if ( length < VAR__MIN )
+            {
+               VAR__MIN            = length;
+               YET_ANOTHER_POINTER = ( &ch[VAR__53647] ) - length;
+            }
+
+            length   = 0;
+            VAR_FLAG = 0;
+         }
+      }
+      else
+      {
+         if ( VAR_FLAG == 0 )
+         {
+            VAR_FLAG = 1;
+         }
+
+         length++;
+      }
+   }
+
+   if ( length > 0 )
+   {
+      if ( length > VAR__MAX )
+      {
+         ANOTHER_POINTER = ( &ch[VAR__53647] ) - length;
+      }
+      else
+      if ( length < VAR__MIN )
+      {
+         YET_ANOTHER_POINTER = ( &ch[VAR__53647] ) - length;
+      }
+   }
+
+   for ( ; (( *ANOTHER_POINTER ) != ' ' ) && (( *ANOTHER_POINTER ) != 0 ); ANOTHER_POINTER++ )
+   {
+      printf("%c", *ANOTHER_POINTER);
+   }
+
+   printf("\n");
+   for ( ; (( *YET_ANOTHER_POINTER ) != ' ' ) && (( *YET_ANOTHER_POINTER ) != 0 ); YET_ANOTHER_POINTER++ )
+   {
+      printf("%c", *YET_ANOTHER_POINTER);
+   }
+
+   printf("\n");
+}

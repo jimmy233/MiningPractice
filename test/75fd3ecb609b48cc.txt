@@ -1,0 +1,55 @@
+int main()
+{
+   char VAR__19328[20000];
+   char VAR__819283[200][100];
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__7685    = 0;
+   int  VAR__8444594 = 0;
+   int  LEN_OF_STH[200];
+   int  VAR__MAX;
+   int  VAR__MIN;
+
+   gets(VAR__19328);
+   VAR_1238123 = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__19328[VAR__53647] != ' ' ) && ( VAR__19328[VAR__53647] != ',' ))
+      {
+         VAR__819283[VAR__7685][VAR__8444594] = VAR__19328[VAR__53647];
+         VAR__8444594++;
+      }
+      else
+      {
+         if ( VAR__8444594 == 0 )
+         {
+            continue;
+         }
+
+         VAR__819283[VAR__7685][VAR__8444594 + 1] = '\0';
+         LEN_OF_STH[VAR__7685] = VAR__8444594;
+         VAR__8444594          = 0;
+         VAR__7685++;
+      }
+   }
+
+   LEN_OF_STH[VAR__7685] = VAR__8444594;
+   VAR__819283[VAR__7685][VAR__8444594 + 1] = '\0';
+   VAR__MAX = 0;
+   VAR__MIN = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__7685; VAR__53647++ )
+   {
+      if ( LEN_OF_STH[VAR__53647] > LEN_OF_STH[VAR__MAX] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+
+      if ( LEN_OF_STH[VAR__53647] < LEN_OF_STH[VAR__MIN] )
+      {
+         VAR__MIN = VAR__53647;
+      }
+   }
+
+   printf("%s\n%s", VAR__819283[VAR__MAX], VAR__819283[VAR__MIN]);
+   return 0;
+}

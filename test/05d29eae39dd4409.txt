@@ -1,0 +1,67 @@
+char *mul(char *, char *);
+
+int main()
+{
+   char ANOTHER_STRING[100000] = "1";
+   char YET_ANOTHER_STRING[100000];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  length   = strlen(YET_ANOTHER_STRING);
+   char *VAR_666 = ANOTHER_STRING;
+   char *VAR_233 = YET_ANOTHER_STRING;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_666 = ANOTHER_STRING;
+      VAR_233 = mul(ANOTHER_STRING, YET_ANOTHER_STRING);
+      VAR_233--;
+      for ( ; VAR_233 >= YET_ANOTHER_STRING; VAR_233-- )
+      {
+         *VAR_666 = *VAR_233;
+         VAR_666++;
+      }
+   }
+
+   ( cout << ANOTHER_STRING ) << endl;
+   return 0;
+}
+
+
+char *mul(char *VAR__NUM, char *YET_ANOTHER_STRING)
+{
+   int  length = strlen(VAR__NUM);
+   char *VAR_233;
+   char *VAR_666;
+
+   VAR_233 = ( VAR__NUM + length ) - 1;
+   VAR_666 = YET_ANOTHER_STRING;
+   int VAR__53647;
+   int VAR_1238123  = 0;
+   int VAR__1238129 = 0;
+   int VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      VAR_1238123  = ( *VAR_233 ) - '0';
+      VAR_1238123  = ( VAR_1238123 * 2 ) + VAR__1238129;
+      VAR__8444594 = VAR_1238123 % 10;
+      VAR__1238129 = VAR_1238123 / 10;
+      *VAR_666     = VAR__8444594 + '0';
+
+      if ( VAR__53647 != ( length - 1 ))
+      {
+         VAR_233--;
+      }
+
+      VAR_666++;
+   }
+
+   if ( VAR__1238129 != 0 )
+   {
+      *VAR_666 = VAR__1238129 + '0';
+      VAR_666++;
+   }
+
+   *VAR_666 = '\0';
+   return VAR_666;
+}

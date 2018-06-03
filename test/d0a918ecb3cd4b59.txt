@@ -1,0 +1,71 @@
+int main()
+{
+   int  LEN_OF_STH[50];
+   int  mark        = 0;
+   int  VAR__819283 = 0;
+   int  VAR__19328;
+   int  B = 0;
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  minIndex;
+   int  maxIndex;
+   char VAR_9494[999];
+   char zfc[50][50];
+
+   gets(VAR_9494);
+   for ( VAR__819283 = 0; VAR__819283 < 50; VAR__819283++ )
+   {
+      for ( VAR__19328 = B, VAR__53647 = 0; VAR__19328 < 999, VAR__53647 < 50; VAR__19328++, VAR__53647++ )
+      {
+         if (( VAR_9494[VAR__19328] != ' ' ) && ( VAR_9494[VAR__19328] != '\0' ))
+         {
+            zfc[VAR__819283][VAR__53647] = VAR_9494[VAR__19328];
+         }
+         else
+         if (( VAR_9494[VAR__19328] == ' ' ) && ( VAR_9494[VAR__19328] != '\0' ))
+         {
+            mark++;
+            B = VAR__19328 + 1;
+            break;
+         }
+         else
+         if ( VAR_9494[VAR__19328] == '\0' )
+         {
+            mark++;
+            break;
+         }
+
+
+
+         zfc[VAR__819283][VAR__53647 + 1] = '\0';
+      }
+
+      if ( VAR_9494[VAR__19328] == '\0' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR_1238123 = 0; VAR_1238123 < mark; VAR_1238123++ )
+   {
+      LEN_OF_STH[VAR_1238123] = strlen(zfc[VAR_1238123]);
+   }
+
+   maxIndex = 0;
+   minIndex = 0;
+   for ( VAR_1238123 = 1; VAR_1238123 < mark; VAR_1238123++ )
+   {
+      if ( LEN_OF_STH[VAR_1238123] > LEN_OF_STH[maxIndex] )
+      {
+         maxIndex = VAR_1238123;
+      }
+      else
+      if ( LEN_OF_STH[VAR_1238123] < LEN_OF_STH[minIndex] )
+      {
+         minIndex = VAR_1238123;
+      }
+   }
+
+   printf("%s\n%s\n", zfc[maxIndex], zfc[minIndex]);
+   return 0;
+}

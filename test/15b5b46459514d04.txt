@@ -1,0 +1,74 @@
+int main()
+{
+   char VAR_9494[101];
+   int  VAR__53647;
+   int  VAR__1111;
+   int  VAR_1238123;
+   int  VAR__7685;
+   int  VAR__21230;
+   int  VAR_129012;
+   int  le[101] = { 0 };
+   int  ri[101] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__7685 = 0; VAR__7685 < VAR_1238123; VAR__7685++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         le[VAR__53647] = 0;
+         ri[VAR__53647] = 0;
+      }
+
+      scanf("%s", VAR_9494);
+      VAR__1111 = strlen(VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            le[VAR__53647] = 1;
+         }
+
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            ri[VAR__53647] = 1;
+         }
+      }
+
+      for ( VAR__53647 = VAR__1111 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( le[VAR__53647] == 1 )
+         {
+            for ( VAR__21230 = VAR__53647; VAR__21230 < VAR__1111; VAR__21230++ )
+            {
+               if ( ri[VAR__21230] == 1 )
+               {
+                  ri[VAR__21230] = 0;
+                  le[VAR__53647] = 0;
+                  break;
+               }
+            }
+         }
+      }
+
+      puts(VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         if ( ri[VAR__53647] == 1 )
+         {
+            printf("?");
+         }
+
+         if ( le[VAR__53647] == 1 )
+         {
+            printf("$");
+         }
+
+         if (( ri[VAR__53647] == 0 ) && ( le[VAR__53647] == 0 ))
+         {
+            printf(" ");
+         }
+      }
+
+      printf("\n");
+   }
+}

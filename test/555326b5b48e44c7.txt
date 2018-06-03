@@ -1,0 +1,59 @@
+int main()
+{
+   char sth[N];
+   char *VAR_233  = 0;
+   char *VAR__MIN = 0;
+   char *VAR__MAX = 0;
+   int  VAR_FLAG  = 0;
+   int  VAR__SUM  = 0;
+   int  sum_max   = 0;
+   int  sum_min   = N;
+
+   gets(sth);
+   for ( VAR_233 = sth; VAR_233 <= ( sth + strlen(sth)); VAR_233++ )
+   {
+      if ((( *VAR_233 ) == ' ' ) || (( *VAR_233 ) == '\0' ))
+      {
+         if ( VAR_FLAG == 0 )
+         {
+            continue;
+         }
+
+         if ( VAR__SUM > sum_max )
+         {
+            VAR__MAX = VAR_233 - VAR__SUM;
+            sum_max  = VAR__SUM;
+         }
+
+         if ( VAR__SUM < sum_min )
+         {
+            VAR__MIN = VAR_233 - VAR__SUM;
+            sum_min  = VAR__SUM;
+         }
+
+         VAR__SUM = 0;
+         VAR_FLAG = 0;
+      }
+      else
+      {
+         VAR__SUM++;
+         VAR_FLAG = 1;
+      }
+   }
+
+   for ( VAR_233 = VAR__MAX; VAR_233 < ( VAR__MAX + sum_max ); VAR_233++ )
+   {
+      printf("%c", *VAR_233);
+   }
+
+   printf("\n");
+   for ( VAR_233 = VAR__MIN; VAR_233 < ( VAR__MIN + sum_min ); VAR_233++ )
+   {
+      printf("%c", *VAR_233);
+   }
+
+   printf("\n");
+   getchar();
+   getchar();
+   return 0;
+}

@@ -1,0 +1,64 @@
+int main()
+{
+   char word[1000] = { '\0' };
+   int  length[100];
+   int  point[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__8444594;
+   int  VAR_233;
+   int  VAR_666;
+
+   gets(word);
+   VAR__8444594 = strlen(word);
+   VAR__819283  = 0;
+   VAR__19328   = 0;
+   point[1]     = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      if ((( word[VAR__53647] == 44 ) || ( word[VAR__53647] == 32 )) || ( word[VAR__53647] == '\0' ))
+      {
+         VAR__19328            = VAR__19328 + 1;
+         length[VAR__19328]    = VAR__53647 - VAR__819283;
+         VAR__819283           = VAR__53647 + 1;
+         point[VAR__19328 + 1] = VAR__53647 + 1;
+      }
+   }
+
+   VAR__819283 = length[1];
+   VAR_233     = 1;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR__19328; VAR__53647++ )
+   {
+      if ( length[VAR__53647] > VAR__819283 )
+      {
+         VAR__819283 = length[VAR__53647];
+         VAR_233     = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = point[VAR_233]; VAR__53647 <= (( point[VAR_233] + VAR__819283 ) - 1 ); VAR__53647++ )
+   {
+      printf("%c", word[VAR__53647]);
+   }
+
+   printf("\n");
+   VAR__819283 = length[1];
+   VAR_233     = 1;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR__19328; VAR__53647++ )
+   {
+      if (( length[VAR__53647] < VAR__819283 ) && ( length[VAR__53647] != 0 ))
+      {
+         VAR__819283 = length[VAR__53647];
+         VAR_233     = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = point[VAR_233]; VAR__53647 <= (( point[VAR_233] + VAR__819283 ) - 1 ); VAR__53647++ )
+   {
+      printf("%c", word[VAR__53647]);
+   }
+
+   return 0;
+}

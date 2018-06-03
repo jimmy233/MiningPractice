@@ -1,0 +1,90 @@
+struct bracket
+{
+   char data[VAR__MAX];
+   int  top;
+};
+int main()
+{
+   char           A_STRING[VAR__MAX] = { 0 };
+   char           VAR_FLAG[VAR__MAX] = { 0 };
+   int            VAR__53647;
+   int            LEN_OF_STH;
+   int            VAR_1238123;
+   struct bracket *leftbracket;
+   struct bracket *rightbracket;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 > 0 )
+   {
+      while ( scanf("%s", A_STRING) != EOF )
+      {
+         leftbracket      = (struct bracket *)malloc(sizeof( struct bracket ));
+         rightbracket     = (struct bracket *)malloc(sizeof( struct bracket ));
+         leftbracket->top = ( rightbracket->top = 0 );
+         LEN_OF_STH       = strlen(A_STRING);
+         for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+         {
+            switch ( A_STRING[VAR__53647] )
+            {
+            case '(':
+               leftbracket->data[leftbracket->top++] = A_STRING[VAR__53647];
+               VAR_FLAG[VAR__53647] = ' ';
+               break;
+
+            case ')':
+
+               if ( leftbracket->top > 0 )
+               {
+                  VAR_FLAG[VAR__53647] = ' ';
+                  leftbracket->top    -= 1;
+               }
+               else
+               {
+                  VAR_FLAG[VAR__53647] = '?';
+               }
+
+               break;
+
+            default:
+               VAR_FLAG[VAR__53647] = ' ';
+               break;
+            }
+         }
+
+         for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+         {
+            switch ( A_STRING[VAR__53647] )
+            {
+            case ')':
+               rightbracket->data[rightbracket->top++] = A_STRING[VAR__53647];
+               break;
+
+            case '(':
+
+               if ( rightbracket->top > 0 )
+               {
+                  rightbracket->top -= 1;
+               }
+               else
+               {
+                  VAR_FLAG[VAR__53647] = '$';
+               }
+
+               break;
+
+            default:
+               break;
+            }
+         }
+
+         printf("%s\n%s\n", A_STRING, VAR_FLAG);
+         memset(A_STRING, '\0', sizeof( A_STRING ));
+         memset(VAR_FLAG, '\0', sizeof( VAR_FLAG ));
+      }
+
+      VAR_1238123--;
+   }
+
+   return 0;
+}

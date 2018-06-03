@@ -1,0 +1,50 @@
+int main()
+{
+   char VAR__819283[300];
+   char VAR__19328[100][100];
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  start      = 0;
+   int  LEN_OF_STH[100];
+   int  VAR__MAX = 0;
+   int  VAR__MIN = 0;
+
+   gets(VAR__819283);
+   for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == ' ' )
+      {
+         VAR__19328[VAR__21230][VAR__53647 - start] = '\0';
+         VAR__21230++;
+         start = VAR__53647 + 1;
+      }
+      else
+      if ( VAR__819283[VAR__53647] != ',' )
+      {
+         VAR__19328[VAR__21230][VAR__53647 - start] = VAR__819283[VAR__53647];
+      }
+   }
+
+   VAR__19328[VAR__21230][VAR__53647 - start] = '\0';
+   VAR__21230++;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      LEN_OF_STH[VAR__53647] = strlen(VAR__19328[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      if ( LEN_OF_STH[VAR__MAX] < LEN_OF_STH[VAR__53647] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+
+      if ( LEN_OF_STH[VAR__MIN] > LEN_OF_STH[VAR__53647] )
+      {
+         VAR__MIN = VAR__53647;
+      }
+   }
+
+   printf("%s\n%s\n", VAR__19328[VAR__MAX], VAR__19328[VAR__MIN]);
+   return 0;
+}

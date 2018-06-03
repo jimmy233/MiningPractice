@@ -1,0 +1,59 @@
+void main()
+{
+   char string[260];
+   char sub[50];
+   char replace[50];
+   char result[260];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp   = 0;
+   int  mark        = 0;
+   int  VAR__819283 = 0;
+
+   scanf("%s%s%s", string, sub, replace);
+   for ( VAR__53647 = 0; string[VAR__53647] != '\0'; VAR__53647++, mark++ )
+   {
+      if ( string[VAR__53647] == sub[0] )
+      {
+         VAR__819283 = 0;
+         for ( VAR__temp = VAR__53647, VAR__21230 = 0; sub[VAR__21230] != '\0'; VAR__temp++, VAR__21230++ )
+         {
+            if ( sub[VAR__21230] != string[VAR__temp] )
+            {
+               VAR__819283 = 1;
+               break;
+            }
+         }
+
+         if ( VAR__819283 == 0 )
+         {
+            break;
+         }
+      }
+   }
+
+   if ( mark == strlen(string))
+   {
+      printf("%s\n", string);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < mark; VAR__53647++ )
+      {
+         result[VAR__53647] = string[VAR__53647];
+      }
+
+      for ( VAR__53647 = mark, VAR__21230 = 0; VAR__21230 < strlen(replace); VAR__53647++, VAR__21230++ )
+      {
+         result[VAR__53647] = replace[VAR__21230];
+      }
+
+      for ( VAR__53647 = mark + VAR__21230, VAR__temp = mark + strlen(sub); string[VAR__temp] != '\0'; VAR__53647++, VAR__temp++ )
+      {
+         result[VAR__53647] = string[VAR__temp];
+      }
+
+      result[VAR__53647] = '\0';
+      printf("%s\n", result);
+   }
+}

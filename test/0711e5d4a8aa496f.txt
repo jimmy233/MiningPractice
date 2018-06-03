@@ -1,0 +1,52 @@
+int exchange(int (*)[5]);
+
+int main()
+{
+   int matrix[5][5];
+   int *VAR_233;
+
+   for ( VAR_233 = matrix[0]; ( VAR_233 - matrix[0] ) < 25; VAR_233++ )
+   {
+      scanf("%d", VAR_233);
+   }
+
+   if ( exchange(matrix))
+   {
+      for ( VAR_233 = matrix[0]; ( VAR_233 - matrix[0] ) < 25; VAR_233++ )
+      {
+         printf("%d%c", *VAR_233, ((( VAR_233 - matrix[0] ) + 1 ) % 5 ) ? ( ' ' ) : ( '\n' ));
+      }
+   }
+   else
+   {
+      printf("error\n");
+   }
+
+   return 0;
+}
+
+
+int exchange(int (*matrix)[5])
+{
+   int VAR_1238123;
+   int VAR__1238129;
+
+   scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+   if (((( VAR_1238123 < 0 ) || ( VAR_1238123 > 4 )) || ( VAR__1238129 < 0 )) || ( VAR__1238129 > 4 ))
+   {
+      return 0;
+   }
+   else
+   {
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+      {
+         matrix[VAR__1238129][VAR__53647] ^= matrix[VAR_1238123][VAR__53647];
+         matrix[VAR_1238123][VAR__53647]  ^= matrix[VAR__1238129][VAR__53647];
+         matrix[VAR__1238129][VAR__53647] ^= matrix[VAR_1238123][VAR__53647];
+      }
+
+      return 1;
+   }
+}

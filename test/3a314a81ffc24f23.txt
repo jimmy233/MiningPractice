@@ -1,0 +1,67 @@
+int main()
+{
+   char A_STRING[101];
+   int  VAR__53647;
+   int  VAR__21230;
+
+   while ( cin.getline(A_STRING, 101))
+   {
+      int length       = strlen(A_STRING);
+      int count1[1000] = { 0 };
+      int count2[1000] = { 0 };
+      for ( VAR__53647 = length; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            for ( VAR__21230 = VAR__53647; A_STRING[VAR__21230] != '\0'; VAR__21230++ )
+            {
+               if (( A_STRING[VAR__21230] == ')' ) && ( count2[VAR__21230] == 0 ))
+               {
+                  count2[VAR__21230]--;
+                  break;
+               }
+               else
+               {
+                  if ( A_STRING[VAR__21230 + 1] == '\0' )
+                  {
+                     count1[VAR__53647]++;
+                  }
+               }
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            count2[VAR__53647]++;
+         }
+
+         cout << A_STRING[VAR__53647];
+      }
+
+      cout << endl;
+      for ( VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( count1[VAR__53647] == 1 )
+         {
+            cout << "$";
+         }
+
+         if ( count2[VAR__53647] == 1 )
+         {
+            cout << "?";
+         }
+
+         if (( count1[VAR__53647] != 1 ) && ( count2[VAR__53647] != 1 ))
+         {
+            cout << " ";
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

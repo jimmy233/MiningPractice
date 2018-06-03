@@ -1,0 +1,54 @@
+int main()
+{
+   char A_STRING[LEN];
+   int  VAR__53647;
+   int  wordlen = 0;
+   int  maxlen  = 0;
+   int  minlen  = 30;
+   int  iofmax;
+   int  iofmin;
+
+   gets(A_STRING);
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] != ' ' ) && ( A_STRING[VAR__53647] != '\0' ))
+      {
+         wordlen++;
+      }
+      else
+      {
+         if ( wordlen > maxlen )
+         {
+            maxlen = wordlen;
+            iofmax = VAR__53647 - wordlen;
+         }
+
+         if ( wordlen < minlen )
+         {
+            minlen = wordlen;
+            iofmin = VAR__53647 - wordlen;
+         }
+
+         wordlen = 0;
+      }
+
+      if ( A_STRING[VAR__53647] == '\0' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = iofmax; VAR__53647 < ( iofmax + maxlen ); VAR__53647++ )
+   {
+      printf("%c", A_STRING[VAR__53647]);
+   }
+
+   printf("\n");
+   for ( VAR__53647 = iofmin; VAR__53647 < ( iofmin + minlen ); VAR__53647++ )
+   {
+      printf("%c", A_STRING[VAR__53647]);
+   }
+
+   printf("\n");
+   return 0;
+}

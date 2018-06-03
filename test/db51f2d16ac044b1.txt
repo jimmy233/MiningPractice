@@ -1,0 +1,91 @@
+void peidui(char A_STRING[], int LEN_OF_STH);
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   char VAR_9494[1000];
+   char s1[5];
+
+   scanf("%d", &VAR_1238123);
+   gets(s1);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      gets(VAR_9494);
+      puts(VAR_9494);
+      peidui(VAR_9494, strlen(VAR_9494));
+   }
+}
+
+
+void peidui(char A_STRING[], int LEN_OF_STH)
+{
+   int a1[500];
+   int n1;
+   int n2;
+   int VAR__1238129;
+   int i1;
+   int i2;
+
+   n1 = 0;
+   char *VAR_233;
+   char mark[1000];
+   for ( VAR__1238129 = 0; VAR__1238129 <= ( LEN_OF_STH - 1 ); VAR__1238129++ )
+   {
+      if ( A_STRING[VAR__1238129] == '(' )
+      {
+         a1[n1] = VAR__1238129;
+         n1++;
+      }
+
+      mark[VAR__1238129] = ' ';
+   }
+
+   for ( i1 = n1 - 1; i1 >= 0; i1-- )
+   {
+      int exist;
+      exist = 0;
+      for ( i2 = a1[i1] + 1; i2 <= ( LEN_OF_STH - 1 ); i2++ )
+      {
+         if (( A_STRING[i2] == ')' ) && ( mark[i2] != 'm' ))
+         {
+            exist        = 1;
+            mark[i2]     = 'm';
+            mark[a1[i1]] = 'm';
+            break;
+         }
+      }
+
+      if ( a1[i1] == ( LEN_OF_STH - 1 ))
+      {
+         mark[LEN_OF_STH - 1] = '$';
+      }
+   }
+
+   for ( VAR__1238129 = 0; VAR__1238129 <= ( LEN_OF_STH - 1 ); VAR__1238129++ )
+   {
+      if (( A_STRING[VAR__1238129] == '(' ) && ( mark[VAR__1238129] != 'm' ))
+      {
+         mark[VAR__1238129] = '$';
+      }
+
+      if (( A_STRING[VAR__1238129] == ')' ) && ( mark[VAR__1238129] != 'm' ))
+      {
+         mark[VAR__1238129] = '?';
+      }
+   }
+
+   for ( VAR__1238129 = 0; VAR__1238129 <= ( LEN_OF_STH - 1 ); VAR__1238129++ )
+   {
+      if ( mark[VAR__1238129] == 'm' )
+      {
+         printf("%c", ' ');
+      }
+      else
+      {
+         printf("%c", mark[VAR__1238129]);
+      }
+   }
+
+   printf("\n");
+}

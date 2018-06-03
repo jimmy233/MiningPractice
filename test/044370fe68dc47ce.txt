@@ -1,0 +1,54 @@
+int main()
+{
+   char zf[106];
+
+   while ( 1 )
+   {
+      memset(zf, '\0', sizeof( zf ));
+      gets(zf);
+
+      if ( zf[0] == '\0' )
+      {
+         break;
+      }
+
+      puts(zf);
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(zf); VAR__53647++ )
+      {
+         if ( zf[VAR__53647] == ')' )
+         {
+            for ( int VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( zf[VAR__21230] == '(' )
+               {
+                  zf[VAR__21230] = ' ';
+                  zf[VAR__53647] = ' ';
+                  break;
+               }
+            }
+         }
+         else
+         if ( zf[VAR__53647] != '(' )
+         {
+            zf[VAR__53647] = ' ';
+         }
+      }
+
+      for ( int VAR__temp = 0; VAR__temp < strlen(zf); VAR__temp++ )
+      {
+         if ( zf[VAR__temp] == '(' )
+         {
+            zf[VAR__temp] = '$';
+         }
+         else
+         if ( zf[VAR__temp] == ')' )
+         {
+            zf[VAR__temp] = '?';
+         }
+      }
+
+      puts(zf);
+   }
+
+   return 0;
+}

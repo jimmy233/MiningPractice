@@ -1,0 +1,91 @@
+struct zimu
+{
+   char VAR__819283;
+   int  VAR_1238123;
+}
+B[300];
+struct zimu
+{
+   char VAR__819283;
+   int  VAR_1238123;
+}
+VAR__TEMP;
+int main()
+{
+   char A[303];
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__8444594;
+   int  number;
+   int  VAR_FLAG;
+   int  flag1 = 0;
+
+   scanf("%s", A);
+   number = strlen(A);
+   for ( VAR__53647 = 0; VAR__53647 < number; VAR__53647++ )
+   {
+      B[VAR__53647].VAR_1238123 = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < number; VAR__53647++ )
+   {
+      if ((( A[VAR__53647] >= 65 ) && ( A[VAR__53647] <= 90 )) || (( A[VAR__53647] >= 97 ) && ( A[VAR__53647] <= 122 )))
+      {
+         flag1    = 1;
+         VAR_FLAG = 0;
+
+         if ( VAR__53647 == 0 )
+         {
+            B[VAR__21230].VAR__819283 = A[VAR__53647];
+            B[VAR__21230].VAR_1238123 = 1;
+            VAR__21230++;
+         }
+         else
+         {
+            for ( VAR__8444594 = 0; VAR__8444594 < VAR__21230; VAR__8444594++ )
+            {
+               if ( B[VAR__8444594].VAR__819283 == A[VAR__53647] )
+               {
+                  B[VAR__8444594].VAR_1238123++;
+                  VAR_FLAG = 1;
+                  break;
+               }
+            }
+
+            if ( VAR_FLAG == 0 )
+            {
+               B[VAR__21230].VAR__819283 = A[VAR__53647];
+               B[VAR__21230].VAR_1238123 = 1;
+               VAR__21230++;
+            }
+         }
+      }
+   }
+
+   if ( flag1 == 0 )
+   {
+      printf("No");
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < VAR__21230; VAR__53647++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__21230 - VAR__53647 ); VAR__8444594++ )
+         {
+            if ( B[VAR__8444594].VAR__819283 > B[VAR__8444594 + 1].VAR__819283 )
+            {
+               VAR__TEMP           = B[VAR__8444594 + 1];
+               B[VAR__8444594 + 1] = B[VAR__8444594];
+               B[VAR__8444594]     = VAR__TEMP;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+      {
+         printf("%c=%d\n", B[VAR__53647].VAR__819283, B[VAR__53647].VAR_1238123);
+      }
+   }
+
+   return 0;
+}

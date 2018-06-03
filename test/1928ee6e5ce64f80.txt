@@ -1,0 +1,77 @@
+char *mystrrchr(char *strcopy, char *end)
+{
+   char *tmp = end - 1;
+
+   while ( tmp >= strcopy )
+   {
+      if (( *tmp ) == '(' )
+      {
+         return tmp;
+      }
+
+      tmp--;
+   }
+
+   return NULL;
+}
+
+
+void judge(char *A_STRING, char *VAR_FLAG)
+{
+   char strcopy[101];
+
+   strcpy(strcopy, A_STRING);
+   int  LEN_OF_STH = strlen(strcopy);
+   char *index1    = strchr(strcopy, ')');
+
+   while (( index1 != NULL ) && (( index1 - strcopy ) < LEN_OF_STH ))
+   {
+      char *index2 = mystrrchr(strcopy, index1);
+
+      if ( index2 != NULL )
+      {
+         strcopy[index1 - strcopy] = '-';
+         strcopy[index2 - strcopy] = '-';
+      }
+
+      index1 = strchr(index1 + 1, ')');
+   }
+
+   int VAR__53647 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( strcopy[VAR__53647] == '(' )
+      {
+         VAR_FLAG[VAR__53647] = '$';
+      }
+
+      if ( strcopy[VAR__53647] == ')' )
+      {
+         VAR_FLAG[VAR__53647] = '?';
+      }
+   }
+
+   printf("%s\n%s\n", A_STRING, VAR_FLAG);
+}
+
+
+int main()
+{
+   int VAR_1238123 = 0;
+
+   scanf("%d", &VAR_1238123);
+   getchar();
+   char A_STRING[101];
+   char VAR_FLAG[101];
+
+   while ( VAR_1238123 > 0 )
+   {
+      memset(VAR_FLAG, ' ', sizeof( VAR_FLAG ));
+      gets(A_STRING);
+      VAR_FLAG[strlen(A_STRING)] = '\0';
+      judge(A_STRING, VAR_FLAG);
+      VAR_1238123--;
+   }
+
+   return 0;
+}

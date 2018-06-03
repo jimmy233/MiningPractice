@@ -1,0 +1,66 @@
+int main()
+{
+   char word[101]      = { "0" };
+   char VAR__TEMP[101] = { "0" };
+   int  LEN_OF_STH     = 0;
+   int  VAR__53647     = 0;
+   int  VAR__21230     = 0;
+   int  VAR_9494       = 0;
+
+   while ( cin.getline(word, 101))
+   {
+      ( cout << word ) << endl;
+      LEN_OF_STH = strlen(word);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR__TEMP[VAR__53647] = ' ';
+      }
+
+      VAR__TEMP[VAR__53647] = '\0';
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( word[VAR__53647] == '(' )
+         {
+            VAR__TEMP[VAR__53647] = '$';
+         }
+
+         if ( word[VAR__53647] == ')' )
+         {
+            VAR__TEMP[VAR__53647] = '?';
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR_9494 = 1;
+
+         if ( word[VAR__53647] == '(' )
+         {
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+            {
+               if ( word[VAR__21230] == '(' )
+               {
+                  VAR_9494++;
+               }
+
+               if ( word[VAR__21230] == ')' )
+               {
+                  VAR_9494--;
+               }
+
+               if ( VAR_9494 == 0 )
+               {
+                  VAR__TEMP[VAR__53647] = ' ';
+                  VAR__TEMP[VAR__21230] = ' ';
+                  break;
+               }
+            }
+         }
+      }
+
+      ( cout << VAR__TEMP ) << endl;
+      strcpy(VAR__TEMP, "0");
+   }
+
+   return 0;
+}

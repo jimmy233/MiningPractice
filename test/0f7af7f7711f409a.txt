@@ -1,0 +1,72 @@
+int main()
+{
+   char ch1[101];
+   char ch2[101];
+   int  VAR__53647   = 0;
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   int  LEN_OF_STH   = 0;
+
+   while ( cin.getline(ch1, 101))
+   {
+      LEN_OF_STH = strlen(ch1);
+      int VAR__NUM = 0;
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         ch2[VAR__53647] = ' ';
+
+         if ( ch1[VAR__53647] == '(' )
+         {
+            ch2[VAR__53647] = '$';
+            VAR__NUM++;
+         }
+
+         if ( ch1[VAR__53647] == ')' )
+         {
+            ch2[VAR__53647] = '?';
+            VAR__NUM--;
+
+            if ( VAR__NUM == 0 )
+            {
+               ch2[VAR__53647] = ' ';
+               for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+               {
+                  if ( ch1[VAR__21230] == '(' )
+                  {
+                     for ( VAR__8444594 = VAR__21230; VAR__8444594 <= VAR__53647; VAR__8444594++ )
+                     {
+                        ch2[VAR__8444594] = ' ';
+                        break;
+                        break;
+                     }
+                  }
+               }
+            }
+
+            if ( VAR__NUM > 0 )
+            {
+               ch2[VAR__53647] = ' ';
+               for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+               {
+                  if ( ch2[VAR__21230] == '$' )
+                  {
+                     ch2[VAR__21230] = ' ';
+                     break;
+                  }
+               }
+            }
+
+            if ( VAR__NUM < 0 )
+            {
+               VAR__NUM = 0;
+            }
+         }
+      }
+
+      ch2[LEN_OF_STH] = '\0';
+      ( cout << ch1 ) << endl;
+      ( cout << ch2 ) << endl;
+   }
+
+   return 0;
+}

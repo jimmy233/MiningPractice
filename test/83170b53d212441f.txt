@@ -1,0 +1,52 @@
+int Issubstr(char *VAR_9494, char *subs)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_9494); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(subs); VAR__21230++ )
+      {
+         if ( subs[VAR__21230] != VAR_9494[VAR__53647 + VAR__21230] )
+         {
+            break;
+         }
+      }
+
+      if ( VAR__21230 == strlen(subs))
+      {
+         break;
+      }
+   }
+
+   if ( VAR__53647 < strlen(VAR_9494))
+   {
+      return VAR__53647;
+   }
+
+   return -1;
+}
+
+
+int main()
+{
+   char VAR_9494[257];
+   char sub[257];
+   char replace[257];
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+
+   scanf("%s%s%s", VAR_9494, sub, replace);
+   for ( VAR__53647 = Issubstr(VAR_9494, sub); ( VAR__53647 != ( -1 )) && ( VAR__21230 < strlen(replace)); VAR__53647++ )
+   {
+      VAR_9494[VAR__53647] = replace[VAR__21230++];
+   }
+
+   if ( VAR__53647 > strlen(VAR_9494))
+   {
+      VAR_9494[VAR__53647] = '\0';
+   }
+
+   printf("%s", VAR_9494);
+   return 0;
+}

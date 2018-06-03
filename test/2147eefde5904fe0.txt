@@ -1,0 +1,120 @@
+int zimu(char VAR__4857423)
+{
+   if ((( VAR__4857423 >= 65 ) && ( VAR__4857423 <= 90 )) || (( VAR__4857423 >= 97 ) && ( VAR__4857423 <= 122 )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   char A_STRING[500];
+   int  max1     = 0;
+   int  max2     = 0;
+   int  min1     = 0;
+   int  min2     = 0;
+   int  VAR__MAX = 0;
+   int  VAR__MIN = 51;
+   int  VAR_FLAG = 0;
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  LEN_OF_STH = 0;
+
+   gets(A_STRING);
+   VAR__8444594 = strlen(A_STRING);
+
+   if ( VAR__8444594 > 50 )
+   {
+      VAR__8444594 = 50;
+   }
+
+   VAR_FLAG = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if (( zimu(A_STRING[VAR__53647]) == 1 ) && ( VAR_FLAG == 0 ))
+      {
+         if ( VAR__53647 != ( VAR__8444594 - 1 ))
+         {
+            LEN_OF_STH = 1;
+            VAR_FLAG   = 1;
+         }
+         else
+         if ( VAR__53647 == ( VAR__8444594 - 1 ))
+         {
+            if ( VAR__MAX < 1 )
+            {
+               max1 = VAR__53647;
+               max2 = VAR__53647 + 1;
+            }
+
+            if ( VAR__MIN > 1 )
+            {
+               min1 = VAR__53647;
+               min2 = VAR__53647 + 1;
+            }
+         }
+      }
+      else
+      if ((( zimu(A_STRING[VAR__53647]) == 1 ) && ( VAR_FLAG == 1 )) && ( VAR__53647 != ( VAR__8444594 - 1 )))
+      {
+         LEN_OF_STH++;
+      }
+      else
+      if ((( zimu(A_STRING[VAR__53647]) == 1 ) && ( VAR_FLAG == 1 )) && ( VAR__53647 == ( VAR__8444594 - 1 )))
+      {
+         LEN_OF_STH++;
+
+         if ( LEN_OF_STH > VAR__MAX )
+         {
+            max1     = ( VAR__53647 - LEN_OF_STH ) + 1;
+            max2     = VAR__53647 + 1;
+            VAR__MAX = LEN_OF_STH;
+         }
+
+         if ( LEN_OF_STH < VAR__MIN )
+         {
+            min1     = ( VAR__53647 - LEN_OF_STH ) + 1;
+            min2     = VAR__53647 + 1;
+            VAR__MIN = LEN_OF_STH;
+         }
+      }
+      else
+      if (( zimu(A_STRING[VAR__53647]) == 0 ) && ( VAR_FLAG == 1 ))
+      {
+         VAR_FLAG = 0;
+
+         if ( LEN_OF_STH > VAR__MAX )
+         {
+            max1     = VAR__53647 - LEN_OF_STH;
+            max2     = VAR__53647;
+            VAR__MAX = LEN_OF_STH;
+         }
+
+         if ( LEN_OF_STH < VAR__MIN )
+         {
+            min1     = VAR__53647 - LEN_OF_STH;
+            min2     = VAR__53647;
+            VAR__MIN = LEN_OF_STH;
+         }
+      }
+   }
+
+   for ( VAR__53647 = max1; VAR__53647 < max2; VAR__53647++ )
+   {
+      printf("%c", A_STRING[VAR__53647]);
+   }
+
+   printf("\n");
+   for ( VAR__53647 = min1; VAR__53647 < min2; VAR__53647++ )
+   {
+      printf("%c", A_STRING[VAR__53647]);
+   }
+
+   printf("\n");
+   return 0;
+}

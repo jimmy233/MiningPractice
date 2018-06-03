@@ -1,0 +1,73 @@
+char word[256];
+char substring[256];
+char replacement[256];
+int  l1;
+int  l2;
+int  l3;
+int the_same(char *ch)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < l2; VAR__53647++ )
+   {
+      if (( *( ch + VAR__53647 )) != substring[VAR__53647] )
+      {
+         return 0;
+      }
+   }
+
+   return 1;
+}
+
+
+int main()
+{
+   char *VAR_233 = NULL;
+   char *VAR_666 = NULL;
+   int  VAR__53647;
+   int  VAR__temp;
+
+   cin.getline(word, 256);
+   l1 = strlen(word);
+   cin.getline(substring, 256);
+   l2 = strlen(substring);
+   cin.getline(replacement, 256);
+   l3 = strlen(replacement);
+   for ( VAR__53647 = 0; VAR__53647 < l1; VAR__53647++ )
+   {
+      VAR__temp = the_same(&word[VAR__53647]);
+
+      if ( VAR__temp == 1 )
+      {
+         VAR_233 = word + VAR__53647;
+         break;
+      }
+   }
+
+   if ( VAR_233 == NULL )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < l1; VAR__53647++ )
+      {
+         cout << word[VAR__53647];
+      }
+   }
+   else
+   {
+      for ( VAR_666 = word; VAR_666 < VAR_233; VAR_666++ )
+      {
+         cout << ( *VAR_666 );
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < l3; VAR__53647++ )
+      {
+         cout << replacement[VAR__53647];
+      }
+
+      for ( VAR_666 = VAR_233 + l2; VAR_666 < ( word + l1 ); VAR_666++ )
+      {
+         cout << ( *VAR_666 );
+      }
+   }
+
+   return 0;
+}

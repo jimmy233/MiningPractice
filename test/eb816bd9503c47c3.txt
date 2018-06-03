@@ -1,0 +1,45 @@
+int main()
+{
+   int  LeftParenIndex[100];
+   char A_STRING[101];
+
+   while ( gets(A_STRING))
+   {
+      int VAR__53647;
+      int top = 0;
+      puts(A_STRING);
+      for ( VAR__53647 = 0; A_STRING[VAR__53647]; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == '(' )
+         {
+            LeftParenIndex[top++] = VAR__53647;
+         }
+         else
+         if ( A_STRING[VAR__53647] == ')' )
+         {
+            if ( top == 0 )
+            {
+               A_STRING[VAR__53647] = '?';
+            }
+            else
+            {
+               A_STRING[VAR__53647]            = ' ';
+               A_STRING[LeftParenIndex[--top]] = ' ';
+            }
+         }
+         else
+         {
+            A_STRING[VAR__53647] = ' ';
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < top; VAR__53647++ )
+      {
+         A_STRING[LeftParenIndex[VAR__53647]] = '$';
+      }
+
+      puts(A_STRING);
+   }
+
+   return 0;
+}

@@ -1,0 +1,137 @@
+int main()
+{
+   char VAR__819283[110];
+   char VAR__19328[110];
+   int  LEN_OF_STH;
+   int  mark;
+   int  sign     = 0;
+   int  VAR_9494 = 0;
+
+   while ( cin.getline(VAR__819283, 110, '\n'))
+   {
+      LEN_OF_STH = strlen(VAR__819283);
+      for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = VAR__819283[VAR__53647];
+      }
+
+      for ( int VAR__21230 = 1; VAR__21230 <= LEN_OF_STH; VAR__21230++ )
+      {
+         mark     = 0;
+         sign     = 0;
+         VAR_9494 = 0;
+         for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+         {
+            if ( VAR__819283[VAR__53647] == '(' )
+            {
+               mark     = VAR__53647;
+               VAR_9494 = 1;
+            }
+         }
+
+         if ( mark == ( LEN_OF_STH - 1 ))
+         {
+            VAR__819283[mark] = '$';
+         }
+
+         if ( VAR_9494 != 0 )
+         {
+            for ( int VAR__53647 = mark + 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+            {
+               if ( VAR__819283[VAR__53647] == ')' )
+               {
+                  VAR__819283[mark]       = 'a';
+                  VAR__819283[VAR__53647] = 'a';
+                  sign = 1;
+                  break;
+               }
+            }
+         }
+
+         if ( VAR_9494 != 0 )
+         {
+            if ( sign == 0 )
+            {
+               VAR__819283[mark] = '$';
+            }
+         }
+
+         sign     = 0;
+         mark     = 0;
+         VAR_9494 = 0;
+         for ( int VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+         {
+            if ( VAR__819283[VAR__53647] == ')' )
+            {
+               mark     = VAR__53647;
+               VAR_9494 = 1;
+            }
+         }
+
+         if ( VAR_9494 != 0 )
+         {
+            if ( mark == 0 )
+            {
+               VAR__819283[mark] = '?';
+            }
+         }
+
+         if ( VAR_9494 != 0 )
+         {
+            for ( int VAR__53647 = mark - 1; VAR__53647 >= 0; VAR__53647-- )
+            {
+               if ( VAR__819283[VAR__53647] == '(' )
+               {
+                  VAR__819283[mark]       = 'a';
+                  VAR__819283[VAR__53647] = 'a';
+                  sign = 1;
+                  break;
+               }
+            }
+         }
+
+         if ( VAR_9494 != 0 )
+         {
+            if ( sign == 0 )
+            {
+               VAR__819283[mark] = '?';
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         cout << VAR__19328[VAR__53647];
+      }
+
+      ( cout << VAR__19328[LEN_OF_STH - 1] ) << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if (( VAR__819283[VAR__53647] != '?' ) && ( VAR__819283[VAR__53647] != '$' ))
+         {
+            cout << ' ';
+         }
+         else
+         {
+            cout << VAR__819283[VAR__53647];
+         }
+      }
+
+      if (( VAR__819283[LEN_OF_STH - 1] != '?' ) && ( VAR__819283[LEN_OF_STH - 1] != '$' ))
+      {
+         ( cout << ' ' ) << endl;
+      }
+      else
+      {
+         ( cout << VAR__819283[LEN_OF_STH - 1] ) << endl;
+      }
+
+      memset(VAR__819283, '\0', sizeof( VAR__819283 ));
+      memset(VAR__19328, '\0', sizeof( VAR__19328 ));
+      mark       = 0;
+      sign       = 0;
+      LEN_OF_STH = 0;
+   }
+
+   return 0;
+}

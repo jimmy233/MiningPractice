@@ -1,0 +1,57 @@
+void main()
+{
+   char A_STRING[300];
+   char VAR__temp;
+   int  VAR__819283[300] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__127322 = 0;
+
+   scanf("%s", A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < ( strlen(A_STRING) - 1 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < strlen(A_STRING); VAR__21230++ )
+      {
+         if ( A_STRING[VAR__21230] < A_STRING[VAR__8444594] )
+         {
+            VAR__8444594 = VAR__21230;
+         }
+      }
+
+      VAR__temp = A_STRING[VAR__8444594];
+      A_STRING[VAR__8444594] = A_STRING[VAR__53647];
+      A_STRING[VAR__53647]   = VAR__temp;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= 97 ) && ( A_STRING[VAR__53647] <= 122 ))
+      {
+         VAR__819283[VAR__53647] = 1;
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < strlen(A_STRING); VAR__21230++ )
+         {
+            if ( A_STRING[VAR__21230] == A_STRING[VAR__53647] )
+            {
+               VAR__819283[VAR__53647]++;
+               A_STRING[VAR__21230] = '0';
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= 97 ) && ( A_STRING[VAR__53647] <= 122 ))
+      {
+         VAR__127322 = 1;
+         printf("%c=%d\n", A_STRING[VAR__53647], VAR__819283[VAR__53647]);
+      }
+   }
+
+   if ( VAR__127322 == 0 )
+   {
+      printf("No");
+   }
+}

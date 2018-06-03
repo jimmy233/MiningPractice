@@ -1,0 +1,53 @@
+void fenpg(int, int);
+
+int VAR__8444594;
+int pg[20];
+int main()
+{
+   int VAR__temp;
+   int VAR__1238129;
+   int VAR_1238123;
+
+   cin >> VAR__temp;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR__temp; VAR__53647++ )
+   {
+      ( cin >> VAR__1238129 ) >> VAR_1238123;
+      VAR__8444594 = 0;
+      for ( int VAR__21230 = VAR_1238123; VAR__21230 >= 1; VAR__21230-- )
+      {
+         for ( int o = 1; o <= 19; o++ )
+         {
+            pg[o] = 0;
+         }
+
+         pg[VAR__21230 + 1] = VAR__1238129;
+         fenpg(VAR__1238129, VAR__21230);
+      }
+
+      ( cout << VAR__8444594 ) << endl;
+   }
+
+   return 0;
+}
+
+
+void fenpg(int pgleft, int pzleft)
+{
+   if (( pgleft == 0 ) && ( pzleft == 0 ))
+   {
+      VAR__8444594++;
+      return;
+   }
+   else
+   if (( pgleft > 0 ) && ( pzleft > 0 ))
+   {
+      for ( int VAR__53647 = pgleft; VAR__53647 > 0; VAR__53647-- )
+      {
+         if ( VAR__53647 <= pg[pzleft + 1] )
+         {
+            pg[pzleft] = VAR__53647;
+            fenpg(pgleft - VAR__53647, pzleft - 1);
+         }
+      }
+   }
+}

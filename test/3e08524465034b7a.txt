@@ -1,0 +1,98 @@
+void fun(char VAR__819283[])
+{
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  bi = 0;
+   int  zuo;
+   int  you;
+   int  hao = 0;
+   char VAR__19328[200];
+   int  VAR__4857423[200];
+
+   LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+   {
+      if (( VAR__819283[VAR__21230] == '(' ) || ( VAR__819283[VAR__21230] == ')' ))
+      {
+         VAR__19328[bi]   = VAR__819283[VAR__21230];
+         VAR__4857423[bi] = VAR__21230;
+         bi += 1;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( bi - 1 ); VAR__21230++ )
+   {
+      if (( VAR__19328[VAR__21230] == '(' ) && ( VAR__19328[VAR__21230 + 1] == ')' ))
+      {
+         zuo = VAR__21230;
+         you = VAR__21230 + 1;
+         hao = 1;
+         break;
+      }
+   }
+
+   if ( hao == 0 )
+   {
+      return;
+   }
+
+   while (( VAR__19328[zuo] == '(' ) && ( VAR__19328[you] == ')' ))
+   {
+      VAR__19328[zuo] = 1;
+      VAR__19328[you] = 1;
+      zuo            -= 1;
+      you            += 1;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < bi; VAR__21230++ )
+   {
+      if ( VAR__19328[VAR__21230] == 1 )
+      {
+         VAR__819283[VAR__4857423[VAR__21230]] = 1;
+      }
+   }
+
+   fun(VAR__819283);
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  VAR__21230;
+   char VAR__819283[200];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", VAR__819283);
+      LEN_OF_STH = strlen(VAR__819283);
+      puts(VAR__819283);
+      fun(VAR__819283);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if (( VAR__819283[VAR__21230] != '(' ) && ( VAR__819283[VAR__21230] != ')' ))
+         {
+            printf(" ");
+         }
+         else
+         if ( VAR__819283[VAR__21230] == '(' )
+         {
+            printf("$");
+         }
+         else
+         if ( VAR__819283[VAR__21230] == ')' )
+         {
+            printf("?");
+         }
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

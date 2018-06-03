@@ -1,0 +1,48 @@
+int main()
+{
+   char A_STRING[10000];
+
+   gets(A_STRING);
+   char word[50];
+   char longword[50];
+   char shortword[50];
+   int  longnum      = 0;
+   int  shortnum     = 50;
+   int  VAR__8444594 = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__NUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] != ' ' ) && ( A_STRING[VAR__53647] != ',' ))
+      {
+         VAR__NUM++;
+         word[VAR__8444594] = A_STRING[VAR__53647];
+         VAR__8444594++;
+      }
+
+      if ((((( A_STRING[VAR__53647] == ' ' ) || ( A_STRING[VAR__53647] == ',' )) && ( A_STRING[VAR__53647 - 1] != ' ' )) && ( A_STRING[VAR__53647 - 1] != ',' )) || ( A_STRING[VAR__53647 + 1] == 0 ))
+      {
+         word[VAR__8444594] = 0;
+
+         if ( longnum < VAR__NUM )
+         {
+            longnum = VAR__NUM;
+            strcpy(longword, word);
+         }
+
+         if ( shortnum > VAR__NUM )
+         {
+            shortnum = VAR__NUM;
+            strcpy(shortword, word);
+         }
+
+         VAR__NUM     = 0;
+         VAR__8444594 = 0;
+      }
+   }
+
+   longword[longnum] = '\0';
+   printf("%s\n%s", longword, shortword);
+   return 0;
+}

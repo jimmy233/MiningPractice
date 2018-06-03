@@ -1,0 +1,69 @@
+void main()
+{
+   char string[256];
+   char sub[256];
+   char replace[256];
+   char VAR_9494[256];
+   char VAR_233[256];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__819283;
+   int  k0;
+   int  k1;
+   int  k2;
+   int  VAR_FLAG = 0;
+
+   scanf("%s", string);
+   scanf("%s", sub);
+   scanf("%s", replace);
+   k0 = strlen(string);
+   k1 = strlen(sub);
+   k2 = strlen(replace);
+   for ( VAR__53647 = 0; VAR__53647 < k0; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647, VAR__8444594 = 0; VAR__21230 < ( VAR__53647 + k1 ); VAR__21230++, VAR__8444594++ )
+      {
+         VAR_233[VAR__8444594] = string[VAR__21230];
+      }
+
+      VAR_233[VAR__8444594] = 0;
+
+      if ( strcmp(sub, VAR_233) == 0 )
+      {
+         VAR__819283 = VAR__53647;
+         for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+         {
+            VAR_9494[VAR__53647] = string[VAR__53647];
+         }
+
+         for ( VAR__53647 = ( k0 + k2 ) - k1, VAR__21230 = k0; VAR__53647 >= ( VAR__819283 + k2 ), VAR__21230 >= ( VAR__819283 + k1 ); VAR__53647--, VAR__21230-- )
+         {
+            VAR_9494[VAR__53647] = string[VAR__21230];
+         }
+
+         for ( VAR__53647 = VAR__819283, VAR__21230 = 0; VAR__53647 < ( VAR__819283 + k2 ), VAR__21230 < k2; VAR__53647++, VAR__21230++ )
+         {
+            VAR_9494[VAR__53647] = replace[VAR__21230];
+         }
+
+         VAR_FLAG = 1;
+         break;
+      }
+   }
+
+   if ( VAR_FLAG == 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( k0 + k2 ) - k1 ); VAR__53647++ )
+      {
+         printf("%c", VAR_9494[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      puts(string);
+   }
+}

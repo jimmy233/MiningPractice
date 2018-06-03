@@ -1,0 +1,80 @@
+int main()
+{
+   char A_STRING[101] = { 0 };
+   int  pro[101]      = { 0 };
+   int  VAR__21230    = 0;
+   int  VAR_233       = 0;
+   int  VAR_666       = 0;
+
+   while ( gets(A_STRING))
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= strlen(A_STRING); VAR__53647++ )
+      {
+         if (( A_STRING[VAR__53647 - 1] != '(' ) && ( A_STRING[VAR__53647 - 1] != ')' ))
+         {
+            pro[VAR__53647 - 1] = 2;
+         }
+
+         if ( A_STRING[VAR__53647 - 1] == ')' )
+         {
+            pro[VAR__53647 - 1] = 1;
+            for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 1; VAR__21230-- )
+            {
+               if (( A_STRING[VAR__21230 - 1] == '(' ) && ( pro[VAR__21230 - 1] == 0 ))
+               {
+                  pro[VAR__21230 - 1] = 1;
+                  break;
+               }
+            }
+
+            if ( VAR__21230 == 0 )
+            {
+               pro[VAR__53647 - 1] = 0;
+            }
+         }
+      }
+
+      ( cout << A_STRING ) << endl;
+      for ( VAR_233 = strlen(A_STRING); VAR_233 >= 1; VAR_233-- )
+      {
+         if ( pro[VAR_233 - 1] == 0 )
+         {
+            break;
+         }
+      }
+
+      for ( VAR_666 = 1; VAR_666 <= strlen(A_STRING); VAR_666++ )
+      {
+         if ( pro[VAR_666 - 1] == 0 )
+         {
+            break;
+         }
+      }
+
+      for ( int VAR__8444594 = VAR_666; VAR__8444594 <= VAR_233; VAR__8444594++ )
+      {
+         if (( A_STRING[VAR__8444594 - 1] == '(' ) && ( pro[VAR__8444594 - 1] == 0 ))
+         {
+            cout << "$";
+         }
+         else
+         if (( A_STRING[VAR__8444594 - 1] == ')' ) && ( pro[VAR__8444594 - 1] == 0 ))
+         {
+            cout << "?";
+         }
+         else
+         {
+            cout << " ";
+         }
+      }
+
+      cout << endl;
+      for ( int clear = 1; clear <= 101; clear++ )
+      {
+         A_STRING[clear - 1] = 0;
+         pro[clear - 1]      = 0;
+      }
+   }
+
+   return 0;
+}

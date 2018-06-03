@@ -1,0 +1,94 @@
+char sign[101];
+int  lf[100];
+int  rt[100];
+int  LEN_OF_STH;
+void match();
+
+int main()
+{
+   while ( cin.getline(sign, 101))
+   {
+      LEN_OF_STH = strlen(sign);
+      ( cout << sign ) << endl;
+      int VAR__53647 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         lf[VAR__53647] = -1;
+         rt[VAR__53647] = -1;
+      }
+
+      match();
+   }
+
+   return 0;
+}
+
+
+void match()
+{
+   int  VAR__53647 = 0;
+   int  VAR__21230 = 0;
+   int  n1         = 0;
+   int  n2         = 0;
+   char result[LEN_OF_STH];
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      result[VAR__53647] = ' ';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( sign[VAR__53647] == '(' )
+      {
+         lf[n1] = VAR__53647;
+         n1++;
+      }
+
+      if ( sign[VAR__53647] == ')' )
+      {
+         rt[n2] = VAR__53647;
+         n2++;
+      }
+   }
+
+   for ( VAR__53647 = n1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < n2; VAR__21230++ )
+      {
+         if ( lf[VAR__53647] < rt[VAR__21230] )
+         {
+            lf[VAR__53647] = -1;
+            rt[VAR__21230] = -1;
+            break;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      if ( lf[VAR__53647] >= 0 )
+      {
+         result[lf[VAR__53647]] = '$';
+      }
+   }
+
+
+   for ( VAR__21230 = 0; VAR__21230 < n2; VAR__21230++ )
+   {
+      if ( rt[VAR__21230] >= 0 )
+      {
+         result[rt[VAR__21230]] = '?';
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      cout << result[VAR__53647];
+   }
+
+   cout << endl;
+}

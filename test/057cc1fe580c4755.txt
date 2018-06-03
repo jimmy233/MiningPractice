@@ -1,0 +1,68 @@
+int main()
+{
+   char VAR__819283[105];
+   int  mark[105] = { 0 };
+
+   while ( cin.getline(VAR__819283, 101))
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__819283); VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == '(' )
+         {
+            mark[VAR__53647] = 1;
+         }
+
+         if ( VAR__819283[VAR__53647] == ')' )
+         {
+            mark[VAR__53647] = -1;
+         }
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 < strlen(VAR__819283); VAR__53647++ )
+      {
+         if ( mark[VAR__53647] == ( -1 ))
+         {
+            for ( int VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( mark[VAR__21230] == 1 )
+               {
+                  mark[VAR__53647] = 0;
+                  mark[VAR__21230] = 0;
+                  break;
+               }
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__819283); VAR__53647++ )
+      {
+         cout << VAR__819283[VAR__53647];
+      }
+
+      cout << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__819283); VAR__53647++ )
+      {
+         if ( mark[VAR__53647] == 0 )
+         {
+            cout << " ";
+         }
+         else
+         if ( mark[VAR__53647] == 1 )
+         {
+            cout << "$";
+         }
+         else
+         {
+            cout << "?";
+         }
+      }
+
+      cout << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__819283); VAR__53647++ )
+      {
+         mark[VAR__53647] = 0;
+      }
+   }
+
+   return 0;
+}

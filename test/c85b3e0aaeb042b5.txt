@@ -1,0 +1,54 @@
+int main()
+{
+   char A_STRING[256 * 2];
+   char sub[300];
+   char replacement[300];
+   char tmp[300];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  result = -1;
+   int  VAR__8444594;
+
+   gets(A_STRING);
+   gets(sub);
+   gets(replacement);
+   for ( VAR__53647 = 0; VAR__53647 <= ((int)( strlen(A_STRING) - strlen(sub))); VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == sub[0] )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ((int)strlen(sub)); VAR__21230++ )
+         {
+            if ( A_STRING[VAR__53647 + VAR__21230] == sub[VAR__21230] )
+            {
+               result = VAR__53647;
+            }
+            else
+            {
+               result = -1;
+               break;
+            }
+         }
+      }
+
+      if ( result != ( -1 ))
+      {
+         break;
+      }
+   }
+
+   VAR__8444594 = (int)strlen(replacement);
+
+   if ( result != ( -1 ))
+   {
+      strcpy(tmp, ( A_STRING + VAR__53647 ) + VAR__21230);
+      strcpy(A_STRING + VAR__53647, replacement);
+      strcpy(( A_STRING + VAR__53647 ) + VAR__8444594, tmp);
+      printf("%s", A_STRING);
+   }
+   else
+   {
+      printf("%s", A_STRING);
+   }
+
+   return 0;
+}

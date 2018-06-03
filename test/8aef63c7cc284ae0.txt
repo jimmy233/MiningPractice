@@ -1,0 +1,59 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR_FLAG;
+   int  VAR_21983012;
+   int  VAR__21230;
+   int  LEN_OF_STH;
+   char A_STRING[257];
+   char sub[200];
+   char rep[50];
+
+   scanf("%s %s %s", A_STRING, sub, rep);
+   LEN_OF_STH   = strlen(sub);
+   VAR_21983012 = 500;
+   for ( VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == sub[0] )
+      {
+         for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + LEN_OF_STH ); VAR__21230++ )
+         {
+            if ( A_STRING[VAR__21230] != sub[VAR__21230 - VAR__53647] )
+            {
+               VAR_FLAG = 0;
+               break;
+            }
+         }
+
+         if ( VAR_FLAG != 0 )
+         {
+            VAR_21983012 = VAR__53647;
+            break;
+         }
+         else
+         {
+            VAR_FLAG = 1;
+         }
+      }
+   }
+
+   if ( VAR_21983012 != 500 )
+   {
+      VAR__21230 = 0;
+      for ( VAR__53647 = VAR_21983012 + LEN_OF_STH; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         sub[VAR__21230] = A_STRING[VAR__53647];
+         VAR__21230++;
+      }
+
+      sub[VAR__21230]        = '\0';
+      A_STRING[VAR_21983012] = '\0';
+      printf("%s%s%s", A_STRING, rep, sub);
+   }
+   else
+   {
+      printf("%s", A_STRING);
+   }
+
+   return 0;
+}

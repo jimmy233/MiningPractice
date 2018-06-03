@@ -1,0 +1,69 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  f1 = 0;
+   int  f2 = 0;
+   char line[101];
+   char copy[101];
+
+   while ( cin >> line )
+   {
+      strcpy(copy, line);
+      for ( VAR__53647 = 0; VAR__53647 < strlen(line); VAR__53647++ )
+      {
+         if ( line[VAR__53647] == ')' )
+         {
+            line[VAR__53647] = '?';
+         }
+
+         if ( line[VAR__53647] == '(' )
+         {
+            f1 = 1;
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < strlen(line); VAR__21230++ )
+            {
+               if ( line[VAR__21230] == '(' )
+               {
+                  f1++;
+               }
+
+               if ( line[VAR__21230] == ')' )
+               {
+                  f1--;
+
+                  if ( f1 == 0 )
+                  {
+                     line[VAR__53647] = ' ';
+                     line[VAR__21230] = ' ';
+                     break;
+                  }
+               }
+            }
+
+            if ( f1 != 0 )
+            {
+               line[VAR__53647] = '$';
+            }
+         }
+      }
+
+      ( cout << copy ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < strlen(line); VAR__53647++ )
+      {
+         if (( line[VAR__53647] == '$' ) || ( line[VAR__53647] == '?' ))
+         {
+            cout << line[VAR__53647];
+         }
+         else
+         {
+            cout << " ";
+         }
+      }
+
+      cout << endl;
+      memset(line, 0, sizeof( line ));
+      memset(copy, 0, sizeof( copy ));
+   }
+
+   return 0;
+}

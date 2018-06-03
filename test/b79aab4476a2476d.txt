@@ -1,0 +1,126 @@
+int right(char VAR_9494[], int VAR__53647, int VAR_1238123)
+{
+   int VAR__21230;
+   int left     = 0;
+   int right    = 0;
+   int VAR__NUM = 0;
+
+   for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( VAR_9494[VAR__21230] == '(' )
+      {
+         right++;
+      }
+
+      if ( VAR_9494[VAR__21230] == ')' )
+      {
+         left++;
+      }
+
+      if ( right < left )
+      {
+         VAR__NUM = 1;
+         break;
+      }
+   }
+
+   return VAR__NUM;
+}
+
+
+int left(char VAR_9494[], int VAR__53647)
+{
+   int VAR__21230;
+   int left     = 0;
+   int right    = 0;
+   int VAR__NUM = 0;
+
+   for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      if ( VAR_9494[VAR__21230] == '(' )
+      {
+         right++;
+      }
+
+      if ( VAR_9494[VAR__21230] == ')' )
+      {
+         left++;
+      }
+
+      if ( right > left )
+      {
+         VAR__NUM = 1;
+         break;
+      }
+   }
+
+   return VAR__NUM;
+}
+
+
+int trans(char s1[], char s2[])
+{
+   int LEN_OF_STH;
+   int VAR__53647;
+
+   LEN_OF_STH = strlen(s1);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( s1[VAR__53647] != ')' ) && ( s1[VAR__53647] != '(' ))
+      {
+         s2[VAR__53647] = ' ';
+      }
+
+      if ( s1[VAR__53647] == ')' )
+      {
+         if ( left(s1, VAR__53647) == 1 )
+         {
+            s2[VAR__53647] = ' ';
+         }
+         else
+         {
+            s2[VAR__53647] = '?';
+         }
+      }
+
+      if ( s1[VAR__53647] == '(' )
+      {
+         if ( right(s1, VAR__53647, LEN_OF_STH) == 1 )
+         {
+            s2[VAR__53647] = ' ';
+         }
+         else
+         {
+            s2[VAR__53647] = '$';
+         }
+      }
+   }
+
+   s2[LEN_OF_STH] = '\0';
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   struct aaa
+   {
+      char s1[105];
+      char s2[105];
+   };
+   struct aaa line[20];
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      gets(line[VAR__53647].s1);
+      trans(line[VAR__53647].s1, line[VAR__53647].s2);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n%s\n", line[VAR__53647].s1, line[VAR__53647].s2);
+   }
+}

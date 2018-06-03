@@ -1,0 +1,77 @@
+int main()
+{
+   int  LEN_OF_STH = 0;
+   int  VAR__53647 = 0;
+   int  VAR__21230 = 0;
+   int  VAR__SUM   = 0;
+   char in[101];
+   int  sign[101];
+   char out[101];
+
+   while ( cin.getline(in, 101) && ( in[0] != '\0' ))
+   {
+      LEN_OF_STH = strlen(in);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         sign[VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         out[VAR__53647] = ' ';
+      }
+
+      out[LEN_OF_STH] = '\0';
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR__SUM = 1;
+
+         if ( in[VAR__53647] == '(' )
+         {
+            if ( VAR__53647 == ( LEN_OF_STH - 1 ))
+            {
+               out[VAR__53647] = '$';
+            }
+            else
+            {
+               for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+               {
+                  if ( in[VAR__21230] == '(' )
+                  {
+                     VAR__SUM = VAR__SUM + 1;
+                  }
+
+                  if ( in[VAR__21230] == ')' )
+                  {
+                     VAR__SUM = VAR__SUM - 1;
+                  }
+
+                  if ( VAR__SUM == 0 )
+                  {
+                     sign[VAR__21230] = 1;
+                     break;
+                  }
+               }
+
+               if ( VAR__SUM != 0 )
+               {
+                  out[VAR__53647] = '$';
+               }
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if (( in[VAR__53647] == ')' ) && ( sign[VAR__53647] == 0 ))
+         {
+            out[VAR__53647] = '?';
+         }
+      }
+
+      ( cout << in ) << endl;
+      ( cout << out ) << endl;
+   }
+
+   return 0;
+}

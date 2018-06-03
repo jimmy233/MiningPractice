@@ -1,0 +1,67 @@
+char VAR_9494[1000];
+int  dp[1000];
+int main(void)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( scanf("%s", VAR_9494) == 1 )
+   {
+      memset(dp, 0, sizeof( dp ));
+      VAR_1238123 = strlen(VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            dp[VAR__53647] = -1;
+         }
+
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            dp[VAR__53647] = 1;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if (( VAR_9494[VAR__21230] == '(' ) && ( dp[VAR__21230] == ( -1 )))
+               {
+                  dp[VAR__53647] = 0;
+                  dp[VAR__21230] = 0;
+                  break;
+               }
+            }
+         }
+      }
+
+      printf("%s\n", VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( dp[VAR__53647] == ( -1 ))
+         {
+            printf("$");
+         }
+         else
+         if ( dp[VAR__53647] == 1 )
+         {
+            printf("?");
+         }
+         else
+         {
+            printf(" ");
+         }
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

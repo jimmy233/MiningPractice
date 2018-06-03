@@ -1,0 +1,67 @@
+int  LEN_OF_STH;
+char A_STRING[101];
+void VAR__127322(int VAR_233)
+{
+   int VAR__1238129 = -1;
+   int VAR_1238123  = -1;
+
+   for ( int VAR__53647 = VAR_233; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( *( A_STRING + VAR__53647 )) == '(' )
+      {
+         VAR__1238129 = VAR__53647;
+         break;
+      }
+   }
+
+   for ( int VAR__53647 = VAR__1238129 + 1; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      if (( *( A_STRING + VAR__53647 )) == ')' )
+      {
+         VAR_1238123 = VAR__53647;
+         break;
+      }
+   }
+
+   if (( VAR__1238129 >= 0 ) && ( VAR_1238123 >= 0 ))
+   {
+      A_STRING[VAR__1238129] = '#';
+      A_STRING[VAR_1238123]  = '#';
+   }
+
+   if ( VAR__1238129 > 0 )
+   {
+      VAR__127322(VAR__1238129 - 1);
+   }
+}
+
+
+int main()
+{
+   while ( cin >> A_STRING )
+   {
+      LEN_OF_STH = strlen(A_STRING);
+      ( cout << A_STRING ) << endl;
+      VAR__127322(LEN_OF_STH);
+      for ( int VAR__21230 = 0; VAR__21230 <= ( LEN_OF_STH - 1 ); VAR__21230++ )
+      {
+         if ( A_STRING[VAR__21230] == '(' )
+         {
+            cout << "$";
+         }
+         else
+         if ( A_STRING[VAR__21230] == ')' )
+         {
+            cout << "?";
+         }
+         else
+         {
+            cout << " ";
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

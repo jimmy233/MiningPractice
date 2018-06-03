@@ -1,0 +1,100 @@
+char word[200];
+int  pp[200];
+int  LEN_OF_STH;
+void op()
+{
+   int VAR__temp = 0;
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+   {
+      pp[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( word[VAR__53647] == '(' )
+      {
+         VAR__temp++;
+      }
+
+      if ( word[VAR__53647] == ')' )
+      {
+         VAR__temp--;
+
+         if ( VAR__temp < 0 )
+         {
+            pp[VAR__53647] = ykhao;
+            VAR__temp++;
+         }
+      }
+   }
+
+   VAR__temp = 0;
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( word[VAR__53647] == ')' ) && ( pp[VAR__53647] != ykhao ))
+      {
+         VAR__temp++;
+      }
+
+      if ( word[VAR__53647] == '(' )
+      {
+         VAR__temp--;
+
+         if ( VAR__temp < 0 )
+         {
+            pp[VAR__53647] = zkhao;
+            VAR__temp++;
+         }
+      }
+   }
+}
+
+
+void pr()
+{
+   int VAR__53647;
+
+   printf("%s\n", word);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( pp[VAR__53647] == 0 )
+      {
+         printf(" ");
+      }
+
+      if ( pp[VAR__53647] == zkhao )
+      {
+         printf("$");
+      }
+
+      if ( pp[VAR__53647] == ykhao )
+      {
+         printf("?");
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d\n", &VAR_1238123);
+   gets(word);
+   LEN_OF_STH = strlen(word);
+   op();
+   pr();
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      gets(word);
+      LEN_OF_STH = strlen(word);
+      printf("\n");
+      op();
+      pr();
+   }
+
+   return 0;
+}

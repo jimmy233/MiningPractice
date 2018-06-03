@@ -1,0 +1,39 @@
+struct point
+{
+   double VAR__7685;
+   double VAR__3918907;
+};
+double dis(struct point VAR__819283, struct point VAR__19328)
+{
+   return (( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 ) * ( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 )) + (( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 ) * ( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 ));
+}
+
+
+void main()
+{
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR_1238123;
+   double       VAR__MAX;
+   struct point VAR_233[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf%lf", &VAR_233[VAR__53647].VAR__7685, &VAR_233[VAR__53647].VAR__3918907);
+   }
+
+   VAR__MAX = dis(VAR_233[0], VAR_233[1]);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( dis(VAR_233[VAR__53647], VAR_233[VAR__21230]) > VAR__MAX )
+         {
+            VAR__MAX = dis(VAR_233[VAR__53647], VAR_233[VAR__21230]);
+         }
+      }
+   }
+
+   printf("%.4f", sqrt(VAR__MAX));
+}

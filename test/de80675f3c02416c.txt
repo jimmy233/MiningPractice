@@ -1,0 +1,59 @@
+char A_STRING[110];
+void search()
+{
+   int  VAR__53647 = 0;
+   int  VAR__1111;
+   int  VAR__temp = 0;
+   char ANOTHER_STRING[110];
+   int  stack[110];
+
+   ( cout << A_STRING ) << endl;
+   VAR__1111 = strlen(A_STRING);
+   memset(ANOTHER_STRING, ' ', sizeof( ANOTHER_STRING ));
+
+   while ( VAR__53647 < VAR__1111 )
+   {
+      if ( A_STRING[VAR__53647] == '(' )
+      {
+         VAR__temp++;
+         stack[VAR__temp] = VAR__53647;
+      }
+
+      if ( A_STRING[VAR__53647] == ')' )
+      {
+         if ( VAR__temp == 0 )
+         {
+            ANOTHER_STRING[VAR__53647] = '?';
+         }
+         else
+         {
+            VAR__temp--;
+         }
+      }
+
+      VAR__53647++;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__temp; VAR__53647++ )
+   {
+      ANOTHER_STRING[stack[VAR__53647]] = '$';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      cout << ANOTHER_STRING[VAR__53647];
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   while ( cin >> A_STRING )
+   {
+      search();
+   }
+
+   return 0;
+}

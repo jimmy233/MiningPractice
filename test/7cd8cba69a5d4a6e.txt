@@ -1,0 +1,45 @@
+int main()
+{
+   for ( char VAR__4857423[101]; cin.getline(VAR__4857423, 101); )
+   {
+      char VAR__819283[101] = { ' ' };
+      int  LEN_OF_STH       = strlen(VAR__4857423);
+      int  cnt       = 0;
+      int  left[101] = { 0 };
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if (( VAR__4857423[VAR__53647] != '(' ) && ( VAR__4857423[VAR__53647] != ')' ))
+         {
+            VAR__819283[VAR__53647] = ' ';
+         }
+         else
+         {
+            if ( VAR__4857423[VAR__53647] == '(' )
+            {
+               VAR__819283[VAR__53647] = '$';
+               cnt      += 1;
+               left[cnt] = VAR__53647 + 1;
+            }
+            else
+            {
+               if ( cnt <= 0 )
+               {
+                  VAR__819283[VAR__53647] = '?';
+               }
+               else
+               {
+                  VAR__819283[VAR__53647]    = ' ';
+                  VAR__819283[left[cnt] - 1] = ' ';
+                  left[cnt] = 0;
+                  cnt      -= 1;
+               }
+            }
+         }
+      }
+
+      ( cout << VAR__4857423 ) << endl;
+      ( cout << VAR__819283 ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,71 @@
+int main()
+{
+   char VAR__819283[101];
+   int  left;
+   int  right;
+   int  pos[101];
+   int  pos1[101];
+   int  VAR__53647;
+
+   while ( cin >> VAR__819283 )
+   {
+      left = ( right = 0 );
+      memset(pos, 0, sizeof( pos ));
+      ( cout << VAR__819283 ) << endl;
+      for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == '(' )
+         {
+            left++;
+            pos[left] = VAR__53647;
+         }
+
+         if ( VAR__819283[VAR__53647] == ')' )
+         {
+            if ( left == 0 )
+            {
+               right++;
+               pos1[right] = VAR__53647;
+            }
+            else
+            {
+               pos[left] = 200;
+               left--;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= left; VAR__53647++ )
+      {
+         VAR__819283[pos[VAR__53647]] = 1;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= right; VAR__53647++ )
+      {
+         VAR__819283[pos1[VAR__53647]] = 2;
+      }
+
+      for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if (( VAR__819283[VAR__53647] != 1 ) && ( VAR__819283[VAR__53647] != 2 ))
+         {
+            cout << " ";
+         }
+         else
+         {
+            if ( VAR__819283[VAR__53647] == 1 )
+            {
+               cout << "$";
+            }
+            else
+            {
+               cout << "?";
+            }
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

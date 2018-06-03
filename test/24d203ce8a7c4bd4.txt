@@ -1,0 +1,63 @@
+int VAR__819283[50] = { 0 };
+int length()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 49; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__53647] != 0 )
+      {
+         return VAR__53647 + 1;
+      }
+   }
+
+
+   return 0;
+}
+
+
+void power(int N)
+{
+   int VAR__53647;
+   int VAR__TEMP;
+   int add = 0;
+
+   if ( N == ( -1 ))
+   {
+      ( cout << "1" ) << endl;
+   }
+   else
+   if ( N == 0 )
+   {
+      for ( VAR__53647 = length() - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << VAR__819283[VAR__53647];
+      }
+
+      cout << endl;
+      return;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < length(); VAR__53647++ )
+      {
+         VAR__TEMP = add + ( VAR__819283[VAR__53647] * 2 );
+         VAR__819283[VAR__53647] = VAR__TEMP % 10;
+         add = VAR__TEMP / 10;
+      }
+
+      VAR__819283[VAR__53647] = add;
+      power(N - 1);
+   }
+}
+
+
+int main()
+{
+   int N;
+
+   VAR__819283[0] = 2;
+   cin >> N;
+   power(N - 1);
+   return 0;
+}

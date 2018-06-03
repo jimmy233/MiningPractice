@@ -1,0 +1,57 @@
+int main()
+{
+   char word[2][256];
+   char chan[256];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  LEN_OF_STH[2];
+   int  result = 1;
+   int  wzy    = 0;
+   int  weizhi;
+
+   scanf("%s%s%s", word[1], word[0], chan);
+   LEN_OF_STH[0] = strlen(word[0]);
+   LEN_OF_STH[1] = strlen(word[1]);
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH[1] - LEN_OF_STH[0] ); VAR__53647++ )
+   {
+      if ( word[1][VAR__53647] == word[0][0] )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < ( VAR__53647 + LEN_OF_STH[0] ); VAR__21230++ )
+         {
+            if ( word[1][VAR__21230] != word[0][VAR__21230 - VAR__53647] )
+            {
+               result = 0;
+               break;
+            }
+         }
+
+         if ( result )
+         {
+            weizhi = VAR__53647;
+            wzy    = 1;
+         }
+
+         result = 1;
+      }
+
+      if ( wzy == 1 )
+      {
+         break;
+      }
+   }
+
+   if ( wzy == 1 )
+   {
+      for ( VAR__53647 = weizhi; VAR__53647 < ( weizhi + LEN_OF_STH[0] ); VAR__53647++ )
+      {
+         word[1][VAR__53647] = chan[VAR__53647 - weizhi];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH[1]; VAR__53647++ )
+   {
+      printf("%c", word[1][VAR__53647]);
+   }
+
+   return 0;
+}

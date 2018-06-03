@@ -1,0 +1,107 @@
+int VAR__SUM(int VAR__819283, int VAR__19328);
+int empty(int VAR__819283, int VAR__19328);
+int full(int VAR__819283, int VAR__19328);
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int count1;
+   int count2;
+   int VAR__COUNT;
+   int VAR__NUM;
+   int VAR__53647;
+
+   scanf("%d", &VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      scanf("%d%d", &VAR__1238129, &VAR_1238123);
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__COUNT = full(VAR__1238129, VAR_1238123);
+      }
+      else
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__COUNT = empty(VAR__1238129, VAR_1238123);
+      }
+      else
+      {
+         count1     = empty(VAR__1238129, VAR_1238123);
+         count2     = full(VAR__1238129, VAR_1238123);
+         VAR__COUNT = count1 + count2;
+      }
+
+
+      printf("%d\n", VAR__COUNT);
+   }
+
+   return 0;
+}
+
+
+int empty(int VAR__819283, int VAR__19328)
+{
+   int VAR__NUM;
+
+   if ( VAR__819283 == 1 )
+   {
+      VAR__NUM = 1;
+   }
+   else
+   {
+      VAR__NUM = VAR__SUM(VAR__819283, VAR__19328 - 1);
+   }
+
+   return VAR__NUM;
+}
+
+
+int full(int VAR__819283, int VAR__19328)
+{
+   int VAR__NUM;
+
+   if ( VAR__819283 == VAR__19328 )
+   {
+      VAR__NUM = 1;
+   }
+   else
+   {
+      VAR__NUM = VAR__SUM(VAR__819283 - VAR__19328, VAR__19328);
+   }
+
+   return VAR__NUM;
+}
+
+
+int VAR__SUM(int VAR__819283, int VAR__19328)
+{
+   int VAR__NUM;
+
+   if (( VAR__819283 > 0 ) && ( VAR__19328 > 0 ))
+   {
+      if ( VAR__819283 < VAR__19328 )
+      {
+         VAR__NUM = VAR__SUM(VAR__819283, VAR__819283);
+      }
+      else
+      if ( VAR__819283 == 1 )
+      {
+         VAR__NUM = 1;
+      }
+      else
+      if ( VAR__19328 == 1 )
+      {
+         VAR__NUM = 1;
+      }
+      else
+      {
+         VAR__NUM = empty(VAR__819283, VAR__19328) + full(VAR__819283, VAR__19328);
+      }
+   }
+
+
+
+   return VAR__NUM;
+}

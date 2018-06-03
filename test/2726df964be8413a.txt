@@ -1,0 +1,58 @@
+char A_STRING[100];
+int search(int VAR_1238123)
+{
+   char *ANOTHER_POINTER;
+   char *YET_ANOTHER_POINTER;
+   char *VAR_233;
+   char *p3;
+   char *p4;
+   int  VAR__MAX;
+   int  VAR__MIN;
+
+   ANOTHER_POINTER = &A_STRING[0];
+   VAR__MAX        = 0;
+   VAR__MIN        = 100;
+   for ( VAR_233 = &A_STRING[0]; VAR_233 <= ( &A_STRING[VAR_1238123] ); VAR_233++ )
+   {
+      if ((((( *VAR_233 ) < 65 ) || ((( *VAR_233 ) > 90 ) && (( *VAR_233 ) < 97 ))) || (( *VAR_233 ) > 122 )) || ( VAR_233 == ( &A_STRING[VAR_1238123] )))
+      {
+         if (( VAR_233 - ANOTHER_POINTER ) > VAR__MAX )
+         {
+            VAR__MAX = VAR_233 - ANOTHER_POINTER;
+            p3       = ANOTHER_POINTER;
+         }
+
+         if (( VAR_233 - ANOTHER_POINTER ) < VAR__MIN )
+         {
+            VAR__MIN = VAR_233 - ANOTHER_POINTER;
+            p4       = ANOTHER_POINTER;
+         }
+
+         VAR_233++;
+         ANOTHER_POINTER = VAR_233;
+      }
+   }
+
+   for ( VAR_233 = p3; VAR_233 < ( p3 + VAR__MAX ); VAR_233++ )
+   {
+      printf("%c", *VAR_233);
+   }
+
+   printf("\n");
+   for ( VAR_233 = p4; VAR_233 < ( p4 + VAR__MIN ); VAR_233++ )
+   {
+      printf("%c", *VAR_233);
+   }
+
+   printf("\n");
+}
+
+
+int main()
+{
+   int lenth;
+
+   gets(A_STRING);
+   lenth = strlen(A_STRING);
+   search(lenth);
+}

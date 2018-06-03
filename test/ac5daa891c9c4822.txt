@@ -1,0 +1,54 @@
+void main()
+{
+   char st[256];
+   char sub[256];
+   char rep[256];
+
+   scanf("%s%s%s", st, sub, rep);
+   int lenst;
+   int lensub;
+   int VAR__53647;
+   int VAR__21230;
+   lenst  = strlen(st);
+   lensub = strlen(sub);
+   for ( VAR__53647 = 0; VAR__53647 <= ( lenst - lensub ); VAR__53647++ )
+   {
+      int VAR__COUNT = 0;
+
+      if ( lensub != 1 )
+      {
+         if ( st[VAR__53647] == sub[0] )
+         {
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < ( VAR__53647 + lensub ); VAR__21230++ )
+            {
+               if ( st[VAR__21230] != sub[VAR__21230 - VAR__53647] )
+               {
+                  break;
+               }
+
+               VAR__COUNT++;
+            }
+         }
+
+         if ( VAR__COUNT == ( lensub - 1 ))
+         {
+            for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + lensub ); VAR__21230++ )
+            {
+               st[VAR__21230] = rep[VAR__21230 - VAR__53647];
+            }
+
+            break;
+         }
+      }
+      else
+      {
+         if ( st[VAR__53647] == sub[0] )
+         {
+            st[VAR__53647] = rep[0];
+            break;
+         }
+      }
+   }
+
+   printf("%s", st);
+}

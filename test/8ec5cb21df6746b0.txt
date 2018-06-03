@@ -1,0 +1,50 @@
+int apple(int M, int N)
+{
+   if ( M == 1 )
+   {
+      return 1;
+   }
+
+   if ( N == 1 )
+   {
+      return 1;
+   }
+
+   if (( M != 1 ) && ( N != 1 ))
+   {
+      if ( M > N )
+      {
+         return apple(M, N - 1) + apple(M - N, N);
+      }
+      else
+      if ( M == N )
+      {
+         return apple(M, N - 1) + 1;
+      }
+      else
+      {
+         return apple(M, M);
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__temp;
+   int VAR__53647;
+
+   scanf("%d", &VAR__temp);
+   int *M;
+   int *N;
+   M = (int *)malloc(VAR__temp * ( sizeof( int )));
+   N = (int *)malloc(VAR__temp * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      scanf("%d %d", &M[VAR__53647], &N[VAR__53647]);
+      printf("%d\n", apple(M[VAR__53647], N[VAR__53647]));
+   }
+
+   free(M);
+   free(N);
+}

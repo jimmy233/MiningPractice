@@ -1,0 +1,53 @@
+void chengfang(int result[], int VAR_1238123)
+{
+   int VAR__53647;
+
+   if ( VAR_1238123 == 0 )
+   {
+      return;
+   }
+   else
+   {
+      for ( VAR__53647 = 32; VAR__53647 >= 0; VAR__53647-- )
+      {
+         result[VAR__53647] = result[VAR__53647] * 2;
+      }
+
+      for ( VAR__53647 = 32; VAR__53647 > 0; VAR__53647-- )
+      {
+         if ( result[VAR__53647] >= 10 )
+         {
+            result[VAR__53647 - 1] += result[VAR__53647] / 10;
+            result[VAR__53647]     %= 10;
+         }
+      }
+
+      chengfang(result, VAR_1238123 - 1);
+   }
+}
+
+
+int main()
+{
+   int result[33];
+   int *VAR_233;
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   memset(result, 0, sizeof( result ));
+   result[32] = 1;
+   chengfang(result, VAR_1238123);
+   VAR_233 = result;
+
+   while (( *VAR_233 ) == 0 )
+   {
+      VAR_233++;
+   }
+
+   for ( ; VAR_233 <= ( result + 32 ); VAR_233++ )
+   {
+      cout << ( *VAR_233 );
+   }
+
+   return 0;
+}

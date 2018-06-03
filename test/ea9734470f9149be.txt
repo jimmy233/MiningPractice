@@ -1,0 +1,81 @@
+char VAR_9494[10000];
+int  countl;
+int  countr;
+int  VAR__SUM[1000] = { 0 };
+int pipei(int VAR__53647)
+{
+   if ( VAR_9494[VAR__53647] == '\0' )
+   {
+      return VAR__SUM[VAR__53647] = 0;
+   }
+
+   if ( VAR_9494[VAR__53647] == '(' )
+   {
+      ++countl;
+      pipei(VAR__53647 + 1);
+      VAR__SUM[VAR__53647] += VAR__SUM[VAR__53647 + 1];
+
+      if ( VAR__SUM[VAR__53647] > 0 )
+      {
+         VAR_9494[VAR__53647] = ' ';
+         countl--;
+         countr--;
+         VAR__SUM[VAR__53647]--;
+      }
+      else
+      {
+         countl--;
+         VAR_9494[VAR__53647] = '$';
+      }
+
+      return 0;
+   }
+   else
+   if ( VAR_9494[VAR__53647] == ')' )
+   {
+      countr++;
+      VAR__SUM[VAR__53647]++;
+
+      if ( countl >= countr )
+      {
+         VAR_9494[VAR__53647] = ' ';
+         pipei(VAR__53647 + 1);
+         VAR__SUM[VAR__53647] += VAR__SUM[VAR__53647 + 1];
+         return 0;
+      }
+      else
+      {
+         countr--;
+         VAR_9494[VAR__53647] = '?';
+         pipei(VAR__53647 + 1);
+         VAR__SUM[VAR__53647] += VAR__SUM[VAR__53647 + 1];
+         return 0;
+      }
+   }
+   else
+   {
+      VAR_9494[VAR__53647] = ' ';
+      pipei(VAR__53647 + 1);
+      VAR__SUM[VAR__53647] += VAR__SUM[VAR__53647 + 1];
+      return 0;
+   }
+
+
+   return 0;
+}
+
+
+int main()
+{
+   while ( cin )
+   {
+      cin.getline(VAR_9494, 1000);
+      ( cout << VAR_9494 ) << endl;
+      pipei(0);
+      ( cout << VAR_9494 ) << endl;
+      countl = ( countr = 0 );
+      memset(VAR__SUM, 0, sizeof( VAR__SUM ));
+   }
+
+   return 0;
+}

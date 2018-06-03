@@ -1,0 +1,73 @@
+int main()
+{
+   char chuan[101];
+   char shuchu[100];
+   int  count1;
+   int  count2;
+   int  length;
+   int  VAR__53647;
+   int  VAR__21230;
+
+   while ( cin >> chuan )
+   {
+      ( cout << chuan ) << endl;
+      length = strlen(chuan);
+      strcpy(shuchu, chuan);
+      count1 = 0;
+      count2 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+      {
+         if ( chuan[VAR__53647] == '(' )
+         {
+            count1++;
+         }
+
+         if ( chuan[VAR__53647] == ')' )
+         {
+            count2++;
+
+            if ( count2 > count1 )
+            {
+               shuchu[VAR__53647] = '?';
+               count2--;
+            }
+         }
+      }
+
+      count1 = 0;
+      count2 = 0;
+      for ( VAR__53647 = length - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( chuan[VAR__53647] == ')' )
+         {
+            count2++;
+         }
+
+         if ( chuan[VAR__53647] == '(' )
+         {
+            count1++;
+
+            if ( count1 > count2 )
+            {
+               shuchu[VAR__53647] = '$';
+               count1--;
+            }
+         }
+      }
+
+      shuchu[length] = '\0';
+      for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+      {
+         if (( shuchu[VAR__53647] != '?' ) && ( shuchu[VAR__53647] != '$' ))
+         {
+            shuchu[VAR__53647] = ' ';
+         }
+      }
+
+      ( cout << shuchu ) << endl;
+      memset(shuchu, 0, sizeof( shuchu ));
+      memset(chuan, 0, sizeof( chuan ));
+   }
+
+   return 0;
+}

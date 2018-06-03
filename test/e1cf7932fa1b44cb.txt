@@ -1,0 +1,58 @@
+int dg(int VAR__819283, int VAR__19328);
+
+char st[1000];
+char st2[1000];
+int main()
+{
+   while ( cin.getline(st, 1000))
+   {
+      st2[strlen(st)] = '\0';
+      dg(1, 0);
+      ((( cout << st ) << endl ) << st2 ) << endl;
+   }
+}
+
+
+int dg(int VAR__819283, int VAR__19328)
+{
+   for ( int VAR__53647 = VAR__819283; VAR__53647 <= strlen(st); VAR__53647++ )
+   {
+      if ( st[VAR__53647 - 1] == '(' )
+      {
+         int VAR__temp = dg(VAR__53647 + 1, VAR__53647);
+
+         if ( VAR__temp == 0 )
+         {
+            st2[VAR__53647 - 1] = '$';
+            break;
+         }
+
+         if ( VAR__temp > 0 )
+         {
+            st2[VAR__53647 - 1] = ' ';
+            VAR__53647          = VAR__temp;
+            continue;
+         }
+      }
+      else
+      if ( st[VAR__53647 - 1] == ')' )
+      {
+         if ( VAR__19328 == 0 )
+         {
+            st2[VAR__53647 - 1] = '?';
+         }
+
+         if ( VAR__19328 > 0 )
+         {
+            st2[VAR__53647 - 1] = ' ';
+            return VAR__53647;
+         }
+      }
+      else
+      {
+         st2[VAR__53647 - 1] = ' ';
+      }
+   }
+
+   return 0;
+}

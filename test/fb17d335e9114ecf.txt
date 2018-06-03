@@ -1,0 +1,72 @@
+char VAR_9494[1000];
+int findri(int VAR__7685, int VAR__3918907)
+{
+   int VAR_233;
+
+   if ( VAR_9494[VAR__7685] == '\0' )
+   {
+      return -1;
+   }
+
+   if ( VAR_9494[VAR__7685] == '(' )
+   {
+      VAR_233 = findri(VAR__7685 + 1, VAR__3918907 + 1);
+
+      if ( VAR_233 == ( -1 ))
+      {
+         VAR_9494[VAR__7685] = '$';
+         return -1;
+      }
+      else
+      {
+         VAR_9494[VAR__7685] = ' ';
+         return findri(VAR_233 + 1, VAR__3918907);
+      }
+   }
+   else
+   if ( VAR_9494[VAR__7685] == ')' )
+   {
+      if ( VAR__3918907 == 0 )
+      {
+         VAR_9494[VAR__7685] = '?';
+         return findri(VAR__7685 + 1, VAR__3918907);
+      }
+      else
+      {
+         VAR_9494[VAR__7685] = ' ';
+         return VAR__7685;
+      }
+   }
+   else
+   {
+      VAR_9494[VAR__7685] = ' ';
+      return findri(VAR__7685 + 1, VAR__3918907);
+   }
+}
+
+
+int main()
+{
+   int LEN_OF_STH;
+   int VAR__53647;
+
+   while ( cin >> VAR_9494 )
+   {
+      LEN_OF_STH = strlen(VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << VAR_9494[VAR__53647];
+      }
+
+      cout << '\n';
+      findri(0, 0);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << VAR_9494[VAR__53647];
+      }
+
+      cout << '\n';
+   }
+
+   return 0;
+}

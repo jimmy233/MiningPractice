@@ -1,0 +1,72 @@
+int main()
+{
+   char A_STRING[500];
+   char sub[500];
+   char rep[500];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  shou;
+   int  mo;
+   int  VAR__8444594;
+
+   scanf("%s %s %s", A_STRING, sub, rep);
+   int len1 = strlen(A_STRING);
+   int len2 = strlen(sub);
+   int len3 = strlen(rep);
+   for ( VAR__53647 = 0; VAR__53647 <= ( len1 - len2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < len2; VAR__21230++ )
+      {
+         if ( A_STRING[VAR__53647 + VAR__21230] != sub[VAR__21230] )
+         {
+            break;
+         }
+      }
+
+      if ( VAR__21230 == len2 )
+      {
+         shou = VAR__53647;
+         mo   = VAR__53647 + VAR__21230;
+         break;
+      }
+   }
+
+   if ( VAR__21230 != len2 )
+   {
+      printf("%s", A_STRING);
+   }
+   else
+   {
+      if ( len2 >= len3 )
+      {
+         for ( VAR__53647 = shou, VAR__21230 = 0; rep[VAR__21230] != 0; VAR__53647++, VAR__21230++ )
+         {
+            A_STRING[VAR__53647] = rep[VAR__21230];
+         }
+
+         for ( VAR__8444594 = mo; A_STRING[VAR__8444594] != 0; VAR__8444594++, VAR__53647++ )
+         {
+            A_STRING[VAR__53647] = A_STRING[VAR__8444594];
+         }
+
+         A_STRING[VAR__53647] = 0;
+      }
+      else
+      {
+         VAR__53647 = ( len1 + len3 ) - len2;
+         for ( VAR__8444594 = len1; VAR__8444594 >= mo; VAR__8444594--, VAR__53647-- )
+         {
+            A_STRING[VAR__53647] = A_STRING[VAR__8444594];
+         }
+
+         for ( VAR__8444594 = shou, VAR__21230 = 0; rep[VAR__21230] != 0; VAR__8444594++, VAR__21230++ )
+         {
+            A_STRING[VAR__8444594] = rep[VAR__21230];
+         }
+      }
+
+      printf("%s", A_STRING);
+   }
+
+   return 0;
+}

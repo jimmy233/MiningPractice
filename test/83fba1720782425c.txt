@@ -1,0 +1,68 @@
+int  length;
+char VAR__819283[1000];
+char VAR__4857423[100];
+int  VAR__19328[100];
+int  zkh = 0;
+int match(int VAR__53647)
+{
+   if ( VAR__53647 == length )
+   {
+      return 0;
+   }
+
+   if ( VAR__819283[VAR__53647] == '(' )
+   {
+      zkh = zkh + 1;
+      VAR__4857423[VAR__53647] = '$';
+      VAR__19328[zkh]          = VAR__53647;
+   }
+
+   if ( VAR__819283[VAR__53647] == ')' )
+   {
+      if ( zkh == 0 )
+      {
+         VAR__4857423[VAR__53647] = '?';
+      }
+
+      if ( zkh != 0 )
+      {
+         VAR__4857423[VAR__19328[zkh]] = ' ';
+         zkh = zkh - 1;
+         VAR__4857423[VAR__53647] = ' ';
+      }
+   }
+
+   if (( VAR__819283[VAR__53647] != '(' ) && ( VAR__819283[VAR__53647] != ')' ))
+   {
+      VAR__4857423[VAR__53647] = ' ';
+   }
+
+   match(VAR__53647 + 1);
+}
+
+
+int main(int argc, const char *argv[])
+{
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+
+   while ( cin.getline(VAR__819283, 200))
+   {
+      zkh    = 0;
+      length = strlen(VAR__819283);
+      for ( VAR__21230 = 0; VAR__21230 < length; VAR__21230++ )
+      {
+         cout << VAR__819283[VAR__21230];
+      }
+
+      cout << endl;
+      match(0);
+      for ( VAR__1111 = 0; VAR__1111 < length; VAR__1111++ )
+      {
+         cout << VAR__4857423[VAR__1111];
+      }
+
+      cout << endl;
+   }
+}

@@ -1,0 +1,86 @@
+int main()
+{
+   char sen[100];
+   int  VAR__9290;
+   int  VAR__3918907;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1111;
+   int  VAR__temp;
+   int  VAR__1238129;
+
+   while ( gets(sen))
+   {
+      VAR__9290    = 0;
+      VAR__3918907 = 0;
+      VAR__1111    = strlen(sen);
+      printf("%s\n", sen);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         if ( sen[VAR__53647] == '(' )
+         {
+            VAR__9290++;
+         }
+
+         if ( sen[VAR__53647] == ')' )
+         {
+            VAR__3918907++;
+         }
+      }
+
+      if ( VAR__9290 > VAR__3918907 )
+      {
+         VAR__1238129 = VAR__3918907;
+      }
+      else
+      {
+         VAR__1238129 = VAR__9290;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         VAR__21230 = 1;
+         for ( VAR__temp = 0; VAR__temp < VAR__1111; VAR__temp++ )
+         {
+            if ( sen[VAR__temp] == '(' )
+            {
+               VAR__21230 = 0;
+               VAR__9290  = VAR__temp;
+            }
+
+            if ( sen[VAR__temp] == ')' )
+            {
+               if ( VAR__21230 == 0 )
+               {
+                  sen[VAR__9290] = '0';
+                  sen[VAR__temp] = '0';
+               }
+
+               VAR__21230 = 1;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         if ( sen[VAR__53647] == '(' )
+         {
+            printf("$");
+         }
+         else
+         if ( sen[VAR__53647] == ')' )
+         {
+            printf("?");
+         }
+         else
+         if (( sen[VAR__53647] != '(' ) && ( sen[VAR__53647] != ')' ))
+         {
+            printf(" ");
+         }
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

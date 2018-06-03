@@ -1,0 +1,124 @@
+char num2[110] = { '\0' };
+int left(char VAR__NUM[110], int point, int VAR__SUM, int VAR__1111)
+{
+   if ( point == VAR__1111 )
+   {
+      if ( VAR__NUM[point] == '(' )
+      {
+         num2[point] = '$';
+         return 0;
+      }
+
+      if ( VAR__NUM[point] == ')' )
+      {
+         VAR__SUM = 1;
+         return VAR__SUM;
+      }
+
+      if (( VAR__NUM[point] != '(' ) && ( VAR__NUM[point] != ')' ))
+      {
+         return 0;
+      }
+   }
+   else
+   {
+      int VAR__8444594 = left(VAR__NUM, point + 1, VAR__SUM, VAR__1111);
+
+      if (( VAR__NUM[point] == '(' ) && ( VAR__8444594 == 0 ))
+      {
+         num2[point] = '$';
+         return 0;
+      }
+
+      if (( VAR__NUM[point] == '(' ) && ( VAR__8444594 != 0 ))
+      {
+         VAR__SUM = VAR__8444594 - 1;
+         return VAR__SUM;
+      }
+
+      if ( VAR__NUM[point] == ')' )
+      {
+         VAR__SUM = VAR__8444594 + 1;
+         return VAR__SUM;
+      }
+
+      if (( VAR__NUM[point] != '(' ) && ( VAR__NUM[point] != ')' ))
+      {
+         return VAR__8444594;
+      }
+   }
+}
+
+
+int right(char VAR__NUM[110], int point, int VAR__SUM, int VAR__1111)
+{
+   if ( point == VAR__1111 )
+   {
+      if ( VAR__NUM[point] == ')' )
+      {
+         num2[point] = '?';
+         return 0;
+      }
+
+      if ( VAR__NUM[point] == '(' )
+      {
+         VAR__SUM = 1;
+         return VAR__SUM;
+      }
+
+      if (( VAR__NUM[point] != '(' ) && ( VAR__NUM[point] != ')' ))
+      {
+         return 0;
+      }
+   }
+   else
+   {
+      int VAR__8444594 = right(VAR__NUM, point - 1, VAR__SUM, VAR__1111);
+
+      if (( VAR__NUM[point] == ')' ) && ( VAR__8444594 == 0 ))
+      {
+         num2[point] = '?';
+         return 0;
+      }
+
+      if (( VAR__NUM[point] == ')' ) && ( VAR__8444594 != 0 ))
+      {
+         VAR__SUM = VAR__8444594 - 1;
+         return VAR__SUM;
+      }
+
+      if ( VAR__NUM[point] == '(' )
+      {
+         VAR__SUM = VAR__8444594 + 1;
+         return VAR__SUM;
+      }
+
+      if (( VAR__NUM[point] != '(' ) && ( VAR__NUM[point] != ')' ))
+      {
+         return VAR__8444594;
+      }
+   }
+}
+
+
+int main()
+{
+   char VAR__NUM[110] = { '\0' };
+
+   while ( cin >> VAR__NUM )
+   {
+      int VAR__1111 = strlen(VAR__NUM);
+      ( cout << VAR__NUM ) << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         num2[VAR__53647] = ' ';
+      }
+
+      num2[VAR__1111] = '\0';
+      left(VAR__NUM, 0, 0, VAR__1111 - 1);
+      right(VAR__NUM, VAR__1111 - 1, 0, 0);
+      ( cout << num2 ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,58 @@
+int exch(int VAR__819283[5][5], int rowa, int rowb)
+{
+   if (((( rowa < 0 ) || ( rowa > 4 )) || ( rowb < 0 )) || ( rowb > 4 ))
+   {
+      return 0;
+   }
+   else
+   {
+      int col;
+      for ( col = 0; col < 5; col++ )
+      {
+         int VAR__TEMP;
+         VAR__TEMP = VAR__819283[rowa][col];
+         VAR__819283[rowa][col] = VAR__819283[rowb][col];
+         VAR__819283[rowb][col] = VAR__TEMP;
+      }
+
+      return 1;
+   }
+}
+
+
+int main()
+{
+   int VAR__819283[5][5];
+   int rowa;
+   int rowb;
+   int row;
+   int col;
+
+   for ( row = 0; row < 5; row++ )
+   {
+      for ( col = 0; col < 5; col++ )
+      {
+         scanf("%d", &VAR__819283[row][col]);
+      }
+   }
+
+   scanf("%d%d", &rowa, &rowb);
+   switch ( exch(VAR__819283, rowa, rowb))
+   {
+   case 0:
+      printf("error");
+      break;
+
+   case 1:
+      for ( row = 0; row < 5; row++ )
+      {
+         printf("\n%d", VAR__819283[row][0]);
+         for ( col = 1; col < 5; col++ )
+         {
+            printf(" %d", VAR__819283[row][col]);
+         }
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,85 @@
+void main()
+{
+   char A_STRING[2048] = { '\0' };
+   char *pstr;
+   int  VAR__NUM[2048] = { 0 };
+   int  VAR__TEMP[100] = { 0 };
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  s1;
+   int  s2;
+   int  VAR__8444594 = 0;
+   int  VAR__temp;
+   int  VAR__MAX;
+   int  VAR__MIN;
+   int  *pnum;
+   int  *ptemp;
+
+   gets(A_STRING);
+   VAR_1238123 = strlen(A_STRING);
+   pstr        = A_STRING;
+   pnum        = VAR__NUM;
+   *(( pstr + VAR_1238123 ) + 1 ) = ' ';
+   for ( VAR__53647 = VAR_1238123; VAR__53647 >= 0; VAR__53647-- )
+   {
+      *( pstr + VAR__53647 ) = *(( pstr + VAR__53647 ) - 1 );
+   }
+
+   *pstr = ' ';
+   s1    = 0;
+   ptemp = VAR__TEMP;
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 + 2 ); VAR__53647++ )
+   {
+      if (( *( pstr + VAR__53647 )) == ' ' )
+      {
+         s2 = VAR__53647;
+         *( pnum + VAR__53647 )    = ( s2 - s1 ) - 1;
+         *( ptemp + VAR__8444594 ) = *( pnum + VAR__53647 );
+         s1 = s2;
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= ( VAR__8444594 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - VAR__21230 ); VAR__53647++ )
+      {
+         if (( *( ptemp + VAR__53647 )) > ( *(( ptemp + VAR__53647 ) + 1 )))
+         {
+            VAR__temp = *(( ptemp + VAR__53647 ) + 1 );
+            *(( ptemp + VAR__53647 ) + 1 ) = *( ptemp + VAR__53647 );
+            *( ptemp + VAR__53647 )        = VAR__temp;
+         }
+      }
+   }
+
+   VAR__MAX = *(( ptemp + VAR__8444594 ) - 1 );
+   VAR__MIN = *ptemp;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 + 2 ); VAR__53647++ )
+   {
+      if (( *( pnum + VAR__53647 )) == VAR__MAX )
+      {
+         for ( VAR__21230 = VAR__53647 - VAR__MAX; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            printf("%c", *( pstr + VAR__21230 ));
+         }
+
+         printf("\n");
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 + 2 ); VAR__53647++ )
+   {
+      if (( *( pnum + VAR__53647 )) == VAR__MIN )
+      {
+         for ( VAR__21230 = VAR__53647 - VAR__MIN; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            printf("%c", *( pstr + VAR__21230 ));
+         }
+
+         return;
+      }
+   }
+}

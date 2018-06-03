@@ -1,0 +1,54 @@
+void multiply(char *VAR_233)
+{
+   int VAR__NUM[70];
+   int VAR__53647 = 0;
+   int end;
+
+   VAR__NUM[0] = 0;
+
+   while (( *( VAR_233 + VAR__53647 )) != '\0' )
+   {
+      VAR__NUM[VAR__53647 + 1] = 2 * (( *( VAR_233 + VAR__53647 )) - '0' );
+      VAR__53647++;
+   }
+
+   end = VAR__53647;
+   for ( ; VAR__53647 > 0; VAR__53647-- )
+   {
+      VAR__NUM[VAR__53647 - 1] += VAR__NUM[VAR__53647] / 10;
+      VAR__NUM[VAR__53647]     %= 10;
+   }
+
+   if ( VAR__NUM[0] == 0 )
+   {
+      VAR__53647 = 1;
+   }
+   else
+   {
+      VAR__53647 = 0;
+   }
+
+   while ( VAR__53647 <= end )
+   {
+      *( VAR_233++ ) = VAR__NUM[VAR__53647++] + '0';
+   }
+
+   *VAR_233 = '\0';
+}
+
+
+int main()
+{
+   char result[71] = "1";
+   int  VAR_1238123;
+   int  VAR__53647;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      multiply(result);
+   }
+
+   ( cout << result ) << endl;
+   return 0;
+}

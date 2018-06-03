@@ -1,0 +1,64 @@
+char VAR__819283[120];
+int  LEN_OF_STH = 0;
+void bracket(int VAR__53647)
+{
+   if ( VAR__53647 < 0 )
+   {
+      return;
+   }
+
+   if ( VAR__819283[VAR__53647] != '(' )
+   {
+      bracket(VAR__53647 - 1);
+   }
+
+   if ( VAR__819283[VAR__53647] == '(' )
+   {
+      for ( int VAR__8444594 = VAR__53647; VAR__8444594 < LEN_OF_STH; VAR__8444594++ )
+      {
+         if ( VAR__819283[VAR__8444594] == ')' )
+         {
+            VAR__819283[VAR__53647]   = 'x';
+            VAR__819283[VAR__8444594] = 'x';
+            break;
+         }
+      }
+
+      bracket(VAR__53647 - 1);
+   }
+}
+
+
+int main()
+{
+   while ( cin >> VAR__819283 )
+   {
+      ( cout << VAR__819283 ) << endl;
+      LEN_OF_STH = strlen(VAR__819283);
+      bracket(LEN_OF_STH - 1);
+      for ( int VAR__8444594 = 0; VAR__8444594 < LEN_OF_STH; VAR__8444594++ )
+      {
+         if ( VAR__819283[VAR__8444594] == '(' )
+         {
+            cout << "$";
+         }
+         else
+         if ( VAR__819283[VAR__8444594] == ')' )
+         {
+            cout << "?";
+         }
+         else
+         {
+            cout << " ";
+         }
+      }
+
+      cout << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < 120; VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = '\0';
+      }
+   }
+
+   return 0;
+}

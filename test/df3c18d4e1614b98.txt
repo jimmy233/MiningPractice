@@ -1,0 +1,86 @@
+int main()
+{
+   char zfc[105];
+   char sign[105];
+   char present[105];
+
+   while ( scanf("%s", zfc) > 0 )
+   {
+      strcpy(sign, zfc);
+      strcpy(present, zfc);
+      int left         = 0;
+      int right        = 0;
+      int VAR__1238129 = strlen(zfc);
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         if ( zfc[VAR__53647] == '(' )
+         {
+            left  = 0;
+            right = 0;
+            for ( int VAR__21230 = VAR__53647; VAR__21230 < VAR__1238129; VAR__21230++ )
+            {
+               if ( zfc[VAR__21230] == '(' )
+               {
+                  left++;
+               }
+
+               if ( zfc[VAR__21230] == ')' )
+               {
+                  left--;
+               }
+
+               if ( left <= 0 )
+               {
+                  break;
+               }
+            }
+
+            if ( left > 0 )
+            {
+               sign[VAR__53647] = '$';
+            }
+         }
+
+         if ( zfc[VAR__53647] == ')' )
+         {
+            left  = 0;
+            right = 0;
+            for ( int VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( zfc[VAR__21230] == '(' )
+               {
+                  right--;
+               }
+
+               if ( zfc[VAR__21230] == ')' )
+               {
+                  right++;
+               }
+
+               if ( right <= 0 )
+               {
+                  break;
+               }
+            }
+
+            if ( right > 0 )
+            {
+               sign[VAR__53647] = '?';
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         if (( sign[VAR__53647] != '$' ) && ( sign[VAR__53647] != '?' ))
+         {
+            sign[VAR__53647] = ' ';
+         }
+      }
+
+      puts(present);
+      puts(sign);
+   }
+
+   return 0;
+}

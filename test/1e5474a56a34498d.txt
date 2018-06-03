@@ -1,0 +1,89 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__COUNT[201] = { 0 };
+   int  paixu[201]      = { 0 };
+   int  VAR_FLAG;
+   int  LEN_OF_STH;
+   int  VAR__1238129;
+   int  tem;
+   int  VAR__53647;
+   int  VAR__21230;
+   char sen[2000];
+   char word[201][50];
+
+   scanf("%d", &VAR_1238123);
+   scanf("\n");
+   gets(sen);
+   LEN_OF_STH   = strlen(sen);
+   VAR_FLAG     = 0;
+   VAR__1238129 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( sen[VAR__53647] != ' ' ) && ( VAR_FLAG == 1 ))
+      {
+         word[VAR__1238129][VAR__COUNT[VAR__1238129]++] = sen[VAR__53647];
+      }
+
+      if (( sen[VAR__53647] != ' ' ) && ( VAR_FLAG == 0 ))
+      {
+         word[VAR__1238129][VAR__COUNT[VAR__1238129]++] = sen[VAR__53647];
+         VAR_FLAG = 1;
+      }
+
+      if (( sen[VAR__53647] == ' ' ) && ( VAR_FLAG == 1 ))
+      {
+         VAR__1238129++;
+         VAR_FLAG = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      paixu[VAR__53647] = VAR__COUNT[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR__1238129; VAR__21230++ )
+      {
+         if ( paixu[VAR__53647] < paixu[VAR__21230] )
+         {
+            tem = paixu[VAR__53647];
+            paixu[VAR__53647] = paixu[VAR__21230];
+            paixu[VAR__21230] = tem;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] == paixu[0] )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR__COUNT[VAR__53647]; VAR__21230++ )
+         {
+            printf("%c", word[VAR__53647][VAR__21230]);
+         }
+
+         break;
+      }
+   }
+
+   printf("\n");
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] == paixu[VAR__1238129] )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR__COUNT[VAR__53647]; VAR__21230++ )
+         {
+            printf("%c", word[VAR__53647][VAR__21230]);
+         }
+
+         break;
+      }
+   }
+
+   return 0;
+}

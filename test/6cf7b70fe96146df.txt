@@ -1,0 +1,88 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  t1;
+   int  t2;
+   int  VAR_FLAG;
+   int  LEN_OF_STH;
+   int  VAR__19328[101];
+   int  VAR__1111[101];
+   int  VAR_129012[101];
+   char VAR_9494[101];
+
+   while ( scanf("%s", VAR_9494) != EOF )
+   {
+      LEN_OF_STH = strlen(VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == '(' )
+         {
+            VAR__19328[VAR__53647] = -1;
+         }
+         else
+         if ( VAR_9494[VAR__53647] == ')' )
+         {
+            VAR__19328[VAR__53647] = 1;
+         }
+         else
+         {
+            VAR__19328[VAR__53647] = 0;
+         }
+      }
+
+      t1 = 0;
+      t2 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647] == ( -1 ))
+         {
+            VAR__1111[t1] = VAR__53647;
+            t1++;
+         }
+
+         if ( VAR__19328[VAR__53647] == 1 )
+         {
+            VAR_129012[t2] = VAR__53647;
+            t2++;
+         }
+      }
+
+      for ( VAR__53647 = t1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < t2; VAR__21230++ )
+         {
+            if ( VAR_129012[VAR__21230] > VAR__1111[VAR__53647] )
+            {
+               VAR__19328[VAR_129012[VAR__21230]] = 0;
+               VAR__19328[VAR__1111[VAR__53647]]  = 0;
+               VAR_129012[VAR__21230]             = 0;
+               VAR__1111[VAR__53647] = 0;
+               break;
+            }
+         }
+      }
+
+      puts(VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647] == ( -1 ))
+         {
+            printf("$");
+         }
+         else
+         if ( VAR__19328[VAR__53647] == 1 )
+         {
+            printf("?");
+         }
+         else
+         {
+            printf(" ");
+         }
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

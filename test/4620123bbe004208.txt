@@ -1,0 +1,124 @@
+int main()
+{
+   char in[1000];
+
+   while ( cin.getline(in, 1000, '\n'))
+   {
+      if ( in[0] == '\0' )
+      {
+         break;
+      }
+
+      int LEN_OF_STH;
+      LEN_OF_STH = strlen(in);
+      int VAR__53647;
+      int VAR__21230;
+      int VAR__8444594;
+      int VAR_FLAG[100] = { 0 };
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if ( in[VAR__53647] == '(' )
+         {
+            VAR_FLAG[VAR__53647] = 2;
+         }
+
+         if ( in[VAR__53647] == ')' )
+         {
+            VAR_FLAG[VAR__53647] = 3;
+         }
+      }
+
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( VAR_FLAG[VAR__53647] == 1 )
+         {
+            continue;
+         }
+
+         if ( in[VAR__53647] == '(' )
+         {
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( LEN_OF_STH - 1 ); VAR__21230++ )
+            {
+               if ( VAR_FLAG[VAR__21230] == 1 )
+               {
+                  continue;
+               }
+
+               if ( in[VAR__21230] == ')' )
+               {
+                  VAR_FLAG[VAR__21230] = 1;
+                  VAR_FLAG[VAR__53647] = 1;
+               }
+
+               if ( in[VAR__21230] == ')' )
+               {
+                  break;
+               }
+            }
+         }
+      }
+
+      ( cout << in ) << endl;
+      int VAR__TEMP;
+      int VAR__temp;
+      int VAR__NUM = 0;
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if (( VAR_FLAG[VAR__53647] == 2 ) || ( VAR_FLAG[VAR__53647] == 3 ))
+         {
+            VAR__TEMP = VAR__53647;
+         }
+
+         if (( VAR_FLAG[VAR__53647] == 2 ) || ( VAR_FLAG[VAR__53647] == 3 ))
+         {
+            break;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if (( VAR_FLAG[VAR__53647] == 2 ) || ( VAR_FLAG[VAR__53647] == 3 ))
+         {
+            VAR__temp = VAR__53647;
+         }
+
+         if (( VAR_FLAG[VAR__53647] == 2 ) || ( VAR_FLAG[VAR__53647] == 3 ))
+         {
+            break;
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= ( LEN_OF_STH - 1 ); VAR__21230++ )
+      {
+         if (( VAR_FLAG[VAR__53647] == 0 ) || ( VAR_FLAG[VAR__53647] == 1 ))
+         {
+            VAR__NUM++;
+         }
+      }
+
+      if ( VAR__NUM < LEN_OF_STH )
+      {
+         for ( VAR__53647 = VAR__temp; VAR__53647 <= VAR__TEMP; VAR__53647++ )
+         {
+            if (( VAR_FLAG[VAR__53647] == 0 ) || ( VAR_FLAG[VAR__53647] == 1 ))
+            {
+               cout << " ";
+            }
+
+            if ( VAR_FLAG[VAR__53647] == 2 )
+            {
+               cout << "$";
+            }
+
+            if ( VAR_FLAG[VAR__53647] == 3 )
+            {
+               cout << "?";
+            }
+         }
+
+         cout << endl;
+      }
+   }
+
+   return 0;
+}

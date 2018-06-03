@@ -1,0 +1,101 @@
+int show(char VAR__819283[], int VAR__temp)
+{
+   int        VAR__53647;
+   int        VAR__8444594;
+   int        VAR__1111;
+   int        VAR__21230 = 1;
+   static int VAR__19328[101];
+
+   puts(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      switch ( VAR__819283[VAR__53647] )
+      {
+      case '(':
+         VAR__819283[VAR__53647] = ' ';
+         VAR__19328[VAR__21230]  = VAR__53647 + 1;
+         VAR__21230++;
+         break;
+
+      case ')':
+         VAR__819283[VAR__53647] = ' ';
+         VAR__19328[VAR__21230]  = -( VAR__53647 + 1 );
+         VAR__21230++;
+         break;
+
+      default:
+         VAR__819283[VAR__53647] = ' ';
+      }
+   }
+
+
+   VAR__21230--;
+   do
+   {
+      VAR__1111 = 0;
+      for ( VAR__8444594 = 1; VAR__8444594 <= ( VAR__21230 - 1 ); VAR__8444594++ )
+      {
+         if ( VAR__19328[VAR__8444594] > 0 )
+         {
+            for ( VAR__53647 = VAR__8444594 + 1; VAR__53647 <= VAR__21230; VAR__53647++ )
+            {
+               if ( VAR__19328[VAR__53647] != 0 )
+               {
+                  break;
+               }
+            }
+
+
+            if (( VAR__19328[VAR__8444594] * VAR__19328[VAR__53647] ) < 0 )
+            {
+               VAR__19328[VAR__8444594] = 0;
+               VAR__19328[VAR__53647]   = 0;
+               VAR__1111++;
+            }
+         }
+      }
+   } while ( VAR__1111 > 0 );
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__21230; VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] < 0 )
+      {
+         VAR__819283[( -VAR__19328[VAR__53647] ) - 1] = '?';
+      }
+      else
+      if ( VAR__19328[VAR__53647] > 0 )
+      {
+         VAR__819283[VAR__19328[VAR__53647] - 1] = '$';
+      }
+   }
+
+   puts(VAR__819283);
+   return 0;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR_1238123;
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      char VAR__819283[101];
+      int  VAR__temp;
+      VAR__819283[0] = '\n';
+      gets(VAR__819283);
+
+      if ( VAR__819283[0] != '\n' )
+      {
+         VAR__temp = strlen(VAR__819283);
+         show(VAR__819283, VAR__temp);
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,37 @@
+int main()
+{
+   char origin[256];
+   char sub[256];
+   char replace[256];
+   char after[256];
+
+   scanf("%s%s%s", origin, sub, replace);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 0;
+   for ( VAR__53647 = 0; origin[VAR__53647]; VAR__53647++ )
+   {
+      int shouldChange = 1;
+      for ( VAR__21230 = 0; sub[VAR__21230]; VAR__21230++ )
+      {
+         if ( origin[VAR__53647 + VAR__21230] != sub[VAR__21230] )
+         {
+            shouldChange = 0;
+         }
+      }
+
+      if ( shouldChange == 1 )
+      {
+         strcpy(after, origin);
+         after[VAR__53647] = 0;
+         strcat(after, replace);
+         strcat(after, &origin[VAR__53647 + strlen(sub)]);
+         strcpy(origin, after);
+         VAR__53647 += strlen(replace);
+         break;
+      }
+   }
+
+   printf("%s", origin);
+   return 0;
+}

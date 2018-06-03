@@ -1,0 +1,82 @@
+char *str_replace(const char *src, const char *oldstr, const char *newstr);
+
+int main()
+{
+   int  aa = 0;
+   int  VAR__53647;
+   char ANOTHER_STRING[100];
+   char YET_ANOTHER_STRING[100];
+   char str3[100];
+   char sub[100]  = { 0 };
+   char sub1[100] = { 0 };
+   char sub2[100] = { 0 };
+
+   gets(ANOTHER_STRING);
+   gets(YET_ANOTHER_STRING);
+   gets(str3);
+
+   if ( strlen(ANOTHER_STRING) < strlen(YET_ANOTHER_STRING))
+   {
+      cout << ANOTHER_STRING;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( strlen(ANOTHER_STRING) - strlen(YET_ANOTHER_STRING)); VAR__53647++ )
+      {
+         strncpy(sub, ANOTHER_STRING + VAR__53647, strlen(YET_ANOTHER_STRING));
+
+         if ( strcmp(sub, YET_ANOTHER_STRING) == 0 )
+         {
+            strncpy(sub1, ANOTHER_STRING, VAR__53647);
+            strncpy(sub2, ( ANOTHER_STRING + VAR__53647 ) + strlen(YET_ANOTHER_STRING), ( strlen(ANOTHER_STRING) - VAR__53647 ) - strlen(YET_ANOTHER_STRING));
+            strcat(sub1, str3);
+            strcat(sub1, sub2);
+            cout << sub1;
+            aa = 1;
+            break;
+         }
+      }
+
+      if ( aa == 0 )
+      {
+         cout << ANOTHER_STRING;
+      }
+   }
+
+   return 0;
+}
+
+
+char *str_replace(const char *src, const char *oldstr, const char *newstr)
+{
+   if ((( NULL == src ) || ( NULL == oldstr )) || ( NULL == newstr ))
+   {
+      return NULL;
+   }
+
+   char *dest = strdup(src);
+
+   if ( strcmp(oldstr, newstr) == 0 )
+   {
+      return dest;
+   }
+
+   char *needle;
+   char *tmp;
+   char *dest_tmp = dest;
+
+   while ( needle = strstr(dest, oldstr))
+   {
+      tmp = (char *)malloc((( strlen(dest) + strlen(newstr)) - strlen(oldstr)) + 1);
+      strncpy(tmp, dest, needle - dest);
+      tmp[needle - dest] = '\0';
+      strcat(tmp, newstr);
+      strcat(tmp, needle + strlen(oldstr));
+      dest = strdup(tmp);
+      free(dest_tmp);
+      free(tmp);
+      dest_tmp = dest;
+   }
+
+   return dest;
+}

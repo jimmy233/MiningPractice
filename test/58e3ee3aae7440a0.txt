@@ -1,0 +1,49 @@
+char result[33] = { 0 };
+void Multiply()
+{
+   int VAR__53647 = 0;
+   int up         = 0;
+   int LEN_OF_STH = strlen(result);
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      int VAR__TEMP = result[VAR__53647] - '0';
+      VAR__TEMP         *= 2;
+      result[VAR__53647] = (( VAR__TEMP % 10 ) + up ) + '0';
+      up = VAR__TEMP / 10;
+
+      if (( VAR__53647 == ( LEN_OF_STH - 1 )) && ( up != 0 ))
+      {
+         result[VAR__53647 + 1] = up + '0';
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   result[0] = '1';
+   cin >> VAR_1238123;
+   int VAR__53647;
+
+   if ( VAR_1238123 == 0 )
+   {
+      ( cout << result ) << endl;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         Multiply();
+      }
+
+      for ( VAR__53647 = strlen(result) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << result[VAR__53647];
+      }
+   }
+
+   return 0;
+}

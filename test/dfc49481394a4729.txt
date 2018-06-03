@@ -1,0 +1,85 @@
+int main()
+{
+   char VAR__819283[300];
+   char VAR__19328[300];
+   char VAR__4857423[300];
+   char VAR__12302[100][100];
+   int  la;
+   int  lb;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__7685    = 0;
+   int  VAR__1238129 = 0;
+   int  wz;
+
+   gets(VAR__819283);
+   gets(VAR__19328);
+   gets(VAR__4857423);
+   la = strlen(VAR__819283);
+   lb = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__19328[0] )
+      {
+         VAR__1238129 = 0;
+         wz           = VAR__53647;
+         for ( VAR__21230 = 0; VAR__21230 < lb; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__53647 + VAR__21230] != VAR__19328[VAR__21230] )
+            {
+               VAR__53647 = ( VAR__53647 + VAR__21230 ) - 1;
+               break;
+            }
+            else
+            {
+               VAR__1238129++;
+            }
+         }
+      }
+
+      if ( VAR__1238129 == lb )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < wz; VAR__21230++ )
+         {
+            VAR__12302[0][VAR__21230] = VAR__819283[VAR__21230];
+            VAR__12302[0][wz]         = '\0';
+         }
+
+         for ( VAR__21230 = wz + lb; VAR__21230 < la; VAR__21230++ )
+         {
+            VAR__12302[1][( VAR__21230 - wz ) - lb] = VAR__819283[VAR__21230];
+            VAR__12302[1][( la - wz ) - lb]         = '\0';
+         }
+
+         break;
+      }
+   }
+
+   if ( VAR__1238129 > 0 )
+   {
+      if ( wz == 0 )
+      {
+         strcpy(VAR__12302[0], VAR__4857423);
+      }
+      else
+      {
+         strcat(VAR__12302[0], VAR__4857423);
+      }
+
+      if (( wz + lb ) == la )
+      {
+         puts(VAR__12302[0]);
+      }
+      else
+      {
+         strcat(VAR__12302[0], VAR__12302[1]);
+         puts(VAR__12302[0]);
+      }
+   }
+   else
+   {
+      puts(VAR__819283);
+   }
+
+   return 0;
+}

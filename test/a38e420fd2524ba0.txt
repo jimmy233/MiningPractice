@@ -1,0 +1,72 @@
+int main()
+{
+   char string[256];
+   char substring[256];
+   char replacement[256];
+   char final[500];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  length;
+   int  length1;
+   int  length2;
+   int  VAR__819283;
+   int  VAR_FLAG = 0;
+
+   scanf("%s", string);
+   scanf("%s", substring);
+   scanf("%s", replacement);
+   length  = strlen(string);
+   length1 = strlen(substring);
+   length2 = strlen(replacement);
+   for ( VAR__53647 = 0, VAR__21230 = 0; string[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( string[VAR__53647] == substring[VAR__21230] )
+      {
+         VAR__819283 = VAR__53647;
+
+         if ( string[VAR__819283 + 1] == substring[VAR__21230 + 1] )
+         {
+            VAR_FLAG = 1;
+            break;
+         }
+      }
+   }
+
+   if ( VAR_FLAG == 1 )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 <= ( VAR__819283 - 1 ); VAR__8444594++ )
+      {
+         *( final + VAR__8444594 ) = *( string + VAR__8444594 );
+      }
+
+      for ( VAR__8444594 = VAR__819283; VAR__8444594 < ( VAR__819283 + length2 ); VAR__8444594++ )
+      {
+         *( final + VAR__8444594 ) = *(( replacement + VAR__8444594 ) - VAR__819283 );
+      }
+
+      for ( VAR__8444594 = VAR__819283 + length2; VAR__8444594 < (( length + length2 ) - length1 ); VAR__8444594++ )
+      {
+         *( final + VAR__8444594 ) = *((( string + VAR__8444594 ) + length1 ) - length2 );
+      }
+
+      *((( final + length ) + length2 ) - length1 ) = '\0';
+      for ( VAR__8444594 = 0; final[VAR__8444594] != '\0'; VAR__8444594++ )
+      {
+         printf("%c", final[VAR__8444594]);
+      }
+   }
+   else
+   if ( VAR_FLAG == 0 )
+   {
+      for ( VAR__53647 = 0, VAR__21230 = 0; string[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         printf("%c", string[VAR__53647]);
+      }
+
+      return 0;
+   }
+
+
+   return 0;
+}
