@@ -1,0 +1,74 @@
+int main()
+{
+   int shuzu[100][100];
+   int VAR__53647;
+   int VAR__21230;
+   int row;
+   int col;
+
+   scanf("%d %d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &shuzu[VAR__53647][VAR__21230]);
+      }
+   }
+
+   int row_xx = 0;
+   int row_sx = row - 1;
+   int col_xx = 0;
+   int col_sx = col - 1;
+
+   while (( row_sx > row_xx ) && ( col_sx > col_xx ))
+   {
+      for ( VAR__21230 = col_xx; VAR__21230 < col_sx; VAR__21230++ )
+      {
+         printf("%d\n", shuzu[row_xx][VAR__21230]);
+      }
+
+      for ( VAR__53647 = row_xx; VAR__53647 < row_sx; VAR__53647++ )
+      {
+         printf("%d\n", shuzu[VAR__53647][col_sx]);
+      }
+
+      for ( VAR__21230 = col_sx; VAR__21230 > col_xx; VAR__21230-- )
+      {
+         printf("%d\n", shuzu[row_sx][VAR__21230]);
+      }
+
+      for ( VAR__53647 = row_sx; VAR__53647 > row_xx; VAR__53647-- )
+      {
+         printf("%d\n", shuzu[VAR__53647][col_xx]);
+      }
+
+      col_xx++;
+      row_xx++;
+      col_sx--;
+      row_sx--;
+   }
+
+   if (( row_xx == row_sx ) && ( col_xx < col_sx ))
+   {
+      for ( VAR__21230 = col_xx; VAR__21230 <= col_sx; VAR__21230++ )
+      {
+         printf("%d\n", shuzu[row_xx][VAR__21230]);
+      }
+   }
+   else
+   if (( col_xx == col_sx ) && ( row_xx < row_sx ))
+   {
+      for ( VAR__53647 = row_xx; VAR__53647 <= row_sx; VAR__53647++ )
+      {
+         printf("%d\n", shuzu[VAR__53647][col_xx]);
+      }
+   }
+
+
+   if (((( row % 2 ) != 0 ) && (( col % 2 ) != 0 )) && ((( row > 1 ) && ( col > 1 )) || (( row == 1 ) && ( col == 1 ))))
+   {
+      printf("%d\n", shuzu[( row - 1 ) / 2][( col - 1 ) / 2]);
+   }
+
+   return 0;
+}

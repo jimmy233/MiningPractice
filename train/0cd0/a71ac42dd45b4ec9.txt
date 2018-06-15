@@ -1,0 +1,61 @@
+int main()
+{
+   int Nxiaopengyou;
+   int Mtiaohuai;
+   int *Leijicishu;
+   int VAR__53647;
+   int VAR__21230;
+   int cishu;
+   int shijian;
+
+   scanf("%d", &Nxiaopengyou);
+   for ( VAR__53647 = 0; VAR__53647 < Nxiaopengyou; VAR__53647++ )
+   {
+      scanf("%d", &Mtiaohuai);
+
+      if ( Mtiaohuai == 0 )
+      {
+         cishu = 60;
+      }
+      else
+      {
+         Leijicishu = (int *)malloc(Mtiaohuai);
+         for ( VAR__21230 = 0; VAR__21230 < Mtiaohuai; VAR__21230++ )
+         {
+            scanf("%d", &Leijicishu[VAR__21230]);
+         }
+
+         shijian = 60;
+         cishu   = 60;
+         for ( VAR__21230 = 0; VAR__21230 < Mtiaohuai; VAR__21230++ )
+         {
+            shijian = ( shijian - Leijicishu[VAR__21230] ) - 3;
+
+            if ( VAR__21230 > 0 )
+            {
+               shijian += Leijicishu[VAR__21230 - 1];
+            }
+
+            if ( shijian > 0 )
+            {
+               cishu -= 3;
+            }
+            else
+            {
+               if ( Leijicishu[VAR__21230] < cishu )
+               {
+                  cishu = Leijicishu[VAR__21230];
+               }
+
+               break;
+            }
+         }
+
+         free(Leijicishu);
+      }
+
+      printf("%d\n", cishu);
+   }
+
+   return 0;
+}

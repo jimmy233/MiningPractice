@@ -1,0 +1,84 @@
+int main()
+{
+   double high[40];
+   double manhigh[40];
+   double womanhigh[40];
+   double sa;
+   char   sex[40][10];
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    VAR__819283;
+   char   man[5]   = { 'm', 'a', 'l', 'e' };
+   char   woman[7] = { 'f', 'e', 'm', 'a', 'l', 'e' };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", sex[VAR__53647], &high[VAR__53647]);
+   }
+
+   VAR__21230   = 0;
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(sex[VAR__53647], man) == 0 )
+      {
+         manhigh[VAR__21230] = high[VAR__53647];
+         VAR__21230++;
+      }
+      else
+      {
+         womanhigh[VAR__8444594] = high[VAR__53647];
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__819283 = 0; VAR__819283 < (( VAR__21230 - 1 ) - VAR__53647 ); VAR__819283++ )
+      {
+         if ( manhigh[VAR__819283] > manhigh[VAR__819283 + 1] )
+         {
+            sa = manhigh[VAR__819283];
+            manhigh[VAR__819283]     = manhigh[VAR__819283 + 1];
+            manhigh[VAR__819283 + 1] = sa;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__819283 = 0; VAR__819283 < (( VAR__8444594 - 1 ) - VAR__53647 ); VAR__819283++ )
+      {
+         if ( womanhigh[VAR__819283] > womanhigh[VAR__819283 + 1] )
+         {
+            sa = womanhigh[VAR__819283];
+            womanhigh[VAR__819283]     = womanhigh[VAR__819283 + 1];
+            womanhigh[VAR__819283 + 1] = sa;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%.2lf ", manhigh[VAR__53647]);
+   }
+
+   if ( VAR__8444594 == 1 )
+   {
+      printf("%.2lf", womanhigh[0]);
+   }
+   else
+   {
+      for ( VAR__53647 = VAR__8444594 - 1; VAR__53647 > 0; VAR__53647-- )
+      {
+         printf("%.2lf ", womanhigh[VAR__53647]);
+      }
+
+      printf("%.2lf", womanhigh[0]);
+   }
+
+   return 0;
+}

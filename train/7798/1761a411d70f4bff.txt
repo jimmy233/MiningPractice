@@ -1,0 +1,74 @@
+struct book
+{
+   int  VAR__NUM;
+   char writer[26];
+};
+int VAR__1238129;
+int main()
+{
+   int VAR__53647;
+
+   scanf("%d", &VAR__1238129);
+   book *VAR_233;
+   VAR_233 = (struct book *)malloc(( sizeof( struct book )) * VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &VAR_233[VAR__53647].VAR__NUM, VAR_233[VAR__53647].writer);
+   }
+
+   int VAR__21230 = 0;
+   int u          = 0;
+   int *VAR__819283;
+   VAR__819283 = (int *)malloc(( sizeof( int )) * 150);
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'z'; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'Z'; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         for ( u = 0; u < strlen(VAR_233[VAR__21230].writer); u++ )
+         {
+            if ( VAR__53647 == VAR_233[VAR__21230].writer[u] )
+            {
+               VAR__819283[VAR__53647]++;
+               break;
+            }
+         }
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'Z'; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__819283[VAR__53647] )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'Z'; VAR__53647++ )
+   {
+      if ( VAR__MAX == VAR__819283[VAR__53647] )
+      {
+         break;
+      }
+   }
+
+   printf("%c\n%d\n", VAR__53647, VAR__819283[VAR__53647]);
+   for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+   {
+      for ( u = 0; u < strlen(VAR_233[VAR__21230].writer); u++ )
+      {
+         if ( VAR__53647 == VAR_233[VAR__21230].writer[u] )
+         {
+            printf("%d\n", VAR_233[VAR__21230].VAR__NUM);
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

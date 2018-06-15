@@ -1,0 +1,66 @@
+struct a
+{
+   char     id[150];
+   struct a *pre;
+};
+struct a *creat()
+{
+   struct a *VAR__HEAD;
+   struct a *ANOTHER_POINTER;
+   struct a *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct a *)malloc(VAR__1111);
+   gets(ANOTHER_POINTER->id);
+   ANOTHER_POINTER->pre = NULL;
+   YET_ANOTHER_POINTER  = ANOTHER_POINTER;
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct a *)malloc(VAR__1111);
+      gets(ANOTHER_POINTER->id);
+
+      if ( ANOTHER_POINTER->id[0] == 'e' )
+      {
+         break;
+      }
+
+      ANOTHER_POINTER->pre = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER  = ANOTHER_POINTER;
+   }
+
+   free(ANOTHER_POINTER);
+   VAR__HEAD = YET_ANOTHER_POINTER;
+   return VAR__HEAD;
+}
+
+
+void des(struct a *VAR__HEAD)
+{
+   struct a *VAR_233;
+
+   while ( VAR__HEAD )
+   {
+      VAR_233   = VAR__HEAD;
+      VAR__HEAD = VAR__HEAD->pre;
+      free(VAR_233);
+   }
+}
+
+
+int main()
+{
+   struct a *VAR__HEAD;
+   struct a *VAR_233;
+
+   VAR__HEAD = creat();
+   VAR_233   = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->pre;
+   }
+
+   des(VAR__HEAD);
+   return 0;
+}

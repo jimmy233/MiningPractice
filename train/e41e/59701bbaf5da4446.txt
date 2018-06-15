@@ -1,0 +1,65 @@
+int main()
+{
+   int  VAR__53647    = 0;
+   int  VAR__21230    = 0;
+   int  VAR__8444594  = 0;
+   int  VAR__TEMP     = 0;
+   int  mod           = 0;
+   int  lth           = 0;
+   char VAR__NUM[101] = { '\0' };
+   char result[101]   = { '0' };
+
+   scanf("%s", VAR__NUM);
+   lth = strlen(VAR__NUM);
+
+   if ( lth == 1 )
+   {
+      printf("0\n%s", VAR__NUM);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( lth - 1 ); VAR__53647++ )
+      {
+         if ( VAR__53647 == 0 )
+         {
+            result[VAR__53647] = (((( VAR__NUM[VAR__53647] - '0' ) * 10 ) + ( VAR__NUM[VAR__53647 + 1] - '0' )) / 13 ) + '0';
+            mod = ((( VAR__NUM[VAR__53647] - '0' ) * 10 ) + ( VAR__NUM[VAR__53647 + 1] - '0' )) % 13;
+         }
+         else
+         {
+            VAR__TEMP          = ( mod * 10 ) + ( VAR__NUM[VAR__53647 + 1] - '0' );
+            result[VAR__53647] = ( VAR__TEMP / 13 ) + '0';
+            mod = VAR__TEMP % 13;
+         }
+      }
+
+      result[VAR__53647] = '\0';
+      for ( VAR__53647 = 0; ; VAR__53647++ )
+      {
+         if ( VAR__53647 == 0 )
+         {
+            if (( result[VAR__53647] == '0' ) && ( result[VAR__53647 + 1] != '\0' ))
+            {
+               continue;
+            }
+            else
+            {
+               printf("%c", result[VAR__53647]);
+            }
+         }
+         else
+         {
+            if ( result[VAR__53647] == '\0' )
+            {
+               break;
+            }
+
+            printf("%c", result[VAR__53647]);
+         }
+      }
+
+      printf("\n%d", mod);
+   }
+
+   return 0;
+}

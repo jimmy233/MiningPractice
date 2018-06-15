@@ -1,0 +1,75 @@
+struct stu
+{
+   char       VAR__NUM[40];
+   char       name[40];
+   char       sex[10];
+   char       year[10];
+   char       score[40];
+   char       add[40];
+   struct stu *fw;
+   struct stu *bw;
+};
+int        VAR_1238123;
+struct stu *tail;
+struct stu *create(void)
+{
+   int        VAR__53647;
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   VAR__HEAD           = (struct stu *)malloc(sizeof( struct stu ));
+   VAR__HEAD->fw       = NULL;
+   VAR__HEAD->bw       = NULL;
+   YET_ANOTHER_POINTER = VAR__HEAD;
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") == 0 )
+      {
+         ANOTHER_POINTER->fw     = NULL;
+         YET_ANOTHER_POINTER->fw = ANOTHER_POINTER;
+         ANOTHER_POINTER->bw     = YET_ANOTHER_POINTER;
+         tail = ANOTHER_POINTER;
+         break;
+      }
+      else
+      {
+         scanf("%s %s %s %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->year, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+         ANOTHER_POINTER->fw     = NULL;
+         YET_ANOTHER_POINTER->fw = ANOTHER_POINTER;
+         ANOTHER_POINTER->bw     = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER     = ANOTHER_POINTER;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void bwprint(struct stu *ptail)
+{
+   struct stu *VAR_233;
+
+   VAR_233 = ptail->bw;
+
+   while ( VAR_233->bw != NULL )
+   {
+      printf("%s %s %s %s %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->year, VAR_233->score, VAR_233->add);
+      VAR_233 = VAR_233->bw;
+   }
+}
+
+
+int main()
+{
+   int        VAR__8444594 = 0;
+   stu        *ANOTHER_POINTER;
+   struct stu *pheader;
+
+   pheader = create();
+   bwprint(tail);
+}

@@ -1,0 +1,63 @@
+int main()
+{
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int VAR__1238129[24] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__819283;
+   int days;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d%d%d", &startyear, &startmonth, &startday);
+   scanf("%d%d%d", &endyear, &endmonth, &endday);
+   VAR__819283 = endyear - startyear;
+
+   if ( startmonth == endmonth )
+   {
+      days = 365 * VAR__819283;
+   }
+
+   if ( startmonth < endmonth )
+   {
+      days = 365 * VAR__819283;
+      for ( VAR__53647 = startmonth; VAR__53647 < endmonth; VAR__53647++ )
+      {
+         days = days + VAR__1238129[VAR__53647 - 1];
+      }
+   }
+
+   if ( startmonth > endmonth )
+   {
+      days = 365 * ( VAR__819283 - 1 );
+      for ( VAR__53647 = startmonth; VAR__53647 < ( endmonth + 12 ); VAR__53647++ )
+      {
+         days = days + VAR__1238129[VAR__53647];
+      }
+   }
+
+   days = ( days + endday ) - startday;
+   for ( VAR__21230 = startyear; VAR__21230 <= endyear; VAR__21230++ )
+   {
+      if (((( VAR__21230 % 4 ) == 0 ) && (( VAR__21230 % 100 ) != 0 )) || (( VAR__21230 % 400 ) == 0 ))
+      {
+         days = days + 1;
+      }
+   }
+
+   if ((((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 )) && ( startmonth > 2 ))
+   {
+      days = days - 1;
+   }
+
+   if ((((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 )) && ( endmonth < 2 ))
+   {
+      days = days - 1;
+   }
+
+   printf("%d", days);
+   return 0;
+}

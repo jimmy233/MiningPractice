@@ -1,0 +1,85 @@
+int chrtoint(char ch)
+{
+   if (( ch >= '0' ) && ( ch <= '9' ))
+   {
+      return ch - '0';
+   }
+   else
+   if (( ch >= 'A' ) && ( ch <= 'Z' ))
+   {
+      return ( ch - 'A' ) + 10;
+   }
+   else
+   if (( ch >= 'a' ) && ( ch <= 'z' ))
+   {
+      return ( ch - 'a' ) + 10;
+   }
+   else
+   {
+      return -1;
+   }
+}
+
+
+char inttochr(int VAR__819283)
+{
+   if (( VAR__819283 >= 0 ) && ( VAR__819283 <= 9 ))
+   {
+      return (char)( VAR__819283 + '0' );
+   }
+   else
+   if (( VAR__819283 >= 10 ) && ( VAR__819283 <= 35 ))
+   {
+      return (char)(( VAR__819283 - 10 ) + 'A' );
+   }
+   else
+   {
+      return -1;
+   }
+}
+
+
+int main()
+{
+   char A_STRING[100] = { 0 };
+   long VAR__819283;
+   long VAR__19328;
+   long VAR__NUM;
+
+   scanf("%d %s %d", &VAR__819283, A_STRING, &VAR__19328);
+   int LEN_OF_STH = 0;
+   int VAR__53647;
+
+   while ( A_STRING[LEN_OF_STH] > 0 )
+   {
+      LEN_OF_STH++;
+   }
+
+   VAR__NUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__NUM = ( VAR__NUM * VAR__819283 ) + chrtoint(A_STRING[VAR__53647]);
+   }
+
+   A_STRING[0] = '0';
+   LEN_OF_STH  = 0;
+
+   while ( VAR__NUM > 0 )
+   {
+      A_STRING[LEN_OF_STH] = inttochr(VAR__NUM % VAR__19328);
+      LEN_OF_STH++;
+      VAR__NUM /= VAR__19328;
+   }
+
+   if ( LEN_OF_STH == 0 )
+   {
+      LEN_OF_STH++;
+   }
+
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      putchar(A_STRING[VAR__53647]);
+   }
+
+   return 0;
+}

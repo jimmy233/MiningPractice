@@ -1,0 +1,95 @@
+int VAR__MAX(double VAR_1238123[], int VAR__1238129)
+{
+   double max_num = VAR_1238123[0];
+   int    maxn    = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR_1238123[VAR__53647] > max_num )
+      {
+         max_num = VAR_1238123[VAR__53647];
+         maxn    = VAR__53647;
+      }
+   }
+
+   return maxn;
+}
+
+
+int VAR__MIN(double VAR_1238123[], int VAR__1238129)
+{
+   double max_num = VAR_1238123[0];
+   int    maxn    = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR_1238123[VAR__53647] < max_num )
+      {
+         max_num = VAR_1238123[VAR__53647];
+         maxn    = VAR__53647;
+      }
+   }
+
+   return maxn;
+}
+
+
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230   = 0;
+   int    VAR__8444594 = 0;
+   int    maxn;
+   char   VAR_9494[10];
+   double mt[40];
+   double ft[40];
+   double VAR__temp;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> VAR_9494 ) >> VAR__temp;
+
+      if ( strcmp(VAR_9494, "male") == 0 )
+      {
+         mt[VAR__21230] = VAR__temp;
+         VAR__21230++;
+      }
+      else
+      if ( strcmp(VAR_9494, "female") == 0 )
+      {
+         ft[VAR__8444594] = VAR__temp;
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      maxn = VAR__MAX(mt, VAR__21230 - VAR__53647);
+      double VAR__TEMP = mt[( VAR__21230 - VAR__53647 ) - 1];
+      mt[( VAR__21230 - VAR__53647 ) - 1] = mt[maxn];
+      mt[maxn] = VAR__TEMP;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      maxn = VAR__MIN(ft, VAR__8444594 - VAR__53647);
+      double VAR__TEMP = ft[( VAR__8444594 - VAR__53647 ) - 1];
+      ft[( VAR__8444594 - VAR__53647 ) - 1] = ft[maxn];
+      ft[maxn] = VAR__TEMP;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%0.2f ", mt[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      printf("%0.2f ", ft[VAR__53647]);
+   }
+
+   printf("%0.2f", ft[VAR__8444594 - 1]);
+   return 0;
+}

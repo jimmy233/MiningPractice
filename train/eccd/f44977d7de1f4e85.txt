@@ -1,0 +1,71 @@
+int main()
+{
+   int VAR__819283[8][8];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR_9494;
+   int I;
+   int J;
+   int VAR__1238129[8];
+   int VAR_1238123[8];
+   int VAR_FLAG;
+
+   scanf("%d,%d", &I, &J);
+   for ( VAR__53647 = 0; VAR__53647 < I; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < J; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < I; VAR__53647++ )
+   {
+      VAR_1238123[VAR__53647] = 0;
+      VAR__temp = VAR__819283[VAR__53647][0];
+      for ( VAR__21230 = 1; VAR__21230 < J; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] > VAR__temp )
+         {
+            VAR__temp = VAR__819283[VAR__53647][VAR__21230];
+            VAR_1238123[VAR__53647] = VAR__21230;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < J; VAR__21230++ )
+   {
+      VAR__1238129[VAR__21230] = 0;
+      VAR_9494 = VAR__819283[0][VAR__21230];
+      for ( VAR__53647 = 1; VAR__53647 < I; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] < VAR_9494 )
+         {
+            VAR_9494 = VAR__819283[VAR__53647][VAR__21230];
+            VAR__1238129[VAR__21230] = VAR__53647;
+         }
+      }
+   }
+
+   VAR_FLAG = 1;
+   for ( VAR__53647 = 0; VAR__53647 < I; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < J; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR_1238123[VAR__53647]] == VAR__819283[VAR__1238129[VAR__21230]][VAR__21230] )
+         {
+            printf("%d+%d\n", VAR__1238129[VAR__21230], VAR_1238123[VAR__53647]);
+            VAR_FLAG = 0;
+            break;
+         }
+      }
+   }
+
+   if ( VAR_FLAG )
+   {
+      printf("No\n");
+   }
+
+   return 0;
+}

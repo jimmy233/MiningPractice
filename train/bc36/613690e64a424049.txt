@@ -1,0 +1,92 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__8444594 = 0;
+   int VAR__21230   = 0;
+   int VAR__temp;
+   struct ren
+   {
+      char   sex[41];
+      double high;
+   }
+   xue[41];
+   struct ren
+   {
+      char   sex[41];
+      double high;
+   }
+   huan;
+   struct ren
+   {
+      char   sex[41];
+      double high;
+   }
+   man[41];
+   struct ren
+   {
+      char   sex[41];
+      double high;
+   }
+   woman[41];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", &xue[VAR__53647].sex, &xue[VAR__53647].high);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(xue[VAR__53647].sex, "male") == 0 )
+      {
+         man[VAR__8444594] = xue[VAR__53647];
+         VAR__8444594++;
+      }
+
+      if ( strcmp(xue[VAR__53647].sex, "female") == 0 )
+      {
+         woman[VAR__21230] = xue[VAR__53647];
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__temp = 0; VAR__temp < (( VAR__8444594 - VAR__53647 ) - 1 ); VAR__temp++ )
+      {
+         if ( man[VAR__temp].high > man[VAR__temp + 1].high )
+         {
+            huan               = man[VAR__temp];
+            man[VAR__temp]     = man[VAR__temp + 1];
+            man[VAR__temp + 1] = huan;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      for ( VAR__temp = 0; VAR__temp < (( VAR__21230 - VAR__53647 ) - 1 ); VAR__temp++ )
+      {
+         if ( woman[VAR__temp].high < woman[VAR__temp + 1].high )
+         {
+            huan                 = woman[VAR__temp];
+            woman[VAR__temp]     = woman[VAR__temp + 1];
+            woman[VAR__temp + 1] = huan;
+         }
+      }
+   }
+
+   for ( VAR__temp = 0; VAR__temp < VAR__8444594; VAR__temp++ )
+   {
+      printf("%.2lf ", man[VAR__temp].high);
+   }
+
+   for ( VAR__temp = 0; VAR__temp < ( VAR__21230 - 1 ); VAR__temp++ )
+   {
+      printf("%.2lf ", woman[VAR__temp].high);
+   }
+
+   printf("%.2lf", woman[VAR__21230 - 1].high);
+   return 0;
+}

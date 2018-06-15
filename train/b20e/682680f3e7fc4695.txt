@@ -1,0 +1,74 @@
+int comp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__temp[1001];
+   int VAR_666[1001];
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_666[VAR__53647];
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), comp);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), comp);
+      int tl     = 0;
+      int ql     = 0;
+      int tr     = VAR_1238123 - 1;
+      int qr     = VAR_1238123 - 1;
+      int result = 0;
+
+      while ( tl <= tr )
+      {
+         if ( VAR__temp[tl] > VAR_666[ql] )
+         {
+            result += 200;
+            tl++;
+            ql++;
+         }
+         else
+         if ( VAR__temp[tr] > VAR_666[qr] )
+         {
+            result += 200;
+            tr--;
+            qr--;
+         }
+         else
+         {
+            if ( VAR__temp[tr] > VAR_666[ql] )
+            {
+               result += 200;
+            }
+            else
+            if ( VAR__temp[tr] < VAR_666[ql] )
+            {
+               result -= 200;
+            }
+
+
+            tr--;
+            ql++;
+         }
+      }
+
+      ( cout << result ) << endl;
+   }
+}

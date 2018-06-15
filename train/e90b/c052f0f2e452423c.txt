@@ -1,0 +1,75 @@
+struct student
+{
+   int            VAR__NUM;
+   int            yu;
+   int            shu;
+   int            he;
+   struct student *VAR__NEXT;
+};
+struct student *create(int VAR_1238123)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+   scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yu, &ANOTHER_POINTER->shu);
+   ANOTHER_POINTER->he        = ANOTHER_POINTER->yu + ANOTHER_POINTER->shu;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yu, &ANOTHER_POINTER->shu);
+      ANOTHER_POINTER->he            = ANOTHER_POINTER->yu + ANOTHER_POINTER->shu;
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct student *VAR__MAX(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *VAR__1238129;
+
+   VAR__1238129 = VAR__HEAD;
+   VAR_233      = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->he > VAR__1238129->he )
+      {
+         VAR__1238129 = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return VAR__1238129;
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct student *VAR__HEAD;
+   struct student *VAR__1238129;
+   struct student *create(int VAR_1238123);
+   struct student *VAR__MAX(struct student *VAR__HEAD);
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create(VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= 3; VAR__53647++ )
+   {
+      VAR__1238129 = VAR__MAX(VAR__HEAD);
+      printf("%d %d\n", VAR__1238129->VAR__NUM, VAR__1238129->he);
+      VAR__1238129->he = -1;
+   }
+}

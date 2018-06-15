@@ -1,0 +1,44 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int count1 = 0;
+   int count2 = 0;
+   int year1;
+   int month1;
+   int day1;
+   int year2;
+   int month2;
+   int day2;
+   int month[2][13] = { { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+
+   ((((( cin >> year1 ) >> month1 ) >> day1 ) >> year2 ) >> month2 ) >> day2;
+   int leap1 = (( year1 % 400 ) == 0 ) || ((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 ));
+   int leap2 = (( year2 % 400 ) == 0 ) || ((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 ));
+   for ( VAR__53647 = 1; VAR__53647 < month1; VAR__53647++ )
+   {
+      count1 += month[leap1][VAR__53647];
+   }
+
+   count1 += day1 - 1;
+   for ( VAR__53647 = year1; VAR__53647 < year2; VAR__53647++ )
+   {
+      if ((( VAR__53647 % 400 ) == 0 ) || ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )))
+      {
+         count2 += 366;
+      }
+      else
+      {
+         count2 += 365;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+   {
+      count2 += month[leap2][VAR__53647];
+   }
+
+   count2 += day2 - 1;
+   ( cout << ( count2 - count1 )) << endl;
+   return 0;
+}

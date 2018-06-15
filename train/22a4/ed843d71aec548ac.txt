@@ -1,0 +1,74 @@
+void turn(char *VAR__819283, int VAR_1238123)
+{
+   char *VAR_233;
+   char *VAR_666;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  VAR__8444594;
+
+   VAR__8444594 = ( VAR_1238123 / 2 ) + ( VAR_1238123 % 2 );
+   VAR_233      = VAR__819283, VAR_666 = ( VAR__819283 + VAR_1238123 ) - 1;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      VAR__temp = *( VAR_233 + VAR__53647 );
+      *( VAR_233 + VAR__53647 ) = *( VAR_666 - VAR__53647 );
+      *( VAR_666 - VAR__53647 ) = VAR__temp;
+   }
+}
+
+
+int main()
+{
+   int ii;
+
+   for ( ii = 0; ii <= 5; ii++ )
+   {
+      char A[100];
+      int  VAR__53647;
+      int  VAR__21230;
+      int  VAR__COUNT = 0;
+      memset(A, '\0', 100);
+      scanf("%s", A);
+
+      if ( A[0] == '-' )
+      {
+         for ( VAR__21230 = 0; A[VAR__21230] != '\0'; VAR__21230++ )
+         {
+            A[VAR__21230] = A[VAR__21230 + 1];
+         }
+
+         printf("-");
+      }
+
+      {
+         for ( VAR__53647 = 0; A[VAR__53647] != '\0'; VAR__53647++ )
+         {
+            VAR__COUNT++;
+         }
+
+         turn(A, VAR__COUNT);
+
+         if (( A[0] == '0' ) && ( A[1] == '\0' ))
+         {
+            printf("0");
+         }
+         else
+         {
+            for ( VAR__53647 = 0; A[0] == '0'; VAR__53647++ )
+            {
+               for ( VAR__21230 = 0; A[VAR__21230] != '\0'; VAR__21230++ )
+               {
+                  A[VAR__21230] = A[VAR__21230 + 1];
+               }
+            }
+
+            for ( VAR__53647 = 0; A[VAR__53647] != '\0'; VAR__53647++ )
+            {
+               printf("%c", A[VAR__53647]);
+            }
+         }
+      }
+      printf("\n");
+   }
+}

@@ -1,0 +1,149 @@
+int find(int VAR__819283[], int VAR__53647, int VAR__21230)
+{
+   int key = VAR__819283[VAR__53647];
+   int VAR__8444594;
+   int VAR_FLAG = 0;
+
+   for ( VAR__8444594 = VAR__53647 + 1; VAR__8444594 <= VAR__21230; VAR__8444594++ )
+   {
+      if ( VAR__819283[VAR__8444594] > key )
+      {
+         return VAR__8444594;
+      }
+      else
+      if ( VAR__819283[VAR__8444594] < key )
+      {
+         return VAR__53647;
+      }
+   }
+
+
+
+   return -1;
+}
+
+
+int partition(int VAR__819283[], int VAR__53647, int VAR__21230, int pivot)
+{
+   int ta;
+   int VAR__1111  = VAR__53647;
+   int VAR_129012 = VAR__21230;
+
+   do
+   {
+      ta = VAR__819283[VAR__1111];
+      VAR__819283[VAR__1111]  = VAR__819283[VAR_129012];
+      VAR__819283[VAR_129012] = ta;
+
+      while ( VAR__819283[VAR__1111] >= pivot )
+      {
+         VAR__1111++;
+      }
+
+      while ( VAR__819283[VAR_129012] < pivot )
+      {
+         VAR_129012--;
+      }
+   } while ( VAR__1111 <= VAR_129012 );
+   return VAR__1111;
+}
+
+
+void quicksort(int VAR__819283[], int VAR__53647, int VAR__21230)
+{
+   int pindex;
+   int pivot;
+   int VAR__8444594;
+
+   pindex = find(VAR__819283, VAR__53647, VAR__21230);
+
+   if ( pindex >= 0 )
+   {
+      pivot        = VAR__819283[pindex];
+      VAR__8444594 = partition(VAR__819283, VAR__53647, VAR__21230, pivot);
+      quicksort(VAR__819283, VAR__53647, VAR__8444594 - 1);
+      quicksort(VAR__819283, VAR__8444594, VAR__21230);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int t_max;
+   int t_min;
+   int VAR_666[1000];
+   int VAR__temp[1000];
+   int win;
+   int loss;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         return 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_666[VAR__53647]);
+      }
+
+      quicksort(VAR__temp, 0, VAR_1238123 - 1);
+      quicksort(VAR_666, 0, VAR_1238123 - 1);
+      t_max = 0;
+      t_min = VAR_1238123 - 1;
+      win   = ( loss = 0 );
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__temp[t_max] > VAR_666[VAR__53647] )
+         {
+            win++;
+            t_max++;
+         }
+         else
+         if ( VAR__temp[t_max] < VAR_666[VAR__53647] )
+         {
+            loss++;
+            t_min--;
+         }
+         else
+         if ( VAR__temp[t_max] == VAR_666[VAR__53647] )
+         {
+            for ( VAR__21230 = VAR__53647 + 1, VAR__8444594 = t_max + 1; VAR__21230 < VAR_1238123; VAR__21230++, VAR__8444594++ )
+            {
+               if (( VAR__temp[VAR__8444594] <= VAR_666[VAR__21230] ) && ( VAR__temp[t_max] > VAR_666[VAR__21230] ))
+               {
+                  break;
+               }
+            }
+
+            if ( VAR__21230 < VAR_1238123 )
+            {
+               if ( VAR__temp[t_min] < VAR_666[VAR__53647] )
+               {
+                  loss++;
+               }
+
+               t_min--;
+            }
+            else
+            {
+               t_max++;
+            }
+         }
+      }
+
+      printf("%d\n", 200 * ( win - loss ));
+   }
+}

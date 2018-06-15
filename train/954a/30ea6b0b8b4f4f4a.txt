@@ -1,0 +1,157 @@
+struct student
+{
+   char name[20];
+   int  grade;
+   int  mark_class;
+   char monitor;
+   char west;
+   int  paper;
+   int  money;
+};
+int c_to_d(char VAR__4857423[]);
+
+void main()
+{
+   int            VAR_1238123;
+   int            LEN_OF_STH;
+   struct student stu[100];
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__8444594;
+   int            VAR__1111;
+   int            VAR__1238129;
+   int            total = 0;
+
+   scanf("%d", &VAR_1238123);
+   getchar();
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      char help[35];
+      gets(help);
+      LEN_OF_STH = strlen(help);
+      for ( VAR__21230 = 0; ; VAR__21230++ )
+      {
+         if ( help[VAR__21230] == ' ' )
+         {
+            stu[VAR__53647].name[VAR__21230] = '\0';
+            break;
+         }
+
+         stu[VAR__53647].name[VAR__21230] = help[VAR__21230];
+      }
+
+      VAR__21230++;
+      for ( VAR__8444594 = 0; ; VAR__8444594++ )
+      {
+         char help2[3];
+
+         if ( help[VAR__21230 + VAR__8444594] == ' ' )
+         {
+            help2[VAR__8444594]   = '\0';
+            stu[VAR__53647].grade = c_to_d(help2);
+            break;
+         }
+
+         help2[VAR__8444594] = help[VAR__21230 + VAR__8444594];
+      }
+
+      VAR__8444594++;
+      for ( VAR__1111 = 0; ; VAR__1111++ )
+      {
+         char help2[3];
+
+         if ( help[( VAR__21230 + VAR__8444594 ) + VAR__1111] == ' ' )
+         {
+            help2[VAR__1111]           = '\0';
+            stu[VAR__53647].mark_class = c_to_d(help2);
+            break;
+         }
+
+         help2[VAR__1111] = help[( VAR__21230 + VAR__8444594 ) + VAR__1111];
+      }
+
+      VAR__1111++;
+      stu[VAR__53647].monitor = help[( VAR__21230 + VAR__8444594 ) + VAR__1111];
+      stu[VAR__53647].west    = help[(( VAR__21230 + VAR__8444594 ) + VAR__1111 ) + 2];
+      for ( VAR__1238129 = 0; ; VAR__1238129++ )
+      {
+         char help2[3];
+
+         if ( LEN_OF_STH == (((( VAR__21230 + VAR__8444594 ) + VAR__1111 ) + 4 ) + VAR__1238129 ))
+         {
+            help2[VAR__1238129]   = '\0';
+            stu[VAR__53647].paper = c_to_d(help2);
+            break;
+         }
+
+         help2[VAR__1238129] = help[((( VAR__21230 + VAR__8444594 ) + VAR__1111 ) + 4 ) + VAR__1238129];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].money = 0;
+
+      if (( stu[VAR__53647].grade > 80 ) && ( stu[VAR__53647].paper > 0 ))
+      {
+         stu[VAR__53647].money += 8000;
+      }
+
+      if (( stu[VAR__53647].grade > 85 ) && ( stu[VAR__53647].mark_class > 80 ))
+      {
+         stu[VAR__53647].money += 4000;
+      }
+
+      if ( stu[VAR__53647].grade > 90 )
+      {
+         stu[VAR__53647].money += 2000;
+      }
+
+      if (( stu[VAR__53647].grade > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].money += 1000;
+      }
+
+      if (( stu[VAR__53647].mark_class > 80 ) && ( stu[VAR__53647].monitor == 'Y' ))
+      {
+         stu[VAR__53647].money += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( stu[VAR__21230].money < stu[VAR__21230 + 1].money )
+         {
+            struct student VAR__3918907;
+            VAR__3918907        = stu[VAR__21230];
+            stu[VAR__21230]     = stu[VAR__21230 + 1];
+            stu[VAR__21230 + 1] = VAR__3918907;
+         }
+      }
+   }
+
+   printf("%s\n%d\n", stu[0].name, stu[0].money);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      total += stu[VAR__53647].money;
+   }
+
+   printf("%d", total);
+}
+
+
+int c_to_d(char VAR__4857423[])
+{
+   int VAR_1238123 = strlen(VAR__4857423);
+   int VAR__53647;
+   int VAR__7685 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__7685 = (( VAR__7685 * 10 ) + VAR__4857423[VAR__53647] ) - 48;
+   }
+
+   return VAR__7685;
+}

@@ -1,0 +1,74 @@
+int main()
+{
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int Array[100][100];
+   int startRow = 0;
+   int startCol = 0;
+   int endRow;
+   int endCol;
+   int step = 1;
+
+   scanf("%d %d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &Array[VAR__53647][VAR__21230]);
+      }
+   }
+
+
+   endRow = row - 1;
+   endCol = col - 1;
+
+   while (( startRow <= endRow ) && ( startCol <= endCol ))
+   {
+      switch ( step )
+      {
+      case 1:
+         for ( VAR__21230 = startCol; VAR__21230 <= endCol; VAR__21230++ )
+         {
+            printf("%d\n", Array[startRow][VAR__21230]);
+         }
+
+         step++;
+         startRow++;
+         break;
+
+      case 2:
+         for ( VAR__53647 = startRow; VAR__53647 <= endRow; VAR__53647++ )
+         {
+            printf("%d\n", Array[VAR__53647][endCol]);
+         }
+
+         step++;
+         endCol--;
+         break;
+
+      case 3:
+         for ( VAR__21230 = endCol; VAR__21230 >= startCol; VAR__21230-- )
+         {
+            printf("%d\n", Array[endRow][VAR__21230]);
+         }
+
+         step++;
+         endRow--;
+         break;
+
+      case 4:
+         for ( VAR__53647 = endRow; VAR__53647 >= startRow; VAR__53647-- )
+         {
+            printf("%d\n", Array[VAR__53647][startCol]);
+         }
+
+         step = 1;
+         startCol++;
+         break;
+      }
+   }
+
+   return 0;
+}

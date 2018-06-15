@@ -1,0 +1,89 @@
+int main()
+{
+   int  VAR_1238123;
+   int  counts[500] = { 0 };
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594 = 0;
+   int  judge        = 0;
+   int  VAR_233      = 0;
+   char VAR__819283[501];
+   char sub[500][5];
+
+   cin >> VAR_1238123;
+   cin >> VAR__819283;
+   LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      strncpy(sub[VAR__53647], VAR__819283 + VAR__53647, VAR_1238123);
+      sub[VAR__53647][VAR_1238123] = '\0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( counts[VAR__53647] == ( -1 ))
+      {
+         continue;
+      }
+
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+      {
+         VAR__8444594 = 0;
+         judge        = 0;
+
+         while ( 1 )
+         {
+            if ( sub[VAR__53647][VAR__8444594] != sub[VAR__21230][VAR__8444594] )
+            {
+               judge = 1;
+               break;
+            }
+
+            if (( sub[VAR__53647][VAR__8444594] == '\0' ) && ( sub[VAR__21230][VAR__8444594] == '\0' ))
+            {
+               break;
+            }
+
+            VAR__8444594++;
+         }
+
+         if ( judge == 0 )
+         {
+            counts[VAR__53647]++;
+            counts[VAR__21230] = -1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 500; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+      {
+         if ( counts[VAR__21230] == VAR__53647 )
+         {
+            if ( VAR_233 == 0 )
+            {
+               ( cout << ( VAR__53647 + 1 )) << endl;
+               VAR_233 = 1;
+            }
+
+            ( cout << sub[VAR__21230] ) << endl;
+         }
+      }
+
+      if ( VAR_233 == 1 )
+      {
+         break;
+      }
+   }
+
+   if ( VAR_233 == 0 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+
+   cin.get();
+   cin.get();
+   return 0;
+}

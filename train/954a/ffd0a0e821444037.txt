@@ -1,0 +1,129 @@
+struct stu
+{
+   char       name[20];
+   int        mark1;
+   int        mark2;
+   char       position;
+   char       hometown;
+   int        paper;
+   int        fund;
+   struct stu *VAR__NEXT;
+};
+struct stu *creat(int VAR_1238123)
+{
+   int        VAR__53647 = 1;
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+   scanf(A, ANOTHER_POINTER->name, &ANOTHER_POINTER->mark1, &ANOTHER_POINTER->mark2, &ANOTHER_POINTER->position, &ANOTHER_POINTER->hometown, &ANOTHER_POINTER->paper);
+   ANOTHER_POINTER->fund = 0;
+
+   if ( VAR_1238123 == 1 )
+   {
+      VAR__HEAD = ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+      free(ANOTHER_POINTER);
+      return VAR__HEAD;
+   }
+   else
+   {
+      VAR__HEAD           = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      do
+      {
+         ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+         scanf(A, ANOTHER_POINTER->name, &ANOTHER_POINTER->mark1, &ANOTHER_POINTER->mark2, &ANOTHER_POINTER->position, &ANOTHER_POINTER->hometown, &ANOTHER_POINTER->paper);
+         ANOTHER_POINTER->fund = 0;
+         VAR__53647++;
+
+         if ( VAR__53647 == VAR_1238123 )
+         {
+            ANOTHER_POINTER->VAR__NEXT     = NULL;
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            break;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         }
+      } while ( 1 );
+      return VAR__HEAD;
+   }
+}
+
+
+int main(void)
+{
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__21230 = 0;
+   int        VAR__MAX   = 0;
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR_233   = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if (( VAR_233->mark1 > 80 ) && ( VAR_233->paper > 0 ))
+      {
+         VAR_233->fund += 8000;
+      }
+
+      if (( VAR_233->mark1 > 85 ) && ( VAR_233->mark2 > 80 ))
+      {
+         VAR_233->fund += 4000;
+      }
+
+      if ( VAR_233->mark1 > 90 )
+      {
+         VAR_233->fund += 2000;
+      }
+
+      if (( VAR_233->mark1 > 85 ) && ( VAR_233->hometown == 'Y' ))
+      {
+         VAR_233->fund += 1000;
+      }
+
+      if (( VAR_233->mark2 > 80 ) && ( VAR_233->position == 'Y' ))
+      {
+         VAR_233->fund += 850;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      VAR__21230 += VAR_233->fund;
+
+      if ( VAR_233->fund > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->fund;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if ( VAR__MAX == VAR_233->fund )
+      {
+         printf("%s\n%d\n%d\n", VAR_233->name, VAR_233->fund, VAR__21230);
+         break;
+      }
+      else
+      {
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+}

@@ -1,0 +1,35 @@
+struct data
+{
+   int id;
+   int cs;
+   int ms;
+   int VAR_9494;
+};
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ((struct data *)VAR__19328 )->VAR_9494 - ((struct data *)VAR__819283 )->VAR_9494;
+}
+
+
+int main()
+{
+   struct data *VAR__819283;
+   int         VAR_1238123;
+   int         VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   VAR__819283 = (struct data *)malloc(VAR_1238123 * ( sizeof( struct data )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR__819283[VAR__53647].id, &VAR__819283[VAR__53647].cs, &VAR__819283[VAR__53647].ms);
+      VAR__819283[VAR__53647].VAR_9494 = VAR__819283[VAR__53647].cs + VAR__819283[VAR__53647].ms;
+   }
+
+   qsort(VAR__819283, VAR_1238123, sizeof( struct data ), cmp);
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%d %d\n", VAR__819283[VAR__53647].id, VAR__819283[VAR__53647].VAR_9494);
+   }
+
+   free(VAR__819283);
+}

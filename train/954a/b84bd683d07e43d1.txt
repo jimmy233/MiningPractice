@@ -1,0 +1,79 @@
+struct student
+{
+   char name[25];
+   int  qi_g;
+   int  bang_g;
+   char gb;
+   char xb;
+   int  paper;
+   int  money;
+};
+int comp_money(struct student VAR_9494);
+
+int main()
+{
+   struct student VAR__819283[LEN];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__SUM;
+   int            VAR__MAX;
+   int            max_i;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].qi_g, &VAR__819283[VAR__53647].bang_g, &VAR__819283[VAR__53647].gb, &VAR__819283[VAR__53647].xb, &VAR__819283[VAR__53647].paper);
+      VAR__819283[VAR__53647].money = comp_money(VAR__819283[VAR__53647]);
+   }
+
+   VAR__SUM = ( VAR__MAX = VAR__819283[0].money );
+   max_i    = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647].money > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647].money;
+         max_i    = VAR__53647;
+      }
+
+      VAR__SUM += VAR__819283[VAR__53647].money;
+   }
+
+   printf("%s\n", VAR__819283[max_i].name);
+   printf("%d\n", VAR__819283[max_i].money);
+   printf("%d\n", VAR__SUM);
+   return 0;
+}
+
+
+int comp_money(struct student VAR_9494)
+{
+   int VAR__SUM = 0;
+
+   if (( VAR_9494.qi_g > 80 ) && ( VAR_9494.paper >= 1 ))
+   {
+      VAR__SUM += 8000;
+   }
+
+   if (( VAR_9494.qi_g > 85 ) && ( VAR_9494.bang_g > 80 ))
+   {
+      VAR__SUM += 4000;
+   }
+
+   if ( VAR_9494.qi_g > 90 )
+   {
+      VAR__SUM += 2000;
+   }
+
+   if (( VAR_9494.qi_g > 85 ) && ( VAR_9494.xb == 'Y' ))
+   {
+      VAR__SUM += 1000;
+   }
+
+   if (( VAR_9494.bang_g > 80 ) && ( VAR_9494.gb == 'Y' ))
+   {
+      VAR__SUM += 850;
+   }
+
+   return VAR__SUM;
+}

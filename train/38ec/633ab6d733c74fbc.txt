@@ -1,0 +1,84 @@
+int main()
+{
+   int monthday_ping[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int monthday_run[13]  = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   struct cal
+   {
+      int year;
+      int month;
+      int day;
+   }
+       date[2];
+   int yy;
+   int mm;
+   int dd;
+   int VAR__SUM = 0;
+   int VAR__53647;
+
+   (( cin >> date[0].year ) >> date[0].month ) >> date[0].day;
+   (( cin >> date[1].year ) >> date[1].month ) >> date[1].day;
+
+   if (( date[1].year - date[0].year ) > 0 )
+   {
+      if (( date[1].year - date[0].year ) > 1 )
+      {
+         VAR__SUM = 365 * (( date[1].year - date[0].year ) - 1 );
+      }
+
+      for ( VAR__53647 = date[0].month; VAR__53647 <= 12; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + monthday_ping[VAR__53647];
+      }
+
+      VAR__SUM = VAR__SUM - date[0].day;
+      for ( VAR__53647 = 1; VAR__53647 < date[1].month; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + monthday_ping[VAR__53647];
+      }
+
+      VAR__SUM = VAR__SUM + date[1].day;
+   }
+   else
+   {
+      if ( date[0].month < date[1].month )
+      {
+         for ( VAR__53647 = date[0].month; VAR__53647 < date[1].month; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + monthday_ping[VAR__53647];
+         }
+
+         VAR__SUM = ( VAR__SUM - date[0].day ) + date[1].day;
+      }
+      else
+      {
+         VAR__SUM = date[1].day - date[0].day;
+      }
+   }
+
+   for ( VAR__53647 = date[0].year + 1; VAR__53647 < date[1].year; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__SUM++;
+      }
+   }
+
+   if (((( date[0].year % 4 ) == 0 ) && (( date[0].year % 100 ) != 0 )) || (( date[0].year % 400 ) == 0 ))
+   {
+      if (( date[0].month < 2 ) || ( date[0].month = 2 && ( date[0].day != 29 )))
+      {
+         VAR__SUM++;
+      }
+   }
+
+   if (((( date[1].year % 4 ) == 0 ) && (( date[1].year % 100 ) != 0 )) || (( date[1].year % 400 ) == 0 ))
+   {
+      if (( date[1].month = 2 ) || ( date[1].month = 2 && ( date[1].day != 29 )))
+      {
+         VAR__SUM++;
+      }
+   }
+
+   cout << VAR__SUM;
+   return 0;
+}

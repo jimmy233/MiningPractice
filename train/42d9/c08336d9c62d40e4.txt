@@ -1,0 +1,51 @@
+int VAR__7685[11];
+int VAR__3918907[11];
+int VAR__9290[11];
+int cnt;
+int VAR_1238123;
+int dist[105];
+int getdist(int VAR__53647, int VAR__21230)
+{
+   return ((( VAR__7685[VAR__53647] - VAR__7685[VAR__21230] ) * ( VAR__7685[VAR__53647] - VAR__7685[VAR__21230] )) + (( VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230] ) * ( VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230] ))) + (( VAR__9290[VAR__53647] - VAR__9290[VAR__21230] ) * ( VAR__9290[VAR__53647] - VAR__9290[VAR__21230] ));
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> VAR__7685[VAR__53647] ) >> VAR__3918907[VAR__53647] ) >> VAR__9290[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         dist[++cnt] = getdist(VAR__53647, VAR__21230);
+      }
+   }
+
+
+   sort(dist + 1, ( dist + 1 ) + cnt);
+   for ( int VAR__8444594 = cnt; VAR__8444594 >= 1; VAR__8444594-- )
+   {
+      if ( dist[VAR__8444594] != dist[VAR__8444594 - 1] )
+      {
+         for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+            {
+               if ( getdist(VAR__53647, VAR__21230) == dist[VAR__8444594] )
+               {
+                  printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR__7685[VAR__53647], VAR__3918907[VAR__53647], VAR__9290[VAR__53647], VAR__7685[VAR__21230], VAR__3918907[VAR__21230], VAR__9290[VAR__21230], (double)sqrt(dist[VAR__8444594]));
+               }
+            }
+         }
+      }
+   }
+
+
+
+   return 0;
+}

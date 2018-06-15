@@ -1,0 +1,115 @@
+int tj[1001];
+int qw[1001];
+void main()
+{
+   int game(int VAR_1238123, int money);
+
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__TEMP;
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tj[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qw[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( tj[VAR__53647] < tj[VAR__21230] )
+            {
+               VAR__TEMP      = tj[VAR__53647];
+               tj[VAR__53647] = tj[VAR__21230];
+               tj[VAR__21230] = VAR__TEMP;
+            }
+
+            if ( qw[VAR__53647] < qw[VAR__21230] )
+            {
+               VAR__TEMP      = qw[VAR__53647];
+               qw[VAR__53647] = qw[VAR__21230];
+               qw[VAR__21230] = VAR__TEMP;
+            }
+         }
+      }
+
+
+      VAR__8444594 = game(VAR_1238123, 0);
+      printf("%d\n", VAR__8444594);
+      scanf("%d", &VAR_1238123);
+   }
+}
+
+
+int game(int VAR_1238123, int money)
+{
+   int VAR__53647;
+
+   if ( VAR_1238123 == 0 )
+   {
+      return money;
+   }
+   else
+   {
+      if ( tj[VAR_1238123] > qw[VAR_1238123] )
+      {
+         money = money + 200;
+      }
+      else
+      if ( tj[VAR_1238123] < qw[VAR_1238123] )
+      {
+         money = money - 200;
+         for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            qw[VAR__53647] = qw[VAR__53647 + 1];
+         }
+      }
+      else
+      {
+         if ( VAR_1238123 != 1 )
+         {
+            if ( tj[1] < qw[1] )
+            {
+               money = money - 200;
+               for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+               {
+                  qw[VAR__53647] = qw[VAR__53647 + 1];
+               }
+            }
+            else
+            if (( tj[1] == qw[1] ) && ( tj[1] > tj[VAR_1238123] ))
+            {
+               money = money - 200;
+               for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+               {
+                  qw[VAR__53647] = qw[VAR__53647 + 1];
+               }
+            }
+            else
+            if ( tj[1] > qw[1] )
+            {
+               money = money + 200;
+               for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+               {
+                  tj[VAR__53647] = tj[VAR__53647 + 1];
+                  qw[VAR__53647] = qw[VAR__53647 + 1];
+               }
+            }
+         }
+      }
+
+
+      VAR_1238123--;
+      return game(VAR_1238123, money);
+   }
+}

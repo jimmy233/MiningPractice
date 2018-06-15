@@ -1,0 +1,54 @@
+int   feibo[200] = { 0 };
+float fen[100]   = { 0 };
+int feii(int VAR_1238123)
+{
+   if ( feibo[VAR_1238123] )
+   {
+      return feibo[VAR_1238123];
+   }
+
+   if ( VAR_1238123 == 1 )
+   {
+      return feibo[VAR_1238123] = 1;
+   }
+
+   if ( VAR_1238123 == 2 )
+   {
+      return feibo[VAR_1238123] = 2;
+   }
+
+   return feibo[VAR_1238123] = feii(VAR_1238123 - 1) + feii(VAR_1238123 - 2);
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+
+   scanf("%d", &VAR__1238129);
+
+   while ( VAR__1238129-- )
+   {
+      int   VAR__53647;
+      int   VAR__21230;
+      float VAR__SUM = 0;
+      scanf("%d", &VAR_1238123);
+      for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 + 1 ); VAR__53647++ )
+      {
+         feii(VAR__53647);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( fen[VAR__53647] == 0 )
+         {
+            fen[VAR__53647] = ((float)feibo[VAR__53647 + 1] ) / ((float)feibo[VAR__53647] );
+         }
+
+         VAR__SUM += fen[VAR__53647];
+      }
+
+      printf("%.3f\n", VAR__SUM);
+   }
+}

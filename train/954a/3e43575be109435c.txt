@@ -1,0 +1,62 @@
+struct student
+{
+   int  avescore;
+   int  classscore;
+   int  paper;
+   int  money;
+   char name[21];
+   char lead[2];
+   char west[2];
+}
+stu[100];
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__MAX = 0;
+   int  money    = 0;
+   char output[21];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].money = 0;
+      scanf("%s%d%d%s%s%d", &stu[VAR__53647].name, &stu[VAR__53647].avescore, &stu[VAR__53647].classscore, &stu[VAR__53647].lead, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+
+      if (( stu[VAR__53647].avescore > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         stu[VAR__53647].money += 8000;
+      }
+
+      if (( stu[VAR__53647].avescore > 85 ) && ( stu[VAR__53647].classscore > 80 ))
+      {
+         stu[VAR__53647].money += 4000;
+      }
+
+      if ( stu[VAR__53647].avescore > 90 )
+      {
+         stu[VAR__53647].money += 2000;
+      }
+
+      if (( stu[VAR__53647].avescore > 85 ) && ( stu[VAR__53647].west[0] == 'Y' ))
+      {
+         stu[VAR__53647].money += 1000;
+      }
+
+      if (( stu[VAR__53647].classscore > 80 ) && ( stu[VAR__53647].lead[0] == 'Y' ))
+      {
+         stu[VAR__53647].money += 850;
+      }
+
+      money += stu[VAR__53647].money;
+
+      if ( VAR__MAX < stu[VAR__53647].money )
+      {
+         VAR__MAX = stu[VAR__53647].money;
+         strcpy(output, stu[VAR__53647].name);
+      }
+   }
+
+   printf("%s\n%d\n%d\n", output, VAR__MAX, money);
+   return 0;
+}

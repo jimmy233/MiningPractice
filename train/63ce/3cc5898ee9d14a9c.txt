@@ -1,0 +1,99 @@
+int VAR__NUM;
+int VAR__temp;
+int yin[50];
+void dd(int VAR_1238123, int VAR__819283, int VAR__12302, int VAR__1238129)
+{
+   int VAR__53647;
+
+   if ( VAR__12302 == VAR__1238129 )
+   {
+      VAR__temp++;
+      return;
+   }
+
+   for ( VAR__53647 = VAR__819283; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ((( VAR_1238123 / yin[VAR__53647] ) >= yin[VAR__53647] ) && (( VAR_1238123 % yin[VAR__53647] ) == 0 ))
+      {
+         dd(VAR_1238123 / yin[VAR__53647], VAR__53647, VAR__12302 + 1, VAR__1238129);
+      }
+   }
+}
+
+
+void q_ys(int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         VAR__NUM++;
+         yin[VAR__NUM] = VAR__53647;
+      }
+   }
+}
+
+
+int m_ys(int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 2; VAR__53647 <= sqrt(VAR_1238123); VAR__53647++ )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         return VAR__53647;
+      }
+   }
+
+   return 1;
+}
+
+
+void output(int VAR__3918907)
+{
+   int VAR__8444594 = 1;
+   int VAR__53647;
+   int VAR__7685;
+
+   VAR__7685 = VAR__3918907;
+   VAR__temp = 1, VAR__NUM = 0, memset(yin, 0, sizeof( yin ));
+   q_ys(VAR__7685);
+
+   while ( m_ys(VAR__7685) != 1 )
+   {
+      VAR__8444594++;
+      VAR__7685 = VAR__7685 / m_ys(VAR__7685);
+   }
+
+   for ( VAR__53647 = 2; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      dd(VAR__3918907, 1, 1, VAR__53647);
+   }
+
+   ( cout << VAR__temp ) << endl;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__819283[1000];
+
+   VAR__temp = 0, VAR__NUM = 0;
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      output(VAR__819283[VAR__53647]);
+   }
+
+   return 0;
+}

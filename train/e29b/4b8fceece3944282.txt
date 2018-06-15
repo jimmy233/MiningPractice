@@ -1,0 +1,84 @@
+struct num
+{
+   int   VAR_1238123;
+   float VAR__12302;
+};
+int main()
+{
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR__SUM = 0;
+   float      aver;
+   struct num nob[300];
+   struct num VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &nob[VAR__53647].VAR_1238123);
+      VAR__SUM += nob[VAR__53647].VAR_1238123;
+   }
+
+   aver = ( VAR__SUM * 1.0 ) / ( VAR_1238123 * 1.0 );
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      nob[VAR__53647].VAR__12302 = ( nob[VAR__53647].VAR_1238123 > aver ) ? ( nob[VAR__53647].VAR_1238123 - aver ) : ( aver - nob[VAR__53647].VAR_1238123 );
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( nob[VAR__21230].VAR__12302 < nob[VAR__21230 + 1].VAR__12302 )
+         {
+            VAR__TEMP           = nob[VAR__21230];
+            nob[VAR__21230]     = nob[VAR__21230 + 1];
+            nob[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR__SUM = 1;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( nob[0].VAR__12302 == nob[VAR__53647].VAR__12302 )
+      {
+         VAR__SUM++;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   if ( VAR__SUM == 1 )
+   {
+      printf("%d\n", nob[0].VAR_1238123);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__SUM - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR__SUM - 1 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( nob[VAR__21230].VAR_1238123 > nob[VAR__21230 + 1].VAR_1238123 )
+            {
+               VAR__TEMP           = nob[VAR__21230];
+               nob[VAR__21230]     = nob[VAR__21230 + 1];
+               nob[VAR__21230 + 1] = nob[VAR__21230];
+            }
+         }
+      }
+
+
+
+      printf("%d", nob[0].VAR_1238123);
+      for ( VAR__53647 = 1; VAR__53647 < VAR__SUM; VAR__53647++ )
+      {
+         printf(",%d", nob[VAR__53647].VAR_1238123);
+      }
+   }
+
+   return 0;
+}

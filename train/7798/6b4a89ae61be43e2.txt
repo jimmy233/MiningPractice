@@ -1,0 +1,54 @@
+int main()
+{
+   int  booknumber;
+   int  order[1000];
+   char author[1000][27];
+   char single_author[26]     = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+   int  author_booknumber[26] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  tmp;
+
+   scanf("%d", &booknumber);
+   for ( VAR__53647 = 0; VAR__53647 < booknumber; VAR__53647++ )
+   {
+      scanf("%d%s", &order[VAR__53647], author[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__21230 < strlen(author[VAR__53647]); VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < 26; VAR__8444594++ )
+         {
+            if ( author[VAR__53647][VAR__21230] == single_author[VAR__8444594] )
+            {
+               author_booknumber[VAR__8444594]++;
+               break;
+            }
+         }
+      }
+   }
+
+   tmp = 0;
+   for ( VAR__53647 = 1; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( author_booknumber[VAR__53647] > author_booknumber[tmp] )
+      {
+         tmp = VAR__53647;
+      }
+   }
+
+   printf("%c\n", single_author[tmp]);
+   printf("%d\n", author_booknumber[tmp]);
+   for ( VAR__53647 = 0; VAR__53647 < booknumber; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(author[VAR__53647]); VAR__21230++ )
+      {
+         if ( author[VAR__53647][VAR__21230] == single_author[tmp] )
+         {
+            printf("%d\n", order[VAR__53647]);
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

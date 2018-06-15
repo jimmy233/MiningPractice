@@ -1,0 +1,82 @@
+int main()
+{
+   const int N = 300;
+   int       VAR__819283[N];
+   int       VAR__53647;
+   int       VAR_1238123;
+   int       VAR__21230;
+   double    VAR__SUM = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+   }
+
+   double ave;
+   ave = VAR__SUM / VAR_1238123;
+   double VAR__19328[N];
+   double temp1;
+   int    temp2;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = fabs(VAR__819283[VAR__53647] - ave);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if (( VAR__19328[VAR__21230] < VAR__19328[VAR__21230 + 1] ) || ( fabs(VAR__19328[VAR__21230] - VAR__19328[VAR__21230 + 1]) < 0.000001 ))
+         {
+            temp1 = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__19328[VAR__21230 + 1];
+            VAR__19328[VAR__21230 + 1] = temp1;
+            temp2 = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = temp2;
+         }
+      }
+   }
+
+
+
+   int VAR__4857423[N];
+   VAR__4857423[0] = VAR__819283[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( fabs(VAR__19328[VAR__53647] - VAR__19328[0]) < 0.000001 )
+      {
+         VAR__4857423[VAR__53647] = VAR__819283[VAR__53647];
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      for ( int VAR__8444594 = 0; VAR__8444594 < ( VAR__53647 - 1 ); VAR__8444594++ )
+      {
+         if ( VAR__4857423[VAR__8444594] > VAR__4857423[VAR__8444594 + 1] )
+         {
+            temp2 = VAR__4857423[VAR__21230];
+            VAR__4857423[VAR__21230]     = VAR__4857423[VAR__21230 + 1];
+            VAR__4857423[VAR__21230 + 1] = temp2;
+         }
+      }
+   }
+
+
+
+   cout << VAR__4857423[0];
+   for ( VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      ( cout << "," ) << VAR__4857423[VAR__21230];
+   }
+
+   cout << endl;
+   return 0;
+}

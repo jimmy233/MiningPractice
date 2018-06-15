@@ -1,0 +1,92 @@
+struct A
+{
+   double data;
+   double differences;
+}
+VAR__819283[300 + 10];
+struct A
+{
+   double data;
+   double differences;
+}
+    VAR__TEMP;
+int VAR_1238123;
+double getaverage(int VAR_1238123)
+{
+   double VAR__SUM = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__SUM += VAR__819283[VAR__53647].data;
+   }
+
+   return VAR__SUM / VAR_1238123;
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647].data;
+   }
+
+   double average = getaverage(VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__819283[VAR__53647].differences = VAR__819283[VAR__53647].data - average;
+
+      if ( VAR__819283[VAR__53647].differences < 0 )
+      {
+         VAR__819283[VAR__53647].differences = -VAR__819283[VAR__53647].differences;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR_1238123 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( VAR__819283[VAR__53647].differences < VAR__819283[VAR__21230].differences )
+         {
+            VAR__TEMP = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647] = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   double output[300 + 10];
+   output[0] = VAR__819283[0].data;
+   int VAR__8444594 = 0;
+   for ( int VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647].differences == VAR__819283[0].differences )
+      {
+         output[++VAR__8444594] = VAR__819283[VAR__53647].data;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__8444594; VAR__21230 >= VAR__53647; VAR__21230-- )
+      {
+         if ( output[VAR__53647] > output[VAR__21230] )
+         {
+            double temp1 = output[VAR__53647];
+            output[VAR__53647] = output[VAR__21230];
+            output[VAR__21230] = temp1;
+         }
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      ( cout << output[VAR__53647] ) << ",";
+   }
+
+   ( cout << output[VAR__8444594] ) << endl;
+   return 0;
+}

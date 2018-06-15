@@ -1,0 +1,116 @@
+struct student
+{
+   char           name[20];
+   int            score1;
+   int            score2;
+   char           mon;
+   char           west;
+   int            paper;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+struct student *creat(int VAR_1238123)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   int            many;
+   int            n1;
+
+   n1 = VAR_1238123;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   VAR__HEAD       = NULL;
+   many            = 0;
+
+   while ( many < n1 )
+   {
+      scanf("%s %d %d %c %c %d", &ANOTHER_POINTER->name, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2, &ANOTHER_POINTER->mon, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+      many++;
+
+      if ( many == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *pmax;
+
+   VAR_233 = VAR__HEAD;
+   int total    = 0;
+   int VAR__MAX = 0;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         VAR_233->VAR__SUM = 0;
+
+         if (( VAR_233->score1 > 80 ) && ( VAR_233->paper >= 1 ))
+         {
+            VAR_233->VAR__SUM = VAR_233->VAR__SUM + 8000;
+         }
+
+         if (( VAR_233->score1 > 85 ) && ( VAR_233->score2 > 80 ))
+         {
+            VAR_233->VAR__SUM = VAR_233->VAR__SUM + 4000;
+         }
+
+         if ( VAR_233->score1 > 90 )
+         {
+            VAR_233->VAR__SUM = VAR_233->VAR__SUM + 2000;
+         }
+
+         if (( VAR_233->score1 > 85 ) && ( VAR_233->west == 'Y' ))
+         {
+            VAR_233->VAR__SUM = VAR_233->VAR__SUM + 1000;
+         }
+
+         if (( VAR_233->score2 > 80 ) && ( VAR_233->mon == 'Y' ))
+         {
+            VAR_233->VAR__SUM = VAR_233->VAR__SUM + 850;
+         }
+
+         total   = total + VAR_233->VAR__SUM;
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+   }
+
+   VAR_233 = VAR__HEAD;
+   do
+   {
+      if ( VAR_233->VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->VAR__SUM;
+         pmax     = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != NULL );
+   printf("%s\n%d\n%d\n", pmax->name, VAR__MAX, total);
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   struct student *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   print(VAR__HEAD);
+}

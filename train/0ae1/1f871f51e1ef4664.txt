@@ -1,0 +1,69 @@
+int main()
+{
+   unsigned long int year;
+   unsigned long int month;
+   unsigned long int day;
+   unsigned long int VAR__SUM = 0;
+   unsigned long int VAR__53647;
+   unsigned long int VAR__7685;
+   int               VAR__819283[12] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30 };
+   int               VAR__19328[12]  = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 };
+
+   scanf("%d %d %d", &year, &month, &day);
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      VAR__SUM = ((( year / 4 ) - ( year / 100 )) + ( year / 400 )) - 1;
+      VAR__SUM = VAR__SUM + ((( year - 1 ) % 7 ) * 365 );
+      for ( VAR__53647 = 0; VAR__53647 < month; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+      }
+
+      VAR__SUM = ( VAR__SUM + day ) - 1;
+   }
+   else
+   {
+      VAR__SUM = (( year / 4 ) - ( year / 100 )) + ( year / 400 );
+      VAR__SUM = VAR__SUM + ((( year - 1 ) % 7 ) * 365 );
+      for ( VAR__53647 = 0; VAR__53647 < month; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + VAR__19328[VAR__53647];
+      }
+
+      VAR__SUM = ( VAR__SUM + day ) - 1;
+   }
+
+   VAR__7685 = VAR__SUM % 7;
+   switch ( VAR__7685 )
+   {
+   case 0:
+      printf("Mon.\n");
+      break;
+
+   case 1:
+      printf("Tue.\n");
+      break;
+
+   case 2:
+      printf("Wed.\n");
+      break;
+
+   case 3:
+      printf("Thu.\n");
+      break;
+
+   case 4:
+      printf("Fri.\n");
+      break;
+
+   case 5:
+      printf("Sat.\n");
+      break;
+
+   default:
+      printf("Sun.\n");
+   }
+
+   return 0;
+}

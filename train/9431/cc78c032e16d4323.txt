@@ -1,0 +1,49 @@
+struct stu
+{
+   char       VAR__NUM[100];
+   char       name[100];
+   char       sex[10];
+   int        age;
+   char       score[100];
+   char       add[100];
+   struct stu *before;
+};
+void main()
+{
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR__127322();
+
+   YET_ANOTHER_POINTER = VAR__127322();
+
+   while ( YET_ANOTHER_POINTER != 0 )
+   {
+      printf("%s %s %s %d %s %s\n", YET_ANOTHER_POINTER->VAR__NUM, YET_ANOTHER_POINTER->name, YET_ANOTHER_POINTER->sex, YET_ANOTHER_POINTER->age, YET_ANOTHER_POINTER->score, YET_ANOTHER_POINTER->add);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->before;
+   }
+}
+
+
+struct stu *VAR__127322()
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (struct stu *)malloc(sizeof( struct stu ));
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   scanf("%s", ANOTHER_POINTER->VAR__NUM);
+   ANOTHER_POINTER->before = 0;
+
+   if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0 )
+   {
+      do
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         scanf("%s%s%d%s%s", ANOTHER_POINTER->name, ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+         ANOTHER_POINTER         = (struct stu *)malloc(sizeof( struct stu ));
+         ANOTHER_POINTER->before = YET_ANOTHER_POINTER;
+         scanf("%s", ANOTHER_POINTER->VAR__NUM);
+      } while ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0 );
+   }
+
+   return YET_ANOTHER_POINTER;
+}

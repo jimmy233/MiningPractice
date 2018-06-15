@@ -1,0 +1,75 @@
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   int VAR_SIZE[9][9];
+   for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         VAR_SIZE[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+   VAR_SIZE[4][4] = VAR__1238129;
+   int VAR__819283[100];
+   int row[100];
+   int col[100];
+   int v = 0;
+   for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( int VAR__1111 = 0; VAR__1111 < 9; VAR__1111++ )
+      {
+         for ( int u = 0; u < 9; u++ )
+         {
+            if ( VAR_SIZE[VAR__1111][u] != 0 )
+            {
+               VAR__819283[v] = VAR_SIZE[VAR__1111][u];
+               row[v]         = VAR__1111;
+               col[v]         = u;
+               v++;
+            }
+         }
+      }
+
+      for ( int VAR_21983012 = 0; VAR_21983012 < 9; VAR_21983012++ )
+      {
+         for ( int VAR__1238129 = 0; VAR__1238129 < 9; VAR__1238129++ )
+         {
+            VAR_SIZE[VAR_21983012][VAR__1238129] = 0;
+         }
+      }
+
+      for ( int VAR__4857423 = 0; VAR__4857423 < v; VAR__4857423++ )
+      {
+         VAR_SIZE[row[VAR__4857423] + 1][col[VAR__4857423] + 1] += VAR__819283[VAR__4857423];
+         VAR_SIZE[row[VAR__4857423] + 1][col[VAR__4857423]]     += VAR__819283[VAR__4857423];
+         VAR_SIZE[row[VAR__4857423]][col[VAR__4857423] + 1]     += VAR__819283[VAR__4857423];
+         VAR_SIZE[row[VAR__4857423] - 1][col[VAR__4857423] - 1] += VAR__819283[VAR__4857423];
+         VAR_SIZE[row[VAR__4857423] - 1][col[VAR__4857423]]     += VAR__819283[VAR__4857423];
+         VAR_SIZE[row[VAR__4857423]][col[VAR__4857423] - 1]     += VAR__819283[VAR__4857423];
+         VAR_SIZE[row[VAR__4857423] + 1][col[VAR__4857423] - 1] += VAR__819283[VAR__4857423];
+         VAR_SIZE[row[VAR__4857423] - 1][col[VAR__4857423] + 1] += VAR__819283[VAR__4857423];
+         VAR_SIZE[row[VAR__4857423]][col[VAR__4857423]]         += 2 * VAR__819283[VAR__4857423];
+      }
+
+      int VAR__819283[100] = { 0 };
+      int row[100]         = { 0 };
+      int col[100]         = { 0 };
+      v = 0;
+   }
+
+   for ( int VAR_233 = 0; VAR_233 < 9; VAR_233++ )
+   {
+      for ( int VAR_666 = 0; VAR_666 < 8; VAR_666++ )
+      {
+         printf("%d ", VAR_SIZE[VAR_233][VAR_666]);
+      }
+
+      printf("%d\n", VAR_SIZE[VAR_233][8]);
+   }
+
+   return 0;
+}

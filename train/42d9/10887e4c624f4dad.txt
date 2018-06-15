@@ -1,0 +1,86 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   int   point[10][3]    = { 0 };
+   float distance[45][3] = { 0 };
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         cin >> point[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   int VAR__COUNT = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         distance[VAR__COUNT][0] = VAR__53647;
+         distance[VAR__COUNT][1] = VAR__21230;
+         distance[VAR__COUNT][2] = sqrt(((((float)( point[VAR__53647][0] - point[VAR__21230][0] )) * ( point[VAR__53647][0] - point[VAR__21230][0] )) + (( point[VAR__53647][1] - point[VAR__21230][1] ) * ( point[VAR__53647][1] - point[VAR__21230][1] ))) + (( point[VAR__53647][2] - point[VAR__21230][2] ) * ( point[VAR__53647][2] - point[VAR__21230][2] )));
+         VAR__COUNT++;
+      }
+   }
+
+
+   float VAR__TEMP = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__COUNT; VAR__21230++ )
+      {
+         if ( distance[VAR__53647][2] < distance[VAR__21230][2] )
+         {
+            VAR__TEMP = distance[VAR__53647][0];
+            distance[VAR__53647][0] = distance[VAR__21230][0];
+            distance[VAR__21230][0] = VAR__TEMP;
+            VAR__TEMP = distance[VAR__53647][1];
+            distance[VAR__53647][1] = distance[VAR__21230][1];
+            distance[VAR__21230][1] = VAR__TEMP;
+            VAR__TEMP = distance[VAR__53647][2];
+            distance[VAR__53647][2] = distance[VAR__21230][2];
+            distance[VAR__21230][2] = VAR__TEMP;
+         }
+         else
+         if ( distance[VAR__53647][2] == distance[VAR__21230][2] )
+         {
+            if ( distance[VAR__53647][0] > distance[VAR__21230][0] )
+            {
+               VAR__TEMP = distance[VAR__53647][0];
+               distance[VAR__53647][0] = distance[VAR__21230][0];
+               distance[VAR__21230][0] = VAR__TEMP;
+               VAR__TEMP = distance[VAR__53647][1];
+               distance[VAR__53647][1] = distance[VAR__21230][1];
+               distance[VAR__21230][1] = VAR__TEMP;
+               VAR__TEMP = distance[VAR__53647][2];
+               distance[VAR__53647][2] = distance[VAR__21230][2];
+               distance[VAR__21230][2] = VAR__TEMP;
+            }
+
+            if ( distance[VAR__53647][1] > distance[VAR__21230][1] )
+            {
+               VAR__TEMP = distance[VAR__53647][0];
+               distance[VAR__53647][0] = distance[VAR__21230][0];
+               distance[VAR__21230][0] = VAR__TEMP;
+               VAR__TEMP = distance[VAR__53647][1];
+               distance[VAR__53647][1] = distance[VAR__21230][1];
+               distance[VAR__21230][1] = VAR__TEMP;
+               VAR__TEMP = distance[VAR__53647][2];
+               distance[VAR__53647][2] = distance[VAR__21230][2];
+               distance[VAR__21230][2] = VAR__TEMP;
+            }
+         }
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", point[(int)distance[VAR__53647][0]][0], point[(int)distance[VAR__53647][0]][1], point[(int)distance[VAR__53647][0]][2], point[(int)distance[VAR__53647][1]][0], point[(int)distance[VAR__53647][1]][1], point[(int)distance[VAR__53647][1]][2], distance[VAR__53647][2]);
+   }
+
+   return 0;
+}

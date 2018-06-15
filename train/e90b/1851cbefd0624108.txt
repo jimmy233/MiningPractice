@@ -1,0 +1,69 @@
+struct student
+{
+   int id;
+   int chinese;
+   int math;
+}
+student[100000];
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM[100000] = { 0 };
+   int h1 = 0;
+   int h2 = 0;
+   int h3 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &student[VAR__53647].id, &student[VAR__53647].chinese, &student[VAR__53647].math);
+   }
+
+   int first = 0;
+   int sec   = 0;
+   int thi   = 0;
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( first < ( student[VAR__21230].chinese + student[VAR__21230].math ))
+      {
+         thi   = sec;
+         h3    = h2;
+         sec   = first;
+         h2    = h1;
+         first = student[VAR__21230].chinese + student[VAR__21230].math;
+         h1    = student[VAR__21230].id;
+      }
+      else
+      if (( first > ( student[VAR__21230].chinese + student[VAR__21230].math )) && ( sec < ( student[VAR__21230].chinese + student[VAR__21230].math )))
+      {
+         thi = sec;
+         h3  = h2;
+         sec = student[VAR__21230].chinese + student[VAR__21230].math;
+         h2  = student[VAR__21230].id;
+      }
+      else
+      if (( sec > ( student[VAR__21230].chinese + student[VAR__21230].math )) && ( thi < ( student[VAR__21230].chinese + student[VAR__21230].math )))
+      {
+         thi = student[VAR__21230].chinese + student[VAR__21230].math;
+         h3  = student[VAR__21230].id;
+      }
+      else
+      if (( first == ( student[VAR__21230].chinese + student[VAR__21230].math )) && ( sec < ( student[VAR__21230].chinese + student[VAR__21230].math )))
+      {
+         thi = sec;
+         h3  = h2;
+         sec = student[VAR__21230].chinese + student[VAR__21230].math;
+         h2  = student[VAR__21230].id;
+      }
+      else
+      if (( sec == ( student[VAR__21230].chinese + student[VAR__21230].math )) && ( thi < ( student[VAR__21230].chinese + student[VAR__21230].math )))
+      {
+         thi = student[VAR__21230].chinese + student[VAR__21230].math;
+         h3  = student[VAR__21230].id;
+      }
+   }
+
+   printf("%d %d\n%d %d\n%d %d", h1, first, h2, sec, h3, thi);
+}

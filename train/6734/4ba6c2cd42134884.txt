@@ -1,0 +1,62 @@
+struct monkey
+{
+   int           VAR__NUM;
+   struct monkey *VAR__NEXT;
+};
+void main()
+{
+   int kingf(int VAR_1238123, int VAR__1238129);
+
+   int VAR__1238129 = 1;
+   int VAR_1238123  = 1;
+   int king;
+   for ( ; ; )
+   {
+      scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR__1238129 == 0 ) && ( VAR_1238123 == 0 ))
+      {
+         break;
+      }
+
+      if ( VAR__1238129 == 1 )
+      {
+         printf("%d\n", VAR_1238123);
+      }
+      else
+      {
+         king = kingf(VAR_1238123, VAR__1238129);
+         printf("%d\n", king);
+      }
+   }
+}
+
+
+int kingf(int VAR_1238123, int VAR__1238129)
+{
+   int           VAR__53647;
+   struct monkey monkey[800];
+   struct monkey *ANOTHER_POINTER     = &monkey[0];
+   struct monkey *YET_ANOTHER_POINTER = &monkey[0];
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      monkey[VAR__53647].VAR__NEXT = &monkey[VAR__53647 + 1];
+      monkey[VAR__53647].VAR__NUM  = VAR__53647 + 1;
+   }
+
+   monkey[VAR__53647].VAR__NEXT = &monkey[0];
+   monkey[VAR__53647].VAR__NUM  = VAR__53647 + 1;
+   for ( ; ANOTHER_POINTER != ANOTHER_POINTER->VAR__NEXT; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < ( VAR__1238129 - 1 ); ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT, VAR__53647++ )
+      {
+      }
+
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER        = YET_ANOTHER_POINTER->VAR__NEXT;
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return ANOTHER_POINTER->VAR__NUM;
+}

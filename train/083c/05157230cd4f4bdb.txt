@@ -1,0 +1,56 @@
+long decimal(char VAR__4857423[], long VAR__7685)
+{
+   long VAR__12302 = 0;
+
+   for ( int VAR__53647 = 0; VAR__4857423[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( VAR__4857423[VAR__53647] >= '0' ) && ( VAR__4857423[VAR__53647] <= '9' ))
+      {
+         VAR__12302 = (( VAR__12302 * VAR__7685 ) + VAR__4857423[VAR__53647] ) - '0';
+      }
+
+      if (( VAR__4857423[VAR__53647] >= 'A' ) && ( VAR__4857423[VAR__53647] <= 'Z' ))
+      {
+         VAR__12302 = ((( VAR__12302 * VAR__7685 ) + VAR__4857423[VAR__53647] ) - 'A' ) + 10;
+      }
+
+      if (( VAR__4857423[VAR__53647] >= 'a' ) && ( VAR__4857423[VAR__53647] <= 'z' ))
+      {
+         VAR__12302 = ((( VAR__12302 * VAR__7685 ) + VAR__4857423[VAR__53647] ) - 'a' ) + 10;
+      }
+   }
+
+   return VAR__12302;
+}
+
+
+int main()
+{
+   long VAR__819283;
+   long VAR__19328;
+   int  length;
+   char VAR_1238123[65] = { 0 };
+
+   (( cin >> VAR__819283 ) >> VAR_1238123 ) >> VAR__19328;
+   long VAR__7685 = decimal(VAR_1238123, VAR__819283);
+   for ( int VAR__53647 = 0; VAR__7685 >= 0; VAR__53647++ )
+   {
+      int remainder = VAR__7685 % VAR__19328;
+      VAR_1238123[VAR__53647] = ( remainder < 10 ) ? ( '0' + remainder ) : (( 'A' + remainder ) - 10 );
+      VAR__7685 = ( VAR__7685 - remainder ) / VAR__19328;
+      length    = VAR__53647;
+
+      if ( VAR__7685 == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( int VAR__53647 = length; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << VAR_1238123[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

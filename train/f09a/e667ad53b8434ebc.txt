@@ -1,0 +1,93 @@
+int first[100];
+int second[100];
+int combination[200];
+int VAR__819283;
+int VAR__19328;
+void cin_number()
+{
+   int VAR__53647;
+
+   ( cin >> VAR__819283 ) >> VAR__19328;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      cin >> first[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__19328; VAR__53647++ )
+   {
+      cin >> second[VAR__53647];
+   }
+}
+
+
+void rank()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = VAR__819283 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( first[VAR__21230] > first[VAR__21230 + 1] )
+         {
+            VAR__TEMP             = first[VAR__21230];
+            first[VAR__21230]     = first[VAR__21230 + 1];
+            first[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR__19328 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( second[VAR__21230] > second[VAR__21230 + 1] )
+         {
+            VAR__TEMP              = second[VAR__21230];
+            second[VAR__21230]     = second[VAR__21230 + 1];
+            second[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void combine()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      combination[VAR__53647] = first[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__19328; VAR__53647++ )
+   {
+      combination[VAR__819283 + VAR__53647] = second[VAR__53647];
+   }
+}
+
+
+void cout_combination()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR__819283 + VAR__19328 ) - 1 ); VAR__53647++ )
+   {
+      ( cout << combination[VAR__53647] ) << " ";
+   }
+
+   ( cout << combination[VAR__53647] ) << endl;
+}
+
+
+int main()
+{
+   cin_number();
+   rank();
+   combine();
+   cout_combination();
+   return 0;
+}

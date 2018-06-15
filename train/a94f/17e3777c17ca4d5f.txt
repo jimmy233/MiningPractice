@@ -1,0 +1,108 @@
+int main()
+{
+   int array[100][100];
+   int row;
+   int col;
+   int VAR__4857423;
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &array[VAR__53647][VAR__21230]);
+      }
+   }
+
+   if (( col == 1 ) && ( row != 1 ))
+   {
+      VAR__53647 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+      {
+         printf("%d\n", array[VAR__53647][0]);
+      }
+   }
+
+   if (( row == 1 ) && ( col != 1 ))
+   {
+      VAR__21230 = 0;
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         printf("%d\n", array[0][VAR__21230]);
+      }
+   }
+
+   if (( col == 1 ) && ( row == 1 ))
+   {
+      printf("%d\n", array[0][0]);
+   }
+
+   if (( row > 1 ) && ( col > 1 ))
+   {
+      if (( col / 2 ) >= ( row / 2 ))
+      {
+         VAR__4857423 = row / 2;
+      }
+      else
+      {
+         VAR__4857423 = col / 2;
+      }
+
+      int VAR__8444594 = 1;
+      for ( VAR__8444594 = 1; VAR__8444594 <= VAR__4857423; VAR__8444594++ )
+      {
+         VAR__21230 = VAR__8444594 - 1;
+         for ( VAR__21230 = VAR__8444594 - 1; VAR__21230 <= ( col - VAR__8444594 ); VAR__21230++ )
+         {
+            printf("%d\n", array[VAR__8444594 - 1][VAR__21230]);
+         }
+
+         VAR__53647 = VAR__8444594;
+         for ( VAR__53647 = VAR__8444594; VAR__53647 <= ( row - VAR__8444594 ); VAR__53647++ )
+         {
+            printf("%d\n", array[VAR__53647][col - VAR__8444594]);
+         }
+
+         VAR__21230 = ( col - VAR__8444594 ) - 1;
+         for ( VAR__21230 = ( col - VAR__8444594 ) - 1; VAR__21230 >= ( VAR__8444594 - 1 ); VAR__21230-- )
+         {
+            printf("%d\n", array[row - VAR__8444594][VAR__21230]);
+         }
+
+         if (( VAR__8444594 - 1 ) == (( row - VAR__8444594 ) - 1 ))
+         {
+            break;
+         }
+
+         VAR__53647 = ( row - VAR__8444594 ) - 1;
+         for ( VAR__53647 = ( row - VAR__8444594 ) - 1; VAR__53647 >= VAR__8444594; VAR__53647-- )
+         {
+            printf("%d\n", array[VAR__53647][VAR__8444594 - 1]);
+         }
+      }
+
+      if (((( row % 2 ) != 0 ) && (( col % 2 ) == 0 )) || ((( row % 2 ) != 0 ) && (( col % 2 ) != 0 )))
+      {
+         VAR__53647 = VAR__4857423;
+         for ( VAR__53647 = VAR__4857423; VAR__53647 < ( col - VAR__4857423 ); VAR__53647++ )
+         {
+            printf("%d\n", array[( row - 1 ) / 2][VAR__53647]);
+         }
+      }
+
+      VAR__53647 = VAR__4857423;
+
+      if ((( col % 2 ) != 0 ) && (( row % 2 ) == 0 ))
+      {
+         VAR__53647 = VAR__4857423;
+         for ( VAR__53647 = VAR__4857423; VAR__53647 < ( row - VAR__4857423 ); VAR__53647++ )
+         {
+            printf("%d\n", array[VAR__53647][( col - 1 ) / 2]);
+         }
+      }
+   }
+
+   return 0;
+}

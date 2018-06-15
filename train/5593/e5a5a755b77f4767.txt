@@ -1,0 +1,92 @@
+void main()
+{
+   int    VAR__1238129;
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    flag1 = 0;
+   int    flag2 = 0;
+   int    flag3 = 0;
+   int    VAR__819283;
+   int    VAR__8444594;
+   int    sign = 0;
+   double VAR__4857423;
+   int    VAR__19328[20] = { 0 };
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 2; VAR__21230 <= (( VAR__53647 / 2 ) + 1 ); VAR__21230++ )
+      {
+         if (( VAR__53647 % VAR__21230 ) == 0 )
+         {
+            flag1 = 0;
+            break;
+         }
+         else
+         {
+            flag1 = 1;
+         }
+      }
+
+      if ( flag1 == 0 )
+      {
+         continue;
+      }
+      else
+      {
+         for ( VAR__819283 = 1; ; VAR__819283++ )
+         {
+            VAR__4857423 = pow(10, (double)VAR__819283);
+
+            if (( VAR__53647 / VAR__4857423 ) < 1 )
+            {
+               break;
+            }
+         }
+
+         VAR__819283--;
+         VAR__4857423 = VAR__4857423 / 10;
+         VAR__8444594 = VAR__53647;
+         for ( VAR__21230 = 0; VAR__21230 <= VAR__819283; VAR__21230++ )
+         {
+            VAR__19328[VAR__21230] = (int)( VAR__8444594 / VAR__4857423 );
+            VAR__8444594           = VAR__8444594 - ((int)( VAR__19328[VAR__21230] * VAR__4857423 ));
+            VAR__4857423           = VAR__4857423 / 10;
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 <= ( VAR__819283 / 2 ); VAR__21230++ )
+         {
+            if ( VAR__19328[VAR__21230] == VAR__19328[VAR__819283 - VAR__21230] )
+            {
+               flag2 = 1;
+            }
+            else
+            {
+               flag2 = 0;
+               break;
+            }
+         }
+
+         if ( flag2 == 1 )
+         {
+            flag3 = 1;
+
+            if ( sign == 0 )
+            {
+               printf("%d", VAR__53647);
+               sign = 1;
+            }
+            else
+            {
+               printf(",%d", VAR__53647);
+            }
+         }
+      }
+   }
+
+   if ( flag3 == 0 )
+   {
+      printf("no");
+   }
+}

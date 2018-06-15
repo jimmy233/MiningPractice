@@ -1,0 +1,72 @@
+const int dom[2][13] = { { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+int main()
+{
+   long sy;
+   long sm;
+   long sd;
+   long ey;
+   long em;
+   long ed;
+   long ans;
+   int  VAR__53647;
+   int  VAR_FLAG;
+
+   scanf("%d%d%d%d%d%d", &sy, &sm, &sd, &ey, &em, &ed);
+   ans = 365 * (( ey - sy ) + 1 );
+   for ( VAR__53647 = sy; VAR__53647 <= ey; VAR__53647++ )
+   {
+      if ((( !( VAR__53647 % 4 )) && ( VAR__53647 % 100 )) || ( !( VAR__53647 % 400 )))
+      {
+         ans++;
+      }
+   }
+
+
+   if ( sm > 1 )
+   {
+      if ((( !( sy % 4 )) && ( sy % 100 )) || ( !( sy % 400 )))
+      {
+         VAR_FLAG = 1;
+      }
+      else
+      {
+         VAR_FLAG = 0;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < sm; VAR__53647++ )
+      {
+         ans -= dom[VAR_FLAG][VAR__53647];
+      }
+   }
+
+   if ( em < 12 )
+   {
+      if ((( !( ey % 4 )) && ( ey % 100 )) || ( !( ey % 400 )))
+      {
+         VAR_FLAG = 1;
+      }
+      else
+      {
+         VAR_FLAG = 0;
+      }
+
+      for ( VAR__53647 = em + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         ans -= dom[VAR_FLAG][VAR__53647];
+      }
+   }
+
+   ans -= sd;
+
+   if ((( !( ey % 4 )) && ( ey % 100 )) || ( !( ey % 400 )))
+   {
+      VAR_FLAG = 1;
+   }
+   else
+   {
+      VAR_FLAG = 0;
+   }
+
+   ans -= dom[VAR_FLAG][em] - ed;
+   printf("%d", ans);
+}

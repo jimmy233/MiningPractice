@@ -1,0 +1,74 @@
+int su[40000];
+int VAR__19328[10000];
+int ans;
+void zhaosushu()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_233;
+
+   for ( VAR__53647 = 2; VAR__53647 < 32768; VAR__53647++ )
+   {
+      VAR_233 = 1;
+      for ( VAR__21230 = 2; VAR__21230 <= sqrt(VAR__53647); VAR__21230++ )
+      {
+         if (( VAR__53647 % VAR__21230 ) == 0 )
+         {
+            VAR_233 = 0;
+            break;
+         }
+      }
+
+
+      if ( VAR_233 == 0 )
+      {
+         continue;
+      }
+
+      su[VAR_233] = 1;
+   }
+}
+
+
+void resolve(int VAR__819283, int VAR__7685)
+{
+   int VAR__53647;
+
+   if (( VAR__819283 == 1 ) || (( su[VAR__819283] == 1 ) && ( VAR__819283 >= VAR__19328[VAR__7685 - 1] )))
+   {
+      ans++;
+      return;
+   }
+
+   for ( VAR__53647 = 2; VAR__53647 <= VAR__819283; VAR__53647++ )
+   {
+      if ((( VAR__819283 % VAR__53647 ) == 0 ) && ( VAR__53647 >= VAR__19328[VAR__7685 - 1] ))
+      {
+         VAR__19328[VAR__7685] = VAR__53647;
+         resolve(VAR__819283 / VAR__53647, VAR__7685 + 1);
+         VAR__19328[VAR__7685] = 0;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__819283;
+
+   memset(su, 0, sizeof( su ));
+   zhaosushu();
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__819283;
+      ans = 0;
+      memset(VAR__19328, 0, sizeof( VAR__19328 ));
+      resolve(VAR__819283, 1);
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

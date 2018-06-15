@@ -1,0 +1,65 @@
+int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int main()
+{
+   int countYear(int syear, int eyear);
+   int countmonth(int year, int month, int day);
+
+   int syear;
+   int smonth;
+   int sday;
+   int eyear;
+   int emonth;
+   int eday;
+   int day;
+   scanf("%d%d%d%d%d%d", &syear, &smonth, &sday, &eyear, &emonth, &eday);
+   int between;
+   int day1;
+   int day2;
+   between = countYear(syear, eyear);
+   day1    = countmonth(syear, smonth, sday);
+   day2    = countmonth(eyear, emonth, eday);
+   day     = ( between - day1 ) + day2;
+   printf("%d", day);
+   return 0;
+}
+
+
+int countYear(int syear, int eyear)
+{
+   int day = 0;
+   int VAR__53647;
+
+   for ( VAR__53647 = syear; VAR__53647 < eyear; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         day += 366;
+      }
+      else
+      {
+         day += 365;
+      }
+   }
+
+   return day;
+}
+
+
+int countmonth(int year, int month, int day)
+{
+   int VAR_1238123 = 0;
+   int VAR__53647;
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      VAR__819283[2] = 29;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      VAR_1238123 += VAR__819283[VAR__53647];
+   }
+
+   VAR_1238123 = VAR_1238123 + day;
+   return VAR_1238123;
+}

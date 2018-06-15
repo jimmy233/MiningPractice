@@ -1,0 +1,55 @@
+struct stu
+{
+   int        VAR__NUM;
+   struct stu *VAR__NEXT;
+};
+int tiren(int VAR__7685, int VAR_1238123, int VAR__1238129, struct stu *VAR_233)
+{
+   int        VAR__53647;
+   struct stu *pp;
+
+   if ( VAR__7685 != VAR_1238123 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+      {
+         VAR_233 = ( *VAR_233 ).VAR__NEXT;
+      }
+
+      pp = ( *VAR_233 ).VAR__NEXT;
+      ( *VAR_233 ).VAR__NEXT = ( *pp ).VAR__NEXT;
+      tiren(VAR__7685 + 1, VAR_1238123, VAR__1238129, VAR_233);
+   }
+   else
+   {
+      printf("%d\n", ( *VAR_233 ).VAR__NUM);
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int        VAR_1238123;
+   int        VAR__1238129;
+   int        VAR__53647;
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+
+   scanf("%d %d", &VAR_1238123, &VAR__1238129);
+
+   while ( VAR_1238123 != 0 )
+   {
+      VAR__HEAD = ( VAR_233 = (struct stu *)malloc(L));
+      for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         ( *VAR_233 ).VAR__NUM = VAR__53647 - 1;
+         VAR_233 = (( *VAR_233 ).VAR__NEXT = (struct stu *)malloc(L));
+      }
+
+      ( *VAR_233 ).VAR__NEXT = VAR__HEAD;
+      ( *VAR_233 ).VAR__NUM  = VAR_1238123;
+      tiren(1, VAR_1238123, VAR__1238129, VAR_233);
+      scanf("%d %d", &VAR_1238123, &VAR__1238129);
+   }
+}

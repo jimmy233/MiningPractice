@@ -1,0 +1,63 @@
+void main(void)
+{
+   int VAR_1238123;
+
+   scanf("%d\n", &VAR_1238123);
+   char VAR_9494[501];
+   gets(VAR_9494);
+   int  LEN_OF_STH = strlen(VAR_9494);
+   int  VAR__53647;
+   int  VAR__21230;
+   char sub[500][5];
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         sub[VAR__53647][VAR__21230] = VAR_9494[VAR__53647 + VAR__21230];
+      }
+
+      sub[VAR__53647][VAR_1238123] = 0;
+   }
+
+   int time[500];
+   int VAR__temp = 0;
+   int VAR__7685 = 1;
+   for ( VAR__53647 = 0; VAR__53647 <= (( LEN_OF_STH - VAR_1238123 ) - 1 ); VAR__53647++ )
+   {
+      time[VAR__53647] = 1;
+
+      if ( sub[VAR__53647][0] != 0 )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+         {
+            if ( strcmp(sub[VAR__53647], sub[VAR__21230]) == 0 )
+            {
+               time[VAR__53647]++;
+               sub[VAR__21230][0] = 0;
+            }
+         }
+
+
+         if ( VAR__7685 < time[VAR__53647] )
+         {
+            VAR__7685 = time[VAR__53647];
+         }
+      }
+   }
+
+   if ( VAR__7685 == 1 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("%d\n", VAR__7685);
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+      {
+         if ( time[VAR__53647] == VAR__7685 )
+         {
+            printf("%s\n", sub[VAR__53647]);
+         }
+      }
+   }
+}

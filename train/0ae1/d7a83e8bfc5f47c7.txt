@@ -1,0 +1,69 @@
+int main()
+{
+   long year;
+   long month;
+   long day;
+   long days = 0;
+
+   scanf("%ld %ld %ld", &year, &month, &day);
+   days = ((((( year - 1 ) % 7 ) + (( year - 1 ) / 4 )) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 )) % 7;
+   int VAR__53647;
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         days += 31;
+      }
+
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         days += 30;
+      }
+
+      if ( VAR__53647 == 2 )
+      {
+         if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+         {
+            days += 29;
+         }
+         else
+         {
+            days += 28;
+         }
+      }
+   }
+
+   days = ( days + day ) % 7;
+   switch ( days )
+   {
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+
+   case 0:
+      printf("Sun.\n");
+      break;
+   }
+
+   return 0;
+}

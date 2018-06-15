@@ -1,0 +1,66 @@
+int main()
+{
+   int N;
+   int VAR__53647;
+   int price;
+   int total    = 0;
+   int VAR__MAX = 0;
+   int VAR__temp;
+
+   scanf("%d", &N);
+   struct student
+   {
+      char name[21];
+      int  ave;
+      int  comment;
+      char officer;
+      char province;
+      int  paper;
+   }
+   stu[100];
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].ave, &stu[VAR__53647].comment, &stu[VAR__53647].officer, &stu[VAR__53647].province, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      price = 0;
+
+      if (( stu[VAR__53647].ave > 80 ) && ( stu[VAR__53647].paper > 0 ))
+      {
+         price = price + 8000;
+      }
+
+      if (( stu[VAR__53647].ave > 85 ) && ( stu[VAR__53647].comment > 80 ))
+      {
+         price = price + 4000;
+      }
+
+      if ( stu[VAR__53647].ave > 90 )
+      {
+         price = price + 2000;
+      }
+
+      if (( stu[VAR__53647].ave > 85 ) && ( stu[VAR__53647].province == 'Y' ))
+      {
+         price = price + 1000;
+      }
+
+      if (( stu[VAR__53647].comment > 80 ) && ( stu[VAR__53647].officer == 'Y' ))
+      {
+         price = price + 850;
+      }
+
+      total = total + price;
+
+      if ( price > VAR__MAX )
+      {
+         VAR__MAX  = price;
+         VAR__temp = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", stu[VAR__temp].name, VAR__MAX, total);
+   return 0;
+}

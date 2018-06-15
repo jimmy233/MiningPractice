@@ -1,0 +1,74 @@
+struct student
+{
+   char name[20];
+   int  mo;
+   int  ban;
+   char ganbu;
+   char xibu;
+   int  lunwen;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR_9494[100];
+   int            VAR__MAX;
+   int            VAR__temp;
+   int            S = 0;
+   struct student stu[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].mo, &stu[VAR__53647].ban, &stu[VAR__53647].ganbu, &stu[VAR__53647].xibu, &stu[VAR__53647].lunwen);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_9494[VAR__53647] = 0;
+
+      if (( stu[VAR__53647].mo > 80 ) && ( stu[VAR__53647].lunwen > 0 ))
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].mo > 85 ) && ( stu[VAR__53647].ban > 80 ))
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].mo > 90 )
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].mo > 85 ) && ( stu[VAR__53647].xibu == 'Y' ))
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].ban > 80 ) && ( stu[VAR__53647].ganbu == 'Y' ))
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      S = S + VAR_9494[VAR__53647];
+   }
+
+   VAR__MAX = VAR_9494[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR_9494[VAR__53647] )
+      {
+         VAR__MAX  = VAR_9494[VAR__53647];
+         VAR__temp = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d", stu[VAR__temp].name, VAR_9494[VAR__temp], S);
+   return 0;
+}

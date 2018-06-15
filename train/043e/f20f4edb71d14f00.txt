@@ -1,0 +1,77 @@
+void main()
+{
+   int  VAR__53647;
+   int  value;
+   int  la;
+   int  lb;
+   int  ls;
+   char *VAR_233;
+   char *ps;
+   char VAR_9494[100]    = "";
+   char VAR__819283[100] = "";
+   char VAR__19328[100]  = "";
+
+   gets(VAR_9494);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   la = strlen(VAR__819283);
+   lb = strlen(VAR__19328);
+   ls = strlen(VAR_9494);
+   for ( VAR_233 = VAR_9494; VAR_233 < ( VAR_9494 + 100 ); VAR_233++ )
+   {
+      value = 1;
+
+      if ((( VAR_233 == VAR_9494 ) || (( *( VAR_233 - 1 )) == ' ' )) && (( *VAR_233 ) == VAR__819283[0] ))
+      {
+         for ( ps = VAR_233 + 1, VAR__53647 = 1; VAR__819283[VAR__53647] != '\0'; ps++, VAR__53647++ )
+         {
+            if (( *ps ) != VAR__819283[VAR__53647] )
+            {
+               value = 0;
+            }
+         }
+
+
+         if ( value == 1 )
+         {
+            if ( la == lb )
+            {
+               for ( VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+               {
+                  *( VAR_233++ ) = VAR__19328[VAR__53647];
+               }
+            }
+
+            else
+            if ( la > lb )
+            {
+               for ( VAR__53647 = 0; VAR__53647 < lb; VAR__53647++ )
+               {
+                  *( VAR_233++ ) = VAR__19328[VAR__53647];
+               }
+
+               while (( *ps ) != '\0' )
+               {
+                  *( VAR_233++ ) = *( ps++ );
+               }
+
+               *VAR_233 = '\0';
+            }
+            else
+            {
+               for ( VAR__53647 = 99; VAR__53647 >= ((( ps - VAR_9494 ) + lb ) - la ); VAR__53647-- )
+               {
+                  VAR_9494[VAR__53647] = VAR_9494[( VAR__53647 - lb ) + la];
+               }
+
+               for ( VAR__53647 = 0; VAR__53647 < lb; VAR__53647++ )
+               {
+                  *( VAR_233++ ) = VAR__19328[VAR__53647];
+               }
+            }
+         }
+      }
+   }
+
+   printf("%s", VAR_9494);
+}

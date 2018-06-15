@@ -1,0 +1,120 @@
+int Min(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__MIN;
+
+   VAR__MIN = VAR__819283[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] < VAR__MIN )
+      {
+         VAR__MIN = VAR__819283[VAR__53647];
+      }
+   }
+
+   return VAR__MIN;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int N;
+   int dd1;
+   int dd2;
+   int VAR__21230;
+   int VAR__MIN;
+   int row[100][100];
+   int col[100][100];
+   int VAR__SUM[100];
+
+   scanf("%d\n", &VAR_1238123);
+   N = VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      for ( dd1 = 0; dd1 < N; dd1++ )
+      {
+         for ( dd2 = 0; dd2 < N; dd2++ )
+         {
+            scanf("%d", &row[dd1][dd2]);
+         }
+      }
+
+      VAR__SUM[VAR__53647] = 0;
+      VAR_1238123          = N;
+      for ( VAR__21230 = 0; VAR__21230 < ( N - 1 ); VAR__21230++ )
+      {
+         for ( dd1 = 0; dd1 < VAR_1238123; dd1++ )
+         {
+            if ( Min(row[dd1], VAR_1238123) != 0 )
+            {
+               VAR__MIN = Min(row[dd1], VAR_1238123);
+               for ( dd2 = 0; dd2 < VAR_1238123; dd2++ )
+               {
+                  row[dd1][dd2] -= VAR__MIN;
+               }
+            }
+         }
+
+         for ( dd1 = 0; dd1 < VAR_1238123; dd1++ )
+         {
+            for ( dd2 = 0; dd2 < VAR_1238123; dd2++ )
+            {
+               col[dd2][dd1] = row[dd1][dd2];
+            }
+         }
+
+         for ( dd1 = 0; dd1 < VAR_1238123; dd1++ )
+         {
+            if ( Min(col[dd1], VAR_1238123) != 0 )
+            {
+               VAR__MIN = Min(col[dd1], VAR_1238123);
+               for ( dd2 = 0; dd2 < VAR_1238123; dd2++ )
+               {
+                  col[dd1][dd2] -= VAR__MIN;
+               }
+            }
+         }
+
+         for ( dd1 = 0; dd1 < VAR_1238123; dd1++ )
+         {
+            for ( dd2 = 0; dd2 < VAR_1238123; dd2++ )
+            {
+               row[dd1][dd2] = col[dd2][dd1];
+            }
+         }
+
+         VAR__SUM[VAR__53647] += row[1][1];
+         for ( dd1 = 0; dd1 < ( VAR_1238123 - 1 ); dd1++ )
+         {
+            for ( dd2 = 0; dd2 < ( VAR_1238123 - 1 ); dd2++ )
+            {
+               if (( dd1 >= 1 ) && ( dd2 == 0 ))
+               {
+                  row[dd1][dd2] = row[dd1 + 1][dd2];
+               }
+
+               if (( dd2 >= 1 ) && ( dd1 == 0 ))
+               {
+                  row[dd1][dd2] = row[dd1][dd2 + 1];
+               }
+
+               if (( dd1 >= 1 ) && ( dd2 >= 1 ))
+               {
+                  row[dd1][dd2] = row[dd1 + 1][dd2 + 1];
+               }
+            }
+         }
+
+         VAR_1238123--;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      printf("%d\n", VAR__SUM[VAR__53647]);
+   }
+
+   return 0;
+}

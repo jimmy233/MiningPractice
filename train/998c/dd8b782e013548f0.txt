@@ -1,0 +1,99 @@
+int main()
+{
+   char ANOTHER_STRING[251]     = { 0 };
+   char YET_ANOTHER_STRING[251] = { 0 };
+   char str3[251] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1238129 = 0;
+   int  sum1;
+   int  sum2;
+   int  sum3;
+   int  VAR__8444594;
+   int  VAR_9494 = 0;
+   int  VAR_233  = 0;
+
+   scanf("%s", ANOTHER_STRING);
+   scanf("%s", YET_ANOTHER_STRING);
+   sum1 = strlen(ANOTHER_STRING);
+   sum2 = strlen(YET_ANOTHER_STRING);
+
+   if ( sum1 > sum2 )
+   {
+      sum3         = sum1;
+      VAR__8444594 = 1;
+   }
+   else
+   {
+      sum3         = sum2;
+      VAR__8444594 = 2;
+   }
+
+   for ( VAR__21230 = 1; ; VAR__21230++ )
+   {
+      if ((( sum1 - VAR__21230 ) < 0 ) && (( sum2 - VAR__21230 ) < 0 ))
+      {
+         break;
+      }
+
+      if ((( sum1 - VAR__21230 ) < 0 ) || (( sum2 - VAR__21230 ) < 0 ))
+      {
+         if ( VAR__8444594 == 1 )
+         {
+            str3[( sum3 - VAR__21230 ) + 1] = ( ANOTHER_STRING[sum1 - VAR__21230] - '0' ) + VAR__1238129;
+         }
+         else
+         {
+            str3[( sum3 - VAR__21230 ) + 1] = ( YET_ANOTHER_STRING[sum2 - VAR__21230] - '0' ) + VAR__1238129;
+         }
+      }
+      else
+      {
+         str3[( sum3 - VAR__21230 ) + 1] = ((( ANOTHER_STRING[sum1 - VAR__21230] + YET_ANOTHER_STRING[sum2 - VAR__21230] ) - '0' ) - '0' ) + VAR__1238129;
+      }
+
+      VAR__1238129 = 0;
+
+      if ( str3[( sum3 - VAR__21230 ) + 1] >= 10 )
+      {
+         if ( VAR__21230 == sum3 )
+         {
+            VAR_9494 = 1;
+         }
+
+         str3[( sum3 - VAR__21230 ) + 1] = str3[( sum3 - VAR__21230 ) + 1] - 10;
+         VAR__1238129 = VAR__1238129 + 1;
+      }
+
+      str3[( sum3 - VAR__21230 ) + 1] = str3[( sum3 - VAR__21230 ) + 1] + '0';
+   }
+
+   str3[sum3 + 1] = '\0';
+
+   if ( VAR_9494 == 1 )
+   {
+      str3[0] = '1';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( sum3 + 1 ); VAR__53647++ )
+   {
+      if ( VAR_233 == 0 )
+      {
+         if (( str3[VAR__53647] == '0' ) || ( str3[VAR__53647] == '\0' ))
+         {
+            continue;
+         }
+      }
+
+
+      VAR_233 = 1;
+      printf("%c", str3[VAR__53647]);
+   }
+
+   if ( VAR_233 == 0 )
+   {
+      printf("0");
+   }
+
+   printf("\n");
+}

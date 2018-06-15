@@ -1,0 +1,72 @@
+int compare(const void *elem1, const void *elem2)
+{
+   return (( *((float *)elem1 )) > ( *((float *)elem2 ))) ? ( 1 ) : ( -1 );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int k1;
+   int k2;
+   int j1;
+   int j2;
+
+   k1 = ( k2 = ( j1 = ( j2 = 0 )));
+   scanf("%d", &VAR_1238123);
+   char  ANOTHER_POINTER[10]     = { 'm', 'a', 'l', 'e', '\0' };
+   char  YET_ANOTHER_POINTER[10] = { 'f', 'e', 'm', 'a', 'l', 'e', '\0' };
+   char  VAR__819283[VAR_1238123][10];
+   float VAR__19328[VAR_1238123];
+   float *VAR__4857423;
+   float *VAR__12302;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", &VAR__819283[VAR__53647]);
+      scanf("%f", &VAR__19328[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(VAR__819283[VAR__53647], ANOTHER_POINTER) == 0 )
+      {
+         k1++;
+      }
+      else
+      if ( strcmp(VAR__819283[VAR__53647], YET_ANOTHER_POINTER) == 0 )
+      {
+         k2++;
+      }
+   }
+
+   VAR__4857423 = (float *)malloc(k1 * ( sizeof( float )));
+   VAR__12302   = (float *)malloc(k2 * ( sizeof( float )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(VAR__819283[VAR__53647], ANOTHER_POINTER) == 0 )
+      {
+         VAR__4857423[j1] = VAR__19328[VAR__53647];
+         j1++;
+      }
+      else
+      if ( strcmp(VAR__819283[VAR__53647], YET_ANOTHER_POINTER) == 0 )
+      {
+         VAR__12302[j2] = VAR__19328[VAR__53647];
+         j2++;
+      }
+   }
+
+   qsort(VAR__4857423, k1, sizeof( float ), compare);
+   qsort(VAR__12302, k2, sizeof( float ), compare);
+   printf("%.2f", VAR__4857423[0]);
+   for ( VAR__53647 = 1; VAR__53647 < k1; VAR__53647++ )
+   {
+      printf(" %.2f", VAR__4857423[VAR__53647]);
+   }
+
+   for ( VAR__53647 = k2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf(" %.2f", VAR__12302[VAR__53647]);
+   }
+}

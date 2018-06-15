@@ -1,0 +1,81 @@
+int main()
+{
+   int  days[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   long year;
+   int  mon;
+   int  day;
+
+   scanf("%ld%d%d", &year, &mon, &day);
+   year = year % 2800;
+   long VAR__7685 = 0;
+   int  VAR__53647;
+
+   if ( year == 1 )
+   {
+      VAR__7685 = 0;
+   }
+
+   if ( year > 1 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+      {
+         if ((( VAR__53647 % 400 ) == 0 ) || ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )))
+         {
+            VAR__7685 += 366;
+         }
+         else
+         {
+            VAR__7685 += 365;
+         }
+      }
+   }
+
+   if ( year == 0 )
+   {
+      VAR__7685 = ((( 2800 * 365 ) + 700 ) - 21 ) - 366;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < mon; VAR__53647++ )
+   {
+      VAR__7685 += days[VAR__53647];
+
+      if (((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 ))) && ( VAR__53647 == 2 ))
+      {
+         VAR__7685++;
+      }
+   }
+
+   VAR__7685 += day;
+   switch ( VAR__7685 % 7 )
+   {
+   case 0:
+      printf("Sun.");
+      break;
+
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+   }
+
+   return 0;
+}

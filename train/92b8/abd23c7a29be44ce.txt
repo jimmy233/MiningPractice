@@ -1,0 +1,70 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int amin;
+   int bmax;
+   int VAR__temp       = 0;
+   int zqj[1000][1000] = { 0 };
+   struct qujian
+   {
+      int VAR__819283;
+      int VAR__19328;
+   };
+   struct qujian VAR_666[5000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &VAR_666[VAR__53647].VAR__819283, &VAR_666[VAR__53647].VAR__19328);
+   }
+
+   amin = VAR_666[1].VAR__819283;
+   bmax = VAR_666[1].VAR__19328;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_666[VAR__53647].VAR__819283 < amin )
+      {
+         amin = VAR_666[VAR__53647].VAR__819283;
+      }
+
+      if ( VAR_666[VAR__53647].VAR__19328 > bmax )
+      {
+         bmax = VAR_666[VAR__53647].VAR__19328;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_666[VAR__53647].VAR__819283 == VAR_666[VAR__53647].VAR__19328 )
+      {
+         zqj[VAR_666[VAR__53647].VAR__819283][VAR_666[VAR__53647].VAR__19328] = 1;
+      }
+
+      for ( VAR__21230 = VAR_666[VAR__53647].VAR__819283; VAR__21230 < VAR_666[VAR__53647].VAR__19328; VAR__21230++ )
+      {
+         zqj[VAR__21230][VAR__21230]     = 1;
+         zqj[VAR__21230][VAR__21230 + 1] = 1;
+      }
+
+      zqj[VAR_666[VAR__53647].VAR__19328][VAR_666[VAR__53647].VAR__19328] = 1;
+   }
+
+   for ( VAR__53647 = amin; VAR__53647 < bmax; VAR__53647++ )
+   {
+      if (( zqj[VAR__53647][VAR__53647] == 0 ) || ( zqj[VAR__53647][VAR__53647 + 1] == 0 ))
+      {
+         VAR__temp = 1;
+         printf("no");
+         break;
+      }
+   }
+
+   if ( VAR__temp == 0 )
+   {
+      printf("%d %d", amin, bmax);
+   }
+
+   return 0;
+}

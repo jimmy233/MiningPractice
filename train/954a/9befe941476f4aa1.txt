@@ -1,0 +1,158 @@
+struct student
+{
+   char           name[100];
+   int            ascore;
+   int            bscore;
+   char           leader;
+   char           xibu;
+   int            papernum;
+   int            money;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+int VAR__NUM;
+int total = 0;
+int main()
+{
+   int VAR__53647;
+
+   scanf("%d", &VAR__NUM);
+   struct student *creat();
+
+   struct student *pt;
+   struct student *VAR_233;
+   struct student *flagp;
+   pt      = creat();
+   VAR_233 = pt;
+   int VAR__MAX = pt->money;
+   for ( ; ; )
+   {
+      if ( VAR__MAX <= VAR_233->money )
+      {
+         VAR__MAX = VAR_233->money;
+      }
+
+      if ( VAR_233->VAR__NEXT == NULL )
+      {
+         goto part2;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+part2:
+   VAR_233 = pt;
+
+   for ( ; ; )
+   {
+      if ( VAR__MAX == VAR_233->money )
+      {
+         flagp = VAR_233;
+         goto part1;
+      }
+
+      if ( VAR_233->VAR__NEXT == NULL )
+      {
+         goto part1;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+part1:
+   ;
+
+   printf("%s\n%d\n%d", flagp->name, flagp->money, total);
+   return 0;
+}
+
+
+struct student *creat()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->ascore, &ANOTHER_POINTER->bscore, &ANOTHER_POINTER->leader, &ANOTHER_POINTER->xibu, &ANOTHER_POINTER->papernum);
+   VAR__HEAD = NULL;
+   ANOTHER_POINTER->money = 0;
+
+   if (( ANOTHER_POINTER->ascore > 80 ) && ( ANOTHER_POINTER->papernum >= 1 ))
+   {
+      ANOTHER_POINTER->money += 8000;
+   }
+
+   if (( ANOTHER_POINTER->ascore > 85 ) && ( ANOTHER_POINTER->bscore > 80 ))
+   {
+      ANOTHER_POINTER->money += 4000;
+   }
+
+   if ( ANOTHER_POINTER->ascore > 90 )
+   {
+      ANOTHER_POINTER->money += 2000;
+   }
+
+   if (( ANOTHER_POINTER->ascore > 85 ) && ( ANOTHER_POINTER->xibu == 'Y' ))
+   {
+      ANOTHER_POINTER->money += 1000;
+   }
+
+   if (( ANOTHER_POINTER->bscore > 80 ) && ( ANOTHER_POINTER->leader == 'Y' ))
+   {
+      ANOTHER_POINTER->money += 850;
+   }
+
+   total = ANOTHER_POINTER->money;
+
+   while ( VAR_1238123 != ( VAR__NUM - 1 ))
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER    = ANOTHER_POINTER;
+      ANOTHER_POINTER        = (struct student *)malloc(LEN);
+      ANOTHER_POINTER->money = 0;
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->ascore, &ANOTHER_POINTER->bscore, &ANOTHER_POINTER->leader, &ANOTHER_POINTER->xibu, &ANOTHER_POINTER->papernum);
+
+      if (( ANOTHER_POINTER->ascore > 80 ) && ( ANOTHER_POINTER->papernum >= 1 ))
+      {
+         ANOTHER_POINTER->money += 8000;
+      }
+
+      if (( ANOTHER_POINTER->ascore > 85 ) && ( ANOTHER_POINTER->bscore > 80 ))
+      {
+         ANOTHER_POINTER->money += 4000;
+      }
+
+      if ( ANOTHER_POINTER->ascore > 90 )
+      {
+         ANOTHER_POINTER->money += 2000;
+      }
+
+      if (( ANOTHER_POINTER->ascore > 85 ) && ( ANOTHER_POINTER->xibu == 'Y' ))
+      {
+         ANOTHER_POINTER->money += 1000;
+      }
+
+      if (( ANOTHER_POINTER->bscore > 80 ) && ( ANOTHER_POINTER->leader == 'Y' ))
+      {
+         ANOTHER_POINTER->money += 850;
+      }
+
+      total = total + ANOTHER_POINTER->money;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}

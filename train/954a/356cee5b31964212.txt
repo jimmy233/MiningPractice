@@ -1,0 +1,78 @@
+struct student
+{
+   char name[21];
+   int  final;
+   int  cla;
+   char stu;
+   char west;
+   int  paper;
+   int  sch;
+};
+int award(struct student *VAR_233)
+{
+   int total = 0;
+
+   if (( VAR_233->final > 80 ) && ( VAR_233->paper > 0 ))
+   {
+      total += 8000;
+   }
+
+   if (( VAR_233->final > 85 ) && ( VAR_233->cla > 80 ))
+   {
+      total += 4000;
+   }
+
+   if ( VAR_233->final > 90 )
+   {
+      total += 2000;
+   }
+
+   if (( VAR_233->final > 85 ) && ( VAR_233->west == 'Y' ))
+   {
+      total += 1000;
+   }
+
+   if (( VAR_233->cla > 80 ) && ( VAR_233->stu == 'Y' ))
+   {
+      total += 850;
+   }
+
+   return total;
+}
+
+
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   long int       all = 0;
+   struct student VAR_9494[100];
+   struct student *VAR_233[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &VAR_9494[VAR__53647].name, &VAR_9494[VAR__53647].final, &VAR_9494[VAR__53647].cla, &VAR_9494[VAR__53647].stu, &VAR_9494[VAR__53647].west, &VAR_9494[VAR__53647].paper);
+      VAR_233[VAR__53647]      = &VAR_9494[VAR__53647];
+      VAR_9494[VAR__53647].sch = award(VAR_233[VAR__53647]);
+      all += VAR_9494[VAR__53647].sch;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR_9494[VAR__21230].sch > VAR_9494[VAR__53647].sch )
+         {
+            struct student VAR__TEMP;
+            VAR__TEMP            = VAR_9494[VAR__53647];
+            VAR_9494[VAR__53647] = VAR_9494[VAR__21230];
+            VAR_9494[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+   printf("%s\n%d\n%ld", VAR_9494[0].name, VAR_9494[0].sch, all);
+   return 0;
+}

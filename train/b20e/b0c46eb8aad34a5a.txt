@@ -1,0 +1,94 @@
+int compare(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   return ( *((int *)YET_ANOTHER_POINTER )) - ( *((int *)ANOTHER_POINTER ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int hq[10002];
+   int ht[10002];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__HEAD;
+   int ans;
+   int VAR__1238129;
+   int tailt;
+   int tailq;
+
+   while ( 1 )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> ht[VAR__53647];
+      }
+
+      qsort(ht, VAR_1238123, sizeof( int ), compare);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> hq[VAR__53647];
+      }
+
+      qsort(hq, VAR_1238123, sizeof( int ), compare);
+      VAR__HEAD = 0;
+      tailt     = ( tailq = VAR_1238123 - 1 );
+      ans       = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( ht[VAR__HEAD] > hq[VAR__53647] )
+         {
+            VAR__HEAD++;
+            ans += 200;
+         }
+         else
+         if ( ht[VAR__HEAD] < hq[VAR__53647] )
+         {
+            tailt--;
+            ans -= 200;
+         }
+         else
+         if ( ht[VAR__HEAD] == hq[VAR__53647] )
+         {
+            for ( VAR__21230 = tailt, VAR__1238129 = tailq; VAR__21230 >= VAR__HEAD; VAR__21230--, VAR__1238129-- )
+            {
+               if ( ht[VAR__21230] > hq[VAR__1238129] )
+               {
+                  ans += 200;
+                  tailt--;
+                  tailq--;
+               }
+               else
+               {
+                  if ( ht[VAR__21230] < hq[VAR__53647] )
+                  {
+                     ans -= 200;
+                  }
+
+                  tailt = --VAR__21230;
+                  tailq = VAR__1238129;
+                  break;
+               }
+            }
+         }
+
+
+
+         if ( VAR__HEAD > tailt )
+         {
+            break;
+         }
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

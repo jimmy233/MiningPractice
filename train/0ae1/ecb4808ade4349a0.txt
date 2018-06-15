@@ -1,0 +1,96 @@
+int leap(int VAR__7685)
+{
+   if (( VAR__7685 % 4 ) != 0 )
+   {
+      return 0;
+   }
+   else
+   if ((( VAR__7685 % 100 ) == 0 ) && (( VAR__7685 % 400 ) != 0 ))
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+void main()
+{
+   int leap(int VAR__7685);
+
+   int VAR__3918907;
+   int VAR__1238129;
+   int VAR__12302;
+   int VAR_233 = 0;
+   scanf("%d%d%d", &VAR__3918907, &VAR__1238129, &VAR__12302);
+   int VAR__53647;
+   int sumy = 0;
+   int summ = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR__3918907 - 1 ) % 400 ); VAR__53647++ )
+   {
+      if ( leap(VAR__53647) == 0 )
+      {
+         sumy = ( sumy + 365 ) % 7;
+      }
+      else
+      if ( leap(VAR__53647) == 1 )
+      {
+         sumy = ( sumy + 366 ) % 7;
+      }
+   }
+
+   int b1[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int b2[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if ( leap(VAR__3918907) == 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+      {
+         summ = ( summ + b1[VAR__53647] ) % 7;
+      }
+   }
+   else
+   if ( leap(VAR__3918907) == 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+      {
+         summ = ( summ + b2[VAR__53647] ) % 7;
+      }
+   }
+
+
+   int re = ( sumy + summ ) + VAR__12302;
+   VAR_233 = re % 7;
+   switch ( VAR_233 )
+   {
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+
+   case 0:
+      printf("Sun.\n");
+      break;
+   }
+}

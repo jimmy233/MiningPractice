@@ -1,0 +1,58 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__1238129 = 0;
+   int    VAR_233;
+   int    VAR_666;
+   int    VAR__12302;
+   double VAR__4857423;
+   double VAR__112390;
+
+   scanf("%d", &VAR_1238123);
+   int VAR_SIZE[30];
+   int VAR__819283[45];
+   int VAR__19328[45];
+   for ( int VAR__53647 = 0; VAR__53647 < ( 3 * VAR_1238123 ); VAR__53647++ )
+   {
+      scanf("%d", &VAR_SIZE[VAR__53647]);
+   }
+
+   double jl[45];
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__4857423              = ( pow(1.0 * ( VAR_SIZE[3 * VAR__21230] - VAR_SIZE[3 * VAR__53647] ), 2.0) + pow(1.0 * ( VAR_SIZE[( 3 * VAR__21230 ) + 1] - VAR_SIZE[( 3 * VAR__53647 ) + 1] ), 2.0)) + pow(1.0 * ( VAR_SIZE[( 3 * VAR__21230 ) + 2] - VAR_SIZE[( 3 * VAR__53647 ) + 2] ), 2.0);
+         jl[VAR__1238129]          = sqrt(VAR__4857423);
+         VAR__819283[VAR__1238129] = VAR__53647;
+         VAR__19328[VAR__1238129]  = VAR__21230;
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR_233 = 1; VAR_233 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR_233++ )
+   {
+      for ( VAR_666 = 0; VAR_666 < ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR_233 ); VAR_666++ )
+      {
+         if ( jl[VAR_666] < jl[VAR_666 + 1] )
+         {
+            VAR__112390              = jl[VAR_666];
+            jl[VAR_666]              = jl[VAR_666 + 1];
+            jl[VAR_666 + 1]          = VAR__112390;
+            VAR__12302               = VAR__819283[VAR_666];
+            VAR__819283[VAR_666]     = VAR__819283[VAR_666 + 1];
+            VAR__819283[VAR_666 + 1] = VAR__12302;
+            VAR__12302               = VAR__19328[VAR_666];
+            VAR__19328[VAR_666]      = VAR__19328[VAR_666 + 1];
+            VAR__19328[VAR_666 + 1]  = VAR__12302;
+         }
+      }
+   }
+
+   for ( VAR_233 = 0; VAR_233 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR_233++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR_SIZE[3 * VAR__819283[VAR_233]], VAR_SIZE[( 3 * VAR__819283[VAR_233] ) + 1], VAR_SIZE[( 3 * VAR__819283[VAR_233] ) + 2], VAR_SIZE[3 * VAR__19328[VAR_233]], VAR_SIZE[( 3 * VAR__19328[VAR_233] ) + 1], VAR_SIZE[( 3 * VAR__19328[VAR_233] ) + 2], jl[VAR_233]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,62 @@
+int main()
+{
+   double VAR__NUM[310] = { 0 };
+   double pianli[310]   = { 0 };
+   int    VAR_1238123;
+
+   cin >> VAR_1238123;
+   double VAR__SUM = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__NUM[VAR__53647];
+      VAR__SUM += VAR__NUM[VAR__53647];
+   }
+
+   double average  = VAR__SUM / VAR_1238123;
+   double VAR__MAX = 0;
+   for ( int VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230] > VAR__NUM[VAR__21230 + 1] )
+         {
+            double VAR__temp = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__NUM[VAR__21230 + 1];
+            VAR__NUM[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      pianli[VAR__53647] = VAR__NUM[VAR__53647] - average;
+
+      if ( pianli[VAR__53647] <= 0.00001 )
+      {
+         pianli[VAR__53647] = -pianli[VAR__53647];
+      }
+
+      if ( VAR__MAX < pianli[VAR__53647] )
+      {
+         VAR__MAX = pianli[VAR__53647];
+      }
+   }
+
+   int douhao = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( pianli[VAR__53647] > ( VAR__MAX - 0.0001 )) && ( pianli[VAR__53647] < ( VAR__MAX + 0.0001 )))
+      {
+         if ( douhao != 0 )
+         {
+            cout << ",";
+         }
+
+         cout << VAR__NUM[VAR__53647];
+         douhao++;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,46 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int N;
+   int anNum[MAX];
+   int anFlag[MAX];
+
+   scanf("%d", &N);
+   memset(anFlag, 1, sizeof( anFlag ));
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%d", &anNum[VAR__53647]);
+      anFlag[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = N - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      int Max = 0;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < N; VAR__21230++ )
+      {
+         if ( anNum[VAR__53647] >= anNum[VAR__21230] )
+         {
+            if ( anFlag[VAR__21230] > Max )
+            {
+               Max = anFlag[VAR__21230];
+            }
+         }
+      }
+
+      anFlag[VAR__53647] = Max + 1;
+   }
+
+   int Max = 0;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( anFlag[VAR__53647] > Max )
+      {
+         Max = anFlag[VAR__53647];
+      }
+   }
+
+
+   printf("%d\n", Max);
+   return 0;
+}

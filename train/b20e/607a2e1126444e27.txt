@@ -1,0 +1,94 @@
+int VAR_1238123;
+int VAR_666[1001];
+int VAR__temp[1001];
+int qshang;
+int tshang;
+int qxia;
+int txia;
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   int *ANOTHER_POINTER     = (int *)VAR__819283;
+   int *YET_ANOTHER_POINTER = (int *)VAR__19328;
+
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int VAR__53647;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_666[VAR__53647];
+      }
+
+      qsort(VAR_666 + 1, VAR_1238123, sizeof( VAR_666[1] ), cmp);
+      qsort(VAR__temp + 1, VAR_1238123, sizeof( VAR__temp[1] ), cmp);
+      int res = 0;
+      qxia   = ( txia = VAR_1238123 );
+      qshang = ( tshang = 1 );
+
+      while (( qshang <= qxia ) && ( tshang <= txia ))
+      {
+         if ( VAR__temp[txia] > VAR_666[qxia] )
+         {
+            res++;
+            qxia--;
+            txia--;
+         }
+         else
+         if ( VAR__temp[txia] < VAR_666[qxia] )
+         {
+            txia--;
+            qshang++;
+            res--;
+         }
+         else
+         {
+            if ( VAR_666[qshang] > VAR__temp[tshang] )
+            {
+               qshang++;
+               txia--;
+               res--;
+            }
+            else
+            if ( VAR_666[qshang] < VAR__temp[tshang] )
+            {
+               tshang++;
+               qshang++;
+               res++;
+            }
+            else
+            {
+               if ( VAR__temp[txia] < VAR_666[qshang] )
+               {
+                  txia--;
+                  qshang++;
+                  res--;
+               }
+               else
+               {
+                  txia--;
+                  qshang++;
+               }
+            }
+         }
+      }
+
+      ( cout << ( res * 200 )) << endl;
+   }
+
+   return 0;
+}

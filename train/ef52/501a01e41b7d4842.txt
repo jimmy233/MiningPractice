@@ -1,0 +1,40 @@
+int MAX(int VAR__819283, int VAR__19328)
+{
+   return ( VAR__819283 > VAR__19328 ) ? ( VAR__819283 ) : ( VAR__19328 );
+}
+
+
+int FIRE(int *VAR_2890, int VAR__1238129, int VAR__53647, int VAR__21230)
+{
+   if ( VAR__53647 == VAR__21230 )
+   {
+      return VAR__1238129 >= VAR_2890[VAR__21230];
+   }
+   else
+   if ( VAR__1238129 >= VAR_2890[VAR__53647] )
+   {
+      return MAX(FIRE(VAR_2890, VAR__1238129, VAR__53647 + 1, VAR__21230), FIRE(VAR_2890, VAR_2890[VAR__53647], VAR__53647 + 1, VAR__21230) + 1);
+   }
+   else
+   if ( VAR__1238129 < VAR_2890[VAR__53647] )
+   {
+      return FIRE(VAR_2890, VAR__1238129, VAR__53647 + 1, VAR__21230);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_2890[26];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", VAR_2890 + VAR__53647);
+   }
+
+   printf("%d", FIRE(VAR_2890, 65530, 1, VAR_1238123));
+}

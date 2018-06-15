@@ -1,0 +1,64 @@
+struct dis
+{
+   int    from[4];
+   int    to[4];
+   double VAR__12302;
+}
+dis[6000];
+int main()
+{
+   int VAR_1238123;
+   int VAR_233[11][4];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 3; VAR__21230++ )
+      {
+         cin >> VAR_233[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         VAR__temp++;
+         dis[VAR__temp].from[1]    = VAR_233[VAR__53647][1];
+         dis[VAR__temp].from[2]    = VAR_233[VAR__53647][2];
+         dis[VAR__temp].from[3]    = VAR_233[VAR__53647][3];
+         dis[VAR__temp].to[1]      = VAR_233[VAR__21230][1];
+         dis[VAR__temp].to[2]      = VAR_233[VAR__21230][2];
+         dis[VAR__temp].to[3]      = VAR_233[VAR__21230][3];
+         dis[VAR__temp].VAR__12302 = sqrt(( pow(VAR_233[VAR__53647][1] - VAR_233[VAR__21230][1], 2.0) + pow(VAR_233[VAR__53647][2] - VAR_233[VAR__21230][2], 2.0)) + pow(VAR_233[VAR__53647][3] - VAR_233[VAR__21230][3], 2.0));
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR__temp - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230].VAR__12302 < dis[VAR__21230 + 1].VAR__12302 )
+         {
+            dis[0]              = dis[VAR__21230];
+            dis[VAR__21230]     = dis[VAR__21230 + 1];
+            dis[VAR__21230 + 1] = dis[0];
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__temp; VAR__53647++ )
+   {
+      ((((((( cout << "(" ) << dis[VAR__53647].from[1] ) << "," ) << dis[VAR__53647].from[2] ) << "," ) << dis[VAR__53647].from[3] ) << ")" ) << "-";
+      ((((((( cout << "(" ) << dis[VAR__53647].to[1] ) << "," ) << dis[VAR__53647].to[2] ) << "," ) << dis[VAR__53647].to[3] ) << ")" ) << "=";
+      ((( cout << fixed ) << setprecision(2)) << dis[VAR__53647].VAR__12302 ) << endl;
+   }
+
+   return 0;
+}

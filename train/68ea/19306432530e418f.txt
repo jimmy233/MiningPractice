@@ -1,0 +1,77 @@
+int main()
+{
+   int sn[128];
+
+   for ( int VAR__53647 = 'a'; VAR__53647 <= 'z'; VAR__53647++ )
+   {
+      sn[VAR__53647] = VAR__53647;
+   }
+
+   char ns[27] = "abcdefghijklmnopqrstuvwxyz";
+   int  VAR_1238123;
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+   {
+      char VAR_9494[100000];
+      scanf("%s", VAR_9494);
+      int LEN_OF_STH      = strlen(VAR_9494);
+      int VAR__53647      = 0;
+      int VAR__819283[26] = { 0 };
+      int sort[26]        = { 0 };
+      int cixu            = 0;
+      for ( int VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         for ( VAR__53647 = 'a'; VAR__53647 <= 'z'; VAR__53647++ )
+         {
+            if ( sn[VAR_9494[VAR__21230]] == VAR__53647 )
+            {
+               VAR__819283[VAR__53647 - 'a']++;
+
+               if ( VAR__819283[VAR__53647 - 'a'] == 1 )
+               {
+                  cixu++;
+                  sort[VAR__53647 - 'a'] = cixu;
+               }
+
+               break;
+            }
+         }
+      }
+
+      int first     = 27;
+      int VAR__TEMP = 0;
+      for ( VAR__53647 = 'a'; VAR__53647 <= 'z'; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647 - 'a'] == 1 )
+         {
+            if ( sort[VAR__53647 - 'a'] < first )
+            {
+               first     = sort[VAR__53647 - 'a'];
+               VAR__TEMP = VAR__53647 - 'a';
+            }
+         }
+      }
+
+      if ( VAR__temp != ( VAR_1238123 - 1 ))
+      {
+         if ( first == 27 )
+         {
+            printf("no\n");
+         }
+         else
+         {
+            printf("%c\n", ns[VAR__TEMP]);
+         }
+      }
+
+      else
+      if ( first == 27 )
+      {
+         printf("no");
+      }
+      else
+      {
+         printf("%c", ns[VAR__TEMP]);
+      }
+   }
+}

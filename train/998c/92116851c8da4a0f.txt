@@ -1,0 +1,50 @@
+const int maxlen = 255;
+int main()
+{
+   char ANOTHER_STRING[maxlen];
+   char YET_ANOTHER_STRING[maxlen];
+   int  a1[maxlen];
+   int  a2[maxlen];
+
+   memset(a1, 0, sizeof( a1 ));
+   memset(a2, 0, sizeof( a2 ));
+   ( cin >> ANOTHER_STRING ) >> YET_ANOTHER_STRING;
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(ANOTHER_STRING); VAR__53647++ )
+   {
+      a1[VAR__53647] = ANOTHER_STRING[( strlen(ANOTHER_STRING) - 1 ) - VAR__53647] - '0';
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(YET_ANOTHER_STRING); VAR__53647++ )
+   {
+      a2[VAR__53647] = YET_ANOTHER_STRING[( strlen(YET_ANOTHER_STRING) - 1 ) - VAR__53647] - '0';
+   }
+
+   int pos = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < ( maxlen - 1 ); VAR__53647++ )
+   {
+      int VAR__TEMP = a1[VAR__53647] + a2[VAR__53647];
+
+      if ( VAR__TEMP >= 10 )
+      {
+         a1[VAR__53647]      = VAR__TEMP % 10;
+         a1[VAR__53647 + 1] += 1;
+      }
+      else
+      {
+         a1[VAR__53647] = VAR__TEMP;
+      }
+
+      if ( a1[VAR__53647] != 0 )
+      {
+         pos = VAR__53647;
+      }
+   }
+
+   for ( int VAR__53647 = pos; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << a1[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

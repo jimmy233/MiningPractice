@@ -1,0 +1,73 @@
+struct patient
+{
+   char VAR__NUM[11];
+   int  age;
+}
+sick[101];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_129012;
+   int VAR_9494;
+
+   VAR_9494   = 0;
+   VAR_129012 = 0;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", sick[VAR__53647].VAR__NUM);
+      scanf("%d", &sick[VAR__53647].age);
+   }
+
+   int old[101]   = { 0 };
+   int young[101] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( sick[VAR__53647].age >= 60 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= VAR_9494; VAR__21230++ )
+         {
+            if (( sick[VAR__53647].age > sick[old[VAR__21230]].age ) || ( VAR__21230 == VAR_9494 ))
+            {
+               if ( VAR__21230 == VAR_9494 )
+               {
+                  old[VAR_9494] = VAR__53647;
+                  VAR_9494      = VAR_9494 + 1;
+                  break;
+               }
+               else
+               {
+                  for ( VAR__8444594 = VAR_9494; VAR__8444594 >= VAR__21230; VAR__8444594-- )
+                  {
+                     old[VAR__8444594 + 1] = old[VAR__8444594];
+                  }
+
+                  old[VAR__21230] = VAR__53647;
+                  VAR_9494        = VAR_9494 + 1;
+                  break;
+               }
+            }
+         }
+      }
+      else
+      {
+         young[VAR_129012] = VAR__53647;
+         VAR_129012        = VAR_129012 + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      printf("%s\n", sick[old[VAR__53647]].VAR__NUM);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_129012; VAR__53647++ )
+   {
+      printf("%s\n", sick[young[VAR__53647]].VAR__NUM);
+   }
+
+   return 0;
+}

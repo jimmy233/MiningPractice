@@ -1,0 +1,60 @@
+int strbigint(char *A_STRING, int *VAR__819283)
+{
+   int LEN_OF_STH = strlen(A_STRING);
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__819283[( LEN_OF_STH - VAR__53647 ) - 1] = A_STRING[VAR__53647] - '0';
+   }
+
+   return LEN_OF_STH;
+}
+
+
+void print_bigint(int *VAR__819283, int LEN_OF_STH)
+{
+   int VAR__8444594 = LEN_OF_STH - 1;
+
+   while (( VAR__819283[VAR__8444594] == 0 ) && ( VAR__8444594 > 1 ))
+   {
+      VAR__8444594--;
+   }
+
+   int VAR__53647;
+   for ( VAR__53647 = VAR__8444594; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+}
+
+
+int main()
+{
+   int  VAR__819283[100];
+   int  alen;
+   int  VAR__19328[100];
+   int  blen;
+   int  VAR__53647;
+   char VAR__4857423[100];
+
+   scanf("%s", VAR__4857423);
+   alen = strbigint(VAR__4857423, VAR__819283);
+
+   if ( alen == 1 )
+   {
+      printf("%d\n%d", 0, VAR__819283[0]);
+   }
+   else
+   {
+      for ( VAR__53647 = alen - 1; VAR__53647 > 0; VAR__53647-- )
+      {
+         VAR__19328[VAR__53647]      = (( 10 * VAR__819283[VAR__53647] ) + VAR__819283[VAR__53647 - 1] ) / 13;
+         VAR__819283[VAR__53647 - 1] = (( 10 * VAR__819283[VAR__53647] ) + VAR__819283[VAR__53647 - 1] ) % 13;
+      }
+
+      print_bigint(VAR__19328, alen);
+      printf("\n");
+      printf("%d", VAR__819283[0]);
+   }
+}

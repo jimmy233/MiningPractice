@@ -1,0 +1,40 @@
+int main()
+{
+   int  Position = 0;
+   int  index    = 0;
+   char StrS[50] = { '\0' };
+   char StrW[50] = { '\0' };
+   int  VAR_FLAG = 0;
+
+   scanf("%s", StrS);
+   scanf("%s", StrW);
+
+   while ( StrW[Position] != '\0' )
+   {
+      while ( StrS[index] != '\0' )
+      {
+         if ( VAR_FLAG && ( StrS[index + 1] == '\0' ))
+         {
+            printf("%d", Position);
+            return 1;
+         }
+
+         if ( StrS[index] == StrW[Position + index] )
+         {
+            VAR_FLAG = 1;
+            index++;
+            continue;
+         }
+         else
+         {
+            VAR_FLAG = 0;
+            break;
+         }
+      }
+
+      Position++;
+      index = 0;
+   }
+
+   return 0;
+}

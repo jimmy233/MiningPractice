@@ -1,0 +1,60 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct patient
+   {
+      char           ID[10];
+      int            age;
+      struct patient *VAR__NEXT;
+      struct patient *pre;
+   };
+   struct patient *VAR_233;
+   struct patient *VAR__HEAD;
+   struct patient *VAR_666;
+   struct patient *VAR__1238129;
+   struct patient *VAR__TEMP;
+   VAR_233   = (struct patient *)malloc(sizeof( struct patient ));
+   VAR__HEAD = VAR_233;
+   VAR__TEMP = (struct patient *)malloc(sizeof( struct patient ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", VAR_233->ID, &VAR_233->age);
+
+      if ( VAR__53647 != ( VAR_1238123 - 1 ))
+      {
+         VAR_233->VAR__NEXT            = (struct patient *)malloc(sizeof( struct patient ));
+         VAR_233->VAR__NEXT->pre       = VAR_233;
+         VAR_233->VAR__NEXT->VAR__NEXT = NULL;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR_666 = VAR_233->VAR__NEXT; VAR_666 != NULL; VAR_666 = VAR_666->VAR__NEXT )
+      {
+         if (( VAR_233->age < VAR_666->age ) && ( VAR_666->age >= 60 ))
+         {
+            for ( VAR__1238129 = VAR_666; VAR__1238129 != VAR_233; VAR__1238129 = VAR__1238129->pre )
+            {
+               VAR__TEMP->age         = VAR__1238129->age;
+               VAR__1238129->age      = VAR__1238129->pre->age;
+               VAR__1238129->pre->age = VAR__TEMP->age;
+               strcpy(VAR__TEMP->ID, VAR__1238129->ID);
+               strcpy(VAR__1238129->ID, VAR__1238129->pre->ID);
+               strcpy(VAR__1238129->pre->ID, VAR__TEMP->ID);
+            }
+         }
+      }
+   }
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s\n", VAR_233->ID);
+   }
+
+   return 0;
+}

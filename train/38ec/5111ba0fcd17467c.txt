@@ -1,0 +1,138 @@
+void main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__SUM;
+   int VAR__819283[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__19328[12]  = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d %d %d", &sy, &sm, &sd);
+   scanf("%d %d %d", &ey, &em, &ed);
+   VAR__SUM = 0;
+
+   if ( sy != ey )
+   {
+      if (( sy + 1 ) <= ( ey - 1 ))
+      {
+         for ( VAR__53647 = sy + 1; VAR__53647 <= ( ey - 1 ); VAR__53647++ )
+         {
+            if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+            {
+               VAR__SUM = VAR__SUM + 366;
+            }
+            else
+            {
+               VAR__SUM = VAR__SUM + 365;
+            }
+         }
+      }
+
+      if (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 ))
+      {
+         if ( sm < 12 )
+         {
+            for ( VAR__21230 = sm + 1; VAR__21230 <= 12; VAR__21230++ )
+            {
+               VAR__SUM = VAR__SUM + VAR__819283[VAR__21230 - 1];
+            }
+         }
+
+
+         VAR__SUM = (( VAR__SUM + VAR__819283[sm - 1] ) - sd ) + 1;
+      }
+      else
+      {
+         if ( sm < 12 )
+         {
+            for ( VAR__21230 = sm + 1; VAR__21230 <= 12; VAR__21230++ )
+            {
+               VAR__SUM = VAR__SUM + VAR__19328[VAR__21230 - 1];
+            }
+         }
+
+
+         VAR__SUM = (( VAR__SUM + VAR__19328[sm - 1] ) - sd ) + 1;
+      }
+
+      if (((( ey % 4 ) == 0 ) && (( ey % 100 ) != 0 )) || (( ey % 400 ) == 0 ))
+      {
+         if ( em > 1 )
+         {
+            for ( VAR__21230 = 1; VAR__21230 <= ( em - 1 ); VAR__21230++ )
+            {
+               VAR__SUM = VAR__SUM + VAR__819283[VAR__21230 - 1];
+            }
+         }
+
+
+         VAR__SUM = VAR__SUM + ed;
+      }
+      else
+      {
+         if ( em > 1 )
+         {
+            for ( VAR__21230 = 1; VAR__21230 <= ( em - 1 ); VAR__21230++ )
+            {
+               VAR__SUM = VAR__SUM + VAR__19328[VAR__21230 - 1];
+            }
+         }
+
+
+         VAR__SUM = VAR__SUM + ed;
+      }
+   }
+   else
+   {
+      if (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 ))
+      {
+         if ( sm != em )
+         {
+            if (( sm + 1 ) <= ( em - 1 ))
+            {
+               for ( VAR__8444594 = sm + 1; VAR__8444594 <= ( em - 1 ); VAR__8444594++ )
+               {
+                  VAR__SUM = VAR__SUM + VAR__819283[VAR__8444594 - 1];
+               }
+            }
+
+
+            VAR__SUM = (( VAR__SUM + VAR__819283[sm - 1] ) - sd ) + 1;
+            VAR__SUM = VAR__SUM + ed;
+         }
+         else
+         {
+            VAR__SUM = (( VAR__SUM + ed ) - sd ) + 1;
+         }
+      }
+      else
+      {
+         if ( sm != em )
+         {
+            if (( sm + 1 ) <= ( em - 1 ))
+            {
+               for ( VAR__8444594 = sm + 1; VAR__8444594 <= ( em - 1 ); VAR__8444594++ )
+               {
+                  VAR__SUM = VAR__SUM + VAR__19328[VAR__8444594 - 1];
+               }
+            }
+
+
+            VAR__SUM = (( VAR__SUM + VAR__19328[sm - 1] ) - sd ) + 1;
+            VAR__SUM = VAR__SUM + ed;
+         }
+         else
+         {
+            VAR__SUM = (( VAR__SUM + ed ) - sd ) + 1;
+         }
+      }
+   }
+
+   printf("%d\n", VAR__SUM - 1);
+}

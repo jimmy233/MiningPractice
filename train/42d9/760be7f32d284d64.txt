@@ -1,0 +1,81 @@
+struct node
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+VAR_233[10];
+struct edge
+{
+   int    node1;
+   int    node2;
+   double dis;
+}
+VAR__temp[100];
+double dist(int VAR__819283, int VAR__19328)
+{
+   return sqrt(((( VAR_233[VAR__819283].VAR__7685 - VAR_233[VAR__19328].VAR__7685 ) * ( VAR_233[VAR__819283].VAR__7685 - VAR_233[VAR__19328].VAR__7685 )) + (( VAR_233[VAR__819283].VAR__3918907 - VAR_233[VAR__19328].VAR__3918907 ) * ( VAR_233[VAR__819283].VAR__3918907 - VAR_233[VAR__19328].VAR__3918907 ))) + (( VAR_233[VAR__819283].VAR__9290 - VAR_233[VAR__19328].VAR__9290 ) * ( VAR_233[VAR__819283].VAR__9290 - VAR_233[VAR__19328].VAR__9290 )));
+}
+
+
+int judge(int VAR__7685, int VAR__3918907)
+{
+   if (( VAR__temp[VAR__7685].node1 < VAR__temp[VAR__3918907].node1 ) || (( VAR__temp[VAR__7685].node1 == VAR__temp[VAR__3918907].node1 ) && ( VAR__temp[VAR__7685].node2 < VAR__temp[VAR__3918907].node2 )))
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__1111 = 0;
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR_233[VAR__53647].VAR__7685, &VAR_233[VAR__53647].VAR__3918907, &VAR_233[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__1111++;
+         VAR__temp[VAR__1111].dis   = dist(VAR__53647, VAR__21230);
+         VAR__temp[VAR__1111].node1 = VAR__53647;
+         VAR__temp[VAR__1111].node2 = VAR__21230;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR__1111; VAR__21230++ )
+      {
+         if (( VAR__temp[VAR__53647].dis < VAR__temp[VAR__21230].dis ) || (( VAR__temp[VAR__53647].dis == VAR__temp[VAR__21230].dis ) && judge(VAR__53647, VAR__21230)))
+         {
+            VAR__temp[56]         = VAR__temp[VAR__53647];
+            VAR__temp[VAR__53647] = VAR__temp[VAR__21230];
+            VAR__temp[VAR__21230] = VAR__temp[56];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      VAR__819283 = VAR__temp[VAR__53647].node1;
+      VAR__19328  = VAR__temp[VAR__53647].node2;
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR_233[VAR__819283].VAR__7685, VAR_233[VAR__819283].VAR__3918907, VAR_233[VAR__819283].VAR__9290, VAR_233[VAR__19328].VAR__7685, VAR_233[VAR__19328].VAR__3918907, VAR_233[VAR__19328].VAR__9290, VAR__temp[VAR__53647].dis);
+   }
+
+   return 0;
+}

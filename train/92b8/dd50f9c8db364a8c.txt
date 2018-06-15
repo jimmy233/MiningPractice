@@ -1,0 +1,80 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283;
+   int VAR__19328;
+   int pau1;
+   int pau2;
+
+   scanf("%d", &VAR_1238123);
+   struct haha
+   {
+      int begin;
+      int end;
+   }
+               qj[50000];
+   struct haha pau;
+   for ( int i1 = 0; i1 < VAR_1238123; i1++ )
+   {
+      scanf("%d%d", &qj[i1].begin, &qj[i1].end);
+   }
+
+   for ( int i3 = 0; i3 < VAR_1238123; i3++ )
+   {
+      for ( int i4 = VAR_1238123 - 1; i4 > 0; i4-- )
+      {
+         if ( qj[i4].begin < qj[i4 - 1].begin )
+         {
+            pau1             = qj[i4].begin;
+            qj[i4].begin     = qj[i4 - 1].begin;
+            qj[i4 - 1].begin = pau1;
+            pau2             = qj[i4].end;
+            qj[i4].end       = qj[i4 - 1].end;
+            qj[i4 - 1].end   = pau2;
+         }
+      }
+   }
+
+   for ( int i2 = 0; i2 < VAR_1238123; i2++ )
+   {
+      for ( int i5 = i2 + 1; i5 < VAR_1238123; i5++ )
+      {
+         if (( qj[i2].begin == qj[i5].begin ) && ( qj[i2].end == qj[i5].end ))
+         {
+            for ( int jj = i5; jj < VAR_1238123; jj++ )
+            {
+               qj[jj] = qj[jj + 1];
+            }
+
+            VAR_1238123--;
+         }
+
+         if ( qj[i2].end >= qj[i5].begin )
+         {
+            if ( qj[i5].end > qj[i2].end )
+            {
+               qj[i2].end = qj[i5].end;
+            }
+
+            for ( int jj = i5; jj < VAR_1238123; jj++ )
+            {
+               qj[jj] = qj[jj + 1];
+            }
+
+            VAR_1238123--;
+            i5 = i2;
+         }
+      }
+   }
+
+   if ( VAR_1238123 == 1 )
+   {
+      printf("%d %d", qj[0].begin, qj[0].end);
+   }
+   else
+   {
+      printf("no");
+   }
+
+   return 0;
+}

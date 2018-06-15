@@ -1,0 +1,63 @@
+typedef struct node
+{
+   char        id[100];
+   char        name[100];
+   char        sex[2];
+   char        address[100];
+   char        age[10];
+   char        grade[10];
+   struct node *VAR__NEXT;
+} node;
+node *VAR__HEAD = NULL;
+int create()
+{
+   node *VAR_233 = (node *)malloc(sizeof( node ));
+
+   scanf("%s", VAR_233->id);
+
+   if ( VAR_233->id[0] == 'e' )
+   {
+      free(VAR_233);
+      return 1;
+   }
+
+   scanf("%s%s%s%s%s", VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->grade, VAR_233->address);
+   VAR_233->VAR__NEXT = VAR__HEAD;
+   VAR__HEAD          = VAR_233;
+   return 0;
+}
+
+
+void print()
+{
+   node *VAR_233 = VAR__HEAD;
+   node *VAR__TEMP;
+
+   for ( ; VAR_233 != NULL; )
+   {
+      printf("%s %s %s %s %s %s\n", VAR_233->id, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->grade, VAR_233->address);
+      VAR__TEMP = VAR_233;
+      VAR_233   = VAR_233->VAR__NEXT;
+      free(VAR__TEMP);
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__8444594;
+
+   for ( ; ; )
+   {
+      if ( create() == 1 )
+      {
+         break;
+      }
+   }
+
+   print();
+}

@@ -1,0 +1,50 @@
+struct dir
+{
+   int VAR_129012;
+   int VAR__1111;
+}
+direct[8] = { { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, 1 }, { 0, -1 }, { -1, 1 }, { -1, 0 }, { -1, -1 } };
+int main()
+{
+   int VAR__1238129 = 0;
+   int VAR_1238123  = 0;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   int VAR__NUM[5][9][9] = { 0 };
+   VAR__NUM[0][4][4] = VAR__1238129;
+   for ( int day = 1; day <= VAR_1238123; day++ )
+   {
+      for ( int VAR__7685 = 0; VAR__7685 < 9; VAR__7685++ )
+      {
+         for ( int VAR__3918907 = 0; VAR__3918907 < 9; VAR__3918907++ )
+         {
+            if ( VAR__NUM[day - 1][VAR__7685][VAR__3918907] > 0 )
+            {
+               for ( int VAR__53647 = 0; VAR__53647 < 8; VAR__53647++ )
+               {
+                  VAR__NUM[day][VAR__7685 + direct[VAR__53647].VAR_129012][VAR__3918907 + direct[VAR__53647].VAR__1111] += VAR__NUM[day - 1][VAR__7685][VAR__3918907];
+               }
+
+               VAR__NUM[day][VAR__7685][VAR__3918907] += VAR__NUM[day - 1][VAR__7685][VAR__3918907] * 2;
+            }
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         cout << VAR__NUM[VAR_1238123][VAR__53647][VAR__21230];
+
+         if ( VAR__21230 < 8 )
+         {
+            cout << " ";
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,69 @@
+struct stu
+{
+   char name[20];
+   int  score1;
+   int  score2;
+   char leader;
+   char west;
+   int  paper;
+}
+stu[100];
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__819283[100] = { 0 };
+   int VAR__MAX         = 0;
+   int VAR__SUM         = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].score1, &stu[VAR__53647].score2, &stu[VAR__53647].leader, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].score1 > 80 ) && ( stu[VAR__53647].paper > 0 ))
+      {
+         VAR__819283[VAR__53647] += 8000;
+      }
+
+      if (( stu[VAR__53647].score1 > 85 ) && ( stu[VAR__53647].score2 > 80 ))
+      {
+         VAR__819283[VAR__53647] += 4000;
+      }
+
+      if ( stu[VAR__53647].score1 > 90 )
+      {
+         VAR__819283[VAR__53647] += 2000;
+      }
+
+      if (( stu[VAR__53647].score1 > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         VAR__819283[VAR__53647] += 1000;
+      }
+
+      if (( stu[VAR__53647].score2 > 80 ) && ( stu[VAR__53647].leader == 'Y' ))
+      {
+         VAR__819283[VAR__53647] += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MAX  = ( VAR__MAX >= VAR__819283[VAR__53647] ) ? ( VAR__MAX ) : ( VAR__819283[VAR__53647] );
+      VAR__SUM += VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__MAX )
+      {
+         printf("%s\n%d\n", stu[VAR__53647].name, VAR__819283[VAR__53647]);
+         break;
+      }
+   }
+
+   printf("%d", VAR__SUM);
+}

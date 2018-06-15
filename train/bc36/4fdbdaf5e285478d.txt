@@ -1,0 +1,66 @@
+int main()
+{
+   char  sex[41][7];
+   float height[41];
+   float VAR__19328[41];
+   float VAR__temp;
+   float VAR_9494;
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   countM = 0;
+   int   countF = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> sex[VAR__53647] ) >> height[VAR__53647];
+
+      if ( sex[VAR__53647][0] == 'm' )
+      {
+         countM++;
+         VAR__19328[countM] = height[VAR__53647];
+      }
+      else
+      {
+         countF++;
+         VAR__19328[( VAR_1238123 + 1 ) - countF] = height[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < countM; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= countM; VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__53647] > VAR__19328[VAR__21230] )
+         {
+            VAR_9494 = VAR__19328[VAR__53647];
+            VAR__19328[VAR__53647] = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230] = VAR_9494;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = countM + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__53647] < VAR__19328[VAR__21230] )
+         {
+            VAR__temp = VAR__19328[VAR__53647];
+            VAR__19328[VAR__53647] = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230] = VAR__temp;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ((( cout << fixed ) << setprecision(2)) << VAR__19328[VAR__53647] ) << " ";
+   }
+
+   ( cout << VAR__19328[VAR_1238123] ) << endl;
+   return 0;
+}

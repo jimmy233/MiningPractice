@@ -1,0 +1,68 @@
+const int maxn = 1200;
+int cmp(const void *e1, const void *e2)
+{
+   return ( *((int *)e1 )) - ( *((int *)e2 ));
+}
+
+
+int main(void)
+{
+   int VAR_1238123;
+   int VAR__819283[maxn];
+   int VAR__19328[maxn];
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), cmp);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), cmp);
+      int la;
+      int lb;
+      int ra;
+      int rb;
+      la = ( lb = 0 );
+      ra = ( rb = VAR_1238123 - 1 );
+      int ans = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__819283[ra] > VAR__19328[rb] )
+         {
+            ans++;
+            ra--, rb--;
+            continue;
+         }
+
+         if ( VAR__819283[la] > VAR__19328[lb] )
+         {
+            ans++;
+            la++, lb++;
+            continue;
+         }
+
+         if ( VAR__819283[la] < VAR__19328[rb] )
+         {
+            ans--;
+         }
+
+         la++, rb--;
+      }
+
+      ( cout << ( ans * 200 )) << endl;
+   }
+
+   return 0;
+}

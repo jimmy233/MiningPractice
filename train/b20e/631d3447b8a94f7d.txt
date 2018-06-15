@@ -1,0 +1,120 @@
+void order(int VAR_9494[1000], int *VAR_233)
+{
+   int VAR__21230 = 0;
+   int VAR_129012 = 0;
+
+   for ( VAR__21230 = ( *VAR_233 ) - 1; VAR__21230 >= 1; VAR__21230-- )
+   {
+      for ( VAR_129012 = 0; VAR_129012 <= ( VAR__21230 - 1 ); VAR_129012++ )
+      {
+         if ( VAR_9494[VAR_129012] < VAR_9494[VAR_129012 + 1] )
+         {
+            int VAR__TEMP = 0;
+            VAR__TEMP = VAR_9494[VAR_129012 + 1];
+            VAR_9494[VAR_129012 + 1] = VAR_9494[VAR_129012];
+            VAR_9494[VAR_129012]     = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__819283[1000];
+   int VAR__19328[1000];
+   int VAR_1238123 = 1;
+   int VAR__53647  = 0;
+   int win         = 0;
+   int lose        = 0;
+   int tie         = 0;
+   int money       = 0;
+   int t1          = 0;
+   int t2          = 0;
+   int q1          = 0;
+   int q2          = 0;
+
+   for ( ; ; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            scanf("%d", &VAR__819283[VAR__53647]);
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      order(VAR__819283, &VAR_1238123);
+      order(VAR__19328, &VAR_1238123);
+      t1    = 0;
+      t2    = VAR_1238123 - 1;
+      q1    = 0;
+      q2    = VAR_1238123 - 1;
+      win   = 0;
+      lose  = 0;
+      money = 0;
+      tie   = 0;
+      for ( ; ( t1 != t2 ) && ( q1 != q2 ); )
+      {
+         if ( VAR__819283[t1] > VAR__19328[q1] )
+         {
+            win++;
+            t1++;
+            q1++;
+            continue;
+         }
+         else
+         if ( VAR__819283[t2] > VAR__19328[q2] )
+         {
+            win++;
+            t2--;
+            q2--;
+            continue;
+         }
+         else
+         if ( VAR__819283[t2] == VAR__19328[q1] )
+         {
+            tie++;
+            t2--;
+            q1++;
+         }
+         else
+         if ( VAR__819283[t2] < VAR__19328[q1] )
+         {
+            lose++;
+            t2--;
+            q1++;
+         }
+      }
+
+      if ( VAR__819283[t1] == VAR__19328[q1] )
+      {
+         tie++;
+      }
+      else
+      if ( VAR__819283[t1] > VAR__19328[q1] )
+      {
+         win++;
+      }
+      else
+      {
+         lose++;
+      }
+
+
+      money = ( 200 * win ) - ( 200 * lose );
+      printf("%d\n", money);
+   }
+}

@@ -1,0 +1,46 @@
+void main()
+{
+   struct student
+   {
+      char           A_STRING[100];
+      struct student *before;
+      struct student *VAR__NEXT;
+   }
+   *VAR__HEAD;
+   struct student
+   {
+      char           A_STRING[100];
+      struct student *before;
+      struct student *VAR__NEXT;
+   }
+   *ANOTHER_POINTER;
+   struct student
+   {
+      char           A_STRING[100];
+      struct student *before;
+      struct student *VAR__NEXT;
+   }
+   *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER         = (struct student *)malloc(sizeof( struct student ));
+   ANOTHER_POINTER->before = NULL;
+   VAR__HEAD = ANOTHER_POINTER;
+
+   while ( strcmp(YET_ANOTHER_POINTER->A_STRING, "end") != 0 )
+   {
+      gets(ANOTHER_POINTER->A_STRING);
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER                = (struct student *)malloc(sizeof( struct student ));
+      ANOTHER_POINTER->before        = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   YET_ANOTHER_POINTER            = YET_ANOTHER_POINTER->before;
+   do
+   {
+      printf("%s\n", YET_ANOTHER_POINTER->A_STRING);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->before;
+   } while ( YET_ANOTHER_POINTER->before != NULL );
+   printf("%s\n", YET_ANOTHER_POINTER->A_STRING);
+}

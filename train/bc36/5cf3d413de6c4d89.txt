@@ -1,0 +1,45 @@
+int main()
+{
+   int   VAR_1238123;
+   int   male   = 0;
+   int   female = 0;
+   char  sex[41][10];
+   float high[41];
+   float male_high[41];
+   float female_high[41];
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", sex[VAR__53647], &high[VAR__53647]);
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( sex[VAR__53647][0] == 'm' )
+      {
+         male++;
+         male_high[male] = high[VAR__53647];
+      }
+      else
+      {
+         female++;
+         female_high[female] = high[VAR__53647];
+      }
+   }
+
+   sort(male_high + 1, ( male_high + male ) + 1);
+   sort(female_high + 1, ( female_high + female ) + 1);
+   for ( int VAR__53647 = 1; VAR__53647 <= male; VAR__53647++ )
+   {
+      printf("%.2f ", male_high[VAR__53647]);
+   }
+
+   for ( int VAR__53647 = female; VAR__53647 >= 2; VAR__53647-- )
+   {
+      printf("%.2f ", female_high[VAR__53647]);
+   }
+
+   printf("%.2f\n", female_high[1]);
+   return 0;
+}

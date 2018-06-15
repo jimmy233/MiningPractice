@@ -1,0 +1,46 @@
+double FindFBN(int nplus2, int *FBNplus2)
+{
+   int    VAR__53647 = 0;
+   double dSum       = 0.0;
+
+   FBNplus2[0] = 1;
+   FBNplus2[1] = 1;
+   for ( VAR__53647 = 2; VAR__53647 < nplus2; VAR__53647++ )
+   {
+      FBNplus2[VAR__53647] = FBNplus2[VAR__53647 - 1] + FBNplus2[VAR__53647 - 2];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( nplus2 - 2 ); VAR__53647++ )
+   {
+      dSum += ((double)FBNplus2[VAR__53647 + 2] ) / ((double)FBNplus2[VAR__53647 + 1] );
+   }
+
+   printf("%.3lf\n", dSum);
+   return dSum;
+}
+
+
+int main(int argc, char *argv[])
+{
+   int    VAR__1238129;
+   int    VAR__53647;
+   int    *FBNum;
+   int    **FBArray;
+   double dSum;
+
+   scanf("%d", &VAR__1238129);
+   FBNum   = (int *)malloc(VAR__1238129 * ( sizeof( int )));
+   FBArray = (int **)malloc(VAR__1238129 * ( sizeof( int * )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d", &FBNum[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      FBArray[VAR__53647] = (int *)calloc(FBNum[VAR__53647] + 2, sizeof( int ));
+      dSum = FindFBN(FBNum[VAR__53647] + 2, FBArray[VAR__53647]);
+   }
+
+   return 0;
+}

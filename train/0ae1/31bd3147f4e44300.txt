@@ -1,0 +1,34 @@
+int main()
+{
+   int  day;
+   int  month;
+   int  year;
+   int  VAR__53647;
+   int  days = 0;
+   int  VAR_9494;
+   int  VAR__8444594;
+   int  mont[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   char *week[7] = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+
+   scanf("%d %d %d", &year, &month, &day);
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      mont[2] = 29;
+   }
+   else
+   {
+      mont[2] = 28;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < month; VAR__53647++ )
+   {
+      days += mont[VAR__53647];
+   }
+
+   days        += day;
+   VAR_9494     = (((( year - 1 ) + ((int)(( year - 1 ) / 4 ))) - ((int)(( year - 1 ) / 100 ))) + ((int)(( year - 1 ) / 400 ))) + days;
+   VAR__8444594 = VAR_9494 % 7;
+   printf("%s", week[VAR__8444594]);
+   return 0;
+}

@@ -1,0 +1,72 @@
+int main()
+{
+   int matrix[6][6];
+   int point[6][6] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__MIN;
+   int VAR__MAX;
+   int max_row  = 0;
+   int min_col  = 0;
+   int point_ok = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 5; VAR__21230++ )
+      {
+         cin >> matrix[VAR__53647][VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+   {
+      VAR__MAX = matrix[VAR__53647][1];
+      max_row  = 1;
+      for ( VAR__21230 = 2; VAR__21230 <= 5; VAR__21230++ )
+      {
+         if ( matrix[VAR__53647][VAR__21230] > VAR__MAX )
+         {
+            max_row  = VAR__21230;
+            VAR__MAX = matrix[VAR__53647][VAR__21230];
+         }
+      }
+
+      point[VAR__53647][max_row]++;
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= 5; VAR__21230++ )
+   {
+      VAR__MIN = matrix[1][VAR__21230];
+      min_col  = 1;
+      for ( VAR__53647 = 2; VAR__53647 <= 5; VAR__53647++ )
+      {
+         if ( matrix[VAR__53647][VAR__21230] < VAR__MIN )
+         {
+            min_col  = VAR__53647;
+            VAR__MIN = matrix[VAR__53647][VAR__21230];
+         }
+      }
+
+      point[min_col][VAR__21230]++;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 5; VAR__21230++ )
+      {
+         if ( point[VAR__53647][VAR__21230] == 2 )
+         {
+            ((((( cout << VAR__53647 ) << " " ) << VAR__21230 ) << " " ) << matrix[VAR__53647][VAR__21230] ) << endl;
+            point_ok++;
+         }
+      }
+   }
+
+   if ( !point_ok )
+   {
+      ( cout << "not found" ) << endl;
+   }
+
+   return 0;
+}

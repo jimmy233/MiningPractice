@@ -1,0 +1,44 @@
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int total[3];
+   int VAR__1238129[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__21230       = 2;
+
+   while ( VAR__21230-- )
+   {
+      (( cin >> year ) >> month ) >> day;
+      total[VAR__21230] = 0;
+      for ( int VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            total[VAR__21230] += 366;
+         }
+         else
+         {
+            total[VAR__21230] += 365;
+         }
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+      {
+         total[VAR__21230] += VAR__1238129[VAR__53647];
+      }
+
+      total[VAR__21230] += day;
+
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         if ( month > 2 )
+         {
+            total[VAR__21230]++;
+         }
+      }
+   }
+
+   ( cout << ( total[0] - total[1] )) << endl;
+   return 0;
+}

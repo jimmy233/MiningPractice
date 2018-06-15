@@ -1,0 +1,84 @@
+int main()
+{
+   struct book
+   {
+      char VAR__9290[27];
+      int  no;
+   };
+   struct book VAR__819283[1000];
+   int         VAR__1238129;
+   int         VAR__53647;
+   int         VAR__7685;
+   int         VAR_233;
+   int         VAR__21230;
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d%s", &VAR__819283[VAR__53647].no, VAR__819283[VAR__53647].VAR__9290);
+   }
+
+   int memo[26] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647].VAR__9290[VAR__21230] == '\0' )
+         {
+            break;
+         }
+
+         VAR__7685 = VAR__819283[VAR__53647].VAR__9290[VAR__21230] - 65;
+         memo[VAR__7685]++;
+      }
+   }
+
+   VAR__7685 = 0;
+   VAR_233   = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( memo[VAR__53647] > VAR__7685 )
+      {
+         VAR__7685 = memo[VAR__53647];
+         VAR_233   = VAR__53647;
+      }
+   }
+
+   printf("%c\n", VAR_233 + 65);
+   int VAR_1238123 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647].VAR__9290[VAR__21230] == '\0' )
+         {
+            break;
+         }
+
+         if ( VAR__819283[VAR__53647].VAR__9290[VAR__21230] == ( VAR_233 + 65 ))
+         {
+            VAR_1238123++;
+         }
+      }
+   }
+
+   printf("%d\n", VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647].VAR__9290[VAR__21230] == '\0' )
+         {
+            break;
+         }
+
+         if ( VAR__819283[VAR__53647].VAR__9290[VAR__21230] == ( VAR_233 + 65 ))
+         {
+            printf("%d\n", VAR__819283[VAR__53647].no);
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

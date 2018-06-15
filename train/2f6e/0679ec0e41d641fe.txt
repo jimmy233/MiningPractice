@@ -1,0 +1,80 @@
+int main()
+{
+   void row(char VAR__7685[], int VAR__NUM[], int VAR__1111, char VAR__819283, char VAR__19328);
+
+   char VAR__819283;
+   char VAR__19328;
+   int  VAR__1111;
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__temp;
+   int  VAR__53647;
+   int  VAR_666;
+   int  VAR__NUM[101] = { 0 };
+   char VAR__7685[101];
+   gets(VAR__7685);
+   VAR__1111   = strlen(VAR__7685);
+   VAR__819283 = VAR__7685[0];
+   VAR__19328  = VAR__7685[VAR__1111 - 1];
+   row(VAR__7685, VAR__NUM, VAR__1111, VAR__819283, VAR__19328);
+   for ( VAR__1238129 = 0; VAR__1238129 < ( VAR__1111 - 1 ); VAR__1238129 = VAR__1238129 + 2 )
+   {
+      for ( VAR_1238123 = 0; VAR_1238123 < (( VAR__1111 - 4 ) - VAR__1238129 ); VAR_1238123 = VAR_1238123 + 2 )
+      {
+         if ( VAR__NUM[VAR_1238123 + 1] > VAR__NUM[VAR_1238123 + 3] )
+         {
+            VAR__temp = VAR__NUM[VAR_1238123 + 1];
+            VAR__NUM[VAR_1238123 + 1] = VAR__NUM[VAR_1238123 + 3];
+            VAR__NUM[VAR_1238123 + 3] = VAR__temp;
+            VAR_666 = VAR__NUM[VAR_1238123];
+            VAR__NUM[VAR_1238123]     = VAR__NUM[VAR_1238123 + 2];
+            VAR__NUM[VAR_1238123 + 2] = VAR_666;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1111 - 1 ); VAR__53647 = VAR__53647 + 2 )
+   {
+      printf("%d %d\n", VAR__NUM[VAR__53647], VAR__NUM[VAR__53647 + 1]);
+   }
+}
+
+
+void row(char VAR__7685[], int VAR__NUM[], int VAR__1111, char VAR__819283, char VAR__19328)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp  = 0;
+   int VAR__COUNT = 0;
+   int VAR_FLAG   = 0;
+
+   for ( ; VAR__COUNT < ( VAR__1111 / 2 ); )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+      {
+         if ( VAR__7685[VAR__53647] != VAR__819283 )
+         {
+            continue;
+         }
+
+         for ( VAR__21230 = VAR__53647 + 1, VAR_FLAG = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+         {
+            if ( VAR__7685[VAR__21230] == VAR__819283 )
+            {
+               VAR_FLAG++;
+            }
+
+            if (( VAR__7685[VAR__21230] == VAR__19328 ) && ( VAR_FLAG == 0 ))
+            {
+               VAR__NUM[VAR__temp]     = VAR__53647;
+               VAR__NUM[VAR__temp + 1] = VAR__21230;
+               VAR__7685[VAR__53647]   = 32;
+               VAR__7685[VAR__21230]   = 32;
+               VAR__COUNT++;
+               VAR__temp = VAR__temp + 2;
+               break;
+            }
+         }
+      }
+   }
+}

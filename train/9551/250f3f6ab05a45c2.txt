@@ -1,0 +1,79 @@
+struct pa
+{
+   char id[10];
+   int  age;
+}
+patient[100];
+struct pa
+{
+   char id[10];
+   int  age;
+}
+patient2[100];
+void main()
+{
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__21230;
+   int  VAR__TEMP;
+   char id2[10];
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d\n", patient[VAR__53647].id, &patient[VAR__53647].age);
+   }
+
+   for ( VAR__53647 = 0, VAR__21230 = 0; VAR__53647 < VAR_1238123; )
+   {
+      if ( patient[VAR__53647].age >= 60 )
+      {
+         strcpy(patient2[VAR__21230].id, patient[VAR__53647].id);
+         patient2[VAR__21230].age = patient[VAR__53647].age;
+         VAR__21230++;
+         for ( VAR__8444594 = VAR__53647; VAR__8444594 < ( VAR_1238123 - 1 ); VAR__8444594++ )
+         {
+            strcpy(patient[VAR__8444594].id, patient[VAR__8444594 + 1].id);
+            patient[VAR__8444594].age = patient[VAR__8444594 + 1].age;
+         }
+
+         VAR_1238123--;
+      }
+      else
+      {
+         VAR__53647++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR__53647; VAR__8444594++ )
+      {
+         if ( patient2[VAR__53647].age > patient2[VAR__8444594].age )
+         {
+            VAR__TEMP = patient2[VAR__53647].age;
+            strcpy(id2, patient2[VAR__53647].id);
+            for ( VAR__1238129 = VAR__53647; VAR__1238129 > VAR__8444594; VAR__1238129-- )
+            {
+               patient2[VAR__1238129].age = patient2[VAR__1238129 - 1].age;
+               strcpy(patient2[VAR__1238129].id, patient2[VAR__1238129 - 1].id);
+            }
+
+            patient2[VAR__8444594].age = VAR__TEMP;
+            strcpy(patient2[VAR__8444594].id, id2);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%s\n", patient2[VAR__53647].id);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", patient[VAR__53647].id);
+   }
+}

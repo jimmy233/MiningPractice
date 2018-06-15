@@ -1,0 +1,71 @@
+int shuzu1[100];
+int shuzu2[100];
+int n1;
+int n2;
+void scan()
+{
+   int VAR__53647;
+
+   scanf("%d%d", &n1, &n2);
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      scanf("%d", &shuzu1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      scanf("%d", &shuzu2[VAR__53647]);
+   }
+}
+
+
+void paixu(int shuzu[], int VAR_1238123)
+{
+   int VAR__MIN;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( shuzu[VAR__21230] < shuzu[VAR__MIN] )
+         {
+            VAR__MIN = VAR__21230;
+         }
+      }
+
+      VAR__TEMP         = shuzu[VAR__53647];
+      shuzu[VAR__53647] = shuzu[VAR__MIN];
+      shuzu[VAR__MIN]   = VAR__TEMP;
+   }
+}
+
+
+void hebing(int shuzu1[], int shuzu2[], int n1, int n2)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      printf("%d ", shuzu1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( n2 - 1 ); VAR__53647++ )
+   {
+      printf("%d ", shuzu2[VAR__53647]);
+   }
+
+   printf("%d", shuzu2[VAR__53647]);
+}
+
+
+void main()
+{
+   scan();
+   paixu(shuzu1, n1);
+   paixu(shuzu2, n2);
+   hebing(shuzu1, shuzu2, n1, n2);
+}

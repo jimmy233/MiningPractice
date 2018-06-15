@@ -1,0 +1,80 @@
+char VAR__819283[] = "end";
+struct student
+{
+   struct student *last;
+   char           VAR__NUM[50];
+   char           name[50];
+   char           sex;
+   int            age;
+   char           grade[50];
+   char           address[50];
+   struct student *VAR__NEXT;
+};
+struct student *Appendnewnode()
+{
+   struct student *VAR__HEAD = NULL;
+   struct student *newnode;
+   struct student *thisnode;
+   struct student *end;
+   int            VAR__53647 = 0;
+
+   do
+   {
+      newnode = (struct student *)malloc(sizeof( struct student ));
+
+      if ( newnode == NULL )
+      {
+         printf("Memory request failed!");
+         exit(-1);
+      }
+
+      scanf("%s", newnode->VAR__NUM);
+
+      if ( strcmp(newnode->VAR__NUM, VAR__819283) != 0 )
+      {
+         scanf("%s %c %d %s %s", newnode->name, &newnode->sex, &newnode->age, &newnode->grade, newnode->address);
+      }
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD     = newnode;
+         thisnode      = VAR__HEAD;
+         newnode->last = NULL;
+
+         if ( strcmp(newnode->VAR__NUM, VAR__819283) != 0 )
+         {
+            newnode->VAR__NEXT = NULL;
+         }
+
+         VAR__53647++;
+      }
+      else
+      {
+         thisnode->VAR__NEXT = newnode;
+         newnode->last       = thisnode;
+
+         if ( strcmp(newnode->VAR__NUM, VAR__819283) != 0 )
+         {
+            thisnode = newnode;
+         }
+      }
+   } while ( strcmp(newnode->VAR__NUM, VAR__819283) != 0 );
+   end = thisnode;
+   thisnode->VAR__NEXT = NULL;
+   return end;
+}
+
+
+void main()
+{
+   struct student *end;
+   struct student *VAR_233;
+
+   end = Appendnewnode();
+   for ( VAR_233 = end; VAR_233->last != NULL; VAR_233 = VAR_233->last )
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->grade, VAR_233->address);
+   }
+
+   printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->grade, VAR_233->address);
+}

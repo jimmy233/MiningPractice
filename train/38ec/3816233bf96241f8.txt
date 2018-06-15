@@ -1,0 +1,73 @@
+int dayofy(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 366;
+   }
+   else
+   {
+      return 365;
+   }
+}
+
+
+int dayofm(int day, int mon, int year)
+{
+   int VAR__53647;
+   int VAR__TEMP;
+   int VAR__SUM = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 < mon; VAR__53647++ )
+   {
+      if ( VAR__53647 == 2 )
+      {
+         if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+         {
+            VAR__TEMP = 29;
+         }
+         else
+         {
+            VAR__TEMP = 28;
+         }
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         VAR__TEMP = 30;
+      }
+      else
+      {
+         VAR__TEMP = 31;
+      }
+
+
+      VAR__SUM += VAR__TEMP;
+   }
+
+   return VAR__SUM + day;
+}
+
+
+int main()
+{
+   int syear;
+   int smon;
+   int sday;
+   int eyear;
+   int emon;
+   int eday;
+   int VAR__53647;
+   int VAR__21230;
+   int disyear = 0;
+   int disday  = 0;
+
+   ((((( cin >> syear ) >> smon ) >> sday ) >> eyear ) >> emon ) >> eday;
+   for ( VAR__53647 = syear; VAR__53647 < eyear; VAR__53647++ )
+   {
+      disyear += dayofy(VAR__53647);
+   }
+
+   disday = dayofm(eday, emon, eyear) - dayofm(sday, smon, syear);
+   ( cout << ( disyear + disday )) << endl;
+   return 0;
+}

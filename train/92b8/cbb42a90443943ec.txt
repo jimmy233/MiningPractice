@@ -1,0 +1,106 @@
+int getMin(int ai[], int ais[])
+{
+   int VAR__53647;
+   int VAR__MIN = 0;
+
+   for ( VAR__53647 = 1; ( VAR__53647 < MAX ) && ( ai[VAR__53647] != ( -1 )); VAR__53647++ )
+   {
+      if ( ai[VAR__53647] < ai[VAR__MIN] )
+      {
+         VAR__MIN = VAR__53647;
+      }
+   }
+
+   ais[VAR__MIN] = 0;
+   return VAR__MIN;
+}
+
+
+int getMax(int bi[])
+{
+   int VAR__53647;
+   int VAR__MAX = 0;
+
+   for ( VAR__53647 = 1; ( VAR__53647 < MAX ) && ( bi[VAR__53647] != ( -1 )); VAR__53647++ )
+   {
+      if ( bi[VAR__53647] > bi[VAR__MAX] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+   return VAR__MAX;
+}
+
+
+int hasEqual(int VAR__819283, int ai[], int ais[])
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < MAX; VAR__53647++ )
+   {
+      if (( ai[VAR__53647] <= VAR__819283 ) && ( ais[VAR__53647] == 1 ))
+      {
+         ais[VAR__53647] = 0;
+         return VAR__53647;
+      }
+   }
+
+   return -1;
+}
+
+
+int main()
+{
+   int ai[MAX];
+   int bi[MAX];
+   int aischeck[MAX];
+   int VAR_1238123 = 0;
+   int VAR__53647;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < MAX; VAR__53647++ )
+   {
+      ai[VAR__53647]       = -1;
+      bi[VAR__53647]       = -1;
+      aischeck[VAR__53647] = 1;
+   }
+
+   int mi;
+   int ma;
+   int VAR__MIN;
+   int VAR__MAX;
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 > MAX )
+   {
+      scanf("%d", &VAR_1238123);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &ai[VAR__53647], &bi[VAR__53647]);
+
+      while ( ai[VAR__53647] > bi[VAR__53647] )
+      {
+         scanf("%d%d", &ai[VAR__53647], &bi[VAR__53647]);
+      }
+   }
+
+   mi        = ( VAR__MIN = getMin(ai, aischeck));
+   ma        = ( VAR__MAX = getMax(bi));
+   VAR__TEMP = hasEqual(bi[VAR__MIN], ai, aischeck);
+
+   while ( VAR__TEMP != ( -1 ))
+   {
+      VAR__TEMP = hasEqual(bi[VAR__TEMP], ai, aischeck);
+
+      if ( bi[VAR__TEMP] == bi[ma] )
+      {
+         printf("\n%d %d", ai[mi], bi[ma]);
+         return 0;
+      }
+   }
+
+   printf("no\n");
+}

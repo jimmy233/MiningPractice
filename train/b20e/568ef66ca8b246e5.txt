@@ -1,0 +1,87 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   int *ANOTHER_POINTER     = (int *)VAR__819283;
+   int *YET_ANOTHER_POINTER = (int *)VAR__19328;
+
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283[1001];
+   int VAR__19328[1001];
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", VAR__819283 + VAR__53647);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", VAR__19328 + VAR__53647);
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( VAR__819283[0] ), cmp);
+      qsort(VAR__19328, VAR_1238123, sizeof( VAR__19328[0] ), cmp);
+      int VAR__SUM   = 0;
+      int VAR__53647 = 0;
+      int VAR__21230 = 0;
+      int VAR_233    = VAR_1238123 - 1;
+      int VAR_666    = VAR_1238123 - 1;
+
+      while (( VAR__53647 <= VAR_233 ) && ( VAR__21230 <= VAR_666 ))
+      {
+         if ( VAR__819283[VAR__53647] > VAR__19328[VAR__21230] )
+         {
+            VAR__53647++;
+            VAR__21230++;
+            VAR__SUM += 200;
+         }
+         else
+         if ( VAR__819283[VAR__53647] < VAR__19328[VAR__21230] )
+         {
+            VAR__21230++;
+            VAR_233--;
+            VAR__SUM -= 200;
+         }
+         else
+         {
+            if ( VAR__819283[VAR_233] > VAR__19328[VAR_666] )
+            {
+               VAR_233--;
+               VAR_666--;
+               VAR__SUM += 200;
+            }
+            else
+            {
+               if ( VAR__819283[VAR_233] < VAR__19328[VAR__21230] )
+               {
+                  VAR_233--;
+                  VAR__21230++;
+                  VAR__SUM -= 200;
+               }
+               else
+               {
+                  VAR_233--;
+                  VAR__21230++;
+               }
+            }
+         }
+      }
+
+      printf("%d\n", VAR__SUM);
+   }
+
+   return 0;
+}

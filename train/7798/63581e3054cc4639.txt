@@ -1,0 +1,80 @@
+struct chain
+{
+   int          VAR__NUM;
+   char         name[27];
+   struct chain *VAR__NEXT;
+};
+void main()
+{
+   int          VAR__819283[26] = { 0 };
+   int          VAR__1238129;
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__8444594;
+   int          VAR__MAX = 0;
+   int          VAR_1238123;
+   struct chain *ANOTHER_POINTER;
+   struct chain *YET_ANOTHER_POINTER;
+   struct chain *VAR__HEAD;
+
+   scanf("%d", &VAR__1238129);
+   YET_ANOTHER_POINTER = ( VAR__HEAD = (struct chain *)malloc(LEN));
+   for ( VAR__8444594 = 0; VAR__8444594 < 27; VAR__8444594++ )
+   {
+      VAR__HEAD->name[VAR__8444594] = 0;
+   }
+
+   scanf("%d%s", &VAR__HEAD->VAR__NUM, &VAR__HEAD->name);
+   for ( VAR__8444594 = 0; VAR__8444594 < strlen(VAR__HEAD->name); VAR__8444594++ )
+   {
+      if (( VAR__HEAD->name[VAR__8444594] >= 65 ) && ( VAR__HEAD->name[VAR__8444594] <= 90 ))
+      {
+         VAR__819283[VAR__HEAD->name[VAR__8444594] - 65]++;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR__1238129 - 1 ); VAR__21230++ )
+   {
+      ANOTHER_POINTER = (struct chain *)malloc(LEN);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      for ( VAR__8444594 = 0; VAR__8444594 < 27; VAR__8444594++ )
+      {
+         ANOTHER_POINTER->name[VAR__8444594] = 0;
+      }
+
+      scanf("%d%s", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->name);
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      for ( VAR__8444594 = 0; VAR__8444594 < strlen(ANOTHER_POINTER->name); VAR__8444594++ )
+      {
+         if (( ANOTHER_POINTER->name[VAR__8444594] >= 65 ) && ( ANOTHER_POINTER->name[VAR__8444594] <= 90 ))
+         {
+            VAR__819283[ANOTHER_POINTER->name[VAR__8444594] - 65]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__819283[VAR__53647] )
+      {
+         VAR__MAX    = VAR__819283[VAR__53647];
+         VAR_1238123 = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", VAR_1238123 + 65, VAR__MAX);
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         if ( ANOTHER_POINTER->name[VAR__21230] == ( VAR_1238123 + 65 ))
+         {
+            printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+            break;
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

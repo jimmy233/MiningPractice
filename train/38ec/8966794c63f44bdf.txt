@@ -1,0 +1,89 @@
+int main()
+{
+   int sY;
+   int sM;
+   int sD;
+   int eY;
+   int eM;
+   int eD;
+   int month1[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int month2[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int pD         = 0;
+   int spD        = 0;
+   int epD        = 0;
+   int ypD        = 0;
+   int VAR__53647;
+
+   ((((( cin >> sY ) >> sM ) >> sD ) >> eY ) >> eM ) >> eD;
+
+   if (((( sY % 4 ) == 0 ) && (( sY % 100 ) != 0 )) || (( sY % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < sM; VAR__53647++ )
+      {
+         spD += month2[VAR__53647 - 1];
+      }
+
+      spD += sD;
+      spD  = 366 - spD;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < sM; VAR__53647++ )
+      {
+         spD += month1[VAR__53647 - 1];
+      }
+
+      spD += sD;
+      spD  = 365 - spD;
+   }
+
+   if (((( eY % 4 ) == 0 ) && (( eY % 100 ) != 0 )) || (( eY % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < eM; VAR__53647++ )
+      {
+         epD += month2[VAR__53647 - 1];
+      }
+
+      epD += eD;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < eM; VAR__53647++ )
+      {
+         epD += month1[VAR__53647 - 1];
+      }
+
+      epD += eD;
+   }
+
+   if ( sY == eY )
+   {
+      if (((( sY % 4 ) == 0 ) && (( sY % 100 ) != 0 )) || (( sY % 400 ) == 0 ))
+      {
+         pD = ( spD + epD ) - 366;
+      }
+      else
+      {
+         pD = ( spD + epD ) - 365;
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = sY + 1; VAR__53647 < eY; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            ypD += 366;
+         }
+         else
+         {
+            ypD += 365;
+         }
+      }
+
+      pD = ( spD + epD ) + ypD;
+   }
+
+   ( cout << pD ) << endl;
+   return 0;
+}

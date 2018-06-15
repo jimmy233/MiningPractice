@@ -1,0 +1,82 @@
+struct N
+{
+   char     VAR_21983012[50];
+   int      VAR_1238123;
+   struct N *VAR__NEXT;
+};
+int main()
+{
+   struct N *VAR_233;
+   struct N *VAR_666;
+   struct N *VAR__HEAD;
+   int      VAR_1238123;
+   int      VAR__12302;
+   int      VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct N *)malloc(sizeof( struct N ));
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = VAR_233;
+         VAR_666   = VAR_233;
+      }
+      else
+      {
+         if ( VAR__53647 != VAR_1238123 )
+         {
+            VAR_666->VAR__NEXT = VAR_233;
+            VAR_666            = VAR_233;
+         }
+         else
+         {
+            VAR_666->VAR__NEXT = VAR_233;
+            VAR_233->VAR__NEXT = NULL;
+         }
+      }
+   }
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", VAR_233->VAR_21983012);
+      VAR_233->VAR_1238123 = strlen(VAR_233->VAR_21983012) + 1;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR__12302 = -1;
+   VAR_233    = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; )
+   {
+      if ( VAR__12302 == ( -1 ))
+      {
+         printf("%s", VAR_233->VAR_21983012);
+         VAR__53647++;
+         VAR__12302 = VAR__12302 + VAR_233->VAR_1238123;
+         VAR_233    = VAR_233->VAR__NEXT;
+      }
+
+      if ((( VAR__12302 + VAR_233->VAR_1238123 ) <= 80 ) && ( VAR__12302 != ( -1 )))
+      {
+         printf(" %s", VAR_233->VAR_21983012);
+         VAR__53647++;
+         VAR__12302 = VAR__12302 + VAR_233->VAR_1238123;
+         VAR_233    = VAR_233->VAR__NEXT;
+
+         if ( VAR_233 == NULL )
+         {
+            break;
+         }
+      }
+
+      if (( VAR__12302 + VAR_233->VAR_1238123 ) > 80 )
+      {
+         printf("\n");
+         VAR__12302 = -1;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,48 @@
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int LEN_OF_STH = 0;
+
+   ((((( cin >> sy ) >> sm ) >> sd ) >> ey ) >> em ) >> ed;
+   int VAR__53647;
+   int month[2][13] = { { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+   int run          = 0;
+
+   if ( sy != ey )
+   {
+      run = (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 )) ? ( 1 ) : ( 0 );
+      for ( VAR__53647 = sm; VAR__53647 <= 12; VAR__53647++ )
+      {
+         LEN_OF_STH += month[run][VAR__53647];
+      }
+
+      for ( VAR__53647 = sy + 1; VAR__53647 < ey; VAR__53647++ )
+      {
+         run         = (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 )) ? ( 1 ) : ( 0 );
+         LEN_OF_STH += 365 + run;
+      }
+
+      run = (((( ey % 4 ) == 0 ) && (( ey % 100 ) != 0 )) || (( ey % 400 ) == 0 )) ? ( 1 ) : ( 0 );
+      for ( VAR__53647 = 1; VAR__53647 < em; VAR__53647++ )
+      {
+         LEN_OF_STH += month[run][VAR__53647];
+      }
+   }
+   else
+   {
+      run = (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 )) ? ( 1 ) : ( 0 );
+      for ( VAR__53647 = sm; VAR__53647 < em; VAR__53647++ )
+      {
+         LEN_OF_STH += month[run][VAR__53647];
+      }
+   }
+
+   LEN_OF_STH = ( LEN_OF_STH - sd ) + ed;
+   ( cout << LEN_OF_STH ) << endl;
+   return 0;
+}

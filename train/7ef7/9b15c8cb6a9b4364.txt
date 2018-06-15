@@ -1,0 +1,104 @@
+int VAR_1238123;
+int board[100][100];
+void Subduction(int);
+
+int VAR__SUM;
+int main()
+{
+   int VAR__53647;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      int VAR__21230;
+      int VAR__8444594;
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 <= ( VAR_1238123 - 1 ); VAR__8444594++ )
+         {
+            cin >> board[VAR__21230][VAR__8444594];
+         }
+      }
+
+      Subduction(VAR_1238123);
+   }
+
+   return 0;
+}
+
+
+void Subduction(int VAR__1238129)
+{
+   if ( VAR__1238129 == 1 )
+   {
+      ( cout << VAR__SUM ) << endl;
+   }
+   else
+   {
+      int rowmin[100];
+      int colmin[100];
+      int VAR_233;
+      int VAR_666;
+      for ( VAR_233 = 0; VAR_233 <= ( VAR__1238129 - 1 ); VAR_233++ )
+      {
+         rowmin[VAR_233] = board[VAR_233][0];
+         for ( VAR_666 = 0; VAR_666 <= ( VAR__1238129 - 1 ); VAR_666++ )
+         {
+            if ( board[VAR_233][VAR_666] < rowmin[VAR_233] )
+            {
+               rowmin[VAR_233] = board[VAR_233][VAR_666];
+            }
+         }
+      }
+
+      for ( VAR_233 = 0; VAR_233 <= ( VAR__1238129 - 1 ); VAR_233++ )
+      {
+         for ( VAR_666 = 0; VAR_666 <= ( VAR__1238129 - 1 ); VAR_666++ )
+         {
+            board[VAR_233][VAR_666] -= rowmin[VAR_233];
+         }
+      }
+
+      for ( VAR_666 = 0; VAR_666 <= ( VAR__1238129 - 1 ); VAR_666++ )
+      {
+         colmin[VAR_666] = board[0][VAR_666];
+         for ( VAR_233 = 0; VAR_233 <= ( VAR__1238129 - 1 ); VAR_233++ )
+         {
+            if ( board[VAR_233][VAR_666] < colmin[VAR_666] )
+            {
+               colmin[VAR_666] = board[VAR_233][VAR_666];
+            }
+         }
+      }
+
+      for ( VAR_666 = 0; VAR_666 <= ( VAR__1238129 - 1 ); VAR_666++ )
+      {
+         for ( VAR_233 = 0; VAR_233 <= ( VAR__1238129 - 1 ); VAR_233++ )
+         {
+            board[VAR_233][VAR_666] -= colmin[VAR_666];
+         }
+      }
+
+      VAR__SUM += board[1][1];
+      for ( VAR_666 = 1; VAR_666 <= ( VAR__1238129 - 2 ); VAR_666++ )
+      {
+         board[0][VAR_666] = board[0][VAR_666 + 1];
+      }
+
+      for ( VAR_233 = 1; VAR_233 <= ( VAR__1238129 - 2 ); VAR_233++ )
+      {
+         board[VAR_233][0] = board[VAR_233 + 1][0];
+      }
+
+      for ( VAR_233 = 1; VAR_233 <= ( VAR__1238129 - 2 ); VAR_233++ )
+      {
+         for ( VAR_666 = 1; VAR_666 <= ( VAR__1238129 - 2 ); VAR_666++ )
+         {
+            board[VAR_233][VAR_666] = board[VAR_233 + 1][VAR_666 + 1];
+         }
+      }
+
+      Subduction(VAR__1238129 - 1);
+   }
+}

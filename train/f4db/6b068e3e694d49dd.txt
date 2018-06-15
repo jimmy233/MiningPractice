@@ -1,0 +1,45 @@
+void main()
+{
+   int VAR__8444594;
+   int VAR__1238129;
+   int VAR_1238123;
+   int *VAR_666;
+
+   int (*VAR_233)[100];
+   int VAR_2890 = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1111;
+   int VAR__temp;
+   VAR_233 = ( int (*)[100] )malloc(( 100 * 100 ) * ( sizeof( int )));
+   VAR_666 = (int *)malloc(100 * ( sizeof( int )));
+   scanf("%d\n", &VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      scanf("%d %d", &VAR__1238129, &VAR_1238123);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         for ( VAR__1111 = 0; VAR__1111 < VAR_1238123; VAR__1111++ )
+         {
+            scanf("%d", ( *( VAR_233 + VAR__21230 )) + VAR__1111);
+         }
+      }
+
+      for ( VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+      {
+         *( VAR_666 + VAR__53647 ) = (( *( VAR_666 + VAR__53647 )) + ( *(( *VAR_233 ) + VAR__temp ))) + ( *(( *(( VAR_233 + VAR__1238129 ) - 1 )) + VAR__temp ));
+      }
+
+      for ( VAR__temp = 0; VAR__temp < VAR__1238129; VAR__temp++ )
+      {
+         *( VAR_666 + VAR__53647 ) = (( *( VAR_666 + VAR__53647 )) + ( *( *( VAR_233 + VAR__temp )))) + ( *((( *( VAR_233 + VAR__temp )) + VAR_1238123 ) - 1 ));
+      }
+
+      *( VAR_666 + VAR__53647 ) = (((( *( VAR_666 + VAR__53647 )) - ( *( *VAR_233 ))) - ( *((( *VAR_233 ) + VAR_1238123 ) - 1 ))) - ( *( *(( VAR_233 + VAR__1238129 ) - 1 )))) - ( *((( *(( VAR_233 + VAR__1238129 ) - 1 )) + VAR_1238123 ) - 1 ));
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%d\n", *( VAR_666 + VAR__53647 ));
+   }
+}

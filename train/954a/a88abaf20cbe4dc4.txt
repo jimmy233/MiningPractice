@@ -1,0 +1,121 @@
+struct student
+{
+   char name[20];
+   int  final;
+   int  cla;
+   char job;
+   char west;
+   int  essay;
+   int  bonus;
+};
+int sco1(struct student VAR__819283);
+int sco2(struct student VAR__819283);
+int sco3(struct student VAR__819283);
+int sco4(struct student VAR__819283);
+int sco5(struct student VAR__819283);
+void bubble(struct student *VAR_233, int VAR_1238123);
+
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            total    = 0;
+   struct student stu[101] = { 0, 0, 0, 0, 0, 0, 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].final, &stu[VAR__53647].cla, &stu[VAR__53647].job, &stu[VAR__53647].west, &stu[VAR__53647].essay);
+      stu[VAR__53647].bonus = ((( sco1(stu[VAR__53647]) + sco2(stu[VAR__53647])) + sco3(stu[VAR__53647])) + sco4(stu[VAR__53647])) + sco5(stu[VAR__53647]);
+      total = total + stu[VAR__53647].bonus;
+   }
+
+   bubble(stu, VAR_1238123);
+   printf("%s\n%d\n%d", stu[0].name, stu[0].bonus, total);
+}
+
+
+int sco1(struct student VAR__819283)
+{
+   if (( VAR__819283.final > 80 ) && ( VAR__819283.essay > 0 ))
+   {
+      return 8000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int sco2(struct student VAR__819283)
+{
+   if (( VAR__819283.final > 85 ) && ( VAR__819283.cla > 80 ))
+   {
+      return 4000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int sco3(struct student VAR__819283)
+{
+   if ( VAR__819283.final > 90 )
+   {
+      return 2000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int sco4(struct student VAR__819283)
+{
+   if (( VAR__819283.final > 85 ) && ( VAR__819283.west == 'Y' ))
+   {
+      return 1000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int sco5(struct student VAR__819283)
+{
+   if (( VAR__819283.cla > 80 ) && ( VAR__819283.job == 'Y' ))
+   {
+      return 850;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void bubble(struct student *VAR_233, int VAR_1238123)
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   struct student VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( VAR_233[VAR__21230].bonus < VAR_233[VAR__21230 + 1].bonus )
+         {
+            VAR__temp               = VAR_233[VAR__21230];
+            VAR_233[VAR__21230]     = VAR_233[VAR__21230 + 1];
+            VAR_233[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+}

@@ -1,0 +1,94 @@
+int Run(int);
+int DI(int, int);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__21230;
+   int VAR__1238129;
+   int year[200];
+   int month[200][2];
+   int VAR__819283[200];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+   {
+      scanf("%d %d %d", &year[VAR__1238129], &month[VAR__1238129][0], &month[VAR__1238129][1]);
+
+      if ((( DI(year[VAR__1238129], month[VAR__1238129][1]) - DI(year[VAR__1238129], month[VAR__1238129][0])) % 7 ) == 0 )
+      {
+         VAR__819283[VAR__1238129] = 1;
+      }
+      else
+      {
+         VAR__819283[VAR__1238129] = 0;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( VAR__819283[VAR__21230] == 1 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}
+
+
+int DI(int year, int month)
+{
+   int VAR__53647;
+
+   int Run(int);
+
+   int total = 1;
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         total += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         total += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ( Run(year))
+         {
+            total += 29;
+         }
+         else
+         {
+            total += 28;
+         }
+      }
+   }
+
+   return total;
+}
+
+
+int Run(int year)
+{
+   int result = 0;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      result = 1;
+   }
+   else
+   {
+      result = 0;
+   }
+
+   return result;
+}

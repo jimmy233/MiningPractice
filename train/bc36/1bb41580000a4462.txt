@@ -1,0 +1,69 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    numm = -1;
+   int    numf = -1;
+   double VAR__112390;
+   double VAR_2890[40];
+   double VAR__1238129[39] = { 0 };
+   double VAR__127322[39]  = { 39 };
+   char   sex[40][7];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", sex[VAR__53647], &VAR_2890[VAR__53647]);
+
+      if ( sex[VAR__53647][0] == 'm' )
+      {
+         numm++;
+         VAR__1238129[numm] = VAR_2890[VAR__53647];
+      }
+      else
+      {
+         numf++;
+         VAR__127322[numf] = VAR_2890[VAR__53647];
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= numm; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( numm - VAR__21230 ); VAR__53647++ )
+      {
+         if ( VAR__1238129[VAR__53647] > VAR__1238129[VAR__53647 + 1] )
+         {
+            VAR__112390 = VAR__1238129[VAR__53647];
+            VAR__1238129[VAR__53647]     = VAR__1238129[VAR__53647 + 1];
+            VAR__1238129[VAR__53647 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= numf; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( numf - VAR__21230 ); VAR__53647++ )
+      {
+         if ( VAR__127322[VAR__53647] < VAR__127322[VAR__53647 + 1] )
+         {
+            VAR__112390                 = VAR__127322[VAR__53647];
+            VAR__127322[VAR__53647]     = VAR__127322[VAR__53647 + 1];
+            VAR__127322[VAR__53647 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= numm; VAR__53647++ )
+   {
+      printf("%.2lf ", VAR__1238129[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < numf; VAR__53647++ )
+   {
+      printf("%.2lf ", VAR__127322[VAR__53647]);
+   }
+
+   printf("%.2lf", VAR__127322[numf]);
+   return 0;
+}

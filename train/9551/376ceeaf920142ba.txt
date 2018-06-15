@@ -1,0 +1,86 @@
+struct patient
+{
+   char           id[10];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+struct patient *creat(int VAR_1238123)
+{
+   struct patient *VAR__HEAD;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = (struct patient *)malloc(LEN_OF_STH);
+   scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   VAR__53647          = 1;
+   do
+   {
+      ANOTHER_POINTER = (struct patient *)malloc(LEN_OF_STH);
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+      VAR__53647++;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   } while ( VAR__53647 < VAR_1238123 );
+   return VAR__HEAD;
+}
+
+
+struct patient *tiao(struct patient *VAR__HEAD, int VAR_1238123)
+{
+   struct patient *ANOTHER_POINTER;
+   int            VAR__temp;
+   int            VAR__53647;
+   char           VAR_9494[10];
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+      do
+      {
+         if (( ANOTHER_POINTER->age < ANOTHER_POINTER->VAR__NEXT->age ) && ( ANOTHER_POINTER->VAR__NEXT->age >= 60 ))
+         {
+            VAR__temp                       = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age            = ANOTHER_POINTER->VAR__NEXT->age;
+            ANOTHER_POINTER->VAR__NEXT->age = VAR__temp;
+            strcpy(VAR_9494, ANOTHER_POINTER->id);
+            strcpy(ANOTHER_POINTER->id, ANOTHER_POINTER->VAR__NEXT->id);
+            strcpy(ANOTHER_POINTER->VAR__NEXT->id, VAR_9494);
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      } while ( ANOTHER_POINTER->VAR__NEXT );
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct patient *VAR__HEAD)
+{
+   struct patient *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   do
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 );
+}
+
+
+void main()
+{
+   struct patient *VAR__HEAD;
+   int            VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR__HEAD = tiao(VAR__HEAD, VAR_1238123);
+   print(VAR__HEAD);
+}

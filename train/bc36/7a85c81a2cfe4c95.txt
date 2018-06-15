@@ -1,0 +1,74 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    sum1 = 0;
+   int    sum2 = 0;
+   char   VAR__819283[40][7];
+   char   t1[7];
+   double sg[40];
+   double VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%lf", VAR__819283[VAR__53647], &sg[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(VAR__819283[VAR__53647], "male") == 0 )
+      {
+         sum1++;
+      }
+   }
+
+   sum2 = VAR_1238123 - sum1;
+   for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( strcmp(VAR__819283[VAR__53647], VAR__819283[VAR__53647 + 1]) <= 0 )
+         {
+            strcpy(t1, VAR__819283[VAR__53647]), strcpy(VAR__819283[VAR__53647], VAR__819283[VAR__53647 + 1]), strcpy(VAR__819283[VAR__53647 + 1], t1);
+            VAR__temp = sg[VAR__53647], sg[VAR__53647] = sg[VAR__53647 + 1], sg[VAR__53647 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < sum1; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( sum1 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( sg[VAR__53647] >= sg[VAR__53647 + 1] )
+         {
+            VAR__temp = sg[VAR__53647], sg[VAR__53647] = sg[VAR__53647 + 1], sg[VAR__53647 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < sum2; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( sum2 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( sg[sum1 + VAR__53647] <= sg[( sum1 + VAR__53647 ) + 1] )
+         {
+            VAR__temp = sg[sum1 + VAR__53647], sg[sum1 + VAR__53647] = sg[( sum1 + VAR__53647 ) + 1], sg[( sum1 + VAR__53647 ) + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 != 0 )
+      {
+         printf(" ");
+      }
+
+      printf("%.2lf", sg[VAR__53647]);
+   }
+
+   return 0;
+}

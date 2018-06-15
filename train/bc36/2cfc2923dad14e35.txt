@@ -1,0 +1,97 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR_233;
+   int    VAR__21230   = 0;
+   int    VAR__8444594 = 0;
+   double tempHeight;
+
+   cin >> VAR_1238123;
+   struct student
+   {
+      char   sex[7];
+      double height;
+   }
+          student[41];
+   int    VAR__COUNT       = 0;
+   double maleHeight[41]   = { 0 };
+   double femaleHeight[41] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> student[VAR__53647].sex ) >> student[VAR__53647].height;
+
+      if ( student[VAR__53647].sex[0] == 'm' )
+      {
+         VAR__COUNT++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( student[VAR__53647].sex[0] == 'm' )
+      {
+         maleHeight[VAR__53647] = student[VAR__53647].height;
+      }
+
+      if ( student[VAR__53647].sex[0] == 'f' )
+      {
+         femaleHeight[VAR__53647] = student[VAR__53647].height;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR_233 = 0; VAR_233 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR_233++ )
+      {
+         if ( maleHeight[VAR_233] > maleHeight[VAR_233 + 1] )
+         {
+            tempHeight              = maleHeight[VAR_233];
+            maleHeight[VAR_233]     = maleHeight[VAR_233 + 1];
+            maleHeight[VAR_233 + 1] = tempHeight;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR_233 = 0; VAR_233 <= (( VAR_1238123 - 1 ) - VAR__53647 ); VAR_233++ )
+      {
+         if ( femaleHeight[VAR_233] < femaleHeight[VAR_233 + 1] )
+         {
+            tempHeight                = femaleHeight[VAR_233];
+            femaleHeight[VAR_233]     = femaleHeight[VAR_233 + 1];
+            femaleHeight[VAR_233 + 1] = tempHeight;
+         }
+      }
+   }
+
+   cout << fixed;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( maleHeight[VAR__53647] != 0 )
+      {
+         VAR__21230 = VAR__53647;
+         ( cout << setprecision(2)) << maleHeight[VAR__21230];
+         break;
+      }
+   }
+
+   for ( VAR__53647 = VAR__21230 + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( maleHeight[VAR__53647] != 0 )
+      {
+         (( cout << setprecision(2)) << " " ) << maleHeight[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( femaleHeight[VAR__53647] != 0 )
+      {
+         (( cout << setprecision(2)) << " " ) << femaleHeight[VAR__53647];
+      }
+   }
+
+   return 0;
+}

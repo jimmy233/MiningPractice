@@ -1,0 +1,75 @@
+int main()
+{
+   char VAR_9494[100];
+   int  VAR__819283;
+   int  VAR__19328;
+
+   scanf("%d %s %d", &VAR__819283, &VAR_9494, &VAR__19328);
+   int  slen  = strlen(VAR_9494);
+   long indec = 0;
+   long tempdec;
+   int  VAR__53647;
+   int  VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 <= ( slen - 1 ); VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647] >= 48 ) && ( VAR_9494[VAR__53647] <= 57 ))
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] - 48;
+      }
+      else
+      if (( VAR_9494[VAR__53647] >= 65 ) && ( VAR_9494[VAR__53647] <= 90 ))
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] - 55;
+      }
+      else
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] - 87;
+      }
+
+
+      tempdec = 1;
+      for ( VAR__21230 = 1; VAR__21230 <= (( slen - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         tempdec = tempdec * VAR__819283;
+      }
+
+      indec = indec + ( tempdec * VAR_9494[VAR__53647] );
+   }
+
+   char res[100];
+   int  VAR__TEMP;
+   int  point = 0;
+
+   while ( indec >= VAR__19328 )
+   {
+      VAR__TEMP = indec % VAR__19328;
+      indec     = indec / VAR__19328;
+
+      if ( VAR__TEMP < 10 )
+      {
+         res[point] = VAR__TEMP + 48;
+      }
+      else
+      {
+         res[point] = VAR__TEMP + 55;
+      }
+
+      point++;
+   }
+
+   if ( indec < 10 )
+   {
+      res[point] = indec + 48;
+   }
+   else
+   {
+      res[point] = indec + 55;
+   }
+
+   for ( VAR__53647 = point; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", res[VAR__53647]);
+   }
+
+   scanf("%d", &VAR__53647);
+}

@@ -1,0 +1,61 @@
+int VAR__819283[50010];
+int VAR__19328[50010];
+int _ins(int VAR__TEMP, int VAR__21230)
+{
+   if ( VAR__819283[VAR__21230] > VAR__TEMP )
+   {
+      return -1;
+   }
+
+   return ( VAR__19328[VAR__21230] > VAR__TEMP ) ? ( VAR__19328[VAR__21230] ) : ( VAR__TEMP );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__112390;
+   int VAR__127322;
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d %d", &VAR__819283[VAR__53647], &VAR__19328[VAR__53647]);
+   }
+
+   for ( int VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] > VAR__819283[VAR__53647 + 1] )
+         {
+            VAR__112390 = VAR__819283[VAR__53647 + 1];
+            VAR__819283[VAR__53647 + 1] = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647]     = VAR__112390;
+            VAR__127322 = VAR__19328[VAR__53647 + 1];
+            VAR__19328[VAR__53647 + 1] = VAR__19328[VAR__53647];
+            VAR__19328[VAR__53647]     = VAR__127322;
+         }
+      }
+   }
+
+   int VAR__TEMP = VAR__19328[0];
+   for ( int VAR__21230 = 1; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      if (( VAR__TEMP = _ins(VAR__TEMP, VAR__21230)) == ( -1 ))
+      {
+         break;
+      }
+   }
+
+   if ( VAR__TEMP == ( -1 ))
+   {
+      printf("no\n");
+   }
+   else
+   {
+      printf("%d %d\n", VAR__819283[0], VAR__TEMP);
+   }
+
+   return 0;
+}

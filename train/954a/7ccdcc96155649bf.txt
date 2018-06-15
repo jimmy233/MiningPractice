@@ -1,0 +1,124 @@
+struct student
+{
+   char           name[20];
+   int            score1;
+   int            score2;
+   char           leader[2];
+   char           west[2];
+   int            paper;
+   int            money;
+   struct student *VAR__NEXT;
+};
+struct student *creat(int VAR_1238123)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+   VAR__HEAD       = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      scanf("%s%d%d%s%s%d", ANOTHER_POINTER->name, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2, &ANOTHER_POINTER->leader, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+      {
+         ANOTHER_POINTER->money = 0;
+
+         if (( ANOTHER_POINTER->score1 > 80 ) && ( ANOTHER_POINTER->paper != 0 ))
+         {
+            ANOTHER_POINTER->money = ANOTHER_POINTER->money + 8000;
+         }
+
+         if (( ANOTHER_POINTER->score1 > 85 ) && ( ANOTHER_POINTER->score2 > 80 ))
+         {
+            ANOTHER_POINTER->money = ANOTHER_POINTER->money + 4000;
+         }
+
+         if ( ANOTHER_POINTER->score1 > 90 )
+         {
+            ANOTHER_POINTER->money = ANOTHER_POINTER->money + 2000;
+         }
+
+         if (( ANOTHER_POINTER->score1 > 85 ) && ( strcmp(ANOTHER_POINTER->west, "Y") == 0 ))
+         {
+            ANOTHER_POINTER->money = ANOTHER_POINTER->money + 1000;
+         }
+
+         if (( ANOTHER_POINTER->score2 > 80 ) && ( strcmp(ANOTHER_POINTER->leader, "Y") == 0 ))
+         {
+            ANOTHER_POINTER->money = ANOTHER_POINTER->money + 850;
+         }
+      }
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *ANOTHER_POINTER;
+   int            VAR__MAX;
+   int            all = 0;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   VAR__MAX        = ANOTHER_POINTER->money;
+   do
+   {
+      if ( ANOTHER_POINTER->money > VAR__MAX )
+      {
+         VAR__MAX = ANOTHER_POINTER->money;
+      }
+
+      all             = all + ANOTHER_POINTER->money;
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER->VAR__NEXT != NULL );
+
+   if ( ANOTHER_POINTER->money > VAR__MAX )
+   {
+      VAR__MAX = ANOTHER_POINTER->money;
+   }
+
+   all             = all + ANOTHER_POINTER->money;
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( ; ANOTHER_POINTER->VAR__NEXT != NULL; )
+   {
+      if ( ANOTHER_POINTER->money == VAR__MAX )
+      {
+         printf("%s\n%d\n", ANOTHER_POINTER->name, ANOTHER_POINTER->money);
+         break;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   printf("%d", all);
+}
+
+
+void print1(struct student *VAR__HEAD)
+{
+   struct student *ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   do
+   {
+      printf("%s %d %d %s %s %d %d\n", ANOTHER_POINTER->name, ANOTHER_POINTER->score1, ANOTHER_POINTER->score2, ANOTHER_POINTER->leader, ANOTHER_POINTER->west, ANOTHER_POINTER->paper, ANOTHER_POINTER->money);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER != NULL );
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   struct student *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   print(VAR__HEAD);
+}

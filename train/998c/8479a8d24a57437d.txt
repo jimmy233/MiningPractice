@@ -1,0 +1,64 @@
+int main()
+{
+   unsigned str_1[250];
+   unsigned str_2[250];
+   char     str_a[251];
+   char     str_b[251];
+   int      len_a;
+   int      len_b;
+
+   cin.getline(str_a, 251);
+   cin.getline(str_b, 251);
+   len_a = strlen(str_a);
+   len_b = strlen(str_b);
+   memset(str_1, 0, sizeof( str_1 ));
+   memset(str_2, 0, sizeof( str_2 ));
+   int VAR__53647;
+   int VAR__21230 = 0;
+   for ( VAR__53647 = len_a - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      str_1[VAR__21230++] = str_a[VAR__53647] - '0';
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = len_b - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      str_2[VAR__21230++] = str_b[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 250; VAR__53647++ )
+   {
+      str_1[VAR__53647] += str_2[VAR__53647];
+
+      if ( str_1[VAR__53647] >= 10 )
+      {
+         str_1[VAR__53647 + 1]++;
+         str_1[VAR__53647] -= 10;
+      }
+   }
+
+   for ( VAR__53647 = 249; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( str_1[VAR__53647] != 0 )
+      {
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 == ( -1 ))
+   {
+      cout << 0;
+   }
+   else
+   {
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << str_1[VAR__53647];
+      }
+   }
+
+
+   cout << endl;
+   return 0;
+}

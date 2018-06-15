@@ -1,0 +1,75 @@
+struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+pt[50];
+struct data
+{
+   int          VAR__NUM;
+   struct point VAR__819283;
+   struct point VAR__19328;
+   double       distance;
+}
+dt[10000];
+struct data
+{
+   int          VAR__NUM;
+   struct point VAR__819283;
+   struct point VAR__19328;
+   double       distance;
+}
+VAR__TEMP;
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> pt[VAR__53647].VAR__7685;
+      cin >> pt[VAR__53647].VAR__3918907;
+      cin >> pt[VAR__53647].VAR__9290;
+   }
+
+   int VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dt[VAR__temp].VAR__NUM    = VAR__temp;
+         dt[VAR__temp].VAR__819283 = pt[VAR__53647];
+         dt[VAR__temp].VAR__19328  = pt[VAR__21230];
+         dt[VAR__temp].distance    = sqrt(((( pt[VAR__53647].VAR__7685 - pt[VAR__21230].VAR__7685 ) * ( pt[VAR__53647].VAR__7685 - pt[VAR__21230].VAR__7685 )) + (( pt[VAR__53647].VAR__3918907 - pt[VAR__21230].VAR__3918907 ) * ( pt[VAR__53647].VAR__3918907 - pt[VAR__21230].VAR__3918907 ))) + (( pt[VAR__53647].VAR__9290 - pt[VAR__21230].VAR__9290 ) * ( pt[VAR__53647].VAR__9290 - pt[VAR__21230].VAR__9290 )));
+         VAR__temp++;
+      }
+   }
+
+
+   int VAR__8444594;
+   VAR__8444594 = VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if (( dt[VAR__53647].distance < dt[VAR__21230].distance ) || (( dt[VAR__53647].distance == dt[VAR__21230].distance ) && ( dt[VAR__53647].VAR__NUM > dt[VAR__21230].VAR__NUM )))
+         {
+            VAR__TEMP      = dt[VAR__53647];
+            dt[VAR__53647] = dt[VAR__21230];
+            dt[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      (((((((((((( cout << "(" ) << dt[VAR__53647].VAR__819283.VAR__7685 ) << "," ) << dt[VAR__53647].VAR__819283.VAR__3918907 ) << "," ) << dt[VAR__53647].VAR__819283.VAR__9290 ) << ")-(" ) << dt[VAR__53647].VAR__19328.VAR__7685 ) << "," ) << dt[VAR__53647].VAR__19328.VAR__3918907 ) << "," ) << dt[VAR__53647].VAR__19328.VAR__9290 ) << ")=";
+      printf("%.2lf\n", dt[VAR__53647].distance);
+   }
+
+   return 0;
+}

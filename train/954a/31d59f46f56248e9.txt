@@ -1,0 +1,67 @@
+struct student
+{
+   char name[21];
+   int  qimo;
+   int  maji;
+   char ganbu;
+   char xibu;
+   int  lun;
+   int  money;
+}
+st[101];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int ans = 0;
+
+   memset(st, 0, sizeof( struct student ));
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", st[VAR__53647].name, &st[VAR__53647].qimo, &st[VAR__53647].maji, &st[VAR__53647].ganbu, &st[VAR__53647].xibu, &st[VAR__53647].lun);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( st[VAR__53647].qimo > 80 ) && ( st[VAR__53647].lun >= 1 ))
+      {
+         st[VAR__53647].money += 8000;
+      }
+
+      if (( st[VAR__53647].qimo > 85 ) && ( st[VAR__53647].maji > 80 ))
+      {
+         st[VAR__53647].money += 4000;
+      }
+
+      if ( st[VAR__53647].qimo > 90 )
+      {
+         st[VAR__53647].money += 2000;
+      }
+
+      if (( st[VAR__53647].qimo > 85 ) && ( st[VAR__53647].xibu == 'Y' ))
+      {
+         st[VAR__53647].money += 1000;
+      }
+
+      if (( st[VAR__53647].maji > 80 ) && ( st[VAR__53647].ganbu == 'Y' ))
+      {
+         st[VAR__53647].money += 850;
+      }
+   }
+
+   VAR__21230 = 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( st[VAR__21230].money < st[VAR__53647].money )
+      {
+         VAR__21230 = VAR__53647;
+      }
+
+      ans += st[VAR__53647].money;
+   }
+
+   printf("%s\n%d\n%d", st[VAR__21230].name, st[VAR__21230].money, ans);
+   return 0;
+}

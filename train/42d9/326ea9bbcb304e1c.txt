@@ -1,0 +1,75 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__819283;
+   int VAR__19328;
+   int VAR_SIZE[200][4];
+
+   scanf("%d", &VAR_1238123);
+   double VAR_129012[200][200];
+   double o[100000];
+   double VAR__112390;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR_SIZE[VAR__53647][1], &VAR_SIZE[VAR__53647][2], &VAR_SIZE[VAR__53647][3]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR_129012[VAR__53647][VAR__21230] = sqrt((double)(((( VAR_SIZE[VAR__53647][1] - VAR_SIZE[VAR__21230][1] ) * ( VAR_SIZE[VAR__53647][1] - VAR_SIZE[VAR__21230][1] )) + (( VAR_SIZE[VAR__53647][2] - VAR_SIZE[VAR__21230][2] ) * ( VAR_SIZE[VAR__53647][2] - VAR_SIZE[VAR__21230][2] ))) + (( VAR_SIZE[VAR__53647][3] - VAR_SIZE[VAR__21230][3] ) * ( VAR_SIZE[VAR__53647][3] - VAR_SIZE[VAR__21230][3] ))));
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         o[( VAR__53647 * VAR_1238123 ) + VAR__21230] = VAR_129012[VAR__53647][VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 * VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 * VAR_1238123 ); VAR__21230++ )
+      {
+         if ( o[VAR__21230] < o[VAR__21230 + 1] )
+         {
+            VAR__112390       = o[VAR__21230];
+            o[VAR__21230]     = o[VAR__21230 + 1];
+            o[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 * VAR_1238123 ); VAR__53647++ )
+   {
+      if ( o[VAR__53647] == o[VAR__53647 - 1] )
+      {
+         continue;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__19328 = VAR__21230 + 1; VAR__19328 < VAR_1238123; VAR__19328++ )
+         {
+            if ( o[VAR__53647 + 1] == VAR_129012[VAR__21230][VAR__19328] )
+            {
+               printf("(%d,%d,%d)", VAR_SIZE[VAR__21230][1], VAR_SIZE[VAR__21230][2], VAR_SIZE[VAR__21230][3]);
+               printf("%c", '-');
+               printf("(%d,%d,%d)", VAR_SIZE[VAR__19328][1], VAR_SIZE[VAR__19328][2], VAR_SIZE[VAR__19328][3]);
+               printf("%c", '=');
+               printf("%.2lf", VAR_129012[VAR__19328][VAR__21230]);
+               cout << endl;
+            }
+         }
+      }
+   }
+
+   return 0;
+}

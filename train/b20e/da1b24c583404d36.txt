@@ -1,0 +1,66 @@
+int mycmp(const void *e1, const void *e2)
+{
+   return ( *((int *)e1 )) - ( *((int *)e2 ));
+}
+
+
+int main()
+{
+   int tj[1002];
+   int qw[2002];
+   int *VAR_666;
+   int VAR_1238123;
+   int ans;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      ans = -99999;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tj[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qw[VAR__53647];
+      }
+
+      qsort(tj, VAR_1238123, sizeof( int ), mycmp);
+      qsort(qw, VAR_1238123, sizeof( int ), mycmp);
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         qw[VAR__53647 + VAR_1238123] = qw[VAR__53647];
+      }
+
+      for ( VAR_666 = qw; VAR_666 < ( qw + VAR_1238123 ); VAR_666++ )
+      {
+         int tmp = 0;
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            if ( tj[VAR__53647] > VAR_666[VAR__53647] )
+            {
+               tmp++;
+            }
+            else
+            if ( tj[VAR__53647] < VAR_666[VAR__53647] )
+            {
+               tmp--;
+            }
+         }
+
+         if ( tmp > ans )
+         {
+            ans = tmp;
+         }
+      }
+
+      ( cout << ( 200 * ans )) << endl;
+   }
+
+   return 0;
+}

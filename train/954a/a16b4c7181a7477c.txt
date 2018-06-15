@@ -1,0 +1,68 @@
+struct students
+{
+   char name[21];
+   int  S1;
+   int  S2;
+   char T1;
+   char T2;
+   int  P;
+   int  JJ;
+};
+int main()
+{
+   int             VAR_1238123;
+   int             VAR__53647;
+   int             VAR__MAX;
+   struct students stu[NUM];
+   long int        all;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("\n%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].S1, &stu[VAR__53647].S2, &stu[VAR__53647].T1, &stu[VAR__53647].T2, &stu[VAR__53647].P);
+   }
+
+   all = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].JJ = 0;
+
+      if (( stu[VAR__53647].S1 > 80 ) && ( stu[VAR__53647].P >= 1 ))
+      {
+         stu[VAR__53647].JJ += 8000;
+      }
+
+      if (( stu[VAR__53647].S1 > 85 ) && ( stu[VAR__53647].S2 > 80 ))
+      {
+         stu[VAR__53647].JJ += 4000;
+      }
+
+      if ( stu[VAR__53647].S1 > 90 )
+      {
+         stu[VAR__53647].JJ += 2000;
+      }
+
+      if (( stu[VAR__53647].S1 > 85 ) && ( stu[VAR__53647].T2 == 'Y' ))
+      {
+         stu[VAR__53647].JJ += 1000;
+      }
+
+      if (( stu[VAR__53647].S2 > 80 ) && ( stu[VAR__53647].T1 == 'Y' ))
+      {
+         stu[VAR__53647].JJ += 850;
+      }
+
+      all = all + stu[VAR__53647].JJ;
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].JJ > stu[VAR__MAX].JJ )
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%ld\n", stu[VAR__MAX].name, stu[VAR__MAX].JJ, all);
+}

@@ -1,0 +1,82 @@
+struct pati
+{
+   char ID[10];
+   int  age;
+}
+VAR_233[100];
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int YET_ANOTHER_POINTER[100] = { 0 };
+   int p3[100]    = { 0 };
+   int VAR__temp  = 0;
+   int VAR_129012 = 0;
+   int tem;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", VAR_233[VAR__53647].ID, &VAR_233[VAR__53647].age);
+
+      if ( VAR_233[VAR__53647].age >= 60 )
+      {
+         YET_ANOTHER_POINTER[VAR__temp] = VAR_233[VAR__53647].age;
+         VAR__temp++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__temp - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( YET_ANOTHER_POINTER[VAR__21230] < YET_ANOTHER_POINTER[VAR__21230 + 1] )
+         {
+            tem = YET_ANOTHER_POINTER[VAR__21230 + 1];
+            YET_ANOTHER_POINTER[VAR__21230 + 1] = YET_ANOTHER_POINTER[VAR__21230];
+            YET_ANOTHER_POINTER[VAR__21230]     = tem;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      if ( VAR__53647 > 0 )
+      {
+         if ( YET_ANOTHER_POINTER[VAR__53647] != YET_ANOTHER_POINTER[VAR__53647 - 1] )
+         {
+            p3[VAR_129012] = YET_ANOTHER_POINTER[VAR__53647];
+            VAR_129012++;
+         }
+      }
+      else
+      {
+         p3[VAR_129012] = YET_ANOTHER_POINTER[VAR__53647];
+         VAR_129012++;
+      }
+   }
+
+   VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR_233[VAR__21230].age == p3[VAR__temp] )
+         {
+            printf("%s\n", VAR_233[VAR__21230].ID);
+         }
+      }
+
+      VAR__temp++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_233[VAR__53647].age < 60 )
+      {
+         printf("%s\n", VAR_233[VAR__53647].ID);
+      }
+   }
+}

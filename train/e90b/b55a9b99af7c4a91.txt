@@ -1,0 +1,111 @@
+struct student
+{
+   char           id[20];
+   int            chinese;
+   int            math;
+   int            score;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *create(int VAR__1238129)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(length));
+   VAR__HEAD       = null;
+
+   while ( VAR_1238123 < VAR__1238129 )
+   {
+      scanf("%s %d %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(length);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = null;
+   return VAR__HEAD;
+}
+
+
+void plus(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != null )
+   {
+      do
+      {
+         VAR_233->score = VAR_233->chinese + VAR_233->math;
+         VAR_233        = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != null );
+   }
+}
+
+
+void pri_top3(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = ( p3 = VAR__HEAD ));
+   VAR_233         = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 != null )
+   {
+      if ( VAR_233->score > ANOTHER_POINTER->score )
+      {
+         p3 = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = VAR_233;
+      }
+      else
+      if (( VAR_233->score <= ANOTHER_POINTER->score ) && ( VAR_233->score > YET_ANOTHER_POINTER->score ))
+      {
+         p3 = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = VAR_233;
+      }
+      else
+      if (( VAR_233->score <= YET_ANOTHER_POINTER->score ) && ( VAR_233->score > p3->score ))
+      {
+         p3 = VAR_233;
+      }
+
+
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%s %d\n", ANOTHER_POINTER->id, ANOTHER_POINTER->score);
+   printf("%s %d\n", YET_ANOTHER_POINTER->id, YET_ANOTHER_POINTER->score);
+   printf("%s %d\n", p3->id, p3->score);
+}
+
+
+void main()
+{
+   int VAR__1238129;
+
+   scanf("%d", &VAR__1238129);
+   struct student *VAR_233 = create(VAR__1238129);
+   plus(VAR_233);
+   pri_top3(VAR_233);
+}

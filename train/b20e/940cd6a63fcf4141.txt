@@ -1,0 +1,123 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR_2890;
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   int VAR__TEMP;
+   int re;
+   int iLAST;
+   int jLAST;
+   int VAR__temp[1000];
+   int VAR_666[1000];
+
+   for ( VAR_2890 = 1; ; VAR_2890++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", VAR__temp + VAR__53647);
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            scanf("%d", VAR_666 + VAR__21230);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               if ( VAR__temp[VAR__21230] < VAR__temp[VAR__53647] )
+               {
+                  VAR__TEMP             = VAR__temp[VAR__21230];
+                  VAR__temp[VAR__21230] = VAR__temp[VAR__53647];
+                  VAR__temp[VAR__53647] = VAR__TEMP;
+               }
+            }
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               if ( VAR_666[VAR__21230] < VAR_666[VAR__53647] )
+               {
+                  VAR__TEMP           = VAR_666[VAR__21230];
+                  VAR_666[VAR__21230] = VAR_666[VAR__53647];
+                  VAR_666[VAR__53647] = VAR__TEMP;
+               }
+            }
+         }
+
+         re         = 0;
+         VAR__21230 = 0;
+         iLAST      = VAR_1238123 - 1;
+         jLAST      = VAR_1238123 - 1;
+         for ( VAR__53647 = 0; VAR__53647 <= iLAST; VAR__53647++ )
+         {
+            if ( VAR__temp[VAR__53647] > VAR_666[VAR__21230] )
+            {
+               re++;
+            }
+            else
+            if ( VAR__temp[VAR__53647] < VAR_666[VAR__21230] )
+            {
+               re--;
+               VAR__21230--;
+               jLAST--;
+            }
+            else
+            {
+               for ( ; ; jLAST-- )
+               {
+                  if ( VAR__temp[iLAST] > VAR_666[jLAST] )
+                  {
+                     re++;
+                     iLAST--;
+                  }
+                  else
+                  if ( VAR__temp[iLAST] < VAR_666[jLAST] )
+                  {
+                     re--;
+                     VAR__21230--;
+                     jLAST--;
+                     break;
+                  }
+                  else
+                  {
+                     if ( VAR__temp[VAR__53647] == VAR__temp[iLAST] )
+                     {
+                        break;
+                     }
+                     else
+                     {
+                        re--;
+                        VAR__21230--;
+                        jLAST--;
+                        break;
+                     }
+                  }
+               }
+
+               if (( VAR__temp[VAR__53647] == VAR__temp[iLAST] ) && ( VAR_666[VAR__21230] == VAR_666[jLAST] ))
+               {
+                  break;
+               }
+            }
+
+
+            VAR__21230++;
+         }
+
+         printf("%d\n", 200 * re);
+      }
+   }
+}

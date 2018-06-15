@@ -1,0 +1,117 @@
+int VAR__819283[100][100];
+int VAR__SUM = 0;
+int minr(int u, int VAR_1238123)
+{
+   int VAR__53647;
+   int minn = VAR__819283[u][1];
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( minn >= VAR__819283[u][VAR__53647] )
+      {
+         minn = VAR__819283[u][VAR__53647];
+      }
+   }
+
+   return minn;
+}
+
+
+int minc(int v, int VAR_1238123)
+{
+   int VAR__53647;
+   int minn = VAR__819283[1][v];
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( minn >= VAR__819283[VAR__53647][v] )
+      {
+         minn = VAR__819283[VAR__53647][v];
+      }
+   }
+
+   return minn;
+}
+
+
+void f2(int VAR_1238123)
+{
+   int u;
+   int v;
+
+   for ( u = 2; u <= ( VAR_1238123 - 1 ); u++ )
+   {
+      for ( v = 1; v <= VAR_1238123; v++ )
+      {
+         VAR__819283[u][v] = VAR__819283[u + 1][v];
+      }
+   }
+
+   for ( v = 2; v <= ( VAR_1238123 - 1 ); v++ )
+   {
+      for ( u = 1; u <= VAR_1238123; u++ )
+      {
+         VAR__819283[u][v] = VAR__819283[u][v + 1];
+      }
+   }
+}
+
+
+void f1(int VAR_1238123)
+{
+   if ( VAR_1238123 == 1 )
+   {
+      ( cout << VAR__SUM ) << endl;
+      return;
+   }
+
+   int u;
+   int v;
+   for ( u = 1; u <= VAR_1238123; u++ )
+   {
+      int VAR__TEMP = minr(u, VAR_1238123);
+      for ( v = 1; v <= VAR_1238123; v++ )
+      {
+         VAR__819283[u][v] = VAR__819283[u][v] - VAR__TEMP;
+      }
+   }
+
+   for ( v = 1; v <= VAR_1238123; v++ )
+   {
+      int VAR__TEMP = minc(v, VAR_1238123);
+      for ( u = 1; u <= VAR_1238123; u++ )
+      {
+         VAR__819283[u][v] = VAR__819283[u][v] - VAR__TEMP;
+      }
+   }
+
+   VAR__SUM = VAR__SUM + VAR__819283[2][2];
+   f2(VAR_1238123);
+   f1(VAR_1238123 - 1);
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int u;
+   int v;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      for ( u = 1; u <= VAR_1238123; u++ )
+      {
+         for ( v = 1; v <= VAR_1238123; v++ )
+         {
+            cin >> VAR__819283[u][v];
+         }
+      }
+
+      f1(VAR_1238123);
+   }
+
+   return 0;
+}

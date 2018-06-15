@@ -1,0 +1,55 @@
+static int days[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+static int isleapyear(int year)
+{
+   return ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 );
+}
+
+
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__21230;
+
+   for ( VAR__21230 = 0; VAR__21230 < 5; VAR__21230++ )
+   {
+      int VAR_1238123 = 0;
+      int VAR__53647;
+      scanf("%d %d %d", &year, &month, &day);
+
+      if (( isleapyear(year) && ( month == 2 )) && (( day < 1 ) || ( day > 29 )))
+      {
+         printf("Illegal input.\n");
+         return -1;
+      }
+
+      if (( isleapyear(year) && ( month != 2 )) && (( day < 1 ) || ( day > days[month] )))
+      {
+         printf("Illegal input.\n");
+         return -1;
+      }
+
+      if (( !isleapyear(year)) && (( day < 1 ) || ( day > days[month] )))
+      {
+         printf("Illegal input.\n");
+         return -1;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+      {
+         VAR_1238123 += days[VAR__53647];
+      }
+
+      VAR_1238123 += day;
+
+      if (( month > 2 ) && isleapyear(year))
+      {
+         VAR_1238123++;
+      }
+
+      printf("%d\n", VAR_1238123);
+   }
+
+   return 0;
+}

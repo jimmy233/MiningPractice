@@ -1,0 +1,79 @@
+int main()
+{
+   int      year1;
+   int      month1;
+   int      day1;
+   int      year2;
+   int      month2;
+   int      day2;
+   int      VAR__53647;
+   int      VAR__TEMP;
+   long int VAR_1238123 = 0;
+   int      A[12]       = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int      B[12]       = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d%d%d", &year1, &month1, &day1);
+   scanf("%d%d%d", &year2, &month2, &day2);
+   VAR__TEMP = year1;
+
+   while ( VAR__TEMP != year2 )
+   {
+      if (((( VAR__TEMP % 4 ) == 0 ) && (( VAR__TEMP % 100 ) != 0 )) || (( VAR__TEMP % 400 ) == 0 ))
+      {
+         VAR_1238123 = VAR_1238123 + 366;
+      }
+      else
+      {
+         VAR_1238123 = VAR_1238123 + 365;
+      }
+
+      VAR__TEMP += 1;
+   }
+
+   VAR__TEMP = 0;
+
+   if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( month1 - 1 ); VAR__53647++ )
+      {
+         VAR__TEMP = VAR__TEMP + B[VAR__53647];
+      }
+
+      VAR__TEMP = VAR__TEMP + day1;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( month1 - 1 ); VAR__53647++ )
+      {
+         VAR__TEMP = VAR__TEMP + A[VAR__53647];
+      }
+
+      VAR__TEMP = VAR__TEMP + day1;
+   }
+
+   VAR_1238123 = VAR_1238123 - VAR__TEMP;
+   VAR__TEMP   = 0;
+
+   if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( month2 - 1 ); VAR__53647++ )
+      {
+         VAR__TEMP = VAR__TEMP + B[VAR__53647];
+      }
+
+      VAR__TEMP = VAR__TEMP + day2;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( month2 - 1 ); VAR__53647++ )
+      {
+         VAR__TEMP = VAR__TEMP + A[VAR__53647];
+      }
+
+      VAR__TEMP = VAR__TEMP + day2;
+   }
+
+   VAR_1238123 = VAR_1238123 + VAR__TEMP;
+   printf("%ld\n", VAR_1238123);
+   return 0;
+}

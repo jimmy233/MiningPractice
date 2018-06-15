@@ -1,0 +1,109 @@
+int judge(int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 2; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__53647 == VAR_1238123 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int scan(int VAR_1238123)
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_129012;
+   int VAR_9494   = 1;
+   int VAR__temp  = 1;
+   int VAR__COUNT = 0;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      VAR__temp = 10 * VAR__temp;
+
+      if (( VAR_1238123 / VAR__temp ) == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 / 2 ); VAR__21230++ )
+   {
+      VAR__temp   = VAR__temp / 10;
+      VAR_9494    = VAR_9494 * 10;
+      VAR_129012  = VAR_9494 / 10;
+      VAR__819283 = ( VAR_1238123 / VAR__temp ) % 10;
+      VAR__19328  = ( VAR_1238123 % VAR_9494 ) / VAR_129012;
+
+      if ( VAR__819283 == VAR__19328 )
+      {
+         VAR__COUNT++;
+      }
+   }
+
+   if ( VAR__COUNT == (( VAR__53647 / 2 ) + 1 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__53647;
+   int VAR_233    = 0;
+   int VAR_666    = 0;
+   int VAR__COUNT = 0;
+
+   scanf("%d %d", &VAR__819283, &VAR__19328);
+   for ( VAR__53647 = VAR__819283; VAR__53647 <= VAR__19328; VAR__53647++ )
+   {
+      VAR_233 = judge(VAR__53647);
+      VAR_666 = scan(VAR__53647);
+
+      if ((( VAR_233 == 1 ) && ( VAR_666 == 1 )) && ( VAR__COUNT != 0 ))
+      {
+         VAR__COUNT++;
+         printf(",%d", VAR__53647);
+      }
+
+      if ((( VAR_233 == 1 ) && ( VAR_666 == 1 )) && ( VAR__COUNT == 0 ))
+      {
+         printf("%d", VAR__53647);
+         VAR__COUNT++;
+      }
+   }
+
+   if ( VAR__COUNT != 0 )
+   {
+      printf("\n");
+   }
+   else
+   {
+      printf("no\n");
+   }
+
+   return 0;
+}

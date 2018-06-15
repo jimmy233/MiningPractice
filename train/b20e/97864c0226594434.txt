@@ -1,0 +1,128 @@
+int ans = 0;
+int VAR_1238123;
+int horses1[1001];
+int horses2[1001];
+void cal()
+{
+   int pos;
+
+   if ( horses1[VAR_1238123 - 1] == ( -1 ))
+   {
+      return;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( horses1[VAR__53647] != ( -1 ))
+      {
+         pos = VAR__53647;
+         break;
+      }
+   }
+
+   if ( horses1[pos] > horses2[pos] )
+   {
+      ans         += 200;
+      horses1[pos] = -1;
+      horses2[pos] = -1;
+      cal();
+      return;
+   }
+
+   if ( horses1[pos] < horses2[pos] )
+   {
+      ans         -= 200;
+      horses1[pos] = -1;
+      for ( int VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+      {
+         horses2[VAR__53647] = horses2[VAR__53647 - 1];
+      }
+
+      horses2[0] = -1;
+      cal();
+      return;
+   }
+
+   if ( horses1[VAR_1238123 - 1] > horses2[VAR_1238123 - 1] )
+   {
+      ans += 200;
+      for ( int VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+      {
+         horses1[VAR__53647] = horses1[VAR__53647 - 1];
+      }
+
+      horses1[0] = -1;
+      for ( int VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+      {
+         horses2[VAR__53647] = horses2[VAR__53647 - 1];
+      }
+
+      horses2[0] = -1;
+      cal();
+      return;
+   }
+
+   if ( horses1[VAR_1238123 - 1] < horses2[VAR_1238123 - 1] )
+   {
+      ans         -= 200;
+      horses1[pos] = -1;
+      for ( int VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+      {
+         horses2[VAR__53647] = horses2[VAR__53647 - 1];
+      }
+
+      horses2[0] = -1;
+      cal();
+      return;
+   }
+
+   if ( horses1[VAR_1238123 - 1] == horses2[VAR_1238123 - 1] )
+   {
+      if ( horses1[pos] < horses2[VAR_1238123 - 1] )
+      {
+         ans -= 200;
+      }
+
+      horses1[pos] = -1;
+      for ( int VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+      {
+         horses2[VAR__53647] = horses2[VAR__53647 - 1];
+      }
+
+      horses2[0] = -1;
+      cal();
+      return;
+   }
+}
+
+
+int main()
+{
+   while ( 1 )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> horses1[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> horses2[VAR__53647];
+      }
+
+      sort(horses1, horses1 + VAR_1238123);
+      sort(horses2, horses2 + VAR_1238123);
+      cal();
+      ( cout << ans ) << endl;
+      ans = 0;
+   }
+
+   return 0;
+}

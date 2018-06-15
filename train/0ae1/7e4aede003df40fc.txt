@@ -1,0 +1,74 @@
+int main()
+{
+   long long year;
+   int       month;
+   int       day;
+   int       VAR__53647;
+   int       VAR__NUM;
+
+   (( cin >> year ) >> month ) >> day;
+   long long VAR__819283;
+   long long VAR__19328;
+   long long VAR__4857423;
+   VAR__819283  = ((long long)( year - 1 )) / 4;
+   VAR__19328   = ((long long)( year - 1 )) / 100;
+   VAR__4857423 = ((long long)( year - 1 )) / 400;
+   VAR__NUM     = ( VAR__819283 - VAR__19328 ) + VAR__4857423;
+   long long VAR__SUM;
+   VAR__SUM = (( year - 1 ) * 365 ) + VAR__NUM;
+   int imonth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if (( year % 4 ) == 0 )
+   {
+      if (( year % 100 ) != 0 )
+      {
+         imonth[1] = 29;
+      }
+
+      if (( year % 400 ) == 0 )
+      {
+         imonth[1] = 29;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + imonth[VAR__53647];
+   }
+
+   VAR__SUM = VAR__SUM + day;
+   long long week;
+   week = VAR__SUM % 7;
+   switch ( week )
+   {
+   case 0:
+      ( cout << "Sun." ) << endl;
+      break;
+
+   case 1:
+      ( cout << "Mon." ) << endl;
+      break;
+
+   case 2:
+      ( cout << "Tue." ) << endl;
+      break;
+
+   case 3:
+      ( cout << "Wed." ) << endl;
+      break;
+
+   case 4:
+      ( cout << "Thu." ) << endl;
+      break;
+
+   case 5:
+      ( cout << "Fri." ) << endl;
+      break;
+
+   case 6:
+      ( cout << "Sat." ) << endl;
+      break;
+   }
+
+   return 0;
+}

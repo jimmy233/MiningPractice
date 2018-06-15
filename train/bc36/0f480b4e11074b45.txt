@@ -1,0 +1,69 @@
+int nancom(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int nvcom(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int    nan[40]    = { 0 };
+   int    nv[40]     = { 0 };
+   double hai        = 0;
+   int    inthai     = 0;
+   char   tmp[8]     = "";
+   int    VAR__53647 = 0;
+   int    VAR__21230 = 0;
+   int    VAR__NUM   = 0;
+   int    nanNum     = 0;
+   int    nvNum      = 0;
+
+   scanf("%d", &VAR__NUM);
+
+   while ( VAR__53647 < VAR__NUM )
+   {
+      scanf("%s %lf", tmp, &hai);
+      inthai = hai * 1000;
+
+      if ( tmp[0] == 'm' )
+      {
+         nan[nanNum++] = inthai;
+      }
+      else
+      {
+         nv[nvNum++] = inthai;
+      }
+
+      VAR__53647++;
+   }
+
+   qsort(&nan[0], nanNum, sizeof( int ), nancom);
+   qsort(&nv[0], nvNum, sizeof( int ), nvcom);
+   for ( VAR__53647 = 0; VAR__53647 < nanNum; VAR__53647++ )
+   {
+      hai = ((double)nan[VAR__53647] ) / 1000;
+      printf("%.2f ", hai);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nvNum; VAR__53647++ )
+   {
+      hai = ((double)nv[VAR__53647] ) / 1000;
+
+      if ( VAR__53647 == 0 )
+      {
+         printf("%.2f", hai);
+      }
+      else
+      {
+         printf(" %.2f", hai);
+      }
+   }
+
+   printf("\n");
+   return 0;
+}

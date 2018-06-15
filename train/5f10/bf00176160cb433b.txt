@@ -1,0 +1,97 @@
+int VAR_1238123;
+int VAR__NUM[200] = { 0 };
+void search(char VAR_9494[200][5], int VAR__21230)
+{
+   extern int VAR_1238123;
+   extern int VAR__NUM[200];
+   int        VAR__COUNT = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__21230][0] == VAR_9494[VAR__53647][0] )
+      {
+         VAR__COUNT = 1;
+         for ( int VAR__7685 = 1; VAR__7685 < VAR_1238123; VAR__7685++ )
+         {
+            if ( VAR_9494[VAR__21230][VAR__7685] != VAR_9494[VAR__53647][VAR__7685] )
+            {
+               VAR__COUNT = 0;
+            }
+         }
+
+         if ( VAR__COUNT == 0 )
+         {
+            continue;
+         }
+         else
+         {
+            VAR__NUM[VAR__53647]++;
+            return;
+         }
+      }
+   }
+
+
+   VAR__NUM[VAR__21230]++;
+}
+
+
+int main()
+{
+   extern int VAR_1238123;
+   extern int VAR__NUM[200];
+
+   cin >> VAR_1238123;
+   char VAR_9494[200][5];
+   char VAR__4857423[500];
+   cin.get();
+   int VAR__53647 = 1;
+
+   while (( VAR__4857423[VAR__53647] = cin.get()) != '\n' )
+   {
+      VAR__53647++;
+   }
+
+   for ( int VAR__21230 = 1; VAR__21230 <= (( VAR__53647 - VAR_1238123 ) + 1 ); VAR__21230++ )
+   {
+      for ( int VAR__7685 = 0; VAR__7685 < VAR_1238123; VAR__7685++ )
+      {
+         VAR_9494[VAR__21230][VAR__7685] = VAR__4857423[VAR__21230 + VAR__7685];
+      }
+
+      search(VAR_9494, VAR__21230);
+   }
+
+   int VAR__MAX = 0;
+   for ( int VAR__21230 = 1; VAR__21230 <= (( VAR__53647 - VAR_1238123 ) + 1 ); VAR__21230++ )
+   {
+      if ( VAR__NUM[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = VAR__NUM[VAR__21230];
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   {
+      ( cout << VAR__MAX ) << endl;
+      for ( int VAR__21230 = 1; VAR__21230 < (( VAR__53647 - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230] == VAR__MAX )
+         {
+            for ( int VAR__7685 = 0; VAR__7685 < VAR_1238123; VAR__7685++ )
+            {
+               cout << VAR_9494[VAR__21230][VAR__7685];
+            }
+         }
+
+
+         cout << endl;
+      }
+   }
+
+   return 0;
+}

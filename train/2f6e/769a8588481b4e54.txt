@@ -1,0 +1,77 @@
+int judge(int VAR_9494, char VAR__8444594[])
+{
+   int VAR__SUM = 0;
+   int VAR_233;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      if ( VAR__8444594[VAR__53647] == ' ' )
+      {
+         VAR__SUM++;
+      }
+   }
+
+   if ( VAR__SUM == VAR_9494 )
+   {
+      VAR_233 = 1;
+   }
+   else
+   {
+      VAR_233 = 0;
+   }
+
+   return VAR_233;
+}
+
+
+int main()
+{
+   int  VAR__53647 = 0;
+   char kids[110];
+   char boy;
+   char gal;
+
+   cin.getline(kids, 110);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(kids); VAR__53647++ )
+   {
+      if ( kids[VAR__53647] != kids[VAR__53647 + 1] )
+      {
+         boy = kids[VAR__53647];
+         gal = kids[VAR__53647 + 1];
+         break;
+      }
+   }
+
+
+   while ( judge(strlen(kids), kids) != 1 )
+   {
+      if (( kids[VAR__53647] == boy ) && ( kids[VAR__53647 + 1] == gal ))
+      {
+         ((( cout << VAR__53647 ) << " " ) << ( VAR__53647 + 1 )) << endl;
+         kids[VAR__53647]     = ' ';
+         kids[VAR__53647 + 1] = ' ';
+         VAR__53647           = 0;
+      }
+      else
+      if (( kids[VAR__53647] == ' ' ) && ( kids[VAR__53647 + 1] == gal ))
+      {
+         for ( int VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( kids[VAR__21230] == boy )
+            {
+               ((( cout << VAR__21230 ) << " " ) << ( VAR__53647 + 1 )) << endl;
+               kids[VAR__53647 + 1] = ' ';
+               kids[VAR__21230]     = ' ';
+               VAR__53647           = 0;
+               break;
+            }
+         }
+      }
+      else
+      {
+         VAR__53647++;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,87 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__8444594;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM;
+   int VAR__MIN;
+   int anw = 0;
+   int test[100][100];
+
+   cin >> VAR_1238123;
+   VAR__SUM = VAR_1238123;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__SUM; VAR__8444594++ )
+   {
+      VAR_1238123 = VAR__SUM;
+      for ( VAR__53647 = 0; VAR__53647 < VAR__SUM; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR__SUM; VAR__21230++ )
+         {
+            cin >> test[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      anw = 0;
+
+      while ( VAR_1238123 != 1 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            VAR__MIN = test[VAR__53647][0];
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               if ( VAR__MIN > test[VAR__53647][VAR__21230] )
+               {
+                  VAR__MIN = test[VAR__53647][VAR__21230];
+               }
+            }
+
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               test[VAR__53647][VAR__21230] -= VAR__MIN;
+            }
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            VAR__MIN = test[0][VAR__53647];
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               if ( VAR__MIN > test[VAR__21230][VAR__53647] )
+               {
+                  VAR__MIN = test[VAR__21230][VAR__53647];
+               }
+            }
+
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               test[VAR__21230][VAR__53647] -= VAR__MIN;
+            }
+         }
+
+         anw += test[1][1];
+         VAR_1238123--;
+         for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            for ( VAR__21230 = 0; VAR__21230 <= VAR_1238123; VAR__21230++ )
+            {
+               test[VAR__53647][VAR__21230] = test[VAR__53647 + 1][VAR__21230];
+            }
+         }
+
+         for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+            {
+               test[VAR__53647][VAR__21230] = test[VAR__53647][VAR__21230 + 1];
+            }
+         }
+      }
+
+      ( cout << anw ) << endl;
+   }
+
+   return 0;
+}

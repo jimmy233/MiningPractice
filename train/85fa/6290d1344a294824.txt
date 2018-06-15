@@ -1,0 +1,42 @@
+void main()
+{
+   int sum_day(int, int);
+   int leap(int year);
+
+   int year;
+   int month;
+   int day;
+   int days;
+   scanf("%d%d%d", &year, &month, &day);
+   days = sum_day(month, day);
+
+   if ( leap(year) && ( month >= 3 ))
+   {
+      days = days + 1;
+   }
+
+   printf("%d", days);
+}
+
+
+int sum_day(int month, int day)
+{
+   int day_tab[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      day += day_tab[VAR__53647];
+   }
+
+   return day;
+}
+
+
+int leap(int year)
+{
+   int leap;
+
+   leap = ((( year % 3 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 );
+   return leap;
+}

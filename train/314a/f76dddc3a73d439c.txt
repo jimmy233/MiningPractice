@@ -1,0 +1,66 @@
+int main()
+{
+   char inp1[4000];
+   char inp2[4000];
+
+   ( cin >> inp1 ) >> inp2;
+   int  time1[1000];
+   int  time2[1000];
+   char VAR__TEMP[4];
+   int  pointer = 0;
+   int  people  = 0;
+   for ( int VAR__8444594 = 0; inp1[VAR__8444594] != '\0'; VAR__8444594++ )
+   {
+      if ( inp1[VAR__8444594] != ',' )
+      {
+         VAR__TEMP[pointer++] = inp1[VAR__8444594];
+      }
+      else
+      {
+         VAR__TEMP[pointer] = '\0';
+         time1[people++]    = atoi(VAR__TEMP);
+         pointer            = 0;
+      }
+   }
+
+   VAR__TEMP[pointer] = '\0';
+   time1[people++]    = atoi(VAR__TEMP);
+   pointer            = 0;
+   people             = 0;
+   for ( int VAR__8444594 = 0; inp2[VAR__8444594] != '\0'; VAR__8444594++ )
+   {
+      if ( inp2[VAR__8444594] != ',' )
+      {
+         VAR__TEMP[pointer++] = inp2[VAR__8444594];
+      }
+      else
+      {
+         VAR__TEMP[pointer] = '\0';
+         time2[people++]    = atoi(VAR__TEMP);
+         pointer            = 0;
+      }
+   }
+
+   VAR__TEMP[pointer] = '\0';
+   time2[people++]    = atoi(VAR__TEMP);
+   int VAR__MAX = 0;
+   for ( int VAR__8444594 = 0; VAR__8444594 != 1000; VAR__8444594++ )
+   {
+      int counter = 0;
+      for ( int VAR__53647 = 0; VAR__53647 != people; VAR__53647++ )
+      {
+         if (( VAR__8444594 >= time1[VAR__53647] ) && ( VAR__8444594 < time2[VAR__53647] ))
+         {
+            counter++;
+         }
+      }
+
+      if ( counter > VAR__MAX )
+      {
+         VAR__MAX = counter;
+      }
+   }
+
+   ((( cout << people ) << " " ) << VAR__MAX ) << endl;
+   return 0;
+}

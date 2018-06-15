@@ -1,0 +1,49 @@
+int prime[50002];
+int main()
+{
+   int N;
+
+   cin >> N;
+   for ( int VAR__53647 = 2; VAR__53647 <= N; VAR__53647++ )
+   {
+      prime[VAR__53647] = 1;
+   }
+
+   for ( int VAR__53647 = 2; VAR__53647 <= ( N / 2 ); VAR__53647++ )
+   {
+      prime[VAR__53647 * 2] = 0;
+   }
+
+   int VAR_233 = 2;
+
+   while (( VAR_233 * VAR_233 ) <= N )
+   {
+      VAR_233 = VAR_233 + 1;
+
+      while ( prime[VAR_233] == 0 )
+      {
+         VAR_233++;
+      }
+
+      int VAR__temp = VAR_233 * VAR_233;
+      int VAR_9494  = 2 * VAR_233;
+
+      while ( VAR__temp <= N )
+      {
+         prime[VAR__temp] = 0;
+         VAR__temp        = VAR__temp + VAR_9494;
+      }
+   }
+
+   for ( int VAR__53647 = 6; VAR__53647 <= N; VAR__53647 += 2 )
+   {
+      for ( int VAR__21230 = 3; VAR__21230 <= ( N - VAR__21230 ); VAR__21230 += 2 )
+      {
+         if (( prime[VAR__21230] == 1 ) && ( prime[VAR__53647 - VAR__21230] == 1 ))
+         {
+            ((((( cout << VAR__53647 ) << "=" ) << VAR__21230 ) << "+" ) << ( VAR__53647 - VAR__21230 )) << endl;
+            break;
+         }
+      }
+   }
+}

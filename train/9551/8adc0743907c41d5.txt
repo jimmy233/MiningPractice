@@ -1,0 +1,65 @@
+struct patient
+{
+   int  age;
+   char id[12];
+};
+void swap(struct patient *VAR__819283, struct patient *VAR__19328)
+{
+   struct patient tmp;
+
+   tmp          = *VAR__819283;
+   *VAR__819283 = *VAR__19328;
+   *VAR__19328  = tmp;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230   = 0;
+   int VAR__8444594 = 0;
+   int VAR__1111;
+
+   scanf("%d", &VAR_1238123);
+   struct patient tmp;
+   struct patient young[120];
+   struct patient old[120];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", tmp.id);
+      scanf("%d", &tmp.age);
+
+      if ( tmp.age >= 60 )
+      {
+         old[VAR__21230++] = tmp;
+      }
+      else
+      {
+         young[VAR__8444594++] = tmp;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < (( VAR__21230 - VAR__53647 ) - 1 ); VAR__1111++ )
+      {
+         if ( old[VAR__1111].age < old[VAR__1111 + 1].age )
+         {
+            swap(&old[VAR__1111], &old[VAR__1111 + 1]);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%s\n", old[VAR__53647].id);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", young[VAR__53647].id);
+   }
+
+   return 0;
+}

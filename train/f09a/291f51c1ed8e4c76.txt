@@ -1,0 +1,82 @@
+int VAR__NUM[2];
+int VAR__819283[100];
+int VAR__19328[100];
+int VAR__4857423[100];
+void getarray(int VAR__819283[], int VAR__19328[], int VAR__NUM[])
+{
+   ( cin >> VAR__NUM[0] ) >> VAR__NUM[1];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM[0]; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM[1]; VAR__53647++ )
+   {
+      cin >> VAR__19328[VAR__53647];
+   }
+}
+
+
+void sort(int VAR__819283[], int VAR__19328[], int af, int bf)
+{
+   int VAR__TEMP;
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( af - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < ( af - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 - 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 - 1];
+            VAR__819283[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( bf - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < ( bf - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__21230] < VAR__19328[VAR__21230 - 1] )
+         {
+            VAR__TEMP = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__19328[VAR__21230 - 1];
+            VAR__19328[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void combine(int VAR__819283[], int VAR__19328[], int VAR__4857423[], int af, int bf)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < af; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__819283[VAR__53647];
+   }
+
+   for ( int VAR__53647 = af; VAR__53647 < ( af + bf ); VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__19328[VAR__53647 - af];
+   }
+}
+
+
+void print(int VAR__4857423[], int af, int bf)
+{
+   cout << VAR__4857423[0];
+   for ( int VAR__53647 = 1; VAR__53647 < ( af + bf ); VAR__53647++ )
+   {
+      ( cout << ' ' ) << VAR__4857423[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   getarray(VAR__819283, VAR__19328, VAR__NUM);
+   sort(VAR__819283, VAR__19328, VAR__NUM[0], VAR__NUM[1]);
+   combine(VAR__819283, VAR__19328, VAR__4857423, VAR__NUM[0], VAR__NUM[1]);
+   print(VAR__4857423, VAR__NUM[0], VAR__NUM[1]);
+}

@@ -1,0 +1,71 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct block
+   {
+      int VAR__819283;
+      int VAR__19328;
+   }
+   bk[10000];
+   for ( int VAR_666 = 0; VAR_666 < VAR_1238123; VAR_666++ )
+   {
+      scanf("%d %d", &bk[VAR_666].VAR__819283, &bk[VAR_666].VAR__19328);
+   }
+
+   for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+   {
+      int VAR__112390 = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( bk[VAR__53647].VAR__819283 > bk[VAR__53647 + 1].VAR__819283 )
+         {
+            VAR__112390 = bk[VAR__53647 + 1].VAR__819283;
+            bk[VAR__53647 + 1].VAR__819283 = bk[VAR__53647].VAR__819283;
+            bk[VAR__53647].VAR__819283     = VAR__112390;
+            VAR__112390 = bk[VAR__53647 + 1].VAR__19328;
+            bk[VAR__53647 + 1].VAR__19328 = bk[VAR__53647].VAR__19328;
+            bk[VAR__53647].VAR__19328     = VAR__112390;
+         }
+      }
+   }
+
+   int VAR__MAX = bk[0].VAR__19328;
+   int VAR__MIN = bk[0].VAR__819283;
+   for ( int VAR__12302 = 0; VAR__12302 < VAR_1238123; VAR__12302++ )
+   {
+      if ( VAR__MAX <= bk[VAR__12302].VAR__19328 )
+      {
+         VAR__MAX = bk[VAR__12302].VAR__19328;
+      }
+
+      if ( VAR__MIN >= bk[VAR__12302].VAR__819283 )
+      {
+         VAR__MIN = bk[VAR__12302].VAR__819283;
+      }
+   }
+
+   int pd = 0;
+   for ( double VAR__temp = 1.0 * VAR__MIN; VAR__temp < VAR__MAX; VAR__temp += 0.5 )
+   {
+      pd = 0;
+      for ( int VAR__127322 = 0; VAR__127322 < VAR_1238123; VAR__127322++ )
+      {
+         if (( VAR__temp >= bk[VAR__127322].VAR__819283 ) && ( VAR__temp <= bk[VAR__127322].VAR__19328 ))
+         {
+            pd = 1;
+            break;
+         }
+      }
+
+      if ( pd == 0 )
+      {
+         printf("no");
+         return 0;
+      }
+   }
+
+   printf("%d %d\n", VAR__MIN, VAR__MAX);
+   return 0;
+}

@@ -1,0 +1,192 @@
+int judge(int year)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+
+   if (( year % 4 ) != 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      if (( year % 100 ) == 0 )
+      {
+         if (( year % 400 ) == 0 )
+         {
+            return 1;
+         }
+         else
+         {
+            return 0;
+         }
+      }
+      else
+      {
+         return 1;
+      }
+   }
+}
+
+
+int main()
+{
+   int y1;
+   int y2;
+   int m1;
+   int m2;
+   int d1;
+   int d2;
+   int day = 0;
+   int VAR__TEMP;
+   int VAR__819283[14];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   (( cin >> y1 ) >> m1 ) >> d1;
+   (( cin >> y2 ) >> m2 ) >> d2;
+   VAR__819283[1]  = 31;
+   VAR__819283[2]  = 28;
+   VAR__819283[3]  = 31;
+   VAR__819283[4]  = 30;
+   VAR__819283[5]  = 31;
+   VAR__819283[6]  = 30;
+   VAR__819283[7]  = 31;
+   VAR__819283[8]  = 31;
+   VAR__819283[9]  = 30;
+   VAR__819283[10] = 31;
+   VAR__819283[11] = 30;
+   VAR__819283[12] = 31;
+
+   if (( y2 - y1 ) > 1 )
+   {
+      for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+      {
+         if ( judge(VAR__53647))
+         {
+            day = day + 366;
+         }
+         else
+         {
+            day = day + 365;
+         }
+      }
+   }
+
+   if (( y2 - y1 ) != 0 )
+   {
+      if ( judge(y1))
+      {
+         VAR__819283[2] = 29;
+
+         if ( m1 != 12 )
+         {
+            for ( VAR__53647 = m1 + 1; VAR__53647 <= 12; VAR__53647++ )
+            {
+               day = day + VAR__819283[VAR__53647];
+            }
+         }
+
+         day = ( day + VAR__819283[m1] ) - d1;
+      }
+
+      VAR__819283[2] = 28;
+
+      if ( judge(y1) == 0 )
+      {
+         if ( m1 != 12 )
+         {
+            for ( VAR__53647 = m1 + 1; VAR__53647 <= 12; VAR__53647++ )
+            {
+               day = day + VAR__819283[VAR__53647];
+            }
+         }
+
+         day = ( day + VAR__819283[m1] ) - d1;
+      }
+
+      if ( judge(y2) != 0 )
+      {
+         VAR__819283[2] = 29;
+         VAR__TEMP      = 0;
+
+         if ( m2 != 1 )
+         {
+            for ( VAR__53647 = 1; VAR__53647 < m2; VAR__53647++ )
+            {
+               day = day + VAR__819283[VAR__53647];
+            }
+
+            day = day + d2;
+         }
+         else
+         {
+            day = day + d2;
+         }
+      }
+
+      VAR__819283[2] = 28;
+
+      if ( judge(y2) == 0 )
+      {
+         if ( m2 != 1 )
+         {
+            for ( VAR__53647 = 1; VAR__53647 < m2; VAR__53647++ )
+            {
+               day = day + VAR__819283[VAR__53647];
+            }
+
+            day = day + d2;
+         }
+         else
+         {
+            day = day + d2;
+         }
+      }
+   }
+
+   VAR__819283[2] = 28;
+
+   if (( y2 - y1 ) == 0 )
+   {
+      if ( judge(y1) == 0 )
+      {
+         if (( m2 - m1 ) != 0 )
+         {
+            for ( VAR__53647 = m1 + 1; VAR__53647 < m2; VAR__53647++ )
+            {
+               day = day + VAR__819283[VAR__53647];
+            }
+
+            day = (( day + VAR__819283[m1] ) - d1 ) + d2;
+         }
+         else
+         {
+            day = d2 - d1;
+         }
+      }
+
+      if ( judge(y1) != 0 )
+      {
+         VAR__819283[2] = 29;
+
+         if (( m2 - m1 ) != 0 )
+         {
+            for ( VAR__53647 = m1 + 1; VAR__53647 < m2; VAR__53647++ )
+            {
+               day = day + VAR__819283[VAR__53647];
+            }
+
+            day = (( day + VAR__819283[m1] ) - d1 ) + d2;
+         }
+         else
+         {
+            day = d2 - d1;
+         }
+      }
+   }
+
+   cout << day;
+   return 0;
+}

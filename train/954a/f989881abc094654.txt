@@ -1,0 +1,123 @@
+struct info
+{
+   char        name[20];
+   int         final;
+   int         ass;
+   char        gan;
+   char        west;
+   int         paper;
+   struct info *VAR__NEXT;
+};
+struct info *create(int VAR_1238123)
+{
+   struct info *ANOTHER_POINTER;
+   struct info *YET_ANOTHER_POINTER;
+   struct info *VAR__HEAD;
+   int         VAR__53647;
+
+   ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->final, &ANOTHER_POINTER->ass, &ANOTHER_POINTER->gan, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->final, &ANOTHER_POINTER->ass, &ANOTHER_POINTER->gan, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int         VAR_1238123;
+   struct info *VAR__HEAD;
+   struct info *ANOTHER_POINTER;
+   int         VAR__53647;
+   int         VAR__1238129;
+   int         VAR__SUM;
+   int         VAR__MAX;
+   char        namemax[22];
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD       = create(VAR_1238123);
+   ANOTHER_POINTER = VAR__HEAD;
+   VAR__SUM        = 0;
+   VAR__MAX        = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__1238129 = 0;
+
+      if (( ANOTHER_POINTER->final > 80 ) && ( ANOTHER_POINTER->paper >= 1 ))
+      {
+         VAR__1238129 += 8000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->ass > 80 ))
+      {
+         VAR__1238129 += 4000;
+      }
+
+      if ( ANOTHER_POINTER->final > 90 )
+      {
+         VAR__1238129 += 2000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->west == 'Y' ))
+      {
+         VAR__1238129 += 1000;
+      }
+
+      if (( ANOTHER_POINTER->ass > 80 ) && ( ANOTHER_POINTER->gan == 'Y' ))
+      {
+         VAR__1238129 += 850;
+      }
+
+      if ( VAR__1238129 > VAR__MAX )
+      {
+         VAR__MAX = VAR__1238129;
+         strcpy(namemax, ANOTHER_POINTER->name);
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__1238129 = 0, VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( ANOTHER_POINTER->final > 80 ) && ( ANOTHER_POINTER->paper >= 1 ))
+      {
+         VAR__1238129 += 8000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->ass > 80 ))
+      {
+         VAR__1238129 += 4000;
+      }
+
+      if ( ANOTHER_POINTER->final > 90 )
+      {
+         VAR__1238129 += 2000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->west == 'Y' ))
+      {
+         VAR__1238129 += 1000;
+      }
+
+      if (( ANOTHER_POINTER->ass > 80 ) && ( ANOTHER_POINTER->gan == 'Y' ))
+      {
+         VAR__1238129 += 850;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   VAR__SUM = VAR__1238129;
+   printf("%s\n%d\n%d\n", namemax, VAR__MAX, VAR__SUM);
+}

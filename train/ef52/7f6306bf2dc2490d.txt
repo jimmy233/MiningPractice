@@ -1,0 +1,36 @@
+int VAR_1238123;
+int VAR__12302[100];
+int dp[30];
+int main()
+{
+   while ( scanf("%d", &VAR_1238123) == 1 )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", VAR__12302 + VAR__53647);
+      }
+
+      VAR__12302[0] = ( -1u ) >> 1;
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         dp[VAR__53647] = 0;
+         for ( int VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            if ( VAR__12302[VAR__21230] >= VAR__12302[VAR__53647] )
+            {
+               dp[VAR__53647] = VAR__MAX(dp[VAR__53647], dp[VAR__21230] + 1);
+            }
+         }
+      }
+
+      int ans = 0;
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         ans = VAR__MAX(ans, dp[VAR__53647]);
+      }
+
+      printf("%d\n", ans);
+   }
+
+   return 0;
+}

@@ -1,0 +1,63 @@
+struct stu *create();
+
+struct stu
+{
+   char       text[100];
+   struct stu *prev;
+};
+int main()
+{
+   struct stu *VAR_233;
+
+   VAR_233 = create();
+
+   while ( VAR_233 )
+   {
+      printf("%s\n", VAR_233->text);
+      VAR_233 = VAR_233->prev;
+   }
+
+   return 0;
+}
+
+
+struct stu *create()
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *start;
+
+   ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+   gets(ANOTHER_POINTER->text);
+
+   if ( ANOTHER_POINTER->text == "end" )
+   {
+      free(ANOTHER_POINTER);
+      start = NULL;
+      return start;
+   }
+   else
+   {
+      ANOTHER_POINTER->prev = NULL;
+      start = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      do
+      {
+         ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+         start           = YET_ANOTHER_POINTER;
+         gets(ANOTHER_POINTER->text);
+
+         if ( strcmp(ANOTHER_POINTER->text, "end") == 0 )
+         {
+            free(ANOTHER_POINTER);
+            break;
+         }
+         else
+         {
+            ANOTHER_POINTER->prev = YET_ANOTHER_POINTER;
+            YET_ANOTHER_POINTER   = ANOTHER_POINTER;
+         }
+      } while ( 1 );
+      return start;
+   }
+}

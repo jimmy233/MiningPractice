@@ -1,0 +1,89 @@
+float VAR__127322(int VAR__819283, int VAR__19328, int VAR__4857423, int VAR__12302, int VAR__112390, int VAR__127322);
+
+int main()
+{
+   int VAR__7685[11];
+   int VAR__3918907[11];
+   int VAR__9290[11];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__NUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   struct POINT
+   {
+      int   point1x;
+      int   point1y;
+      int   point1z;
+      int   point2x;
+      int   point2y;
+      int   point2z;
+      int   mark;
+      float VAR__1111;
+   };
+   struct POINT VAR__TEMP;
+   struct POINT VAR__12302[55];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__12302[VAR__NUM].mark      = VAR__NUM;
+         VAR__12302[VAR__NUM].point1x   = VAR__7685[VAR__53647];
+         VAR__12302[VAR__NUM].point1y   = VAR__3918907[VAR__53647];
+         VAR__12302[VAR__NUM].point1z   = VAR__9290[VAR__53647];
+         VAR__12302[VAR__NUM].point2x   = VAR__7685[VAR__21230];
+         VAR__12302[VAR__NUM].point2y   = VAR__3918907[VAR__21230];
+         VAR__12302[VAR__NUM].point2z   = VAR__9290[VAR__21230];
+         VAR__12302[VAR__NUM].VAR__1111 = VAR__127322(VAR__7685[VAR__53647], VAR__3918907[VAR__53647], VAR__9290[VAR__53647], VAR__7685[VAR__21230], VAR__3918907[VAR__21230], VAR__9290[VAR__21230]);
+         VAR__NUM = VAR__NUM + 1;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__NUM - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__12302[VAR__21230].VAR__1111 > VAR__12302[VAR__21230 + 1].VAR__1111 )
+         {
+            VAR__TEMP = VAR__12302[VAR__21230];
+            VAR__12302[VAR__21230]     = VAR__12302[VAR__21230 + 1];
+            VAR__12302[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__NUM - VAR__53647 ); VAR__21230++ )
+      {
+         if (( VAR__12302[VAR__21230].VAR__1111 == VAR__12302[VAR__21230 + 1].VAR__1111 ) && ( VAR__12302[VAR__21230].mark < VAR__12302[VAR__21230 + 1].mark ))
+         {
+            VAR__TEMP = VAR__12302[VAR__21230];
+            VAR__12302[VAR__21230]     = VAR__12302[VAR__21230 + 1];
+            VAR__12302[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR__NUM - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", VAR__12302[VAR__53647].point1x, VAR__12302[VAR__53647].point1y, VAR__12302[VAR__53647].point1z, VAR__12302[VAR__53647].point2x, VAR__12302[VAR__53647].point2y, VAR__12302[VAR__53647].point2z, VAR__12302[VAR__53647].VAR__1111);
+   }
+
+   return 0;
+}
+
+
+float VAR__127322(int VAR__819283, int VAR__19328, int VAR__4857423, int VAR__12302, int VAR__112390, int VAR__127322)
+{
+   float length;
+
+   length = sqrt(((( VAR__819283 - VAR__12302 ) * ( VAR__819283 - VAR__12302 )) + (( VAR__19328 - VAR__112390 ) * ( VAR__19328 - VAR__112390 ))) + (( VAR__4857423 - VAR__127322 ) * ( VAR__4857423 - VAR__127322 )));
+   return length;
+}

@@ -1,0 +1,81 @@
+int day_of_year(int VAR_1238123)
+{
+   if (( VAR_1238123 % 400 ) == 0 )
+   {
+      return 366;
+   }
+
+   if ((( VAR_1238123 % 4 ) == 0 ) && (( VAR_1238123 % 100 ) != 0 ))
+   {
+      return 366;
+   }
+   else
+   {
+      return 365;
+   }
+}
+
+
+int day_of_month(int month, int year)
+{
+   if ( month == 2 )
+   {
+      if ( day_of_year(year) == 366 )
+      {
+         return 29;
+      }
+      else
+      {
+         return 28;
+      }
+   }
+
+
+   if (((( month == 4 ) || ( month == 6 )) || ( month == 9 )) || ( month == 11 ))
+   {
+      return 30;
+   }
+   else
+   {
+      return 31;
+   }
+}
+
+
+int main()
+{
+   int year1;
+   int year2;
+   int month1;
+   int month2;
+   int day1;
+   int day2;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM;
+   int sumyear;
+   int summonth1;
+   int summonth2;
+
+   scanf("%d %d %d\n%d %d %d", &year1, &month1, &day1, &year2, &month2, &day2);
+   VAR__SUM = ( sumyear = ( summonth1 = ( summonth2 = 0 )));
+   for ( VAR__53647 = year1; VAR__53647 < year2; VAR__53647++ )
+   {
+      sumyear += day_of_year(VAR__53647);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < month1; VAR__53647++ )
+   {
+      summonth1 = summonth1 + day_of_month(VAR__53647, year1);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+   {
+      summonth2 = summonth2 + day_of_month(VAR__53647, year2);
+   }
+
+   VAR__SUM = ((( sumyear + summonth2 ) + day2 ) - summonth1 ) - day1;
+   printf("%d", VAR__SUM);
+   scanf("%d", &VAR__53647);
+   return 0;
+}

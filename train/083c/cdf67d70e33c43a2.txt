@@ -1,0 +1,80 @@
+int change(char VAR__819283)
+{
+   int VAR__19328;
+
+   if (( VAR__819283 <= '9' ) && ( VAR__819283 >= '0' ))
+   {
+      VAR__19328 = VAR__819283 - '0';
+   }
+   else
+   if (( VAR__819283 >= 'a' ) && ( VAR__819283 <= 'z' ))
+   {
+      VAR__19328 = ( VAR__819283 - 'a' ) + 10;
+   }
+   else
+   {
+      VAR__19328 = ( VAR__819283 - 'A' ) + 10;
+   }
+
+
+   return VAR__19328;
+}
+
+
+int main()
+{
+   int  VAR__53647 = 0;
+   int  VAR__21230;
+   int  num1;
+   int  num2;
+   int  VAR__1238129;
+   long ten = 0;
+   char output[100];
+   char chu;
+   char mo;
+
+   cin >> num1;
+   cin.get();
+
+   while (( chu = cin.get()) != ' ' )
+   {
+      VAR__1238129 = change(chu);
+      ten          = ten * num1;
+      ten          = ten + VAR__1238129;
+   }
+
+   cin >> num2;
+
+   while ( ten > 0 )
+   {
+      VAR__1238129 = ten % num2;
+
+      if ( VAR__1238129 > 9 )
+      {
+         mo = ( VAR__1238129 - 10 ) + 'A';
+      }
+      else
+      {
+         mo = VAR__1238129 + '0';
+      }
+
+      output[VAR__53647] = mo;
+      VAR__53647++;
+      ten = ten / num2;
+   }
+
+   if ( VAR__53647 == 0 )
+   {
+      ( cout << "0" ) << endl;
+   }
+   else
+   {
+      for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         cout << output[VAR__21230];
+      }
+   }
+
+
+   return 0;
+}

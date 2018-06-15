@@ -1,0 +1,76 @@
+int judge(char VAR__7685)
+{
+   if (( VAR__7685 > 47 ) && ( VAR__7685 < 58 ))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  all;
+   int  VAR__COUNT;
+   int  start[30];
+   int  end[30];
+   int  VAR_233;
+   char sen[31];
+
+   gets(sen);
+   all        = strlen(sen);
+   VAR__COUNT = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( all - 1 ); VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         if ( judge(sen[VAR__53647]))
+         {
+            start[0] = 0;
+            VAR__COUNT++;
+         }
+      }
+
+      if ((( VAR__53647 != 0 ) && ( !judge(sen[VAR__53647 - 1]))) && judge(sen[VAR__53647]))
+      {
+         start[VAR__COUNT] = VAR__53647;
+         VAR__COUNT++;
+      }
+
+      if ( judge(sen[VAR__53647]) && ( !judge(sen[VAR__53647 + 1])))
+      {
+         end[VAR__COUNT - 1] = VAR__53647;
+      }
+   }
+
+   if ( judge(sen[all - 2]) && judge(sen[all - 1]))
+   {
+      end[VAR__COUNT - 1]++;
+   }
+
+   if (( !judge(sen[all - 2])) && judge(sen[all - 1]))
+   {
+      start[VAR__COUNT] = all - 1;
+      end[VAR__COUNT]   = all - 1;
+      VAR__COUNT++;
+   }
+
+   if (( end[VAR__COUNT - 1] < 0 ) || ( end[VAR__COUNT - 1] > 30 ))
+   {
+      end[VAR__COUNT - 1] = all - 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR_233 = start[VAR__53647]; VAR_233 <= end[VAR__53647]; VAR_233++ )
+      {
+         printf("%c", sen[VAR_233]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

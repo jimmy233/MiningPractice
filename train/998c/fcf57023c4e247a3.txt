@@ -1,0 +1,73 @@
+int maxi(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 < VAR__19328 )
+   {
+      return VAR__19328;
+   }
+   else
+   {
+      return VAR__819283;
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[260];
+   char VAR__19328[260];
+   char VAR_FLAG = 0;
+
+   cin.getline(VAR__819283, 251);
+   cin.getline(VAR__19328, 251);
+   int na[260];
+   int nb[260];
+   int VAR__SUM[260];
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int lena       = strlen(VAR__819283);
+   int lenb       = strlen(VAR__19328);
+   memset(na, 0, sizeof( na ));
+   memset(nb, 0, sizeof( nb ));
+   memset(VAR__SUM, 0, sizeof( VAR__SUM ));
+   for ( VAR__53647 = lena - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      na[VAR__21230++] = VAR__819283[VAR__53647] - '0';
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = lenb - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      nb[VAR__21230++] = VAR__19328[VAR__53647] - '0';
+   }
+
+   int VAR__1238129 = maxi(lena, lenb);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647] += na[VAR__53647] + nb[VAR__53647];
+
+      if ( VAR__SUM[VAR__53647] >= 10 )
+      {
+         VAR__SUM[VAR__53647] -= 10;
+         VAR__SUM[VAR__53647 + 1]++;
+      }
+   }
+
+   VAR__53647 = VAR__1238129;
+
+   while ( VAR__SUM[VAR__53647] == 0 )
+   {
+      VAR__53647--;
+   }
+
+   if ( VAR__53647 == ( -1 ))
+   {
+      ( cout << 0 ) << endl;
+   }
+
+   for ( ; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << VAR__SUM[VAR__53647];
+   }
+
+   return 0;
+}

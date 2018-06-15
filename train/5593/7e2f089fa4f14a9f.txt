@@ -1,0 +1,140 @@
+int cont(int VAR_9494)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   VAR__21230 = 1;
+   for ( VAR__53647 = 0; VAR__53647 <= 10; VAR__53647++ )
+   {
+      VAR_9494 = VAR_9494 / 10;
+
+      if ( VAR_9494 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         VAR__21230++;
+      }
+   }
+
+   return VAR__21230;
+}
+
+
+int su(int VAR_233)
+{
+   int VAR__53647;
+   int VAR__temp;
+   int VAR__1238129;
+   int VAR_21983012;
+
+   VAR_21983012 = VAR_233, VAR__temp = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_21983012; VAR__53647++ )
+   {
+      VAR__1238129 = VAR_233 % VAR__53647;
+
+      if ( VAR__1238129 == 0 )
+      {
+         VAR__temp++;
+      }
+   }
+
+   if ( VAR__temp > 2 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int dao(int VAR__1238129, int VAR_1238123)
+{
+   int VAR__819283[1000];
+   int VAR__19328[1000];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR__temp;
+   int VAR_9494;
+
+   VAR__819283[0] = VAR__1238129;
+   VAR__temp      = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR__819283[VAR__53647 - 1] / 10;
+   }
+
+   VAR__819283[VAR_1238123] = 0;
+   for ( VAR__53647 = VAR_1238123; VAR__53647 > 0; VAR__53647-- )
+   {
+      VAR__19328[VAR__53647] = VAR__819283[VAR__53647 - 1] - ( VAR__819283[VAR__53647] * 10 );
+   }
+
+   for ( VAR_9494 = 1; VAR_9494 <= VAR_1238123; VAR_9494++ )
+   {
+      for ( VAR__21230 = VAR_1238123 - VAR_9494; VAR__21230 > 0; VAR__21230-- )
+      {
+         VAR__19328[VAR_9494] = VAR__19328[VAR_9494] * 10;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__temp = VAR__temp + VAR__19328[VAR__53647];
+   }
+
+   return VAR__temp;
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__819283[10000];
+   int VAR__19328[10000];
+   int VAR__127322;
+   int o;
+   int VAR_9494;
+   int VAR__temp;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   VAR__8444594 = 0;
+   o            = 0;
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__127322 = cont(VAR__53647);
+      VAR__temp   = dao(VAR__53647, VAR__127322);
+      VAR_9494    = su(VAR__53647);
+
+      if (( VAR__temp == VAR__53647 ) && ( VAR_9494 == 0 ))
+      {
+         VAR__819283[o] = VAR__53647;
+         o++;
+      }
+   }
+
+   o--;
+
+   if (( o + 1 ) == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < o; VAR__53647++ )
+      {
+         printf("%d,", VAR__819283[VAR__53647]);
+      }
+
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+}

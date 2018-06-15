@@ -1,0 +1,61 @@
+int main()
+{
+   void sc(char *VAR_233[], char *VAR_666[]);
+
+   char *VAR_233[100];
+   char *VAR_666[100];
+   int  VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = (char *)malloc(10);
+      VAR_666[VAR__53647] = (char *)malloc(5);
+   }
+
+   sc(VAR_233, VAR_666);
+}
+
+
+void sc(char *VAR_233[], char *VAR_666[])
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__21230;
+   int VAR__MAX;
+   int VAR__7685;
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; scanf("%s %s", VAR_233[VAR__53647], VAR_666[VAR__53647]) != EOF; VAR__53647++ )
+   {
+      VAR_1238123  = strlen(VAR_233[VAR__53647]);
+      VAR__1238129 = strlen(VAR_666[VAR__53647]);
+      for ( VAR__21230 = 1, VAR__MAX = *VAR_233[VAR__53647]; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if (( *( VAR_233[VAR__53647] + VAR__21230 )) > VAR__MAX )
+         {
+            VAR__MAX  = *( VAR_233[VAR__53647] + VAR__21230 );
+            VAR__7685 = VAR__21230;
+         }
+      }
+
+
+      for ( VAR__21230 = ( VAR_1238123 - VAR__7685 ) - 1; VAR__21230 >= 1; VAR__21230-- )
+      {
+         *((( VAR_233[VAR__53647] + VAR__7685 ) + VAR__21230 ) + VAR__1238129 ) = *(( VAR_233[VAR__53647] + VAR__7685 ) + VAR__21230 );
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         *((( VAR_233[VAR__53647] + VAR__7685 ) + VAR__21230 ) + 1 ) = *( VAR_666[VAR__53647] + VAR__21230 );
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__1238129 + VAR_1238123 ); VAR__21230++ )
+      {
+         printf("%c", *( VAR_233[VAR__53647] + VAR__21230 ));
+
+         if ( VAR__21230 == (( VAR_1238123 + VAR__1238129 ) - 1 ))
+         {
+            printf("\n");
+         }
+      }
+   }
+}

@@ -1,0 +1,101 @@
+struct w
+{
+   int      id;
+   int      ch;
+   int      ma;
+   int      VAR__SUM;
+   struct w *VAR__NEXT;
+};
+int      VAR__53647;
+int      VAR_1238123;
+int      VAR__8444594 = 1;
+int      VAR__MAX;
+int      VAR_9494 = 0;
+struct w *VAR__HEAD;
+struct w *ANOTHER_POINTER;
+struct w *YET_ANOTHER_POINTER;
+struct w *make(void)
+{
+   VAR__HEAD = null;
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct w *)malloc(LEN_OF_STH));
+   scanf("%d %d %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->ma);
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( VAR__8444594 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct w *)malloc(LEN_OF_STH);
+      scanf("%d %d %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->ma);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = VAR__HEAD;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   VAR__HEAD = make();
+
+   while ( VAR_9494 < 3 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__53647 == VAR_1238123 )
+         {
+            ANOTHER_POINTER = null;
+         }
+         else
+         {
+            ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->ch + ANOTHER_POINTER->ma;
+            ANOTHER_POINTER           = ANOTHER_POINTER->VAR__NEXT;
+         }
+      }
+
+      ANOTHER_POINTER = VAR__HEAD;
+      VAR__MAX        = 0;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( ANOTHER_POINTER->VAR__SUM > VAR__MAX )
+         {
+            VAR__MAX = ANOTHER_POINTER->VAR__SUM;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+
+         if (( ANOTHER_POINTER->ch + ANOTHER_POINTER->ma ) == VAR__MAX )
+         {
+            printf("%d %d\n", ANOTHER_POINTER->id, ANOTHER_POINTER->VAR__SUM);
+
+            if ( ANOTHER_POINTER == VAR__HEAD )
+            {
+               VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+            }
+            else
+            {
+               YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+            }
+
+            break;
+         }
+      }
+
+      VAR_9494++;
+   }
+}

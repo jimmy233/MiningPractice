@@ -1,0 +1,68 @@
+int main()
+{
+   int       month;
+   int       day;
+   int       VAR__819283[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   long long VAR__SUM        = 0;
+   long long year;
+   long long VAR__TEMP;
+   long long runnian;
+
+   (( cin >> year ) >> month ) >> day;
+   VAR__TEMP = year - 1;
+   runnian   = (( VAR__TEMP / 4 ) - ( VAR__TEMP / 100 )) + ( VAR__TEMP / 400 );
+   VAR__SUM  = ( runnian * 366 ) + (( VAR__TEMP - runnian ) * 365 );
+
+   if ((( year % 4 ) != 0 ) || ((( year % 100 ) == 0 ) && (( year % 400 ) != 0 )))
+   {
+      VAR__819283[1] = 28;
+   }
+
+   if ( month == 1 )
+   {
+      VAR__SUM += day;
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 <= ( month - 2 ); VAR__53647++ )
+      {
+         VAR__SUM += VAR__819283[VAR__53647];
+      }
+
+      VAR__SUM += day;
+   }
+
+   VAR__SUM = VAR__SUM % 7;
+   switch ( VAR__SUM )
+   {
+   case 1:
+      cout << "Mon.";
+      break;
+
+   case 2:
+      cout << "Tue.";
+      break;
+
+   case 3:
+      cout << "Wed.";
+      break;
+
+   case 4:
+      cout << "Thu.";
+      break;
+
+   case 5:
+      cout << "Fri.";
+      break;
+
+   case 6:
+      cout << "Sat.";
+      break;
+
+   case 0:
+      cout << "Sun.";
+      break;
+   }
+
+   return 0;
+}

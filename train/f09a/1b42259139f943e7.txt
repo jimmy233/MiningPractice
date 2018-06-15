@@ -1,0 +1,87 @@
+void read(int *VAR__819283, int *VAR__19328, int num1, int num2);
+void sort(int *VAR__819283, int num1);
+void merge(int *VAR__819283, int *VAR__19328, int *VAR__4857423, int num1, int num2);
+void print(int *VAR__819283, int num1);
+
+int main()
+{
+   int VAR__819283[100];
+   int VAR__19328[100];
+   int VAR__4857423[200];
+   int num1;
+   int num2;
+
+   ( cin >> num1 ) >> num2;
+   read(VAR__819283, VAR__19328, num1, num2);
+   sort(VAR__819283, num1);
+   sort(VAR__19328, num2);
+   merge(VAR__819283, VAR__19328, VAR__4857423, num1, num2);
+   print(VAR__4857423, num1 + num2);
+   return 0;
+}
+
+
+void read(int *VAR__819283, int *VAR__19328, int num1, int num2)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < num1; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < num2; VAR__53647++ )
+   {
+      cin >> VAR__19328[VAR__53647];
+   }
+}
+
+
+void sort(int *VAR__819283, int num1)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < num1; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < num1; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647] > VAR__819283[VAR__21230] )
+         {
+            int VAR__TEMP;
+            VAR__TEMP = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647] = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void merge(int *VAR__819283, int *VAR__19328, int *VAR__4857423, int num1, int num2)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < num1; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = num1; VAR__53647 < ( num1 + num2 ); VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__19328[VAR__53647 - num1];
+   }
+}
+
+
+void print(int *VAR__819283, int num1)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( num1 - 1 ); VAR__53647++ )
+   {
+      ( cout << VAR__819283[VAR__53647] ) << " ";
+   }
+
+   ( cout << VAR__819283[num1 - 1] ) << endl;
+}

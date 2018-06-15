@@ -1,0 +1,152 @@
+struct student
+{
+   int            VAR__NUM;
+   int            yuwen;
+   int            shuxue;
+   int            score;
+   struct student *VAR__NEXT;
+};
+int            VAR_1238123;
+int            VAR__53647 = 0;
+int            VAR__819283;
+struct student *m1;
+struct student *m2;
+struct student *m3;
+struct student *VAR_666;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+   ANOTHER_POINTER->score = ANOTHER_POINTER->yuwen + ANOTHER_POINTER->shuxue;
+   VAR__HEAD = NULL;
+
+   while ( VAR__53647 < ( VAR_1238123 - 1 ))
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+      ANOTHER_POINTER->score = ANOTHER_POINTER->yuwen + ANOTHER_POINTER->shuxue;
+
+      if ( VAR__53647 >= 3 )
+      {
+         if ( YET_ANOTHER_POINTER->score > m1->score )
+         {
+            m3 = m2;
+            m2 = m1;
+            m1 = YET_ANOTHER_POINTER;
+         }
+         else
+         if (( YET_ANOTHER_POINTER->score <= m1->score ) && ( YET_ANOTHER_POINTER->score > m2->score ))
+         {
+            m3 = m2;
+            m2 = YET_ANOTHER_POINTER;
+         }
+         else
+         if (( YET_ANOTHER_POINTER->score <= m2->score ) && ( YET_ANOTHER_POINTER->score > m3->score ))
+         {
+            m3 = YET_ANOTHER_POINTER;
+         }
+
+
+
+         VAR__53647++;
+         continue;
+      }
+
+      if ( VAR__53647 == 0 )
+      {
+         m1 = YET_ANOTHER_POINTER;
+      }
+      else
+      if ( VAR__53647 == 1 )
+      {
+         m2 = YET_ANOTHER_POINTER;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         m3 = YET_ANOTHER_POINTER;
+
+         if ( m1->score > m2->score )
+         {
+            if ( m2->score <= m3->score )
+            {
+               if ( m1->score > m3->score )
+               {
+                  VAR_666 = m3;
+                  m3      = m2;
+                  m2      = VAR_666;
+               }
+               else
+               if ( m1->score <= m3->score )
+               {
+                  VAR_666 = m1;
+                  m1      = m2;
+                  m2      = m3;
+                  m3      = VAR_666;
+               }
+            }
+         }
+         else
+         if ( m1->score <= m2->score )
+         {
+            if ( m2->score > m3->score )
+            {
+               if ( m1->score > m3->score )
+               {
+                  VAR_666 = m1;
+                  m1      = m2;
+                  m2      = VAR_666;
+               }
+               else
+               if ( m1->score <= m3->score )
+               {
+                  VAR_666 = m3;
+                  m3      = m1;
+                  m1      = m2;
+                  m2      = VAR_666;
+               }
+            }
+            else
+            if ( m2->score <= m3->score )
+            {
+               VAR_666 = m1;
+               m1      = m3;
+               m3      = VAR_666;
+            }
+         }
+      }
+
+
+
+      VAR__53647++;
+   }
+
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   struct student *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat();
+   printf("%d %d\n", m1->VAR__NUM, m1->score);
+   printf("%d %d\n", m2->VAR__NUM, m2->score);
+   printf("%d %d\n", m3->VAR__NUM, m3->score);
+   return 0;
+}

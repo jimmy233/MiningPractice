@@ -1,0 +1,58 @@
+int main()
+{
+   char VAR__NUM[200];
+   int  innum[200];
+   int  outnum[200];
+   int  VAR__TEMP = 0;
+   int  VAR__53647;
+   int  LEN_OF_STH;
+   int  mark = 0;
+
+   cin.getline(VAR__NUM, 200);
+   LEN_OF_STH = strlen(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      innum[VAR__53647] = VAR__NUM[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__TEMP = ( VAR__TEMP * 10 ) + innum[VAR__53647];
+
+      if ( VAR__TEMP / 13 )
+      {
+         outnum[VAR__53647] = VAR__TEMP / 13;
+         VAR__TEMP          = VAR__TEMP % 13;
+      }
+      else
+      {
+         outnum[VAR__53647] = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( mark == 0 ) && ( outnum[VAR__53647] == 0 ))
+      {
+         continue;
+      }
+
+      if ( outnum[VAR__53647] )
+      {
+         mark = 1;
+      }
+
+      cout << outnum[VAR__53647];
+   }
+
+   if ( !mark )
+   {
+      (( cout << '0' ) << endl ) << VAR__TEMP;
+   }
+   else
+   {
+      ( cout << endl ) << VAR__TEMP;
+   }
+
+   return 0;
+}

@@ -1,0 +1,80 @@
+void MyStrupr(char *VAR_233)
+{
+   int VAR__53647 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_233); VAR__53647++ )
+   {
+      if (( VAR_233[VAR__53647] >= 'a' ) && ( VAR_233[VAR__53647] <= 'z' ))
+      {
+         VAR_233[VAR__53647] -= 32;
+      }
+   }
+}
+
+
+void main()
+{
+   int      VAR__819283;
+   int      VAR__19328;
+   int      VAR_9494;
+   int      VAR__53647;
+   int      VAR__21230;
+   int      VAR__8444594;
+   int      VAR__1238129[100];
+   long int VAR__7685;
+   char     VAR_1238123[100];
+   char     VAR__temp[100];
+
+   scanf("%d%s%d", &VAR__819283, VAR_1238123, &VAR__19328);
+   MyStrupr(VAR_1238123);
+   VAR_9494  = strlen(VAR_1238123);
+   VAR__7685 = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_9494 - 1 ); VAR__53647++ )
+   {
+      if (( VAR_1238123[VAR__53647] >= 'A' ) && ( VAR_1238123[VAR__53647] <= 'Z' ))
+      {
+         VAR__1238129[VAR__53647] = VAR_1238123[VAR__53647] - 55;
+      }
+      else
+      {
+         VAR__1238129[VAR__53647] = ((int)VAR_1238123[VAR__53647] ) - 48;
+      }
+
+      VAR__7685 = (long)( VAR__7685 + ( pow(VAR__819283, ( VAR_9494 - 1 ) - VAR__53647) * VAR__1238129[VAR__53647] ));
+   }
+
+   VAR__21230 = 0;
+
+   while ( VAR__7685 >= VAR__19328 )
+   {
+      VAR__1238129[VAR__21230] = VAR__7685 % VAR__19328;
+
+      if ( VAR__1238129[VAR__21230] > 9 )
+      {
+         VAR__temp[VAR__21230] = VAR__1238129[VAR__21230] + 55;
+      }
+      else
+      {
+         VAR__temp[VAR__21230] = VAR__1238129[VAR__21230] + 48;
+      }
+
+      VAR__7685 = VAR__7685 / VAR__19328;
+      VAR__21230++;
+   }
+
+   if ( VAR__7685 > 9 )
+   {
+      VAR__temp[VAR__21230] = VAR__7685 + 55;
+   }
+   else
+   {
+      VAR__temp[VAR__21230] = VAR__7685 + 48;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__21230; VAR__53647++ )
+   {
+      printf("%c", VAR__temp[VAR__21230 - VAR__53647]);
+   }
+
+   printf("\n");
+}

@@ -1,0 +1,50 @@
+int main()
+{
+   int    VAR_1238123;
+   int    dot[100][3];
+   int    VAR__COUNT = -1;
+   double counter[5000][3];
+   double tmp;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> dot[VAR__53647][0] ) >> dot[VAR__53647][1] ) >> dot[VAR__53647][2];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__COUNT++;
+         counter[VAR__COUNT][0] = sqrt((double)(((( dot[VAR__53647][0] - dot[VAR__21230][0] ) * ( dot[VAR__53647][0] - dot[VAR__21230][0] )) + (( dot[VAR__53647][1] - dot[VAR__21230][1] ) * ( dot[VAR__53647][1] - dot[VAR__21230][1] ))) + (( dot[VAR__53647][2] - dot[VAR__21230][2] ) * ( dot[VAR__53647][2] - dot[VAR__21230][2] ))));
+         counter[VAR__COUNT][1] = VAR__53647;
+         counter[VAR__COUNT][2] = VAR__21230;
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__COUNT; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( counter[VAR__21230][0] > counter[VAR__21230 - 1][0] )
+         {
+            for ( int VAR__8444594 = 0; VAR__8444594 < 3; VAR__8444594++ )
+            {
+               tmp = counter[VAR__21230][VAR__8444594];
+               counter[VAR__21230][VAR__8444594]     = counter[VAR__21230 - 1][VAR__8444594];
+               counter[VAR__21230 - 1][VAR__8444594] = tmp;
+            }
+         }
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      (((((((((((((((( cout << "(" ) << dot[(int)counter[VAR__53647][1]][0] ) << "," ) << dot[(int)counter[VAR__53647][1]][1] ) << "," ) << dot[(int)counter[VAR__53647][1]][2] ) << ")-(" ) << dot[(int)counter[VAR__53647][2]][0] ) << "," ) << dot[(int)counter[VAR__53647][2]][1] ) << "," ) << dot[(int)counter[VAR__53647][2]][2] ) << ")=" ) << setprecision(2)) << fixed ) << counter[VAR__53647][0] ) << endl;
+   }
+
+   return 0;
+}

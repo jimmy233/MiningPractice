@@ -1,0 +1,87 @@
+int VAR_1238123;
+int VAR__7685[1000];
+int VAR__3918907[1000];
+int myCmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int *hx;
+   int *hy;
+   int *rx;
+   int *ry;
+   int win;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 )
+   {
+      win = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__7685[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__3918907[VAR__53647]);
+      }
+
+      qsort(VAR__7685, VAR_1238123, sizeof( int ), myCmp);
+      qsort(VAR__3918907, VAR_1238123, sizeof( int ), myCmp);
+      hx = &VAR__7685[0];
+      hy = &VAR__3918907[0];
+      rx = &VAR__7685[VAR_1238123 - 1];
+      ry = &VAR__3918907[VAR_1238123 - 1];
+
+      while ( hx <= rx )
+      {
+         if (( *hx ) != ( *hy ))
+         {
+            if (( *hx ) > ( *hy ))
+            {
+               win++;
+               hx++;
+               hy++;
+            }
+            else
+            {
+               win--;
+               rx--;
+               hy++;
+            }
+         }
+         else
+         if (( *rx ) != ( *ry ))
+         {
+            if (( *rx ) > ( *ry ))
+            {
+               win++;
+               rx--;
+               ry--;
+            }
+            else
+            {
+               win--;
+               rx--;
+               hy++;
+            }
+         }
+         else
+         {
+            win += (( *rx ) < ( *hy )) ? ( -1 ) : ( 0 );
+            rx--;
+            hy++;
+         }
+      }
+
+      printf("%d\n", win * 200);
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 1;
+}

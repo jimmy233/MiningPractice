@@ -1,0 +1,73 @@
+struct stu
+{
+   int        id;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+};
+void main()
+{
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *p0;
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        ch;
+   int        ma;
+   int        LEN_OF_STH;
+
+   scanf("%d", &VAR_1238123);
+   LEN_OF_STH      = sizeof( struct stu );
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(LEN_OF_STH));
+   VAR__HEAD       = ANOTHER_POINTER;
+   scanf("%d%d%d", &ANOTHER_POINTER->id, &ch, &ma);
+   ANOTHER_POINTER->VAR__SUM  = ch + ma;
+   ANOTHER_POINTER->VAR__NEXT = 0;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      p0 = (struct stu *)malloc(LEN_OF_STH);
+      scanf("%d %d %d", &p0->id, &ch, &ma);
+      p0->VAR__SUM    = ch + ma;
+      ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+
+      while (( p0->VAR__SUM <= ANOTHER_POINTER->VAR__SUM ) && ( ANOTHER_POINTER->VAR__NEXT != 0 ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( p0->VAR__SUM > ANOTHER_POINTER->VAR__SUM )
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            VAR__HEAD = p0;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         }
+
+         p0->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = 0;
+      }
+
+      if ( VAR__53647 > 3 )
+      {
+         ANOTHER_POINTER            = VAR__HEAD->VAR__NEXT;
+         ANOTHER_POINTER            = ANOTHER_POINTER->VAR__NEXT;
+         ANOTHER_POINTER->VAR__NEXT = 0;
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != 0 )
+   {
+      printf("%d %d\n", ANOTHER_POINTER->id, ANOTHER_POINTER->VAR__SUM);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

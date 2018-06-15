@@ -1,0 +1,53 @@
+int VAR__819283[29];
+int VAR__MAX[29]   = { 0 };
+int VAR__COUNT[29] = { 0 };
+int N;
+int select(int VAR__7685)
+{
+   if ( VAR__COUNT[VAR__7685] == 0 )
+   {
+      int VAR__53647;
+      for ( VAR__53647 = VAR__7685 + 1; VAR__53647 <= N; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__7685] >= VAR__819283[VAR__53647] )
+         {
+            if ( VAR__MAX[VAR__7685] <= select(VAR__53647))
+            {
+               VAR__MAX[VAR__7685] = select(VAR__53647) + 1;
+            }
+         }
+      }
+
+      if ( VAR__MAX[VAR__7685] == 0 )
+      {
+         VAR__MAX[VAR__7685] = 1;
+      }
+
+      VAR__COUNT[VAR__7685] = 1;
+   }
+
+   return VAR__MAX[VAR__7685];
+}
+
+
+int main()
+{
+   int maxm;
+
+   scanf("%d", &N);
+   for ( int VAR__21230 = 1; VAR__21230 <= N; VAR__21230++ )
+   {
+      scanf("%d", &VAR__819283[VAR__21230]);
+   }
+
+   maxm = select(1);
+   for ( int VAR__8444594 = 2; VAR__8444594 <= N; VAR__8444594++ )
+   {
+      if ( maxm < select(VAR__8444594))
+      {
+         maxm = select(VAR__8444594);
+      }
+   }
+
+   printf("%d", maxm);
+}

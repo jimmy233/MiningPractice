@@ -1,0 +1,62 @@
+struct RAT
+{
+   int        weight;
+   char       color[10];
+   struct RAT *VAR__NEXT;
+};
+int N;
+int main()
+{
+   void sort(struct RAT *VAR_233);
+
+   int VAR__53647;
+   scanf("%d", &N);
+   struct RAT *VAR__HEAD;
+   struct RAT *ANOTHER_POINTER;
+   struct RAT *YET_ANOTHER_POINTER;
+   ANOTHER_POINTER = (struct RAT *)malloc(Len);
+   scanf("%s %d", ANOTHER_POINTER->color, &ANOTHER_POINTER->weight);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < N; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct RAT *)malloc(Len);
+      scanf("%s %d", ANOTHER_POINTER->color, &ANOTHER_POINTER->weight);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   sort(VAR__HEAD);
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      printf("%s\n", ANOTHER_POINTER->color);
+   }
+
+   return 0;
+}
+
+
+void sort(struct RAT *VAR_233)
+{
+   int        VAR__21230;
+   int        VAR__53647;
+   struct RAT *pt;
+   struct RAT VAR__TEMP;
+
+   for ( VAR__21230 = 0; VAR__21230 < N; VAR__21230++ )
+   {
+      for ( pt = VAR_233, VAR__53647 = 0; VAR__53647 < (( N - VAR__21230 ) - 1 ); pt = pt->VAR__NEXT, VAR__53647++ )
+      {
+         if ((( pt->weight < 60 ) && ( pt->VAR__NEXT->weight >= 60 )) || ((( pt->weight >= 60 ) && ( pt->VAR__NEXT->weight >= 60 )) && ( pt->weight < pt->VAR__NEXT->weight )))
+         {
+            VAR__TEMP  = *pt;
+            pt->weight = pt->VAR__NEXT->weight;
+            strcpy(pt->color, pt->VAR__NEXT->color);
+            pt->VAR__NEXT->weight = VAR__TEMP.weight;
+            strcpy(pt->VAR__NEXT->color, VAR__TEMP.color);
+         }
+      }
+   }
+}

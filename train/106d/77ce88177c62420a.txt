@@ -1,0 +1,74 @@
+int main()
+{
+   int VAR_1238123;
+   struct remonth
+   {
+      int year;
+      int month1;
+      int month2;
+   }
+       remonth[200];
+   int diff[200];
+   int VAR__53647;
+   int VAR__1238129;
+   int VAR__8444594;
+   int VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &remonth[VAR__53647].year, &remonth[VAR__53647].month1, &remonth[VAR__53647].month2);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (((( remonth[VAR__53647].year % 4 ) == 0 ) && (( remonth[VAR__53647].year % 100 ) != 0 )) || (( remonth[VAR__53647].year % 400 ) == 0 ))
+      {
+         VAR__1238129 = 29;
+      }
+      else
+      {
+         VAR__1238129 = 28;
+      }
+
+      if ( remonth[VAR__53647].month1 > remonth[VAR__53647].month2 )
+      {
+         VAR__temp = remonth[VAR__53647].month1;
+         remonth[VAR__53647].month1 = remonth[VAR__53647].month2;
+         remonth[VAR__53647].month2 = VAR__temp;
+      }
+
+      diff[VAR__53647] = 0;
+      for ( VAR__8444594 = remonth[VAR__53647].month1; VAR__8444594 < remonth[VAR__53647].month2; VAR__8444594++ )
+      {
+         if ((((((( VAR__8444594 == 1 ) || ( VAR__8444594 == 3 )) || ( VAR__8444594 == 5 )) || ( VAR__8444594 == 7 )) || ( VAR__8444594 == 8 )) || ( VAR__8444594 == 10 )) || ( VAR__8444594 == 12 ))
+         {
+            diff[VAR__53647] = diff[VAR__53647] + 31;
+         }
+         else
+         if (((( VAR__8444594 == 4 ) || ( VAR__8444594 == 6 )) || ( VAR__8444594 == 9 )) || ( VAR__8444594 == 11 ))
+         {
+            diff[VAR__53647] = diff[VAR__53647] + 30;
+         }
+         else
+         if ( VAR__8444594 == 2 )
+         {
+            diff[VAR__53647] = diff[VAR__53647] + VAR__1238129;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( diff[VAR__53647] % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}

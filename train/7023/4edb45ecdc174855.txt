@@ -1,0 +1,75 @@
+void minus(char VAR__819283[], char VAR__19328[], char result[]);
+
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   char VAR__819283[VAR__MAX][VAR__MAX];
+   char VAR__19328[VAR__MAX][VAR__MAX];
+   char result[VAR__MAX][VAR__MAX];
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s\n%s\n\n", VAR__819283[VAR__53647], VAR__19328[VAR__53647]);
+      minus(VAR__819283[VAR__53647], VAR__19328[VAR__53647], result[VAR__53647]);
+      printf("%s\n", result[VAR__53647]);
+   }
+}
+
+
+void minus(char VAR__819283[], char VAR__19328[], char result[])
+{
+   int  la;
+   int  lb;
+   int  VAR__temp = 0;
+   int  VAR_9494;
+   int  VAR__4857423 = 0;
+   int  VAR__53647;
+   char VAR__TEMP;
+
+   la = strlen(VAR__819283) - 1;
+   lb = strlen(VAR__19328) - 1;
+
+   while ( la >= 0 )
+   {
+      if ( lb < 0 )
+      {
+         VAR_9494 = VAR__819283[la--] - 48;
+      }
+      else
+      {
+         VAR_9494 = VAR__819283[la--] - VAR__19328[lb--];
+      }
+
+      result[VAR__temp++] = ( VAR_9494 - VAR__4857423 ) + 48;
+
+      if ( result[VAR__temp - 1] < 48 )
+      {
+         result[VAR__temp - 1] += 10;
+         VAR__4857423           = 1;
+      }
+      else
+      {
+         VAR__4857423 = 0;
+      }
+   }
+
+   while ( result[VAR__temp] == 0 )
+   {
+      VAR__temp--;
+   }
+
+   while ( result[VAR__temp] == '0' )
+   {
+      result[VAR__temp] = 0;
+      VAR__temp--;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp / 2 ); VAR__53647++ )
+   {
+      VAR__TEMP                      = result[VAR__53647];
+      result[VAR__53647]             = result[VAR__temp - VAR__53647];
+      result[VAR__temp - VAR__53647] = VAR__TEMP;
+   }
+}

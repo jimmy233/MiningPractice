@@ -1,0 +1,105 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  changdu1;
+   int  changdu2;
+   int  jieguo[1005];
+   char jianshu[1005];
+   char beijianshu[1005];
+   char zhongjian[1005];
+
+   cin >> VAR_1238123;
+   cin.get();
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( VAR__8444594 != 0 )
+      {
+         cin.get();
+      }
+
+      cin.getline(beijianshu, 1001);
+      cin.getline(jianshu, 1001);
+      changdu1 = strlen(beijianshu);
+      changdu2 = strlen(jianshu);
+      for ( VAR__53647 = 0; VAR__53647 < changdu1; VAR__53647++ )
+      {
+         zhongjian[VAR__53647] = beijianshu[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < changdu1; VAR__53647++ )
+      {
+         beijianshu[VAR__53647] = zhongjian[( changdu1 - 1 ) - VAR__53647];
+
+         if ( beijianshu[VAR__53647] == ' ' )
+         {
+            beijianshu[VAR__53647] = '0';
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < changdu2; VAR__53647++ )
+      {
+         zhongjian[VAR__53647] = jianshu[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < changdu2; VAR__53647++ )
+      {
+         jianshu[VAR__53647] = zhongjian[( changdu2 - 1 ) - VAR__53647];
+
+         if ( jianshu[VAR__53647] == ' ' )
+         {
+            jianshu[VAR__53647] = '0';
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < changdu2; VAR__53647++ )
+      {
+         if ( beijianshu[VAR__53647] < jianshu[VAR__53647] )
+         {
+            jieguo[VAR__53647] = ( 10 - jianshu[VAR__53647] ) + beijianshu[VAR__53647];
+
+            if ( beijianshu[VAR__53647 + 1] != '0' )
+            {
+               beijianshu[VAR__53647 + 1] -= 1;
+            }
+            else
+            {
+               VAR__21230 = VAR__53647;
+
+               while ( beijianshu[VAR__21230 + 1] == '0' )
+               {
+                  beijianshu[VAR__21230 + 1] = '9';
+                  VAR__21230 = VAR__21230 + 1;
+               }
+
+               beijianshu[VAR__21230 + 1] -= 1;
+            }
+         }
+         else
+         {
+            jieguo[VAR__53647] = beijianshu[VAR__53647] - jianshu[VAR__53647];
+         }
+      }
+
+      for ( VAR__53647 = changdu2; VAR__53647 < changdu1; VAR__53647++ )
+      {
+         jieguo[VAR__53647] = beijianshu[VAR__53647] - '0';
+      }
+
+      if ( beijianshu[changdu1 - 1] == '0' )
+      {
+         changdu1 -= 1;
+      }
+
+      for ( VAR__53647 = changdu1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << jieguo[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

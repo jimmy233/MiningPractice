@@ -1,0 +1,80 @@
+int main()
+{
+   int styear;
+   int stmonth;
+   int stday;
+   int enyear;
+   int enmonth;
+   int enday;
+   int VAR__SUM = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int year[2]          = { 365, 366 };
+   int yearmonth[2][13] = { { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+
+   (( cin >> styear ) >> stmonth ) >> stday;
+   (( cin >> enyear ) >> enmonth ) >> enday;
+
+   if ( styear == enyear )
+   {
+      if ( stmonth == enmonth )
+      {
+         VAR__SUM = enday - stday;
+      }
+      else
+      {
+         for ( VAR__21230 = stmonth; VAR__21230 <= enmonth; VAR__21230++ )
+         {
+            if ( VAR__21230 == stmonth )
+            {
+               VAR__SUM = ( VAR__SUM + yearmonth[((( styear % 4 ) == 0 ) && (( styear % 100 ) != 0 )) || (( styear % 400 ) == 0 )][VAR__21230] ) - stday;
+            }
+            else
+            if ( VAR__21230 == enmonth )
+            {
+               VAR__SUM = VAR__SUM + enday;
+            }
+            else
+            {
+               VAR__SUM = VAR__SUM + yearmonth[((( styear % 4 ) == 0 ) && (( styear % 100 ) != 0 )) || (( styear % 400 ) == 0 )][VAR__21230];
+            }
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__21230 = stmonth; VAR__21230 <= 12; VAR__21230++ )
+      {
+         if ( VAR__21230 == stmonth )
+         {
+            VAR__SUM = ( VAR__SUM + yearmonth[((( styear % 4 ) == 0 ) && (( styear % 100 ) != 0 )) || (( styear % 400 ) == 0 )][VAR__21230] ) - stday;
+         }
+         else
+         {
+            VAR__SUM = VAR__SUM + yearmonth[((( styear % 4 ) == 0 ) && (( styear % 100 ) != 0 )) || (( styear % 400 ) == 0 )][VAR__21230];
+         }
+      }
+
+      styear++;
+
+      while ( styear < enyear )
+      {
+         VAR__SUM = VAR__SUM + year[((( styear % 4 ) == 0 ) && (( styear % 100 ) != 0 )) || (( styear % 400 ) == 0 )];
+         styear++;
+      }
+
+      VAR__21230 = 1;
+
+      while ( VAR__21230 < enmonth )
+      {
+         VAR__SUM = VAR__SUM + yearmonth[((( styear % 4 ) == 0 ) && (( styear % 100 ) != 0 )) || (( styear % 400 ) == 0 )][VAR__21230];
+         VAR__21230++;
+      }
+
+      VAR__SUM = VAR__SUM + enday;
+   }
+
+   cout << VAR__SUM;
+   return 0;
+}

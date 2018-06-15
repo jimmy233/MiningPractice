@@ -1,0 +1,57 @@
+struct student
+{
+   int ID;
+   int Chinese;
+   int Math;
+   int Score;
+};
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int first = 0;
+   int ifirst;
+   int second = 0;
+   int isecond;
+   int third = 0;
+   int ithird;
+
+   scanf("%d", &VAR_1238123);
+   struct student STUDENT_NUM[VAR_1238123];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &STUDENT_NUM[VAR__53647].ID, &STUDENT_NUM[VAR__53647].Chinese, &STUDENT_NUM[VAR__53647].Math);
+      STUDENT_NUM[VAR__53647].Score = STUDENT_NUM[VAR__53647].Chinese + STUDENT_NUM[VAR__53647].Math;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( first < STUDENT_NUM[VAR__53647].Score )
+      {
+         first  = STUDENT_NUM[VAR__53647].Score;
+         ifirst = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((( second < STUDENT_NUM[VAR__53647].Score ) && ( STUDENT_NUM[VAR__53647].Score <= first )) && ( VAR__53647 != ifirst ))
+      {
+         second  = STUDENT_NUM[VAR__53647].Score;
+         isecond = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (((( third < STUDENT_NUM[VAR__53647].Score ) && ( STUDENT_NUM[VAR__53647].Score <= second )) && ( VAR__53647 != ifirst )) && ( VAR__53647 != isecond ))
+      {
+         third  = STUDENT_NUM[VAR__53647].Score;
+         ithird = VAR__53647;
+      }
+   }
+
+   printf("%d %d\n", STUDENT_NUM[ifirst].ID, first);
+   printf("%d %d\n", STUDENT_NUM[isecond].ID, second);
+   printf("%d %d\n", STUDENT_NUM[ithird].ID, third);
+}

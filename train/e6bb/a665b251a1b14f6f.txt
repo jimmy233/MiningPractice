@@ -1,0 +1,79 @@
+int VAR__19328[9][9];
+int old[9][9];
+void mul(int VAR__8444594, const int day);
+void pam(int VAR__7685, int VAR__3918907);
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   memset(VAR__19328, 0, sizeof( VAR__19328 ));
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   VAR__19328[4][4] = VAR__1238129;
+   mul(0, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 8; VAR__21230++ )
+      {
+         ( cout << VAR__19328[VAR__53647][VAR__21230] ) << " ";
+      }
+
+      ( cout << VAR__19328[VAR__53647][8] ) << endl;
+   }
+
+   return 0;
+}
+
+
+void mul(int VAR__8444594, const int day)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 4 - VAR__8444594; VAR__53647 <= ( 4 + VAR__8444594 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 4 - VAR__8444594; VAR__21230 <= ( 4 + VAR__8444594 ); VAR__21230++ )
+      {
+         old[VAR__53647][VAR__21230] = VAR__19328[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 4 - VAR__8444594; VAR__53647 <= ( 4 + VAR__8444594 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 4 - VAR__8444594; VAR__21230 <= ( 4 + VAR__8444594 ); VAR__21230++ )
+      {
+         pam(VAR__53647, VAR__21230);
+      }
+   }
+
+
+   VAR__8444594++;
+
+   if ( VAR__8444594 < day )
+   {
+      mul(VAR__8444594, day);
+   }
+   else
+   {
+      return;
+   }
+}
+
+
+void pam(int VAR__7685, int VAR__3918907)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = VAR__7685 - 1; VAR__53647 <= ( VAR__7685 + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__3918907 - 1; VAR__21230 <= ( VAR__3918907 + 1 ); VAR__21230++ )
+      {
+         VAR__19328[VAR__53647][VAR__21230] = VAR__19328[VAR__53647][VAR__21230] + old[VAR__7685][VAR__3918907];
+      }
+   }
+}

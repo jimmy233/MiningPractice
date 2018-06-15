@@ -1,0 +1,58 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  VAR__7685[110];
+   int  VAR__8444594;
+   int  x2[110];
+   char id[110][20];
+   char VAR__TEMP[20];
+   char id2[100][20];
+
+   scanf("%d", &VAR_1238123);
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", &id[VAR__53647], &VAR__7685[VAR__53647]);
+
+      if ( VAR__7685[VAR__53647] >= 60 )
+      {
+         VAR__8444594++;
+         x2[VAR__8444594] = VAR__7685[VAR__53647];
+         strcpy(id2[VAR__8444594], id[VAR__53647]);
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__8444594; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( x2[VAR__21230] > x2[VAR__21230 - 1] )
+         {
+            VAR__temp          = x2[VAR__21230];
+            x2[VAR__21230]     = x2[VAR__21230 - 1];
+            x2[VAR__21230 - 1] = VAR__temp;
+            strcpy(VAR__TEMP, id2[VAR__21230]);
+            strcpy(id2[VAR__21230], id2[VAR__21230 - 1]);
+            strcpy(id2[VAR__21230 - 1], VAR__TEMP);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", id2[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__7685[VAR__53647] < 60 )
+      {
+         printf("%s\n", id[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

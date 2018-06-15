@@ -1,0 +1,95 @@
+int main()
+{
+   int VAR_1238123[100];
+   int tianji[100][1000];
+   int qiwang[100][1000];
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      scanf("%d", &VAR_1238123[VAR__53647]);
+
+      if ( VAR_1238123[VAR__53647] == 0 )
+      {
+         break;
+      }
+      else
+      {
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123[VAR__53647] - 1 ); VAR__21230++ )
+         {
+            scanf("%d", &tianji[VAR__53647][VAR__21230]);
+         }
+
+         for ( int VAR__8444594 = 0; VAR__8444594 <= ( VAR_1238123[VAR__53647] - 1 ); VAR__8444594++ )
+         {
+            scanf("%d", &qiwang[VAR__53647][VAR__8444594]);
+         }
+      }
+   }
+
+   for ( int VAR__1111 = 0; VAR__1111 <= ( VAR__53647 - 1 ); VAR__1111++ )
+   {
+      for ( int VAR__21230 = VAR_1238123[VAR__1111] - 1; VAR__21230 > 0; VAR__21230-- )
+      {
+         for ( int VAR__8444594 = 0; VAR__8444594 < VAR__21230; VAR__8444594++ )
+         {
+            if ( tianji[VAR__1111][VAR__8444594] > tianji[VAR__1111][VAR__8444594 + 1] )
+            {
+               int VAR__TEMP;
+               VAR__TEMP = tianji[VAR__1111][VAR__8444594 + 1];
+               tianji[VAR__1111][VAR__8444594 + 1] = tianji[VAR__1111][VAR__8444594];
+               tianji[VAR__1111][VAR__8444594]     = VAR__TEMP;
+            }
+
+            if ( qiwang[VAR__1111][VAR__8444594] > qiwang[VAR__1111][VAR__8444594 + 1] )
+            {
+               int VAR__TEMP;
+               VAR__TEMP = qiwang[VAR__1111][VAR__8444594 + 1];
+               qiwang[VAR__1111][VAR__8444594 + 1] = qiwang[VAR__1111][VAR__8444594];
+               qiwang[VAR__1111][VAR__8444594]     = VAR__TEMP;
+            }
+         }
+      }
+   }
+
+   for ( int VAR__1111 = 0; VAR__1111 <= ( VAR__53647 - 1 ); VAR__1111++ )
+   {
+      int t1         = 0;
+      int t2         = VAR_1238123[VAR__1111] - 1;
+      int q1         = 0;
+      int q2         = VAR_1238123[VAR__1111] - 1;
+      int VAR__COUNT = 0;
+      for ( ; t1 <= t2; )
+      {
+         if ( tianji[VAR__1111][t2] > qiwang[VAR__1111][q2] )
+         {
+            VAR__COUNT++;
+            t2--;
+            q2--;
+         }
+         else
+         if ( tianji[VAR__1111][t1] > qiwang[VAR__1111][q1] )
+         {
+            VAR__COUNT++;
+            t1++;
+            q1++;
+         }
+         else
+         if ( tianji[VAR__1111][t1] < qiwang[VAR__1111][q2] )
+         {
+            VAR__COUNT--;
+            t1++;
+            q2--;
+         }
+         else
+         {
+            t1++;
+            q2--;
+         }
+      }
+
+      printf("%d\n", 200 * VAR__COUNT);
+   }
+
+   return 0;
+}

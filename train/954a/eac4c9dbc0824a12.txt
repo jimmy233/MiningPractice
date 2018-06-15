@@ -1,0 +1,107 @@
+struct data
+{
+   char name[21];
+   int  final;
+   int  assess;
+   char servant;
+   char west;
+   int  pub;
+   int  bonus;
+}
+student[100];
+struct data
+{
+   char name[21];
+   int  final;
+   int  assess;
+   char servant;
+   char west;
+   int  pub;
+   int  bonus;
+}
+*medium;
+void yuanshi(struct data *student)
+{
+   if (( student->final > 80 ) && ( student->pub > 0 ))
+   {
+      student->bonus = student->bonus + 8000;
+   }
+}
+
+
+void wusi(struct data *student)
+{
+   if (( student->final > 85 ) && ( student->assess > 80 ))
+   {
+      student->bonus = student->bonus + 4000;
+   }
+}
+
+
+void chengji(struct data *student)
+{
+   if ( student->final > 90 )
+   {
+      student->bonus = student->bonus + 2000;
+   }
+}
+
+
+void xibu(struct data *student)
+{
+   if (( student->final > 85 ) && ( student->west == 'Y' ))
+   {
+      student->bonus = student->bonus + 1000;
+   }
+}
+
+
+void banji(struct data *student)
+{
+   if (( student->assess > 80 ) && ( student->servant == 'Y' ))
+   {
+      student->bonus = student->bonus + 850;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int index;
+   int VAR__MAX = 0;
+   int VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", student[VAR__53647].name, &student[VAR__53647].final, &student[VAR__53647].assess, &student[VAR__53647].servant, &student[VAR__53647].west, &student[VAR__53647].pub);
+      student[VAR__53647].bonus = 0;
+   }
+
+   medium = student;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      banji(medium + VAR__53647);
+      xibu(medium + VAR__53647);
+      chengji(medium + VAR__53647);
+      yuanshi(medium + VAR__53647);
+      wusi(medium + VAR__53647);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < student[VAR__53647].bonus )
+      {
+         VAR__MAX = student[VAR__53647].bonus;
+         index    = VAR__53647;
+      }
+
+      VAR__SUM = VAR__SUM + student[VAR__53647].bonus;
+   }
+
+   printf("%s\n%d\n%d", student[index].name, VAR__MAX, VAR__SUM);
+   return 0;
+}

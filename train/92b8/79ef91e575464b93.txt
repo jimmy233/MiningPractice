@@ -1,0 +1,71 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR_666 = 0;
+   int VAR__53647;
+   int VAR__21230;
+   struct qujian
+   {
+      int begin;
+      int end;
+   }
+       qujian[50000];
+   int VAR__819283[100000] = { 0 };
+   int first;
+   int last;
+   int A = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &qujian[VAR__53647].begin, &qujian[VAR__53647].end);
+   }
+
+   first = qujian[0].begin;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( first > qujian[VAR__53647 + 1].begin )
+      {
+         first = qujian[VAR__53647 + 1].begin;
+      }
+   }
+
+   last = qujian[VAR_1238123 - 1].end;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( qujian[VAR__53647].end > last )
+      {
+         last = qujian[VAR__53647].end;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = qujian[VAR__53647].begin * 10; VAR__21230 <= ( qujian[VAR__53647].end * 10 ); VAR__21230++ )
+      {
+         VAR__819283[VAR__21230]--;
+      }
+   }
+
+   first = first * 10;
+   last  = last * 10;
+   for ( VAR__53647 = first; VAR__53647 <= last; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == 0 )
+      {
+         A = 9;
+         break;
+      }
+   }
+
+   if ( A == 9 )
+   {
+      printf("no");
+   }
+   else
+   {
+      printf("%d %d", first / 10, last / 10);
+   }
+
+   return 0;
+}

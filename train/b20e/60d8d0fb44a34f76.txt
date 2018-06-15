@@ -1,0 +1,87 @@
+int VAR__819283[1000];
+int VAR__19328[1000];
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((long *)VAR__819283 )) - ( *((long *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( 1 )
+   {
+      int VAR__SUM = 0;
+      int VAR__53647;
+      int VAR__21230;
+      int end1;
+      int end2;
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), cmp);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), cmp);
+      VAR__21230 = 0;
+      for ( VAR__53647 = ( VAR__21230 = VAR_1238123 - 1 ), end1 = ( end2 = 0 ); ( VAR__21230 >= end2 ) && ( VAR__53647 >= end1 ); VAR__21230-- )
+      {
+         if ( VAR__819283[VAR__53647] > VAR__19328[VAR__21230] )
+         {
+            VAR__SUM++;
+            VAR__53647--;
+         }
+         else
+         if ( VAR__819283[VAR__53647] < VAR__19328[VAR__21230] )
+         {
+            VAR__SUM--;
+            end1++;
+         }
+         else
+         {
+            if ( VAR__819283[end1] > VAR__19328[end2] )
+            {
+               VAR__SUM++;
+               end1++;
+               end2++;
+               VAR__21230++;
+            }
+            else
+            if ( VAR__819283[end1] < VAR__19328[end2] )
+            {
+               VAR__SUM--;
+               end1++;
+            }
+            else
+            {
+               if ( VAR__819283[end1] == VAR__19328[VAR__21230] )
+               {
+                  end1++;
+               }
+               else
+               {
+                  VAR__SUM--;
+                  end1++;
+               }
+            }
+         }
+      }
+
+      ( cout << ( VAR__SUM * 200 )) << endl;
+   }
+
+   return 0;
+}

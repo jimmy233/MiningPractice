@@ -1,0 +1,29 @@
+char *strqp(char *);
+
+int main()
+{
+   char buffer[101] = { 0 };
+
+   gets(buffer);
+   printf("%s\n", strqp(buffer));
+   return 0;
+}
+
+
+char *strqp(char *A_STRING)
+{
+   int LEN_OF_STH;
+
+   LEN_OF_STH = strlen(A_STRING);
+   char *qp;
+   qp = (char *)malloc(LEN_OF_STH + 1);
+   int index = 0;
+   for ( index = 0; index < ( LEN_OF_STH - 1 ); index++ )
+   {
+      qp[index] = A_STRING[index] + A_STRING[index + 1];
+   }
+
+   qp[LEN_OF_STH - 1] = A_STRING[LEN_OF_STH - 1] + A_STRING[0];
+   qp[LEN_OF_STH]     = '\0';
+   return qp;
+}

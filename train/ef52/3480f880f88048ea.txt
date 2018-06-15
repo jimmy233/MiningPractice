@@ -1,0 +1,59 @@
+int H[100];
+int N;
+int memo[40][40];
+int dp(int VAR__53647, int VAR__8444594)
+{
+   int rslt;
+
+   if ( VAR__53647 == N )
+   {
+      return 0;
+   }
+
+   if ( memo[VAR__53647][VAR__8444594] != ( -1 ))
+   {
+      return memo[VAR__53647][VAR__8444594];
+   }
+
+   if (( VAR__8444594 != 30 ) && ( H[VAR__53647] > H[VAR__8444594] ))
+   {
+      rslt = dp(VAR__53647 + 1, VAR__8444594);
+   }
+   else
+   {
+      int VAR__819283 = dp(VAR__53647 + 1, VAR__53647) + 1;
+      int VAR__19328  = dp(VAR__53647 + 1, VAR__8444594);
+
+      if ( VAR__819283 > VAR__19328 )
+      {
+         rslt = VAR__819283;
+      }
+      else
+      {
+         rslt = VAR__19328;
+      }
+   }
+
+   return memo[VAR__53647][VAR__8444594] = rslt;
+}
+
+
+int main()
+{
+   scanf("%d", &N);
+   for ( int VAR__53647 = 0; VAR__53647 < 40; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 40; VAR__21230++ )
+      {
+         memo[VAR__53647][VAR__21230] = -1;
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%d", &H[VAR__53647]);
+   }
+
+   printf("%d\n", dp(0, 30));
+}

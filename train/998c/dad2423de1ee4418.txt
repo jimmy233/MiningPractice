@@ -1,0 +1,84 @@
+int main()
+{
+   char ANOTHER_STRING[252];
+   char YET_ANOTHER_STRING[252];
+   char str3[253];
+   char VAR__4857423;
+   int  VAR_9494;
+   int  VAR__53647;
+   int  VAR__819283;
+   int  VAR__19328;
+
+   gets(ANOTHER_STRING);
+   gets(YET_ANOTHER_STRING);
+   VAR__819283 = strlen(ANOTHER_STRING);
+   VAR__19328  = strlen(YET_ANOTHER_STRING);
+   for ( VAR__53647 = 0; VAR__53647 <= (( VAR__819283 / 2 ) - 1 ); VAR__53647++ )
+   {
+      VAR__4857423 = ANOTHER_STRING[VAR__53647];
+      ANOTHER_STRING[VAR__53647] = ANOTHER_STRING[( VAR__819283 - 1 ) - VAR__53647];
+      ANOTHER_STRING[( VAR__819283 - 1 ) - VAR__53647] = VAR__4857423;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= (( VAR__19328 / 2 ) - 1 ); VAR__53647++ )
+   {
+      VAR__4857423 = YET_ANOTHER_STRING[VAR__53647];
+      YET_ANOTHER_STRING[VAR__53647] = YET_ANOTHER_STRING[( VAR__19328 - 1 ) - VAR__53647];
+      YET_ANOTHER_STRING[( VAR__19328 - 1 ) - VAR__53647] = VAR__4857423;
+   }
+
+   if ( VAR__819283 > VAR__19328 )
+   {
+      for ( VAR__53647 = VAR__19328; VAR__53647 < VAR__819283; VAR__53647++ )
+      {
+         YET_ANOTHER_STRING[VAR__53647] = '0';
+      }
+
+      YET_ANOTHER_STRING[VAR__53647] = '\0';
+   }
+
+   if ( VAR__819283 < VAR__19328 )
+   {
+      for ( VAR__53647 = VAR__819283; VAR__53647 < VAR__19328; VAR__53647++ )
+      {
+         ANOTHER_STRING[VAR__53647] = '0';
+      }
+
+      ANOTHER_STRING[VAR__53647] = '\0';
+   }
+
+   for ( VAR__53647 = 0; ANOTHER_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      VAR_9494 = (( ANOTHER_STRING[VAR__53647] - '0' ) + YET_ANOTHER_STRING[VAR__53647] ) - '0';
+
+      if ( VAR_9494 >= 10 )
+      {
+         str3[VAR__53647] = ( VAR_9494 - 10 ) + '0';
+         YET_ANOTHER_STRING[VAR__53647 + 1] = YET_ANOTHER_STRING[VAR__53647 + 1] + 1;
+      }
+      else
+      {
+         str3[VAR__53647] = VAR_9494 + '0';
+      }
+   }
+
+   if ( YET_ANOTHER_STRING[VAR__53647] == 1 )
+   {
+      str3[VAR__53647]     = '1';
+      str3[VAR__53647 + 1] = '\0';
+   }
+   else
+   {
+      str3[VAR__53647] = '\0';
+   }
+
+   for ( VAR__53647 = strlen(str3) - 1; ( str3[VAR__53647] == '0' ) && ( VAR__53647 > 0 ); VAR__53647-- )
+   {
+      str3[VAR__53647] = '\0';
+   }
+
+   for ( VAR__53647 = strlen(str3) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", str3[VAR__53647]);
+   }
+}

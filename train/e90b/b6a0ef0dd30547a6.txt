@@ -1,0 +1,101 @@
+struct student
+{
+   long           VAR__NUM;
+   int            scorec;
+   int            scorem;
+   struct student *VAR__NEXT;
+};
+struct student *creat(long VAR_1238123)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN);
+   scanf("%ld %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->scorec, &ANOTHER_POINTER->scorem);
+   long VAR_9494 = VAR_1238123 - 1;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   do
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%ld %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->scorec, &ANOTHER_POINTER->scorem);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      VAR_9494 = VAR_9494 - 1;
+   } while ( VAR_9494 );
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student stu1;
+   struct student stu2;
+   struct student stu3;
+   long           VAR_1238123;
+   long           k1 = -1;
+   long           k2 = -1;
+   long           k3 = -1;
+   long           VAR__53647;
+   long           VAR__21230;
+   int            VAR__1111;
+
+   scanf("%ld", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   for ( VAR_233 = VAR__HEAD, VAR__53647 = 0; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT, VAR__53647++ )
+   {
+      VAR__1111 = 0;
+      for ( VAR_666 = VAR__HEAD, VAR__21230 = 0; VAR_666 != NULL; VAR_666 = VAR_666->VAR__NEXT, VAR__21230++ )
+      {
+         if ((( VAR_666->scorec + VAR_666->scorem ) > ( VAR_233->scorec + VAR_233->scorem )) || ((( VAR_666->scorec + VAR_666->scorem ) == ( VAR_233->scorec + VAR_233->scorem )) && ( VAR__21230 < VAR__53647 )))
+         {
+            VAR__1111 = VAR__1111 + 1;
+
+            if ( VAR__1111 > 3 )
+            {
+               break;
+            }
+         }
+      }
+
+
+      if ( VAR__1111 == 0 )
+      {
+         k1            = VAR__53647;
+         stu1.VAR__NUM = VAR_233->VAR__NUM;
+         stu1.scorec   = VAR_233->scorec;
+         stu1.scorem   = VAR_233->scorem;
+      }
+
+      if ( VAR__1111 == 1 )
+      {
+         k2            = VAR__53647;
+         stu2.VAR__NUM = VAR_233->VAR__NUM;
+         stu2.scorec   = VAR_233->scorec;
+         stu2.scorem   = VAR_233->scorem;
+      }
+
+      if ( VAR__1111 == 2 )
+      {
+         k3            = VAR__53647;
+         stu3.VAR__NUM = VAR_233->VAR__NUM;
+         stu3.scorec   = VAR_233->scorec;
+         stu3.scorem   = VAR_233->scorem;
+      }
+
+      if ((( k1 != ( -1 )) && ( k2 != ( -1 ))) && ( k3 != ( -1 )))
+      {
+         break;
+      }
+   }
+
+   printf("%ld %d\n", stu1.VAR__NUM, stu1.scorec + stu1.scorem);
+   printf("%ld %d\n", stu2.VAR__NUM, stu2.scorec + stu2.scorem);
+   printf("%ld %d", stu3.VAR__NUM, stu3.scorec + stu3.scorem);
+}

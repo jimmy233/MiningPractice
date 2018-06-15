@@ -1,0 +1,101 @@
+int VAR_1238123;
+int VAR_129012[M][2];
+int rn;
+int VAR_233[M];
+int wk;
+void cal()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   wk = -1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < rn; VAR__53647++ )
+   {
+      VAR_233[VAR_129012[VAR__53647][0]] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_233[VAR__53647] == 1 )
+      {
+         if ( wk != ( -1 ))
+         {
+            wk = -1;
+            return;
+         }
+         else
+         {
+            wk = VAR__53647;
+         }
+      }
+   }
+
+   if ( wk == ( -1 ))
+   {
+      return;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < rn; VAR__53647++ )
+   {
+      if ( VAR_129012[VAR__53647][1] == wk )
+      {
+         VAR_233[VAR_129012[VAR__53647][0]] = 0;
+      }
+   }
+
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__21230 += VAR_233[VAR__53647];
+   }
+
+   if ( VAR__21230 != 1 )
+   {
+      wk == ( -1 );
+   }
+}
+
+
+void input()
+{
+   scanf("%d", &VAR_1238123);
+   rn = 0;
+
+   while (( scanf("%d%d", &VAR_129012[rn][0], &VAR_129012[rn][1]) != EOF ) && ( !(( VAR_129012[rn][0] == 0 ) && ( VAR_129012[rn][1] == 0 ))))
+   {
+      rn++;
+   }
+}
+
+
+void output()
+{
+   if ( wk == ( -1 ))
+   {
+      printf("NOT FOUND\n");
+   }
+   else
+   {
+      printf("%d\n", wk);
+   }
+}
+
+
+int main()
+{
+   input();
+   cal();
+   output();
+   return 0;
+}

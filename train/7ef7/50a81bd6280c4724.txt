@@ -1,0 +1,78 @@
+int VAR_1238123;
+int VAR__1238129;
+int the_min;
+int VAR__819283[110][110];
+void reduce_min(int VAR__7685, int VAR__3918907, int dx, int dy)
+{
+   if (( VAR__7685 == VAR__1238129 ) || ( VAR__3918907 == VAR__1238129 ))
+   {
+      return;
+   }
+
+   if ( VAR__819283[VAR__7685][VAR__3918907] < the_min )
+   {
+      the_min = VAR__819283[VAR__7685][VAR__3918907];
+   }
+
+   reduce_min(VAR__7685 + dx, VAR__3918907 + dy, dx, dy);
+   VAR__819283[VAR__7685][VAR__3918907] -= the_min;
+}
+
+
+void reduce()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647][VAR__21230 + 1];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         VAR__819283[VAR__21230][VAR__53647] = VAR__819283[VAR__21230 + 1][VAR__53647];
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR__SUM;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+         }
+      }
+
+      VAR__SUM = 0;
+      for ( VAR__1238129 = VAR_1238123; VAR__1238129 >= 1; VAR__1238129-- )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( 2 * VAR__1238129 ); VAR__53647++ )
+         {
+            the_min = 10000;
+            reduce_min(( VAR__53647 % VAR__1238129 ) * ( 1 - ( VAR__53647 / VAR__1238129 )), ( VAR__53647 % VAR__1238129 ) * ( VAR__53647 / VAR__1238129 ), VAR__53647 / VAR__1238129, 1 - ( VAR__53647 / VAR__1238129 ));
+         }
+
+         VAR__SUM += VAR__819283[1][1];
+         reduce();
+      }
+
+      printf("%d\n", VAR__SUM);
+   }
+}

@@ -1,0 +1,70 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int total    = 0;
+   int VAR__MAX = 0;
+   int maxi     = 0;
+   struct list
+   {
+      char name[20];
+      int  score;
+      int  rate;
+      char leader;
+      char west;
+      int  pap;
+      int  schol;
+   };
+   struct list *start;
+   struct list *ANOTHER_POINTER;
+
+   scanf("%d", &VAR_1238123);
+   getchar();
+   start           = (struct list *)calloc(VAR_1238123, sizeof( struct list ));
+   ANOTHER_POINTER = start;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", &ANOTHER_POINTER->name);
+      scanf("%d %d %c %c %d", &ANOTHER_POINTER->score, &ANOTHER_POINTER->rate, &ANOTHER_POINTER->leader, &ANOTHER_POINTER->west, &ANOTHER_POINTER->pap);
+      getchar();
+      ANOTHER_POINTER->schol = 0;
+
+      if (( ANOTHER_POINTER->score > 80 ) && ( ANOTHER_POINTER->pap > 0 ))
+      {
+         ANOTHER_POINTER->schol += 8000;
+      }
+
+      if (( ANOTHER_POINTER->score > 85 ) && ( ANOTHER_POINTER->rate > 80 ))
+      {
+         ANOTHER_POINTER->schol += 4000;
+      }
+
+      if ( ANOTHER_POINTER->score > 90 )
+      {
+         ANOTHER_POINTER->schol += 2000;
+      }
+
+      if (( ANOTHER_POINTER->score > 85 ) && ( ANOTHER_POINTER->west == 'Y' ))
+      {
+         ANOTHER_POINTER->schol += 1000;
+      }
+
+      if (( ANOTHER_POINTER->rate > 80 ) && ( ANOTHER_POINTER->leader == 'Y' ))
+      {
+         ANOTHER_POINTER->schol += 850;
+      }
+
+      total += ANOTHER_POINTER->schol;
+
+      if ( ANOTHER_POINTER->schol > VAR__MAX )
+      {
+         VAR__MAX = ANOTHER_POINTER->schol;
+         maxi     = VAR__53647;
+      }
+
+      ANOTHER_POINTER++;
+   }
+
+   printf("%s\n%d\n%d\n", ( start + maxi )->name, ( start + maxi )->schol, total);
+   return 0;
+}

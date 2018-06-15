@@ -1,0 +1,109 @@
+struct student
+{
+   char           VAR__NUM[20];
+   int            age;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+int VAR__53647;
+struct student *create()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__HEAD = NULL;
+   scanf("%d", &VAR__53647);
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH));
+   scanf("%s %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+
+   while ( VAR_1238123 != ( VAR__53647 - 1 ))
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN_OF_STH);
+      scanf("%s %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+void paixu(struct student *VAR_233)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   char           VAR__TEMP[20];
+   int            temp2;
+
+   for ( VAR_1238123 = 1; VAR_1238123 < VAR__53647; VAR_1238123++ )
+   {
+      YET_ANOTHER_POINTER = VAR_233;
+      ANOTHER_POINTER     = VAR_233->VAR__NEXT;
+
+      while ( ANOTHER_POINTER != NULL )
+      {
+         if (( ANOTHER_POINTER->age >= 60 ) && ( YET_ANOTHER_POINTER->age < 60 ))
+         {
+            strcpy(VAR__TEMP, ANOTHER_POINTER->VAR__NUM);
+            strcpy(ANOTHER_POINTER->VAR__NUM, YET_ANOTHER_POINTER->VAR__NUM);
+            strcpy(YET_ANOTHER_POINTER->VAR__NUM, VAR__TEMP);
+            temp2 = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age     = YET_ANOTHER_POINTER->age;
+            YET_ANOTHER_POINTER->age = temp2;
+         }
+         else
+         if (( ANOTHER_POINTER->age > YET_ANOTHER_POINTER->age ) && ( YET_ANOTHER_POINTER->age >= 60 ))
+         {
+            strcpy(VAR__TEMP, ANOTHER_POINTER->VAR__NUM);
+            strcpy(ANOTHER_POINTER->VAR__NUM, YET_ANOTHER_POINTER->VAR__NUM);
+            strcpy(YET_ANOTHER_POINTER->VAR__NUM, VAR__TEMP);
+            temp2 = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age     = YET_ANOTHER_POINTER->age;
+            YET_ANOTHER_POINTER->age = temp2;
+         }
+
+
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+}
+
+
+void print(struct student *VAR_233)
+{
+   while ( VAR_233 != NULL )
+   {
+      printf("%s", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+
+      if ( VAR_233 != NULL )
+      {
+         printf("\n");
+      }
+   }
+}
+
+
+void main()
+{
+   struct student *VAR_233;
+
+   VAR_233 = create();
+   paixu(VAR_233);
+   print(VAR_233);
+}

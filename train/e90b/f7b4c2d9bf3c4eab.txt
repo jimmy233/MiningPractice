@@ -1,0 +1,90 @@
+struct student
+{
+   int            no;
+   int            ch;
+   int            math;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+struct student *creat(long VAR_1238123)
+{
+   long           VAR__53647;
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *VAR_666;
+
+   VAR__HEAD            = (struct student *)malloc(LEN_OF_STH);
+   VAR_233              = (struct student *)malloc(LEN_OF_STH);
+   VAR__HEAD->VAR__NEXT = ( VAR_666 = VAR_233 );
+   scanf("%d %d %d", &VAR_233->no, &VAR_233->ch, &VAR_233->math);
+   VAR_233->VAR__SUM = VAR_233->ch + VAR_233->math;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct student *)malloc(LEN_OF_STH);
+      scanf("%d %d %d", &VAR_233->no, &VAR_233->ch, &VAR_233->math);
+      VAR_233->VAR__SUM  = VAR_233->ch + VAR_233->math;
+      VAR_666->VAR__NEXT = VAR_233;
+      VAR_666            = VAR_233;
+      VAR_233->VAR__NEXT = NULL;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void sort(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *q1;
+   struct student *q2;
+   struct student *q3;
+   int            m1;
+   int            m2;
+   int            m3;
+
+   for ( VAR_233 = VAR__HEAD->VAR__NEXT, m1 = VAR_233->VAR__SUM; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->VAR__SUM > m1 )
+      {
+         m1 = VAR_233->VAR__SUM;
+         q1 = VAR_233;
+      }
+   }
+
+
+   printf("%d %d\n", q1->no, q1->VAR__SUM);
+   for ( VAR_233 = VAR__HEAD->VAR__NEXT, m2 = VAR_233->VAR__SUM; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if (( VAR_233->VAR__SUM > m2 ) && ( VAR_233 != q1 ))
+      {
+         m2 = VAR_233->VAR__SUM;
+         q2 = VAR_233;
+      }
+   }
+
+
+   printf("%d %d\n", q2->no, q2->VAR__SUM);
+   for ( VAR_233 = VAR__HEAD->VAR__NEXT, m3 = VAR_233->VAR__SUM; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ((( VAR_233->VAR__SUM > m3 ) && ( VAR_233 != q1 )) && ( VAR_233 != q2 ))
+      {
+         m3 = VAR_233->VAR__SUM;
+         q3 = VAR_233;
+      }
+   }
+
+
+   printf("%d %d\n", q3->no, q3->VAR__SUM);
+}
+
+
+int main()
+{
+   long           VAR_1238123;
+   struct student *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   sort(VAR__HEAD);
+   return 0;
+}

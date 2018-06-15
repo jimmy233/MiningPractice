@@ -1,0 +1,108 @@
+struct xinxi
+{
+   char         ming[22];
+   int          qimo;
+   int          pingyi;
+   char         guan;
+   char         xibu;
+   int          lunwen;
+   int          award;
+   struct xinxi *VAR__NEXT;
+};
+void main()
+{
+   struct xinxi *VAR__HEAD;
+   struct xinxi *pt;
+   struct xinxi *VAR_233;
+   struct xinxi *VAR__7685;
+   int          VAR__53647;
+   int          VAR_1238123;
+   int          VAR__temp;
+   int          awardmax;
+   int          awardsum;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = (struct xinxi *)malloc(sizeof( struct xinxi ));
+   scanf("%s %d %d %c %c %d\n", VAR_233->ming, &VAR_233->qimo, &VAR_233->pingyi, &VAR_233->guan, &VAR_233->xibu, &VAR_233->lunwen);
+   pt        = VAR_233;
+   VAR__HEAD = NULL;
+   VAR__temp = 1;
+
+   while ( VAR__temp < VAR_1238123 )
+   {
+      if ( VAR__temp == 1 )
+      {
+         VAR__HEAD = VAR_233;
+      }
+
+      if ( VAR__temp > 1 )
+      {
+         pt->VAR__NEXT = VAR_233;
+      }
+
+      pt        = VAR_233;
+      VAR_233   = (struct xinxi *)malloc(sizeof( struct xinxi ));
+      VAR__temp = VAR__temp + 1;
+      scanf("%s %d %d %c %c %d", VAR_233->ming, &VAR_233->qimo, &VAR_233->pingyi, &VAR_233->guan, &VAR_233->xibu, &VAR_233->lunwen);
+   }
+
+   pt->VAR__NEXT      = VAR_233;
+   VAR_233->VAR__NEXT = NULL;
+   VAR__7685          = VAR__HEAD;
+
+   while ( VAR__7685 != NULL )
+   {
+      VAR__7685->award = 0;
+
+      if (( VAR__7685->qimo > 80 ) && ( VAR__7685->lunwen != 0 ))
+      {
+         VAR__7685->award = VAR__7685->award + 8000;
+      }
+
+      if (( VAR__7685->qimo > 85 ) && ( VAR__7685->pingyi > 80 ))
+      {
+         VAR__7685->award = VAR__7685->award + 4000;
+      }
+
+      if ( VAR__7685->qimo > 90 )
+      {
+         VAR__7685->award = VAR__7685->award + 2000;
+      }
+
+      if (( VAR__7685->qimo > 85 ) && ( VAR__7685->xibu == 'Y' ))
+      {
+         VAR__7685->award = VAR__7685->award + 1000;
+      }
+
+      if (( VAR__7685->pingyi > 80 ) && ( VAR__7685->guan == 'Y' ))
+      {
+         VAR__7685->award = VAR__7685->award + 850;
+      }
+
+      VAR__7685 = VAR__7685->VAR__NEXT;
+   }
+
+   awardsum  = 0;
+   awardmax  = 0;
+   VAR__7685 = VAR__HEAD;
+
+   while ( VAR__7685 != NULL )
+   {
+      awardsum = VAR__7685->award + awardsum;
+
+      if ( VAR__7685->award > awardmax )
+      {
+         awardmax = VAR__7685->award;
+      }
+
+      VAR__7685 = VAR__7685->VAR__NEXT;
+   }
+
+   for ( VAR__7685 = VAR__HEAD; VAR__7685->award != awardmax; VAR__7685 = VAR__7685->VAR__NEXT )
+   {
+   }
+
+   printf("%s\n", VAR__7685->ming);
+   printf("%d\n", VAR__7685->award);
+   printf("%d", awardsum);
+}

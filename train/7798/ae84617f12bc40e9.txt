@@ -1,0 +1,72 @@
+int main()
+{
+   int  VAR_1238123;
+   int  book[1000];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  countt[26] = { 0 };
+   int  LEN_OF_STH;
+   int  VAR__MAX = -1;
+   int  maxauthor;
+   char peo[1000][27];
+   char VAR__SUM[100000] = "\0";
+   char ch;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> book[VAR__53647] ) >> peo[VAR__53647];
+      strcat(VAR__SUM, peo[VAR__53647]);
+   }
+
+   LEN_OF_STH = strlen(VAR__SUM);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      countt[VAR__SUM[VAR__53647] - 65]++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( countt[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX  = countt[VAR__53647];
+         maxauthor = VAR__53647;
+      }
+   }
+
+
+   ch = maxauthor + 65;
+   int VAR_233   = 0;
+   int VAR__temp = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(peo[VAR__53647]); VAR__21230++ )
+      {
+         if ( peo[VAR__53647][VAR__21230] == ch )
+         {
+            VAR_233++;
+         }
+      }
+
+
+      if ( VAR_233 > 0 )
+      {
+         book[VAR__53647 - VAR__temp] = book[VAR__53647];
+      }
+      else
+      {
+         VAR__temp++;
+      }
+
+      VAR_233 = 0;
+   }
+
+   ( cout << ch ) << endl;
+   ( cout << ( VAR_1238123 - VAR__temp )) << endl;
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - VAR__temp ); VAR__53647++ )
+   {
+      ( cout << book[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,85 @@
+struct pat
+{
+   char       VAR__NUM[11];
+   int        age;
+   struct pat *VAR__NEXT;
+};
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct pat *VAR__HEAD;
+   struct pat *ANOTHER_POINTER;
+   struct pat *YET_ANOTHER_POINTER;
+   struct pat *pre;
+   ANOTHER_POINTER = (struct pat *)malloc(sizeof( struct pat ));
+   scanf("%s %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+   VAR__HEAD = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct pat *)malloc(sizeof( struct pat ));
+      scanf("%s %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+
+      if ( ANOTHER_POINTER->age < 60 )
+      {
+         YET_ANOTHER_POINTER = VAR__HEAD;
+
+         while ( YET_ANOTHER_POINTER )
+         {
+            if ( YET_ANOTHER_POINTER->VAR__NEXT == NULL )
+            {
+               YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT     = NULL;
+               break;
+            }
+
+            YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+         }
+      }
+      else
+      if ( ANOTHER_POINTER->age >= 60 )
+      {
+         YET_ANOTHER_POINTER = VAR__HEAD;
+
+         while ( YET_ANOTHER_POINTER )
+         {
+            if (( YET_ANOTHER_POINTER == VAR__HEAD ) && ( ANOTHER_POINTER->age > YET_ANOTHER_POINTER->age ))
+            {
+               VAR__HEAD = ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+               break;
+            }
+            else
+            if ( ANOTHER_POINTER->age > YET_ANOTHER_POINTER->age )
+            {
+               pre->VAR__NEXT             = ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+               break;
+            }
+            else
+            if ( YET_ANOTHER_POINTER->VAR__NEXT == NULL )
+            {
+               YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT     = NULL;
+               break;
+            }
+            else
+            {
+               pre = YET_ANOTHER_POINTER;
+               YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+            }
+         }
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER )
+   {
+      printf("%s\n", ANOTHER_POINTER->VAR__NUM);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

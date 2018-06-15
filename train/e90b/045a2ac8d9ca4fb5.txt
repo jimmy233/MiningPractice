@@ -1,0 +1,89 @@
+void main(int argc, char *argv[])
+{
+   int VAR__NUM;
+   int chi;
+   int math;
+   int VAR__SUM;
+   struct student
+   {
+      int VAR__NUM;
+      int chi;
+      int math;
+      int VAR__SUM;
+   }
+       students[100000];
+   int VAR__53647;
+   int STUDENT_NUM;
+
+   scanf("%d", &STUDENT_NUM);
+   for ( VAR__53647 = 0; VAR__53647 < STUDENT_NUM; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR__NUM, &chi, &math);
+      students[VAR__53647].VAR__NUM = VAR__NUM;
+      students[VAR__53647].chi      = chi;
+      students[VAR__53647].math     = math;
+      VAR__SUM = chi + math;
+      students[VAR__53647].VAR__SUM = VAR__SUM;
+   }
+
+   int sum1 = 0;
+   int sum2 = 0;
+   int sum3 = 0;
+   int num1;
+   int num2;
+   int num3;
+   for ( VAR__53647 = 0; VAR__53647 < STUDENT_NUM; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         sum1 = students[0].VAR__SUM;
+         num1 = students[0].VAR__NUM;
+      }
+      else
+      if ( VAR__53647 == 1 )
+      {
+         if ( students[1].VAR__SUM > students[0].VAR__SUM )
+         {
+            sum2 = sum1;
+            num2 = num1;
+            sum1 = students[1].VAR__SUM;
+            num1 = students[1].VAR__NUM;
+         }
+         else
+         {
+            sum2 = students[1].VAR__SUM;
+            num2 = students[1].VAR__NUM;
+         }
+      }
+      else
+      {
+         if ( students[VAR__53647].VAR__SUM > sum1 )
+         {
+            sum3 = sum2;
+            num3 = num2;
+            sum2 = sum1;
+            num2 = num1;
+            sum1 = students[VAR__53647].VAR__SUM;
+            num1 = students[VAR__53647].VAR__NUM;
+         }
+         else
+         if ( students[VAR__53647].VAR__SUM > sum2 )
+         {
+            sum3 = sum2;
+            num3 = num2;
+            sum2 = students[VAR__53647].VAR__SUM;
+            num2 = students[VAR__53647].VAR__NUM;
+         }
+         else
+         if ( students[VAR__53647].VAR__SUM > sum3 )
+         {
+            sum3 = students[VAR__53647].VAR__SUM;
+            num3 = students[VAR__53647].VAR__NUM;
+         }
+      }
+   }
+
+   printf("%d %d\n", num1, sum1);
+   printf("%d %d\n", num2, sum2);
+   printf("%d %d\n", num3, sum3);
+}

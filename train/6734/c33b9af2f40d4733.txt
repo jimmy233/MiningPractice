@@ -1,0 +1,91 @@
+static struct str
+{
+   int        VAR__NUM;
+   struct str *VAR__NEXT;
+}
+s1[301];
+static struct str
+{
+   int        VAR__NUM;
+   struct str *VAR__NEXT;
+}
+s2[301];
+static struct str
+{
+   int        VAR__NUM;
+   struct str *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+static struct str
+{
+   int        VAR__NUM;
+   struct str *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+int chq(int VAR_1238123, int VAR__8444594)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR_1238123 == 1 )
+   {
+      return 1;
+   }
+
+   if ( VAR__8444594 == 1 )
+   {
+      return VAR_1238123;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR__8444594; VAR__21230++ )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+   }
+
+   return ANOTHER_POINTER->VAR__NUM;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__112390;
+
+   for ( VAR__53647 = 0; VAR__53647 <= 300; VAR__53647++ )
+   {
+      s1[VAR__53647].VAR__NUM  = VAR__53647;
+      s1[VAR__53647].VAR__NEXT = &s2[VAR__53647 + 1];
+   }
+
+   while ( 1 )
+   {
+      scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR_1238123 == 0 ) && ( VAR__1238129 == 0 ))
+      {
+         break;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         s2[VAR__21230] = s1[VAR__21230];
+      }
+
+      s2[VAR_1238123].VAR__NEXT = &s2[1];
+      ANOTHER_POINTER           = &s2[0];
+      VAR__112390 = chq(VAR_1238123, VAR__1238129);
+      printf("%d\n", VAR__112390);
+   }
+
+   return 0;
+}

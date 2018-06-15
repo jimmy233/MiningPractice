@@ -1,0 +1,91 @@
+int VAR__NUM(char VAR__7685[])
+{
+   int VAR__53647;
+   int LEN_OF_STH;
+   int VAR__NUM = 0;
+
+   LEN_OF_STH = strlen(VAR__7685);
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__7685[VAR__53647] != ' ' )
+      {
+         VAR__NUM++;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   return VAR__NUM;
+}
+
+
+void read(char VAR__7685[], char VAR__3918907[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int lenx;
+   int leny;
+
+   lenx = strlen(VAR__7685);
+   leny = VAR__NUM(VAR__7685);
+   for ( VAR__53647 = lenx - 1, VAR__21230 = 0; VAR__53647 >= ( lenx - leny ); VAR__53647--, VAR__21230++ )
+   {
+      VAR__3918907[( leny - 1 ) - VAR__21230] = VAR__7685[VAR__53647];
+   }
+
+   VAR__3918907[leny]             = ' ';
+   VAR__3918907[leny + 1]         = '\0';
+   VAR__7685[( lenx - leny ) - 1] = '\0';
+}
+
+
+int VAR__COUNT(char VAR__7685[])
+{
+   int LEN_OF_STH;
+   int VAR__53647;
+   int VAR_233      = 0;
+   int VAR__1238129 = 0;
+
+   LEN_OF_STH = strlen(VAR__7685);
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      if ( VAR__7685[VAR__53647] == ' ' )
+      {
+         VAR_233 = 0;
+      }
+      else
+      if ( VAR_233 == 0 )
+      {
+         VAR_233 = 1;
+         VAR__1238129++;
+      }
+   }
+
+   return VAR__1238129;
+}
+
+
+int main()
+{
+   char src[101];
+   char obj[101];
+   char trn[30];
+   int  VAR__53647;
+   int  VAR__NUM;
+   int  LEN_OF_STH;
+
+   gets(src);
+   LEN_OF_STH = strlen(src);
+   VAR__NUM   = VAR__COUNT(src);
+   obj[0]     = '\0';
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__NUM - 1 ); VAR__53647++ )
+   {
+      read(src, trn);
+      strcat(obj, trn);
+   }
+
+   obj[LEN_OF_STH] = '\0';
+   puts(obj);
+}

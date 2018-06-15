@@ -1,0 +1,78 @@
+struct stu
+{
+   char       VAR__7685[300];
+   struct stu *VAR__NEXT;
+};
+void creat1(struct stu *VAR__HEAD, char *VAR_233)
+{
+   struct stu *pre;
+   struct stu *ANOTHER_POINTER;
+   struct stu *VAR_9494;
+
+   VAR_9494 = (struct stu *)malloc(sizeof( struct stu ));
+   strcpy(VAR_9494->VAR__7685, VAR_233);
+   pre                 = VAR__HEAD;
+   ANOTHER_POINTER     = pre->VAR__NEXT;
+   pre->VAR__NEXT      = VAR_9494;
+   VAR_9494->VAR__NEXT = ANOTHER_POINTER;
+}
+
+
+void creat2(struct stu *VAR__HEAD, char *VAR_233)
+{
+   struct stu *pre;
+   struct stu *ANOTHER_POINTER;
+   struct stu *VAR_9494;
+
+   VAR_9494 = (struct stu *)malloc(sizeof( struct stu ));
+   strcpy(VAR_9494->VAR__7685, VAR_233);
+   pre             = VAR__HEAD;
+   ANOTHER_POINTER = pre->VAR__NEXT;
+   for ( ; ANOTHER_POINTER != NULL; )
+   {
+      pre             = ANOTHER_POINTER;
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   pre->VAR__NEXT      = VAR_9494;
+   VAR_9494->VAR__NEXT = ANOTHER_POINTER;
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__1238129;
+   int  VAR_1238123;
+   char *VAR_233;
+
+   VAR_233 = (char *)malloc(300 * ( sizeof( int )));
+   struct stu *VAR__HEAD;
+   struct stu *VAR_9494;
+   VAR__HEAD            = (struct stu *)malloc(sizeof( struct stu ));
+   VAR__HEAD->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      gets(VAR_233);
+
+      if (( *( VAR_233 + 0 )) == 'e' )
+      {
+         break;
+      }
+      else
+      {
+         creat1(VAR__HEAD, VAR_233);
+      }
+   }
+
+   VAR_9494 = VAR__HEAD->VAR__NEXT;
+   for ( ; VAR_9494 != NULL; )
+   {
+      puts(VAR_9494->VAR__7685);
+      VAR_9494 = VAR_9494->VAR__NEXT;
+   }
+
+   return 0;
+}

@@ -1,0 +1,68 @@
+int input(char VAR_9494[], int VAR__819283[])
+{
+   int LEN_OF_STH = strlen(VAR_9494);
+   int VAR__53647;
+   int VAR__21230 = 0;
+
+   VAR__819283[VAR__21230] = VAR_9494[0] - '0';
+   for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647] >= '0' ) && ( VAR_9494[VAR__53647] <= '9' ))
+      {
+         if (( VAR_9494[VAR__53647 - 1] >= '0' ) && ( VAR_9494[VAR__53647 - 1] <= '9' ))
+         {
+            VAR__819283[VAR__21230] = (( VAR__819283[VAR__21230] * 10 ) + VAR_9494[VAR__53647] ) - '0';
+         }
+         else
+         {
+            VAR__21230++;
+            VAR__819283[VAR__21230] = VAR_9494[VAR__53647] - '0';
+         }
+      }
+   }
+
+
+   return VAR__21230 + 1;
+}
+
+
+void main()
+{
+   char VAR__819283[5050];
+   char VAR__19328[5050];
+   int  VAR__7685[1010];
+   int  VAR__3918907[1010];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__COUNT[1010] = { 0 };
+
+   gets(VAR__819283);
+   gets(VAR__19328);
+   VAR_1238123 = input(VAR__819283, VAR__7685);
+   VAR_1238123 = input(VAR__19328, VAR__3918907);
+   int VAR_233;
+   for ( VAR_233 = 0; VAR_233 < 1000; VAR_233++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if (( VAR_233 >= VAR__7685[VAR__53647] ) && ( VAR_233 < VAR__3918907[VAR__53647] ))
+         {
+            VAR__COUNT[VAR_233]++;
+         }
+      }
+   }
+
+
+
+   int VAR__MAX = 0;
+   for ( VAR_233 = 0; VAR_233 < 1000; VAR_233++ )
+   {
+      if ( VAR__COUNT[VAR_233] > VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT[VAR_233];
+      }
+   }
+
+
+   printf("%d %d", VAR_1238123, VAR__MAX);
+}

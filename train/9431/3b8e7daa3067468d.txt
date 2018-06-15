@@ -1,0 +1,45 @@
+struct student
+{
+   char           VAR__819283[10];
+   char           VAR__19328[20];
+   char           VAR__4857423;
+   int            VAR__12302;
+   float          VAR__112390;
+   char           VAR__127322[19];
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+   scanf("%s %s %c %d %f %s", ANOTHER_POINTER->VAR__819283, ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->VAR__4857423, &ANOTHER_POINTER->VAR__12302, &ANOTHER_POINTER->VAR__112390, ANOTHER_POINTER->VAR__127322);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+      scanf("%s", ANOTHER_POINTER->VAR__819283);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__819283, "end") == 0 )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %f %s", ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->VAR__4857423, &ANOTHER_POINTER->VAR__12302, &ANOTHER_POINTER->VAR__112390, ANOTHER_POINTER->VAR__127322);
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+   }
+
+   ANOTHER_POINTER = YET_ANOTHER_POINTER;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      printf("%s %s %c %d %g %s\n", ANOTHER_POINTER->VAR__819283, ANOTHER_POINTER->VAR__19328, ANOTHER_POINTER->VAR__4857423, ANOTHER_POINTER->VAR__12302, ANOTHER_POINTER->VAR__112390, ANOTHER_POINTER->VAR__127322);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return 0;
+}

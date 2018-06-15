@@ -1,0 +1,100 @@
+void sort(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__temp;
+   int VAR__53647;
+
+   VAR__temp = VAR__819283[VAR_1238123 - 1];
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      VAR__819283[VAR__53647] = VAR__819283[VAR__53647 - 1];
+   }
+
+   VAR__819283[0] = VAR__temp;
+}
+
+
+void main()
+{
+   int VAR__819283[1010];
+   int VAR__19328[1010];
+   int k1;
+   int k2;
+   int VAR__MAX;
+   int max1;
+   int max2;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR_1238123 = 1;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( ; VAR_1238123 != 0; )
+   {
+      VAR__MAX = -10000;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         k1   = VAR__53647;
+         k2   = VAR__53647;
+         max1 = VAR__819283[VAR__53647];
+         max2 = VAR__19328[VAR__53647];
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230] > max1 )
+            {
+               max1 = VAR__819283[VAR__21230];
+               k1   = VAR__21230;
+            }
+
+            if ( VAR__19328[VAR__21230] > max2 )
+            {
+               max2 = VAR__19328[VAR__21230];
+               k2   = VAR__21230;
+            }
+         }
+
+         VAR__temp = VAR__819283[VAR__53647];
+         VAR__819283[VAR__53647] = VAR__819283[k1];
+         VAR__819283[k1]         = VAR__temp;
+         VAR__temp = VAR__19328[VAR__53647];
+         VAR__19328[VAR__53647] = VAR__19328[k2];
+         VAR__19328[k2]         = VAR__temp;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__temp = 0;
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230] > VAR__19328[VAR__21230] )
+            {
+               VAR__temp = VAR__temp + 200;
+            }
+
+            if ( VAR__819283[VAR__21230] < VAR__19328[VAR__21230] )
+            {
+               VAR__temp = VAR__temp - 200;
+            }
+         }
+
+         if ( VAR__temp > VAR__MAX )
+         {
+            VAR__MAX = VAR__temp;
+         }
+
+         sort(VAR__819283, VAR_1238123);
+      }
+
+      printf("%d\n", VAR__MAX);
+      scanf("%d", &VAR_1238123);
+   }
+}

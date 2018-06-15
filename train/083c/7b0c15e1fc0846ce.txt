@@ -1,0 +1,87 @@
+struct stack
+{
+   char data[MAX];
+   int  top;
+};
+long int switchToTen(int VAR__819283, char *VAR_9494);
+
+int main()
+{
+   long int VAR__819283;
+   long int VAR__19328;
+   long int VAR_1238123;
+   char     A_STRING[MAX];
+
+   while ( scanf("%ld %s %ld", &VAR__819283, A_STRING, &VAR__19328) != EOF )
+   {
+      VAR_1238123 = switchToTen(VAR__819283, A_STRING);
+
+      if ( VAR_1238123 == 0 )
+      {
+         printf("0");
+      }
+      else
+      {
+         int          VAR__TEMP;
+         struct stack *VAR_9494 = (struct stack *)malloc(sizeof( struct stack ));
+         VAR_9494->top = 0;
+
+         while ( VAR_1238123 )
+         {
+            VAR__TEMP = VAR_1238123 % VAR__19328;
+
+            if (( VAR__TEMP >= 0 ) && ( VAR__TEMP <= 9 ))
+            {
+               VAR_9494->data[VAR_9494->top++] = VAR__TEMP + '0';
+            }
+            else
+            {
+               VAR_9494->data[VAR_9494->top++] = ( VAR__TEMP - 10 ) + 'A';
+            }
+
+            VAR_1238123 /= VAR__19328;
+         }
+
+         while ( VAR_9494->top )
+         {
+            printf("%c", VAR_9494->data[--VAR_9494->top]);
+         }
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}
+
+
+long int switchToTen(int VAR__819283, char *VAR_9494)
+{
+   int      VAR__53647;
+   int      VAR__19328;
+   long int VAR_1238123;
+   long int VAR__4857423;
+
+   for ( VAR_1238123 = 0, VAR__4857423 = 1, VAR__53647 = strlen(VAR_9494) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( VAR_9494[VAR__53647] >= 'A' ) && ( VAR_9494[VAR__53647] <= 'Z' ))
+      {
+         VAR__19328 = VAR_9494[VAR__53647] - 55;
+      }
+      else
+      if (( VAR_9494[VAR__53647] >= 'a' ) && ( VAR_9494[VAR__53647] <= 'z' ))
+      {
+         VAR__19328 = VAR_9494[VAR__53647] - 87;
+      }
+      else
+      {
+         VAR__19328 = VAR_9494[VAR__53647] - '0';
+      }
+
+
+      VAR_1238123  += VAR__19328 * VAR__4857423;
+      VAR__4857423 *= VAR__819283;
+   }
+
+   return VAR_1238123;
+}

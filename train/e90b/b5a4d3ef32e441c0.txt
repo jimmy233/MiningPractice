@@ -1,0 +1,83 @@
+struct Student
+{
+   long id;
+   int  chn;
+   int  mth;
+   int  total;
+};
+void main()
+{
+   struct Student *ANOTHER_POINTER;
+   struct Student *top1;
+   struct Student *top2;
+   struct Student *top3;
+   struct Student *VAR__TEMP;
+   int            VAR__53647;
+   long int       VAR_1238123;
+
+   scanf("%ld", &VAR_1238123);
+   top1      = (struct Student *)malloc(sizeof( struct Student ));
+   top2      = (struct Student *)malloc(sizeof( struct Student ));
+   top3      = (struct Student *)malloc(sizeof( struct Student ));
+   VAR__TEMP = (struct Student *)malloc(sizeof( struct Student ));
+   scanf("%d %d %d", &top1->id, &top1->chn, &top1->mth);
+   top1->total = top1->chn + top1->mth;
+   scanf("%d %d %d", &top2->id, &top2->chn, &top2->mth);
+   top2->total = top2->chn + top2->mth;
+
+   if ( top2->total > top1->total )
+   {
+      VAR__TEMP = top2;
+      top2      = top1;
+      top1      = VAR__TEMP;
+   }
+
+   scanf("%d %d %d", &top3->id, &top3->chn, &top3->mth);
+   top3->total = top3->chn + top3->mth;
+
+   if ( top3->total > top2->total )
+   {
+      VAR__TEMP = top3;
+      top3      = top2;
+      top2      = VAR__TEMP;
+   }
+
+   if ( top2->total > top1->total )
+   {
+      VAR__TEMP = top2;
+      top2      = top1;
+      top1      = VAR__TEMP;
+   }
+
+   for ( VAR__53647 = 3; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct Student *)malloc(sizeof( struct Student ));
+      scanf("%d %d %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->chn, &ANOTHER_POINTER->mth);
+      ANOTHER_POINTER->total = ANOTHER_POINTER->chn + ANOTHER_POINTER->mth;
+
+      if ( top1->total < ANOTHER_POINTER->total )
+      {
+         top3 = top2;
+         top2 = top1;
+         top1 = ANOTHER_POINTER;
+         continue;
+      }
+
+      if ( top2->total < ANOTHER_POINTER->total )
+      {
+         top3 = top2;
+         top2 = ANOTHER_POINTER;
+         continue;
+      }
+
+      if ( top3->total < ANOTHER_POINTER->total )
+      {
+         top3 = ANOTHER_POINTER;
+         continue;
+      }
+
+      free(ANOTHER_POINTER);
+   }
+
+   printf("%d %d\n%d %d\n%d %d\n", top1->id, top1->total, top2->id, top2->total, top3->id, top3->total);
+}

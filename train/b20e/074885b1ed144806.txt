@@ -1,0 +1,80 @@
+int compare(const void *elem1, const void *elem2)
+{
+   return ( *((int *)elem1 )) - ( *((int *)elem2 ));
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   long VAR__1238129[100];
+   int  VAR__819283[1000];
+   int  VAR__19328[1000];
+   int  VAR__53647;
+   int  win;
+   int  lose;
+   int  VAR__temp = 0;
+   int  VAR_FLAG  = 0;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 )
+   {
+      VAR_FLAG++;
+      lose = ( win = 0 );
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), compare);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), compare);
+      int *aj = &VAR__819283[0];
+      int *ai = &VAR__819283[VAR_1238123 - 1];
+      int *bj = &VAR__19328[0];
+      int *bi = &VAR__19328[VAR_1238123 - 1];
+
+      while (( ai - aj ) >= 0 )
+      {
+         if (( *ai ) > ( *bi ))
+         {
+            ai--;
+            bi--;
+            win++;
+         }
+         else
+         if (( *aj ) > ( *bj ))
+         {
+            aj++;
+            bj++;
+            win++;
+         }
+         else
+         {
+            if (( *aj ) < ( *bi ))
+            {
+               lose++;
+            }
+
+            aj++;
+            bi--;
+         }
+      }
+
+      VAR__1238129[VAR__temp] = 200 * ( win - lose );
+      VAR__temp++;
+      scanf("%d", &VAR_1238123);
+   }
+
+   for ( VAR__temp = 0; VAR__temp < VAR_FLAG; VAR__temp++ )
+   {
+      printf("%ld\n", VAR__1238129[VAR__temp]);
+   }
+
+   return 0;
+}

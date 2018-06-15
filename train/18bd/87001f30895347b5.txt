@@ -1,0 +1,36 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   char line[81];
+   char *VAR_233 = line;
+   memset(line, '\0', 81);
+
+   while ( VAR_1238123-- )
+   {
+      char word[41];
+      cin >> word;
+      int LEN_OF_STH = strlen(word);
+
+      if (( strlen(line) + LEN_OF_STH ) > 80 )
+      {
+         *( VAR_233 - 1 ) = '\0';
+         ( cout << line ) << endl;
+         memset(line, '\0', 81);
+         VAR_233 = line;
+      }
+
+      memcpy(VAR_233, word, LEN_OF_STH);
+      VAR_233       += LEN_OF_STH;
+      *( VAR_233++ ) = ' ';
+   }
+
+   if ( strlen(line) > 0 )
+   {
+      *( VAR_233 - 1 ) = '\0';
+      cout << line;
+   }
+
+   return 0;
+}

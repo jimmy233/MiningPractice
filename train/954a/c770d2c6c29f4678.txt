@@ -1,0 +1,82 @@
+int main()
+{
+   struct student
+   {
+      char nam[50];
+      int  ave;
+      int  ping;
+      char gan;
+      char xi;
+      int  wen;
+      int  total[5];
+      int  all;
+   }
+       stu[100];
+   int VAR__NUM;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283[100] = { 0 };
+
+   scanf("%d", &VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c%d", stu[VAR__53647].nam, &stu[VAR__53647].ave, &stu[VAR__53647].ping, &stu[VAR__53647].gan, &stu[VAR__53647].xi, &stu[VAR__53647].wen);
+      stu[VAR__53647].all = 0;
+      memset(stu[VAR__53647].total, 0, sizeof( stu[VAR__53647].total ));
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].ave > 80 ) && ( stu[VAR__53647].wen >= 1 ))
+      {
+         stu[VAR__53647].total[0] = 8000;
+      }
+
+      if (( stu[VAR__53647].ave > 85 ) && ( stu[VAR__53647].ping > 80 ))
+      {
+         stu[VAR__53647].total[1] = 4000;
+      }
+
+      if ( stu[VAR__53647].ave > 90 )
+      {
+         stu[VAR__53647].total[2] = 2000;
+      }
+
+      if (( stu[VAR__53647].ave > 85 ) && ( stu[VAR__53647].xi == 'Y' ))
+      {
+         stu[VAR__53647].total[3] = 1000;
+      }
+
+      if (( stu[VAR__53647].ping > 80 ) && ( stu[VAR__53647].gan == 'Y' ))
+      {
+         stu[VAR__53647].total[4] = 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 5; VAR__21230++ )
+      {
+         stu[VAR__53647].all += stu[VAR__53647].total[VAR__21230];
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].all > VAR__MAX )
+      {
+         VAR__MAX   = stu[VAR__53647].all;
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+   int whole = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      whole += stu[VAR__53647].all;
+   }
+
+   printf("%s\n%d\n%d", stu[VAR__21230].nam, VAR__MAX, whole);
+   return 0;
+}

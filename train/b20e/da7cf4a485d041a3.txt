@@ -1,0 +1,83 @@
+int mycompare(const void *e1, const void *e2)
+{
+   if (( *((int *)e1 )) < ( *((int *)e2 )))
+   {
+      return 1;
+   }
+   else
+   {
+      return -1;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int VAR__819283[1000];
+      int VAR__19328[1000];
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( VAR__819283[0] ), mycompare);
+      qsort(VAR__19328, VAR_1238123, sizeof( VAR__19328[0] ), mycompare);
+      int begin_a = 0;
+      int begin_b = 0;
+      int end_a   = VAR_1238123 - 1;
+      int end_b   = VAR_1238123 - 1;
+      int win     = 0;
+
+      while ( begin_a <= end_a )
+      {
+         if ( VAR__819283[end_a] > VAR__19328[end_b] )
+         {
+            win++;
+            end_a--;
+            end_b--;
+         }
+         else
+         if ( VAR__819283[end_a] < VAR__19328[end_b] )
+         {
+            win--;
+            end_a--;
+            begin_b++;
+         }
+         else
+         {
+            if ( VAR__819283[begin_a] > VAR__19328[begin_b] )
+            {
+               win++;
+               begin_a++;
+               begin_b++;
+            }
+            else
+            {
+               if ( VAR__819283[end_a] < VAR__19328[begin_b] )
+               {
+                  win--;
+               }
+
+               end_a--;
+               begin_b++;
+            }
+         }
+      }
+
+      ( cout << ( win * 200 )) << endl;
+   }
+}

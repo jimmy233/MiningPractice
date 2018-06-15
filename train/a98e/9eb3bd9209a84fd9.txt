@@ -1,0 +1,85 @@
+void get_next(char VAR__temp[], int VAR__1111, int VAR__NEXT[])
+{
+   int VAR__21230   = 0;
+   int VAR__8444594 = -1;
+
+   VAR__NEXT[0] = -1;
+
+   while ( VAR__21230 < VAR__1111 )
+   {
+      if (( VAR__8444594 == ( -1 )) || ( VAR__temp[VAR__21230] == VAR__temp[VAR__8444594] ))
+      {
+         VAR__21230++;
+         VAR__8444594++;
+
+         if ( VAR__temp[VAR__21230] == VAR__temp[VAR__8444594] )
+         {
+            VAR__NEXT[VAR__21230] = VAR__NEXT[VAR__8444594];
+         }
+         else
+         {
+            VAR__NEXT[VAR__21230] = VAR__8444594;
+         }
+      }
+      else
+      {
+         VAR__8444594 = VAR__NEXT[VAR__8444594];
+      }
+   }
+}
+
+
+int kmp_index(char VAR_9494[], char VAR__temp[], int ls, int lt, int VAR__NEXT[])
+{
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   while ( VAR__53647 < ls )
+   {
+      if (( VAR__21230 == ( -1 )) || ( VAR_9494[VAR__53647] == VAR__temp[VAR__21230] ))
+      {
+         VAR__53647++;
+         VAR__21230++;
+      }
+      else
+      {
+         VAR__21230 = VAR__NEXT[VAR__21230];
+      }
+
+      if ( VAR__21230 == lt )
+      {
+         return VAR__53647 - lt;
+      }
+   }
+
+   return -1;
+}
+
+
+int main()
+{
+   char VAR_9494[51];
+   char VAR__temp[51];
+   int  VAR__NEXT[51] = { -1 };
+   int  lt            = 0;
+   int  ls;
+   int  VAR__53647;
+
+   gets(VAR__temp);
+
+   while ( VAR__temp[lt] != ' ' )
+   {
+      lt++;
+   }
+
+   ls = ( strlen(VAR__temp) - 1 ) - lt;
+   for ( VAR__53647 = 0; VAR__53647 < ls; VAR__53647++ )
+   {
+      VAR_9494[VAR__53647] = VAR__temp[( lt + 1 ) + VAR__53647];
+   }
+
+   VAR__temp[lt] = '\0';
+   VAR_9494[ls]  = '\0';
+   get_next(VAR__temp, lt, VAR__NEXT);
+   printf("%d\n", kmp_index(VAR_9494, VAR__temp, ls, lt, VAR__NEXT));
+}

@@ -1,0 +1,88 @@
+int CMP(const void *ele1, const void *ele2)
+{
+   return ( *((int *)ele2 )) - ( *((int *)ele1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int counter;
+   int qiwangleft;
+   int qiwangright;
+   int tianjileft;
+   int tianjiright;
+   int tianji[1006];
+   int qiwang[1006];
+   int ans;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tianji[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qiwang[VAR__53647];
+      }
+
+      qsort(tianji, VAR_1238123, sizeof( int ), CMP);
+      qsort(qiwang, VAR_1238123, sizeof( int ), CMP);
+      qiwangleft  = 0;
+      tianjileft  = 0;
+      qiwangright = VAR_1238123 - 1;
+      tianjiright = VAR_1238123 - 1;
+      counter     = 0;
+      ans         = 0;
+
+      while ( counter != VAR_1238123 )
+      {
+         counter++;
+
+         if ( qiwang[qiwangleft] < tianji[tianjileft] )
+         {
+            qiwangleft++;
+            tianjileft++;
+            ans += 200;
+         }
+         else
+         if ( qiwang[qiwangleft] == tianji[tianjileft] )
+         {
+            if ( qiwang[qiwangright] < tianji[tianjiright] )
+            {
+               ans += 200;
+               qiwangright--;
+               tianjiright--;
+            }
+            else
+            {
+               if ( qiwang[qiwangleft] > tianji[tianjiright] )
+               {
+                  ans -= 200;
+               }
+
+               qiwangleft++;
+               tianjiright--;
+            }
+         }
+         else
+         {
+            ans -= 200;
+            qiwangleft++;
+            tianjiright--;
+         }
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

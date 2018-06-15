@@ -1,0 +1,84 @@
+int count1;
+int VAR__819283[1010];
+int VAR__19328[1010];
+int VAR_1238123;
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int dfs(int *VAR__819283, int *VAR__19328)
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__53647;
+   int VAR__21230;
+
+   VAR__7685  = ( VAR__3918907 = 0 );
+   VAR__53647 = ( VAR__21230 = VAR_1238123 - 1 );
+
+   while ( true )
+   {
+      if ( VAR__7685 > VAR__53647 )
+      {
+         break;
+      }
+
+      if ( VAR__819283[VAR__7685] > VAR__19328[VAR__3918907] )
+      {
+         count1 += 1;
+         VAR__7685++;
+         VAR__3918907++;
+      }
+      else
+      if ( VAR__819283[VAR__53647] > VAR__19328[VAR__21230] )
+      {
+         count1 += 1;
+         VAR__53647--;
+         VAR__21230--;
+      }
+      else
+      {
+         if ( VAR__819283[VAR__53647] < VAR__19328[VAR__3918907] )
+         {
+            count1 -= 1;
+         }
+
+         VAR__53647--;
+         VAR__3918907++;
+      }
+   }
+}
+
+
+int main()
+{
+   while ( true )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), cmp);
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), cmp);
+      count1 = 0;
+      dfs(VAR__819283, VAR__19328);
+      ( cout << ( 200 * count1 )) << endl;
+   }
+
+   return 0;
+}

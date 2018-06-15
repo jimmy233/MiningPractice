@@ -1,0 +1,88 @@
+int total(int year, int mouth, int day);
+
+int main()
+{
+   int VAR__8444594;
+   int VAR_233;
+   int VAR_666;
+   int year;
+   int mouth;
+   int day;
+   int VAR__SUM = 0;
+
+   scanf("%d %d %d", &year, &mouth, &day);
+   VAR__SUM += ((( year - 1 ) + (( year - 1 ) / 4 )) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 );
+   VAR_233   = total(year, mouth, day);
+   VAR_666   = VAR_233 + VAR__SUM;
+
+   if (( VAR_666 % 7 ) == 0 )
+   {
+      printf("Sun.\n");
+   }
+
+   if (( VAR_666 % 7 ) == 1 )
+   {
+      printf("Mon.\n");
+   }
+
+   if (( VAR_666 % 7 ) == 2 )
+   {
+      printf("Tue.\n");
+   }
+
+   if (( VAR_666 % 7 ) == 3 )
+   {
+      printf("Wed.\n");
+   }
+
+   if (( VAR_666 % 7 ) == 4 )
+   {
+      printf("Thu.\n");
+   }
+
+   if (( VAR_666 % 7 ) == 5 )
+   {
+      printf("Fri.\n");
+   }
+
+   if (( VAR_666 % 7 ) == 6 )
+   {
+      printf("Sat.\n");
+   }
+
+   return 0;
+}
+
+
+int total(int year, int mouth, int day)
+{
+   int VAR__21230 = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < mouth; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         VAR__21230 += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         VAR__21230 += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+         {
+            VAR__21230 += 29;
+         }
+         else
+         {
+            VAR__21230 += 28;
+         }
+      }
+   }
+
+   VAR__21230 += day;
+   return VAR__21230;
+}

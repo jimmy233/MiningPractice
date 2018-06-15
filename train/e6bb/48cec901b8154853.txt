@@ -1,0 +1,72 @@
+int map[10][10];
+int add[10][10];
+int VAR__1238129;
+int VAR_1238123;
+void Generate(int VAR__7685, int VAR__3918907)
+{
+   int v = map[VAR__7685][VAR__3918907];
+
+   for ( int VAR__53647 = -1; VAR__53647 <= 1; VAR__53647++ )
+   {
+      for ( int VAR__21230 = -1; VAR__21230 <= 1; VAR__21230++ )
+      {
+         if (( VAR__53647 == 0 ) && ( VAR__21230 == 0 ))
+         {
+            add[VAR__7685 + VAR__53647][VAR__3918907 + VAR__21230] += v * 2;
+         }
+         else
+         {
+            add[VAR__7685 + VAR__53647][VAR__3918907 + VAR__21230] += v;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   memset(map, 0, sizeof( map ));
+   map[5][5] = VAR__1238129;
+   for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      memset(add, 0, sizeof( add ));
+      for ( int VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+         {
+            if ( map[VAR__53647][VAR__21230] != 0 )
+            {
+               Generate(VAR__53647, VAR__21230);
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+         {
+            map[VAR__53647][VAR__21230] = add[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+      {
+         if ( VAR__21230 != 1 )
+         {
+            ( cout << " " ) << map[VAR__53647][VAR__21230];
+         }
+         else
+         {
+            cout << map[VAR__53647][VAR__21230];
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

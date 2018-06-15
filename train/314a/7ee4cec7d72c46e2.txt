@@ -1,0 +1,68 @@
+int convert(char VAR_9494[], int result[])
+{
+   int value;
+   int LEN_OF_STH;
+   int VAR__NUM     = 0;
+   int VAR__8444594 = 0;
+
+   LEN_OF_STH           = strlen(VAR_9494);
+   VAR_9494[LEN_OF_STH] = '\0';
+
+   while ( VAR__8444594 < LEN_OF_STH )
+   {
+      value = 0;
+
+      while (( VAR_9494[VAR__8444594] != ',' ) && ( VAR_9494[VAR__8444594] != '\0' ))
+      {
+         value = (( value * 10 ) + VAR_9494[VAR__8444594++] ) - '0';
+      }
+
+      result[VAR__NUM++] = value;
+      VAR__8444594       = VAR__8444594 + 1;
+   }
+
+   return VAR__NUM;
+}
+
+
+void VAR__127322(int VAR__7685[], int VAR__3918907[], int VAR__NUM[], int total)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < total; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__7685[VAR__53647]; VAR__21230 < VAR__3918907[VAR__53647]; VAR__21230++ )
+      {
+         VAR__NUM[VAR__21230] = VAR__NUM[VAR__21230] + 1;
+      }
+   }
+}
+
+
+void main()
+{
+   int  VAR__NUM[1000] = { 0 };
+   int  VAR__7685[1000];
+   int  VAR__3918907[1000];
+   char s1[10000];
+   char s2[10000];
+
+   gets(s1);
+   gets(s2);
+   int total;
+   total = convert(s1, VAR__7685);
+   total = convert(s2, VAR__3918907);
+   VAR__127322(VAR__7685, VAR__3918907, VAR__NUM, total);
+   int VAR__MAX = VAR__NUM[0];
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__NUM[VAR__53647];
+      }
+   }
+
+   printf("%d %d", total, VAR__MAX);
+}

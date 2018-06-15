@@ -1,0 +1,114 @@
+int money(int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int ans = 0;
+   int mid;
+   int VAR__HEAD     = 0;
+   int tailt         = VAR_1238123 - 1;
+   int tailk         = VAR_1238123 - 1;
+   int *VAR__8444594 = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   int *VAR__temp    = (int *)malloc(( sizeof( int )) * VAR_1238123);
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__temp[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__8444594[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( VAR__8444594[VAR__21230] < VAR__8444594[VAR__21230 + 1] )
+         {
+            mid = VAR__8444594[VAR__21230];
+            VAR__8444594[VAR__21230]     = VAR__8444594[VAR__21230 + 1];
+            VAR__8444594[VAR__21230 + 1] = mid;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( VAR__temp[VAR__21230] < VAR__temp[VAR__21230 + 1] )
+         {
+            mid = VAR__temp[VAR__21230];
+            VAR__temp[VAR__21230]     = VAR__temp[VAR__21230 + 1];
+            VAR__temp[VAR__21230 + 1] = mid;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__temp[VAR__HEAD] > VAR__8444594[VAR__53647] )
+      {
+         VAR__HEAD++;
+         ans += 200;
+      }
+      else
+      if ( VAR__temp[VAR__HEAD] < VAR__8444594[VAR__53647] )
+      {
+         tailt--;
+         ans -= 200;
+      }
+      else
+      if ( VAR__temp[VAR__HEAD] == VAR__8444594[VAR__53647] )
+      {
+         for ( VAR__21230 = tailt, VAR__1238129 = tailk; VAR__21230 >= VAR__HEAD; VAR__21230--, VAR__1238129-- )
+         {
+            if ( VAR__temp[VAR__21230] > VAR__8444594[VAR__1238129] )
+            {
+               ans += 200;
+               tailt--;
+               tailk--;
+            }
+            else
+            {
+               if ( VAR__temp[VAR__21230] < VAR__8444594[VAR__53647] )
+               {
+                  ans -= 200;
+               }
+
+               tailt = --VAR__21230;
+               tailk = VAR__1238129;
+               break;
+            }
+         }
+      }
+
+
+
+      if ( VAR__HEAD > tailt )
+      {
+         break;
+      }
+   }
+
+   free(VAR__8444594);
+   free(VAR__temp);
+   return ans;
+}
+
+
+void main()
+{
+   int VAR_1238123;
+
+   while (( scanf("%d", &VAR_1238123) == 1 ) && ( VAR_1238123 != 0 ))
+   {
+      printf("%d\n", money(VAR_1238123));
+   }
+}

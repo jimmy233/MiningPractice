@@ -1,0 +1,41 @@
+struct stu
+{
+   char       VAR__NUM[20];
+   char       name[20];
+   char       VAR_9494;
+   int        age;
+   char       point[10];
+   char       adr[50];
+   struct stu *VAR_233;
+};
+void main()
+{
+   struct stu *stu1       = NULL;
+   int        VAR_1238123 = sizeof( struct stu );
+
+   stu1 = (struct stu *)malloc(VAR_1238123);
+   struct stu *VAR__HEAD = NULL;
+   struct stu *curent    = NULL;
+   stu1->VAR_233 = NULL;
+
+   while ( scanf("%s", stu1->VAR__NUM))
+   {
+      if ( strcmp(stu1->VAR__NUM, "end") == 0 )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %s %s", stu1->name, &stu1->VAR_9494, &stu1->age, &stu1->point, stu1->adr);
+      stu1->VAR_233 = curent;
+      curent        = stu1;
+      stu1          = (struct stu *)malloc(VAR_1238123);
+   }
+
+   while ( curent != NULL )
+   {
+      printf("%s %s %c %d %s %s\n", curent->VAR__NUM, curent->name, curent->VAR_9494, curent->age, curent->point, curent->adr);
+      stu1   = curent;
+      curent = curent->VAR_233;
+      free(stu1);
+   }
+}

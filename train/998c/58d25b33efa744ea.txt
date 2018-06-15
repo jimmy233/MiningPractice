@@ -1,0 +1,80 @@
+int lenA;
+int lenB;
+int maxLen;
+void change(char VAR__819283[300], int LEN_OF_STH)
+{
+   int VAR_666;
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH / 2 ); VAR__53647++ )
+   {
+      if ((( LEN_OF_STH - VAR__53647 ) - 1 ) == VAR__53647 )
+      {
+         break;
+      }
+      else
+      {
+         VAR_666 = VAR__819283[VAR__53647];
+         VAR__819283[VAR__53647] = VAR__819283[( LEN_OF_STH - VAR__53647 ) - 1];
+         VAR__819283[( LEN_OF_STH - VAR__53647 ) - 1] = VAR_666;
+      }
+   }
+}
+
+
+int add(char VAR__4857423[300], char VAR__12302[300], int VAR__7685, char VAR_9494[300])
+{
+   if (((( VAR__4857423[VAR__7685] - '0' ) + VAR__12302[VAR__7685] ) - '0' ) < 10 )
+   {
+      VAR_9494[VAR__7685] = ( VAR__4857423[VAR__7685] - '0' ) + VAR__12302[VAR__7685];
+
+      if ( VAR__7685 >= ( maxLen - 1 ))
+      {
+         return 0;
+      }
+   }
+   else
+   {
+      VAR_9494[VAR__7685] = (( VAR__4857423[VAR__7685] - '0' ) + VAR__12302[VAR__7685] ) - 10;
+      VAR__4857423[VAR__7685 + 1]++;
+
+      if ( VAR__7685 >= ( maxLen - 1 ))
+      {
+         VAR_9494[VAR__7685 + 1]++;
+         maxLen++;
+         return 0;
+      }
+   }
+
+   return add(VAR__4857423, VAR__12302, VAR__7685 + 1, VAR_9494);
+}
+
+
+int main()
+{
+   char VAR__819283[300];
+   char VAR__19328[300];
+   char VAR__4857423[300];
+
+   for ( int VAR__53647 = 0; VAR__53647 < 300; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = ( VAR__19328[VAR__53647] = ( VAR__4857423[VAR__53647] = '0' ));
+   }
+
+   ( cin >> VAR__819283 ) >> VAR__19328;
+   lenA              = strlen(VAR__819283);
+   lenB              = strlen(VAR__19328);
+   maxLen            = ( lenA > lenB ) ? ( lenA ) : ( lenB );
+   VAR__819283[lenA] = ( VAR__19328[lenB] = '0' );
+   change(VAR__819283, lenA);
+   change(VAR__19328, lenB);
+   add(VAR__819283, VAR__19328, 0, VAR__4857423);
+   for ( int VAR__53647 = maxLen - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ((( VAR__53647 == ( maxLen - 1 )) && ( VAR__53647 != 0 )) && ( VAR__4857423[VAR__53647] == '0' ))
+      {
+         continue;
+      }
+
+      cout << VAR__4857423[VAR__53647];
+   }
+}

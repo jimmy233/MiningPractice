@@ -1,0 +1,68 @@
+int isrunnian(int year)
+{
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int year;
+   int month;
+   int date;
+   int VAR__SUM;
+   int montha[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+
+   scanf("%d%d%d", &year, &month, &date);
+   VAR__SUM = (((( year % 7 ) + (( year - 1 ) / 4 )) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 )) % 7;
+   for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      VAR__SUM += montha[isrunnian(year)][VAR__53647] % 7;
+   }
+
+   VAR__SUM += date - 1;
+   int VAR__12302;
+   VAR__12302 = VAR__SUM % 7;
+
+   if ( VAR__12302 == 1 )
+   {
+      printf("Mon.");
+   }
+
+   if ( VAR__12302 == 2 )
+   {
+      printf("Tue.");
+   }
+
+   if ( VAR__12302 == 3 )
+   {
+      printf("Wed.");
+   }
+
+   if ( VAR__12302 == 4 )
+   {
+      printf("Thu.");
+   }
+
+   if ( VAR__12302 == 5 )
+   {
+      printf("Fri.");
+   }
+
+   if ( VAR__12302 == 6 )
+   {
+      printf("Sat.");
+   }
+
+   if ( VAR__12302 == 0 )
+   {
+      printf("Sun.");
+   }
+
+   return 0;
+}

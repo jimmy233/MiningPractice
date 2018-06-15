@@ -1,0 +1,71 @@
+struct student
+{
+   char name[20];
+   int  score1;
+   int  score2;
+   char VAR__819283;
+   char VAR__19328;
+   int  VAR__NUM;
+};
+struct student stu[100];
+int main()
+{
+   int N;
+   int VAR__53647;
+   int VAR__NUM;
+   int VAR__819283[100] = { 0 };
+   int sumall           = 0;
+   int summax           = 0;
+
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].score1, &stu[VAR__53647].score2, &stu[VAR__53647].VAR__819283, &stu[VAR__53647].VAR__19328, &stu[VAR__53647].VAR__NUM);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].score1 > 80 ) && ( stu[VAR__53647].VAR__NUM >= 1 ))
+      {
+         VAR__819283[VAR__53647] += 8000;
+      }
+
+      if (( stu[VAR__53647].score1 > 85 ) && ( stu[VAR__53647].score2 > 80 ))
+      {
+         VAR__819283[VAR__53647] += 4000;
+      }
+
+      if ( stu[VAR__53647].score1 > 90 )
+      {
+         VAR__819283[VAR__53647] += 2000;
+      }
+
+      if (( stu[VAR__53647].score1 > 85 ) && ( stu[VAR__53647].VAR__19328 == 'Y' ))
+      {
+         VAR__819283[VAR__53647] += 1000;
+      }
+
+      if (( stu[VAR__53647].score2 > 80 ) && ( stu[VAR__53647].VAR__819283 == 'Y' ))
+      {
+         VAR__819283[VAR__53647] += 850;
+      }
+
+      if ( summax < VAR__819283[VAR__53647] )
+      {
+         summax = VAR__819283[VAR__53647];
+      }
+
+      sumall += VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == summax )
+      {
+         VAR__NUM = VAR__53647;
+         break;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", stu[VAR__NUM].name, VAR__819283[VAR__NUM], sumall);
+}

@@ -1,0 +1,61 @@
+int TimeUsed = 0;
+int Jumps    = 0;
+int Time     = 0;
+void Jump()
+{
+   TimeUsed++;
+   Jumps++;
+}
+
+
+void Fail()
+{
+   TimeUsed += 3;
+}
+
+
+int main()
+{
+   int kids;
+   int Failure;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int FailTime[2][60];
+
+   cin >> kids;
+   for ( VAR__53647 = 0; VAR__53647 < kids; VAR__53647++ )
+   {
+      Jumps    = 0;
+      TimeUsed = 0;
+      cin >> Failure;
+      for ( VAR__21230 = 0; VAR__21230 < Failure; VAR__21230++ )
+      {
+         cin >> FailTime[0][VAR__21230];
+         FailTime[1][VAR__21230] = 0;
+      }
+
+      while ( 1 )
+      {
+         Jump();
+         for ( VAR__8444594 = 0; VAR__8444594 < Failure; VAR__8444594++ )
+         {
+            if (( Jumps == FailTime[0][VAR__8444594] ) && ( FailTime[1][VAR__8444594] == 0 ))
+            {
+               FailTime[0][VAR__8444594] = 1;
+               Fail();
+               break;
+            }
+         }
+
+         if ( TimeUsed >= 60 )
+         {
+            break;
+         }
+      }
+
+      ( cout << Jumps ) << endl;
+   }
+
+   return 0;
+}

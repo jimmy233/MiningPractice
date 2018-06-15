@@ -1,0 +1,90 @@
+struct student
+{
+   char           A_STRING[10];
+   int            VAR__819283;
+   struct student *VAR__NEXT;
+};
+struct student *creat(int VAR_1238123)
+{
+   int            VAR__53647 = 0;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d", &ANOTHER_POINTER->A_STRING, &ANOTHER_POINTER->VAR__819283);
+   VAR__HEAD = NULL;
+
+   while ( VAR__53647 < ( VAR_1238123 - 1 ))
+   {
+      VAR__53647 = VAR__53647 + 1;
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d", &ANOTHER_POINTER->A_STRING, &ANOTHER_POINTER->VAR__819283);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER            = (struct student *)malloc(LEN);
+   YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   struct student *p4;
+   struct student *p5;
+   struct student *p6;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   char VAR__4857423[10];
+   int  VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER     = VAR__HEAD;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if (( YET_ANOTHER_POINTER->VAR__819283 > 59 ) && ( YET_ANOTHER_POINTER->VAR__819283 > ANOTHER_POINTER->VAR__819283 ))
+         {
+            strcpy(VAR__4857423, YET_ANOTHER_POINTER->A_STRING);
+            strcpy(YET_ANOTHER_POINTER->A_STRING, ANOTHER_POINTER->A_STRING);
+            strcpy(ANOTHER_POINTER->A_STRING, VAR__4857423);
+            VAR__temp = ANOTHER_POINTER->VAR__819283;
+            ANOTHER_POINTER->VAR__819283     = YET_ANOTHER_POINTER->VAR__819283;
+            YET_ANOTHER_POINTER->VAR__819283 = VAR__temp;
+         }
+
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   p5 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      {
+         printf("%s\n", p5->A_STRING);
+      }
+      p5 = p5->VAR__NEXT;
+   }
+}

@@ -1,0 +1,78 @@
+int djt(int year, int month)
+{
+   int VAR__53647;
+   int VAR__SUM = 1;
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      switch ( VAR__53647 )
+      {
+      case 1:
+
+      case 3:
+
+      case 5:
+
+      case 7:
+
+      case 8:
+
+      case 10:
+         VAR__SUM += 31;
+         break;
+
+      case 4:
+
+      case 6:
+
+      case 9:
+
+      case 11:
+         VAR__SUM += 30;
+         break;
+
+      case 2:
+
+         if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+         {
+            VAR__SUM += 29;
+         }
+         else
+         {
+            VAR__SUM += 28;
+         }
+      }
+   }
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int year[200];
+   int month1[200];
+   int month2[200];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &year[VAR__53647], &month1[VAR__53647], &month2[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((( djt(year[VAR__53647], month1[VAR__53647]) - djt(year[VAR__53647], month2[VAR__53647])) % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}

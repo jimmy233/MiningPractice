@@ -1,0 +1,86 @@
+int main(int argc, char *argv[])
+{
+   char VAR__819283[1000];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  LEN_OF_STH;
+   int  VAR_FLAG = 0;
+   int  VAR_21983012;
+   int  VAR__MAX         = 0;
+   int  VAR__19328[1000] = { 1 };
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", VAR__819283);
+   LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         VAR_FLAG = 0;
+         for ( VAR__8444594 = VAR__53647; VAR__8444594 < ( VAR__53647 + VAR_1238123 ); VAR__8444594++ )
+         {
+            if ( VAR__819283[VAR__8444594] != VAR__819283[VAR__21230] )
+            {
+               VAR_21983012 = VAR_FLAG;
+               VAR_FLAG     = 0;
+               break;
+            }
+            else
+            {
+               VAR_FLAG++;
+               VAR__21230++;
+            }
+         }
+
+         if ( VAR_FLAG == VAR_1238123 )
+         {
+            VAR__19328[VAR__53647]++;
+            VAR__21230 = VAR__21230 - VAR_1238123;
+         }
+         else
+         {
+            VAR__21230   = VAR__21230 - VAR_21983012;
+            VAR__8444594 = VAR__8444594 - VAR_21983012;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__19328[VAR__53647] )
+      {
+         VAR__MAX = VAR__19328[VAR__53647];
+      }
+   }
+
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647] == VAR__MAX )
+         {
+            for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + VAR_1238123 ); VAR__21230++ )
+            {
+               printf("%c", VAR__819283[VAR__21230]);
+            }
+
+            printf("\n");
+         }
+      }
+   }
+
+   return 0;
+}

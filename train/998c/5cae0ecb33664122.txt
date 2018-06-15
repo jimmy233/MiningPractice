@@ -1,0 +1,49 @@
+int main()
+{
+   char ANOTHER_STRING[MAX_LEN + 10];
+   char YET_ANOTHER_STRING[MAX_LEN + 10];
+   int  an1[MAX_LEN + 10];
+   int  an2[MAX_LEN + 10];
+   int  VAR__53647;
+   int  VAR__21230;
+
+   gets(ANOTHER_STRING);
+   gets(YET_ANOTHER_STRING);
+   memset(an1, 0, sizeof( an1 ));
+   memset(an2, 0, sizeof( an2 ));
+   int Lenth1 = strlen(ANOTHER_STRING);
+   for ( VAR__21230 = 0, VAR__53647 = Lenth1 - 1; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      an1[VAR__21230] = ANOTHER_STRING[VAR__53647] - '0';
+   }
+
+   int Lenth2 = strlen(YET_ANOTHER_STRING);
+   for ( VAR__21230 = 0, VAR__53647 = Lenth2 - 1; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      an2[VAR__21230] = YET_ANOTHER_STRING[VAR__53647] - '0';
+   }
+
+   int Highestpos = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < MAX_LEN; VAR__53647++ )
+   {
+      an1[VAR__53647] = an1[VAR__53647] + an2[VAR__53647];
+
+      if ( an1[VAR__53647] >= 10 )
+      {
+         an1[VAR__53647]     = an1[VAR__53647] - 10;
+         an1[VAR__53647 + 1] = an1[VAR__53647 + 1] + 1;
+      }
+
+      if ( an1[VAR__53647] )
+      {
+         Highestpos = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = Highestpos; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << an1[VAR__53647];
+   }
+
+   return 0;
+}

@@ -1,0 +1,65 @@
+struct pa
+{
+   char      VAR__NUM[15];
+   int       age;
+   struct pa *VAR__NEXT;
+};
+int main()
+{
+   struct pa *VAR_233;
+   struct pa *ANOTHER_POINTER;
+   struct pa *YET_ANOTHER_POINTER;
+   int       VAR__53647 = 0;
+   int       VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = (struct pa *)malloc(LEN);
+   scanf("%s%d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+   VAR_233 = YET_ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct pa *)malloc(LEN);
+      scanf("%s%d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+
+      if ( ANOTHER_POINTER->age < 60 )
+      {
+         while ( YET_ANOTHER_POINTER->VAR__NEXT != NULL )
+         {
+            YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+         }
+
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR__NEXT     = NULL;
+      }
+      else
+      {
+         if ( VAR_233->age < ANOTHER_POINTER->age )
+         {
+            ANOTHER_POINTER->VAR__NEXT = VAR_233;
+            VAR_233 = ANOTHER_POINTER;
+         }
+         else
+         {
+            while (( YET_ANOTHER_POINTER->VAR__NEXT != NULL ) && ( YET_ANOTHER_POINTER->VAR__NEXT->age >= ANOTHER_POINTER->age ))
+            {
+               YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+            }
+
+            ANOTHER_POINTER->VAR__NEXT     = YET_ANOTHER_POINTER->VAR__NEXT;
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         }
+      }
+
+      YET_ANOTHER_POINTER = VAR_233;
+   }
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return 0;
+}

@@ -1,0 +1,80 @@
+int main()
+{
+   struct patient
+   {
+      char id[11];
+      int  age;
+   }
+   ren[100];
+   struct oldp
+   {
+      char idold[11];
+      int  ageold;
+   }
+   oldren[100];
+   struct youngp
+   {
+      char idyoung[11];
+      int  ageyoung;
+   }
+        youngren[100];
+   int  old[100];
+   int  young[100];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__temp;
+   int  VAR__21230;
+   int  oldindex   = 0;
+   int  youngindex = 0;
+   char VAR__NUM[4];
+   char idinter[11];
+
+   gets(VAR__NUM);
+   VAR_1238123 = atoi(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", ren[VAR__53647].id, &ren[VAR__53647].age);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( ren[VAR__53647].age >= 60 )
+      {
+         oldren[oldindex].ageold = ren[VAR__53647].age;
+         strcpy(oldren[oldindex].idold, ren[VAR__53647].id);
+         oldindex += 1;
+      }
+      else
+      {
+         youngren[youngindex].ageyoung = ren[VAR__53647].age;
+         strcpy(youngren[youngindex].idyoung, ren[VAR__53647].id);
+         youngindex += 1;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < oldindex; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( oldindex - VAR__53647 ); VAR__21230++ )
+      {
+         if ( oldren[VAR__21230].ageold < oldren[VAR__21230 + 1].ageold )
+         {
+            VAR__temp = oldren[VAR__21230].ageold;
+            oldren[VAR__21230].ageold     = oldren[VAR__21230 + 1].ageold;
+            oldren[VAR__21230 + 1].ageold = VAR__temp;
+            strcpy(idinter, oldren[VAR__21230].idold);
+            strcpy(oldren[VAR__21230].idold, oldren[VAR__21230 + 1].idold);
+            strcpy(oldren[VAR__21230 + 1].idold, idinter);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < oldindex; VAR__53647++ )
+   {
+      printf("%s\n", oldren[VAR__53647].idold);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < youngindex; VAR__53647++ )
+   {
+      printf("%s\n", youngren[VAR__53647].idyoung);
+   }
+}

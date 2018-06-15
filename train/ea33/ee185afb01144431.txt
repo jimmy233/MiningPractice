@@ -1,0 +1,53 @@
+int MAX(char A_STRING[], int LEN_OF_STH)
+{
+   int VAR__53647;
+   int VAR__MAX;
+   int VAR__TEMP;
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__MAX] < A_STRING[VAR__53647] )
+      {
+         VAR__TEMP  = VAR__MAX;
+         VAR__MAX   = VAR__53647;
+         VAR__53647 = VAR__TEMP;
+      }
+   }
+
+   return VAR__MAX;
+}
+
+
+void main()
+{
+   char A_STRING[10];
+   char substr[3];
+   int  stop;
+   int  LEN_OF_STH;
+   int  VAR__53647;
+
+   for ( ; ; )
+   {
+      stop = scanf("%s %s", A_STRING, substr);
+
+      if ( stop != 2 )
+      {
+         break;
+      }
+
+      LEN_OF_STH = strlen(A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 <= MAX(A_STRING, LEN_OF_STH); VAR__53647++ )
+      {
+         printf("%c", A_STRING[VAR__53647]);
+      }
+
+      printf("%s", substr);
+      for ( VAR__53647 = MAX(A_STRING, LEN_OF_STH) + 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         printf("%c", A_STRING[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+}

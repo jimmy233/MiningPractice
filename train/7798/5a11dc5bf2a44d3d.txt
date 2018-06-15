@@ -1,0 +1,106 @@
+struct sa
+{
+   int       VAR__819283;
+   char      VAR__19328[100];
+   struct sa *VAR__NEXT;
+};
+int VAR_1238123;
+int VAR__1238129;
+int VAR__8444594[27];
+struct sa *kao(void)
+{
+   struct sa *VAR__HEAD;
+   struct sa *ANOTHER_POINTER;
+   struct sa *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   VAR__HEAD       = NULL;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct sa *)malloc(LEN_OF_STH));
+   scanf("%d %s", &ANOTHER_POINTER->VAR__819283, ANOTHER_POINTER->VAR__19328);
+   VAR__HEAD = ANOTHER_POINTER;
+   for ( ; ; )
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 == ( VAR__1238129 + 1 ))
+      {
+         break;
+      }
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = (struct sa *)malloc(LEN_OF_STH);
+         scanf("%d %s", &ANOTHER_POINTER->VAR__819283, ANOTHER_POINTER->VAR__19328);
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+   }
+
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   struct sa *VAR_233;
+   struct sa *VAR_666;
+   struct sa *VAR__HEAD;
+   struct sa *ped;
+   int       VAR__127322;
+   int       VAR__53647;
+   int       VAR_9Q8Q90;
+   int       VAR_9494 = 1;
+   int       VAR__temp;
+   int       VAR__12302 = 0;
+   char      VAR__4857423;
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = kao();
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      VAR_9Q8Q90 = strlen(VAR_233->VAR__19328);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_9Q8Q90; VAR__53647++ )
+      {
+         VAR__8444594[VAR_233->VAR__19328[VAR__53647] - 64]++;
+      }
+   }
+
+   VAR__temp = VAR__8444594[1];
+   for ( VAR__53647 = 2; VAR__53647 < 27; VAR__53647++ )
+   {
+      if ( VAR__8444594[VAR__53647] > VAR__8444594[VAR_9494] )
+      {
+         VAR_9494  = VAR__53647;
+         VAR__temp = VAR__8444594[VAR__53647];
+      }
+   }
+
+   printf("%c\n%d\n", VAR_9494 + 64, VAR__temp);
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; )
+   {
+      VAR_9Q8Q90 = strlen(VAR_233->VAR__19328);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_9Q8Q90; VAR__53647++ )
+      {
+         if ( VAR_233->VAR__19328[VAR__53647] == ( VAR_9494 + 64 ))
+         {
+            VAR__12302 = 1;
+            break;
+         }
+      }
+
+      if ( VAR__12302 == 1 )
+      {
+         printf("%d\n", VAR_233->VAR__819283);
+      }
+
+      VAR__12302 = 0;
+      VAR_233    = VAR_233->VAR__NEXT;
+   }
+
+   return 0;
+}

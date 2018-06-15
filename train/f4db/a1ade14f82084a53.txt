@@ -1,0 +1,60 @@
+int main()
+{
+   int VAR_SIZE[100][100];
+   int VAR_1238123;
+   int VAR_9494[100] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   int LEN_OF_STH;
+   int col;
+   int VAR__1238129;
+   int VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+   {
+      scanf("%d%d", &LEN_OF_STH, &col);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+         {
+            scanf("%d", &VAR_SIZE[VAR__53647][VAR__21230]);
+            VAR__SUM += VAR_SIZE[VAR__53647][VAR__21230];
+         }
+      }
+
+      if (( col == 1 ) || ( LEN_OF_STH == 1 ))
+      {
+         VAR_9494[VAR__1238129] = VAR__SUM;
+      }
+      else
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( col - 1 ); VAR__21230++ )
+         {
+            VAR_9494[VAR__1238129] += VAR_SIZE[0][VAR__21230];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+         {
+            VAR_9494[VAR__1238129] += VAR_SIZE[VAR__53647][col - 1];
+         }
+
+         for ( VAR__21230 = 1; VAR__21230 < col; VAR__21230++ )
+         {
+            VAR_9494[VAR__1238129] += VAR_SIZE[LEN_OF_STH - 1][VAR__21230];
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+         {
+            VAR_9494[VAR__1238129] += VAR_SIZE[VAR__53647][0];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%d\n", VAR_9494[VAR__53647]);
+   }
+
+   return 0;
+}

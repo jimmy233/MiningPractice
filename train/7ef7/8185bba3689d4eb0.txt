@@ -1,0 +1,132 @@
+int minx[1000];
+int miny[1000];
+int VAR_1238123;
+int VAR__1238129;
+int VAR__819283[105][105];
+int VAR__19328[105][105];
+void calc_min()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      minx[VAR__53647] = 100000;
+      miny[VAR__53647] = 100000;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] < minx[VAR__53647] )
+         {
+            minx[VAR__53647] = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] -= minx[VAR__53647];
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] < miny[VAR__21230] )
+         {
+            miny[VAR__21230] = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] -= miny[VAR__21230];
+      }
+   }
+}
+
+
+void calc_delete()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if (( VAR__53647 - 1 ) != 0 )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+         {
+            if ( VAR__21230 == 1 )
+            {
+               continue;
+            }
+
+            int VAR__7685    = VAR__53647;
+            int VAR__3918907 = VAR__21230;
+
+            if ( VAR__7685 )
+            {
+               VAR__7685--;
+            }
+
+            if ( VAR__3918907 )
+            {
+               VAR__3918907--;
+            }
+
+            VAR__19328[VAR__7685][VAR__3918907] = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+
+
+   VAR__1238129--;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__19328[VAR__53647][VAR__21230];
+      }
+   }
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int ans = 0;
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            cin >> VAR__819283[VAR__21230][VAR__8444594];
+         }
+      }
+
+
+      VAR__1238129 = VAR_1238123;
+
+      while ( VAR__1238129 > 2 )
+      {
+         calc_min();
+         ans += VAR__819283[1][1];
+         calc_delete();
+      }
+
+      calc_min();
+      ans += VAR__819283[1][1];
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

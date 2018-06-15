@@ -1,0 +1,47 @@
+int main()
+{
+   char A_STRING[4][500];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__COUNT    = 0;
+   int  LEN_OF_STH[3] = { 0 };
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      cin.getline(A_STRING[VAR__53647], 500);
+      LEN_OF_STH[VAR__53647] = strlen(A_STRING[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; A_STRING[0][VAR__53647] != 0; VAR__53647++ )
+   {
+      if ((( VAR__53647 == 0 ) || (( VAR__53647 > 0 ) && ( A_STRING[0][VAR__53647 - 1] == ' ' ))) && (( A_STRING[0][VAR__53647 + LEN_OF_STH[1]] == ' ' ) || ( A_STRING[0][VAR__53647 + LEN_OF_STH[1]] == 0 )))
+      {
+         for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH[1]; VAR__21230++ )
+         {
+            if ( A_STRING[0][VAR__53647 + VAR__21230] != A_STRING[1][VAR__21230] )
+            {
+               break;
+            }
+         }
+
+
+         if ( VAR__21230 == LEN_OF_STH[1] )
+         {
+            strcpy(A_STRING[3], ( A_STRING[0] + VAR__53647 ) + LEN_OF_STH[1]);
+            strcpy(( A_STRING[0] + VAR__53647 ) + LEN_OF_STH[2], A_STRING[3]);
+            for ( VAR__8444594 = 0; A_STRING[2][VAR__8444594] != 0; VAR__8444594++ )
+            {
+               A_STRING[0][VAR__53647 + VAR__8444594] = A_STRING[2][VAR__8444594];
+            }
+
+            VAR__COUNT++;
+         }
+      }
+
+      A_STRING[0][( LEN_OF_STH[0] + ( VAR__COUNT * ( LEN_OF_STH[2] - LEN_OF_STH[1] ))) + 1] = 0;
+   }
+
+   ( cout << A_STRING[0] ) << endl;
+   return 0;
+}

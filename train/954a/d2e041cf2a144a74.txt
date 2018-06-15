@@ -1,0 +1,72 @@
+struct Student
+{
+   char name[21];
+   int  grade;
+   int  eval;
+   char clasAsi;
+   char west;
+   int  essay;
+   int  total;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            totalMoney = 0;
+   int            money      = 0;
+   struct Student stu[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c%d", stu[VAR__53647].name, &stu[VAR__53647].grade, &stu[VAR__53647].eval, &stu[VAR__53647].clasAsi, &stu[VAR__53647].west, &stu[VAR__53647].essay);
+      stu[VAR__53647].total = 0;
+
+      if (( stu[VAR__53647].grade > 80 ) && ( stu[VAR__53647].essay > 0 ))
+      {
+         stu[VAR__53647].total = stu[VAR__53647].total + 8000;
+      }
+
+      if (( stu[VAR__53647].grade > 85 ) && ( stu[VAR__53647].eval > 80 ))
+      {
+         stu[VAR__53647].total = stu[VAR__53647].total + 4000;
+      }
+
+      if ( stu[VAR__53647].grade > 90 )
+      {
+         stu[VAR__53647].total = stu[VAR__53647].total + 2000;
+      }
+
+      if (( stu[VAR__53647].grade > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].total = stu[VAR__53647].total + 1000;
+      }
+
+      if (( stu[VAR__53647].eval > 80 ) && ( stu[VAR__53647].clasAsi == 'Y' ))
+      {
+         stu[VAR__53647].total = stu[VAR__53647].total + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].total > money )
+      {
+         money = stu[VAR__53647].total;
+      }
+
+      totalMoney = totalMoney + stu[VAR__53647].total;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].total == money )
+      {
+         printf("%s\n%d\n", stu[VAR__53647].name, money);
+         break;
+      }
+   }
+
+   printf("%d", totalMoney);
+   return 0;
+}

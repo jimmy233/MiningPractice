@@ -1,0 +1,64 @@
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__COUNT;
+   int   VAR__TEMP = 0;
+   float VAR__SUM;
+
+   cin >> VAR_1238123;
+   VAR__COUNT = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   int   point[3][VAR_1238123];
+   float distance[VAR__COUNT];
+   float distance_temp;
+   int   ptp[2][VAR__COUNT];
+   int   ptp_temp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         cin >> point[VAR__21230][VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__SUM            = ((((float)( point[0][VAR__53647] - point[0][VAR__21230] )) * ( point[0][VAR__53647] - point[0][VAR__21230] )) + (( point[1][VAR__53647] - point[1][VAR__21230] ) * ( point[1][VAR__53647] - point[1][VAR__21230] ))) + (( point[2][VAR__53647] - point[2][VAR__21230] ) * ( point[2][VAR__53647] - point[2][VAR__21230] ));
+         distance[VAR__TEMP] = sqrt(VAR__SUM);
+         ptp[0][VAR__TEMP]   = VAR__53647;
+         ptp[1][VAR__TEMP]   = VAR__21230;
+         VAR__TEMP++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__COUNT - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( distance[VAR__21230] < distance[VAR__21230 + 1] )
+         {
+            distance_temp            = distance[VAR__21230];
+            distance[VAR__21230]     = distance[VAR__21230 + 1];
+            distance[VAR__21230 + 1] = distance_temp;
+            ptp_temp = ptp[0][VAR__21230 + 1];
+            ptp[0][VAR__21230 + 1] = ptp[0][VAR__21230];
+            ptp[0][VAR__21230]     = ptp_temp;
+            ptp_temp = ptp[1][VAR__21230 + 1];
+            ptp[1][VAR__21230 + 1] = ptp[1][VAR__21230];
+            ptp[1][VAR__21230]     = ptp_temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      (((((( cout << '(' ) << point[0][ptp[0][VAR__53647]] ) << ',' ) << point[1][ptp[0][VAR__53647]] ) << ',' ) << point[2][ptp[0][VAR__53647]] ) << ")-(";
+      ((((( cout << point[0][ptp[1][VAR__53647]] ) << ',' ) << point[1][ptp[1][VAR__53647]] ) << ',' ) << point[2][ptp[1][VAR__53647]] ) << ")=";
+      ((( cout << fixed ) << setprecision(2)) << distance[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

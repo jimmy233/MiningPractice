@@ -1,0 +1,82 @@
+int main()
+{
+   char A_STRING[101];
+   char result[100] = { "0" };
+   int  VAR__53647;
+   int  tem;
+   int  VAR__MAX = 0;
+
+   scanf("%s", A_STRING);
+   for ( VAR__53647 = 1; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647 - 2] == '1' )
+      {
+         VAR__53647--;
+      }
+
+      if (((((( A_STRING[VAR__53647 - 1] - '0' ) * 10 ) + A_STRING[VAR__53647] ) - '0' ) >= 13 ) || ((((( A_STRING[VAR__53647 - 1] - '0' ) * 10 ) + A_STRING[VAR__53647] ) - '0' ) == 0 ))
+      {
+         tem = ((( A_STRING[VAR__53647 - 1] - '0' ) * 10 ) + A_STRING[VAR__53647] ) - '0';
+      }
+      else
+      {
+         VAR__53647++;
+
+         if ( result[VAR__53647 - 2] == '\0' )
+         {
+            result[VAR__53647 - 2] = '0';
+         }
+
+         tem = (((( A_STRING[VAR__53647 - 2] - '0' ) * 100 ) + (( A_STRING[VAR__53647 - 1] - '0' ) * 10 )) + A_STRING[VAR__53647] ) - '0';
+      }
+
+      if ( A_STRING[VAR__53647] != '\0' )
+      {
+         result[VAR__53647 - 1] = ( tem / 13 ) + '0';
+      }
+
+      if ( A_STRING[VAR__53647] != '\0' )
+      {
+         A_STRING[VAR__53647 - 1] = (( tem % 13 ) / 10 ) + '0';
+      }
+
+      if ( A_STRING[VAR__53647] != '\0' )
+      {
+         A_STRING[VAR__53647] = (( tem % 13 ) % 10 ) + '0';
+      }
+   }
+
+   A_STRING[VAR__53647] = '\0';
+
+   if ( result[0] == '0' )
+   {
+      if ( result[1] == '\0' )
+      {
+         printf("0\n");
+      }
+      else
+      {
+         printf("%s\n", &result[1]);
+      }
+   }
+
+   else
+   {
+      printf("%s\n", result);
+   }
+
+   for ( VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+   }
+
+   if ( A_STRING[VAR__53647 - 2] != '1' )
+   {
+      printf("%d", A_STRING[VAR__53647 - 1] - '0');
+   }
+   else
+   {
+      printf("%d%d", 1, A_STRING[VAR__53647 - 1] - '0');
+   }
+
+   return 0;
+}

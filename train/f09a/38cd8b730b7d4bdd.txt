@@ -1,0 +1,75 @@
+void input(int *n1, int data1[], int *n2, int data2[])
+{
+   ( cin >> ( *n1 )) >> ( *n2 );
+   for ( int VAR__53647 = 0; VAR__53647 < ( *n1 ); ++VAR__53647 )
+   {
+      cin >> data1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( *n2 ); ++VAR__53647 )
+   {
+      cin >> data2[VAR__53647];
+   }
+}
+
+
+void bubblesort(int VAR_1238123, int data[])
+{
+   for ( int VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; --VAR__53647 )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__53647; ++VAR__21230 )
+      {
+         if ( data[VAR__21230] > data[VAR__21230 + 1] )
+         {
+            int VAR__TEMP = data[VAR__21230];
+            data[VAR__21230]     = data[VAR__21230 + 1];
+            data[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int combine(int n1, int data1[], int n2, int data2[], int data3[])
+{
+   for ( int VAR__53647 = 0; VAR__53647 < n1; ++VAR__53647 )
+   {
+      data3[VAR__53647] = data1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = n1; VAR__53647 < ( n1 + n2 ); ++VAR__53647 )
+   {
+      data3[VAR__53647] = data2[VAR__53647 - n1];
+   }
+
+   return n1 + n2;
+}
+
+
+void print(int VAR_1238123, int data[])
+{
+   cout << data[0];
+   for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      ( cout << ' ' ) << data[VAR__53647];
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   int n1;
+   int n2;
+   int a1[101];
+   int a2[101];
+   int a3[201];
+
+   input(&n1, a1, &n2, a2);
+   bubblesort(n1, a1);
+   bubblesort(n2, a2);
+   int n3 = combine(n1, a1, n2, a2, a3);
+   print(n3, a3);
+   return 0;
+}

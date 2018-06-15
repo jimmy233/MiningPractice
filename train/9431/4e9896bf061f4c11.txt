@@ -1,0 +1,86 @@
+int main()
+{
+   struct joyan
+   {
+      char         VAR__NUM[10];
+      char         name[20];
+      char         sex[1];
+      int          age;
+      float        score;
+      char         add[20];
+      struct joyan *VAR__NEXT;
+   };
+   struct joyan *VAR__HEAD;
+   struct joyan *ANOTHER_POINTER;
+   struct joyan *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = ( VAR__HEAD = (struct joyan *)malloc(LEN)));
+   scanf("%s%s%s%d%f%s", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   int VAR_1238123 = 1;
+   int VAR__53647;
+
+   while (( ANOTHER_POINTER->VAR__NUM[0] >= '0' ) && ( ANOTHER_POINTER->VAR__NUM[0] <= '9' ))
+   {
+      ANOTHER_POINTER = (struct joyan *)malloc(LEN);
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( ANOTHER_POINTER->VAR__NUM[0] != 'e' )
+      {
+         scanf("%s%s%d%f%s", ANOTHER_POINTER->name, ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         VAR_1238123++;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+         break;
+      }
+   }
+
+   struct joyan *VAR_233;
+   struct joyan *VAR_666;
+   struct joyan *VAR__TEMP;
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR_233->VAR__NEXT != NULL )
+   {
+      VAR_666 = VAR_233->VAR__NEXT;
+
+      if ( VAR_666->VAR__NEXT == NULL )
+      {
+         VAR_233->VAR__NEXT = NULL;
+         VAR_666->VAR__NEXT = VAR_233;
+      }
+      else
+      {
+         VAR_233->VAR__NEXT = NULL;
+         VAR__TEMP          = VAR_233;
+         VAR_233            = VAR_666;
+         VAR_666            = VAR_666->VAR__NEXT;
+
+         while ( VAR_666->VAR__NEXT != NULL )
+         {
+            VAR_233->VAR__NEXT = VAR__TEMP;
+            VAR__TEMP          = VAR_233;
+            VAR_233            = VAR_666;
+            VAR_666            = VAR_666->VAR__NEXT;
+         }
+
+         VAR_233->VAR__NEXT = VAR__TEMP;
+         VAR_666->VAR__NEXT = VAR_233;
+      }
+
+      VAR__HEAD = VAR_666;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s %s %s %d %g %s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return 0;
+}

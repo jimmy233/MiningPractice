@@ -1,0 +1,88 @@
+int huan(char VAR__8444594);
+char huan2(int VAR__8444594);
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   char *ps;
+   char *result;
+   int  *tmp;
+
+   ps     = (char *)malloc(( sizeof( long )) * 8);
+   tmp    = (int *)malloc(( sizeof( long )) * 8);
+   result = (char *)malloc(( sizeof( long )) * 8);
+   scanf("%d", &VAR__819283);
+   scanf("%s", ps);
+   scanf("%d", &VAR__19328);
+   int  VAR__8444594 = strlen(ps);
+   int  VAR__53647;
+   long tmp2 = 0;
+   for ( VAR__53647 = 0; ps[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      tmp[VAR__53647] = huan(ps[VAR__53647]);
+      tmp2           += (long)( tmp[VAR__53647] * pow(VAR__819283, ( VAR__8444594 - 1 ) - VAR__53647));
+   }
+
+   int VAR__1111 = VAR__53647 - 1;
+   int *tmp3     = (int *)malloc(( sizeof( long )) * 8);
+   for ( VAR__1111 = 0; tmp2 != 0; VAR__1111++ )
+   {
+      tmp3[VAR__1111] = tmp2 % VAR__19328;
+      tmp2            = tmp2 / VAR__19328;
+   }
+
+   int VAR__1238129;
+   VAR__1111--;
+   for ( VAR__1238129 = 0; VAR__1111 >= 0; VAR__1111--, VAR__1238129++ )
+   {
+      result[VAR__1238129] = huan2(tmp3[VAR__1111]);
+   }
+
+   result[VAR__1238129] = '\0';
+   printf("%s", result);
+   printf("\n");
+   free(ps);
+   free(tmp);
+   free(result);
+   return 0;
+}
+
+
+int huan(char VAR__8444594)
+{
+   if ( VAR__8444594 <= 57 )
+   {
+      return VAR__8444594 - 48;
+   }
+   else
+   if (( VAR__8444594 >= 97 ) && ( VAR__8444594 <= 122 ))
+   {
+      return VAR__8444594 - 87;
+   }
+   else
+   if (( VAR__8444594 >= 65 ) && ( VAR__8444594 <= 90 ))
+   {
+      return VAR__8444594 - 55;
+   }
+
+
+
+   return 0;
+}
+
+
+char huan2(int VAR__8444594)
+{
+   if ( VAR__8444594 <= 9 )
+   {
+      return VAR__8444594 + 48;
+   }
+
+   if ( VAR__8444594 >= 10 )
+   {
+      return VAR__8444594 + 55;
+   }
+
+   return 0;
+}

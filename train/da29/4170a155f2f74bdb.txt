@@ -1,0 +1,85 @@
+char change(int VAR__1238129, int VAR_1238123);
+
+char suite[100][100] = { 0 };
+char mark[100][100]  = { 0 };
+int main()
+{
+   int VAR_1238123;
+   int day;
+   int VAR__temp;
+   int amount = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__MAX;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", suite[VAR__53647]);
+   }
+
+   scanf("%d", &day);
+   for ( VAR__temp = 0; VAR__temp < ( day - 1 ); VAR__temp++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( suite[VAR__53647][VAR__21230] == '@' )
+            {
+               mark[VAR__53647][VAR__21230] = 1;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( mark[VAR__53647][VAR__21230] == 1 )
+            {
+               change(VAR__53647, VAR__21230);
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( suite[VAR__53647][VAR__21230] == '@' )
+         {
+            amount++;
+         }
+      }
+   }
+
+   printf("%d", amount);
+   return 0;
+}
+
+
+char change(int VAR__1238129, int VAR_1238123)
+{
+   if ( suite[VAR__1238129 - 1][VAR_1238123] == '.' )
+   {
+      suite[VAR__1238129 - 1][VAR_1238123] = '@';
+   }
+
+   if ( suite[VAR__1238129][VAR_1238123 - 1] == '.' )
+   {
+      suite[VAR__1238129][VAR_1238123 - 1] = '@';
+   }
+
+   if ( suite[VAR__1238129 + 1][VAR_1238123] == '.' )
+   {
+      suite[VAR__1238129 + 1][VAR_1238123] = '@';
+   }
+
+   if ( suite[VAR__1238129][VAR_1238123 + 1] == '.' )
+   {
+      suite[VAR__1238129][VAR_1238123 + 1] = '@';
+   }
+}

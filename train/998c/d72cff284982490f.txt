@@ -1,0 +1,58 @@
+int main()
+{
+   char num1[251] = { 0 };
+   char num2[251] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1111;
+   int  anw1[251] = { 0 };
+   int  anw2[251] = { 0 };
+
+   cin >> num1;
+   cin >> num2;
+   VAR__1111 = strlen(num1);
+   for ( VAR__21230 = 0, VAR__53647 = strlen(num1) - 1; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      anw1[VAR__21230] = num1[VAR__53647] - '0';
+   }
+
+   for ( VAR__21230 = 0, VAR__53647 = strlen(num2) - 1; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      anw2[VAR__21230] = num2[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 250; VAR__53647++ )
+   {
+      if (( anw1[VAR__53647] + anw2[VAR__53647] ) < 10 )
+      {
+         anw1[VAR__53647] = anw1[VAR__53647] + anw2[VAR__53647];
+         continue;
+      }
+
+      if (( anw1[VAR__53647] + anw2[VAR__53647] ) >= 10 )
+      {
+         VAR__1111        = ( anw1[VAR__53647] + anw2[VAR__53647] ) - 10;
+         anw1[VAR__53647] = VAR__1111;
+         anw1[VAR__53647 + 1]++;
+         continue;
+      }
+   }
+
+   for ( VAR__53647 = 250; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( anw1[VAR__53647] != 0 )
+      {
+         for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+         {
+            cout << anw1[VAR__21230];
+         }
+
+         goto lable;
+      }
+   }
+
+
+   ( cout << "0" ) << endl;
+lable:
+   return 0;
+}

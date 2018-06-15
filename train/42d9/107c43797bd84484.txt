@@ -1,0 +1,81 @@
+struct Point
+{
+   int x1;
+   int x2;
+   int x3;
+}
+point1;
+struct Point
+{
+   int x1;
+   int x2;
+   int x3;
+}
+point2;
+struct Point
+{
+   int x1;
+   int x2;
+   int x3;
+}
+VAR_233[11];
+struct Dis
+{
+   struct Point point1;
+   struct Point point2;
+   float        VAR__12302;
+}
+dis[46];
+struct Dis
+{
+   struct Point point1;
+   struct Point point2;
+   float        VAR__12302;
+}
+tmp;
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR_233[VAR__53647].x1, &VAR_233[VAR__53647].x2, &VAR_233[VAR__53647].x3);
+   }
+
+   for ( VAR__8444594 = 0, VAR__1238129 = VAR_1238123 - 1; VAR__1238129 > 0; VAR__1238129-- )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+      {
+         dis[VAR__8444594 + VAR__53647].point1     = VAR_233[VAR_1238123 - VAR__1238129];
+         dis[VAR__8444594 + VAR__53647].point2     = VAR_233[( VAR_1238123 - VAR__1238129 ) + VAR__53647];
+         dis[VAR__8444594 + VAR__53647].VAR__12302 = sqrt(((( dis[VAR__8444594 + VAR__53647].point1.x1 - dis[VAR__8444594 + VAR__53647].point2.x1 ) * ( dis[VAR__8444594 + VAR__53647].point1.x1 - dis[VAR__8444594 + VAR__53647].point2.x1 )) + (( dis[VAR__8444594 + VAR__53647].point1.x2 - dis[VAR__8444594 + VAR__53647].point2.x2 ) * ( dis[VAR__8444594 + VAR__53647].point1.x2 - dis[VAR__8444594 + VAR__53647].point2.x2 ))) + (( dis[VAR__8444594 + VAR__53647].point1.x3 - dis[VAR__8444594 + VAR__53647].point2.x3 ) * ( dis[VAR__8444594 + VAR__53647].point1.x3 - dis[VAR__8444594 + VAR__53647].point2.x3 )));
+      }
+
+      VAR__8444594 = VAR__8444594 + VAR__1238129;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230].VAR__12302 < dis[VAR__21230 + 1].VAR__12302 )
+         {
+            tmp                 = dis[VAR__21230];
+            dis[VAR__21230]     = dis[VAR__21230 + 1];
+            dis[VAR__21230 + 1] = tmp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", dis[VAR__53647].point1.x1, dis[VAR__53647].point1.x2, dis[VAR__53647].point1.x3, dis[VAR__53647].point2.x1, dis[VAR__53647].point2.x2, dis[VAR__53647].point2.x3, dis[VAR__53647].VAR__12302);
+   }
+
+   return 0;
+}

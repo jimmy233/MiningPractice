@@ -1,0 +1,61 @@
+char pure(int VAR_1238123, int VAR__819283[], int topnum, int topcheck);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+
+   if ( VAR_1238123 <= 4 )
+   {
+      printf("empty");
+   }
+   else
+   {
+      int VAR__819283[1300];
+      int topnum;
+      int topcheck;
+      VAR__819283[0] = 3;
+      topnum         = 0;
+      topcheck       = 2;
+      for ( VAR__53647 = 5; VAR__53647 <= VAR_1238123; VAR__53647 = VAR__53647 + 2 )
+      {
+         if (( topcheck * topcheck ) <= VAR__53647 )
+         {
+            topcheck++;
+         }
+
+         if ( pure(VAR__53647, VAR__819283, topnum, topcheck))
+         {
+            topnum++;
+            VAR__819283[topnum] = VAR__53647;
+
+            if ( VAR__819283[topnum] == ( VAR__819283[topnum - 1] + 2 ))
+            {
+               printf("%d %d\n", VAR__819283[topnum - 1], VAR__819283[topnum]);
+            }
+         }
+      }
+   }
+}
+
+
+char pure(int VAR_1238123, int VAR__819283[], int topnum, int topcheck)
+{
+   for ( int VAR__53647 = 0; VAR__53647 <= topnum; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == topcheck )
+      {
+         break;
+      }
+
+      if (( VAR_1238123 % VAR__819283[VAR__53647] ) == 0 )
+      {
+         return 0;
+      }
+   }
+
+   return 1;
+}

@@ -1,0 +1,118 @@
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__53647;
+
+   int inverse(int VAR__NUM);
+
+   for ( VAR__53647 = 0; VAR__53647 < 6; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283);
+
+      if ( VAR__819283 >= 0 )
+      {
+         VAR__19328 = inverse(VAR__819283);
+         printf("%d\n", VAR__19328);
+      }
+      else
+      {
+         VAR__19328 = inverse(VAR__819283);
+         printf("-%d\n", VAR__19328);
+      }
+   }
+
+   return 0;
+}
+
+
+int inverse(int VAR__NUM)
+{
+   int ge;
+   int shi;
+   int bai;
+   int qian;
+   int wan;
+   int num2;
+   int fu;
+
+   if ( VAR__NUM >= 0 )
+   {
+      wan  = (int)( VAR__NUM / 1e4 );
+      qian = (int)(( VAR__NUM - ( wan * 1e4 )) / 1000 );
+      bai  = (int)((( VAR__NUM - ( wan * 1e4 )) - ( qian * 1e3 )) / 100 );
+      shi  = (int)(((( VAR__NUM - ( wan * 1e4 )) - ( qian * 1e3 )) - ( bai * 1e2 )) / 10 );
+      ge   = (int)(((( VAR__NUM - ( wan * 1e4 )) - ( qian * 1e3 )) - ( bai * 1e2 )) - ( 10 * shi ));
+
+      if (( 10000 <= VAR__NUM ) && ( VAR__NUM <= 99999 ))
+      {
+         num2 = (int)(((( wan + ( 10 * qian )) + ( 1e2 * bai )) + ( 1e3 * shi )) + ( 1e4 * ge ));
+      }
+      else
+      {
+         if (( 1000 <= VAR__NUM ) && ( VAR__NUM <= 9999 ))
+         {
+            num2 = (int)((( qian + ( 10 * bai )) + ( 1e2 * shi )) + ( 1e3 * ge ));
+         }
+         else
+         {
+            if (( 999 >= VAR__NUM ) && ( 100 <= VAR__NUM ))
+            {
+               num2 = (int)((( ge * 1e2 ) + ( shi * 10 )) + bai );
+            }
+            else
+            {
+               if (( 10 <= VAR__NUM ) && ( VAR__NUM <= 99 ))
+               {
+                  num2 = (int)(( ge * 10 ) + shi );
+               }
+               else
+               {
+                  num2 = ge;
+               }
+            }
+         }
+      }
+   }
+   else
+   {
+      VAR__NUM = 0 - VAR__NUM;
+      wan      = (int)( VAR__NUM / 1e4 );
+      qian     = (int)(( VAR__NUM - ( wan * 1e4 )) / 1000 );
+      bai      = (int)((( VAR__NUM - ( wan * 1e4 )) - ( qian * 1e3 )) / 100 );
+      shi      = (int)(((( VAR__NUM - ( wan * 1e4 )) - ( qian * 1e3 )) - ( bai * 1e2 )) / 10 );
+      ge       = (int)(((( VAR__NUM - ( wan * 1e4 )) - ( qian * 1e3 )) - ( bai * 1e2 )) - ( 10 * shi ));
+
+      if (( 10000 <= VAR__NUM ) && ( VAR__NUM <= 99999 ))
+      {
+         num2 = (int)(((( wan + ( 10 * qian )) + ( 1e2 * bai )) + ( 1e3 * shi )) + ( 1e4 * ge ));
+      }
+      else
+      {
+         if (( 1000 <= VAR__NUM ) && ( VAR__NUM <= 9999 ))
+         {
+            num2 = (int)((( qian + ( 10 * bai )) + ( 1e2 * shi )) + ( 1e3 * ge ));
+         }
+         else
+         {
+            if (( 999 >= VAR__NUM ) && ( 100 <= VAR__NUM ))
+            {
+               num2 = (int)((( ge * 1e2 ) + ( shi * 10 )) + bai );
+            }
+            else
+            {
+               if (( 10 <= VAR__NUM ) && ( VAR__NUM <= 99 ))
+               {
+                  num2 = (int)(( ge * 10 ) + shi );
+               }
+               else
+               {
+                  num2 = ge;
+               }
+            }
+         }
+      }
+   }
+
+   return num2;
+}

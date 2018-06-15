@@ -1,0 +1,113 @@
+void sort(int VAR__819283[], int VAR_1238123);
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int tquick;
+   int tslow;
+   int qquick;
+   int qslow;
+   int tj[1000];
+   int qw[1000];
+   int win;
+   int lose;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tj[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qw[VAR__53647]);
+      }
+
+      win    = 0;
+      tquick = ( qquick = 0 );
+      tslow  = ( qslow = VAR_1238123 - 1 );
+      sort(tj, VAR_1238123);
+      sort(qw, VAR_1238123);
+
+      while ( VAR_1238123-- )
+      {
+         if ( tj[tslow] > qw[qslow] )
+         {
+            tslow--;
+            qslow--;
+            win++;
+         }
+         else
+         if ( tj[tslow] < qw[qslow] )
+         {
+            qquick++;
+            tslow--;
+            win--;
+         }
+         else
+         if ( tj[tquick] > qw[qquick] )
+         {
+            qquick++;
+            tquick++;
+            win++;
+         }
+         else
+         if ( tj[tquick] < qw[qquick] )
+         {
+            tslow--;
+            qquick++;
+            win--;
+         }
+         else
+         if ( tj[tquick] == qw[qquick] )
+         {
+            if ( tj[tslow] < qw[qquick] )
+            {
+               win--;
+            }
+
+            tslow--;
+            qquick++;
+         }
+      }
+
+      printf("%d\n", 200 * win);
+   }
+
+   return 0;
+}
+
+
+void sort(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int tmp;
+   int VAR__MAX;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__MAX = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__MAX] )
+         {
+            VAR__MAX = VAR__21230;
+         }
+      }
+
+      tmp = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647] = VAR__819283[VAR__MAX];
+      VAR__819283[VAR__MAX]   = tmp;
+   }
+}

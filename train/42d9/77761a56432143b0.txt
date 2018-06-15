@@ -1,0 +1,65 @@
+struct position
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+pos[10];
+int main()
+{
+   int   VAR_1238123;
+   int   finish[10][10]     = { 0 };
+   int   cnt                = 0;
+   float VAR__12302[10][10] = { 0 };
+   float square             = 0;
+   float VAR__MAX           = 0;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> pos[VAR__53647].VAR__7685 ) >> pos[VAR__53647].VAR__3918907 ) >> pos[VAR__53647].VAR__9290;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         square = ((( pos[VAR__53647].VAR__7685 - pos[VAR__21230].VAR__7685 ) * ( pos[VAR__53647].VAR__7685 - pos[VAR__21230].VAR__7685 )) + (( pos[VAR__53647].VAR__3918907 - pos[VAR__21230].VAR__3918907 ) * ( pos[VAR__53647].VAR__3918907 - pos[VAR__21230].VAR__3918907 ))) + (( pos[VAR__53647].VAR__9290 - pos[VAR__21230].VAR__9290 ) * ( pos[VAR__53647].VAR__9290 - pos[VAR__21230].VAR__9290 ));
+         VAR__12302[VAR__53647][VAR__21230] = sqrt(square);
+      }
+   }
+
+   for ( int VAR__8444594 = 0; VAR__8444594 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__8444594++, VAR__MAX = 0 )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if (( VAR__MAX < VAR__12302[VAR__53647][VAR__21230] ) && ( finish[VAR__53647][VAR__21230] == 0 ))
+            {
+               VAR__MAX = VAR__12302[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+      for ( int VAR_233 = 0; VAR_233 < VAR_1238123; VAR_233++ )
+      {
+         for ( int VAR_666 = 0; VAR_666 < VAR_1238123; VAR_666++ )
+         {
+            if ( VAR__MAX == VAR__12302[VAR_233][VAR_666] )
+            {
+               finish[VAR_233][VAR_666] = 1;
+               cnt++;
+               (((((((((((((((( cout << "(" ) << pos[VAR_233].VAR__7685 ) << ',' ) << pos[VAR_233].VAR__3918907 ) << ',' ) << pos[VAR_233].VAR__9290 ) << ")-(" ) << pos[VAR_666].VAR__7685 ) << ',' ) << pos[VAR_666].VAR__3918907 ) << ',' ) << pos[VAR_666].VAR__9290 ) << ")=" ) << fixed ) << setprecision(2)) << VAR__12302[VAR_233][VAR_666] ) << endl;
+            }
+         }
+      }
+
+      if ( cnt == (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ))
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,73 @@
+char name;
+int  VAR__NUM;
+int  VAR__8444594   = 0;
+int  VAR__temp      = 0;
+int  nametimes[100] = { 0 };
+struct book
+{
+   unsigned int No;
+   char         Name[26];
+}
+*VAR_233;
+void operate()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 65; VAR__53647 < 91; VAR__53647++ )
+   {
+      if ( nametimes[VAR__53647] > VAR__temp )
+      {
+         VAR__temp = nametimes[VAR__53647];
+         name      = VAR__53647;
+      }
+   }
+}
+
+
+void print()
+{
+   struct book *pi;
+   int         VAR__53647;
+
+   printf("%c\n%d\n", name, VAR__temp);
+   for ( pi = VAR_233; pi < ( VAR_233 + VAR__NUM ); pi++ )
+   {
+      for ( VAR__53647 = 0; pi->Name[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( pi->Name[VAR__53647] == name )
+         {
+            if ( VAR__8444594 == 0 )
+            {
+               printf("%d", pi->No);
+               VAR__8444594++;
+            }
+            else
+            {
+               printf("\n%d", pi->No);
+            }
+
+            break;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   scanf("%d", &VAR__NUM);
+   struct book *pi;
+   int         VAR__53647;
+   VAR_233 = (struct book *)malloc(VAR__NUM * ( sizeof( struct book )));
+   for ( pi = VAR_233; pi < ( VAR_233 + VAR__NUM ); pi++ )
+   {
+      scanf("%d %s", &pi->No, pi->Name);
+      for ( VAR__53647 = 0; pi->Name[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         nametimes[(int)pi->Name[VAR__53647]]++;
+      }
+   }
+
+   operate();
+   print();
+}

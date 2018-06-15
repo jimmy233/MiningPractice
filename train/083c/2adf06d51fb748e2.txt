@@ -1,0 +1,73 @@
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   long ans           = 0;
+   char VAR__7685[20] = { 0 };
+
+   scanf("%d %s %d", &VAR__819283, VAR__7685, &VAR__19328);
+
+   if ( VAR__819283 == VAR__19328 )
+   {
+      printf("%s\n", VAR__7685);
+   }
+   else
+   {
+      long VAR_FLAG = 1;
+      for ( int VAR__53647 = strlen(VAR__7685) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         long VAR__TEMP;
+
+         if (( VAR__7685[VAR__53647] >= '0' ) && ( VAR__7685[VAR__53647] <= '9' ))
+         {
+            VAR__TEMP = VAR__7685[VAR__53647] - '0';
+         }
+
+         if (( VAR__7685[VAR__53647] >= 'A' ) && ( VAR__7685[VAR__53647] <= 'Z' ))
+         {
+            VAR__TEMP = ( VAR__7685[VAR__53647] - 'A' ) + 10;
+         }
+
+         if (( VAR__7685[VAR__53647] >= 'a' ) && ( VAR__7685[VAR__53647] <= 'z' ))
+         {
+            VAR__TEMP = ( VAR__7685[VAR__53647] - 'a' ) + 10;
+         }
+
+         ans      += VAR__TEMP * VAR_FLAG;
+         VAR_FLAG *= VAR__819283;
+      }
+
+      if ( ans == 0 )
+      {
+         printf("0\n");
+      }
+      else
+      {
+         long final[100] = { 0 };
+         VAR_FLAG = 0;
+
+         while ( ans > 0 )
+         {
+            VAR_FLAG++;
+            final[VAR_FLAG] = ans % VAR__19328;
+            ans            /= VAR__19328;
+         }
+
+         for ( int VAR__53647 = VAR_FLAG; VAR__53647 >= 1; VAR__53647-- )
+         {
+            if ( final[VAR__53647] >= 10 )
+            {
+               printf("%c", ( final[VAR__53647] - 10 ) + 'A');
+            }
+            else
+            {
+               printf("%ld", final[VAR__53647]);
+            }
+         }
+
+         printf("\n");
+      }
+   }
+
+   return 0;
+}

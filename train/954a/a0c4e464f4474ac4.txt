@@ -1,0 +1,128 @@
+struct stu
+{
+   char       name[20];
+   int        chengji;
+   int        pingyi;
+   char       ganbu[1];
+   char       xibu[1];
+   int        lunwen;
+   int        scholarship;
+   struct stu *VAR__NEXT;
+};
+struct stu *creat(void)
+{
+   int        VAR__53647;
+   int        VAR_1238123;
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(LEN));
+   VAR__HEAD       = NULL;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %s %s %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->chengji, &ANOTHER_POINTER->pingyi, ANOTHER_POINTER->ganbu, ANOTHER_POINTER->xibu, &ANOTHER_POINTER->lunwen);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+
+      if ( VAR__53647 != ( VAR_1238123 - 1 ))
+      {
+         ANOTHER_POINTER = ( YET_ANOTHER_POINTER->VAR__NEXT = (struct stu *)malloc(LEN));
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct stu *px(struct stu *VAR__HEAD)
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *p3;
+   struct stu *p4;
+   int        VAR__8444594;
+   int        add      = 0;
+   int        VAR__MAX = 0;
+
+   for ( YET_ANOTHER_POINTER = VAR__HEAD; YET_ANOTHER_POINTER != NULL; YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT )
+   {
+      YET_ANOTHER_POINTER->scholarship = 0;
+   }
+
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if (( ANOTHER_POINTER->chengji > 80 ) && ( ANOTHER_POINTER->lunwen >= 1 ))
+      {
+         ANOTHER_POINTER->scholarship = ANOTHER_POINTER->scholarship + 8000;
+      }
+
+      if (( ANOTHER_POINTER->chengji > 85 ) && ( ANOTHER_POINTER->pingyi > 80 ))
+      {
+         ANOTHER_POINTER->scholarship = ANOTHER_POINTER->scholarship + 4000;
+      }
+
+      if ( ANOTHER_POINTER->chengji > 90 )
+      {
+         ANOTHER_POINTER->scholarship = ANOTHER_POINTER->scholarship + 2000;
+      }
+
+      if (( ANOTHER_POINTER->chengji > 85 ) && ( ANOTHER_POINTER->xibu[0] == 'Y' ))
+      {
+         ANOTHER_POINTER->scholarship = ANOTHER_POINTER->scholarship + 1000;
+      }
+
+      if (( ANOTHER_POINTER->pingyi > 80 ) && ( ANOTHER_POINTER->ganbu[0] == 'Y' ))
+      {
+         ANOTHER_POINTER->scholarship = ANOTHER_POINTER->scholarship + 850;
+      }
+   }
+
+   for ( p3 = VAR__HEAD; p3 != NULL; p3 = p3->VAR__NEXT )
+   {
+      VAR__8444594 = 0;
+      for ( p4 = VAR__HEAD; p4 != NULL; p4 = p4->VAR__NEXT )
+      {
+         if ( p3->scholarship < p4->scholarship )
+         {
+            VAR__8444594++;
+         }
+      }
+
+      if ( VAR__8444594 == 0 )
+      {
+         printf("%s\n%d\n", p3->name, p3->scholarship);
+         break;
+      }
+   }
+
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      add = add + ANOTHER_POINTER->scholarship;
+   }
+
+   printf("%d\n", add);
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct stu *VAR__819283;
+   struct stu *VAR__19328;
+
+   VAR__819283 = creat();
+   VAR__19328  = px(VAR__819283);
+}

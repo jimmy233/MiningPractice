@@ -1,0 +1,74 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct
+   {
+      char id[10];
+      int  age;
+   }
+   br[100];
+   struct
+   {
+      char id[10];
+      int  age;
+   }
+   *VAR_233;
+   struct
+   {
+      char id[10];
+      int  age;
+   }
+   old[100];
+   struct
+   {
+      char id[10];
+      int  age;
+   }
+   *VAR_666;
+   for ( VAR_233 = br; VAR_233 < ( br + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%s%d", &VAR_233->id, &VAR_233->age);
+   }
+
+   VAR_666 = old;
+   int js = 0;
+   for ( VAR_233 = br; VAR_233 < ( br + VAR_1238123 ); VAR_233++ )
+   {
+      if ( VAR_233->age >= 60 )
+      {
+         VAR_666->age = VAR_233->age;
+         strcpy(VAR_666->id, VAR_233->id);
+         VAR_666++;
+         js++;
+         VAR_233->age = 0;
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < js; VAR__53647++ )
+   {
+      for ( VAR_666 = old; VAR_666 < ( old + js ); VAR_666++ )
+      {
+         if ( VAR_666->age > ( old + VAR__MAX )->age )
+         {
+            VAR__MAX = VAR_666 - old;
+         }
+      }
+
+      printf("%s\n", ( old + VAR__MAX )->id);
+      ( old + VAR__MAX )->age = 0;
+   }
+
+   for ( VAR_233 = br; VAR_233 < ( br + VAR_1238123 ); VAR_233++ )
+   {
+      if ( VAR_233->age != 0 )
+      {
+         printf("%s\n", VAR_233->id);
+      }
+   }
+
+   return 0;
+}

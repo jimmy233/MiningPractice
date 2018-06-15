@@ -1,0 +1,89 @@
+int VAR_1238123;
+int VAR__53647;
+int VAR__21230;
+int VAR__8444594;
+int rec;
+int VAR__SUM;
+int VAR__7685[150][150];
+void F()
+{
+   int VAR_233;
+   int VAR_666;
+   int VAR__MIN;
+
+   for ( VAR_233 = 1; VAR_233 <= rec; VAR_233++ )
+   {
+      VAR__MIN = *(( *( VAR__7685 + VAR_233 )) + 1 );
+      for ( VAR_666 = 1; VAR_666 <= rec; VAR_666++ )
+      {
+         VAR__MIN = (( *(( *( VAR__7685 + VAR_233 )) + VAR_666 )) < VAR__MIN ) ? ( *(( *( VAR__7685 + VAR_233 )) + VAR_666 )) : ( VAR__MIN );
+      }
+
+      for ( VAR_666 = 1; VAR_666 <= rec; VAR_666++ )
+      {
+         *(( *( VAR__7685 + VAR_233 )) + VAR_666 ) -= VAR__MIN;
+      }
+   }
+
+   for ( VAR_233 = 1; VAR_233 <= rec; VAR_233++ )
+   {
+      VAR__MIN = *(( *( VAR__7685 + 1 )) + VAR_233 );
+      for ( VAR_666 = 1; VAR_666 <= rec; VAR_666++ )
+      {
+         VAR__MIN = (( *(( *( VAR__7685 + VAR_666 )) + VAR_233 )) < VAR__MIN ) ? ( *(( *( VAR__7685 + VAR_666 )) + VAR_233 )) : ( VAR__MIN );
+      }
+
+      for ( VAR_666 = 1; VAR_666 <= rec; VAR_666++ )
+      {
+         *(( *( VAR__7685 + VAR_666 )) + VAR_233 ) -= VAR__MIN;
+      }
+   }
+
+   VAR__SUM += *(( *( VAR__7685 + 2 )) + 2 );
+   for ( VAR_233 = 2; VAR_233 < rec; VAR_233++ )
+   {
+      *(( *( VAR__7685 + 1 )) + VAR_233 ) = *((( *( VAR__7685 + 1 )) + VAR_233 ) + 1 );
+   }
+
+   for ( VAR_233 = 2; VAR_233 < rec; VAR_233++ )
+   {
+      *(( *( VAR__7685 + VAR_233 )) + 1 ) = *(( *(( VAR__7685 + VAR_233 ) + 1 )) + 1 );
+   }
+
+   for ( VAR_233 = 2; VAR_233 < rec; VAR_233++ )
+   {
+      for ( VAR_666 = 2; VAR_666 < rec; VAR_666++ )
+      {
+         *(( *( VAR__7685 + VAR_233 )) + VAR_666 ) = *((( *(( VAR__7685 + VAR_233 ) + 1 )) + VAR_666 ) + 1 );
+      }
+   }
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+   {
+      rec      = VAR_1238123;
+      VAR__SUM = 0;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            cin >> ( *(( *( VAR__7685 + VAR__53647 )) + VAR__21230 ));
+         }
+      }
+
+
+      while ( rec > 1 )
+      {
+         F();
+         rec--;
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

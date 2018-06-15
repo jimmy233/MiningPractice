@@ -1,0 +1,106 @@
+struct man
+{
+   char       id[20];
+   int        VAR__819283;
+   struct man *VAR__NEXT;
+}
+*VAR_233;
+struct man
+{
+   char       id[20];
+   int        VAR__819283;
+   struct man *VAR__NEXT;
+}
+*VAR__HEAD;
+struct man
+{
+   char       id[20];
+   int        VAR__819283;
+   struct man *VAR__NEXT;
+}
+*VAR_666;
+void main()
+{
+   struct man *insert(struct man *VAR__HEAD, struct man *ill);
+
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct man *)malloc(LEN);
+      scanf("%s %d", VAR_233->id, &VAR_233->VAR__819283);
+      VAR__HEAD = insert(VAR__HEAD, VAR_233);
+   }
+
+   VAR_666 = VAR__HEAD;
+
+   while ( VAR_666 != NULL )
+   {
+      printf("%s\n", VAR_666->id);
+      VAR_666 = VAR_666->VAR__NEXT;
+   }
+}
+
+
+struct man *insert(struct man *VAR__HEAD, struct man *ill)
+{
+   struct man *p0;
+   struct man *ANOTHER_POINTER;
+   struct man *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = ill;
+
+   if ( VAR__HEAD == NULL )
+   {
+      VAR__HEAD     = p0;
+      p0->VAR__NEXT = NULL;
+   }
+   else
+   {
+      if ( p0->VAR__819283 < 60 )
+      {
+         while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+         {
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+            ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         }
+
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = NULL;
+      }
+      else
+      if ( p0->VAR__819283 >= 60 )
+      {
+         while (( p0->VAR__819283 <= ANOTHER_POINTER->VAR__819283 ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+         {
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+            ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         }
+
+         if ( p0->VAR__819283 > ANOTHER_POINTER->VAR__819283 )
+         {
+            if ( VAR__HEAD == ANOTHER_POINTER )
+            {
+               VAR__HEAD = p0;
+            }
+            else
+            {
+               YET_ANOTHER_POINTER->VAR__NEXT = p0;
+            }
+
+            p0->VAR__NEXT = ANOTHER_POINTER;
+         }
+         else
+         {
+            ANOTHER_POINTER->VAR__NEXT = p0;
+            p0->VAR__NEXT = NULL;
+         }
+      }
+   }
+
+   return VAR__HEAD;
+}

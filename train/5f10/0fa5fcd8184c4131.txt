@@ -1,0 +1,94 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  LEN_OF_STH;
+   int  re;
+   int  foul;
+   int  VAR__MAX;
+   char VAR__819283[500][6];
+   char VAR__4857423[502];
+   int  VAR__19328[500];
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", &VAR__4857423);
+   LEN_OF_STH = 0;
+   for ( VAR__53647 = 0; VAR__4857423[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      LEN_OF_STH++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__4857423[VAR__53647 + VAR__21230];
+      }
+
+      VAR__819283[VAR__53647][VAR_1238123] = '\0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      foul = 0;
+      re   = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( strcmp(VAR__819283[VAR__53647], VAR__819283[VAR__21230]) == 0 )
+         {
+            foul++;
+            break;
+         }
+      }
+
+      if ( foul == 1 )
+      {
+         continue;
+      }
+      else
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+         {
+            if ( strcmp(VAR__819283[VAR__53647], VAR__819283[VAR__21230]) == 0 )
+            {
+               re++;
+            }
+         }
+
+         VAR__19328[VAR__53647] += re;
+      }
+   }
+
+   for ( VAR__MAX = 1, VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__19328[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX != 1 )
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647] == VAR__MAX )
+         {
+            printf("%s\n", VAR__819283[VAR__53647]);
+         }
+      }
+   }
+   else
+   {
+      printf("NO\n");
+   }
+
+   scanf("%d", &VAR_1238123);
+   return 0;
+}

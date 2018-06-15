@@ -1,0 +1,131 @@
+int old = 0;
+struct seqs
+{
+   char        id[11];
+   int         age;
+   struct seqs *VAR__NEXT;
+};
+struct seqs *build(int VAR__1111)
+{
+   int         VAR__53647;
+   struct seqs *VAR__HEAD;
+   struct seqs *newnode;
+   struct seqs *VAR_233;
+
+   VAR__HEAD = (struct seqs *)malloc(LEN_OF_STH);
+   scanf("%s %d", VAR__HEAD->id, &VAR__HEAD->age);
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD->age >= 60 )
+   {
+      old++;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      newnode = (struct seqs *)malloc(LEN_OF_STH);
+      scanf("%s %d", newnode->id, &newnode->age);
+
+      if ( newnode->age < 60 )
+      {
+         VAR_233->VAR__NEXT = newnode;
+         VAR_233            = newnode;
+      }
+      else
+      {
+         old++;
+         newnode->VAR__NEXT = VAR__HEAD;
+         VAR__HEAD          = newnode;
+      }
+   }
+
+   VAR_233->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct seqs *rebuild(struct seqs *headx)
+{
+   int         VAR__53647;
+   struct seqs *VAR__HEAD;
+   struct seqs *newnode;
+   struct seqs *VAR_233;
+   struct seqs *px;
+
+   newnode            = (struct seqs *)malloc(LEN_OF_STH);
+   newnode->VAR__NEXT = NULL;
+   strcpy(newnode->id, headx->id);
+   newnode->age = headx->age;
+   VAR_233      = newnode;
+   px           = headx->VAR__NEXT;
+   for ( VAR__53647 = 1; VAR__53647 < old; VAR__53647++ )
+   {
+      newnode = (struct seqs *)malloc(LEN_OF_STH);
+      strcpy(newnode->id, px->id);
+      newnode->age       = px->age;
+      newnode->VAR__NEXT = VAR_233;
+      VAR_233            = newnode;
+      px = px->VAR__NEXT;
+   }
+
+   VAR__HEAD = VAR_233;
+   return VAR__HEAD;
+}
+
+
+void bubble(struct seqs *VAR__HEAD, int VAR__1111)
+{
+   struct seqs *VAR_233;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR__TEMP;
+   char        VAR__temp[11] = { 0 };
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      for ( VAR_233 = VAR__HEAD, VAR__21230 = 0; VAR__21230 < ( VAR__1111 - VAR__53647 ); VAR__21230++, VAR_233 = VAR_233->VAR__NEXT )
+      {
+         if ( VAR_233->age < VAR_233->VAR__NEXT->age )
+         {
+            strcpy(VAR__temp, VAR_233->id);
+            strcpy(VAR_233->id, VAR_233->VAR__NEXT->id);
+            strcpy(VAR_233->VAR__NEXT->id, VAR__temp);
+            VAR__TEMP               = VAR_233->age;
+            VAR_233->age            = VAR_233->VAR__NEXT->age;
+            VAR_233->VAR__NEXT->age = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__21230;
+   struct seqs *VAR_233;
+   struct seqs *px;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = build(VAR_1238123);
+   px      = rebuild(VAR_233);
+   bubble(px, old);
+
+   while ( px != NULL )
+   {
+      printf("%s\n", px->id);
+      px = px->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < old; VAR__53647++ )
+   {
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

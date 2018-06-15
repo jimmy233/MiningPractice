@@ -1,0 +1,81 @@
+struct student
+{
+   char name[20];
+   int  qm;
+   int  bj;
+   char VAR__7685;
+   char xi;
+   int  lun;
+   int  award;
+};
+void main()
+{
+   struct student VAR_9494[100];
+   int            VAR__53647;
+   int            N;
+   int            VAR__8444594 = 0;
+   int            VAR_233;
+   int            VAR_666 = 0;
+
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR_9494[VAR__53647].name, &VAR_9494[VAR__53647].qm, &VAR_9494[VAR__53647].bj, &VAR_9494[VAR__53647].VAR__7685, &VAR_9494[VAR__53647].xi, &VAR_9494[VAR__53647].lun);
+      VAR_9494[VAR__53647].award = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647].qm > 80 ) && ( VAR_9494[VAR__53647].lun > 0 ))
+      {
+         VAR_9494[VAR__53647].award = VAR_9494[VAR__53647].award + 8000;
+      }
+
+      if (( VAR_9494[VAR__53647].qm > 85 ) && ( VAR_9494[VAR__53647].bj > 80 ))
+      {
+         VAR_9494[VAR__53647].award = VAR_9494[VAR__53647].award + 4000;
+      }
+
+      if ( VAR_9494[VAR__53647].qm > 90 )
+      {
+         VAR_9494[VAR__53647].award = VAR_9494[VAR__53647].award + 2000;
+      }
+
+      if (( VAR_9494[VAR__53647].qm > 85 ) && ( VAR_9494[VAR__53647].xi == 'Y' ))
+      {
+         VAR_9494[VAR__53647].award = VAR_9494[VAR__53647].award + 1000;
+      }
+
+      if (( VAR_9494[VAR__53647].bj > 80 ) && ( VAR_9494[VAR__53647].VAR__7685 == 'Y' ))
+      {
+         VAR_9494[VAR__53647].award = VAR_9494[VAR__53647].award + 850;
+      }
+   }
+
+   VAR_233 = VAR_9494[0].award;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647].award > VAR_233 )
+      {
+         VAR_233 = VAR_9494[VAR__53647].award;
+      }
+   }
+
+   VAR_666 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647].award == VAR_233 )
+      {
+         if ( VAR__8444594 == 0 )
+         {
+            VAR__8444594 = VAR__8444594 + 1;
+            printf("%s\n", VAR_9494[VAR__53647].name);
+            printf("%d\n", VAR_233);
+         }
+      }
+
+      VAR_666 = VAR_666 + VAR_9494[VAR__53647].award;
+   }
+
+   printf("%d", VAR_666);
+}

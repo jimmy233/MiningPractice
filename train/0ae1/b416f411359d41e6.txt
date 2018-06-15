@@ -1,0 +1,87 @@
+int DiJiTian(int year, int month, int day);
+
+int main()
+{
+   int VAR__3918907;
+   int VAR__1238129;
+   int VAR__12302;
+   int VAR__8444594;
+   int VAR__21230;
+
+   scanf("%d %d %d", &VAR__3918907, &VAR__1238129, &VAR__12302);
+   VAR__21230   = VAR__3918907 - 1;
+   VAR__8444594 = ((( DiJiTian(VAR__3918907, VAR__1238129, VAR__12302) + VAR__21230 ) + ( VAR__21230 / 400 )) + ( VAR__21230 / 4 )) - ( VAR__21230 / 100 );
+   VAR__1238129 = VAR__8444594 % 7;
+
+   if ( VAR__1238129 == 0 )
+   {
+      printf("Sun.\n");
+   }
+   else
+   if ( VAR__1238129 == 1 )
+   {
+      printf("Mon.\n");
+   }
+   else
+   if ( VAR__1238129 == 2 )
+   {
+      printf("Tue.\n");
+   }
+   else
+   if ( VAR__1238129 == 3 )
+   {
+      printf("Wed.\n");
+   }
+   else
+   if ( VAR__1238129 == 4 )
+   {
+      printf("Thu.\n");
+   }
+   else
+   if ( VAR__1238129 == 5 )
+   {
+      printf("Fri.\n");
+   }
+   else
+   {
+      printf("Sat.\n");
+   }
+
+
+
+   return 0;
+}
+
+
+int DiJiTian(int year, int month, int day)
+{
+   int result = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         result += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         result += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+         {
+            result += 29;
+         }
+         else
+         {
+            result += 28;
+         }
+      }
+   }
+
+   result += day;
+   return result;
+}

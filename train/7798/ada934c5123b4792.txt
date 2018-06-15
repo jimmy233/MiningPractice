@@ -1,0 +1,81 @@
+struct author
+{
+   char name;
+   int  VAR__COUNT;
+}
+aut[26];
+int VAR__MAX(struct author VAR__819283[26])
+{
+   int VAR__53647;
+   int VAR__MAX;
+
+   VAR__MAX = VAR__819283[0].VAR__COUNT;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647].VAR__COUNT > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647].VAR__COUNT;
+      }
+   }
+
+
+   return VAR__MAX;
+}
+
+
+void main()
+{
+   int VAR__1238129;
+   int VAR_2890 = 0;
+
+   scanf("%d", &VAR__1238129);
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  VAR__1111[1000];
+   int  book_name[1000];
+   char author_name[1000][27];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      aut[VAR__53647].name       = 'A' + VAR__53647;
+      aut[VAR__53647].VAR__COUNT = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d%s", &book_name[VAR__53647], author_name[VAR__53647]);
+      VAR__1111[VAR__53647] = strlen(author_name[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         for ( VAR_1238123 = 0; VAR_1238123 < VAR__1111[VAR__53647]; VAR_1238123++ )
+         {
+            if ( author_name[VAR__53647][VAR_1238123] == aut[VAR__21230].name )
+            {
+               aut[VAR__21230].VAR__COUNT++;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( aut[VAR__53647].VAR__COUNT == VAR__MAX(aut))
+      {
+         printf("%c\n", aut[VAR__53647].name);
+         VAR_2890 = VAR__53647;
+      }
+   }
+
+   printf("%d\n", VAR__MAX(aut));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__1111[VAR__53647] = strlen(author_name[VAR__53647]);
+      for ( VAR_1238123 = 0; VAR_1238123 < VAR__1111[VAR__53647]; VAR_1238123++ )
+      {
+         if ( author_name[VAR__53647][VAR_1238123] == aut[VAR_2890].name )
+         {
+            printf("%d\n", book_name[VAR__53647]);
+         }
+      }
+   }
+}

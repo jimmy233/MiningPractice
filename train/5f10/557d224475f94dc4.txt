@@ -1,0 +1,122 @@
+struct group
+{
+   char B[5];
+   int  VAR_1238123;
+}
+G[500];
+struct group
+{
+   char B[5];
+   int  VAR_1238123;
+}
+VAR__TEMP;
+int main()
+{
+   char A[504];
+   int  number;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_FLAG;
+   int  VAR_1238123;
+   int  VAR__temp;
+   int  VAR__1238129 = 0;
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 504; VAR__53647++ )
+   {
+      G[VAR__53647].VAR_1238123 = 0;
+      for ( VAR__21230 = 0; VAR__21230 < 5; VAR__21230++ )
+      {
+         G[VAR__53647].B[VAR__21230] = '\0';
+      }
+   }
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", A);
+   number     = strlen(A);
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < (( number - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      VAR_FLAG = 0;
+
+      if ( VAR__53647 == 0 )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            G[VAR__21230].B[VAR__8444594] = A[VAR__8444594];
+         }
+
+         G[VAR__21230].VAR_1238123++;
+         VAR__21230++;
+      }
+      else
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            G[VAR__21230].B[VAR__8444594] = A[VAR__53647 + VAR__8444594];
+            G[VAR__21230].VAR_1238123     = 1;
+         }
+
+         for ( VAR__temp = 0; VAR__temp < VAR__21230; VAR__temp++ )
+         {
+            if ( strcmp(G[VAR__temp].B, G[VAR__21230].B) == 0 )
+            {
+               G[VAR__temp].VAR_1238123++;
+               VAR_FLAG = 1;
+               break;
+            }
+         }
+
+         if ( VAR_FLAG == 1 )
+         {
+            for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+            {
+               G[VAR__21230].B[VAR__8444594] = '\0';
+               G[VAR__21230].VAR_1238123     = 0;
+            }
+         }
+         else
+         {
+            VAR__21230++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__21230 - VAR__53647 ); VAR__8444594++ )
+      {
+         if ( G[VAR__8444594].VAR_1238123 < G[VAR__8444594 + 1].VAR_1238123 )
+         {
+            VAR__TEMP           = G[VAR__8444594 + 1];
+            G[VAR__8444594 + 1] = G[VAR__8444594];
+            G[VAR__8444594]     = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR__1238129 = 1;
+   VAR__53647   = 1;
+
+   while ( G[VAR__53647].VAR_1238123 == G[0].VAR_1238123 )
+   {
+      VAR__53647++;
+      VAR__1238129++;
+   }
+
+   if ( G[0].VAR_1238123 == 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", G[0].VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         printf("%s\n", G[VAR__53647].B);
+      }
+   }
+
+   return 0;
+}

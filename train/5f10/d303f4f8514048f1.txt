@@ -1,0 +1,85 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594 = 0;
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__SUM[500] = { 0 };
+   char VAR__19328[600];
+   char VAR__819283[510][5];
+   char VAR__4857423[5];
+
+   scanf("%d", &VAR_1238123);
+   getchar();
+   gets(VAR__19328);
+   VAR__1238129 = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1238129 - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + VAR_1238123 ); VAR__21230++ )
+      {
+         VAR__819283[VAR__8444594][VAR__21230 - VAR__53647] = VAR__19328[VAR__21230];
+      }
+
+      VAR__819283[VAR__8444594][VAR__21230] = '\0';
+      VAR__8444594 += 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+         {
+            if ( VAR__819283[VAR__53647][VAR__1238129] != VAR__819283[VAR__21230][VAR__1238129] )
+            {
+               VAR__1238129 = 0;
+               break;
+            }
+         }
+
+         if ( VAR__1238129 != 0 )
+         {
+            VAR__SUM[VAR__53647] += 1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__8444594 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( VAR__SUM[VAR__21230] < VAR__SUM[VAR__21230 + 1] )
+         {
+            VAR__1238129             = VAR__SUM[VAR__21230 + 1];
+            VAR__SUM[VAR__21230 + 1] = VAR__SUM[VAR__21230];
+            VAR__SUM[VAR__21230]     = VAR__1238129;
+            strcpy(VAR__4857423, VAR__819283[VAR__21230]);
+            strcpy(VAR__819283[VAR__21230], VAR__819283[VAR__21230 + 1]);
+            strcpy(VAR__819283[VAR__21230 + 1], VAR__4857423);
+         }
+      }
+   }
+
+   if ( VAR__SUM[0] != 1 )
+   {
+      printf("%d\n", VAR__SUM[0]);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if ( VAR__SUM[VAR__53647] < VAR__SUM[0] )
+         {
+            break;
+         }
+         else
+         {
+            printf("%s\n", VAR__819283[VAR__53647]);
+         }
+      }
+   }
+   else
+   {
+      printf("NO");
+   }
+
+   return 0;
+}

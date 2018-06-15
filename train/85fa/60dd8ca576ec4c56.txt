@@ -1,0 +1,45 @@
+int leapyear(int year)
+{
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int whichday(int year, int month, int day)
+{
+   int mon[MONTH] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__12302 = 0;
+   int VAR__53647;
+
+   if ( leapyear(year) == 1 )
+   {
+      mon[1]++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      VAR__12302 += mon[VAR__53647];
+   }
+
+   VAR__12302 += day;
+   return VAR__12302;
+}
+
+
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__12302;
+
+   scanf("%d%d%d", &year, &month, &day);
+   VAR__12302 = whichday(year, month, day);
+   printf("%d", VAR__12302);
+}

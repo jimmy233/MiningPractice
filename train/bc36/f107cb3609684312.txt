@@ -1,0 +1,84 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129 = 0;
+   int VAR__7685    = 0;
+   int VAR__3918907 = 0;
+   int VAR_666;
+   int VAR_9494;
+
+   scanf("%d", &VAR_1238123);
+   struct person
+   {
+      char  sex[7];
+      float height;
+   };
+   struct person people[VAR_1238123];
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s %f", people[VAR__53647].sex, &people[VAR__53647].height);
+   }
+
+   for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      if ( people[VAR__21230].sex[0] == 'm' )
+      {
+         VAR__1238129++;
+      }
+   }
+
+   struct person male[VAR__1238129];
+   struct person female[VAR_1238123 - VAR__1238129];
+   struct person VAR__19328;
+   for ( int VAR__8444594 = 0; VAR__8444594 <= ( VAR_1238123 - 1 ); VAR__8444594++ )
+   {
+      if ( people[VAR__8444594].sex[0] == 'm' )
+      {
+         male[VAR__7685] = people[VAR__8444594];
+         VAR__7685++;
+      }
+      else
+      {
+         female[VAR__3918907] = people[VAR__8444594];
+         VAR__3918907++;
+      }
+   }
+
+   for ( int VAR_233 = 0; VAR_233 <= ( VAR__1238129 - 2 ); VAR_233++ )
+   {
+      for ( VAR_666 = 0; VAR_666 <= (( VAR__1238129 - 2 ) - VAR_233 ); VAR_666++ )
+      {
+         if ( male[VAR_666 + 1].height < male[VAR_666].height )
+         {
+            VAR__19328        = male[VAR_666 + 1];
+            male[VAR_666 + 1] = male[VAR_666];
+            male[VAR_666]     = VAR__19328;
+         }
+      }
+   }
+
+   for ( int VAR_129012 = 0; VAR_129012 <= ( VAR__3918907 - 2 ); VAR_129012++ )
+   {
+      for ( VAR_9494 = 0; VAR_9494 <= (( VAR__3918907 - 2 ) - VAR_129012 ); VAR_9494++ )
+      {
+         if ( female[VAR_9494 + 1].height > female[VAR_9494].height )
+         {
+            VAR__19328           = female[VAR_9494 + 1];
+            female[VAR_9494 + 1] = female[VAR_9494];
+            female[VAR_9494]     = VAR__19328;
+         }
+      }
+   }
+
+   for ( int VAR__temp = 0; VAR__temp <= ( VAR__1238129 - 1 ); VAR__temp++ )
+   {
+      printf("%.2f ", male[VAR__temp].height);
+   }
+
+   for ( int u = 0; u <= ( VAR__3918907 - 2 ); u++ )
+   {
+      printf("%.2f ", female[u].height);
+   }
+
+   printf("%.2f", female[VAR__3918907 - 1].height);
+}

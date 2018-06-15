@@ -1,0 +1,76 @@
+struct student
+{
+   char           A_STRING[100];
+   struct student *VAR__NEXT;
+   struct student *front;
+};
+struct student *create()
+{
+   struct student *VAR__HEAD;
+   struct student *pf;
+   struct student *pa;
+   struct student *end;
+   int            VAR_1238123 = 1;
+   int            VAR_FLAG    = 0;
+
+   do
+   {
+      pa = (struct student *)malloc(LEN);
+      gets(pa->A_STRING);
+
+      if ( strcmp(pa->A_STRING, "end") == 0 )
+      {
+         if ( VAR_1238123 == 1 )
+         {
+            VAR_FLAG = 1;
+         }
+
+         break;
+      }
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = pa;
+         pf        = pa;
+         pa->front = NULL;
+         VAR_1238123++;
+      }
+      else
+      {
+         pf->VAR__NEXT = pa;
+         pa->front     = pf;
+         pf            = pa;
+      }
+   } while ( VAR_1238123 != 0 );
+
+   if ( VAR_FLAG == 0 )
+   {
+      pf->VAR__NEXT = NULL;
+      end           = pf;
+   }
+   else
+   {
+      VAR__HEAD = pa;
+      end       = NULL;
+   }
+
+   return end;
+}
+
+
+int main()
+{
+   struct student *end;
+   struct student *pt;
+
+   end = create();
+   pt  = end;
+
+   while ( pt != NULL )
+   {
+      printf("%s\n", pt->A_STRING);
+      pt = pt->front;
+   }
+
+   return 0;
+}

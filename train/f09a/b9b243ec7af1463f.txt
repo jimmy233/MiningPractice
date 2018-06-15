@@ -1,0 +1,109 @@
+void main()
+{
+   int N1[100];
+   int N2[100];
+   int N[200];
+   int n1;
+   int n2;
+
+   void scan(int N1[], int N2[], int *ANOTHER_POINTER, int *YET_ANOTHER_POINTER);
+   void order(int N1[], int n1, int N2[], int n2);
+   void join(int N1[], int N2[], int N[], int n1, int n2);
+   void print(int N[], int VAR_1238123);
+
+   scan(N1, N2, &n1, &n2);
+   order(N1, n1, N2, n2);
+   join(N1, N2, N, n1, n2);
+   print(N, n1 + n2);
+}
+
+
+void scan(int N1[], int N2[], int *ANOTHER_POINTER, int *YET_ANOTHER_POINTER)
+{
+   int VAR__53647;
+
+   scanf("%d%d", ANOTHER_POINTER, YET_ANOTHER_POINTER);
+   for ( VAR__53647 = 0; VAR__53647 < ( *ANOTHER_POINTER ); VAR__53647++ )
+   {
+      scanf("%d", &N1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( *YET_ANOTHER_POINTER ); VAR__53647++ )
+   {
+      scanf("%d", &N2[VAR__53647]);
+   }
+}
+
+
+void order(int N1[], int n1, int N2[], int n2)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int imin;
+   int Nmin;
+   int Nm;
+
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      imin = VAR__53647;
+      Nmin = N1[VAR__53647];
+      for ( VAR__21230 = VAR__53647; VAR__21230 < n1; VAR__21230++ )
+      {
+         if ( N1[VAR__21230] < Nmin )
+         {
+            imin = VAR__21230;
+            Nmin = N1[VAR__21230];
+         }
+      }
+
+      Nm             = N1[VAR__53647];
+      N1[VAR__53647] = N1[imin];
+      N1[imin]       = Nm;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      imin = VAR__53647;
+      Nmin = N2[VAR__53647];
+      for ( VAR__21230 = VAR__53647; VAR__21230 < n2; VAR__21230++ )
+      {
+         if ( N2[VAR__21230] < Nmin )
+         {
+            imin = VAR__21230;
+            Nmin = N2[VAR__21230];
+         }
+      }
+
+      Nm             = N2[VAR__53647];
+      N2[VAR__53647] = N2[imin];
+      N2[imin]       = Nm;
+   }
+}
+
+
+void join(int N1[], int N2[], int N[], int n1, int n2)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      N[VAR__53647] = N1[VAR__53647];
+   }
+
+   for ( VAR__53647 = n1; VAR__53647 < ( n1 + n2 ); VAR__53647++ )
+   {
+      N[VAR__53647] = N2[VAR__53647 - n1];
+   }
+}
+
+
+void print(int N[], int VAR_1238123)
+{
+   int VAR__53647;
+
+   printf("%d", N[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf(" %d", N[VAR__53647]);
+   }
+}

@@ -1,0 +1,78 @@
+struct student
+{
+   char name[25];
+   int  qimo;
+   int  pingshi;
+   char ganbu;
+   char xibu;
+   int  lunwen;
+   int  money;
+};
+int jiangxuejin(struct student VAR_9494);
+
+int main(int argc, char *argv[])
+{
+   struct student VAR__819283[101];
+   int            N;
+   int            VAR__SUM;
+   int            VAR__MAX;
+   int            MAX;
+
+   scanf("%d", &N);
+   for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].qimo, &VAR__819283[VAR__53647].pingshi, &VAR__819283[VAR__53647].ganbu, &VAR__819283[VAR__53647].xibu, &VAR__819283[VAR__53647].lunwen);
+      VAR__819283[VAR__53647].money = jiangxuejin(VAR__819283[VAR__53647]);
+   }
+
+   VAR__SUM = ( VAR__MAX = 0 );
+   MAX      = 0;
+   for ( int VAR__21230 = 0; VAR__21230 < N; VAR__21230++ )
+   {
+      if ( VAR__819283[VAR__21230].money > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__21230].money;
+         MAX      = VAR__21230;
+      }
+
+      VAR__SUM += VAR__819283[VAR__21230].money;
+   }
+
+   printf("%s\n", VAR__819283[MAX].name);
+   printf("%d\n", VAR__MAX);
+   printf("%d\n", VAR__SUM);
+   return 0;
+}
+
+
+int jiangxuejin(struct student VAR_9494)
+{
+   int VAR__SUM = 0;
+
+   if (( VAR_9494.qimo > 80 ) && ( VAR_9494.lunwen >= 1 ))
+   {
+      VAR__SUM += 8000;
+   }
+
+   if (( VAR_9494.qimo > 85 ) && ( VAR_9494.pingshi > 80 ))
+   {
+      VAR__SUM += 4000;
+   }
+
+   if ( VAR_9494.qimo > 90 )
+   {
+      VAR__SUM += 2000;
+   }
+
+   if (( VAR_9494.xibu == 'Y' ) && ( VAR_9494.qimo > 85 ))
+   {
+      VAR__SUM += 1000;
+   }
+
+   if (( VAR_9494.pingshi > 80 ) && ( VAR_9494.ganbu == 'Y' ))
+   {
+      VAR__SUM += 850;
+   }
+
+   return VAR__SUM;
+}

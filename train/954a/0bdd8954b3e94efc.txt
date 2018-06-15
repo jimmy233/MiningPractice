@@ -1,0 +1,88 @@
+struct
+{
+   int  tgra;
+   char name[21];
+   int  cgra;
+   char statue;
+   char west;
+   int  paper;
+}
+stu[100];
+void main()
+{
+   int  N;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_666;
+   int  scholar[100] = { 0 };
+   int  VAR__TEMP;
+   int  VAR_1238123 = 1;
+   int  total       = 0;
+   char media[21];
+   char VAR__819283;
+
+   scanf("%d\n", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; ( VAR__819283 = getchar()) != ' '; VAR__21230++ )
+      {
+         stu[VAR__53647].name[VAR__21230] = VAR__819283;
+      }
+
+      stu[VAR__53647].name[VAR__21230] = '\0';
+      scanf("%d %d %c %c %d", &stu[VAR__53647].tgra, &stu[VAR__53647].cgra, &stu[VAR__53647].statue, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].tgra > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         scholar[VAR__53647] = scholar[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].tgra > 85 ) && ( stu[VAR__53647].cgra > 80 ))
+      {
+         scholar[VAR__53647] = scholar[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].tgra > 90 )
+      {
+         scholar[VAR__53647] = scholar[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].tgra > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         scholar[VAR__53647] = scholar[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].cgra > 80 ) && ( stu[VAR__53647].statue == 'Y' ))
+      {
+         scholar[VAR__53647] = scholar[VAR__53647] + 850;
+      }
+   }
+
+   VAR_666 = 0;
+   for ( VAR__21230 = 1; VAR__21230 < N; VAR__21230++ )
+   {
+      if ( scholar[VAR_666] < scholar[VAR__21230] )
+      {
+         VAR_666 = VAR__21230;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(stu[VAR_666].name); VAR__53647++ )
+   {
+      if ( stu[VAR_666].name[VAR__53647] != 10 )
+      {
+         printf("%c", stu[VAR_666].name[VAR__53647]);
+      }
+   }
+
+   printf("\n%d\n", scholar[VAR_666]);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      total = total + scholar[VAR__53647];
+   }
+
+   printf("%d\n", total);
+}

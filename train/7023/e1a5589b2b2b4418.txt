@@ -1,0 +1,77 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  u = 1;
+   int  l1;
+   int  l2;
+   int  VAR_FLAG                = 0;
+   char ANOTHER_STRING[102]     = { 0 };
+   char YET_ANOTHER_STRING[102] = { 0 };
+   int  out[102]                = { 0 };
+   int  num1[103]               = { 0 };
+   int  num2[103]               = { 0 };
+
+   cin >> VAR_1238123;
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+   {
+      VAR_FLAG = 0;
+      ( cin >> ANOTHER_STRING ) >> YET_ANOTHER_STRING;
+      l1 = strlen(ANOTHER_STRING);
+      l2 = strlen(YET_ANOTHER_STRING);
+      u  = 1;
+      memset(out, 0, 102);
+      for ( VAR__53647 = 0; VAR__53647 <= ( l1 - 1 ); VAR__53647++ )
+      {
+         num1[VAR__53647 + 1] = ANOTHER_STRING[VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ( l2 - 1 ); VAR__53647++ )
+      {
+         num2[VAR__53647 + 1] = YET_ANOTHER_STRING[VAR__53647] - '0';
+      }
+
+      while (( u <= l1 ) && ( u <= l2 ))
+      {
+         out[u] = num1[( l1 - u ) + 1] - num2[( l2 - u ) + 1];
+         u++;
+      }
+
+      for ( u = l1; u >= ( l2 + 1 ); u-- )
+      {
+         out[u] = num1[( l1 - u ) + 1];
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= ( l1 - 1 ); VAR__53647++ )
+      {
+         if ( out[VAR__53647] < 0 )
+         {
+            out[VAR__53647 + 1] += -1, out[VAR__53647] += 10;
+         }
+      }
+
+      for ( u = l1; u >= 1; u-- )
+      {
+         if ( out[u] != 0 )
+         {
+            VAR_FLAG = 1;
+         }
+
+         if ( VAR_FLAG )
+         {
+            cout << out[u];
+         }
+
+         if ( u == 0 )
+         {
+            break;
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

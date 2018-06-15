@@ -1,0 +1,45 @@
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283;
+   int zf[100000];
+   struct student
+   {
+      int name;
+      int yw;
+      int sx;
+   }
+   stu[100000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &stu[VAR__53647].name, &stu[VAR__53647].yw, &stu[VAR__53647].sx);
+      zf[VAR__53647] = stu[VAR__53647].yw + stu[VAR__53647].sx;
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < 4; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( zf[VAR__53647] >= zf[VAR__53647 + 1] )
+         {
+            VAR__819283              = zf[VAR__53647];
+            zf[VAR__53647]           = zf[VAR__53647 + 1];
+            zf[VAR__53647 + 1]       = VAR__819283;
+            VAR__819283              = stu[VAR__53647].name;
+            stu[VAR__53647].name     = stu[VAR__53647 + 1].name;
+            stu[VAR__53647 + 1].name = VAR__819283;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= ( VAR_1238123 - 3 ); VAR__53647-- )
+   {
+      printf("%d %d\n", stu[VAR__53647].name, zf[VAR__53647]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,87 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  a1       = 8000;
+   int  a2       = 4000;
+   int  a3       = 2000;
+   int  a4       = 1000;
+   int  a5       = 850;
+   int  VAR__MAX = 0;
+   int  top      = 0;
+   int  VAR__SUM = 0;
+   int  grade[100];
+   int  assess[100];
+   int  article[100];
+   int  award[100];
+   char west[100];
+   char official[100];
+   char name[100][20];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      getchar();
+      for ( VAR__21230 = 0; VAR__21230 < 20; VAR__21230++ )
+      {
+         scanf("%c", &name[VAR__53647][VAR__21230]);
+
+         if ( name[VAR__53647][VAR__21230] == ' ' )
+         {
+            break;
+         }
+      }
+
+      award[VAR__53647] = 0;
+      scanf("%d %d %c %c %d", &grade[VAR__53647], &assess[VAR__53647], &official[VAR__53647], &west[VAR__53647], &article[VAR__53647]);
+
+      if (( grade[VAR__53647] > 80 ) && ( article[VAR__53647] > 0 ))
+      {
+         award[VAR__53647] += a1;
+      }
+
+      if (( grade[VAR__53647] > 85 ) && ( assess[VAR__53647] > 80 ))
+      {
+         award[VAR__53647] += a2;
+      }
+
+      if ( grade[VAR__53647] > 90 )
+      {
+         award[VAR__53647] += a3;
+      }
+
+      if (( grade[VAR__53647] > 85 ) && ( west[VAR__53647] == 'Y' ))
+      {
+         award[VAR__53647] += a4;
+      }
+
+      if (( assess[VAR__53647] > 80 ) && ( official[VAR__53647] == 'Y' ))
+      {
+         award[VAR__53647] += a5;
+      }
+
+      VAR__SUM += award[VAR__53647];
+
+      if ( award[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = award[VAR__53647];
+         top      = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 20; VAR__53647++ )
+   {
+      if ( name[top][VAR__53647] != ' ' )
+      {
+         printf("%c", name[top][VAR__53647]);
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   printf("\n%d\n%d\n", VAR__MAX, VAR__SUM);
+   return 0;
+}

@@ -1,0 +1,67 @@
+int main()
+{
+   int  VAR__temp;
+   int  VAR__53647;
+   int  VAR__NUM[26] = { 0 };
+   int  VAR__21230;
+   int  LEN_OF_STH;
+   int  VAR__7685;
+   int  VAR_FLAG = 0;
+   int  rank[26];
+   int  VAR_129012 = 0;
+   int  VAR__MIN   = 26;
+   int  VAR__9290;
+   char VAR__819283[100000];
+   char ch;
+
+   cin >> VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      cin >> VAR__819283;
+      LEN_OF_STH = strlen(VAR__819283);
+      for ( VAR__21230 = 0; VAR__21230 <= LEN_OF_STH; VAR__21230++ )
+      {
+         VAR__7685 = VAR__819283[VAR__21230] - 'a';
+         VAR__NUM[VAR__7685]++;
+
+         if ( VAR__NUM[VAR__7685] == 1 )
+         {
+            rank[VAR__7685] = VAR_129012++;
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= 26; VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230] == 1 )
+         {
+            if ( rank[VAR__21230] < VAR__MIN )
+            {
+               VAR__MIN  = rank[VAR__21230];
+               VAR__9290 = VAR__21230;
+               VAR_FLAG  = 1;
+            }
+         }
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         ( cout << "no" ) << endl;
+      }
+      else
+      {
+         ch = (char)VAR__9290;
+         ch = ch + 'a';
+         ( cout << ch ) << endl;
+      }
+
+      VAR__21230 = 0;
+      memset(VAR__819283, ' ', sizeof( VAR__819283 ));
+      memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+      memset(rank, 0, sizeof( rank ));
+      VAR_FLAG   = 0;
+      VAR__MIN   = 26;
+      VAR_129012 = 0;
+   }
+
+   return 0;
+}

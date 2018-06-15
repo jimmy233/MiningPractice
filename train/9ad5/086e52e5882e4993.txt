@@ -1,0 +1,68 @@
+struct tree
+{
+   struct tree *up;
+   int         VAR__NUM;
+};
+struct tree *MLC;
+struct tree *ptree;
+int         VAR__819283[500];
+int         VAR__19328[500];
+int main()
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__53647 = 1;
+   int VAR__21230;
+   int VAR_233;
+   int VAR_666;
+   int miao;
+   int woofoo = 0;
+
+   MLC = (struct tree *)malloc(MAXNUM * ( sizeof( struct tree )));
+   for ( ptree = MLC; ptree < ( MLC + 1000 ); ptree++ )
+   {
+      ptree->VAR__NUM                   = VAR__53647;
+      ( ptree + VAR__53647 )->up        = ptree;
+      (( ptree + VAR__53647 ) + 1 )->up = ptree;
+      VAR__53647++;
+   }
+
+   scanf("%d%d", &VAR__7685, &VAR__3918907);
+   ptree      = MLC;
+   ptree      = ( ptree + VAR__7685 ) - 1;
+   VAR__53647 = 0;
+   do
+   {
+      VAR__819283[VAR__53647] = ptree->VAR__NUM;
+      ptree = ptree->up;
+      VAR__53647++;
+   } while ( VAR__819283[VAR__53647 - 1] != 1 );
+   ptree      = ( MLC + VAR__3918907 ) - 1;
+   VAR__21230 = 0;
+   do
+   {
+      VAR__19328[VAR__21230] = ptree->VAR__NUM;
+      ptree = ptree->up;
+      VAR__21230++;
+   } while ( VAR__19328[VAR__21230 - 1] != 1 );
+   for ( VAR_233 = 0; VAR_233 < VAR__53647; VAR_233++ )
+   {
+      miao = 0;
+      for ( VAR_666 = 0; VAR_666 < VAR__21230; VAR_666++ )
+      {
+         if ( VAR__819283[VAR_233] == VAR__19328[VAR_666] )
+         {
+            miao++;
+            break;
+         }
+      }
+
+      if ( miao == 1 )
+      {
+         printf("%d\n", VAR__819283[VAR_233]);
+         break;
+      }
+   }
+
+   return 0;
+}

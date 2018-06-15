@@ -1,0 +1,138 @@
+int countnum(char VAR__819283[])
+{
+   int VAR__NUM = 0;
+
+   while ( VAR__819283[VAR__NUM] != '\0' )
+   {
+      VAR__NUM++;
+   }
+
+   return VAR__NUM;
+}
+
+
+void clean(char VAR__819283[])
+{
+   int VAR__NUM = 0;
+   int lenth    = 0;
+
+   while ( VAR__819283[lenth] != '\0' )
+   {
+      lenth++;
+   }
+
+   while ( VAR__819283[VAR__NUM] == '0' )
+   {
+      VAR__NUM++;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( lenth - VAR__NUM ); VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR__819283[VAR__53647 + VAR__NUM];
+   }
+}
+
+
+void sort(char VAR__819283[], int la, int VAR__MAX)
+{
+   int VAR__COUNT = la;
+   int differ     = VAR__MAX - la;
+
+   for ( ; VAR__COUNT >= 0; VAR__COUNT-- )
+   {
+      VAR__819283[VAR__COUNT + differ] = VAR__819283[VAR__COUNT];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < differ; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = '0';
+   }
+}
+
+
+void entire(char VAR__819283[], int la)
+{
+   char aa[1000];
+   int  VAR__COUNT = la;
+
+   for ( ; VAR__COUNT >= 0; VAR__COUNT-- )
+   {
+      aa[la - VAR__COUNT] = VAR__819283[VAR__COUNT];
+   }
+
+   aa[la + 1] = '\0';
+   for ( int VAR__53647 = 0; VAR__53647 <= ( la + 1 ); VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = aa[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[1000];
+   char VAR__19328[1000];
+
+   scanf("%s %s", VAR__819283, VAR__19328);
+
+   if (((( strlen(VAR__819283) == 1 ) && ( strlen(VAR__19328) == 1 )) && ( VAR__819283[0] == '0' )) && ( VAR__19328[0] == '0' ))
+   {
+   }
+   else
+   {
+      clean(VAR__819283);
+      clean(VAR__19328);
+   }
+
+   int la       = countnum(VAR__819283);
+   int lb       = countnum(VAR__19328);
+   int VAR__MAX = la;
+
+   if ( la < lb )
+   {
+      VAR__MAX = lb;
+   }
+
+   VAR__MAX = VAR__MAX + 1;
+   sort(VAR__819283, la, VAR__MAX);
+   sort(VAR__19328, lb, VAR__MAX);
+   VAR__MAX = VAR__MAX - 1;
+   entire(VAR__819283, VAR__MAX);
+   entire(VAR__19328, VAR__MAX);
+   int  sign = 0;
+   char VAR__4857423[1000];
+   for ( int VAR__53647 = 0; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      int VAR__TEMP = ((( sign + VAR__819283[VAR__53647] ) - '0' ) + VAR__19328[VAR__53647] ) - '0';
+
+      if ( VAR__TEMP > 9 )
+      {
+         sign      = 1;
+         VAR__TEMP = VAR__TEMP - 10;
+      }
+      else
+      {
+         sign = 0;
+      }
+
+      VAR__4857423[VAR__53647] = VAR__TEMP + '0';
+   }
+
+   VAR__4857423[VAR__MAX + 1] = '\0';
+   VAR__MAX = VAR__MAX;
+   entire(VAR__4857423, VAR__MAX);
+
+   if ( VAR__4857423[0] == '0' )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR__MAX; VAR__21230++ )
+      {
+         printf("%c", VAR__4857423[VAR__21230]);
+      }
+
+      printf("\n");
+   }
+   else
+   {
+      printf("%s\n", VAR__4857423);
+   }
+}

@@ -1,0 +1,69 @@
+struct student
+{
+   char           xuehao[20];
+   char           name[30];
+   char           sex;
+   int            age;
+   char           score[20];
+   char           adress[40];
+   struct student *VAR__NEXT;
+};
+void insert(struct student *pheader)
+{
+   struct student *VAR_233;
+
+   VAR_233            = (struct student *)malloc(sizeof( struct student ));
+   VAR_233->VAR__NEXT = pheader->VAR__NEXT;
+   pheader->VAR__NEXT = VAR_233;
+}
+
+
+int main()
+{
+   struct student *pheader;
+   struct student *VAR_233;
+
+   pheader            = (struct student *)malloc(sizeof( struct student ));
+   pheader->VAR__NEXT = NULL;
+
+   while ( 9 )
+   {
+      insert(pheader);
+      scanf("%s", pheader->VAR__NEXT->xuehao);
+
+      if ( pheader->VAR__NEXT->xuehao[0] == 'e' )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %s %s", pheader->VAR__NEXT->name, &pheader->VAR__NEXT->sex, &pheader->VAR__NEXT->age, &pheader->VAR__NEXT->score, pheader->VAR__NEXT->adress);
+   }
+
+   VAR_233 = pheader->VAR__NEXT;
+
+   while ( 9 )
+   {
+      VAR_233 = VAR_233->VAR__NEXT;
+      printf("%s %s %c %d %s %s\n", VAR_233->xuehao, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->adress);
+
+      if ( VAR_233->VAR__NEXT == NULL )
+      {
+         break;
+      }
+   }
+
+   while ( 9 )
+   {
+      if ( pheader->VAR__NEXT->VAR__NEXT == NULL )
+      {
+         break;
+      }
+
+      VAR_233            = pheader->VAR__NEXT;
+      pheader->VAR__NEXT = VAR_233->VAR__NEXT;
+      free(VAR_233);
+   }
+
+   free(pheader->VAR__NEXT);
+   free(pheader);
+}

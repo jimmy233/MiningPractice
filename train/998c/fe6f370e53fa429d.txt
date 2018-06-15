@@ -1,0 +1,60 @@
+char num1[MAX_LENGTH + 10];
+char num2[MAX_LENGTH + 10];
+int  an1[MAX_LENGTH + 10] = { 0 };
+int  an2[MAX_LENGTH + 10] = { 0 };
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%s", num1);
+   scanf("%s", num2);
+   memset(an1, 0, sizeof( an1 ));
+   memset(an2, 0, sizeof( an2 ));
+   int length1 = strlen(num1);
+   int length2 = strlen(num2);
+   VAR__21230 = 0;
+   for ( VAR__53647 = length1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an1[VAR__21230++] = num1[VAR__53647] - '0';
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = length2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an2[VAR__21230++] = num2[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < MAX_LENGTH; VAR__53647++ )
+   {
+      an1[VAR__53647] += an2[VAR__53647];
+
+      if ( an1[VAR__53647] >= 10 )
+      {
+         an1[VAR__53647] -= 10;
+         an1[VAR__53647 + 1]++;
+      }
+   }
+
+   int flagStart = FALSE;
+   for ( VAR__53647 = MAX_LENGTH; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( flagStart )
+      {
+         printf("%d", an1[VAR__53647]);
+      }
+      else
+      if ( an1[VAR__53647] )
+      {
+         printf("%d", an1[VAR__53647]);
+         flagStart = TRUE;
+      }
+   }
+
+   if ( flagStart == FALSE )
+   {
+      printf("0\n");
+   }
+
+   return 0;
+}

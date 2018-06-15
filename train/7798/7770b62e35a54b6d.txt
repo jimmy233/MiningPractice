@@ -1,0 +1,66 @@
+int main()
+{
+   int  amount_temp = 0;
+   int  amount_most = 0;
+   char most;
+   char VAR__TEMP;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_9494;
+   int  VAR_233;
+   int  VAR__1238129;
+   char jiancha[27];
+   struct xinxi
+   {
+      int  bianhao;
+      char zuozhe[27];
+   };
+   struct xinxi shuru[999];
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR_233 = 0; VAR_233 < VAR__1238129; VAR_233++ )
+   {
+      scanf("%d %s", &shuru[VAR_233].bianhao, shuru[VAR_233].zuozhe);
+   }
+
+   for ( VAR__TEMP = 'A'; VAR__TEMP <= 'Z'; VAR__TEMP++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         strcpy(jiancha, shuru[VAR__53647].zuozhe);
+         for ( VAR__21230 = 0; VAR__21230 < strlen(jiancha); VAR__21230++ )
+         {
+            if ( jiancha[VAR__21230] == VAR__TEMP )
+            {
+               amount_temp++;
+            }
+         }
+      }
+
+      if ( amount_temp > amount_most )
+      {
+         amount_most = amount_temp;
+         most        = VAR__TEMP;
+         amount_temp = 0;
+      }
+      else
+      {
+         amount_temp = 0;
+      }
+   }
+
+   printf("%c\n%d\n", most, amount_most);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      strcpy(jiancha, shuru[VAR__53647].zuozhe);
+      for ( VAR__21230 = 0; VAR__21230 < strlen(jiancha); VAR__21230++ )
+      {
+         if ( jiancha[VAR__21230] == most )
+         {
+            printf("%d\n", shuru[VAR__53647].bianhao);
+            break;
+         }
+      }
+   }
+}

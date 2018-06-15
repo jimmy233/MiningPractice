@@ -1,0 +1,74 @@
+int main()
+{
+   char ca[251];
+   char cb[251];
+   char tempc;
+   int  ia[251]      = { 0 };
+   int  ib[251]      = { 0 };
+   int  result[251]  = { 0 };
+   int  numa         = 0;
+   int  numb         = 0;
+   int  jinwei       = 0;
+   int  weishu       = 0;
+   int  resultweishu = 0;
+
+   cin >> ca;
+   cin >> cb;
+   numa = strlen(ca);
+   numb = strlen(cb);
+   memset(ia, 0, sizeof( int ));
+   memset(ib, 0, sizeof( int ));
+   memset(result, 0, sizeof( int ));
+
+   if ( numa > numb )
+   {
+      weishu = numa;
+   }
+   else
+   {
+      weishu = numb;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < numa; VAR__53647++ )
+   {
+      tempc          = ca[( numa - VAR__53647 ) - 1];
+      ia[VAR__53647] = atoi(&tempc);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < numb; VAR__53647++ )
+   {
+      tempc          = cb[( numb - VAR__53647 ) - 1];
+      ib[VAR__53647] = atoi(&tempc);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= weishu; VAR__53647++ )
+   {
+      result[VAR__53647] = ( ia[VAR__53647] + ib[VAR__53647] ) + jinwei;
+
+      if ( result[VAR__53647] > 9 )
+      {
+         result[VAR__53647] = result[VAR__53647] - 10;
+         jinwei             = 1;
+      }
+      else
+      {
+         jinwei = 0;
+      }
+   }
+
+   for ( int VAR__53647 = 250; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( result[VAR__53647] != 0 )
+      {
+         resultweishu = VAR__53647;
+         break;
+      }
+   }
+
+   for ( int VAR__53647 = resultweishu; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << result[VAR__53647];
+   }
+
+   cout << endl;
+}

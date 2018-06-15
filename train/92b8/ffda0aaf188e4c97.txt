@@ -1,0 +1,59 @@
+int main()
+{
+   int VAR__53647 = 0;
+   int VAR_1238123;
+   int front = 0;
+   int back  = 0;
+
+   scanf("%d", &VAR_1238123);
+
+   if (( VAR_1238123 < 3 ) || ( VAR_1238123 > 50000 ))
+   {
+      printf("no");
+      return 0;
+   }
+
+   int *VAR__819283 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   int *VAR__19328  = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      scanf("%d %d", VAR__819283 + VAR__53647, VAR__19328 + VAR__53647);
+
+      if ( VAR__819283[VAR__53647] > VAR__19328[VAR__53647] )
+      {
+         printf("input error");
+         return 0;
+      }
+
+      if ((( front != back ) && ( VAR__819283[VAR__53647] < front )) || ( front == back ))
+      {
+         front = VAR__819283[VAR__53647];
+         back  = VAR__19328[VAR__53647];
+      }
+
+      VAR__53647++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((( front <= VAR__819283[VAR__53647] ) && ( VAR__819283[VAR__53647] <= back )) && ( back < VAR__19328[VAR__53647] ))
+      {
+         back       = VAR__19328[VAR__53647];
+         VAR__53647 = -1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647] < front ) || ( VAR__19328[VAR__53647] > back ))
+      {
+         printf("no");
+         return 0;
+      }
+   }
+
+   free(VAR__819283);
+   free(VAR__19328);
+   printf("%d %d\n", front, back);
+}

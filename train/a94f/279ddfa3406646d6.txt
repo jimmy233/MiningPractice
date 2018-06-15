@@ -1,0 +1,94 @@
+int VAR__819283[102][102];
+int VAR_FLAG[102][102];
+int row;
+int col;
+int go(int VAR__127322, int VAR__53647, int VAR__21230, int VAR__COUNT)
+{
+   if ( VAR__COUNT != ( col * row ))
+   {
+      ( cout << VAR__819283[VAR__53647][VAR__21230] ) << endl;
+      VAR_FLAG[VAR__53647][VAR__21230] = 1;
+
+      if ( VAR__127322 == 0 )
+      {
+         if ( VAR_FLAG[VAR__53647][VAR__21230 + 1] == 0 )
+         {
+            go(VAR__127322, VAR__53647, VAR__21230 + 1, VAR__COUNT + 1);
+         }
+         else
+         {
+            go(( VAR__127322 + 1 ) % 4, VAR__53647 + 1, VAR__21230, VAR__COUNT + 1);
+         }
+      }
+
+      if ( VAR__127322 == 1 )
+      {
+         if ( VAR_FLAG[VAR__53647 + 1][VAR__21230] == 0 )
+         {
+            go(VAR__127322, VAR__53647 + 1, VAR__21230, VAR__COUNT + 1);
+         }
+         else
+         {
+            go(( VAR__127322 + 1 ) % 4, VAR__53647, VAR__21230 - 1, VAR__COUNT + 1);
+         }
+      }
+
+      if ( VAR__127322 == 2 )
+      {
+         if ( VAR_FLAG[VAR__53647][VAR__21230 - 1] == 0 )
+         {
+            go(VAR__127322, VAR__53647, VAR__21230 - 1, VAR__COUNT + 1);
+         }
+         else
+         {
+            go(( VAR__127322 + 1 ) % 4, VAR__53647 - 1, VAR__21230, VAR__COUNT + 1);
+         }
+      }
+
+      if ( VAR__127322 == 3 )
+      {
+         if ( VAR_FLAG[VAR__53647 - 1][VAR__21230] == 0 )
+         {
+            go(VAR__127322, VAR__53647 - 1, VAR__21230, VAR__COUNT + 1);
+         }
+         else
+         {
+            go(( VAR__127322 + 1 ) % 4, VAR__53647, VAR__21230 + 1, VAR__COUNT + 1);
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   ( cin >> row ) >> col;
+   int turn = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= col; VAR__21230++ )
+      {
+         cin >> VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( col + 1 ); VAR__53647++ )
+   {
+      VAR_FLAG[0][VAR__53647]       = 1;
+      VAR_FLAG[row + 1][VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( row + 1 ); VAR__53647++ )
+   {
+      VAR_FLAG[VAR__53647][0]       = 1;
+      VAR_FLAG[VAR__53647][col + 1] = 1;
+   }
+
+   go(0, 1, 1, 0);
+}

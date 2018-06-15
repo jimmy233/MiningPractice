@@ -1,0 +1,62 @@
+const long maxL = 300;
+long       VAR__819283;
+long       VAR__19328;
+char       A_STRING[maxL + 10];
+long       from[maxL + 10];
+long       to[maxL + 10];
+long       ans[maxL + 10];
+int main()
+{
+   long VAR__53647;
+   long VAR__21230;
+   long VAR__8444594;
+   long L;
+   long VAR__7685;
+
+   scanf("%ld%s%ld", &VAR__819283, A_STRING, &VAR__19328);
+   L = strlen(A_STRING);
+   for ( VAR__53647 = '0'; VAR__53647 <= '9'; VAR__53647++ )
+   {
+      from[VAR__53647]     = VAR__53647 - '0';
+      to[VAR__53647 - '0'] = VAR__53647;
+   }
+
+   for ( VAR__53647 = 'a'; VAR__53647 <= 'z'; VAR__53647++ )
+   {
+      from[VAR__53647] = ( VAR__53647 - 'a' ) + 10;
+   }
+
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'Z'; VAR__53647++ )
+   {
+      from[VAR__53647] = ( VAR__53647 - 'A' ) + 10;
+      to[( VAR__53647 - 'A' ) + 10] = VAR__53647;
+   }
+
+   VAR__7685 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < L; VAR__53647++ )
+   {
+      VAR__7685 *= VAR__819283;
+      VAR__7685 += from[A_STRING[VAR__53647]];
+   }
+
+   L = 0;
+
+   while ( VAR__7685 )
+   {
+      ans[++L]   = VAR__7685 % VAR__19328;
+      VAR__7685 /= VAR__19328;
+   }
+
+   if ( L == 0 )
+   {
+      ans[++L] = 0;
+   }
+
+   for ( VAR__53647 = L; VAR__53647 >= 1; VAR__53647-- )
+   {
+      printf("%c", to[ans[VAR__53647]]);
+   }
+
+   printf("\n");
+   return 0;
+}

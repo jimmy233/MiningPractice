@@ -1,0 +1,79 @@
+int main()
+{
+   int  VAR_1238123   = 0;
+   int  VAR__53647    = 0;
+   int  VAR__21230    = 0;
+   int  VAR__8444594  = 0;
+   char A_STRING[500] = { '0' };
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", A_STRING);
+   int LEN_OF_STH       = 0;
+   int VAR__MAX         = 0;
+   int VAR__NUM[500]    = { 0 };
+   int VAR__819283[100] = { 0 };
+   LEN_OF_STH = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; )
+         {
+            if ( A_STRING[VAR__53647 + VAR__8444594] == A_STRING[VAR__21230 + VAR__8444594] )
+            {
+               VAR__8444594++;
+            }
+            else
+            {
+               break;
+            }
+         }
+
+         if ( VAR__8444594 == VAR_1238123 )
+         {
+            VAR__NUM[VAR__53647]++;
+         }
+      }
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__8444594 = 0;
+         memset(VAR__819283, 0, sizeof( VAR__819283 ));
+         VAR__MAX = VAR__NUM[VAR__53647];
+         VAR__819283[VAR__8444594] = VAR__53647;
+         VAR__8444594++;
+      }
+      else
+      if ( VAR__NUM[VAR__53647] == VAR__MAX )
+      {
+         VAR__819283[VAR__8444594] = VAR__53647;
+         VAR__8444594++;
+      }
+   }
+
+   if ( VAR__NUM[VAR__819283[0]] == 0 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("%d\n", VAR__NUM[VAR__819283[0]] + 1);
+      VAR__53647 = 0;
+      do
+      {
+         for ( VAR__21230 = VAR__819283[VAR__53647]; VAR__21230 < (( VAR__819283[VAR__53647] + VAR_1238123 ) - 1 ); VAR__21230++ )
+         {
+            printf("%c", A_STRING[VAR__21230]);
+         }
+
+         printf("%c\n", A_STRING[VAR__21230]);
+         VAR__53647++;
+      } while ( VAR__819283[VAR__53647] != 0 );
+   }
+
+   return 0;
+}

@@ -1,0 +1,106 @@
+void saima(int VAR__819283, int VAR__19328[1500], int VAR__12302[1500]);
+void paixu(int VAR__112390[1500], int VAR__4857423);
+
+int main()
+{
+   int tianji[1500];
+   int kingma[1500];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__NUM = 0;
+
+   do
+   {
+      scanf("%d", &VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tianji[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &kingma[VAR__53647]);
+      }
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      paixu(tianji, VAR_1238123);
+      paixu(kingma, VAR_1238123);
+      saima(VAR_1238123, tianji, kingma);
+   } while ( VAR_1238123 != 0 );
+   return 0;
+}
+
+
+void paixu(int VAR__112390[1500], int VAR__4857423)
+{
+   int VAR__TEMP;
+   int VAR__8444594;
+   int VAR__1111;
+
+   for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__4857423 - 1 ); VAR__8444594++ )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < ( VAR__4857423 - 1 ); VAR__1111++ )
+      {
+         if ( VAR__112390[VAR__1111] < VAR__112390[VAR__1111 + 1] )
+         {
+            VAR__TEMP = VAR__112390[VAR__1111];
+            VAR__112390[VAR__1111]     = VAR__112390[VAR__1111 + 1];
+            VAR__112390[VAR__1111 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void saima(int VAR__819283, int VAR__19328[1500], int VAR__12302[1500])
+{
+   int qian      = 0;
+   int VAR__HEAD = 0;
+   int twei      = VAR__819283 - 1;
+   int kwei      = VAR__819283 - 1;
+   int VAR__21230;
+   int VAR__7685;
+   int VAR__3918907;
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__819283; VAR__21230++ )
+   {
+      if ( VAR__19328[VAR__HEAD] > VAR__12302[VAR__21230] )
+      {
+         VAR__HEAD++;
+         qian += 200;
+      }
+      else
+      {
+         for ( VAR__7685 = twei, VAR__3918907 = kwei; VAR__7685 >= VAR__HEAD; VAR__7685--, VAR__3918907-- )
+         {
+            if ( VAR__19328[VAR__7685] > VAR__12302[VAR__3918907] )
+            {
+               qian += 200;
+               twei--;
+               kwei--;
+            }
+            else
+            {
+               if ( VAR__19328[VAR__7685] < VAR__12302[VAR__21230] )
+               {
+                  qian -= 200;
+               }
+
+               twei--;
+               break;
+            }
+         }
+      }
+
+      if ( twei < VAR__HEAD )
+      {
+         break;
+      }
+   }
+
+   printf("%d\n", qian);
+}

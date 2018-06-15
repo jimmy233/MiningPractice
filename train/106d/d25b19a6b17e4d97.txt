@@ -1,0 +1,68 @@
+int year(int VAR__3918907)
+{
+   int VAR_129012;
+
+   if (((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 ))
+   {
+      VAR_129012 = 1;
+   }
+   else
+   {
+      VAR_129012 = 0;
+   }
+
+   return VAR_129012;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int day;
+   int VAR__temp;
+   int ye;
+   int m1;
+   int m2;
+   int days[2][12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      day = 0;
+      scanf("%d%d%d", &ye, &m1, &m2);
+
+      if ( m1 > m2 )
+      {
+         VAR__temp = m1;
+         m1        = m2;
+         m2        = VAR__temp;
+      }
+
+      if ( year(ye) == 1 )
+      {
+         for ( VAR__21230 = m1 - 1; VAR__21230 < ( m2 - 1 ); VAR__21230++ )
+         {
+            day = day + days[1][VAR__21230];
+         }
+      }
+      else
+      {
+         for ( VAR__21230 = m1 - 1; VAR__21230 < ( m2 - 1 ); VAR__21230++ )
+         {
+            day = day + days[0][VAR__21230];
+         }
+      }
+
+
+      if (( day % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+}

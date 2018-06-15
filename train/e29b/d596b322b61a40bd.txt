@@ -1,0 +1,64 @@
+void bubble(int *VAR__819283, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= (( VAR_1238123 - VAR__21230 ) - 2 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647] > VAR__819283[VAR__53647 + 1] )
+         {
+            VAR__temp = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647]     = VAR__819283[VAR__53647 + 1];
+            VAR__819283[VAR__53647 + 1] = VAR__temp;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__819283[300];
+   int   VAR__53647;
+   int   VAR__SUM = 0;
+   float ave;
+   float difa;
+   float difb;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d", VAR__819283 + VAR__53647);
+   }
+
+   bubble(VAR__819283, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__SUM += VAR__819283[VAR__53647];
+   }
+
+   ave  = ( VAR__SUM * 1.0 ) / VAR_1238123;
+   difa = fabs(ave - VAR__819283[0]);
+   difb = fabs(ave - VAR__819283[VAR_1238123 - 1]);
+
+   if ( difa > difb )
+   {
+      printf("%d", VAR__819283[0]);
+   }
+   else
+   if ( difa == difb )
+   {
+      printf("%d,%d", VAR__819283[0], VAR__819283[VAR_1238123 - 1]);
+   }
+   else
+   {
+      printf("%d", VAR__819283[VAR_1238123 - 1]);
+   }
+
+
+   return 0;
+}

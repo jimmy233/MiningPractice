@@ -1,0 +1,98 @@
+int       VAR__SUM[1000000] = { 0 };
+const int pi = ( 365 * 3 ) + 366;
+int       VAR__819283[][12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int main()
+{
+   int jud;
+   int VAR__3918907;
+   int VAR__1238129;
+   int VAR__12302;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int to = 0;
+
+   (( cin >> VAR__3918907 ) >> VAR__1238129 ) >> VAR__12302;
+   VAR__21230 = VAR__3918907;
+
+   if ( VAR__3918907 > 1 )
+   {
+      if ( VAR__21230 > 2000 )
+      {
+         for ( VAR__53647 = 0; ; VAR__53647++ )
+         {
+            VAR__SUM[VAR__53647] = 0;
+
+            if ( VAR__21230 < 2000 )
+            {
+               break;
+            }
+
+            VAR__SUM[VAR__53647] += ( 2000 / 4 ) * pi;
+            VAR__21230           -= 2000;
+         }
+
+         VAR__SUM[VAR__53647] += (( VAR__21230 - 1 ) % 4 ) * 365;
+         VAR__SUM[VAR__53647] += (( VAR__21230 - 1 ) / 4 ) * pi;
+      }
+      else
+      {
+         VAR__53647   = 0;
+         VAR__SUM[0] += (( VAR__3918907 - 1 ) % 4 ) * 365;
+         VAR__SUM[0] += (( VAR__3918907 - 1 ) / 4 ) * pi;
+      }
+   }
+
+   for ( VAR__temp = 100; VAR__temp < VAR__3918907; VAR__temp += 100 )
+   {
+      if ((( VAR__temp % 100 ) == 0 ) && (( VAR__temp % 400 ) != 0 ))
+      {
+         VAR__SUM[VAR__53647] -= 1;
+      }
+   }
+
+   jud = ((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 );
+   for ( VAR__temp = 0; VAR__temp < ( VAR__1238129 - 1 ); VAR__temp++ )
+   {
+      VAR__SUM[VAR__53647] += VAR__819283[jud][VAR__temp];
+   }
+
+   VAR__SUM[VAR__53647] += VAR__12302 - 1;
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+   {
+      to += VAR__SUM[VAR__21230] % 7;
+   }
+
+   switch ( to % 7 )
+   {
+   case 6:
+      ( cout << "Sun." ) << endl;
+      break;
+
+   case 0:
+      ( cout << "Mon." ) << endl;
+      break;
+
+   case 1:
+      ( cout << "Tue." ) << endl;
+      break;
+
+   case 2:
+      ( cout << "Wed." ) << endl;
+      break;
+
+   case 3:
+      ( cout << "Thu." ) << endl;
+      break;
+
+   case 4:
+      ( cout << "Fri." ) << endl;
+      break;
+
+   case 5:
+      ( cout << "Sat." ) << endl;
+      break;
+   }
+
+   return 0;
+}

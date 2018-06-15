@@ -1,0 +1,182 @@
+void main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int tq[2][1000];
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_21983012;
+   int K;
+   int money;
+   int VAR_9Q8Q90;
+   int VAR__819283;
+   int VAR__4857423[100];
+   int VAR__12302;
+   int VAR__112390;
+   int VAR__53647;
+
+   for ( VAR__1238129 = 0, VAR__12302 = 0; ; VAR__1238129++, VAR__12302++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < 2; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            scanf("%d", &tq[VAR__21230][VAR__8444594]);
+         }
+      }
+
+
+      for ( VAR__21230 = 0, VAR__8444594 = 0; VAR__8444594 < ( VAR_1238123 - 1 ); VAR__8444594++ )
+      {
+         for ( K = 0; K < (( VAR_1238123 - 1 ) - VAR__8444594 ); K++ )
+         {
+            if ( tq[0][K] < tq[0][K + 1] )
+            {
+               VAR_21983012 = tq[0][K];
+               tq[0][K]     = tq[0][K + 1];
+               tq[0][K + 1] = VAR_21983012;
+            }
+         }
+      }
+
+
+
+      for ( VAR__21230 = 1, VAR__8444594 = 0; VAR__8444594 < ( VAR_1238123 - 1 ); VAR__8444594++ )
+      {
+         for ( K = 0; K < (( VAR_1238123 - 1 ) - VAR__8444594 ); K++ )
+         {
+            if ( tq[1][K] < tq[1][K + 1] )
+            {
+               VAR_21983012 = tq[1][K];
+               tq[1][K]     = tq[1][K + 1];
+               tq[1][K + 1] = VAR_21983012;
+            }
+         }
+      }
+
+
+
+      for ( VAR_9Q8Q90 = VAR_1238123 - 1, money = 0; VAR_9Q8Q90 > 0; VAR_9Q8Q90-- )
+      {
+         if ( tq[0][VAR_9Q8Q90] > tq[1][VAR_9Q8Q90] )
+         {
+            VAR__53647 = 0;
+         }
+
+         if ( tq[0][VAR_9Q8Q90] < tq[1][VAR_9Q8Q90] )
+         {
+            VAR__53647 = 1;
+         }
+
+         if ( tq[0][VAR_9Q8Q90] == tq[1][VAR_9Q8Q90] )
+         {
+            if ( tq[0][0] > tq[1][0] )
+            {
+               VAR__53647 = 2;
+            }
+
+            if ( tq[0][0] < tq[1][0] )
+            {
+               VAR__53647 = 3;
+            }
+
+            if ( tq[0][0] == tq[1][0] )
+            {
+               VAR__53647 = 4;
+            }
+         }
+
+         switch ( VAR__53647 )
+         {
+         case 0:
+            money = money + 200;
+            break;
+
+         case 1:
+            money = money - 200;
+            for ( VAR__819283 = 0; VAR__819283 < VAR_9Q8Q90; VAR__819283++ )
+            {
+               tq[1][VAR__819283] = tq[1][VAR__819283 + 1];
+            }
+
+            break;
+
+         case 2:
+            money = money + 200;
+            for ( VAR__819283 = 0; VAR__819283 < VAR_9Q8Q90; VAR__819283++ )
+            {
+               tq[1][VAR__819283] = tq[1][VAR__819283 + 1];
+            }
+
+            for ( VAR__112390 = 0; VAR__112390 < VAR_9Q8Q90; VAR__112390++ )
+            {
+               tq[0][VAR__112390] = tq[0][VAR__112390 + 1];
+            }
+
+            break;
+
+         case 3:
+            money = money - 200;
+            for ( VAR__819283 = 0; VAR__819283 < VAR_9Q8Q90; VAR__819283++ )
+            {
+               tq[1][VAR__819283] = tq[1][VAR__819283 + 1];
+            }
+
+            break;
+
+         case 4:
+
+            if ( tq[0][VAR_9Q8Q90] > tq[1][0] )
+            {
+               money = money + 200;
+            }
+
+            if ( tq[0][VAR_9Q8Q90] == tq[1][0] )
+            {
+               money = money + 0;
+            }
+
+            if ( tq[0][VAR_9Q8Q90] < tq[1][0] )
+            {
+               money = money - 200;
+            }
+
+            for ( VAR__819283 = 0; VAR__819283 < VAR_9Q8Q90; VAR__819283++ )
+            {
+               tq[1][VAR__819283] = tq[1][VAR__819283 + 1];
+            }
+
+            break;
+         }
+      }
+
+      if ( tq[0][0] > tq[1][0] )
+      {
+         money = money + 200;
+      }
+
+      if ( tq[0][0] == tq[1][0] )
+      {
+         money = money + 0;
+      }
+
+      if ( tq[0][0] < tq[1][0] )
+      {
+         money = money - 200;
+      }
+
+      VAR__4857423[VAR__1238129] = money;
+   }
+
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR__12302; VAR__1238129++ )
+   {
+      printf("%d\n", VAR__4857423[VAR__1238129]);
+   }
+}

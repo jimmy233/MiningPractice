@@ -1,0 +1,92 @@
+long int VAR__NUM(long int VAR__7685, int VAR__53647, int VAR__19328)
+{
+   long int VAR__819283;
+
+   VAR__819283 = VAR__7685;
+   int VAR__21230;
+   for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      VAR__819283 = VAR__819283 * VAR__19328;
+   }
+
+   return VAR__819283;
+}
+
+
+void main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  length;
+   char shu[100];
+   char zhuanhuan[100];
+
+   scanf("%d %s %d", &VAR__819283, shu, &VAR__19328);
+   long int VAR__8444594 = 0;
+   length = strlen(shu);
+   long int VAR__1111;
+   for ( VAR__53647 = 0; VAR__53647 < ( length - 1 ); VAR__53647++ )
+   {
+      if (( shu[VAR__53647] >= 'A' ) && ( shu[VAR__53647] <= 'Z' ))
+      {
+         VAR__1111    = ( shu[VAR__53647] - 'A' ) + 10;
+         VAR__8444594 = VAR__8444594 + VAR__NUM(VAR__1111, ( length - VAR__53647 ) - 1, VAR__819283);
+      }
+
+      if (( shu[VAR__53647] >= '0' ) && ( shu[VAR__53647] <= '9' ))
+      {
+         VAR__1111    = shu[VAR__53647] - '0';
+         VAR__8444594 = VAR__8444594 + VAR__NUM(VAR__1111, ( length - VAR__53647 ) - 1, VAR__819283);
+      }
+
+      if (( shu[VAR__53647] >= 'a' ) && ( shu[VAR__53647] <= 'z' ))
+      {
+         VAR__1111    = ( shu[VAR__53647] - 'a' ) + 10;
+         VAR__8444594 = VAR__8444594 + VAR__NUM(VAR__1111, ( length - VAR__53647 ) - 1, VAR__819283);
+      }
+   }
+
+   if (( shu[length - 1] >= 'A' ) && ( shu[length - 1] <= 'Z' ))
+   {
+      VAR__8444594 = (( VAR__8444594 + shu[length - 1] ) - 'A' ) + 10;
+   }
+
+   if (( shu[length - 1] >= '0' ) && ( shu[length - 1] <= '9' ))
+   {
+      VAR__8444594 = ( VAR__8444594 + shu[length - 1] ) - '0';
+   }
+
+   if (( shu[length - 1] >= 'a' ) && ( shu[length - 1] <= 'z' ))
+   {
+      VAR__8444594 = (( VAR__8444594 + shu[length - 1] ) - 'a' ) + 10;
+   }
+
+   int      VAR__1238129 = 0;
+   int      VAR_1238123;
+   long int VAR__127322 = VAR__8444594;
+   do
+   {
+      VAR_1238123 = VAR__127322 % VAR__19328;
+
+      if (( VAR_1238123 >= 0 ) && ( VAR_1238123 <= 9 ))
+      {
+         zhuanhuan[VAR__1238129] = VAR_1238123 + '0';
+         VAR__1238129++;
+      }
+      else
+      {
+         zhuanhuan[VAR__1238129] = ( VAR_1238123 - 10 ) + 'A';
+         VAR__1238129++;
+      }
+
+      VAR__127322 = VAR__127322 / VAR__19328;
+   } while ( VAR__127322 != 0 );
+   for ( VAR__53647 = VAR__1238129 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", zhuanhuan[VAR__53647]);
+   }
+
+   printf("\n");
+}

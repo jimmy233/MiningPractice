@@ -1,0 +1,75 @@
+int  an1[MAX_LEN];
+int  an2[MAX_LEN];
+char szline1[MAX_LEN];
+char szline2[MAX_LEN];
+int main()
+{
+   scanf("%s", szline1);
+   scanf("%s", szline2);
+   int VAR__53647;
+   int VAR__21230;
+   int maxlen;
+   memset(an1, 0, sizeof( an1 ));
+   memset(an2, 0, sizeof( an2 ));
+   int len1;
+   int len2;
+   len1 = strlen(szline1);
+   len2 = strlen(szline2);
+   for ( VAR__21230 = 0, VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an1[VAR__21230++] = szline1[VAR__53647] - '0';
+   }
+
+   for ( VAR__21230 = 0, VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an2[VAR__21230++] = szline2[VAR__53647] - '0';
+   }
+
+   if ( len1 > len2 )
+   {
+      maxlen = len1;
+   }
+   else
+   {
+      maxlen = len2;
+   }
+
+   int startpos = 0;
+   for ( VAR__53647 = 0; VAR__53647 < maxlen; VAR__53647++ )
+   {
+      if (( an1[VAR__53647] + an2[VAR__53647] ) >= 10 )
+      {
+         an1[VAR__53647] = ( an1[VAR__53647] + an2[VAR__53647] ) - 10;
+         an1[VAR__53647 + 1]++;
+      }
+      else
+      {
+         an1[VAR__53647] += an2[VAR__53647];
+      }
+
+      if ( an1[VAR__53647] )
+      {
+         startpos = VAR__53647;
+      }
+   }
+
+   if ( an1[VAR__53647] )
+   {
+      startpos = VAR__53647;
+   }
+
+   if ( startpos == 0 )
+   {
+      printf("0");
+   }
+   else
+   {
+      for ( VAR__53647 = startpos; VAR__53647 >= 0; VAR__53647-- )
+      {
+         printf("%d", an1[VAR__53647]);
+      }
+   }
+
+   printf("\n");
+   return 0;
+}

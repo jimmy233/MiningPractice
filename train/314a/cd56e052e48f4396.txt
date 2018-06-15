@@ -1,0 +1,80 @@
+void char2int(int *length, char *VAR__819283, int *aa)
+{
+   int VAR__TEMP    = 0;
+   int VAR__8444594 = 0;
+
+   for ( int VAR__21230 = 0; VAR__21230 < ( *length ); ++VAR__21230 )
+   {
+      if ( VAR__819283[VAR__21230] == ',' )
+      {
+         VAR__TEMP = 0;
+         ++VAR__8444594;
+      }
+      else
+      {
+         aa[VAR__8444594] = (( 10 * aa[VAR__8444594] ) + VAR__819283[VAR__21230] ) - '0';
+      }
+   }
+}
+
+
+int main()
+{
+   char VAR__4857423;
+   char VAR__819283[4 * 1000];
+   char VAR__19328[4 * 1000];
+   int  aa[1000]   = { 0 };
+   int  bb[1000]   = { 0 };
+   int  stat[1000] = { 0 };
+   int  VAR__53647 = 0;
+   int  VAR__NUM   = 0;
+   int  length1    = 0;
+   int  length2    = 0;
+   int  maxindex   = 0;
+   int  in;
+   int  out;
+
+   while (( scanf("%c", &VAR__4857423) != EOF ) && ( VAR__4857423 != '\n' ))
+   {
+      VAR__819283[VAR__53647++] = VAR__4857423;
+      ++length1;
+
+      if ( VAR__4857423 == ',' )
+      {
+         ++VAR__NUM;
+      }
+   }
+
+   VAR__53647 = 0;
+
+   while (( scanf("%c", &VAR__4857423) != EOF ) && ( VAR__4857423 != '\n' ))
+   {
+      VAR__19328[VAR__53647++] = VAR__4857423;
+      ++length2;
+   }
+
+   char2int(&length1, VAR__819283, aa);
+   char2int(&length2, VAR__19328, bb);
+   ++VAR__NUM;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; ++VAR__53647 )
+   {
+      in  = aa[VAR__53647];
+      out = bb[VAR__53647];
+      for ( int VAR__21230 = in; VAR__21230 < out; ++VAR__21230 )
+      {
+         ++stat[VAR__21230];
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < 1000; ++VAR__53647 )
+   {
+      if ( stat[VAR__53647] > stat[maxindex] )
+      {
+         maxindex = VAR__53647;
+      }
+   }
+
+
+   ((( cout << VAR__NUM ) << " " ) << stat[maxindex] ) << endl;
+   return 0;
+}

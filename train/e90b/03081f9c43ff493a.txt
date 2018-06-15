@@ -1,0 +1,81 @@
+struct student
+{
+   int            VAR__NUM;
+   int            yuwen;
+   int            shuxue;
+   struct student *VAR__NEXT;
+};
+int VAR__1238129;
+void main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct student *creat(int VAR_1238123);
+   void print(struct student *VAR__HEAD, int VAR_1238123);
+
+   struct student *VAR__HEAD;
+   VAR__HEAD = creat(VAR_1238123);
+   print(VAR__HEAD, VAR_1238123);
+   print(VAR__HEAD, VAR_1238123);
+   print(VAR__HEAD, VAR_1238123);
+}
+
+
+struct student *creat(int VAR_1238123)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__1238129    = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%d %d %d\n", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+   VAR__HEAD = NULL;
+   for ( ; VAR_1238123 != 0; VAR_1238123-- )
+   {
+      VAR__1238129 += 1;
+
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%d %d %d\n", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD, int VAR_1238123)
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+
+   VAR_233 = VAR__HEAD;
+   int VAR__MAX = 0;
+   int index    = 0;
+   for ( ; VAR_1238123 != 0; VAR_1238123-- )
+   {
+      if ( VAR__MAX < ( VAR_233->yuwen + VAR_233->shuxue ))
+      {
+         VAR__MAX = VAR_233->yuwen + VAR_233->shuxue;
+         index    = VAR_233->VAR__NUM;
+         VAR_666  = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", index, VAR__MAX);
+   VAR_666->yuwen  = 0;
+   VAR_666->shuxue = 0;
+}

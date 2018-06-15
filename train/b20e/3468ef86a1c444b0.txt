@@ -1,0 +1,96 @@
+int tian[1004];
+int qi[1004];
+int cmp(const void *c1, const void *c2)
+{
+   return ( *((int *)c2 )) - ( *((int *)c1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( true )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 <= 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qi[VAR__53647]);
+      }
+
+      qsort(tian, VAR_1238123, sizeof( int ), cmp);
+      qsort(qi, VAR_1238123, sizeof( int ), cmp);
+      int ts     = 0;
+      int te     = VAR_1238123 - 1;
+      int qs     = 0;
+      int qe     = VAR_1238123 - 1;
+      int nMoney = 0;
+
+      while ( ts <= te )
+      {
+         if ( tian[ts] > qi[qs] )
+         {
+            ts++;
+            qs++;
+            nMoney += 200;
+         }
+         else
+         if ( tian[ts] < qi[qs] )
+         {
+            nMoney -= 200;
+            qs++;
+            te--;
+         }
+         else
+         {
+            if ( tian[te] > qi[qe] )
+            {
+               nMoney += 200;
+               te--;
+               qe--;
+            }
+            else
+            if ( tian[te] < qi[qe] )
+            {
+               nMoney -= 200;
+               te--;
+               qs++;
+            }
+            else
+            {
+               if ( tian[te] > qi[qs] )
+               {
+                  nMoney += 200;
+                  te--;
+                  qs++;
+               }
+               else
+               {
+                  if ( tian[te] < qi[qs] )
+                  {
+                     nMoney -= 200;
+                  }
+
+                  te--;
+                  qs++;
+               }
+            }
+         }
+      }
+
+      printf("%d\n", nMoney);
+   }
+
+   return 0;
+}

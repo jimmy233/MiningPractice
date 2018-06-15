@@ -1,0 +1,59 @@
+struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+dot[10];
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    VAR_233;
+   int    VAR_666;
+   double distance[10][10];
+   double VAR__temp;
+   double VAR__MAX;
+   double VAR__MIN = 200;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> dot[VAR__53647].VAR__7685 ) >> dot[VAR__53647].VAR__3918907 ) >> dot[VAR__53647].VAR__9290;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         distance[VAR__53647][VAR__21230] = sqrt(((( dot[VAR__53647].VAR__7685 - dot[VAR__21230].VAR__7685 ) * ( dot[VAR__53647].VAR__7685 - dot[VAR__21230].VAR__7685 )) + (( dot[VAR__53647].VAR__3918907 - dot[VAR__21230].VAR__3918907 ) * ( dot[VAR__53647].VAR__3918907 - dot[VAR__21230].VAR__3918907 ))) + (( dot[VAR__53647].VAR__9290 - dot[VAR__21230].VAR__9290 ) * ( dot[VAR__53647].VAR__9290 - dot[VAR__21230].VAR__9290 )));
+         VAR__MIN = ( distance[VAR__53647][VAR__21230] < VAR__MIN ) ? ( distance[VAR__53647][VAR__21230] ) : ( VAR__MIN );
+      }
+   }
+
+
+   for ( VAR__8444594 = 0; VAR__8444594 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__8444594++ )
+   {
+      VAR__MAX = VAR__MIN;
+      for ( VAR__53647 = VAR_1238123 - 2; VAR__53647 >= 0; VAR__53647-- )
+      {
+         for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 >= ( VAR__53647 + 1 ); VAR__21230-- )
+         {
+            if ( VAR__MAX <= distance[VAR__53647][VAR__21230] )
+            {
+               VAR__MAX = distance[VAR__53647][VAR__21230];
+               VAR_233  = VAR__53647;
+               VAR_666  = VAR__21230;
+            }
+         }
+      }
+
+
+      (((((((((((((((( cout << "(" ) << dot[VAR_233].VAR__7685 ) << "," ) << dot[VAR_233].VAR__3918907 ) << "," ) << dot[VAR_233].VAR__9290 ) << ")-(" ) << dot[VAR_666].VAR__7685 ) << "," ) << dot[VAR_666].VAR__3918907 ) << "," ) << dot[VAR_666].VAR__9290 ) << ")=" ) << fixed ) << setprecision(2)) << distance[VAR_233][VAR_666] ) << endl;
+      distance[VAR_233][VAR_666] = 0;
+   }
+
+   return 0;
+}

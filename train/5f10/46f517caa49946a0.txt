@@ -1,0 +1,74 @@
+char strin[503]             = { 0 };
+char YET_ANOTHER_STRING[10] = { 0 };
+int  jilu[500] = { 0 };
+int  used[500] = { 0 };
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int LEN_OF_STH;
+   int VAR__8444594;
+   int VAR_1238123;
+   int pd      = 0;
+   int maxtime = 0;
+
+   cin >> VAR_1238123;
+   getchar();
+   cin.getline(strin, 500);
+   LEN_OF_STH = strlen(strin);
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         YET_ANOTHER_STRING[VAR__21230] = strin[VAR__53647 + VAR__21230];
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 <= ( LEN_OF_STH - VAR_1238123 ); VAR__8444594++ )
+      {
+         if ( used[VAR__8444594] == 1 )
+         {
+            continue;
+         }
+
+         pd = 1;
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( strin[VAR__8444594 + VAR__21230] != YET_ANOTHER_STRING[VAR__21230] )
+            {
+               pd = 0;
+            }
+         }
+
+         if ( pd == 1 )
+         {
+            jilu[VAR__53647]++;
+            used[VAR__8444594] = 1;
+         }
+      }
+
+      maxtime = ( maxtime > jilu[VAR__53647] ) ? ( maxtime ) : ( jilu[VAR__53647] );
+   }
+
+   if ( maxtime == 1 )
+   {
+      cout << "NO";
+   }
+   else
+   {
+      ( cout << maxtime ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+      {
+         if ( jilu[VAR__53647] == maxtime )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               cout << strin[VAR__53647 + VAR__21230];
+            }
+
+            cout << endl;
+         }
+      }
+   }
+
+   return 0;
+}

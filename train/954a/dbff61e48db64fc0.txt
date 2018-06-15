@@ -1,0 +1,72 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int summoney = 0;
+
+   scanf("%d", &VAR_1238123);
+   struct data
+   {
+      char name[50];
+      int  grade;
+      int  classgrade;
+      int  papers;
+      char monitor;
+      char west;
+      int  money;
+   }
+   *number;
+   number = (struct data *)malloc(( sizeof( data )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", number[VAR__53647].name, &number[VAR__53647].grade, &number[VAR__53647].classgrade, &number[VAR__53647].monitor, &number[VAR__53647].west, &number[VAR__53647].papers);
+      number[VAR__53647].money = 0;
+
+      if (( number[VAR__53647].grade > 80 ) && ( number[VAR__53647].papers >= 1 ))
+      {
+         number[VAR__53647].money += 8000;
+      }
+
+      if (( number[VAR__53647].grade > 85 ) && ( number[VAR__53647].classgrade > 80 ))
+      {
+         number[VAR__53647].money += 4000;
+      }
+
+      if ( number[VAR__53647].grade > 90 )
+      {
+         number[VAR__53647].money += 2000;
+      }
+
+      if (( number[VAR__53647].grade > 85 ) && ( number[VAR__53647].west == 'Y' ))
+      {
+         number[VAR__53647].money += 1000;
+      }
+
+      if (( number[VAR__53647].classgrade > 80 ) && ( number[VAR__53647].monitor == 'Y' ))
+      {
+         number[VAR__53647].money += 850;
+      }
+
+      summoney += number[VAR__53647].money;
+   }
+
+   int VAR__819283;
+   int VAR__8444594;
+   VAR__819283  = number[VAR_1238123 - 1].money;
+   VAR__8444594 = 0;
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      if ( VAR__819283 > number[VAR__53647 - 1].money )
+      {
+         VAR__819283 = VAR__819283;
+      }
+      else
+      {
+         VAR__819283  = number[VAR__53647 - 1].money;
+         VAR__8444594 = VAR__53647 - 1;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", number[VAR__8444594].name, number[VAR__8444594].money, summoney);
+   return 0;
+}

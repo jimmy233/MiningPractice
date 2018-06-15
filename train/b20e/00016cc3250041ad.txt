@@ -1,0 +1,103 @@
+int Compare(const void *VAR__819283, const void *VAR__19328);
+int WinCount(int *Q, int *T, int VAR_1238123);
+int VAR__MAX(int VAR__819283, int VAR__19328);
+
+int main()
+{
+   int  VAR_1238123;
+   int  TianJi[1000];
+   int  QiWang[1000];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  *pwin[1000];
+   FILE *fp;
+
+   fp = fopen("horse.txt", "r");
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if (( pwin[VAR__53647] = (int *)malloc(( sizeof( int )) * 1000)) == NULL )
+      {
+         printf("Error: memory out!");
+         return 1;
+      }
+   }
+
+   while ( 1 )
+   {
+      fscanf(fp, "%d", &VAR_1238123);
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         fscanf(fp, "%d", &TianJi[VAR__53647]);
+         scanf("%d", &TianJi[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         fscanf(fp, "%d", &QiWang[VAR__53647]);
+         scanf("%d", &QiWang[VAR__53647]);
+      }
+
+      qsort((void *)( &TianJi[0] ), VAR_1238123, sizeof( int ), Compare);
+      qsort((void *)( &QiWang[0] ), VAR_1238123, sizeof( int ), Compare);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( TianJi[0] > QiWang[VAR__53647] )
+         {
+            *( pwin[VAR__53647] + 0 ) = 1;
+         }
+         else
+         if ( TianJi[0] < QiWang[VAR__53647] )
+         {
+            *( pwin[VAR__53647] + 0 ) = -1;
+         }
+         else
+         {
+            *( pwin[VAR__53647] + 0 ) = 0;
+         }
+      }
+
+      for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__53647 = ( VAR_1238123 - 1 ) - VAR__21230; VAR__53647 >= 0; VAR__53647-- )
+         {
+            if ( TianJi[VAR__21230] > QiWang[VAR__53647 + VAR__21230] )
+            {
+               *( pwin[VAR__53647] + VAR__21230 ) = ( *(( pwin[VAR__53647] + VAR__21230 ) - 1 )) + 1;
+            }
+            else
+            if ( TianJi[VAR__21230] < QiWang[VAR__53647 + VAR__21230] )
+            {
+               *( pwin[VAR__53647] + VAR__21230 ) = ( *(( pwin[VAR__53647 + 1] + VAR__21230 ) - 1 )) - 1;
+            }
+            else
+            {
+               *( pwin[VAR__53647] + VAR__21230 ) = VAR__MAX(*(( pwin[VAR__53647] + VAR__21230 ) - 1 ), ( *(( pwin[VAR__53647 + 1] + VAR__21230 ) - 1 )) - 1);
+            }
+         }
+      }
+
+      printf("%d\n", ( *(( pwin[0] + VAR_1238123 ) - 1 )) * 200);
+   }
+
+   fclose(fp);
+   return 0;
+}
+
+
+int Compare(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   return ( VAR__819283 > VAR__19328 ) ? ( VAR__819283 ) : ( VAR__19328 );
+}

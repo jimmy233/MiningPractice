@@ -1,0 +1,63 @@
+void insertSort(float *arr, long LEN_OF_STH)
+{
+   long  VAR__53647 = 0;
+   long  VAR__21230 = 0;
+   float tmpData;
+
+   for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__21230 = VAR__53647;
+      tmpData    = *( arr + VAR__53647 );
+
+      while (( VAR__21230 > 0 ) && ( tmpData < arr[VAR__21230 - 1] ))
+      {
+         arr[VAR__21230] = arr[VAR__21230 - 1];
+         VAR__21230--;
+      }
+
+      arr[VAR__21230] = tmpData;
+   }
+}
+
+
+int main()
+{
+   int   VAR_1238123 = 0;
+   float male[40];
+   float female[40];
+   int   maleNum   = 0;
+   int   femaleNum = 0;
+   char  sex[10];
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      scanf("%s", sex);
+
+      if ( strcmp(sex, "male") == 0 )
+      {
+         scanf("%f", &male[maleNum++]);
+      }
+      else
+      {
+         scanf("%f", &female[femaleNum++]);
+      }
+   }
+
+   insertSort(male, maleNum);
+   insertSort(female, femaleNum);
+   int VAR__53647 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( maleNum - 1 ); ++VAR__53647 )
+   {
+      printf("%.2f ", male[VAR__53647]);
+   }
+
+   printf("%.2f ", male[VAR__53647]);
+   for ( VAR__53647 = femaleNum - 1; VAR__53647 > 0; --VAR__53647 )
+   {
+      printf("%.2f ", female[VAR__53647]);
+   }
+
+   printf("%.2f", female[VAR__53647]);
+   return 0;
+}

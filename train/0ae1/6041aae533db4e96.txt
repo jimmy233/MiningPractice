@@ -1,0 +1,120 @@
+struct date
+{
+   int century;
+   int year;
+   int month;
+   int day;
+};
+int runnian(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+long int day_from_cen_begin(struct date VAR__12302)
+{
+   long int day = 0;
+   int      VAR__53647;
+
+   for ( VAR__53647 = 100 * VAR__12302.century; VAR__53647 < VAR__12302.year; VAR__53647++ )
+   {
+      if ( runnian(VAR__53647))
+      {
+         day = day + 366;
+      }
+      else
+      {
+         day = day + 365;
+      }
+
+      day = day % 7;
+   }
+
+   day = day % 7;
+   for ( int VAR__21230 = 1; VAR__21230 < VAR__12302.month; VAR__21230++ )
+   {
+      if ((((((( VAR__21230 == 1 ) || ( VAR__21230 == 3 )) || ( VAR__21230 == 5 )) || ( VAR__21230 == 7 )) || ( VAR__21230 == 8 )) || ( VAR__21230 == 10 )) || ( VAR__21230 == 12 ))
+      {
+         day = day + 31;
+      }
+
+      if (((( VAR__21230 == 4 ) || ( VAR__21230 == 6 )) || ( VAR__21230 == 9 )) || ( VAR__21230 == 11 ))
+      {
+         day = day + 30;
+      }
+
+      if ( VAR__21230 == 2 )
+      {
+         if ( runnian(VAR__12302.year))
+         {
+            day = day + 29;
+         }
+         else
+         {
+            day = day + 28;
+         }
+      }
+   }
+
+   day = ( day + VAR__12302.day ) - 1;
+   day = day % 7;
+   return day;
+}
+
+
+void putout(int VAR_FLAG)
+{
+   char VAR_9494[7][5] = { "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun." };
+
+   ( cout << VAR_9494[VAR_FLAG % 7] ) << endl;
+}
+
+
+int main()
+{
+   struct date VAR__12302;
+   int         cen;
+   int         VAR_FLAG;
+   int         VAR__53647;
+   int         VAR__1238129 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR__1238129++;
+      VAR__1238129 = (( VAR__1238129 * 8 ) / ( VAR__1238129 - 32 )) + VAR__1238129;
+   }
+
+   (( cin >> VAR__12302.year ) >> VAR__12302.month ) >> VAR__12302.day;
+   VAR__12302.century = VAR__12302.year / 100;
+
+   if (( VAR__12302.century % 4 ) == 0 )
+   {
+      cen = 0;
+   }
+
+   if (( VAR__12302.century % 4 ) == 1 )
+   {
+      cen = 6;
+   }
+
+   if (( VAR__12302.century % 4 ) == 2 )
+   {
+      cen = 4;
+   }
+
+   if (( VAR__12302.century % 4 ) == 3 )
+   {
+      cen = 2;
+   }
+
+   VAR_FLAG = day_from_cen_begin(VAR__12302) + cen;
+   VAR_FLAG = VAR_FLAG + 5;
+   putout(VAR_FLAG);
+}

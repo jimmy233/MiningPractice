@@ -1,0 +1,59 @@
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   char num1[32];
+   int  num2[32] = { 0 };
+   long VAR__NUM;
+   int  VAR__53647;
+   int  lenth;
+
+   scanf("%d %s %d", &VAR__819283, num1, &VAR__19328);
+   for ( lenth = 0; num1[lenth] != '\0'; lenth++ )
+   {
+      if ( num1[lenth] <= '9' )
+      {
+         num1[lenth] -= '0';
+      }
+      else
+      {
+         num1[lenth] -= 'A' - 10;
+      }
+
+      if ( num1[lenth] >= 35 )
+      {
+         num1[lenth] -= 32;
+      }
+   }
+
+   for ( VAR__53647 = 1, VAR__NUM = num1[0]; VAR__53647 < lenth; VAR__53647++ )
+   {
+      VAR__NUM = ( VAR__NUM * VAR__819283 ) + num1[VAR__53647];
+   }
+
+   for ( VAR__53647 = 31; VAR__NUM >= VAR__19328; VAR__53647-- )
+   {
+      num2[VAR__53647] = ( VAR__NUM % VAR__19328 ) + 1;
+      VAR__NUM        /= VAR__19328;
+   }
+
+   num2[VAR__53647] = VAR__NUM + 1;
+   for ( VAR__53647 = 0; VAR__53647 < 32; VAR__53647++ )
+   {
+      if ( num2[VAR__53647] == 0 )
+      {
+         continue;
+      }
+      else
+      if ( num2[VAR__53647] < 10 )
+      {
+         printf("%d", num2[VAR__53647] - 1);
+      }
+      else
+      {
+         printf("%c", ( num2[VAR__53647] + 'A' ) - 11);
+      }
+   }
+
+   return 1;
+}

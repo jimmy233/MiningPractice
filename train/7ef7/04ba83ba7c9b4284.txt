@@ -1,0 +1,96 @@
+int VAR__SUM = 0;
+int main()
+{
+   void Subtraction(int [100][100], int);
+
+   int VAR_1238123 = 0;
+   cin >> VAR_1238123;
+   int VAR__819283[100][100];
+   for ( int VAR__127322 = 1; VAR__127322 <= VAR_1238123; VAR__127322++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            cin >> VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+      VAR__SUM = 0;
+      Subtraction(VAR__819283, VAR_1238123);
+
+      if ( VAR__127322 == VAR_1238123 )
+      {
+         cout << VAR__SUM;
+      }
+      else
+      {
+         ( cout << VAR__SUM ) << endl;
+      }
+   }
+
+   return 0;
+}
+
+
+void Subtraction(int VAR__1238129[100][100], int VAR_1238123)
+{
+   if ( VAR_1238123 != 1 )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         int VAR__MIN = VAR__1238129[VAR__53647][0];
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            if ( VAR__MIN > VAR__1238129[VAR__53647][VAR__21230] )
+            {
+               VAR__MIN = VAR__1238129[VAR__53647][VAR__21230];
+            }
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            VAR__1238129[VAR__53647][VAR__21230] -= VAR__MIN;
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         int VAR__MIN = VAR__1238129[0][VAR__53647];
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            if ( VAR__MIN > VAR__1238129[VAR__21230][VAR__53647] )
+            {
+               VAR__MIN = VAR__1238129[VAR__21230][VAR__53647];
+            }
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            VAR__1238129[VAR__21230][VAR__53647] -= VAR__MIN;
+         }
+      }
+
+      VAR__SUM += VAR__1238129[1][1];
+      int mtuta[100][100];
+      for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         if ( VAR__53647 == 1 )
+         {
+            continue;
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            if ( VAR__21230 == 1 )
+            {
+               continue;
+            }
+
+            mtuta[VAR__53647 - ( VAR__53647 != 0 )][VAR__21230 - ( VAR__21230 != 0 )] = VAR__1238129[VAR__53647][VAR__21230];
+         }
+      }
+
+      Subtraction(mtuta, VAR_1238123 - 1);
+   }
+}

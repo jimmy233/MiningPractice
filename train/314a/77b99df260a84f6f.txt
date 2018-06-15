@@ -1,0 +1,141 @@
+int main()
+{
+   int  VAR_1238123 = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__TEMP = 0;
+   char cinx[100000];
+   char ciny[100000];
+   int  VAR__7685[1000];
+   int  VAR__3918907[1000];
+   int  VAR__temp[1000];
+   int  LEN_OF_STH;
+   int  lenx     = 0;
+   int  leny     = 0;
+   int  VAR__MAX = 0;
+   int  maxi;
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      VAR__7685[VAR__53647]    = 0;
+      VAR__3918907[VAR__53647] = 0;
+      VAR__temp[VAR__53647]    = 0;
+   }
+
+   cin.getline(cinx, 100001, '\n');
+   LEN_OF_STH = strlen(cinx);
+   for ( VAR__53647 = 0; VAR__53647 < 100000; VAR__53647++ )
+   {
+      if ( cinx[VAR__53647] == ',' )
+      {
+         VAR_1238123++;
+      }
+   }
+
+
+   VAR_1238123++;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( cinx[VAR__53647] != ',' )
+      {
+         lenx++;
+      }
+      else
+      {
+         for ( VAR__21230 = lenx - 1; VAR__21230 >= 0; VAR__21230-- )
+         {
+            VAR__7685[VAR__TEMP] = VAR__7685[VAR__TEMP] + (((int)( cinx[( VAR__53647 - VAR__21230 ) - 1] - '0' )) * pow(10.0, VAR__21230));
+         }
+
+         lenx = 0;
+         VAR__TEMP++;
+      }
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( cinx[VAR__53647] == ',' )
+      {
+         VAR__21230++;
+      }
+
+      if ( VAR__21230 == ( VAR_1238123 - 1 ))
+      {
+         break;
+      }
+   }
+
+   lenx = ( LEN_OF_STH - VAR__53647 ) - 1;
+   for ( VAR__21230 = lenx - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      VAR__7685[VAR__TEMP] = VAR__7685[VAR__TEMP] + (((int)( cinx[( LEN_OF_STH - VAR__21230 ) - 1] - '0' )) * pow(10.0, VAR__21230));
+   }
+
+   cin.getline(ciny, 100001, '\n');
+   LEN_OF_STH = strlen(ciny);
+   VAR__TEMP  = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( ciny[VAR__53647] != ',' )
+      {
+         leny++;
+      }
+      else
+      {
+         for ( VAR__21230 = leny - 1; VAR__21230 >= 0; VAR__21230-- )
+         {
+            VAR__3918907[VAR__TEMP] = VAR__3918907[VAR__TEMP] + (((int)( ciny[( VAR__53647 - VAR__21230 ) - 1] - '0' )) * pow(10.0, VAR__21230));
+         }
+
+         leny = 0;
+         VAR__TEMP++;
+      }
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( ciny[VAR__53647] == ',' )
+      {
+         VAR__21230++;
+      }
+
+      if ( VAR__21230 == ( VAR_1238123 - 1 ))
+      {
+         break;
+      }
+   }
+
+   leny = ( LEN_OF_STH - VAR__53647 ) - 1;
+   for ( VAR__21230 = leny - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      VAR__3918907[VAR__TEMP] = VAR__3918907[VAR__TEMP] + (((int)( ciny[( LEN_OF_STH - VAR__21230 ) - 1] - '0' )) * pow(10.0, VAR__21230));
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 1000; VAR__21230++ )
+      {
+         if (( VAR__21230 >= VAR__7685[VAR__53647] ) && ( VAR__21230 < VAR__3918907[VAR__53647] ))
+         {
+            VAR__temp[VAR__21230]++;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if ( VAR__temp[VAR__53647] > VAR__MAX )
+      {
+         maxi     = VAR__53647;
+         VAR__MAX = VAR__temp[VAR__53647];
+      }
+   }
+
+
+   ((( cout << VAR_1238123 ) << " " ) << VAR__MAX ) << endl;
+   return 0;
+}

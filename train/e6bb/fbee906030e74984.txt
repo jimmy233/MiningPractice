@@ -1,0 +1,62 @@
+int VAR__1238129;
+int VAR_1238123;
+int board[2][9][9] = { 0 };
+void fanzhi(int VAR__8444594)
+{
+   if ( VAR__8444594 == VAR_1238123 )
+   {
+      return;
+   }
+
+   int VAR_9494 = VAR__8444594 % 2;
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         board[1 - VAR_9494][VAR__53647 - 1][VAR__21230]     += board[VAR_9494][VAR__53647][VAR__21230];
+         board[1 - VAR_9494][VAR__53647 + 1][VAR__21230]     += board[VAR_9494][VAR__53647][VAR__21230];
+         board[1 - VAR_9494][VAR__53647][VAR__21230 - 1]     += board[VAR_9494][VAR__53647][VAR__21230];
+         board[1 - VAR_9494][VAR__53647][VAR__21230 + 1]     += board[VAR_9494][VAR__53647][VAR__21230];
+         board[1 - VAR_9494][VAR__53647 + 1][VAR__21230 + 1] += board[VAR_9494][VAR__53647][VAR__21230];
+         board[1 - VAR_9494][VAR__53647 - 1][VAR__21230 + 1] += board[VAR_9494][VAR__53647][VAR__21230];
+         board[1 - VAR_9494][VAR__53647 + 1][VAR__21230 - 1] += board[VAR_9494][VAR__53647][VAR__21230];
+         board[1 - VAR_9494][VAR__53647 - 1][VAR__21230 - 1] += board[VAR_9494][VAR__53647][VAR__21230];
+         board[1 - VAR_9494][VAR__53647][VAR__21230]         += board[VAR_9494][VAR__53647][VAR__21230] * 2;
+         board[VAR_9494][VAR__53647][VAR__21230]              = 0;
+      }
+   }
+
+   fanzhi(VAR__8444594 + 1);
+}
+
+
+int main()
+{
+   cin >> VAR__1238129;
+   cin >> VAR_1238123;
+   board[0][4][4] = VAR__1238129;
+   fanzhi(0);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_233 = VAR_1238123 % 2;
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      int shou = 0;
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( shou != 0 )
+         {
+            cout << " ";
+         }
+
+         shou = 1;
+         cout << board[VAR_233][VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

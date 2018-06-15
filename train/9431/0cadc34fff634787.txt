@@ -1,0 +1,53 @@
+struct stu
+{
+   char       xinxi[100];
+   struct stu *down;
+};
+int VAR_1238123 = 0;
+struct stu *creat()
+{
+   struct stu *top                 = NULL;
+   struct stu *ANOTHER_POINTER     = NULL;
+   struct stu *YET_ANOTHER_POINTER = NULL;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(LEN));
+   gets(ANOTHER_POINTER->xinxi);
+
+   while ( ANOTHER_POINTER->xinxi[0] != 'e' )
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 == 1 )
+      {
+         ANOTHER_POINTER->down = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->down = YET_ANOTHER_POINTER;
+      }
+
+      top = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(LEN);
+      gets(ANOTHER_POINTER->xinxi);
+   }
+
+   return top;
+}
+
+
+void main()
+{
+   struct stu *top;
+   struct stu *VAR_233;
+
+   top     = creat();
+   VAR_233 = top;
+
+   while ( VAR_1238123 != 0 )
+   {
+      VAR_1238123--;
+      puts(VAR_233->xinxi);
+      VAR_233 = VAR_233->down;
+   }
+}

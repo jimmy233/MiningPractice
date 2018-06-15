@@ -1,0 +1,86 @@
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   index_male   = 0;
+   int   index_female = 0;
+   char  sex[10];
+   float *male;
+   float *female;
+   float VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   male   = (float *)malloc(( sizeof( float )) * VAR_1238123);
+   female = (float *)malloc(( sizeof( float )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      male[VAR__53647]   = 0;
+      female[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", sex);
+
+      if ( strcmp(sex, "male") == 0 )
+      {
+         scanf("%f", &VAR__TEMP);
+         male[index_male] = VAR__TEMP;
+         index_male++;
+      }
+      else
+      {
+         scanf("%f", &VAR__TEMP);
+         female[index_female] = VAR__TEMP;
+         index_female++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( male[VAR__21230] > male[VAR__21230 + 1] )
+         {
+            VAR__TEMP            = male[VAR__21230];
+            male[VAR__21230]     = male[VAR__21230 + 1];
+            male[VAR__21230 + 1] = VAR__TEMP;
+         }
+
+         if ( female[VAR__21230] < female[VAR__21230 + 1] )
+         {
+            VAR__TEMP              = female[VAR__21230];
+            female[VAR__21230]     = female[VAR__21230 + 1];
+            female[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( male[VAR__53647] != 0 )
+      {
+         printf("%3.2f", male[VAR__53647]);
+      }
+
+      if ((( male[VAR__53647] != 0 ) && (( VAR__53647 + 1 ) < VAR_1238123 )) && ( male[VAR__53647 + 1] != 0 ))
+      {
+         printf(" ");
+      }
+   }
+
+   printf(" ");
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( female[VAR__53647] != 0 )
+      {
+         printf("%3.2f", female[VAR__53647]);
+      }
+
+      if ((( female[VAR__53647] != 0 ) && (( VAR__53647 + 1 ) < VAR_1238123 )) && ( female[VAR__53647 + 1] != 0 ))
+      {
+         printf(" ");
+      }
+   }
+}

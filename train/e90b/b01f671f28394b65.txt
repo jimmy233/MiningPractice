@@ -1,0 +1,37 @@
+struct student
+{
+   int id;
+   int chinese;
+   int math;
+   int total;
+};
+int main()
+{
+   int            number;
+   struct student stu[100000];
+
+   scanf("%d\n", &number);
+   for ( int VAR__53647 = 1; VAR__53647 <= number; ++VAR__53647 )
+   {
+      scanf("%d%d%d", &stu[VAR__53647].id, &stu[VAR__53647].chinese, &stu[VAR__53647].math);
+      stu[VAR__53647].total = stu[VAR__53647].chinese + stu[VAR__53647].math;
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= 3; ++VAR__53647 )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 <= number; ++VAR__21230 )
+      {
+         if ( stu[VAR__53647].total < stu[VAR__21230].total )
+         {
+            struct student VAR__TEMP;
+            VAR__TEMP       = stu[VAR__53647];
+            stu[VAR__53647] = stu[VAR__21230];
+            stu[VAR__21230] = VAR__TEMP;
+         }
+      }
+
+      printf("%d %d\n", stu[VAR__53647].id, stu[VAR__53647].total);
+   }
+
+   return 0;
+}

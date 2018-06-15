@@ -1,0 +1,97 @@
+int main()
+{
+   struct sub
+   {
+      char VAR__819283[5];
+      int  counter;
+   }
+   sub[500];
+   struct sub
+   {
+      char VAR__819283[5];
+      int  counter;
+   }
+   *ANOTHER_POINTER = sub;
+   struct sub
+   {
+      char VAR__819283[5];
+      int  counter;
+   }
+        *YET_ANOTHER_POINTER;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  counter = 0;
+   int  mark;
+   int  VAR_FLAG;
+   int  VAR__MAX = 0;
+   char A_STRING[501];
+   char *pstr1;
+   char *pstr2;
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", &A_STRING);
+   LEN_OF_STH = strlen(A_STRING);
+   pstr2      = A_STRING;
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH + 1 ) - VAR_1238123 ); VAR__53647++ )
+   {
+      pstr1 = ( ANOTHER_POINTER + VAR__53647 )->VAR__819283;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         *( pstr1 + VAR__21230 ) = *(( pstr2 + VAR__53647 ) + VAR__21230 );
+      }
+
+      *( pstr1 + VAR_1238123 ) = '\0';
+      counter++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < counter; VAR__53647++ )
+   {
+      mark  = 1;
+      pstr1 = ( ANOTHER_POINTER + VAR__53647 )->VAR__819283;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < counter; VAR__21230++ )
+      {
+         pstr2    = ( ANOTHER_POINTER + VAR__21230 )->VAR__819283;
+         VAR_FLAG = 0;
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            if (( *( pstr1 + VAR__8444594 )) == ( *( pstr2 + VAR__8444594 )))
+            {
+               VAR_FLAG++;
+            }
+         }
+
+         if ( VAR_FLAG == VAR_1238123 )
+         {
+            mark++;
+         }
+      }
+
+      if ( mark > VAR__MAX )
+      {
+         VAR__MAX = mark;
+      }
+
+      ( ANOTHER_POINTER + VAR__53647 )->counter = mark;
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < counter; VAR__53647++ )
+      {
+         if (( ANOTHER_POINTER + VAR__53647 )->counter == VAR__MAX )
+         {
+            printf("%s\n", ( ANOTHER_POINTER + VAR__53647 )->VAR__819283);
+         }
+      }
+   }
+
+   return 0;
+}

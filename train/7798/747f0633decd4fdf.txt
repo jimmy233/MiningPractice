@@ -1,0 +1,85 @@
+struct book
+{
+   int         VAR__NUM;
+   char        au[30];
+   struct book *VAR__NEXT;
+};
+void main()
+{
+   int VAR__1238129;
+
+   scanf("%d", &VAR__1238129);
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   struct book *VAR__HEAD;
+   ANOTHER_POINTER = (struct book *)malloc(LEN);
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->au);
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   VAR__HEAD           = ANOTHER_POINTER;
+   int VAR_1238123 = 1;
+
+   while ( VAR_1238123 < VAR__1238129 )
+   {
+      ANOTHER_POINTER = (struct book *)malloc(LEN);
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->au);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      VAR_1238123++;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   char        maxa;
+   char        author;
+   char        VAR__TEMP[30];
+   int         an;
+   int         maxn = 0;
+   int         VAR__53647;
+   struct book *VAR_233;
+   for ( author = 'A'; author <= 'Z'; )
+   {
+      VAR_233 = VAR__HEAD;
+      an      = 0;
+
+      while ( VAR_233 )
+      {
+         strcpy(VAR__TEMP, VAR_233->au);
+         for ( VAR__53647 = 0; VAR__TEMP[VAR__53647] != '\0'; VAR__53647++ )
+         {
+            if ( VAR__TEMP[VAR__53647] == author )
+            {
+               an++;
+               break;
+            }
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      if ( an > maxn )
+      {
+         maxa = author;
+         maxn = an;
+      }
+
+      author = author + 1;
+   }
+
+   printf("%c\n%d", maxa, maxn);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      strcpy(VAR__TEMP, VAR_233->au);
+      for ( VAR__53647 = 0; VAR__TEMP[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( VAR__TEMP[VAR__53647] == maxa )
+         {
+            printf("\n");
+            printf("%d", VAR_233->VAR__NUM);
+            break;
+         }
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

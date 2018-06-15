@@ -1,0 +1,79 @@
+int main()
+{
+   double VAR__819283;
+   double VAR__19328;
+   int    VAR__53647;
+   int    L1;
+   int    L2;
+   char   VAR_1238123[32];
+   char   VAR__1238129[32];
+   int    VAR_233[32];
+   int    VAR_666[32];
+
+   (( cin >> VAR__819283 ) >> VAR_1238123 ) >> VAR__19328;
+   L1 = strlen(VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < L1; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = VAR_1238123[VAR__53647];
+
+      if ( VAR_233[VAR__53647] >= 97 )
+      {
+         VAR_233[VAR__53647] = VAR_233[VAR__53647] - 87;
+      }
+      else
+      if ( VAR_233[VAR__53647] >= 65 )
+      {
+         VAR_233[VAR__53647] = VAR_233[VAR__53647] - 55;
+      }
+      else
+      {
+         VAR_233[VAR__53647] = VAR_233[VAR__53647] - 48;
+      }
+   }
+
+   int dec = 0;
+   for ( VAR__53647 = 0; VAR__53647 < L1; VAR__53647++ )
+   {
+      dec = dec + ( VAR_233[VAR__53647] * pow(VAR__819283, ( L1 - 1 ) - VAR__53647));
+   }
+
+   if ( dec == 0 )
+   {
+      cout << "0";
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 32; VAR__53647++ )
+      {
+         if ( pow(VAR__19328, VAR__53647) > dec )
+         {
+            L2 = VAR__53647;
+            break;
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < L2; VAR__53647++ )
+      {
+         VAR_666[VAR__53647] = dec / ((int)pow(VAR__19328, ( L2 - 1 ) - VAR__53647));
+         dec = dec - ( VAR_666[VAR__53647] * pow(VAR__19328, ( L2 - 1 ) - VAR__53647));
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < L2; VAR__53647++ )
+      {
+         if ( VAR_666[VAR__53647] < 10 )
+         {
+            VAR__1238129[VAR__53647] = VAR_666[VAR__53647] + 48;
+         }
+         else
+         {
+            VAR__1238129[VAR__53647] = VAR_666[VAR__53647] + 55;
+         }
+      }
+
+      VAR__1238129[L2] = '\0';
+      cout << VAR__1238129;
+   }
+
+   return 0;
+}

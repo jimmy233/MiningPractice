@@ -1,0 +1,56 @@
+int VAR_1238123;
+int s1[MN];
+int s2[MN];
+int Cmp(int VAR__819283, int VAR__19328)
+{
+   if ( s1[VAR__819283] > s2[VAR__19328] )
+   {
+      return 200;
+   }
+
+   if ( s1[VAR__819283] == s2[VAR__19328] )
+   {
+      return 0;
+   }
+
+   return -200;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int ans;
+   int VAR__8444594;
+
+   while ( scanf("%d", &VAR_1238123), VAR_1238123 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", s1 + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", s2 + VAR__53647);
+      }
+
+      sort(s1, s1 + VAR_1238123);
+      sort(s2, s2 + VAR_1238123);
+      ans = -1000000;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__8444594 = 0;
+         for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__8444594 += Cmp(VAR__21230, VAR__21230 - VAR__53647);
+         }
+
+         VAR__8444594 -= 200 * VAR__53647;
+         ans           = VAR__MAX(ans, VAR__8444594);
+      }
+
+      printf("%d\n", ans);
+   }
+}

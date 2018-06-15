@@ -1,0 +1,69 @@
+int  VAR_1238123;
+char words[1000][100];
+int  wordlen[1000];
+int  longsum = 0;
+void out(int location)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = location; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      longsum = ( longsum + wordlen[VAR__53647] ) + 1;
+
+      if (( longsum - 1 ) > 80 )
+      {
+         for ( VAR__21230 = location; VAR__21230 <= ( VAR__53647 - 2 ); VAR__21230++ )
+         {
+            ( cout << words[VAR__21230] ) << ' ';
+         }
+
+         ( cout << words[VAR__53647 - 1] ) << endl;
+         break;
+      }
+
+      if (( longsum - 1 ) == 80 )
+      {
+         for ( VAR__21230 = location; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+         {
+            ( cout << words[VAR__21230] ) << ' ';
+         }
+
+         ( cout << words[VAR__53647] ) << endl;
+         VAR__53647++;
+         break;
+      }
+
+      if ( VAR__53647 == ( VAR_1238123 - 1 ))
+      {
+         for ( VAR__21230 = location; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            ( cout << words[VAR__21230] ) << ' ';
+         }
+
+         ( cout << words[VAR_1238123 - 1] ) << endl;
+         return;
+      }
+   }
+
+   longsum  = 0;
+   location = VAR__53647;
+   out(location);
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> words[VAR__53647];
+      wordlen[VAR__53647] = strlen(words[VAR__53647]);
+   }
+
+   out(0);
+   return 0;
+}

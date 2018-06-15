@@ -1,0 +1,85 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_1238123;
+   int  chsum            = 0;
+   int  VAR__1111        = 0;
+   int  VAR__temp        = 0;
+   int  maxnum           = 1;
+   int  VAR__819283[600] = { 0 };
+   char ch[600][10];
+   char ch1[700];
+   char VAR__TEMP[10];
+
+   ( cin >> VAR_1238123 ) >> ch1;
+   VAR__1111 = strlen(ch1);
+   for ( VAR__8444594 = 0; VAR__8444594 <= ( VAR__1111 - VAR_1238123 ); VAR__8444594++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__TEMP[VAR__21230] = ch1[VAR__8444594 + VAR__21230];
+      }
+
+      VAR__temp = 0;
+      for ( VAR__53647 = 1; VAR__53647 <= chsum; VAR__53647++ )
+      {
+         VAR__temp = 1;
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( ch[VAR__53647][VAR__21230] != VAR__TEMP[VAR__21230] )
+            {
+               VAR__temp = 0;
+               break;
+            }
+         }
+
+         if ( VAR__temp == 1 )
+         {
+            VAR__819283[VAR__53647]++;
+
+            if ( VAR__819283[VAR__53647] > maxnum )
+            {
+               maxnum = VAR__819283[VAR__53647];
+            }
+
+            break;
+         }
+      }
+
+      if ( VAR__temp == 0 )
+      {
+         chsum++;
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            ch[chsum][VAR__53647] = VAR__TEMP[VAR__53647];
+         }
+
+         VAR__819283[chsum]++;
+      }
+   }
+
+   if ( maxnum > 1 )
+   {
+      ( cout << maxnum ) << endl;
+      for ( VAR__53647 = 1; VAR__53647 <= chsum; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == maxnum )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               cout << ch[VAR__53647][VAR__21230];
+            }
+
+            cout << endl;
+         }
+      }
+   }
+   else
+   {
+      cout << "NO";
+   }
+
+   return 0;
+}

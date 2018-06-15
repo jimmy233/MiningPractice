@@ -1,0 +1,81 @@
+void change(char ch[], int VAR__819283[])
+{
+   int VAR__53647;
+   int nc;
+
+   nc = strlen(ch);
+   for ( VAR__53647 = 0; VAR__53647 < nc; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = ch[VAR__53647] - 48;
+   }
+}
+
+
+void minus(int VAR__819283[], int VAR__19328[], int na, int nb)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 <= nb; VAR__53647++ )
+   {
+      if ( VAR__819283[na - VAR__53647] < VAR__19328[nb - VAR__53647] )
+      {
+         VAR__819283[( na - VAR__53647 ) - 1]--;
+         VAR__819283[na - VAR__53647] = ( VAR__819283[na - VAR__53647] - VAR__19328[nb - VAR__53647] ) + 10;
+      }
+      else
+      {
+         VAR__819283[na - VAR__53647] -= VAR__19328[nb - VAR__53647];
+      }
+   }
+}
+
+
+void print(int VAR__819283[], int na)
+{
+   int VAR__53647;
+   int VAR__21230 = 0;
+
+   for ( VAR__21230 = 0; VAR__819283[VAR__21230] == 0; VAR__21230++ )
+   {
+      VAR__53647++;
+   }
+
+   for ( VAR__53647 = VAR__21230; VAR__53647 < na; VAR__53647++ )
+   {
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+}
+
+
+int main()
+{
+   int  VAR__819283[100];
+   int  VAR__19328[100];
+   char VAR__4857423[100];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  na;
+   int  nb;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", VAR__4857423);
+      na = strlen(VAR__4857423);
+      change(VAR__4857423, VAR__819283);
+      for ( VAR__21230 = 0; VAR__21230 < 100; VAR__21230++ )
+      {
+         VAR__4857423[VAR__21230] = '\0';
+      }
+
+      scanf("%s", VAR__4857423);
+      nb = strlen(VAR__4857423);
+      change(VAR__4857423, VAR__19328);
+      minus(VAR__819283, VAR__19328, na, nb);
+      print(VAR__819283, na);
+      printf("\n");
+   }
+
+   return 0;
+}

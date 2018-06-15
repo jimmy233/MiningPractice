@@ -1,0 +1,87 @@
+int input(int *VAR_9494, int VAR_1238123)
+{
+   int VAR__53647 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR_9494[VAR__53647]);
+   }
+
+   return 0;
+}
+
+
+int sort(int *VAR_9494, int VAR_1238123)
+{
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR_9494[VAR__21230 - 1] > VAR_9494[VAR__21230] )
+         {
+            int VAR__TEMP = VAR_9494[VAR__21230 - 1];
+            VAR_9494[VAR__21230 - 1] = VAR_9494[VAR__21230];
+            VAR_9494[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+int combine(int *s1, int *s2, int n1, int n2, int *VAR_9494)
+{
+   int VAR__53647 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      VAR_9494[VAR__53647] = s1[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      VAR_9494[VAR__53647 + n1] = s2[VAR__53647];
+   }
+
+   return 0;
+}
+
+
+int output(int *VAR_9494, int VAR_1238123)
+{
+   int VAR__53647 = 0;
+
+   if ( VAR_1238123 <= 0 )
+   {
+      return 0;
+   }
+
+   printf("%d", VAR_9494[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf(" %d", VAR_9494[VAR__53647]);
+   }
+}
+
+
+int main()
+{
+   int n1 = 0;
+   int n2 = 0;
+
+   scanf("%d %d", &n1, &n2);
+   int s1[1000] = { 0 };
+   int s2[1000] = { 0 };
+   input(s1, n1);
+   input(s2, n2);
+   sort(s1, n1);
+   sort(s2, n2);
+   int VAR_9494[2000] = { 0 };
+   combine(s1, s2, n1, n2, VAR_9494);
+   output(VAR_9494, n1 + n2);
+   return 0;
+}

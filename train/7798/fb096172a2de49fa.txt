@@ -1,0 +1,137 @@
+struct worker
+{
+   int           nm;
+   char          name1[26];
+   struct worker *VAR__NEXT;
+};
+struct zuozhe
+{
+   char          nam;
+   int           counts;
+   int           name[1000];
+   struct zuozhe *VAR__NEXT;
+};
+struct worker *creat1(int VAR_1238123)
+{
+   struct worker *VAR__HEAD;
+   struct worker *ANOTHER_POINTER;
+   struct worker *YET_ANOTHER_POINTER;
+   int           VAR__53647;
+
+   VAR__HEAD       = (struct worker *)malloc(sizeof( struct worker ));
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct worker *)malloc(sizeof( struct worker ));
+      scanf("%d %s", &YET_ANOTHER_POINTER->nm, YET_ANOTHER_POINTER->name1);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+struct zuozhe *creat2()
+{
+   struct zuozhe *VAR__HEAD;
+   struct zuozhe *ANOTHER_POINTER;
+   struct zuozhe *YET_ANOTHER_POINTER;
+   int           VAR__53647;
+
+   VAR__HEAD       = (struct zuozhe *)malloc(sizeof( struct zuozhe ));
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER                = (struct zuozhe *)malloc(sizeof( struct zuozhe ));
+      YET_ANOTHER_POINTER->counts    = 0;
+      YET_ANOTHER_POINTER->nam       = 'A' + VAR__53647;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int           big = 0;
+   char          zz;
+   int           VAR__53647;
+   int           VAR__21230;
+   char          VAR__4857423;
+   int           VAR__1238129;
+   int           VAR_1238123;
+   int           VAR__819283[26] = { 0 };
+   struct worker *head1;
+   struct worker *ANOTHER_POINTER;
+   struct worker *YET_ANOTHER_POINTER;
+   struct zuozhe *head2;
+   struct zuozhe *q1;
+   struct zuozhe *q2;
+
+   scanf("%d", &VAR_1238123);
+   head1           = creat1(VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = head1 );
+   head2           = creat2();
+   q1 = ( q2 = head2 );
+
+   while ( ANOTHER_POINTER != 0 )
+   {
+      VAR__53647 = 0;
+
+      while ( ANOTHER_POINTER->name1[VAR__53647] != '\0' )
+      {
+         q1 = head2;
+
+         while ( 1 )
+         {
+            if ( q1->nam == ANOTHER_POINTER->name1[VAR__53647] )
+            {
+               q1->name[q1->counts] = ANOTHER_POINTER->nm;
+               q1->counts++;
+               VAR__53647++;
+               break;
+            }
+
+            q1 = q1->VAR__NEXT;
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   q1 = head2;
+
+   while ( q1 != 0 )
+   {
+      if ( q1->counts > big )
+      {
+         zz  = q1->nam;
+         big = q1->counts;
+      }
+
+      q1 = q1->VAR__NEXT;
+   }
+
+   q1 = head2;
+
+   while ( 1 )
+   {
+      if ( q1->nam == zz )
+      {
+         printf("%c\n%d\n", q1->nam, q1->counts);
+         for ( VAR__53647 = 0; VAR__53647 < q1->counts; VAR__53647++ )
+         {
+            printf("%d\n", q1->name[VAR__53647]);
+         }
+
+         break;
+      }
+
+      q1 = q1->VAR__NEXT;
+   }
+}

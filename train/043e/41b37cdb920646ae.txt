@@ -1,0 +1,41 @@
+int main()
+{
+   char input[110];
+   char replaced[110];
+   char replace[110];
+   char *VAR_233;
+   char *start;
+   int  LEN_OF_STH;
+   char VAR__TEMP;
+
+   cin.getline(input, 110);
+   cin.getline(replaced, 110);
+   cin.getline(replace, 110);
+   LEN_OF_STH = strlen(replaced);
+   VAR_233    = strstr(input, replaced);
+   start      = input;
+
+   while ( VAR_233 != NULL )
+   {
+      if ((( VAR_233 == input ) || ( isalpha(*( VAR_233 - 1 )) == 0 )) && ( isalpha(*( VAR_233 + LEN_OF_STH )) == 0 ))
+      {
+         *VAR_233 = '\0';
+         ( cout << start ) << replace;
+         start   = VAR_233 + LEN_OF_STH;
+         VAR_233 = strstr(start, replaced);
+      }
+      else
+      {
+         VAR_233   = ( input + ( VAR_233 - input )) + LEN_OF_STH;
+         VAR__TEMP = *VAR_233;
+         *VAR_233  = '\0';
+         cout << start;
+         start   = VAR_233;
+         *start  = VAR__TEMP;
+         VAR_233 = strstr(start, replaced);
+      }
+   }
+
+   ( cout << start ) << endl;
+   return 0;
+}

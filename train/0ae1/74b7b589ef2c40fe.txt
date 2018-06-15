@@ -1,0 +1,59 @@
+int main()
+{
+   int year;
+   int month;
+   int date;
+
+   (( cin >> year ) >> month ) >> date;
+   int days       = 0;
+   int VAR__53647 = 0;
+   for ( ; year >= 400; VAR__53647++ )
+   {
+      year = year - 400;
+   }
+
+   for ( ; VAR__53647 > 2800; )
+   {
+      VAR__53647 -= 2800;
+   }
+
+   days = days + ( VAR__53647 * 146097 );
+
+   if ( year != 0 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            days += 366;
+         }
+         else
+         {
+            days += 365;
+         }
+      }
+   }
+
+
+   else
+   {
+      days -= 366;
+   }
+
+   int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      days += VAR__819283[VAR__53647];
+   }
+
+   if ((((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 )) && ( month >= 3 ))
+   {
+      days++;
+   }
+
+   days += date;
+   char VAR__19328[][5] = { "Sun.", "Mon.", "Tue.", "Wed.", "Thr.", "Fri.", "Sat." };
+   int  VAR__21230      = days % 7;
+   cout << VAR__19328[VAR__21230];
+   return 0;
+}

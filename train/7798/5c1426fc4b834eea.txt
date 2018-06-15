@@ -1,0 +1,77 @@
+int main()
+{
+   struct writer
+   {
+      int           VAR__NUM;
+      char          name[20];
+      struct writer *VAR__NEXT;
+   };
+   int           VAR__53647;
+   int           VAR__21230;
+   int           VAR__8444594;
+   int           VAR__1111;
+   int           VAR__1238129;
+   int           VAR__9290[26] = { 0 };
+   int           VAR__MAX;
+   int           VAR_1238123;
+   struct writer *ANOTHER_POINTER;
+   struct writer *YET_ANOTHER_POINTER;
+   struct writer *VAR_233;
+   struct writer *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct writer *)malloc(sizeof( struct writer ))));
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->name);
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct writer *)malloc(sizeof( struct writer ));
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->name);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR_233 = VAR__HEAD;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < 20; VAR__8444594++ )
+         {
+            if ( VAR_233->name[VAR__8444594] == ((char)( VAR__53647 + 65 )))
+            {
+               VAR__9290[VAR__53647]++;
+            }
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+
+   VAR__MAX   = VAR__9290[0];
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__9290[VAR__53647] )
+      {
+         VAR__MAX   = VAR__9290[VAR__53647];
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", 65 + VAR__21230, VAR__MAX);
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < 20; VAR__8444594++ )
+      {
+         if ( VAR_233->name[VAR__8444594] == ((char)( 65 + VAR__21230 )))
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+            break;
+         }
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

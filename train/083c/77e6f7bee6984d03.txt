@@ -1,0 +1,79 @@
+int convertorto10(char A[], int code, int right)
+{
+   if ( right == 0 )
+   {
+      return A[0] - '0';
+   }
+   else
+   {
+      return ( A[right] - '0' ) + ( code * convertorto10(A, code, right - 1));
+   }
+}
+
+
+void main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__1111;
+   int  VAR__4857423;
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR_1238123[100];
+   char nf[100];
+   char VAR__1238129[100];
+   char mf[100];
+
+   scanf("%d %s%d", &VAR__819283, VAR_1238123, &VAR__19328);
+   VAR__1111 = strlen(VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if (( 64 < VAR_1238123[VAR__53647] ) && ( VAR_1238123[VAR__53647] < 91 ))
+      {
+         nf[VAR__53647] = VAR_1238123[VAR__53647] - 7;
+      }
+      else
+      if ( VAR_1238123[VAR__53647] > 96 )
+      {
+         nf[VAR__53647] = VAR_1238123[VAR__53647] - 39;
+      }
+      else
+      {
+         nf[VAR__53647] = VAR_1238123[VAR__53647];
+      }
+   }
+
+   VAR__4857423 = convertorto10(nf, VAR__819283, VAR__1111 - 1);
+   VAR__53647   = 0;
+
+   while (( VAR__4857423 / VAR__19328 ) > 0 )
+   {
+      VAR__1238129[VAR__53647] = VAR__4857423 % VAR__19328;
+      VAR__4857423             = VAR__4857423 / VAR__19328;
+      VAR__53647 = VAR__53647 + 1;
+   }
+
+   VAR__1238129[VAR__53647] = VAR__4857423;
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+   {
+      mf[VAR__21230] = VAR__1238129[VAR__53647 - VAR__21230];
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+   {
+      if ( mf[VAR__21230] < 10 )
+      {
+         mf[VAR__21230] = mf[VAR__21230] + 48;
+      }
+      else
+      if ( mf[VAR__21230] > 9 )
+      {
+         mf[VAR__21230] = mf[VAR__21230] + 55;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+   {
+      printf("%c", mf[VAR__21230]);
+   }
+}

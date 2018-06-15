@@ -1,0 +1,75 @@
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  VAR__NUM;
+   int  VAR__MAX = 0;
+   int  LEN_OF_STH;
+   int  VAR__COUNT[1000] = { 0 };
+   char VAR_9494[1000];
+   char zi[500][6];
+   char now[6];
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", VAR_9494);
+   LEN_OF_STH = strlen(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      zi[0][VAR__53647] = VAR_9494[VAR__53647];
+   }
+
+   zi[0][VAR__53647] = '\0';
+   VAR__COUNT[0]     = 1;
+   VAR__NUM          = 1;
+   for ( VAR__53647 = 1; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         now[VAR__8444594] = VAR_9494[VAR__53647 + VAR__8444594];
+      }
+
+      now[VAR__8444594] = '\0';
+      int VAR_233 = 0;
+
+      while (( VAR_233 < VAR__NUM ) && ( strcmp(now, zi[VAR_233]) != 0 ))
+      {
+         VAR_233++;
+      }
+
+      if ( VAR_233 < VAR__NUM )
+      {
+         VAR__COUNT[VAR_233]++;
+      }
+      else
+      {
+         VAR__COUNT[VAR__NUM] = 1;
+         strcpy(zi[VAR__NUM], now);
+         VAR__NUM++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX > 1 )
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+      {
+         if ( VAR__COUNT[VAR__53647] == VAR__MAX )
+         {
+            puts(zi[VAR__53647]);
+         }
+      }
+   }
+   else
+   {
+      printf("NO");
+   }
+}

@@ -1,0 +1,76 @@
+int VAR__819283[10000];
+int VAR__19328[10000];
+int sizea;
+int sizeb;
+void read()
+{
+   ( cin >> sizea ) >> sizeb;
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 <= ( sizea - 1 ); VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( sizeb - 1 ); VAR__53647++ )
+   {
+      cin >> VAR__19328[VAR__53647];
+   }
+}
+
+
+void order(int VAR_1238123, int VAR__819283[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void paixu()
+{
+   order(sizea, VAR__819283);
+   order(sizeb, VAR__19328);
+}
+
+
+void mix()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( sizeb - 1 ); VAR__53647++ )
+   {
+      VAR__819283[sizea + VAR__53647] = VAR__19328[VAR__53647];
+   }
+}
+
+
+void print()
+{
+   cout << VAR__819283[0];
+   for ( int VAR__53647 = 1; VAR__53647 <= (( sizea + sizeb ) - 1 ); VAR__53647++ )
+   {
+      ( cout << " " ) << VAR__819283[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   read();
+   paixu();
+   mix();
+   print();
+}

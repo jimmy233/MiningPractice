@@ -1,0 +1,88 @@
+void main()
+{
+   struct book
+   {
+      int         VAR__NUM;
+      char        auth[26];
+      int         inf[26];
+      struct book *VAR__NEXT;
+   };
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   struct book *t1;
+   struct book *t2;
+
+   VAR__HEAD = (struct book *)malloc(sizeof( struct book ));
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR__21230;
+   int VAR__MAX;
+   int authnum[26] = { 0 };
+   scanf("%d", &VAR__1238129);
+   ANOTHER_POINTER     = VAR__HEAD;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->auth);
+      YET_ANOTHER_POINTER        = (struct book *)malloc(sizeof( struct book ));
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      ANOTHER_POINTER            = YET_ANOTHER_POINTER;
+   }
+
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->auth);
+   YET_ANOTHER_POINTER        = NULL;
+   ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+   ANOTHER_POINTER            = VAR__HEAD;
+   YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      VAR__1111 = strlen(ANOTHER_POINTER->auth);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+      {
+         ANOTHER_POINTER->inf[( *( ANOTHER_POINTER->auth + VAR__21230 )) - 65] = 1;
+         authnum[( *( ANOTHER_POINTER->auth + VAR__21230 )) - 65]++;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 1; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( authnum[VAR__53647] > authnum[VAR__MAX] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+   printf("%c\n", VAR__MAX + 65);
+   printf("%d\n", authnum[VAR__MAX]);
+   ANOTHER_POINTER     = VAR__HEAD;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      if ( ANOTHER_POINTER->inf[VAR__MAX] > 0 )
+      {
+         printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+   }
+
+   ANOTHER_POINTER     = VAR__HEAD;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      free(ANOTHER_POINTER);
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+   }
+}

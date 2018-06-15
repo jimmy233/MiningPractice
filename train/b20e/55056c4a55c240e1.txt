@@ -1,0 +1,98 @@
+static int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283[1000] = { 0 };
+   int VAR__19328[1000]  = { 0 };
+   int VAR__temp;
+   int VAR_9494;
+   int VAR__21230;
+   int VAR_233;
+   int VAR__4857423;
+   int tk;
+   int tm;
+   int qk;
+   int qm;
+
+   for ( ; ; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      VAR__temp  = 0;
+      VAR_233    = 0;
+      VAR__21230 = 0;
+      VAR_9494   = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), cmp);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), cmp);
+      tk = 0;
+      tm = VAR_1238123 - 1;
+      qk = 0;
+      qm = VAR_1238123 - 1;
+      for ( ; tk <= tm; )
+      {
+         if ( VAR__819283[tm] > VAR__19328[qm] )
+         {
+            VAR__temp++;
+            tm--;
+            qm--;
+         }
+         else
+         if ( VAR__819283[tm] < VAR__19328[qm] )
+         {
+            VAR_9494++;
+            tm--;
+            qk++;
+         }
+         else
+         if ( VAR__819283[tk] > VAR__19328[qk] )
+         {
+            VAR__temp++;
+            tk++;
+            qk++;
+         }
+         else
+         if ( VAR__819283[tk] < VAR__19328[qk] )
+         {
+            VAR_9494++;
+            tm--;
+            qk++;
+         }
+         else
+         if ( VAR__819283[tm] < VAR__19328[qk] )
+         {
+            VAR_9494++;
+            tm--;
+            qk++;
+         }
+         else
+         {
+            tm--;
+            qk++;
+         }
+      }
+
+      printf("%d\n", ( VAR__temp * 200 ) - ( VAR_9494 * 200 ));
+   }
+
+   return 0;
+}

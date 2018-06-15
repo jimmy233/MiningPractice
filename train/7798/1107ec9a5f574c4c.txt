@@ -1,0 +1,80 @@
+int main()
+{
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283;
+   int VAR_1238123;
+   struct book
+   {
+      int  no;
+      char name[30];
+   }
+        book[999];
+   int  author1[30] = { 0 };
+   int  author2[30] = { 0 };
+   char VAR__8444594;
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &book[VAR__53647].no, &book[VAR__53647].name);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__819283 = strlen(book[VAR__53647].name);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__819283; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 'A'; VAR__8444594 <= 'Z'; VAR__8444594++ )
+         {
+            if ( book[VAR__53647].name[VAR__21230] == VAR__8444594 )
+            {
+               author1[((int)VAR__8444594 ) - 65]++;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      author2[VAR__53647] = author1[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < 26; VAR__21230++ )
+      {
+         if ( author1[VAR__53647] < author1[VAR__21230] )
+         {
+            int tmp;
+            tmp = author1[VAR__53647];
+            author1[VAR__53647] = author1[VAR__21230];
+            author1[VAR__21230] = tmp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( author2[VAR__53647] == author1[0] )
+      {
+         printf("%c\n", (char)( 65 + VAR__53647 ));
+         printf("%d\n", author1[0]);
+         for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+         {
+            VAR__819283 = strlen(book[VAR__21230].name);
+            for ( VAR_1238123 = 0; VAR_1238123 < VAR__819283; VAR_1238123++ )
+            {
+               if ( book[VAR__21230].name[VAR_1238123] == ((char)( 65 + VAR__53647 )))
+               {
+                  printf("%d\n", book[VAR__21230].no);
+                  break;
+               }
+            }
+         }
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,74 @@
+struct coordinate
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+point[10];
+int main()
+{
+   double dis[10][10]     = { 0 };
+   double VAR__12302[100] = { 0 };
+   double VAR__TEMP       = 0;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR_1238123;
+   int    k1 = 0;
+   int    k2 = 0;
+   int    VAR__8444594;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> point[VAR__53647].VAR__7685 ) >> point[VAR__53647].VAR__3918907 ) >> point[VAR__53647].VAR__9290;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__53647][VAR__21230] = sqrt(((( point[VAR__53647].VAR__7685 - point[VAR__21230].VAR__7685 ) * ( point[VAR__53647].VAR__7685 - point[VAR__21230].VAR__7685 )) + (( point[VAR__53647].VAR__3918907 - point[VAR__21230].VAR__3918907 ) * ( point[VAR__53647].VAR__3918907 - point[VAR__21230].VAR__3918907 ))) + (( point[VAR__53647].VAR__9290 - point[VAR__21230].VAR__9290 ) * ( point[VAR__53647].VAR__9290 - point[VAR__21230].VAR__9290 )));
+         VAR__12302[( 10 * VAR__53647 ) + VAR__21230] = sqrt(((( point[VAR__53647].VAR__7685 - point[VAR__21230].VAR__7685 ) * ( point[VAR__53647].VAR__7685 - point[VAR__21230].VAR__7685 )) + (( point[VAR__53647].VAR__3918907 - point[VAR__21230].VAR__3918907 ) * ( point[VAR__53647].VAR__3918907 - point[VAR__21230].VAR__3918907 ))) + (( point[VAR__53647].VAR__9290 - point[VAR__21230].VAR__9290 ) * ( point[VAR__53647].VAR__9290 - point[VAR__21230].VAR__9290 )));
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 99; VAR__53647++ )
+   {
+      for ( VAR__21230 = 99; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( VAR__12302[VAR__21230] > VAR__12302[VAR__21230 - 1] )
+         {
+            VAR__TEMP = VAR__12302[VAR__21230];
+            VAR__12302[VAR__21230]     = VAR__12302[VAR__21230 - 1];
+            VAR__12302[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 99; VAR__53647 >= 1; VAR__53647-- )
+   {
+      if ( VAR__12302[VAR__53647] == VAR__12302[VAR__53647 - 1] )
+      {
+         VAR__12302[VAR__53647] = 0;
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < 99; VAR__8444594++ )
+   {
+      if ( VAR__12302[VAR__8444594] != 0 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               if ( dis[VAR__53647][VAR__21230] == VAR__12302[VAR__8444594] )
+               {
+                  (((((((((((((((( cout << "(" ) << point[VAR__53647].VAR__7685 ) << "," ) << point[VAR__53647].VAR__3918907 ) << "," ) << point[VAR__53647].VAR__9290 ) << ")-(" ) << point[VAR__21230].VAR__7685 ) << "," ) << point[VAR__21230].VAR__3918907 ) << "," ) << point[VAR__21230].VAR__9290 ) << ")=" ) << fixed ) << setprecision(2)) << dis[VAR__53647][VAR__21230] ) << endl;
+               }
+            }
+         }
+      }
+   }
+
+   return 0;
+}

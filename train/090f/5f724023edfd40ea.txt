@@ -1,0 +1,101 @@
+char VAR__temp;
+int  begin = 0;
+int  VAR__819283[1000];
+int  VAR_233 = 1;
+int  VAR__53647;
+int  done = 0;
+char VAR_9494[10000];
+int IsDigit(char VAR__temp)
+{
+   if (( VAR__temp <= '9' ) && ( VAR__temp >= '0' ))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+void sort(int VAR__1111, int VAR_129012)
+{
+   int VAR__53647   = VAR__1111;
+   int VAR__21230   = VAR_129012;
+   int VAR__8444594 = VAR__819283[( VAR__53647 + VAR__21230 ) >> 1];
+   int VAR__temp;
+
+   do
+   {
+      while ( VAR__819283[VAR__53647] > VAR__8444594 )
+      {
+         ++VAR__53647;
+      }
+
+      while ( VAR__819283[VAR__21230] < VAR__8444594 )
+      {
+         --VAR__21230;
+      }
+
+      if ( VAR__53647 <= VAR__21230 )
+      {
+         VAR__temp = VAR__819283[VAR__53647];
+         VAR__819283[VAR__53647] = VAR__819283[VAR__21230];
+         VAR__819283[VAR__21230] = VAR__temp;
+         ++VAR__53647;
+         --VAR__21230;
+      }
+   } while ( VAR__53647 <= VAR__21230 );
+
+   if ( VAR__53647 < VAR_129012 )
+   {
+      sort(VAR__53647, VAR_129012);
+   }
+
+   if ( VAR__1111 < VAR__21230 )
+   {
+      sort(VAR__1111, VAR__21230);
+   }
+}
+
+
+int main()
+{
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   scanf("%s", VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_9494); ++VAR__53647 )
+   {
+      VAR__temp = VAR_9494[VAR__53647];
+
+      if ( !IsDigit(VAR__temp))
+      {
+         if ( begin == 1 )
+         {
+            ++VAR_233;
+            begin = 0;
+         }
+      }
+      else
+      {
+         begin = 1;
+         VAR__819283[VAR_233] = (( VAR__819283[VAR_233] * 10 ) + VAR__temp ) - '0';
+      }
+   }
+
+   sort(1, VAR_233);
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_233; ++VAR__53647 )
+   {
+      if ( VAR__819283[VAR__53647] != VAR__819283[VAR__53647 - 1] )
+      {
+         printf("%d\n", VAR__819283[VAR__53647]);
+         done = 1;
+         break;
+      }
+   }
+
+
+   if ( done == 0 )
+   {
+      printf("No\n");
+   }
+
+   return 0;
+}

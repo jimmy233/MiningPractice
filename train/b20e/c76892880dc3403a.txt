@@ -1,0 +1,80 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int tl;
+   int ql;
+   int VAR__1238129;
+   int VAR_1238123;
+   int ans;
+   int tian[1100];
+   int qi[1100];
+
+   while ( scanf("%d", &VAR_1238123) && ( VAR_1238123 != 0 ))
+   {
+      ans = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qi[VAR__53647]);
+      }
+
+      sort(tian, tian + VAR_1238123);
+      sort(qi, qi + VAR_1238123);
+      VAR__53647 = VAR_1238123 - 1;
+      VAR__21230 = VAR_1238123 - 1;
+      tl         = 0;
+      ql         = 0;
+
+      while (( VAR__53647 >= tl ) && ( VAR__21230 >= ql ))
+      {
+         if ( tian[VAR__53647] > qi[VAR__21230] )
+         {
+            ans++;
+            VAR__53647--;
+            VAR__21230--;
+         }
+         else
+         if ( tian[VAR__53647] < qi[VAR__21230] )
+         {
+            ans--;
+            tl++;
+            VAR__21230--;
+         }
+         else
+         {
+            if ( tian[tl] <= qi[ql] )
+            {
+               if ( tian[tl] < qi[VAR__21230] )
+               {
+                  ans--;
+               }
+
+               tl++;
+               VAR__21230--;
+            }
+            else
+            {
+               while ((( tian[tl] > qi[ql] ) && ( tl <= VAR__53647 )) && ( ql <= VAR__21230 ))
+               {
+                  tl++;
+                  ql++;
+                  ans++;
+               }
+
+               if (( tl > VAR__53647 ) || ( ql > VAR__21230 ))
+               {
+                  break;
+               }
+            }
+         }
+      }
+
+      printf("%d\n", ans * 200);
+   }
+}

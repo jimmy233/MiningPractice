@@ -1,0 +1,182 @@
+void delZero(char VAR__819283[])
+{
+   int VAR__53647 = 0;
+   int VAR__COUNT = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < MAXNUM; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '0' )
+      {
+         VAR__COUNT++;
+      }
+
+      if ( VAR__819283[VAR__53647] != '0' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__819283[VAR__53647 + VAR__COUNT] != '\0'; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR__819283[VAR__53647 + VAR__COUNT];
+   }
+
+   int VAR__21230;
+   for ( VAR__21230 = 0; VAR__21230 < VAR__COUNT; VAR__21230++ )
+   {
+      VAR__819283[VAR__53647 + VAR__21230] = '\0';
+   }
+}
+
+
+int addWorker(int VAR__819283[], int na, int VAR__19328[], int nb, int VAR__4857423[]);
+
+int add(char VAR__819283[], char VAR__19328[], int VAR__4857423[])
+{
+   int na = 0;
+   int nb = 0;
+   int _a[MAXNUM];
+   int _b[MAXNUM];
+
+   memset(_a, 0, sizeof( _a ));
+   memset(_b, 0, sizeof( _b ));
+
+   while ( VAR__819283[na] == '0' )
+   {
+      na++;
+   }
+
+   while ( VAR__819283[na] != '\0' )
+   {
+      _a[na] = (int)( VAR__819283[na] - '0' );
+      na++;
+   }
+
+   while ( VAR__19328[nb] != '\0' )
+   {
+      _b[nb] = (int)( VAR__19328[nb] - '0' );
+      nb++;
+   }
+
+   if ( na > nb )
+   {
+      return addWorker(_a, na, _b, nb, VAR__4857423);
+   }
+   else
+   {
+      return addWorker(_b, nb, _a, na, VAR__4857423);
+   }
+}
+
+
+int addWorker(int VAR__819283[], int na, int VAR__19328[], int nb, int VAR__4857423[])
+{
+   int nc        = na + 1;
+   int VAR__1111 = nc;
+
+   na--;
+   nb--;
+   nc--;
+
+   while ( nb >= 0 )
+   {
+      int carry = 0;
+
+      if (( VAR__819283[na] + VAR__19328[nb] ) > 9 )
+      {
+         carry = 1;
+      }
+
+      VAR__4857423[nc] += ( VAR__819283[na] + VAR__19328[nb] ) % 10;
+
+      if ( VAR__4857423[nc] == 10 )
+      {
+         int VAR__53647 = nc;
+
+         while ( VAR__4857423[VAR__53647] == 10 )
+         {
+            VAR__4857423[VAR__53647]      = 0;
+            VAR__4857423[VAR__53647 - 1] += 1;
+            VAR__53647--;
+         }
+      }
+
+      VAR__4857423[nc - 1] += carry;
+
+      if ( VAR__4857423[nc - 1] == 10 )
+      {
+         int VAR__53647 = nc;
+
+         while ( VAR__4857423[VAR__53647 - 1] == 10 )
+         {
+            VAR__4857423[VAR__53647 - 1]  = 0;
+            VAR__4857423[VAR__53647 - 2] += 1;
+            VAR__53647--;
+         }
+      }
+
+      nb--;
+      na--;
+      nc--;
+   }
+
+   while ( na >= 0 )
+   {
+      VAR__4857423[nc] += VAR__819283[na];
+
+      if ( VAR__4857423[nc] == 10 )
+      {
+         int VAR__53647 = nc;
+
+         while ( VAR__4857423[VAR__53647] == 10 )
+         {
+            VAR__4857423[VAR__53647]      = 0;
+            VAR__4857423[VAR__53647 - 1] += 1;
+            VAR__53647--;
+         }
+      }
+
+      na--;
+      nc--;
+   }
+
+   if ( VAR__4857423[nc] == 0 )
+   {
+      return VAR__1111 - 1;
+   }
+
+   return VAR__1111;
+}
+
+
+int main(int argc, const char *argv[])
+{
+   char VAR__819283[MAXNUM];
+   char VAR__19328[MAXNUM];
+   int  VAR__4857423[MAXNUM];
+
+   memset(VAR__4857423, 0, sizeof( VAR__4857423 ));
+   cin >> VAR__819283;
+   cin >> VAR__19328;
+   delZero(VAR__819283);
+   delZero(VAR__19328);
+   int VAR_1238123 = add(VAR__819283, VAR__19328, VAR__4857423);
+   int VAR__53647  = 0;
+
+   while ( VAR__4857423[VAR__53647] == 0 )
+   {
+      VAR__53647++;
+   }
+
+   while ( VAR__53647 >= MAXNUM )
+   {
+      cout << 0;
+      return 0;
+   }
+
+   int VAR__21230;
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      cout << VAR__4857423[VAR__53647 + VAR__21230];
+   }
+}

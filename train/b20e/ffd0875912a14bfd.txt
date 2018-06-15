@@ -1,0 +1,126 @@
+int main()
+{
+   int saima(int VAR_1238123, int qiwang[1000], int tianji[1000]);
+
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int tianji[1000] = { 0 };
+   int qiwang[1000] = { 0 };
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR_1238123 != 0; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &tianji[VAR__21230]);
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &qiwang[VAR__21230]);
+      }
+
+      printf("%d\n", saima(VAR_1238123, qiwang, tianji));
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 0;
+}
+
+
+int saima(int VAR_1238123, int qiwang[1000], int tianji[1000])
+{
+   void seq(int VAR_1238123, int VAR__819283[1000]);
+   void del(int VAR__53647, int VAR_1238123, int VAR__819283[1000]);
+
+   int VAR__53647;
+   int win;
+   seq(VAR_1238123, tianji);
+   seq(VAR_1238123, qiwang);
+   win = 0;
+
+   while ( VAR_1238123 > 0 )
+   {
+      if (( tianji[VAR_1238123 - 1] != qiwang[VAR_1238123 - 1] ) && ( VAR_1238123 > 0 ))
+      {
+         if ( tianji[VAR_1238123 - 1] > qiwang[VAR_1238123 - 1] )
+         {
+            win = win + 200;
+            del(VAR_1238123 - 1, VAR_1238123, tianji);
+            del(VAR_1238123 - 1, VAR_1238123, qiwang);
+            VAR_1238123 = VAR_1238123 - 1;
+         }
+         else
+         {
+            win = win - 200;
+            del(VAR_1238123 - 1, VAR_1238123, tianji);
+            del(0, VAR_1238123, qiwang);
+            VAR_1238123 = VAR_1238123 - 1;
+         }
+      }
+
+      if (( tianji[0] != qiwang[0] ) && ( VAR_1238123 > 0 ))
+      {
+         if ( tianji[0] > qiwang[0] )
+         {
+            win = win + 200;
+            del(0, VAR_1238123, tianji);
+            del(0, VAR_1238123, qiwang);
+            VAR_1238123 = VAR_1238123 - 1;
+         }
+         else
+         {
+            win = win - 200;
+            del(VAR_1238123 - 1, VAR_1238123, tianji);
+            del(0, VAR_1238123, qiwang);
+            VAR_1238123 = VAR_1238123 - 1;
+         }
+      }
+
+      if ((( tianji[0] == qiwang[0] ) && ( tianji[VAR_1238123 - 1] == qiwang[VAR_1238123 - 1] )) && ( VAR_1238123 > 0 ))
+      {
+         if ( tianji[VAR_1238123 - 1] < qiwang[0] )
+         {
+            win = win - 200;
+         }
+
+         del(VAR_1238123 - 1, VAR_1238123, tianji);
+         del(0, VAR_1238123, qiwang);
+         VAR_1238123 = VAR_1238123 - 1;
+      }
+   }
+
+   return win;
+}
+
+
+void seq(int VAR_1238123, int VAR__819283[1000])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void del(int VAR__53647, int VAR_1238123, int VAR__819283[1000])
+{
+   int VAR__21230;
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      VAR__819283[VAR__21230] = VAR__819283[VAR__21230 + 1];
+   }
+}

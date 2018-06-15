@@ -1,0 +1,54 @@
+void main()
+{
+   struct stu
+   {
+      char       VAR__NUM[20];
+      char       name[20];
+      char       sex;
+      int        age;
+      float      score;
+      char       addr[20];
+      struct stu *VAR__NEXT;
+   }
+   *ANOTHER_POINTER;
+   struct stu
+   {
+      char       VAR__NUM[20];
+      char       name[20];
+      char       sex;
+      int        age;
+      float      score;
+      char       addr[20];
+      struct stu *VAR__NEXT;
+   }
+   *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = malloc(sizeof( struct stu ));
+   scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+   if (( *ANOTHER_POINTER->VAR__NUM ) != 'e' )
+   {
+      scanf("%s %c%d%f%s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->addr);
+      ANOTHER_POINTER->VAR__NEXT = 0;
+      for ( ; ; )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = malloc(sizeof( struct stu ));
+         scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+         if (( *ANOTHER_POINTER->VAR__NUM ) == 'e' )
+         {
+            break;
+         }
+
+         scanf("%s %c%d%f%s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->addr);
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+      for ( ; ANOTHER_POINTER; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+      {
+         printf("%s %s %c %d %g %s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->addr);
+      }
+   }
+}

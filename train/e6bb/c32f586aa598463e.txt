@@ -1,0 +1,63 @@
+int area[11][11] = { 0 };
+void grow(int day)
+{
+   int VAR__TEMP[11][11] = { 0 };
+
+   for ( int VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+      {
+         VAR__TEMP[VAR__53647 - 1][VAR__21230]     += area[VAR__53647][VAR__21230] * 1;
+         VAR__TEMP[VAR__53647 + 1][VAR__21230]     += area[VAR__53647][VAR__21230] * 1;
+         VAR__TEMP[VAR__53647][VAR__21230 - 1]     += area[VAR__53647][VAR__21230] * 1;
+         VAR__TEMP[VAR__53647][VAR__21230 + 1]     += area[VAR__53647][VAR__21230] * 1;
+         VAR__TEMP[VAR__53647 + 1][VAR__21230 + 1] += area[VAR__53647][VAR__21230] * 1;
+         VAR__TEMP[VAR__53647 - 1][VAR__21230 + 1] += area[VAR__53647][VAR__21230] * 1;
+         VAR__TEMP[VAR__53647 + 1][VAR__21230 - 1] += area[VAR__53647][VAR__21230] * 1;
+         VAR__TEMP[VAR__53647 - 1][VAR__21230 - 1] += area[VAR__53647][VAR__21230] * 1;
+         VAR__TEMP[VAR__53647][VAR__21230]         += area[VAR__53647][VAR__21230] * 2;
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+      {
+         area[VAR__53647][VAR__21230] = VAR__TEMP[VAR__53647][VAR__21230];
+      }
+   }
+
+   day -= 1;
+
+   if ( day > 0 )
+   {
+      grow(day);
+   }
+}
+
+
+void print()
+{
+   for ( int VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+      {
+         ( cout << area[VAR__53647][VAR__21230] ) << " ";
+      }
+
+      ( cout << area[VAR__53647][9] ) << endl;
+   }
+}
+
+
+int main()
+{
+   int start = 0;
+   int day   = 0;
+
+   ( cin >> start ) >> day;
+   area[5][5] = start;
+   grow(day);
+   print();
+   return 0;
+}

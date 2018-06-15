@@ -1,0 +1,146 @@
+int read();
+void circle(int VAR__temp);
+void print();
+void baoshu(int VAR_233, int VAR_666);
+
+int VAR_1238123[100];
+int VAR__1238129[100];
+int VAR__819283[300];
+int ans[100];
+int VAR__NUM;
+int VAR__53647;
+int main()
+{
+   read();
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      circle(VAR__53647);
+   }
+
+   print();
+   return 0;
+}
+
+
+int read()
+{
+   VAR__53647 = 1;
+   scanf("%d%d", &VAR_1238123[VAR__53647], &VAR__1238129[VAR__53647]);
+
+   while (( VAR_1238123[VAR__53647] != 0 ) && ( VAR__1238129 != 0 ))
+   {
+      VAR__53647++;
+      scanf("%d%d", &VAR_1238123[VAR__53647], &VAR__1238129[VAR__53647]);
+   }
+
+   VAR__NUM = VAR__53647 - 1;
+   return 0;
+}
+
+
+void circle(int VAR__temp)
+{
+   int VAR__21230;
+
+   for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123[VAR__temp]; VAR__21230++ )
+   {
+      VAR__819283[VAR__21230] = 1;
+   }
+
+   baoshu(VAR_1238123[VAR__temp], 1);
+}
+
+
+void baoshu(int VAR_233, int VAR_666)
+{
+   int zz;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__9290;
+
+   if ( VAR_233 == 1 )
+   {
+      ans[VAR__53647] = VAR_666;
+      return;
+   }
+   else
+   {
+      zz         = VAR_666;
+      VAR__21230 = 1;
+
+      while ( VAR__21230 < VAR__1238129[VAR__53647] )
+      {
+         VAR__21230++;
+
+         if ( zz < VAR_1238123[VAR__53647] )
+         {
+            VAR__9290 = zz;
+            for ( VAR__8444594 = zz + 1; VAR__8444594 <= VAR_1238123[VAR__53647]; VAR__8444594++ )
+            {
+               if ( VAR__819283[VAR__8444594] == 1 )
+               {
+                  zz = VAR__8444594;
+                  break;
+               }
+            }
+
+            if ( VAR__9290 == zz )
+            {
+               for ( VAR__8444594 = 1; VAR__8444594 <= zz; VAR__8444594++ )
+               {
+                  if ( VAR__819283[VAR__8444594] == 1 )
+                  {
+                     zz = VAR__8444594;
+                     break;
+                  }
+               }
+            }
+         }
+         else
+         {
+            for ( VAR__8444594 = 1; VAR__8444594 <= VAR_1238123[VAR__53647]; VAR__8444594++ )
+            {
+               if ( VAR__819283[VAR__8444594] == 1 )
+               {
+                  zz = VAR__8444594;
+                  break;
+               }
+            }
+         }
+      }
+
+      VAR__819283[zz] = 0;
+      VAR__9290       = zz;
+      for ( VAR__8444594 = VAR__9290; VAR__8444594 <= VAR_1238123[VAR__53647]; VAR__8444594++ )
+      {
+         if ( VAR__819283[VAR__8444594] == 1 )
+         {
+            zz = VAR__8444594;
+            break;
+         }
+      }
+
+      if ( VAR__9290 == zz )
+      {
+         for ( VAR__8444594 = 1; VAR__8444594 < VAR__9290; VAR__8444594++ )
+         {
+            if ( VAR__819283[VAR__8444594] == 1 )
+            {
+               zz = VAR__8444594;
+               break;
+            }
+         }
+      }
+
+      baoshu(VAR_233 - 1, zz);
+   }
+}
+
+
+void print()
+{
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      printf("%d\n", ans[VAR__53647]);
+   }
+}

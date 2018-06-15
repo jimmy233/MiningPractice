@@ -1,0 +1,72 @@
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   nanrenshu = 0;
+   int   nvrenshu  = 0;
+   char  zfc[7];
+   char  male[7]   = { 'm', 'a', 'l', 'e', '\0' };
+   char  female[7] = { 'f', 'e', 'm', 'a', 'l', 'e', '\0' };
+   float nan[41];
+   float nv[41];
+   float jh;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= 40; VAR__53647++ )
+   {
+      nan[VAR__53647] = 0;
+      nv[VAR__53647]  = 0;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", zfc);
+
+      if ( strcmp(zfc, male) == 0 )
+      {
+         scanf("%f", &nan[VAR__53647]);
+         nanrenshu++;
+      }
+
+      if ( strcmp(zfc, male) != 0 )
+      {
+         scanf("%f", &nv[VAR__53647]);
+         nvrenshu++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < (( VAR_1238123 - VAR__53647 ) + 1 ); VAR__21230++ )
+      {
+         if ( nan[VAR__21230] < nan[VAR__21230 + 1] )
+         {
+            jh = nan[VAR__21230];
+            nan[VAR__21230]     = nan[VAR__21230 + 1];
+            nan[VAR__21230 + 1] = jh;
+         }
+
+         if ( nv[VAR__21230] < nv[VAR__21230 + 1] )
+         {
+            jh                 = nv[VAR__21230];
+            nv[VAR__21230]     = nv[VAR__21230 + 1];
+            nv[VAR__21230 + 1] = jh;
+         }
+      }
+   }
+
+   printf("%.2f", nan[nanrenshu]);
+   for ( VAR__53647 = nanrenshu - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf(" %.2f", nan[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= nvrenshu; VAR__53647++ )
+   {
+      printf(" %.2f", nv[VAR__53647]);
+   }
+
+   scanf("%d", &VAR_1238123);
+   return 0;
+}

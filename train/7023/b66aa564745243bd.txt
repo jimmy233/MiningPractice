@@ -1,0 +1,80 @@
+int main()
+{
+   int VAR_233;
+
+   scanf("%d", &VAR_233);
+
+   while ( VAR_233 > 0 )
+   {
+      char VAR__819283[101];
+      char VAR__19328[101];
+      char VAR__4857423[101] = { 0 };
+      char a1[101]           = { 0 };
+      char b1[101]           = { 0 };
+      int  lena;
+      int  lenb;
+      int  VAR__53647;
+      int  VAR__21230;
+      scanf("%s", VAR__819283);
+      scanf("%s", VAR__19328);
+      lena = strlen(VAR__819283);
+      lenb = strlen(VAR__19328);
+      for ( VAR__53647 = 0; VAR__53647 < lena; VAR__53647++ )
+      {
+         a1[( VAR__53647 + 101 ) - lena] = VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < lenb; VAR__53647++ )
+      {
+         b1[( VAR__53647 + 101 ) - lenb] = VAR__19328[VAR__53647];
+      }
+
+      int carry = 0;
+      for ( VAR__21230 = 100; VAR__21230 >= ( 100 - ( lena - 1 )); VAR__21230-- )
+      {
+         if ( b1[VAR__21230] == 0 )
+         {
+            VAR__4857423[VAR__21230] = a1[VAR__21230] - carry;
+            carry = 0;
+         }
+         else
+         {
+            if ( a1[VAR__21230] > b1[VAR__21230] )
+            {
+               VAR__4857423[VAR__21230] = (( a1[VAR__21230] - b1[VAR__21230] ) - carry ) + '0';
+               carry = 0;
+            }
+            else
+            {
+               if (( a1[VAR__21230] == b1[VAR__21230] ) && ( carry == 0 ))
+               {
+                  VAR__4857423[VAR__21230] = '0';
+               }
+               else
+               {
+                  VAR__4857423[VAR__21230] = ((( 10 + a1[VAR__21230] ) - b1[VAR__21230] ) - carry ) + '0';
+                  carry = 1;
+               }
+            }
+         }
+      }
+
+      int VAR__TEMP = 0;
+      for ( VAR__53647 = 0; VAR__53647 < 101; VAR__53647++ )
+      {
+         if ( VAR__4857423[VAR__53647] != 0 )
+         {
+            VAR__TEMP = VAR__53647;
+            break;
+         }
+      }
+
+      for ( VAR__53647 = VAR__TEMP; VAR__53647 < 101; VAR__53647++ )
+      {
+         printf("%c", VAR__4857423[VAR__53647]);
+      }
+
+      printf("\n");
+      VAR_233--;
+   }
+}

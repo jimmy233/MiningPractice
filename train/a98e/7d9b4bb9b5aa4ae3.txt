@@ -1,0 +1,44 @@
+int location(char *seg, char *who)
+{
+   int VAR__53647 = 0;
+   int VAR__21230;
+   int LEN_OF_STH;
+   int VAR_FLAG = 0;
+
+   LEN_OF_STH = strlen(seg);
+   for ( VAR__21230 = 0; ; VAR__21230++ )
+   {
+      if ( who[VAR__21230] == seg[VAR__53647] )
+      {
+         for ( ; ( VAR__53647 < LEN_OF_STH ) && ( who[VAR__21230] == seg[VAR__53647] ); VAR__53647++, VAR__21230++ )
+         {
+         }
+
+         if (( VAR__53647 == LEN_OF_STH ) && ( who[VAR__21230 - 1] == seg[VAR__53647 - 1] ))
+         {
+            VAR_FLAG = 1;
+            break;
+         }
+      }
+   }
+
+   if ( VAR_FLAG == 1 )
+   {
+      return VAR__21230 - LEN_OF_STH;
+   }
+   else
+   {
+      return -1;
+   }
+}
+
+
+int main()
+{
+   char *segment = (char *)malloc(sizeof( char ));
+   char *whole   = (char *)malloc(sizeof( char ));
+
+   scanf("%s%s", segment, whole);
+   printf("%d", location(segment, whole));
+   return 0;
+}

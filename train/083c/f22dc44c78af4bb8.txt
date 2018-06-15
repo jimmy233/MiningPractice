@@ -1,0 +1,88 @@
+int  VAR__819283;
+int  VAR__19328;
+int  LEN_OF_STH = 0;
+char A_STRING[101];
+int  VAR__NUM[101];
+int  res[101];
+int pow(int VAR__7685, int VAR__3918907);
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int con        = 0;
+
+   (( cin >> VAR__819283 ) >> A_STRING ) >> VAR__19328;
+
+   while ( A_STRING[LEN_OF_STH] )
+   {
+      LEN_OF_STH++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; ++VAR__53647 )
+   {
+      if ( islower(A_STRING[VAR__53647]))
+      {
+         VAR__NUM[VAR__53647] = ((int)A_STRING[VAR__53647] ) - 87;
+      }
+
+      if ( isupper(A_STRING[VAR__53647]))
+      {
+         VAR__NUM[VAR__53647] = ((int)A_STRING[VAR__53647] ) - 55;
+      }
+
+      if ( isdigit(A_STRING[VAR__53647]))
+      {
+         VAR__NUM[VAR__53647] = ((int)A_STRING[VAR__53647] ) - 48;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; ++VAR__53647 )
+   {
+      con += VAR__NUM[VAR__53647] * pow(VAR__819283, ( LEN_OF_STH - VAR__53647 ) - 1);
+   }
+
+   while ( con > 0 )
+   {
+      res[VAR__21230] = con % VAR__19328;
+      con            -= con % VAR__19328;
+      con            /= VAR__19328;
+      VAR__21230++;
+   }
+
+   memset(A_STRING, 0, sizeof( A_STRING ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; ++VAR__53647 )
+   {
+      if ( res[VAR__53647] < 10 )
+      {
+         A_STRING[( VAR__21230 - VAR__53647 ) - 1] = ((char)res[VAR__53647] ) + 48;
+      }
+
+      if ( res[VAR__53647] >= 10 )
+      {
+         A_STRING[( VAR__21230 - VAR__53647 ) - 1] = ((char)res[VAR__53647] ) + 55;
+      }
+   }
+
+   if ( A_STRING[0] == 0 )
+   {
+      A_STRING[0] = '0';
+   }
+
+   ( cout << A_STRING ) << endl;
+   return 0;
+}
+
+
+int pow(int VAR__7685, int VAR__3918907)
+{
+   int VAR__53647;
+   int res = 1;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__3918907; ++VAR__53647 )
+   {
+      res *= VAR__7685;
+   }
+
+   return res;
+}

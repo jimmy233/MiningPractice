@@ -1,0 +1,59 @@
+int main()
+{
+   unsigned a1[260];
+   unsigned a2[260];
+   char     l1[260];
+   char     l2[260];
+
+   gets(l1);
+   cin.getline(l2, 260);
+   int len1 = strlen(l1);
+   int len2 = strlen(l2);
+   memset(a1, 0, sizeof( a1 ));
+   memset(a2, 0, sizeof( a2 ));
+   int VAR__53647;
+   int VAR__21230 = 0;
+   for ( VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      a1[VAR__21230++] = l1[VAR__53647] - '0';
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      a2[VAR__21230++] = l2[VAR__53647] - '0';
+   }
+
+   int VAR__MAX = ( len1 > len2 ) ? ( len1 ) : ( len2 );
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      a1[VAR__53647] += a2[VAR__53647];
+
+      if ( a1[VAR__53647] > 9 )
+      {
+         a1[VAR__53647] -= 10;
+         a1[VAR__53647 + 1]++;
+      }
+   }
+
+   VAR__53647 = VAR__MAX;
+
+   while (( a1[VAR__53647] == 0 ) && ( VAR__53647 > 0 ))
+   {
+      VAR__53647--;
+   }
+
+   if ( VAR__53647 == 0 )
+   {
+      cout << 0;
+   }
+   else
+   {
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << a1[VAR__53647];
+      }
+   }
+
+   return 0;
+}

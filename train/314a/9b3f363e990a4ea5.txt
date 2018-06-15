@@ -1,0 +1,100 @@
+int main()
+{
+   char come1[10000];
+   char leave1[10000];
+   int  come2[10000];
+   int  leave2[10000];
+   int  VAR__NUM[1001];
+   int  comma1[10000];
+   int  comma2[100000];
+   int  VAR__COUNT = 0;
+   int  VAR__MAX   = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  all;
+
+   memset(come2, 0, sizeof( come2 ));
+   memset(leave2, 0, sizeof( leave2 ));
+   memset(comma1, 0, sizeof( comma1 ));
+   memset(comma2, 0, sizeof( comma2 ));
+   memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+   cin.getline(come1, 10000);
+   cin.getline(leave1, 10000);
+   for ( VAR__53647 = 0; come1[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( come1[VAR__53647] == ',' )
+      {
+         comma1[VAR__COUNT] = VAR__53647;
+         VAR__COUNT++;
+      }
+   }
+
+   all = VAR__COUNT + 1;
+   for ( VAR__21230 = 0; VAR__21230 < comma1[0]; VAR__21230++ )
+   {
+      come2[0] = ( come2[0] * 10 ) + ( come1[VAR__21230] - '0' );
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__21230 = comma1[VAR__53647 - 1] + 1; VAR__21230 < comma1[VAR__53647]; VAR__21230++ )
+      {
+         come2[VAR__53647] = ( come2[VAR__53647] * 10 ) + ( come1[VAR__21230] - '0' );
+      }
+   }
+
+
+   for ( VAR__21230 = comma1[VAR__COUNT - 1] + 1; come1[VAR__21230] != '\0'; VAR__21230++ )
+   {
+      come2[VAR__COUNT] = ( come2[VAR__COUNT] * 10 ) + ( come1[VAR__21230] - '0' );
+   }
+
+   VAR__COUNT = 0;
+   for ( VAR__53647 = 0; leave1[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( leave1[VAR__53647] == ',' )
+      {
+         comma2[VAR__COUNT] = VAR__53647;
+         VAR__COUNT++;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < comma2[0]; VAR__21230++ )
+   {
+      leave2[0] = ( leave2[0] * 10 ) + ( leave1[VAR__21230] - '0' );
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__21230 = comma2[VAR__53647 - 1] + 1; VAR__21230 < comma2[VAR__53647]; VAR__21230++ )
+      {
+         leave2[VAR__53647] = ( leave2[VAR__53647] * 10 ) + ( leave1[VAR__21230] - '0' );
+      }
+   }
+
+
+   for ( VAR__21230 = comma2[VAR__COUNT - 1] + 1; leave1[VAR__21230] != '\0'; VAR__21230++ )
+   {
+      leave2[VAR__COUNT] = ( leave2[VAR__COUNT] * 10 ) + ( leave1[VAR__21230] - '0' );
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < all; VAR__53647++ )
+   {
+      for ( VAR__21230 = come2[VAR__53647]; VAR__21230 < leave2[VAR__53647]; VAR__21230++ )
+      {
+         VAR__NUM[VAR__21230] = VAR__NUM[VAR__21230] + 1;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 1001; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__NUM[VAR__53647] )
+      {
+         VAR__MAX = VAR__NUM[VAR__53647];
+      }
+   }
+
+   ((( cout << all ) << " " ) << VAR__MAX ) << endl;
+   return 0;
+}

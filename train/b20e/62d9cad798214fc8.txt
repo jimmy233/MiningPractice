@@ -1,0 +1,85 @@
+int qi[1002];
+int tian[1002];
+int VAR_1238123;
+int myCompare(const void *VAR__819283, const void *VAR__19328)
+{
+   int *VAR_233;
+   int *VAR_666;
+
+   VAR_233 = (int *)VAR__819283;
+   VAR_666 = (int *)VAR__19328;
+   return ( *VAR_666 ) - ( *VAR_233 );
+}
+
+
+int main()
+{
+   while ( 1 )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qi[VAR__53647]);
+      }
+
+      qsort(tian, VAR_1238123, sizeof( int ), myCompare);
+      qsort(qi, VAR_1238123, sizeof( int ), myCompare);
+      int qif   = 0;
+      int qis   = VAR_1238123 - 1;
+      int tianf = 0;
+      int tians = VAR_1238123 - 1;
+      int wins  = 0;
+      int ping  = 0;
+
+      while ( tianf <= tians )
+      {
+         if ( tian[tianf] < qi[qif] )
+         {
+            qif++;
+            tians--;
+            continue;
+         }
+         else
+         if ( tian[tianf] > qi[qif] )
+         {
+            tianf++;
+            qif++;
+            wins++;
+         }
+         else
+         {
+            if ( tian[tians] > qi[qis] )
+            {
+               tians--;
+               qis--;
+               wins++;
+            }
+            else
+            {
+               if ( tian[tians] == qi[qif] )
+               {
+                  ping++;
+               }
+
+               tians--;
+               qif++;
+            }
+         }
+      }
+
+      ( cout << (( 200 * wins ) - ((( VAR_1238123 - wins ) - ping ) * 200 ))) << endl;
+   }
+
+   return 0;
+}

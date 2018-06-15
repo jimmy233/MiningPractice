@@ -1,0 +1,97 @@
+char sentence[1000];
+char word[1000][10];
+int  VAR__NUM[1000] = { 1 };
+int  words;
+int  VAR_1238123;
+int  Max = 0;
+void seperate()
+{
+   int VAR__53647;
+   int i1;
+   int VAR__21230   = 0;
+   int VAR__8444594 = 0;
+
+   for ( VAR__53647 = 0; sentence[( VAR__53647 + VAR_1238123 ) - 1] != '\0'; VAR__53647++ )
+   {
+      for ( i1 = 0; i1 < VAR_1238123; i1++ )
+      {
+         word[VAR__8444594][VAR__21230] = sentence[VAR__53647 + i1];
+         VAR__21230++;
+      }
+
+      if ( VAR__21230 == VAR_1238123 )
+      {
+         word[VAR__8444594][VAR_1238123] == '\0';
+         VAR__21230 = 0;
+         VAR__8444594++;
+      }
+   }
+
+   words = VAR__8444594;
+}
+
+
+void coun()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < words; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] != 0 )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < words; VAR__21230++ )
+         {
+            if ( strcmp(word[VAR__53647], word[VAR__21230]) == 0 )
+            {
+               VAR__NUM[VAR__21230] = 0;
+               VAR__NUM[VAR__53647]++;
+            }
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < words; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > Max )
+      {
+         Max = VAR__NUM[VAR__53647];
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+
+   cin >> VAR_1238123;
+   cin >> sentence;
+   seperate();
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = 1;
+   }
+
+   coun();
+
+   if ( Max <= 1 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   {
+      ( cout << Max ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < words; VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647] == Max )
+         {
+            ( cout << word[VAR__53647] ) << endl;
+         }
+      }
+   }
+
+   return 0;
+}

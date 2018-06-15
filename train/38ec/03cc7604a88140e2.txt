@@ -1,0 +1,70 @@
+int main()
+{
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+   int VAR__53647;
+   int day1            = 0;
+   int day2            = 0;
+   int day3            = 0;
+   int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__19328[13]  = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   ((((( cin >> startYear ) >> startMonth ) >> startDay ) >> endYear ) >> endMonth ) >> endDay;
+
+   if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || (( startYear % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( startMonth - 1 ); VAR__53647++ )
+      {
+         day1 = VAR__19328[VAR__53647] + day1;
+      }
+
+      day1 = day1 + startDay;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( startMonth - 1 ); VAR__53647++ )
+      {
+         day1 = VAR__819283[VAR__53647] + day1;
+      }
+
+      day1 = day1 + startDay;
+   }
+
+   if (((( endYear % 4 ) == 0 ) && (( endYear % 100 ) != 0 )) || (( endYear % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( endMonth - 1 ); VAR__53647++ )
+      {
+         day2 = VAR__19328[VAR__53647] + day2;
+      }
+
+      day2 = day2 + endDay;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( endMonth - 1 ); VAR__53647++ )
+      {
+         day2 = VAR__819283[VAR__53647] + day2;
+      }
+
+      day2 = day2 + endDay;
+   }
+
+   for ( VAR__53647 = startYear; VAR__53647 <= ( endYear - 1 ); VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         day3 = day3 + 366;
+      }
+      else
+      {
+         day3 = day3 + 365;
+      }
+   }
+
+   cout << (( day3 + day2 ) - day1 );
+   return 0;
+}

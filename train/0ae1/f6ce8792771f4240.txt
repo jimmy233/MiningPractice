@@ -1,0 +1,82 @@
+int main()
+{
+   int year;
+   int month;
+   int date;
+   int days = 0;
+   int yearleft;
+
+   (( cin >> year ) >> month ) >> date;
+   int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__19328[13]  = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   yearleft = year % 400;
+
+   if ( yearleft == 0 )
+   {
+      yearleft = 400;
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 < yearleft; VAR__53647++ )
+   {
+      if ((( VAR__53647 % 400 ) == 0 ) || ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )))
+      {
+         days += 2;
+      }
+      else
+      {
+         days += 1;
+      }
+   }
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      for ( int VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+      {
+         days += VAR__19328[VAR__53647];
+      }
+
+      days += date;
+   }
+   else
+   {
+      for ( int VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+      {
+         days += VAR__819283[VAR__53647];
+      }
+
+      days += date;
+   }
+
+   switch ( days % 7 )
+   {
+   case 1:
+      ( cout << "Mon." ) << endl;
+      break;
+
+   case 2:
+      ( cout << "Tue." ) << endl;
+      break;
+
+   case 3:
+      ( cout << "Wed." ) << endl;
+      break;
+
+   case 4:
+      ( cout << "Thu." ) << endl;
+      break;
+
+   case 5:
+      ( cout << "Fri." ) << endl;
+      break;
+
+   case 6:
+      ( cout << "Sat." ) << endl;
+      break;
+
+   case 0:
+      ( cout << "Sun." ) << endl;
+      break;
+   }
+
+   return 0;
+}

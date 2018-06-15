@@ -1,0 +1,72 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647 = 0;
+   int    VAR__21230 = 0;
+   char   sex[41][7];
+   double height[41];
+   double male[41]   = { 0 };
+   double female[41] = { 0 };
+   double ex;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", sex[VAR__53647]);
+      scanf("%lf", &height[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( sex[VAR__53647][0] == 'm' )
+      {
+         male[VAR__53647] = height[VAR__53647];
+      }
+      else
+      {
+         female[VAR__53647] = height[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 41; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 40; VAR__21230++ )
+      {
+         if ( male[VAR__21230] > male[VAR__21230 + 1] )
+         {
+            ex = male[VAR__21230];
+            male[VAR__21230]     = male[VAR__21230 + 1];
+            male[VAR__21230 + 1] = ex;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 41; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 40; VAR__21230++ )
+      {
+         if ( female[VAR__21230] < female[VAR__21230 + 1] )
+         {
+            ex = female[VAR__21230];
+            female[VAR__21230]     = female[VAR__21230 + 1];
+            female[VAR__21230 + 1] = ex;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 41; VAR__53647++ )
+   {
+      if ( male[VAR__53647] != 0 )
+      {
+         printf("%.2lf ", male[VAR__53647]);
+      }
+   }
+
+   printf("%.2lf", female[0]);
+   for ( VAR__53647 = 1; female[VAR__53647] != 0; VAR__53647++ )
+   {
+      printf(" %.2lf", female[VAR__53647]);
+   }
+
+   return 0;
+}

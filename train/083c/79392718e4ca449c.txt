@@ -1,0 +1,78 @@
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+
+   cin >> VAR__819283;
+   char VAR__NUM[12000];
+   cin >> VAR__NUM;
+   cin >> VAR__19328;
+   int ln       = strlen(VAR__NUM);
+   int VAR__SUM = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < ( ln - 1 ); VAR__53647++ )
+   {
+      if (( VAR__NUM[VAR__53647] >= '0' ) && ( VAR__NUM[VAR__53647] <= '9' ))
+      {
+         VAR__SUM = ( VAR__SUM + ( VAR__NUM[VAR__53647] - '0' )) * VAR__819283;
+      }
+
+      if (( VAR__NUM[VAR__53647] >= 'a' ) && ( VAR__NUM[VAR__53647] <= 'z' ))
+      {
+         VAR__SUM = ( VAR__SUM + (( VAR__NUM[VAR__53647] - 'a' ) + 10 )) * VAR__819283;
+      }
+
+      if (( VAR__NUM[VAR__53647] >= 'A' ) && ( VAR__NUM[VAR__53647] <= 'Z' ))
+      {
+         VAR__SUM = ( VAR__SUM + (( VAR__NUM[VAR__53647] - 'A' ) + 10 )) * VAR__819283;
+      }
+   }
+
+   if (( VAR__NUM[ln - 1] >= '0' ) && ( VAR__NUM[ln - 1] <= '9' ))
+   {
+      VAR__SUM += VAR__NUM[ln - 1] - '0';
+   }
+
+   if (( VAR__NUM[ln - 1] >= 'a' ) && ( VAR__NUM[ln - 1] <= 'z' ))
+   {
+      VAR__SUM += ( VAR__NUM[ln - 1] - 'a' ) + 10;
+   }
+
+   if (( VAR__NUM[ln - 1] >= 'A' ) && ( VAR__NUM[ln - 1] <= 'Z' ))
+   {
+      VAR__SUM += ( VAR__NUM[ln - 1] - 'A' ) + 10;
+   }
+
+   int  VAR__21230 = 0;
+   char output[11000];
+
+   if ( VAR__SUM == 0 )
+   {
+      ( cout << '0' ) << endl;
+   }
+   else
+   {
+      while ( VAR__SUM != 0 )
+      {
+         if ((( VAR__SUM % VAR__19328 ) >= 0 ) && (( VAR__SUM % VAR__19328 ) <= 9 ))
+         {
+            output[VAR__21230] = ( VAR__SUM % VAR__19328 ) + '0';
+         }
+         else
+         if (( VAR__SUM % VAR__19328 ) >= 10 )
+         {
+            output[VAR__21230] = (( VAR__SUM % VAR__19328 ) + 'A' ) - 10;
+         }
+
+
+         VAR__SUM = VAR__SUM / VAR__19328;
+         VAR__21230++;
+      }
+
+      for ( int VAR__53647 = VAR__21230 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << output[VAR__53647];
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,78 @@
+struct node
+{
+   char name[20];
+   int  fin;
+   int  bj;
+   char gb;
+   char west;
+   int  essay;
+}
+stu[100];
+void main()
+{
+   int VAR_1238123;
+   int VAR__SUM = 0;
+   int VAR__MAX = 0;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].fin, &stu[VAR__53647].bj, &stu[VAR__53647].gb, &stu[VAR__53647].west, &stu[VAR__53647].essay);
+   }
+
+   int VAR__819283[100];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 0;
+
+      if (( stu[VAR__53647].fin > 80 ) && ( stu[VAR__53647].essay >= 1 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].fin > 85 ) && ( stu[VAR__53647].bj > 80 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].fin > 90 )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].fin > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].gb == 'Y' ) && ( stu[VAR__53647].bj > 80 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__MAX )
+      {
+         printf("%s\n%d\n", stu[VAR__53647].name, VAR__819283[VAR__53647]);
+         break;
+      }
+   }
+
+   printf("%d", VAR__SUM);
+}

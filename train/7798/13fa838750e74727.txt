@@ -1,0 +1,96 @@
+struct info
+{
+   int         VAR__NUM;
+   char        author[30];
+   struct info *VAR__NEXT;
+};
+struct info *create(int VAR_1238123)
+{
+   struct info *ANOTHER_POINTER;
+   struct info *YET_ANOTHER_POINTER;
+   struct info *VAR__HEAD;
+   int         VAR__53647;
+
+   ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+   scanf("%d%s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->author);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+   VAR__HEAD  = ANOTHER_POINTER;
+   VAR__53647 = 1;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+      scanf("%d%s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->author);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      VAR__53647++;
+   }
+
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__temp;
+   int         index;
+   int         VAR__21230;
+   struct info *VAR__HEAD;
+   struct info *VAR_233;
+   int         *VAR_9Q8Q90;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD  = create(VAR_1238123);
+   VAR_9Q8Q90 = (int *)malloc(26 * ( sizeof( int )));
+   VAR_233    = VAR__HEAD;
+   for ( VAR__53647 = 0, VAR__temp = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      *( VAR_9Q8Q90 + VAR__53647 ) = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__21230 = 0;
+
+      while (( *( VAR_233->author + VAR__21230 )) != '\0' )
+      {
+         ( *(( VAR_9Q8Q90 + ( *( VAR_233->author + VAR__21230 ))) - 65 ))++;
+         VAR__21230++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0, VAR__temp = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if (( *( VAR_9Q8Q90 + VAR__53647 )) > VAR__temp )
+      {
+         VAR__temp = *( VAR_9Q8Q90 + VAR__53647 );
+         index     = VAR__53647;
+      }
+   }
+
+   printf("%c\n", index + 65);
+   printf("%d\n", *( VAR_9Q8Q90 + index ));
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__21230 = 0;
+
+      while (( *( VAR_233->author + VAR__21230 )) != '\0' )
+      {
+         if (( *( VAR_233->author + VAR__21230 )) == ( index + 65 ))
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+         }
+
+         VAR__21230++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

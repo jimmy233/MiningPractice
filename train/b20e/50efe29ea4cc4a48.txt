@@ -1,0 +1,75 @@
+int src[1000];
+int tgt[1000];
+int main()
+{
+   int VAR_1238123;
+
+   while (( scanf("%d", &VAR_1238123) == 1 ) && ( VAR_1238123 > 0 ))
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         scanf("%d", &src[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         scanf("%d", &tgt[VAR__53647]);
+      }
+
+      sort(src, src + VAR_1238123);
+      sort(tgt, tgt + VAR_1238123);
+      int si   = 0;
+      int sj   = VAR_1238123 - 1;
+      int ti   = 0;
+      int tj   = VAR_1238123 - 1;
+      int gain = 0;
+
+      while ( si <= sj )
+      {
+         int VAR__819283  = src[si];
+         int VAR__19328   = src[sj];
+         int VAR__4857423 = tgt[ti];
+         int VAR__12302   = tgt[tj];
+
+         if ( VAR__819283 < VAR__4857423 )
+         {
+            --gain;
+            ++si;
+            --tj;
+         }
+         else
+         if ( VAR__819283 > VAR__4857423 )
+         {
+            ++gain;
+            ++si;
+            ++ti;
+         }
+         else
+         if ( VAR__19328 < VAR__12302 )
+         {
+            --gain;
+            ++si;
+            --tj;
+         }
+         else
+         if ( VAR__19328 > VAR__12302 )
+         {
+            ++gain;
+            --sj;
+            --tj;
+         }
+         else
+         {
+            if ( VAR__819283 < VAR__12302 )
+            {
+               --gain;
+            }
+
+            ++si;
+            --tj;
+         }
+      }
+
+      printf("%d\n", gain * 200);
+   }
+}

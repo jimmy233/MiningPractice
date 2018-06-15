@@ -1,0 +1,57 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int book_number[26];
+   int VAR__MAX = 0;
+   int max_n;
+   int author_len;
+   struct data
+   {
+      int  number;
+      char author[27];
+   }
+   input[1000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__21230 = 0; VAR__21230 <= 25; VAR__21230++ )
+   {
+      book_number[VAR__21230] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d %s", &input[VAR__53647].number, input[VAR__53647].author);
+      author_len = strlen(input[VAR__53647].author);
+      for ( VAR__21230 = 0; VAR__21230 <= ( author_len - 1 ); VAR__21230++ )
+      {
+         book_number[input[VAR__53647].author[VAR__21230] - 'A']++;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= 25; VAR__21230++ )
+   {
+      if ( book_number[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = book_number[VAR__21230];
+         max_n    = VAR__21230;
+      }
+   }
+
+   printf("%c\n%d\n", max_n + 'A', VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      author_len = strlen(input[VAR__53647].author);
+      for ( VAR__21230 = 0; VAR__21230 <= ( author_len - 1 ); VAR__21230++ )
+      {
+         if ( input[VAR__53647].author[VAR__21230] == ( max_n + 'A' ))
+         {
+            printf("%d\n", input[VAR__53647].number);
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

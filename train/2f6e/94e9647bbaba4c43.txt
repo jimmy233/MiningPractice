@@ -1,0 +1,88 @@
+char c1;
+char c2;
+int  VAR__NUM;
+int  VAR__8444594 = 0;
+int  VAR_9494[1000][2];
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   void VAR__127322(char A_STRING[1000]);
+
+   char VAR__4857423[1000];
+   gets(VAR__4857423);
+   c1       = VAR__4857423[0];
+   VAR__NUM = strlen(VAR__4857423);
+   for ( VAR__53647 = 1; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] != c1 )
+      {
+         c2 = VAR__4857423[VAR__53647];
+         break;
+      }
+   }
+
+   VAR__127322(VAR__4857423);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__8444594 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR_9494[VAR__21230][1] > VAR_9494[VAR__21230 + 1][1] )
+         {
+            VAR__TEMP = VAR_9494[VAR__21230 + 1][1];
+            VAR_9494[VAR__21230 + 1][1] = VAR_9494[VAR__21230][1];
+            VAR_9494[VAR__21230][1]     = VAR__TEMP;
+            VAR__TEMP = VAR_9494[VAR__21230 + 1][0];
+            VAR_9494[VAR__21230 + 1][0] = VAR_9494[VAR__21230][0];
+            VAR_9494[VAR__21230][0]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%d %d\n", VAR_9494[VAR__53647][0], VAR_9494[VAR__53647][1]);
+   }
+
+   printf("\n");
+   return 0;
+}
+
+
+void VAR__127322(char A_STRING[1000])
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__NUM - 1 ); VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == c1 )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__NUM; VAR__21230++ )
+         {
+            if ( A_STRING[VAR__21230] == c1 )
+            {
+               break;
+            }
+
+            if ( A_STRING[VAR__21230] == c2 )
+            {
+               VAR_9494[VAR__8444594][0]   = VAR__53647;
+               VAR_9494[VAR__8444594++][1] = VAR__21230;
+               A_STRING[VAR__53647]        = ' ';
+               A_STRING[VAR__21230]        = ' ';
+               break;
+            }
+         }
+      }
+   }
+
+
+
+   if (( VAR__8444594 * 2 ) < VAR__NUM )
+   {
+      VAR__127322(A_STRING);
+   }
+}

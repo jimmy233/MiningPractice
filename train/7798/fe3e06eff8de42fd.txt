@@ -1,0 +1,109 @@
+struct book *VAR__HEAD;
+int         abc[26];
+struct book
+{
+   int         VAR__NUM;
+   char        name[1000];
+   struct book *VAR__NEXT;
+};
+void ffind(char *name)
+{
+   while (( *name ) != 0 )
+   {
+      abc[( *name ) - 65]++;
+      name++;
+   }
+}
+
+
+int mfind(char *name, char VAR__819283)
+{
+   while (( *name ) != 0 )
+   {
+      if ( VAR__819283 == ( *name ))
+      {
+         return 1;
+      }
+
+      name++;
+   }
+}
+
+
+struct book *creat(int VAR__MAX)
+{
+   int         VAR_1238123;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct book *)malloc(LEN));
+   VAR__HEAD       = 0;
+   do
+   {
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->name);
+      ffind(ANOTHER_POINTER->name);
+      VAR_1238123++;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER->VAR__NEXT = 0;
+      ANOTHER_POINTER = (struct book *)malloc(LEN);
+   } while ( VAR_1238123 < VAR__MAX );
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__MAX = 0;
+   int         maxi     = 0;
+   char        tt[2];
+   struct book *VAR_233;
+   struct book *ANOTHER_POINTER;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233         = creat(VAR_1238123);
+   ANOTHER_POINTER = VAR_233;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( abc[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = abc[VAR__53647];
+         maxi     = VAR__53647;
+      }
+   }
+
+   printf("%C\n%d\n", 65 + maxi, VAR__MAX);
+   tt[0] = maxi + 65;
+   tt[1] = 0;
+   do
+   {
+      if ( mfind(ANOTHER_POINTER->name, maxi + 65) == 1 )
+      {
+         VAR__MAX--;
+
+         if ( VAR__MAX != 0 )
+         {
+            printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+         }
+         else
+         {
+            printf("%d", ANOTHER_POINTER->VAR__NUM);
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER != 0 );
+}

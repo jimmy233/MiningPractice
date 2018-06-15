@@ -1,0 +1,82 @@
+struct book
+{
+   int  number;
+   char auther[27];
+}
+bk[1000];
+struct ath
+{
+   char VAR__819283;
+   int  books[999];
+   int  VAR__SUM;
+}
+auth[27];
+struct ath
+{
+   char VAR__819283;
+   int  books[999];
+   int  VAR__SUM;
+}
+VAR__TEMP;
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__7685;
+   int VAR__1238129;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%s", &bk[VAR__53647].number, bk[VAR__53647].auther);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 27; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 999; VAR__21230++ )
+      {
+         auth[VAR__53647].books[VAR__21230] = 0;
+      }
+
+      auth[VAR__53647].VAR__SUM    = 0;
+      auth[VAR__53647].VAR__819283 = 'A' + VAR__53647;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__1238129 = strlen(bk[VAR__53647].auther);
+      int VAR__127322;
+      for ( VAR__127322 = 0; VAR__127322 < VAR__1238129; VAR__127322++ )
+      {
+         VAR__7685 = (int)( bk[VAR__53647].auther[VAR__127322] - 'A' );
+         auth[VAR__7685].books[auth[VAR__7685].VAR__SUM] = bk[VAR__53647].number;
+         auth[VAR__7685].VAR__SUM++;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < 25; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( 25 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( auth[VAR__53647].VAR__SUM > auth[VAR__53647 + 1].VAR__SUM )
+         {
+            VAR__TEMP            = auth[VAR__53647];
+            auth[VAR__53647]     = auth[VAR__53647 + 1];
+            auth[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   printf("%c\n", auth[25].VAR__819283);
+   printf("%d\n", auth[25].VAR__SUM);
+   VAR__53647 = 0;
+
+   while ( auth[25].books[VAR__53647] != 0 )
+   {
+      printf("%d\n", auth[25].books[VAR__53647]);
+      VAR__53647++;
+   }
+}

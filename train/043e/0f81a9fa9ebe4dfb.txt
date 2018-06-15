@@ -1,0 +1,64 @@
+char *Strlwr(char *);
+
+int main()
+{
+   char input[110];
+   char replaced[110];
+   char replace[110];
+   char inputL[110];
+   char replacedL[110];
+   char *VAR_233;
+   char *pL;
+   char *start;
+   int  LEN_OF_STH;
+   char VAR__TEMP;
+
+   cin.getline(input, 110);
+   cin.getline(replaced, 110);
+   cin.getline(replace, 110);
+   strcpy(inputL, input);
+   strcpy(replacedL, replaced);
+   LEN_OF_STH = strlen(replaced);
+   pL         = strstr(inputL, replacedL);
+   start      = input;
+
+   while ( pL != NULL )
+   {
+      if ((( pL == inputL ) || ( isalpha(*( pL - 1 )) == 0 )) && ( isalpha(*( pL + LEN_OF_STH )) == 0 ))
+      {
+         VAR_233  = input + ( pL - inputL );
+         *VAR_233 = '\0';
+         ( cout << start ) << replace;
+         start = VAR_233 + LEN_OF_STH;
+         pL    = strstr(( start - input ) + inputL, replacedL);
+      }
+      else
+      {
+         VAR_233   = ( input + ( pL - inputL )) + LEN_OF_STH;
+         VAR__TEMP = *VAR_233;
+         *VAR_233  = '\0';
+         cout << start;
+         start  = VAR_233;
+         *start = VAR__TEMP;
+         pL     = strstr(( start - input ) + inputL, replacedL);
+      }
+   }
+
+   ( cout << start ) << endl;
+   return 0;
+}
+
+
+char *Strlwr(char *VAR_233)
+{
+   for ( ; ( *VAR_233 ) != '\0'; VAR_233++ )
+   {
+      if ((( *VAR_233 ) >= 'A' ) && (( *VAR_233 ) <= 'Z' ))
+      {
+         *VAR_233 += 32;
+      }
+   }
+
+
+   return VAR_233;
+}

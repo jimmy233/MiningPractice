@@ -1,0 +1,75 @@
+int main()
+{
+   int  lenth1;
+   int  lenthw1;
+   int  lenthw2;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__NUM = 0;
+   int  row      = 0;
+   int  VAR_FLAG;
+   int  VAR__819283[101];
+   char s1[101];
+   char word[101];
+   char wordnew[101];
+   char olds1[101][101];
+
+   cin.getline(s1, 101);
+   cin >> word;
+   cin >> wordnew;
+   lenth1  = strlen(s1);
+   lenthw1 = strlen(word);
+   lenthw2 = strlen(wordnew);
+   for ( VAR__53647 = 0; VAR__53647 < lenth1; VAR__53647++ )
+   {
+      if ( s1[VAR__53647] == ' ' )
+      {
+         VAR__NUM++;
+         row = 0;
+      }
+      else
+      {
+         olds1[VAR__NUM][row]  = s1[VAR__53647];
+         VAR__819283[VAR__NUM] = row;
+         row++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      VAR_FLAG = 1;
+      for ( VAR__21230 = 0; VAR__21230 < lenthw1; VAR__21230++ )
+      {
+         if ( olds1[VAR__53647][VAR__21230] != word[VAR__21230] )
+         {
+            VAR_FLAG = 0;
+         }
+      }
+
+      if ( VAR_FLAG == 1 )
+      {
+         VAR__819283[VAR__53647] = lenthw2 - 1;
+         for ( VAR__21230 = 0; VAR__21230 < lenthw2; VAR__21230++ )
+         {
+            olds1[VAR__53647][VAR__21230] = wordnew[VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= VAR__819283[VAR__53647]; VAR__21230++ )
+      {
+         cout << olds1[VAR__53647][VAR__21230];
+      }
+
+      cout << " ";
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__819283[VAR__NUM]; VAR__21230++ )
+   {
+      cout << olds1[VAR__NUM][VAR__21230];
+   }
+
+   return 0;
+}

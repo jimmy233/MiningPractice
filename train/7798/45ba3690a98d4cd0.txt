@@ -1,0 +1,61 @@
+int main()
+{
+   int VAR__1238129;
+
+   cin >> VAR__1238129;
+   int  book[1000];
+   char person[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   char people[100][100];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1111;
+   int  VAR__temp[100] = { 0 };
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      cin >> book[VAR__53647];
+      cin >> people[VAR__53647];
+      VAR__1111 = strlen(people[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+      {
+         VAR__temp[people[VAR__53647][VAR__21230] - 'A']++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   int tt;
+   for ( VAR__53647 = 0; VAR__53647 <= 26; VAR__53647++ )
+   {
+      if ( VAR__temp[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__temp[VAR__53647];
+         tt       = VAR__53647;
+      }
+   }
+
+   ( cout << person[tt] ) << endl;
+   ( cout << VAR__MAX ) << endl;
+   int VAR__8444594;
+   int already[26] = { 1 };
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      VAR__1111 = strlen(people[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+      {
+         if ( people[VAR__53647][VAR__21230] == person[tt] )
+         {
+            ( cout << book[VAR__53647] ) << endl;
+            for ( VAR__8444594 = 0; VAR__8444594 < VAR__1111; VAR__8444594++ )
+            {
+               if (( people[VAR__53647][VAR__8444594] != person[tt] ) && ( already[people[VAR__53647][VAR__8444594] - 'A'] != 0 ))
+               {
+                  already[people[VAR__53647][VAR__8444594] - 'A'] = 0;
+               }
+            }
+
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

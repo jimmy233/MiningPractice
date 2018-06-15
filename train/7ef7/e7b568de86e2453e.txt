@@ -1,0 +1,81 @@
+int VAR_1238123;
+int A[111][111];
+void VAR__SUM()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> A[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   int S = 0;
+   for ( int VAR__temp = VAR_1238123; VAR__temp > 1; VAR__temp-- )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+      {
+         int VAR__MIN = 999999;
+         for ( int VAR__21230 = 0; VAR__21230 < VAR__temp; VAR__21230++ )
+         {
+            if ( A[VAR__53647][VAR__21230] < VAR__MIN )
+            {
+               VAR__MIN = A[VAR__53647][VAR__21230];
+            }
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 < VAR__temp; VAR__21230++ )
+         {
+            A[VAR__53647][VAR__21230] -= VAR__MIN;
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+      {
+         int VAR__MIN = 999999;
+         for ( int VAR__21230 = 0; VAR__21230 < VAR__temp; VAR__21230++ )
+         {
+            if ( A[VAR__21230][VAR__53647] < VAR__MIN )
+            {
+               VAR__MIN = A[VAR__21230][VAR__53647];
+            }
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 < VAR__temp; VAR__21230++ )
+         {
+            A[VAR__21230][VAR__53647] -= VAR__MIN;
+         }
+      }
+
+      S += A[1][1];
+      for ( int VAR__53647 = 1; VAR__53647 < VAR__temp; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR__temp; VAR__21230++ )
+         {
+            A[VAR__53647][VAR__21230] = A[VAR__53647 + 1][VAR__21230];
+         }
+      }
+
+
+      for ( int VAR__53647 = 1; VAR__53647 < VAR__temp; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR__temp; VAR__21230++ )
+         {
+            A[VAR__21230][VAR__53647] = A[VAR__21230][VAR__53647 + 1];
+         }
+      }
+   }
+
+   ( cout << S ) << endl;
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM();
+   }
+}

@@ -1,0 +1,60 @@
+int kh[1000];
+int th[1000];
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main(void)
+{
+   int N;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int mxt;
+   int mxk;
+   int VAR_21983012;
+
+   while ( scanf("%d", &N), N )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < N; ++VAR__53647 )
+      {
+         scanf("%d", &th[VAR__53647]);
+      }
+
+      qsort(th, VAR__53647, sizeof( th[0] ), cmp);
+      for ( VAR__53647 = 0; VAR__53647 < N; ++VAR__53647 )
+      {
+         scanf("%d", &kh[VAR__53647]);
+      }
+
+      qsort(kh, VAR__53647, sizeof( kh[0] ), cmp);
+      VAR_21983012 = ( VAR__8444594 = ( VAR__21230 = 0 ));
+      mxk          = ( mxt = N - 1 );
+      for ( VAR__53647 = 0; VAR__53647 < N; ++VAR__53647 )
+      {
+         if ( th[VAR__21230] > kh[VAR__8444594] )
+         {
+            ++VAR_21983012, ++VAR__21230, ++VAR__8444594;
+         }
+         else
+         if ( th[mxt] > kh[mxk] )
+         {
+            ++VAR_21983012, --mxt, --mxk;
+         }
+         else
+         if ( th[mxt] < kh[VAR__8444594] )
+         {
+            --VAR_21983012, --mxt, ++VAR__8444594;
+         }
+         else
+         {
+         }
+      }
+
+      printf("%d\n", 200 * VAR_21983012);
+   }
+
+   return 0;
+}

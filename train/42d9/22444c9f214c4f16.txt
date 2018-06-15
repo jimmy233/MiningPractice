@@ -1,0 +1,117 @@
+int VAR_1238123;
+int VAR__7685;
+int VAR__3918907;
+int VAR__9290;
+int VAR_233;
+struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+points[10];
+struct print
+{
+   double       VAR__1111;
+   struct point ANOTHER_POINTER;
+   struct point YET_ANOTHER_POINTER;
+}
+prints[45];
+void scan();
+void VAR__COUNT();
+void sort();
+void print();
+
+int main()
+{
+   scan();
+   VAR__COUNT();
+   sort();
+   print();
+   return 0;
+}
+
+
+void scan()
+{
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__7685, &VAR__3918907, &VAR__9290);
+      points[VAR__53647].VAR__7685    = VAR__7685;
+      points[VAR__53647].VAR__3918907 = VAR__3918907;
+      points[VAR__53647].VAR__9290    = VAR__9290;
+   }
+}
+
+
+void VAR__COUNT()
+{
+   int x1;
+   int y1;
+   int z1;
+   int x2;
+   int y2;
+   int z2;
+
+   VAR_233 = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         x1 = points[VAR__53647].VAR__7685;
+         y1 = points[VAR__53647].VAR__3918907;
+         z1 = points[VAR__53647].VAR__9290;
+         x2 = points[VAR__21230].VAR__7685;
+         y2 = points[VAR__21230].VAR__3918907;
+         z2 = points[VAR__21230].VAR__9290;
+         prints[VAR_233].VAR__1111           = sqrt(((( x1 - x2 ) * ( x1 - x2 )) + (( y1 - y2 ) * ( y1 - y2 ))) + (( z1 - z2 ) * ( z1 - z2 )));
+         prints[VAR_233].ANOTHER_POINTER     = points[VAR__53647];
+         prints[VAR_233].YET_ANOTHER_POINTER = points[VAR__21230];
+         VAR_233++;
+      }
+   }
+}
+
+
+void sort()
+{
+   struct print VAR__TEMP;
+
+   for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_233; VAR__8444594++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_233 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( prints[VAR__53647].VAR__1111 < prints[VAR__53647 + 1].VAR__1111 )
+         {
+            VAR__TEMP = prints[VAR__53647 + 1];
+            prints[VAR__53647 + 1] = prints[VAR__53647];
+            prints[VAR__53647]     = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void print()
+{
+   int    x1;
+   int    y1;
+   int    z1;
+   int    x2;
+   int    y2;
+   int    z2;
+   double VAR__1111;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      x1        = prints[VAR__53647].ANOTHER_POINTER.VAR__7685;
+      y1        = prints[VAR__53647].ANOTHER_POINTER.VAR__3918907;
+      z1        = prints[VAR__53647].ANOTHER_POINTER.VAR__9290;
+      x2        = prints[VAR__53647].YET_ANOTHER_POINTER.VAR__7685;
+      y2        = prints[VAR__53647].YET_ANOTHER_POINTER.VAR__3918907;
+      z2        = prints[VAR__53647].YET_ANOTHER_POINTER.VAR__9290;
+      VAR__1111 = prints[VAR__53647].VAR__1111;
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", x1, y1, z1, x2, y2, z2, VAR__1111);
+   }
+}

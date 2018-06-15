@@ -1,0 +1,168 @@
+int h1[1000];
+int h2[1000];
+void Sort(int VAR_2890[], int VAR_1238123)
+{
+   InsertSort(VAR_2890, VAR_1238123);
+}
+
+
+void InsertSort(int A[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int key;
+
+   for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      key        = A[VAR__21230];
+      VAR__53647 = VAR__21230 - 1;
+
+      while (( VAR__53647 >= 0 ) && ( A[VAR__53647] > key ))
+      {
+         A[VAR__53647 + 1] = A[VAR__53647];
+         VAR__53647        = VAR__53647 - 1;
+      }
+
+      A[VAR__53647 + 1] = key;
+   }
+}
+
+
+void QuickSort(int array[], int left, int right)
+{
+   int pivot;
+   int leftIdx  = left;
+   int rightIdx = right;
+   int VAR__TEMP;
+
+   if (( right - left ) > 0 )
+   {
+      pivot = ( left + right ) / 2;
+   }
+
+   while (( leftIdx <= pivot ) && ( rightIdx >= pivot ))
+   {
+      while (( array[leftIdx] < array[pivot] ) && ( leftIdx <= pivot ))
+      {
+         leftIdx = leftIdx + 1;
+      }
+
+      while (( array[rightIdx] > array[pivot] ) && ( rightIdx >= pivot ))
+      {
+         rightIdx = rightIdx - 1;
+      }
+
+      VAR__TEMP       = array[leftIdx];
+      array[leftIdx]  = array[rightIdx];
+      array[rightIdx] = VAR__TEMP;
+      leftIdx         = leftIdx + 1;
+      rightIdx        = rightIdx - 1;
+
+      if (( leftIdx - 1 ) == pivot )
+      {
+         pivot    = rightIdx + 1;
+         rightIdx = rightIdx + 1;
+      }
+      else
+      if (( rightIdx + 1 ) == pivot )
+      {
+         pivot   = leftIdx - 1;
+         leftIdx = leftIdx - 1;
+      }
+   }
+
+   QuickSort(array, left, pivot - 1);
+   QuickSort(array, pivot + 1, right);
+}
+
+
+int Race(int VAR_1238123)
+{
+   int VAR__53647;
+   int Nwin = 0;
+   int begin1;
+   int end1;
+   int begin2;
+   int end2;
+
+   begin1 = VAR_1238123 - 1;
+   begin2 = VAR_1238123 - 1;
+   end1   = 0;
+   end2   = 0;
+   Sort(h1, VAR_1238123);
+   Sort(h2, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( h1[begin1] > h2[begin2] )
+      {
+         Nwin++;
+         begin2--;
+         begin1--;
+      }
+      else
+      if ( h1[end1] > h2[end2] )
+      {
+         Nwin++;
+         end1++;
+         end2++;
+      }
+      else
+      {
+         if ( h1[end1] < h2[begin2] )
+         {
+            Nwin--;
+         }
+
+         begin2--;
+         end1++;
+      }
+   }
+
+   return Nwin * 200;
+}
+
+
+void ParseHorse(int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      scanf("%d", &h1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      scanf("%d", &h2[VAR__53647]);
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR_1238123 = 0;
+   int result[50000];
+
+   scanf("%d", &VAR__53647);
+
+   while ( VAR__53647 )
+   {
+      ParseHorse(VAR__53647);
+      result[VAR_1238123] = Race(VAR__53647);
+      VAR_1238123++;
+      scanf("%d", &VAR__53647);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%d", result[VAR__53647]);
+
+      if ( VAR__53647 != ( VAR_1238123 - 1 ))
+      {
+         printf("\n");
+      }
+   }
+
+   return 0;
+}

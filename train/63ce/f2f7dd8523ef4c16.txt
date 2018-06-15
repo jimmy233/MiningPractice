@@ -1,0 +1,43 @@
+int varieties = 0;
+int VAR_233;
+int dfs(int dep, int last, int VAR__8444594)
+{
+   if ( VAR__8444594 == 1 )
+   {
+      varieties++;
+      return 0;
+   }
+
+   for ( int VAR__53647 = last; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      if (( VAR__8444594 % VAR__53647 ) == 0 )
+      {
+         dfs(dep + 1, VAR__53647, VAR__8444594 / VAR__53647);
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR_1238123;
+   int VAR__temp;
+
+   cin >> VAR_1238123;
+   int VAR__1238129[VAR_1238123];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__temp;
+      dfs(0, 2, VAR__temp);
+      VAR__1238129[VAR__53647] = varieties;
+      varieties = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cout << VAR__1238129[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

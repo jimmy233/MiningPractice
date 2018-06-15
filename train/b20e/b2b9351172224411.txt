@@ -1,0 +1,67 @@
+int N;
+int TJ[MAX];
+int QW[MAX];
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int lt;
+   int rt;
+   int lq;
+   int rq;
+
+   while ( scanf("%d", &N))
+   {
+      if ( N == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         scanf("%d", TJ + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         scanf("%d", QW + VAR__53647);
+      }
+
+      sort(TJ, TJ + N);
+      sort(QW, QW + N);
+      lt         = 0;
+      rt         = N - 1;
+      lq         = 0;
+      rq         = N - 1;
+      VAR__21230 = 0;
+
+      while ( lt <= rt )
+      {
+         if ( TJ[lt] > QW[lq] )
+         {
+            VAR__21230 += 200;
+            lq++;
+            lt++;
+         }
+         else
+         if ( TJ[rt] > QW[rq] )
+         {
+            VAR__21230 += 200;
+            rt--;
+            rq--;
+         }
+         else
+         {
+            if ( TJ[lt] < QW[rq] )
+            {
+               VAR__21230 -= 200;
+            }
+
+            lt++;
+            rq--;
+         }
+      }
+
+      printf("%d\n", VAR__21230);
+   }
+}

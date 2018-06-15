@@ -1,0 +1,65 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   int VAR__819283[VAR_1238123][3];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         cin >> VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   int    VAR__1238129 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   double VAR__12302[VAR__1238129];
+   double VAR__temp;
+   int    VAR_233 = 0;
+   int    VAR__NUM[VAR__1238129][2];
+   int    tt;
+   int    ttt;
+   for ( int ii = 0; ii < VAR_1238123; ii++ )
+   {
+      for ( int jj = ii + 1; jj < VAR_1238123; jj++ )
+      {
+         VAR__12302[VAR_233]  = sqrt(((( VAR__819283[ii][0] - VAR__819283[jj][0] ) * ( VAR__819283[ii][0] - VAR__819283[jj][0] )) + (( VAR__819283[ii][1] - VAR__819283[jj][1] ) * ( VAR__819283[ii][1] - VAR__819283[jj][1] ))) + (( VAR__819283[ii][2] - VAR__819283[jj][2] ) * ( VAR__819283[ii][2] - VAR__819283[jj][2] )));
+         VAR__NUM[VAR_233][0] = ii;
+         VAR__NUM[VAR_233][1] = jj;
+         VAR_233++;
+      }
+   }
+
+
+   for ( int iii = 1; iii < VAR__1238129; iii++ )
+   {
+      for ( int jjj = 0; jjj < ( VAR__1238129 - iii ); jjj++ )
+      {
+         if ( VAR__12302[jjj] < VAR__12302[jjj + 1] )
+         {
+            VAR__temp           = VAR__12302[jjj];
+            VAR__12302[jjj]     = VAR__12302[jjj + 1];
+            VAR__12302[jjj + 1] = VAR__temp;
+            tt = VAR__NUM[jjj][0];
+            VAR__NUM[jjj][0]     = VAR__NUM[jjj + 1][0];
+            VAR__NUM[jjj + 1][0] = tt;
+            ttt = VAR__NUM[jjj][1];
+            VAR__NUM[jjj][1]     = VAR__NUM[jjj + 1][1];
+            VAR__NUM[jjj + 1][1] = ttt;
+         }
+      }
+   }
+
+
+   int iij;
+   int jji;
+   for ( int ij = 0; ij < VAR__1238129; ij++ )
+   {
+      iij = VAR__NUM[ij][0];
+      jji = VAR__NUM[ij][1];
+      (((((((((((((((( cout << "(" ) << VAR__819283[iij][0] ) << "," ) << VAR__819283[iij][1] ) << "," ) << VAR__819283[iij][2] ) << ")-(" ) << VAR__819283[jji][0] ) << "," ) << VAR__819283[jji][1] ) << "," ) << VAR__819283[jji][2] ) << ")=" ) << fixed ) << setprecision(2)) << VAR__12302[ij] ) << endl;
+   }
+
+   return 0;
+}

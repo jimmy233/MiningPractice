@@ -1,0 +1,176 @@
+int main()
+{
+   int year1;
+   int month1;
+   int date1;
+   int year2;
+   int month2;
+   int date2;
+   int year_2;
+   int year;
+   int month;
+   int date;
+
+   scanf("%d%d%d\n%d%d%d", &year1, &month1, &date1, &year2, &month2, &date2);
+   year_2 = year2;
+
+   if ( date1 <= date2 )
+   {
+      date = date2 - date1;
+   }
+   else
+   {
+      month2 = month2 - 1;
+
+      if ((( month2 <= 7 ) && (( month2 % 2 ) != 0 )) || (( month2 > 7 ) && (( month2 % 2 ) == 0 )))
+      {
+         date = ( date2 - date1 ) + 31;
+      }
+      else
+      if ( month2 != 2 )
+      {
+         date = ( date2 - date1 ) + 30;
+      }
+      else
+      if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+      {
+         date = ( date2 - date1 ) + 29;
+      }
+      else
+      {
+         date = ( date2 - date1 ) + 28;
+      }
+   }
+
+   if ( month2 >= month1 )
+   {
+      month = month2 - month1;
+   }
+   else
+   {
+      month  = ( month2 - month1 ) + 12;
+      year_2 = year2 - 1;
+   }
+
+   year = year_2 - year1;
+   int day;
+   int monthday;
+   int yearday;
+   int monthday1 = 0;
+   int monthday2 = 0;
+   day      = 0;
+   monthday = 0;
+   int judgeyear2;
+   int VAR__53647;
+
+   if (( month1 + month ) >= 12 )
+   {
+      judgeyear2 = year_2;
+   }
+   else
+   {
+      judgeyear2 = year2;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( month1 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__53647 <= 12 )
+      {
+         if ((( VAR__53647 <= 7 ) && (( VAR__53647 % 2 ) != 0 )) || (( VAR__53647 > 7 ) && (( VAR__53647 % 2 ) == 0 )))
+         {
+            monthday1 = monthday1 + 31;
+         }
+         else
+         if ( VAR__53647 == 2 )
+         {
+            if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+            {
+               monthday1 = monthday1 + 29;
+            }
+            else
+            {
+               monthday1 = monthday1 + 28;
+            }
+         }
+         else
+         {
+            monthday1 = monthday1 + 30;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( month1 + month ) - 1 ); VAR__53647++ )
+   {
+      if ( VAR__53647 > 12 )
+      {
+         if (((( VAR__53647 - 12 ) <= 7 ) && ((( VAR__53647 - 12 ) % 2 ) != 0 )) || ((( VAR__53647 - 12 ) > 7 ) && ((( VAR__53647 - 12 ) % 2 ) == 0 )))
+         {
+            monthday2 = monthday2 + 31;
+         }
+         else
+         if (( VAR__53647 - 12 ) == 2 )
+         {
+            if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+            {
+               monthday2 = monthday2 + 29;
+            }
+            else
+            {
+               monthday2 = monthday2 + 28;
+            }
+         }
+         else
+         {
+            monthday2 = monthday2 + 30;
+         }
+      }
+
+
+      else
+      if ((( VAR__53647 <= 7 ) && (( VAR__53647 % 2 ) != 0 )) || (( VAR__53647 > 7 ) && (( VAR__53647 % 2 ) == 0 )))
+      {
+         monthday2 = monthday2 + 31;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if (((( judgeyear2 % 4 ) == 0 ) && (( judgeyear2 % 100 ) != 0 )) || (( judgeyear2 % 400 ) == 0 ))
+         {
+            monthday2 = monthday2 + 29;
+         }
+         else
+         {
+            monthday2 = monthday2 + 28;
+         }
+      }
+      else
+      {
+         monthday2 = monthday2 + 30;
+      }
+   }
+
+
+
+   monthday = monthday2 - monthday1;
+   yearday  = 365 * year;
+   int VAR__21230;
+   year2 = year_2;
+   for ( VAR__21230 = year1; VAR__21230 <= ( year2 - 1 ); VAR__21230++ )
+   {
+      if (((( VAR__21230 % 4 ) == 0 ) && (( VAR__21230 % 100 ) != 0 )) || (( VAR__21230 % 400 ) == 0 ))
+      {
+         yearday = yearday + 1;
+      }
+      else
+      {
+         continue;
+      }
+   }
+
+
+   day = ( date + monthday ) + yearday;
+   printf("%d\n", day);
+   return 0;
+}

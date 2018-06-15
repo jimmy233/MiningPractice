@@ -1,0 +1,78 @@
+short int VAR_1238123;
+short int tianji[1010];
+short int qiwang[1010];
+int main()
+{
+   while ( scanf("%d", &VAR_1238123))
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tianji[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qiwang[VAR__53647]);
+      }
+
+      sort(tianji, tianji + VAR_1238123);
+      sort(qiwang, qiwang + VAR_1238123);
+      short int tianjigood;
+      short int qiwanggood;
+      short int tianjibad;
+      short int qiwangbad;
+      tianjigood = ( qiwanggood = VAR_1238123 - 1 );
+      tianjibad  = ( qiwangbad = 0 );
+      short int cnt = 0;
+
+      while ( tianjigood >= tianjibad )
+      {
+         if ( tianji[tianjibad] > qiwang[qiwangbad] )
+         {
+            cnt++;
+            tianjibad++;
+            qiwangbad++;
+            continue;
+         }
+
+         if ( tianji[tianjibad] < qiwang[qiwangbad] )
+         {
+            cnt--;
+            tianjibad++;
+            qiwanggood--;
+            continue;
+         }
+
+         if ( tianji[tianjigood] > qiwang[qiwanggood] )
+         {
+            cnt++;
+            tianjigood--;
+            qiwanggood--;
+            continue;
+         }
+
+         if ( tianji[tianjigood] < qiwang[qiwanggood] )
+         {
+            cnt--;
+            tianjibad++;
+            qiwanggood--;
+            continue;
+         }
+
+         if ( tianji[tianjibad] < qiwang[qiwanggood] )
+         {
+            cnt--;
+         }
+
+         tianjibad++;
+         qiwanggood--;
+      }
+
+      printf("%d\n", 200 * cnt);
+   }
+}

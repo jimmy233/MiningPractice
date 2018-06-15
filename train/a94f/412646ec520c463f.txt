@@ -1,0 +1,80 @@
+int main()
+{
+   int array[100][100];
+   int VAR_FLAG[100][100] = { { 0 }, { 0 } };
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int rowstart;
+   int colstart;
+
+   ( cin >> row ) >> col;
+   for ( VAR__53647 = 1; VAR__53647 <= row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= col; VAR__21230++ )
+      {
+         cin >> array[VAR__53647][VAR__21230];
+         VAR_FLAG[VAR__53647][VAR__21230] = 1;
+      }
+   }
+
+   rowstart = ( colstart = 1 );
+   do
+   {
+      for ( VAR__53647 = colstart; VAR__53647 <= col; VAR__53647++ )
+      {
+         if (( VAR_FLAG[rowstart][VAR__53647] == 0 ) || ( array[rowstart][VAR__53647] == 0 ))
+         {
+            break;
+         }
+
+         ( cout << array[rowstart][VAR__53647] ) << endl;
+         VAR_FLAG[rowstart][VAR__53647] = 0;
+      }
+
+      rowstart++;
+      for ( VAR__53647 = rowstart; VAR__53647 <= row; VAR__53647++ )
+      {
+         if (( VAR_FLAG[VAR__53647][col] == 0 ) || ( array[VAR__53647][col] == 0 ))
+         {
+            break;
+         }
+
+         ( cout << array[VAR__53647][col] ) << endl;
+         VAR_FLAG[VAR__53647][col] = 0;
+      }
+
+      col--;
+      for ( VAR__53647 = col; VAR__53647 >= colstart; VAR__53647-- )
+      {
+         if (( VAR_FLAG[row][VAR__53647] == 0 ) || ( array[row][VAR__53647] == 0 ))
+         {
+            break;
+         }
+
+         ( cout << array[row][VAR__53647] ) << endl;
+         VAR_FLAG[row][VAR__53647] = 0;
+      }
+
+      row--;
+      for ( VAR__53647 = row; VAR__53647 >= rowstart; VAR__53647-- )
+      {
+         if (( VAR_FLAG[VAR__53647][colstart] == 0 ) || ( array[VAR__53647][colstart] == 0 ))
+         {
+            break;
+         }
+
+         ( cout << array[VAR__53647][colstart] ) << endl;
+         VAR_FLAG[VAR__53647][colstart] = 0;
+      }
+
+      colstart++;
+
+      if (( row == rowstart ) && ( col == colstart ))
+      {
+         cout << array[row][col];
+      }
+   } while (( row > rowstart ) || ( col > colstart ));
+   return 0;
+}

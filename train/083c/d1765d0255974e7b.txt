@@ -1,0 +1,115 @@
+long int shijinzhi(int VAR__819283, char VAR_1238123[100])
+{
+   int      VAR__53647;
+   long int VAR__9290 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_1238123); VAR__53647++ )
+   {
+      if (( VAR_1238123[VAR__53647] >= '0' ) && ( VAR_1238123[VAR__53647] <= '9' ))
+      {
+         VAR__9290 += pow(VAR__819283, ( strlen(VAR_1238123) - 1 ) - VAR__53647) * ( VAR_1238123[VAR__53647] - '0' );
+      }
+      else
+      if (( VAR_1238123[VAR__53647] >= 'a' ) && ( VAR_1238123[VAR__53647] <= 'z' ))
+      {
+         VAR__9290 += pow(VAR__819283, ( strlen(VAR_1238123) - 1 ) - VAR__53647) * (( VAR_1238123[VAR__53647] - 'a' ) + 10 );
+      }
+      else
+      if (( VAR_1238123[VAR__53647] >= 'A' ) && ( VAR_1238123[VAR__53647] <= 'Z' ))
+      {
+         VAR__9290 += pow(VAR__819283, ( strlen(VAR_1238123) - 1 ) - VAR__53647) * (( VAR_1238123[VAR__53647] - 'A' ) + 10 );
+      }
+   }
+
+   return VAR__9290;
+}
+
+
+void zhuanhuan(long int VAR__7685, char VAR__819283[1000], int VAR__19328)
+{
+   int  yushu;
+   int  VAR__1111;
+   int  VAR__21230;
+   int  VAR__53647        = 0;
+   char VAR_1238123[1000] = { 0 };
+
+   if ( VAR__19328 <= 10 )
+   {
+      do
+      {
+         yushu     = VAR__7685 % VAR__19328;
+         VAR__7685 = VAR__7685 / VAR__19328;
+         VAR_1238123[VAR__53647] = yushu + '0';
+         VAR__53647++;
+      } while ( VAR__7685 >= VAR__19328 );
+      VAR_1238123[VAR__53647] = VAR__7685 + '0';
+   }
+   else
+   if ( VAR__19328 > 10 )
+   {
+      do
+      {
+         yushu     = VAR__7685 % VAR__19328;
+         VAR__7685 = VAR__7685 / VAR__19328;
+
+         if ( yushu <= 9 )
+         {
+            VAR_1238123[VAR__53647] = yushu + '0';
+         }
+         else
+         if ( yushu > 9 )
+         {
+            VAR_1238123[VAR__53647] = ( yushu - 10 ) + 'A';
+         }
+
+
+         VAR__53647++;
+      } while ( VAR__7685 >= VAR__19328 );
+
+      if ( VAR__7685 <= 9 )
+      {
+         VAR_1238123[VAR__53647] = VAR__7685 + '0';
+      }
+      else
+      if ( VAR__7685 > 9 )
+      {
+         VAR_1238123[VAR__53647] = ( VAR__7685 - 10 ) + 'A';
+      }
+   }
+
+
+   for ( VAR__1111 = VAR__53647, VAR__21230 = 0; VAR__1111 >= 0; VAR__1111--, VAR__21230++ )
+   {
+      VAR__819283[VAR__21230] = VAR_1238123[VAR__1111];
+   }
+}
+
+
+void main()
+{
+   int      VAR__819283;
+   int      VAR__19328;
+   int      VAR__53647;
+   int      VAR_233;
+   long int VAR__7685;
+   char     VAR_1238123[1000] = { 0 };
+
+   scanf("%d %s %d", &VAR__819283, &VAR_1238123, &VAR__19328);
+   VAR__7685 = shijinzhi(VAR__819283, VAR_1238123);
+   VAR_233   = strlen(VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_233; VAR__53647++ )
+   {
+      VAR_1238123[VAR__53647] = 0;
+   }
+
+   zhuanhuan(VAR__7685, VAR_1238123, VAR__19328);
+
+   if ( VAR_1238123[0] != '0' )
+   {
+      printf("%s", VAR_1238123);
+   }
+   else
+   {
+      printf("0");
+   }
+}

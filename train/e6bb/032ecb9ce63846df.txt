@@ -1,0 +1,62 @@
+void birth(int day, int VAR__NUM);
+
+int cnt = 0;
+int VAR__819283[10][10] = { 0 };
+int spread[10][10]      = { 0 };
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   VAR__819283[4][4] = VAR__1238129;
+   birth(VAR_1238123, VAR__1238129);
+   for ( int VAR__3918907 = 0; VAR__3918907 <= 8; VAR__3918907++ )
+   {
+      for ( int o = 0; o <= 7; o++ )
+      {
+         ( cout << VAR__819283[VAR__3918907][o] ) << " ";
+      }
+
+      ( cout << VAR__819283[VAR__3918907][8] ) << endl;
+   }
+
+   return 0;
+}
+
+
+void birth(int day, int VAR__NUM)
+{
+   cnt++;
+
+   if ( cnt > day )
+   {
+      return;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         spread[VAR__53647][VAR__21230]      = VAR__819283[VAR__53647][VAR__21230];
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647][VAR__21230] * 2;
+      }
+   }
+
+   for ( int VAR__8444594 = 0; VAR__8444594 <= 8; VAR__8444594++ )
+   {
+      for ( int VAR__1111 = 0; VAR__1111 <= 8; VAR__1111++ )
+      {
+         VAR__819283[VAR__8444594 - 1][VAR__1111]     = VAR__819283[VAR__8444594 - 1][VAR__1111] + spread[VAR__8444594][VAR__1111];
+         VAR__819283[VAR__8444594 + 1][VAR__1111]     = VAR__819283[VAR__8444594 + 1][VAR__1111] + spread[VAR__8444594][VAR__1111];
+         VAR__819283[VAR__8444594][VAR__1111 - 1]     = VAR__819283[VAR__8444594][VAR__1111 - 1] + spread[VAR__8444594][VAR__1111];
+         VAR__819283[VAR__8444594][VAR__1111 + 1]     = VAR__819283[VAR__8444594][VAR__1111 + 1] + spread[VAR__8444594][VAR__1111];
+         VAR__819283[VAR__8444594 - 1][VAR__1111 - 1] = VAR__819283[VAR__8444594 - 1][VAR__1111 - 1] + spread[VAR__8444594][VAR__1111];
+         VAR__819283[VAR__8444594 - 1][VAR__1111 + 1] = VAR__819283[VAR__8444594 - 1][VAR__1111 + 1] + spread[VAR__8444594][VAR__1111];
+         VAR__819283[VAR__8444594 + 1][VAR__1111 - 1] = VAR__819283[VAR__8444594 + 1][VAR__1111 - 1] + spread[VAR__8444594][VAR__1111];
+         VAR__819283[VAR__8444594 + 1][VAR__1111 + 1] = VAR__819283[VAR__8444594 + 1][VAR__1111 + 1] + spread[VAR__8444594][VAR__1111];
+      }
+   }
+
+   birth(day, VAR__NUM);
+}

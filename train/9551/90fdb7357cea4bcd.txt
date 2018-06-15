@@ -1,0 +1,77 @@
+typedef struct data *pdata;
+struct data
+{
+   char  VAR__819283[20];
+   int   VAR__19328;
+   pdata VAR__NEXT;
+};
+pdata sort(int VAR_1238123)
+{
+   pdata VAR_233   = NULL;
+   pdata VAR_666   = NULL;
+   pdata VAR_9494  = NULL;
+   pdata VAR__HEAD = NULL;
+
+   VAR__HEAD            = (pdata)malloc(sizeof( struct data ));
+   VAR__HEAD->VAR__NEXT = NULL;
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_9494 = (pdata)malloc(sizeof( struct data ));
+      scanf("%s %d", VAR_9494->VAR__819283, &VAR_9494->VAR__19328);
+
+      if ( VAR_9494->VAR__19328 >= 60 )
+      {
+         VAR_666 = VAR__HEAD;
+         VAR_233 = VAR__HEAD->VAR__NEXT;
+
+         while ( VAR_233 )
+         {
+            if ( VAR_233->VAR__19328 < VAR_9494->VAR__19328 )
+            {
+               break;
+            }
+
+            VAR_666 = VAR_666->VAR__NEXT;
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         VAR_666->VAR__NEXT  = VAR_9494;
+         VAR_9494->VAR__NEXT = VAR_233;
+      }
+      else
+      {
+         VAR_666 = VAR__HEAD;
+         VAR_233 = VAR__HEAD->VAR__NEXT;
+
+         while ( VAR_233 )
+         {
+            VAR_666 = VAR_666->VAR__NEXT;
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         VAR_666->VAR__NEXT  = VAR_9494;
+         VAR_9494->VAR__NEXT = NULL;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   pdata VAR_233;
+   pdata VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = sort(VAR_1238123);
+   VAR_233   = VAR__HEAD->VAR__NEXT;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233->VAR__819283);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

@@ -1,0 +1,67 @@
+int main()
+{
+   int VAR_1238123;
+   struct point
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+      int VAR__53647;
+   }
+   points[10];
+   struct jieguo
+   {
+      struct point pointqian;
+      struct point pointhou;
+      double       juliss;
+   }
+   VAR__112390;
+   struct jieguo
+   {
+      struct point pointqian;
+      struct point pointhou;
+      double       juliss;
+   }
+   jieguos[45];
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &points[VAR__53647].VAR__7685, &points[VAR__53647].VAR__3918907, &points[VAR__53647].VAR__9290);
+   }
+
+   int VAR__1238129 = 0;
+   int VAR__8444594 = 0;
+   VAR__53647 = 0;
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+   {
+      for ( VAR__8444594 = VAR__1238129 + 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         jieguos[VAR__53647].pointqian = points[VAR__1238129];
+         jieguos[VAR__53647].pointhou  = points[VAR__8444594];
+         jieguos[VAR__53647].juliss    = sqrt(((( jieguos[VAR__53647].pointqian.VAR__7685 - jieguos[VAR__53647].pointhou.VAR__7685 ) * ( jieguos[VAR__53647].pointqian.VAR__7685 - jieguos[VAR__53647].pointhou.VAR__7685 )) + (( jieguos[VAR__53647].pointqian.VAR__3918907 - jieguos[VAR__53647].pointhou.VAR__3918907 ) * ( jieguos[VAR__53647].pointqian.VAR__3918907 - jieguos[VAR__53647].pointhou.VAR__3918907 ))) + (( jieguos[VAR__53647].pointqian.VAR__9290 - jieguos[VAR__53647].pointhou.VAR__9290 ) * ( jieguos[VAR__53647].pointqian.VAR__9290 - jieguos[VAR__53647].pointhou.VAR__9290 )));
+         VAR__53647++;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( jieguos[VAR__53647].juliss < jieguos[VAR__53647 + 1].juliss )
+         {
+            VAR__112390             = jieguos[VAR__53647 + 1];
+            jieguos[VAR__53647 + 1] = jieguos[VAR__53647];
+            jieguos[VAR__53647]     = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", jieguos[VAR__53647].pointqian.VAR__7685, jieguos[VAR__53647].pointqian.VAR__3918907, jieguos[VAR__53647].pointqian.VAR__9290, jieguos[VAR__53647].pointhou.VAR__7685, jieguos[VAR__53647].pointhou.VAR__3918907, jieguos[VAR__53647].pointhou.VAR__9290, jieguos[VAR__53647].juliss);
+   }
+
+   return 0;
+}

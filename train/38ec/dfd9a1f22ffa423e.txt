@@ -1,0 +1,69 @@
+int main()
+{
+   int runday[13]  = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int brunday[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int year1;
+   int year2;
+   int month1;
+   int month2;
+   int day1;
+   int day2;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM = 0;
+
+   (( cin >> year1 ) >> month1 ) >> day1;
+   (( cin >> year2 ) >> month2 ) >> day2;
+   for ( VAR__53647 = year1; VAR__53647 < year2; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__SUM = VAR__SUM + 366;
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + 365;
+      }
+   }
+
+   if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < month1; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM - runday[VAR__53647];
+      }
+
+      VAR__SUM = VAR__SUM - day1;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < month1; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM - brunday[VAR__53647];
+      }
+
+      VAR__SUM = VAR__SUM - day1;
+   }
+
+   if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + runday[VAR__53647];
+      }
+
+      VAR__SUM = VAR__SUM + day2;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + brunday[VAR__53647];
+      }
+
+      VAR__SUM = VAR__SUM + day2;
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

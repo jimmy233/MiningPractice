@@ -1,0 +1,84 @@
+int main()
+{
+   long year;
+   long month;
+   long day;
+
+   scanf("%ld%ld%ld", &year, &month, &day);
+   int sumyearday = 0;
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( year > 400 )
+   {
+      year = 400 + (( year - 400 ) % 400 );
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+   {
+      if ((( VAR__53647 % 400 ) == 0 ) || ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )))
+      {
+         sumyearday = sumyearday + ( 366 % 7 );
+      }
+      else
+      {
+         sumyearday = sumyearday + ( 365 % 7 );
+      }
+   }
+
+   int mday[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int total    = 0;
+   for ( VAR__21230 = 0; VAR__21230 < ( month - 1 ); VAR__21230++ )
+   {
+      total = total + mday[VAR__21230];
+   }
+
+   if ((((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) && ( month >= 3 )) || ((( year % 400 ) == 0 ) && ( month >= 3 )))
+   {
+      total = total + 1;
+   }
+
+   int days;
+   days = ( sumyearday + ( total % 7 )) + ( day % 7 );
+   int result;
+   result = days % 7;
+
+   if ( result == 1 )
+   {
+      printf("Mon.\n");
+   }
+   else
+   if ( result == 2 )
+   {
+      printf("Tue.\n");
+   }
+   else
+   if ( result == 3 )
+   {
+      printf("Wed.\n");
+   }
+   else
+   if ( result == 4 )
+   {
+      printf("Thu.\n");
+   }
+   else
+   if ( result == 5 )
+   {
+      printf("Fri.\n");
+   }
+   else
+   if ( result == 6 )
+   {
+      printf("Sat.\n");
+   }
+   else
+   if ( result == 0 )
+   {
+      printf("Sun.\n");
+   }
+
+
+
+   return 0;
+}

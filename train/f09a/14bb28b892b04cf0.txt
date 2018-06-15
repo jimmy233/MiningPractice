@@ -1,0 +1,86 @@
+void input(int *M, int *N, int VAR__819283[], int VAR__19328[])
+{
+   scanf("%d %d", M, N);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < ( *M ); VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( *N ); VAR__53647++ )
+   {
+      scanf("%d", &VAR__19328[VAR__53647]);
+   }
+}
+
+
+void sort(int array[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( array[VAR__21230] < array[VAR__8444594] )
+         {
+            VAR__8444594 = VAR__21230;
+         }
+      }
+
+
+      VAR__temp           = array[VAR__8444594];
+      array[VAR__8444594] = array[VAR__53647];
+      array[VAR__53647]   = VAR__temp;
+   }
+}
+
+
+void merge(int M, int N, int VAR__819283[], int VAR__19328[], int VAR__4857423[])
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < M; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647 + M] = VAR__19328[VAR__53647];
+   }
+}
+
+
+void output(int M, int N, int VAR__4857423[])
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < (( M + N ) - 1 ); VAR__53647++ )
+   {
+      printf("%d ", VAR__4857423[VAR__53647]);
+   }
+
+   printf("%d", VAR__4857423[( M + N ) - 1]);
+}
+
+
+int main()
+{
+   int M;
+   int N;
+   int VAR__819283[100000];
+   int VAR__19328[100000];
+
+   input(&M, &N, VAR__819283, VAR__19328);
+   sort(VAR__819283, M);
+   sort(VAR__19328, N);
+   int VAR__4857423[100000];
+   merge(M, N, VAR__819283, VAR__19328, VAR__4857423);
+   output(M, N, VAR__4857423);
+   return 0;
+}

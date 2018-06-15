@@ -1,0 +1,58 @@
+struct student
+{
+   int xuehao;
+   int yuwen;
+   int shuxue;
+   int zongfen;
+}
+stu[100000];
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &stu[VAR__53647].xuehao, &stu[VAR__53647].yuwen, &stu[VAR__53647].shuxue);
+      stu[VAR__53647].zongfen = stu[VAR__53647].yuwen + stu[VAR__53647].shuxue;
+   }
+
+   int max1 = 2;
+   int max2 = 1;
+   int max3 = 0;
+   int num1 = 0;
+   int num2 = 0;
+   int num3 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].zongfen > max1 )
+      {
+         max3 = max2;
+         num3 = num2;
+         max2 = max1;
+         num2 = num1;
+         max1 = stu[VAR__53647].zongfen;
+         num1 = VAR__53647;
+      }
+      else
+      if (( stu[VAR__53647].zongfen <= max1 ) && ( stu[VAR__53647].zongfen > max2 ))
+      {
+         max3 = max2;
+         num3 = num2;
+         max2 = stu[VAR__53647].zongfen;
+         num2 = VAR__53647;
+      }
+      else
+      if (( stu[VAR__53647].zongfen <= max2 ) && ( stu[VAR__53647].zongfen > max3 ))
+      {
+         max3 = stu[VAR__53647].zongfen;
+         num3 = VAR__53647;
+      }
+   }
+
+   printf("%d %d\n", stu[num1].xuehao, stu[num1].zongfen);
+   printf("%d %d\n", stu[num2].xuehao, stu[num2].zongfen);
+   printf("%d %d\n", stu[num3].xuehao, stu[num3].zongfen);
+   return 0;
+}

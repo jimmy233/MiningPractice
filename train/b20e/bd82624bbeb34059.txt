@@ -1,0 +1,89 @@
+int MyCmp(const void *e1, const void *e2)
+{
+   int *ANOTHER_POINTER     = (int *)e1;
+   int *YET_ANOTHER_POINTER = (int *)e2;
+
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__SUM;
+   int front2;
+   int back2;
+   int front;
+   int back;
+   int VAR__819283[1010];
+   int VAR__19328[1010];
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      VAR__SUM = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), MyCmp);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), MyCmp);
+      front2 = ( front = 0 );
+      back2  = ( back = VAR_1238123 - 1 );
+
+      while ( front2 <= back2 )
+      {
+         if ( VAR__819283[front] > VAR__19328[front2] )
+         {
+            front++;
+            front2++;
+            VAR__SUM += 200;
+         }
+         else
+         if ( VAR__819283[front] == VAR__19328[front2] )
+         {
+            while ( front <= back )
+            {
+               if ( VAR__819283[back] > VAR__19328[back2] )
+               {
+                  VAR__SUM += 200;
+                  back--;
+                  back2--;
+               }
+               else
+               {
+                  if ( VAR__819283[back] < VAR__19328[front2] )
+                  {
+                     VAR__SUM -= 200;
+                  }
+
+                  back--;
+                  front2++;
+                  break;
+               }
+            }
+         }
+         else
+         {
+            VAR__SUM -= 200;
+            back--;
+            front2++;
+         }
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

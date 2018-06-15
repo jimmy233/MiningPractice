@@ -1,0 +1,167 @@
+char *MoveNext(char *VAR_233)
+{
+   while ( isalpha(*VAR_233) && ( *VAR_233 ))
+   {
+      VAR_233++;
+   }
+
+   while (( !isalpha(*VAR_233)) && ( *VAR_233 ))
+   {
+      VAR_233++;
+   }
+
+   return VAR_233;
+}
+
+
+int StrWords(char *VAR_233)
+{
+   int VAR__NUM = 0;
+
+   while (( *VAR_233 ) != '\0' )
+   {
+      if (( *VAR_233 ) == ' ' )
+      {
+         VAR_233++;
+      }
+      else
+      {
+         VAR__NUM++;
+         for ( ; (( *VAR_233 ) != ' ' ) && (( *VAR_233 ) != '\0' ); VAR_233++ )
+         {
+         }
+      }
+   }
+
+
+   return VAR__NUM;
+}
+
+
+int CheckSame(char *s1, char *s2)
+{
+   char A_STRING[N];
+   char *VAR_233 = A_STRING;
+
+   while ( isalpha(*s2))
+   {
+      *( VAR_233++ ) = *( s2++ );
+   }
+
+   *VAR_233 = '\0';
+
+   if ( strcmp(s1, A_STRING) == 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void SwapWord(char *YET_ANOTHER_POINTER, char *ANOTHER_POINTER, char *VAR_9494)
+{
+   char *VAR_233;
+   char *t1;
+   char *t2;
+   char *VAR__temp = VAR_9494;
+   int  Dis;
+   int  loop;
+   int  VAR__8444594;
+   int  LEN_OF_STH;
+   int  tag;
+   int  VAR_FLAG;
+
+   Dis = strlen(YET_ANOTHER_POINTER) - strlen(ANOTHER_POINTER);
+
+   if ( Dis < 0 )
+   {
+      tag  = -1;
+      Dis *= -1;
+   }
+   else
+   if ( Dis > 0 )
+   {
+      tag = 1;
+   }
+   else
+   {
+      tag = 0;
+   }
+
+
+   loop = StrWords(VAR__temp);
+
+   while ( loop-- )
+   {
+      if ( CheckSame(ANOTHER_POINTER, VAR__temp))
+      {
+         switch ( tag )
+         {
+         case -1:
+            VAR_233 = VAR__temp;
+
+            while ( isalpha(*VAR_233))
+            {
+               *( VAR_233++ ) = ' ';
+            }
+
+            VAR_233 = VAR__temp;
+
+            while ( *( VAR_233++ ))
+            {
+               *( VAR_233 - Dis ) = *VAR_233;
+            }
+
+            break;
+
+         case 1:
+            LEN_OF_STH = strlen(VAR__temp);
+            VAR_233    = VAR__temp + LEN_OF_STH;
+            for ( VAR__8444594 = 0; VAR__8444594 < strlen(VAR__temp); VAR__8444594++ )
+            {
+               *( VAR_233 + Dis ) = *( VAR_233-- );
+            }
+
+            break;
+
+         default:
+            break;
+         }
+
+         VAR_233 = VAR__temp;
+         t2      = YET_ANOTHER_POINTER;
+
+         while ( *t2 )
+         {
+            *( VAR_233++ ) = *( t2++ );
+         }
+
+         while ( !isalpha(*VAR_233))
+         {
+            VAR_233++;
+         }
+      }
+      else
+      {
+         VAR__temp = MoveNext(VAR__temp);
+      }
+   }
+}
+
+
+int main()
+{
+   char sen[M];
+   char w1[N];
+   char w2[N];
+
+   gets(sen);
+   gets(w1);
+   gets(w2);
+   SwapWord(w2, w1, sen);
+   puts(sen);
+   return 0;
+}

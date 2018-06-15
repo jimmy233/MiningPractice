@@ -1,0 +1,71 @@
+void sort(float *VAR_233, int VAR_1238123)
+{
+   float VAR__TEMP;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR_1238123 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if (( *( VAR_233 + VAR__21230 )) < ( *(( VAR_233 + VAR__21230 ) - 1 )))
+         {
+            VAR__TEMP = *( VAR_233 + VAR__21230 );
+            *( VAR_233 + VAR__21230 )        = *(( VAR_233 + VAR__21230 ) - 1 );
+            *(( VAR_233 + VAR__21230 ) - 1 ) = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   void sort(float *VAR_233, int VAR_1238123);
+
+   float height[40];
+   char  gender[40][6];
+   int   VAR_1238123;
+   int   lens[40];
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%f", &gender[VAR__53647], &height[VAR__53647]);
+      lens[VAR__53647] = strlen(gender[VAR__53647]);
+   }
+
+   int   VAR_233 = -1;
+   int   VAR_666 = -1;
+   float VAR__1238129[40];
+   float VAR__127322[40];
+   for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( lens[VAR__21230] == 4 )
+      {
+         VAR_233++;
+         VAR__1238129[VAR_233] = height[VAR__21230];
+      }
+      else
+      {
+         VAR_666++;
+         VAR__127322[VAR_666] = height[VAR__21230];
+      }
+   }
+
+   float *ANOTHER_POINTER     = VAR__1238129;
+   float *YET_ANOTHER_POINTER = VAR__127322;
+   sort(ANOTHER_POINTER, VAR_233 + 1);
+   sort(YET_ANOTHER_POINTER, VAR_666 + 1);
+   for ( int VAR__8444594 = 0; VAR__8444594 <= VAR_233; VAR__8444594++ )
+   {
+      printf("%3.2f ", VAR__1238129[VAR__8444594]);
+   }
+
+   for ( int VAR__8444594 = VAR_666; VAR__8444594 >= 0; VAR__8444594-- )
+   {
+      printf("%3.2f", VAR__127322[VAR__8444594]);
+
+      if ( VAR__8444594 > 0 )
+      {
+         printf(" ");
+      }
+   }
+}

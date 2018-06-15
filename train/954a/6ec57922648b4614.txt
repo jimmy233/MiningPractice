@@ -1,0 +1,65 @@
+struct student
+{
+   char name[20];
+   int  ave;
+   int  cla;
+   char mon;
+   char pro;
+   int  essay;
+   int  scholar;
+};
+struct student st[100];
+struct student VAR__TEMP;
+int main()
+{
+   int VAR__53647;
+   int N;
+   int VAR__21230;
+   int VAR__SUM = 0;
+
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", st[VAR__53647].name, &st[VAR__53647].ave, &st[VAR__53647].cla, &st[VAR__53647].mon, &st[VAR__53647].pro, &st[VAR__53647].essay);
+      st[VAR__53647].scholar = 0;
+
+      if (( st[VAR__53647].ave > 80 ) && ( st[VAR__53647].essay != 0 ))
+      {
+         st[VAR__53647].scholar = st[VAR__53647].scholar + 8000;
+      }
+
+      if (( st[VAR__53647].ave > 85 ) && ( st[VAR__53647].cla > 80 ))
+      {
+         st[VAR__53647].scholar = st[VAR__53647].scholar + 4000;
+      }
+
+      if ( st[VAR__53647].ave > 90 )
+      {
+         st[VAR__53647].scholar = st[VAR__53647].scholar + 2000;
+      }
+
+      if (( st[VAR__53647].ave > 85 ) && ( st[VAR__53647].pro == 'Y' ))
+      {
+         st[VAR__53647].scholar = st[VAR__53647].scholar + 1000;
+      }
+
+      if (( st[VAR__53647].cla > 80 ) && ( st[VAR__53647].mon == 'Y' ))
+      {
+         st[VAR__53647].scholar = st[VAR__53647].scholar + 850;
+      }
+
+      VAR__SUM = VAR__SUM + st[VAR__53647].scholar;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( N - 1 ); VAR__21230++ )
+   {
+      if ( st[VAR__21230].scholar >= st[VAR__21230 + 1].scholar )
+      {
+         VAR__TEMP          = st[VAR__21230];
+         st[VAR__21230]     = st[VAR__21230 + 1];
+         st[VAR__21230 + 1] = VAR__TEMP;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", st[N - 1].name, st[N - 1].scholar, VAR__SUM);
+}

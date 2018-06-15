@@ -1,0 +1,160 @@
+int main()
+{
+   char s1[251] = { 0 };
+   char s2[251] = { 0 };
+
+   gets(s1);
+   gets(s2);
+   int l1;
+   int l2;
+   int zeroPrefix = 0;
+   l1 = strlen(s1);
+   l2 = strlen(s2);
+   int  VAR__53647;
+   char *ANOTHER_POINTER;
+   char *YET_ANOTHER_POINTER;
+   int  VAR__MAX;
+   int  VAR__MIN;
+   char longer[251]  = { 0 };
+   char shorter[251] = { 0 };
+
+   if ( l1 >= l2 )
+   {
+      strcpy(longer, s1);
+      strcpy(shorter, s2);
+      VAR__MAX = l1;
+      VAR__MIN = l2;
+   }
+   else
+   {
+      strcpy(longer, s2);
+      strcpy(shorter, s1);
+      VAR__MAX = l2;
+      VAR__MIN = l1;
+   }
+
+   ANOTHER_POINTER     = ( longer + VAR__MAX ) - 1;
+   YET_ANOTHER_POINTER = ( shorter + VAR__MIN ) - 1;
+   int VAR__temp;
+   VAR__temp = 0;
+
+   if ( VAR__MAX != VAR__MIN )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__MIN; VAR__53647++, ANOTHER_POINTER--, YET_ANOTHER_POINTER-- )
+      {
+         if (((( *ANOTHER_POINTER ) + ( *YET_ANOTHER_POINTER )) - '0' ) <= '9' )
+         {
+            *ANOTHER_POINTER = (( *ANOTHER_POINTER ) + ( *YET_ANOTHER_POINTER )) - '0';
+         }
+         else
+         {
+            *ANOTHER_POINTER         = (( *ANOTHER_POINTER ) + ( *YET_ANOTHER_POINTER )) - ':';
+            *( ANOTHER_POINTER - 1 ) = ( *( ANOTHER_POINTER - 1 )) + 1;
+         }
+      }
+
+      for ( VAR__53647 = VAR__MIN; VAR__53647 < VAR__MAX; VAR__53647++, ANOTHER_POINTER-- )
+      {
+         if ( VAR__53647 != ( VAR__MAX - 1 ))
+         {
+            if (( *ANOTHER_POINTER ) <= '9' )
+            {
+               break;
+            }
+            else
+            {
+               *( ANOTHER_POINTER - 1 ) = ( *( ANOTHER_POINTER - 1 )) + 1;
+               *ANOTHER_POINTER         = '0';
+            }
+         }
+         else
+         {
+            if (( *ANOTHER_POINTER ) <= '9' )
+            {
+               break;
+            }
+            else
+            {
+               VAR__temp        = 1;
+               *ANOTHER_POINTER = '0';
+            }
+         }
+      }
+
+      if ( VAR__temp == 1 )
+      {
+         printf("1");
+         puts(longer);
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR__MAX; VAR__53647++ )
+         {
+            if (( longer[VAR__53647] != '0' ) || ( zeroPrefix == 1 ))
+            {
+               zeroPrefix = 1;
+               printf("%c", longer[VAR__53647]);
+            }
+         }
+
+         if ( zeroPrefix == 0 )
+         {
+            printf("0");
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__MAX; VAR__53647++, ANOTHER_POINTER--, YET_ANOTHER_POINTER-- )
+      {
+         if ( VAR__53647 != ( VAR__MAX - 1 ))
+         {
+            if (((( *ANOTHER_POINTER ) + ( *YET_ANOTHER_POINTER )) - '0' ) <= '9' )
+            {
+               *ANOTHER_POINTER = (( *ANOTHER_POINTER ) + ( *YET_ANOTHER_POINTER )) - '0';
+            }
+            else
+            {
+               *ANOTHER_POINTER         = (( *ANOTHER_POINTER ) + ( *YET_ANOTHER_POINTER )) - ':';
+               *( ANOTHER_POINTER - 1 ) = (( *( ANOTHER_POINTER - 1 )) + '1' ) - '0';
+            }
+         }
+         else
+         {
+            if (((( *ANOTHER_POINTER ) + ( *YET_ANOTHER_POINTER )) - '0' ) <= '9' )
+            {
+               *ANOTHER_POINTER = (( *ANOTHER_POINTER ) + ( *YET_ANOTHER_POINTER )) - '0';
+            }
+            else
+            {
+               VAR__temp        = 1;
+               *ANOTHER_POINTER = (( *ANOTHER_POINTER ) + ( *YET_ANOTHER_POINTER )) - ':';
+            }
+         }
+      }
+
+      if ( VAR__temp == 1 )
+      {
+         printf("1");
+         puts(longer);
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < strlen(longer); VAR__53647++ )
+         {
+            if (( longer[VAR__53647] != '0' ) || ( zeroPrefix == 1 ))
+            {
+               zeroPrefix = 1;
+               printf("%c", longer[VAR__53647]);
+            }
+         }
+
+         if ( zeroPrefix == 0 )
+         {
+            printf("0");
+         }
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,93 @@
+struct stu
+{
+   char name[100];
+   int  qm;
+   int  py;
+   char gb;
+   char xb;
+   int  lw;
+   int  jj;
+};
+int VAR__819283[101] = { 0 };
+int main()
+{
+   void pai(struct stu VAR_9494[], int VAR_1238123, int VAR__819283[]);
+
+   struct stu VAR_9494[101];
+   int        VAR__53647        = 0;
+   int        VAR_1238123       = 0;
+   int        VAR__SUM          = 0;
+   char       VAR__1238129[100] = { '\0' };
+   for ( VAR__53647 = 0; VAR__53647 < 101; VAR__53647++ )
+   {
+      strcpy(VAR_9494[VAR__53647].name, VAR__1238129);
+      VAR_9494[VAR__53647].qm = 0;
+      VAR_9494[VAR__53647].py = 0;
+      VAR_9494[VAR__53647].gb = '\0';
+      VAR_9494[VAR__53647].xb = '\0';
+      VAR_9494[VAR__53647].lw = 0;
+      VAR_9494[VAR__53647].jj = 0;
+   }
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", VAR_9494[VAR__53647].name);
+      scanf("%d %d %c %c %d", &VAR_9494[VAR__53647].qm, &VAR_9494[VAR__53647].py, &VAR_9494[VAR__53647].gb, &VAR_9494[VAR__53647].xb, &VAR_9494[VAR__53647].lw);
+
+      if (( VAR_9494[VAR__53647].qm > 80 ) && ( VAR_9494[VAR__53647].lw >= 1 ))
+      {
+         VAR_9494[VAR__53647].jj = VAR_9494[VAR__53647].jj + 8000;
+      }
+
+      if (( VAR_9494[VAR__53647].qm > 85 ) && ( VAR_9494[VAR__53647].py > 80 ))
+      {
+         VAR_9494[VAR__53647].jj = VAR_9494[VAR__53647].jj + 4000;
+      }
+
+      if ( VAR_9494[VAR__53647].qm > 90 )
+      {
+         VAR_9494[VAR__53647].jj = VAR_9494[VAR__53647].jj + 2000;
+      }
+
+      if (( VAR_9494[VAR__53647].xb == 'Y' ) && ( VAR_9494[VAR__53647].qm > 85 ))
+      {
+         VAR_9494[VAR__53647].jj = VAR_9494[VAR__53647].jj + 1000;
+      }
+
+      if (( VAR_9494[VAR__53647].py > 80 ) && ( VAR_9494[VAR__53647].gb == 'Y' ))
+      {
+         VAR_9494[VAR__53647].jj = VAR_9494[VAR__53647].jj + 850;
+      }
+
+      VAR__SUM = VAR__SUM + VAR_9494[VAR__53647].jj;
+      VAR__819283[VAR__53647] = VAR__53647;
+   }
+
+   pai(VAR_9494, VAR_1238123, VAR__819283);
+   printf("%s\n", VAR_9494[VAR__819283[0]].name);
+   printf("%d\n", VAR_9494[VAR__819283[0]].jj);
+   printf("%d", VAR__SUM);
+   return 0;
+}
+
+
+void pai(struct stu VAR_9494[], int VAR_1238123, int VAR__819283[])
+{
+   int VAR__temp  = 0;
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( VAR_9494[VAR__819283[VAR__21230]].jj < VAR_9494[VAR__819283[VAR__21230 + 1]].jj )
+         {
+            VAR__temp = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+}

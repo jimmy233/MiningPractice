@@ -1,0 +1,86 @@
+const int MAX = 1005;
+int       VAR__819283[MAX];
+int       VAR__19328[MAX];
+int cmp(int VAR__819283, int VAR__19328)
+{
+   return VAR__819283 > VAR__19328;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   while (( cin >> VAR_1238123 ) && VAR_1238123 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      sort(VAR__819283, VAR__819283 + VAR_1238123, cmp);
+      sort(VAR__19328, VAR__19328 + VAR_1238123, cmp);
+      int VAR__NUM = 0;
+      int al       = 0;
+      int bl       = 0;
+      int ar       = VAR_1238123 - 1;
+      int br       = VAR_1238123 - 1;
+
+      while ( al <= ar )
+      {
+         if ( VAR__819283[ar] > VAR__19328[br] )
+         {
+            ar--;
+            br--;
+            VAR__NUM += 200;
+         }
+         else
+         if ( VAR__819283[ar] < VAR__19328[br] )
+         {
+            ar--;
+            bl++;
+            VAR__NUM -= 200;
+         }
+         else
+         if ( VAR__819283[ar] == VAR__19328[br] )
+         {
+            if ( VAR__819283[al] > VAR__19328[bl] )
+            {
+               al++;
+               bl++;
+               VAR__NUM += 200;
+            }
+            else
+            if ( VAR__819283[al] < VAR__19328[bl] )
+            {
+               ar--;
+               bl++;
+               VAR__NUM -= 200;
+            }
+            else
+            if ( VAR__819283[al] == VAR__19328[bl] )
+            {
+               if ( VAR__819283[ar] == VAR__19328[bl] )
+               {
+                  ar--;
+                  bl++;
+               }
+               else
+               {
+                  ar--;
+                  bl++;
+                  VAR__NUM -= 200;
+               }
+            }
+         }
+      }
+
+      ( cout << VAR__NUM ) << endl;
+   }
+}

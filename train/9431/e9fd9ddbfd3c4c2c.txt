@@ -1,0 +1,55 @@
+struct a
+{
+   struct a *back;
+   char     VAR__819283[20];
+   char     VAR__19328[20];
+   char     VAR__4857423;
+   char     VAR__12302[20];
+   char     VAR__112390[20];
+   char     VAR__127322[20];
+   struct a *VAR__NEXT;
+};
+int main()
+{
+   struct a *pHeader;
+   struct a *pEnd;
+   struct a *ANOTHER_POINTER;
+   struct a *VAR_233;
+
+   pHeader         = (struct a *)malloc(sizeof( struct a ));
+   pHeader->back   = NULL;
+   ANOTHER_POINTER = pHeader;
+   for ( ; ; )
+   {
+      VAR_233 = (struct a *)malloc(sizeof( struct a ));
+      scanf("%s", VAR_233->VAR__819283);
+
+      if ( VAR_233->VAR__819283[0] == 'e' )
+      {
+         pEnd          = VAR_233;
+         VAR_233->back = ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR__NEXT = VAR_233;
+         VAR_233->VAR__NEXT         = NULL;
+         break;
+      }
+
+      VAR_233->back = ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NEXT = VAR_233;
+      ANOTHER_POINTER            = VAR_233;
+      scanf("%s %c %s %s %s", VAR_233->VAR__19328, &VAR_233->VAR__4857423, VAR_233->VAR__12302, VAR_233->VAR__112390, VAR_233->VAR__127322);
+   }
+
+   printf("%s %s %c %s %s %s\n", ANOTHER_POINTER->VAR__819283, ANOTHER_POINTER->VAR__19328, ANOTHER_POINTER->VAR__4857423, ANOTHER_POINTER->VAR__12302, ANOTHER_POINTER->VAR__112390, ANOTHER_POINTER->VAR__127322);
+   free(ANOTHER_POINTER->VAR__NEXT);
+   for ( ; ; )
+   {
+      printf("%s %s %c %s %s %s\n", ANOTHER_POINTER->back->VAR__819283, ANOTHER_POINTER->back->VAR__19328, ANOTHER_POINTER->back->VAR__4857423, ANOTHER_POINTER->back->VAR__12302, ANOTHER_POINTER->back->VAR__112390, ANOTHER_POINTER->back->VAR__127322);
+      ANOTHER_POINTER = ANOTHER_POINTER->back;
+      free(ANOTHER_POINTER->VAR__NEXT);
+
+      if ( ANOTHER_POINTER->back == NULL )
+      {
+         break;
+      }
+   }
+}

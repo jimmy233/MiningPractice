@@ -1,0 +1,48 @@
+int main()
+{
+   char VAR__4857423;
+   char Dividend[100] = { 0 };
+   int  N;
+
+   for ( int VAR__53647 = 0; ( VAR__4857423 = getchar()) != '\n'; VAR__53647++ )
+   {
+      Dividend[VAR__53647] = VAR__4857423;
+      N = VAR__53647 + 1;
+   }
+
+   int PartQuotient[100]  = { 0 };
+   int PartRemainder[100] = { 0 };
+
+   if ( N == 1 )
+   {
+      ((( cout << 0 ) << endl ) << ((int)( Dividend[0] - 48 ))) << endl;
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         int PartDividend;
+
+         if ( VAR__53647 == 0 )
+         {
+            PartDividend = Dividend[VAR__53647] - 48;
+         }
+         else
+         {
+            PartDividend = ( 10 * PartRemainder[VAR__53647 - 1] ) + ( Dividend[VAR__53647] - 48 );
+         }
+
+         PartQuotient[VAR__53647]  = PartDividend / 13;
+         PartRemainder[VAR__53647] = PartDividend % 13;
+
+         if (((( VAR__53647 < 2 ) && ( PartQuotient[VAR__53647] == 0 )) && ( Dividend[VAR__53647 + 1] != 0 )) == 0 )
+         {
+            cout << PartQuotient[VAR__53647];
+         }
+      }
+
+      (( cout << endl ) << PartRemainder[N - 1] ) << endl;
+   }
+
+   return 0;
+}

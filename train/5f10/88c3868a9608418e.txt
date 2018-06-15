@@ -1,0 +1,92 @@
+int main()
+{
+   int VAR_1238123;
+   int changdu;
+
+   scanf("%d", &VAR_1238123);
+   char gram[501];
+   char bijiao[500];
+   scanf("%s", &gram);
+   changdu = strlen(gram);
+   int paohui[500] = { 0 };
+   for ( int VAR__53647 = 0; VAR__53647 < ( changdu - ( VAR_1238123 - 1 )); VAR__53647++ )
+   {
+      for ( int VAR_129012 = 0; VAR_129012 < VAR_1238123; VAR_129012++ )
+      {
+         bijiao[VAR_129012] = gram[VAR__53647 + VAR_129012];
+      }
+
+      if ( paohui[VAR__53647] != 0 )
+      {
+         continue;
+      }
+      else
+      {
+         for ( int VAR_129012 = VAR__53647; VAR_129012 < ( changdu - ( VAR_1238123 - 1 )); VAR_129012++ )
+         {
+            for ( int VAR_666 = 0; VAR_666 < ( VAR_1238123 + 1 ); VAR_666++ )
+            {
+               if ( VAR_666 == VAR_1238123 )
+               {
+                  paohui[VAR_129012]++;
+                  paohui[VAR__53647]++;
+
+                  if ( VAR_129012 == VAR__53647 )
+                  {
+                     paohui[VAR__53647]--;
+                  }
+
+                  break;
+               }
+               else
+               {
+                  if ( bijiao[VAR_666] != gram[VAR_129012 + VAR_666] )
+                  {
+                     break;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   int zuiduo[500];
+   int cishu = 0;
+   int jige  = 0;
+   for ( int VAR__1238129 = 0; VAR__1238129 < ( changdu - ( VAR_1238123 - 1 )); VAR__1238129++ )
+   {
+      if ( cishu == paohui[VAR__1238129] )
+      {
+         zuiduo[jige] = VAR__1238129;
+         jige++;
+      }
+
+      if ( cishu < paohui[VAR__1238129] )
+      {
+         jige         = 0;
+         zuiduo[jige] = VAR__1238129;
+         jige++;
+         cishu = paohui[VAR__1238129];
+      }
+   }
+
+   if ( cishu == 1 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("%d\n", cishu);
+      for ( int VAR__53647 = 0; VAR__53647 < jige; VAR__53647++ )
+      {
+         for ( int VAR_129012 = 0; VAR_129012 < VAR_1238123; VAR_129012++ )
+         {
+            printf("%c", gram[zuiduo[VAR__53647] + VAR_129012]);
+         }
+
+         printf("\n");
+      }
+   }
+
+   return 0;
+}

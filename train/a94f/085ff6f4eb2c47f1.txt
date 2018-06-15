@@ -1,0 +1,93 @@
+int main()
+{
+   int array[101][101];
+   int pos[101][101] = { 0 };
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__COUNT = 0;
+   int VAR_1238123;
+
+   ( cin >> row ) >> col;
+   VAR_1238123 = row * col;
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         cin >> array[VAR__53647][VAR__21230];
+         pos[VAR__53647][VAR__21230] = 1;
+      }
+   }
+
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+
+   while ( 1 )
+   {
+      while ( pos[VAR__53647][VAR__21230 + 1] != 0 )
+      {
+         ( cout << array[VAR__53647][VAR__21230] ) << endl;
+         pos[VAR__53647][VAR__21230] = 0;
+         VAR__21230++;
+         VAR__COUNT++;
+      }
+
+      if ( VAR__COUNT == ( VAR_1238123 - 1 ))
+      {
+         break;
+      }
+
+      while ( pos[VAR__53647 + 1][VAR__21230] != 0 )
+      {
+         ( cout << array[VAR__53647][VAR__21230] ) << endl;
+         pos[VAR__53647][VAR__21230] = 0;
+         VAR__53647++;
+         VAR__COUNT++;
+      }
+
+      if ( VAR__COUNT == ( VAR_1238123 - 1 ))
+      {
+         break;
+      }
+
+      while (( VAR__21230 >= 0 ) && ( pos[VAR__53647][VAR__21230 - 1] != 0 ))
+      {
+         ( cout << array[VAR__53647][VAR__21230] ) << endl;
+         pos[VAR__53647][VAR__21230] = 0;
+         VAR__21230--;
+         VAR__COUNT++;
+      }
+
+      if ( VAR__COUNT == ( VAR_1238123 - 1 ))
+      {
+         break;
+      }
+
+      while (( VAR__53647 >= 0 ) && ( pos[VAR__53647 - 1][VAR__21230] != 0 ))
+      {
+         ( cout << array[VAR__53647][VAR__21230] ) << endl;
+         pos[VAR__53647][VAR__21230] = 0;
+         VAR__53647--;
+         VAR__COUNT++;
+      }
+
+      if ( VAR__COUNT == ( VAR_1238123 - 1 ))
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         if ( pos[VAR__53647][VAR__21230] == 1 )
+         {
+            ( cout << array[VAR__53647][VAR__21230] ) << endl;
+         }
+      }
+   }
+
+   return 0;
+}

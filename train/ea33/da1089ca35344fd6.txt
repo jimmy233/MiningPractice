@@ -1,0 +1,59 @@
+int main()
+{
+   char A_STRING[100][11] = { 0 };
+   char substr[100][4]    = { 0 };
+   char ans[100][20]      = { 0 };
+   int  VAR__53647        = 0;
+   int  VAR__21230;
+   int  VAR__MAX = 0;
+   int  index;
+   int  VAR_1238123 = 0;
+
+   for ( VAR__21230 = 0; scanf("%s %s", A_STRING[VAR__21230], substr[VAR__21230]) != EOF; VAR__21230++ )
+   {
+      VAR_1238123++;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      VAR__MAX = 0;
+      for ( VAR__53647 = 0; VAR__53647 < 10; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__21230][VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX = A_STRING[VAR__21230][VAR__53647];
+            continue;
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < 10; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__21230][VAR__53647] == VAR__MAX )
+         {
+            index = VAR__53647;
+            break;
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < ( index + 1 ); VAR__53647++ )
+      {
+         ans[VAR__21230][VAR__53647] = A_STRING[VAR__21230][VAR__53647];
+      }
+
+      for ( VAR__53647 = index + 1; VAR__53647 < (( index + strlen(substr[VAR__21230])) + 1 ); VAR__53647++ )
+      {
+         ans[VAR__21230][VAR__53647] = substr[VAR__21230][( VAR__53647 - index ) - 1];
+      }
+
+      for ( VAR__53647 = ( index + strlen(substr[VAR__21230])) + 1; VAR__53647 < ( strlen(A_STRING[VAR__21230]) + strlen(substr[VAR__21230])); VAR__53647++ )
+      {
+         ans[VAR__21230][VAR__53647] = A_STRING[VAR__21230][VAR__53647 - strlen(substr[VAR__21230])];
+      }
+
+      puts(ans[VAR__21230]);
+   }
+
+   return 0;
+}

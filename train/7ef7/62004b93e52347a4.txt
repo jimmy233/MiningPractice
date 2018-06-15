@@ -1,0 +1,73 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__4857423 = 0; VAR__4857423 < VAR_1238123; VAR__4857423++ )
+   {
+      int mat[VAR_1238123][VAR_1238123];
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> mat[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      int VAR_9494 = 0;
+      for ( int VAR_129012 = VAR_1238123; VAR_129012 > 1; VAR_129012-- )
+      {
+         int VAR__1238129;
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_129012; VAR__53647++ )
+         {
+            VAR__1238129 = mat[VAR__53647][0];
+            for ( int VAR__21230 = 1; VAR__21230 < VAR_129012; VAR__21230++ )
+            {
+               VAR__1238129 = VAR__MIN(VAR__1238129, mat[VAR__53647][VAR__21230]);
+            }
+
+            for ( int VAR__21230 = 0; VAR__21230 < VAR_129012; VAR__21230++ )
+            {
+               mat[VAR__53647][VAR__21230] -= VAR__1238129;
+            }
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_129012; VAR__21230++ )
+         {
+            VAR__1238129 = mat[0][VAR__21230];
+            for ( int VAR__53647 = 1; VAR__53647 < VAR_129012; VAR__53647++ )
+            {
+               VAR__1238129 = VAR__MIN(VAR__1238129, mat[VAR__53647][VAR__21230]);
+            }
+
+            for ( int VAR__53647 = 0; VAR__53647 < VAR_129012; VAR__53647++ )
+            {
+               mat[VAR__53647][VAR__21230] -= VAR__1238129;
+            }
+         }
+
+         VAR_9494 += mat[1][1];
+         for ( int VAR__53647 = 1; VAR__53647 < ( VAR_129012 - 1 ); VAR__53647++ )
+         {
+            for ( int VAR__21230 = 0; VAR__21230 < VAR_129012; VAR__21230++ )
+            {
+               mat[VAR__53647][VAR__21230] = mat[VAR__53647 + 1][VAR__21230];
+            }
+         }
+
+
+         for ( int VAR__21230 = 1; VAR__21230 < ( VAR_129012 - 1 ); VAR__21230++ )
+         {
+            for ( int VAR__53647 = 0; VAR__53647 < ( VAR_129012 - 1 ); VAR__53647++ )
+            {
+               mat[VAR__53647][VAR__21230] = mat[VAR__53647][VAR__21230 + 1];
+            }
+         }
+      }
+
+      ( cout << VAR_9494 ) << endl;
+   }
+
+   return 0;
+}

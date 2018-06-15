@@ -1,0 +1,93 @@
+int judge_year(int year)
+{
+   if (( year % 400 ) == 0 )
+   {
+      return 1;
+   }
+
+   if (( year % 100 ) == 0 )
+   {
+      return 0;
+   }
+
+   if (( year % 4 ) == 0 )
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int sumdays       = 0;
+   int monthdays[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+
+   scanf("%d %d %d", &startYear, &startMonth, &startDay);
+   scanf("%d %d %d", &endYear, &endMonth, &endDay);
+
+   if ( judge_year(startYear))
+   {
+      monthdays[2] = 29;
+   }
+
+   if ( startYear == endYear )
+   {
+      if ( startMonth == endMonth )
+      {
+         sumdays = endDay - startDay;
+         printf("%d", sumdays);
+         return 0;
+      }
+      else
+      {
+         for ( VAR__53647 = startMonth + 1; VAR__53647 < endMonth; VAR__53647++ )
+         {
+            sumdays += monthdays[VAR__53647];
+         }
+
+         sumdays += monthdays[startMonth] - startDay;
+         sumdays += endDay;
+         printf("%d", sumdays);
+         return 0;
+      }
+   }
+
+   for ( VAR__53647 = startYear + 1; VAR__53647 < endYear; VAR__53647++ )
+   {
+      sumdays += judge_year(VAR__53647) + 365;
+   }
+
+   for ( VAR__53647 = startMonth + 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      sumdays += monthdays[VAR__53647];
+   }
+
+   sumdays += monthdays[startMonth] - startDay;
+
+   if ( judge_year(endYear))
+   {
+      monthdays[2] = 29;
+   }
+   else
+   {
+      monthdays[2] = 28;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < endMonth; VAR__53647++ )
+   {
+      sumdays += monthdays[VAR__53647];
+   }
+
+   sumdays += endDay;
+   printf("%d", sumdays);
+   return 0;
+}

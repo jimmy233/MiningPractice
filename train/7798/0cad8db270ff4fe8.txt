@@ -1,0 +1,109 @@
+int VAR_1238123;
+struct student
+{
+   char           name[100];
+   int            VAR__NUM;
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   VAR__HEAD       = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void list(struct student *VAR__HEAD)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   struct student *p4;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__temp;
+   int            VAR__819283[100] = { 0 };
+   int            VAR__19328[100];
+   char           A_STRING[100];
+
+   ANOTHER_POINTER = VAR__HEAD->VAR__NEXT;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      strcpy(A_STRING, ANOTHER_POINTER->name);
+      for ( VAR__21230 = 0; VAR__21230 < strlen(A_STRING); VAR__21230++ )
+      {
+         if (( A_STRING[VAR__21230] >= 'A' ) && ( A_STRING[VAR__21230] <= 'Z' ))
+         {
+            VAR__819283[A_STRING[VAR__21230] - 65]++;
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( 26 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( 26 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__temp = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] == VAR__819283[0] )
+      {
+         printf("%c\n%d\n", VAR__53647 + 65, VAR__819283[0]);
+         VAR__temp = VAR__53647;
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD->VAR__NEXT;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      strcpy(A_STRING, ANOTHER_POINTER->name);
+      for ( VAR__21230 = 0; VAR__21230 < strlen(A_STRING); VAR__21230++ )
+      {
+         if ( A_STRING[VAR__21230] == ( VAR__temp + 65 ))
+         {
+            printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   struct student *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = creat();
+   list(VAR_233);
+}

@@ -1,0 +1,63 @@
+int main()
+{
+   char VAR__NUM[40];
+   char VAR__TEMP[40][40];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  L;
+   int  S     = 0;
+   int  Order = 0;
+
+   cin.getline(VAR__NUM, 40);
+   L = strlen(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < L; VAR__53647++ )
+   {
+      if (( VAR__NUM[VAR__53647] > '9' ) || ( VAR__NUM[VAR__53647] < '0' ))
+      {
+         Order++;
+         for ( VAR__21230 = S; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            VAR__TEMP[Order][VAR__21230 - S] = VAR__NUM[VAR__21230];
+         }
+
+         VAR__TEMP[Order][VAR__21230 - S] = '\0';
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= L; VAR__21230++ )
+         {
+            if (( VAR__NUM[VAR__21230] <= '9' ) && ( VAR__NUM[VAR__21230] >= '0' ))
+            {
+               S          = VAR__21230;
+               VAR__53647 = VAR__21230 - 1;
+               break;
+            }
+            else
+            if ( VAR__NUM[VAR__21230] == '\0' )
+            {
+               VAR__53647 = L - 1;
+            }
+         }
+      }
+   }
+
+   if (( VAR__NUM[L - 1] <= '9' ) && ( VAR__NUM[L - 1] >= '0' ))
+   {
+      Order++;
+      for ( VAR__53647 = S; VAR__53647 < L; VAR__53647++ )
+      {
+         VAR__TEMP[Order][VAR__53647 - S] = VAR__NUM[VAR__53647];
+      }
+
+      VAR__TEMP[Order][VAR__53647 - S] = '\0';
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= Order; VAR__53647++ )
+   {
+      cout << VAR__TEMP[VAR__53647];
+
+      if ( VAR__53647 != Order )
+      {
+         cout << endl;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,62 @@
+void main()
+{
+   char ANOTHER_STRING[200];
+   char YET_ANOTHER_STRING[200];
+   int  zhe1[200];
+   int  zhe2[200];
+
+   memset(zhe1, 0, sizeof( zhe1 ));
+   memset(zhe2, 0, sizeof( zhe2 ));
+   int cases;
+   scanf("%d", &cases);
+
+   while ( cases > 0 )
+   {
+      int n1;
+      int n2;
+      int VAR__53647;
+      int VAR__21230;
+      int VAR__8444594;
+      scanf("%s%s", ANOTHER_STRING, YET_ANOTHER_STRING);
+      n1 = strlen(ANOTHER_STRING);
+      n2 = strlen(YET_ANOTHER_STRING);
+      for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+      {
+         zhe1[VAR__53647] = ANOTHER_STRING[VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+      {
+         zhe2[VAR__53647] = YET_ANOTHER_STRING[VAR__53647] - '0';
+      }
+
+      for ( VAR__21230 = n1 - 1, VAR__8444594 = n2 - 1; VAR__21230 >= 0, VAR__8444594 >= 0; VAR__21230--, VAR__8444594-- )
+      {
+         if ( zhe1[VAR__21230] >= zhe2[VAR__8444594] )
+         {
+            zhe1[VAR__21230] -= zhe2[VAR__8444594];
+         }
+         else
+         {
+            zhe1[VAR__21230] = ( 10 + zhe1[VAR__21230] ) - zhe2[VAR__8444594];
+            zhe1[VAR__21230 - 1]--;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+      {
+         if ( zhe1[VAR__53647] != 0 )
+         {
+            break;
+         }
+      }
+
+      for ( VAR__21230 = VAR__53647; VAR__21230 < n1; VAR__21230++ )
+      {
+         printf("%d", zhe1[VAR__21230]);
+      }
+
+      printf("\n");
+      cases--;
+   }
+}

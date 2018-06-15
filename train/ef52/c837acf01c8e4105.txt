@@ -1,0 +1,118 @@
+int xu(int VAR__819283[], int VAR_1238123, int VAR__8444594)
+{
+   int VAR__53647;
+   int VAR__19328 = 0;
+
+   for ( VAR__53647 = VAR__8444594 + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__8444594] < VAR__819283[VAR__53647] )
+      {
+         VAR__19328++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__8444594] > VAR__819283[VAR__53647] )
+      {
+         VAR__19328 = VAR__19328 + 1;
+      }
+   }
+
+   return VAR__19328;
+}
+
+
+int VAR__MAX(int VAR__19328[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 1;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__8444594 = 1;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__53647] < VAR__19328[VAR__21230] )
+         {
+            VAR__8444594 = 0;
+         }
+      }
+
+      if ( VAR__8444594 == 1 )
+      {
+         return VAR__53647;
+      }
+   }
+}
+
+
+int maxd(int VAR__19328[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 1;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__8444594 = 1;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__53647] < VAR__19328[VAR__21230] )
+         {
+            VAR__8444594 = 0;
+         }
+      }
+
+      if ( VAR__8444594 == 1 )
+      {
+         return VAR__19328[VAR__53647];
+      }
+   }
+}
+
+
+int shai(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129[30] = { 0 };
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__1238129[VAR__53647] = xu(VAR__819283, VAR_1238123, VAR__53647);
+   }
+
+   if ( maxd(VAR__1238129, VAR_1238123) == 0 )
+   {
+      return VAR_1238123;
+   }
+   else
+   {
+      for ( VAR__21230 = VAR__MAX(VAR__1238129, VAR_1238123); VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__21230] = VAR__819283[VAR__21230 + 1];
+      }
+
+      shai(VAR__819283, VAR_1238123 - 1);
+   }
+}
+
+
+int main()
+{
+   int VAR__8444594    = 0;
+   int VAR__819283[30] = { 0 };
+   int lRet;
+
+   scanf("%d", &VAR__8444594);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+   }
+
+   lRet = shai(VAR__819283, VAR__8444594);
+   printf("%d", lRet);
+   return 1;
+}

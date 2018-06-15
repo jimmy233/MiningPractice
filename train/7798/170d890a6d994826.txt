@@ -1,0 +1,84 @@
+struct book
+{
+   int  id;
+   char VAR_9494[L];
+   int  LEN_OF_STH;
+}
+VAR__19328[M];
+void fun(int VAR__COUNT[L], char VAR_9494[L], int LEN_OF_STH)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      int VAR__1238129;
+      VAR__1238129 = VAR_9494[VAR__53647] - 'A';
+      VAR__COUNT[VAR__1238129]++;
+   }
+}
+
+
+int judge(char VAR_9494[L], int LEN_OF_STH, char name)
+{
+   int VAR__53647;
+   int answer = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] == name )
+      {
+         answer = 1;
+         break;
+      }
+   }
+
+   return answer;
+}
+
+
+int main()
+{
+   int  VAR__1238129;
+   int  VAR__8444594;
+   int  VAR__COUNT[L] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__MAX;
+   int  VAR__NUM;
+   char name;
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__1238129; VAR__8444594++ )
+   {
+      scanf("%d%s", &VAR__19328[VAR__8444594].id, VAR__19328[VAR__8444594].VAR_9494);
+      VAR__19328[VAR__8444594].LEN_OF_STH = strlen(VAR__19328[VAR__8444594].VAR_9494);
+      fun(VAR__COUNT, VAR__19328[VAR__8444594].VAR_9494, VAR__19328[VAR__8444594].LEN_OF_STH);
+   }
+
+   VAR__MAX = VAR__COUNT[0];
+   VAR__NUM = 0;
+   for ( VAR__21230 = 1; VAR__21230 < L; VAR__21230++ )
+   {
+      if ( VAR__COUNT[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT[VAR__21230];
+         VAR__NUM = VAR__21230;
+      }
+   }
+
+   name = VAR__NUM + 65;
+   printf("%c\n", name);
+   printf("%d\n", VAR__MAX);
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__1238129; VAR__8444594++ )
+   {
+      int answer = 0;
+      answer = judge(VAR__19328[VAR__8444594].VAR_9494, VAR__19328[VAR__8444594].LEN_OF_STH, name);
+
+      if ( answer == 1 )
+      {
+         printf("%d\n", VAR__19328[VAR__8444594].id);
+      }
+   }
+
+   return 0;
+}

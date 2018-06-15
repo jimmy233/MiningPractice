@@ -1,0 +1,56 @@
+int analyse(int *, int *, int, int);
+
+int main()
+{
+   int VAR__8444594;
+   int height[25];
+   int numbers[25] = { 0 };
+   int VAR__53647;
+   int VAR__MAX;
+   int VAR__TEMP;
+
+   scanf("%d", &VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      scanf("%d", height + VAR__53647);
+   }
+
+   VAR__MAX = ( numbers[24] = 1 );
+   for ( VAR__53647 = 23; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__TEMP = analyse(height, numbers, VAR__53647, VAR__8444594);
+
+      if ( VAR__TEMP > VAR__MAX )
+      {
+         VAR__MAX = VAR__TEMP;
+      }
+   }
+
+   printf("%d\n", VAR__MAX);
+   return 0;
+}
+
+
+int analyse(int *height, int *numbers, int seq, int VAR__8444594)
+{
+   int VAR__MAX = 0;
+   int VAR__TEMP;
+   int VAR__53647;
+
+   for ( VAR__53647 = VAR__8444594 - 1; VAR__53647 > seq; VAR__53647-- )
+   {
+      if ( height[seq] >= height[VAR__53647] )
+      {
+         VAR__TEMP = numbers[VAR__53647];
+
+         if ( VAR__TEMP > VAR__MAX )
+         {
+            VAR__MAX = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR__MAX++;
+   numbers[seq] = VAR__MAX;
+   return VAR__MAX;
+}

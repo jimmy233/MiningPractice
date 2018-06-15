@@ -1,0 +1,53 @@
+void main()
+{
+   int row  = 0;
+   int line = 0;
+   int scores[8][8];
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   int maxline    = 0;
+   int minrow     = 0;
+   int VAR__COUNT = 0;
+   int i1         = 0;
+
+   scanf("%d,%d", &row, &line);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < line; VAR__21230++ )
+      {
+         scanf("%d", &scores[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( row - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( line - 1 ); VAR__21230++ )
+      {
+         if ( scores[VAR__53647][maxline] < scores[VAR__53647][VAR__21230 + 1] )
+         {
+            maxline = VAR__21230 + 1;
+         }
+      }
+
+      for ( i1 = 0; i1 < ( row - 1 ); i1++ )
+      {
+         if ( scores[minrow][maxline] > scores[i1 + 1][maxline] )
+         {
+            minrow = i1 + 1;
+         }
+      }
+
+      if ( VAR__53647 == minrow )
+      {
+         printf("%d+%d\n", minrow, maxline);
+         VAR__COUNT++;
+      }
+   }
+
+   if ( VAR__COUNT == 0 )
+   {
+      printf("No\n");
+   }
+
+   return 0;
+}

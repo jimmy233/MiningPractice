@@ -1,0 +1,81 @@
+struct author
+{
+   int  number;
+   char name[26];
+}
+author[999];
+struct single
+{
+   char letter[1];
+   int  number;
+}
+single[26];
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__1238129;
+   int VAR__21230;
+   int VAR_233;
+   int VAR__8444594;
+   int book[999];
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      single[VAR__53647].letter[0] = 65 + VAR__53647;
+      single[VAR__53647].number    = 0;
+   }
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %s", &author[VAR__53647].number, &author[VAR__53647].name);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < 26; VAR__8444594++ )
+         {
+            if ( single[VAR__8444594].letter[0] == author[VAR__53647].name[VAR__21230] )
+            {
+               single[VAR__8444594].number++;
+            }
+         }
+      }
+   }
+
+   VAR__1238129 = 0;
+   VAR_233      = single[0].number;
+   for ( VAR__53647 = 1; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR_233 < single[VAR__53647].number )
+      {
+         VAR_233      = single[VAR__53647].number;
+         VAR__1238129 = VAR__53647;
+      }
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         if ( author[VAR__53647].name[VAR__21230] == single[VAR__1238129].letter[0] )
+         {
+            book[VAR__8444594] = author[VAR__53647].number;
+            VAR__8444594++;
+         }
+      }
+   }
+
+   printf("%c\n", single[VAR__1238129].letter[0]);
+   printf("%d\n", VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%d\n", book[VAR__53647]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,76 @@
+int ston(char VAR__7685[], int VAR__3918907, int);
+void ntos(char VAR__7685[], int VAR__3918907, int VAR__9290);
+
+void main()
+{
+   char in[100]  = "\0";
+   char out[100] = "\0";
+   int  VAR__53647;
+   int  VAR__12302;
+   int  exp1;
+   int  exp2;
+   int  VAR__1111;
+
+   scanf("%d %s %d", &exp1, in, &exp2);
+   VAR__1111 = strlen(in);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if (( in[VAR__53647] <= 'z' ) && ( in[VAR__53647] >= 'a' ))
+      {
+         in[VAR__53647] = ( in[VAR__53647] + 'A' ) - 'a';
+      }
+   }
+
+
+   VAR__12302 = ston(in, exp1, VAR__1111);
+   ntos(out, exp2, VAR__12302);
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(out) - 1 ); VAR__53647++ )
+   {
+      if ( out[VAR__53647] >= ( 10 + '0' ))
+      {
+         out[VAR__53647] = (( out[VAR__53647] + 'A' ) - 10 ) - '0';
+      }
+   }
+
+   puts(out);
+}
+
+
+int ston(char VAR__7685[], int VAR__3918907, int VAR__1111)
+{
+   int VAR__9290 = 0;
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ((( *( VAR__7685 + VAR__53647 )) <= 'Z' ) && (( *( VAR__7685 + VAR__53647 )) >= 'A' ))
+      {
+         VAR__7685[VAR__53647] = ( VAR__7685[VAR__53647] - 'A' ) + 10;
+      }
+      else
+      {
+         *( VAR__7685 + VAR__53647 ) = ( *( VAR__7685 + VAR__53647 )) - '0';
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      VAR__9290 = ( VAR__9290 * VAR__3918907 ) + VAR__7685[VAR__53647 - 1];
+   }
+
+   return VAR__9290;
+}
+
+
+void ntos(char VAR__7685[], int VAR__3918907, int VAR__9290)
+{
+   if ( VAR__9290 < VAR__3918907 )
+   {
+      VAR__7685[0] = VAR__9290 + '0';
+   }
+   else
+   {
+      ntos(VAR__7685, VAR__3918907, VAR__9290 / VAR__3918907);
+      VAR__7685[strlen(VAR__7685)] = ( VAR__9290 % VAR__3918907 ) + '0';
+   }
+}

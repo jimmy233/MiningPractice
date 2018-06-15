@@ -1,0 +1,88 @@
+int main()
+{
+   int   VAR__53647    = 0;
+   int   VAR__21230    = 0;
+   int   VAR__8444594  = 0;
+   float VAR__NUM[300] = { 0 };
+   int   VAR_1238123;
+   float ave       = 0;
+   float VAR__SUM  = 0;
+   float VAR__TEMP = 0;
+   int   temp_num;
+
+   cin >> VAR_1238123;
+   VAR__53647 = 1;
+
+   while ( VAR__53647 <= VAR_1238123 )
+   {
+      cin >> VAR__NUM[VAR__53647];
+      VAR__SUM = VAR__SUM + VAR__NUM[VAR__53647];
+      VAR__53647++;
+   }
+
+   ave        = VAR__SUM / VAR_1238123;
+   VAR__53647 = 1;
+   float distance = 0;
+
+   while ( VAR__53647 <= VAR_1238123 )
+   {
+      if (( VAR__NUM[VAR__53647] - ave ) >= 0 )
+      {
+         distance = VAR__NUM[VAR__53647] - ave;
+      }
+      else
+      {
+         distance = ave - VAR__NUM[VAR__53647];
+      }
+
+      if ( VAR__TEMP < distance )
+      {
+         VAR__TEMP = distance;
+      }
+
+      VAR__53647++;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230] > VAR__NUM[VAR__21230 + 1] )
+         {
+            temp_num                 = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__NUM[VAR__21230 + 1];
+            VAR__NUM[VAR__21230 + 1] = temp_num;
+         }
+      }
+   }
+
+   VAR__53647 = 1;
+   int record = 0;
+
+   while ( VAR__53647 <= VAR_1238123 )
+   {
+      if (( VAR__NUM[VAR__53647] - ave ) >= 0 )
+      {
+         distance = VAR__NUM[VAR__53647] - ave;
+      }
+      else
+      {
+         distance = ave - VAR__NUM[VAR__53647];
+      }
+
+      if (( VAR__TEMP - distance ) <= 0.000001 )
+      {
+         if ( record == 0 )
+         {
+            cout << VAR__NUM[VAR__53647];
+            record = record + 1;
+         }
+         else
+         {
+            ( cout << "," ) << VAR__NUM[VAR__53647];
+         }
+      }
+
+      VAR__53647 = VAR__53647 + 1;
+   }
+}

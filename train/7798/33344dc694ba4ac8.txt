@@ -1,0 +1,105 @@
+struct book
+{
+   char        name[20];
+   int         VAR__NUM;
+   struct book *VAR__NEXT;
+};
+struct book *creat(int VAR__1238129)
+{
+   int         VAR__53647;
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH);
+   scanf("%d", &ANOTHER_POINTER->VAR__NUM);
+   scanf("%s", ANOTHER_POINTER->name);
+   ANOTHER_POINTER->VAR__NEXT = null;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH);
+      scanf("%d", &ANOTHER_POINTER->VAR__NUM);
+      scanf("%s", ANOTHER_POINTER->name);
+      ANOTHER_POINTER->VAR__NEXT     = null;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct book *VAR_233;
+   struct book *VAR__HEAD;
+   int         VAR__53647;
+   int         VAR__819283[26];
+   int         VAR__1238129;
+   char        *VAR_666;
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = creat(VAR__1238129);
+   VAR_233   = VAR__HEAD;
+   char VAR_9494[30];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 0;
+   }
+
+   while ( VAR_233 )
+   {
+      VAR__53647 = 0;
+      strcpy(VAR_9494, VAR_233->name);
+
+      while ( VAR_9494[VAR__53647] != '\0' )
+      {
+         VAR__819283[VAR_9494[VAR__53647] - 'A']++;
+         VAR__53647++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   int VAR__MAX = 0;
+   int max_p;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+         max_p    = VAR__53647 + 'A';
+      }
+   }
+
+   printf("%c\n%d\n", max_p, VAR__MAX);
+   VAR_233 = VAR__HEAD;
+   int  VAR__7685 = 0;
+   char VAR__4857423[20];
+
+   while ( VAR_233 )
+   {
+      VAR__53647 = 0;
+      strcpy(VAR__4857423, VAR_233->name);
+
+      while ( VAR__4857423[VAR__53647] != '\0' )
+      {
+         if ( VAR__4857423[VAR__53647] == max_p )
+         {
+            VAR__7685 = 1;
+         }
+
+         VAR__53647++;
+      }
+
+      if ( VAR__7685 == 1 )
+      {
+         printf("%d\n", VAR_233->VAR__NUM);
+      }
+
+      VAR__7685 = 0;
+      VAR_233   = VAR_233->VAR__NEXT;
+   }
+}

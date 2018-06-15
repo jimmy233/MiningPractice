@@ -1,0 +1,80 @@
+int VAR__SUM = 0;
+int N;
+struct student
+{
+   char           name[20];
+   int            qimo;
+   int            zongping;
+   char           ganbu;
+   char           xibu;
+   int            lunwen;
+   int            total;
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *pmax;
+   struct student *VAR_233;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR_1238123;
+   int            VAR__MAX = 0;
+
+   scanf("%d", &N);
+   for ( VAR_1238123 = 0; VAR_1238123 < N; VAR_1238123++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d", &ANOTHER_POINTER->name, &ANOTHER_POINTER->qimo, &ANOTHER_POINTER->zongping, &ANOTHER_POINTER->ganbu, &ANOTHER_POINTER->xibu, &ANOTHER_POINTER->lunwen);
+      ANOTHER_POINTER->total     = 0;
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+
+      if ( VAR_1238123 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+   }
+
+   for ( VAR__MAX = 0, VAR_233 = ( pmax = VAR__HEAD ); VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if (( VAR_233->qimo > 80 ) && ( VAR_233->lunwen >= 1 ))
+      {
+         VAR_233->total = VAR_233->total + 8000;
+      }
+
+      if (( VAR_233->qimo > 85 ) && ( VAR_233->zongping > 80 ))
+      {
+         VAR_233->total = VAR_233->total + 4000;
+      }
+
+      if ( VAR_233->qimo > 90 )
+      {
+         VAR_233->total = VAR_233->total + 2000;
+      }
+
+      if (( VAR_233->qimo > 85 ) && ( VAR_233->xibu == 'Y' ))
+      {
+         VAR_233->total = VAR_233->total + 1000;
+      }
+
+      if (( VAR_233->zongping > 80 ) && ( VAR_233->ganbu == 'Y' ))
+      {
+         VAR_233->total = VAR_233->total + 850;
+      }
+
+      VAR__SUM = VAR__SUM + VAR_233->total;
+
+      if ( VAR__MAX < VAR_233->total )
+      {
+         VAR__MAX = VAR_233->total;
+         pmax     = VAR_233;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", pmax->name, pmax->total, VAR__SUM);
+}

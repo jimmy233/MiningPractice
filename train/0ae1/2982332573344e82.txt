@@ -1,0 +1,109 @@
+int isRunnian(int year);
+int Dijitian(int year, int month, int day);
+
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__53647;
+   int VAR_9494;
+   int VAR__SUM;
+
+   scanf("%d%d%d", &year, &month, &day);
+   VAR_9494 = (( year - 1 ) % 400 ) + 1;
+   VAR__SUM = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      if ( isRunnian(VAR__53647))
+      {
+         VAR__SUM += 2;
+      }
+      else
+      {
+         VAR__SUM++;
+      }
+   }
+
+   VAR__SUM += Dijitian(VAR_9494, month, day);
+   switch ( VAR__SUM % 7 )
+   {
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+
+   case 0:
+      printf("Sun.");
+      break;
+   }
+
+   return 0;
+}
+
+
+int isRunnian(int year)
+{
+   int result;
+
+   result = 0;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 100 ) != 0 ) && (( year % 4 ) == 0 )))
+   {
+      result = 1;
+   }
+
+   return result;
+}
+
+
+int Dijitian(int year, int month, int day)
+{
+   int VAR__53647;
+   int VAR__127322;
+
+   VAR__127322 = 0;
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         VAR__127322 += 3;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         VAR__127322 += 2;
+      }
+      else
+      if (( VAR__53647 == 2 ) && isRunnian(year))
+      {
+         VAR__127322 += 1;
+      }
+      else
+      {
+         VAR__127322 += 0;
+      }
+   }
+
+   VAR__127322 += day;
+   return VAR__127322;
+}

@@ -1,0 +1,49 @@
+int panduan(int nian)
+{
+   if (((( nian % 4 ) == 0 ) && (( nian % 100 ) != 0 )) || (( nian % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int year;
+   int month;
+   int day;
+
+   (( cin >> year ) >> month ) >> day;
+   int       VAR__53647;
+   long long VAR__SUM = 0;
+   int       tempsum  = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= 400; VAR__53647++ )
+   {
+      tempsum += 365 + panduan(VAR__53647);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( year - 1 ) / 400 ); VAR__53647++ )
+   {
+      VAR__SUM += tempsum;
+   }
+
+   for ( VAR__53647 = ((( year - 1 ) / 400 ) * 400 ) + 1; VAR__53647 <= ( year - 1 ); VAR__53647++ )
+   {
+      VAR__SUM += 365 + panduan(VAR__53647);
+   }
+
+   int VAR__19328[2][13] = { { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      VAR__SUM += VAR__19328[panduan(year)][VAR__53647];
+   }
+
+   VAR__SUM += day;
+   char VAR_666[8][10] = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+   cout << VAR_666[VAR__SUM % 7];
+   return 0;
+}

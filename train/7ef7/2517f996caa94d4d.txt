@@ -1,0 +1,111 @@
+int minline(int VAR_1238123, int u, int **VAR__819283)
+{
+   int VAR__TEMP = VAR__819283[0][u];
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__TEMP > VAR__819283[VAR__53647][u] )
+      {
+         VAR__TEMP = VAR__819283[VAR__53647][u];
+      }
+   }
+
+   return VAR__TEMP;
+}
+
+
+int mincross(int VAR_1238123, int VAR__819283[])
+{
+   int VAR__TEMP = VAR__819283[0];
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__TEMP > VAR__819283[VAR__53647] )
+      {
+         VAR__TEMP = VAR__819283[VAR__53647];
+      }
+   }
+
+   return VAR__TEMP;
+}
+
+
+int ans(int VAR_1238123, int **pp)
+{
+   int VAR__SUM = 0;
+
+   for ( int VAR__3918907 = 0; VAR__3918907 < ( VAR_1238123 - 1 ); VAR__3918907++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__3918907 ); VAR__53647++ )
+      {
+         int minTemp = mincross(VAR_1238123 - VAR__3918907, pp[VAR__53647]);
+         for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__3918907 ); VAR__21230++ )
+         {
+            pp[VAR__53647][VAR__21230] = pp[VAR__53647][VAR__21230] - minTemp;
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__3918907 ); VAR__53647++ )
+      {
+         int minTemp = minline(VAR_1238123 - VAR__3918907, VAR__53647, pp);
+         for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__3918907 ); VAR__21230++ )
+         {
+            pp[VAR__21230][VAR__53647] = pp[VAR__21230][VAR__53647] - minTemp;
+         }
+      }
+
+      VAR__SUM = VAR__SUM + pp[1][1];
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__3918907 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__3918907 ); VAR__21230++ )
+         {
+            pp[VAR__53647][VAR__21230] = pp[VAR__53647][VAR__21230 + 1];
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - 1 ) - VAR__3918907 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < (( VAR_1238123 - VAR__3918907 ) - 1 ); VAR__21230++ )
+         {
+            pp[VAR__21230][VAR__53647] = pp[VAR__21230 + 1][VAR__53647];
+         }
+      }
+   }
+
+   return VAR__SUM;
+}
+
+
+int main(void)
+{
+   int VAR_1238123 = 0;
+
+   scanf("%d", &VAR_1238123);
+   int **pp;
+   pp = (int **)malloc(VAR_1238123 * ( sizeof( int * )));
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      pp[VAR__53647] = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   }
+
+   for ( int VAR_21983012 = 0; VAR_21983012 < VAR_1238123; VAR_21983012++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            scanf("%d", &pp[VAR__53647][VAR__21230]);
+         }
+      }
+
+      printf("%d\n", ans(VAR_1238123, pp));
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      free(pp[VAR__53647]);
+   }
+
+   free(pp);
+   return 0;
+}

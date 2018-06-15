@@ -1,0 +1,74 @@
+int sn(char VAR_9494)
+{
+   char *VAR_233;
+
+   VAR_233 = &VAR_9494;
+   return atoi(VAR_233);
+}
+
+
+int yu = 0;
+void chufa(char *ANOTHER_POINTER, char *YET_ANOTHER_POINTER)
+{
+   int l1 = strlen(ANOTHER_POINTER);
+
+   if ( l1 == 1 )
+   {
+      YET_ANOTHER_POINTER[0] = '0';
+      yu = sn(ANOTHER_POINTER[0]);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( l1 - 1 ); VAR__53647++ )
+   {
+      int flg = 0;
+
+      if ( VAR__53647 == 0 )
+      {
+         flg = 1;
+      }
+
+      int VAR__TEMP = 0;
+      VAR__TEMP = (((( flg * 10 ) * sn(ANOTHER_POINTER[VAR__53647])) + sn(ANOTHER_POINTER[VAR__53647 + 1])) + ( yu * 10 )) % 13;
+      YET_ANOTHER_POINTER[VAR__53647] = '0' + (((((( flg * 10 ) * sn(ANOTHER_POINTER[VAR__53647])) + sn(ANOTHER_POINTER[VAR__53647 + 1])) + ( yu * 10 )) - VAR__TEMP ) / 13 );
+      yu = VAR__TEMP;
+   }
+}
+
+
+int main()
+{
+   char VAR_9494[100];
+
+   gets(VAR_9494);
+   int  LEN_OF_STH = strlen(VAR_9494);
+   char shang[LEN_OF_STH - 1];
+   chufa(VAR_9494, shang);
+   for ( int VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if (( VAR__53647 == 0 ) && ( shang[VAR__53647] == '0' ))
+      {
+         if (( LEN_OF_STH == 1 ) || ( LEN_OF_STH == 2 ))
+         {
+            printf("%c", shang[VAR__53647]);
+         }
+         else
+         {
+            continue;
+         }
+      }
+
+      else
+      if ( VAR__53647 != ( LEN_OF_STH - 1 ))
+      {
+         printf("%c", shang[VAR__53647]);
+      }
+
+
+      if ( VAR__53647 == ( LEN_OF_STH - 1 ))
+      {
+         break;
+      }
+   }
+
+   printf("\n%d", yu);
+}

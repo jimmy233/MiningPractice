@@ -1,0 +1,71 @@
+int main()
+{
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int array[101][101];
+   int VAR__COUNT = 0;
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &array[VAR__53647][VAR__21230]);
+      }
+   }
+
+
+   int VAR__NUM = ( row + col ) - 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      if ( VAR__COUNT == ( row * col ))
+      {
+         break;
+      }
+      else
+      {
+         switch ( VAR__53647 % 4 )
+         {
+         case 1:
+            for ( VAR__21230 = VAR__53647 / 4; VAR__21230 < ( col - ( VAR__53647 / 4 )); VAR__21230++ )
+            {
+               printf("%d\n", array[VAR__53647 / 4][VAR__21230]);
+               VAR__COUNT += 1;
+            }
+
+            break;
+
+         case 2:
+            for ( VAR__21230 = ( VAR__53647 / 4 ) + 1; VAR__21230 < ( row - ( VAR__53647 / 4 )); VAR__21230++ )
+            {
+               printf("%d\n", array[VAR__21230][( col - ( VAR__53647 / 4 )) - 1]);
+               VAR__COUNT += 1;
+            }
+
+            break;
+
+         case 3:
+            for ( VAR__21230 = ( col - 2 ) - ( VAR__53647 / 4 ); VAR__21230 >= ( VAR__53647 / 4 ); VAR__21230-- )
+            {
+               printf("%d\n", array[( row - 1 ) - ( VAR__53647 / 4 )][VAR__21230]);
+               VAR__COUNT += 1;
+            }
+
+            break;
+
+         case 0:
+            for ( VAR__21230 = ( row - 1 ) - ( VAR__53647 / 4 ); VAR__21230 >= ( VAR__53647 / 4 ); VAR__21230-- )
+            {
+               printf("%d\n", array[VAR__21230][( VAR__53647 / 4 ) - 1]);
+               VAR__COUNT += 1;
+            }
+
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

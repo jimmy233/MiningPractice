@@ -1,0 +1,103 @@
+int main()
+{
+   int VAR__819283[1000] = { 0 };
+   int VAR__19328[1000]  = { 0 };
+
+   void move(int VAR__7685[], int VAR__3918907);
+   void list(int VAR__7685[], int VAR__3918907);
+
+   while ( true )
+   {
+      int VAR__temp;
+      int VAR__21230;
+      int VAR__53647;
+      int VAR__MAX;
+      cin >> VAR__temp;
+
+      if ( VAR__temp != 0 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+         {
+            cin >> VAR__819283[VAR__53647];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+         {
+            cin >> VAR__19328[VAR__53647];
+         }
+
+         list(VAR__819283, VAR__temp);
+         list(VAR__19328, VAR__temp);
+         for ( VAR__21230 = 0; VAR__21230 <= (( VAR__temp - 1 ) / 2 ); VAR__21230++ )
+         {
+            int money = 0;
+            for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+            {
+               if ( VAR__819283[VAR__53647] < VAR__19328[VAR__53647] )
+               {
+                  money--;
+               }
+
+               if ( VAR__819283[VAR__53647] > VAR__19328[VAR__53647] )
+               {
+                  money++;
+               }
+            }
+
+            if ( VAR__21230 == 0 )
+            {
+               VAR__MAX = money;
+            }
+
+            if ( VAR__MAX < money )
+            {
+               VAR__MAX = money;
+            }
+
+            move(VAR__819283, VAR__temp - 1);
+         }
+
+         ( cout << ( VAR__MAX * 200 )) << endl;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+}
+
+
+void move(int VAR__7685[], int VAR__3918907)
+{
+   int VAR__TEMP;
+   int VAR__53647;
+
+   VAR__TEMP = VAR__7685[VAR__3918907];
+   for ( VAR__53647 = VAR__3918907 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__7685[VAR__53647 + 1] = VAR__7685[VAR__53647];
+   }
+
+   VAR__7685[0] = VAR__TEMP;
+}
+
+
+void list(int VAR__7685[], int VAR__3918907)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__3918907 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= ( VAR__3918907 - 1 ); VAR__21230++ )
+      {
+         if ( VAR__7685[VAR__53647] < VAR__7685[VAR__21230] )
+         {
+            VAR__TEMP             = VAR__7685[VAR__21230];
+            VAR__7685[VAR__21230] = VAR__7685[VAR__53647];
+            VAR__7685[VAR__53647] = VAR__TEMP;
+         }
+      }
+   }
+}

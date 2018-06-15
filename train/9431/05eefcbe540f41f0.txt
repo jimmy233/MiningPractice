@@ -1,0 +1,72 @@
+struct student
+{
+   char           VAR__NUM[10];
+   char           name[20];
+   char           gender[2];
+   int            year;
+   char           score[10];
+   char           ad[20];
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   int            VAR__53647;
+   int            VAR__COUNT = 0;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *VAR__TEMP;
+
+   for ( VAR__53647 = 1; VAR__53647 <= 10000; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") == 0 )
+      {
+         VAR__HEAD = VAR__TEMP;
+         break;
+      }
+      else
+      if ( VAR__53647 == 1 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+         YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+         VAR__TEMP = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+         VAR__TEMP = ANOTHER_POINTER;
+      }
+
+
+      scanf("%s", ANOTHER_POINTER->name);
+      scanf("%s", ANOTHER_POINTER->gender);
+      scanf("%d", &ANOTHER_POINTER->year);
+      scanf("%s", ANOTHER_POINTER->score);
+      scanf("%s", ANOTHER_POINTER->ad);
+      VAR__COUNT = VAR__COUNT + 1;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      if ( VAR__53647 == 1 )
+      {
+         VAR_233 = VAR__HEAD;
+      }
+
+      printf("%s %s %s %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->gender, VAR_233->year, VAR_233->score, VAR_233->ad);
+      VAR_233 = VAR_233->VAR__NEXT;
+
+      if ( VAR_233 == NULL )
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

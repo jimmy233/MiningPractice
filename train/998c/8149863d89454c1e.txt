@@ -1,0 +1,104 @@
+int main()
+{
+   char VAR__819283[250];
+   char VAR__19328[250];
+
+   ( cin >> VAR__819283 ) >> VAR__19328;
+   int ia = strlen(VAR__819283);
+   int ib = strlen(VAR__19328);
+   int VAR__53647;
+   int VAR__8444594 = 0;
+   int VAR__21230;
+   int VAR__SUM;
+   int VAR_9494[250] = { 0 };
+   int com;
+
+   if ( ia == ib )
+   {
+      com = ia;
+      for ( VAR__53647 = com - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         VAR__SUM                 = (( VAR__819283[VAR__53647] + VAR__19328[VAR__53647] ) + VAR__8444594 ) - 96;
+         VAR__8444594             = VAR__SUM / 10;
+         VAR__21230               = VAR__SUM - ( VAR__8444594 * 10 );
+         VAR_9494[VAR__53647 + 1] = VAR__21230;
+      }
+
+      if ( VAR__8444594 != 0 )
+      {
+         VAR_9494[0] = VAR__8444594;
+      }
+   }
+   else
+   {
+      int VAR__MAX;
+
+      if ( ia > ib )
+      {
+         VAR__MAX = ia;
+      }
+      else
+      {
+         VAR__MAX = ib;
+      }
+
+      com = VAR__MAX;
+      for ( ; ( ia != 0 ) && ( ib != 0 ); ia--, ib--, VAR__MAX-- )
+      {
+         VAR__SUM           = (( VAR__819283[ia - 1] + VAR__19328[ib - 1] ) + VAR__8444594 ) - 96;
+         VAR__8444594       = VAR__SUM / 10;
+         VAR__21230         = VAR__SUM - ( VAR__8444594 * 10 );
+         VAR_9494[VAR__MAX] = VAR__21230;
+      }
+
+      VAR__819283[-1] = '0';
+      VAR__19328[-1]  = '0';
+
+      if ( ia > ib )
+      {
+         for ( ; VAR__MAX >= 0; VAR__MAX-- )
+         {
+            VAR__SUM           = ( VAR__819283[ia - 1] + VAR__8444594 ) - 48;
+            VAR__8444594       = VAR__SUM / 10;
+            VAR__21230         = VAR__SUM - ( VAR__8444594 * 10 );
+            VAR_9494[VAR__MAX] = VAR__21230;
+            ia--;
+         }
+      }
+      else
+      {
+         for ( ; VAR__MAX >= 0; VAR__MAX-- )
+         {
+            VAR__SUM           = ( VAR__19328[ib - 1] + VAR__8444594 ) - 48;
+            VAR__8444594       = VAR__SUM / 10;
+            VAR__21230         = VAR__SUM - ( VAR__8444594 * 10 );
+            VAR_9494[VAR__MAX] = VAR__21230;
+            ib--;
+         }
+      }
+
+      if ( VAR__8444594 != 0 )
+      {
+         VAR_9494[0] = VAR__8444594;
+      }
+   }
+
+   if (((( VAR__819283[0] == '0' ) && ( VAR__19328[0] == '0' )) && ( ia == 1 )) && ( ib == 1 ))
+   {
+      ( cout << "0" ) << endl;
+   }
+   else
+   {
+      int VAR__temp;
+      for ( VAR__temp = 0; VAR_9494[VAR__temp] == 0; VAR__temp++ )
+      {
+      }
+
+      for ( VAR__53647 = VAR__temp; VAR__53647 <= com; VAR__53647++ )
+      {
+         cout << VAR_9494[VAR__53647];
+      }
+
+      cout << endl;
+   }
+}

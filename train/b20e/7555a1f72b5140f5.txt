@@ -1,0 +1,90 @@
+int T[1000];
+int Q[1000];
+int TT[1000];
+int Cmp(const void *e1, const void *e2)
+{
+   int *ANOTHER_POINTER     = (int *)e1;
+   int *YET_ANOTHER_POINTER = (int *)e2;
+
+   return ( *ANOTHER_POINTER ) - ( *YET_ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while (( cin >> VAR_1238123 ) && VAR_1238123 )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> T[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> Q[VAR__53647];
+      }
+
+      qsort(T, VAR_1238123, sizeof( int ), Cmp);
+      qsort(Q, VAR_1238123, sizeof( int ), Cmp);
+      int pT;
+      int qT;
+      int pQ;
+      int qQ;
+      pT = 0, qT = VAR_1238123 - 1, pQ = 0, qQ = VAR_1238123 - 1;
+      int ans = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( T[pT] > Q[pQ] )
+         {
+            ans += 200;
+            pT++;
+            pQ++;
+            continue;
+         }
+
+         if ( T[pT] < Q[pQ] )
+         {
+            ans -= 200;
+            pT++;
+            qQ--;
+            continue;
+         }
+
+         if ( T[qT] > Q[qQ] )
+         {
+            ans += 200;
+            qT--;
+            qQ--;
+            continue;
+         }
+
+         if ( T[qT] < Q[qQ] )
+         {
+            ans -= 200;
+            pT++;
+            qQ--;
+            continue;
+         }
+
+         if ( T[pT] > Q[qQ] )
+         {
+            ans += 200;
+         }
+         else
+         if ( T[pT] < Q[qQ] )
+         {
+            ans -= 200;
+         }
+
+
+         pT++;
+         qQ--;
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,115 @@
+void main()
+{
+   int sushu(int VAR__7685);
+   int huiwen(int VAR__7685);
+
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__127322 = 0;
+   int VAR__819283[100];
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( sushu(VAR__53647) == 1 ) && ( huiwen(VAR__53647) == 1 ))
+      {
+         VAR__819283[VAR__127322] = VAR__53647;
+         VAR__127322++;
+      }
+   }
+
+   if ( VAR__127322 == 0 )
+   {
+      printf("no\n");
+   }
+   else
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__127322 - 1 ); VAR__21230++ )
+      {
+         printf("%d,", VAR__819283[VAR__21230]);
+      }
+
+      printf("%d", VAR__819283[VAR__127322 - 1]);
+   }
+}
+
+
+int sushu(int VAR__7685)
+{
+   int flag1;
+   int VAR__8444594;
+   int VAR__819283;
+
+   VAR__8444594 = sqrt(VAR__7685);
+   for ( VAR__819283 = 2; VAR__819283 <= VAR__8444594; VAR__819283++ )
+   {
+      if (( VAR__7685 % VAR__819283 ) == 0 )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__819283 > VAR__8444594 )
+   {
+      flag1 = 1;
+   }
+   else
+   {
+      flag1 = 0;
+   }
+
+   return flag1;
+}
+
+
+int huiwen(int VAR__7685)
+{
+   int VAR__819283[9];
+   int VAR__12302;
+   int VAR__21230;
+   int VAR__19328;
+   int VAR__4857423;
+   int VAR__8444594;
+   int VAR__112390;
+   int VAR__3918907;
+   int VAR__SUM = 0;
+   int cha;
+   int flag2;
+
+   VAR__12302   = 9;
+   VAR__8444594 = pow(10, VAR__12302);
+
+   while (( VAR__7685 / VAR__8444594 ) == 0 )
+   {
+      VAR__12302--;
+      VAR__8444594 = pow(10, VAR__12302);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__12302; VAR__21230++ )
+   {
+      VAR__19328              = pow(10, VAR__21230 + 1);
+      VAR__4857423            = pow(10, VAR__21230);
+      VAR__819283[VAR__21230] = (( VAR__7685 % VAR__19328 ) - ( VAR__7685 % VAR__4857423 )) / VAR__4857423;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__12302; VAR__21230++ )
+   {
+      VAR__112390  = pow(10, VAR__12302 - VAR__21230);
+      VAR__3918907 = VAR__819283[VAR__21230] * VAR__112390;
+      VAR__SUM     = VAR__SUM + VAR__3918907;
+   }
+
+   cha = VAR__7685 - VAR__SUM;
+
+   if ( cha == 0 )
+   {
+      flag2 = 1;
+   }
+   else
+   {
+      flag2 = 0;
+   }
+
+   return flag2;
+}

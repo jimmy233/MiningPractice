@@ -1,0 +1,149 @@
+int lenth(int VAR__819283)
+{
+   int VAR_1238123 = 0;
+
+   while (( VAR__819283 / 10 ) > 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+      VAR__819283 = VAR__819283 / 10;
+   }
+
+   return VAR_1238123;
+}
+
+
+int nixu(int VAR__819283, int VAR_1238123)
+{
+   int VAR__9290;
+   int VAR__1238129;
+   int VAR__53647;
+
+   if ( VAR__819283 < 10 )
+   {
+      VAR__9290 = VAR__819283;
+   }
+   else
+   {
+      VAR__1238129 = VAR__819283 % 10;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         VAR__1238129 = VAR__1238129 * 10;
+      }
+
+      VAR__9290 = VAR__1238129 + nixu(VAR__819283 / 10, VAR_1238123 - 1);
+   }
+
+   return VAR__9290;
+}
+
+
+int huiwen(int VAR__819283)
+{
+   int VAR__9290;
+   int VAR__1238129;
+
+   VAR__1238129 = nixu(VAR__819283, lenth(VAR__819283));
+
+   if ( VAR__1238129 == VAR__819283 )
+   {
+      VAR__9290 = 1;
+   }
+   else
+   {
+      VAR__9290 = 0;
+   }
+
+   return VAR__9290;
+}
+
+
+int sushu(int VAR__819283)
+{
+   int VAR__53647;
+   int VAR__9290;
+
+   for ( VAR__53647 = 2; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      if (( VAR__819283 % VAR__53647 ) == 0 )
+      {
+         VAR__9290 = 0;
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 == VAR__819283 )
+   {
+      VAR__9290 = 1;
+   }
+
+   return VAR__9290;
+}
+
+
+void main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__53647;
+   int VAR_9494 = 0;
+
+   scanf("%d%d", &VAR__819283, &VAR__19328);
+
+   if ( VAR__819283 > VAR__19328 )
+   {
+      for ( VAR__53647 = VAR__19328; VAR__53647 <= VAR__819283; VAR__53647++ )
+      {
+         if ( huiwen(VAR__53647) && sushu(VAR__53647))
+         {
+            VAR_9494 = VAR_9494 + 1;
+            printf("%d", VAR__53647);
+            break;
+         }
+      }
+
+
+      for ( VAR__53647 = VAR__53647 + 1; VAR__53647 <= VAR__819283; VAR__53647++ )
+      {
+         if ( huiwen(VAR__53647) && sushu(VAR__53647))
+         {
+            VAR_9494 = VAR_9494 + 1;
+            printf(",%d", VAR__53647);
+         }
+      }
+
+
+      if ( VAR_9494 == 0 )
+      {
+         printf("no");
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = VAR__819283; VAR__53647 <= VAR__19328; VAR__53647++ )
+      {
+         if ( huiwen(VAR__53647) && sushu(VAR__53647))
+         {
+            VAR_9494 = VAR_9494 + 1;
+            printf("%d", VAR__53647);
+            break;
+         }
+      }
+
+
+      for ( VAR__53647 = VAR__53647 + 1; VAR__53647 <= VAR__19328; VAR__53647++ )
+      {
+         if ( huiwen(VAR__53647) && sushu(VAR__53647))
+         {
+            VAR_9494 = VAR_9494 + 1;
+            printf(",%d", VAR__53647);
+         }
+      }
+
+
+      if ( VAR_9494 == 0 )
+      {
+         printf("no");
+      }
+   }
+}

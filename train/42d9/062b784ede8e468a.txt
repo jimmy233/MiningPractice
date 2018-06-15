@@ -1,0 +1,60 @@
+int main()
+{
+   int    VAR__8444594;
+   int    VAR__53647;
+   int    VAR_1238123;
+   int    VAR__temp;
+   int    o;
+   int    VAR_233;
+   int    VAR_666 = 0;
+   int    VAR__7685[100];
+   int    VAR__3918907[100];
+   int    VAR__9290[100];
+   int    one[100];
+   int    two[100];
+   double VAR__112390;
+   double VAR_SIZE[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR_233 = VAR__53647 + 1; VAR_233 < VAR_1238123; VAR_233++ )
+      {
+         VAR_SIZE[VAR_666] = sqrt(((( VAR__7685[VAR__53647] - VAR__7685[VAR_233] ) * ( VAR__7685[VAR__53647] - VAR__7685[VAR_233] )) + (( VAR__3918907[VAR__53647] - VAR__3918907[VAR_233] ) * ( VAR__3918907[VAR__53647] - VAR__3918907[VAR_233] ))) + (( VAR__9290[VAR__53647] - VAR__9290[VAR_233] ) * ( VAR__9290[VAR__53647] - VAR__9290[VAR_233] )));
+         one[VAR_666]      = VAR__53647;
+         two[VAR_666]      = VAR_233;
+         VAR_666++;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 < ( VAR_666 + 1 ); VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_666 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( VAR_SIZE[VAR__53647] < VAR_SIZE[VAR__53647 + 1] )
+         {
+            VAR__112390 = VAR_SIZE[VAR__53647 + 1];
+            VAR__temp   = one[VAR__53647 + 1];
+            o           = two[VAR__53647 + 1];
+            VAR_SIZE[VAR__53647 + 1] = VAR_SIZE[VAR__53647];
+            one[VAR__53647 + 1]      = one[VAR__53647];
+            two[VAR__53647 + 1]      = two[VAR__53647];
+            VAR_SIZE[VAR__53647]     = VAR__112390;
+            one[VAR__53647]          = VAR__temp;
+            two[VAR__53647]          = o;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR__7685[one[VAR__53647]], VAR__3918907[one[VAR__53647]], VAR__9290[one[VAR__53647]], VAR__7685[two[VAR__53647]], VAR__3918907[two[VAR__53647]], VAR__9290[two[VAR__53647]], VAR_SIZE[VAR__53647]);
+   }
+
+   return 0;
+}

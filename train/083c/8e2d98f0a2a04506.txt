@@ -1,0 +1,80 @@
+void main()
+{
+   int  a1;
+   int  b1;
+   int  VAR__TEMP = 0;
+   int  numtemp[10];
+   char num1[10];
+   char num2[10];
+   char VAR__4857423;
+   int  VAR__53647   = 0;
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   int  VAR_1238123;
+
+   scanf("%d %s %d", &a1, num1, &b1);
+
+   while ( num1[VAR__53647] != '\0' )
+   {
+      if (( num1[VAR__53647] >= 97 ) && ( num1[VAR__53647] <= 122 ))
+      {
+         num1[VAR__53647] -= 32;
+      }
+
+      if (( num1[VAR__53647] >= 65 ) && ( num1[VAR__53647] <= 90 ))
+      {
+         numtemp[VAR__53647] = num1[VAR__53647] - 55;
+      }
+      else
+      {
+         numtemp[VAR__53647] = num1[VAR__53647] - 48;
+      }
+
+      VAR__53647 += 1;
+   }
+
+   VAR__53647 -= 1;
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+   {
+      VAR__TEMP += numtemp[VAR__21230] * power(a1, VAR__53647 - VAR__21230);
+   }
+
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+
+   while ( power(b1, VAR__53647) < VAR__TEMP )
+   {
+      VAR__53647++;
+   }
+
+   VAR__21230 = VAR__53647 - 1;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__53647; VAR__8444594++ )
+   {
+      VAR_1238123 = VAR__TEMP / power(b1, VAR__21230);
+
+      if ( VAR_1238123 >= 10 )
+      {
+         VAR__4857423 = (char)( VAR_1238123 + 55 );
+      }
+      else
+      {
+         VAR__4857423 = (char)( VAR_1238123 + 48 );
+      }
+
+      VAR__TEMP -= power(b1, VAR__21230) * VAR_1238123;
+      VAR__21230--;
+      num2[VAR__8444594] = VAR__4857423;
+      VAR_1238123        = 0;
+   }
+
+   num2[VAR__8444594] = '\0';
+
+   if ( VAR__8444594 != 0 )
+   {
+      printf("%s\n", num2);
+   }
+   else
+   {
+      printf("0\n");
+   }
+}

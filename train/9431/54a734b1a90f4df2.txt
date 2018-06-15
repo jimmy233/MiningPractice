@@ -1,0 +1,75 @@
+struct stu
+{
+   char       no[20];
+   char       sx;
+   char       nm[30];
+   char       rm[20];
+   char       mk[10];
+   int        age;
+   struct stu *VAR__NEXT;
+};
+int main()
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR__HEAD;
+   int        VAR__53647;
+
+   void output(struct stu *VAR_233, struct stu *YET_ANOTHER_POINTER);
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(L);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      scanf("%s", ANOTHER_POINTER->no);
+
+      if ( strcmp(ANOTHER_POINTER->no, "end") == 0 )
+      {
+         break;
+      }
+      else
+      {
+         if ( VAR__53647 == 0 )
+         {
+            VAR__HEAD = ANOTHER_POINTER;
+         }
+
+         scanf("%s %c%d%s%s", ANOTHER_POINTER->nm, &ANOTHER_POINTER->sx, &ANOTHER_POINTER->age, ANOTHER_POINTER->mk, ANOTHER_POINTER->rm);
+
+         if ( VAR__53647 == 0 )
+         {
+            VAR__HEAD->VAR__NEXT = NULL;
+            YET_ANOTHER_POINTER  = VAR__HEAD;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+            YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+         }
+      }
+   }
+
+   output(VAR__HEAD, VAR__HEAD);
+}
+
+
+void output(struct stu *VAR_233, struct stu *YET_ANOTHER_POINTER)
+{
+   if ( VAR_233->VAR__NEXT != NULL )
+   {
+      output(VAR_233->VAR__NEXT, YET_ANOTHER_POINTER);
+   }
+
+   printf("%s %s %c %d %s %s", VAR_233->no, VAR_233->nm, VAR_233->sx, VAR_233->age, VAR_233->mk, VAR_233->rm);
+
+   if ( VAR_233 != YET_ANOTHER_POINTER )
+   {
+      printf("\n");
+   }
+}

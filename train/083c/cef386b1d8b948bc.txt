@@ -1,0 +1,81 @@
+void transform(int, char [], int);
+
+int main()
+{
+   int  from;
+   int  to;
+   char VAR__NUM[50] = { 0 };
+
+   cin >> from;
+   cin.get();
+   cin.getline(VAR__NUM, 50, ' ');
+   cin >> to;
+   transform(from, VAR__NUM, to);
+   cout << VAR__NUM;
+   return 0;
+}
+
+
+void transform(int from, char VAR__NUM[], int to)
+{
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  num_1[50];
+   long number     = 0;
+   char rebmun[50] = { 0 };
+
+   for ( VAR__53647 = 0; VAR__NUM[VAR__53647] != 0; VAR__53647++ )
+   {
+      if (( VAR__NUM[VAR__53647] >= 'a' ) && ( VAR__NUM[VAR__53647] <= 'z' ))
+      {
+         num_1[VAR__53647] = ( VAR__NUM[VAR__53647] - 'a' ) + 10;
+      }
+      else
+      if (( VAR__NUM[VAR__53647] >= 'A' ) && ( VAR__NUM[VAR__53647] <= 'Z' ))
+      {
+         num_1[VAR__53647] = ( VAR__NUM[VAR__53647] - 'A' ) + 10;
+      }
+      else
+      if (( VAR__NUM[VAR__53647] >= '0' ) && ( VAR__NUM[VAR__53647] <= '9' ))
+      {
+         num_1[VAR__53647] = VAR__NUM[VAR__53647] - '0';
+      }
+   }
+
+   VAR_1238123 = VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      number = ( number * from ) + num_1[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; number != 0; VAR__53647++ )
+   {
+      num_1[VAR__53647] = number % to;
+      number            = number / to;
+   }
+
+   VAR_1238123 = VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( num_1[VAR__53647] < 10 )
+      {
+         num_1[VAR__53647] += '0';
+      }
+      else
+      {
+         num_1[VAR__53647] += 'A' - 10;
+      }
+
+      VAR__NUM[( VAR_1238123 - 1 ) - VAR__53647] = num_1[VAR__53647];
+   }
+
+   if ( VAR_1238123 != 0 )
+   {
+      VAR__NUM[VAR_1238123] = 0;
+   }
+   else
+   {
+      VAR__NUM[0] = '0';
+      VAR__NUM[1] = 0;
+   }
+}

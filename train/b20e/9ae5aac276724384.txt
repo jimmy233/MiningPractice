@@ -1,0 +1,79 @@
+int compare(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__temp[1000];
+   int VAR_666[1000];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1238129;
+   int VAR_129012;
+   int tk;
+   int tm;
+   int qk;
+   int qm;
+
+   for ( ; ; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_666[VAR__53647]);
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), compare);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), compare);
+      VAR_129012 = 0;
+      tk         = 0;
+      tm         = VAR_1238123 - 1;
+      qk         = 0;
+      qm         = VAR_1238123 - 1;
+
+      while ( tk <= tm )
+      {
+         if ( VAR__temp[tm] > VAR_666[qm] )
+         {
+            VAR_129012++;
+            tm--;
+            qm--;
+         }
+         else
+         if ( VAR__temp[tk] > VAR_666[qk] )
+         {
+            VAR_129012++;
+            tk++;
+            qk++;
+         }
+         else
+         if ( VAR__temp[tm] < VAR_666[qk] )
+         {
+            VAR_129012--;
+            tm--;
+            qk++;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      printf("%d\n", VAR_129012 * 200);
+   }
+}

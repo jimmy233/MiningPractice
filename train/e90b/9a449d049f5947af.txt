@@ -1,0 +1,74 @@
+struct score
+{
+   int ID;
+   int chinese;
+   int math;
+};
+void main()
+{
+   int          VAR_1238123;
+   int          VAR__53647;
+   int          *VAR__SUM;
+   int          VAR__MAX;
+   int          VAR_233 = 0;
+   struct score *VAR_9494;
+
+   scanf("%d", &VAR_1238123);
+   VAR_9494 = (struct score *)malloc(( sizeof( struct score )) * VAR_1238123);
+   VAR__SUM = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR_9494[VAR__53647].ID, &VAR_9494[VAR__53647].chinese, &VAR_9494[VAR__53647].math);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      *( VAR__SUM + VAR__53647 ) = VAR_9494[VAR__53647].chinese + VAR_9494[VAR__53647].math;
+   }
+
+   VAR__MAX = VAR__SUM[0];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < ( *( VAR__SUM + VAR__53647 )))
+      {
+         VAR__MAX = *( VAR__SUM + VAR__53647 );
+         VAR_233  = VAR__53647;
+      }
+   }
+
+   printf("%d %d\n", VAR_9494[VAR_233].ID, *( VAR__SUM + VAR_233 ));
+
+   if ( VAR_1238123 > 1 )
+   {
+      VAR__MAX = *VAR__SUM;
+      *( VAR__SUM + VAR_233 ) = 0;
+      VAR_233 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__MAX < ( *( VAR__SUM + VAR__53647 )))
+         {
+            VAR__MAX = *( VAR__SUM + VAR__53647 );
+            VAR_233  = VAR__53647;
+         }
+      }
+
+      printf("%d %d\n", VAR_9494[VAR_233].ID, *( VAR__SUM + VAR_233 ));
+
+      if ( VAR_1238123 > 2 )
+      {
+         VAR__MAX = *VAR__SUM;
+         *( VAR__SUM + VAR_233 ) = 0;
+         VAR_233 = 0;
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            if ( VAR__MAX < ( *( VAR__SUM + VAR__53647 )))
+            {
+               VAR__MAX = *( VAR__SUM + VAR__53647 );
+               VAR_233  = VAR__53647;
+            }
+         }
+
+         printf("%d %d\n", VAR_9494[VAR_233].ID, *( VAR__SUM + VAR_233 ));
+      }
+   }
+}

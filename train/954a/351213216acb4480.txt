@@ -1,0 +1,65 @@
+struct scholarship
+{
+   char  name[21];
+   short mark;
+   short judge;
+   char  cadre;
+   char  west;
+   short paper;
+   int   ss;
+}
+stu[100];
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].mark, &stu[VAR__53647].judge, &stu[VAR__53647].cadre, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+      stu[VAR__53647].ss = 0;
+
+      if (( stu[VAR__53647].mark > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         stu[VAR__53647].ss = stu[VAR__53647].ss + 8000;
+      }
+
+      if (( stu[VAR__53647].mark > 85 ) && ( stu[VAR__53647].judge > 80 ))
+      {
+         stu[VAR__53647].ss = stu[VAR__53647].ss + 4000;
+      }
+
+      if ( stu[VAR__53647].mark > 90 )
+      {
+         stu[VAR__53647].ss = stu[VAR__53647].ss + 2000;
+      }
+
+      if (( stu[VAR__53647].mark > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].ss = stu[VAR__53647].ss + 1000;
+      }
+
+      if (( stu[VAR__53647].judge > 80 ) && ( stu[VAR__53647].cadre == 'Y' ))
+      {
+         stu[VAR__53647].ss = stu[VAR__53647].ss + 850;
+      }
+   }
+
+   int VAR__MAX    = stu[0].ss;
+   int VAR__819283 = 0;
+   int total       = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].ss > VAR__MAX )
+      {
+         VAR__MAX    = stu[VAR__53647].ss;
+         VAR__819283 = VAR__53647;
+      }
+
+      total = total + stu[VAR__53647].ss;
+   }
+
+   printf("%s\n%d\n%d\n", stu[VAR__819283].name, stu[VAR__819283].ss, total);
+   return 0;
+}

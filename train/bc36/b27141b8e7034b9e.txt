@@ -1,0 +1,82 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   double shengao[40];
+   char   xingbie[40][10];
+   double nansheng[40];
+   double nvsheng[40];
+   int    VAR__1238129 = 0;
+   int    VAR__127322  = 0;
+   int    VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", xingbie[VAR__53647]);
+      scanf("%lf", &shengao[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(xingbie[VAR__53647], "male") == 0 )
+      {
+         nansheng[VAR__1238129] = shengao[VAR__53647];
+         VAR__1238129++;
+      }
+      else
+      if ( strcmp(xingbie[VAR__53647], "female") == 0 )
+      {
+         nvsheng[VAR__127322] = shengao[VAR__53647];
+         VAR__127322++;
+      }
+   }
+
+   int    VAR__21230;
+   double VAR__temp;
+   for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( nansheng[VAR__53647] > nansheng[VAR__53647 + 1] )
+         {
+            VAR__temp                = nansheng[VAR__53647];
+            nansheng[VAR__53647]     = nansheng[VAR__53647 + 1];
+            nansheng[VAR__53647 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   double VAR_129012;
+   for ( VAR__21230 = 1; VAR__21230 < VAR__127322; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__127322 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( nvsheng[VAR__53647] < nvsheng[VAR__53647 + 1] )
+         {
+            VAR_129012              = nvsheng[VAR__53647];
+            nvsheng[VAR__53647]     = nvsheng[VAR__53647 + 1];
+            nvsheng[VAR__53647 + 1] = VAR_129012;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("%.2lf ", nansheng[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__127322; VAR__53647++ )
+   {
+      if ( VAR__53647 < ( VAR__127322 - 1 ))
+      {
+         printf("%.2lf ", nvsheng[VAR__53647]);
+      }
+      else
+      if ( VAR__53647 == ( VAR__127322 - 1 ))
+      {
+         printf("%.2lf", nvsheng[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

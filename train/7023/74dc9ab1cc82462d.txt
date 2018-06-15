@@ -1,0 +1,79 @@
+int main()
+{
+   const int ma = 200;
+   const int mx = 50;
+   int       VAR__53647;
+   int       VAR_1238123;
+   int       VAR__8444594;
+   int       VAR__21230;
+   int       len1[ma]     = { 0 };
+   int       len2[ma]     = { 0 };
+   int       zs1[mx][ma]  = { 0 };
+   int       zs2[mx][ma]  = { 0 };
+   int       ans[mx][ma]  = { 0 };
+   char      num1[mx][ma] = { 0 };
+   char      num2[mx][ma] = { 0 };
+
+   cin >> VAR_1238123;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      cin.get();
+      cin.getline(num1[VAR__8444594], ma);
+      cin.getline(num2[VAR__8444594], ma);
+      len1[VAR__8444594] = strlen(num1[VAR__8444594]);
+      len2[VAR__8444594] = strlen(num2[VAR__8444594]);
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      VAR__21230 = 0;
+      for ( VAR__53647 = len1[VAR__8444594] - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         zs1[VAR__8444594][VAR__21230++] = num1[VAR__8444594][VAR__53647] - '0';
+      }
+
+      VAR__21230 = 0;
+      for ( VAR__53647 = len2[VAR__8444594] - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         zs2[VAR__8444594][VAR__21230++] = num2[VAR__8444594][VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < len1[VAR__8444594]; VAR__53647++ )
+      {
+         if ( VAR__53647 < len2[VAR__8444594] )
+         {
+            if ( zs1[VAR__8444594][VAR__53647] < zs2[VAR__8444594][VAR__53647] )
+            {
+               zs1[VAR__8444594][VAR__53647]     = zs1[VAR__8444594][VAR__53647] + 10;
+               zs1[VAR__8444594][VAR__53647 + 1] = zs1[VAR__8444594][VAR__53647 + 1] - 1;
+               ans[VAR__8444594][VAR__53647]     = zs1[VAR__8444594][VAR__53647] - zs2[VAR__8444594][VAR__53647];
+            }
+            else
+            {
+               ans[VAR__8444594][VAR__53647] = zs1[VAR__8444594][VAR__53647] - zs2[VAR__8444594][VAR__53647];
+            }
+         }
+         else
+         {
+            ans[VAR__8444594][VAR__53647] = zs1[VAR__8444594][VAR__53647] - zs2[VAR__8444594][VAR__53647];
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( ans[VAR__8444594][len1[VAR__8444594]] == 0 )
+      {
+         len1[VAR__8444594] = len1[VAR__8444594] - 1;
+      }
+
+      for ( VAR__53647 = len1[VAR__8444594]; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << ans[VAR__8444594][VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

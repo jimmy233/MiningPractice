@@ -1,0 +1,100 @@
+int is_legal(char name[20], int length);
+int first_lg(char trig);
+int illegal_sym(char name[20], int length);
+
+int main()
+{
+   int  VAR_1238123;
+   int  length;
+   int  VAR__53647;
+   char name[100][20];
+   int  ok[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s", &name[VAR__53647]);
+      length         = strlen(name[VAR__53647]);
+      ok[VAR__53647] = is_legal(name[VAR__53647], length);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( ok[VAR__53647] )
+      {
+         printf("yes\n");
+      }
+      else
+      {
+         printf("no\n");
+      }
+   }
+}
+
+
+int is_legal(char name[20], int length)
+{
+   if ( !first_lg(name[0]))
+   {
+      return FALSE;
+   }
+
+   if ( !illegal_sym(name, length))
+   {
+      return FALSE;
+   }
+
+   return TRUE;
+}
+
+
+int first_lg(char trig)
+{
+   int  is1;
+   int  is2;
+   int  is3;
+   char ch;
+
+   ch  = toupper(trig);
+   is1 = ch > 'Z';
+   is2 = ch < 'A';
+
+   if ( trig == '_' )
+   {
+      return TRUE;
+   }
+
+   if (( is1 + is2 ) != 0 )
+   {
+      return FALSE;
+   }
+
+   return TRUE;
+}
+
+
+int illegal_sym(char name[20], int length)
+{
+   int  VAR__53647;
+   char ch;
+   int  is_al;
+   int  is_num;
+   int  is_dash;
+   int  is;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( length - 1 ); VAR__53647++ )
+   {
+      ch      = toupper(name[VAR__53647]);
+      is_al   = ( ch <= 'Z' ) && ( ch >= 'A' );
+      is_num  = ( ch <= '9' ) && ( ch >= '0' );
+      is_dash = ch == '_';
+      is      = ( is_al || is_num ) || is_dash;
+
+      if ( !is )
+      {
+         return FALSE;
+      }
+   }
+
+   return TRUE;
+}

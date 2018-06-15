@@ -1,0 +1,73 @@
+int main()
+{
+   struct student
+   {
+      char  sex[6];
+      float height;
+   }
+         stu[40];
+   int   VAR_1238123;
+   int   bnum = 0;
+   int   gnum = 0;
+   int   VAR__53647;
+   int   VAR__21230;
+   float VAR__TEMP;
+   float boy[40];
+   float girl[40];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", stu[VAR__53647].sex);
+      scanf("%f", &stu[VAR__53647].height);
+
+      if ( strcmp(stu[VAR__53647].sex, "female") > 0 )
+      {
+         boy[VAR__53647 - gnum] = stu[VAR__53647].height;
+         bnum++;
+      }
+      else
+      {
+         girl[VAR__53647 - bnum] = stu[VAR__53647].height;
+         gnum++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < bnum; VAR__53647++ )
+   {
+      for ( VAR__21230 = bnum - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( boy[VAR__21230] < boy[VAR__21230 - 1] )
+         {
+            VAR__TEMP           = boy[VAR__21230 - 1];
+            boy[VAR__21230 - 1] = boy[VAR__21230];
+            boy[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < gnum; VAR__53647++ )
+   {
+      for ( VAR__21230 = gnum - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( girl[VAR__21230] > girl[VAR__21230 - 1] )
+         {
+            VAR__TEMP            = girl[VAR__21230 - 1];
+            girl[VAR__21230 - 1] = girl[VAR__21230];
+            girl[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < bnum; VAR__53647++ )
+   {
+      printf("%.2f ", boy[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( gnum - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", girl[VAR__53647]);
+   }
+
+   printf("%.2f", girl[gnum - 1]);
+}

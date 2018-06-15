@@ -1,0 +1,127 @@
+void main()
+{
+   while ( 1 )
+   {
+      int VAR__819283[1024] = { 0 };
+      int VAR__19328[1024]  = { 0 };
+      int choose[1024]      = { 0 };
+      int bchoose[1024]     = { 0 };
+      int VAR_1238123;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int VAR__53647;
+      int VAR__21230;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+         choose[VAR__53647]  = VAR_1238123;
+         bchoose[VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230] >= VAR__819283[VAR__53647] )
+            {
+               int VAR__TEMP = VAR__819283[VAR__21230];
+               VAR__819283[VAR__21230] = VAR__819283[VAR__53647];
+               VAR__819283[VAR__53647] = VAR__TEMP;
+            }
+
+            if ( VAR__19328[VAR__21230] >= VAR__19328[VAR__53647] )
+            {
+               int VAR__TEMP = VAR__19328[VAR__21230];
+               VAR__19328[VAR__21230] = VAR__19328[VAR__53647];
+               VAR__19328[VAR__53647] = VAR__TEMP;
+            }
+         }
+      }
+
+
+      int win   = 0;
+      int deuce = 0;
+      int lose  = 0;
+      int heada = 0;
+      int headb = 0;
+      int taila = VAR_1238123 - 1;
+      int tailb = VAR_1238123 - 1;
+
+      while (( heada <= taila ) && ( headb <= tailb ))
+      {
+         if ( choose[heada] != VAR_1238123 )
+         {
+            heada++;
+            continue;
+         }
+         else
+         if ( choose[taila] != VAR_1238123 )
+         {
+            taila--;
+            continue;
+         }
+         else
+         if ( bchoose[headb] == 1 )
+         {
+            headb++;
+            continue;
+         }
+         else
+         if ( bchoose[tailb] == 1 )
+         {
+            tailb--;
+            continue;
+         }
+         else
+         {
+            if ( VAR__819283[heada] > VAR__19328[headb] )
+            {
+               choose[heada]  = headb;
+               bchoose[headb] = 1;
+               win++;
+               heada++;
+               headb++;
+            }
+            else
+            if ( VAR__819283[taila] > VAR__19328[tailb] )
+            {
+               choose[taila]  = tailb;
+               bchoose[tailb] = 1;
+               win++;
+               taila--;
+               tailb--;
+            }
+            else
+            {
+               choose[taila]  = headb;
+               bchoose[headb] = 1;
+
+               if ( VAR__819283[taila] < VAR__19328[headb] )
+               {
+                  lose++;
+               }
+               else
+               {
+                  deuce++;
+               }
+
+               headb++;
+               taila--;
+            }
+         }
+      }
+
+      int money = ( 200 * win ) - ( lose * 200 );
+      printf("%d\n", money);
+   }
+}

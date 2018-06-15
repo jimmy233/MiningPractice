@@ -1,0 +1,77 @@
+char x0[100000];
+char y0[100000];
+int  VAR__7685[1000];
+int  VAR__3918907[1000];
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int time[1000];
+   int people   = 0;
+   int most     = 0;
+   int VAR__MAX = 0;
+
+   memset(VAR__7685, 0, sizeof( VAR__7685 ));
+   memset(VAR__3918907, 0, sizeof( VAR__3918907 ));
+   memset(time, 0, sizeof( time ));
+   cin.getline(x0, 10000);
+   cin.getline(y0, 10000);
+   for ( VAR__53647 = 0; x0[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( x0[VAR__53647] == ',' )
+      {
+         people++;
+      }
+   }
+
+   people++;
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; x0[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( x0[VAR__53647] != ',' )
+      {
+         VAR__7685[VAR__21230] = (( VAR__7685[VAR__21230] * 10 ) + x0[VAR__53647] ) - '0';
+      }
+
+      if ( x0[VAR__53647] == ',' )
+      {
+         VAR__21230++;
+      }
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; y0[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( y0[VAR__53647] != ',' )
+      {
+         VAR__3918907[VAR__21230] = (( VAR__3918907[VAR__21230] * 10 ) + y0[VAR__53647] ) - '0';
+      }
+
+      if ( y0[VAR__53647] == ',' )
+      {
+         VAR__3918907[VAR__21230]--;
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( people - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__7685[VAR__53647]; VAR__21230 <= VAR__3918907[VAR__53647]; VAR__21230++ )
+      {
+         time[VAR__21230]++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 <= 999; VAR__53647++ )
+   {
+      if ( time[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = time[VAR__53647];
+      }
+   }
+
+
+   ((( cout << people ) << " " ) << VAR__MAX ) << endl;
+   return 0;
+}

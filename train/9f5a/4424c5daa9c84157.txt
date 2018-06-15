@@ -1,0 +1,52 @@
+int main()
+{
+   int row = 0;
+   int col = 0;
+   int array[100][100];
+
+   int (*VAR_233)[100] = array;
+   int *VAR_666 = *VAR_233;
+   ( cin >> row ) >> col;
+   for ( int VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         cin >> array[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   int VAR__7685  = 0;
+   int VAR__21230 = 0;
+
+   while ( VAR_666 != (( array[row - 1] + col ) - 1 ))
+   {
+      ( cout << ( *VAR_666 )) << endl;
+
+      if (( VAR_666 == ( *VAR_233 )) || (( *VAR_233 ) == array[row - 1] ))
+      {
+         VAR__7685++;
+
+         if ( VAR__7685 >= col )
+         {
+            VAR_233    = (( array + VAR__7685 ) + 1 ) - col;
+            VAR_666    = (( *VAR_233 ) + col ) - 1;
+            VAR__21230 = col - 1;
+         }
+         else
+         {
+            VAR_233    = array;
+            VAR_666    = ( *VAR_233 ) + VAR__7685;
+            VAR__21230 = VAR__7685;
+         }
+      }
+      else
+      {
+         VAR_233++;
+         VAR_666 = ( *VAR_233 ) + ( --VAR__21230 );
+      }
+   }
+
+   cout << ( *VAR_666 );
+   return 0;
+}

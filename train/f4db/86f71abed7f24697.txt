@@ -1,0 +1,64 @@
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int row;
+      int col;
+      int total = 0;
+      int VAR_9494[100][100];
+      scanf("%d%d", &row, &col);
+      int VAR__7685;
+      int VAR__3918907;
+      for ( VAR__7685 = 0; VAR__7685 < row; VAR__7685++ )
+      {
+         for ( VAR__3918907 = 0; VAR__3918907 < col; VAR__3918907++ )
+         {
+            scanf("%d", &VAR_9494[VAR__7685][VAR__3918907]);
+         }
+      }
+
+      if (( row < 3 ) || ( col < 3 ))
+      {
+         for ( VAR__7685 = 0; VAR__7685 < row; VAR__7685++ )
+         {
+            for ( VAR__3918907 = 0; VAR__3918907 < col; VAR__3918907++ )
+            {
+               total += VAR_9494[VAR__7685][VAR__3918907];
+            }
+         }
+
+         printf("%d\n", total);
+      }
+      else
+      {
+         for ( VAR__3918907 = 0; VAR__3918907 < col; VAR__3918907++ )
+         {
+            total += VAR_9494[0][VAR__3918907];
+         }
+
+         for ( VAR__3918907 = 0; VAR__3918907 < col; VAR__3918907++ )
+         {
+            total += VAR_9494[row - 1][VAR__3918907];
+         }
+
+         for ( VAR__7685 = 0; VAR__7685 < row; VAR__7685++ )
+         {
+            total += VAR_9494[VAR__7685][0];
+         }
+
+         for ( VAR__7685 = 0; VAR__7685 < row; VAR__7685++ )
+         {
+            total += VAR_9494[VAR__7685][col - 1];
+         }
+
+         total = ((( total - VAR_9494[0][0] ) - VAR_9494[0][col - 1] ) - VAR_9494[row - 1][0] ) - VAR_9494[row - 1][col - 1];
+         printf("%d\n", total);
+      }
+   }
+
+   return 0;
+}

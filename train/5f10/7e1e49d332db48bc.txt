@@ -1,0 +1,102 @@
+char VAR__19328[500][5] = { ' ' };
+int  VAR_1238123;
+int is(int VAR__53647, int VAR__21230);
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   getchar();
+   char VAR__819283[501] = { ' ' };
+   int  VAR__MAX         = 0;
+   int  bs[500]          = { 0 };
+   scanf("%s", VAR__819283);
+   int VAR_9494;
+   VAR_9494 = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_9494 - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647, VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__21230++, VAR__8444594++ )
+      {
+         VAR__19328[VAR__53647][VAR__8444594] = VAR__819283[VAR__21230];
+      }
+   }
+
+   char VAR__4857423[500] = { ' ' };
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_9494 - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] == '1' )
+      {
+         VAR__53647++;
+         continue;
+      }
+      else
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= ( VAR_9494 - VAR_1238123 ); VAR__21230++ )
+         {
+            if ( is(VAR__53647, VAR__21230))
+            {
+               bs[VAR__53647] += 1;
+
+               if ( bs[VAR__53647] > 1 )
+               {
+                  VAR__4857423[VAR__21230] = '1';
+               }
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_9494 - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( VAR__MAX < bs[VAR__53647] )
+      {
+         VAR__MAX = bs[VAR__53647];
+      }
+   }
+
+
+   if ( VAR__MAX > 1 )
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR_9494 - VAR_1238123 ); VAR__53647++ )
+      {
+         if ( bs[VAR__53647] == VAR__MAX )
+         {
+            printf("%s\n", VAR__19328[VAR__53647]);
+         }
+      }
+   }
+   else
+   {
+      printf("NO\n");
+   }
+
+   return 0;
+}
+
+
+int is(int VAR__53647, int VAR__21230)
+{
+   int VAR__8444594;
+   int VAR_9494 = 0;
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( VAR__19328[VAR__53647][VAR__8444594] == VAR__19328[VAR__21230][VAR__8444594] )
+      {
+         VAR_9494 += 1;
+      }
+   }
+
+   if ( VAR_9494 == VAR_1238123 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

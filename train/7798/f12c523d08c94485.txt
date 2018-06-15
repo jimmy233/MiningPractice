@@ -1,0 +1,79 @@
+struct BOOK
+{
+   int  VAR__NUM;
+   char author[26];
+};
+char maxbook(int VAR__819283[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int bookmax = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( bookmax < VAR__819283[VAR__53647] )
+      {
+         bookmax    = VAR__819283[VAR__53647];
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", 'A' + VAR__21230, bookmax);
+   return 'A' + VAR__21230;
+}
+
+
+int contain(char author[], char VAR__MAX)
+{
+   char *VAR__4857423 = author;
+
+   while ( *VAR__4857423 )
+   {
+      if (( *VAR__4857423 ) == VAR__MAX )
+      {
+         return 1;
+      }
+
+      VAR__4857423++;
+   }
+
+   return 0;
+}
+
+
+void main()
+{
+   struct BOOK book[1000];
+   int         VAR__1238129;
+   int         VAR__53647;
+   int         VAR__21230;
+   char        VAR__4857423;
+   char        VAR__MAX;
+   int         AtoZ[26] = { 0 };
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d", &book[VAR__53647].VAR__NUM);
+      getchar();
+      VAR__21230 = 0;
+
+      while (( VAR__4857423 = getchar()) != '\n' )
+      {
+         book[VAR__53647].author[VAR__21230] = VAR__4857423;
+         AtoZ[VAR__4857423 - 'A']++;
+         VAR__21230++;
+      }
+
+      book[VAR__53647].author[VAR__21230] = '\0';
+   }
+
+   VAR__MAX = maxbook(AtoZ);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( contain(book[VAR__53647].author, VAR__MAX))
+      {
+         printf("%d\n", book[VAR__53647].VAR__NUM);
+      }
+   }
+}

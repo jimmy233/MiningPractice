@@ -1,0 +1,43 @@
+struct Student
+{
+   struct Student *prev;
+   char           number[30];
+   char           name[30];
+   char           gender;
+   int            age;
+   double         score;
+   char           address[30];
+};
+int main()
+{
+   struct Student VAR__819283;
+   struct Student *VAR_233;
+
+   scanf("%s%s %c%d%lf%s", VAR__819283.number, VAR__819283.name, &VAR__819283.gender, &VAR__819283.age, &VAR__819283.score, VAR__819283.address);
+   VAR_233           = (struct Student *)malloc(LEN);
+   *VAR_233          = VAR__819283;
+   ( *VAR_233 ).prev = NULL;
+   for ( ; 1; )
+   {
+      scanf("%s", VAR__819283.number);
+
+      if ( VAR__819283.number[0] == 'e' )
+      {
+         break;
+      }
+
+      scanf("%s %c%d%lf%s", VAR__819283.name, &VAR__819283.gender, &VAR__819283.age, &VAR__819283.score, VAR__819283.address);
+      VAR__819283.prev = VAR_233;
+      VAR_233          = (struct Student *)malloc(LEN);
+      *VAR_233         = VAR__819283;
+   }
+
+   printf("%s %s %c %d %g %s\n", VAR_233->number, VAR_233->name, VAR_233->gender, VAR_233->age, VAR_233->score, VAR_233->address);
+   for ( ; ( *VAR_233 ).prev != NULL; )
+   {
+      VAR_233 = VAR_233->prev;
+      printf("%s %s %c %d %g %s\n", VAR_233->number, VAR_233->name, VAR_233->gender, VAR_233->age, VAR_233->score, VAR_233->address);
+   }
+
+   return 0;
+}

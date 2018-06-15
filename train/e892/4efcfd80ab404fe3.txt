@@ -1,0 +1,82 @@
+char *solve_x(int xn, float VAR__819283, float VAR__19328, float VAR__4857423)
+{
+   double in_sqrt = ( VAR__19328 * VAR__19328 ) - (( 4 * VAR__819283 ) * VAR__4857423 );
+   double VAR__7685;
+   char   *res;
+   double real;
+   double imaginary;
+
+   res = (char *)malloc(100 * ( sizeof( char )));
+
+   if ( in_sqrt >= 0 )
+   {
+      if ( xn == 1 )
+      {
+         VAR__7685 = (( -VAR__19328 ) + sqrt(in_sqrt)) / ( 2 * VAR__819283 );
+      }
+      else
+      {
+         VAR__7685 = (( -VAR__19328 ) - sqrt(in_sqrt)) / ( 2 * VAR__819283 );
+      }
+
+      sprintf(res, "%.05f", VAR__7685);
+
+      if ( !strcmp(res, "-0.00000"))
+      {
+         res++;
+      }
+   }
+   else
+   {
+      real      = ( -VAR__19328 ) / ( 2 * VAR__819283 );
+      imaginary = sqrt(-in_sqrt) / ( 2 * VAR__819283 );
+      sprintf(res, "%.05f", real);
+
+      if ( !strcmp(res, "-0.00000"))
+      {
+         res++;
+      }
+
+      if ( xn == 1 )
+      {
+         sprintf(res + strlen(res), "+%.05fi", imaginary);
+      }
+      else
+      {
+         sprintf(res + strlen(res), "-%.05fi", imaginary);
+      }
+   }
+
+   return res;
+}
+
+
+int main()
+{
+   int    VAR_1238123;
+   double VAR__819283;
+   double VAR__19328;
+   double VAR__4857423;
+   char   *x1;
+   char   *x2;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123-- )
+   {
+      scanf("%lf %lf %lf", &VAR__819283, &VAR__19328, &VAR__4857423);
+      x1 = solve_x(1, VAR__819283, VAR__19328, VAR__4857423);
+      x2 = solve_x(2, VAR__819283, VAR__19328, VAR__4857423);
+
+      if ( !strcmp(x1, x2))
+      {
+         printf("x1=x2=%s\n", x1);
+      }
+      else
+      {
+         printf("x1=%s;x2=%s\n", x1, x2);
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,76 @@
+void main()
+{
+   int    VAR_1238123;
+   int    VAR__819283[301] = { 0 };
+   int    VAR__53647;
+   int    VAR__21230;
+   double aver            = 0;
+   double VAR__temp       = 0;
+   int    u               = 0;
+   int    VAR__19328[301] = { 0 };
+   int    tem             = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+      aver += VAR__819283[VAR__53647];
+   }
+
+   aver = aver / VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((( aver - VAR__819283[VAR__53647] ) > VAR__temp ) || (( VAR__819283[VAR__53647] - aver ) > VAR__temp ))
+      {
+         VAR__temp  = aver - VAR__819283[VAR__53647];
+         VAR__21230 = VAR__53647;
+
+         if ( VAR__temp < 0 )
+         {
+            VAR__temp = 0 - VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (((( aver - VAR__819283[VAR__53647] ) - VAR__temp ) < 0.001 ) && ((( VAR__819283[VAR__53647] + VAR__temp ) - aver ) < 0.001 ))
+      {
+         VAR__19328[u] = VAR__819283[VAR__53647];
+         u++;
+      }
+
+      if (((( VAR__819283[VAR__53647] - aver ) - VAR__temp ) < 0.001 ) && ((( aver + VAR__temp ) - VAR__819283[VAR__53647] ) < 0.001 ))
+      {
+         VAR__19328[u] = VAR__819283[VAR__53647];
+         u++;
+      }
+   }
+
+   for ( VAR__53647 = u; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__21230] > VAR__19328[VAR__21230 + 1] )
+         {
+            int VAR__temp = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__19328[VAR__21230 + 1];
+            VAR__19328[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < u; VAR__53647++ )
+   {
+      if ( tem == 0 )
+      {
+         printf("%d", VAR__19328[VAR__53647]);
+         tem = 1;
+      }
+      else
+      {
+         printf(",%d", VAR__19328[VAR__53647]);
+      }
+   }
+}

@@ -1,0 +1,91 @@
+void main()
+{
+   char VAR__819283[1000]  = { 0 };
+   char VAR__19328[1000]   = { 0 };
+   char VAR__4857423[1000] = { 0 };
+   int  na;
+   int  nb;
+   int  VAR__53647;
+   int  VAR__SUM;
+   int  add = 0;
+   int  VAR__MAX;
+   int  VAR_FLAG;
+
+   scanf("%s\n%s", VAR__819283, VAR__19328);
+   na = strlen(VAR__819283);
+   nb = strlen(VAR__19328);
+
+   if ( na >= nb )
+   {
+      VAR__MAX = na;
+      for ( VAR__53647 = na - 1; (( VAR__53647 - na ) + nb ) >= 0; VAR__53647-- )
+      {
+         VAR__19328[VAR__53647] = VAR__19328[( VAR__53647 - na ) + nb];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( na - nb ); VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = '0';
+      }
+   }
+   else
+   if ( na < nb )
+   {
+      VAR__MAX = nb;
+      for ( VAR__53647 = nb - 1; (( VAR__53647 - nb ) + na ) >= 0; VAR__53647-- )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[( VAR__53647 - nb ) + na];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( nb - na ); VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = '0';
+      }
+   }
+
+
+   for ( VAR__53647 = VAR__MAX; VAR__53647 > 0; VAR__53647-- )
+   {
+      VAR__SUM = (( VAR__819283[VAR__53647 - 1] - 48 ) + ( VAR__19328[VAR__53647 - 1] - 48 )) + add;
+      add      = VAR__SUM / 10;
+      VAR__4857423[VAR__53647] = VAR__SUM - ( add * 10 );
+   }
+
+   if ( add != 0 )
+   {
+      printf("%d", add);
+      for ( VAR__53647 = 1; VAR__53647 <= VAR__MAX; VAR__53647++ )
+      {
+         printf("%d", VAR__4857423[VAR__53647]);
+      }
+   }
+   else
+   if ( add == 0 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR__MAX; VAR__53647++ )
+      {
+         if ( VAR__4857423[VAR__53647] != 0 )
+         {
+            VAR_FLAG = VAR__53647;
+            break;
+         }
+         else
+         if ( VAR__4857423[VAR__53647] == 0 )
+         {
+            VAR_FLAG = 0;
+         }
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         printf("0");
+      }
+      else
+      {
+         for ( VAR__53647 = VAR_FLAG; VAR__53647 <= VAR__MAX; VAR__53647++ )
+         {
+            printf("%d", VAR__4857423[VAR__53647]);
+         }
+      }
+   }
+}

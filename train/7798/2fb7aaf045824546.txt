@@ -1,0 +1,78 @@
+int N;
+struct stu
+{
+   int        VAR__NUM;
+   char       au[50];
+   struct stu *VAR__NEXT;
+};
+struct stu *creat()
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR__HEAD;
+   int        VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = Z;
+      scanf("%d%s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->au);
+      ANOTHER_POINTER->VAR__NEXT = 0;
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+   int        VAR__53647;
+   int        VAR_1238123;
+   int        VAR__21230;
+   int        VAR__MAX;
+   int        max1;
+   int        VAR__4857423[26]     = { 0 };
+   int        VAR__12302[26][1000] = { 0 };
+   int        VAR__112390[26]      = { 0 };
+
+   scanf("%d", &N);
+   VAR__HEAD = creat();
+   for ( VAR_233 = VAR__HEAD; VAR_233 != 0; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      VAR_1238123 = strlen(VAR_233->au);
+      for ( VAR__53647 = 0, VAR__21230 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__4857423[VAR_233->au[VAR__53647] - 'A']++;
+         VAR__12302[VAR_233->au[VAR__53647] - 'A'][VAR__112390[VAR_233->au[VAR__53647] - 'A']++] = VAR_233->VAR__NUM;
+      }
+   }
+
+   for ( VAR__53647 = 0, VAR__MAX = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__4857423[VAR__53647] )
+      {
+         max1     = VAR__53647;
+         VAR__MAX = VAR__4857423[VAR__53647];
+      }
+   }
+
+   printf("%c\n", max1 + 'A');
+   printf("%d\n", VAR__4857423[max1]);
+   VAR__53647 = 0;
+
+   while ( VAR__12302[max1][VAR__53647] != 0 )
+   {
+      printf("%d\n", VAR__12302[max1][VAR__53647++]);
+   }
+}

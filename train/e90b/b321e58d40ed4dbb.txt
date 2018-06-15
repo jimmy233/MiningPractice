@@ -1,0 +1,68 @@
+struct student
+{
+   int            VAR__NUM;
+   int            yuwen;
+   int            shuxue;
+   int            total;
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *P;
+   int            VAR_1238123;
+   int            VAR__53647 = 0;
+   int            VAR__21230 = 0;
+
+   scanf("%d\n", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = ( VAR__HEAD = (struct student *)malloc(LEN)));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      scanf("%d%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+      ANOTHER_POINTER->total         = ANOTHER_POINTER->yuwen + ANOTHER_POINTER->shuxue;
+      YET_ANOTHER_POINTER->VAR__NEXT = ( ANOTHER_POINTER = (struct student *)malloc(LEN));
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; ; )
+   {
+      if ( VAR__21230 == 3 )
+      {
+         break;
+      }
+
+      VAR__HEAD       = ANOTHER_POINTER;
+      P               = ANOTHER_POINTER;
+      ANOTHER_POINTER = VAR__HEAD->VAR__NEXT;
+
+      while ( ANOTHER_POINTER != VAR__HEAD )
+      {
+         if ( ANOTHER_POINTER->total > P->total )
+         {
+            P = ANOTHER_POINTER;
+         }
+         else
+         if (( ANOTHER_POINTER->total == P->total ) && ( ANOTHER_POINTER->VAR__NUM < P->VAR__NUM ))
+         {
+            P = ANOTHER_POINTER;
+         }
+
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      printf("%d %d\n", P->VAR__NUM, P->total);
+
+      while ( ANOTHER_POINTER->VAR__NEXT != P )
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER->VAR__NEXT = P->VAR__NEXT;
+      VAR__21230++;
+   }
+}

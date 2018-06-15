@@ -1,0 +1,71 @@
+float abss(float VAR__1238129)
+{
+   if ( VAR__1238129 < 0 )
+   {
+      return -VAR__1238129;
+   }
+   else
+   {
+      return VAR__1238129;
+   }
+}
+
+
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__1238129;
+   float ave      = 0;
+   float VAR__MAX = 0;
+   float VAR__NUM[301];
+   float VAR__temp[300];
+   float te;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%f", &VAR__NUM[VAR__53647]);
+      ave += VAR__NUM[VAR__53647];
+   }
+
+   ave /= VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( abss(VAR__NUM[VAR__53647] - ave) > VAR__MAX )
+      {
+         VAR__MAX = abss(VAR__NUM[VAR__53647] - ave);
+      }
+   }
+
+   for ( VAR__53647 = 1, VAR__21230 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( abss(VAR__NUM[VAR__53647] - ave) == VAR__MAX )
+      {
+         VAR__21230++;
+         VAR__temp[VAR__21230] = VAR__NUM[VAR__53647];
+      }
+   }
+
+   VAR__1238129 = VAR__21230;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR__1238129 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__temp[VAR__21230] > VAR__temp[VAR__21230 + 1] )
+         {
+            te = VAR__temp[VAR__21230];
+            VAR__temp[VAR__21230]     = VAR__temp[VAR__21230 + 1];
+            VAR__temp[VAR__21230 + 1] = te;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      printf(( VAR__53647 == 1 ) ? ( "%.0f" ) : ( ",%.0f" ), VAR__temp[VAR__53647]);
+   }
+}

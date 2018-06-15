@@ -1,0 +1,70 @@
+int main()
+{
+   char s1[251];
+   char s2[251];
+   int  VAR__SUM[251];
+   int  VAR_FLAG = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  len1;
+   int  len2;
+   int  VAR__MIN;
+   int  VAR__MAX;
+
+   memset(s1, 0, sizeof( s1 ));
+   memset(s2, 0, sizeof( s2 ));
+   cin.getline(s1, sizeof( s1 ));
+   cin.getline(s2, sizeof( s2 ));
+   memset(VAR__SUM, 0, sizeof( VAR__SUM ));
+   len1     = strlen(s1);
+   len2     = strlen(s2);
+   VAR__MIN = ( len1 > len2 ) ? ( len2 ) : ( len1 );
+   VAR__MAX = ( len1 > len2 ) ? ( len1 ) : ( len2 );
+   for ( VAR__53647 = VAR__MIN - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__SUM[VAR__MAX - (( VAR__MIN - 1 ) - VAR__53647 )] = (( s2[( len2 - 1 ) - (( VAR__MIN - 1 ) - VAR__53647 )] - '0' ) + s1[( len1 - 1 ) - (( VAR__MIN - 1 ) - VAR__53647 )] ) - '0';
+   }
+
+   if ( VAR__MAX == len1 )
+   {
+      for ( VAR__53647 = VAR__MAX - VAR__MIN; VAR__53647 >= 1; VAR__53647-- )
+      {
+         VAR__SUM[VAR__53647] = s1[VAR__53647 - 1] - '0';
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = VAR__MAX - VAR__MIN; VAR__53647 >= 1; VAR__53647-- )
+      {
+         VAR__SUM[VAR__53647] = s2[VAR__53647 - 1] - '0';
+      }
+   }
+
+   for ( VAR__53647 = VAR__MAX; VAR__53647 >= 1; VAR__53647-- )
+   {
+      VAR__SUM[VAR__53647 - 1] = VAR__SUM[VAR__53647 - 1] + ( VAR__SUM[VAR__53647] / 10 );
+      VAR__SUM[VAR__53647]     = VAR__SUM[VAR__53647] % 10;
+   }
+
+   VAR__21230 = 0;
+
+   while (( VAR__SUM[VAR__21230] == 0 ) && ( VAR__21230 <= VAR__MAX ))
+   {
+      VAR__21230++;
+   }
+
+   if ( VAR__SUM[VAR__21230] != 0 )
+   {
+      for ( VAR__53647 = VAR__21230; VAR__53647 <= VAR__MAX; VAR__53647++ )
+      {
+         cout << VAR__SUM[VAR__53647];
+      }
+   }
+   else
+   {
+      cout << 0;
+   }
+
+   return 0;
+}

@@ -1,0 +1,59 @@
+int main()
+{
+   int ans;
+   int VAR__53647;
+   int N;
+   int VAR__3918907;
+   int VAR__819283;
+   int VAR__19328;
+   int sum1[13];
+   int sum2[13];
+   int mon[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   sum1[0] = ( sum2[0] = 0 );
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      sum1[VAR__53647] = sum1[VAR__53647 - 1] + mon[VAR__53647];
+      sum2[VAR__53647] = sum2[VAR__53647 - 1] + mon[VAR__53647];
+
+      if ( VAR__53647 == 2 )
+      {
+         sum2[VAR__53647]++;
+      }
+   }
+
+   scanf("%d", &N);
+
+   while ( N-- )
+   {
+      scanf("%d%d%d", &VAR__3918907, &VAR__819283, &VAR__19328);
+      ans = 0;
+
+      if ( VAR__819283 > VAR__19328 )
+      {
+         VAR__819283 ^= VAR__19328;
+         VAR__19328  ^= VAR__819283;
+         VAR__819283 ^= VAR__19328;
+      }
+
+      if (((( VAR__3918907 % 100 ) == 0 ) && (( VAR__3918907 % 400 ) == 0 )) || (( VAR__3918907 % 100 ) && (( VAR__3918907 % 4 ) == 0 )))
+      {
+         ans = ( sum2[VAR__19328 - 1] - sum2[VAR__819283 - 1] ) % 7;
+      }
+      else
+      {
+         ans = ( sum1[VAR__19328 - 1] - sum1[VAR__819283 - 1] ) % 7;
+      }
+
+      if ( !ans )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}

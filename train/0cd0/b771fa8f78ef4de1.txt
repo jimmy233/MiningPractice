@@ -1,0 +1,61 @@
+int timesPerMin(int *, int);
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int failedTimes[100];
+   int VAR__NUM[100][100] = { 0 };
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> failedTimes[VAR__53647];
+      for ( VAR__21230 = 0; VAR__21230 < failedTimes[VAR__53647]; VAR__21230++ )
+      {
+         cin >> VAR__NUM[VAR__53647][VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cout << timesPerMin(VAR__NUM[VAR__53647], failedTimes[VAR__53647])) << endl;
+   }
+
+   return 0;
+}
+
+
+int timesPerMin(int VAR__NUM[], int failed)
+{
+   int VAR__53647 = 0;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] == 0 )
+      {
+         VAR__NUM[VAR__53647] = 60;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if ((( VAR__NUM[VAR__53647] + ( VAR__53647 * 3 )) <= 60 ) && ((( VAR__NUM[VAR__53647] + ( VAR__53647 * 3 )) + 3 ) > 60 ))
+      {
+         return VAR__NUM[VAR__53647];
+
+         break;
+      }
+      else
+      {
+         if (((( VAR__NUM[VAR__53647] + ( VAR__53647 * 3 )) + 3 ) <= 60 ) && (((( VAR__53647 * 3 ) + 3 ) + VAR__NUM[VAR__53647 + 1] ) > 60 ))
+         {
+            return ( 60 - ( VAR__53647 * 3 )) - 3;
+
+            break;
+         }
+      }
+   }
+}

@@ -1,0 +1,67 @@
+int main()
+{
+   char zfc[100];
+   char zsz[100][100];
+   char word_a[100];
+   char word_b[100];
+
+   gets(zfc);
+   scanf("%s\n%s", word_a, word_b);
+   int word_i = 0;
+   int word_j = 0;
+   int VAR__53647;
+   int VAR_1238123;
+   VAR_1238123 = strlen(zfc);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( zfc[VAR__53647] == ' ' ) || ( zfc[VAR__53647] == ',' ))
+      {
+         zsz[word_i][word_j] = '\0';
+         word_i++;
+         word_j = 0;
+      }
+      else
+      {
+         zsz[word_i][word_j] = zfc[VAR__53647];
+         word_j++;
+
+         if ( VAR__53647 == ( VAR_1238123 - 1 ))
+         {
+            zsz[word_i][word_j] = '\0';
+            word_i++;
+         }
+      }
+   }
+
+   int VAR__21230;
+   int VAR__819283[10];
+   int VAR__1238129 = 0;
+   int VAR__8444594;
+   for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      if ( strcmp(zsz[VAR__21230], word_a) == 0 )
+      {
+         VAR__819283[VAR__1238129] = VAR__21230;
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__1238129; VAR__8444594++ )
+   {
+      strcpy(zsz[VAR__819283[VAR__8444594]], word_b);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < word_i; VAR__21230++ )
+   {
+      if ( VAR__21230 != ( word_i - 1 ))
+      {
+         printf("%s ", zsz[VAR__21230]);
+      }
+      else
+      {
+         printf("%s", zsz[VAR__21230]);
+      }
+   }
+
+   return 0;
+}

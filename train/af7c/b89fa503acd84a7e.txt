@@ -1,0 +1,58 @@
+int judge(int VAR__7685)
+{
+   if (( VAR__7685 % 2 ) == 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int number[500];
+   int VAR__COUNT;
+   int VAR__53647;
+   int VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &number[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR_233 = 0; VAR_233 < ( VAR_1238123 - 1 ); VAR_233++ )
+      {
+         if ( number[VAR_233] > number[VAR_233 + 1] )
+         {
+            number[VAR_233]    += number[VAR_233 + 1];
+            number[VAR_233 + 1] = number[VAR_233] - number[VAR_233 + 1];
+            number[VAR_233]    -= number[VAR_233 + 1];
+         }
+      }
+   }
+
+   VAR__COUNT = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( judge(number[VAR__53647]) && ( VAR__COUNT == 0 ))
+      {
+         printf("%d", number[VAR__53647]);
+         VAR__COUNT = 1;
+         continue;
+      }
+
+      if ( judge(number[VAR__53647]) && ( VAR__COUNT == 1 ))
+      {
+         printf(",%d", number[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

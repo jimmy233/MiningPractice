@@ -1,0 +1,78 @@
+int main()
+{
+   int  al;
+   int  bl;
+   int  VAR__21230;
+   int  VAR__53647;
+   int  VAR__1238129;
+   int  VAR_1238123 = 0;
+   char VAR__819283[255];
+   char VAR__19328[255];
+   char ab[255];
+   char VAR__4857423 = 62;
+
+   scanf("%s%c%s", &VAR__819283, &VAR__4857423, &VAR__19328);
+   al = strlen(VAR__819283);
+   bl = strlen(VAR__19328);
+
+   if ( al > bl )
+   {
+      VAR__1238129 = bl;
+      bl           = al;
+      al           = VAR__1238129;
+      strcpy(ab, VAR__819283);
+      strcpy(VAR__819283, VAR__19328);
+      strcpy(VAR__19328, ab);
+   }
+
+   for ( VAR__53647 = al - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__21230              = ( VAR__53647 - al ) + bl;
+      VAR__19328[VAR__21230] += VAR__819283[VAR__53647] - 48;
+   }
+
+   for ( VAR__53647 = bl - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__19328[VAR__53647] > 57 )
+      {
+         VAR__19328[VAR__53647] -= 10;
+
+         if ( VAR__53647 > 0 )
+         {
+            VAR__19328[VAR__53647 - 1]++;
+         }
+         else
+         {
+            VAR_1238123 = 1;
+         }
+      }
+   }
+
+   if ( VAR_1238123 )
+   {
+      printf("1");
+      printf("%s\n", VAR__19328);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < bl; VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647] != '0' )
+         {
+            for ( VAR__21230 = VAR__53647; VAR__21230 < bl; VAR__21230++ )
+            {
+               printf("%c", VAR__19328[VAR__21230]);
+            }
+
+            break;
+         }
+         else
+         if (( VAR__53647 == 0 ) && ( bl == 1 ))
+         {
+            printf("0\n");
+         }
+      }
+   }
+
+   return 0;
+}

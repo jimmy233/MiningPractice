@@ -1,0 +1,60 @@
+int sf(const void *VAR__819283, const void *VAR__19328)
+{
+   if (( *((double *)VAR__819283 )) > ( *((double *)VAR__19328 )))
+   {
+      return 1;
+   }
+
+   if (( *((double *)VAR__819283 )) < ( *((double *)VAR__19328 )))
+   {
+      return -1;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int    VAR__53647;
+   int    VAR_1238123;
+   double VAR__127322[40];
+   double VAR__1238129[40];
+   int    fn = 0;
+   int    mn = 0;
+   char   A_STRING[20];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", A_STRING);
+
+      if ( A_STRING[0] == 'f' )
+      {
+         scanf("%lf", &VAR__127322[fn++]);
+      }
+      else
+      {
+         scanf("%lf", &VAR__1238129[mn++]);
+      }
+   }
+
+   qsort(VAR__127322, fn, sizeof( double ), sf);
+   qsort(VAR__1238129, mn, sizeof( double ), sf);
+   for ( VAR__53647 = 0; VAR__53647 < mn; VAR__53647++ )
+   {
+      printf("%.2lf ", VAR__1238129[VAR__53647]);
+   }
+
+   for ( VAR__53647 = fn - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf("%.2lf ", VAR__127322[VAR__53647]);
+   }
+
+   if ( fn > 0 )
+   {
+      printf("%.2lf", VAR__127322[0]);
+   }
+
+   return 0;
+}

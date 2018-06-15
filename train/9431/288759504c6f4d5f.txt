@@ -1,0 +1,36 @@
+struct student
+{
+   char           info[100];
+   struct student *VAR__NEXT;
+   struct student *former;
+};
+int main()
+{
+   struct student *VAR__HEAD;
+   struct student *tail;
+   struct student *VAR_233;
+   char           VAR_9494[100];
+
+   VAR_233 = (struct student *)malloc(sizeof( struct student ));
+   gets(VAR_233->info);
+   VAR__HEAD         = VAR_233;
+   VAR__HEAD->former = NULL;
+   tail = VAR_233;
+
+   while ( strcmp(VAR_233->info, "end") != 0 )
+   {
+      VAR_233 = (struct student *)malloc(sizeof( struct student ));
+      gets(VAR_233->info);
+      tail->VAR__NEXT = VAR_233;
+      VAR_233->former = tail;
+      tail            = VAR_233;
+   }
+
+   while ( VAR_233->former != NULL )
+   {
+      VAR_233 = VAR_233->former;
+      printf("%s\n", VAR_233->info);
+   }
+
+   return 0;
+}

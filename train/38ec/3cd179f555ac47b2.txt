@@ -1,0 +1,85 @@
+int leap(int);
+
+int main()
+{
+   int total[13] = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
+   int y1;
+   int y2;
+   int m1;
+   int m2;
+   int d1;
+   int d2;
+   int VAR__SUM = 0;
+   int VAR__21230;
+
+   scanf("%d %d %d %d %d %d", &y1, &m1, &d1, &y2, &m2, &d2);
+
+   if ( y1 == y2 )
+   {
+      if ( leap(y1) == 0 )
+      {
+         VAR__SUM += (( total[m2 - 1] - total[m1 - 1] ) + d2 ) - d1;
+      }
+
+      if (( leap(y1) == 1 ) && ( m2 > 2 ))
+      {
+         VAR__SUM += ((( total[m2 - 1] - total[m1 - 1] ) + d2 ) - d1 ) + 1;
+      }
+   }
+
+   if ( y2 > y1 )
+   {
+      for ( VAR__21230 = y1 + 1; VAR__21230 < y2; VAR__21230++ )
+      {
+         if ( leap(VAR__21230) == 1 )
+         {
+            VAR__SUM += 366;
+         }
+         else
+         if ( leap(VAR__21230) == 0 )
+         {
+            VAR__SUM += 365;
+         }
+      }
+
+      if ( leap(y1) == 0 )
+      {
+         VAR__SUM += ( 365 - total[m1 - 1] ) - d1;
+      }
+      else
+      if ( m1 <= 2 )
+      {
+         VAR__SUM += (( 365 - total[m1 - 1] ) - d1 ) + 1;
+      }
+
+
+      if ( leap(y2) == 0 )
+      {
+         VAR__SUM += total[m2 - 1] + d2;
+      }
+      else
+      if ( m2 > 2 )
+      {
+         VAR__SUM += ( total[m2 - 1] + d2 ) + 1;
+      }
+   }
+
+   printf("%d", VAR__SUM);
+}
+
+
+int leap(int VAR__3918907)
+{
+   int VAR__21230;
+
+   if ((( VAR__3918907 % 400 ) == 0 ) || ((( VAR__3918907 % 100 ) != 0 ) && (( VAR__3918907 % 4 ) == 0 )))
+   {
+      VAR__21230 = 1;
+   }
+   else
+   {
+      VAR__21230 = 0;
+   }
+
+   return VAR__21230;
+}

@@ -1,0 +1,86 @@
+int main()
+{
+   int row;
+   int col;
+   int VAR__819283[100][100];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_FLAG = 1;
+
+   ( cin >> row ) >> col;
+   int topBorder    = 0;
+   int bottomBorder = row - 1;
+   int leftBorder   = 0;
+   int rightBorder  = col - 1;
+   int VAR__7685    = 0;
+   int VAR__3918907 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         cin >> VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( row * col ); VAR__53647++ )
+   {
+      ( cout << VAR__819283[VAR__3918907][VAR__7685] ) << endl;
+
+      if ( VAR_FLAG == 1 )
+      {
+         if (( VAR__7685 + 1 ) > rightBorder )
+         {
+            VAR_FLAG = 2;
+            VAR__3918907++;
+            topBorder++;
+         }
+         else
+         {
+            VAR__7685++;
+         }
+      }
+      else
+      if ( VAR_FLAG == 2 )
+      {
+         if (( VAR__3918907 + 1 ) > bottomBorder )
+         {
+            VAR_FLAG = 3;
+            VAR__7685--;
+            rightBorder--;
+         }
+         else
+         {
+            VAR__3918907++;
+         }
+      }
+      else
+      if ( VAR_FLAG == 3 )
+      {
+         if (( VAR__7685 - 1 ) < leftBorder )
+         {
+            VAR_FLAG = 4;
+            VAR__3918907--;
+            bottomBorder--;
+         }
+         else
+         {
+            VAR__7685--;
+         }
+      }
+      else
+      {
+         if (( VAR__3918907 - 1 ) < topBorder )
+         {
+            VAR_FLAG = 1;
+            VAR__7685++;
+            leftBorder++;
+         }
+         else
+         {
+            VAR__3918907--;
+         }
+      }
+   }
+
+   return 0;
+}

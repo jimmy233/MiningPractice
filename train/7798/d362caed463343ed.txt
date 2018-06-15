@@ -1,0 +1,79 @@
+int VAR_21983012[26] = { 0 };
+int VAR_233          = 0;
+void zimu(char VAR__819283[])
+{
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR__4857423;
+
+   VAR__1238129 = strlen(VAR__819283);
+   for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+   {
+      VAR__4857423 = 'A' + VAR__21230;
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == VAR__4857423 )
+         {
+            VAR_21983012[VAR__21230]++;
+         }
+      }
+   }
+}
+
+
+int VAR__MAX(int VAR_21983012[26])
+{
+   int VAR__53647;
+   int VAR__MAX;
+
+   VAR__MAX = VAR_21983012[0];
+   for ( VAR__53647 = 1; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR_21983012[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR_21983012[VAR__53647];
+         VAR_233  = VAR__53647;
+      }
+   }
+
+
+   return VAR__MAX;
+}
+
+
+void main()
+{
+   char VAR__19328[300][20];
+   int  VAR__819283[300];
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  mm;
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d%s", &VAR__819283[VAR__53647], VAR__19328[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      zimu(VAR__19328[VAR__53647]);
+   }
+
+   mm = VAR__MAX(VAR_21983012);
+   printf("%c\n", VAR_233 + 'A');
+   printf("%d\n", mm);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(VAR__19328[VAR__53647]); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__53647][VAR__21230] == ( VAR_233 + 'A' ))
+         {
+            printf("%d\n", VAR__819283[VAR__53647]);
+            break;
+         }
+      }
+   }
+}

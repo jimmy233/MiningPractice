@@ -1,0 +1,63 @@
+int main()
+{
+   int  VAR__53647;
+   char zs1[260];
+   char zs2[260];
+   int  a1[260];
+   int  a2[260];
+
+   scanf("%s", zs1);
+   scanf("%s", zs2);
+
+   if (( strcmp(zs1, zs2) == 0 ) && ( zs1[0] == '0' ))
+   {
+      printf("0");
+      return 0;
+   }
+
+   memset(a1, 0, sizeof( a1 ));
+   memset(a2, 0, sizeof( a2 ));
+   int len1       = strlen(zs1);
+   int VAR__21230 = 0;
+   for ( VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      a1[VAR__21230] = zs1[VAR__53647] - '0';
+      VAR__21230++;
+   }
+
+   int len2 = strlen(zs2);
+   VAR__21230 = 0;
+   for ( VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      a2[VAR__21230] = zs2[VAR__53647] - '0';
+      VAR__21230++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 250; VAR__53647++ )
+   {
+      a1[VAR__53647] += a2[VAR__53647];
+
+      if ( a1[VAR__53647] >= 10 )
+      {
+         a1[VAR__53647] -= 10;
+         a1[VAR__53647 + 1]++;
+      }
+   }
+
+   int q0 = 0;
+   for ( VAR__53647 = 251; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( q0 )
+      {
+         printf("%d", a1[VAR__53647]);
+      }
+      else
+      if ( a1[VAR__53647] )
+      {
+         printf("%d", a1[VAR__53647]);
+         q0 = 1;
+      }
+   }
+
+   return 0;
+}

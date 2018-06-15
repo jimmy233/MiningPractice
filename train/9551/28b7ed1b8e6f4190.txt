@@ -1,0 +1,89 @@
+int N;
+struct patient
+{
+   char           ID[20];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+struct patient *creat()
+{
+   struct patient *VAR__HEAD;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = (struct patient *)malloc(LEN);
+   scanf("%s %d", ANOTHER_POINTER->ID, &ANOTHER_POINTER->age);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < N; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct patient *)malloc(LEN);
+      scanf("%s %d", ANOTHER_POINTER->ID, &ANOTHER_POINTER->age);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct patient *rank(struct patient *VAR__HEAD)
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__819283;
+   char           ID[20];
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( N - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER     = VAR__HEAD;
+      YET_ANOTHER_POINTER = VAR__HEAD->VAR__NEXT;
+      for ( VAR__21230 = 0; VAR__21230 < (( N - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if (( ANOTHER_POINTER->age < YET_ANOTHER_POINTER->age ) && ( YET_ANOTHER_POINTER->age >= 60 ))
+         {
+            VAR__819283              = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age     = YET_ANOTHER_POINTER->age;
+            YET_ANOTHER_POINTER->age = VAR__819283;
+            strcpy(ID, ANOTHER_POINTER->ID);
+            strcpy(ANOTHER_POINTER->ID, YET_ANOTHER_POINTER->ID);
+            strcpy(YET_ANOTHER_POINTER->ID, ID);
+         }
+
+         ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct patient *VAR__HEAD)
+{
+   struct patient *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      printf("%s\n", VAR_233->ID);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   struct patient *VAR__HEAD;
+
+   scanf("%d", &N);
+   VAR__HEAD = creat();
+   VAR__HEAD = rank(VAR__HEAD);
+   print(VAR__HEAD);
+}

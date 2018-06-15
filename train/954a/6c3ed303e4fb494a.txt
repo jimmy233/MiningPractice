@@ -1,0 +1,143 @@
+struct student
+{
+   char name[20];
+   int  fs;
+   int  cs;
+   char gb;
+   char xb;
+   int  paper;
+   int  sch;
+}
+stu[100];
+int ys(int VAR__819283, int VAR__19328);
+int ws(int VAR__819283, int VAR__19328);
+int cj(int VAR__819283);
+int xibu(int VAR__819283, char VAR__19328);
+int bj(int VAR__819283, char VAR__19328);
+
+int main()
+{
+   int VAR_1238123  = 0;
+   int VAR__53647   = 0;
+   int VAR__SUM     = 0;
+   int VAR__8444594 = 0;
+   int VAR__21230   = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].fs, &stu[VAR__53647].cs, &stu[VAR__53647].gb, &stu[VAR__53647].xb, &stu[VAR__53647].paper);
+      stu[VAR__53647].sch = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( ys(stu[VAR__53647].fs, stu[VAR__53647].paper) == 1 )
+      {
+         stu[VAR__53647].sch += 8000;
+         VAR__SUM            += 8000;
+      }
+
+      if ( ws(stu[VAR__53647].fs, stu[VAR__53647].cs) == 1 )
+      {
+         stu[VAR__53647].sch += 4000;
+         VAR__SUM            += 4000;
+      }
+
+      if ( cj(stu[VAR__53647].fs) == 1 )
+      {
+         stu[VAR__53647].sch += 2000;
+         VAR__SUM            += 2000;
+      }
+
+      if ( xibu(stu[VAR__53647].fs, stu[VAR__53647].xb) == 1 )
+      {
+         stu[VAR__53647].sch += 1000;
+         VAR__SUM            += 1000;
+      }
+
+      if ( bj(stu[VAR__53647].cs, stu[VAR__53647].gb) == 1 )
+      {
+         stu[VAR__53647].sch += 850;
+         VAR__SUM            += 850;
+      }
+   }
+
+   VAR__8444594 = stu[0].sch;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__8444594 < stu[VAR__53647].sch )
+      {
+         VAR__21230   = VAR__53647;
+         VAR__8444594 = stu[VAR__53647].sch;
+      }
+   }
+
+   printf("%s\n%d\n%d", stu[VAR__21230].name, stu[VAR__21230].sch, VAR__SUM);
+   return 0;
+}
+
+
+int ys(int VAR__819283, int VAR__19328)
+{
+   if (( VAR__819283 > 80 ) && ( VAR__19328 >= 1 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int ws(int VAR__819283, int VAR__19328)
+{
+   if (( VAR__819283 > 85 ) && ( VAR__19328 > 80 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int cj(int VAR__819283)
+{
+   if ( VAR__819283 > 90 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int xibu(int VAR__819283, char VAR__19328)
+{
+   if (( VAR__819283 > 85 ) && ( VAR__19328 == 'Y' ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int bj(int VAR__819283, char VAR__19328)
+{
+   if (( VAR__819283 > 80 ) && ( VAR__19328 == 'Y' ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

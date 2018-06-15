@@ -1,0 +1,62 @@
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__8444594;
+   int  VAR__4857423;
+   char string[500][300];
+   int  VAR__53647;
+   int  d1;
+   int  d2;
+   int  VAR__12302;
+   char A_STRING[2][300];
+   char VAR__temp[10];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      gets(VAR__temp);
+      for ( VAR__53647 = 0; VAR__53647 < 2; VAR__53647++ )
+      {
+         gets(A_STRING[VAR__53647]);
+      }
+
+      d1         = strlen(A_STRING[0]);
+      d2         = strlen(A_STRING[1]);
+      VAR__12302 = d1 - d2;
+      for ( VAR__53647 = 0; VAR__53647 < d2; VAR__53647++ )
+      {
+         A_STRING[1][( d1 - 1 ) - VAR__53647] = A_STRING[1][( d2 - 1 ) - VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__12302; VAR__53647++ )
+      {
+         A_STRING[1][VAR__53647] = '0';
+      }
+
+      A_STRING[1][d1] = '\0';
+      VAR__4857423    = 0;
+      for ( VAR__53647 = d1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         int k1 = (int)( A_STRING[0][VAR__53647] - '0' );
+         int k2 = (int)( A_STRING[1][VAR__53647] - '0' );
+
+         if (( k1 - VAR__4857423 ) < k2 )
+         {
+            string[VAR__8444594][VAR__53647] = (char)(((( k1 + 10 ) - VAR__4857423 ) - k2 ) + 48 );
+            VAR__4857423 = 1;
+         }
+         else
+         {
+            string[VAR__8444594][VAR__53647] = (char)((( k1 - VAR__4857423 ) - k2 ) + 48 );
+            VAR__4857423 = 0;
+         }
+      }
+
+      string[VAR__8444594][d1] = '\0';
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      printf("%s\n", string[VAR__8444594]);
+   }
+}

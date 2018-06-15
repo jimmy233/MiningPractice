@@ -1,0 +1,64 @@
+int leapy(int VAR_1238123)
+{
+   if (((( VAR_1238123 % 4 ) == 0 ) && (( VAR_1238123 % 100 ) != 0 )) || (( VAR_1238123 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int VAR_9494 = 0;
+   int VAR__temp;
+
+   ((((( cin >> sy ) >> sm ) >> sd ) >> ey ) >> em ) >> ed;
+   int month[2][13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int year[2]      = { 365, 366 };
+
+   if ( sy == ey )
+   {
+      for ( int VAR__53647 = sm; VAR__53647 <= em; VAR__53647++ )
+      {
+         VAR_9494 = VAR_9494 + month[leapy(sy)][VAR__53647];
+      }
+
+      VAR_9494 = (( VAR_9494 - sd ) + 1 ) - ( month[leapy(sy)][em] - ed );
+   }
+   else
+   {
+      for ( int VAR__53647 = sm + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         VAR_9494 = VAR_9494 + month[leapy(sy)][VAR__53647];
+      }
+
+      VAR_9494 = (( VAR_9494 + month[leapy(sy)][sm] ) - sd ) + 1;
+      for ( int VAR__53647 = 1; VAR__53647 < em; VAR__53647++ )
+      {
+         VAR_9494 = VAR_9494 + month[leapy(ey)][VAR__53647];
+      }
+
+      VAR_9494 = VAR_9494 + ed;
+
+      if (( ey - sy ) > 1 )
+      {
+         for ( int VAR__53647 = sy + 1; VAR__53647 <= ( ey - 1 ); VAR__53647++ )
+         {
+            VAR_9494 = VAR_9494 + year[leapy(VAR__53647)];
+         }
+      }
+   }
+
+   cout << ( VAR_9494 - 1 );
+   return 0;
+}

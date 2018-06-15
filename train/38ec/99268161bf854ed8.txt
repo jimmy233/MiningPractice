@@ -1,0 +1,110 @@
+int panrun(int VAR__7685)
+{
+   if (( VAR__7685 % 100 ) != 0 )
+   {
+      if ((( VAR__7685 % 4 ) == 0 ) && (( VAR__7685 % 100 ) != 0 ))
+      {
+         return 366;
+      }
+      else
+      {
+         return 365;
+      }
+   }
+   else
+   {
+      if (( VAR__7685 % 400 ) == 0 )
+      {
+         return 366;
+      }
+      else
+      {
+         return 365;
+      }
+   }
+}
+
+
+int main()
+{
+   int y1;
+   int m1;
+   int d1;
+   int y2;
+   int m2;
+   int d2;
+   int sum1            = 0;
+   int sum2            = 0;
+   int sum3            = 0;
+   int VAR__SUM        = 0;
+   int VAR__53647      = 0;
+   int VAR__819283[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__19328[13]  = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> y1 ) >> m1 ) >> d1;
+   (( cin >> y2 ) >> m2 ) >> d2;
+   for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+   {
+      sum1 = sum1 + panrun(VAR__53647);
+   }
+
+   if ( panrun(y1) == 366 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < m1; VAR__53647++ )
+      {
+         sum2 = sum2 + VAR__819283[VAR__53647];
+      }
+
+      sum2 = sum2 + d1;
+
+      if ( y1 != y2 )
+      {
+         sum2 = 366 - sum2;
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < m1; VAR__53647++ )
+      {
+         sum2 = sum2 + VAR__19328[VAR__53647];
+      }
+
+      sum2 = sum2 + d1;
+
+      if ( y1 != y2 )
+      {
+         sum2 = 365 - sum2;
+      }
+   }
+
+   if ( panrun(y2) == 366 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < m2; VAR__53647++ )
+      {
+         sum3 = sum3 + VAR__819283[VAR__53647];
+      }
+
+      sum3 = sum3 + d2;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < m2; VAR__53647++ )
+      {
+         sum3 = sum3 + VAR__19328[VAR__53647];
+      }
+
+      sum3 = sum3 + d2;
+   }
+
+   if ( y1 != y2 )
+   {
+      VAR__SUM = ( sum1 + sum2 ) + sum3;
+   }
+   else
+   {
+      VAR__SUM = sum3 - sum2;
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

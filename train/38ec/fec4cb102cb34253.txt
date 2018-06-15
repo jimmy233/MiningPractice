@@ -1,0 +1,76 @@
+int main()
+{
+   int sY;
+   int sM;
+   int sD;
+   int eY;
+   int eM;
+   int eD;
+   int d1;
+   int VAR__53647;
+   int d2;
+   int VAR__21230;
+   int d3;
+   int VAR__8444594;
+   int VAR__12302;
+
+   scanf("%d%d%d\n", &sY, &sM, &sD);
+   scanf("%d%d%d", &eY, &eM, &eD);
+   d1 = (( sM - 1 ) * 31 ) + sD;
+   sM = sM - 1;
+   for ( VAR__53647 = 0; sM >= 1; sM = sM - 1 )
+   {
+      if (((( sM == 4 ) || ( sM == 6 )) || ( sM == 9 )) || ( sM == 11 ))
+      {
+         VAR__53647 = VAR__53647 + 1;
+      }
+      else
+      if ( sM == 2 )
+      {
+         if (((( sY % 4 ) == 0 ) && (( sY % 100 ) != 0 )) || (( sY % 400 ) == 0 ))
+         {
+            VAR__53647 = VAR__53647 + 2;
+         }
+         else
+         {
+            VAR__53647 = VAR__53647 + 3;
+         }
+      }
+   }
+
+   d1 = d1 - VAR__53647;
+   d2 = (( 13 - eM ) * 31 ) - eD;
+   for ( VAR__21230 = 0; eM <= 12; eM = eM + 1 )
+   {
+      if (((( eM == 4 ) || ( eM == 6 )) || ( eM == 9 )) || ( eM == 11 ))
+      {
+         VAR__21230++;
+      }
+      else
+      if ( eM == 2 )
+      {
+         if (((( eY % 4 ) == 0 ) && (( eY % 100 ) != 0 )) || (( eY % 400 ) == 0 ))
+         {
+            VAR__21230 = VAR__21230 + 2;
+         }
+         else
+         {
+            VAR__21230 = VAR__21230 + 3;
+         }
+      }
+   }
+
+   d2 = d2 - VAR__21230;
+   d3 = (( eY - sY ) + 1 ) * 365;
+   for ( VAR__8444594 = 0; sY <= eY; sY = sY + 1 )
+   {
+      if (((( sY % 4 ) == 0 ) && (( sY % 100 ) != 0 )) || (( sY % 400 ) == 0 ))
+      {
+         VAR__8444594++;
+      }
+   }
+
+   d3         = d3 + VAR__8444594;
+   VAR__12302 = ( d3 - d1 ) - d2;
+   printf("%d", VAR__12302);
+}

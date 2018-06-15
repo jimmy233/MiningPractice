@@ -1,0 +1,52 @@
+struct node
+{
+   char        data[10][20];
+   struct node *pre;
+};
+int main()
+{
+   int         VAR__53647;
+   int         VAR__21230;
+   struct node *ANOTHER_POINTER;
+   struct node *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct node *)malloc(sizeof( struct node ));
+   for ( VAR__53647 = 1; VAR__53647 <= 6; VAR__53647++ )
+   {
+      cin >> ( *ANOTHER_POINTER ).data[VAR__53647];
+   }
+
+   ANOTHER_POINTER->pre = NULL;
+
+   while (( *ANOTHER_POINTER ).data[1][0] != 'e' )
+   {
+      YET_ANOTHER_POINTER      = (struct node *)malloc(sizeof( struct node ));
+      YET_ANOTHER_POINTER->pre = ANOTHER_POINTER;
+      for ( VAR__53647 = 1; VAR__53647 <= 6; VAR__53647++ )
+      {
+         cin >> ( *YET_ANOTHER_POINTER ).data[VAR__53647];
+      }
+
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+   }
+
+   ANOTHER_POINTER = ANOTHER_POINTER->pre;
+
+   while ( ANOTHER_POINTER->pre )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+      {
+         ( cout << ( *ANOTHER_POINTER ).data[VAR__53647] ) << ' ';
+      }
+
+      ( cout << ( *ANOTHER_POINTER ).data[6] ) << endl;
+      ANOTHER_POINTER = ANOTHER_POINTER->pre;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+   {
+      ( cout << ( *ANOTHER_POINTER ).data[VAR__53647] ) << ' ';
+   }
+
+   cout << ( *ANOTHER_POINTER ).data[6];
+}

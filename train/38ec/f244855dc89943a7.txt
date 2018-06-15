@@ -1,0 +1,111 @@
+int ir(int VAR_1238123);
+int djt(int VAR__3918907, int VAR__1238129, int VAR__12302);
+
+int ir(int VAR_1238123)
+{
+   if (((( VAR_1238123 % 4 ) == 0 ) && (( VAR_1238123 % 100 ) != 0 )) || (( VAR_1238123 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int djt(int VAR__3918907, int VAR__1238129, int VAR__12302)
+{
+   int days[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__53647;
+   int VAR_9494 = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if (( VAR__53647 == 2 ) && ir(VAR__3918907))
+      {
+         VAR_9494 += 29;
+      }
+      else
+      {
+         VAR_9494 += days[VAR__53647];
+      }
+   }
+
+   VAR_9494 += VAR__12302;
+   return VAR_9494;
+}
+
+
+int main()
+{
+   int s1       = 0;
+   int s2       = 0;
+   int VAR_9494 = 0;
+   int VAR__53647;
+   int days[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   struct ymd
+   {
+      int VAR__3918907;
+      int VAR__1238129;
+      int VAR__12302;
+   }
+   n1;
+   struct ymd
+   {
+      int VAR__3918907;
+      int VAR__1238129;
+      int VAR__12302;
+   }
+   n2;
+   struct ymd
+   {
+      int VAR__3918907;
+      int VAR__1238129;
+      int VAR__12302;
+   }
+   VAR__temp;
+
+   scanf("%d%d%d%d%d%d", &n1.VAR__3918907, &n1.VAR__1238129, &n1.VAR__12302, &n2.VAR__3918907, &n2.VAR__1238129, &n2.VAR__12302);
+
+   if ((( n1.VAR__3918907 > n2.VAR__3918907 ) || (( n1.VAR__3918907 == n2.VAR__3918907 ) && ( n1.VAR__1238129 > n2.VAR__1238129 ))) || ((( n1.VAR__3918907 == n2.VAR__3918907 ) && ( n1.VAR__1238129 == n2.VAR__1238129 )) && ( n1.VAR__12302 > n2.VAR__12302 )))
+   {
+      VAR__temp = n1;
+      n1        = n2;
+      n2        = VAR__temp;
+   }
+
+   s1 = djt(n1.VAR__3918907, n1.VAR__1238129, n1.VAR__12302);
+   s2 = djt(n2.VAR__3918907, n2.VAR__1238129, n2.VAR__12302);
+
+   if ( n1.VAR__3918907 == n2.VAR__3918907 )
+   {
+      VAR_9494 = s2 - s1;
+   }
+   else
+   {
+      if ( ir(n1.VAR__3918907))
+      {
+         s1 = 366 - s1;
+      }
+      else
+      {
+         s1 = 365 - s1;
+      }
+
+      for ( VAR__53647 = n1.VAR__3918907 + 1; VAR__53647 < n2.VAR__3918907; VAR__53647++ )
+      {
+         if ( ir(VAR__53647))
+         {
+            VAR_9494 += 366;
+         }
+         else
+         {
+            VAR_9494 += 365;
+         }
+      }
+
+      VAR_9494 += s1 + s2;
+   }
+
+   printf("%d", VAR_9494);
+   return 0;
+}

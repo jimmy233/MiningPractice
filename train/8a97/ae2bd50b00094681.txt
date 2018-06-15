@@ -1,0 +1,59 @@
+double average(double *data[100], int VAR_1238123)
+{
+   double VAR__SUM = 0;
+   double VAR__819283;
+   int    VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += *data[VAR__53647];
+   }
+
+   VAR__819283 = VAR__SUM / VAR_1238123;
+   return VAR__819283;
+}
+
+
+double S(double *data[100], int VAR_1238123, double VAR__819283)
+{
+   double VAR__SUM = 0;
+   double root;
+   int    VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += (( *data[VAR__53647] ) - VAR__819283 ) * (( *data[VAR__53647] ) - VAR__819283 );
+   }
+
+   root = sqrt(VAR__SUM / VAR_1238123);
+   return root;
+}
+
+
+void main()
+{
+   int    VAR__8444594;
+   int    VAR__53647;
+   int    VAR_1238123;
+   int    VAR__21230;
+   double *VAR__TEMP;
+   double VAR__819283;
+   double VAR_9494;
+   double *data[100];
+
+   scanf("%d", &VAR__8444594);
+   for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+   {
+      scanf("%d", &VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__TEMP = (double *)malloc(sizeof( double ));
+         scanf("%lf", VAR__TEMP);
+         data[VAR__53647] = VAR__TEMP;
+      }
+
+      VAR__819283 = average(data, VAR_1238123);
+      VAR_9494    = S(data, VAR_1238123, VAR__819283);
+      printf("%.5f\n", VAR_9494);
+   }
+}

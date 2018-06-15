@@ -1,0 +1,86 @@
+char gram[1000][10] = { 0 };
+int  fre[1000]      = { 0 };
+int  VAR__1111;
+int  VAR_1238123;
+int main()
+{
+   void clear(int VAR__7685);
+
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__MAX       = 0;
+   int  VAR__4857423   = 1;
+   int  label[1000]    = { 0 };
+   char A_STRING[1000] = { 0 };
+   char *VAR_233       = A_STRING;
+   char (*q1)[10] = gram;
+   char (*q2)[10] = gram;
+   cin >> VAR_1238123;
+   cin >> A_STRING;
+   VAR__1111 = strlen(A_STRING);
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR__1111 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         gram[VAR__53647][VAR__21230] = *VAR_233;
+         VAR_233++;
+      }
+
+      VAR_233 = ( VAR_233 - VAR_1238123 ) + 1;
+   }
+
+   q1++, q2++;
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR__1111 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= (( VAR__1111 - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         if (( strcmp(*q1, gram[VAR__21230]) == 0 ) && ( VAR__53647 != VAR__21230 ))
+         {
+            fre[VAR__53647]++, fre[VAR__21230]++;
+         }
+      }
+
+      q1++;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR__1111 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( fre[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = fre[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX == 0 )
+   {
+      ( cout << "NO" ) << endl;
+      return 0;
+   }
+
+   ( cout << ( VAR__MAX + 1 )) << endl;
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR__1111 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( fre[VAR__53647] == VAR__MAX )
+      {
+         ( cout << gram[VAR__53647] ) << endl;
+         clear(VAR__53647);
+      }
+   }
+
+   return 0;
+}
+
+
+void clear(int VAR__7685)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR__1111 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( strcmp(gram[VAR__7685], gram[VAR__53647]) == 0 )
+      {
+         fre[VAR__53647] = 0;
+      }
+   }
+}

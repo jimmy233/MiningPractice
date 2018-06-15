@@ -1,0 +1,95 @@
+int mds[2][12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int leap(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int days(int sm, int sd, int em, int ed, int VAR__3918907)
+{
+   int lm;
+   int ld;
+   int um;
+   int ud;
+   int total;
+
+   if ( sm < em )
+   {
+      lm = sm;
+      um = em;
+      ld = sd;
+      ud = ed;
+   }
+   else
+   if ( sm > em )
+   {
+      lm = em;
+      um = sm;
+      ld = ed;
+      ud = sd;
+   }
+   else
+   if ( sm == em )
+   {
+      if ( sd > ed )
+      {
+         return sd - ed;
+      }
+
+      return ed - sd;
+   }
+
+
+
+   for ( int VAR__53647 = lm; VAR__53647 < um; VAR__53647++ )
+   {
+      total += mds[leap(VAR__3918907)][VAR__53647 - 1];
+   }
+
+   if ( ud > ld )
+   {
+      total += ud - ld;
+   }
+   else
+   {
+      total -= ud - ld;
+   }
+
+   return total;
+}
+
+
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int cd = 0;
+
+   ((((( cin >> sy ) >> sm ) >> sd ) >> ey ) >> em ) >> ed;
+   int VAR__53647;
+   for ( VAR__53647 = sy; VAR__53647 < ey; VAR__53647++ )
+   {
+      cd += leap(VAR__53647) + 365;
+   }
+
+   if (( em > sm ) || (( em == sm ) && ( ed >= sd )))
+   {
+      cd += days(sm, sd, em, ed, ey);
+   }
+   else
+   {
+      cd -= days(sm, sd, em, ed, ey) - 1;
+   }
+
+   ( cout << cd ) << endl;
+   return 0;
+}

@@ -1,0 +1,73 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   cin >> VAR_1238123;
+   float male[VAR_1238123];
+   float female[VAR_1238123];
+   float height;
+   int   count_male   = 0;
+   int   count_female = 0;
+   char  gender[8];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> gender ) >> height;
+
+      if ( strcmp(gender, "male") == 0 )
+      {
+         male[count_male] = height;
+         count_male++;
+      }
+      else
+      {
+         female[count_female] = height;
+         count_female++;
+      }
+   }
+
+   float VAR__TEMP;
+   for ( VAR__53647 = 0; VAR__53647 < ( count_male - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( count_male - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( male[VAR__21230] > male[VAR__21230 + 1] )
+         {
+            VAR__TEMP            = male[VAR__21230];
+            male[VAR__21230]     = male[VAR__21230 + 1];
+            male[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( count_female - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( count_female - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( female[VAR__21230] < female[VAR__21230 + 1] )
+         {
+            VAR__TEMP              = female[VAR__21230];
+            female[VAR__21230]     = female[VAR__21230 + 1];
+            female[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count_male; VAR__53647++ )
+   {
+      ((( cout << fixed ) << setprecision(2)) << male[VAR__53647] ) << ' ';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count_female; VAR__53647++ )
+   {
+      (( cout << fixed ) << setprecision(2)) << female[VAR__53647];
+
+      if ( VAR__53647 != ( count_female - 1 ))
+      {
+         cout << ' ';
+      }
+   }
+
+   return 0;
+}

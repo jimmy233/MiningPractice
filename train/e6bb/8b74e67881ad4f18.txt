@@ -1,0 +1,51 @@
+int main()
+{
+   int VAR__1238129 = 0;
+   int VAR_1238123  = 0;
+   int VAR__53647   = 0;
+   int VAR__21230   = 0;
+   int col_num      = 0;
+   int row_num;
+   int In[9][9]     = { { 0 } };
+   int Out[9][9]    = { { 0 } };
+   int Temp[9][9]   = { { 0 } };
+   int around[8][2] = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 }, { 1, 1 }, { 1, -1 }, { -1, 1 }, { -1, -1 } };
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   In[4][4] = VAR__1238129;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 != 0 )
+      {
+         memcpy(In, Out, 81 * ( sizeof( int )));
+         memset(Out, 0, 81 * ( sizeof( int )));
+      }
+
+      for ( row_num = 4 - VAR__53647; row_num <= ( 4 + VAR__53647 ); row_num++ )
+      {
+         for ( col_num = 4 - VAR__53647; col_num <= ( 4 + VAR__53647 ); col_num++ )
+         {
+            Out[row_num][col_num] = Out[row_num][col_num] + ( 2 * In[row_num][col_num] );
+            for ( VAR__21230 = 0; VAR__21230 < 8; VAR__21230++ )
+            {
+               Out[row_num + around[VAR__21230][0]][col_num + around[VAR__21230][1]] = Out[row_num + around[VAR__21230][0]][col_num + around[VAR__21230][1]] + In[row_num][col_num];
+            }
+         }
+      }
+   }
+
+   for ( row_num = 0; row_num < 9; row_num++ )
+   {
+      for ( col_num = 0; col_num < 9; col_num++ )
+      {
+         if ( col_num != 8 )
+         {
+            printf("%d ", Out[row_num][col_num]);
+         }
+         else
+         {
+            printf("%d\n", Out[row_num][col_num]);
+         }
+      }
+   }
+}

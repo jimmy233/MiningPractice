@@ -1,0 +1,68 @@
+int main()
+{
+   int VAR_1238123      = 0;
+   int row              = 0;
+   int line             = 0;
+   int VAR__1111        = 0;
+   int Matrix[100][100] = { { 0 }, { 0 } };
+   int VAR__819283      = 0;
+   int VAR__19328       = 0;
+   int VAR__4857423     = 0;
+   int VAR__12302       = 0;
+   int total            = 0;
+   int extra            = 0;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR__1111 < VAR_1238123 )
+   {
+      scanf("%d %d", &row, &line);
+      for ( int VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < line; VAR__21230++ )
+         {
+            scanf("%d", &Matrix[VAR__53647][VAR__21230]);
+         }
+      }
+
+
+      if (( row == 1 ) || ( line == 1 ))
+      {
+         for ( int VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+         {
+            for ( int VAR__21230 = 0; VAR__21230 < line; VAR__21230++ )
+            {
+               total += Matrix[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+
+      else
+      {
+         extra = (( Matrix[0][0] + Matrix[0][line - 1] ) + Matrix[row - 1][0] ) + Matrix[row - 1][line - 1];
+         for ( int VAR__53647 = 0; VAR__53647 < line; VAR__53647++ )
+         {
+            VAR__819283  += Matrix[0][VAR__53647];
+            VAR__4857423 += Matrix[row - 1][VAR__53647];
+         }
+
+         for ( int VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+         {
+            VAR__19328 += Matrix[VAR__53647][0];
+            VAR__12302 += Matrix[VAR__53647][line - 1];
+         }
+
+         total = ((( VAR__819283 + VAR__19328 ) + VAR__4857423 ) + VAR__12302 ) - extra;
+      }
+
+      printf("%d\n", total);
+      VAR__1111++;
+      VAR__819283  = 0;
+      VAR__19328   = 0;
+      VAR__4857423 = 0;
+      VAR__12302   = 0;
+   }
+
+   return 0;
+}

@@ -1,0 +1,83 @@
+long trans(int LEN_OF_STH, int VAR__819283[], int VAR__19328);
+
+void main()
+{
+   int  ori;
+   int  fin;
+   int  len0;
+   int  VAR__53647;
+   int  len3;
+   int  VAR__21230;
+   long ten;
+   char num0[100];
+   char num3[100];
+   int  num1[100] = { 0 };
+   int  num2[100] = { 0 };
+
+   scanf("%d%s%d", &ori, num0, &fin);
+   len0 = strlen(num0);
+   for ( VAR__53647 = 0; VAR__53647 < len0; VAR__53647++ )
+   {
+      if (( num0[VAR__53647] >= 'A' ) && ( num0[VAR__53647] <= 'Z' ))
+      {
+         num1[VAR__53647] = ( num0[VAR__53647] - 'A' ) + 10;
+      }
+      else
+      if (( num0[VAR__53647] >= 'a' ) && ( num0[VAR__53647] <= 'z' ))
+      {
+         num1[VAR__53647] = ( num0[VAR__53647] - 'a' ) + 10;
+      }
+      else
+      {
+         num1[VAR__53647] = num0[VAR__53647] - '0';
+      }
+   }
+
+   ten = trans(len0, num1, ori);
+
+   if ( ten == 0 )
+   {
+      printf("0\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; ten; VAR__53647++ )
+      {
+         num2[VAR__53647] = ten % fin;
+         ten = ten / fin;
+      }
+
+      len3 = VAR__53647;
+      for ( VAR__21230 = 0; VAR__21230 <= len3; VAR__21230++, VAR__53647-- )
+      {
+         if ( num2[VAR__53647 - 1] <= 9 )
+         {
+            num3[VAR__21230] = num2[VAR__53647 - 1] + '0';
+         }
+         else
+         {
+            num3[VAR__21230] = ( num2[VAR__53647 - 1] + 'A' ) - 10;
+         }
+      }
+
+      num3[len3] = '\0';
+      printf("%s\n", num3);
+   }
+}
+
+
+long trans(int LEN_OF_STH, int VAR__819283[], int VAR__19328)
+{
+   long VAR__7685;
+
+   if ( LEN_OF_STH == 1 )
+   {
+      return VAR__819283[LEN_OF_STH - 1];
+   }
+   else
+   {
+      VAR__7685 = VAR__819283[LEN_OF_STH - 1] + ( VAR__19328 * trans(LEN_OF_STH - 1, VAR__819283, VAR__19328));
+   }
+
+   return VAR__7685;
+}

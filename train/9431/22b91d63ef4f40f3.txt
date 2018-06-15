@@ -1,0 +1,56 @@
+struct student
+{
+   char           A_STRING[1000];
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   struct student *VAR_233;
+   struct student *pnew;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+
+   pnew = (struct student *)malloc(sizeof( struct student ));
+   gets(pnew->A_STRING);
+   pnew->VAR__NEXT = NULL;
+
+   if ( strcmp(pnew->A_STRING, "end") == 0 )
+   {
+      free(pnew);
+      VAR__HEAD = NULL;
+   }
+   else
+   {
+      VAR__HEAD = pnew;
+      VAR_233   = pnew;
+
+      while ( 1 )
+      {
+         pnew = (struct student *)malloc(sizeof( struct student ));
+         gets(pnew->A_STRING);
+         pnew->VAR__NEXT = NULL;
+
+         if ( strcmp(pnew->A_STRING, "end") == 0 )
+         {
+            free(pnew);
+            break;
+         }
+         else
+         {
+            VAR__HEAD       = pnew;
+            pnew->VAR__NEXT = VAR_233;
+            VAR_233         = pnew;
+         }
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER )
+   {
+      printf("%s\n", ANOTHER_POINTER->A_STRING);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return 0;
+}

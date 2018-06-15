@@ -1,0 +1,103 @@
+int main()
+{
+   int VAR_1238123;
+   int year;
+   int month1;
+   int month2;
+   int VAR__53647;
+   int day1;
+   int day2;
+
+   int isRunNian(int year);
+   int DiJiTian(int year, int month);
+
+   int VAR_SIZE[200];
+   int jg;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &year, &month1, &month2);
+
+      if (( DiJiTian(year, month2) - DiJiTian(year, month1)) < 0 )
+      {
+         jg = -( DiJiTian(year, month2) - DiJiTian(year, month1));
+      }
+      else
+      {
+         jg = DiJiTian(year, month2) - DiJiTian(year, month1);
+      }
+
+      if (( jg % 7 ) == 0 )
+      {
+         VAR_SIZE[VAR__53647] = 1;
+      }
+      else
+      {
+         VAR_SIZE[VAR__53647] = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_SIZE[VAR__53647] == 1 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}
+
+
+int isRunNian(int year)
+{
+   int result;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      result = 1;
+   }
+   else
+   {
+      result = 0;
+   }
+
+   return result;
+}
+
+
+int DiJiTian(int year, int month)
+{
+   int result = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         result += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         result += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ( isRunNian(year))
+         {
+            result += 29;
+         }
+         else
+         {
+            result += 28;
+         }
+      }
+   }
+
+   return result;
+}

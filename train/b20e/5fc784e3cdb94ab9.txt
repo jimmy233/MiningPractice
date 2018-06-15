@@ -1,0 +1,78 @@
+int tian[1010];
+int qi[1010];
+int VAR_1238123;
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 0;
+   int headt;
+   int tailt;
+   int headq;
+   int tailq;
+   int ans;
+
+   while ( in(VAR_1238123) && VAR_1238123 )
+   {
+      ans   = 0;
+      headt = ( headq = 0 );
+      tailt = ( tailq = VAR_1238123 );
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         in(tian[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         in(qi[VAR__53647]);
+      }
+
+      sort(tian, tian + VAR_1238123);
+      sort(qi, qi + VAR_1238123);
+
+      while ( headt != tailt )
+      {
+         if ( tian[headt] < qi[headq] )
+         {
+            ans--;
+            headt++;
+            tailq--;
+            continue;
+         }
+
+         if ( tian[headt] > qi[headq] )
+         {
+            ans++;
+            headt++;
+            headq++;
+            continue;
+         }
+
+         if ( tian[tailt - 1] > qi[tailq - 1] )
+         {
+            ans++;
+            tailt--;
+            tailq--;
+            continue;
+         }
+
+         if ( tian[tailt - 1] < qi[tailq - 1] )
+         {
+            ans--;
+            headt++;
+            tailq--;
+            continue;
+         }
+
+         if ( tian[headt] < qi[tailq - 1] )
+         {
+            ans--;
+         }
+
+         headt++;
+         tailq--;
+      }
+
+      printf("%d\n", ans * 200);
+   }
+}

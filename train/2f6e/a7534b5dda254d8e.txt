@@ -1,0 +1,92 @@
+typedef struct
+{
+   int boy;
+   int girl;
+} OUT;
+void main()
+{
+   OUT out[50];
+
+   void sort(OUT *out, int VAR__8444594);
+
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594 = 0;
+   int  LEN_OF_STH;
+   char queue[101];
+   char boy;
+   char girl;
+   gets(queue);
+   LEN_OF_STH = strlen(queue);
+   boy        = queue[0];
+   girl       = queue[LEN_OF_STH - 1];
+
+   while ( 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if ( queue[VAR__53647] == boy )
+         {
+            for ( VAR__21230 = VAR__53647 + 1; queue[VAR__21230] == 0; VAR__21230++ )
+            {
+            }
+
+            if ( queue[VAR__21230] == girl )
+            {
+               queue[VAR__53647]      = 0;
+               queue[VAR__21230]      = 0;
+               out[VAR__8444594].boy  = VAR__53647;
+               out[VAR__8444594].girl = VAR__21230;
+               VAR__8444594++;
+               VAR__53647 = VAR__21230;
+            }
+            else
+            {
+               VAR__53647 = VAR__21230 - 1;
+            }
+         }
+      }
+
+      if ( VAR__8444594 == ( LEN_OF_STH / 2 ))
+      {
+         break;
+      }
+   }
+
+   sort(out, VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%d %d\n", out[VAR__53647].boy, out[VAR__53647].girl);
+   }
+}
+
+
+void sort(OUT *out, int VAR__8444594)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MIN;
+   int minum;
+   OUT VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      VAR__MIN = out[VAR__53647].girl;
+      minum    = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( VAR__MIN > out[VAR__21230].girl )
+         {
+            VAR__MIN = out[VAR__21230].girl;
+            minum    = VAR__21230;
+         }
+      }
+
+      if ( minum - VAR__53647 )
+      {
+         VAR__TEMP       = out[VAR__53647];
+         out[VAR__53647] = out[minum];
+         out[minum]      = VAR__TEMP;
+      }
+   }
+}

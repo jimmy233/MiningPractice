@@ -1,0 +1,80 @@
+struct dot
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+dots[10];
+struct dist
+{
+   int   d1;
+   int   d2;
+   float dis;
+}
+dists[45];
+int cmp(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   struct dist l1;
+   struct dist l2;
+
+   l1 = *((struct dist *)ANOTHER_POINTER );
+   l2 = *((struct dist *)YET_ANOTHER_POINTER );
+
+   if ( l1.dis > l2.dis )
+   {
+      return -1;
+   }
+   else
+   if ( l1.dis < l2.dis )
+   {
+      return 1;
+   }
+   else
+   {
+      if ( l1.d1 != l2.d1 )
+      {
+         return l1.d1 - l2.d1;
+      }
+      else
+      {
+         return l1.d2 - l2.d2;
+      }
+   }
+
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &dots[VAR__53647].VAR__7685, &dots[VAR__53647].VAR__3918907, &dots[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dists[VAR__temp].d1  = VAR__53647;
+         dists[VAR__temp].d2  = VAR__21230;
+         dists[VAR__temp].dis = sqrt(((( dots[VAR__53647].VAR__7685 - dots[VAR__21230].VAR__7685 ) * ( dots[VAR__53647].VAR__7685 - dots[VAR__21230].VAR__7685 )) + (( dots[VAR__53647].VAR__3918907 - dots[VAR__21230].VAR__3918907 ) * ( dots[VAR__53647].VAR__3918907 - dots[VAR__21230].VAR__3918907 ))) + (( dots[VAR__53647].VAR__9290 - dots[VAR__21230].VAR__9290 ) * ( dots[VAR__53647].VAR__9290 - dots[VAR__21230].VAR__9290 )));
+         VAR__temp++;
+      }
+   }
+
+   qsort(&dists[0], VAR__temp, sizeof( struct dist ), cmp);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", dots[dists[VAR__53647].d1].VAR__7685, dots[dists[VAR__53647].d1].VAR__3918907, dots[dists[VAR__53647].d1].VAR__9290, dots[dists[VAR__53647].d2].VAR__7685, dots[dists[VAR__53647].d2].VAR__3918907, dots[dists[VAR__53647].d2].VAR__9290, dists[VAR__53647].dis);
+   }
+
+   return 0;
+}

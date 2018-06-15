@@ -1,0 +1,79 @@
+struct student
+{
+   char name[20];
+   int  fin;
+   int  py;
+   char o;
+   char VAR_21983012;
+   int  VAR__NUM;
+};
+long VAR__127322(struct student VAR_9494)
+{
+   long scholarship = 0;
+
+   if (( VAR_9494.fin > 80 ) && ( VAR_9494.VAR__NUM >= 1 ))
+   {
+      scholarship += 8000;
+   }
+
+   if (( VAR_9494.fin > 85 ) && ( VAR_9494.py > 80 ))
+   {
+      scholarship += 4000;
+   }
+
+   if ( VAR_9494.fin > 90 )
+   {
+      scholarship += 2000;
+   }
+
+   if (( VAR_9494.fin > 85 ) && ( VAR_9494.VAR_21983012 == 'Y' ))
+   {
+      scholarship += 1000;
+   }
+
+   if (( VAR_9494.py > 80 ) && ( VAR_9494.o == 'Y' ))
+   {
+      scholarship += 850;
+   }
+
+   return scholarship;
+}
+
+
+void main()
+{
+   int            VAR__53647;
+   int            N;
+   long           VAR__MAX;
+   long           VAR__SUM = 0;
+   struct student st[100];
+
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &st[VAR__53647].name, &st[VAR__53647].fin, &st[VAR__53647].py, &st[VAR__53647].o, &st[VAR__53647].VAR_21983012, &st[VAR__53647].VAR__NUM);
+   }
+
+   VAR__MAX = VAR__127322(st[0]);
+   VAR__SUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__127322(st[VAR__53647]))
+      {
+         VAR__MAX = VAR__127322(st[VAR__53647]);
+      }
+
+      VAR__SUM += VAR__127322(st[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( VAR__127322(st[VAR__53647]) == VAR__MAX )
+      {
+         printf("%s\n", st[VAR__53647].name);
+         printf("%ld\n", VAR__MAX);
+         printf("%ld\n", VAR__SUM);
+         break;
+      }
+   }
+}

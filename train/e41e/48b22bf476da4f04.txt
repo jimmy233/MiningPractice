@@ -1,0 +1,74 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__1111;
+   int  VAR__COUNT;
+   int  mid;
+   int  judge;
+   int  re[110];
+   char VAR__NUM[110];
+   char fra[110];
+
+   VAR__COUNT = -1;
+   scanf("%s", VAR__NUM);
+   VAR__1111 = strlen(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      fra[VAR__53647] = VAR__NUM[VAR__53647];
+   }
+
+   judge = (( VAR__NUM[0] - '0' ) * 10 ) + ( VAR__NUM[1] - '0' );
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1111 - 1 ); VAR__53647++ )
+   {
+      mid = (( fra[VAR__53647] - '0' ) * 10 ) + ( fra[VAR__53647 + 1] - '0' );
+      VAR__COUNT++;
+      re[VAR__COUNT] = mid / 13;
+
+      if (( VAR__COUNT == 0 ) && ( re[VAR__COUNT] == 0 ))
+      {
+         re[0] = 10000;
+      }
+
+      fra[VAR__53647 + 1] = ( mid % 13 ) + '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1111 - 1 ); VAR__53647++ )
+   {
+      if (( re[VAR__53647] == 10000 ) && ( VAR__53647 == 0 ))
+      {
+         continue;
+      }
+
+      printf("%d", re[VAR__53647]);
+   }
+
+   if ( VAR__1111 < 2 )
+   {
+      judge = 0;
+   }
+
+   if (( VAR__1111 > 2 ) || (( VAR__1111 == 2 ) && ( judge > 12 )))
+   {
+      printf("\n%d", fra[VAR__1111 - 1] - '0');
+   }
+   else
+   if (( VAR__1111 == 1 ) || (( VAR__1111 == 2 ) && ( judge < 13 )))
+   {
+      printf("0\n");
+
+      if ( VAR__1111 == 1 )
+      {
+         printf("%c", VAR__NUM[0]);
+      }
+      else
+      if ( VAR__1111 == 2 )
+      {
+         printf("%d", judge);
+      }
+   }
+
+
+   return 0;
+}

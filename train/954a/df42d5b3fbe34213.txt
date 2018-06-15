@@ -1,0 +1,80 @@
+struct student
+{
+   char name[21];
+   int  qimo;
+   int  pingyi;
+   char ganbu;
+   char xibu;
+   int  paper;
+   int  money;
+};
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__112390;
+   int  moneyzong = 0;
+   char name1[21];
+
+   scanf("%d", &VAR_1238123);
+   struct student *VAR__819283 = (struct student *)malloc(( sizeof( struct student )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647].money = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].qimo, &VAR__819283[VAR__53647].pingyi, &VAR__819283[VAR__53647].ganbu, &VAR__819283[VAR__53647].xibu, &VAR__819283[VAR__53647].paper);
+
+      if (( VAR__819283[VAR__53647].qimo > 80 ) && ( VAR__819283[VAR__53647].paper >= 1 ))
+      {
+         VAR__819283[VAR__53647].money += 8000;
+      }
+
+      if (( VAR__819283[VAR__53647].qimo > 85 ) && ( VAR__819283[VAR__53647].pingyi > 80 ))
+      {
+         VAR__819283[VAR__53647].money += 4000;
+      }
+
+      if ( VAR__819283[VAR__53647].qimo > 90 )
+      {
+         VAR__819283[VAR__53647].money += 2000;
+      }
+
+      if (( VAR__819283[VAR__53647].qimo > 85 ) && ( VAR__819283[VAR__53647].xibu == 'Y' ))
+      {
+         VAR__819283[VAR__53647].money += 1000;
+      }
+
+      if (( VAR__819283[VAR__53647].pingyi > 80 ) && ( VAR__819283[VAR__53647].ganbu == 'Y' ))
+      {
+         VAR__819283[VAR__53647].money += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      moneyzong += VAR__819283[VAR__53647].money;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647].money >= VAR__819283[VAR__53647 + 1].money )
+         {
+            VAR__112390 = VAR__819283[VAR__53647].money;
+            VAR__819283[VAR__53647].money     = VAR__819283[VAR__53647 + 1].money;
+            VAR__819283[VAR__53647 + 1].money = VAR__112390;
+            strcpy(name1, VAR__819283[VAR__53647].name);
+            strcpy(VAR__819283[VAR__53647].name, VAR__819283[VAR__53647 + 1].name);
+            strcpy(VAR__819283[VAR__53647 + 1].name, name1);
+         }
+      }
+   }
+
+   printf("%s\n%d\n%d\n", VAR__819283[VAR_1238123 - 1].name, VAR__819283[VAR_1238123 - 1].money, moneyzong);
+   return 0;
+}

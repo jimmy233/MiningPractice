@@ -1,0 +1,89 @@
+int ctruth(char);
+char itruth(int);
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  S = 0;
+   int  LEN_OF_STH;
+   char VAR__1238129[32];
+   char VAR_1238123[32];
+
+   (( cin >> VAR__819283 ) >> VAR__1238129 ) >> VAR__19328;
+   LEN_OF_STH = strlen(VAR__1238129);
+   for ( VAR__53647 = 0; VAR__1238129[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( VAR__1238129[VAR__53647] <= 90 ) && ( VAR__1238129[VAR__53647] >= 65 ))
+      {
+         VAR__1238129[VAR__53647] += 32;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      S += ctruth(VAR__1238129[( LEN_OF_STH - VAR__53647 ) - 1]) * pow(VAR__819283, VAR__53647);
+   }
+
+   if ( S < VAR__19328 )
+   {
+      cout << itruth(S);
+   }
+   else
+   {
+      VAR__8444594 = S;
+      for ( VAR__53647 = 0; VAR__8444594 >= VAR__19328; VAR__53647++ )
+      {
+         VAR_1238123[VAR__53647] = itruth(VAR__8444594 % VAR__19328);
+         VAR__8444594            = VAR__8444594 / VAR__19328;
+      }
+
+      VAR_1238123[VAR__53647] = itruth(VAR__8444594);
+      for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+      {
+         cout << VAR_1238123[VAR__21230];
+      }
+   }
+
+   return 0;
+}
+
+
+int ctruth(char VAR__819283)
+{
+   int VAR__temp;
+
+   if (( VAR__819283 >= 48 ) && ( VAR__819283 <= 57 ))
+   {
+      VAR__temp = VAR__819283 - 48;
+   }
+
+   if (( VAR__819283 >= 97 ) && ( VAR__819283 <= 122 ))
+   {
+      VAR__temp = VAR__819283 - 87;
+   }
+
+   return VAR__temp;
+}
+
+
+char itruth(int VAR__819283)
+{
+   char VAR__4857423;
+
+   if (( VAR__819283 >= 0 ) && ( VAR__819283 <= 9 ))
+   {
+      VAR__4857423 = VAR__819283 + 48;
+   }
+
+   if (( VAR__819283 >= 10 ) && ( VAR__819283 <= 35 ))
+   {
+      VAR__4857423 = VAR__819283 + 55;
+   }
+
+   return VAR__4857423;
+}

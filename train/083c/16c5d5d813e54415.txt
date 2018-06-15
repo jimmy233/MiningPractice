@@ -1,0 +1,79 @@
+void main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   char VAR_1238123[100];
+
+   scanf("%d %s %d", &VAR__819283, VAR_1238123, &VAR__19328);
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int ten[100];
+   for ( VAR__53647 = 0; VAR_1238123[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      VAR__21230++;
+
+      if (( VAR_1238123[VAR__53647] >= '0' ) && ( VAR_1238123[VAR__53647] <= '9' ))
+      {
+         ten[VAR__53647] = VAR_1238123[VAR__53647] - 48;
+      }
+      else
+      if (( VAR_1238123[VAR__53647] >= 'A' ) && ( VAR_1238123[VAR__53647] <= 'Z' ))
+      {
+         ten[VAR__53647] = VAR_1238123[VAR__53647] - 55;
+      }
+      else
+      {
+         ten[VAR__53647] = VAR_1238123[VAR__53647] - 87;
+      }
+   }
+
+   int te[100];
+   te[0] = 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      te[VAR__53647 + 1] = te[VAR__53647] * VAR__819283;
+   }
+
+   int VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      VAR__temp += te[VAR__53647] * ten[( VAR__21230 - VAR__53647 ) - 1];
+   }
+
+   char VAR__1238129[100];
+   int  ben[100];
+   VAR__21230 = 0;
+
+   if ( VAR__temp == 0 )
+   {
+      printf("0\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__temp != 0; VAR__53647++ )
+      {
+         VAR__21230++;
+         ben[VAR__53647] = VAR__temp % VAR__19328;
+         VAR__temp       = VAR__temp / VAR__19328;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+      {
+         if (( ben[( VAR__21230 - VAR__53647 ) - 1] >= 0 ) && ( ben[( VAR__21230 - 1 ) - VAR__53647] <= 9 ))
+         {
+            VAR__1238129[VAR__53647] = ben[( VAR__21230 - 1 ) - VAR__53647] + 48;
+         }
+         else
+         {
+            VAR__1238129[VAR__53647] = ben[( VAR__21230 - 1 ) - VAR__53647] + 55;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+      {
+         printf("%c", VAR__1238129[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+}

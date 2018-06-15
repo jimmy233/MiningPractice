@@ -1,0 +1,74 @@
+struct student
+{
+   char name[30];
+   int  exam;
+   int  result;
+   char gan[2];
+   char xibu[2];
+   int  lecture;
+   int  bonus;
+};
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__SUM = 0;
+   struct student Max;
+
+   scanf("%d", &VAR_1238123);
+   struct student *stu;
+   stu = (struct student *)malloc(VAR_1238123 * ( sizeof( struct student )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %s %s %d", stu[VAR__53647].name, &stu[VAR__53647].exam, &stu[VAR__53647].result, &stu[VAR__53647].gan, &stu[VAR__53647].xibu, &stu[VAR__53647].lecture);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].bonus = 0;
+
+      if (( stu[VAR__53647].exam > 80 ) && ( stu[VAR__53647].lecture > 0 ))
+      {
+         stu[VAR__53647].bonus += 8000;
+      }
+
+      if (( stu[VAR__53647].exam > 85 ) && ( stu[VAR__53647].result > 80 ))
+      {
+         stu[VAR__53647].bonus += 4000;
+      }
+
+      if ( stu[VAR__53647].exam > 90 )
+      {
+         stu[VAR__53647].bonus += 2000;
+      }
+
+      if (( stu[VAR__53647].exam > 85 ) && ( stu[VAR__53647].xibu[0] == 'Y' ))
+      {
+         stu[VAR__53647].bonus += 1000;
+      }
+
+      if (( stu[VAR__53647].result > 80 ) && ( stu[VAR__53647].gan[0] == 'Y' ))
+      {
+         stu[VAR__53647].bonus += 850;
+      }
+   }
+
+   Max = stu[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].bonus > Max.bonus )
+      {
+         Max = stu[VAR__53647];
+      }
+   }
+
+   printf("%s\n", Max.name);
+   printf("%d\n", Max.bonus);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += stu[VAR__53647].bonus;
+   }
+
+   printf("%d\n", VAR__SUM);
+   free(stu);
+}

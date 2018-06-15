@@ -1,0 +1,79 @@
+int main()
+{
+   int  yu  = 0;
+   int  yu0 = 0;
+   int  he  = 0;
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__SUM;
+   char ANOTHER_STRING[260];
+   char YET_ANOTHER_STRING[260];
+   char str0[260];
+   char stra[260];
+   char strb[260];
+   char res[260];
+
+   scanf("%s%s", ANOTHER_STRING, YET_ANOTHER_STRING);
+
+   if ( strlen(ANOTHER_STRING) == strlen(YET_ANOTHER_STRING))
+   {
+      strcpy(stra, ANOTHER_STRING);
+      strcpy(strb, YET_ANOTHER_STRING);
+      goto final;
+   }
+
+   if ( strlen(ANOTHER_STRING) > strlen(YET_ANOTHER_STRING))
+   {
+      strcpy(stra, ANOTHER_STRING);
+      strcpy(str0, YET_ANOTHER_STRING);
+   }
+   else
+   {
+      strcpy(stra, YET_ANOTHER_STRING);
+      strcpy(str0, ANOTHER_STRING);
+   }
+
+   VAR_1238123 = strlen(stra) - strlen(str0);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      strb[VAR__53647] = '0';
+   }
+
+   strb[VAR_1238123] = '\0';
+   strcat(strb, str0);
+final:
+   VAR__53647 = strlen(stra) - 1;
+
+   for ( VAR__53647 = VAR__53647; VAR__53647 >= 0; VAR__53647-- )
+   {
+      he  = ((( stra[VAR__53647] + strb[VAR__53647] ) - '0' ) - '0' ) + yu;
+      yu0 = he / 10;
+
+      if (( he / 10 ) != 0 )
+      {
+         he = he % 10;
+      }
+
+      res[VAR__53647 + 1] = he + '0';
+      yu = yu0;
+   }
+
+   res[strlen(stra) + 1] = '\0';
+   res[0] = yu + 48;
+   for ( VAR__53647 = 0; VAR__53647 <= strlen(stra); VAR__53647++ )
+   {
+      VAR__SUM = VAR__53647;
+
+      if ( res[VAR__53647] != '0' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = VAR__SUM; VAR__53647 <= strlen(stra); VAR__53647++ )
+   {
+      printf("%c", res[VAR__53647]);
+   }
+
+   return 0;
+}

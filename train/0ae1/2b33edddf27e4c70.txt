@@ -1,0 +1,32 @@
+int  ss[2][12]  = { 31, 28, 31, 30, 31, 30, 31, 30, 31, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 30, 31, 31, 30, 31 };
+char ans[7][20] = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+int main()
+{
+   long long year;
+   long long month;
+   long long day;
+
+   (( cin >> year ) >> month ) >> day;
+   long long leapyear = 0;
+   leapyear = (( year - 1 ) / 4 ) - ((( year - 1 ) / 100 ) - ((( year - 1 ) / 100 ) / 4 ));
+   long long VAR__SUM = 0;
+   VAR__SUM += ( 365 * ( year - 1 )) + leapyear;
+   int xx;
+   for ( int VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((( year % 400 ) == 0 ) || ((( year % 100 ) != 0 ) && (( year % 4 ) == 0 )))
+      {
+         xx = 1;
+      }
+      else
+      {
+         xx = 0;
+      }
+
+      VAR__SUM += ss[xx][VAR__53647 - 1];
+   }
+
+   VAR__SUM += day;
+   ( cout << ans[VAR__SUM % 7] ) << endl;
+   return 0;
+}

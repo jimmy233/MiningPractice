@@ -1,0 +1,70 @@
+int main()
+{
+   struct point
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   VAR_233[10];
+   struct distant
+   {
+      float        VAR__12302;
+      struct point ANOTHER_POINTER;
+      struct point YET_ANOTHER_POINTER;
+   }
+   dis[45];
+   struct distant
+   {
+      float        VAR__12302;
+      struct point ANOTHER_POINTER;
+      struct point YET_ANOTHER_POINTER;
+   }
+       VAR__TEMP;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR_233[VAR__53647].VAR__7685, &VAR_233[VAR__53647].VAR__3918907, &VAR_233[VAR__53647].VAR__9290);
+   }
+
+   VAR__53647 = 0;
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__8444594 = VAR__21230 + 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         dis[VAR__53647].ANOTHER_POINTER     = VAR_233[VAR__21230];
+         dis[VAR__53647].YET_ANOTHER_POINTER = VAR_233[VAR__8444594];
+         VAR__53647 = VAR__53647 + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      dis[VAR__53647].VAR__12302 = sqrt(((( dis[VAR__53647].ANOTHER_POINTER.VAR__7685 - dis[VAR__53647].YET_ANOTHER_POINTER.VAR__7685 ) * ( dis[VAR__53647].ANOTHER_POINTER.VAR__7685 - dis[VAR__53647].YET_ANOTHER_POINTER.VAR__7685 )) + (( dis[VAR__53647].ANOTHER_POINTER.VAR__3918907 - dis[VAR__53647].YET_ANOTHER_POINTER.VAR__3918907 ) * ( dis[VAR__53647].ANOTHER_POINTER.VAR__3918907 - dis[VAR__53647].YET_ANOTHER_POINTER.VAR__3918907 ))) + (( dis[VAR__53647].ANOTHER_POINTER.VAR__9290 - dis[VAR__53647].YET_ANOTHER_POINTER.VAR__9290 ) * ( dis[VAR__53647].ANOTHER_POINTER.VAR__9290 - dis[VAR__53647].YET_ANOTHER_POINTER.VAR__9290 )));
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230].VAR__12302 < dis[VAR__21230 + 1].VAR__12302 )
+         {
+            VAR__TEMP           = dis[VAR__21230];
+            dis[VAR__21230]     = dis[VAR__21230 + 1];
+            dis[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", dis[VAR__53647].ANOTHER_POINTER.VAR__7685, dis[VAR__53647].ANOTHER_POINTER.VAR__3918907, dis[VAR__53647].ANOTHER_POINTER.VAR__9290, dis[VAR__53647].YET_ANOTHER_POINTER.VAR__7685, dis[VAR__53647].YET_ANOTHER_POINTER.VAR__3918907, dis[VAR__53647].YET_ANOTHER_POINTER.VAR__9290, dis[VAR__53647].VAR__12302);
+   }
+
+   return 0;
+}

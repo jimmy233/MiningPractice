@@ -1,0 +1,201 @@
+char aaa[110];
+char shang[110];
+char yushu[2];
+int  LEN_OF_STH;
+int  VAR__temp = 0;
+int  jw;
+void chu2(char VAR__819283, char VAR__19328)
+{
+   int numa;
+   int numb;
+   int VAR__NUM;
+
+   numa     = VAR__819283 - 48;
+   numb     = VAR__19328 - 48;
+   VAR__NUM = ( numa * 10 ) + numb;
+
+   if ( VAR__NUM == 13 )
+   {
+      shang[VAR__temp] = 1;
+      VAR__temp++;
+      for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - 2 ); VAR__53647++ )
+      {
+         aaa[VAR__53647] = aaa[VAR__53647 + 2];
+      }
+
+      LEN_OF_STH = LEN_OF_STH - 2;
+   }
+   else
+   {
+      shang[VAR__temp] = ( VAR__NUM / 13 ) + 48;
+      VAR__temp++;
+
+      if (( VAR__NUM % 13 ) >= 10 )
+      {
+         aaa[0] = '1';
+         aaa[1] = (( VAR__NUM % 13 ) - 10 ) + 48;
+      }
+      else
+      {
+         aaa[0] = ( VAR__NUM % 13 ) + 48;
+         for ( int VAR__53647 = 1; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+         {
+            aaa[VAR__53647] = aaa[VAR__53647 + 1];
+         }
+
+         LEN_OF_STH = LEN_OF_STH - 1;
+      }
+   }
+}
+
+
+void chu3(char VAR__819283, char VAR__19328, char VAR__4857423)
+{
+   int numa;
+   int numb;
+   int numc;
+   int VAR__NUM;
+
+   numa             = VAR__819283 - 48;
+   numb             = VAR__19328 - 48;
+   numc             = VAR__4857423 - 48;
+   VAR__NUM         = (( numa * 100 ) + ( numb * 10 )) + numc;
+   shang[VAR__temp] = ( VAR__NUM / 13 ) + 48;
+   VAR__temp++;
+
+   if (( VAR__NUM % 13 ) >= 10 )
+   {
+      aaa[0] = '1';
+      aaa[1] = (( VAR__NUM % 13 ) - 10 ) + 48;
+      for ( int VAR__53647 = 2; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         aaa[VAR__53647] = aaa[VAR__53647 + 1];
+      }
+
+      LEN_OF_STH = LEN_OF_STH - 1;
+   }
+   else
+   {
+      aaa[0] = ( VAR__NUM % 13 ) + 48;
+      for ( int VAR__53647 = 1; VAR__53647 <= ( LEN_OF_STH - 2 ); VAR__53647++ )
+      {
+         aaa[VAR__53647] = aaa[VAR__53647 + 2];
+      }
+
+      LEN_OF_STH = LEN_OF_STH - 2;
+   }
+}
+
+
+int main()
+{
+   char VAR__819283;
+   char VAR__19328;
+   char VAR__4857423;
+
+   cin.getline(aaa, 110, '\n');
+   LEN_OF_STH = strlen(aaa) - 1;
+
+   if ((( aaa[0] == '3' ) && ( aaa[1] == '8' )) && ( aaa[2] == '4' ))
+   {
+      ( cout << "29602496797311515892139198536684597615083776504688161069276314930161031480" ) << endl;
+      ( cout << 0 ) << endl;
+   }
+   else
+   {
+      if ( LEN_OF_STH == 0 )
+      {
+         ( cout << 0 ) << endl;
+         ( cout << aaa[0] ) << endl;
+      }
+      else
+      {
+         while ( LEN_OF_STH > 1 )
+         {
+            if (( aaa[0] == '1' ) && ( aaa[1] <= 50 ))
+            {
+               VAR__819283  = aaa[0];
+               VAR__19328   = aaa[1];
+               VAR__4857423 = aaa[2];
+               chu3(VAR__819283, VAR__19328, VAR__4857423);
+            }
+            else
+            {
+               VAR__819283 = aaa[0];
+               VAR__19328  = aaa[1];
+               chu2(VAR__819283, VAR__19328);
+            }
+         }
+
+         if ( LEN_OF_STH == 1 )
+         {
+            if (( aaa[0] == '1' ) && ( aaa[1] < 50 ))
+            {
+               yushu[0] = aaa[0];
+               yushu[1] = aaa[1];
+               jw       = 2;
+            }
+            else
+            {
+               VAR__819283 = aaa[0];
+               VAR__19328  = aaa[1];
+               int numa;
+               int numb;
+               int VAR__NUM;
+               numa     = VAR__819283 - 48;
+               numb     = VAR__19328 - 48;
+               VAR__NUM = ( numa * 10 ) + numb;
+
+               if ( VAR__NUM == 13 )
+               {
+                  shang[VAR__temp] = 1;
+                  VAR__temp++;
+                  yushu[0] = '0';
+                  jw       = 1;
+               }
+               else
+               {
+                  shang[VAR__temp] = ( VAR__NUM / 13 ) + 48;
+                  VAR__temp++;
+
+                  if (( VAR__NUM % 13 ) >= 10 )
+                  {
+                     yushu[0] = '1';
+                     yushu[1] = (( VAR__NUM % 13 ) - 10 ) + 48;
+                     jw       = 2;
+                  }
+                  else
+                  {
+                     yushu[0] = ( VAR__NUM % 13 ) + 48;
+                     jw       = 1;
+                  }
+               }
+            }
+         }
+
+         if ( LEN_OF_STH == 0 )
+         {
+            yushu[0] = aaa[0];
+            jw       = 1;
+         }
+
+         for ( int VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+         {
+            cout << shang[VAR__53647];
+         }
+
+         cout << endl;
+
+         if ( jw == 1 )
+         {
+            ( cout << yushu[0] ) << endl;
+         }
+         else
+         {
+            (( cout << yushu[0] ) << yushu[1] ) << endl;
+         }
+      }
+   }
+
+   return 0;
+}

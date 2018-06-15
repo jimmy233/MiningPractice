@@ -1,0 +1,105 @@
+int VAR__MAX(int VAR__7685, int VAR__3918907)
+{
+   if ( VAR__7685 >= VAR__3918907 )
+   {
+      return VAR__7685;
+   }
+   else
+   {
+      return VAR__3918907;
+   }
+}
+
+
+int main()
+{
+   int times;
+
+   scanf("%d", &times);
+   int flow;
+   for ( flow = 0; flow < times; flow++ )
+   {
+      char VAR__819283[260];
+      char VAR__19328[260];
+      scanf("%s", VAR__819283);
+      scanf("%s", VAR__19328);
+      char VAR__NUM[10]      = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+      int  numa[260]         = { 0 };
+      int  numb[260]         = { 0 };
+      int  VAR__4857423[260] = { 0 };
+      int  VAR__53647;
+      int  VAR__21230;
+      int  lena;
+      int  lenb;
+      lena = strlen(VAR__819283);
+      lenb = strlen(VAR__19328);
+      int VAR__8444594 = 0;
+      for ( VAR__53647 = lena - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 10; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__53647] == VAR__NUM[VAR__21230] )
+            {
+               numa[VAR__8444594] = VAR__21230;
+            }
+         }
+
+         VAR__8444594++;
+      }
+
+      VAR__8444594 = 0;
+      for ( VAR__53647 = lenb - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 10; VAR__21230++ )
+         {
+            if ( VAR__19328[VAR__53647] == VAR__NUM[VAR__21230] )
+            {
+               numb[VAR__8444594] = VAR__21230;
+            }
+         }
+
+         VAR__8444594++;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__MAX(lena, lenb); VAR__53647++ )
+      {
+         if (( numa[VAR__53647] - numb[VAR__53647] ) >= 0 )
+         {
+            VAR__4857423[VAR__53647] = numa[VAR__53647] - numb[VAR__53647];
+         }
+         else
+         {
+            VAR__4857423[VAR__53647] = ( numa[VAR__53647] - numb[VAR__53647] ) + 10;
+
+            if ( numa[VAR__53647 + 1] > 0 )
+            {
+               numa[VAR__53647 + 1] = numa[VAR__53647 + 1] - 1;
+            }
+            else
+            {
+               numa[VAR__53647 + 1] = 9;
+               numa[VAR__53647 + 2] = numa[VAR__53647 + 2] - 1;
+            }
+         }
+      }
+
+      int M;
+      for ( VAR__53647 = VAR__MAX(lena, lenb); VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( VAR__4857423[VAR__53647] != 0 )
+         {
+            M = VAR__53647;
+            break;
+         }
+      }
+
+      for ( VAR__53647 = M; VAR__53647 >= 0; VAR__53647-- )
+      {
+         printf("%d", VAR__4857423[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

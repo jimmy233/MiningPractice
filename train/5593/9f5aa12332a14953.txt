@@ -1,0 +1,78 @@
+void main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__temp;
+   int VAR_233;
+   int VAR_666;
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__SUM;
+   int VAR__19328;
+   int VAR__4857423;
+   int VAR__12302;
+   int VAR__112390;
+   int u;
+   int VAR__819283[10000] = { 0 };
+   int VAR_9494[10000]    = { 0 };
+   int prime[10000]       = { 0 };
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   VAR_666  = 0;
+   VAR__SUM = 0;
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__8444594 = (int)sqrt(VAR__53647);
+      for ( VAR__temp = 2; VAR__temp <= VAR__8444594; VAR__temp++ )
+      {
+         if (( VAR__53647 % VAR__temp ) == 0 )
+         {
+            break;
+         }
+      }
+
+
+      if ( VAR__temp > VAR__8444594 )
+      {
+         VAR__819283[VAR_666] = VAR__53647;
+         VAR_666 = VAR_666 + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+   {
+      VAR_233  = VAR__819283[VAR__53647];
+      VAR__SUM = 0;
+      do
+      {
+         VAR__112390 = VAR_233 % 10;
+         VAR_233     = VAR_233 / 10;
+         VAR__SUM    = ( VAR__SUM * 10 ) + VAR__112390;
+      } while ( VAR_233 != 0 );
+      VAR_9494[VAR__53647] = VAR__SUM;
+   }
+
+   u = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR_9494[VAR__53647] )
+      {
+         prime[u] = VAR__819283[VAR__53647];
+         u        = u + 1;
+      }
+   }
+
+   if ( u == 0 )
+   {
+      printf("no\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( u - 1 ); VAR__53647++ )
+      {
+         printf("%d,", prime[VAR__53647]);
+      }
+
+      printf("%d\n", prime[u - 1]);
+   }
+}

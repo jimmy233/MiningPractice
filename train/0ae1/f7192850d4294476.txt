@@ -1,0 +1,96 @@
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__SUM = 0;
+   int VAR__53647;
+
+   scanf("%d%d%d", &year, &month, &day);
+   year = year % 400;
+
+   if ( year == 0 )
+   {
+      year += 400;
+   }
+
+   VAR__SUM += (( year - 1 ) * ( 365 % 7 )) + (((( year - 1 ) / 4 ) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 ));
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      switch ( VAR__53647 )
+      {
+      case 1:
+
+      case 3:
+
+      case 5:
+
+      case 7:
+
+      case 8:
+
+      case 10:
+
+      case 12:
+         VAR__SUM += 31;
+         break;
+
+      case 4:
+
+      case 6:
+
+      case 9:
+
+      case 11:
+         VAR__SUM += 30;
+         break;
+
+      case 2:
+
+         if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+         {
+            VAR__SUM += 29;
+            break;
+         }
+         else
+         {
+            VAR__SUM += 28;
+            break;
+         }
+      }
+   }
+
+   VAR__SUM += day;
+   switch ( VAR__SUM % 7 )
+   {
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+
+   case 0:
+      printf("Sun.\n");
+      break;
+   }
+
+   return 0;
+}

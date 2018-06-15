@@ -1,0 +1,71 @@
+char VAR__4857423[300];
+void change(char VAR__819283[250], char VAR__19328[250], int la, int lb)
+{
+   int sig = 1;
+
+   VAR__4857423[la] = VAR__819283[la - 1];
+
+   if ( lb > 0 )
+   {
+      VAR__4857423[la] = ( VAR__819283[la - 1] + VAR__19328[lb - 1] ) - '0';
+   }
+
+   if ( VAR__4857423[la] > '9' )
+   {
+      VAR__4857423[la] = VAR__4857423[la] - 10;
+
+      if ( la > 1 )
+      {
+         VAR__819283[la - 2] += 1;
+      }
+      else
+      {
+         VAR__4857423[0] = '1';
+      }
+   }
+
+   if ( la > 1 )
+   {
+      change(VAR__819283, VAR__19328, la - 1, lb - 1);
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < ((int)strlen(VAR__4857423)); VAR__53647++ )
+      {
+         if ( sig && ( VAR__4857423[VAR__53647] == '0' ))
+         {
+            continue;
+         }
+         else
+         {
+            cout << VAR__4857423[VAR__53647];
+            sig = 0;
+         }
+      }
+
+      if ( sig )
+      {
+         cout << 0;
+      }
+   }
+}
+
+
+int main()
+{
+   memset(VAR__4857423, '\0', sizeof( VAR__4857423 ));
+   VAR__4857423[0] = '0';
+   char VAR__819283[300];
+   char VAR__19328[300];
+   cin.getline(VAR__819283, 250, '\n');
+   cin.getline(VAR__19328, 250, '\n');
+
+   if ( strlen(VAR__819283) > strlen(VAR__19328))
+   {
+      change(VAR__819283, VAR__19328, strlen(VAR__819283), strlen(VAR__19328));
+   }
+   else
+   {
+      change(VAR__19328, VAR__819283, strlen(VAR__19328), strlen(VAR__819283));
+   }
+}

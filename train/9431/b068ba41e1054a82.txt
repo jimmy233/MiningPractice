@@ -1,0 +1,70 @@
+struct student
+{
+   char           stu[50];
+   struct student *VAR__NEXT;
+};
+struct student *Create();
+void Insert(struct student *VAR__HEAD, struct student *newnode);
+void Print(struct student *VAR__HEAD);
+
+int main()
+{
+   struct student tmp;
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = Create();
+   gets(tmp.stu);
+
+   while ( strcmp(tmp.stu, "end") != 0 )
+   {
+      Insert(VAR__HEAD, &tmp);
+      gets(tmp.stu);
+   }
+
+   Print(VAR__HEAD);
+   return 0;
+}
+
+
+struct student *Create()
+{
+   struct student *VAR_233;
+
+   VAR_233 = (struct student *)malloc(sizeof( struct student ));
+   strcpy(VAR_233->stu, "0");
+   VAR_233->VAR__NEXT = NULL;
+   return VAR_233;
+}
+
+
+void Insert(struct student *VAR__HEAD, struct student *tmp)
+{
+   struct student *VAR_233;
+   struct student *newnode;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233->VAR__NEXT != NULL )
+   {
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   newnode            = (struct student *)malloc(sizeof( struct student ));
+   VAR_233->VAR__NEXT = newnode;
+   strcpy(newnode->stu, tmp->stu);
+   newnode->VAR__NEXT = NULL;
+}
+
+
+void Print(struct student *VAR__HEAD)
+{
+   if ( VAR__HEAD->VAR__NEXT != NULL )
+   {
+      Print(VAR__HEAD->VAR__NEXT);
+   }
+
+   if ( strcmp(VAR__HEAD->stu, "0") != 0 )
+   {
+      printf("%s\n", VAR__HEAD->stu);
+   }
+}

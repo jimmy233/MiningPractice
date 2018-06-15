@@ -1,0 +1,95 @@
+int main()
+{
+   void paixu(int *VAR_233, int VAR__8444594);
+
+   int tian[2010];
+   int qi[2010];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_1238123;
+   int win;
+   int equal;
+   for ( ; ; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 != 0 )
+      {
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &tian[VAR__53647]);
+         }
+
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &qi[VAR__53647]);
+         }
+
+         paixu(tian, VAR_1238123);
+         paixu(qi, VAR_1238123);
+         int win   = 0;
+         int equal = 0;
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            for ( int VAR__21230 = VAR_1238123 - 1; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( tian[VAR__53647] > qi[VAR__21230] )
+               {
+                  if (( tian[VAR__53647] != ( -1 )) && ( qi[VAR__21230] != ( -1 )))
+                  {
+                     win++;
+                     tian[VAR__53647] = -1;
+                     qi[VAR__21230]   = -1;
+                     break;
+                  }
+               }
+            }
+         }
+
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               if ( tian[VAR__53647] == qi[VAR__21230] )
+               {
+                  if (( tian[VAR__53647] != ( -1 )) && ( qi[VAR__21230] != ( -1 )))
+                  {
+                     equal++;
+                     tian[VAR__53647] = -1;
+                     qi[VAR__21230]   = -1;
+                     break;
+                  }
+               }
+            }
+         }
+
+         printf("%d\n", ( win - (( VAR_1238123 - win ) - equal )) * 200);
+      }
+      else
+      {
+         break;
+      }
+   }
+}
+
+
+void paixu(int *VAR_233, int VAR__8444594)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__8444594 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR_233[VAR__21230] > VAR_233[VAR__21230 + 1] )
+         {
+            VAR__temp               = VAR_233[VAR__21230];
+            VAR_233[VAR__21230]     = VAR_233[VAR__21230 + 1];
+            VAR_233[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+}

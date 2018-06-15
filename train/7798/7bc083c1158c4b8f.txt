@@ -1,0 +1,114 @@
+struct node
+{
+   int         VAR__NUM;
+   char        name[26];
+   struct node *VAR__NEXT;
+};
+int VAR_1238123 = 1;
+int VAR__1238129;
+struct zuozhe
+{
+   char name;
+   int  books[300];
+   int  VAR__NUM;
+}
+zuozhe[26];
+struct node *getlinked()
+{
+   struct node *VAR__HEAD;
+   struct node *newnode;
+   struct node *thisnode;
+
+   do
+   {
+      newnode = (struct node *)malloc(sizeof( struct node ));
+
+      if ( newnode == NULL )
+      {
+         printf("malloc failed");
+         exit(-1);
+      }
+
+      scanf("%d%s", &newnode->VAR__NUM, &newnode->name);
+      newnode->VAR__NEXT = NULL;
+
+      if ( VAR_1238123 == 1 )
+      {
+         thisnode  = newnode;
+         VAR__HEAD = newnode;
+      }
+      else
+      {
+         thisnode->VAR__NEXT = newnode;
+      }
+
+      if ( VAR_1238123 <= VAR__1238129 )
+      {
+         thisnode = newnode;
+         VAR_1238123++;
+      }
+   } while ( VAR_1238123 <= VAR__1238129 );
+   return VAR__HEAD;
+}
+
+
+void tongji(struct node *VAR_233, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(VAR_233->name); VAR__21230++ )
+      {
+         zuozhe[VAR_233->name[VAR__21230] - 'A'].books[zuozhe[VAR_233->name[VAR__21230] - 'A'].VAR__NUM] = VAR_233->VAR__NUM;
+         zuozhe[VAR_233->name[VAR__21230] - 'A'].VAR__NUM++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void bubble(struct zuozhe array[], int VAR_1238123)
+{
+   int           VAR__53647 = 0;
+   int           pass;
+   struct zuozhe VAR__TEMP;
+
+   for ( pass = 1; pass <= VAR_1238123; pass++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - pass ); VAR__53647++ )
+      {
+         if ( array[VAR__53647].VAR__NUM < array[VAR__53647 + 1].VAR__NUM )
+         {
+            VAR__TEMP             = array[VAR__53647];
+            array[VAR__53647]     = array[VAR__53647 + 1];
+            array[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   struct node *VAR_233;
+   int         VAR__53647;
+
+   scanf("%d", &VAR__1238129);
+   VAR_233 = getlinked();
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      zuozhe[VAR__53647].name     = 'A' + VAR__53647;
+      zuozhe[VAR__53647].VAR__NUM = 0;
+   }
+
+   tongji(VAR_233, VAR__1238129);
+   bubble(zuozhe, 26);
+   printf("%c\n%d\n", zuozhe[0].name, zuozhe[0].VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < zuozhe[0].VAR__NUM; VAR__53647++ )
+   {
+      printf("%d\n", zuozhe[0].books[VAR__53647]);
+   }
+}

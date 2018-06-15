@@ -1,0 +1,104 @@
+int com1(const void *e1, const void *e2)
+{
+   float *ANOTHER_POINTER;
+   float *YET_ANOTHER_POINTER;
+   int   VAR__7685 = 0;
+
+   ANOTHER_POINTER     = (float *)e1;
+   YET_ANOTHER_POINTER = (float *)e2;
+
+   if (( *ANOTHER_POINTER ) > ( *YET_ANOTHER_POINTER ))
+   {
+      VAR__7685 = 1;
+   }
+
+   if (( *ANOTHER_POINTER ) < ( *YET_ANOTHER_POINTER ))
+   {
+      VAR__7685 = -1;
+   }
+
+   return VAR__7685;
+}
+
+
+int com2(const void *e1, const void *e2)
+{
+   float *ANOTHER_POINTER;
+   float *YET_ANOTHER_POINTER;
+   int   VAR__7685 = 0;
+
+   ANOTHER_POINTER     = (float *)e1;
+   YET_ANOTHER_POINTER = (float *)e2;
+
+   if (( *ANOTHER_POINTER ) > ( *YET_ANOTHER_POINTER ))
+   {
+      VAR__7685 = -1;
+   }
+
+   if (( *ANOTHER_POINTER ) < ( *YET_ANOTHER_POINTER ))
+   {
+      VAR__7685 = 1;
+   }
+
+   return VAR__7685;
+}
+
+
+int main()
+{
+   int   VAR__53647;
+   int   VAR__21230   = 0;
+   int   VAR__8444594 = 0;
+   int   VAR_1238123;
+   float *VAR__819283;
+   float *VAR__19328;
+   char  VAR__4857423[10];
+   float VAR__12302;
+
+   scanf("%d", &VAR_1238123);
+   VAR__819283 = (float *)malloc(VAR_1238123 * ( sizeof( int )));
+   VAR__19328  = (float *)malloc(VAR_1238123 * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", VAR__4857423, &VAR__12302);
+
+      if ( strlen(VAR__4857423) == 4 )
+      {
+         VAR__819283[VAR__21230] = VAR__12302;
+         VAR__21230++;
+      }
+      else
+      {
+         VAR__19328[VAR__8444594] = VAR__12302;
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = VAR__21230; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 6;
+   }
+
+   for ( VAR__53647 = VAR__8444594; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = 0;
+   }
+
+   qsort(VAR__819283, VAR_1238123, sizeof( float ), com1);
+   qsort(VAR__19328, VAR_1238123, sizeof( float ), com2);
+   printf("%.2f", VAR__819283[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf(" %.2f", VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf(" %.2f", VAR__19328[VAR__53647]);
+   }
+
+   getchar();
+   getchar();
+   getchar();
+   return 0;
+}

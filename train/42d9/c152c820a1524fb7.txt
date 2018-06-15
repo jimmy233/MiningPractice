@@ -1,0 +1,62 @@
+int main()
+{
+   typedef struct _Point
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   } Point;
+   typedef struct _Distance
+   {
+      int   first;
+      int   second;
+      float dist;
+   } Distance;
+   Point point[10];
+   int   VAR_1238123;
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   int VAR__21230;
+   int total = ( VAR_1238123 * ( VAR_1238123 - 1 )) >> 1;
+   VAR_1238123--;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &point[VAR__53647].VAR__7685, &point[VAR__53647].VAR__3918907, &point[VAR__53647].VAR__9290);
+   }
+
+   Distance *pDistance   = (Distance *)malloc(total * ( sizeof( Distance )));
+   int      VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         pDistance[VAR__8444594].first  = VAR__53647;
+         pDistance[VAR__8444594].second = VAR__21230;
+         pDistance[VAR__8444594].dist   = sqrt((float)(((( point[VAR__53647].VAR__7685 - point[VAR__21230].VAR__7685 ) * ( point[VAR__53647].VAR__7685 - point[VAR__21230].VAR__7685 )) + (( point[VAR__53647].VAR__3918907 - point[VAR__21230].VAR__3918907 ) * ( point[VAR__53647].VAR__3918907 - point[VAR__21230].VAR__3918907 ))) + (( point[VAR__53647].VAR__9290 - point[VAR__21230].VAR__9290 ) * ( point[VAR__53647].VAR__9290 - point[VAR__21230].VAR__9290 ))));
+         VAR__8444594++;
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 < total; VAR__53647++ )
+   {
+      int tmp = total - VAR__53647;
+      for ( VAR__21230 = 0; VAR__21230 < tmp; VAR__21230++ )
+      {
+         if ( pDistance[VAR__21230].dist < pDistance[VAR__21230 + 1].dist )
+         {
+            Distance tmp = pDistance[VAR__21230];
+            pDistance[VAR__21230]     = pDistance[VAR__21230 + 1];
+            pDistance[VAR__21230 + 1] = tmp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", point[pDistance[VAR__53647].first].VAR__7685, point[pDistance[VAR__53647].first].VAR__3918907, point[pDistance[VAR__53647].first].VAR__9290, point[pDistance[VAR__53647].second].VAR__7685, point[pDistance[VAR__53647].second].VAR__3918907, point[pDistance[VAR__53647].second].VAR__9290, pDistance[VAR__53647].dist);
+   }
+
+   free(pDistance);
+   return 0;
+}

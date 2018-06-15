@@ -1,0 +1,74 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int dx;
+   int dy;
+   int dz;
+   int o = 0;
+
+   scanf("%d", &VAR_1238123);
+   int    VAR__7685[10];
+   int    VAR__3918907[10];
+   int    VAR__9290[10];
+   double ji[100];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   struct pp
+   {
+      int    xi[2];
+      int    yi[2];
+      int    zi[2];
+      double jl;
+   }
+   pp[100];
+   struct pp
+   {
+      int    xi[2];
+      int    yi[2];
+      int    zi[2];
+      double jl;
+   }
+   VAR__112390;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dx          = VAR__7685[VAR__21230] - VAR__7685[VAR__53647];
+         dy          = VAR__3918907[VAR__21230] - VAR__3918907[VAR__53647];
+         dz          = VAR__9290[VAR__21230] - VAR__9290[VAR__53647];
+         pp[o].xi[0] = VAR__7685[VAR__53647];
+         pp[o].xi[1] = VAR__7685[VAR__21230];
+         pp[o].yi[0] = VAR__3918907[VAR__53647];
+         pp[o].yi[1] = VAR__3918907[VAR__21230];
+         pp[o].zi[0] = VAR__9290[VAR__53647];
+         pp[o].zi[1] = VAR__9290[VAR__21230];
+         pp[o].jl    = sqrt((( dx * dx ) + ( dy * dy )) + ( dz * dz ));
+         o++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - 1; VAR__21230 >= ( VAR__53647 + 1 ); VAR__21230-- )
+      {
+         if ( pp[VAR__21230].jl > pp[VAR__21230 - 1].jl )
+         {
+            VAR__112390        = pp[VAR__21230 - 1];
+            pp[VAR__21230 - 1] = pp[VAR__21230];
+            pp[VAR__21230]     = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", pp[VAR__53647].xi[0], pp[VAR__53647].yi[0], pp[VAR__53647].zi[0], pp[VAR__53647].xi[1], pp[VAR__53647].yi[1], pp[VAR__53647].zi[1], pp[VAR__53647].jl);
+   }
+
+   return 0;
+}

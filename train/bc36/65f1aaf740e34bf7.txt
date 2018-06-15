@@ -1,0 +1,97 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__1238129 = 0;
+   int    VAR__127322  = 0;
+   int    VAR__8444594;
+   char   sex[10];
+   char   VAR_9494[10] = { "male" };
+   double VAR_2890;
+
+   struct
+   {
+      char   sex[10];
+      double VAR_2890;
+   }
+   qq[40];
+   struct
+   {
+      char   sex[10];
+      double VAR_2890;
+   }
+   male[40];
+   struct
+   {
+      char   sex[10];
+      double VAR_2890;
+   }
+   female[40];
+   struct
+   {
+      char   sex[10];
+      double VAR_2890;
+   }
+   VAR__112390;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", sex);
+      scanf("%lf", &VAR_2890);
+      strcpy(qq[VAR__53647].sex, sex);
+      qq[VAR__53647].VAR_2890 = VAR_2890;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(qq[VAR__53647].sex, VAR_9494))
+      {
+         female[VAR__127322] = qq[VAR__53647];
+         VAR__127322++;
+      }
+      else
+      {
+         male[VAR__1238129] = qq[VAR__53647];
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__1238129 - VAR__53647 ); VAR__8444594++ )
+      {
+         if ( male[VAR__8444594].VAR_2890 > male[VAR__8444594 + 1].VAR_2890 )
+         {
+            VAR__112390            = male[VAR__8444594];
+            male[VAR__8444594]     = male[VAR__8444594 + 1];
+            male[VAR__8444594 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__127322; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__127322 - VAR__53647 ); VAR__8444594++ )
+      {
+         if ( female[VAR__8444594].VAR_2890 > female[VAR__8444594 + 1].VAR_2890 )
+         {
+            VAR__112390              = female[VAR__8444594];
+            female[VAR__8444594]     = female[VAR__8444594 + 1];
+            female[VAR__8444594 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   printf("%.2lf", male[0].VAR_2890);
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf(" %.2lf", male[VAR__53647].VAR_2890);
+   }
+
+   for ( VAR__53647 = VAR__127322 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf(" %.2lf", female[VAR__53647].VAR_2890);
+   }
+
+   return 0;
+}

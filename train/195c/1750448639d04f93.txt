@@ -1,0 +1,36 @@
+int reserve(int *self, int start, int end)
+{
+   int VAR__TEMP;
+
+   if (( end - start ) > 0 )
+   {
+      VAR__TEMP   = self[start];
+      self[start] = self[end];
+      self[end]   = VAR__TEMP;
+      reserve(self, start + 1, end - 1);
+   }
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__NUM[50];
+
+   scanf("%d%d", &VAR_1238123, &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__NUM[VAR__53647]);
+   }
+
+   reserve(VAR__NUM, 0, VAR_1238123 - 1);
+   reserve(VAR__NUM, 0, VAR__1238129 - 1);
+   reserve(VAR__NUM, VAR__1238129, VAR_1238123 - 1);
+   printf("%d", VAR__NUM[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf(" %d", VAR__NUM[VAR__53647]);
+   }
+}

@@ -1,0 +1,54 @@
+int main()
+{
+   int dayofpmon[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int y1;
+   int m1;
+   int d1;
+   int y2;
+   int m2;
+   int d2;
+
+   ((((( cin >> y1 ) >> m1 ) >> d1 ) >> y2 ) >> m2 ) >> d2;
+   int day = 0;
+   int VAR__53647;
+   for ( VAR__53647 = y1; VAR__53647 < y2; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         day = day + 366;
+      }
+      else
+      {
+         day = day + 365;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < m1; VAR__53647++ )
+   {
+      if (( VAR__53647 == 2 ) && (((( y1 % 4 ) == 0 ) && (( y1 % 100 ) != 0 )) || (( y1 % 400 ) == 0 )))
+      {
+         day = day - 29;
+      }
+      else
+      {
+         day = day - dayofpmon[VAR__53647];
+      }
+   }
+
+   day = day - d1;
+   for ( VAR__53647 = 1; VAR__53647 < m2; VAR__53647++ )
+   {
+      if (( VAR__53647 == 2 ) && (((( y2 % 4 ) == 0 ) && (( y2 % 100 ) != 0 )) || (( y2 % 400 ) == 0 )))
+      {
+         day = day + 29;
+      }
+      else
+      {
+         day = day + dayofpmon[VAR__53647];
+      }
+   }
+
+   day = day + d2;
+   cout << day;
+   return 0;
+}

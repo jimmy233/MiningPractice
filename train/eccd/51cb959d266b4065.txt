@@ -1,0 +1,75 @@
+int VAR__819283[100][100];
+int xx[10];
+int yy[10];
+int hang(int no, int VAR_1238123)
+{
+   int ans      = 0;
+   int VAR__MAX = VAR__819283[no][0];
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[no][VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[no][VAR__53647];
+         ans      = VAR__53647;
+      }
+   }
+
+   return ans;
+}
+
+
+int lie(int no, int VAR_1238123)
+{
+   int ans      = 0;
+   int VAR__MAX = VAR__819283[0][no];
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647][no] < VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647][no];
+         ans      = VAR__53647;
+      }
+   }
+
+   return ans;
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+
+   scanf("%d,%d", &VAR_1238123, &VAR__1238129);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      xx[VAR__53647] = hang(VAR__53647, VAR__1238129);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      yy[VAR__53647] = lie(VAR__53647, VAR_1238123);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( yy[xx[VAR__53647]] == VAR__53647 )
+      {
+         printf("%d+%d\n", VAR__53647, xx[VAR__53647]);
+         return 0;
+      }
+   }
+
+   printf("No\n");
+   return 0;
+}

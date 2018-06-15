@@ -1,0 +1,95 @@
+int nu;
+int f1(int VAR__1238129)
+{
+   int VAR__53647;
+   int VAR__12302 = 0;
+
+   for ( VAR__53647 = 2; VAR__53647 <= sqrt(VAR__1238129); VAR__53647++ )
+   {
+      if (( VAR__1238129 % VAR__53647 ) == 0 )
+      {
+         VAR__12302 = 1;
+         break;
+      }
+   }
+
+
+   if ( VAR__12302 == 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+int f2(int VAR__1238129)
+{
+   int mm         = 1;
+   int VAR__12302 = 0;
+   int te;
+
+   while (( VAR__1238129 / mm ) >= 10 )
+   {
+      mm = mm * 10;
+   }
+
+   while ( mm >= 10 )
+   {
+      if (( VAR__1238129 / mm ) != ( VAR__1238129 % 10 ))
+      {
+         VAR__12302 = 1;
+         break;
+      }
+
+      VAR__1238129  = VAR__1238129 - (( VAR__1238129 / mm ) * mm );
+      VAR__1238129 /= 10;
+      mm           /= 100;
+   }
+
+   if ( VAR__12302 == 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+void main()
+{
+   int VAR__MIN;
+   int VAR__MAX;
+   int VAR__53647;
+
+   scanf("%d%d", &VAR__MIN, &VAR__MAX);
+   nu = 0;
+   for ( VAR__53647 = VAR__MIN; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      if (( f1(VAR__53647) == 0 ) && ( f2(VAR__53647) == 0 ))
+      {
+         printf("%d", VAR__53647);
+         nu = 1;
+         break;
+      }
+   }
+
+
+   for ( VAR__53647++; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      if (( f1(VAR__53647) == 0 ) && ( f2(VAR__53647) == 0 ))
+      {
+         printf(",%d", VAR__53647);
+      }
+   }
+
+
+   if ( nu == 0 )
+   {
+      printf("no");
+   }
+}

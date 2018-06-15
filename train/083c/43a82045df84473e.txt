@@ -1,0 +1,65 @@
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  VAR__21230;
+   long mi;
+   long middle = 0;
+   char A_STRING[33];
+
+   scanf("%d%s%d", &VAR__819283, A_STRING, &VAR__19328);
+   LEN_OF_STH = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; ++VAR__53647 )
+   {
+      if (( A_STRING[VAR__53647] >= 97 ) && ( A_STRING[VAR__53647] <= 122 ))
+      {
+         A_STRING[VAR__53647] -= 32;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; ++VAR__53647 )
+   {
+      if (( A_STRING[VAR__53647] >= 65 ) && ( A_STRING[VAR__53647] <= 90 ))
+      {
+         A_STRING[VAR__53647] -= 55;
+      }
+      else
+      {
+         A_STRING[VAR__53647] -= 48;
+      }
+
+      mi = 1;
+      for ( VAR__21230 = 1; VAR__21230 < ( LEN_OF_STH - VAR__53647 ); ++VAR__21230 )
+      {
+         mi *= VAR__819283;
+      }
+
+      middle = middle + ( A_STRING[VAR__53647] * mi );
+   }
+
+   VAR__53647 = 0;
+
+   while ( middle >= VAR__19328 )
+   {
+      A_STRING[VAR__53647] = middle % VAR__19328;
+      middle = ( middle - A_STRING[VAR__53647] ) / VAR__19328;
+      VAR__53647++;
+   }
+
+   A_STRING[VAR__53647] = middle;
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; ++VAR__21230 )
+   {
+      if ( A_STRING[VAR__53647 - VAR__21230] > 9 )
+      {
+         A_STRING[VAR__53647 - VAR__21230] = ( A_STRING[VAR__53647 - VAR__21230] - 9 ) + 64;
+         printf("%c", A_STRING[VAR__53647 - VAR__21230]);
+      }
+      else
+      {
+         printf("%d", A_STRING[VAR__53647 - VAR__21230]);
+      }
+   }
+}

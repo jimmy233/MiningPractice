@@ -1,0 +1,56 @@
+int height[26];
+int VAR__MAX[26];
+void cha(int VAR_1238123)
+{
+   int premax;
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 1; VAR__53647 <= 25; VAR__53647++ )
+   {
+      VAR__MAX[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__MAX[VAR__53647] = 1;
+      for ( VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( height[VAR__53647] <= height[VAR__21230] )
+         {
+            premax = VAR__MAX[VAR__21230] + 1;
+
+            if ( premax > VAR__MAX[VAR__53647] )
+            {
+               VAR__MAX[VAR__53647] = premax;
+            }
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__NUM;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &height[VAR__53647]);
+   }
+
+   cha(VAR_1238123);
+   VAR__NUM = -1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__NUM < VAR__MAX[VAR__53647] )
+      {
+         VAR__NUM = VAR__MAX[VAR__53647];
+      }
+   }
+
+   printf("%d", VAR__NUM);
+}

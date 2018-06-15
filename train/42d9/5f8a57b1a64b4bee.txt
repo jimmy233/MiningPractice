@@ -1,0 +1,64 @@
+struct distance
+{
+   double length;
+   int    start;
+   int    end;
+};
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int             point[10][4];
+   int             VAR__53647;
+   int             VAR__21230;
+   struct distance dist[45];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &point[VAR__53647][1], &point[VAR__53647][2], &point[VAR__53647][3]);
+   }
+
+   int VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dist[VAR__8444594].length = sqrt(((( point[VAR__53647][1] - point[VAR__21230][1] ) * ( point[VAR__53647][1] - point[VAR__21230][1] )) + (( point[VAR__53647][2] - point[VAR__21230][2] ) * ( point[VAR__53647][2] - point[VAR__21230][2] ))) + (( point[VAR__53647][3] - point[VAR__21230][3] ) * ( point[VAR__53647][3] - point[VAR__21230][3] )));
+         dist[VAR__8444594].start  = VAR__53647;
+         dist[VAR__8444594].end    = VAR__21230;
+         VAR__8444594++;
+      }
+   }
+
+
+   double VAR__TEMP;
+   int    temp1;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__8444594 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dist[VAR__21230].length < dist[VAR__21230 + 1].length )
+         {
+            VAR__TEMP = dist[VAR__21230].length;
+            dist[VAR__21230].length     = dist[VAR__21230 + 1].length;
+            dist[VAR__21230 + 1].length = VAR__TEMP;
+            temp1 = dist[VAR__21230].start;
+            dist[VAR__21230].start     = dist[VAR__21230 + 1].start;
+            dist[VAR__21230 + 1].start = temp1;
+            temp1 = dist[VAR__21230].end;
+            dist[VAR__21230].end     = dist[VAR__21230 + 1].end;
+            dist[VAR__21230 + 1].end = temp1;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", point[dist[VAR__53647].start][1], point[dist[VAR__53647].start][2], point[dist[VAR__53647].start][3], point[dist[VAR__53647].end][1], point[dist[VAR__53647].end][2], point[dist[VAR__53647].end][3], dist[VAR__53647].length);
+   }
+
+   getchar();
+   getchar();
+}

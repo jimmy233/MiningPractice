@@ -1,0 +1,67 @@
+int main()
+{
+   char VAR_9494[100];
+   int  VAR__819283[100] = { 0 };
+   int  VAR__53647;
+   int  LEN_OF_STH;
+   int  VAR__COUNT = 0;
+   int  VAR__NUM   = 1;
+
+   gets(VAR_9494);
+   LEN_OF_STH = strlen(VAR_9494);
+
+   if ( LEN_OF_STH == 1 )
+   {
+      printf("0\n%d", VAR_9494[0] - 48);
+   }
+   else
+   if (( LEN_OF_STH == 2 ) && (((( VAR_9494[0] - 48 ) * 10 ) + ( VAR_9494[1] - 48 )) < 13 ))
+   {
+      printf("0\n%d", ((( VAR_9494[0] - 48 ) * 10 ) + VAR_9494[1] ) - 48);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] - 48;
+      }
+
+      if ((( VAR_9494[0] * 10 ) + VAR_9494[1] ) >= 13 )
+      {
+         for ( VAR__53647 = 0; ( VAR__53647 < LEN_OF_STH ) && ( VAR__COUNT < ( LEN_OF_STH - 1 )); VAR__53647++ )
+         {
+            VAR__819283[VAR__COUNT]  = (( VAR_9494[VAR__53647] * 10 ) + VAR_9494[VAR__53647 + 1] ) / 13;
+            VAR_9494[VAR__53647 + 1] = (( VAR_9494[VAR__53647] * 10 ) + VAR_9494[VAR__53647 + 1] ) % 13;
+            VAR__COUNT++;
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+         {
+            printf("%d", VAR__819283[VAR__53647]);
+         }
+
+         printf("\n%d", VAR_9494[VAR__53647 + 1]);
+      }
+      else
+      {
+         VAR__819283[0] = ((( VAR_9494[0] * 100 ) + ( VAR_9494[1] * 10 )) + VAR_9494[2] ) / 13;
+         VAR_9494[2]    = ((( VAR_9494[0] * 100 ) + ( VAR_9494[1] * 10 )) + VAR_9494[2] ) % 13;
+         for ( VAR__53647 = 2; ( VAR__53647 < LEN_OF_STH ) && ( VAR__NUM < ( LEN_OF_STH - 2 )); VAR__53647++ )
+         {
+            VAR__819283[VAR__NUM]    = (( VAR_9494[VAR__53647] * 10 ) + VAR_9494[VAR__53647 + 1] ) / 13;
+            VAR_9494[VAR__53647 + 1] = (( VAR_9494[VAR__53647] * 10 ) + VAR_9494[VAR__53647 + 1] ) % 13;
+            VAR__NUM++;
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+         {
+            printf("%d", VAR__819283[VAR__53647]);
+         }
+
+         printf("\n%d", VAR_9494[VAR__53647 + 1]);
+      }
+   }
+
+
+   return 0;
+}

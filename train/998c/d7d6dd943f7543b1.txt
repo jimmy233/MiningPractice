@@ -1,0 +1,84 @@
+int change(char *as, int *VAR__819283)
+{
+   int LEN_OF_STH;
+   int VAR__53647;
+
+   LEN_OF_STH = (int)strlen(as);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__819283[( LEN_OF_STH - VAR__53647 ) - 1] = as[VAR__53647] - '0';
+   }
+
+   return LEN_OF_STH;
+}
+
+
+void bigprint(int *VAR__819283, int LEN_OF_STH)
+{
+   int VAR__8444594 = LEN_OF_STH - 1;
+   int VAR__53647;
+
+   while (( VAR__819283[VAR__8444594] == 0 ) && ( VAR__8444594 > 0 ))
+   {
+      VAR__8444594--;
+   }
+
+   for ( VAR__53647 = VAR__8444594; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+}
+
+
+int add(int *VAR__819283, int lena, int *VAR__19328, int lenb, int *VAR__4857423)
+{
+   int VAR__53647;
+   int LEN_OF_STH = ( lena > lenb ) ? ( lena ) : ( lenb );
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = 0;
+
+      if ( VAR__53647 < lena )
+      {
+         VAR__4857423[VAR__53647] += VAR__819283[VAR__53647];
+      }
+
+      if ( VAR__53647 < lenb )
+      {
+         VAR__4857423[VAR__53647] += VAR__19328[VAR__53647];
+      }
+   }
+
+   VAR__4857423[LEN_OF_STH] = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] >= 10 )
+      {
+         VAR__4857423[VAR__53647 + 1] += VAR__4857423[VAR__53647] / 10;
+         VAR__4857423[VAR__53647]     %= 10;
+      }
+   }
+
+   return ( VAR__4857423[LEN_OF_STH] ) ? ( LEN_OF_STH + 1 ) : ( LEN_OF_STH );
+}
+
+
+void main()
+{
+   int  VAR__819283[250];
+   int  VAR__19328[250];
+   int  VAR__4857423[251];
+   int  lena;
+   int  lenb;
+   int  lenc;
+   char as[250];
+   char bs[250];
+
+   scanf("%s", as);
+   scanf("%s", bs);
+   lena = change(as, VAR__819283);
+   lenb = change(bs, VAR__19328);
+   lenc = add(VAR__819283, lena, VAR__19328, lenb, VAR__4857423);
+   bigprint(VAR__4857423, lenc);
+}

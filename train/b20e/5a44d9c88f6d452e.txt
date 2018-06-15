@@ -1,0 +1,81 @@
+int main()
+{
+   int king_horse[1010];
+   int tian_horse[1010];
+   int king_head;
+   int tian_head;
+   int king_tail;
+   int tian_tail;
+   int VAR_1238123 = 0;
+   int VAR__53647  = 0;
+   int VAR__SUM    = 0;
+   int VAR_FLAG    = 0;
+
+   while (( cin >> VAR_1238123 ) && ( VAR_1238123 != 0 ))
+   {
+      VAR__SUM = 0;
+      VAR_FLAG = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tian_horse[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> king_horse[VAR__53647];
+      }
+
+      sort(tian_horse, tian_horse + VAR_1238123);
+      sort(king_horse, king_horse + VAR_1238123);
+      king_head = ( tian_head = 0 );
+      king_tail = ( tian_tail = VAR_1238123 - 1 );
+
+      while (( king_head <= king_tail ) && ( tian_head <= tian_tail ))
+      {
+         if ( tian_horse[tian_tail] > king_horse[king_tail] )
+         {
+            VAR__SUM = VAR__SUM + 200;
+            tian_tail--;
+            king_tail--;
+         }
+         else
+         {
+            while (( king_head <= king_tail ) && ( tian_head <= tian_tail ))
+            {
+               if ( tian_horse[tian_head] > king_horse[king_head] )
+               {
+                  VAR__SUM = VAR__SUM + 200;
+                  tian_head++;
+                  king_head++;
+               }
+               else
+               {
+                  if ( tian_horse[tian_head] < king_horse[king_tail] )
+                  {
+                     VAR__SUM = VAR__SUM - 200;
+                  }
+
+                  tian_head++;
+                  king_tail--;
+                  break;
+               }
+            }
+         }
+
+         if ( tian_horse[tian_head] > king_horse[king_tail] )
+         {
+            VAR_FLAG = 1;
+            break;
+         }
+      }
+
+      if ( VAR_FLAG == 1 )
+      {
+         VAR__SUM = VAR__SUM + ((( tian_tail - tian_head ) + 1 ) * 200 );
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

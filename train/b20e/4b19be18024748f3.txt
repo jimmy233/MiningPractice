@@ -1,0 +1,93 @@
+void paixu(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__19328;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__19328 = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__19328;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   for ( ; ; )
+   {
+      int VAR_1238123;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int *tian = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+      int *qi   = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", tian + VAR__53647);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", qi + VAR__53647);
+      }
+
+      paixu(tian, VAR_1238123);
+      paixu(qi, VAR_1238123);
+      int VAR__temp = 0;
+      int VAR_666   = 0;
+      int qmax      = VAR_1238123 - 1;
+      int tmax      = VAR_1238123 - 1;
+      int win       = 0;
+      for ( ; VAR_1238123 >= 1; VAR_1238123-- )
+      {
+         if (( *( tian + VAR__temp )) > ( *( qi + VAR_666 )))
+         {
+            win++;
+            VAR__temp++;
+            VAR_666++;
+         }
+         else
+         if (( *( tian + VAR__temp )) == ( *( qi + VAR_666 )))
+         {
+            if (( *( tian + tmax )) > ( *( qi + qmax )))
+            {
+               win++;
+               tmax--;
+               qmax--;
+            }
+            else
+            if (( *( tian + tmax )) <= ( *( qi + qmax )))
+            {
+               if (( *( tian + VAR__temp )) < ( *( qi + qmax )))
+               {
+                  win--;
+               }
+
+               qmax--;
+               VAR__temp++;
+            }
+         }
+         else
+         if (( *( tian + VAR__temp )) < ( *( qi + VAR_666 )))
+         {
+            win--;
+            VAR__temp++;
+            qmax--;
+         }
+      }
+
+      printf("%d\n", win * 200);
+   }
+}

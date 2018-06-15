@@ -1,0 +1,87 @@
+int VAR__7685[1000][1000];
+int juzheng(int VAR__3918907)
+{
+   if ( VAR__3918907 == 1 )
+   {
+      return 0;
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR__3918907; VAR__53647++ )
+   {
+      int VAR__MIN = 100000;
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR__3918907; VAR__21230++ )
+      {
+         if ( VAR__7685[VAR__53647][VAR__21230] < VAR__MIN )
+         {
+            VAR__MIN = VAR__7685[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR__3918907; VAR__21230++ )
+      {
+         VAR__7685[VAR__53647][VAR__21230] = VAR__7685[VAR__53647][VAR__21230] - VAR__MIN;
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR__3918907; VAR__53647++ )
+   {
+      int VAR__MIN = 100000;
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR__3918907; VAR__21230++ )
+      {
+         if ( VAR__7685[VAR__21230][VAR__53647] < VAR__MIN )
+         {
+            VAR__MIN = VAR__7685[VAR__21230][VAR__53647];
+         }
+      }
+
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR__3918907; VAR__21230++ )
+      {
+         VAR__7685[VAR__21230][VAR__53647] = VAR__7685[VAR__21230][VAR__53647] - VAR__MIN;
+      }
+   }
+
+   int min1 = VAR__7685[2][2];
+   for ( int VAR__53647 = 2; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      VAR__7685[1][VAR__53647] = VAR__7685[1][VAR__53647 + 1];
+   }
+
+   for ( int VAR__53647 = 2; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      VAR__7685[VAR__53647][1] = VAR__7685[VAR__53647 + 1][1];
+   }
+
+   for ( int VAR__53647 = 3; VAR__53647 <= VAR__3918907; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 3; VAR__21230 <= VAR__3918907; VAR__21230++ )
+      {
+         VAR__7685[VAR__53647 - 1][VAR__21230 - 1] = VAR__7685[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   return min1 + juzheng(VAR__3918907 - 1);
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+         {
+            cin >> VAR__7685[VAR__21230][VAR__8444594];
+         }
+      }
+
+
+      ( cout << juzheng(VAR_1238123)) << endl;
+   }
+
+   return 0;
+}

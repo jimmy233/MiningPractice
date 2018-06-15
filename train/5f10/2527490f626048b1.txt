@@ -1,0 +1,104 @@
+int main()
+{
+   int  VAR_1238123;
+   char VAR_9494[1000];
+   char A_STRING[500][500];
+   char result[500][500];
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", VAR_9494);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int LEN_OF_STH = ( strlen(VAR_9494) - VAR_1238123 ) + 1;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         A_STRING[VAR__53647][VAR__21230] = VAR_9494[VAR__53647 + VAR__21230];
+      }
+
+      A_STRING[VAR__53647][VAR__21230] = '\0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( LEN_OF_STH - 1 ); VAR__21230++ )
+      {
+         if ( strcmp(A_STRING[VAR__21230], A_STRING[VAR__21230 + 1]) > 0 )
+         {
+            char VAR__TEMP[1000];
+            strcpy(VAR__TEMP, A_STRING[VAR__21230]);
+            strcpy(A_STRING[VAR__21230], A_STRING[VAR__21230 + 1]);
+            strcpy(A_STRING[VAR__21230 + 1], VAR__TEMP);
+         }
+      }
+   }
+
+   int VAR__MAX   = 1;
+   int VAR__COUNT = 1;
+   for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( strcmp(A_STRING[VAR__53647], A_STRING[VAR__53647 - 1]) == 0 )
+      {
+         VAR__COUNT++;
+
+         if ( VAR__COUNT > VAR__MAX )
+         {
+            VAR__MAX = VAR__COUNT;
+         }
+      }
+      else
+      {
+         VAR__COUNT = 1;
+      }
+   }
+
+   if ( VAR__MAX <= 1 )
+   {
+      printf("NO\n");
+      return 0;
+   }
+
+   printf("%d\n", VAR__MAX);
+   int VAR__NUM = 0;
+   VAR__COUNT = 1;
+   for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( strcmp(A_STRING[VAR__53647], A_STRING[VAR__53647 - 1]) == 0 )
+      {
+         VAR__COUNT++;
+
+         if ( VAR__COUNT == VAR__MAX )
+         {
+            strcpy(result[VAR__NUM], A_STRING[VAR__53647]);
+            VAR__NUM++;
+         }
+      }
+      else
+      {
+         VAR__COUNT = 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__NUM - 1 ); VAR__21230++ )
+      {
+         if ( strstr(VAR_9494, result[VAR__21230]) > strstr(VAR_9494, result[VAR__21230 + 1]))
+         {
+            char VAR__TEMP[1000];
+            strcpy(VAR__TEMP, result[VAR__21230]);
+            strcpy(result[VAR__21230], result[VAR__21230 + 1]);
+            strcpy(result[VAR__21230 + 1], VAR__TEMP);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      printf("%s\n", result[VAR__53647]);
+   }
+
+   return 0;
+}

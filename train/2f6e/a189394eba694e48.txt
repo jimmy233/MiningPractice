@@ -1,0 +1,72 @@
+struct dui
+{
+   int nannv;
+   int weizhi;
+}
+VAR__819283[100];
+void shuchu(struct dui VAR__819283[100], int VAR_1238123)
+{
+   int VAR__53647 = 1;
+   int VAR__21230;
+   int VAR_2890 = 1;
+
+   do
+   {
+      if ( VAR__819283[VAR__53647].nannv == 0 )
+      {
+         printf("%d %d\n", VAR__819283[VAR__53647 - 1].weizhi - 1, VAR__819283[VAR__53647].weizhi - 1);
+
+         if ( VAR__53647 < VAR_1238123 )
+         {
+            for ( VAR__21230 = VAR__53647; VAR__21230 <= VAR_1238123; VAR__21230++ )
+            {
+               VAR__819283[VAR__21230 - 1] = VAR__819283[VAR__21230 + 1];
+               VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 2];
+               VAR__21230++;
+            }
+
+            VAR_1238123 = VAR_1238123 - 2;
+         }
+         else
+         {
+            VAR_1238123 = 0;
+         }
+
+         VAR__53647 = 1;
+      }
+      else
+      {
+         VAR__53647++;
+      }
+   } while ( VAR_1238123 != 0 );
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   char VAR_9494[100];
+   char nan;
+
+   scanf("%s", VAR_9494);
+   VAR_1238123 = strlen(VAR_9494);
+   nan         = VAR_9494[0];
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647 - 1] == nan )
+      {
+         VAR__819283[VAR__53647].nannv  = 1;
+         VAR__819283[VAR__53647].weizhi = VAR__53647;
+      }
+      else
+      {
+         VAR__819283[VAR__53647].nannv  = 0;
+         VAR__819283[VAR__53647].weizhi = VAR__53647;
+      }
+   }
+
+   shuchu(VAR__819283, VAR_1238123);
+}

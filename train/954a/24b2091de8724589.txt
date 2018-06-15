@@ -1,0 +1,78 @@
+struct st
+{
+   char nam[100];
+   int  scq;
+   int  scb;
+   char gb;
+   char xb;
+   int  lw;
+};
+void main()
+{
+   int       VAR_1238123;
+   int       VAR__53647;
+   int       VAR__819283[1000] = { 0 };
+   int       VAR__19328[1000];
+   int       VAR__SUM = 0;
+   int       VAR__21230;
+   int       VAR__temp;
+   struct st VAR_9494[1000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      getchar();
+      scanf("%s%d%d %c %c%d", VAR_9494[VAR__53647].nam, &VAR_9494[VAR__53647].scq, &VAR_9494[VAR__53647].scb, &VAR_9494[VAR__53647].gb, &VAR_9494[VAR__53647].xb, &VAR_9494[VAR__53647].lw);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = VAR__53647;
+
+      if (( VAR_9494[VAR__53647].scq > 80 ) && ( VAR_9494[VAR__53647].lw >= 1 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 8000;
+      }
+
+      if (( VAR_9494[VAR__53647].scq > 85 ) && ( VAR_9494[VAR__53647].scb > 80 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 4000;
+      }
+
+      if ( VAR_9494[VAR__53647].scq > 90 )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 2000;
+      }
+
+      if (( VAR_9494[VAR__53647].scq > 85 ) && ( VAR_9494[VAR__53647].xb == 'Y' ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 1000;
+      }
+
+      if (( VAR_9494[VAR__53647].scb > 80 ) && ( VAR_9494[VAR__53647].gb == 'Y' ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 850;
+      }
+
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__temp = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__temp;
+            VAR__temp = VAR__19328[VAR__21230 + 1];
+            VAR__19328[VAR__21230 + 1] = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__temp;
+         }
+      }
+   }
+
+   printf("%s\n", VAR_9494[VAR__19328[0]].nam);
+   printf("%d\n%d\n", VAR__819283[0], VAR__SUM);
+}

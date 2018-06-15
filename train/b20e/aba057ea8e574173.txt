@@ -1,0 +1,89 @@
+int com(const void *ele1, const void *ele2)
+{
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (int *)ele1;
+   YET_ANOTHER_POINTER = (int *)ele2;
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main(int argc, char *argv[])
+{
+   int VAR__819283[1000];
+   int VAR__19328[1000];
+   int VAR__NUM;
+   int win = 0;
+   int shu = 0;
+   int VAR__53647;
+
+   while ( 1 )
+   {
+      cin >> VAR__NUM;
+
+      if ( VAR__NUM == 0 )
+      {
+         break;
+      }
+
+      win = 0;
+      int tt = VAR__NUM - 1;
+      int tq = VAR__NUM - 1;
+      int ht = 0;
+      int hq = 0;
+      shu = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR__NUM, sizeof( int ), com);
+      qsort(VAR__19328, VAR__NUM, sizeof( int ), com);
+
+      while ( ht <= tt )
+      {
+         if ( VAR__19328[tq] > VAR__819283[tt] )
+         {
+            hq++;
+            tt--;
+            shu++;
+         }
+         else
+         if ( VAR__19328[tq] < VAR__819283[tt] )
+         {
+            win++;
+            tt--;
+            tq--;
+         }
+         else
+         {
+            if ( VAR__819283[ht] > VAR__19328[hq] )
+            {
+               win++;
+               ht++;
+               hq++;
+            }
+            else
+            {
+               if ( VAR__819283[tt] < VAR__19328[hq] )
+               {
+                  shu++;
+               }
+
+               hq++;
+               tt--;
+            }
+         }
+      }
+
+      ( cout << ( 200 * ( win - shu ))) << endl;
+   }
+
+   return EXIT_SUCCESS;
+}

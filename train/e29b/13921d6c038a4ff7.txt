@@ -1,0 +1,79 @@
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__819283[302] = { 0 };
+   int   VAR_129012[301]  = { 0 };
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__COUNT = 0;
+   int   tag        = 0;
+   int   VAR__TEMP;
+   float aver;
+   float VAR__MAX = 0;
+   float VAR__SUM = 0;
+   float VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += VAR__819283[VAR__53647];
+   }
+
+   aver = VAR__SUM / VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( fabs(VAR__819283[VAR__53647] - aver) > VAR__MAX )
+      {
+         VAR__MAX = fabs(VAR__819283[VAR__53647] - aver);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__temp = fabs(VAR__819283[VAR__53647] - aver);
+
+      if ( VAR__temp == VAR__MAX )
+      {
+         VAR_129012[VAR__COUNT] = VAR__819283[VAR__53647];
+         VAR__COUNT++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      tag = VAR_129012[VAR__53647];
+      for ( VAR__21230 = VAR__53647; VAR__21230 < VAR__COUNT; VAR__21230++ )
+      {
+         if ( VAR_129012[VAR__21230] < tag )
+         {
+            tag = VAR_129012[VAR__21230];
+         }
+      }
+
+      if ( tag != VAR_129012[VAR__21230] )
+      {
+         VAR__TEMP = VAR_129012[VAR__53647];
+         VAR_129012[VAR__53647] = VAR_129012[VAR__21230];
+         VAR_129012[VAR__21230] = VAR__TEMP;
+      }
+   }
+
+   if ( VAR__COUNT == 1 )
+   {
+      printf("%d", VAR_129012[1]);
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < VAR__COUNT; VAR__53647++ )
+      {
+         printf("%d,", VAR_129012[VAR__53647]);
+      }
+
+      printf("%d\n", VAR_129012[VAR__53647]);
+   }
+}

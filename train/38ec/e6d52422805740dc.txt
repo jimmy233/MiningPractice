@@ -1,0 +1,92 @@
+int judge(int VAR_1238123)
+{
+   if (((( VAR_1238123 % 4 ) == 0 ) && (( VAR_1238123 % 100 ) != 0 )) || (( VAR_1238123 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int add(int VAR_9Q8Q90[15], int year, int mon, int day)
+{
+   int VAR__53647;
+   int VAR_9494 = 0;
+
+   if ( judge(year))
+   {
+      VAR_9Q8Q90[2]++;
+      for ( VAR__53647 = 1; VAR__53647 <= ( mon - 1 ); VAR__53647++ )
+      {
+         VAR_9494 += VAR_9Q8Q90[VAR__53647];
+      }
+
+      VAR_9494 += day;
+      VAR_9Q8Q90[2]--;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( mon - 1 ); VAR__53647++ )
+      {
+         VAR_9494 += VAR_9Q8Q90[VAR__53647];
+      }
+
+      VAR_9494 += day;
+   }
+
+   return VAR_9494;
+}
+
+
+int main()
+{
+   int u = 0;
+   int year;
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+   int VAR__12302;
+   int VAR__112390;
+   int VAR__127322;
+   int VAR_9Q8Q90[15] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d %d %d", &VAR__819283, &VAR__19328, &VAR__4857423);
+   scanf("%d %d %d", &VAR__12302, &VAR__112390, &VAR__127322);
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR__819283 == VAR__12302 )
+   {
+      u += add(VAR_9Q8Q90, VAR__819283, VAR__112390, VAR__127322) - add(VAR_9Q8Q90, VAR__819283, VAR__19328, VAR__4857423);
+   }
+   else
+   {
+      if ( judge(VAR__819283))
+      {
+         u += 366 - add(VAR_9Q8Q90, VAR__819283, VAR__19328, VAR__4857423);
+      }
+      else
+      {
+         u += 365 - add(VAR_9Q8Q90, VAR__819283, VAR__19328, VAR__4857423);
+      }
+
+      for ( VAR__53647 = VAR__819283 + 1; VAR__53647 <= ( VAR__12302 - 1 ); VAR__53647++ )
+      {
+         if ( judge(VAR__53647))
+         {
+            u += 366;
+         }
+         else
+         {
+            u += 365;
+         }
+      }
+
+      u += add(VAR_9Q8Q90, VAR__12302, VAR__112390, VAR__127322);
+   }
+
+   printf("%d", u);
+}

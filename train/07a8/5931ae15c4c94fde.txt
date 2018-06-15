@@ -1,0 +1,196 @@
+struct data;
+typedef struct data *pdata;
+struct data
+{
+   int   VAR__7685;
+   pdata VAR__NEXT;
+};
+pdata create()
+{
+   pdata VAR_233;
+
+   VAR_233            = (pdata)malloc(sizeof( struct data ));
+   VAR_233->VAR__NEXT = NULL;
+   return VAR_233;
+}
+
+
+void sort(pdata VAR__HEAD, int VAR_1238123)
+{
+   pdata VAR_233  = NULL;
+   pdata VAR_666  = NULL;
+   pdata VAR_9494 = NULL;
+   int   VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_9494 = (pdata)malloc(sizeof( struct data ));
+      scanf("%d", VAR_9494->VAR__7685);
+      VAR_666 = VAR__HEAD;
+      VAR_233 = VAR__HEAD->VAR__NEXT;
+
+      while ( VAR_233 )
+      {
+         if ( VAR_233->VAR__7685 >= VAR_9494->VAR__7685 )
+         {
+            break;
+         }
+
+         VAR_666 = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      VAR_666->VAR__NEXT  = VAR_9494;
+      VAR_9494->VAR__NEXT = VAR_233;
+   }
+}
+
+
+void outputdata(pdata VAR_233)
+{
+   VAR_233 = VAR_233->VAR__NEXT;
+
+   while ( VAR_233->VAR__NEXT )
+   {
+      printf("%d ", VAR_233->VAR__7685);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d", VAR_233->VAR__7685);
+}
+
+
+pdata inputdata(int VAR_1238123)
+{
+   pdata VAR_666   = NULL;
+   pdata VAR_233   = NULL;
+   pdata VAR__HEAD = NULL;
+   int   VAR__53647;
+
+   VAR__HEAD = create();
+   VAR_666   = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (pdata)malloc(sizeof( struct data ));
+
+      if ( VAR_233 != NULL )
+      {
+         scanf("%d", &VAR_233->VAR__7685);
+         VAR_233->VAR__NEXT = NULL;
+         VAR_666->VAR__NEXT = VAR_233;
+         VAR_666            = VAR_233;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void del(pdata VAR_233, int VAR__8444594)
+{
+   pdata VAR_666 = NULL;
+
+   VAR_666 = VAR_233;
+   VAR_233 = VAR_233->VAR__NEXT;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->VAR__7685 == VAR__8444594 )
+      {
+         VAR_666->VAR__NEXT = VAR_233->VAR__NEXT;
+         free(VAR_233);
+         VAR_233 = VAR_666->VAR__NEXT;
+      }
+      else
+      {
+         VAR_666 = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+}
+
+
+pdata rinputdata(int VAR_1238123)
+{
+   pdata VAR_666   = NULL;
+   pdata VAR_233   = NULL;
+   pdata VAR__HEAD = NULL;
+   int   VAR__53647;
+
+   VAR__HEAD = create();
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (pdata)malloc(sizeof( struct data ));
+
+      if ( VAR_233 != NULL )
+      {
+         scanf("%d", &VAR_233->VAR__7685);
+         VAR_233->VAR__NEXT = VAR_666;
+         VAR_666            = VAR_233;
+      }
+   }
+
+   VAR__HEAD->VAR__NEXT = VAR_666;
+   return VAR__HEAD;
+}
+
+
+void outputk(pdata VAR_233, int VAR__8444594)
+{
+   int VAR__53647 = 1;
+
+   VAR_233 = VAR_233->VAR__NEXT;
+
+   while ( VAR_233 )
+   {
+      if ( VAR__53647 == VAR__8444594 )
+      {
+         printf("%d", VAR_233->VAR__7685);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+      VAR__53647++;
+   }
+}
+
+
+void change(pdata VAR_233, int VAR_1238123, int VAR__1238129)
+{
+   int   VAR__53647 = 1;
+   pdata VAR_666    = NULL;
+   pdata VAR_9494   = NULL;
+   pdata VAR__HEAD  = NULL;
+
+   VAR_666   = VAR_233;
+   VAR__HEAD = VAR_233;
+   VAR_233   = VAR_233->VAR__NEXT;
+
+   while ( VAR_233 )
+   {
+      if ( VAR__53647 == (( VAR_1238123 - VAR__1238129 ) + 1 ))
+      {
+         break;
+      }
+
+      VAR__53647++;
+      VAR_666 = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_9494 = VAR__HEAD;
+
+   while ( VAR_9494->VAR__NEXT )
+   {
+      VAR_9494 = VAR_9494->VAR__NEXT;
+   }
+
+   VAR_666->VAR__NEXT   = NULL;
+   VAR_9494->VAR__NEXT  = VAR__HEAD->VAR__NEXT;
+   VAR__HEAD->VAR__NEXT = VAR_233;
+}
+
+
+int main()
+{
+   printf("l 50\nq 40\nz 20\ns 10");
+}

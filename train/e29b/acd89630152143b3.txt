@@ -1,0 +1,75 @@
+const double MIN = 0.000001;
+int main()
+{
+   int    VAR_1238123;
+   int    number[301];
+   int    result[301];
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__temp;
+   double VAR__SUM = 0;
+   double average;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> number[VAR__53647];
+      VAR__SUM += number[VAR__53647];
+   }
+
+   average = VAR__SUM / VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( number[VAR__53647] > number[VAR__21230] )
+         {
+            VAR__temp          = number[VAR__53647];
+            number[VAR__53647] = number[VAR__21230];
+            number[VAR__21230] = VAR__temp;
+         }
+      }
+   }
+
+   result[0] = -1;
+   double VAR__7685;
+   double VAR__3918907 = -1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__7685 = number[VAR__53647] - average;
+
+      if ( VAR__7685 < 0 )
+      {
+         VAR__7685 = -VAR__7685;
+      }
+
+      if ( VAR__3918907 < VAR__7685 )
+      {
+         VAR__3918907 = VAR__7685;
+      }
+   }
+
+   VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((((( number[VAR__53647] - average ) - VAR__3918907 ) < MIN ) && ((( number[VAR__53647] - average ) - VAR__3918907 ) > ( -MIN ))) || (((( number[VAR__53647] - average ) + VAR__3918907 ) < MIN ) && ((( number[VAR__53647] - average ) + VAR__3918907 ) > ( -MIN ))))
+      {
+         if ( number[VAR__53647] != result[VAR__temp] )
+         {
+            result[VAR__temp++] = number[VAR__53647];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      cout << result[VAR__53647];
+
+      if ( VAR__53647 < ( VAR__temp - 1 ))
+      {
+         cout << ",";
+      }
+   }
+
+   return 0;
+}

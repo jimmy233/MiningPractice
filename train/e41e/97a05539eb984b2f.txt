@@ -1,0 +1,40 @@
+int main()
+{
+   char number[100];
+   char result[100];
+   int  VAR__819283 = 0;
+   int  VAR__19328  = 0;
+   int  lenght      = 0;
+   int  VAR_FLAG    = 0;
+
+   scanf("%s", number);
+   lenght     = strlen(number);
+   VAR__19328 = number[0] - '0';
+   for ( int VAR__53647 = 0; VAR__53647 < ( lenght - 1 ); VAR__53647++ )
+   {
+      VAR__819283        = ( VAR__19328 * 10 ) + ( number[VAR__53647 + 1] - '0' );
+      result[VAR__53647] = ( VAR__819283 / 13 ) + '0';
+      VAR__19328         = VAR__819283 % 13;
+   }
+
+   if ( lenght == 1 )
+   {
+      result[0] = '0';
+      result[1] = '\0';
+   }
+   else
+   {
+      result[lenght - 1] = '\0';
+      for ( int VAR__53647 = 0; result[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if (( result[VAR__53647] != '0' ) && ( result[VAR__53647] != '\0' ))
+         {
+            VAR_FLAG = VAR__53647;
+            break;
+         }
+      }
+   }
+
+   printf("%s\n%d\n", result + VAR_FLAG, VAR__19328);
+   return 0;
+}

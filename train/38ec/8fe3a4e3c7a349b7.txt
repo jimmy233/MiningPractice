@@ -1,0 +1,91 @@
+int main()
+{
+   int year1;
+   int year2;
+   int month1;
+   int month2;
+   int day1;
+   int day2;
+   int VAR__SUM = 0;
+   int VAR__53647;
+   int days[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> year1 ) >> month1 ) >> day1;
+   (( cin >> year2 ) >> month2 ) >> day2;
+
+   if ( year1 == year2 )
+   {
+      if ( month1 == month2 )
+      {
+         VAR__SUM = day2 - day1;
+      }
+      else
+      {
+         VAR__SUM += days[month1] - day1;
+         for ( VAR__53647 = month1 + 1; VAR__53647 < month2; VAR__53647++ )
+         {
+            VAR__SUM += days[VAR__53647];
+         }
+
+         VAR__SUM += day2;
+      }
+   }
+   else
+   {
+      VAR__SUM += days[month1] - day1;
+      for ( VAR__53647 = month1 + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         if ( VAR__53647 == 2 )
+         {
+            if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+            {
+               VAR__SUM += days[VAR__53647] + 1;
+            }
+            else
+            {
+               VAR__SUM += days[VAR__53647];
+            }
+         }
+         else
+         {
+            VAR__SUM += days[VAR__53647];
+         }
+      }
+
+      for ( VAR__53647 = year1 + 1; VAR__53647 < year2; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            VAR__SUM += 366;
+         }
+         else
+         {
+            VAR__SUM += 365;
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+      {
+         if ( VAR__53647 == 2 )
+         {
+            if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+            {
+               VAR__SUM += days[VAR__53647] + 1;
+            }
+            else
+            {
+               VAR__SUM += days[VAR__53647];
+            }
+         }
+         else
+         {
+            VAR__SUM += days[VAR__53647];
+         }
+      }
+
+      VAR__SUM += day2;
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

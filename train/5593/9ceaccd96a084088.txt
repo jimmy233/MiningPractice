@@ -1,0 +1,59 @@
+int huiwen(int VAR__819283, int VAR_1238123)
+{
+   if (( VAR__819283 / 10 ) == 0 )
+   {
+      return ( VAR_1238123 * 10 ) + VAR__819283;
+   }
+   else
+   {
+      return huiwen(VAR__819283 / 10, ( VAR_1238123 * 10 ) + ( VAR__819283 % 10 ));
+   }
+}
+
+
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__21230;
+   int flag1;
+   int flag2 = 0;
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR_2890;
+
+   scanf("%d%d", &VAR__819283, &VAR__19328);
+   for ( VAR__53647 = VAR__819283; VAR__53647 <= VAR__19328; VAR__53647++ )
+   {
+      flag1        = 1;
+      VAR__8444594 = sqrt(VAR__53647);
+      for ( VAR__21230 = 2; VAR__21230 <= VAR__8444594; VAR__21230++ )
+      {
+         if (( VAR__53647 % VAR__21230 ) == 0 )
+         {
+            flag1 = 0;
+         }
+      }
+
+      if ( flag1 )
+      {
+         VAR_2890 = huiwen(VAR__53647, 0);
+
+         if ( VAR_2890 == VAR__53647 )
+         {
+            if ( flag2 != 0 )
+            {
+               printf(",");
+            }
+
+            printf("%d", VAR__53647);
+            flag2 = 1;
+         }
+      }
+   }
+
+   if ( flag2 == 0 )
+   {
+      printf("no");
+   }
+}

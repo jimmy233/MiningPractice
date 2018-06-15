@@ -1,0 +1,87 @@
+struct student
+{
+   char           name[20];
+   int            score1;
+   int            score2;
+   char           lead;
+   char           west;
+   int            paper;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+int money(struct student *VAR_233)
+{
+   int VAR__9290 = 0;
+
+   if (( VAR_233->score1 > 80 ) && ( VAR_233->paper >= 1 ))
+   {
+      VAR__9290 += 8000;
+   }
+
+   if (( VAR_233->score1 > 85 ) && ( VAR_233->score2 > 80 ))
+   {
+      VAR__9290 += 4000;
+   }
+
+   if ( VAR_233->score1 > 90 )
+   {
+      VAR__9290 += 2000;
+   }
+
+   if (( VAR_233->score1 > 85 ) && ( VAR_233->west == 'Y' ))
+   {
+      VAR__9290 += 1000;
+   }
+
+   if (( VAR_233->score2 > 80 ) && ( VAR_233->lead == 'Y' ))
+   {
+      VAR__9290 += 850;
+   }
+
+   return VAR__9290;
+}
+
+
+void main()
+{
+   long           total = 0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p0;
+   struct student *VAR__HEAD;
+   int            VAR_1238123;
+   int            VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   VAR__HEAD       = NULL;
+   scanf("%s %d %d %c %c %d\n", ANOTHER_POINTER->name, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2, &ANOTHER_POINTER->lead, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+   p0 = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__SUM = money(ANOTHER_POINTER);
+   total += ANOTHER_POINTER->VAR__SUM;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d\n", ANOTHER_POINTER->name, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2, &ANOTHER_POINTER->lead, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+      ANOTHER_POINTER->VAR__SUM = money(ANOTHER_POINTER);
+
+      if ( p0->VAR__SUM < ANOTHER_POINTER->VAR__SUM )
+      {
+         p0 = ANOTHER_POINTER;
+      }
+
+      total += ANOTHER_POINTER->VAR__SUM;
+   }
+
+   printf("%s\n%d\n%ld\n", p0->name, p0->VAR__SUM, total);
+}

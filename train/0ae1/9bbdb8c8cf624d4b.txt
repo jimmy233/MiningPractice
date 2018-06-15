@@ -1,0 +1,69 @@
+int main(int argc, char *argv[])
+{
+   int year;
+   int month;
+   int day;
+   int n_runnian = 0;
+   int diyitian;
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__SUM        = 0;
+   int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d%d%d", &year, &month, &day);
+   n_runnian = (( year - 1 ) / 100 ) - (( year - 1 ) / 400 );
+   n_runnian = (( year - 1 ) / 4 ) - n_runnian;
+   diyitian  = (( year - 1 ) + n_runnian ) % 7;
+
+   if (( year % 100 ) > 0 )
+   {
+      if (( year % 4 ) == 0 )
+      {
+         VAR__819283[2] = 29;
+      }
+   }
+
+   if (( year % 400 ) == 0 )
+   {
+      VAR__819283[2] = 29;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < month; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+   }
+
+   VAR__SUM     = VAR__SUM + day;
+   VAR__1238129 = (( VAR__SUM % 7 ) + diyitian ) % 7;
+   switch ( VAR__1238129 )
+   {
+   case 0:
+      printf("Sun.");
+      break;
+
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+   }
+
+   return 0;
+}

@@ -1,0 +1,49 @@
+void main()
+{
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    VAR_1238123;
+   int    point[10][3];
+   double dis[10][10];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &point[VAR__53647][0], &point[VAR__53647][1], &point[VAR__53647][2]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__53647][VAR__21230] = ((( point[VAR__53647][0] - point[VAR__21230][0] ) * ( point[VAR__53647][0] - point[VAR__21230][0] )) + (( point[VAR__53647][1] - point[VAR__21230][1] ) * ( point[VAR__53647][1] - point[VAR__21230][1] ))) + (( point[VAR__53647][2] - point[VAR__21230][2] ) * ( point[VAR__53647][2] - point[VAR__21230][2] ));
+      }
+   }
+
+
+   for ( VAR__8444594 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2; VAR__8444594 > 0; VAR__8444594-- )
+   {
+      double VAR__MAX = 0;
+      int    VAR_9494;
+      int    VAR__temp;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( dis[VAR__53647][VAR__21230] > VAR__MAX )
+            {
+               VAR__MAX  = dis[VAR__53647][VAR__21230];
+               VAR_9494  = VAR__53647;
+               VAR__temp = VAR__21230;
+            }
+         }
+      }
+
+
+
+      VAR__MAX = sqrt(VAR__MAX);
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", point[VAR_9494][0], point[VAR_9494][1], point[VAR_9494][2], point[VAR__temp][0], point[VAR__temp][1], point[VAR__temp][2], VAR__MAX);
+      dis[VAR_9494][VAR__temp] = 0;
+   }
+}

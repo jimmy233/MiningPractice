@@ -1,0 +1,79 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int *left  = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   int *right = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   int VAR__53647;
+   int VAR__21230;
+   int tmp;
+   int sign = 0;
+   int VAR__MIN;
+   int VAR__MAX;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &left[VAR__53647], &right[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( left[VAR__21230] < left[VAR__21230 - 1] )
+         {
+            tmp = left[VAR__21230];
+            left[VAR__21230]     = left[VAR__21230 - 1];
+            left[VAR__21230 - 1] = tmp;
+            tmp = right[VAR__21230];
+            right[VAR__21230]     = right[VAR__21230 - 1];
+            right[VAR__21230 - 1] = tmp;
+         }
+      }
+   }
+
+   VAR__MIN = left[0];
+   VAR__MAX = right[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( left[VAR__21230] <= VAR__MAX )
+         {
+            if ( right[VAR__21230] > VAR__MAX )
+            {
+               VAR__MAX = right[VAR__21230];
+            }
+
+            sign++;
+         }
+      }
+
+      if ( sign == 0 )
+      {
+         break;
+      }
+      else
+      if (( VAR__53647 == ( VAR_1238123 - 1 )) && ( sign == ( VAR_1238123 - 1 )))
+      {
+         sign = 1;
+      }
+      else
+      {
+         sign = 0;
+      }
+   }
+
+   if (( VAR__53647 == VAR_1238123 ) && ( sign == 1 ))
+   {
+      printf("%d %d\n", VAR__MIN, VAR__MAX);
+   }
+   else
+   {
+      printf("no\n");
+   }
+
+   free(left);
+   free(right);
+   return 0;
+}

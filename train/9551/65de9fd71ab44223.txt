@@ -1,0 +1,100 @@
+struct stu
+{
+   char VAR_1238123[30];
+   int  VAR__3918907;
+};
+void sort(struct stu VAR__819283[], int VAR__1111, int VAR_129012)
+{
+   int        VAR__53647 = VAR__1111;
+   int        VAR__21230 = VAR_129012;
+   int        VAR__temp  = VAR__819283[( VAR__1111 + VAR_129012 ) / 2].VAR__3918907;
+   struct stu VAR__TEMP;
+
+   while ( VAR__53647 <= VAR__21230 )
+   {
+      while ( VAR__819283[VAR__53647].VAR__3918907 > VAR__temp )
+      {
+         VAR__53647++;
+      }
+
+      while ( VAR__819283[VAR__21230].VAR__3918907 < VAR__temp )
+      {
+         VAR__21230--;
+      }
+
+      if ( VAR__53647 <= VAR__21230 )
+      {
+         VAR__TEMP = VAR__819283[VAR__53647];
+         VAR__819283[VAR__53647] = VAR__819283[VAR__21230];
+         VAR__819283[VAR__21230] = VAR__TEMP;
+         VAR__53647++;
+         VAR__21230--;
+      }
+   }
+
+   if ( VAR__1111 < VAR__21230 )
+   {
+      sort(VAR__819283, VAR__1111, VAR__21230);
+   }
+
+   if ( VAR__53647 < VAR_129012 )
+   {
+      sort(VAR__819283, VAR__53647, VAR_129012);
+   }
+}
+
+
+int main()
+{
+   int        VAR_1238123;
+   struct stu VAR__819283[1000];
+   struct stu VAR__19328[1000];
+   struct stu VAR__4857423[1000];
+   struct stu VAR__TEMP;
+   int        VAR__53647;
+   int        VAR__21230;
+   int        tot  = 0;
+   int        totc = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", &VAR__819283[VAR__53647].VAR_1238123, &VAR__819283[VAR__53647].VAR__3918907);
+
+      if ( VAR__819283[VAR__53647].VAR__3918907 >= 60 )
+      {
+         VAR__19328[++tot] = VAR__819283[VAR__53647];
+      }
+      else
+      {
+         VAR__4857423[++totc] = VAR__819283[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < tot; VAR__53647++ )
+   {
+      for ( VAR__21230 = 2; VAR__21230 <= (( tot - VAR__53647 ) + 1 ); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__21230 - 1].VAR__3918907 < VAR__19328[VAR__21230].VAR__3918907 )
+         {
+            VAR__TEMP = VAR__19328[VAR__21230 - 1];
+            VAR__19328[VAR__21230 - 1] = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= tot; VAR__53647++ )
+   {
+      printf("%s\n", VAR__19328[VAR__53647].VAR_1238123);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= totc; VAR__53647++ )
+   {
+      printf("%s\n", VAR__4857423[VAR__53647].VAR_1238123);
+   }
+
+   return 0;
+}

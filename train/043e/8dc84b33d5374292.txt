@@ -1,0 +1,54 @@
+int main()
+{
+   char sentence[110];
+   char first[110];
+   char second[110];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_FLAG;
+   int  lens;
+   int  len1;
+   int  len2;
+
+   cin.getline(sentence, 110);
+   cin.getline(first, 110);
+   cin.getline(second, 110);
+   lens = strlen(sentence);
+   len1 = strlen(first);
+   for ( VAR__53647 = 0; VAR__53647 < (( lens - len1 ) + 1 ); VAR__53647++ )
+   {
+      VAR_FLAG = 0;
+
+      if (((( VAR__53647 == 0 ) && ( sentence[VAR__53647 + len1] == ' ' )) || (( sentence[VAR__53647 - 1] == ' ' ) && ( sentence[VAR__53647 + len1] == ' ' ))) || (( VAR__53647 == ( lens - len1 )) && ( sentence[VAR__53647 - 1] == ' ' )))
+      {
+         for ( VAR__21230 = 0; VAR__21230 < len1; VAR__21230++ )
+         {
+            if ( sentence[VAR__53647 + VAR__21230] == first[VAR__21230] )
+            {
+               VAR_FLAG++;
+            }
+         }
+      }
+
+      if ( VAR_FLAG == len1 )
+      {
+         VAR__53647 = ( VAR__53647 + len1 ) - 1;
+         cout << second;
+      }
+      else
+      {
+         cout << sentence[VAR__53647];
+      }
+   }
+
+   if ( VAR_FLAG != len1 )
+   {
+      for ( VAR__53647 = ( lens - len1 ) + 1; VAR__53647 < lens; VAR__53647++ )
+      {
+         cout << sentence[VAR__53647];
+      }
+   }
+
+
+   return 0;
+}

@@ -1,0 +1,79 @@
+struct student
+{
+   char           VAR__NUM[30];
+   char           name[50];
+   char           sex;
+   int            age;
+   float          score;
+   char           addr[100];
+   struct student *VAR__NEXT;
+   struct student *pre;
+};
+int            VAR_1238123;
+struct student *end;
+struct student *creat()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+   scanf("%s %s %c %d %f %s", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, &ANOTHER_POINTER->addr);
+   VAR__HEAD            = 0;
+   ANOTHER_POINTER->pre = 0;
+   for ( ; strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0; )
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER  = ANOTHER_POINTER;
+      ANOTHER_POINTER      = (struct student *)malloc(sizeof( struct student ));
+      ANOTHER_POINTER->pre = YET_ANOTHER_POINTER;
+      scanf("%s %s %c %d %f %s", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, &ANOTHER_POINTER->addr);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   end = YET_ANOTHER_POINTER;
+   return VAR__HEAD;
+}
+
+
+void backprint(struct student *VAR__HEAD, struct student *end)
+{
+   struct student *VAR_233;
+
+   VAR_233 = end;
+
+   if ( VAR_1238123 == 0 )
+   {
+      printf("1\n");
+   }
+   else
+   if ( end != 0 )
+   {
+      for ( ; VAR_233 != 0; )
+      {
+         printf("%s %s %c %d %g %s", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->addr);
+         printf("\n");
+         VAR_233 = VAR_233->pre;
+      }
+   }
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   backprint(VAR__HEAD, end);
+}

@@ -1,0 +1,55 @@
+int main()
+{
+   int year[2];
+   int month[2];
+   int day[2];
+   int VAR__819283[][12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_FLAG[2];
+   int VAR__COUNT[2]   = { 0, 0 };
+   int VAR__19328[2]   = { 365, 366 };
+   int VAR__4857423[2] = { 0, 0 };
+
+   for ( VAR__53647 = 0; VAR__53647 < 2; VAR__53647++ )
+   {
+      (( cin >> year[VAR__53647] ) >> month[VAR__53647] ) >> day[VAR__53647];
+   }
+
+   if ( year[0] > year[1] )
+   {
+      VAR__21230 = year[1];
+      year[1]    = year[0];
+      year[0]    = VAR__21230;
+      VAR__21230 = month[1];
+      month[1]   = month[0];
+      month[0]   = VAR__21230;
+      VAR__21230 = day[1];
+      day[1]     = day[0];
+      day[0]     = VAR__21230;
+   }
+
+   VAR_FLAG[0]    = ((( year[0] % 4 ) == 0 ) && (( year[0] % 100 ) != 0 )) || (( year[0] % 400 ) == 0 );
+   VAR_FLAG[1]    = ((( year[1] % 4 ) == 0 ) && (( year[1] % 100 ) != 0 )) || (( year[1] % 400 ) == 0 );
+   VAR__COUNT[0] += day[0] - 1;
+   VAR__COUNT[1] += day[1] - 1;
+   for ( VAR__53647 = 0; VAR__53647 < 2; VAR__53647++ )
+   {
+      while (( VAR__4857423[VAR__53647] + 1 ) < month[VAR__53647] )
+      {
+         VAR__COUNT[VAR__53647] += VAR__819283[VAR_FLAG[VAR__53647]][VAR__4857423[VAR__53647]];
+         VAR__4857423[VAR__53647]++;
+      }
+   }
+
+   while ( year[0] < year[1] )
+   {
+      VAR__COUNT[1] += VAR__19328[((( year[0] % 4 ) == 0 ) && (( year[0] % 100 ) != 0 )) || (( year[0] % 400 ) == 0 )];
+      year[0]++;
+   }
+
+   ( cout << ( VAR__COUNT[1] - VAR__COUNT[0] )) << endl;
+   char mm;
+   cin >> mm;
+   return 0;
+}

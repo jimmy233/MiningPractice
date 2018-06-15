@@ -1,0 +1,81 @@
+void main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__53647;
+   int VAR__SUM = 0;
+   int VAR__temp;
+   int month1[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int month2[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d %d %d", &year, &month, &day);
+   year = year % 400;
+
+   if ( year == 0 )
+   {
+      VAR__SUM = -2;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < year; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__SUM += 0;
+      }
+      else
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__SUM += 366;
+      }
+      else
+      {
+         VAR__SUM += 365;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < month; VAR__53647++ )
+   {
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         VAR__SUM += month2[VAR__53647];
+      }
+      else
+      {
+         VAR__SUM += month1[VAR__53647];
+      }
+   }
+
+   VAR__SUM += day;
+   VAR__temp = VAR__SUM % 7;
+   switch ( VAR__temp )
+   {
+   case 0:
+      printf("Sun.\n");
+      break;
+
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+   }
+}

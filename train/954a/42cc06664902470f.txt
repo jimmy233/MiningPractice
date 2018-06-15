@@ -1,0 +1,69 @@
+struct Student
+{
+   char name[20];
+   int  mark;
+   int  classpoint;
+   char leader;
+   char west;
+   int  paper;
+   int  money;
+};
+void main()
+{
+   int            VAR__53647;
+   int            VAR_1238123;
+   int            maxnum;
+   int            tot      = 0;
+   struct Student stu[100] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].mark, &stu[VAR__53647].classpoint, &stu[VAR__53647].leader, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].mark > 80 ) && ( stu[VAR__53647].paper > 0 ))
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 8000;
+      }
+
+      if (( stu[VAR__53647].mark > 85 ) && ( stu[VAR__53647].classpoint > 80 ))
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 4000;
+      }
+
+      if ( stu[VAR__53647].mark > 90 )
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 2000;
+      }
+
+      if (( stu[VAR__53647].mark > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 1000;
+      }
+
+      if (( stu[VAR__53647].leader == 'Y' ) && ( stu[VAR__53647].classpoint > 80 ))
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 850;
+      }
+   }
+
+   maxnum = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[maxnum].money < stu[VAR__53647].money )
+      {
+         maxnum = VAR__53647;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      tot = tot + stu[VAR__53647].money;
+   }
+
+   printf("%s\n%d\n%d", stu[maxnum].name, stu[maxnum].money, tot);
+}

@@ -1,0 +1,76 @@
+struct member
+{
+   char name[100];
+   int  VAR__819283;
+   int  VAR__19328;
+   char O;
+   char W;
+   int  VAR__7685;
+};
+int money(struct member VAR_233)
+{
+   int VAR__1238129 = 0;
+
+   if (( VAR_233.VAR__819283 > 80 ) && ( VAR_233.VAR__7685 >= 1 ))
+   {
+      VAR__1238129 += 8000;
+   }
+
+   if (( VAR_233.VAR__819283 > 85 ) && ( VAR_233.VAR__19328 > 80 ))
+   {
+      VAR__1238129 += 4000;
+   }
+
+   if ( VAR_233.VAR__819283 > 90 )
+   {
+      VAR__1238129 += 2000;
+   }
+
+   if (( VAR_233.VAR__819283 > 85 ) && ( VAR_233.W == 'Y' ))
+   {
+      VAR__1238129 += 1000;
+   }
+
+   if (( VAR_233.VAR__19328 > 80 ) && ( VAR_233.O == 'Y' ))
+   {
+      VAR__1238129 += 850;
+   }
+
+   return VAR__1238129;
+}
+
+
+int main()
+{
+   struct member VAR_233[100];
+   int           N;
+   int           VAR__53647;
+   int           VAR__1238129[100];
+   int           VAR__MAX = 0;
+   int           co;
+
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR_233[VAR__53647].name, &VAR_233[VAR__53647].VAR__819283, &VAR_233[VAR__53647].VAR__19328, &VAR_233[VAR__53647].O, &VAR_233[VAR__53647].W, &VAR_233[VAR__53647].VAR__7685);
+      VAR__1238129[VAR__53647] = money(VAR_233[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( VAR__1238129[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__1238129[VAR__53647];
+         co       = VAR__53647;
+      }
+   }
+
+
+   int VAR__SUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      VAR__SUM += VAR__1238129[VAR__53647];
+   }
+
+   printf("%s\n%d\n%d\n", VAR_233[co].name, VAR__1238129[co], VAR__SUM);
+}

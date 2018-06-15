@@ -1,0 +1,101 @@
+int main()
+{
+   char sen[1000]     = "\0";
+   char word_1[101]   = "\0";
+   char word_2[101]   = "\0";
+   char word_1_1[101] = "\0";
+   int  number[101]   = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__SUM;
+   int  VAR__NUM     = 0;
+   int  VAR__1238129 = 0;
+
+   gets(sen);
+   gets(word_1);
+   gets(word_2);
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(sen) - strlen(word_1)); VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      for ( VAR__21230 = 0; VAR__21230 <= ( strlen(word_1) - 1 ); VAR__21230++ )
+      {
+         word_1_1[VAR__21230] = sen[VAR__21230 + VAR__53647];
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= ( strlen(word_1) - 1 ); VAR__21230++ )
+      {
+         if ( word_1_1[VAR__21230] != word_1[VAR__21230] )
+         {
+            VAR__SUM = VAR__SUM + 1;
+         }
+      }
+
+      if ((( VAR__SUM == 0 ) && ( VAR__53647 != 0 )) && ( sen[VAR__53647 - 1] != ' ' ))
+      {
+         VAR__SUM = VAR__SUM + 1;
+      }
+
+      if ( VAR__SUM == 0 )
+      {
+         number[VAR__1238129] = VAR__53647;
+         VAR__1238129         = VAR__1238129 + 1;
+         VAR__NUM             = VAR__NUM + 1;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR__NUM; VAR__8444594++ )
+   {
+      if ( VAR__8444594 == 1 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < number[VAR__8444594 - 1]; VAR__21230++ )
+         {
+            printf("%c", sen[VAR__21230]);
+         }
+      }
+
+
+      if ( VAR__8444594 != 1 )
+      {
+         for ( VAR__21230 = number[VAR__8444594 - 2] + strlen(word_1); VAR__21230 < number[VAR__8444594 - 1]; VAR__21230++ )
+         {
+            printf("%c", sen[VAR__21230]);
+         }
+      }
+
+
+      for ( VAR__21230 = 0; VAR__21230 < strlen(word_2); VAR__21230++ )
+      {
+         printf("%c", word_2[VAR__21230]);
+      }
+
+      if ( VAR__8444594 == VAR__NUM )
+      {
+         if (( number[VAR__8444594 - 1] + strlen(word_1)) == strlen(sen))
+         {
+            printf("\n");
+         }
+         else
+         {
+            for ( VAR__21230 = number[VAR__8444594 - 1] + strlen(word_1); VAR__21230 < strlen(sen); VAR__21230++ )
+            {
+               if ( VAR__21230 == ( strlen(sen) - 1 ))
+               {
+                  printf("%c\n", sen[VAR__21230]);
+               }
+               else
+               {
+                  printf("%c", sen[VAR__21230]);
+               }
+            }
+         }
+      }
+   }
+
+   if ( VAR__NUM == 0 )
+   {
+      printf("%s\n", sen);
+   }
+
+   return 0;
+}

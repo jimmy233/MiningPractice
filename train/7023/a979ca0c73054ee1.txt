@@ -1,0 +1,112 @@
+int leap(int *VAR_233, int VAR_1238123)
+{
+   if ( VAR_1238123 == 0 )
+   {
+      return -1;
+   }
+
+   if (( *VAR_233 ) != 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      return leap(VAR_233 + 1, VAR_1238123 - 1) + 1;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      char VAR__819283[100];
+      char VAR__19328[100];
+      int  VAR__21230;
+      int  VAR__8444594      = 0;
+      int  VAR__127322       = 0;
+      int  VAR__4857423[100] = { 0 };
+      scanf("%s %s", VAR__819283, VAR__19328);
+      int len1 = strlen(VAR__819283);
+      int len2 = strlen(VAR__19328);
+
+      if ( len1 < len2 )
+      {
+         VAR__127322 = -1;
+      }
+      else
+      if ( len1 == len2 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < len1; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230] < VAR__19328[VAR__21230] )
+            {
+               VAR__127322 = -1;
+               break;
+            }
+         }
+      }
+
+
+
+      if ( VAR__127322 == ( -1 ))
+      {
+         printf("-");
+         char VAR_9494[100];
+         strcpy(VAR_9494, VAR__819283);
+         strcpy(VAR__819283, VAR__19328);
+         strcpy(VAR__19328, VAR_9494);
+         int LEN_OF_STH = len1;
+         len1 = len2;
+         len2 = LEN_OF_STH;
+      }
+
+      for ( VAR__21230 = len2 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         VAR__19328[( VAR__21230 + len1 ) - len2] = VAR__19328[VAR__21230];
+      }
+
+      for ( VAR__21230 = ( len1 - len2 ) - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         VAR__19328[VAR__21230] = '0';
+      }
+
+      for ( VAR__21230 = len1 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         VAR__4857423[VAR__21230] = ( VAR__819283[VAR__21230] - VAR__19328[VAR__21230] ) - VAR__8444594;
+
+         if ( VAR__4857423[VAR__21230] < 0 )
+         {
+            VAR__4857423[VAR__21230] += 10;
+            VAR__8444594              = 1;
+         }
+         else
+         {
+            VAR__8444594 = 0;
+         }
+      }
+
+      VAR__21230 = leap(VAR__4857423, len1);
+
+      if ( VAR__21230 == ( -1 ))
+      {
+         printf("0");
+      }
+      else
+      {
+         for ( ; VAR__21230 < len1; VAR__21230++ )
+         {
+            printf("%d", VAR__4857423[VAR__21230]);
+         }
+      }
+
+
+      printf("\n");
+   }
+
+   return 0;
+}

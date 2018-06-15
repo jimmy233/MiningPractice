@@ -1,0 +1,83 @@
+void strf(char *A_STRING)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < ((int)( strlen(A_STRING) / 2 )); VAR__53647++ )
+   {
+      char VAR__TEMP = A_STRING[VAR__53647];
+      A_STRING[VAR__53647] = A_STRING[( strlen(A_STRING) - 1 ) - VAR__53647];
+      A_STRING[( strlen(A_STRING) - 1 ) - VAR__53647] = VAR__TEMP;
+   }
+}
+
+
+int main()
+{
+   char an1[201];
+   char an2[201];
+
+   ( cin >> an1 ) >> an2;
+   strf(an1);
+   strf(an2);
+   int anum1[201];
+   int anum2[201];
+   int ar[202];
+   memset(anum1, 0, sizeof( anum1 ));
+   memset(anum2, 0, sizeof( anum2 ));
+   memset(ar, 0, sizeof( ar ));
+   int l1 = strlen(an1);
+   int l2 = strlen(an2);
+   int VAR__53647;
+   int length = ( l1 > l2 ) ? ( l1 ) : ( l2 );
+
+   if ( length == l1 )
+   {
+      for ( VAR__53647 = l2; VAR__53647 < length; VAR__53647++ )
+      {
+         an2[VAR__53647] = '0';
+      }
+
+      an2[VAR__53647] = 0;
+   }
+   else
+   {
+      for ( VAR__53647 = l1; VAR__53647 < length; VAR__53647++ )
+      {
+         an1[VAR__53647] = '0';
+      }
+
+      an1[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      anum1[VAR__53647] = an1[VAR__53647] - '0';
+      anum2[VAR__53647] = an2[VAR__53647] - '0';
+      ar[VAR__53647]   += anum1[VAR__53647] + anum2[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( length + 1 ); VAR__53647++ )
+   {
+      if ( ar[VAR__53647] >= 10 )
+      {
+         ar[VAR__53647] -= 10;
+         ar[VAR__53647 + 1]++;
+      }
+   }
+
+   for ( VAR__53647 = length + 2; ar[VAR__53647] == 0; VAR__53647-- )
+   {
+   }
+
+   if ( VAR__53647 < 0 )
+   {
+      ( cout << '0' ) << endl;
+   }
+   else
+   {
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << ar[VAR__53647];
+      }
+
+      cout << endl;
+   }
+}

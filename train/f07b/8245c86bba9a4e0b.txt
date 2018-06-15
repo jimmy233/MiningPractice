@@ -1,0 +1,101 @@
+struct stu
+{
+   char       VAR__NUM[20];
+   int        score;
+   struct stu *VAR__NEXT;
+};
+struct stu *del(struct stu *VAR__HEAD, int VAR__NUM)
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( ; ANOTHER_POINTER != NULL; )
+   {
+      if ( VAR__NUM != ANOTHER_POINTER->score )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+      else
+      {
+         if ( ANOTHER_POINTER == VAR__HEAD )
+         {
+            VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct stu *creat(int VAR__8444594)
+{
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   int        VAR__21230 = 0;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   VAR__HEAD       = NULL;
+
+   while ( VAR__21230 < VAR__8444594 )
+   {
+      scanf("%d", &ANOTHER_POINTER->score);
+      VAR__21230++;
+
+      if ( VAR__21230 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(sizeof( struct stu ));
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct stu *VAR__HEAD)
+{
+   struct stu *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%d", VAR_233->score);
+      VAR_233 = VAR_233->VAR__NEXT;
+
+      if ( VAR_233 != NULL )
+      {
+         printf(" ");
+      }
+   }
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+   int        VAR_1238123;
+   int        VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   scanf("%d", &VAR__8444594);
+   VAR__HEAD = del(VAR__HEAD, VAR__8444594);
+   print(VAR__HEAD);
+}

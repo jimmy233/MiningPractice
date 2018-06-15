@@ -1,0 +1,65 @@
+struct Info
+{
+   char        VAR__NUM[10];
+   char        name[20];
+   char        sex;
+   int         age;
+   char        score[10];
+   char        address[20];
+   struct Info *VAR__NEXT;
+   struct Info *former;
+};
+int main()
+{
+   struct Info *VAR__HEAD;
+   struct Info *ANOTHER_POINTER;
+   struct Info *YET_ANOTHER_POINTER;
+   struct Info *VAR_233;
+   struct Info *tail;
+
+   VAR__HEAD           = (struct Info *)malloc(sizeof( struct Info ));
+   ANOTHER_POINTER     = VAR__HEAD;
+   YET_ANOTHER_POINTER = VAR__HEAD;
+   char VAR__TEMP[10];
+   scanf("%s %s %c %d %s %s", YET_ANOTHER_POINTER->VAR__NUM, YET_ANOTHER_POINTER->name, &YET_ANOTHER_POINTER->sex, &YET_ANOTHER_POINTER->age, YET_ANOTHER_POINTER->score, YET_ANOTHER_POINTER->address);
+   VAR__HEAD->former    = NULL;
+   VAR__HEAD->VAR__NEXT = NULL;
+   YET_ANOTHER_POINTER  = (struct Info *)malloc(sizeof( struct Info ));
+
+   while ( 1 )
+   {
+      scanf("%s", VAR__TEMP);
+
+      if ( strcmp(VAR__TEMP, "end") != 0 )
+      {
+         strcpy(YET_ANOTHER_POINTER->VAR__NUM, VAR__TEMP);
+         scanf("%s %c %d %s %s", YET_ANOTHER_POINTER->name, &YET_ANOTHER_POINTER->sex, &YET_ANOTHER_POINTER->age, YET_ANOTHER_POINTER->score, YET_ANOTHER_POINTER->address);
+         YET_ANOTHER_POINTER->former    = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+         ANOTHER_POINTER->VAR__NEXT     = YET_ANOTHER_POINTER;
+         ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = (struct Info *)malloc(sizeof( struct Info ));
+      }
+      else
+      {
+         tail = ANOTHER_POINTER;
+         break;
+      }
+   }
+
+   VAR_233 = tail;
+   do
+   {
+      if (( VAR_233->score - ((int)VAR_233->score )) != 0 )
+      {
+         printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->address);
+      }
+      else
+      {
+         printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->address);
+      }
+
+      VAR_233 = VAR_233->former;
+   } while ( VAR_233 != NULL );
+   return 0;
+}

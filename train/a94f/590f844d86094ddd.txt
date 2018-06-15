@@ -1,0 +1,104 @@
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR_SIZE[100][100];
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+   int VAR__819283;
+   int VAR__19328;
+   int VAR_21983012 = 0;
+   int VAR__53647;
+   int bz[100][100];
+   int VAR_FLAG = 0;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   for ( int VAR_233 = 0; VAR_233 <= ( VAR__1238129 + 1 ); VAR_233++ )
+   {
+      for ( int VAR_666 = 0; VAR_666 <= ( VAR_1238123 + 1 ); VAR_666++ )
+      {
+         bz[VAR_666][VAR_233] = 1;
+      }
+   }
+
+
+   for ( int VAR_233 = 1; VAR_233 <= VAR__1238129; VAR_233++ )
+   {
+      for ( int VAR_666 = 1; VAR_666 <= VAR_1238123; VAR_666++ )
+      {
+         scanf("%d", &VAR_SIZE[VAR_666][VAR_233]);
+         bz[VAR_666][VAR_233] = 0;
+      }
+   }
+
+   VAR__7685    = 1;
+   VAR__3918907 = 1;
+
+   while ( VAR_21983012 < ( VAR__1238129 * VAR_1238123 ))
+   {
+      printf("%d\n", VAR_SIZE[VAR__7685][VAR__3918907]);
+      bz[VAR__7685][VAR__3918907] = 1;
+      VAR_21983012++;
+      switch ( VAR_FLAG )
+      {
+      case 0:
+
+         if ( bz[VAR__7685 + 1][VAR__3918907] == 1 )
+         {
+            VAR_FLAG = 1;
+            VAR__3918907++;
+         }
+         else
+         {
+            VAR__7685++;
+         }
+
+         break;
+
+      case 1:
+
+         if ( bz[VAR__7685][VAR__3918907 + 1] == 1 )
+         {
+            VAR_FLAG = 2;
+            VAR__7685--;
+         }
+         else
+         {
+            VAR__3918907++;
+         }
+
+         break;
+
+      case 2:
+
+         if ( bz[VAR__7685 - 1][VAR__3918907] == 1 )
+         {
+            VAR_FLAG = 3;
+            VAR__3918907--;
+         }
+         else
+         {
+            VAR__7685--;
+         }
+
+         break;
+
+      case 3:
+
+         if ( bz[VAR__7685][VAR__3918907 - 1] == 1 )
+         {
+            VAR_FLAG = 0;
+            VAR__7685++;
+         }
+         else
+         {
+            VAR__3918907--;
+         }
+
+         break;
+      }
+   }
+
+   return 0;
+}

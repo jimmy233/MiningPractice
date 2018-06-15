@@ -1,0 +1,114 @@
+int win(int VAR__7685, int VAR_21983012[], int VAR_233[])
+{
+   int VAR__53647;
+   int topw  = 0;
+   int topp  = 0;
+   int downw = VAR__7685 - 1;
+   int downp = VAR__7685 - 1;
+   int VAR__21230;
+   int convert;
+   int converts;
+   int win  = 0;
+   int same = 0;
+   int fail = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__7685 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( VAR_21983012[VAR__21230] < VAR_21983012[VAR__21230 + 1] )
+         {
+            convert = VAR_21983012[VAR__21230];
+            VAR_21983012[VAR__21230]     = VAR_21983012[VAR__21230 + 1];
+            VAR_21983012[VAR__21230 + 1] = convert;
+         }
+
+         if ( VAR_233[VAR__21230] < VAR_233[VAR__21230 + 1] )
+         {
+            converts                = VAR_233[VAR__21230];
+            VAR_233[VAR__21230]     = VAR_233[VAR__21230 + 1];
+            VAR_233[VAR__21230 + 1] = converts;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      if ( VAR_21983012[downw] > VAR_233[downp] )
+      {
+         win++;
+         downw--;
+         downp--;
+      }
+      else
+      if ( VAR_21983012[downw] < VAR_233[downp] )
+      {
+         fail++;
+         downw--;
+         topp++;
+      }
+      else
+      if ( VAR_21983012[topw] > VAR_233[topp] )
+      {
+         win++;
+         topw++;
+         topp++;
+      }
+      else
+      if ( VAR_21983012[downw] == VAR_233[topp] )
+      {
+         break;
+      }
+      else
+      {
+         fail++;
+         topp++;
+         downw--;
+      }
+   }
+
+   return 200 * ( win - fail );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int get;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( 1 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         int VAR__819283[VAR_1238123];
+         int VAR__19328[VAR_1238123];
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR__819283[VAR__53647]);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR__19328[VAR__53647]);
+         }
+
+         get = win(VAR_1238123, VAR__819283, VAR__19328);
+         printf("%d\n", get);
+      }
+
+      scanf("%d", &VAR_1238123);
+   }
+
+   getchar();
+   getchar();
+}

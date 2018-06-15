@@ -1,0 +1,48 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  VAR__112390;
+   char VAR_666[11];
+   struct point
+   {
+      char name[11];
+      int  age;
+   }
+   VAR_233[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", &VAR_233[VAR__53647].name, &VAR_233[VAR__53647].age);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         if ((((( VAR_233[VAR__53647].age > 60 ) || ( VAR_233[VAR__53647].age == 60 )) && (( VAR_233[VAR__53647 + 1].age > 60 ) || ( VAR_233[VAR__53647 + 1].age == 60 ))) && ( VAR_233[VAR__53647].age < VAR_233[VAR__53647 + 1].age )) || (( VAR_233[VAR__53647].age < 60 ) && (( VAR_233[VAR__53647 + 1].age > 60 ) || ( VAR_233[VAR__53647 + 1].age == 60 ))))
+         {
+            VAR__112390                 = VAR_233[VAR__53647].age;
+            VAR_233[VAR__53647].age     = VAR_233[VAR__53647 + 1].age;
+            VAR_233[VAR__53647 + 1].age = VAR__112390;
+            strcpy(VAR_666, VAR_233[VAR__53647].name);
+            strcpy(VAR_233[VAR__53647].name, VAR_233[VAR__53647 + 1].name);
+            strcpy(VAR_233[VAR__53647 + 1].name, VAR_666);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s", VAR_233[VAR__53647].name);
+
+      if ( VAR__53647 != ( VAR_1238123 - 1 ))
+      {
+         printf("\n");
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,56 @@
+int main()
+{
+   char         days[7][8] = { "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun." };
+   int          years[4]   = { 365, 365, 365, 366 };
+   int          month[12]  = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   unsigned int VAR__1238129;
+   unsigned int VAR__12302;
+   unsigned int VAR__53647;
+   unsigned int VAR__8444594;
+   unsigned int VAR__21230;
+   unsigned int td;
+   unsigned int a1;
+   unsigned int a2;
+   unsigned int VAR__3918907;
+
+   td           = 0;
+   VAR__8444594 = 0;
+   scanf("%d%d%d", &VAR__3918907, &VAR__1238129, &VAR__12302);
+   a1           = ( VAR__3918907 - 1 ) / 100;
+   a2           = ( VAR__3918907 - 1 ) / 400;
+   VAR__21230   = a1 - a2;
+   VAR__8444594 = ( VAR__3918907 - 1 ) / 4;
+   td           = 5 * VAR__8444594;
+   td           = td + (( VAR__3918907 - 1 ) % 4 );
+   td           = td - VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      td = td + month[VAR__53647];
+
+      if (( VAR__3918907 % 100 ) == 0 )
+      {
+         if ((( VAR__3918907 % 400 ) == 0 ) && ( VAR__53647 == 1 ))
+         {
+            td++;
+         }
+      }
+      else
+      {
+         if ((( VAR__3918907 % 4 ) == 0 ) && ( VAR__53647 == 1 ))
+         {
+            td++;
+         }
+      }
+   }
+
+   td = td + VAR__12302;
+   td = td % 7;
+
+   if ( td == 0 )
+   {
+      td = 7;
+   }
+
+   printf("%s\n", days[td - 1]);
+   return 0;
+}

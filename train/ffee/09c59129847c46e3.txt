@@ -1,0 +1,48 @@
+int LEN_OF_STH;
+int checkbegin(char VAR__819283[], int VAR__53647)
+{
+   int VAR__21230;
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 < LEN_OF_STH; ++VAR__21230 )
+   {
+      if ( VAR__819283[VAR__21230] != ' ' )
+      {
+         return VAR__21230;
+      }
+   }
+}
+
+
+int checkend(char VAR__819283[], int VAR__53647)
+{
+   int VAR__21230;
+
+   for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= LEN_OF_STH; ++VAR__21230 )
+   {
+      if (( VAR__819283[VAR__21230] == ' ' ) || ( VAR__819283[VAR__21230] == '\0' ))
+      {
+         return VAR__21230;
+      }
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[1000];
+   int  VAR__53647 = 0;
+   int  VAR__19328;
+
+   gets(VAR__819283);
+   LEN_OF_STH = strlen(VAR__819283);
+   VAR__19328 = checkend(VAR__819283, checkbegin(VAR__819283, VAR__53647)) - checkbegin(VAR__819283, VAR__53647);
+   printf("%d", VAR__19328);
+   VAR__53647 = checkend(VAR__819283, checkbegin(VAR__819283, VAR__53647)) + 1;
+
+   while ( VAR__53647 <= LEN_OF_STH )
+   {
+      VAR__19328 = checkend(VAR__819283, checkbegin(VAR__819283, VAR__53647)) - checkbegin(VAR__819283, VAR__53647);
+      printf(",%d", VAR__19328);
+      VAR__53647 = checkend(VAR__819283, checkbegin(VAR__819283, VAR__53647)) + 1;
+   }
+}

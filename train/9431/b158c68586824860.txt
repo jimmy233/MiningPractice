@@ -1,0 +1,34 @@
+struct stu
+{
+   char       VAR__NUM[20];
+   char       name[20];
+   char       gen;
+   int        age;
+   float      mark;
+   char       add[20];
+   struct stu *VAR__NEXT;
+};
+char end[4] = "end";
+int main()
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu VAR__temp;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = NULL );
+
+   while ( scanf("%s", VAR__temp.VAR__NUM), strcmp(VAR__temp.VAR__NUM, end) != 0 )
+   {
+      scanf("%s %c %d %g %s\n", VAR__temp.name, &VAR__temp.gen, &VAR__temp.age, &VAR__temp.mark, VAR__temp.add);
+      ANOTHER_POINTER            = (struct stu *)malloc(LEN);
+      *ANOTHER_POINTER           = VAR__temp;
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+   }
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      printf("%s %s %c %d %g %s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->gen, ANOTHER_POINTER->age, ANOTHER_POINTER->mark, ANOTHER_POINTER->add);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

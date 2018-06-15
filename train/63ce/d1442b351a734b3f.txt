@@ -1,0 +1,56 @@
+int main()
+{
+   int VAR__127322[200][200] = { 0 };
+   int div[40000]            = { 0 };
+   int divth[200]            = { 0 };
+   int kase = 0;
+
+   cin >> kase;
+   for ( ; kase > 0; kase-- )
+   {
+      int VAR_1238123 = 0;
+      cin >> VAR_1238123;
+      memset(VAR__127322, 0, sizeof( VAR__127322 ));
+      memset(div, 0, sizeof( div ));
+      memset(divth, 0, sizeof( divth ));
+      int VAR__1238129 = 0;
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if (( VAR_1238123 % VAR__53647 ) == 0 )
+         {
+            div[VAR__53647]     = ++VAR__1238129;
+            divth[VAR__1238129] = VAR__53647;
+         }
+      }
+
+
+      VAR__127322[1][1] = 1;
+      for ( int VAR__53647 = 2; VAR__53647 <= VAR__1238129; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 2; VAR__21230 <= VAR__53647; VAR__21230++ )
+         {
+            for ( int VAR__8444594 = VAR__21230; VAR__8444594 > 1; VAR__8444594-- )
+            {
+               if (( divth[VAR__53647] % divth[VAR__8444594] ) == 0 )
+               {
+                  int ii = divth[VAR__53647] / divth[VAR__8444594];
+                  int jj = VAR__8444594;
+
+                  if ( div[ii] < jj )
+                  {
+                     jj = div[ii];
+                  }
+
+                  VAR__127322[VAR__53647][VAR__21230] += VAR__127322[div[ii]][jj];
+               }
+            }
+         }
+      }
+
+
+
+      ( cout << VAR__127322[VAR__1238129][VAR__1238129] ) << endl;
+   }
+
+   return 0;
+}

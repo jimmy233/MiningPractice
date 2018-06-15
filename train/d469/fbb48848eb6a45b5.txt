@@ -1,0 +1,81 @@
+int maxhui(char chuan[], int VAR__53647)
+{
+   int VAR__8444594;
+   int length = 2;
+
+   for ( VAR__8444594 = VAR__53647; ; VAR__8444594++ )
+   {
+      if ( chuan[VAR__8444594] == chuan[( VAR__8444594 - length ) + 1] )
+      {
+         length += 2;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   length -= 2;
+   return length;
+}
+
+
+int main()
+{
+   char chuan[500];
+   char huichuan[500][500];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594 = 0;
+   int  length;
+   int  VAR_233;
+
+   cin.getline(chuan, 500, '\n');
+   for ( VAR__53647 = 1; VAR__53647 < strlen(chuan); VAR__53647++ )
+   {
+      if ( chuan[VAR__53647] == chuan[VAR__53647 - 1] )
+      {
+         length = maxhui(chuan, VAR__53647) / 2;
+         for ( VAR__21230 = 0; VAR__21230 < length; VAR__21230++ )
+         {
+            huichuan[VAR__8444594][VAR__21230] = chuan[VAR__53647 + VAR__21230];
+         }
+
+         huichuan[VAR__8444594][length] = '\0';
+         VAR__8444594++;
+      }
+   }
+
+   int maxlen[500];
+   int maxlength = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( strlen(huichuan[VAR__53647]) > maxlength )
+      {
+         maxlength = strlen(huichuan[VAR__53647]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < maxlength; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( strlen(huichuan[VAR__21230]) > VAR__53647 )
+         {
+            for ( VAR_233 = VAR__53647; VAR_233 >= 0; VAR_233-- )
+            {
+               cout << huichuan[VAR__21230][VAR_233];
+            }
+
+            for ( VAR_233 = 0; VAR_233 <= VAR__53647; VAR_233++ )
+            {
+               cout << huichuan[VAR__21230][VAR_233];
+            }
+
+            cout << endl;
+         }
+      }
+   }
+
+   return 0;
+}

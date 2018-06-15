@@ -1,0 +1,50 @@
+char line[110];
+char boy;
+char girl;
+int match(int VAR__53647, int VAR__1111)
+{
+   int VAR__21230;
+
+   if ( VAR__53647 == VAR__1111 )
+   {
+      return 0;
+   }
+
+   if ( line[VAR__53647] == girl )
+   {
+      for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ( line[VAR__21230] == boy )
+         {
+            printf("%d %d\n", VAR__21230, VAR__53647);
+            line[VAR__21230] = ' ';
+            break;
+         }
+      }
+   }
+
+   match(VAR__53647 + 1, VAR__1111);
+   return 0;
+}
+
+
+int main()
+{
+   int VAR__1111;
+   int VAR__53647;
+
+   scanf("%s", line);
+   VAR__1111 = strlen(line);
+   boy       = line[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( line[VAR__53647] != boy )
+      {
+         girl = line[VAR__53647];
+         break;
+      }
+   }
+
+   match(0, VAR__1111);
+   return 0;
+}

@@ -1,0 +1,94 @@
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   start = 0;
+   int   end;
+   int   ANOTHER_POINTER     = 0;
+   int   YET_ANOTHER_POINTER = 0;
+   int   x1;
+   int   x2;
+   float VAR__819283;
+   float VAR__19328;
+
+   scanf("%d", &VAR_1238123);
+   end = VAR_1238123 - 1;
+   struct student
+   {
+      char  sex[6];
+      float height;
+   }
+   VAR_9494[40];
+   struct student
+   {
+      char  sex[6];
+      float height;
+   }
+   VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", VAR_9494[VAR__53647].sex, &VAR_9494[VAR__53647].height);
+   }
+
+   while ( start <= end )
+   {
+      VAR__819283 = ( VAR__19328 = 3 );
+      for ( VAR__53647 = start; VAR__53647 <= end; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647].sex[0] == 'm' )
+         {
+            ANOTHER_POINTER = 1;
+
+            if ( VAR_9494[VAR__53647].height < VAR__819283 )
+            {
+               x1          = VAR__53647;
+               VAR__819283 = VAR_9494[VAR__53647].height;
+            }
+         }
+         else
+         {
+            YET_ANOTHER_POINTER = 1;
+
+            if ( VAR_9494[VAR__53647].height < VAR__19328 )
+            {
+               x2         = VAR__53647;
+               VAR__19328 = VAR_9494[VAR__53647].height;
+            }
+         }
+      }
+
+      if ( ANOTHER_POINTER )
+      {
+         VAR__temp       = VAR_9494[x1];
+         VAR_9494[x1]    = VAR_9494[start];
+         VAR_9494[start] = VAR__temp;
+
+         if ( x2 == start )
+         {
+            x2 = x1;
+         }
+
+         start++;
+         ANOTHER_POINTER = 0;
+      }
+
+      if ( YET_ANOTHER_POINTER )
+      {
+         VAR__temp     = VAR_9494[x2];
+         VAR_9494[x2]  = VAR_9494[end];
+         VAR_9494[end] = VAR__temp;
+         end--;
+         YET_ANOTHER_POINTER = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 > 0 )
+      {
+         printf(" ");
+      }
+
+      printf("%.2f", VAR_9494[VAR__53647].height);
+   }
+}

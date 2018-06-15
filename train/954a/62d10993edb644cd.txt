@@ -1,0 +1,103 @@
+int  qm[102];
+int  bp[102];
+int  lw[102];
+char bg[102] = { '\0' };
+char xb[102] = { '\0' };
+int yuanshi(int VAR__53647)
+{
+   if (( qm[VAR__53647] > 80 ) && ( lw[VAR__53647] > 0 ))
+   {
+      return 8000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int wusi(int VAR__53647)
+{
+   if (( qm[VAR__53647] > 85 ) && ( bp[VAR__53647] > 80 ))
+   {
+      return 4000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int youxiu(int VAR__53647)
+{
+   if ( qm[VAR__53647] > 90 )
+   {
+      return 2000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int xibu(int VAR__53647)
+{
+   if (( qm[VAR__53647] > 85 ) && ( xb[VAR__53647] == 'Y' ))
+   {
+      return 1000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int banji(int VAR__53647)
+{
+   if (( bp[VAR__53647] > 80 ) && ( bg[VAR__53647] == 'Y' ))
+   {
+      return 850;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__MAX;
+   int  VAR__NUM;
+   int  jxj[102]      = { 0 };
+   int  VAR__SUM      = 0;
+   char name[102][21] = { '\0' };
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ((((( cin >> name[VAR__53647] ) >> qm[VAR__53647] ) >> bp[VAR__53647] ) >> bg[VAR__53647] ) >> xb[VAR__53647] ) >> lw[VAR__53647];
+      jxj[VAR__53647] = ((( yuanshi(VAR__53647) + wusi(VAR__53647)) + youxiu(VAR__53647)) + xibu(VAR__53647)) + banji(VAR__53647);
+   }
+
+   VAR__MAX = jxj[1];
+   VAR__NUM = 1, VAR__SUM = jxj[1];
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + jxj[VAR__53647];
+
+      if ( jxj[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = jxj[VAR__53647];
+         VAR__NUM = VAR__53647;
+      }
+   }
+
+   ((((( cout << name[VAR__NUM] ) << endl ) << jxj[VAR__NUM] ) << endl ) << VAR__SUM ) << endl;
+   return 0;
+}

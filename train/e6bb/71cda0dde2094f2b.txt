@@ -1,0 +1,118 @@
+int main()
+{
+   int **squre1;
+   int **squre2;
+
+   squre1 = (int **)calloc(LEN_OF_STH, sizeof( int * ));
+   squre2 = (int **)calloc(LEN_OF_STH, sizeof( int * ));
+   for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      squre1[VAR__53647] = (int *)calloc(LEN_OF_STH, sizeof( int ));
+      squre2[VAR__53647] = (int *)calloc(LEN_OF_STH, sizeof( int ));
+   }
+
+   int day;
+   scanf("%d%d", &squre1[4][4], &day);
+   for ( int VAR_1238123 = 0; VAR_1238123 < day; VAR_1238123++ )
+   {
+      for ( int VAR__53647 = 4 - VAR_1238123; VAR__53647 <= ( 4 + VAR_1238123 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 4 - VAR_1238123; VAR__21230 <= ( 4 + VAR_1238123 ); VAR__21230++ )
+         {
+            for ( int VAR__7685 = VAR__53647 - 1; VAR__7685 <= ( VAR__53647 + 1 ); VAR__7685++ )
+            {
+               for ( int VAR__3918907 = VAR__21230 - 1; VAR__3918907 <= ( VAR__21230 + 1 ); VAR__3918907++ )
+               {
+                  if (( VAR_1238123 % 2 ) == 0 )
+                  {
+                     squre2[VAR__7685][VAR__3918907] = 0;
+                  }
+                  else
+                  {
+                     squre1[VAR__7685][VAR__3918907] = 0;
+                  }
+               }
+            }
+         }
+      }
+
+
+
+      for ( int VAR__53647 = 4 - VAR_1238123; VAR__53647 <= ( 4 + VAR_1238123 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 4 - VAR_1238123; VAR__21230 <= ( 4 + VAR_1238123 ); VAR__21230++ )
+         {
+            for ( int VAR__7685 = VAR__53647 - 1; VAR__7685 <= ( VAR__53647 + 1 ); VAR__7685++ )
+            {
+               for ( int VAR__3918907 = VAR__21230 - 1; VAR__3918907 <= ( VAR__21230 + 1 ); VAR__3918907++ )
+               {
+                  if (( VAR__7685 == VAR__53647 ) && ( VAR__3918907 == VAR__21230 ))
+                  {
+                     if (( VAR_1238123 % 2 ) == 0 )
+                     {
+                        squre2[VAR__7685][VAR__3918907] += 2 * squre1[VAR__53647][VAR__21230];
+                     }
+                     else
+                     {
+                        squre1[VAR__7685][VAR__3918907] += 2 * squre2[VAR__53647][VAR__21230];
+                     }
+                  }
+                  else
+                  if (( VAR_1238123 % 2 ) == 0 )
+                  {
+                     squre2[VAR__7685][VAR__3918907] += squre1[VAR__53647][VAR__21230];
+                  }
+                  else
+                  {
+                     squre1[VAR__7685][VAR__3918907] += squre2[VAR__53647][VAR__21230];
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   if (( day % 2 ) == 0 )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         int VAR__COUNT = 0;
+         for ( int VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+         {
+            if ( VAR__COUNT == 0 )
+            {
+               printf("%d", squre1[VAR__53647][VAR__21230]);
+               VAR__COUNT = 1;
+            }
+            else
+            {
+               printf(" %d", squre1[VAR__53647][VAR__21230]);
+            }
+         }
+
+         printf("\n");
+      }
+   }
+
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         int VAR__COUNT = 0;
+         for ( int VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+         {
+            if ( VAR__COUNT == 0 )
+            {
+               printf("%d", squre2[VAR__53647][VAR__21230]);
+               VAR__COUNT = 1;
+            }
+            else
+            {
+               printf(" %d", squre2[VAR__53647][VAR__21230]);
+            }
+         }
+
+         printf("\n");
+      }
+   }
+}

@@ -1,0 +1,117 @@
+int main()
+{
+   char sentence[101];
+   char word[20];
+   char subWord[20];
+
+   cin.getline(sentence, 100);
+   cin.getline(word, 20);
+   cin.getline(subWord, 20);
+   int VAR__53647;
+   int lenOfSen     = 0;
+   int lenOfWord    = 0;
+   int lenOfsubWord = 0;
+   int left[100];
+   int right[100];
+   int found = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      if ( sentence[VAR__53647] != '\0' )
+      {
+         lenOfSen++;
+      }
+
+      if ( sentence[VAR__53647] == '\0' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 20; VAR__53647++ )
+   {
+      if ( word[VAR__53647] != '\0' )
+      {
+         lenOfWord++;
+      }
+
+      if ( word[VAR__53647] == '\0' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 20; VAR__53647++ )
+   {
+      if ( subWord[VAR__53647] != '\0' )
+      {
+         lenOfsubWord++;
+      }
+
+      if ( subWord[VAR__53647] == '\0' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < lenOfSen; VAR__53647++ )
+   {
+      if ( sentence[VAR__53647] == word[0] )
+      {
+         if (( VAR__53647 == 0 ) || ( sentence[VAR__53647 - 1] == ' ' ))
+         {
+            left[found] = VAR__53647;
+            int VAR__21230;
+            for ( VAR__21230 = 1; VAR__21230 < lenOfWord; VAR__21230++ )
+            {
+               if ( sentence[VAR__53647 + VAR__21230] != word[VAR__21230] )
+               {
+                  break;
+               }
+            }
+
+            if ( VAR__21230 == lenOfWord )
+            {
+               if ((( VAR__53647 + VAR__21230 ) == lenOfSen ) || ( sentence[VAR__53647 + VAR__21230] == ' ' ))
+               {
+                  right[found] = VAR__53647 + VAR__21230;
+                  found++;
+               }
+            }
+         }
+      }
+   }
+
+   char newString[200];
+   int  VAR__8444594 = 0;
+
+   if ( found == 0 )
+   {
+      ( cout << sentence ) << endl;
+   }
+   else
+   {
+      int VAR__temp = 0;
+      for ( VAR__53647 = 0; VAR__53647 < lenOfSen; VAR__53647++ )
+      {
+         if ( VAR__53647 == left[VAR__temp] )
+         {
+            for ( int VAR__21230 = 0; VAR__21230 < lenOfsubWord; VAR__21230++ )
+            {
+               newString[VAR__8444594++] = subWord[VAR__21230];
+            }
+
+            VAR__53647 = right[VAR__temp];
+
+            if ( VAR__temp < found )
+            {
+               VAR__temp++;
+            }
+         }
+
+         newString[VAR__8444594++] = sentence[VAR__53647];
+      }
+
+      newString[VAR__8444594] = '\0';
+      ( cout << newString ) << endl;
+   }
+}

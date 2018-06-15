@@ -1,0 +1,102 @@
+int VAR__819283[20];
+int VAR__19328[20];
+int VAR__4857423[40];
+void read(int x1, int x2)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < x1; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < x2; VAR__53647++ )
+   {
+      cin >> VAR__19328[VAR__53647];
+   }
+}
+
+
+void sort1(int VAR_1238123)
+{
+   int VAR__8444594;
+   int VAR__21230;
+   int tem;
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__8444594 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            tem = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = tem;
+         }
+      }
+   }
+}
+
+
+void sort2(int VAR_1238123)
+{
+   int VAR__8444594;
+   int VAR__21230;
+   int tem;
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__8444594 ); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__21230] > VAR__19328[VAR__21230 + 1] )
+         {
+            tem = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__19328[VAR__21230 + 1];
+            VAR__19328[VAR__21230 + 1] = tem;
+         }
+      }
+   }
+}
+
+
+void combine(int n1, int n2)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = n1; VAR__53647 < ( n1 + n2 ); VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__19328[VAR__53647 - n1];
+   }
+}
+
+
+void arraycout(int n1, int n2)
+{
+   int VAR__53647;
+
+   cout << VAR__4857423[0];
+   for ( VAR__53647 = 1; VAR__53647 < ( n1 + n2 ); VAR__53647++ )
+   {
+      ( cout << " " ) << VAR__4857423[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   int n1;
+   int n2;
+
+   ( cin >> n1 ) >> n2;
+   read(n1, n2);
+   sort1(n1);
+   sort2(n2);
+   combine(n1, n2);
+   arraycout(n1, n2);
+   return 0;
+}

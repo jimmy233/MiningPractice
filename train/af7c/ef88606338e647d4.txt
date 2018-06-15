@@ -1,0 +1,53 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int N;
+
+   VAR__21230 = 0;
+   int VAR_SIZE[10000];
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%d", &VAR_SIZE[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if (( VAR_SIZE[VAR__53647] % 2 ) != 0 )
+      {
+         VAR_SIZE[VAR__21230] = VAR_SIZE[VAR__53647];
+         VAR__21230++;
+      }
+   }
+
+   int maxIndex;
+   int VAR__112390;
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR__21230; VAR__8444594++ )
+   {
+      maxIndex = 0;
+      for ( int VAR__53647 = 0; VAR__53647 <= ( VAR__21230 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( VAR_SIZE[VAR__53647] > VAR_SIZE[maxIndex] )
+         {
+            maxIndex = VAR__53647;
+         }
+      }
+
+      if ( maxIndex != ( VAR__21230 - VAR__8444594 ))
+      {
+         VAR__112390        = VAR_SIZE[maxIndex];
+         VAR_SIZE[maxIndex] = VAR_SIZE[VAR__21230 - VAR__8444594];
+         VAR_SIZE[VAR__21230 - VAR__8444594] = VAR__112390;
+      }
+   }
+
+   printf("%d", VAR_SIZE[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf(",%d", VAR_SIZE[VAR__53647]);
+   }
+
+   return 0;
+}

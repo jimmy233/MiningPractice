@@ -1,0 +1,69 @@
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return VAR__19328;
+   }
+}
+
+
+int main()
+{
+   int  VAR__819283[260]  = { 0 };
+   int  VAR__19328[260]   = { 0 };
+   int  carry             = 0;
+   int  VAR__4857423[260] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   char s1[260];
+   char s2[260];
+
+   ( cin >> s1 ) >> s2;
+   int len1       = strlen(s1);
+   int len2       = strlen(s2);
+   int LEN_OF_STH = VAR__MAX(len1, len2);
+   for ( VAR__53647 = len1 - 1, VAR__21230 = 0; VAR__53647 >= 0; --VAR__53647, ++VAR__21230 )
+   {
+      VAR__819283[VAR__53647] = s1[VAR__21230] - '0';
+   }
+
+   for ( VAR__53647 = len2 - 1, VAR__21230 = 0; VAR__53647 >= 0; --VAR__53647, ++VAR__21230 )
+   {
+      VAR__19328[VAR__53647] = s2[VAR__21230] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH + 1 ); ++VAR__53647 )
+   {
+      VAR__4857423[VAR__53647] = ( VAR__819283[VAR__53647] + VAR__19328[VAR__53647] ) + carry;
+
+      if ( VAR__4857423[VAR__53647] >= 10 )
+      {
+         carry = 1;
+         VAR__4857423[VAR__53647] -= 10;
+      }
+      else
+      {
+         carry = 0;
+      }
+   }
+
+   int judge = 0;
+   for ( ; VAR__53647 >= 0; --VAR__53647 )
+   {
+      if (( VAR__4857423[VAR__53647] != 0 ) || (( VAR__4857423[VAR__53647] == 0 ) && ( VAR__53647 == 0 )))
+      {
+         judge = 1;
+      }
+
+      if ( judge == 1 )
+      {
+         cout << VAR__4857423[VAR__53647];
+      }
+   }
+
+   return 0;
+}

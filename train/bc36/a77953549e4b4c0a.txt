@@ -1,0 +1,93 @@
+double male[40];
+double female[40];
+int    mk;
+int    fk;
+void sor1()
+{
+   int    VAR__53647;
+   int    VAR__21230;
+   int    tmp;
+   double VAR__MIN;
+
+   for ( VAR__53647 = 0; VAR__53647 < mk; VAR__53647++ )
+   {
+      VAR__MIN = male[VAR__53647];
+      tmp      = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < mk; VAR__21230++ )
+      {
+         if ( VAR__MIN > male[VAR__21230] )
+         {
+            VAR__MIN = male[VAR__21230];
+            tmp      = VAR__21230;
+         }
+      }
+
+      male[tmp]        = male[VAR__53647];
+      male[VAR__53647] = VAR__MIN;
+   }
+}
+
+
+void sor2()
+{
+   int    VAR__53647;
+   int    VAR__21230;
+   int    tmp;
+   double VAR__MIN;
+
+   for ( VAR__53647 = 0; VAR__53647 < fk; VAR__53647++ )
+   {
+      VAR__MIN = female[VAR__53647];
+      tmp      = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < fk; VAR__21230++ )
+      {
+         if ( VAR__MIN > female[VAR__21230] )
+         {
+            VAR__MIN = female[VAR__21230];
+            tmp      = VAR__21230;
+         }
+      }
+
+      female[tmp]        = female[VAR__53647];
+      female[VAR__53647] = VAR__MIN;
+   }
+}
+
+
+int main(void)
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   char sex[10];
+
+   scanf("%d", &VAR_1238123);
+   mk = 0;
+   fk = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", sex);
+
+      if ( sex[0] == 'm' )
+      {
+         scanf("%lf", &male[mk++]);
+      }
+      else
+      {
+         scanf("%lf", &female[fk++]);
+      }
+   }
+
+   sor1();
+   sor2();
+   for ( VAR__53647 = 0; VAR__53647 < mk; VAR__53647++ )
+   {
+      printf("%.2f ", male[VAR__53647]);
+   }
+
+   for ( VAR__53647 = fk - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf("%.2f ", female[VAR__53647]);
+   }
+
+   printf("%.2f\n", female[0]);
+}

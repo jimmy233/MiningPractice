@@ -1,0 +1,66 @@
+int reverse(int VAR__NUM)
+{
+   if ( VAR__NUM == 0 )
+   {
+      return 0;
+   }
+   else
+   if ( VAR__NUM > 0 )
+   {
+      if ( VAR__NUM < 10 )
+      {
+         return VAR__NUM;
+      }
+      else
+      if ( VAR__NUM < 100 )
+      {
+         int ANOTHER_POINTER     = VAR__NUM % 10;
+         int YET_ANOTHER_POINTER = VAR__NUM / 10;
+         return ( 10 * ANOTHER_POINTER ) + YET_ANOTHER_POINTER;
+      }
+      else
+      if ( VAR__NUM < 1000 )
+      {
+         int p3 = VAR__NUM / 100;
+         int YET_ANOTHER_POINTER = ( VAR__NUM - ( p3 * 100 )) / 10;
+         int ANOTHER_POINTER     = VAR__NUM % 10;
+         return (( 100 * ANOTHER_POINTER ) + ( 10 * YET_ANOTHER_POINTER )) + p3;
+      }
+      else
+      if ( VAR__NUM < 10000 )
+      {
+         int p4 = VAR__NUM / 1000;
+         int p3 = ( VAR__NUM - ( p4 * 1000 )) / 100;
+         int YET_ANOTHER_POINTER = (( VAR__NUM - ( p4 * 1000 )) - ( p3 * 100 )) / 10;
+         int ANOTHER_POINTER     = VAR__NUM % 10;
+         return ((( 1000 * ANOTHER_POINTER ) + ( 100 * YET_ANOTHER_POINTER )) + ( 10 * p3 )) + p4;
+      }
+      else
+      {
+         int p5 = VAR__NUM / 10000;
+         int p4 = ( VAR__NUM - ( p5 * 10000 )) / 1000;
+         int p3 = (( VAR__NUM - ( p5 * 10000 )) - ( p4 * 1000 )) / 100;
+         int YET_ANOTHER_POINTER = ((( VAR__NUM - ( p5 * 10000 )) - ( p4 * 1000 )) - ( p3 * 100 )) / 10;
+         int ANOTHER_POINTER     = VAR__NUM % 10;
+         return (((( 10000 * ANOTHER_POINTER ) + ( 1000 * YET_ANOTHER_POINTER )) + ( 100 * p3 )) + ( 10 * p4 )) + p5;
+      }
+   }
+   else
+   {
+      return 0 - reverse(0 - VAR__NUM);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   for ( int VAR__53647 = 0; VAR__53647 < 6; VAR__53647++ )
+   {
+      cin >> VAR_1238123;
+      ( cout << reverse(VAR_1238123)) << endl;
+   }
+
+   return 0;
+}

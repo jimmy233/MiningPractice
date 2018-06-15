@@ -1,0 +1,141 @@
+struct node
+{
+   int VAR_9494;
+   int VAR_1238123;
+};
+void cpy_clr(struct node VAR__819283[], struct node VAR__19328[])
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; ( VAR__53647 <= MAX ) && (( VAR__819283[VAR__53647].VAR_9494 != 0 ) || ( VAR__19328[VAR__53647].VAR_9494 != 0 )); VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647].VAR_9494 != 0 )
+      {
+         VAR__819283[VAR__53647].VAR_9494    = VAR__19328[VAR__53647].VAR_9494;
+         VAR__819283[VAR__53647].VAR_1238123 = VAR__19328[VAR__53647].VAR_1238123;
+         VAR__19328[VAR__53647].VAR_9494     = 0;
+         VAR__19328[VAR__53647].VAR_1238123  = 0;
+      }
+      else
+      {
+         VAR__819283[VAR__53647].VAR_9494    = 0;
+         VAR__819283[VAR__53647].VAR_1238123 = 0;
+         VAR__19328[VAR__53647].VAR_1238123  = 0;
+      }
+   }
+}
+
+
+int chklst(struct node VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int result = 0;
+
+   for ( VAR__53647 = 0; VAR__819283[VAR__53647].VAR_9494 != 0; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647].VAR_9494 != VAR_1238123 )
+      {
+         result = 0;
+         break;
+      }
+      else
+      {
+         result++;
+      }
+   }
+
+   return result;
+}
+
+
+void init(struct node VAR__819283[])
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < MAX; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647].VAR_9494    = 0;
+      VAR__819283[VAR__53647].VAR_1238123 = 0;
+   }
+}
+
+
+void main()
+{
+   struct node VAR__819283[MAX];
+   struct node VAR__19328[MAX];
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR__8444594;
+   int         VAR__1111;
+   int         _n;
+   int         VAR_1238123;
+   int         VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123-- )
+   {
+      scanf("%d", &_n);
+      for ( VAR__1111 = 2; VAR__1111 < _n; VAR__1111++ )
+      {
+         if (( _n % VAR__1111 ) == 0 )
+         {
+            init(VAR__819283);
+            init(VAR__19328);
+            VAR__819283[0].VAR_9494    = VAR__1111;
+            VAR__819283[0].VAR_1238123 = VAR__1111;
+
+            while (( chklst(VAR__819283, _n) == 0 ) && ( VAR__819283[0].VAR_9494 != 0 ))
+            {
+               VAR__53647   = 0;
+               VAR__8444594 = -1;
+
+               if ( VAR__819283[0].VAR_9494 == 0 )
+               {
+                  break;
+               }
+
+               while ( VAR__819283[VAR__53647].VAR_9494 != 0 )
+               {
+                  if ( VAR__819283[VAR__53647].VAR_9494 == _n )
+                  {
+                     VAR__SUM++;
+                  }
+                  else
+                  {
+                     for ( VAR__21230 = VAR__819283[VAR__53647].VAR_1238123; VAR__21230 <= ( _n / VAR__819283[VAR__53647].VAR_9494 ); VAR__21230++ )
+                     {
+                        if (( _n % ( VAR__819283[VAR__53647].VAR_9494 * VAR__21230 )) == 0 )
+                        {
+                           VAR__19328[++VAR__8444594].VAR_9494  = VAR__819283[VAR__53647].VAR_9494 * VAR__21230;
+                           VAR__19328[VAR__8444594].VAR_1238123 = VAR__21230;
+                        }
+                     }
+                  }
+
+                  VAR__53647++;
+               }
+
+               cpy_clr(VAR__819283, VAR__19328);
+            }
+
+            VAR__53647 = 0;
+
+            while ( VAR__819283[VAR__53647].VAR_9494 != 0 )
+            {
+               if ( VAR__819283[VAR__53647].VAR_9494 == _n )
+               {
+                  VAR__SUM++;
+               }
+
+               VAR__53647++;
+            }
+         }
+      }
+
+
+      printf("%d\n", ++VAR__SUM);
+      VAR__SUM = 0;
+   }
+}

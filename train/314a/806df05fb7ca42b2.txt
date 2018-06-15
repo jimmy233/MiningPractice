@@ -1,0 +1,147 @@
+int main()
+{
+   int  start1[10000];
+   int  end1[10000];
+   int  VAR__53647 = 0;
+   int  renshu     = 0;
+   int  VAR__MAX   = 0;
+   int  VAR_FLAG   = 0;
+   int  flag1      = 0;
+   int  VAR__21230 = 0;
+   int  VAR__NUM[100000];
+   char start[200000];
+   char end[200000];
+
+   memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+   memset(start1, 0, sizeof( start1 ));
+   memset(start, 0, sizeof( start ));
+   memset(end, 0, sizeof( end ));
+   memset(end1, 0, sizeof( end1 ));
+   cin.getline(start, 200000, '\n');
+   cin.getline(end, 200000, '\n');
+   for ( VAR__53647 = 0; VAR__53647 < 200000; VAR__53647++ )
+   {
+      if ( start[VAR__53647] == 0 )
+      {
+         renshu++;
+         VAR_FLAG = flag1;
+         flag1    = VAR__53647 - 1;
+
+         if ( renshu == 1 )
+         {
+            for ( VAR__21230 = flag1; VAR__21230 >= 0; VAR__21230-- )
+            {
+               start1[renshu] = start1[renshu] + (( start[VAR__21230] - '0' ) * pow((double)10, (double)( flag1 - VAR__21230 )));
+            }
+         }
+         else
+         {
+            for ( VAR__21230 = flag1; VAR__21230 > ( VAR_FLAG + 1 ); VAR__21230-- )
+            {
+               start1[renshu] = start1[renshu] + (( start[VAR__21230] - '0' ) * pow((double)10, (double)( flag1 - VAR__21230 )));
+            }
+         }
+
+         break;
+      }
+
+      if ( start[VAR__53647] != 0 )
+      {
+         if ( start[VAR__53647] == ',' )
+         {
+            renshu++;
+            VAR_FLAG = flag1;
+            flag1    = VAR__53647 - 1;
+
+            if ( renshu == 1 )
+            {
+               for ( VAR__21230 = flag1; VAR__21230 >= 0; VAR__21230-- )
+               {
+                  start1[renshu] = start1[renshu] + (( start[VAR__21230] - '0' ) * pow((double)10, (double)( flag1 - VAR__21230 )));
+               }
+            }
+            else
+            {
+               for ( VAR__21230 = flag1; VAR__21230 > ( VAR_FLAG + 1 ); VAR__21230-- )
+               {
+                  start1[renshu] = start1[renshu] + (( start[VAR__21230] - '0' ) * pow((double)10, (double)( flag1 - VAR__21230 )));
+               }
+            }
+         }
+      }
+   }
+
+   VAR_FLAG = 0;
+   flag1    = 0;
+   renshu   = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 200000; VAR__53647++ )
+   {
+      if ( end[VAR__53647] == 0 )
+      {
+         renshu++;
+         VAR_FLAG = flag1;
+         flag1    = VAR__53647 - 1;
+
+         if ( renshu == 1 )
+         {
+            for ( VAR__21230 = flag1; VAR__21230 >= 0; VAR__21230-- )
+            {
+               end1[renshu] = end1[renshu] + (( end[VAR__21230] - '0' ) * pow((double)10, (double)( flag1 - VAR__21230 )));
+            }
+         }
+         else
+         {
+            for ( VAR__21230 = flag1; VAR__21230 > ( VAR_FLAG + 1 ); VAR__21230-- )
+            {
+               end1[renshu] = end1[renshu] + (( end[VAR__21230] - '0' ) * pow((double)10, (double)( flag1 - VAR__21230 )));
+            }
+         }
+
+         break;
+      }
+
+      if ( end[VAR__53647] != 0 )
+      {
+         if ( end[VAR__53647] == ',' )
+         {
+            renshu++;
+            VAR_FLAG = flag1;
+            flag1    = VAR__53647 - 1;
+
+            if ( renshu == 1 )
+            {
+               for ( VAR__21230 = flag1; VAR__21230 >= 0; VAR__21230-- )
+               {
+                  end1[renshu] = end1[renshu] + (( end[VAR__21230] - '0' ) * pow((double)10, (double)( flag1 - VAR__21230 )));
+               }
+            }
+            else
+            {
+               for ( VAR__21230 = flag1; VAR__21230 > ( VAR_FLAG + 1 ); VAR__21230-- )
+               {
+                  end1[renshu] = end1[renshu] + (( end[VAR__21230] - '0' ) * pow((double)10, (double)( flag1 - VAR__21230 )));
+               }
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= renshu; VAR__53647++ )
+   {
+      for ( VAR__21230 = start1[VAR__53647]; VAR__21230 < end1[VAR__53647]; VAR__21230++ )
+      {
+         VAR__NUM[VAR__21230]++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__NUM[VAR__53647];
+      }
+   }
+
+   ((( cout << renshu ) << " " ) << VAR__MAX ) << endl;
+   return 0;
+}

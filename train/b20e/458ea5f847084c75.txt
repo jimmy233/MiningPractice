@@ -1,0 +1,110 @@
+void line(int VAR_1238123, int *VAR_233);
+
+int main()
+{
+   int VAR_1238123;
+   int n1;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+   int VAR__1111;
+   int VAR__SUM;
+   int VAR_9494;
+   int win;
+   int VAR_21983012;
+   int lose;
+   int money;
+   int VAR_FLAG;
+   int flag2;
+   int VAR__819283[1000];
+   int VAR__19328[1000];
+
+   for ( VAR__1111 = 0; ; VAR__1111++ )
+   {
+      scanf("%d", &n1);
+
+      if ( n1 == 0 )
+      {
+         break;
+      }
+
+      lose         = 0;
+      win          = 0;
+      VAR__53647   = ( VAR__21230 = 0 );
+      VAR__8444594 = ( VAR__1111 = n1 - 1 );
+      memset(VAR__819283, 0, 1000 * ( sizeof( int )));
+      memset(VAR__19328, 0, 1000 * ( sizeof( int )));
+      line(n1, VAR__819283);
+      line(n1, VAR__19328);
+
+      while (( VAR__21230 <= VAR__8444594 ) && ( VAR__53647 <= VAR__1111 ))
+      {
+         if ( VAR__19328[VAR__21230] < VAR__819283[VAR__53647] )
+         {
+            win++;
+            VAR__53647++;
+            VAR__21230++;
+         }
+         else
+         if ( VAR__19328[VAR__21230] > VAR__819283[VAR__53647] )
+         {
+            lose++;
+            VAR__53647++;
+            VAR__8444594--;
+         }
+         else
+         {
+            if ( VAR__19328[VAR__8444594] < VAR__819283[VAR__1111] )
+            {
+               win++;
+               VAR__8444594--;
+               VAR__1111--;
+            }
+            else
+            if ( VAR__19328[VAR__8444594] > VAR__819283[VAR__53647] )
+            {
+               lose++;
+               VAR__8444594--;
+               VAR__53647++;
+            }
+            else
+            {
+               VAR__8444594--;
+               VAR__53647++;
+            }
+         }
+      }
+
+      money = ( 200 * win ) - ( 200 * lose );
+      printf("%d\n", money);
+   }
+
+   return 0;
+}
+
+
+void line(int VAR_1238123, int VAR_233[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR_233[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR_233[VAR__21230] > VAR_233[VAR__21230 + 1] )
+         {
+            VAR__8444594            = VAR_233[VAR__21230];
+            VAR_233[VAR__21230]     = VAR_233[VAR__21230 + 1];
+            VAR_233[VAR__21230 + 1] = VAR__8444594;
+         }
+      }
+   }
+}

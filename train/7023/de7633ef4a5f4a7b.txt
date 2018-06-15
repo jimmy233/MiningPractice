@@ -1,0 +1,60 @@
+int main()
+{
+   char ANOTHER_STRING[102];
+   char YET_ANOTHER_STRING[102];
+   int  result[102];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%s", ANOTHER_STRING, YET_ANOTHER_STRING);
+      int borrow = 0;
+      int len1   = strlen(ANOTHER_STRING);
+      int len2   = strlen(YET_ANOTHER_STRING);
+      int LEN_OF_STH;
+      LEN_OF_STH = len1;
+      for ( VAR__21230 = len2 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         YET_ANOTHER_STRING[( VAR__21230 + len1 ) - len2] = YET_ANOTHER_STRING[VAR__21230];
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < ( len1 - len2 ); VAR__21230++ )
+      {
+         YET_ANOTHER_STRING[VAR__21230] = '0';
+      }
+
+      for ( VAR__8444594 = LEN_OF_STH - 1; VAR__8444594 >= 0; VAR__8444594-- )
+      {
+         int VAR__TEMP = (( ANOTHER_STRING[VAR__8444594] - '0' ) - ( YET_ANOTHER_STRING[VAR__8444594] - '0' )) - borrow;
+
+         if ( VAR__TEMP < 0 )
+         {
+            borrow = 1;
+            result[VAR__8444594] = VAR__TEMP + 10;
+         }
+         else
+         {
+            borrow = 0;
+            result[VAR__8444594] = VAR__TEMP;
+         }
+      }
+
+      int VAR__8444594;
+      for ( VAR__8444594 = 0; result[VAR__8444594] == 0; VAR__8444594++ )
+      {
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 < LEN_OF_STH; VAR__8444594++ )
+      {
+         printf("%d", result[VAR__8444594]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

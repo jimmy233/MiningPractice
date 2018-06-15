@@ -1,0 +1,65 @@
+struct Student
+{
+   char           information[200];
+   struct Student *VAR__NEXT;
+};
+int VAR_1238123;
+struct Student *creat()
+{
+   struct Student *ANOTHER_POINTER;
+   struct Student *YET_ANOTHER_POINTER;
+   struct Student *VAR__HEAD;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct Student *)malloc(LEN));
+   gets(ANOTHER_POINTER->information);
+   VAR__HEAD = NULL;
+
+   while ( strcmp(ANOTHER_POINTER->information, "end") != 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct Student *)malloc(LEN);
+      gets(ANOTHER_POINTER->information);
+   }
+
+   VAR__HEAD = YET_ANOTHER_POINTER;
+   return VAR__HEAD;
+}
+
+
+void print(struct Student *VAR__HEAD)
+{
+   struct Student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         printf("%s\n", VAR_233->information);
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+   }
+}
+
+
+int main()
+{
+   struct Student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+   return 0;
+}

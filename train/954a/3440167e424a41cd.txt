@@ -1,0 +1,99 @@
+struct Node;
+typedef struct Node *pNode;
+struct Node
+{
+   int   av;
+   int   py;
+   int   thesis;
+   int   VAR__SUM;
+   char  name[20];
+   char  west;
+   char  gb;
+   pNode VAR__NEXT;
+};
+pNode create()
+{
+   pNode VAR_233;
+
+   VAR_233            = (pNode)malloc(sizeof( struct Node ));
+   VAR_233->VAR__NEXT = NULL;
+   return VAR_233;
+}
+
+
+int main()
+{
+   int   VAR__53647;
+   int   VAR_1238123;
+   int   VAR__MAX;
+   int   VAR__SUM  = 0;
+   pNode VAR_666   = NULL;
+   pNode VAR_233   = NULL;
+   pNode VAR__HEAD = NULL;
+   pNode maxn      = NULL;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create();
+   VAR_666   = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (pNode)malloc(sizeof( struct Node ));
+
+      if ( VAR_233 != NULL )
+      {
+         scanf("%s %d %d %c %c %d", &VAR_233->name, &VAR_233->av, &VAR_233->py, &VAR_233->gb, &VAR_233->west, &VAR_233->thesis);
+         VAR_233->VAR__SUM = 0;
+
+         if (( VAR_233->av > 80 ) && ( VAR_233->thesis > 0 ))
+         {
+            VAR_233->VAR__SUM += 8000;
+         }
+
+         if (( VAR_233->av > 85 ) && ( VAR_233->py > 80 ))
+         {
+            VAR_233->VAR__SUM += 4000;
+         }
+
+         if ( VAR_233->av > 90 )
+         {
+            VAR_233->VAR__SUM += 2000;
+         }
+
+         if (( VAR_233->av > 85 ) && ( VAR_233->west == 'Y' ))
+         {
+            VAR_233->VAR__SUM += 1000;
+         }
+
+         if (( VAR_233->py > 80 ) && ( VAR_233->gb == 'Y' ))
+         {
+            VAR_233->VAR__SUM += 850;
+         }
+
+         VAR_233->VAR__NEXT = NULL;
+         VAR_666->VAR__NEXT = VAR_233;
+         VAR__SUM          += VAR_233->VAR__SUM;
+         VAR_666            = VAR_233;
+      }
+   }
+
+   maxn    = VAR__HEAD->VAR__NEXT;
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   while ( 1 )
+   {
+      if ( VAR_233->VAR__SUM > maxn->VAR__SUM )
+      {
+         maxn = VAR_233;
+      }
+
+      if ( VAR_233->VAR__NEXT == NULL )
+      {
+         break;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%s\n%d\n%d", maxn->name, maxn->VAR__SUM, VAR__SUM);
+   return 0;
+}

@@ -1,0 +1,83 @@
+void countdate(int year, int month, int date, long *VAR__NUM);
+void countyear(int year, long *VAR__NUM);
+
+int main()
+{
+   int  month;
+   int  date;
+   long year;
+   long VAR__NUM = 0;
+
+   (( cin >> year ) >> month ) >> date;
+
+   while ( year > 7000 )
+   {
+      year -= 7000;
+   }
+
+   countdate(year, month, date, &VAR__NUM);
+   countyear(year, &VAR__NUM);
+   switch ( VAR__NUM % 7 )
+   {
+   case 0:
+      ( cout << "Sun." ) << endl;
+      break;
+
+   case 1:
+      ( cout << "Mon." ) << endl;
+      break;
+
+   case 2:
+      ( cout << "Tue." ) << endl;
+      break;
+
+   case 3:
+      ( cout << "Wen." ) << endl;
+      break;
+
+   case 4:
+      ( cout << "Thu." ) << endl;
+      break;
+
+   case 5:
+      ( cout << "Fri." ) << endl;
+      break;
+
+   case 6:
+      ( cout << "Sat." ) << endl;
+      break;
+   }
+
+   return 0;
+}
+
+
+void countdate(int year, int month, int date, long *VAR__NUM)
+{
+   int VAR__53647;
+   int day[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      *VAR__NUM += day[VAR__53647];
+   }
+
+   *VAR__NUM += date;
+
+   if ( month > 2 )
+   {
+      if ((( year % 400 ) == 0 ) || ((( year % 100 ) != 0 ) && (( year % 4 ) == 0 )))
+      {
+         ( *VAR__NUM )++;
+      }
+   }
+}
+
+
+void countyear(int year, long *VAR__NUM)
+{
+   *VAR__NUM += ( year - 1 ) * 365;
+   *VAR__NUM += ( year - 1 ) / 4;
+   *VAR__NUM -= ( year - 1 ) / 100;
+   *VAR__NUM += ( year - 1 ) / 400;
+}

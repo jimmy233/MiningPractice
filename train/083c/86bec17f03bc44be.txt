@@ -1,0 +1,68 @@
+int main()
+{
+   char     A_STRING[10001];
+   char     *array[36] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+   long int VAR__819283;
+   long int VAR__19328;
+   long int VAR_1238123;
+   long int VAR__1238129[10001];
+   long int lstr;
+   long int VAR__53647;
+   long int lb;
+   long int a1;
+
+   cin >> VAR__819283;
+   cin.get();
+   cin >> A_STRING;
+   cin >> VAR__19328;
+   lstr        = strlen(A_STRING);
+   VAR_1238123 = 0;
+   lb          = 0;
+   for ( VAR__53647 = 0; VAR__53647 < lstr; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= 65 ) && ( A_STRING[VAR__53647] <= 90 ))
+      {
+         VAR__1238129[VAR__53647] = ( A_STRING[VAR__53647] - 'A' ) + 10;
+      }
+      else
+      if (( A_STRING[VAR__53647] >= 97 ) && ( A_STRING[VAR__53647] <= 122 ))
+      {
+         VAR__1238129[VAR__53647] = ( A_STRING[VAR__53647] - 'a' ) + 10;
+      }
+      else
+      {
+         VAR__1238129[VAR__53647] = A_STRING[VAR__53647] - '0';
+      }
+   }
+
+   a1           = VAR__819283;
+   VAR_1238123 += VAR__1238129[lstr - 1];
+   for ( VAR__53647 = lstr - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR_1238123 = VAR_1238123 + ( VAR__1238129[VAR__53647] * VAR__819283 );
+      VAR__819283 = VAR__819283 * a1;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 10000; VAR__53647++ )
+   {
+      if ( VAR_1238123 < VAR__19328 )
+      {
+         cout << array[VAR_1238123];
+         break;
+      }
+      else
+      {
+         VAR__1238129[VAR__53647] = VAR_1238123 % VAR__19328;
+         VAR_1238123 -= VAR__1238129[VAR__53647];
+         VAR_1238123  = VAR_1238123 / VAR__19328;
+         lb++;
+      }
+   }
+
+   for ( VAR__53647 = lb; VAR__53647 >= 1; VAR__53647-- )
+   {
+      cout << array[VAR__1238129[VAR__53647]];
+   }
+
+   return 0;
+}

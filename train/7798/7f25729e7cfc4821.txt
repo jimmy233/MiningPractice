@@ -1,0 +1,68 @@
+struct Book
+{
+   int  id;
+   char author[26];
+   int  VAR_FLAG;
+}
+book[1000];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1111;
+   int VAR__MAX;
+   int maxnum;
+   int VAR__NUM        = 0;
+   int VAR__819283[26] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %s", &book[VAR__53647].id, book[VAR__53647].author);
+      VAR__1111 = strlen(book[VAR__53647].author);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+      {
+         VAR__819283[book[VAR__53647].author[VAR__21230] - 65]++;
+      }
+   }
+
+   VAR__MAX = 0;
+   maxnum   = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+         maxnum   = VAR__53647;
+      }
+   }
+
+   printf("%c\n", maxnum + 65);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      book[VAR__53647].VAR_FLAG = 0;
+      VAR__1111 = strlen(book[VAR__53647].author);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+      {
+         if ( book[VAR__53647].author[VAR__21230] == ( maxnum + 65 ))
+         {
+            VAR__NUM++;
+            book[VAR__53647].VAR_FLAG = 1;
+            break;
+         }
+      }
+   }
+
+   printf("%d\n", VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( book[VAR__53647].VAR_FLAG == 1 )
+      {
+         printf("%d\n", book[VAR__53647].id);
+      }
+   }
+
+
+   return 0;
+}

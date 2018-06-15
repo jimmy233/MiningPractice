@@ -1,0 +1,58 @@
+int main()
+{
+   int group = 0;
+   int row   = 0;
+   int col   = 0;
+   int VAR__819283[101][101];
+
+   int (*VAR_233)[101];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM = 0;
+   VAR_233 = VAR__819283;
+   cin >> group;
+
+   while ( group-- )
+   {
+      ( cin >> row ) >> col;
+      for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+         {
+            cin >> ( *(( *( VAR_233 + VAR__53647 )) + VAR__21230 ));
+         }
+      }
+
+
+      VAR__SUM = 0;
+
+      if (( row == 1 ) && ( col == 1 ))
+      {
+         VAR__SUM = *( *VAR_233 );
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < col; VAR__53647++ )
+         {
+            VAR__SUM += *(( *VAR_233 ) + VAR__53647 );
+
+            if ( row > 1 )
+            {
+               VAR__SUM += *(( *(( VAR_233 + row ) - 1 )) + VAR__53647 );
+            }
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 <= ( row - 2 ); VAR__53647++ )
+         {
+            VAR__SUM += *( *( VAR_233 + VAR__53647 ));
+
+            if ( col > 1 )
+            {
+               VAR__SUM += *((( *( VAR_233 + VAR__53647 )) + col ) - 1 );
+            }
+         }
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+}

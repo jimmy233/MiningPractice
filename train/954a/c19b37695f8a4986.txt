@@ -1,0 +1,76 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct student
+   {
+      char name[1000];
+      int  final;
+      int  clas;
+      char ganbu;
+      char west;
+      int  paper;
+   }
+   stu[1000];
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].final, &stu[VAR__53647].clas, &stu[VAR__53647].ganbu, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   int total[1000] = { 0 };
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].final > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         total[VAR__53647] = total[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].final > 85 ) && ( stu[VAR__53647].clas > 80 ))
+      {
+         total[VAR__53647] = total[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].final > 90 )
+      {
+         total[VAR__53647] = total[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].final > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         total[VAR__53647] = total[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].clas > 80 ) && ( stu[VAR__53647].ganbu == 'Y' ))
+      {
+         total[VAR__53647] = total[VAR__53647] + 850;
+      }
+   }
+
+   int VAR__MAX = total[1];
+   int VAR__SUM = total[1];
+   int VAR__8444594;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + total[VAR__53647];
+
+      if ( total[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = total[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( total[VAR__53647] == VAR__MAX )
+      {
+         printf("%s\n", stu[VAR__53647].name);
+         break;
+      }
+   }
+
+   printf("%d\n", VAR__MAX);
+   printf("%d", VAR__SUM);
+   return 0;
+}

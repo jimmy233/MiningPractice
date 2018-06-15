@@ -1,0 +1,67 @@
+int ascmax(char A_STRING[10])
+{
+   int  sit = 0;
+   int  VAR__53647;
+   char VAR__MAX;
+
+   VAR__MAX = A_STRING[0];
+   for ( VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = A_STRING[VAR__53647];
+         sit      = VAR__53647 + 1;
+      }
+   }
+
+   return sit;
+}
+
+
+void insert(int sit, char *pa, char *pb, char *pc)
+{
+   int VAR__53647 = 0;
+
+   while ( VAR__53647 < sit )
+   {
+      *pc = *pa;
+      pc++;
+      pa++;
+      VAR__53647++;
+   }
+
+   while (( VAR__53647 >= sit ) && ( VAR__53647 < ( sit + 3 )))
+   {
+      *pc = *pb;
+      pc++;
+      pb++;
+      VAR__53647++;
+   }
+
+   while (( VAR__53647 >= ( sit + 3 )) && (( *pa ) != '\0' ))
+   {
+      *pc = *pa;
+      pc++;
+      pa++;
+      VAR__53647++;
+   }
+
+   *pc = '\0';
+}
+
+
+void main()
+{
+   int  sit;
+   char VAR__819283[11];
+   char VAR__19328[4];
+   char VAR__4857423[15];
+
+   while ( scanf("%s", VAR__819283) != EOF )
+   {
+      scanf("%s", VAR__19328);
+      sit = ascmax(VAR__819283);
+      insert(sit, VAR__819283, VAR__19328, VAR__4857423);
+      puts(VAR__4857423);
+   }
+}

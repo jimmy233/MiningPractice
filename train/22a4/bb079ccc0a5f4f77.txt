@@ -1,0 +1,98 @@
+int main()
+{
+   int VAR__127322(int VAR__1238129);
+   int VAR__COUNT(int VAR__1238129);
+
+   int VAR__1238129[6];
+   for ( int VAR__53647 = 0; VAR__53647 <= 5; VAR__53647++ )
+   {
+      scanf("%d", &VAR__1238129[VAR__53647]);
+   }
+
+   for ( int VAR__21230 = 0; VAR__21230 <= 5; VAR__21230++ )
+   {
+      printf("%d\n", VAR__127322(VAR__1238129[VAR__21230]));
+   }
+}
+
+
+int VAR__COUNT(int VAR__1238129)
+{
+   int VAR__819283 = 1;
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      VAR__819283 = VAR__819283 * 10;
+   }
+
+   return VAR__819283;
+}
+
+
+int VAR__127322(int VAR__1238129)
+{
+   if ( VAR__1238129 > 0 )
+   {
+      int VAR__53647  = 1;
+      int VAR_1238123 = VAR__1238129;
+
+      while (( VAR_1238123 / 10 ) >= 1 )
+      {
+         VAR__53647++;
+         VAR_1238123 = VAR_1238123 / 10;
+      }
+
+      int *VAR_233 = (int *)malloc(VAR__53647 * ( sizeof( int )));
+      int VAR__21230;
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         VAR_233[VAR__21230] = VAR__1238129 - (((int)( VAR__1238129 / 10 )) * 10 );
+         VAR__1238129        = VAR__1238129 / 10;
+      }
+
+      int VAR__8444594;
+      int VAR__19328 = 0;
+      for ( VAR__8444594 = 0; VAR__8444594 <= ( VAR__53647 - 1 ); VAR__8444594++ )
+      {
+         VAR__19328 = VAR__19328 + ( VAR_233[VAR__8444594] * VAR__COUNT(( VAR__53647 - VAR__8444594 ) - 1));
+      }
+
+      return VAR__19328;
+   }
+   else
+   if ( VAR__1238129 == 0 )
+   {
+      int VAR__4857423 = 0;
+      return VAR__4857423;
+   }
+   else
+   {
+      int VAR__53647 = 1;
+      int VAR_666;
+      int VAR_1238123 = VAR_666 = -VAR__1238129;
+
+      while (( VAR_1238123 / 10 ) >= 1 )
+      {
+         VAR__53647++;
+         VAR_1238123 = VAR_1238123 / 10;
+      }
+
+      int *VAR_233 = (int *)malloc(VAR__53647 * ( sizeof( int )));
+      int VAR__21230;
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         VAR_233[VAR__21230] = VAR_666 - (((int)( VAR_666 / 10 )) * 10 );
+         VAR_666             = VAR_666 / 10;
+      }
+
+      int VAR__8444594;
+      int VAR__19328 = 0;
+      for ( VAR__8444594 = 0; VAR__8444594 <= ( VAR__53647 - 1 ); VAR__8444594++ )
+      {
+         VAR__19328 = VAR__19328 + ( VAR_233[VAR__8444594] * VAR__COUNT(( VAR__53647 - VAR__8444594 ) - 1));
+      }
+
+      return -VAR__19328;
+   }
+}

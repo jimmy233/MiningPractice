@@ -1,0 +1,82 @@
+int main()
+{
+   int  VAR__53647;
+   int  n1;
+   int  n2;
+   int  VAR__temp = 0;
+   int  a1[26];
+   int  a2[26];
+   int  a3[26];
+   int  a4[26];
+   int  VAR_FLAG = 0;
+   char s1[100];
+   char s2[100];
+   char *ANOTHER_POINTER;
+   char *YET_ANOTHER_POINTER;
+
+   scanf("%s %s", s1, s2);
+   ANOTHER_POINTER     = s1;
+   YET_ANOTHER_POINTER = s2;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      a1[VAR__53647] = 0;
+      a2[VAR__53647] = 0;
+      a3[VAR__53647] = 0;
+      a4[VAR__53647] = 0;
+   }
+
+   n1 = strlen(s1);
+   n2 = strlen(s2);
+
+   if ( n1 != n2 )
+   {
+      printf("NO\n");
+   }
+
+   if ( n1 == n2 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+      {
+         if ((( *( ANOTHER_POINTER + VAR__53647 )) >= 'a' ) && (( *( ANOTHER_POINTER + VAR__53647 )) <= 'z' ))
+         {
+            VAR__temp = ( *( ANOTHER_POINTER + VAR__53647 )) - 97;
+            a1[VAR__temp]++;
+         }
+
+         if ((( *( YET_ANOTHER_POINTER + VAR__53647 )) >= 'a' ) && (( *( YET_ANOTHER_POINTER + VAR__53647 )) <= 'z' ))
+         {
+            VAR__temp = ( *( YET_ANOTHER_POINTER + VAR__53647 )) - 97;
+            a2[VAR__temp]++;
+         }
+
+         if ((( *( ANOTHER_POINTER + VAR__53647 )) >= 'A' ) && (( *( ANOTHER_POINTER + VAR__53647 )) <= 'Z' ))
+         {
+            VAR__temp = ( *( ANOTHER_POINTER + VAR__53647 )) - 65;
+            a3[VAR__temp]++;
+         }
+
+         if ((( *( YET_ANOTHER_POINTER + VAR__53647 )) >= 'A' ) && (( *( YET_ANOTHER_POINTER + VAR__53647 )) <= 'Z' ))
+         {
+            VAR__temp = ( *( YET_ANOTHER_POINTER + VAR__53647 )) - 65;
+            a4[VAR__temp]++;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+      {
+         if (( a1[VAR__53647] != a2[VAR__53647] ) || ( a3[VAR__53647] != a4[VAR__53647] ))
+         {
+            printf("NO\n");
+            VAR_FLAG = 1;
+            break;
+         }
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         printf("YES\n");
+      }
+   }
+
+   return 0;
+}

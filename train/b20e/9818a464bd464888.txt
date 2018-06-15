@@ -1,0 +1,88 @@
+int VAR_1238123;
+int num1[1001];
+int num2[1001];
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   while ( 1 )
+   {
+      cin >> VAR_1238123;
+
+      if ( !VAR_1238123 )
+      {
+         break;
+      }
+
+      memset(num1, 0, sizeof( num1 ));
+      memset(num2, 0, sizeof( num2 ));
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> num1[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> num2[VAR__53647];
+      }
+
+      qsort(num1, VAR_1238123, sizeof( num1[0] ), cmp);
+      qsort(num2, VAR_1238123, sizeof( num2[0] ), cmp);
+      int res = 0;
+      int VAR__1238129;
+      int VAR__HEAD = 0;
+      int ttail     = VAR_1238123 - 1;
+      int ktail     = VAR_1238123 - 1;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( num1[VAR__HEAD] > num2[VAR__53647] )
+         {
+            res++;
+            VAR__HEAD++;
+         }
+         else
+         if ( num1[VAR__HEAD] < num2[VAR__53647] )
+         {
+            ttail--;
+            res--;
+         }
+         else
+         {
+            for ( int VAR__21230 = ttail, VAR__1238129 = ktail; VAR__21230 >= VAR__HEAD; VAR__21230--, VAR__1238129-- )
+            {
+               if ( num1[VAR__21230] > num2[VAR__1238129] )
+               {
+                  res++;
+                  ttail--;
+                  ktail--;
+               }
+               else
+               {
+                  if ( num1[VAR__21230] < num2[VAR__53647] )
+                  {
+                     res--;
+                  }
+
+                  ttail = --VAR__21230;
+                  ktail = VAR__1238129;
+                  break;
+               }
+            }
+         }
+
+
+         if ( VAR__HEAD > ttail )
+         {
+            break;
+         }
+      }
+
+      ( cout << ( res * 200 )) << endl;
+   }
+
+   return 0;
+}

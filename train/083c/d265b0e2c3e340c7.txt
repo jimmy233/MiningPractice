@@ -1,0 +1,64 @@
+int main(int argc, const char *argv[])
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  s2[100] = { 0 };
+   int  s1[100] = { 0 };
+   int  Sum     = 0;
+   char ANOTHER_STRING[100];
+   char YET_ANOTHER_STRING[100];
+
+   (( cin >> VAR__819283 ) >> ANOTHER_STRING ) >> VAR__19328;
+   int len1 = strlen(ANOTHER_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      if ( ANOTHER_STRING[VAR__53647] <= 57 )
+      {
+         s1[VAR__53647] = ANOTHER_STRING[VAR__53647] - '0';
+      }
+
+      if (( ANOTHER_STRING[VAR__53647] >= 65 ) && ( ANOTHER_STRING[VAR__53647] <= 90 ))
+      {
+         s1[VAR__53647] = ( ANOTHER_STRING[VAR__53647] - 'A' ) + 10;
+      }
+
+      if ( ANOTHER_STRING[VAR__53647] > 90 )
+      {
+         s1[VAR__53647] = ( ANOTHER_STRING[VAR__53647] - 'a' ) + 10;
+      }
+
+      s2[VAR__53647] = s1[VAR__53647] * pow((double)VAR__819283, ( len1 - VAR__53647 ) - 1);
+      Sum           += s2[VAR__53647];
+   }
+
+   if ( Sum == 0 )
+   {
+      cout << '0';
+      return 0;
+   }
+
+   for ( VAR__53647 = 0; Sum > 0; VAR__53647++ )
+   {
+      if (( Sum % VAR__19328 ) < 10 )
+      {
+         YET_ANOTHER_STRING[VAR__53647] = ( Sum % VAR__19328 ) + '0';
+      }
+      else
+      {
+         YET_ANOTHER_STRING[VAR__53647] = (( Sum % VAR__19328 ) - 10 ) + 'A';
+      }
+
+      Sum -= Sum % VAR__19328;
+      Sum /= VAR__19328;
+   }
+
+   YET_ANOTHER_STRING[VAR__53647] = '\0';
+   int len2 = strlen(YET_ANOTHER_STRING);
+   for ( VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << YET_ANOTHER_STRING[VAR__53647];
+   }
+
+   return 0;
+}

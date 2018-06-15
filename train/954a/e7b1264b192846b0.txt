@@ -1,0 +1,70 @@
+struct student
+{
+   char name[25];
+   int  qmpj;
+   int  bjpy;
+   char gb;
+   char xb;
+   int  paper;
+   int  money;
+};
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            total = 0;
+   int            c1;
+   int            c2;
+   int            c3;
+   struct student stu[100];
+   struct student *VAR_233;
+   struct student *VAR__1238129;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR_233 = stu; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%s%d%d%c%c%c%c%c%d", &( *VAR_233 ).name, &( *VAR_233 ).qmpj, &( *VAR_233 ).bjpy, &c1, &( *VAR_233 ).gb, &c2, &( *VAR_233 ).xb, &c3, &( *VAR_233 ).paper);
+      VAR_233->money = 0;
+   }
+
+   for ( VAR_233 = stu; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      if (( VAR_233->qmpj > 80 ) && ( VAR_233->paper > 0 ))
+      {
+         VAR_233->money = VAR_233->money + 8000;
+      }
+
+      if (( VAR_233->qmpj > 85 ) && ( VAR_233->bjpy > 80 ))
+      {
+         VAR_233->money = VAR_233->money + 4000;
+      }
+
+      if ( VAR_233->qmpj > 90 )
+      {
+         VAR_233->money = VAR_233->money + 2000;
+      }
+
+      if (( VAR_233->qmpj > 85 ) && ( VAR_233->xb == 'Y' ))
+      {
+         VAR_233->money = VAR_233->money + 1000;
+      }
+
+      if (( VAR_233->bjpy > 80 ) && ( VAR_233->gb == 'Y' ))
+      {
+         VAR_233->money = VAR_233->money + 850;
+      }
+   }
+
+   VAR__1238129 = stu;
+   for ( VAR_233 = stu; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      if ( VAR_233->money > VAR__1238129->money )
+      {
+         VAR__1238129 = VAR_233;
+      }
+
+      total = VAR_233->money + total;
+   }
+
+   printf("%s\n%d\n%d\n", VAR__1238129->name, VAR__1238129->money, total);
+}

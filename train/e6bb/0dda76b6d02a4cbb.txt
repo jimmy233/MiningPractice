@@ -1,0 +1,68 @@
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   int VAR_SIZE[6][9][9];
+   int day = 1;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__112390;
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         VAR_SIZE[0][VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+   VAR_SIZE[0][4][4] = VAR__1238129;
+   for ( day = 1; day <= VAR_1238123; day++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            VAR_SIZE[day][VAR__53647][VAR__21230] = 0;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            if ( VAR_SIZE[day - 1][VAR__53647][VAR__21230] != 0 )
+            {
+               VAR__112390 = VAR_SIZE[day - 1][VAR__53647][VAR__21230];
+               VAR_SIZE[day][VAR__53647 - 1][VAR__21230 - 1] += VAR__112390;
+               VAR_SIZE[day][VAR__53647 - 1][VAR__21230]     += VAR__112390;
+               VAR_SIZE[day][VAR__53647 - 1][VAR__21230 + 1] += VAR__112390;
+               VAR_SIZE[day][VAR__53647][VAR__21230 - 1]     += VAR__112390;
+               VAR_SIZE[day][VAR__53647][VAR__21230]         += VAR__112390 * 2;
+               VAR_SIZE[day][VAR__53647][VAR__21230 + 1]     += VAR__112390;
+               VAR_SIZE[day][VAR__53647 + 1][VAR__21230 - 1] += VAR__112390;
+               VAR_SIZE[day][VAR__53647 + 1][VAR__21230]     += VAR__112390;
+               VAR_SIZE[day][VAR__53647 + 1][VAR__21230 + 1] += VAR__112390;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( VAR__21230 == 8 )
+         {
+            printf("%d\n", VAR_SIZE[VAR_1238123][VAR__53647][VAR__21230]);
+         }
+         else
+         {
+            printf("%d ", VAR_SIZE[VAR_1238123][VAR__53647][VAR__21230]);
+         }
+      }
+   }
+
+   return 0;
+}

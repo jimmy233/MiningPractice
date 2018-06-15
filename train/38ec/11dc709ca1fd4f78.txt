@@ -1,0 +1,202 @@
+int leap(int);
+
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int VAR__SUM = 0;
+   int VAR__819283[13];
+   int VAR__19328[13];
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 < 13; VAR__53647++ )
+   {
+      if ( VAR__53647 == 2 )
+      {
+         VAR__819283[VAR__53647] = 28;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         VAR__819283[VAR__53647] = 30;
+      }
+      else
+      {
+         VAR__819283[VAR__53647] = 31;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 13; VAR__53647++ )
+   {
+      if ( VAR__53647 == 2 )
+      {
+         VAR__19328[VAR__53647] = 29;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         VAR__19328[VAR__53647] = 30;
+      }
+      else
+      {
+         VAR__19328[VAR__53647] = 31;
+      }
+   }
+
+   ((((( cin >> sy ) >> sm ) >> sd ) >> ey ) >> em ) >> ed;
+
+   if ( sy == ey )
+   {
+      if ( sm == em )
+      {
+         VAR__SUM += ed - sd;
+      }
+      else
+      {
+         for ( VAR__53647 = sm + 1; VAR__53647 <= ( em - 1 ); VAR__53647++ )
+         {
+            if ( VAR__53647 == 2 )
+            {
+               if ( leap(sy))
+               {
+                  VAR__SUM += VAR__19328[VAR__53647];
+               }
+               else
+               {
+                  VAR__SUM += VAR__819283[VAR__53647];
+               }
+            }
+            else
+            {
+               VAR__SUM += VAR__819283[VAR__53647];
+            }
+         }
+
+         VAR__SUM = ( VAR__SUM + ed ) - 1;
+
+         if ( sm == 2 )
+         {
+            if ( leap(sy))
+            {
+               VAR__SUM += ( VAR__19328[2] - sd ) + 1;
+            }
+            else
+            {
+               VAR__SUM += ( VAR__819283[2] - sd ) + 1;
+            }
+         }
+         else
+         {
+            VAR__SUM = (( VAR__SUM + VAR__819283[sm] ) - sd ) + 1;
+         }
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+   else
+   {
+      for ( VAR__53647 = sy + 1; VAR__53647 <= ( ey - 1 ); VAR__53647++ )
+      {
+         if ( leap(VAR__53647))
+         {
+            VAR__SUM += 366;
+         }
+         else
+         {
+            VAR__SUM += 365;
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= ( em - 1 ); VAR__53647++ )
+      {
+         if ( VAR__53647 == 2 )
+         {
+            if ( leap(ey))
+            {
+               VAR__SUM += VAR__19328[VAR__53647];
+            }
+            else
+            {
+               VAR__SUM += VAR__819283[VAR__53647];
+            }
+         }
+         else
+         {
+            VAR__SUM += VAR__819283[VAR__53647];
+         }
+      }
+
+      VAR__SUM += ed - 1;
+      for ( VAR__53647 = sm + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         if ( VAR__53647 == 2 )
+         {
+            if ( leap(sy))
+            {
+               VAR__SUM += VAR__19328[VAR__53647];
+            }
+            else
+            {
+               VAR__SUM += VAR__819283[VAR__53647];
+            }
+         }
+         else
+         {
+            VAR__SUM += VAR__819283[VAR__53647];
+         }
+      }
+
+      if ( sm == 2 )
+      {
+         if ( leap(sy))
+         {
+            VAR__SUM += ( VAR__19328[2] - sd ) + 1;
+         }
+         else
+         {
+            VAR__SUM += ( VAR__819283[2] - sd ) + 1;
+         }
+      }
+      else
+      {
+         VAR__SUM += ( VAR__819283[sm] - sd ) + 1;
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}
+
+
+int leap(int VAR_1238123)
+{
+   if (( VAR_1238123 % 100 ) == 0 )
+   {
+      if (( VAR_1238123 % 400 ) == 0 )
+      {
+         return 1;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+   else
+   {
+      if (( VAR_1238123 % 4 ) == 0 )
+      {
+         return 1;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+
+   return 0;
+}

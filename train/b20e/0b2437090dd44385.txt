@@ -1,0 +1,91 @@
+int comp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR_21983012[1001];
+   int VAR__temp[1001];
+   int VAR__SUM;
+   int tfast;
+   int tslow;
+   int wfast;
+   int wslow;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_21983012[VAR__53647]);
+      }
+
+      tfast    = VAR_1238123 - 1;
+      tslow    = 0;
+      wfast    = VAR_1238123 - 1;
+      wslow    = 0;
+      VAR__SUM = 0;
+      qsort(VAR__temp, VAR_1238123, sizeof( VAR__temp[0] ), comp);
+      qsort(VAR_21983012, VAR_1238123, sizeof( VAR_21983012[0] ), comp);
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR_21983012[wfast] < VAR__temp[tfast] )
+         {
+            wfast--;
+            tfast--;
+            VAR__SUM++;
+         }
+         else
+         if ( VAR_21983012[wfast] > VAR__temp[tfast] )
+         {
+            wfast--;
+            tslow++;
+            VAR__SUM--;
+         }
+         else
+         if ( VAR_21983012[wfast] == VAR__temp[tfast] )
+         {
+            if ( VAR_21983012[wslow] == VAR__temp[tslow] )
+            {
+               if ( VAR_21983012[wfast] == VAR_21983012[wslow] )
+               {
+                  break;
+               }
+               else
+               if ( VAR_21983012[wfast] > VAR__temp[tslow] )
+               {
+                  tslow++;
+                  wfast--;
+                  VAR__SUM--;
+               }
+            }
+            else
+            if ( VAR_21983012[wslow] > VAR__temp[tslow] )
+            {
+               wfast--;
+               tslow++;
+               VAR__SUM--;
+            }
+            else
+            if ( VAR_21983012[wslow] < VAR__temp[tslow] )
+            {
+               wslow++;
+               tslow++;
+               VAR__SUM++;
+            }
+         }
+      }
+
+      printf("%d\n", VAR__SUM * 200);
+      scanf("%d", &VAR_1238123);
+   }
+}

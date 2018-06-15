@@ -1,0 +1,112 @@
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   int  LEN_OF_STH;
+   int  VAR_FLAG = 0;
+   char A_STRING[501];
+   char word[500][6];
+
+   for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 6; VAR__21230++ )
+      {
+         word[VAR__53647][VAR__21230] = '\0';
+      }
+   }
+
+
+   scanf("%d\n", &VAR_1238123);
+   gets(A_STRING);
+   LEN_OF_STH   = strlen(A_STRING);
+   VAR__21230   = 0;
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      word[VAR__8444594][VAR__21230] = A_STRING[VAR__53647];
+      VAR__21230++;
+
+      if ( VAR__21230 == VAR_1238123 )
+      {
+         VAR__8444594++;
+         VAR__53647 = ( VAR__53647 - VAR_1238123 ) + 1;
+         VAR__21230 = 0;
+      }
+   }
+
+   int VAR__COUNT[501] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( word[VAR__53647][0] != 0 )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+         {
+            if ( strcmp(word[VAR__53647], word[VAR__21230]) == 0 )
+            {
+               VAR__COUNT[VAR__53647]++;
+               word[VAR__21230][0] = 0;
+            }
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] != 0 )
+      {
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 == VAR__8444594 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+         {
+            if ( VAR__COUNT[VAR__53647] < VAR__COUNT[VAR__21230] )
+            {
+               break;
+            }
+         }
+
+
+         if ( VAR__21230 == VAR__8444594 )
+         {
+            printf("%d\n", VAR__COUNT[VAR__53647] + 1);
+            printf("%s\n", word[VAR__53647]);
+            VAR_FLAG = 1;
+         }
+
+         if ( VAR_FLAG == 1 )
+         {
+            break;
+         }
+      }
+
+      for ( VAR__53647 = VAR__53647 + 1; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+         {
+            if ( VAR__COUNT[VAR__53647] < VAR__COUNT[VAR__21230] )
+            {
+               break;
+            }
+         }
+
+
+         if ( VAR__21230 == VAR__8444594 )
+         {
+            printf("%s\n", word[VAR__53647]);
+         }
+      }
+   }
+}

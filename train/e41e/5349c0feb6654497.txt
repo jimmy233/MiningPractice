@@ -1,0 +1,54 @@
+int main(void)
+{
+   char ori[101];
+   char VAR__TEMP[4];
+   char res[100];
+   int  VAR__53647 = 1;
+   int  VAR__temp;
+   int  VAR_9494;
+
+   scanf("%s", ori);
+   VAR__TEMP[0] = ori[0];
+   VAR__TEMP[1] = ori[1];
+   VAR__TEMP[2] = '\0';
+
+   if ( atoi(VAR__TEMP) < 13 )
+   {
+      if ( atoi(VAR__TEMP) < 10 )
+      {
+         printf("0\n%d\n", atoi(VAR__TEMP));
+         return 0;
+      }
+
+      VAR__TEMP[2] = ori[2];
+      VAR__TEMP[3] = '\0';
+      VAR__53647   = 2;
+   }
+
+   VAR__temp = atoi(VAR__TEMP);
+   for ( VAR_9494 = VAR__53647; ori[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      res[VAR__53647 - VAR_9494] = ( VAR__temp / 13 ) + '0';
+      VAR__TEMP[0] = ori[VAR__53647 + 1];
+      VAR__TEMP[1] = '\0';
+
+      if ( ori[VAR__53647 + 1] == '\0' )
+      {
+         VAR__temp = VAR__temp % 13;
+      }
+      else
+      {
+         VAR__temp = (( VAR__temp % 13 ) * 10 ) + atoi(VAR__TEMP);
+      }
+   }
+
+   if ( VAR__53647 == VAR_9494 )
+   {
+      res[0] = '0';
+      VAR__53647++;
+   }
+
+   res[VAR__53647 - VAR_9494] = '\0';
+   printf("%s\n%d\n", res, VAR__temp);
+   return 0;
+}

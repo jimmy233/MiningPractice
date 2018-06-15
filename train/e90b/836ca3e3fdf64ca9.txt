@@ -1,0 +1,89 @@
+struct student
+{
+   int            VAR__NUM;
+   int            yuwen;
+   int            math;
+   int            total;
+   struct student *VAR__NEXT;
+};
+long VAR__1238129;
+long VAR_1238123;
+long VAR__8444594;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+
+   VAR__1238129 = 0;
+   VAR__HEAD    = 0;
+
+   while ( VAR__1238129 < VAR_1238123 )
+   {
+      VAR__1238129    = VAR__1238129 + 1;
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->total = ANOTHER_POINTER->yuwen + ANOTHER_POINTER->math;
+      YET_ANOTHER_POINTER    = VAR__HEAD;
+
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR__NEXT = 0;
+      }
+      else
+      {
+         VAR__8444594 = 0;
+
+         while ((( ANOTHER_POINTER->total <= YET_ANOTHER_POINTER->total ) && ( YET_ANOTHER_POINTER->VAR__NEXT != 0 )) && ( VAR__8444594 <= 3 ))
+         {
+            p3 = YET_ANOTHER_POINTER;
+            YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+            VAR__8444594++;
+         }
+
+         if (( ANOTHER_POINTER->total > YET_ANOTHER_POINTER->total ) && ( VAR__8444594 <= 3 ))
+         {
+            if ( VAR__HEAD == YET_ANOTHER_POINTER )
+            {
+               VAR__HEAD = ANOTHER_POINTER;
+            }
+            else
+            {
+               p3->VAR__NEXT = ANOTHER_POINTER;
+            }
+
+            ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            ANOTHER_POINTER->VAR__NEXT     = 0;
+         }
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *px;
+   int            t1 = 0;
+   int            t2;
+
+   scanf("%ld", &VAR_1238123);
+   VAR__HEAD = creat();
+   VAR_233   = VAR__HEAD;
+
+   while ( t1 < 3 )
+   {
+      printf("%d %d\n", VAR_233->VAR__NUM, VAR_233->total);
+      VAR_233 = VAR_233->VAR__NEXT;
+      t1++;
+   }
+}

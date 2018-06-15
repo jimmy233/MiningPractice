@@ -1,0 +1,45 @@
+struct student
+{
+   char           inf[200];
+   struct student *prev;
+};
+struct student *creat()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+   gets(ANOTHER_POINTER->inf);
+   ANOTHER_POINTER->prev = 0;
+
+   while ( ANOTHER_POINTER->inf[0] != 'e' )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(sizeof( struct student ));
+      gets(ANOTHER_POINTER->inf);
+      ANOTHER_POINTER->prev = YET_ANOTHER_POINTER;
+   }
+
+   return YET_ANOTHER_POINTER;
+}
+
+
+void print_f(struct student *VAR__HEAD)
+{
+   struct student *ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != 0 )
+   {
+      printf("%s\n", ANOTHER_POINTER->inf);
+      ANOTHER_POINTER = ANOTHER_POINTER->prev;
+   }
+}
+
+
+void main()
+{
+   print_f(creat());
+}

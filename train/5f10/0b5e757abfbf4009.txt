@@ -1,0 +1,80 @@
+void exp(int VAR__819283);
+void pick();
+
+int  VAR_1238123;
+char A_STRING[501];
+int  sumstr[499]  = { 0 };
+int  flagstr[499] = { 0 };
+int  LEN_OF_STH;
+int  maximum = INT_MIN;
+int main()
+{
+   cin >> VAR_1238123;
+   cin.get();
+   cin.getline(A_STRING, 501);
+   LEN_OF_STH = strlen(A_STRING);
+   exp(0);
+
+   if ( maximum <= 1 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   {
+      pick();
+   }
+
+   return 0;
+}
+
+
+void exp(int VAR__819283)
+{
+   if ( VAR__819283 == (( LEN_OF_STH - VAR_1238123 ) + 1 ))
+   {
+      return;
+   }
+
+   int VAR_FLAG;
+   for ( int VAR__53647 = VAR__819283; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      VAR_FLAG = 0;
+      for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( A_STRING[VAR__53647 + VAR__21230] == A_STRING[VAR__819283 + VAR__21230] )
+         {
+            VAR_FLAG++;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      if ( VAR_FLAG == VAR_1238123 )
+      {
+         sumstr[VAR__819283]++;
+      }
+   }
+
+   maximum = ( sumstr[VAR__819283] > maximum ) ? ( sumstr[VAR__819283] ) : ( maximum );
+   exp(VAR__819283 + 1);
+}
+
+
+void pick()
+{
+   ( cout << maximum ) << endl;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( sumstr[VAR__53647] == maximum )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            cout << A_STRING[VAR__53647 + VAR__21230];
+         }
+
+         cout << endl;
+      }
+   }
+}

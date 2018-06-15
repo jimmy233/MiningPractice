@@ -1,0 +1,68 @@
+struct student
+{
+   int VAR__NUM;
+   int score1;
+   int score2;
+   int score;
+};
+void main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct student stu[100000];
+   struct student *VAR_233;
+   struct student *ANOTHER_POINTER;
+   struct student *t1;
+   struct student *t2;
+   struct student *t3;
+   int            tem;
+   int            tem1;
+   for ( VAR_233 = stu; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%d %d %d", &VAR_233->VAR__NUM, &VAR_233->score1, &VAR_233->score2);
+      VAR_233->score = VAR_233->score1 + VAR_233->score2;
+   }
+
+   int VAR__MAX;
+   for ( VAR_233 = stu, t1 = stu, VAR__MAX = stu->score; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      if ( VAR_233->score > VAR__MAX )
+      {
+         t1       = VAR_233;
+         VAR__MAX = VAR_233->score;
+      }
+   }
+
+   for ( VAR_233 = stu, t2 = stu, VAR__MAX = stu->score; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      if ( VAR_233 == t1 )
+      {
+         continue;
+      }
+
+      if ( VAR_233->score > VAR__MAX )
+      {
+         t2       = VAR_233;
+         VAR__MAX = VAR_233->score;
+      }
+   }
+
+   for ( VAR_233 = stu, t3 = stu, VAR__MAX = stu->score; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      if (( VAR_233 == t1 ) || ( VAR_233 == t2 ))
+      {
+         continue;
+      }
+
+      if ( VAR_233->score > VAR__MAX )
+      {
+         t3       = VAR_233;
+         VAR__MAX = VAR_233->score;
+      }
+   }
+
+   printf("%d %d\n", t1->VAR__NUM, t1->score);
+   printf("%d %d\n", t2->VAR__NUM, t2->score);
+   printf("%d %d\n", t3->VAR__NUM, t3->score);
+}

@@ -1,0 +1,120 @@
+void list(int VAR__7685[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__7685[VAR__21230] > VAR__7685[VAR__53647] )
+         {
+            VAR__TEMP             = VAR__7685[VAR__53647];
+            VAR__7685[VAR__53647] = VAR__7685[VAR__21230];
+            VAR__7685[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   void list(int VAR__7685[], int VAR_1238123);
+
+   int VAR_1238123;
+   int VAR__53647;
+   int tian[1010];
+   int qi[1010];
+   int win  = 0;
+   int lose = 0;
+   int *ptianlow;
+   int *pqilow;
+   int *ptianfast;
+   int *pqifast;
+   int money;
+   for ( ; ; money = ( win = ( lose = 0 )))
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &tian[VAR__53647]);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &qi[VAR__53647]);
+         }
+
+         list(tian, VAR_1238123);
+         list(qi, VAR_1238123);
+         ptianlow  = &tian[VAR_1238123 - 1];
+         ptianfast = &tian[0];
+         pqilow    = &qi[VAR_1238123 - 1];
+         pqifast   = &qi[0];
+         for ( ; ptianfast < ( ptianlow + 1 ); )
+         {
+            if (( *ptianlow ) < ( *pqilow ))
+            {
+               lose++;
+               ptianlow--;
+               pqifast++;
+               continue;
+            }
+            else
+            if (( *ptianlow ) > ( *pqilow ))
+            {
+               win++;
+               ptianlow--;
+               pqilow--;
+               continue;
+            }
+            else
+            {
+               if (( *ptianfast ) < ( *pqifast ))
+               {
+                  lose++;
+                  ptianlow--;
+                  pqifast++;
+                  continue;
+               }
+               else
+               if (( *ptianfast ) > ( *pqifast ))
+               {
+                  win++;
+                  ptianfast++;
+                  pqifast++;
+                  continue;
+               }
+               else
+               {
+                  if (( *ptianlow ) < ( *pqifast ))
+                  {
+                     lose++;
+                     ptianlow--;
+                     pqifast++;
+                  }
+                  else
+                  {
+                     ptianlow--;
+                     pqifast++;
+                  }
+               }
+            }
+         }
+
+         money = ( win * 200 ) - ( lose * 200 );
+         printf("%d\n", money);
+      }
+   }
+
+   return 0;
+}

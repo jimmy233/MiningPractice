@@ -1,0 +1,79 @@
+int ary1[30];
+int ary2[30];
+int *pt1;
+int *pt2;
+void input(int array[], int VAR__NUM)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      cin >> array[VAR__53647];
+   }
+}
+
+
+void sort(int *A_POINTER, int VAR__NUM)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = VAR__NUM - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if (( *( A_POINTER + VAR__21230 )) > ( *(( A_POINTER + VAR__21230 ) + 1 )))
+         {
+            swap(*( A_POINTER + VAR__21230 ), *(( A_POINTER + VAR__21230 ) + 1 ));
+         }
+      }
+   }
+}
+
+
+void combine(int *ptr1, int *ptr2, int num1, int num2)
+{
+   int VAR__53647;
+
+   ptr1 += num1;
+   for ( VAR__53647 = 0; VAR__53647 < num2; VAR__53647++ )
+   {
+      *( ptr1 + VAR__53647 ) = *( ptr2 + VAR__53647 );
+   }
+}
+
+
+void demo(int *pointer, int VAR__SUM)
+{
+   int VAR__COUNT = 0;
+
+   while ( VAR__COUNT != VAR__SUM )
+   {
+      cout << ( *pointer );
+
+      if (( VAR__COUNT++ ) != ( VAR__SUM - 1 ))
+      {
+         cout << " ";
+      }
+
+      pointer++;
+   }
+}
+
+
+int main(int argc, char *argv[])
+{
+   pt1 = &ary1[0];
+   pt2 = &ary2[0];
+   int VAR__1238129;
+   int VAR_1238123;
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   input(ary1, VAR__1238129);
+   input(ary2, VAR_1238123);
+   sort(ary1, VAR__1238129);
+   sort(ary2, VAR_1238123);
+   combine(pt1, pt2, VAR__1238129, VAR_1238123);
+   demo(pt1, VAR__1238129 + VAR_1238123);
+   return EXIT_SUCCESS;
+}

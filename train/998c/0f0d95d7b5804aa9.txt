@@ -1,0 +1,79 @@
+int main()
+{
+   char VAR__819283[251];
+   char VAR__19328[251];
+
+   ( cin >> VAR__819283 ) >> VAR__19328;
+   int len1 = strlen(VAR__819283);
+   int len2 = strlen(VAR__19328);
+
+   if (((( len1 == 1 ) && ( len2 == 1 )) && ( VAR__819283[0] == '0' )) && ( VAR__19328[0] == '0' ))
+   {
+      ( cout << 0 ) << endl;
+      return 0;
+   }
+
+   if ( len1 > len2 )
+   {
+      char VAR__TEMP[251];
+      strcpy(VAR__TEMP, VAR__819283);
+      strcpy(VAR__819283, VAR__19328);
+      strcpy(VAR__19328, VAR__TEMP);
+   }
+
+   len1 = strlen(VAR__819283);
+   len2 = strlen(VAR__19328);
+   int over = 0;
+   int VAR__53647;
+   for ( VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      int VAR__temp = ( len2 - len1 ) + VAR__53647;
+      VAR__19328[VAR__temp] += VAR__819283[VAR__53647] - '0';
+
+      if ( VAR__19328[VAR__temp] > '9' )
+      {
+         VAR__19328[VAR__temp] -= 10;
+
+         if ( VAR__temp > 0 )
+         {
+            VAR__19328[VAR__temp - 1] += 1;
+         }
+         else
+         {
+            over = 1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = len2 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      if ( VAR__19328[VAR__53647] > '9' )
+      {
+         VAR__19328[VAR__53647]     -= 10;
+         VAR__19328[VAR__53647 - 1] += 1;
+      }
+   }
+
+   if ( VAR__19328[0] > '9' )
+   {
+      VAR__19328[0] -= 10;
+      over           = 1;
+   }
+
+   if ( over > 0 )
+   {
+      cout << over;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647] != '0' )
+         {
+            break;
+         }
+      }
+   }
+
+   ( cout << ( VAR__19328 + VAR__53647 )) << endl;
+}

@@ -1,0 +1,94 @@
+void main()
+{
+   int  startyear;
+   int  startmonth;
+   int  startday;
+   int  endyear;
+   int  endmonth;
+   int  endday;
+   int  VAR__53647;
+   long day1 = 0;
+   long day2 = 0;
+
+   scanf("%d %d %d", &startyear, &startmonth, &startday);
+   scanf("%d %d %d", &endyear, &endmonth, &endday);
+   for ( VAR__53647 = 0; VAR__53647 < startyear; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         day1 += 366;
+      }
+      else
+      {
+         day1 += 365;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < startmonth; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         day1 += 31;
+      }
+      else
+      {
+         if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+         {
+            day1 += 30;
+         }
+         else
+         {
+            if ((((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 )) && ( VAR__53647 == 2 ))
+            {
+               day1 += 29;
+            }
+            else
+            {
+               day1 += 28;
+            }
+         }
+      }
+   }
+
+   day1 += startday;
+   for ( VAR__53647 = 0; VAR__53647 < endyear; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         day2 += 366;
+      }
+      else
+      {
+         day2 += 365;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < endmonth; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         day2 += 31;
+      }
+      else
+      {
+         if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+         {
+            day2 += 30;
+         }
+         else
+         {
+            if ((((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 )) && ( VAR__53647 == 2 ))
+            {
+               day2 += 29;
+            }
+            else
+            {
+               day2 += 28;
+            }
+         }
+      }
+   }
+
+   day2 += endday;
+   printf("%ld\n", day2 - day1);
+}

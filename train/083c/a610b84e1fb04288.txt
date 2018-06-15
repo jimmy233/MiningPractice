@@ -1,0 +1,76 @@
+void shuchu(int VAR__4857423[], int VAR__53647)
+{
+   int VAR__21230;
+
+   for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      if (( VAR__4857423[VAR__21230] >= 0 ) && ( VAR__4857423[VAR__21230] <= 9 ))
+      {
+         cout << VAR__4857423[VAR__21230];
+      }
+
+      if ( VAR__4857423[VAR__21230] >= 10 )
+      {
+         cout << ((char)( VAR__4857423[VAR__21230] + 55 ));
+      }
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   char   ANOTHER_STRING[10000];
+   char   YET_ANOTHER_STRING[10000];
+   char   VAR__1111;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__NUM[10000]     = { 0 };
+   int    VAR__SUM            = 0;
+   int    VAR__4857423[10000] = { 0 };
+   int    nlen;
+   int    VAR__8444594;
+   double before;
+   double after;
+
+   memset(ANOTHER_STRING, ' ', sizeof( ANOTHER_STRING ));
+   memset(YET_ANOTHER_STRING, ' ', sizeof( YET_ANOTHER_STRING ));
+   cin >> before;
+   cin >> ANOTHER_STRING;
+   cin >> after;
+   nlen = strlen(ANOTHER_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < nlen; VAR__53647++ )
+   {
+      if (( ANOTHER_STRING[VAR__53647] >= 97 ) && ( ANOTHER_STRING[VAR__53647] < 122 ))
+      {
+         ANOTHER_STRING[VAR__53647] = (char)toupper(ANOTHER_STRING[VAR__53647]);
+      }
+
+      if (( ANOTHER_STRING[VAR__53647] >= 65 ) && ( ANOTHER_STRING[VAR__53647] <= 90 ))
+      {
+         VAR__NUM[VAR__53647] = ANOTHER_STRING[VAR__53647] - '7';
+      }
+      else
+      {
+         VAR__NUM[VAR__53647] = ANOTHER_STRING[VAR__53647] - '0';
+      }
+   }
+
+   VAR__8444594 = nlen - 1;
+   for ( VAR__53647 = 0; VAR__53647 < nlen; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + ( VAR__NUM[VAR__53647] * pow(before, VAR__8444594));
+      VAR__8444594--;
+   }
+
+   VAR__53647 = 0;
+   do
+   {
+      VAR__4857423[VAR__53647] = VAR__SUM % ((int)after );
+      VAR__SUM = VAR__SUM / after;
+      VAR__53647++;
+   } while ( VAR__SUM > 0 );
+   shuchu(VAR__4857423, VAR__53647);
+   return 0;
+}

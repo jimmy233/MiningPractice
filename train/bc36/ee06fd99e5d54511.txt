@@ -1,0 +1,74 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    nan = 0;
+   int    nv  = 0;
+   int    VAR__21230;
+   double VAR_2890[40];
+   double h1[40];
+   double h2[40];
+   double VAR__112390;
+   char   VAR__819283[40][7];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", VAR__819283[VAR__53647], &VAR_2890[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__21230 < 10; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] == 'f' )
+         {
+            h1[nv] = VAR_2890[VAR__53647];
+            nv++;
+            break;
+         }
+         else
+         if ( VAR__819283[VAR__53647][VAR__21230] == 'm' )
+         {
+            h2[nan] = VAR_2890[VAR__53647];
+            nan++;
+            break;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nan; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( nan - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( h2[VAR__21230] > h2[VAR__21230 + 1] )
+         {
+            VAR__112390        = h2[VAR__21230];
+            h2[VAR__21230]     = h2[VAR__21230 + 1];
+            h2[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nv; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( nv - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( h1[VAR__21230] < h1[VAR__21230 + 1] )
+         {
+            VAR__112390        = h1[VAR__21230];
+            h1[VAR__21230]     = h1[VAR__21230 + 1];
+            h1[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nan; VAR__53647++ )
+   {
+      printf("%.2lf ", h2[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( nv - 1 ); VAR__53647++ )
+   {
+      printf("%.2lf ", h1[VAR__53647]);
+   }
+
+   printf("%.2lf", h1[nv - 1]);
+   return 0;
+}

@@ -1,0 +1,78 @@
+int main()
+{
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__12302 = 0;
+   int VAR__COUNT = 0;
+   int de[]       = { 0, 1, 2, 3 };
+
+   scanf("%d%d", &row, &col);
+   int VAR__819283[row][col];
+   int VAR__19328[row][col];
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+         VAR__19328[VAR__53647][VAR__21230] = 1;
+      }
+   }
+
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+   for ( VAR__COUNT = 0; VAR__COUNT < ( row * col ); VAR__COUNT++ )
+   {
+      printf("%d\n", VAR__819283[VAR__53647][VAR__21230]);
+      VAR__19328[VAR__53647][VAR__21230] = 0;
+      switch ( de[VAR__12302] )
+      {
+      case 0:
+         VAR__21230++;
+         break;
+
+      case 1:
+         VAR__53647++;
+         break;
+
+      case 2:
+         VAR__21230--;
+         break;
+
+      case 3:
+         VAR__53647--;
+         break;
+      }
+
+      if ((((( VAR__53647 < 0 ) || ( VAR__53647 >= row )) || ( VAR__21230 < 0 )) || ( VAR__21230 >= col )) || ( VAR__19328[VAR__53647][VAR__21230] == 0 ))
+      {
+         switch ( de[VAR__12302] )
+         {
+         case 0:
+            VAR__21230--;
+            VAR__53647++;
+            break;
+
+         case 1:
+            VAR__53647--;
+            VAR__21230--;
+            break;
+
+         case 2:
+            VAR__21230++;
+            VAR__53647--;
+            break;
+
+         case 3:
+            VAR__53647++;
+            VAR__21230++;
+            break;
+         }
+
+         VAR__12302 = ( VAR__12302 + 1 ) % 4;
+      }
+   }
+
+   return 0;
+}

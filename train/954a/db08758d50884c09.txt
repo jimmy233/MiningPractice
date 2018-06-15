@@ -1,0 +1,76 @@
+struct p
+{
+   char name[100];
+   char leader;
+   char xibu;
+   int  fen;
+   int  ban;
+   int  lun;
+   int  scho;
+}
+stu[100];
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR__1238129 = 0;
+   int VAR_1238123;
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].fen, &stu[VAR__53647].ban, &stu[VAR__53647].leader, &stu[VAR__53647].xibu, &stu[VAR__53647].lun);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].lun >= 1 ) && ( stu[VAR__53647].fen > 80 ))
+      {
+         stu[VAR__53647].scho = stu[VAR__53647].scho + 8000;
+      }
+
+      if (( stu[VAR__53647].fen > 85 ) && ( stu[VAR__53647].ban > 80 ))
+      {
+         stu[VAR__53647].scho = stu[VAR__53647].scho + 4000;
+      }
+
+      if ( stu[VAR__53647].fen > 90 )
+      {
+         stu[VAR__53647].scho = stu[VAR__53647].scho + 2000;
+      }
+
+      if (( stu[VAR__53647].fen > 85 ) && ( stu[VAR__53647].xibu == 'Y' ))
+      {
+         stu[VAR__53647].scho = stu[VAR__53647].scho + 1000;
+      }
+
+      if (( stu[VAR__53647].ban > 80 ) && ( stu[VAR__53647].leader == 'Y' ))
+      {
+         stu[VAR__53647].scho = stu[VAR__53647].scho + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__1238129 = VAR__1238129 + stu[VAR__53647].scho;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( stu[VAR__53647].scho < stu[VAR__21230].scho )
+         {
+            break;
+         }
+      }
+
+      if ( VAR__21230 == VAR_1238123 )
+      {
+         printf("%s\n%d\n%d", stu[VAR__53647].name, stu[VAR__53647].scho, VAR__1238129);
+         break;
+      }
+   }
+}

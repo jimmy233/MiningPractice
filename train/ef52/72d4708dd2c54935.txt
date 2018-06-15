@@ -1,0 +1,53 @@
+void sort(int *VAR__819283, int VAR__53647, int VAR_1238123)
+{
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__8444594 = VAR__21230 + 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+      {
+         if ( VAR__819283[VAR__21230] <= VAR__819283[VAR__8444594] )
+         {
+            VAR__temp = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]   = VAR__819283[VAR__8444594];
+            VAR__819283[VAR__8444594] = VAR__temp;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int *VAR__819283 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   int *jishu       = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+      jishu[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if (( VAR__819283[VAR__21230] <= VAR__819283[VAR__53647] ) && ( jishu[VAR__21230] >= jishu[VAR__53647] ))
+         {
+            jishu[VAR__53647] = jishu[VAR__21230] + 1;
+         }
+      }
+   }
+
+   sort(jishu, 0, VAR_1238123 - 1);
+   printf("%d\n", jishu[0]);
+   free(VAR__819283);
+   free(jishu);
+}

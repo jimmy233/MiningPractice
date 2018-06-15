@@ -1,0 +1,117 @@
+int VAR_1238123;
+struct ceshi
+{
+   char         hao[20];
+   int          VAR__NUM;
+   struct ceshi *VAR__NEXT;
+};
+struct ceshi *charu(struct ceshi *VAR__HEAD, struct ceshi *ANOTHER_POINTER)
+{
+   struct ceshi *YET_ANOTHER_POINTER;
+   struct ceshi *VAR_233;
+
+   if ( ANOTHER_POINTER->VAR__NUM >= 60 )
+   {
+      if ( VAR__HEAD == Null )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR__NEXT = Null;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER = VAR__HEAD;
+
+         while (( ANOTHER_POINTER->VAR__NUM <= YET_ANOTHER_POINTER->VAR__NUM ) && ( YET_ANOTHER_POINTER->VAR__NEXT != Null ))
+         {
+            VAR_233             = YET_ANOTHER_POINTER;
+            YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+         }
+
+         if ( ANOTHER_POINTER->VAR__NUM >= YET_ANOTHER_POINTER->VAR__NUM )
+         {
+            if ( YET_ANOTHER_POINTER == VAR__HEAD )
+            {
+               VAR__HEAD = ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+            }
+            else
+            {
+               VAR_233->VAR__NEXT         = ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+            }
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            ANOTHER_POINTER->VAR__NEXT     = Null;
+         }
+      }
+   }
+   else
+   {
+      VAR_233 = VAR__HEAD;
+
+      if ( VAR__HEAD == Null )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR__NEXT = Null;
+      }
+      else
+      {
+         while ( VAR_233->VAR__NEXT != Null )
+         {
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         VAR_233->VAR__NEXT         = ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR__NEXT = Null;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct ceshi *create()
+{
+   struct ceshi *ANOTHER_POINTER;
+   struct ceshi *VAR__HEAD;
+   struct ceshi *YET_ANOTHER_POINTER;
+   int          VAR__53647 = 0;
+
+   VAR__HEAD = Null;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      VAR__53647++;
+      ANOTHER_POINTER = (struct ceshi *)malloc(LEN_OF_STH);
+      scanf("%s %d", ANOTHER_POINTER->hao, &ANOTHER_POINTER->VAR__NUM);
+      VAR__HEAD = charu(VAR__HEAD, ANOTHER_POINTER);
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct ceshi *VAR__HEAD)
+{
+   struct ceshi *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != Null )
+   {
+      printf("%s\n", VAR_233->hao);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct ceshi *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = create();
+   print(VAR_233);
+}

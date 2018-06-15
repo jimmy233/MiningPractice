@@ -1,0 +1,79 @@
+struct people
+{
+   char name[30];
+   int  qimo;
+   int  pingyi;
+   char gan;
+   char xi;
+   int  lunwen;
+   int  jiang;
+}
+line[100];
+struct people
+{
+   char name[30];
+   int  qimo;
+   int  pingyi;
+   char gan;
+   char xi;
+   int  lunwen;
+   int  jiang;
+}
+VAR__TEMP;
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d\n", &VAR_1238123);
+   int VAR__SUM = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &line[VAR__53647].name, &line[VAR__53647].qimo, &line[VAR__53647].pingyi, &line[VAR__53647].gan, &line[VAR__53647].xi, &line[VAR__53647].lunwen);
+      line[VAR__53647].jiang = 0;
+
+      if (( line[VAR__53647].qimo > 80 ) && ( line[VAR__53647].lunwen != 0 ))
+      {
+         line[VAR__53647].jiang += 8000;
+      }
+
+      if (( line[VAR__53647].qimo > 85 ) && ( line[VAR__53647].pingyi > 80 ))
+      {
+         line[VAR__53647].jiang += 4000;
+      }
+
+      if ( line[VAR__53647].qimo > 90 )
+      {
+         line[VAR__53647].jiang += 2000;
+      }
+
+      if (( line[VAR__53647].qimo > 85 ) && (((int)line[VAR__53647].xi ) == ((int)'Y' )))
+      {
+         line[VAR__53647].jiang += 1000;
+      }
+
+      if (( line[VAR__53647].pingyi > 80 ) && (((int)line[VAR__53647].gan ) == ((int)'Y' )))
+      {
+         line[VAR__53647].jiang += 850;
+      }
+
+      VAR__SUM += line[VAR__53647].jiang;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( line[VAR__21230].jiang < line[VAR__21230 + 1].jiang )
+         {
+            VAR__TEMP            = line[VAR__21230];
+            line[VAR__21230]     = line[VAR__21230 + 1];
+            line[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   printf("%s\n%d\n%d", line[1].name, line[1].jiang, VAR__SUM);
+   return 0;
+}

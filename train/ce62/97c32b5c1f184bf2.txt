@@ -1,0 +1,69 @@
+int isKeyWord(char *A_STRING)
+{
+   int  VAR__53647;
+   char *keyword[] = { "auto", "break", "case", "char", "const", "continue", "default", "do", "double", "else", "enum", "extern", "float", "for", "goto", "if", "int", "long", "register", "return", "short", "signed", "sizeof", "static", "struct", "switch", "typedef", "union", "unsigned", "void", "volatile", "while" };
+
+   for ( VAR__53647 = 0; VAR__53647 < 32; VAR__53647++ )
+   {
+      if ( strcmp(A_STRING, keyword[VAR__53647]) == 0 )
+      {
+         return 1;
+      }
+   }
+
+   return 0;
+}
+
+
+int islegalIdentifier(char *A_STRING)
+{
+   char *VAR_233 = A_STRING;
+
+   if ( isKeyWord(A_STRING))
+   {
+      return 0;
+   }
+
+   if ( !((((( *VAR_233 ) >= 'a' ) && (( *VAR_233 ) <= 'z' )) || ((( *VAR_233 ) >= 'A' ) && (( *VAR_233 ) <= 'Z' ))) || (( *VAR_233 ) == '_' )))
+   {
+      return 0;
+   }
+
+   while (( *VAR_233 ) != '\0' )
+   {
+      if ( !(((((( *VAR_233 ) >= 'a' ) && (( *VAR_233 ) <= 'z' )) || ((( *VAR_233 ) >= 'A' ) && (( *VAR_233 ) <= 'Z' ))) || (( *VAR_233 ) == '_' )) || ((( *VAR_233 ) >= '0' ) && (( *VAR_233 ) <= '9' ))))
+      {
+         return 0;
+      }
+
+      VAR_233++;
+   }
+
+   return 1;
+}
+
+
+int main()
+{
+   char buffer[21];
+   int  VAR_1238123;
+   int  VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   gets(buffer);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      gets(buffer);
+
+      if ( islegalIdentifier(buffer))
+      {
+         puts("yes");
+      }
+      else
+      {
+         puts("no");
+      }
+   }
+
+   return 0;
+}

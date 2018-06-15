@@ -1,0 +1,52 @@
+int main()
+{
+   struct student
+   {
+      char           number[20];
+      char           name[20];
+      char           sex;
+      int            age;
+      float          score;
+      char           address[20];
+      struct student *fomer;
+      struct student *VAR__NEXT;
+   };
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *wei;
+   int            VAR__53647;
+   int            VAR__21230;
+
+   VAR__HEAD      = (struct student *)malloc(sizeof( struct student ));
+   VAR_233        = VAR__HEAD;
+   VAR_233->fomer = NULL;
+
+   if ( VAR_233 == NULL )
+   {
+      printf("fail!!!");
+      exit(-1);
+   }
+
+   scanf("%s%s %c %d%f%s", &VAR_233->number, &VAR_233->name, &VAR_233->sex, &VAR_233->age, &VAR_233->score, &VAR_233->address);
+   for ( VAR__53647 = 1; VAR__53647 <= 1000; VAR__53647++ )
+   {
+      VAR_233->VAR__NEXT        = (struct student *)malloc(sizeof( struct student ));
+      VAR_233->VAR__NEXT->fomer = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+      scanf("%s%s %c %d%g%s", &VAR_233->number, &VAR_233->name, &VAR_233->sex, &VAR_233->age, &VAR_233->score, &VAR_233->address);
+
+      if (( *VAR_233->number ) == 'e' )
+      {
+         VAR_233->fomer->VAR__NEXT = NULL;
+         wei = VAR_233->fomer;
+         break;
+      }
+   }
+
+   VAR_233 = wei;
+   for ( ; VAR_233 != NULL; )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->number, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->address);
+      VAR_233 = VAR_233->fomer;
+   }
+}

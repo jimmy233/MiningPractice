@@ -1,0 +1,97 @@
+struct word
+{
+   char        vol[40];
+   int         LEN_OF_STH;
+   struct word *VAR__NEXT;
+};
+struct word *create(int VAR_1238123)
+{
+   struct word *ANOTHER_POINTER;
+   struct word *YET_ANOTHER_POINTER;
+   struct word *VAR__HEAD;
+   int         VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct word *)malloc(sizeof( struct word ));
+      scanf("%s", &ANOTHER_POINTER->vol);
+      ANOTHER_POINTER->LEN_OF_STH = strlen(ANOTHER_POINTER->vol) + 1;
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD           = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      }
+   }
+
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct word *VAR__HEAD, int VAR_1238123)
+{
+   struct word *pa;
+   int         VAR__COUNT = 0;
+
+   pa = VAR__HEAD;
+
+   while ( VAR_1238123 )
+   {
+      if ( VAR__COUNT == 0 )
+      {
+         printf("%s", pa->vol);
+         VAR__COUNT += pa->LEN_OF_STH;
+         pa          = pa->VAR__NEXT;
+
+         if ( pa )
+         {
+            VAR__COUNT += pa->LEN_OF_STH;
+         }
+      }
+      else
+      if (( VAR__COUNT <= 81 ) && ( VAR__COUNT != 0 ))
+      {
+         printf(" %s", pa->vol);
+         pa = pa->VAR__NEXT;
+
+         if ( pa )
+         {
+            VAR__COUNT += pa->LEN_OF_STH;
+         }
+      }
+      else
+      if ( VAR__COUNT > 81 )
+      {
+         printf("\n%s", pa->vol);
+         VAR__COUNT = pa->LEN_OF_STH;
+         pa         = pa->VAR__NEXT;
+
+         if ( pa )
+         {
+            VAR__COUNT += pa->LEN_OF_STH;
+         }
+      }
+
+
+
+      VAR_1238123--;
+   }
+}
+
+
+int main()
+{
+   int         VAR_1238123;
+   struct word *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create(VAR_1238123);
+   print(VAR__HEAD, VAR_1238123);
+   return 0;
+}

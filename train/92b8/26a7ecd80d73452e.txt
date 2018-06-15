@@ -1,0 +1,66 @@
+int main()
+{
+   struct ab
+   {
+      int VAR__819283;
+      int VAR__19328;
+   };
+   int       VAR_1238123;
+   int       VAR__53647;
+   int       VAR__21230;
+   int       VAR__112390 = 1;
+   int       VAR__MAX    = 0;
+   struct ab *VAR_233;
+   struct ab VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = (struct ab *)malloc(( sizeof( struct ab )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &VAR_233[VAR__53647].VAR__819283, &VAR_233[VAR__53647].VAR__19328);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__temp = VAR_233[VAR__53647];
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR_233[VAR__21230].VAR__819283 < VAR_233[VAR__53647].VAR__819283 )
+         {
+            VAR_233[VAR__53647] = VAR_233[VAR__21230];
+            VAR_233[VAR__21230] = VAR__temp;
+            VAR__temp           = VAR_233[VAR__53647];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR_233[VAR__53647].VAR__19328 > VAR__MAX )
+      {
+         VAR__MAX = VAR_233[VAR__53647].VAR__19328;
+      }
+
+      if ( VAR__MAX < VAR_233[VAR__53647 + 1].VAR__819283 )
+      {
+         VAR__112390 = 0;
+         break;
+      }
+   }
+
+   if ( VAR_233[VAR_1238123 - 1].VAR__19328 > VAR__MAX )
+   {
+      VAR__MAX = VAR_233[VAR_1238123 - 1].VAR__19328;
+   }
+
+   if ( VAR__112390 == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      printf("%d %d", VAR_233[0].VAR__819283, VAR__MAX);
+   }
+
+   return 0;
+}

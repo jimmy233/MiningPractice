@@ -1,0 +1,68 @@
+int main()
+{
+   int    VAR__53647;
+   int    VAR_1238123;
+   int    male = 1;
+   int    female;
+   int    VAR__21230;
+   int    VAR__8444594;
+   double shengao;
+   double pai[45];
+   double huan;
+   char   VAR__7685[10];
+
+   scanf("%d", &VAR_1238123);
+   female = VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s\n %lf", VAR__7685, &shengao);
+
+      if ( VAR__7685[0] == 'm' )
+      {
+         pai[male] = shengao;
+         male++;
+      }
+
+      if ( VAR__7685[0] == 'f' )
+      {
+         pai[female] = shengao;
+         female--;
+      }
+   }
+
+   male--;
+   female++;
+   for ( VAR__21230 = 1; VAR__21230 <= male; VAR__21230++ )
+   {
+      for ( VAR__8444594 = VAR__21230; VAR__8444594 <= male; VAR__8444594++ )
+      {
+         if ( pai[VAR__8444594] < pai[VAR__21230] )
+         {
+            huan = pai[VAR__8444594];
+            pai[VAR__8444594] = pai[VAR__21230];
+            pai[VAR__21230]   = huan;
+         }
+      }
+   }
+
+   for ( VAR__21230 = male + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__8444594 = VAR__21230; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+      {
+         if ( pai[VAR__8444594] > pai[VAR__21230] )
+         {
+            huan = pai[VAR__8444594];
+            pai[VAR__8444594] = pai[VAR__21230];
+            pai[VAR__21230]   = huan;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%.2lf ", pai[VAR__53647]);
+   }
+
+   printf("%.2lf\n", pai[VAR_1238123]);
+   return 0;
+}

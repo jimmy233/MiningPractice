@@ -1,0 +1,63 @@
+int main()
+{
+   int    VAR_1238123;
+   int    xz[100];
+   int    yz[100];
+   int    zz[100];
+   int    xx[100];
+   int    yy[100];
+   double jl[100];
+   double VAR__21230[100];
+   int    VAR__4857423 = 0;
+   int    VAR__temp;
+   int    VAR__1238129;
+   int    VAR__1111;
+
+   scanf("%d\n", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &xz[VAR__53647], &yz[VAR__53647], &zz[VAR__53647]);
+   }
+
+   for ( int VAR__819283 = 0; VAR__819283 < VAR_1238123; VAR__819283++ )
+   {
+      for ( int VAR__19328 = VAR__819283 + 1; VAR__19328 < VAR_1238123; VAR__19328++ )
+      {
+         jl[VAR__4857423] = ((( zz[VAR__19328] - zz[VAR__819283] ) * ( zz[VAR__19328] - zz[VAR__819283] )) + (( xz[VAR__19328] - xz[VAR__819283] ) * ( xz[VAR__19328] - xz[VAR__819283] ))) + (( yz[VAR__19328] - yz[VAR__819283] ) * ( yz[VAR__19328] - yz[VAR__819283] ));
+         xx[VAR__4857423] = VAR__819283;
+         yy[VAR__4857423] = VAR__19328;
+         VAR__4857423     = VAR__4857423 + 1;
+      }
+   }
+
+   for ( int VAR__8444594 = 1; VAR__8444594 <= VAR__4857423; VAR__8444594++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR__4857423 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( jl[VAR__53647] < jl[VAR__53647 + 1] )
+         {
+            VAR__temp          = jl[VAR__53647];
+            jl[VAR__53647]     = jl[VAR__53647 + 1];
+            jl[VAR__53647 + 1] = VAR__temp;
+            VAR__1238129       = xx[VAR__53647];
+            xx[VAR__53647]     = xx[VAR__53647 + 1];
+            xx[VAR__53647 + 1] = VAR__1238129;
+            VAR__1111          = yy[VAR__53647];
+            yy[VAR__53647]     = yy[VAR__53647 + 1];
+            yy[VAR__53647 + 1] = VAR__1111;
+         }
+      }
+   }
+
+   for ( int VAR_21983012 = 0; VAR_21983012 < VAR__4857423; VAR_21983012++ )
+   {
+      VAR__21230[VAR_21983012] = sqrt(jl[VAR_21983012]);
+   }
+
+   for ( int VAR_9494 = 0; VAR_9494 < VAR__4857423; VAR_9494++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", xz[xx[VAR_9494]], yz[xx[VAR_9494]], zz[xx[VAR_9494]], xz[yy[VAR_9494]], yz[yy[VAR_9494]], zz[yy[VAR_9494]], VAR__21230[VAR_9494]);
+   }
+
+   return 0;
+}

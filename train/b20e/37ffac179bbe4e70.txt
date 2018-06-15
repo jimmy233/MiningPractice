@@ -1,0 +1,120 @@
+int main()
+{
+   int ma(int VAR_1238123);
+
+   int VAR_1238123;
+   for ( ; 1; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      ma(VAR_1238123);
+   }
+
+   return 0;
+}
+
+
+int ma(int VAR_1238123)
+{
+   int VAR__SUM = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283 = 1;
+   int VAR__19328;
+   int wang[1001];
+   int tian[1001];
+   int endw;
+   int endt;
+   int staw = 0;
+   int stat = 0;
+
+   endw = VAR_1238123 - 1;
+   endt = VAR_1238123 - 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &tian[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &wang[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( tian[VAR__21230] > tian[VAR__21230 - 1] )
+         {
+            VAR__19328           = tian[VAR__21230];
+            tian[VAR__21230]     = tian[VAR__21230 - 1];
+            tian[VAR__21230 - 1] = VAR__19328;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( wang[VAR__21230] > wang[VAR__21230 - 1] )
+         {
+            VAR__19328           = wang[VAR__21230];
+            wang[VAR__21230]     = wang[VAR__21230 - 1];
+            wang[VAR__21230 - 1] = VAR__19328;
+         }
+      }
+   }
+
+   for ( ; stat <= endt; )
+   {
+      if ( tian[stat] > wang[staw] )
+      {
+         VAR__SUM += 200;
+         staw++;
+         stat++;
+      }
+      else
+      if ( tian[stat] < wang[staw] )
+      {
+         VAR__SUM -= 200;
+         endt--;
+         staw++;
+      }
+      else
+      if ( tian[stat] == wang[staw] )
+      {
+         for ( ; VAR__819283 == 1; )
+         {
+            if ( tian[endt] > wang[endw] )
+            {
+               VAR__SUM += 200;
+               endt--;
+               endw--;
+            }
+            else
+            if ( tian[endt] <= wang[endw] )
+            {
+               if ( tian[endt] < wang[staw] )
+               {
+                  VAR__SUM -= 200;
+               }
+
+               staw++;
+               endt--;
+               VAR__819283 = 0;
+            }
+         }
+
+         VAR__819283 = 1;
+      }
+   }
+
+   printf("%d\n", VAR__SUM);
+   return 0;
+}

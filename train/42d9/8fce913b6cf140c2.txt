@@ -1,0 +1,109 @@
+typedef struct Point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+} Point;
+double Distance(Point *ANOTHER_POINTER, Point *YET_ANOTHER_POINTER)
+{
+   int    VAR__7685    = ANOTHER_POINTER->VAR__7685 - YET_ANOTHER_POINTER->VAR__7685;
+   int    VAR__3918907 = ANOTHER_POINTER->VAR__3918907 - YET_ANOTHER_POINTER->VAR__3918907;
+   int    VAR__9290    = ANOTHER_POINTER->VAR__9290 - YET_ANOTHER_POINTER->VAR__9290;
+   double VAR__TEMP    = (double)((( VAR__7685 * VAR__7685 ) + ( VAR__3918907 * VAR__3918907 )) + ( VAR__9290 * VAR__9290 ));
+
+   return sqrt(VAR__TEMP);
+}
+
+
+void Input(Point *VAR_233[], int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = (Point *)malloc(sizeof( Point ));
+      (( cin >> VAR_233[VAR__53647]->VAR__7685 ) >> VAR_233[VAR__53647]->VAR__3918907 ) >> VAR_233[VAR__53647]->VAR__9290;
+   }
+}
+
+
+void Output(Point *ANOTHER_POINTER, Point *YET_ANOTHER_POINTER)
+{
+   printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n\n", ANOTHER_POINTER->VAR__7685, ANOTHER_POINTER->VAR__3918907, ANOTHER_POINTER->VAR__9290, YET_ANOTHER_POINTER->VAR__7685, YET_ANOTHER_POINTER->VAR__3918907, YET_ANOTHER_POINTER->VAR__9290, Distance(ANOTHER_POINTER, YET_ANOTHER_POINTER));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   cin >> VAR_1238123;
+   Point *VAR_233[15];
+   Input(VAR_233, VAR_1238123);
+   double VAR__819283[60];
+   int    VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         int VAR__temp = 0;
+
+         while (( VAR__temp < ( VAR__8444594 + 1 )) && ((( VAR__819283[VAR__temp] - Distance(VAR_233[VAR__53647], VAR_233[VAR__21230])) > 0.00001 ) || (( Distance(VAR_233[VAR__53647], VAR_233[VAR__21230]) - VAR__819283[VAR__temp] ) > 0.00001 )))
+         {
+            VAR__temp++;
+         }
+
+         if ( VAR__temp == ( VAR__8444594 + 1 ))
+         {
+            VAR__819283[VAR__8444594] = Distance(VAR_233[VAR__53647], VAR_233[VAR__21230]);
+            VAR__8444594++;
+         }
+      }
+   }
+
+   int VAR__COUNT = VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__COUNT; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647] < VAR__819283[VAR__21230] )
+         {
+            double VAR__TEMP = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647] = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR__8444594 = 0;
+
+   while ( VAR__8444594 < VAR__COUNT )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__8444594] > Distance(VAR_233[VAR__53647], VAR_233[VAR__21230]))
+            {
+               if (( VAR__819283[VAR__8444594] - Distance(VAR_233[VAR__53647], VAR_233[VAR__21230])) < 0.000001 )
+               {
+                  Output(VAR_233[VAR__53647], VAR_233[VAR__21230]);
+               }
+            }
+            else
+            {
+               if (( Distance(VAR_233[VAR__53647], VAR_233[VAR__21230]) - VAR__819283[VAR__8444594] ) < 0.000001 )
+               {
+                  Output(VAR_233[VAR__53647], VAR_233[VAR__21230]);
+               }
+            }
+         }
+      }
+
+      VAR__8444594++;
+   }
+
+   return 0;
+}

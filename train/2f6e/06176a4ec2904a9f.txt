@@ -1,0 +1,52 @@
+char sign1;
+char sign2;
+void go_out(char line[], int LEN_OF_STH)
+{
+   int VAR__TEMP;
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      if ( line[VAR__53647] == sign1 )
+      {
+         VAR__TEMP = VAR__53647 + 1;
+
+         while ( line[VAR__TEMP] == '@' )
+         {
+            VAR__TEMP++;
+         }
+
+         if ( line[VAR__TEMP] == sign2 )
+         {
+            ((( cout << VAR__53647 ) << ' ' ) << VAR__TEMP ) << endl;
+            line[VAR__TEMP] = ( line[VAR__53647] = '@' );
+            return;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   char line[1000];
+   int  LEN_OF_STH;
+
+   cin.getline(line, 1000);
+   sign1 = line[0];
+   int VAR__TEMP = 1;
+
+   while ( line[VAR__TEMP] == sign1 )
+   {
+      VAR__TEMP++;
+   }
+
+   sign2      = line[VAR__TEMP];
+   LEN_OF_STH = sizeof( line );
+
+   while ( line[0] == sign1 )
+   {
+      go_out(line, LEN_OF_STH);
+   }
+
+   return 0;
+}

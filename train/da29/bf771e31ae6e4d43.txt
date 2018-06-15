@@ -1,0 +1,88 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d\n", &VAR_1238123);
+   char VAR_SIZE[101][101];
+   int  row;
+   int  col;
+   for ( row = 0; row <= ( VAR_1238123 + 1 ); row++ )
+   {
+      for ( col = 0; col <= ( VAR_1238123 + 1 ); col++ )
+      {
+         VAR_SIZE[row][col] = '#';
+      }
+   }
+
+   for ( row = 1; row <= VAR_1238123; row++ )
+   {
+      for ( col = 1; col < VAR_1238123; col++ )
+      {
+         scanf("%c", &VAR_SIZE[row][col]);
+      }
+
+      scanf("%c\n", &VAR_SIZE[row][VAR_1238123]);
+   }
+
+   int VAR__1238129;
+   scanf("%d", &VAR__1238129);
+   int day;
+   int people;
+   people = 0;
+   for ( day = 1; day < VAR__1238129; day++ )
+   {
+      for ( row = 1; row <= VAR_1238123; row++ )
+      {
+         for ( col = 1; col <= VAR_1238123; col++ )
+         {
+            if ( VAR_SIZE[row][col] == '@' )
+            {
+               if ( VAR_SIZE[row][col + 1] == '.' )
+               {
+                  VAR_SIZE[row][col + 1] = 'a';
+               }
+
+               if ( VAR_SIZE[row][col - 1] == '.' )
+               {
+                  VAR_SIZE[row][col - 1] = 'a';
+               }
+
+               if ( VAR_SIZE[row - 1][col] == '.' )
+               {
+                  VAR_SIZE[row - 1][col] = 'a';
+               }
+
+               if ( VAR_SIZE[row + 1][col] == '.' )
+               {
+                  VAR_SIZE[row + 1][col] = 'a';
+               }
+            }
+         }
+      }
+
+      for ( row = 1; row <= VAR_1238123; row++ )
+      {
+         for ( col = 1; col <= VAR_1238123; col++ )
+         {
+            if ( VAR_SIZE[row][col] == 'a' )
+            {
+               VAR_SIZE[row][col] = '@';
+            }
+         }
+      }
+   }
+
+   for ( row = 1; row <= VAR_1238123; row++ )
+   {
+      for ( col = 1; col <= VAR_1238123; col++ )
+      {
+         if ( VAR_SIZE[row][col] == '@' )
+         {
+            people = people + 1;
+         }
+      }
+   }
+
+   printf("%d", people);
+   return 0;
+}

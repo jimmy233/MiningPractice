@@ -1,0 +1,59 @@
+struct node
+{
+   struct node *last;
+   char        id[15];
+   char        name[25];
+   char        sex;
+   int         age;
+   char        score[10];
+   char        addr[15];
+   struct node *VAR__NEXT;
+};
+int VAR_1238123 = 1;
+struct node *newnode()
+{
+   struct node *VAR__HEAD = NULL;
+   struct node *New;
+   struct node *This;
+
+   do
+   {
+      New = (struct node *)malloc(sizeof( struct node ));
+      scanf("%s", New->id);
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = New;
+         New->last = NULL;
+         This      = VAR__HEAD;
+      }
+      else
+      {
+         This->VAR__NEXT = New;
+         New->last       = This;
+      }
+
+      if ( strcmp(New->id, "end") != 0 )
+      {
+         scanf("%s %c %d %s %s", New->name, &New->sex, &New->age, New->score, New->addr);
+         This = New;
+         VAR_1238123++;
+      }
+   } while ( strcmp(New->id, "end") != 0 );
+   This->VAR__NEXT = NULL;
+   return This;
+}
+
+
+void main()
+{
+   struct node *VAR_233;
+
+   VAR_233 = newnode();
+   do
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->id, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->addr);
+      VAR_233 = VAR_233->last;
+   } while ( VAR_233->last != NULL );
+   printf("%s %s %c %d %s %s\n", VAR_233->id, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->addr);
+}

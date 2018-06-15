@@ -1,0 +1,96 @@
+const int MAXN = 200;
+char      VAR__819283[MAXN + 10][MAXN + 10];
+char getAChar()
+{
+   int ch = getchar();
+
+   while ((( ch != '#' ) && ( ch != '.' )) && ( ch != '@' ))
+   {
+      ch = getchar();
+   }
+
+   return ch;
+}
+
+
+int main()
+{
+   static int VAR_1238123;
+   static int VAR__53647;
+   static int VAR__21230;
+   static int VAR__1238129;
+   static int VAR__8444594;
+   static int VAR_9Q8Q90;
+   static int VAR__SUM = 0;
+   static int temp1[( MAXN * MAXN ) + 10];
+   static int temp2[( MAXN * MAXN ) + 10];
+   static int VAR_129012;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = getAChar();
+      }
+   }
+
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR__1238129; VAR__8444594++ )
+   {
+      VAR_129012 = 1;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__53647][VAR__21230] == '@' )
+            {
+               temp1[VAR_129012] = VAR__53647;
+               temp2[VAR_129012] = VAR__21230;
+               VAR_129012       += 1;
+            }
+         }
+      }
+
+      for ( VAR_9Q8Q90 = 1; VAR_9Q8Q90 < VAR_129012; VAR_9Q8Q90++ )
+      {
+         VAR__53647 = temp1[VAR_9Q8Q90];
+         VAR__21230 = temp2[VAR_9Q8Q90];
+
+         if ( VAR__819283[VAR__53647 + 1][VAR__21230] == '.' )
+         {
+            VAR__819283[VAR__53647 + 1][VAR__21230] = '@';
+         }
+
+         if ( VAR__819283[VAR__53647][VAR__21230 + 1] == '.' )
+         {
+            VAR__819283[VAR__53647][VAR__21230 + 1] = '@';
+         }
+
+         if ( VAR__819283[VAR__53647 - 1][VAR__21230] == '.' )
+         {
+            VAR__819283[VAR__53647 - 1][VAR__21230] = '@';
+         }
+
+         if ( VAR__819283[VAR__53647][VAR__21230 - 1] == '.' )
+         {
+            VAR__819283[VAR__53647][VAR__21230 - 1] = '@';
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] == '@' )
+         {
+            VAR__SUM += 1;
+         }
+      }
+   }
+
+   printf("%d\n", VAR__SUM);
+   return 0;
+}

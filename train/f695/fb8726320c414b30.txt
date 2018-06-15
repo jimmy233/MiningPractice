@@ -1,0 +1,47 @@
+int LeapQ(int);
+int DayCount(int, int, int);
+
+int main()
+{
+   int VAR__53647;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      if ((( DayCount(1, VAR__53647, 13) - ( 6 - VAR_1238123 )) % 7 ) == 0 )
+      {
+         printf("%d\n", VAR__53647);
+      }
+   }
+
+   return 0;
+}
+
+
+int LeapQ(int year)
+{
+   return ((( year % 400 ) == 0 ) || ((( year % 100 ) != 0 ) && (( year % 4 ) == 0 ))) ? ( 1 ) : ( 0 );
+}
+
+
+int DayCount(int year, int month, int date)
+{
+   int VAR__53647;
+   int VAR__NUM = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ( VAR__53647 == 2 )
+      {
+         VAR__NUM += ( LeapQ(year)) ? ( 29 ) : ( 28 );
+      }
+      else
+      {
+         VAR__NUM += ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 )) ? ( 31 ) : ( 30 );
+      }
+   }
+
+   VAR__NUM += date;
+   return VAR__NUM;
+}

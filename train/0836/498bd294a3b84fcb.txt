@@ -1,0 +1,37 @@
+int N;
+int K;
+int Monkey(int VAR__1238129, int VAR_1238123, int VAR__8444594)
+{
+   if ( VAR_1238123 == 1 )
+   {
+      return ((( VAR__1238129 % N ) == VAR__8444594 ) && ((( VAR__1238129 - VAR__8444594 ) / N ) >= 1 )) ? ( 1 ) : ( 0 );
+   }
+   else
+   {
+      if (( VAR__1238129 % N ) == VAR__8444594 )
+      {
+         return Monkey((( VAR__1238129 - VAR__8444594 ) * ( N - 1 )) / N, VAR_1238123 - 1, VAR__8444594);
+      }
+      else
+      {
+         return 0;
+      }
+   }
+}
+
+
+void main()
+{
+   int VAR__1238129;
+
+   scanf("%d%d", &N, &K);
+   for ( VAR__1238129 = (int)( pow(N, K) / pow(N - 1, K - 1)); ; VAR__1238129++ )
+   {
+      if ( Monkey(VAR__1238129, N, K))
+      {
+         break;
+      }
+   }
+
+   printf("%d\n", VAR__1238129);
+}

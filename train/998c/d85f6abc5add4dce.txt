@@ -1,0 +1,66 @@
+int main()
+{
+   int  a1[Max + 10] = { 0 };
+   int  a2[Max + 10] = { 0 };
+   char s1[Max + 10];
+   char s2[Max + 10];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__112390;
+   int  VAR__127322;
+   int  L1;
+   int  L2;
+
+   scanf("%s", s1);
+   scanf("%s", s2);
+   L1         = strlen(s1);
+   L2         = strlen(s2);
+   VAR__21230 = 0;
+
+   if (( L1 == 1 ) && ( L2 == 1 ))
+   {
+      VAR__112390 = s1[0] - '0';
+      VAR__127322 = s2[0] - '0';
+      printf("%d", VAR__112390 + VAR__127322);
+   }
+   else
+   {
+      for ( VAR__53647 = L1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         a1[VAR__21230++] = s1[VAR__53647] - '0';
+      }
+
+      VAR__21230 = 0;
+      for ( VAR__53647 = L2 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         a2[VAR__21230++] = s2[VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < Max; VAR__53647++ )
+      {
+         a1[VAR__53647] += a2[VAR__53647];
+
+         if ( a1[VAR__53647] >= 10 )
+         {
+            a1[VAR__53647] -= 10;
+            a1[VAR__53647 + 1]++;
+         }
+      }
+
+      for ( VAR__53647 = Max; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( a1[VAR__53647] != 0 )
+         {
+            VAR__21230 = VAR__53647;
+            break;
+         }
+      }
+
+      for ( VAR__53647 = VAR__21230; VAR__53647 >= 0; VAR__53647-- )
+      {
+         printf("%d", a1[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

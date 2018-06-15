@@ -1,0 +1,41 @@
+struct student
+{
+   int ID;
+   int chi;
+   int math;
+   int total;
+}
+stu[1000000];
+void main()
+{
+   int STUDENT_NUM;
+   int VAR__53647;
+   int VAR__21230;
+   int temp1;
+   int temp2;
+
+   scanf("%d", &STUDENT_NUM);
+   for ( VAR__53647 = 0; VAR__53647 < STUDENT_NUM; VAR__53647++ )
+   {
+      scanf("%d %d %d", &stu[VAR__53647].ID, &stu[VAR__53647].chi, &stu[VAR__53647].math);
+      stu[VAR__53647].total = stu[VAR__53647].chi + stu[VAR__53647].math;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < STUDENT_NUM; VAR__21230++ )
+      {
+         if ( stu[VAR__53647].total < stu[VAR__21230].total )
+         {
+            temp1 = stu[VAR__53647].ID;
+            stu[VAR__53647].ID = stu[VAR__21230].ID;
+            stu[VAR__21230].ID = temp1;
+            temp2 = stu[VAR__53647].total;
+            stu[VAR__53647].total = stu[VAR__21230].total;
+            stu[VAR__21230].total = temp2;
+         }
+      }
+   }
+
+   printf("%d %d\n%d %d\n%d %d\n", stu[0].ID, stu[0].total, stu[1].ID, stu[1].total, stu[2].ID, stu[2].total);
+}

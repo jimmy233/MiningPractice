@@ -1,0 +1,82 @@
+int a1[100];
+int a2[100];
+void get(int n1, int n2)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      cin >> a1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      cin >> a2[VAR__53647];
+   }
+}
+
+
+void arrange(int n1, int n2)
+{
+   int VAR__TEMP;
+
+   for ( int VAR__21230 = 1; VAR__21230 <= ( n1 - 1 ); VAR__21230++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 <= (( n1 - VAR__21230 ) - 1 ); VAR__53647++ )
+      {
+         if ( a1[VAR__53647] > a1[VAR__53647 + 1] )
+         {
+            VAR__TEMP          = a1[VAR__53647];
+            a1[VAR__53647]     = a1[VAR__53647 + 1];
+            a1[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( int VAR__21230 = 1; VAR__21230 <= ( n2 - 1 ); VAR__21230++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 <= (( n2 - VAR__21230 ) - 1 ); VAR__53647++ )
+      {
+         if ( a2[VAR__53647] > a2[VAR__53647 + 1] )
+         {
+            VAR__TEMP          = a2[VAR__53647];
+            a2[VAR__53647]     = a2[VAR__53647 + 1];
+            a2[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int combine(int n1, int n2)
+{
+   int out[100];
+
+   for ( int VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      out[VAR__53647] = a1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      out[n1 + VAR__53647] = a2[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < (( n1 + n2 ) - 1 ); VAR__53647++ )
+   {
+      ( cout << out[VAR__53647] ) << " ";
+   }
+
+   cout << out[( n1 + n2 ) - 1];
+}
+
+
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+
+   ( cin >> VAR__819283 ) >> VAR__19328;
+   get(VAR__819283, VAR__19328);
+   arrange(VAR__819283, VAR__19328);
+   combine(VAR__819283, VAR__19328);
+   return 0;
+}

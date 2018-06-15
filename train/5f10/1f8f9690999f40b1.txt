@@ -1,0 +1,86 @@
+struct chain
+{
+   char sp[6];
+   int  VAR__NUM;
+};
+void bubble(struct chain VAR__819283[], int VAR_1238123)
+{
+   int          VAR__53647;
+   int          VAR__21230;
+   struct chain VAR__TEMP;
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230].VAR__NUM < VAR__819283[VAR__21230 + 1].VAR__NUM )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   struct chain VAR__819283[500];
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__8444594;
+   char         VAR_9494[501];
+   char         VAR__4857423[6];
+   char         c1;
+
+   for ( VAR__53647 = 0; VAR__53647 <= 500; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647].VAR__NUM = 1;
+   }
+
+   scanf("%d", &VAR__8444594);
+   scanf("%s", VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(VAR_9494) - VAR__8444594 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         VAR__4857423[VAR__21230] = VAR_9494[VAR__53647 + VAR__21230];
+      }
+
+      VAR__4857423[VAR__21230] = '\0';
+      strcpy(VAR__819283[VAR__53647].sp, VAR__4857423);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( strlen(VAR_9494) - VAR__8444594 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( strlen(VAR_9494) - VAR__8444594 ); VAR__21230++ )
+      {
+         if ( strcmp(VAR__819283[VAR__53647].sp, VAR__819283[VAR__21230].sp) == 0 )
+         {
+            VAR__819283[VAR__53647].VAR__NUM++;
+         }
+      }
+   }
+
+   bubble(VAR__819283, strlen(VAR_9494) - VAR__8444594);
+
+   if ( VAR__819283[0].VAR__NUM > 1 )
+   {
+      printf("%d\n", VAR__819283[0].VAR__NUM);
+      printf("%s\n", VAR__819283[0].sp);
+      for ( VAR__53647 = 1; VAR__53647 <= ( strlen(VAR_9494) - VAR__8444594 ); VAR__53647++ )
+      {
+         if (( VAR__819283[VAR__53647].VAR__NUM == VAR__819283[0].VAR__NUM ) && ( strcmp(VAR__819283[VAR__53647].sp, VAR__819283[VAR__53647 - 1].sp) != 0 ))
+         {
+            printf("%s\n", VAR__819283[VAR__53647].sp);
+         }
+      }
+   }
+   else
+   {
+      printf("NO");
+   }
+
+   return 0;
+}

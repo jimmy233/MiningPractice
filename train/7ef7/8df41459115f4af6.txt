@@ -1,0 +1,95 @@
+int main()
+{
+   int N;
+
+   scanf("%d", &N);
+   for ( int VAR_1238123 = 0; VAR_1238123 < N; VAR_1238123++ )
+   {
+      int Ma[N][N];
+      for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < N; VAR__21230++ )
+         {
+            scanf("%d", &Ma[VAR__53647][VAR__21230]);
+         }
+      }
+
+      int SUM = 0;
+      for ( int Now = 1; Now < N; Now++ )
+      {
+         int MINR = Ma[0][0];
+         for ( int VAR__21230 = Now; VAR__21230 < N; VAR__21230++ )
+         {
+            if ( MINR > Ma[0][VAR__21230] )
+            {
+               MINR = Ma[0][VAR__21230];
+            }
+         }
+
+
+         Ma[0][0] -= MINR;
+         for ( int VAR__21230 = Now; VAR__21230 < N; VAR__21230++ )
+         {
+            Ma[0][VAR__21230] -= MINR;
+         }
+
+         for ( int VAR__53647 = Now; VAR__53647 < N; VAR__53647++ )
+         {
+            int MIR = Ma[VAR__53647][0];
+            for ( int VAR__21230 = Now; VAR__21230 < N; VAR__21230++ )
+            {
+               if ( MIR > Ma[VAR__53647][VAR__21230] )
+               {
+                  MIR = Ma[VAR__53647][VAR__21230];
+               }
+            }
+
+
+            Ma[VAR__53647][0] -= MIR;
+            for ( int VAR__21230 = Now; VAR__21230 < N; VAR__21230++ )
+            {
+               Ma[VAR__53647][VAR__21230] -= MIR;
+            }
+         }
+
+         int MINC = Ma[0][0];
+         for ( int VAR__21230 = Now; VAR__21230 < N; VAR__21230++ )
+         {
+            if ( MINC > Ma[VAR__21230][0] )
+            {
+               MINC = Ma[VAR__21230][0];
+            }
+         }
+
+
+         Ma[0][0] -= MINC;
+         for ( int VAR__21230 = Now; VAR__21230 < N; VAR__21230++ )
+         {
+            Ma[VAR__21230][0] -= MINC;
+         }
+
+         for ( int VAR__53647 = Now; VAR__53647 < N; VAR__53647++ )
+         {
+            int Mic = Ma[0][VAR__53647];
+            for ( int VAR__21230 = Now; VAR__21230 < N; VAR__21230++ )
+            {
+               if ( Mic > Ma[VAR__21230][VAR__53647] )
+               {
+                  Mic = Ma[VAR__21230][VAR__53647];
+               }
+            }
+
+
+            Ma[0][VAR__53647] -= Mic;
+            for ( int VAR__21230 = Now; VAR__21230 < N; VAR__21230++ )
+            {
+               Ma[VAR__21230][VAR__53647] -= Mic;
+            }
+         }
+
+         SUM += Ma[Now][Now];
+      }
+
+      printf("%d\n", SUM);
+   }
+}

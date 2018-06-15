@@ -1,0 +1,66 @@
+struct shuju
+{
+   char         xh[20];
+   char         xm[20];
+   char         sex;
+   int          age;
+   char         fen[10];
+   char         dorm[20];
+   struct shuju *VAR__NEXT;
+};
+struct shuju *create()
+{
+   struct shuju *VAR__HEAD;
+   struct shuju *ANOTHER_POINTER;
+   struct shuju *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct shuju *)malloc(LEN_OF_STH);
+   scanf("%s %s %c %d %s %s", ANOTHER_POINTER->xh, ANOTHER_POINTER->xm, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->fen, ANOTHER_POINTER->dorm);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+
+   while ( 1 )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct shuju *)malloc(LEN_OF_STH);
+      scanf("%s", ANOTHER_POINTER->xh);
+
+      if ( strcmp(ANOTHER_POINTER->xh, "end") == 0 )
+      {
+         free(ANOTHER_POINTER);
+         break;
+      }
+      else
+      {
+         scanf("%s %c %d %s %s", ANOTHER_POINTER->xm, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->fen, ANOTHER_POINTER->dorm);
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+   }
+
+   VAR__HEAD = YET_ANOTHER_POINTER;
+   return VAR__HEAD;
+}
+
+
+void print(struct shuju *VAR__HEAD)
+{
+   struct shuju *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233->VAR__NEXT != NULL )
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->xh, VAR_233->xm, VAR_233->sex, VAR_233->age, VAR_233->fen, VAR_233->dorm);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%s %s %c %d %s %s\n", VAR_233->xh, VAR_233->xm, VAR_233->sex, VAR_233->age, VAR_233->fen, VAR_233->dorm);
+}
+
+
+void main()
+{
+   struct shuju *VAR_233;
+
+   VAR_233 = create();
+   print(VAR_233);
+}

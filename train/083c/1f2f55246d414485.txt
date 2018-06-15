@@ -1,0 +1,60 @@
+void main()
+{
+   int           a1;
+   int           a2;
+   int           VAR__53647;
+   int           LEN_OF_STH;
+   int           VAR__21230;
+   unsigned long VAR__temp = 0;
+   unsigned long VAR_1238123[40];
+   unsigned long VAR__8444594;
+   char          num1[40];
+
+   scanf("%d%s%d", &a1, &num1, &a2);
+   LEN_OF_STH = strlen(num1);
+   for ( VAR__53647 = LEN_OF_STH - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      if (( num1[VAR__53647] >= 'A' ) && ( num1[VAR__53647] <= 'Z' ))
+      {
+         VAR_1238123[VAR__53647] = ( 10 + num1[VAR__53647] ) - 'A';
+      }
+
+      if (( num1[VAR__53647] >= 'a' ) && ( num1[VAR__53647] <= 'z' ))
+      {
+         VAR_1238123[VAR__53647] = ( 10 + num1[VAR__53647] ) - 'a';
+      }
+
+      if (( num1[VAR__53647] >= '0' ) && ( num1[VAR__53647] <= '9' ))
+      {
+         VAR_1238123[VAR__53647] = ( 1 + num1[VAR__53647] ) - '1';
+      }
+
+      VAR__temp = VAR__temp + ( VAR_1238123[VAR__53647] * ((int)pow(a1, VAR__21230)));
+   }
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      VAR__8444594 = VAR__temp / ((int)pow(a2, VAR__53647));
+
+      if ( VAR__8444594 < a2 )
+      {
+         break;
+      }
+   }
+
+   for ( ; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR_1238123[VAR__53647] = VAR__temp / ((int)pow(a2, VAR__53647));
+      VAR__temp = VAR__temp - (((int)pow(a2, VAR__53647)) * VAR_1238123[VAR__53647] );
+
+      if (( VAR_1238123[VAR__53647] >= 0 ) && ( VAR_1238123[VAR__53647] <= 9 ))
+      {
+         printf("%c", VAR_1238123[VAR__53647] + 48);
+      }
+
+      if (( VAR_1238123[VAR__53647] >= 10 ) && ( VAR_1238123[VAR__53647] <= 35 ))
+      {
+         printf("%c", VAR_1238123[VAR__53647] + 55);
+      }
+   }
+}

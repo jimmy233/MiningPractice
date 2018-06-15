@@ -1,0 +1,122 @@
+struct stu
+{
+   char       id[111];
+   int        qm;
+   int        bj;
+   char       ganbu[2];
+   char       xibu[2];
+   int        lun;
+   float      total;
+   struct stu *VAR__NEXT;
+};
+int VAR_1238123;
+struct stu *creat(int VAR_2890)
+{
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(L));
+   scanf("%s %d %d %s %s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->qm, &ANOTHER_POINTER->bj, &ANOTHER_POINTER->ganbu, &ANOTHER_POINTER->xibu, &ANOTHER_POINTER->lun);
+   VAR__HEAD = NULL;
+
+   while ( VAR_1238123 < ( VAR_2890 - 1 ))
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(L);
+      scanf("%s %d %d %s %s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->qm, &ANOTHER_POINTER->bj, &ANOTHER_POINTER->ganbu, &ANOTHER_POINTER->xibu, &ANOTHER_POINTER->lun);
+   }
+
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int        VAR__1238129;
+   float      VAR_9494;
+   float      all = 0;
+   struct stu VAR__127322;
+   struct stu *VAR_233;
+   struct stu *VAR_666;
+   struct stu *VAR__1111;
+
+   scanf("%d", &VAR__1238129);
+   VAR_233   = creat(VAR__1238129);
+   VAR__1111 = VAR_233;
+
+   while ( VAR_233 )
+   {
+      VAR_233->total = 0;
+
+      if (( VAR_233->qm > 80 ) && ( VAR_233->lun >= 1 ))
+      {
+         VAR_233->total = VAR_233->total + 8000;
+      }
+
+      if (( VAR_233->qm > 85 ) && ( VAR_233->bj > 80 ))
+      {
+         VAR_233->total = VAR_233->total + 4000;
+      }
+
+      if ( VAR_233->qm > 90 )
+      {
+         VAR_233->total = VAR_233->total + 2000;
+      }
+
+      if (( VAR_233->qm > 85 ) && ( strcmp(VAR_233->xibu, "Y") == 0 ))
+      {
+         VAR_233->total = VAR_233->total + 1000;
+      }
+
+      if (( VAR_233->bj > 80 ) && ( strcmp(VAR_233->ganbu, "Y") == 0 ))
+      {
+         VAR_233->total = VAR_233->total + 850;
+      }
+
+      all     = all + VAR_233->total;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233           = VAR__1111;
+   VAR__127322.total = 0;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->total > VAR__127322.total )
+      {
+         VAR__127322 = *VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_9494 = VAR__127322.total;
+   VAR_233  = VAR__1111;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->total == VAR__127322.total )
+      {
+         VAR__127322.total = VAR__127322.total + VAR_233->total;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%s\n%.0f\n%.0f\n", VAR__127322.id, VAR_9494, all);
+}

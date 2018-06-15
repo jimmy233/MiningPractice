@@ -1,0 +1,66 @@
+struct studen
+{
+   char name[100];
+   int  score1;
+   int  score2;
+   char H;
+   char W;
+   int  paper;
+   int  money;
+}
+stu[200];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int money = 0;
+   int student;
+   int scholar = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c%d", stu[VAR__53647].name, &stu[VAR__53647].score1, &stu[VAR__53647].score2, &stu[VAR__53647].H, &stu[VAR__53647].W, &stu[VAR__53647].paper);
+      stu[VAR__53647].money = 0;
+
+      if (( stu[VAR__53647].score1 > 80 ) && ( stu[VAR__53647].paper > 0 ))
+      {
+         stu[VAR__53647].money += 8000;
+      }
+
+      if (( stu[VAR__53647].score1 > 85 ) && ( stu[VAR__53647].score2 > 80 ))
+      {
+         stu[VAR__53647].money += 4000;
+      }
+
+      if ( stu[VAR__53647].score1 > 90 )
+      {
+         stu[VAR__53647].money += 2000;
+      }
+
+      if (( stu[VAR__53647].score1 > 85 ) && ( stu[VAR__53647].W == 'Y' ))
+      {
+         stu[VAR__53647].money += 1000;
+      }
+
+      if (( stu[VAR__53647].score2 > 80 ) && ( stu[VAR__53647].H == 'Y' ))
+      {
+         stu[VAR__53647].money += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].money > money )
+      {
+         student = VAR__53647;
+         money   = stu[VAR__53647].money;
+      }
+
+      scholar = scholar + stu[VAR__53647].money;
+   }
+
+   printf("%s\n%d\n%d\n", stu[student].name, stu[student].money, scholar);
+   return 0;
+}

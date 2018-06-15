@@ -1,0 +1,103 @@
+int VAR__819283[101][101] = { 0 };
+int mem[101][101]         = { 0 };
+int sx[2][10001]          = { 0 };
+int sy[2][10001]          = { 0 };
+int VAR__SUM = 0;
+int VAR_233 = 0;
+void fuck(int VAR__7685, int VAR__3918907)
+{
+   int VAR__112390;
+   int VAR__127322;
+   int VAR__53647;
+   int VAR__21230;
+
+   VAR__112390 = sx[( VAR__7685 + 1 ) % 2][VAR__3918907];
+   VAR__127322 = sy[( VAR__7685 + 1 ) % 2][VAR__3918907];
+
+   if (( VAR__819283[VAR__112390 - 1][VAR__127322] == 1 ) && ( mem[VAR__112390 - 1][VAR__127322] == 0 ))
+   {
+      VAR__SUM++;
+      sx[VAR__7685 % 2][VAR__SUM]       = VAR__112390 - 1;
+      sy[VAR__7685 % 2][VAR__SUM]       = VAR__127322;
+      mem[VAR__112390 - 1][VAR__127322] = 1;
+      VAR_233++;
+   }
+
+   if (( VAR__819283[VAR__112390 + 1][VAR__127322] == 1 ) && ( mem[VAR__112390 + 1][VAR__127322] == 0 ))
+   {
+      VAR__SUM++;
+      sx[VAR__7685 % 2][VAR__SUM]       = VAR__112390 + 1;
+      sy[VAR__7685 % 2][VAR__SUM]       = VAR__127322;
+      mem[VAR__112390 + 1][VAR__127322] = 1;
+      VAR_233++;
+   }
+
+   if (( VAR__819283[VAR__112390][VAR__127322 - 1] == 1 ) && ( mem[VAR__112390][VAR__127322 - 1] == 0 ))
+   {
+      VAR__SUM++;
+      sx[VAR__7685 % 2][VAR__SUM]       = VAR__112390;
+      sy[VAR__7685 % 2][VAR__SUM]       = VAR__127322 - 1;
+      mem[VAR__112390][VAR__127322 - 1] = 1;
+      VAR_233++;
+   }
+
+   if (( VAR__819283[VAR__112390][VAR__127322 + 1] == 1 ) && ( mem[VAR__112390][VAR__127322 + 1] == 0 ))
+   {
+      VAR__SUM++;
+      sx[VAR__7685 % 2][VAR__SUM]       = VAR__112390;
+      sy[VAR__7685 % 2][VAR__SUM]       = VAR__127322 + 1;
+      mem[VAR__112390][VAR__127322 + 1] = 1;
+      VAR_233++;
+   }
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   char VAR__4857423;
+
+   cin >> VAR_1238123;
+   cin.get();
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin.get(VAR__4857423);
+
+         if (( VAR__4857423 == '.' ) || ( VAR__4857423 == '@' ))
+         {
+            VAR__819283[VAR__53647][VAR__21230] = 1;
+         }
+
+         if ( VAR__4857423 == '@' )
+         {
+            mem[VAR__53647][VAR__21230] = 1;
+            VAR__SUM++;
+            sx[0][VAR__SUM] = VAR__53647;
+            sy[0][VAR__SUM] = VAR__21230;
+            VAR_233++;
+         }
+      }
+
+      cin.get();
+   }
+
+   cin >> VAR__1238129;
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      VAR__temp = VAR__SUM;
+      VAR__SUM  = 0;
+      for ( VAR__21230 = 1; VAR__21230 <= VAR__temp; VAR__21230++ )
+      {
+         fuck(VAR__53647, VAR__21230);
+      }
+   }
+
+   cout << VAR_233;
+   return 0;
+}

@@ -1,0 +1,57 @@
+int iflet(char VAR__819283)
+{
+   int test = 0;
+
+   if ((( VAR__819283 >= 'a' ) && ( VAR__819283 <= 'z' )) || (( VAR__819283 >= 'A' ) && ( VAR__819283 <= 'Z' )))
+   {
+      test = 1;
+   }
+
+   return test;
+}
+
+
+void main()
+{
+   char ori[100];
+   char out[100];
+   char in[100];
+   char *pori = ori;
+   char *pout = out;
+   char *pin  = in;
+   char VAR__TEMP[20];
+   int  VAR__8444594;
+
+   gets(ori);
+   gets(out);
+   gets(in);
+   for ( ; ( *pori ) != '\0'; )
+   {
+      if (( *pori ) == ' ' )
+      {
+         printf("%c", *pori);
+         pori++;
+      }
+      else
+      if ((( iflet(*pori) == 1 ) && (( *( pori - 1 )) == ' ' )) || ( pori = ori ))
+      {
+         for ( VAR__8444594 = 0; (( *( pori + VAR__8444594 )) != ' ' ) && (( *( pori + VAR__8444594 )) != '\0' ); VAR__8444594++ )
+         {
+            VAR__TEMP[VAR__8444594] = *( pori + VAR__8444594 );
+         }
+
+         VAR__TEMP[VAR__8444594] = '\0';
+
+         if ( strcmp(VAR__TEMP, out) == 0 )
+         {
+            printf("%s", in);
+         }
+         else
+         {
+            printf("%s", VAR__TEMP);
+         }
+
+         pori = pori + VAR__8444594;
+      }
+   }
+}

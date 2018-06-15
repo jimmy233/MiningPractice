@@ -1,0 +1,100 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int tianji[10100];
+   int king[10100];
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( !VAR_1238123 )
+      {
+         break;
+      }
+
+      VAR__53647 = 0;
+
+      while ( VAR__53647 < VAR_1238123 )
+      {
+         cin >> tianji[VAR__53647++];
+      }
+
+      VAR__53647 = 0;
+
+      while ( VAR__53647 < VAR_1238123 )
+      {
+         cin >> king[VAR__53647++];
+      }
+
+      sort(tianji, tianji + VAR_1238123);
+      sort(king, king + VAR_1238123);
+      int b1;
+      int e1;
+      int b2;
+      int e2;
+      int score = 0;
+      b1 = 0;
+      e1 = VAR_1238123 - 1;
+      b2 = 0;
+      e2 = VAR_1238123 - 1;
+
+      while ( b1 <= e1 )
+      {
+         if ( tianji[e1] > king[e2] )
+         {
+            score += 200;
+            e1--;
+            e2--;
+         }
+         else
+         if ( tianji[e1] < king[e2] )
+         {
+            score -= 200;
+            e2--;
+            b1++;
+         }
+         else
+         {
+            if (( tianji[b1] != king[b2] ) && ( b1 <= e1 ))
+            {
+               while (( tianji[b1] != king[b2] ) && ( b1 <= e1 ))
+               {
+                  if ( tianji[b1] > king[b2] )
+                  {
+                     b1++;
+                     b2++;
+                     score += 200;
+                  }
+                  else
+                  {
+                     b1++;
+                     e2--;
+                     score -= 200;
+                  }
+               }
+            }
+
+            else
+            if (( b1 < e1 ) && ( tianji[b1] == king[b2] ))
+            {
+               if ( tianji[b1] < king[e2] )
+               {
+                  score -= 200;
+               }
+
+               b1++;
+               e2--;
+            }
+            else
+            if ( b1 == e1 )
+            {
+               break;
+            }
+         }
+      }
+
+      ( cout << score ) << endl;
+   }
+
+   return 0;
+}

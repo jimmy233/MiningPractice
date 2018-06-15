@@ -1,0 +1,62 @@
+void main()
+{
+   char VAR__819283[300] = { '\0' };
+   char VAR__19328[300]  = { '\0' };
+   char *VAR_233;
+   int  VAR__53647;
+   int  bb[300] = { 0 };
+   int  aa[300] = { 0 };
+   int  LEN_OF_STH;
+   int  lena;
+   int  lenb;
+   int  start;
+
+   gets(VAR__819283);
+   gets(VAR__19328);
+   lena       = strlen(VAR__819283);
+   lenb       = strlen(VAR__19328);
+   LEN_OF_STH = ( lena > lenb ) ? ( lena ) : ( lenb );
+   for ( VAR_233 = VAR__819283, VAR__53647 = lena - 1; VAR_233 < ( VAR__819283 + lena ); VAR_233++, VAR__53647-- )
+   {
+      aa[VAR__53647] = ( *VAR_233 ) - '0';
+   }
+
+   for ( VAR_233 = VAR__19328, VAR__53647 = lenb - 1; VAR_233 < ( VAR__19328 + lenb ); VAR_233++, VAR__53647-- )
+   {
+      bb[VAR__53647] = ( *VAR_233 ) - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      bb[VAR__53647] = aa[VAR__53647] + bb[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+   {
+      if ( bb[VAR__53647] >= 10 )
+      {
+         bb[VAR__53647] -= 10;
+         bb[VAR__53647 + 1]++;
+      }
+   }
+
+   start = 0;
+   for ( VAR__53647 = LEN_OF_STH; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( start )
+      {
+         printf("%d", bb[VAR__53647]);
+      }
+      else
+      if ( bb[VAR__53647] != 0 )
+      {
+         printf("%d", bb[VAR__53647]);
+         start = 1;
+      }
+   }
+
+   if ( !start )
+   {
+      printf("0");
+   }
+}

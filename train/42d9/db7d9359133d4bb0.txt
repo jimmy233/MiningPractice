@@ -1,0 +1,72 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int point[11][3];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         scanf("%d", &point[VAR__53647][VAR__21230]);
+      }
+   }
+
+   double distance[15][15] = { 0 };
+   double VAR_9494;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__8444594 = 1; ( VAR__53647 + VAR__8444594 ) < VAR_1238123; VAR__8444594++ )
+      {
+         VAR_9494 = sqrt(((( point[VAR__53647][0] - point[VAR__53647 + VAR__8444594][0] ) * ( point[VAR__53647][0] - point[VAR__53647 + VAR__8444594][0] )) + (( point[VAR__53647][1] - point[VAR__53647 + VAR__8444594][1] ) * ( point[VAR__53647][1] - point[VAR__53647 + VAR__8444594][1] ))) + (( point[VAR__53647][2] - point[VAR__53647 + VAR__8444594][2] ) * ( point[VAR__53647][2] - point[VAR__53647 + VAR__8444594][2] )));
+         distance[VAR__53647][VAR__53647 + VAR__8444594] = VAR_9494;
+      }
+   }
+
+   double lenth[105];
+   int    id[105][2];
+   int    VAR__8444594 = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( distance[VAR__53647][VAR__21230] == 0 )
+         {
+            continue;
+         }
+
+         id[VAR__8444594][0] = VAR__53647;
+         id[VAR__8444594][1] = VAR__21230;
+         lenth[VAR__8444594] = distance[VAR__53647][VAR__21230];
+         VAR__8444594++;
+      }
+   }
+
+   double VAR__112390;
+   for ( int VAR_233 = 1; VAR_233 < VAR__8444594; VAR_233++ )
+   {
+      for ( int VAR__53647 = VAR__8444594 - 1; VAR__53647 >= VAR_233; VAR__53647-- )
+      {
+         if ( lenth[VAR__53647] > lenth[VAR__53647 - 1] )
+         {
+            VAR__112390           = id[VAR__53647][0];
+            id[VAR__53647][0]     = id[VAR__53647 - 1][0];
+            id[VAR__53647 - 1][0] = VAR__112390;
+            VAR__112390           = id[VAR__53647][1];
+            id[VAR__53647][1]     = id[VAR__53647 - 1][1];
+            id[VAR__53647 - 1][1] = VAR__112390;
+            VAR__112390           = lenth[VAR__53647];
+            lenth[VAR__53647]     = lenth[VAR__53647 - 1];
+            lenth[VAR__53647 - 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", point[id[VAR__53647][0]][0], point[id[VAR__53647][0]][1], point[id[VAR__53647][0]][2], point[id[VAR__53647][1]][0], point[id[VAR__53647][1]][1], point[id[VAR__53647][1]][2], lenth[VAR__53647]);
+   }
+
+   scanf("%d", &VAR_1238123);
+   return 0;
+}

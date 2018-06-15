@@ -1,0 +1,68 @@
+char VAR__1238129[1000];
+char VAR_1238123[1000];
+int main()
+{
+   int  VAR__53647 = 0;
+   int  VAR__21230 = 0;
+   int  lenm;
+   int  lenn;
+   int  km[1000] = { 0 };
+   int  kn[1000] = { 0 };
+   char VAR_9494;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   lenm = strlen(VAR__1238129);
+   lenn = strlen(VAR_1238123);
+   for ( VAR__53647 = lenm - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      km[VAR__21230++] = VAR__1238129[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = lenn - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      kn[VAR__21230] = VAR_1238123[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; ( VAR__53647 < lenm ) || ( VAR__53647 < lenn ); VAR__53647++ )
+   {
+      kn[VAR__53647] += km[VAR__53647];
+
+      if ( kn[VAR__53647] >= 10 )
+      {
+         kn[VAR__53647]     -= 10;
+         kn[VAR__53647 + 1] += 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; ( VAR__53647 < lenn ) || ( VAR__53647 < lenm ); VAR__53647++ )
+   {
+      VAR_1238123[VAR__53647] = '0' + kn[VAR__53647];
+   }
+
+   if ( kn[VAR__53647] != 0 )
+   {
+      VAR_1238123[VAR__53647++] = '0' + kn[VAR__53647];
+   }
+
+   VAR_1238123[VAR__53647] = '\0';
+   VAR__53647--;
+   int VAR_FLAG = 0;
+   for ( ; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( VAR_FLAG == 0 ) && ( VAR_1238123[VAR__53647] == '0' ))
+      {
+         continue;
+      }
+
+      VAR_FLAG = 1;
+      cout << VAR_1238123[VAR__53647];
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      cout << 0;
+   }
+
+   cout << endl;
+   return 0;
+}

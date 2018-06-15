@@ -1,0 +1,74 @@
+struct student
+{
+   char   name[20];
+   int    qimo;
+   int    banpin;
+   char   ganbu;
+   char   xibu;
+   int    lunwen;
+   double VAR__SUM;
+}
+stu[100];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].qimo, &stu[VAR__53647].banpin, &stu[VAR__53647].ganbu, &stu[VAR__53647].xibu, &stu[VAR__53647].lunwen);
+      stu[VAR__53647].VAR__SUM = 0;
+
+      if (( stu[VAR__53647].qimo > 80 ) && ( stu[VAR__53647].lunwen > 0 ))
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 8000;
+      }
+
+      if (( stu[VAR__53647].qimo > 85 ) && ( stu[VAR__53647].banpin > 80 ))
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 4000;
+      }
+
+      if ( stu[VAR__53647].qimo > 90 )
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 2000;
+      }
+
+      if (( stu[VAR__53647].xibu == 'Y' ) && ( stu[VAR__53647].qimo > 85 ))
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 1000;
+      }
+
+      if (( stu[VAR__53647].ganbu == 'Y' ) && ( stu[VAR__53647].banpin > 80 ))
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 850;
+      }
+   }
+
+   int VAR__MAX = 0;
+   int totalsum = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX = stu[VAR__53647].VAR__SUM;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].VAR__SUM == VAR__MAX )
+      {
+         printf("%s\n", stu[VAR__53647].name);
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      totalsum = totalsum + stu[VAR__53647].VAR__SUM;
+   }
+
+   printf("%d\n%d", VAR__MAX, totalsum);
+}

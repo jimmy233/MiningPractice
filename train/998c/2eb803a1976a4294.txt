@@ -1,0 +1,99 @@
+void AddBigInt(char *result, char *ANOTHER_STRING, char *YET_ANOTHER_STRING)
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__4857423;
+   int  VAR__7685 = 0;
+   char c1;
+   char c2;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if (( *( ANOTHER_STRING + VAR__53647 )) == '\0' )
+      {
+         VAR__819283 = VAR__53647 - 1;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if (( *( YET_ANOTHER_STRING + VAR__53647 )) == '\0' )
+      {
+         VAR__19328 = VAR__53647 - 1;
+         break;
+      }
+   }
+
+   if ( VAR__819283 > VAR__19328 )
+   {
+      VAR__4857423 = VAR__819283 + 1;
+   }
+   else
+   {
+      VAR__4857423 = VAR__19328 + 1;
+   }
+
+   *(( result + VAR__4857423 ) + 1 ) = '\0';
+   for ( VAR__53647 = 0; VAR__4857423 >= VAR__53647; VAR__53647++ )
+   {
+      if ( VAR__819283 < VAR__53647 )
+      {
+         c1 = '0';
+      }
+      else
+      {
+         c1 = *(( ANOTHER_STRING + VAR__819283 ) - VAR__53647 );
+      }
+
+      if ( VAR__19328 < VAR__53647 )
+      {
+         c2 = '0';
+      }
+      else
+      {
+         c2 = *(( YET_ANOTHER_STRING + VAR__19328 ) - VAR__53647 );
+      }
+
+      *(( result + VAR__4857423 ) - VAR__53647 ) = ((((( c1 - '0' ) + c2 ) - '0' ) + VAR__7685 ) % 10 ) + '0';
+      VAR__7685 = (((( c1 - '0' ) + c2 ) - '0' ) + VAR__7685 ) / 10;
+   }
+
+   if (( *result ) == '0' )
+   {
+      for ( VAR__53647 = 0; *( result + VAR__53647 ); VAR__53647++ )
+      {
+         *( result + VAR__53647 ) = *(( result + VAR__53647 ) + 1 );
+      }
+   }
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   char ANOTHER_STRING[251];
+   char YET_ANOTHER_STRING[251];
+   char result[251];
+
+   gets(ANOTHER_STRING);
+   gets(YET_ANOTHER_STRING);
+   AddBigInt(result, ANOTHER_STRING, YET_ANOTHER_STRING);
+   int index = 0;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(result); VAR__53647++ )
+   {
+      if ( '0' != result[VAR__53647] )
+      {
+         index = VAR__53647;
+         break;
+      }
+   }
+
+   char VAR__8444594[250];
+   strcpy(VAR__8444594, result + index);
+   printf("%s\n", VAR__8444594);
+   return 0;
+}

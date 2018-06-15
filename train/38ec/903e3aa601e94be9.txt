@@ -1,0 +1,64 @@
+int main()
+{
+   int mon[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int distance;
+   int VAR__53647;
+   int d1 = 0;
+   int d2 = 0;
+
+   (( cin >> sy ) >> sm ) >> sd;
+   (( cin >> ey ) >> em ) >> ed;
+   distance = 0;
+   for ( VAR__53647 = sy; VAR__53647 < ey; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         distance += 366;
+      }
+      else
+      {
+         distance += 365;
+      }
+   }
+
+   if (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 ))
+   {
+      mon[1] = 29;
+   }
+   else
+   {
+      mon[1] = 28;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( sm - 1 ); VAR__53647++ )
+   {
+      d1 += mon[VAR__53647];
+   }
+
+   d1 += sd;
+
+   if (((( ey % 4 ) == 0 ) && (( ey % 100 ) != 0 )) || (( ey % 400 ) == 0 ))
+   {
+      mon[1] = 29;
+   }
+   else
+   {
+      mon[1] = 28;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( em - 1 ); VAR__53647++ )
+   {
+      d2 += mon[VAR__53647];
+   }
+
+   d2       += ed;
+   distance += d2 - d1;
+   ( cout << distance ) << endl;
+   return 0;
+}

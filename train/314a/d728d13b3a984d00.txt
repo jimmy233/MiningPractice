@@ -1,0 +1,82 @@
+int convert(int VAR__819283, int VAR__19328, char A_STRING[])
+{
+   int VAR__53647;
+   int VAR__1238129 = 0;
+
+   for ( VAR__53647 = VAR__819283 + 1; VAR__53647 < VAR__19328; ++VAR__53647 )
+   {
+      VAR__1238129 = ( VAR__1238129 * 10 ) + ( A_STRING[VAR__53647] - '0' );
+   }
+
+   return VAR__1238129;
+}
+
+
+int main()
+{
+   char A_STRING[5000];
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__COUNT = 1;
+   int  comma[2000];
+   int  VAR__MAX;
+
+   gets(A_STRING);
+   LEN_OF_STH = strlen(A_STRING);
+   comma[0]   = -1;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; ++VAR__53647 )
+   {
+      if ( A_STRING[VAR__53647] == ',' )
+      {
+         comma[VAR__COUNT] = VAR__53647;
+         VAR__COUNT++;
+      }
+   }
+
+
+   comma[VAR__COUNT] = LEN_OF_STH;
+   int VAR__819283[2000];
+   int VAR__19328[2000];
+   int VAR__4857423[2000];
+   for ( VAR__53647 = 0; VAR__53647 < 1000; ++VAR__53647 )
+   {
+      VAR__4857423[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; ++VAR__53647 )
+   {
+      VAR__819283[VAR__53647] = convert(comma[VAR__53647], comma[VAR__53647 + 1], A_STRING);
+   }
+
+   scanf("%d", &VAR__19328[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR__COUNT; ++VAR__53647 )
+   {
+      scanf(",%d", &VAR__19328[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__COUNT; ++VAR__21230 )
+      {
+         if (( VAR__53647 >= VAR__819283[VAR__21230] ) && ( VAR__53647 < VAR__19328[VAR__21230] ))
+         {
+            VAR__4857423[VAR__53647]++;
+         }
+      }
+   }
+
+
+
+   VAR__MAX = VAR__4857423[0];
+   for ( VAR__53647 = 1; VAR__53647 < 1000; ++VAR__53647 )
+   {
+      if ( VAR__4857423[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__4857423[VAR__53647];
+      }
+   }
+
+
+   printf("%d %d", VAR__COUNT, VAR__MAX);
+}

@@ -1,0 +1,60 @@
+int plug(char A_STRING[11], char substr[4])
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  VAR__4857423;
+   int  VAR_1238123;
+   int  VAR__819283[11] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+   char VAR_233[11];
+   char VAR_666;
+
+   VAR_1238123 = strlen(A_STRING);
+   strcpy(VAR_233, A_STRING);
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( VAR_233[VAR__53647] < VAR_233[VAR__53647 + 1] )
+         {
+            VAR__temp = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647]     = VAR__819283[VAR__53647 + 1];
+            VAR__819283[VAR__53647 + 1] = VAR__temp;
+            VAR_666                 = VAR_233[VAR__53647];
+            VAR_233[VAR__53647]     = VAR_233[VAR__53647 + 1];
+            VAR_233[VAR__53647 + 1] = VAR_666;
+         }
+      }
+   }
+
+
+
+   VAR__4857423 = VAR__819283[0];
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__4857423; VAR__53647++ )
+   {
+      printf("%c", A_STRING[VAR__53647]);
+   }
+
+   printf("%s", substr);
+   for ( VAR__53647 = VAR__4857423 + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%c", A_STRING[VAR__53647]);
+   }
+
+   printf("\n");
+   return 0;
+}
+
+
+int main()
+{
+   char A_STRING[11];
+   char substr[4];
+
+   while ( scanf("%s%s", A_STRING, substr) != EOF )
+   {
+      plug(A_STRING, substr);
+   }
+
+   return 0;
+}

@@ -1,0 +1,103 @@
+int comp(const void *elem1, const void *elem2)
+{
+   if (( *((int *)elem1 )) < ( *((int *)elem2 )))
+   {
+      return 1;
+   }
+
+   if (( *((int *)elem1 )) > ( *((int *)elem2 )))
+   {
+      return -1;
+   }
+
+   if (( *((int *)elem1 )) == ( *((int *)elem2 )))
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int *tj  = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+      int *qww = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &tj[VAR__21230]);
+      }
+
+      qsort(tj, VAR_1238123, sizeof( int ), comp);
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &qww[VAR__21230]);
+      }
+
+      qsort(qww, VAR_1238123, sizeof( int ), comp);
+      VAR__21230 = 0;
+      int VAR_9494     = 0;
+      int VAR__8444594 = VAR_1238123 - 1;
+      for ( VAR__53647 = 0; ( VAR__53647 < VAR_1238123 ) && ( VAR__21230 <= VAR__8444594 ); )
+      {
+         if ( tj[VAR__21230] < qww[VAR__53647] )
+         {
+            VAR_9494--;
+            VAR__8444594--;
+            VAR__53647++;
+         }
+         else
+         if ( tj[VAR__21230] == qww[VAR__53647] )
+         {
+            if ( tj[VAR__8444594] < qww[VAR_1238123 - 1] )
+            {
+               VAR_9494--;
+               VAR__53647++;
+               VAR__8444594--;
+            }
+            else
+            if ( tj[VAR__8444594] > qww[VAR_1238123 - 1] )
+            {
+               VAR_9494++;
+               VAR_1238123--;
+               VAR__8444594--;
+            }
+            else
+            if ( tj[VAR__8444594] == qww[VAR_1238123 - 1] )
+            {
+               if ( tj[VAR__8444594] != qww[VAR__53647] )
+               {
+                  VAR_9494--;
+                  VAR__53647++;
+                  VAR__8444594--;
+               }
+               else
+               {
+                  break;
+               }
+            }
+         }
+         else
+         {
+            VAR_9494++;
+            VAR__53647++;
+            VAR__21230++;
+         }
+      }
+
+      printf("%d\n", VAR_9494 * 200);
+      free(tj);
+      free(qww);
+   }
+}

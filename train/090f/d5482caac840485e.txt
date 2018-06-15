@@ -1,0 +1,103 @@
+int main()
+{
+   char VAR__1111[1000];
+   int  VAR__53647;
+   int  VAR__NUM[1000];
+   int  VAR__21230;
+   int  rate;
+   int  VAR__8444594;
+   int  circle;
+   int  VAR__819283;
+
+   scanf("%s", &VAR__1111);
+   VAR__53647 = 0;
+   rate       = 1;
+   int terminalnum[1000] = { 0 };
+
+   while ( VAR__1111[VAR__53647] != '\0' )
+   {
+      for ( VAR__21230 = 1; ( VAR__1111[VAR__53647] != ',' ) && ( VAR__1111[VAR__53647] != '\0' ); VAR__53647++, VAR__21230++ )
+      {
+         VAR__NUM[VAR__21230] = VAR__1111[VAR__53647] - '0';
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__21230 - 1 ); VAR__8444594++ )
+      {
+         VAR__819283 = 1;
+         for ( circle = 1; circle <= VAR__8444594; circle++ )
+         {
+            VAR__819283 *= 10;
+         }
+
+         terminalnum[rate] += VAR__819283 * VAR__NUM[( VAR__21230 - VAR__8444594 ) - 1];
+      }
+
+      if ( VAR__1111[VAR__53647] == '\0' )
+      {
+         break;
+      }
+      else
+      {
+         VAR__53647 += 1;
+      }
+
+      rate += 1;
+   }
+
+   int VAR__MAX;
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__MIN;
+   VAR_1238123 = 0;
+   VAR__MAX    = 0;
+   for ( VAR__1238129 = 1; VAR__1238129 <= rate; VAR__1238129++ )
+   {
+      if ( terminalnum[VAR__1238129] < VAR__MAX )
+      {
+         VAR__MAX = VAR__MAX;
+      }
+      else
+      {
+         if ( terminalnum[VAR__1238129] > VAR__MAX )
+         {
+            VAR__MAX = terminalnum[VAR__1238129];
+         }
+         else
+         {
+            VAR_1238123 += 1;
+         }
+      }
+   }
+
+   if ( VAR_1238123 == ( rate - 1 ))
+   {
+      printf("No\n");
+   }
+   else
+   {
+      for ( VAR__1238129 = 1; VAR__1238129 <= rate; VAR__1238129++ )
+      {
+         if ( terminalnum[VAR__1238129] == VAR__MAX )
+         {
+            terminalnum[VAR__1238129] = -1;
+         }
+      }
+
+      VAR__MIN = 0;
+      for ( VAR__1238129 = 1; VAR__1238129 <= rate; VAR__1238129++ )
+      {
+         if ( terminalnum[VAR__1238129] < VAR__MIN )
+         {
+            VAR__MIN = VAR__MIN;
+         }
+         else
+         {
+            VAR__MIN = terminalnum[VAR__1238129];
+         }
+      }
+
+      printf("%d\n", VAR__MIN);
+   }
+
+   return 0;
+}

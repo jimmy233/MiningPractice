@@ -1,0 +1,80 @@
+void main()
+{
+   int VAR__819283[105][105];
+   int VAR_FLAG = 1;
+   int loci     = 0;
+   int locj     = 0;
+   int row;
+   int col;
+   int upwall = 0;
+   int downwall;
+   int rightwall;
+   int leftwall = -1;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d %d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+
+   rightwall = col;
+   downwall  = row;
+   for ( VAR__53647 = 1; VAR__53647 < ( row * col ); )
+   {
+      if ((( locj + 1 ) < rightwall ) && ( VAR_FLAG == 1 ))
+      {
+         printf("%d\n", VAR__819283[loci][locj++]);
+         VAR__53647++;
+      }
+      else
+      if ((( locj - 1 ) > leftwall ) && ( VAR_FLAG == 2 ))
+      {
+         printf("%d\n", VAR__819283[loci][locj--]);
+         VAR__53647++;
+      }
+      else
+      if ((( loci + 1 ) < downwall ) && ( VAR_FLAG == 3 ))
+      {
+         printf("%d\n", VAR__819283[loci++][locj]);
+         VAR__53647++;
+      }
+      else
+      if ((( loci - 1 ) > upwall ) && ( VAR_FLAG == 4 ))
+      {
+         printf("%d\n", VAR__819283[loci--][locj]);
+         VAR__53647++;
+      }
+      else
+      if ((( locj + 1 ) == rightwall ) && ( VAR_FLAG == 1 ))
+      {
+         rightwall--;
+         VAR_FLAG = 3;
+      }
+      else
+      if ((( locj - 1 ) == leftwall ) && ( VAR_FLAG == 2 ))
+      {
+         leftwall++;
+         VAR_FLAG = 4;
+      }
+      else
+      if ((( loci + 1 ) == downwall ) && ( VAR_FLAG == 3 ))
+      {
+         downwall--;
+         VAR_FLAG = 2;
+      }
+      else
+      if ((( loci - 1 ) == upwall ) && ( VAR_FLAG == 4 ))
+      {
+         upwall++;
+         VAR_FLAG = 1;
+      }
+   }
+
+   printf("%d\n", VAR__819283[loci][locj]);
+}

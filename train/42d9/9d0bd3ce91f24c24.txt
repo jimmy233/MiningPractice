@@ -1,0 +1,89 @@
+typedef struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+} Point;
+double Distance(Point ANOTHER_POINTER, Point YET_ANOTHER_POINTER)
+{
+   double dist = 0;
+
+   dist = sqrtf((((( ANOTHER_POINTER.VAR__7685 - YET_ANOTHER_POINTER.VAR__7685 ) * ( ANOTHER_POINTER.VAR__7685 - YET_ANOTHER_POINTER.VAR__7685 )) + (( ANOTHER_POINTER.VAR__3918907 - YET_ANOTHER_POINTER.VAR__3918907 ) * ( ANOTHER_POINTER.VAR__3918907 - YET_ANOTHER_POINTER.VAR__3918907 ))) + (( ANOTHER_POINTER.VAR__9290 - YET_ANOTHER_POINTER.VAR__9290 ) * ( ANOTHER_POINTER.VAR__9290 - YET_ANOTHER_POINTER.VAR__9290 ))) + 0.0);
+   return dist;
+}
+
+
+int main(int argc, char *argv[])
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594 = 0;
+   int    numtotal;
+   int    maxpj = 0;
+   int    maxpi = 0;
+   double **ppdDist;
+   double dMaxDist = 0.0;
+   Point  *pcPoint;
+
+   scanf("%d", &VAR_1238123);
+   numtotal = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   ppdDist  = (double **)calloc(VAR_1238123, sizeof( double * ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ppdDist[VAR__53647] = (double *)calloc(VAR_1238123, sizeof( double ));
+   }
+
+   pcPoint = (Point *)calloc(VAR_1238123, sizeof( Point ));
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         ppdDist[VAR__21230][VAR__53647] = 0.0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &pcPoint[VAR__53647].VAR__7685, &pcPoint[VAR__53647].VAR__3918907, &pcPoint[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = VAR__21230 + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         ppdDist[VAR__21230][VAR__53647] = Distance(pcPoint[VAR__21230], pcPoint[VAR__53647]);
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < numtotal; VAR__8444594++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__53647 = VAR__21230 + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            if ( ppdDist[VAR__21230][VAR__53647] > dMaxDist )
+            {
+               maxpi    = VAR__53647;
+               maxpj    = VAR__21230;
+               dMaxDist = ppdDist[VAR__21230][VAR__53647];
+            }
+         }
+      }
+
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", pcPoint[maxpj].VAR__7685, pcPoint[maxpj].VAR__3918907, pcPoint[maxpj].VAR__9290, pcPoint[maxpi].VAR__7685, pcPoint[maxpi].VAR__3918907, pcPoint[maxpi].VAR__9290, dMaxDist);
+      ppdDist[maxpj][maxpi] = 0.0;
+      maxpi    = 0;
+      maxpj    = 0;
+      dMaxDist = 0.0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      free(ppdDist[VAR__53647]);
+   }
+
+   free(ppdDist);
+   free(pcPoint);
+   return 0;
+}

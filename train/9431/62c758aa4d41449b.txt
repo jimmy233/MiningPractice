@@ -1,0 +1,91 @@
+struct student
+{
+   char           VAR__NUM[1000];
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   char           VAR__819283[4] = { "end" };
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   gets(ANOTHER_POINTER->VAR__NUM);
+   VAR__HEAD = NULL;
+
+   while ( strcmp(ANOTHER_POINTER->VAR__NUM, VAR__819283) != 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      gets(ANOTHER_POINTER->VAR__NUM);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         printf("%s\n", VAR_233->VAR__NUM);
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+   }
+}
+
+
+struct student *sort(struct student *VAR__HEAD)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+
+   ANOTHER_POINTER            = VAR__HEAD;
+   YET_ANOTHER_POINTER        = ANOTHER_POINTER->VAR__NEXT;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+
+   while ( YET_ANOTHER_POINTER->VAR__NEXT != NULL )
+   {
+      VAR__HEAD = YET_ANOTHER_POINTER;
+      p3        = YET_ANOTHER_POINTER->VAR__NEXT;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = p3;
+   }
+
+   VAR__HEAD = YET_ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   VAR__HEAD = sort(VAR__HEAD);
+   print(VAR__HEAD);
+}

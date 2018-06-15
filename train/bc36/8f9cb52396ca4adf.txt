@@ -1,0 +1,78 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    male;
+   int    female;
+   double VAR__temp;
+   char   xingbie[50][10];
+   double shengao[50];
+   double nan[50];
+   double nv[50];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      scanf("%s", xingbie[VAR__21230]);
+      scanf("%lf", &shengao[VAR__21230]);
+   }
+
+   VAR__53647   = 0;
+   VAR__8444594 = 0;
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( xingbie[VAR__21230][0] == 'm' )
+      {
+         nan[VAR__53647] = shengao[VAR__21230];
+         VAR__53647++;
+      }
+      else
+      {
+         nv[VAR__8444594] = shengao[VAR__21230];
+         VAR__8444594++;
+      }
+   }
+
+   male   = VAR__53647;
+   female = VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < ( male - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( male - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( nan[VAR__21230] > nan[VAR__21230 + 1] )
+         {
+            VAR__temp           = nan[VAR__21230];
+            nan[VAR__21230]     = nan[VAR__21230 + 1];
+            nan[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < female; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( female - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( nv[VAR__21230] > nv[VAR__21230 + 1] )
+         {
+            VAR__temp          = nv[VAR__21230];
+            nv[VAR__21230]     = nv[VAR__21230 + 1];
+            nv[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < male; VAR__53647++ )
+   {
+      printf("%.2lf ", nan[VAR__53647]);
+   }
+
+   for ( VAR__53647 = female - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf("%.2lf ", nv[VAR__53647]);
+   }
+
+   printf("%.2lf", nv[0]);
+   return 0;
+}

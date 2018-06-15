@@ -1,0 +1,90 @@
+int cmp1(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   int *p3 = (int *)ANOTHER_POINTER;
+   int *p4 = (int *)YET_ANOTHER_POINTER;
+
+   return ( *p3 ) - ( *p4 );
+}
+
+
+int cmp2(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   int *p3 = (int *)ANOTHER_POINTER;
+   int *p4 = (int *)YET_ANOTHER_POINTER;
+
+   return ( *p4 ) - ( *p3 );
+}
+
+
+int VAR_666[1001];
+int VAR__temp[1001];
+int main()
+{
+   int VAR_1238123;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_666[VAR__53647];
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), cmp1);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), cmp2);
+      int result = 0;
+      int tl;
+      int tr;
+      int ql;
+      int qr;
+      tl = ( ql = 0 );
+      tr = ( qr = VAR_1238123 - 1 );
+
+      while (( ql <= qr ) && ( tl <= tr ))
+      {
+         if ( VAR_666[ql] < VAR__temp[tr] )
+         {
+            result += 200;
+            ql++;
+            tr--;
+            continue;
+         }
+         else
+         {
+            if ( VAR__temp[tl] > VAR_666[qr] )
+            {
+               result += 200;
+               tl++;
+               qr--;
+            }
+            else
+            {
+               if ( VAR__temp[tl] < VAR_666[ql] )
+               {
+                  result -= 200;
+                  tl++;
+                  ql++;
+               }
+               else
+               {
+                  tl++;
+                  ql++;
+               }
+            }
+         }
+      }
+
+      ( cout << result ) << endl;
+   }
+
+   return 0;
+}

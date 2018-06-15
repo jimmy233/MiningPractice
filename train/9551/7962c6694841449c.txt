@@ -1,0 +1,57 @@
+struct stu
+{
+   char       name[20];
+   int        age;
+   int        order;
+   struct stu *VAR__NEXT;
+};
+int main()
+{
+   struct stu *VAR_233;
+   struct stu *VAR_666;
+   struct stu *VAR__temp;
+   struct stu *VAR_129012;
+   struct stu *VAR__HEAD;
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = (struct stu *)malloc(VAR__1111);
+   VAR_666   = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct stu *)malloc(VAR__1111);
+      scanf("%s %d", VAR_233->name, &VAR_233->age);
+      VAR_233->order     = VAR__53647;
+      VAR_666->VAR__NEXT = VAR_233;
+      VAR_666            = VAR_233;
+   }
+
+   VAR_666->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR_233 = VAR__HEAD, VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++, VAR_233 = VAR_233->VAR__NEXT )
+      {
+         VAR_666   = VAR_233->VAR__NEXT;
+         VAR__temp = VAR_666->VAR__NEXT;
+
+         if ((((( VAR_666->age == VAR__temp->age ) && ( VAR_666->order > VAR__temp->order )) || ((( VAR_666->age < 60 ) && ( VAR__temp->age < VAR_666->age )) && ( VAR_666->order > VAR__temp->order ))) || ((( VAR__temp->age < 60 ) && ( VAR__temp->age > VAR_666->age )) && ( VAR_666->order > VAR__temp->order ))) || (( VAR__temp->age >= 60 ) && ( VAR__temp->age > VAR_666->age )))
+         {
+            VAR_129012           = VAR__temp->VAR__NEXT;
+            VAR__temp->VAR__NEXT = VAR_666;
+            VAR_233->VAR__NEXT   = VAR__temp;
+            VAR_666->VAR__NEXT   = VAR_129012;
+         }
+      }
+   }
+
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->name);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

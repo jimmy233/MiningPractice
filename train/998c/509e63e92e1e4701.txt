@@ -1,0 +1,96 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   char num1[N];
+   char num2[N];
+   char tmp;
+   int  len1;
+   int  len2;
+   int  len_max;
+   int  len_min;
+   int  result[N + 1] = { 0 };
+
+   scanf("%s%s", num1, num2);
+   len1    = strlen(num1);
+   len2    = strlen(num2);
+   len_max = ( len1 > len2 ) ? ( len1 ) : ( len2 );
+   len_min = ( len1 < len2 ) ? ( len1 ) : ( len2 );
+   for ( VAR__21230 = 0; VAR__21230 < ( len1 / 2 ); VAR__21230++ )
+   {
+      tmp = num1[VAR__21230];
+      num1[VAR__21230] = num1[( len1 - 1 ) - VAR__21230];
+      num1[( len1 - 1 ) - VAR__21230] = tmp;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( len2 / 2 ); VAR__21230++ )
+   {
+      tmp = num2[VAR__21230];
+      num2[VAR__21230] = num2[( len2 - 1 ) - VAR__21230];
+      num2[( len2 - 1 ) - VAR__21230] = tmp;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < len_min; VAR__21230++ )
+   {
+      result[VAR__21230] += (( num1[VAR__21230] + num2[VAR__21230] ) - '0' ) - '0';
+
+      if ( result[VAR__21230] >= 10 )
+      {
+         result[VAR__21230 + 1] += 1;
+         result[VAR__21230]      = result[VAR__21230] % 10;
+      }
+   }
+
+   for ( VAR__21230 = len_min; VAR__21230 < len_max; VAR__21230++ )
+   {
+      if ( len_max == len1 )
+      {
+         result[VAR__21230] += num1[VAR__21230] - '0';
+
+         if ( result[VAR__21230] >= 10 )
+         {
+            result[VAR__21230 + 1] += 1;
+            result[VAR__21230]      = result[VAR__21230] % 10;
+         }
+      }
+      else
+      {
+         result[VAR__21230] += num2[VAR__21230] - '0';
+
+         if ( result[VAR__21230] >= 10 )
+         {
+            result[VAR__21230 + 1] += 1;
+            result[VAR__21230]      = result[VAR__21230] % 10;
+         }
+      }
+   }
+
+   if ( result[len_max] == 1 )
+   {
+      len_max++;
+   }
+
+   for ( VAR__53647 = len_max - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( result[VAR__53647] != 0 )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__53647 >= 0 )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+      {
+         printf("%d", result[VAR__21230]);
+      }
+
+      printf("\n");
+   }
+   else
+   {
+      printf("0\n");
+   }
+
+   return 0;
+}

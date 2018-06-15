@@ -1,0 +1,52 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230 = 0;
+   int    VAR__NUM[300];
+   double ping = 0;
+   double cha[300];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__NUM[VAR__53647]);
+      ping += ((double)VAR__NUM[VAR__53647] ) / VAR_1238123;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cha[VAR__53647] = VAR__NUM[VAR__53647] - ping;
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( cha[VAR__21230] > cha[VAR__21230 + 1] )
+         {
+            double tmp;
+            tmp = cha[VAR__21230 + 1];
+            cha[VAR__21230 + 1] = cha[VAR__21230];
+            cha[VAR__21230]     = tmp;
+         }
+      }
+   }
+
+   if (( cha[0] + cha[VAR_1238123 - 1] ) > 0 )
+   {
+      printf("%.0lf", cha[VAR_1238123 - 1] + ping);
+   }
+   else
+   if (( cha[0] + cha[VAR_1238123 - 1] ) == 0 )
+   {
+      printf("%.0lf,%.0lf", ping + cha[0], ping + cha[VAR_1238123 - 1]);
+   }
+   else
+   {
+      printf("%.0lf", ping + cha[0]);
+   }
+
+
+   return 0;
+}

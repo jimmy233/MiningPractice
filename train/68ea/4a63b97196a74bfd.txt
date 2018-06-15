@@ -1,0 +1,57 @@
+int main()
+{
+   int VAR__8444594;
+   int VAR__53647     = 0;
+   int VAR_1238123    = 0;
+   int VAR__COUNT[26] = { 0 };
+   int pos[26]        = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   char array[100001];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < 26; VAR__8444594++ )
+      {
+         pos[VAR__8444594]        = 101;
+         VAR__COUNT[VAR__8444594] = 0;
+      }
+
+      scanf("%s", &array);
+      int VAR__21230 = 0;
+      int VAR_FLAG   = -1;
+      for ( ; VAR__21230 < strlen(array); VAR__21230++ )
+      {
+         if ( VAR__COUNT[array[VAR__21230] - 'a'] == 0 )
+         {
+            pos[array[VAR__21230] - 'a'] = VAR__21230;
+         }
+
+         VAR__COUNT[array[VAR__21230] - 'a']++;
+      }
+
+      int min_pos = 100;
+      int tpos    = -1;
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         if ( VAR__COUNT[VAR__21230] == 1 )
+         {
+            if ( min_pos > pos[VAR__21230] )
+            {
+               min_pos = pos[VAR__21230];
+               tpos    = VAR__21230;
+            }
+         }
+      }
+
+      if ( min_pos == 100 )
+      {
+         printf("no\n");
+      }
+      else
+      {
+         printf("%c\n", tpos + 'a');
+      }
+   }
+
+   return 0;
+}

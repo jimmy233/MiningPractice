@@ -1,0 +1,55 @@
+int leap(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int month[13]     = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int syear         = 0;
+   int eyear         = 0;
+   int smonth        = 0;
+   int emonth        = 0;
+   int sday          = 0;
+   int eday          = 0;
+   int nleap         = 0;
+   int nyears        = 0;
+   int startYearDays = 0;
+   int endYearDays   = 0;
+   int totaldays     = 0;
+
+   (( cin >> syear ) >> smonth ) >> sday;
+   (( cin >> eyear ) >> emonth ) >> eday;
+   for ( int VAR__53647 = syear; VAR__53647 <= eyear; VAR__53647++ )
+   {
+      if ( leap(VAR__53647))
+      {
+         nleap++;
+      }
+   }
+
+   nyears = ( eyear - syear ) - 1;
+   for ( int VAR__53647 = smonth + 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      startYearDays = startYearDays + month[VAR__53647];
+   }
+
+   startYearDays = startYearDays + ( month[smonth] - sday );
+   for ( int VAR__53647 = 1; VAR__53647 <= ( emonth - 1 ); VAR__53647++ )
+   {
+      endYearDays = endYearDays + month[VAR__53647];
+   }
+
+   endYearDays = endYearDays + eday;
+   totaldays   = ((( nyears * 365 ) + endYearDays ) + startYearDays ) + nleap;
+   cout << totaldays;
+   return 0;
+}

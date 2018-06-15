@@ -1,0 +1,66 @@
+struct s
+{
+   char     xuehao[20];
+   char     xingming[20];
+   char     xingbie;
+   int      age;
+   char     score[20];
+   char     add[20];
+   struct s *VAR__NEXT;
+};
+int main()
+{
+   struct s *A(void);
+
+   struct s *VAR__HEAD;
+   struct s *VAR_233;
+
+   VAR__HEAD = A();
+   VAR_233   = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      while ( VAR_233->VAR__NEXT != NULL )
+      {
+         printf("%s %s %c %d %s %s\n", VAR_233->xuehao, VAR_233->xingming, VAR_233->xingbie, VAR_233->age, VAR_233->score, VAR_233->add);
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      printf("%s %s %c %d %s %s\n", VAR_233->xuehao, VAR_233->xingming, VAR_233->xingbie, VAR_233->age, VAR_233->score, VAR_233->add);
+   }
+
+   return 0;
+}
+
+
+struct s *A(void)
+{
+   struct s *VAR__HEAD;
+   struct s *ANOTHER_POINTER;
+   struct s *YET_ANOTHER_POINTER;
+
+   VAR__HEAD = (struct s *)malloc(sizeof( struct s ));
+   scanf("%s %s %c %d %s %s", VAR__HEAD->xuehao, VAR__HEAD->xingming, &VAR__HEAD->xingbie, &VAR__HEAD->age, VAR__HEAD->score, VAR__HEAD->add);
+   VAR__HEAD->VAR__NEXT = NULL;
+   ANOTHER_POINTER      = VAR__HEAD;
+   for ( ; ; )
+   {
+      YET_ANOTHER_POINTER = (struct s *)malloc(sizeof( struct s ));
+      scanf("%s", YET_ANOTHER_POINTER->xuehao);
+
+      if ( strcmp(YET_ANOTHER_POINTER->xuehao, "end"))
+      {
+         scanf(" %s %c %d %s %s", YET_ANOTHER_POINTER->xingming, &YET_ANOTHER_POINTER->xingbie, &YET_ANOTHER_POINTER->age, YET_ANOTHER_POINTER->score, YET_ANOTHER_POINTER->add);
+      }
+      else
+      {
+         break;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   return ANOTHER_POINTER;
+}

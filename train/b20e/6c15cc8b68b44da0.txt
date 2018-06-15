@@ -1,0 +1,125 @@
+int VAR__819283[1000];
+int VAR__19328[1000];
+int ans[1000];
+int a1[1000];
+int VAR_1238123;
+int VAR_233;
+void change()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR_233 ); VAR__53647++ )
+   {
+      VAR__819283[VAR__53647 + VAR_233] = a1[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = a1[( VAR_1238123 - VAR__53647 ) - 1];
+   }
+}
+
+
+int calc()
+{
+   int VAR_9494;
+   int VAR__53647;
+   int VAR__21230;
+
+   VAR_9494 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__19328[VAR__53647] )
+      {
+         VAR_9494 = VAR_9494 + 200;
+      }
+      else
+      if ( VAR__819283[VAR__53647] < VAR__19328[VAR__53647] )
+      {
+         VAR_9494 = VAR_9494 - 200;
+      }
+   }
+
+
+
+   return VAR_9494;
+}
+
+
+void make(int VAR__819283[1000])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_233;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR_233 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR_233] )
+         {
+            VAR_233 = VAR__21230;
+         }
+      }
+
+
+      VAR__8444594            = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647] = VAR__819283[VAR_233];
+      VAR__819283[VAR_233]    = VAR__8444594;
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__MAX;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      make(VAR__819283);
+      make(VAR__19328);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         a1[VAR__53647] = VAR__819283[VAR__53647];
+      }
+
+      VAR_233 = 1;
+
+      while ( VAR_233 < VAR_1238123 )
+      {
+         ans[VAR_233] = calc();
+         change();
+         VAR_233++;
+      }
+
+      VAR__MAX = -200000;
+      for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( ans[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX = ans[VAR__53647];
+         }
+      }
+
+
+      printf("%d\n", VAR__MAX);
+      scanf("%d", &VAR_1238123);
+   }
+}

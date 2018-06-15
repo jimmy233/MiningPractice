@@ -1,0 +1,146 @@
+typedef struct
+{
+   int    sex;
+   char   VAR_2890[5];
+   double height;
+} person;
+int main()
+{
+   int    N;
+   int    VAR__53647 = 0;
+   int    VAR__COUNT = 0;
+   person *line;
+
+   scanf("%d\n", &N);
+   line = (person *)malloc(( sizeof( person )) * N);
+
+   while ( VAR__53647 < N )
+   {
+      char   sex;
+      char   tmp;
+      char   VAR_2890[5];
+      int    VAR__8444594 = 0;
+      int    point        = 0;
+      int    VAR__NUM     = 0;
+      int    VAR__21230   = 0;
+      double number;
+      int    length = 0;
+      scanf("%c", &sex);
+
+      while (( tmp = fgetc(stdin)) != ' ' )
+      {
+      }
+
+      scanf("%s", &VAR_2890);
+      fgetc(stdin);
+
+      while ( VAR_2890[VAR__21230] != '\0' )
+      {
+         line[VAR__53647].VAR_2890[VAR__21230] = VAR_2890[VAR__21230];
+         VAR__21230++;
+      }
+
+      line[VAR__53647].VAR_2890[VAR__21230] = '\0';
+
+      while ( VAR_2890[VAR__8444594] != '\0' )
+      {
+         int one = 0;
+
+         if ( VAR_2890[VAR__8444594] == '.' )
+         {
+            point = VAR__8444594;
+         }
+         else
+         {
+            one      = VAR_2890[VAR__8444594] - 48;
+            VAR__NUM = ( VAR__NUM * 10 ) + one;
+         }
+
+         VAR__8444594++;
+         length++;
+      }
+
+      point  = ( length - point ) - 1;
+      number = ((double)VAR__NUM ) / pow(10.0, point);
+      line[VAR__53647].height = number;
+
+      if ( sex == 'm' )
+      {
+         line[VAR__53647].sex = 1;
+      }
+
+      if ( sex == 'f' )
+      {
+         line[VAR__53647].sex = 0;
+      }
+
+      VAR__53647++;
+   }
+
+   VAR__53647 = N - 1;
+
+   while ( VAR__53647 > 0 )
+   {
+      int VAR__8444594 = 0;
+
+      while ( VAR__8444594 < VAR__53647 )
+      {
+         if ( line[VAR__8444594].height > line[VAR__8444594 + 1].height )
+         {
+            person tmp = line[VAR__8444594];
+            line[VAR__8444594]     = line[VAR__8444594 + 1];
+            line[VAR__8444594 + 1] = tmp;
+         }
+
+         VAR__8444594++;
+      }
+
+      VAR__53647--;
+   }
+
+   VAR__53647 = 0;
+
+   while ( VAR__53647 < N )
+   {
+      if ( line[VAR__53647].sex == 1 )
+      {
+         printf("%s", line[VAR__53647].VAR_2890);
+         VAR__COUNT++;
+
+         if ( VAR__COUNT != N )
+         {
+            printf(" ");
+         }
+         else
+         {
+            printf("\n");
+         }
+      }
+
+      VAR__53647++;
+   }
+
+   VAR__53647 = N - 1;
+
+   while ( VAR__53647 >= 0 )
+   {
+      if ( line[VAR__53647].sex == 0 )
+      {
+         printf("%s", line[VAR__53647].VAR_2890);
+         VAR__COUNT++;
+
+         if ( VAR__COUNT != N )
+         {
+            printf(" ");
+         }
+         else
+         {
+            printf("\n");
+         }
+      }
+
+      VAR__53647--;
+   }
+
+   return 0;
+}

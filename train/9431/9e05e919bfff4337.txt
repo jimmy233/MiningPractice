@@ -1,0 +1,46 @@
+struct stu
+{
+   char       info[50];
+   struct stu *VAR__NEXT;
+};
+int main(int argc, char *argv[])
+{
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   YET_ANOTHER_POINTER = NULL;
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(LEN);
+      gets(ANOTHER_POINTER->info);
+
+      if ( strcmp(ANOTHER_POINTER->info, "end") == 0 )
+      {
+         break;
+      }
+
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+   }
+
+   VAR__HEAD       = YET_ANOTHER_POINTER;
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( 1 )
+   {
+      printf("%s\n", ANOTHER_POINTER->info);
+
+      if ( ANOTHER_POINTER->VAR__NEXT == NULL )
+      {
+         break;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      free(YET_ANOTHER_POINTER);
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   return 0;
+}

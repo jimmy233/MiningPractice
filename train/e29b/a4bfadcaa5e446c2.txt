@@ -1,0 +1,71 @@
+int main()
+{
+   int          VAR_1238123;
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__MAX;
+   float        average;
+   float        VAR__SUM = 0;
+   float        distance;
+   float        maxdistance;
+   float        VAR__TEMP;
+   float        sign;
+   unsigned int VAR__NUM[300];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__NUM[VAR__53647]);
+      VAR__SUM = VAR__SUM + VAR__NUM[VAR__53647];
+   }
+
+   average = VAR__SUM / VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 >= VAR__53647; VAR__21230-- )
+      {
+         if ( VAR__NUM[VAR__21230] < VAR__NUM[VAR__21230 - 1] )
+         {
+            VAR__TEMP                = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__NUM[VAR__21230 - 1];
+            VAR__NUM[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   maxdistance = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      distance = (( VAR__NUM[VAR__53647] - average ) > 0 ) ? ( VAR__NUM[VAR__53647] - average ) : ( average - VAR__NUM[VAR__53647] );
+
+      if ( distance > maxdistance )
+      {
+         maxdistance = distance;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      distance = (( VAR__NUM[VAR__53647] - average ) > 0 ) ? ( VAR__NUM[VAR__53647] - average ) : ( average - VAR__NUM[VAR__53647] );
+
+      if ( distance == maxdistance )
+      {
+         printf("%d", VAR__NUM[VAR__53647]);
+         break;
+      }
+   }
+
+   for ( VAR__53647++; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      distance = (( VAR__NUM[VAR__53647] - average ) > 0 ) ? ( VAR__NUM[VAR__53647] - average ) : ( average - VAR__NUM[VAR__53647] );
+
+      if ( distance == maxdistance )
+      {
+         printf(",%d", VAR__NUM[VAR__53647]);
+         break;
+      }
+   }
+
+   printf("\n");
+   return 0;
+}

@@ -1,0 +1,104 @@
+struct st
+{
+   int       age;
+   int       he;
+   char      VAR__NUM[15];
+   struct st *VAR__NEXT;
+};
+struct st *creat(int VAR_1238123)
+{
+   struct st *VAR__HEAD;
+   struct st *ANOTHER_POINTER;
+   struct st *YET_ANOTHER_POINTER;
+   int       VAR__53647;
+   int       VAR_2890 = 105;
+
+   ANOTHER_POINTER     = (struct st *)malloc(sizeof( struct st ));
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   VAR__HEAD           = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct st *)malloc(sizeof( struct st ));
+      scanf("%s %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+
+      if ( ANOTHER_POINTER->age >= 60 )
+      {
+         ANOTHER_POINTER->he = ( ANOTHER_POINTER->age * 1000 ) + VAR_2890;
+      }
+      else
+      {
+         ANOTHER_POINTER->he = VAR_2890;
+      }
+
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      VAR_2890--;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void paixu(struct st *VAR__HEAD)
+{
+   struct st *VAR__MAX;
+   struct st *VAR_233;
+   struct st *ANOTHER_POINTER;
+   struct st *YET_ANOTHER_POINTER;
+   struct st *p3;
+   struct st *p4;
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER->VAR__NEXT )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      VAR__MAX            = YET_ANOTHER_POINTER;
+      p4      = YET_ANOTHER_POINTER;
+      VAR_233 = YET_ANOTHER_POINTER->VAR__NEXT;
+
+      while ( VAR_233 )
+      {
+         if ( VAR_233->he > VAR__MAX->he )
+         {
+            VAR__MAX = VAR_233;
+            p3       = p4;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+         p4      = p4->VAR__NEXT;
+      }
+
+      if ( VAR__MAX > ANOTHER_POINTER->VAR__NEXT )
+      {
+         p3->VAR__NEXT = VAR__MAX->VAR__NEXT;
+         ANOTHER_POINTER->VAR__NEXT = VAR__MAX;
+         VAR__MAX->VAR__NEXT        = YET_ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct st *creat(int VAR_1238123);
+
+   void paixu(struct st *VAR__HEAD);
+
+   struct st *VAR__HEAD;
+   struct st *VAR_233;
+   int       VAR_1238123;
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   paixu(VAR__HEAD);
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

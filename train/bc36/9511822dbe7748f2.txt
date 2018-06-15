@@ -1,0 +1,69 @@
+float cmp(float *VAR__819283, int VAR_1238123)
+{
+   float VAR__TEMP;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR_1238123 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 - 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 - 1];
+            VAR__819283[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   return *VAR__819283;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int   VAR__53647 = 0;
+   int   VAR__21230;
+   int   VAR__8444594;
+   int   VAR__819283 = 0;
+   int   VAR__19328  = 0;
+   char  sex[10];
+   float man[40];
+   float woman[40];
+   float VAR_2890;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      scanf("%s %f", sex, &VAR_2890);
+
+      if ( sex[0] == 'm' )
+      {
+         man[VAR__819283] = VAR_2890;
+         VAR__819283++;
+      }
+      else
+      {
+         woman[VAR__19328] = VAR_2890;
+         VAR__19328++;
+      }
+
+      VAR__53647++;
+   }
+
+   cmp(man, VAR__819283);
+   cmp(woman, VAR__19328);
+   printf("%.2f", man[0]);
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR__819283; VAR__8444594++ )
+   {
+      printf(" %.2f", man[VAR__8444594]);
+   }
+
+   for ( VAR__8444594 = VAR__19328 - 1; VAR__8444594 > 0; VAR__8444594-- )
+   {
+      printf(" %.2f", woman[VAR__8444594]);
+   }
+
+   printf(" %.2f\n", woman[0]);
+}

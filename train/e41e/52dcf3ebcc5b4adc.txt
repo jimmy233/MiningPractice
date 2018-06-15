@@ -1,0 +1,102 @@
+int main()
+{
+   char shuru[1000];
+   char shuchu[1000];
+
+   scanf("%s", shuru);
+   int VAR__53647;
+   int length;
+   int yushu;
+   int VAR__819283[1000][2];
+   int shang[1000];
+   length = strlen(shuru);
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647][0] = shuru[VAR__53647] - '0';
+   }
+
+   yushu = 0;
+   int yushu2;
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      yushu = ( yushu * 10 ) + VAR__819283[VAR__53647][0];
+
+      if ( yushu >= 13 )
+      {
+         yushu2            = yushu;
+         yushu             = yushu % 13;
+         shang[VAR__53647] = yushu2 / 13;
+      }
+      else
+      {
+         shang[VAR__53647] = 0;
+         yushu             = yushu;
+      }
+   }
+
+   if (( shang[0] == 0 ) && ( shang[1] != 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < length; VAR__53647++ )
+      {
+         shuchu[VAR__53647 - 1] = shang[VAR__53647] + '0';
+      }
+
+      shuchu[length - 1] = '\0';
+   }
+   else
+   if (( shang[0] == 0 ) && ( shang[1] == 0 ))
+   {
+      for ( VAR__53647 = 2; VAR__53647 < length; VAR__53647++ )
+      {
+         shuchu[VAR__53647 - 2] = shang[VAR__53647] + '0';
+      }
+
+      shuchu[length - 2] = '\0';
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+      {
+         shuchu[VAR__53647] = shang[VAR__53647] + '0';
+      }
+   }
+
+
+   shuchu[VAR__53647 - 1] = '\0';
+   int VAR__temp;
+   VAR__temp = ( VAR__819283[0][0] * 10 ) + VAR__819283[1][0];
+
+   if (( length == 1 ) && ( VAR__819283[0][0] == 0 ))
+   {
+      char VAR__4857423[2];
+      VAR__4857423[0] = '0';
+      printf("%s\n", VAR__4857423);
+      printf("0");
+   }
+   else
+   if ( length == 1 )
+   {
+      char VAR__4857423[2];
+      VAR__4857423[0] = '0';
+      printf("%s\n", VAR__4857423);
+      printf("%d", yushu);
+   }
+   else
+   if (( VAR__temp < 13 ) && ( length == 2 ))
+   {
+      char VAR__4857423[2];
+      VAR__4857423[0] = '0';
+      printf("%s\n", VAR__4857423);
+      printf("%d", yushu);
+   }
+   else
+   {
+      printf("%s\n", shuchu);
+      printf("%d", yushu);
+   }
+
+
+
+   getchar();
+   getchar();
+}

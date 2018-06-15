@@ -1,0 +1,65 @@
+int *matrix;
+int *matrix_end;
+int row;
+int col;
+int *VAR__NEXT(int *VAR_233)
+{
+   printf("%d\n", *VAR_233);
+   return ( VAR_233 + col ) - 1;
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   scanf("%d %d", &row, &col);
+   matrix     = malloc(( row * col ) * ( sizeof( int )));
+   matrix_end = ( matrix + ( row * col )) - 1;
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &matrix[( VAR__53647 * col ) + VAR__21230]);
+      }
+   }
+
+   int *iter;
+   int *iter_;
+   iter = matrix;
+   for ( iter = matrix; iter < ( matrix + col ); iter++ )
+   {
+      int VAR__819283 = ( iter - matrix ) + 1;
+
+      if ( row < VAR__819283 )
+      {
+         VAR__819283 = row;
+      }
+
+      iter_ = iter;
+
+      while ( VAR__819283-- )
+      {
+         iter_ = VAR__NEXT(iter_);
+      }
+   }
+
+   for ( iter = ( matrix + ( 2 * col )) - 1; iter <= matrix_end; iter = iter + col )
+   {
+      int VAR__819283 = (( matrix_end - iter ) / col ) + 1;
+
+      if ( col < VAR__819283 )
+      {
+         VAR__819283 = col;
+      }
+
+      iter_ = iter;
+
+      while ( VAR__819283-- )
+      {
+         iter_ = VAR__NEXT(iter_);
+      }
+   }
+}

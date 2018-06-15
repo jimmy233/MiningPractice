@@ -1,0 +1,75 @@
+void MINUS(char *VAR__819283, char *VAR__19328);
+
+void main()
+{
+   char jian[50][200];
+   char beijian[50][200];
+   int  VAR_1238123;
+   int  VAR__53647 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", beijian[VAR__53647]);
+      scanf("%s", jian[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      MINUS(beijian[VAR__53647], jian[VAR__53647]);
+   }
+}
+
+
+void MINUS(char *VAR__819283, char *btemp)
+{
+   int  lena;
+   int  lenb;
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR__19328[200];
+   int  VAR__TEMP = 0;
+   char tt        = '0';
+
+   lena = strlen(VAR__819283);
+   lenb = strlen(btemp);
+   for ( VAR__53647 = 0; VAR__53647 < ( lena - lenb ); VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = '0';
+   }
+
+   for ( VAR__21230 = VAR__53647 + 1; VAR__53647 < 200; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = btemp[( VAR__53647 - lena ) + lenb];
+   }
+
+   for ( VAR__53647 = lena - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ((( VAR__819283[VAR__53647] - VAR__19328[VAR__53647] ) + VAR__TEMP ) >= 0 )
+      {
+         VAR__819283[VAR__53647] = (( VAR__819283[VAR__53647] - VAR__19328[VAR__53647] ) + VAR__TEMP ) + 48;
+         VAR__TEMP = 0;
+      }
+      else
+      {
+         VAR__819283[VAR__53647] = ((( VAR__819283[VAR__53647] - VAR__19328[VAR__53647] ) + VAR__TEMP ) + 48 ) + 10;
+         VAR__TEMP = -1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 200; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '\0' )
+      {
+         break;
+      }
+
+      if ( VAR__819283[VAR__53647] != tt )
+      {
+         putchar(VAR__819283[VAR__53647]);
+         tt = '*';
+      }
+   }
+
+   putchar('\n');
+}

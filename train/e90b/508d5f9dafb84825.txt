@@ -1,0 +1,48 @@
+struct student
+{
+   int id;
+   int chinese;
+   int math;
+}
+stu[100000];
+void bubble(struct student stu[], int VAR_1238123)
+{
+   int            pass;
+   int            VAR__53647;
+   struct student VAR__TEMP;
+
+   for ( pass = VAR_1238123 - 1; pass >= ( VAR_1238123 - 3 ); pass-- )
+   {
+      for ( VAR__53647 = pass; VAR__53647 > 0; VAR__53647-- )
+      {
+         if (( stu[VAR__53647].chinese + stu[VAR__53647].math ) > ( stu[VAR__53647 - 1].chinese + stu[VAR__53647 - 1].math ))
+         {
+            VAR__TEMP           = stu[VAR__53647];
+            stu[VAR__53647]     = stu[VAR__53647 - 1];
+            stu[VAR__53647 - 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   struct student *VAR_233;
+   int            VAR__53647;
+   int            VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &stu[VAR__53647].id, &stu[VAR__53647].chinese, &stu[VAR__53647].math);
+   }
+
+   bubble(stu, VAR_1238123);
+   for ( VAR_233 = stu; VAR_233 < ( stu + 3 ); VAR_233++ )
+   {
+      printf("%d %d%c", VAR_233->id, VAR_233->chinese + VAR_233->math, ( VAR_233 == (( stu + VAR_1238123 ) - 1 )) ? ( '\0' ) : ( '\n' ));
+   }
+
+   return 0;
+}

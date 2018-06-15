@@ -1,0 +1,136 @@
+struct student
+{
+   char           VAR__NUM[30];
+   float          chi;
+   float          mat;
+   float          tot;
+   struct student *VAR__NEXT;
+};
+struct student *creat(struct student *VAR__HEAD, struct student *stud)
+{
+   struct student *p0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = stud;
+
+   if ( VAR__HEAD == NULL )
+   {
+      VAR__HEAD     = p0;
+      p0->VAR__NEXT = NULL;
+   }
+   else
+   {
+      while (( p0->tot <= ANOTHER_POINTER->tot ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( p0->tot >= ANOTHER_POINTER->tot )
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            VAR__HEAD = p0;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         }
+
+         p0->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = NULL;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct student *compare(struct student *VAR__HEAD, struct student *stud)
+{
+   struct student *p0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = stud;
+
+   while (( p0->tot <= ANOTHER_POINTER->tot ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   if (( p0->tot > ANOTHER_POINTER->tot ) || (( p0->tot = ANOTHER_POINTER->tot ) && ( ANOTHER_POINTER->VAR__NEXT != NULL )))
+   {
+      if ( VAR__HEAD == ANOTHER_POINTER )
+      {
+         VAR__HEAD = p0;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = p0;
+      }
+
+      p0->VAR__NEXT   = ANOTHER_POINTER;
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__53647 = 0; VAR__53647 < 2; VAR__53647++ )
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   int            VAR__53647;
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%s %g\n", VAR_233->VAR__NUM, VAR_233->tot);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *stu;
+   int            VAR_1238123;
+   int            VAR__53647;
+
+   VAR__HEAD = NULL;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      stu = (struct student *)malloc(LEN);
+      scanf("%s %f %f", &stu->VAR__NUM, &stu->chi, &stu->mat);
+      stu->tot  = stu->chi + stu->mat;
+      VAR__HEAD = creat(VAR__HEAD, stu);
+   }
+
+   for ( VAR__53647 = 3; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu = (struct student *)malloc(LEN);
+      scanf("%s %f %f", &stu->VAR__NUM, &stu->chi, &stu->mat);
+      stu->tot  = stu->chi + stu->mat;
+      VAR__HEAD = compare(VAR__HEAD, stu);
+   }
+
+   print(VAR__HEAD);
+}

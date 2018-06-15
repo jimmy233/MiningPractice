@@ -1,0 +1,47 @@
+int main()
+{
+   char part[100];
+   char full[1000];
+   char change[100];
+   char new[1000];
+   char *diff2;
+
+   gets(full);
+   gets(part);
+   gets(change);
+   int partlen = strlen(part);
+   int fulllen = strlen(full);
+   int which   = 0;
+   int end     = fulllen - partlen;
+   int VAR__53647;
+   int VAR__21230;
+   int yes;
+   int start = 0;
+   full[-1] = ' ';
+   for ( VAR__53647 = 0; VAR__53647 <= end; VAR__53647++ )
+   {
+      yes = 1;
+      for ( VAR__21230 = 0; VAR__21230 < partlen; VAR__21230++ )
+      {
+         if ( full[VAR__53647 + VAR__21230] != part[VAR__21230] )
+         {
+            yes = 0;
+         }
+      }
+
+      if (( yes == 1 ) && ( full[VAR__53647 - 1] == ' ' ))
+      {
+         which = VAR__53647;
+         strcpy(new, full);
+         new[which] = '\0';
+         strcat(new, change);
+         diff2 = &full[which + partlen];
+         strcat(new, diff2);
+         strcpy(full, new);
+         VAR__53647 += strlen(change);
+      }
+   }
+
+   printf("%s", full);
+   return 0;
+}

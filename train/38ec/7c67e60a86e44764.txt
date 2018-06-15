@@ -1,0 +1,83 @@
+int mon[12] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 };
+int days(int VAR__819283, int VAR__19328, int VAR__4857423)
+{
+   int result = 0;
+   int VAR__53647;
+
+   if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+   {
+      mon[2] = 29;
+   }
+   else
+   {
+      mon[2] = 28;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__19328; VAR__53647++ )
+   {
+      result += mon[VAR__53647];
+   }
+
+   result += VAR__4857423;
+   return result;
+}
+
+
+int main()
+{
+   int a1;
+   int b1;
+   int c1;
+   int a2;
+   int b2;
+   int c2;
+   int VAR__SUM = 0;
+   int VAR__TEMP;
+   int VAR__7685;
+   int VAR__53647;
+   int VAR__21230;
+   int year;
+
+   scanf("%d%d%d%d%d%d", &a1, &b1, &c1, &a2, &b2, &c2);
+
+   if ( a1 == a2 )
+   {
+      VAR__7685 = days(a1, b2, c2) - days(a2, b1, c1);
+
+      if ( VAR__7685 < 0 )
+      {
+         VAR__7685 = -VAR__7685;
+      }
+   }
+   else
+   {
+      if ( a2 < a1 )
+      {
+         VAR__TEMP = a1;
+         a1        = a2;
+         a2        = VAR__TEMP;
+         VAR__TEMP = b1;
+         b1        = b2;
+         b2        = VAR__TEMP;
+         VAR__TEMP = c1;
+         c1        = c2;
+         c2        = VAR__TEMP;
+      }
+
+      for ( year = a1; year < a2; year++ )
+      {
+         if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+         {
+            VAR__SUM += 366;
+         }
+         else
+         {
+            VAR__SUM += 365;
+         }
+      }
+
+      VAR__7685 = ( VAR__SUM + days(a2, b2, c2)) - days(a1, b1, c1);
+   }
+
+   printf("%d", VAR__7685);
+}

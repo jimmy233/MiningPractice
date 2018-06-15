@@ -1,0 +1,66 @@
+struct stu
+{
+   char name[25];
+   int  qimo;
+   int  banji;
+   char ganbu[1];
+   char xibu[1];
+   int  lunwen;
+}
+VAR__819283[150];
+void main()
+{
+   int  VAR_1238123;
+   int  VAR_9494[150] = { 0 };
+   int  VAR__53647;
+   int  VAR__SUM = 0;
+   int  VAR__MAX = 0;
+   char name[25];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d%s%s%d", VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].qimo, &VAR__819283[VAR__53647].banji, VAR__819283[VAR__53647].ganbu, VAR__819283[VAR__53647].xibu, &VAR__819283[VAR__53647].lunwen);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647].qimo > 80 ) && ( VAR__819283[VAR__53647].lunwen >= 1 ))
+      {
+         VAR_9494[VAR__53647] += 8000;
+      }
+
+      if (( VAR__819283[VAR__53647].qimo > 85 ) && ( VAR__819283[VAR__53647].banji > 80 ))
+      {
+         VAR_9494[VAR__53647] += 4000;
+      }
+
+      if ( VAR__819283[VAR__53647].qimo > 90 )
+      {
+         VAR_9494[VAR__53647] += 2000;
+      }
+
+      if (( VAR__819283[VAR__53647].qimo > 85 ) && ( VAR__819283[VAR__53647].xibu[0] == 'Y' ))
+      {
+         VAR_9494[VAR__53647] += 1000;
+      }
+
+      if (( VAR__819283[VAR__53647].banji > 80 ) && ( VAR__819283[VAR__53647].ganbu[0] == 'Y' ))
+      {
+         VAR_9494[VAR__53647] += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR_9494[VAR__53647] )
+      {
+         VAR__MAX = VAR_9494[VAR__53647];
+         strcpy(name, VAR__819283[VAR__53647].name);
+      }
+
+      VAR__SUM += VAR_9494[VAR__53647];
+   }
+
+   printf("%s\n%d\n%d\n", name, VAR__MAX, VAR__SUM);
+}

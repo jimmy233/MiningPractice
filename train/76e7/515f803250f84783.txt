@@ -1,0 +1,72 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int lineMax[5] = { 0 };
+   int columnMin[5];
+   int matrix[5][5];
+
+   for ( VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 5; VAR__21230++ )
+      {
+         scanf("%d", &matrix[VAR__53647][VAR__21230]);
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      int VAR__MAX = 0;
+      for ( VAR__21230 = 1; VAR__21230 < 5; VAR__21230++ )
+      {
+         if ( matrix[VAR__53647][VAR__21230] > matrix[VAR__53647][VAR__MAX] )
+         {
+            VAR__MAX = VAR__21230;
+         }
+      }
+
+      lineMax[VAR__53647] = VAR__MAX;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      int VAR__MIN = 0;
+      for ( VAR__21230 = 1; VAR__21230 < 5; VAR__21230++ )
+      {
+         if ( matrix[VAR__21230][VAR__53647] < matrix[VAR__MIN][VAR__53647] )
+         {
+            VAR__MIN = VAR__21230;
+         }
+      }
+
+      columnMin[VAR__53647] = VAR__MIN;
+   }
+
+   int record[5];
+   int LEN_OF_STH = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      if ( columnMin[lineMax[VAR__53647]] == VAR__53647 )
+      {
+         record[LEN_OF_STH] = VAR__53647;
+         LEN_OF_STH++;
+      }
+   }
+
+   if ( LEN_OF_STH == 0 )
+   {
+      printf("not found\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         int line   = record[VAR__53647];
+         int column = lineMax[record[VAR__53647]];
+         printf("%d %d %d\n", line + 1, column + 1, matrix[line][column]);
+      }
+   }
+
+   return 0;
+}

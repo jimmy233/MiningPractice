@@ -1,0 +1,93 @@
+void main()
+{
+   int  VAR__819283[300];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_FLAG = 0;
+   int  VAR__1111;
+   int  VAR__1238129 = 0;
+   int  VAR__NUM     = 0;
+   int  VAR__TEMP;
+   char A_STRING[1500];
+
+   gets(A_STRING);
+   VAR__1111 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= '0' ) && ( A_STRING[VAR__53647] <= '9' ))
+      {
+         VAR__1238129 = (( VAR__1238129 * 10 ) + A_STRING[VAR__53647] ) - '0';
+      }
+      else
+      {
+         if ( VAR__1238129 != 0 )
+         {
+            VAR_FLAG++;
+         }
+      }
+
+      if ( VAR_FLAG == 1 )
+      {
+         VAR__819283[VAR__NUM++] = VAR__1238129;
+         VAR_FLAG     = 0;
+         VAR__1238129 = 0;
+      }
+   }
+
+   if ( VAR__NUM == 1 )
+   {
+      printf("No");
+   }
+   else
+   if ( VAR__NUM == 2 )
+   {
+      if ( VAR__819283[0] != VAR__819283[1] )
+      {
+         printf("%d", ( VAR__819283[0] < VAR__819283[1] ) ? ( VAR__819283[0] ) : ( VAR__819283[1] ));
+      }
+      else
+      {
+         printf("No");
+      }
+   }
+   else
+   {
+      int *VAR__MAX;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__NUM - 1 ); VAR__53647++ )
+      {
+         VAR__MAX = &VAR__819283[VAR__53647];
+         for ( VAR__21230 = VAR__NUM - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+         {
+            if ( VAR__819283[VAR__21230] > ( *VAR__MAX ))
+            {
+               VAR__MAX = &VAR__819283[VAR__21230];
+            }
+         }
+
+         if (( *VAR__MAX ) != VAR__819283[VAR__53647] )
+         {
+         }
+
+         {
+            VAR__TEMP = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647] = *VAR__MAX;
+            *VAR__MAX = VAR__TEMP;
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < VAR__NUM; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] != VAR__819283[0] )
+         {
+            printf("%d", VAR__819283[VAR__53647]);
+            VAR_FLAG++;
+            break;
+         }
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         printf("No");
+      }
+   }
+}

@@ -1,0 +1,88 @@
+int main(int argc, char *argv[])
+{
+   char VAR__819283[3];
+   char VAR__19328[100];
+   char VAR__4857423[3];
+   char after[100];
+   char strtmp;
+   char after1[100];
+   int  before = 0;
+   int  n1;
+   int  n2;
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  A[100];
+   int  tmp;
+   int  VAR__1238129;
+
+   scanf("%s %s %s", VAR__819283, VAR__19328, VAR__4857423);
+   n1          = atoi(VAR__819283);
+   n2          = atoi(VAR__4857423);
+   VAR_1238123 = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__19328[VAR__53647] >= 'a' ) && ( VAR__19328[VAR__53647] <= 'z' ))
+      {
+         VAR__19328[VAR__53647] = VAR__19328[VAR__53647] - 32;
+      }
+
+      if (( VAR__19328[VAR__53647] >= '0' ) && ( VAR__19328[VAR__53647] <= '9' ))
+      {
+         A[VAR__53647] = VAR__19328[VAR__53647] - 48;
+      }
+
+      if (( VAR__19328[VAR__53647] >= 'A' ) && ( VAR__19328[VAR__53647] <= 'Z' ))
+      {
+         A[VAR__53647] = VAR__19328[VAR__53647] - 55;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      before = ( before * n1 ) + A[VAR__53647];
+   }
+
+   if ( before == 0 )
+   {
+      after1[0] = '0';
+      after1[1] = '\0';
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         if ( before < 1 )
+         {
+            break;
+         }
+         else
+         {
+            tmp    = before % n2;
+            before = before / n2;
+
+            if ( tmp >= 10 )
+            {
+               strtmp = tmp + 55;
+            }
+            else
+            {
+               strtmp = tmp + 48;
+            }
+
+            after[VAR__53647] = strtmp;
+         }
+      }
+
+      after[VAR__53647] = '\0';
+      VAR__1238129      = strlen(after);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         after1[VAR__53647] = after[( VAR__1238129 - VAR__53647 ) - 1];
+      }
+
+      after1[VAR__53647] = '\0';
+   }
+
+   puts(after1);
+   return 0;
+}

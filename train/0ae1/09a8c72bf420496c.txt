@@ -1,0 +1,102 @@
+int main()
+{
+   int  VAR_233[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   long year;
+   long month;
+   long day;
+   long VAR__3918907;
+   int  VAR__SUM;
+   int  VAR__819283;
+   int  VAR__19328;
+
+   scanf("%d%d%d", &year, &month, &day);
+
+   if (( year % 400 ) == 0 )
+   {
+      VAR__SUM = 0;
+
+      if ( month <= 2 )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < month; VAR__21230++ )
+         {
+            VAR__SUM = VAR__SUM + VAR_233[VAR__21230 - 1];
+         }
+      }
+      else
+      {
+         for ( int VAR__8444594 = 1; VAR__8444594 < month; VAR__8444594++ )
+         {
+            VAR__SUM = VAR__SUM + VAR_233[VAR__8444594 - 1];
+         }
+
+         VAR__SUM = VAR__SUM + 1;
+      }
+
+      VAR__SUM = VAR__SUM + day;
+   }
+   else
+   {
+      VAR__SUM = 0;
+
+      while ( year > 400 )
+      {
+         year = year - 400;
+      }
+
+      VAR__819283 = ( year - 1 ) / 4;
+      VAR__19328  = ( year - 1 ) / 100;
+      VAR__SUM    = ((( 365 * year ) + VAR__819283 ) + 1 ) - VAR__19328;
+      for ( int VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + VAR_233[VAR__53647 - 1];
+      }
+
+      if ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 ))
+      {
+         VAR__SUM++;
+      }
+
+      VAR__SUM = VAR__SUM + day;
+   }
+
+   VAR__3918907 = VAR__SUM % 7;
+
+   if ( VAR__3918907 == 2 )
+   {
+      printf("Sun.\n");
+   }
+   else
+   if ( VAR__3918907 == 3 )
+   {
+      printf("Mon.\n");
+   }
+   else
+   if ( VAR__3918907 == 4 )
+   {
+      printf("Tue.\n");
+   }
+   else
+   if ( VAR__3918907 == 5 )
+   {
+      printf("Wed.\n");
+   }
+   else
+   if ( VAR__3918907 == 6 )
+   {
+      printf("Thu.\n");
+   }
+   else
+   if ( VAR__3918907 == 0 )
+   {
+      printf("Fri.\n");
+   }
+   else
+   if ( VAR__3918907 == 1 )
+   {
+      printf("Sat.\n");
+   }
+
+
+
+   return 0;
+}

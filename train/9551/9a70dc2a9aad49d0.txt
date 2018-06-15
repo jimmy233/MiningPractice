@@ -1,0 +1,77 @@
+int main()
+{
+   struct patient
+   {
+      char id[10];
+      int  VAR__819283;
+   }
+   patients[100];
+   struct old
+   {
+      char ido[10];
+      int  ao;
+   }
+   olds[100];
+   struct young
+   {
+      char idy[10];
+      int  ay;
+   }
+       youngs[100];
+   int VAR_1238123;
+   int VAR__3918907 = 0;
+   int o            = 0;
+   int so           = 0;
+   int sy           = 0;
+   int VAR__112390;
+
+   scanf("%d", &VAR_1238123);
+   char VAR__127322[10];
+   for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      scanf("%s", patients[VAR__21230].id);
+      scanf("%d", &patients[VAR__21230].VAR__819283);
+
+      if ( patients[VAR__21230].VAR__819283 < 60 )
+      {
+         strcpy(youngs[VAR__3918907].idy, patients[VAR__21230].id);
+         youngs[VAR__3918907].ay = patients[VAR__21230].VAR__819283;
+         VAR__3918907++;
+      }
+
+      if ( patients[VAR__21230].VAR__819283 >= 60 )
+      {
+         strcpy(olds[o].ido, patients[VAR__21230].id);
+         olds[o].ao = patients[VAR__21230].VAR__819283;
+         o++;
+      }
+   }
+
+   for ( int VAR_129012 = o - 1; VAR_129012 > 0; VAR_129012-- )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_129012; VAR__53647++ )
+      {
+         if ( olds[VAR__53647].ao < olds[VAR__53647 + 1].ao )
+         {
+            VAR__112390             = olds[VAR__53647 + 1].ao;
+            olds[VAR__53647 + 1].ao = olds[VAR__53647].ao;
+            olds[VAR__53647].ao     = VAR__112390;
+            strcpy(VAR__127322, olds[VAR__53647 + 1].ido);
+            strcpy(olds[VAR__53647 + 1].ido, olds[VAR__53647].ido);
+            strcpy(olds[VAR__53647].ido, VAR__127322);
+         }
+      }
+   }
+
+   for ( int VAR__1111 = 0; VAR__1111 <= ( o - 1 ); VAR__1111++ )
+   {
+      printf("%s\n", olds[VAR__1111].ido);
+   }
+
+   for ( int VAR__1238129 = 0; VAR__1238129 <= ( VAR__3918907 - 1 ); VAR__1238129++ )
+   {
+      printf("%s\n", youngs[VAR__1238129].idy);
+   }
+
+   return 0;
+}

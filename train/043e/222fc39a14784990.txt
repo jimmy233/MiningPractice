@@ -1,0 +1,80 @@
+void main()
+{
+   char VAR_9494[1000];
+   char VAR__819283[100];
+   char VAR__19328[100];
+   char out[1000];
+
+   void insertb(char *VAR_9494, char *VAR__819283, char *VAR__19328, char *out);
+
+   gets(VAR_9494);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   insertb(VAR_9494, VAR__819283, VAR__19328, out);
+}
+
+
+void insertb(char *VAR_9494, char *VAR__819283, char *VAR__19328, char *out)
+{
+   char *ANOTHER_POINTER;
+   char *YET_ANOTHER_POINTER;
+   char *p3;
+   char *p4;
+
+   for ( ANOTHER_POINTER = VAR_9494, YET_ANOTHER_POINTER = VAR__819283; ANOTHER_POINTER < ( VAR_9494 + strlen(VAR_9494)); )
+   {
+      if (((( *ANOTHER_POINTER ) == ( *YET_ANOTHER_POINTER )) && ( ANOTHER_POINTER == VAR_9494 )) || ((( *ANOTHER_POINTER ) == ( *YET_ANOTHER_POINTER )) && (( *( ANOTHER_POINTER - 1 )) == 32 )))
+      {
+         for ( YET_ANOTHER_POINTER = VAR__819283; YET_ANOTHER_POINTER < ( VAR__819283 + strlen(VAR__819283)); YET_ANOTHER_POINTER++ )
+         {
+            if (( *ANOTHER_POINTER ) == ( *YET_ANOTHER_POINTER ))
+            {
+               ANOTHER_POINTER++;
+            }
+            else
+            {
+               break;
+            }
+         }
+
+         if ( YET_ANOTHER_POINTER == ( VAR__819283 + strlen(VAR__819283)))
+         {
+            p4 = out;
+            for ( p3 = VAR_9494; p3 < ( ANOTHER_POINTER - strlen(VAR__819283)); p4++, p3++ )
+            {
+               *p4 = *p3;
+            }
+
+            for ( p3 = VAR__19328; p3 < ( VAR__19328 + strlen(VAR__19328)); p4++, p3++ )
+            {
+               *p4 = *p3;
+            }
+
+            for ( p3 = ANOTHER_POINTER; p3 < ( VAR_9494 + strlen(VAR_9494)); p3++, p4++ )
+            {
+               *p4 = *p3;
+            }
+
+            *p4 = '\0';
+            break;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER = VAR__819283;
+         }
+      }
+      else
+      {
+         ANOTHER_POINTER++;
+      }
+   }
+
+   if ( YET_ANOTHER_POINTER == ( VAR__819283 + strlen(VAR__819283)))
+   {
+      insertb(out, VAR__819283, VAR__19328, VAR_9494);
+   }
+   else
+   {
+      puts(VAR_9494);
+   }
+}

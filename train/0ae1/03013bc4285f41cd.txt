@@ -1,0 +1,48 @@
+int VAR__127322(int VAR__1238129)
+{
+   if ((( VAR__1238129 % 4 ) != 0 ) || ((( VAR__1238129 % 100 ) == 0 ) && (( VAR__1238129 % 400 ) != 0 )))
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+char week[7][5]   = { "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun." };
+int  month[2][12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int main()
+{
+   int Year;
+   int Month;
+   int Day;
+   int Week;
+   int VAR__53647;
+
+   scanf("%d%d%d", &Year, &Month, &Day);
+   int VAR__SUM = (((((( Year - 1 ) / 4 ) - (( Year - 1 ) / 100 )) + (( Year - 1 ) / 400 )) % 7 ) * 366 ) + (((( Year - 1 ) - ((((( Year - 1 ) / 4 ) - (( Year - 1 ) / 100 )) + (( Year - 1 ) / 400 )) % 7 )) % 7 ) * 365 );
+   for ( VAR__53647 = 0; VAR__53647 < ( Month - 1 ); VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + month[0][VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < Day; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + 1;
+   }
+
+   if ( Month > 2 )
+   {
+      if ( VAR__127322(Year))
+      {
+         VAR__SUM = VAR__SUM + 1;
+      }
+   }
+
+   Week = VAR__SUM % 7;
+   printf("%s", week[Week]);
+   printf("\n");
+   return 0;
+}

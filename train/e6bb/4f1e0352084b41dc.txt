@@ -1,0 +1,56 @@
+struct bacteria
+{
+   int have;
+   int add;
+}
+VAR__819283[11][11];
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1111;
+   int VAR__8444594;
+
+   memset(VAR__819283, 0, ( sizeof( struct bacteria )) * 121);
+   scanf("%d%d", &VAR__819283[5][5].have, &VAR_1238123);
+   for ( VAR__1238129 = 1; VAR__1238129 <= VAR_1238123; VAR__1238129++ )
+   {
+      for ( VAR__53647 = 5 - VAR_1238123; VAR__53647 <= ( 5 + VAR_1238123 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 5 - VAR_1238123; VAR__21230 <= ( 5 + VAR_1238123 ); VAR__21230++ )
+         {
+            for ( VAR__8444594 = -1; VAR__8444594 <= 1; VAR__8444594++ )
+            {
+               for ( VAR__1111 = -1; VAR__1111 <= 1; VAR__1111++ )
+               {
+                  VAR__819283[VAR__53647][VAR__21230].add += VAR__819283[VAR__53647 + VAR__1111][VAR__21230 + VAR__8444594].have;
+               }
+            }
+         }
+      }
+
+      for ( VAR__53647 = 5 - VAR_1238123; VAR__53647 <= ( 5 + VAR_1238123 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 5 - VAR_1238123; VAR__21230 <= ( 5 + VAR_1238123 ); VAR__21230++ )
+         {
+            VAR__819283[VAR__53647][VAR__21230].have += VAR__819283[VAR__53647][VAR__21230].add;
+            VAR__819283[VAR__53647][VAR__21230].add   = 0;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      printf("%d", VAR__819283[VAR__53647][1].have);
+      for ( VAR__21230 = 2; VAR__21230 < 10; VAR__21230++ )
+      {
+         printf(" %d", VAR__819283[VAR__53647][VAR__21230].have);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

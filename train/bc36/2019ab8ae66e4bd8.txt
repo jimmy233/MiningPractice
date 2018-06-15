@@ -1,0 +1,80 @@
+int main()
+{
+   struct photo
+   {
+      double high;
+      char   sex[10];
+   }
+          VAR_233[43];
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    i2;
+   int    VAR__21230   = 0;
+   int    VAR__8444594 = 0;
+   double man[43];
+   double woman[43];
+   double hehe;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%lf", VAR_233[VAR__53647].sex, &VAR_233[VAR__53647].high);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(VAR_233[VAR__53647].sex, "male") == 0 )
+      {
+         man[VAR__21230] = VAR_233[VAR__53647].high;
+         VAR__21230++;
+      }
+      else
+      {
+         woman[VAR__8444594] = VAR_233[VAR__53647].high;
+         VAR__8444594++;
+      }
+   }
+
+
+   for ( VAR__53647 = VAR__21230 - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( i2 = 0; i2 <= VAR__53647; i2++ )
+      {
+         if ( man[i2] > man[i2 + 1] )
+         {
+            hehe        = man[i2 + 1];
+            man[i2 + 1] = man[i2];
+            man[i2]     = hehe;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = VAR__8444594 - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( i2 = 0; i2 <= VAR__53647; i2++ )
+      {
+         if ( woman[i2] < woman[i2 + 1] )
+         {
+            hehe          = woman[i2 + 1];
+            woman[i2 + 1] = woman[i2];
+            woman[i2]     = hehe;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%.2f ", man[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", woman[VAR__53647]);
+   }
+
+   printf("%.2f", woman[VAR__53647]);
+}

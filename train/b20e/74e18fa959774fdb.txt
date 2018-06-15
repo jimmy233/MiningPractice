@@ -1,0 +1,95 @@
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   return ( VAR__819283 > VAR__19328 ) ? ( VAR__819283 ) : ( VAR__19328 );
+}
+
+
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int VAR_9Q8Q90(int VAR__53647, int VAR__21230, int general[], int king[])
+{
+   if ( general[VAR__53647 - 1] > king[VAR__21230 - 1] )
+   {
+      return 200;
+   }
+   else
+   if ( general[VAR__53647 - 1] < king[VAR__21230 - 1] )
+   {
+      return -200;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int VAR__127322[2000][2000];
+int main()
+{
+   int VAR_1238123;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int VAR__53647;
+      int VAR__21230;
+      int king[1002];
+      int general[1002];
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> general[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> king[VAR__53647];
+      }
+
+      qsort(general, VAR_1238123, sizeof( general[0] ), cmp);
+      qsort(king, VAR_1238123, sizeof( king[0] ), cmp);
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         VAR__127322[0][VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         VAR__127322[VAR__53647][0] = VAR__127322[VAR__53647 - 1][0] + VAR_9Q8Q90(( VAR_1238123 + 1 ) - VAR__53647, VAR__53647, general, king);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= VAR__53647; VAR__21230++ )
+         {
+            if ( VAR__53647 == VAR__21230 )
+            {
+               VAR__127322[VAR__53647][VAR__21230] = VAR__127322[VAR__53647 - 1][VAR__21230 - 1] + VAR_9Q8Q90(VAR__21230, VAR__53647, general, king);
+            }
+            else
+            {
+               VAR__127322[VAR__53647][VAR__21230] = VAR__MAX(VAR__127322[VAR__53647 - 1][VAR__21230] + VAR_9Q8Q90(( VAR_1238123 - ( VAR__53647 - VAR__21230 )) + 1, VAR__53647, general, king), VAR__127322[VAR__53647 - 1][VAR__21230 - 1] + VAR_9Q8Q90(VAR__21230, VAR__53647, general, king));
+            }
+         }
+      }
+
+
+      int VAR__TEMP = -200000000;
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         VAR__TEMP = VAR__MAX(VAR__TEMP, VAR__127322[VAR_1238123][VAR__53647]);
+      }
+
+      ( cout << VAR__TEMP ) << endl;
+   }
+
+   return 0;
+}

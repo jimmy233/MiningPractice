@@ -1,0 +1,84 @@
+int compare(const void *elem1, const void *elem2)
+{
+   return ( *((int *)elem1 )) - ( *((int *)elem2 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int TJ[2001];
+   int QW[2001];
+
+   while (( cin >> VAR_1238123 ) && ( VAR_1238123 != 0 ))
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> TJ[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> QW[VAR__53647];
+      }
+
+      qsort(TJ, VAR_1238123, sizeof( int ), compare);
+      qsort(QW, VAR_1238123, sizeof( int ), compare);
+      int Tslow;
+      int Tfast;
+      int Qslow;
+      int Qfast;
+      Tslow = ( Qslow = 0 );
+      Tfast = ( Qfast = VAR_1238123 - 1 );
+      int bonus = 0;
+
+      while (( Tslow <= Tfast ) && ( Qslow <= Qfast ))
+      {
+         if ( TJ[Tfast] > QW[Qfast] )
+         {
+            Tfast--;
+            Qfast--;
+            bonus++;
+         }
+         else
+         if ( TJ[Tfast] < QW[Qfast] )
+         {
+            Tslow++;
+            Qfast--;
+
+            if ( TJ[Tslow - 1] < QW[Qfast + 1] )
+            {
+               bonus--;
+            }
+         }
+         else
+         {
+            while (( Tslow <= Tfast ) && ( Qslow <= Qfast ))
+            {
+               if ( TJ[Tslow] > QW[Qslow] )
+               {
+                  Tslow++;
+                  Qslow++;
+                  bonus++;
+               }
+               else
+               {
+                  Tslow++;
+                  Qfast--;
+
+                  if ( TJ[Tslow - 1] < QW[Qfast + 1] )
+                  {
+                     bonus--;
+                  }
+
+                  break;
+               }
+            }
+         }
+      }
+
+      ( cout << ( bonus * 200 )) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,54 @@
+int main()
+{
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int day_month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int day_sum1      = 0;
+   int day_sum2      = 0;
+   int VAR__53647;
+   int VAR__21230;
+
+   ((((( cin >> startyear ) >> startmonth ) >> startday ) >> endyear ) >> endmonth ) >> endday;
+
+   if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+   {
+      day_month[1] = 29;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( startmonth - 1 ); VAR__53647++ )
+   {
+      day_sum1 += day_month[VAR__53647];
+   }
+
+   day_month[1] = 28;
+   day_sum1    += startday;
+   for ( VAR__53647 = startyear; VAR__53647 < endyear; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         day_sum2 += 366;
+      }
+      else
+      {
+         day_sum2 += 365;
+      }
+   }
+
+   if (((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 ))
+   {
+      day_month[1] = 29;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( endmonth - 1 ); VAR__53647++ )
+   {
+      day_sum2 += day_month[VAR__53647];
+   }
+
+   day_sum2 += endday;
+   ( cout << ( day_sum2 - day_sum1 )) << endl;
+   return 0;
+}

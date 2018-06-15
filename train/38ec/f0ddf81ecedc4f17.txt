@@ -1,0 +1,41 @@
+int main()
+{
+   int startyear = 0;
+   int startmonth;
+   int startday;
+   int endyear = 0;
+   int endmonth;
+   int endday;
+
+   (( cin >> startyear ) >> startmonth ) >> startday;
+   (( cin >> endyear ) >> endmonth ) >> endday;
+   int leapyear     = 0;
+   int sum1         = 0;
+   int sum2         = 0;
+   int sum3         = 0;
+   int year[2]      = { 365, 366 };
+   int month[2][12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   leapyear = ((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 );
+   for ( int VAR__53647 = 0; VAR__53647 < ( startmonth - 1 ); VAR__53647++ )
+   {
+      sum1 = sum1 + month[leapyear][VAR__53647];
+   }
+
+   sum1 = sum1 + startday;
+   for ( int VAR__53647 = startyear; VAR__53647 < endyear; VAR__53647++ )
+   {
+      leapyear = ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 );
+      sum2     = sum2 + year[leapyear];
+   }
+
+   leapyear = ((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 );
+   for ( int VAR__8444594 = 0; VAR__8444594 < ( endmonth - 1 ); VAR__8444594++ )
+   {
+      sum3 = sum3 + month[leapyear][VAR__8444594];
+   }
+
+   sum3 = sum3 + endday;
+   sum2 = ( sum2 + sum3 ) - sum1;
+   cout << sum2;
+   return 0;
+}

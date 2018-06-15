@@ -1,0 +1,72 @@
+int sushu(int VAR__819283)
+{
+   int result;
+   int sq;
+   int VAR__SUM = 0;
+   int VAR__53647;
+
+   sq = sqrt(VAR__819283);
+
+   if (( VAR__819283 == 2 ) || ( VAR__819283 == 3 ))
+   {
+      result = 1;
+   }
+   else
+   if (( VAR__819283 % 2 ) == 0 )
+   {
+      result = 0;
+   }
+   else
+   {
+      for ( VAR__53647 = 2; VAR__53647 <= sq; VAR__53647++ )
+      {
+         if (( VAR__53647 % 2 ) == 1 )
+         {
+            if (( VAR__819283 % VAR__53647 ) == 0 )
+            {
+               break;
+            }
+
+            VAR__SUM++;
+         }
+      }
+
+      if ( VAR__SUM == (( sq - 1 ) / 2 ))
+      {
+         result = 1;
+      }
+      else
+      {
+         result = 0;
+      }
+   }
+
+
+   return result;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 6; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__53647 % 2 ) == 0 )
+      {
+         for ( VAR__21230 = 2; VAR__21230 <= ( VAR__53647 / 2 ); VAR__21230++ )
+         {
+            if ( sushu(VAR__21230) && sushu(VAR__53647 - VAR__21230))
+            {
+               printf("%d=%d+%d\n", VAR__53647, VAR__21230, VAR__53647 - VAR__21230);
+               break;
+            }
+         }
+      }
+   }
+
+   return 0;
+}

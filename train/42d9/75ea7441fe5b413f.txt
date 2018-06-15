@@ -1,0 +1,57 @@
+struct dian
+{
+   float VAR__7685;
+   float VAR__3918907;
+   float VAR__9290;
+};
+struct diandui
+{
+   struct dian VAR__819283;
+   struct dian VAR__19328;
+   float       dis;
+};
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__temp = 0;
+   struct dian    VAR__12302[10];
+   struct diandui dui[50];
+   struct diandui VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%f%f%f", &VAR__12302[VAR__53647].VAR__7685, &VAR__12302[VAR__53647].VAR__3918907, &VAR__12302[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dui[VAR__temp].VAR__819283 = VAR__12302[VAR__53647];
+         dui[VAR__temp].VAR__19328  = VAR__12302[VAR__21230];
+         dui[VAR__temp].dis         = sqrt(((( VAR__12302[VAR__53647].VAR__7685 - VAR__12302[VAR__21230].VAR__7685 ) * ( VAR__12302[VAR__53647].VAR__7685 - VAR__12302[VAR__21230].VAR__7685 )) + (( VAR__12302[VAR__53647].VAR__3918907 - VAR__12302[VAR__21230].VAR__3918907 ) * ( VAR__12302[VAR__53647].VAR__3918907 - VAR__12302[VAR__21230].VAR__3918907 ))) + (( VAR__12302[VAR__53647].VAR__9290 - VAR__12302[VAR__21230].VAR__9290 ) * ( VAR__12302[VAR__53647].VAR__9290 - VAR__12302[VAR__21230].VAR__9290 )));
+         VAR__temp++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__temp - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dui[VAR__21230].dis < dui[VAR__21230 + 1].dis )
+         {
+            VAR__TEMP           = dui[VAR__21230];
+            dui[VAR__21230]     = dui[VAR__21230 + 1];
+            dui[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      printf("(%.0f,%.0f,%.0f)-(%.0f,%.0f,%.0f)=%.2f\n", dui[VAR__53647].VAR__819283.VAR__7685, dui[VAR__53647].VAR__819283.VAR__3918907, dui[VAR__53647].VAR__819283.VAR__9290, dui[VAR__53647].VAR__19328.VAR__7685, dui[VAR__53647].VAR__19328.VAR__3918907, dui[VAR__53647].VAR__19328.VAR__9290, dui[VAR__53647].dis);
+   }
+}

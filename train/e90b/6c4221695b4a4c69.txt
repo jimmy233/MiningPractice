@@ -1,0 +1,83 @@
+struct student
+{
+   int            n1;
+   int            n2;
+   int            n3;
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   struct student *VAR_233;
+   struct student *VAR__HEAD;
+   struct student *tail;
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__SUM[100000];
+   int            max1;
+   int            max2;
+   int            max3;
+   int            k1;
+   int            k2;
+   int            k3;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = NULL;
+   tail      = NULL;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct student *)malloc(LEN_OF_STH);
+      scanf("%d%d%d", &VAR_233->n1, &VAR_233->n2, &VAR_233->n3);
+
+      if ( VAR__HEAD == NULL )
+      {
+         VAR__HEAD = ( tail = VAR_233 );
+      }
+      else
+      {
+         tail->VAR__NEXT = VAR_233;
+         tail            = VAR_233;
+      }
+
+      VAR__SUM[VAR__53647] = VAR_233->n2 + VAR_233->n3;
+   }
+
+   max1 = VAR__SUM[1];
+   k1   = 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] > max1 )
+      {
+         max1 = VAR__SUM[VAR__53647];
+         k1   = VAR__53647;
+      }
+   }
+
+
+   VAR__SUM[k1] = 0;
+   max2         = VAR__SUM[1];
+   k2           = 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] > max2 )
+      {
+         max2 = VAR__SUM[VAR__53647];
+         k2   = VAR__53647;
+      }
+   }
+
+
+   VAR__SUM[k2] = 0;
+   max3         = VAR__SUM[1];
+   k3           = 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] > max3 )
+      {
+         max3 = VAR__SUM[VAR__53647];
+         k3   = VAR__53647;
+      }
+   }
+
+
+   printf("%d %d\n%d %d\n%d %d\n", k1, max1, k2, max2, k3, max3);
+}

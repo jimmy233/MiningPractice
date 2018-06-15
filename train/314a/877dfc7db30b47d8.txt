@@ -1,0 +1,84 @@
+int change(char VAR_233[], int VAR_1238123)
+{
+   int VAR__53647;
+   int result = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      result = (( result * 10 ) + VAR_233[VAR__53647] ) - '0';
+   }
+
+   return result;
+}
+
+
+int manzu(int VAR_233[], int VAR_1238123)
+{
+   if (( VAR_1238123 >= VAR_233[0] ) && ( VAR_1238123 < VAR_233[1] ))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+void main()
+{
+   int time[1000][2] = { 0 };
+   int VAR__53647    = 0;
+   int VAR__21230    = 0;
+   int VAR__8444594;
+   int VAR__NUM;
+
+   int (*VAR_233)[2];
+   int  VAR__MAX;
+   int  VAR__COUNT = 0;
+   char ch;
+   char VAR__TEMP[5] = { '\0' };
+   VAR_233 = time;
+   for ( VAR__8444594 = 0; VAR__8444594 <= 1; VAR__8444594++ )
+   {
+      while (( ch = getchar()) != '\n' )
+      {
+         if ( ch != ',' )
+         {
+            VAR__TEMP[VAR__53647++] = ch;
+         }
+         else
+         {
+            VAR__TEMP[VAR__53647]            = '\0';
+            time[VAR__21230++][VAR__8444594] = change(VAR__TEMP, VAR__53647);
+            VAR__53647 = 0;
+         }
+      }
+
+      VAR__TEMP[VAR__53647]            = '\0';
+      time[VAR__21230++][VAR__8444594] = change(VAR__TEMP, VAR__53647);
+      VAR__53647 = 0;
+      VAR__NUM   = VAR__21230;
+      VAR__21230 = 0;
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__NUM; VAR__21230++ )
+      {
+         if ( manzu(VAR_233[VAR__21230], VAR__53647))
+         {
+            VAR__COUNT++;
+         }
+      }
+
+
+      if ( VAR__COUNT > VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT;
+      }
+
+      VAR__COUNT = 0;
+   }
+
+   printf("%d %d", VAR__NUM, VAR__MAX);
+}

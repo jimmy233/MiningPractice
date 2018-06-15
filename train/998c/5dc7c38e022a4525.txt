@@ -1,0 +1,85 @@
+int VAR__MAX(int s1, int s2)
+{
+   if ( s1 > s2 )
+   {
+      return s1;
+   }
+   else
+   {
+      return s2;
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[251] = "";
+   char VAR__19328[251]  = "";
+
+   cin >> VAR__819283;
+   cin >> VAR__19328;
+   int  s1 = strlen(VAR__819283);
+   int  s2 = strlen(VAR__19328);
+   int  VAR__53647;
+   char VAR__4857423[251] = "";
+   char VAR__12302[251]   = "";
+   for ( VAR__53647 = 0; VAR__53647 < s1; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__819283[( s1 - 1 ) - VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < s2; VAR__53647++ )
+   {
+      VAR__12302[VAR__53647] = VAR__19328[( s2 - 1 ) - VAR__53647];
+   }
+
+   char result[252] = "";
+   int  carry       = 0;
+   int  smax        = VAR__MAX(s1, s2);
+   for ( VAR__53647 = 0; VAR__53647 <= smax; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] == 0 )
+      {
+         VAR__4857423[VAR__53647] = '0';
+      }
+
+      if ( VAR__12302[VAR__53647] == 0 )
+      {
+         VAR__12302[VAR__53647] = '0';
+      }
+
+      result[VAR__53647] = (( VAR__4857423[VAR__53647] + VAR__12302[VAR__53647] ) - 48 ) + carry;
+
+      if ( result[VAR__53647] >= 58 )
+      {
+         result[VAR__53647] = result[VAR__53647] - 10;
+         carry = 1;
+      }
+      else
+      {
+         carry = 0;
+      }
+   }
+
+   for ( VAR__53647 = smax; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( result[VAR__53647] != '0' )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__53647 == ( -1 ))
+   {
+      ( cout << 0 ) << endl;
+   }
+   else
+   {
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << result[VAR__53647];
+      }
+   }
+
+   return 0;
+}

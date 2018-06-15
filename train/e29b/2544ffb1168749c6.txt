@@ -1,0 +1,75 @@
+float abs(float VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return VAR__819283 - VAR__19328;
+   }
+   else
+   {
+      return VAR__19328 - VAR__819283;
+   }
+}
+
+
+void bubble(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__819283[310];
+   int   VAR__53647;
+   int   VAR_FLAG = 0;
+   float VAR_9494 = 0;
+   float VAR_233  = 0;
+   float VAR__MAX = -1.0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+      VAR_9494 = VAR_9494 + VAR__819283[VAR__53647];
+   }
+
+   bubble(VAR__819283, VAR_1238123);
+   VAR_233 = VAR_9494 / VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( abs(VAR_233, VAR__819283[VAR__53647]) > VAR__MAX )
+      {
+         VAR__MAX = abs(VAR_233, VAR__819283[VAR__53647]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( abs(VAR_233, VAR__819283[VAR__53647]) == VAR__MAX ) && ( VAR_FLAG == 0 ))
+      {
+         printf("%d", VAR__819283[VAR__53647]);
+         VAR_FLAG = 1;
+      }
+      else
+      if (( abs(VAR_233, VAR__819283[VAR__53647]) == VAR__MAX ) && ( VAR_FLAG == 1 ))
+      {
+         printf(",%d", VAR__819283[VAR__53647]);
+      }
+   }
+}

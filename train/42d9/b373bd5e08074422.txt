@@ -1,0 +1,81 @@
+int main()
+{
+   int pointnum;
+   int groupnum;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int point[10][3] = { 0 };
+
+   cin >> pointnum;
+   groupnum = ( pointnum * ( pointnum - 1 )) / 2;
+   for ( VAR__53647 = 0; VAR__53647 < pointnum; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         cin >> point[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   int    group[45][6] = { 0 };
+   double result[45];
+   for ( VAR__53647 = 0; VAR__53647 < 45; VAR__53647++ )
+   {
+      result[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = ( VAR__8444594 = 0 ); VAR__53647 < ( pointnum - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < pointnum; VAR__21230++ )
+      {
+         group[VAR__8444594][0] = point[VAR__53647][0];
+         group[VAR__8444594][1] = point[VAR__53647][1];
+         group[VAR__8444594][2] = point[VAR__53647][2];
+         group[VAR__8444594][3] = point[VAR__21230][0];
+         group[VAR__8444594][4] = point[VAR__21230][1];
+         group[VAR__8444594][5] = point[VAR__21230][2];
+         result[VAR__8444594]   = sqrt(((((double)( point[VAR__53647][0] - point[VAR__21230][0] )) * ( point[VAR__53647][0] - point[VAR__21230][0] )) + (( point[VAR__53647][1] - point[VAR__21230][1] ) * ( point[VAR__53647][1] - point[VAR__21230][1] ))) + (( point[VAR__53647][2] - point[VAR__21230][2] ) * ( point[VAR__53647][2] - point[VAR__21230][2] )));
+         VAR__8444594++;
+      }
+   }
+
+
+   double temp1;
+   int    VAR__TEMP[6];
+   for ( VAR__53647 = 0; VAR__53647 < ( groupnum - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( groupnum - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( result[VAR__21230] < result[VAR__21230 + 1] )
+         {
+            temp1 = result[VAR__21230];
+            result[VAR__21230]     = result[VAR__21230 + 1];
+            result[VAR__21230 + 1] = temp1;
+            for ( VAR__8444594 = 0; VAR__8444594 < 6; VAR__8444594++ )
+            {
+               VAR__TEMP[VAR__8444594] = group[VAR__21230][VAR__8444594];
+            }
+
+            for ( VAR__8444594 = 0; VAR__8444594 < 6; VAR__8444594++ )
+            {
+               group[VAR__21230][VAR__8444594] = group[VAR__21230 + 1][VAR__8444594];
+            }
+
+            for ( VAR__8444594 = 0; VAR__8444594 < 6; VAR__8444594++ )
+            {
+               group[VAR__21230 + 1][VAR__8444594] = VAR__TEMP[VAR__8444594];
+            }
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < groupnum; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", group[VAR__53647][0], group[VAR__53647][1], group[VAR__53647][2], group[VAR__53647][3], group[VAR__53647][4], group[VAR__53647][5], result[VAR__53647]);
+   }
+
+   return 0;
+}

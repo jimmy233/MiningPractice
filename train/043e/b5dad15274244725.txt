@@ -1,0 +1,110 @@
+int main()
+{
+   char word_in[200];
+   char word_tr[200];
+   char word_out[200];
+   char word_fil[200];
+
+   for ( int VAR__53647 = 0; VAR__53647 < 200; VAR__53647++ )
+   {
+      word_in[VAR__53647]  = 0;
+      word_tr[VAR__53647]  = 0;
+      word_out[VAR__53647] = 0;
+      word_fil[VAR__53647] = 0;
+   }
+
+   int lg1;
+   int lg2;
+   int lg3;
+   int lg4;
+   int VAR__SUM  = 0;
+   int VAR__temp = 0;
+   cin.getline(word_in, 200);
+   lg1          = strlen(word_in);
+   word_in[lg1] = ' ';
+   cin.getline(word_tr, 200);
+   lg2 = strlen(word_tr);
+   cin.getline(word_out, 200);
+   lg3 = strlen(word_out);
+   for ( int VAR__53647 = 0; VAR__53647 < 200; VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      for ( int VAR__21230 = 0; VAR__21230 < lg2; VAR__21230++ )
+      {
+         if ( word_in[VAR__53647 + VAR__21230] == word_tr[VAR__21230] )
+         {
+            VAR__SUM = VAR__SUM + 1;
+         }
+      }
+
+      if (((( word_in[VAR__53647 - 1] == ' ' ) || ( VAR__53647 == 0 )) && ( word_in[VAR__53647 + lg2] == ' ' )) && ( VAR__SUM == lg2 ))
+      {
+         if ( lg3 == lg2 )
+         {
+            for ( int VAR__21230 = 0; VAR__21230 < lg3; VAR__21230++ )
+            {
+               word_in[VAR__53647 + VAR__21230] = word_out[VAR__21230];
+            }
+
+            VAR__53647 = VAR__53647 + lg2;
+         }
+
+         if ( lg3 < lg2 )
+         {
+            for ( int VAR__21230 = 0; VAR__21230 < lg3; VAR__21230++ )
+            {
+               word_in[VAR__53647 + VAR__21230] = word_out[VAR__21230];
+            }
+
+            for ( int VAR__21230 = lg3; VAR__21230 < lg2; VAR__21230++ )
+            {
+               word_in[VAR__53647 + VAR__21230] = ' ';
+            }
+
+            VAR__53647 = VAR__53647 + lg2;
+         }
+
+         if ( lg3 > lg2 )
+         {
+            for ( int VAR__21230 = 199; VAR__21230 >= ( VAR__53647 + lg2 ); VAR__21230-- )
+            {
+               word_in[( VAR__21230 + lg3 ) - lg2] = word_in[VAR__21230];
+            }
+
+            for ( int VAR__21230 = 0; VAR__21230 < lg3; VAR__21230++ )
+            {
+               word_in[VAR__53647 + VAR__21230] = word_out[VAR__21230];
+            }
+
+            VAR__53647 = VAR__53647 + lg3;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < 200; VAR__53647++ )
+   {
+      if ( word_in[VAR__53647] != ' ' )
+      {
+         word_fil[VAR__temp] = word_in[VAR__53647];
+         VAR__temp++;
+      }
+
+      if ( word_in[VAR__53647] == ' ' )
+      {
+         if ( word_in[VAR__53647 + 1] != ' ' )
+         {
+            word_fil[VAR__temp] = word_in[VAR__53647];
+            VAR__temp++;
+         }
+      }
+   }
+
+   lg4 = strlen(word_fil);
+   for ( int VAR__53647 = 0; VAR__53647 < ( lg4 - 1 ); VAR__53647++ )
+   {
+      cout << word_fil[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

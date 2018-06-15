@@ -1,0 +1,80 @@
+int VAR_1238123;
+int tian[1001] = { 0 };
+int qi[1001]   = { 0 };
+int cal(int VAR_1238123)
+{
+   int result = ( -200 ) * VAR_1238123;
+   int money  = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int VAR__8444594 = 0;
+
+      while (( VAR__53647 + VAR__8444594 ) < VAR_1238123 )
+      {
+         if ( tian[VAR__8444594] > qi[VAR__53647 + VAR__8444594] )
+         {
+            VAR__8444594++;
+            money += 200;
+         }
+         else
+         if ( tian[VAR__8444594] == qi[VAR__53647 + VAR__8444594] )
+         {
+            VAR__8444594++;
+         }
+         else
+         {
+            VAR__8444594 = 0;
+            money        = 0;
+            break;
+         }
+      }
+
+      if (( VAR__53647 + VAR__8444594 ) == VAR_1238123 )
+      {
+         if (( money - ( VAR__53647 * 200 )) > result )
+         {
+            result = money - ( VAR__53647 * 200 );
+         }
+
+         money = 0;
+      }
+   }
+
+   return result;
+}
+
+
+int cmp(const void *af, const void *bf)
+{
+   int *elem1 = (int *)af;
+   int *elem2 = (int *)bf;
+
+   return ( *elem2 ) - ( *elem1 );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while (( cin >> VAR_1238123 ) && ( VAR_1238123 != 0 ))
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tian[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qi[VAR__53647];
+      }
+
+      qsort(tian, VAR_1238123, sizeof( int ), cmp);
+      qsort(qi, VAR_1238123, sizeof( int ), cmp);
+      int pos = 0;
+      ( cout << cal(VAR_1238123)) << endl;
+   }
+
+   return 0;
+}

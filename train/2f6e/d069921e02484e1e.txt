@@ -1,0 +1,50 @@
+struct child
+{
+   char VAR__4857423;
+   int  VAR__819283;
+}
+dui[100];
+void print(struct child dui[], int VAR_1238123)
+{
+   int VAR__53647;
+
+   if ( VAR_1238123 == 2 )
+   {
+      printf("%d %d", dui[0].VAR__819283, dui[1].VAR__819283);
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( dui[VAR__53647].VAR__4857423 != dui[VAR__53647 - 1].VAR__4857423 )
+         {
+            printf("%d %d\n", dui[VAR__53647 - 1].VAR__819283, dui[VAR__53647].VAR__819283);
+            for ( VAR__53647 = VAR__53647 + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+            {
+               dui[VAR__53647 - 2] = dui[VAR__53647];
+            }
+
+            print(dui, VAR_1238123 - 2);
+            break;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int  VAR__53647;
+   int  VAR_1238123;
+   char VAR_9494[100];
+
+   scanf("%s", VAR_9494);
+   VAR_1238123 = strlen(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      dui[VAR__53647].VAR__4857423 = VAR_9494[VAR__53647];
+      dui[VAR__53647].VAR__819283  = VAR__53647;
+   }
+
+   print(dui, VAR_1238123);
+}

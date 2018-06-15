@@ -1,0 +1,125 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   if (( *((int *)VAR__819283 )) > ( *((int *)VAR__19328 )))
+   {
+      return -1;
+   }
+   else
+   if (( *((int *)VAR__819283 )) < ( *((int *)VAR__19328 )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283[1000];
+   int VAR__19328[1000];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__SUM;
+   int s1;
+   int s2;
+   int i1;
+   int i2;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 )
+   {
+      VAR__SUM = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( VAR__819283[0] ), cmp);
+      qsort(VAR__19328, VAR_1238123, sizeof( VAR__19328[0] ), cmp);
+      i1 = ( i2 = VAR_1238123 - 1 );
+      s1 = ( s2 = 0 );
+
+      while ( s1 <= i1 )
+      {
+         while (( VAR__819283[i1] != VAR__19328[i2] ) && ( s1 <= i1 ))
+         {
+            if ( VAR__819283[i1] > VAR__19328[i2] )
+            {
+               VAR__SUM++;
+               i1--;
+               i2--;
+            }
+            else
+            {
+               VAR__SUM--;
+               i1--;
+               s2++;
+            }
+         }
+
+         if ( s1 > i1 )
+         {
+            break;
+         }
+
+         while (( VAR__819283[s1] != VAR__19328[s2] ) && ( s1 <= i1 ))
+         {
+            if ( VAR__819283[s1] > VAR__19328[s2] )
+            {
+               VAR__SUM++;
+               s1++;
+               s2++;
+            }
+            else
+            {
+               VAR__SUM--;
+               i1--;
+               s2++;
+            }
+         }
+
+         if ( s1 > i1 )
+         {
+            break;
+         }
+
+         if (( VAR__819283[s1] == VAR__19328[s2] ) && ( VAR__819283[i1] == VAR__19328[i2] ))
+         {
+            if ( VAR__819283[i1] > VAR__19328[s2] )
+            {
+               VAR__SUM++;
+            }
+            else
+            if ( VAR__819283[i1] < VAR__19328[s2] )
+            {
+               VAR__SUM--;
+            }
+
+
+            i1--;
+            s2++;
+         }
+
+         if ( s1 > i1 )
+         {
+            break;
+         }
+      }
+
+      printf("%d\n", VAR__SUM * 200);
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 0;
+}

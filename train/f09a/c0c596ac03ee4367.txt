@@ -1,0 +1,80 @@
+int la        = 0;
+int lb        = 0;
+int VAR__1111 = 0;
+int VAR__819283[100];
+int VAR__19328[100];
+int combine[200];
+void input();
+void seq();
+void sequence(int VAR__7685[100]);
+void com(int VAR__819283[100], int VAR__19328[100]);
+void output(int combine[200]);
+
+int main()
+{
+   input();
+   seq();
+   com(VAR__819283, VAR__19328);
+   output(combine);
+   return 0;
+}
+
+
+void input()
+{
+   ( cin >> la ) >> lb;
+   for ( int VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < lb; VAR__53647++ )
+   {
+      cin >> VAR__19328[VAR__53647];
+   }
+}
+
+
+void seq()
+{
+   VAR__1111 = la;
+   sequence(VAR__819283);
+   VAR__1111 = lb;
+   sequence(VAR__19328);
+}
+
+
+void sequence(int VAR__7685[100])
+{
+   int VAR__TEMP = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= ( VAR__1111 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__7685[VAR__21230 - 1] > VAR__7685[VAR__21230] )
+         {
+            VAR__TEMP                 = VAR__7685[VAR__21230];
+            VAR__7685[VAR__21230]     = VAR__7685[VAR__21230 - 1];
+            VAR__7685[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void com(int VAR__819283[100], int VAR__19328[100])
+{
+   memcpy(combine, VAR__819283, la * 4);
+   memcpy(combine + la, VAR__19328, lb * 4);
+}
+
+
+void output(int combine[200])
+{
+   cout << combine[0];
+   for ( int VAR__53647 = 1; VAR__53647 < ( la + lb ); VAR__53647++ )
+   {
+      ( cout << " " ) << combine[VAR__53647];
+   }
+}

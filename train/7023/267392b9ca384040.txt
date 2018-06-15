@@ -1,0 +1,63 @@
+int sub(int LEN_OF_STH, int *an1, int *an2)
+{
+   int VAR__MAX = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+   {
+      an1[VAR__53647] = an1[VAR__53647] - an2[VAR__53647];
+
+      if ( an1[VAR__53647] < 0 )
+      {
+         an1[VAR__53647]     = an1[VAR__53647] + 10;
+         an1[VAR__53647 + 1] = an1[VAR__53647 + 1] - 1;
+      }
+
+      if ( an1[VAR__53647] != 0 )
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+   return VAR__MAX;
+}
+
+
+int main()
+{
+   int VAR_1238123 = 0;
+   int VAR__53647  = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      char bn1[102];
+      char bn2[102];
+      int  VAR__21230   = 0;
+      int  VAR__8444594 = 0;
+      int  VAR__MAX     = 0;
+      int  an1[102];
+      int  an2[102];
+      ( cin >> bn1 ) >> bn2;
+      memset(an1, 0, sizeof( an1 ));
+      memset(an2, 0, sizeof( an2 ));
+      for ( VAR__21230 = strlen(bn1) - 1, VAR__8444594 = 0; VAR__21230 >= 0; VAR__21230-- )
+      {
+         an1[VAR__8444594++] = bn1[VAR__21230] - '0';
+      }
+
+      for ( VAR__21230 = strlen(bn2) - 1, VAR__8444594 = 0; VAR__21230 >= 0; VAR__21230-- )
+      {
+         an2[VAR__8444594++] = bn2[VAR__21230] - '0';
+      }
+
+      VAR__MAX = sub(strlen(bn1), an1, an2);
+      for ( VAR__21230 = VAR__MAX; VAR__21230 >= 0; VAR__21230-- )
+      {
+         cout << an1[VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,77 @@
+int cmp(char *VAR__819283, char *VAR__19328)
+{
+   int ai = 0;
+   int bi = 0;
+
+   while (( VAR__819283[ai] != 0 ) && ( VAR__19328[bi] != 0 ))
+   {
+      if ( VAR__819283[ai] > VAR__19328[bi] )
+      {
+         return 1;
+      }
+
+      if ( VAR__819283[ai] < VAR__19328[bi] )
+      {
+         return -1;
+      }
+
+      ai++;
+      bi++;
+   }
+
+   if ( VAR__819283[ai] != 0 )
+   {
+      return 1;
+   }
+
+   if ( VAR__19328[bi] != 0 )
+   {
+      return -1;
+   }
+
+   return 0;
+}
+
+
+void strlw(char *VAR__819283)
+{
+   int VAR__53647 = 0;
+
+   while ( VAR__819283[VAR__53647] != 0 )
+   {
+      if (( VAR__819283[VAR__53647] >= 'A' ) && ( VAR__819283[VAR__53647] <= 'Z' ))
+      {
+         VAR__819283[VAR__53647] += 'a' - 'A';
+      }
+
+      VAR__53647++;
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[1000];
+   char VAR__19328[1000];
+
+   cin.getline(VAR__819283, 900, '\n');
+   cin.getline(VAR__19328, 900, '\n');
+   strlw(VAR__819283);
+   strlw(VAR__19328);
+   switch ( cmp(VAR__819283, VAR__19328))
+   {
+   case 0:
+      ( cout << '=' ) << endl;
+      break;
+
+   case 1:
+      ( cout << '>' ) << endl;
+      break;
+
+   case -1:
+      ( cout << '<' ) << endl;
+      break;
+   }
+
+   return 0;
+}

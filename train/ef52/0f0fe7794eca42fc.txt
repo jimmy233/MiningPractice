@@ -1,0 +1,68 @@
+int missle[25];
+int VAR_1238123;
+int Intercept(int VAR__53647, int VAR__21230)
+{
+   int VAR__8444594;
+   int VAR__MAX = 1;
+   int VAR__SUM = 1;
+
+   for ( VAR__8444594 = VAR__53647 + 1; VAR__8444594 < VAR__21230; VAR__8444594++ )
+   {
+      if (( missle[VAR__8444594] <= missle[VAR__53647] ) && ( missle[VAR__8444594] >= missle[VAR__21230] ))
+      {
+         VAR__SUM = Intercept(VAR__8444594, VAR__21230) + 1;
+      }
+      else
+      {
+         continue;
+      }
+
+      if ( VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX = VAR__SUM;
+      }
+
+      VAR__SUM = 1;
+   }
+
+   return VAR__MAX;
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MAX = 1;
+   int VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &missle[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( missle[VAR__21230] <= missle[VAR__53647] )
+         {
+            VAR__SUM = Intercept(VAR__53647, VAR__21230) + 1;
+         }
+         else
+         {
+            continue;
+         }
+
+         if ( VAR__SUM > VAR__MAX )
+         {
+            VAR__MAX = VAR__SUM;
+         }
+
+         VAR__SUM = 0;
+      }
+   }
+
+   printf("%d\n", VAR__MAX);
+}

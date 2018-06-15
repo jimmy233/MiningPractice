@@ -1,0 +1,62 @@
+int MaxIndex(char *A_STRING)
+{
+   char maxChar    = 0;
+   int  VAR__53647 = 0;
+   int  VAR__21230 = 0;
+
+   while (( *A_STRING ) != 0 )
+   {
+      if ( maxChar < ( *A_STRING ))
+      {
+         maxChar    = *A_STRING;
+         VAR__53647 = VAR__21230;
+      }
+
+      VAR__21230++;
+      A_STRING++;
+   }
+
+   return VAR__53647;
+}
+
+
+void fun(char *A_STRING, char *substr)
+{
+   int VAR__MAX = MaxIndex(A_STRING);
+
+   A_STRING += VAR__MAX;
+   char *VAR__TEMP = A_STRING;
+
+   while (( *( VAR__TEMP++ )) != 0 )
+   {
+   }
+
+   *( VAR__TEMP + 3 ) = 0;
+
+   while (( --VAR__TEMP ) != A_STRING )
+   {
+      *( VAR__TEMP + 3 ) = *VAR__TEMP;
+   }
+
+   while (( *substr ) != 0 )
+   {
+      *( ++VAR__TEMP ) = *( substr++ );
+   }
+}
+
+
+int main()
+{
+   char A_STRING[16];
+   char substr[4];
+   int  VAR__53647;
+   int  lenth;
+   int  maxAsc  = 0;
+   char maxChar = 0;
+
+   while ( scanf("%s%s", A_STRING, substr) == 2 )
+   {
+      fun(A_STRING, substr);
+      printf("%s\n", A_STRING);
+   }
+}

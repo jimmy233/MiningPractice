@@ -1,0 +1,60 @@
+void Matrix(int VAR__819283[100][100], int srow, int scol, int erow, int ecol)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = scol; VAR__53647 <= ecol; VAR__53647++ )
+   {
+      printf("%d\n", VAR__819283[srow][VAR__53647]);
+   }
+
+   for ( VAR__53647 = srow + 1; VAR__53647 <= erow; VAR__53647++ )
+   {
+      printf("%d\n", VAR__819283[VAR__53647][ecol]);
+   }
+
+   if ( erow > srow )
+   {
+      for ( VAR__53647 = ecol - 1; VAR__53647 >= scol; VAR__53647-- )
+      {
+         printf("%d\n", VAR__819283[erow][VAR__53647]);
+      }
+   }
+
+
+   if ( ecol > scol )
+   {
+      for ( VAR__53647 = erow - 1; VAR__53647 >= ( srow + 1 ); VAR__53647-- )
+      {
+         printf("%d\n", VAR__819283[VAR__53647][scol]);
+      }
+   }
+
+
+   if ((( erow - srow ) >= 2 ) && (( ecol - scol ) >= 2 ))
+   {
+      Matrix(VAR__819283, srow + 1, scol + 1, erow - 1, ecol - 1);
+   }
+}
+
+
+int main()
+{
+   int VAR__819283[100][100];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR_1238123;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+
+   Matrix(VAR__819283, 0, 0, VAR__1238129 - 1, VAR_1238123 - 1);
+}

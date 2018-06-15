@@ -1,0 +1,58 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+   {
+      char VAR__819283[SIZE + 1] = { 0 };
+      char VAR__19328[SIZE + 1]  = { 0 };
+      char carry = 0;
+      char a_str[SIZE + 1];
+      char b_str[SIZE + 1];
+      char ab_minus[SIZE + 1] = { 0 };
+      int  big = 0;
+      scanf("%s", a_str);
+      scanf("%s", b_str);
+      for ( VAR__53647 = strlen(a_str), VAR__21230 = SIZE; VAR__53647 >= 0; VAR__53647--, VAR__21230-- )
+      {
+         VAR__819283[VAR__21230] = a_str[VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = strlen(b_str), VAR__21230 = SIZE; VAR__53647 >= 0; VAR__53647--, VAR__21230-- )
+      {
+         VAR__19328[VAR__21230] = b_str[VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = SIZE - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if (( VAR__819283[VAR__53647] - carry ) < VAR__19328[VAR__53647] )
+         {
+            VAR__819283[VAR__53647] += 10;
+            ab_minus[VAR__53647]     = ( VAR__819283[VAR__53647] - VAR__19328[VAR__53647] ) - carry;
+            carry = 1;
+         }
+         else
+         {
+            ab_minus[VAR__53647] = ( VAR__819283[VAR__53647] - VAR__19328[VAR__53647] ) - carry;
+            carry = 0;
+         }
+      }
+
+      for ( VAR__53647 = 0; ( VAR__53647 < ( SIZE - 1 )) && ( ab_minus[VAR__53647] == 0 ); VAR__53647++ )
+      {
+      }
+
+      for ( ; VAR__53647 < SIZE; VAR__53647++ )
+      {
+         printf("%c", ab_minus[VAR__53647] + '0');
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

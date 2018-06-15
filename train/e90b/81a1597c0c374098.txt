@@ -1,0 +1,43 @@
+struct Student
+{
+   int ID;
+   int chi;
+   int math;
+   int total;
+};
+int main()
+{
+   struct Student stu[100000];
+   struct Student VAR__TEMP;
+   int            VAR__53647;
+   int            VAR_1238123;
+   int            VAR__21230;
+   int            VAR__1238129;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &stu[VAR__53647].ID, &stu[VAR__53647].chi, &stu[VAR__53647].math);
+      stu[VAR__53647].total = stu[VAR__53647].chi + stu[VAR__53647].math;
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < 4; VAR__21230++ )
+   {
+      for ( VAR__1238129 = 0; VAR__1238129 < ( VAR_1238123 - VAR__21230 ); VAR__1238129++ )
+      {
+         if ( stu[VAR__1238129].total >= stu[VAR__1238129 + 1].total )
+         {
+            VAR__TEMP             = stu[VAR__1238129];
+            stu[VAR__1238129]     = stu[VAR__1238129 + 1];
+            stu[VAR__1238129 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > ( VAR_1238123 - 4 ); VAR__53647-- )
+   {
+      printf("%d %d\n", stu[VAR__53647].ID, stu[VAR__53647].total);
+   }
+
+   return 0;
+}

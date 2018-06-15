@@ -1,0 +1,79 @@
+void main()
+{
+   struct stu
+   {
+      long       VAR__NUM;
+      long       VAR__4857423;
+      long       VAR__1238129;
+      long       VAR__12302;
+      struct stu *VAR__NEXT;
+   };
+   long       VAR_1238123;
+   long       VAR__53647;
+   long       VAR__127322;
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   scanf("%ld", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(LEN);
+      scanf("%ld%ld%ld", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->VAR__4857423, &ANOTHER_POINTER->VAR__1238129);
+      ANOTHER_POINTER->VAR__12302 = ANOTHER_POINTER->VAR__4857423 + ANOTHER_POINTER->VAR__1238129;
+
+      if ( VAR__53647 == 1 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = 0;
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         if ( VAR__53647 <= 3 )
+         {
+            VAR__127322 = 1;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER = VAR__HEAD->VAR__NEXT->VAR__NEXT;
+
+            if ( ANOTHER_POINTER->VAR__12302 > YET_ANOTHER_POINTER->VAR__12302 )
+            {
+               VAR__127322 = 1;
+            }
+            else
+            {
+               VAR__127322 = 0;
+            }
+         }
+
+         if ( VAR__127322 == 1 )
+         {
+            YET_ANOTHER_POINTER = VAR__HEAD;
+
+            if ( YET_ANOTHER_POINTER->VAR__12302 < ANOTHER_POINTER->VAR__12302 )
+            {
+               ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+               VAR__HEAD = ANOTHER_POINTER;
+            }
+            else
+            {
+               while (( YET_ANOTHER_POINTER->VAR__NEXT != 0 ) && ( YET_ANOTHER_POINTER->VAR__NEXT->VAR__12302 > ANOTHER_POINTER->VAR__12302 ))
+               {
+                  YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+               }
+
+               ANOTHER_POINTER->VAR__NEXT     = YET_ANOTHER_POINTER->VAR__NEXT;
+               YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            }
+         }
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 <= 3; VAR__53647++ )
+   {
+      printf("%ld %ld\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR__12302);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

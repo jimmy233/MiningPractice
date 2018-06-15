@@ -1,0 +1,73 @@
+struct points
+{
+   char name[30];
+   int  score1;
+   int  score2;
+   char west;
+   char leader;
+   int  essay;
+   int  money;
+}
+points[100];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__MAX     = 0;
+   int VAR__1238129 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", points[VAR__53647].name, &points[VAR__53647].score1, &points[VAR__53647].score2, &points[VAR__53647].leader, &points[VAR__53647].west, &points[VAR__53647].essay);
+      points[VAR__53647].money = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( points[VAR__53647].score1 > 90 )
+      {
+         points[VAR__53647].money = points[VAR__53647].money + 2000;
+      }
+
+      if (( points[VAR__53647].score1 > 85 ) && ( points[VAR__53647].score2 > 80 ))
+      {
+         points[VAR__53647].money = points[VAR__53647].money + 4000;
+      }
+
+      if (( points[VAR__53647].score1 > 85 ) && ( points[VAR__53647].west == 'Y' ))
+      {
+         points[VAR__53647].money = points[VAR__53647].money + 1000;
+      }
+
+      if (( points[VAR__53647].score2 > 80 ) && ( points[VAR__53647].leader == 'Y' ))
+      {
+         points[VAR__53647].money = points[VAR__53647].money + 850;
+      }
+
+      if (( points[VAR__53647].score1 > 80 ) && ( points[VAR__53647].essay >= 1 ))
+      {
+         points[VAR__53647].money = points[VAR__53647].money + 8000;
+      }
+   }
+
+   char *VAR_233 = points[0].name;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( points[VAR__53647].money > VAR__MAX )
+      {
+         VAR__MAX = points[VAR__53647].money;
+         VAR_233  = points[VAR__53647].name;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__1238129 = VAR__1238129 + points[VAR__53647].money;
+   }
+
+   printf("%s\n", VAR_233);
+   printf("%d\n", VAR__MAX);
+   printf("%d\n", VAR__1238129);
+   return 0;
+}

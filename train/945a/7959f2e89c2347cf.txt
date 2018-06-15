@@ -1,0 +1,68 @@
+int EnStack(char *Stack, int Top, char Letter)
+{
+   Stack[++Top] = Letter;
+   return Top;
+}
+
+
+int PushAndPop(char *Stack, int Top)
+{
+   while ( Top >= 0 )
+   {
+      putchar(Stack[Top--]);
+   }
+
+   Stack[0] = '\0';
+   return Top;
+}
+
+
+int IsEmpty(char *Stack)
+{
+   return Stack[0] == '\0';
+}
+
+
+int main()
+{
+   int  Top       = -1;
+   char Stack[20] = { '\0' };
+   char Str[101]  = { '\0' };
+   int  VAR_FLAG  = 0;
+   int  VAR__53647;
+
+   gets(Str);
+   for ( VAR__53647 = strlen(Str) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( Str[VAR__53647] != ' ' )
+      {
+         Top = EnStack(Stack, Top, Str[VAR__53647]);
+      }
+      else
+      if ( !IsEmpty(Stack))
+      {
+         if ( VAR_FLAG )
+         {
+            printf(" ");
+         }
+         else
+         {
+            VAR_FLAG = 1;
+         }
+
+         Top = PushAndPop(Stack, Top);
+      }
+   }
+
+   if ( !IsEmpty(Stack))
+   {
+      if ( VAR_FLAG )
+      {
+         printf(" ");
+      }
+
+      PushAndPop(Stack, Top);
+   }
+
+   return 1;
+}

@@ -1,0 +1,81 @@
+struct pat
+{
+   char       VAR__NUM[10];
+   int        age;
+   struct pat *VAR__NEXT;
+};
+struct pat *creat(int VAR_1238123)
+{
+   struct pat *ANOTHER_POINTER;
+   struct pat *YET_ANOTHER_POINTER;
+   struct pat *VAR__HEAD;
+   int        VAR__53647;
+
+   YET_ANOTHER_POINTER = ( VAR__HEAD = ( ANOTHER_POINTER = (struct pat *)malloc(sizeof( struct pat ))));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER = (struct pat *)malloc(sizeof( struct pat ));
+   }
+
+   YET_ANOTHER_POINTER = NULL;
+   return VAR__HEAD;
+}
+
+
+void array(struct pat *VAR__HEAD, int VAR_1238123)
+{
+   int        VAR__53647;
+   int        VAR__21230;
+   int        ta;
+   char       A_STRING[10];
+   struct pat *ANOTHER_POINTER;
+   struct pat *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+
+         if (( ANOTHER_POINTER->age > YET_ANOTHER_POINTER->age ) && ( ANOTHER_POINTER->age >= 60 ))
+         {
+            strcpy(A_STRING, YET_ANOTHER_POINTER->VAR__NUM);
+            strcpy(YET_ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR__NUM);
+            strcpy(ANOTHER_POINTER->VAR__NUM, A_STRING);
+            ta = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age     = YET_ANOTHER_POINTER->age;
+            YET_ANOTHER_POINTER->age = ta;
+         }
+      }
+
+      ANOTHER_POINTER = VAR__HEAD;
+   }
+}
+
+
+void main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct pat *VAR_233;
+   VAR_233 = creat(VAR_1238123);
+   array(VAR_233, VAR_1238123);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

@@ -1,0 +1,71 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__4857423[10][3];
+   int VAR__TEMP  = 0;
+   int VAR__COUNT = 0;
+
+   cin >> VAR_1238123;
+   struct
+   {
+      int    VAR__819283[3];
+      int    VAR__19328[3];
+      int    flag1;
+      int    flag2;
+      double distance;
+   }
+   dian[46] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         cin >> VAR__4857423[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__TEMP = 0;
+         for ( VAR__8444594 = 0; VAR__8444594 < 3; VAR__8444594++ )
+         {
+            dian[VAR__COUNT].VAR__819283[VAR__8444594] = VAR__4857423[VAR__53647][VAR__8444594];
+            dian[VAR__COUNT].VAR__19328[VAR__8444594]  = VAR__4857423[VAR__21230][VAR__8444594];
+            dian[VAR__COUNT].flag1 = VAR__53647;
+            dian[VAR__COUNT].flag2 = VAR__21230;
+            VAR__TEMP = VAR__TEMP + (( VAR__4857423[VAR__53647][VAR__8444594] - VAR__4857423[VAR__21230][VAR__8444594] ) * ( VAR__4857423[VAR__53647][VAR__8444594] - VAR__4857423[VAR__21230][VAR__8444594] ));
+         }
+
+         dian[VAR__COUNT].distance = sqrt(VAR__TEMP);
+         VAR__COUNT++;
+      }
+   }
+
+
+   for ( VAR__53647 = VAR__COUNT - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = VAR__COUNT - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ((( dian[VAR__53647].distance > dian[VAR__21230].distance ) && ( VAR__53647 > VAR__21230 )) || (( dian[VAR__53647].distance == dian[VAR__21230].distance ) && ((( dian[VAR__53647].flag1 < dian[VAR__21230].flag1 ) && ( VAR__53647 > VAR__21230 )) || ((( dian[VAR__53647].flag1 == dian[VAR__21230].flag1 ) && ( dian[VAR__53647].flag2 < dian[VAR__21230].flag2 )) && ( VAR__53647 > VAR__21230 )))))
+         {
+            dian[45]         = dian[VAR__53647];
+            dian[VAR__53647] = dian[VAR__21230];
+            dian[VAR__21230] = dian[45];
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      ((((((((((((((((((( cout << "(" ) << dian[VAR__53647].VAR__819283[0] ) << "," ) << dian[VAR__53647].VAR__819283[1] ) << "," ) << dian[VAR__53647].VAR__819283[2] ) << ")" ) << "-" ) << "(" ) << dian[VAR__53647].VAR__19328[0] ) << "," ) << dian[VAR__53647].VAR__19328[1] ) << "," ) << dian[VAR__53647].VAR__19328[2] ) << ")" ) << "=" ) << fixed ) << setprecision(2)) << dian[VAR__53647].distance ) << endl;
+   }
+
+   return 0;
+}

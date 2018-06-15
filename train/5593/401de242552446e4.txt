@@ -1,0 +1,121 @@
+int huiwen(int VAR__NUM)
+{
+   int VAR__53647;
+   int *shuwei;
+   int number;
+   int gao       = 0;
+   int VAR__temp = 1;
+   int VAR__819283;
+   int VAR__9290;
+
+   number = VAR__NUM;
+   for ( ; ; )
+   {
+      if (( VAR__NUM / 10 ) != 0 )
+      {
+         gao++;
+         VAR__NUM = VAR__NUM / 10;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+
+   shuwei = (int *)calloc(gao + 1, 4);
+   for ( VAR__53647 = gao + 1; VAR__53647 >= 1; VAR__53647-- )
+   {
+      shuwei[VAR__53647 - 1] = number / pow(10, VAR__53647 - 1);
+      VAR__819283            = number / pow(10, VAR__53647 - 1);
+      number = number - ( VAR__819283 * pow(10, VAR__53647 - 1));
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( gao + 1 ); VAR__53647++ )
+   {
+      if ( shuwei[VAR__53647 - 1] != shuwei[( gao + 1 ) - VAR__53647] )
+      {
+         VAR__temp = 0;
+         break;
+      }
+   }
+
+
+   if ( VAR__temp == 1 )
+   {
+      VAR__9290 = 1;
+   }
+   else
+   {
+      VAR__9290 = 0;
+   }
+
+   free(shuwei);
+   return VAR__9290;
+}
+
+
+int main()
+{
+   int VAR__NUM;
+   int VAR__53647 = 1;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__819283[1000] = { 0 };
+   int VAR__temp[1000]   = { 0 };
+   int VAR_21983012      = 0;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__NUM = VAR__1238129; VAR__NUM <= VAR_1238123; VAR__NUM++ )
+   {
+      if ( huiwen(VAR__NUM) == 1 )
+      {
+         VAR__819283[VAR__53647 - 1] = VAR__NUM;
+         VAR__53647++;
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= 1000; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647 - 1] != 0 )
+      {
+         for ( VAR__21230 = 2; VAR__21230 < VAR__819283[VAR__53647 - 1]; VAR__21230++ )
+         {
+            if (( VAR__819283[VAR__53647 - 1] % VAR__21230 ) == 0 )
+            {
+               VAR__temp[VAR__53647 - 1] = 1;
+               break;
+            }
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= 1000; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647 - 1] != 0 ) && ( VAR__temp[VAR__53647 - 1] == 0 ))
+      {
+         printf("%d", VAR__819283[VAR__53647 - 1]);
+         VAR_21983012 = 1;
+         break;
+      }
+   }
+
+
+   for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= 1000; VAR__21230++ )
+   {
+      if (( VAR__819283[VAR__21230 - 1] != 0 ) && ( VAR__temp[VAR__21230 - 1] == 0 ))
+      {
+         printf(",%d", VAR__819283[VAR__21230 - 1]);
+      }
+   }
+
+
+   if ( VAR_21983012 == 0 )
+   {
+      printf("no");
+   }
+}

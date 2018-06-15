@@ -1,0 +1,106 @@
+void main()
+{
+   int VAR__819283[MAX];
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__TEMP;
+   int VAR_FLAG;
+   int istart;
+   int iend;
+   int length;
+
+   scanf("%d%d", &VAR_1238123, &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+   }
+
+   VAR__TEMP = VAR_1238123 - VAR__1238129;
+
+   if (( VAR_1238123 - VAR__1238129 ) > VAR__1238129 )
+   {
+      VAR_FLAG = 0;
+      length   = VAR__1238129;
+      istart   = 0;
+      iend     = VAR_1238123 - 1;
+   }
+   else
+   {
+      VAR_FLAG = 1;
+      length   = VAR_1238123 - VAR__1238129;
+      istart   = 0;
+      iend     = VAR_1238123 - 1;
+   }
+
+   while ( length > 1 )
+   {
+      if ( VAR_FLAG == 0 )
+      {
+         VAR__53647 = (( iend - length ) - length ) + 1;
+         for ( ; VAR__53647 < (( iend - length ) + 1 ); VAR__53647++ )
+         {
+            VAR__TEMP = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647]          = VAR__819283[VAR__53647 + length];
+            VAR__819283[VAR__53647 + length] = VAR__TEMP;
+         }
+
+         iend = iend - length;
+
+         if ((( iend - length ) + 1 ) <= (( istart + length ) - 1 ))
+         {
+            VAR_FLAG = 1;
+            length   = (( iend - length ) + 1 ) - istart;
+         }
+      }
+      else
+      {
+         VAR__53647 = istart;
+         for ( ; VAR__53647 < ( istart + length ); VAR__53647++ )
+         {
+            VAR__TEMP = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647]          = VAR__819283[VAR__53647 + length];
+            VAR__819283[VAR__53647 + length] = VAR__TEMP;
+         }
+
+         istart = istart + length;
+
+         if ((( iend - length ) + 1 ) <= (( istart + length ) - 1 ))
+         {
+            VAR_FLAG = 0;
+            length   = (( iend - length ) + 1 ) - istart;
+         }
+      }
+   }
+
+   if ( length == 1 )
+   {
+      if ( VAR_FLAG == 0 )
+      {
+         VAR__TEMP = VAR__819283[iend];
+         for ( VAR__53647 = iend; VAR__53647 > istart; VAR__53647-- )
+         {
+            VAR__819283[VAR__53647] = VAR__819283[VAR__53647 - 1];
+         }
+
+         VAR__819283[istart] = VAR__TEMP;
+      }
+      else
+      {
+         VAR__TEMP = VAR__819283[istart];
+         for ( VAR__53647 = istart; VAR__53647 < iend; VAR__53647++ )
+         {
+            VAR__819283[VAR__53647] = VAR__819283[VAR__53647 + 1];
+         }
+
+         VAR__819283[iend] = VAR__TEMP;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      printf("%d ", VAR__819283[VAR__53647]);
+   }
+
+   printf("%d", VAR__819283[VAR__53647]);
+}

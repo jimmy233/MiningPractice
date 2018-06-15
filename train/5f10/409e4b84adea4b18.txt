@@ -1,0 +1,66 @@
+void ngram(char A_STRING[], int VAR_1238123)
+{
+   char ng[2000][5] = { '\0' };
+   int  VAR__53647;
+   int  Len = strlen(A_STRING);
+
+   for ( VAR__53647 = 0; VAR__53647 < (( Len - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      strncpy(ng[VAR__53647], A_STRING + VAR__53647, VAR_1238123);
+   }
+
+   int VAR__21230;
+   int VAR__MAX = 1;
+   int VAR__COUNT;
+   for ( VAR__53647 = 0; VAR__53647 < (( Len - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      VAR__COUNT = 1;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < (( Len - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         if ( strcmp(ng[VAR__53647], ng[VAR__21230]) == 0 )
+         {
+            VAR__COUNT++;
+         }
+      }
+
+      if ( VAR__COUNT >= VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT;
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < (( Len - VAR_1238123 ) + 1 ); VAR__53647++ )
+      {
+         VAR__COUNT = 1;
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < (( Len - VAR_1238123 ) + 1 ); VAR__21230++ )
+         {
+            if ( strcmp(ng[VAR__53647], ng[VAR__21230]) == 0 )
+            {
+               VAR__COUNT++;
+            }
+         }
+
+         if ( VAR__COUNT == VAR__MAX )
+         {
+            printf("%s\n", ng[VAR__53647]);
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int  VAR_1238123;
+   char A_STRING[500];
+
+   scanf("%d%s", &VAR_1238123, A_STRING);
+   ngram(A_STRING, VAR_1238123);
+}

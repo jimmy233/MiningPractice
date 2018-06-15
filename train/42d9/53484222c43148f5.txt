@@ -1,0 +1,57 @@
+int main()
+{
+   double VAR__819283[11];
+   double VAR__19328[11];
+   double VAR__4857423[11];
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    VAR_233;
+   int    VAR_666;
+   double VAR__MAX;
+   double dis[10][11];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> VAR__819283[VAR__53647] ) >> VAR__19328[VAR__53647] ) >> VAR__4857423[VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__53647][VAR__21230] = (double)pow((((double)pow(VAR__819283[VAR__53647] - VAR__819283[VAR__21230], 2)) + ((double)pow(VAR__19328[VAR__53647] - VAR__19328[VAR__21230], 2))) + ((double)pow(VAR__4857423[VAR__53647] - VAR__4857423[VAR__21230], 2)), 0.5);
+
+         if ( dis[VAR__53647][VAR__21230] < 0 )
+         {
+            dis[VAR__53647][VAR__21230] = -dis[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__8444594++ )
+   {
+      VAR__MAX = dis[1][2];
+      VAR_233  = 1;
+      VAR_666  = 2;
+      for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( dis[VAR__53647][VAR__21230] > VAR__MAX )
+            {
+               VAR__MAX = dis[VAR__53647][VAR__21230];
+               VAR_233  = VAR__53647;
+               VAR_666  = VAR__21230;
+            }
+         }
+      }
+
+      ((((((((((((((((((( cout << '(' ) << ((int)VAR__819283[VAR_233] )) << ',' ) << ((int)VAR__19328[VAR_233] )) << ',' ) << ((int)VAR__4857423[VAR_233] )) << ')' ) << '-' ) << '(' ) << ((int)VAR__819283[VAR_666] )) << ',' ) << ((int)VAR__19328[VAR_666] )) << ',' ) << ((int)VAR__4857423[VAR_666] )) << ')' ) << '=' ) << fixed ) << setprecision(2)) << dis[VAR_233][VAR_666] ) << endl;
+      dis[VAR_233][VAR_666] = 0;
+   }
+
+   return 0;
+}

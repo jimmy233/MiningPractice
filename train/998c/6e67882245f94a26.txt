@@ -1,0 +1,61 @@
+int VAR__127322(int *an1, int *an2);
+
+int  an1[211];
+int  an2[211];
+int  nHighestPos = 0;
+char num1[211];
+char num2[211];
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int len1;
+   int len2;
+
+   memset(an1, sizeof( an1 ), 0);
+   memset(an2, sizeof( an2 ), 0);
+   ( cin >> num1 ) >> num2;
+   len1 = strlen(num1);
+   len2 = strlen(num2);
+   for ( VAR__21230 = 0, VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an1[VAR__21230++] = num1[VAR__53647] - '0';
+   }
+
+   for ( VAR__21230 = 0, VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an2[VAR__21230++] = num2[VAR__53647] - '0';
+   }
+
+   nHighestPos = VAR__127322(an1, an2);
+   for ( VAR__53647 = nHighestPos; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << an1[VAR__53647];
+   }
+
+   return 0;
+}
+
+
+int VAR__127322(int *an1, int *an2)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < 201; VAR__53647++ )
+   {
+      an1[VAR__53647] = an1[VAR__53647] + an2[VAR__53647];
+
+      if ( an1[VAR__53647] >= 10 )
+      {
+         an1[VAR__53647] = an1[VAR__53647] - 10;
+         an1[VAR__53647 + 1]++;
+      }
+
+      if ( an1[VAR__53647] )
+      {
+         nHighestPos = VAR__53647;
+      }
+   }
+
+   return nHighestPos;
+}

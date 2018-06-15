@@ -1,0 +1,106 @@
+int VAR__819283[MAXSIZE][MAXSIZE];
+int VAR_1238123;
+void sub_to_zero()
+{
+   int VAR__1238129;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__1238129 = VAR__819283[VAR__53647][0];
+      for ( int VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] < VAR__1238129 )
+         {
+            VAR__1238129 = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+      if ( VAR__1238129 > 0 )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__819283[VAR__53647][VAR__21230] -= VAR__1238129;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__1238129 = VAR__819283[0][VAR__53647];
+      for ( int VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230][VAR__53647] < VAR__1238129 )
+         {
+            VAR__1238129 = VAR__819283[VAR__21230][VAR__53647];
+         }
+      }
+
+      if ( VAR__1238129 > 0 )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__819283[VAR__21230][VAR__53647] -= VAR__1238129;
+         }
+      }
+   }
+}
+
+
+void delimination()
+{
+   for ( int VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__819283[0][VAR__53647] = VAR__819283[0][VAR__53647 + 1];
+      VAR__819283[VAR__53647][0] = VAR__819283[VAR__53647 + 1][0];
+   }
+
+   for ( int VAR__53647 = 2; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 2; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647 - 1][VAR__21230 - 1] = VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   --VAR_1238123;
+}
+
+
+int calcMatrix()
+{
+   int VAR__SUM = 0;
+
+   while ( VAR_1238123 > 1 )
+   {
+      sub_to_zero();
+      VAR__SUM += VAR__819283[1][1];
+      delimination();
+   }
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int nMatrix;
+
+   cin >> nMatrix;
+   for ( int VAR__53647 = 0; VAR__53647 < nMatrix; VAR__53647++ )
+   {
+      VAR_1238123 = nMatrix;
+      for ( int VAR__21230 = 0; VAR__21230 < nMatrix; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 0; VAR__8444594 < nMatrix; VAR__8444594++ )
+         {
+            cin >> VAR__819283[VAR__21230][VAR__8444594];
+         }
+      }
+
+
+      ( cout << calcMatrix()) << endl;
+   }
+
+   return 0;
+}

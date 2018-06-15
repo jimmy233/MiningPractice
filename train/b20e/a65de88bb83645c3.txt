@@ -1,0 +1,88 @@
+const long maxn = 1000;
+long       VAR_1238123;
+long       VAR__819283[maxn + 10];
+long       VAR__19328[maxn + 10];
+long       mark[maxn + 10];
+void Sort(long VAR__819283[])
+{
+   long VAR__53647;
+   long VAR__21230;
+   long VAR__8444594;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__53647] )
+         {
+            VAR__8444594            = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230] = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647] = VAR__8444594;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   long VAR__53647;
+   long ans;
+   long s1;
+   long t1;
+   long s2;
+   long t2;
+
+   for ( scanf("%ld", &VAR_1238123); VAR_1238123 > 0; scanf("%ld", &VAR_1238123))
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%ld", VAR__819283 + VAR__53647);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%ld", VAR__19328 + VAR__53647);
+      }
+
+      Sort(VAR__819283);
+      Sort(VAR__19328);
+      s1  = 1;
+      t1  = VAR_1238123;
+      s2  = 1;
+      t2  = VAR_1238123;
+      ans = 0;
+
+      while ( t1 >= s1 )
+      {
+         while (( VAR__819283[s1] > VAR__19328[s2] ) && ( s1 <= t1 ))
+         {
+            ans += 200;
+            s1++;
+            s2++;
+         }
+
+         while (( VAR__819283[t1] > VAR__19328[t2] ) && ( s1 <= t1 ))
+         {
+            ans += 200;
+            t1--;
+            t2--;
+         }
+
+         if ( t1 >= s1 )
+         {
+            if ( VAR__819283[s1] < VAR__19328[t2] )
+            {
+               ans -= 200;
+            }
+
+            s1++;
+            t2--;
+         }
+      }
+
+      printf("%ld\n", ans);
+   }
+
+   return 0;
+}

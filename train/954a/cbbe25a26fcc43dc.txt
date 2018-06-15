@@ -1,0 +1,82 @@
+struct student
+{
+   int  VAR__NUM;
+   char name[20];
+   int  qimo;
+   int  pingyi;
+   char ganbu;
+   char west;
+   int  paper;
+};
+struct jiangxuejin
+{
+   int VAR__NUM;
+   int total;
+};
+int main()
+{
+   int                VAR_1238123;
+   int                VAR__53647;
+   int                all = 0;
+   struct student     list[100];
+   struct student     most;
+   struct jiangxuejin everyone[100];
+   struct jiangxuejin check;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      list[VAR__53647].VAR__NUM = VAR__53647;
+      scanf("%s %d %d %c %c %d", list[VAR__53647].name, &list[VAR__53647].qimo, &list[VAR__53647].pingyi, &list[VAR__53647].ganbu, &list[VAR__53647].west, &list[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      everyone[VAR__53647].VAR__NUM = VAR__53647;
+      everyone[VAR__53647].total    = 0;
+
+      if (( list[VAR__53647].qimo > 80 ) && ( list[VAR__53647].paper >= 1 ))
+      {
+         everyone[VAR__53647].total += 8000;
+      }
+
+      if (( list[VAR__53647].qimo > 85 ) && ( list[VAR__53647].pingyi > 80 ))
+      {
+         everyone[VAR__53647].total += 4000;
+      }
+
+      if ( list[VAR__53647].qimo > 90 )
+      {
+         everyone[VAR__53647].total += 2000;
+      }
+
+      if (( list[VAR__53647].qimo > 85 ) && ( list[VAR__53647].west == 'Y' ))
+      {
+         everyone[VAR__53647].total += 1000;
+      }
+
+      if (( list[VAR__53647].pingyi > 80 ) && ( list[VAR__53647].ganbu == 'Y' ))
+      {
+         everyone[VAR__53647].total += 850;
+      }
+   }
+
+   most  = list[0];
+   check = everyone[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( everyone[VAR__53647].total > check.total )
+      {
+         most  = list[VAR__53647];
+         check = everyone[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      all += everyone[VAR__53647].total;
+   }
+
+   printf("%s\n%d\n%d", most.name, check.total, all);
+   return 0;
+}

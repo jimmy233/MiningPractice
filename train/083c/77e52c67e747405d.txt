@@ -1,0 +1,83 @@
+int change2Dec(char *number, int len_number, int originBase)
+{
+   int result = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 < len_number; VAR__53647++ )
+   {
+      int numberBit = 0;
+
+      if (( number[VAR__53647] >= '0' ) && ( number[VAR__53647] <= '9' ))
+      {
+         numberBit = number[VAR__53647] - '0';
+      }
+      else
+      if (( number[VAR__53647] >= 'a' ) && ( number[VAR__53647] <= 'z' ))
+      {
+         numberBit = ( number[VAR__53647] - 'a' ) + 10;
+      }
+      else
+      {
+         numberBit = ( number[VAR__53647] - 'A' ) + 10;
+      }
+
+
+      int position        = len_number - VAR__53647;
+      int currentBitValue = numberBit;
+      for ( int VAR__21230 = 1; VAR__21230 < position; VAR__21230++ )
+      {
+         currentBitValue *= originBase;
+      }
+
+      result += currentBitValue;
+   }
+
+   return result;
+}
+
+
+int changeDec2NewBase(int decNumber, int newBase, char *newNumber)
+{
+   int bitValue[100];
+   int length = 0;
+
+   while (( decNumber / newBase ) > 0 )
+   {
+      bitValue[length++] = decNumber % newBase;
+      decNumber         /= newBase;
+   }
+
+   bitValue[length++] = decNumber;
+   for ( int VAR__53647 = length - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      int currentBit = bitValue[VAR__53647];
+
+      if ( currentBit < 10 )
+      {
+         newNumber[VAR__21230] = currentBit + '0';
+      }
+      else
+      {
+         newNumber[VAR__21230] = ( currentBit + 'A' ) - 10;
+      }
+   }
+
+   return length;
+}
+
+
+int main()
+{
+   int  originBase;
+   int  newBase;
+   char number[100];
+   char newNumber[100];
+
+   (( cin >> originBase ) >> number ) >> newBase;
+   int len_number = strlen(number);
+   int len_newNumber;
+   int decNumber = change2Dec(number, len_number, originBase);
+   len_newNumber            = changeDec2NewBase(decNumber, newBase, newNumber);
+   newNumber[len_newNumber] = NULL;
+   ( cout << newNumber ) << endl;
+   return 0;
+}

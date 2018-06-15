@@ -1,0 +1,69 @@
+int main()
+{
+   int answer = 0;
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+
+   (( cin >> startYear ) >> startMonth ) >> startDay;
+   (( cin >> endYear ) >> endMonth ) >> endDay;
+   int VAR__12302[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int gap;
+   gap = endYear - startYear;
+   int judge1;
+   int judge2;
+   int mid;
+   judge1 = (( endYear % 400 ) == 0 ) || ((( endYear % 4 ) == 0 ) && (( endYear % 100 ) != 0 ));
+   judge2 = (( startYear % 400 ) == 0 ) || ((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 ));
+
+   if ((( startYear == endYear ) && ( startMonth == endMonth )) && ( startDay == endDay ))
+   {
+      cout << "0";
+      return 0;
+   }
+
+   if ( startMonth > endMonth )
+   {
+      mid = 0;
+      for ( int VAR__53647 = endMonth - 1; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+      {
+         mid += VAR__12302[VAR__53647];
+      }
+
+      mid    += startDay - endDay;
+      answer -= mid;
+   }
+   else
+   {
+      mid = 0;
+      for ( int VAR__53647 = startMonth - 1; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+      {
+         mid += VAR__12302[VAR__53647];
+      }
+
+      mid    += endDay - startDay;
+      answer += mid;
+   }
+
+   answer += 365 * gap;
+   for ( int VAR__8444594 = startYear + 1; VAR__8444594 < endYear; VAR__8444594++ )
+   {
+      answer += (( VAR__8444594 % 400 ) == 0 ) || ((( VAR__8444594 % 4 ) == 0 ) && (( VAR__8444594 % 100 ) != 0 ));
+   }
+
+   if ((( startMonth < 2 ) && ( judge2 == 1 )) || ((( startMonth == 2 ) && ( startDay != 29 )) && ( judge2 == 1 )))
+   {
+      answer++;
+   }
+
+   if (( endMonth > 2 ) && ( judge1 == 1 ))
+   {
+      answer++;
+   }
+
+   cout << answer;
+   return 0;
+}

@@ -1,0 +1,58 @@
+typedef struct Stu
+{
+   char           stu_id[20];
+   char           name[20];
+   char           gender;
+   int            age;
+   char           score[20];
+   char           address[50];
+   struct Student *VAR__NEXT;
+   struct Student *prev;
+} Student;
+int main()
+{
+   char    start[50];
+   Student *VAR__HEAD = NULL;
+   Student *tail      = NULL;
+
+   while ( scanf("%s", start))
+   {
+      if ( strcmp(start, "end") != 0 )
+      {
+         Student *stu = (Student *)malloc(sizeof( Student ));
+         strcpy(stu->stu_id, start);
+
+         if ( scanf(" %s %c %d %s %s", stu->name, &stu->gender, &stu->age, stu->score, stu->address))
+         {
+            stu->VAR__NEXT = NULL;
+            stu->prev      = NULL;
+
+            if ( VAR__HEAD == NULL )
+            {
+               VAR__HEAD = stu;
+               tail      = stu;
+            }
+            else
+            {
+               tail->VAR__NEXT = stu;
+               stu->prev       = tail;
+               tail            = tail->VAR__NEXT;
+            }
+         }
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   while ( tail != NULL )
+   {
+      printf("%s %s %c %d %s %s\n", tail->stu_id, tail->name, tail->gender, tail->age, tail->score, tail->address);
+      VAR__HEAD = tail;
+      tail      = tail->prev;
+      free(VAR__HEAD);
+   }
+
+   return 0;
+}

@@ -1,0 +1,40 @@
+struct student
+{
+   char           what[100];
+   struct student *last;
+};
+void print(struct student *VAR_233)
+{
+   printf("%s\n", VAR_233->what);
+
+   if ( VAR_233->last != NULL )
+   {
+      print(VAR_233->last);
+   }
+}
+
+
+int main()
+{
+   struct student stu;
+   struct student *VAR__HEAD;
+   struct student *tail;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   tail       = (struct student *)malloc(LEN);
+   tail->last = NULL;
+   gets(tail->what);
+   ANOTHER_POINTER = tail;
+
+   while ( strcmp(ANOTHER_POINTER->what, "end") != 0 )
+   {
+      YET_ANOTHER_POINTER       = (struct student *)malloc(LEN);
+      YET_ANOTHER_POINTER->last = ANOTHER_POINTER;
+      gets(YET_ANOTHER_POINTER->what);
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+   }
+
+   VAR__HEAD = ANOTHER_POINTER->last;
+   print(VAR__HEAD);
+}

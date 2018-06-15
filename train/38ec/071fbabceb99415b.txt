@@ -1,0 +1,50 @@
+int main()
+{
+   int syear;
+   int smonth;
+   int sday;
+   int eyear;
+   int emonth;
+   int eday;
+   int leap[3001] = { 0 };
+   int VAR__53647;
+   int days             = 0;
+   int VAR__1238129[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> syear ) >> smonth ) >> sday;
+   (( cin >> eyear ) >> emonth ) >> eday;
+   for ( VAR__53647 = 1; VAR__53647 <= 3000; VAR__53647++ )
+   {
+      leap[VAR__53647] = ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 );
+   }
+
+   days = days + (( eyear - syear ) * 365 );
+   for ( VAR__53647 = syear; VAR__53647 <= eyear; VAR__53647++ )
+   {
+      days = days + leap[VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( emonth - 1 ); VAR__53647++ )
+   {
+      days = days + VAR__1238129[VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( smonth - 1 ); VAR__53647++ )
+   {
+      days = days - VAR__1238129[VAR__53647];
+   }
+
+   if (( leap[syear] == 1 ) && ( smonth > 2 ))
+   {
+      days = days - 1;
+   }
+
+   if (( leap[eyear] == 1 ) && ( emonth <= 2 ))
+   {
+      days = days - 1;
+   }
+
+   days = ( days + eday ) - sday;
+   ( cout << days ) << endl;
+   return 0;
+}

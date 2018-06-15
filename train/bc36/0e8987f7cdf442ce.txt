@@ -1,0 +1,46 @@
+int main()
+{
+   int    VAR__53647;
+   int    VAR__8444594;
+   int    VAR_1238123;
+   double VAR_SIZE[99];
+   double VAR__112390;
+   char   tmp[9];
+   char   sex[99][99];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%lf", sex[VAR__53647], &VAR_SIZE[VAR__53647]);
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ((((( sex[VAR__53647][0] == 'm' ) && ( sex[VAR__53647 + 1][0] == 'm' )) && ( VAR_SIZE[VAR__53647] > VAR_SIZE[VAR__53647 + 1] )) || (( sex[VAR__53647][0] == 'f' ) && ( sex[VAR__53647 + 1][0] == 'm' ))) || ((( sex[VAR__53647][0] == 'f' ) && ( sex[VAR__53647 + 1][0] == 'f' )) && ( VAR_SIZE[VAR__53647] < VAR_SIZE[VAR__53647 + 1] )))
+         {
+            strcpy(tmp, sex[VAR__53647]);
+            strcpy(sex[VAR__53647], sex[VAR__53647 + 1]);
+            strcpy(sex[VAR__53647 + 1], tmp);
+            VAR__112390              = VAR_SIZE[VAR__53647];
+            VAR_SIZE[VAR__53647]     = VAR_SIZE[VAR__53647 + 1];
+            VAR_SIZE[VAR__53647 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         printf("%.2lf", VAR_SIZE[VAR__53647]);
+      }
+      else
+      {
+         printf(" %.2lf", VAR_SIZE[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

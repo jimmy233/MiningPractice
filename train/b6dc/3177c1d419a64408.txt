@@ -1,0 +1,58 @@
+int main(void)
+{
+   char A_STRING[MAX];
+   char dig[MAX];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__temp = 0;
+   int  ok        = 0;
+   int  VAR__21230;
+   int  VAR__8444594 = 0;
+   int  VAR__819283[MAX];
+
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   memset(dig, 0, sizeof( dig ));
+   gets(A_STRING);
+   VAR_1238123 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( isdigit(A_STRING[VAR__53647]) && ok )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( VAR__temp - 1 ); VAR__21230++ )
+         {
+            VAR__819283[VAR__8444594] += ((int)dig[VAR__21230] ) - '0';
+            VAR__819283[VAR__8444594] *= 10;
+         }
+
+         VAR__819283[VAR__8444594] += dig[VAR__temp - 1] - '0';
+         VAR__8444594++;
+         VAR__temp = 0;
+      }
+
+      if ( isdigit(A_STRING[VAR__53647]))
+      {
+         dig[VAR__temp++] = A_STRING[VAR__53647];
+         ok = 0;
+      }
+
+      if (( !ok ) && ( !isdigit(A_STRING[VAR__53647])))
+      {
+         ok = 1;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR__temp - 1 ); VAR__21230++ )
+   {
+      VAR__819283[VAR__8444594] += dig[VAR__21230] - '0';
+      VAR__819283[VAR__8444594] *= 10;
+   }
+
+   VAR__819283[VAR__8444594] += dig[VAR__temp - 1] - '0';
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] >= 0 )
+      {
+         printf("%d\n", VAR__819283[VAR__53647]);
+      }
+   }
+}

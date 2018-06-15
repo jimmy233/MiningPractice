@@ -1,0 +1,71 @@
+int VAR__127322(int VAR__temp)
+{
+   double v = sqrt(VAR__temp) + 1;
+
+   for ( int VAR__53647 = 2; VAR__53647 < v; VAR__53647++ )
+   {
+      if (( VAR__temp % VAR__53647 ) == 0 )
+      {
+         return 0;
+      }
+   }
+
+
+   return 1;
+}
+
+
+int VAR__SUM = 0;
+void fun(int VAR_1238123, int VAR__53647)
+{
+   if ( VAR_1238123 == 1 )
+   {
+      VAR__SUM++;
+   }
+
+   while ( VAR__53647 <= VAR_1238123 )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         fun(VAR_1238123 / VAR__53647, VAR__53647);
+      }
+
+      VAR__53647++;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int VAR__819283;
+      scanf("%d", &VAR__819283);
+
+      if ( VAR__127322(VAR__819283) > 0 )
+      {
+         printf("1\n");
+         continue;
+      }
+
+      int VAR__53647 = 2;
+      int K          = 1;
+
+      while ( VAR__53647 <= ( VAR__819283 / 2 ))
+      {
+         if (( VAR__819283 % VAR__53647 ) == 0 )
+         {
+            VAR__SUM = 0;
+            fun(VAR__819283 / VAR__53647, VAR__53647);
+            K += VAR__SUM;
+         }
+
+         VAR__53647++;
+      }
+
+      printf("%d\n", K);
+   }
+}

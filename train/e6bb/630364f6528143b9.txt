@@ -1,0 +1,102 @@
+int VAR__1238129;
+int VAR_1238123;
+int VAR_9494[9][9];
+struct NUM
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__TEMP;
+}
+ex[81];
+void zhou(int, int, int);
+
+int main()
+{
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         VAR_9494[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+
+   VAR_9494[4][4] = VAR__1238129;
+   int VAR_233 = 0;
+   for ( int VAR__temp = 1; VAR__temp <= VAR_1238123; VAR__temp++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            if ( VAR_9494[VAR__53647][VAR__21230] != 0 )
+            {
+               int VAR__TEMP = VAR_9494[VAR__53647][VAR__21230] * 8;
+               VAR_9494[VAR__53647][VAR__21230] = 2 * VAR_9494[VAR__53647][VAR__21230];
+               ex[VAR_233].VAR__7685            = VAR__53647;
+               ex[VAR_233].VAR__3918907         = VAR__21230;
+               ex[VAR_233].VAR__TEMP            = VAR__TEMP;
+               VAR_233++;
+            }
+         }
+      }
+
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+      {
+         zhou(ex[VAR__53647].VAR__7685, ex[VAR__53647].VAR__3918907, ex[VAR__53647].VAR__TEMP);
+      }
+
+      VAR_233 = 0;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( VAR__21230 == 0 )
+         {
+            cout << VAR_9494[VAR__53647][VAR__21230];
+         }
+         else
+         {
+            ( cout << " " ) << VAR_9494[VAR__53647][VAR__21230];
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}
+
+
+void zhou(int VAR__7685, int VAR__3918907, int VAR__NUM)
+{
+   int xd[8]    = { 0, 0, 1, -1, -1, 1, 1, -1 };
+   int yd[8]    = { 1, -1, 0, 0, -1, 1, -1, 1 };
+   int VAR__SUM = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 < 8; VAR__53647++ )
+   {
+      int nx = VAR__7685 + xd[VAR__53647];
+      int ny = VAR__3918907 + yd[VAR__53647];
+
+      if (((( nx >= 0 ) && ( nx < 9 )) && ( ny >= 0 )) && ( ny < 9 ))
+      {
+         VAR__SUM++;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < 8; VAR__53647++ )
+   {
+      int nx = VAR__7685 + xd[VAR__53647];
+      int ny = VAR__3918907 + yd[VAR__53647];
+
+      if (((( nx >= 0 ) && ( nx < 9 )) && ( ny >= 0 )) && ( ny < 9 ))
+      {
+         VAR_9494[nx][ny] += VAR__NUM / VAR__SUM;
+      }
+   }
+}

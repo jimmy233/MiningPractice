@@ -1,0 +1,71 @@
+struct stud
+{
+   int         VAR_1238123;
+   int         chinese;
+   int         math;
+   int         total;
+   struct stud *VAR__NEXT;
+};
+int tol;
+struct stud *creat(void)
+{
+   struct stud *VAR__HEAD;
+   struct stud *ANOTHER_POINTER;
+   struct stud *YET_ANOTHER_POINTER;
+   int         VAR__53647 = 1;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stud *)malloc(sizeof( struct stud )));
+   VAR__HEAD       = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < tol; VAR__53647++ )
+   {
+      scanf("%d%d%d", &ANOTHER_POINTER->VAR_1238123, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->total         = ANOTHER_POINTER->math + ANOTHER_POINTER->chinese;
+      ANOTHER_POINTER                = (struct stud *)malloc(sizeof( struct stud ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   scanf("%d%d%d", &ANOTHER_POINTER->VAR_1238123, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+   ANOTHER_POINTER->total         = ANOTHER_POINTER->math + ANOTHER_POINTER->chinese;
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = 0;
+   return VAR__HEAD;
+}
+
+
+int VAR__MAX(struct stud *VAR__HEAD, int max1, int max2)
+{
+   struct stud *ANOTHER_POINTER;
+   int         maxtotal = VAR__HEAD->total;
+   int         max_index;
+
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != 0; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if ((( ANOTHER_POINTER->total > maxtotal ) && ( ANOTHER_POINTER->VAR_1238123 != max1 )) && ( ANOTHER_POINTER->VAR_1238123 != max2 ))
+      {
+         maxtotal  = ANOTHER_POINTER->total;
+         max_index = ANOTHER_POINTER->VAR_1238123;
+      }
+   }
+
+   if ( maxtotal != max1 )
+   {
+      printf("%d %d\n", max_index, maxtotal);
+   }
+
+   return max_index;
+}
+
+
+void main()
+{
+   struct stud *VAR__HEAD;
+   int         max1;
+   int         max2;
+
+   scanf("%d", &tol);
+   VAR__HEAD = creat();
+   max1      = VAR__MAX(VAR__HEAD, 0, 0);
+   max2      = VAR__MAX(VAR__HEAD, max1, 0);
+   VAR__MAX(VAR__HEAD, max1, max2);
+}

@@ -1,0 +1,234 @@
+int VAR__COUNT = 1;
+int x1         = 0;
+struct Node;
+typedef struct Node *PNode;
+struct Node
+{
+   int   VAR__NUM;
+   PNode llink;
+   PNode rlink;
+};
+typedef struct Node *Linklist;
+Linklist createNullList_link(void)
+{
+   PNode VAR_233 = (PNode)malloc(sizeof( struct Node ));
+
+   if ( VAR_233 != NULL )
+   {
+      VAR_233->rlink = ( VAR_233->llink = NULL );
+   }
+   else
+   {
+      printf("out of space!\n");
+   }
+
+   return VAR_233;
+}
+
+
+Linklist create()
+{
+   char     VAR__4857423;
+   int      X = 0;
+   Linklist VAR_233;
+
+   VAR_233        = createNullList_link();
+   VAR_233->rlink = NULL;
+
+   while (( VAR__4857423 = getchar()) != '\n' )
+   {
+      PNode VAR_666 = (PNode)malloc(sizeof( struct Node ));
+
+      if ( VAR_666 != NULL )
+      {
+         if ( VAR__4857423 == '-' )
+         {
+            X = 1;
+            continue;
+         }
+
+         if ( X == 1 )
+         {
+            VAR_666->VAR__NUM = ( -1 ) * ( VAR__4857423 - '0' );
+         }
+         else
+         {
+            VAR_666->VAR__NUM = VAR__4857423 - '0';
+         }
+
+         VAR_666->rlink = VAR_233;
+         VAR_666->llink = NULL;
+         VAR_233->llink = VAR_666;
+         VAR_233        = VAR_666;
+      }
+      else
+      {
+         printf("out of space!\n");
+      }
+   }
+
+   VAR__COUNT++;
+   return VAR_233;
+}
+
+
+void print(Linklist llist)
+{
+   int x0 = 0;
+
+   while ( llist->rlink != NULL )
+   {
+      if (( llist->VAR__NUM > 0 ) && ( llist->rlink->VAR__NUM < 0 ))
+      {
+         llist->VAR__NUM--;
+         llist->rlink->VAR__NUM += 10;
+      }
+
+      if (( llist->VAR__NUM == 0 ) && ( llist->rlink->VAR__NUM < 0 ))
+      {
+         printf("-");
+      }
+
+      if (((( x0 == 0 ) && ( llist->rlink->rlink != NULL )) && ( llist->VAR__NUM == 0 )) && ( x1 == 0 ))
+      {
+         llist = llist->rlink;
+         continue;
+      }
+
+      printf("%d", abs(llist->VAR__NUM));
+      llist = llist->rlink;
+      x0++;
+   }
+}
+
+
+Linklist add(Linklist ANOTHER_POINTER, Linklist YET_ANOTHER_POINTER, Linklist VAR_666)
+{
+   int Jw  = 0;
+   int out = 0;
+
+   while (( ANOTHER_POINTER->rlink != NULL ) || ( YET_ANOTHER_POINTER->rlink != NULL ))
+   {
+      if (( ANOTHER_POINTER->rlink != NULL ) && ( YET_ANOTHER_POINTER->rlink != NULL ))
+      {
+         out                 = ( ANOTHER_POINTER->VAR__NUM + YET_ANOTHER_POINTER->VAR__NUM ) + Jw;
+         ANOTHER_POINTER     = ANOTHER_POINTER->rlink;
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->rlink;
+      }
+      else
+      if (( ANOTHER_POINTER->rlink == NULL ) && ( YET_ANOTHER_POINTER->rlink != NULL ))
+      {
+         out = ( 0 + YET_ANOTHER_POINTER->VAR__NUM ) + Jw;
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->rlink;
+      }
+      else
+      {
+         out             = ( ANOTHER_POINTER->VAR__NUM + 0 ) + Jw;
+         ANOTHER_POINTER = ANOTHER_POINTER->rlink;
+      }
+
+
+      Jw = 0;
+      PNode VAR_233 = (PNode)malloc(sizeof( struct Node ));
+
+      if ( VAR_233 == NULL )
+      {
+         printf("out of space!\n");
+      }
+
+      if (( out > 0 ) || ( out == 0 ))
+      {
+         VAR_233->VAR__NUM = out % 10;
+      }
+      else
+      {
+         VAR_233->VAR__NUM = ( -1 ) * ((( -1 ) * out ) % 10 );
+      }
+
+      VAR_233->rlink = VAR_666;
+      VAR_233->llink = NULL;
+      VAR_666->llink = VAR_233;
+      VAR_666        = VAR_233;
+
+      if (( out > 0 ) || ( out == 0 ))
+      {
+         Jw = out / 10;
+      }
+      else
+      if ( out < (( -1 ) * 9 ))
+      {
+         Jw = -1;
+      }
+   }
+
+   if ( Jw == 1 )
+   {
+      printf("1");
+      x1 = 1;
+   }
+
+   if (( Jw == ( -1 )) && ( out != 0 ))
+   {
+      printf("-1");
+      x1 = 1;
+   }
+   else
+   if ( out < 0 )
+   {
+      printf("-");
+   }
+
+
+   return VAR_666;
+}
+
+
+void destroy1List_link(Linklist llist)
+{
+   PNode VAR_233;
+
+   while ( llist != NULL )
+   {
+      VAR_233 = llist;
+      llist   = llist->rlink;
+      free(VAR_233);
+   }
+}
+
+
+void destroy2List_link(Linklist llist)
+{
+   PNode VAR_233;
+
+   while ( llist != NULL )
+   {
+      VAR_233 = llist;
+      llist   = llist->llink;
+      free(VAR_233);
+   }
+}
+
+
+int main()
+{
+   Linklist l1;
+   Linklist l2;
+   Linklist l3;
+
+   l1 = create();
+   l2 = create();
+   l3 = (PNode)malloc(sizeof( struct Node ));
+
+   if ( l3 == NULL )
+   {
+      printf("out of space!\n");
+   }
+
+   l3->rlink = ( l3->llink = NULL );
+   l3        = add(l1, l2, l3);
+   print(l3);
+   destroy2List_link(l3);
+   destroy1List_link(l1);
+   destroy1List_link(l2);
+   return 0;
+}

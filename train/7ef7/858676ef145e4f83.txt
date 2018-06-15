@@ -1,0 +1,75 @@
+int main()
+{
+   int maze[100 + 10][100 + 10] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      int VAR__SUM = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> maze[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__1111 = VAR_1238123; VAR__1111 >= 2; VAR__1111-- )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+         {
+            int VAR__MIN = 1000000;
+            for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+            {
+               VAR__MIN = ( VAR__MIN < ( *(( *( maze + VAR__53647 )) + VAR__21230 ))) ? ( VAR__MIN ) : ( *(( *( maze + VAR__53647 )) + VAR__21230 ));
+            }
+
+            for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+            {
+               *(( *( maze + VAR__53647 )) + VAR__21230 ) -= VAR__MIN;
+            }
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+         {
+            int VAR__MIN = 1000000;
+            for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+            {
+               VAR__MIN = ( VAR__MIN < ( *(( *( maze + VAR__21230 )) + VAR__53647 ))) ? ( VAR__MIN ) : ( *(( *( maze + VAR__21230 )) + VAR__53647 ));
+            }
+
+            for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+            {
+               *(( *( maze + VAR__21230 )) + VAR__53647 ) -= VAR__MIN;
+            }
+         }
+
+         VAR__SUM += *(( *( maze + 1 )) + 1 );
+         for ( VAR__53647 = 1; VAR__53647 < ( VAR__1111 - 1 ); VAR__53647++ )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+            {
+               *(( *( maze + VAR__53647 )) + VAR__21230 ) = *(( *(( maze + VAR__53647 ) + 1 )) + VAR__21230 );
+            }
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 < ( VAR__1111 - 1 ); VAR__53647++ )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+            {
+               *(( *( maze + VAR__21230 )) + VAR__53647 ) = *((( *( maze + VAR__21230 )) + VAR__53647 ) + 1 );
+            }
+         }
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

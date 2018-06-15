@@ -1,0 +1,56 @@
+struct sd
+{
+   char      xh[100];
+   char      xm[100];
+   char      xb;
+   int       nl;
+   double    df;
+   char      dz[10];
+   struct sd *before;
+};
+struct sd *cre()
+{
+   struct sd *ANOTHER_POINTER;
+   struct sd *YET_ANOTHER_POINTER = NULL;
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct sd *)malloc(sizeof( struct sd ));
+      scanf("%s", ANOTHER_POINTER->xh);
+
+      if ( strcmp(ANOTHER_POINTER->xh, "end") == 0 )
+      {
+         break;
+      }
+      else
+      {
+         ANOTHER_POINTER->before = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER     = ANOTHER_POINTER;
+         scanf("%s %c %d %lf %s", ANOTHER_POINTER->xm, &ANOTHER_POINTER->xb, &ANOTHER_POINTER->nl, &ANOTHER_POINTER->df, ANOTHER_POINTER->dz);
+      }
+   }
+
+   return YET_ANOTHER_POINTER;
+}
+
+
+void main()
+{
+   struct sd *cre();
+
+   struct sd *VAR_233 = cre();
+
+   while ( 1 )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->xh, VAR_233->xm, VAR_233->xb, VAR_233->nl, VAR_233->df, VAR_233->dz);
+
+      if ( VAR_233->before == NULL )
+      {
+         break;
+      }
+      else
+      {
+         VAR_233 = VAR_233->before;
+      }
+   }
+}

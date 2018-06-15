@@ -1,0 +1,60 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__1238129;
+   int  cnt      = 0;
+   int  VAR_FLAG = 0;
+   char room[102][102][2];
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> room[VAR__53647][VAR__21230][0];
+      }
+   }
+
+
+   cin >> VAR__1238129;
+   for ( int day = 1; day < VAR__1238129; day++ )
+   {
+      VAR_FLAG = 1 - VAR_FLAG;
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( room[VAR__53647][VAR__21230][1 - VAR_FLAG] != '#' )
+            {
+               if (((( room[VAR__53647 - 1][VAR__21230][1 - VAR_FLAG] == '@' ) || ( room[VAR__53647 + 1][VAR__21230][1 - VAR_FLAG] == '@' )) || ( room[VAR__53647][VAR__21230 - 1][1 - VAR_FLAG] == '@' )) || ( room[VAR__53647][VAR__21230 + 1][1 - VAR_FLAG] == '@' ))
+               {
+                  room[VAR__53647][VAR__21230][VAR_FLAG] = '@';
+               }
+               else
+               {
+                  room[VAR__53647][VAR__21230][VAR_FLAG] = room[VAR__53647][VAR__21230][1 - VAR_FLAG];
+               }
+            }
+            else
+            {
+               room[VAR__53647][VAR__21230][VAR_FLAG] = '#';
+            }
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( room[VAR__53647][VAR__21230][VAR_FLAG] == '@' )
+         {
+            cnt++;
+         }
+      }
+   }
+
+
+   ( cout << cnt ) << endl;
+   return 0;
+}

@@ -1,0 +1,71 @@
+int VAR__NUM[11][11];
+int num1[11][11];
+int increase(int VAR__819283, int time)
+{
+   if ( VAR__819283 == time )
+   {
+      return 1;
+   }
+   else
+   {
+      memset(num1, 0, sizeof( num1 ));
+      for ( int VAR__53647 = 0; VAR__53647 < 11; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647][0] = ( VAR__NUM[VAR__53647][10] = ( VAR__NUM[0][VAR__53647] = ( VAR__NUM[VAR__53647][10] = 0 )));
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+         {
+            if ( VAR__NUM[VAR__53647][VAR__21230] != 0 )
+            {
+               num1[VAR__53647][VAR__21230]         = num1[VAR__53647][VAR__21230] + ( 2 * VAR__NUM[VAR__53647][VAR__21230] );
+               num1[VAR__53647][VAR__21230 - 1]     = num1[VAR__53647][VAR__21230 - 1] + VAR__NUM[VAR__53647][VAR__21230];
+               num1[VAR__53647 - 1][VAR__21230]     = num1[VAR__53647 - 1][VAR__21230] + VAR__NUM[VAR__53647][VAR__21230];
+               num1[VAR__53647 + 1][VAR__21230]     = num1[VAR__53647 + 1][VAR__21230] + VAR__NUM[VAR__53647][VAR__21230];
+               num1[VAR__53647][VAR__21230 + 1]     = num1[VAR__53647][VAR__21230 + 1] + VAR__NUM[VAR__53647][VAR__21230];
+               num1[VAR__53647 - 1][VAR__21230 - 1] = num1[VAR__53647 - 1][VAR__21230 - 1] + VAR__NUM[VAR__53647][VAR__21230];
+               num1[VAR__53647 + 1][VAR__21230 - 1] = num1[VAR__53647 + 1][VAR__21230 - 1] + VAR__NUM[VAR__53647][VAR__21230];
+               num1[VAR__53647 - 1][VAR__21230 + 1] = num1[VAR__53647 - 1][VAR__21230 + 1] + VAR__NUM[VAR__53647][VAR__21230];
+               num1[VAR__53647 + 1][VAR__21230 + 1] = num1[VAR__53647 + 1][VAR__21230 + 1] + VAR__NUM[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < 11; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < 11; VAR__21230++ )
+         {
+            VAR__NUM[VAR__53647][VAR__21230] = num1[VAR__53647][VAR__21230];
+         }
+      }
+
+      return increase(VAR__819283 + 1, time);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__temp;
+
+   ( cin >> VAR_1238123 ) >> VAR__temp;
+   memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+   memset(num1, 0, sizeof( num1 ));
+   VAR__NUM[5][5] = VAR_1238123;
+   VAR__NUM[5][5] = VAR_1238123;
+   increase(0, VAR__temp);
+   for ( int VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+      {
+         ( cout << num1[VAR__53647][VAR__21230] ) << ' ';
+      }
+
+      ( cout << num1[VAR__53647][9] ) << endl;
+   }
+
+   return 0;
+}

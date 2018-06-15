@@ -1,0 +1,92 @@
+struct student
+{
+   int            VAR__NUM;
+   int            chi;
+   int            math;
+   struct student *VAR__NEXT;
+};
+struct student *creat(int VAR_1238123)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chi, &ANOTHER_POINTER->math);
+   VAR__HEAD = ANOTHER_POINTER;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chi, &ANOTHER_POINTER->math);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   int            VAR_1238123;
+   int            m1;
+   int            m2;
+   int            m3;
+   int            VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR_233   = VAR__HEAD;
+   m1        = ( m2 = ( m3 = 0 ));
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         VAR__8444594 = VAR_233->chi + VAR_233->math;
+
+         if ( VAR__8444594 > m1 )
+         {
+            m1 = VAR__8444594;
+            ANOTHER_POINTER = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+      VAR_233 = VAR__HEAD;
+      do
+      {
+         VAR__8444594 = VAR_233->chi + VAR_233->math;
+
+         if (( VAR__8444594 > m2 ) && ( VAR_233 != ANOTHER_POINTER ))
+         {
+            m2 = VAR__8444594;
+            YET_ANOTHER_POINTER = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+      VAR_233 = VAR__HEAD;
+      do
+      {
+         VAR__8444594 = VAR_233->chi + VAR_233->math;
+
+         if ((( VAR__8444594 > m3 ) && ( VAR_233 != ANOTHER_POINTER )) && ( VAR_233 != YET_ANOTHER_POINTER ))
+         {
+            m3 = VAR__8444594;
+            p3 = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+   }
+
+   printf("%d %d\n%d %d\n%d %d\n", ANOTHER_POINTER->VAR__NUM, m1, YET_ANOTHER_POINTER->VAR__NUM, m2, p3->VAR__NUM, m3);
+}

@@ -1,0 +1,68 @@
+int main()
+{
+   int           leap[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int           none[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   unsigned long VAR__819283;
+   unsigned long year;
+   unsigned long month;
+   unsigned long day;
+   unsigned long VAR__53647;
+   unsigned long week;
+
+   scanf("%ld %ld %ld", &year, &month, &day);
+   VAR__819283 = (( year / 4 ) - ( year / 100 )) + ( year / 400 );
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      VAR__819283 = VAR__819283 - 1;
+      day        += (( year - 1 ) - VAR__819283 ) + ( 2 * VAR__819283 );
+      for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+      {
+         day += leap[VAR__53647];
+      }
+
+      week = day % 7;
+   }
+   else
+   {
+      day += (( year - 1 ) - VAR__819283 ) + ( 2 * VAR__819283 );
+      for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+      {
+         day += none[VAR__53647];
+      }
+
+      week = day % 7;
+   }
+
+   switch ( week )
+   {
+   case 0:
+      printf("Sun.");
+      break;
+
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+   }
+
+   return 0;
+}

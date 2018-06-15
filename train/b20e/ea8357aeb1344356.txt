@@ -1,0 +1,94 @@
+int fun(int VAR__7685, int VAR__3918907)
+{
+   int VAR__9290 = 0;
+
+   if ( VAR__7685 > VAR__3918907 )
+   {
+      VAR__9290 = 1;
+   }
+
+   if ( VAR__7685 < VAR__3918907 )
+   {
+      VAR__9290 = -1;
+   }
+
+   return VAR__9290;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int media;
+   int VAR__8444594;
+   int VAR__MAX;
+   int VAR__TEMP;
+   int VAR__temp[1000];
+   int VAR_21983012[1000];
+   int VAR__SUM[1000];
+   int VAR__53647;
+   int i1;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   do
+   {
+      memset(VAR__SUM, 0, sizeof( VAR__SUM ));
+      VAR__MAX = -1000;
+      for ( i1 = 0; i1 < VAR_1238123; i1++ )
+      {
+         scanf("%d", &VAR__temp[i1]);
+      }
+
+      for ( i1 = 0; i1 < VAR_1238123; i1++ )
+      {
+         scanf("%d", &VAR_21983012[i1]);
+      }
+
+      for ( i1 = 0; i1 < VAR_1238123; i1++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            if ( VAR__temp[VAR__21230] < VAR__temp[VAR__21230 + 1] )
+            {
+               media = VAR__temp[VAR__21230];
+               VAR__temp[VAR__21230]     = VAR__temp[VAR__21230 + 1];
+               VAR__temp[VAR__21230 + 1] = media;
+            }
+         }
+      }
+
+      for ( i1 = 0; i1 < VAR_1238123; i1++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            if ( VAR_21983012[VAR__21230] < VAR_21983012[VAR__21230 + 1] )
+            {
+               media = VAR_21983012[VAR__21230];
+               VAR_21983012[VAR__21230]     = VAR_21983012[VAR__21230 + 1];
+               VAR_21983012[VAR__21230 + 1] = media;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 / 2 ); VAR__53647++ )
+      {
+         for ( i1 = 0; i1 < VAR_1238123; i1++ )
+         {
+            VAR__SUM[VAR__53647] = VAR__SUM[VAR__53647] + fun(VAR__temp[i1], VAR_21983012[i1]);
+         }
+
+         VAR__MAX  = ( VAR__MAX > VAR__SUM[VAR__53647] ) ? ( VAR__MAX ) : ( VAR__SUM[VAR__53647] );
+         VAR__TEMP = VAR_21983012[0];
+         for ( i1 = 0; i1 < ( VAR_1238123 - 1 ); i1++ )
+         {
+            VAR_21983012[i1] = VAR_21983012[i1 + 1];
+         }
+
+         VAR_21983012[VAR_1238123 - 1] = VAR__TEMP;
+      }
+
+      printf("%d\n", VAR__MAX * 200);
+      scanf("%d", &VAR_1238123);
+   } while ( VAR_1238123 != 0 );
+}

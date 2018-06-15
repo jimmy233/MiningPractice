@@ -1,0 +1,113 @@
+typedef struct
+{
+   int file;
+   int VAR_FLAG;
+} map;
+void main()
+{
+   map  VAR__819283[200][200];
+   int  VAR__COUNT = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  col;
+   int  row;
+   char direction = 'd';
+
+   for ( VAR__53647 = 1; VAR__53647 <= 200; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 200; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647 - 1][VAR__21230 - 1].VAR_FLAG = 0;
+      }
+   }
+
+   scanf("%d %d", &row, &col);
+   for ( VAR__53647 = 1; VAR__53647 <= row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= col; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230].file);
+         VAR__819283[VAR__53647][VAR__21230].VAR_FLAG = 1;
+      }
+   }
+
+   VAR__53647 = 1;
+   VAR__21230 = 1;
+   do
+   {
+      VAR__COUNT++;
+      switch ( direction )
+      {
+      case 'd':
+         VAR__819283[VAR__53647][VAR__21230].VAR_FLAG = 0;
+
+         if ( VAR__819283[VAR__53647][VAR__21230 + 1].VAR_FLAG == 1 )
+         {
+            printf("%d\n", VAR__819283[VAR__53647][VAR__21230].file);
+            VAR__21230++;
+         }
+         else
+         {
+            printf("%d\n", VAR__819283[VAR__53647][VAR__21230].file);
+            direction = 's';
+            VAR__53647++;
+         }
+
+         break;
+
+      case 's':
+         VAR__819283[VAR__53647][VAR__21230].VAR_FLAG = 0;
+
+         if ( VAR__819283[VAR__53647 + 1][VAR__21230].VAR_FLAG == 1 )
+         {
+            printf("%d\n", VAR__819283[VAR__53647][VAR__21230].file);
+            VAR__53647++;
+         }
+         else
+         {
+            printf("%d\n", VAR__819283[VAR__53647][VAR__21230].file);
+            direction = 'a';
+            VAR__21230--;
+         }
+
+         break;
+
+      case 'a':
+         VAR__819283[VAR__53647][VAR__21230].VAR_FLAG = 0;
+
+         if ( VAR__819283[VAR__53647][VAR__21230 - 1].VAR_FLAG == 1 )
+         {
+            printf("%d\n", VAR__819283[VAR__53647][VAR__21230].file);
+            VAR__21230--;
+         }
+         else
+         {
+            printf("%d\n", VAR__819283[VAR__53647][VAR__21230].file);
+            direction = 'w';
+            VAR__53647--;
+         }
+
+         break;
+
+      case 'w':
+         VAR__819283[VAR__53647][VAR__21230].VAR_FLAG = 0;
+
+         if ( VAR__819283[VAR__53647 - 1][VAR__21230].VAR_FLAG == 1 )
+         {
+            printf("%d\n", VAR__819283[VAR__53647][VAR__21230].file);
+            VAR__53647--;
+         }
+         else
+         {
+            printf("%d\n", VAR__819283[VAR__53647][VAR__21230].file);
+            direction = 'd';
+            VAR__21230++;
+         }
+
+         break;
+
+      default:
+         break;
+      }
+   } while ( VAR__COUNT != ( row * col ));
+}

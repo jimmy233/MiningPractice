@@ -1,0 +1,57 @@
+int data[K];
+int ju[K][K];
+int weight[K];
+int main(int argc, char *argv[])
+{
+   int VAR_1238123 = 0;
+   int VAR__53647  = 0;
+   int VAR__21230  = 0;
+   int VAR__MAX    = 0;
+
+   freopen("in.txt", "r", stdin);
+   freopen("out.txt", "w", stdout);
+   scanf("%d", &VAR_1238123);
+   memset(ju, 0, sizeof( ju ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &data[VAR__53647]);
+      weight[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( data[VAR__53647] >= data[VAR__21230] )
+         {
+            ju[VAR__53647][VAR__21230] = 1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( ju[VAR__53647][VAR__21230] )
+         {
+            if ( weight[VAR__53647] < ( weight[VAR__21230] + 1 ))
+            {
+               weight[VAR__53647] = weight[VAR__21230] + 1;
+            }
+         }
+      }
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < weight[VAR__53647] )
+      {
+         VAR__MAX = weight[VAR__53647];
+      }
+   }
+
+   printf("%d\n", VAR__MAX);
+   return 0;
+}

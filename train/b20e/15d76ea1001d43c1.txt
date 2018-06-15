@@ -1,0 +1,114 @@
+void main()
+{
+   int VAR__1238129;
+   int VAR__1111;
+   int qww_fast;
+   int tj_fast;
+   int qww_slow;
+   int tj_slow;
+   int VAR_1238123;
+   int game;
+   int win;
+   int turn;
+   int qww[2000];
+   int tj[2000];
+   int out[300];
+
+   for ( game = 0; ; game++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+      {
+         scanf("%d", &tj[VAR__1238129]);
+      }
+
+      for ( VAR__1111 = 0; VAR__1111 < VAR_1238123; VAR__1111++ )
+      {
+         scanf("%d", &qww[VAR__1111]);
+      }
+
+      for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+      {
+         for ( VAR__1111 = 0; VAR__1111 < (( VAR_1238123 - VAR__1238129 ) - 1 ); VAR__1111++ )
+         {
+            if ( tj[VAR__1111] < tj[VAR__1111 + 1] )
+            {
+               turn              = tj[VAR__1111];
+               tj[VAR__1111]     = tj[VAR__1111 + 1];
+               tj[VAR__1111 + 1] = turn;
+            }
+         }
+      }
+
+
+      for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+      {
+         for ( VAR__1111 = 0; VAR__1111 < (( VAR_1238123 - VAR__1238129 ) - 1 ); VAR__1111++ )
+         {
+            if ( qww[VAR__1111] < qww[VAR__1111 + 1] )
+            {
+               turn               = qww[VAR__1111];
+               qww[VAR__1111]     = qww[VAR__1111 + 1];
+               qww[VAR__1111 + 1] = turn;
+            }
+         }
+      }
+
+
+      for ( win = 0, tj_slow = VAR_1238123 - 1, qww_slow = VAR_1238123 - 1, tj_fast = 0, qww_fast = 0; tj_slow >= tj_fast; )
+      {
+         if ( tj[tj_slow] > qww[qww_slow] )
+         {
+            win++;
+            tj_slow--;
+            qww_slow--;
+         }
+         else
+         if ( tj[tj_slow] < qww[qww_slow] )
+         {
+            win--;
+            tj_slow--;
+            qww_fast++;
+         }
+         else
+         {
+            if ( tj[tj_fast] > qww[qww_fast] )
+            {
+               win++;
+               tj_fast++;
+               qww_fast++;
+            }
+            else
+            if ( tj[tj_fast] < qww[qww_fast] )
+            {
+               win--;
+               tj_slow--;
+               qww_fast++;
+            }
+            else
+            {
+               if ( tj[tj_slow] < qww[qww_fast] )
+               {
+                  win--;
+               }
+
+               qww_fast++;
+               tj_slow--;
+            }
+         }
+      }
+
+      out[game] = win * 200;
+   }
+
+   for ( VAR__1238129 = 0; VAR__1238129 < game; VAR__1238129++ )
+   {
+      printf("%d\n", out[VAR__1238129]);
+   }
+}

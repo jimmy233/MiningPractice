@@ -1,0 +1,77 @@
+int sushu(int VAR__19328)
+{
+   int VAR_FLAG = 1;
+   int VAR__53647;
+
+   if ( VAR__19328 == 2 )
+   {
+      return 1;
+   }
+
+   if (( VAR__19328 % 2 ) == 0 )
+   {
+      return 0;
+   }
+
+   for ( VAR__53647 = 2; VAR__53647 <= ( VAR__19328 / 2 ); VAR__53647++ )
+   {
+      if (( VAR__19328 % VAR__53647 ) == 0 )
+      {
+         VAR_FLAG = 0;
+         break;
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+int number(int VAR__819283, int VAR__19328)
+{
+   int VAR__53647;
+   int total = 1;
+
+   if ( sushu(VAR__819283))
+   {
+      total = 1;
+      return total;
+   }
+
+   for ( VAR__53647 = VAR__19328; VAR__53647 <= VAR__819283; VAR__53647++ )
+   {
+      if ((( VAR__819283 % VAR__53647 ) == 0 ) && (( VAR__819283 / VAR__53647 ) >= VAR__53647 ))
+      {
+         total = total + number(VAR__819283 / VAR__53647, VAR__53647);
+      }
+   }
+
+   return total;
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int A[100];
+   int B[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &A[VAR__53647]);
+      B[VAR__53647] = number(A[VAR__53647], 2);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%d\n", B[VAR__53647]);
+   }
+}

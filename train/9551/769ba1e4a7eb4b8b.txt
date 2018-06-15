@@ -1,0 +1,140 @@
+struct arr
+{
+   char       id[10];
+   int        age;
+   struct arr *VAR__NEXT;
+};
+int VAR_1238123;
+struct arr *create(int VAR__1238129)
+{
+   struct arr *VAR__HEAD;
+   struct arr *ANOTHER_POINTER;
+   struct arr *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 1;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct arr *)malloc(LEN));
+   scanf("%s %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+   VAR__HEAD = ANOTHER_POINTER;
+
+   while ( VAR_1238123 < VAR__1238129 )
+   {
+      ANOTHER_POINTER = (struct arr *)malloc(LEN);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      VAR_1238123++;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      scanf("%s %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+   }
+
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct arr *del(struct arr *VAR__HEAD, long int dnum)
+{
+   struct arr *ANOTHER_POINTER;
+   struct arr *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+
+   while (( ANOTHER_POINTER != NULL ) && ( ANOTHER_POINTER->age == dnum ))
+   {
+      VAR__HEAD           = ANOTHER_POINTER->VAR__NEXT;
+      YET_ANOTHER_POINTER = VAR__HEAD;
+      free(ANOTHER_POINTER);
+      ANOTHER_POINTER = VAR__HEAD;
+   }
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+
+      while (( ANOTHER_POINTER != NULL ) && ( ANOTHER_POINTER->age == dnum ))
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+         free(ANOTHER_POINTER);
+         ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct arr *VAR__HEAD)
+{
+   struct arr *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      if ( VAR_233 == VAR__HEAD )
+      {
+         printf("%s\n", VAR_233->id);
+      }
+      else
+      {
+         printf("%s\n", VAR_233->id);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void freelist(struct arr *VAR__HEAD)
+{
+   struct arr *VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      while ( VAR_233 != NULL )
+      {
+         VAR__HEAD = VAR__HEAD->VAR__NEXT;
+         free(VAR_233);
+         VAR_233 = VAR__HEAD;
+      }
+   }
+}
+
+
+void main()
+{
+   struct arr *VAR__HEAD;
+   struct arr *ANOTHER_POINTER;
+   int        VAR__1238129;
+   int        VAR__MAX = 0;
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = create(VAR__1238129);
+   for ( ; ; )
+   {
+      VAR__MAX = 0;
+      for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+      {
+         VAR__MAX = ( VAR__MAX > ANOTHER_POINTER->age ) ? ( VAR__MAX ) : ( ANOTHER_POINTER->age );
+      }
+
+      if ( VAR__MAX >= 60 )
+      {
+         for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+         {
+            if ( ANOTHER_POINTER->age == VAR__MAX )
+            {
+               printf("%s\n", ANOTHER_POINTER->id);
+            }
+         }
+
+         VAR__HEAD = del(VAR__HEAD, VAR__MAX);
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   print(VAR__HEAD);
+   freelist(VAR__HEAD);
+}

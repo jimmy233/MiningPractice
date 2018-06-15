@@ -1,0 +1,70 @@
+int main()
+{
+   char A_STRING[1024];
+   char src[1024];
+   char tar[1024];
+   char tmp[1024];
+
+   gets(A_STRING);
+   gets(src);
+   gets(tar);
+   int cnt = 0;
+
+   if ( A_STRING[0] == ' ' )
+   {
+      putchar(A_STRING[0]);
+   }
+   else
+   {
+      tmp[cnt++] = A_STRING[0];
+   }
+
+   for ( int VAR__53647 = 1; A_STRING[VAR__53647]; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647 - 1] == ' ' ) && ( A_STRING[VAR__53647] != ' ' ))
+      {
+         tmp[cnt++] = A_STRING[VAR__53647];
+      }
+      else
+      if ( A_STRING[VAR__53647] == ' ' )
+      {
+         if ( cnt > 0 )
+         {
+            tmp[cnt] = 0;
+
+            if ( !strcmp(tmp, src))
+            {
+               printf("%s", tar);
+            }
+            else
+            {
+               printf("%s", tmp);
+            }
+
+            cnt = 0;
+         }
+
+         putchar(' ');
+      }
+      else
+      {
+         tmp[cnt++] = A_STRING[VAR__53647];
+      }
+   }
+
+   if ( cnt > 0 )
+   {
+      tmp[cnt] = 0;
+
+      if ( !strcmp(tmp, src))
+      {
+         printf("%s", tar);
+      }
+      else
+      {
+         printf("%s", tmp);
+      }
+   }
+
+   putchar('\n');
+}

@@ -1,0 +1,38 @@
+int main()
+{
+   char ANOTHER_STRING[100];
+   char YET_ANOTHER_STRING[100];
+   char str3[100];
+   int  temp1;
+   int  temp2;
+   int  l1;
+   int  l2;
+   int  VAR__MAX;
+
+   while ( scanf("%s%s", ANOTHER_STRING, YET_ANOTHER_STRING) != EOF )
+   {
+      l1       = strlen(ANOTHER_STRING);
+      l2       = strlen(YET_ANOTHER_STRING);
+      VAR__MAX = 0;
+      for ( temp1 = 1; temp1 <= ( l1 - 1 ); temp1++ )
+      {
+         if ( ANOTHER_STRING[temp1] > ANOTHER_STRING[VAR__MAX] )
+         {
+            VAR__MAX = temp1;
+         }
+      }
+
+      for ( temp1 = VAR__MAX + 1, temp2 = 0; temp1 <= ( l1 - 1 ); temp1++, temp2++ )
+      {
+         str3[temp2]           = ANOTHER_STRING[temp1];
+         ANOTHER_STRING[temp1] = '\0';
+      }
+
+      str3[temp2] = '\0';
+      strcat(ANOTHER_STRING, YET_ANOTHER_STRING);
+      strcat(ANOTHER_STRING, str3);
+      puts(ANOTHER_STRING);
+   }
+
+   return 0;
+}

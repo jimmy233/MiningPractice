@@ -1,0 +1,38 @@
+struct S
+{
+   char     xuehao[200];
+   char     xingming[200];
+   char     xingbie;
+   int      nianling;
+   float    defen;
+   char     dizhi[200];
+   struct S *VAR__NEXT;
+};
+int main()
+{
+   struct S *ANOTHER_POINTER;
+   struct S *YET_ANOTHER_POINTER;
+   struct S *VAR__HEAD;
+
+   VAR__HEAD       = (struct S *)malloc(sizeof( struct S ));
+   ANOTHER_POINTER = VAR__HEAD;
+   scanf("%s", ANOTHER_POINTER->xuehao);
+   VAR__HEAD->VAR__NEXT = NULL;
+
+   while ( ANOTHER_POINTER->xuehao[0] != 'e' )
+   {
+      scanf("%s %c%d%f %s", ANOTHER_POINTER->xingming, &ANOTHER_POINTER->xingbie, &ANOTHER_POINTER->nianling, &ANOTHER_POINTER->defen, ANOTHER_POINTER->dizhi);
+      YET_ANOTHER_POINTER            = (struct S *)malloc(sizeof( struct S ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+      scanf("%s", ANOTHER_POINTER->xuehao);
+   }
+
+   while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+   {
+      printf("%s %s %c %d %g %s\n", ANOTHER_POINTER->VAR__NEXT->xuehao, ANOTHER_POINTER->VAR__NEXT->xingming, ANOTHER_POINTER->VAR__NEXT->xingbie, ANOTHER_POINTER->VAR__NEXT->nianling, ANOTHER_POINTER->VAR__NEXT->defen, ANOTHER_POINTER->VAR__NEXT->dizhi);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return 0;
+}

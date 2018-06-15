@@ -1,0 +1,65 @@
+int days[13]      = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int leap_days[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int leap(int year)
+{
+   return ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 );
+}
+
+
+int daysum(int year, int month, int day)
+{
+   int VAR__53647;
+   int VAR__4857423 = day;
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ( leap(year))
+      {
+         VAR__4857423 += leap_days[VAR__53647];
+      }
+      else
+      {
+         VAR__4857423 += days[VAR__53647];
+      }
+   }
+
+
+   return VAR__4857423;
+}
+
+
+void main()
+{
+   int y1;
+   int m1;
+   int d1;
+   int y2;
+   int m2;
+   int d2;
+   int VAR__53647;
+   int VAR_1238123 = 0;
+   int VAR__819283;
+   int VAR__19328;
+
+   scanf("%d%d%d%d%d%d", &y1, &m1, &d1, &y2, &m2, &d2);
+   for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+   {
+      VAR_1238123 += ( leap(VAR__53647)) ? ( 366 ) : ( 365 );
+   }
+
+   if ( y1 == y2 )
+   {
+      VAR_1238123 = daysum(y2, m2, d2) - daysum(y1, m1, d1);
+   }
+   else
+   {
+      VAR_1238123 = (( VAR_1238123 + daysum(y2, m2, d2)) + 365 ) - daysum(y1, m1, d1);
+
+      if ( leap(y1))
+      {
+         VAR_1238123++;
+      }
+   }
+
+   printf("%d", VAR_1238123);
+}

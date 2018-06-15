@@ -1,0 +1,45 @@
+int change(int VAR__819283, int VAR_233)
+{
+   int VAR__53647;
+   int VAR__COUNT = 0;
+
+   for ( VAR__53647 = VAR_233; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      if ((( VAR__819283 % VAR__53647 ) == 0 ) && (( VAR__819283 / VAR__53647 ) >= VAR__53647 ))
+      {
+         VAR__COUNT++;
+         int VAR__8444594;
+         int VAR__temp;
+         VAR__8444594 = (int)sqrt(VAR__819283 / VAR__53647);
+         for ( VAR__temp = 2; VAR__temp <= VAR__8444594; VAR__temp++ )
+         {
+            if ((( VAR__819283 / VAR__53647 ) % VAR__temp ) == 0 )
+            {
+               VAR__COUNT += change(VAR__819283 / VAR__53647, VAR__53647);
+               break;
+            }
+         }
+      }
+   }
+
+   return VAR__COUNT;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__819283;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      int total = 0;
+      cin >> VAR__819283;
+      total += change(VAR__819283, 2);
+      ( cout << ( total + 1 )) << endl;
+   }
+
+   return 0;
+}

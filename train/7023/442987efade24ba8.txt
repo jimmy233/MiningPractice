@@ -1,0 +1,82 @@
+void main()
+{
+   void VAR__MIN(char VAR__819283[], char VAR__19328[]);
+
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   char VAR__819283[100][110];
+   char VAR__19328[100][110];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %s", VAR__819283[VAR__53647], VAR__19328[VAR__53647]);
+      printf("\n");
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN(VAR__819283[VAR__53647], VAR__19328[VAR__53647]);
+   }
+}
+
+
+void VAR__MIN(char VAR__819283[], char VAR__19328[])
+{
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int pa[110];
+   int pb[110];
+   int la = strlen(VAR__819283);
+   int lb = strlen(VAR__19328);
+
+   for ( VAR__53647 = la - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      pa[VAR__21230++] = VAR__819283[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = VAR__21230; VAR__53647 < 109; VAR__53647++ )
+   {
+      pa[VAR__53647] = 0;
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = lb - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      pb[VAR__21230++] = VAR__19328[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = VAR__21230; VAR__53647 < 109; VAR__53647++ )
+   {
+      pb[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+   {
+      pa[VAR__53647] -= pb[VAR__53647];
+
+      if ( pa[VAR__53647] < 0 )
+      {
+         pa[VAR__53647] += 10;
+         pa[VAR__53647 + 1]--;
+      }
+   }
+
+   int out = 0;
+   for ( VAR__53647 = la - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( out )
+      {
+         printf("%d", pa[VAR__53647]);
+      }
+      else
+      if ( pa[VAR__53647] )
+      {
+         printf("%d", pa[VAR__53647]);
+         out = 1;
+      }
+   }
+
+   printf("\n");
+}

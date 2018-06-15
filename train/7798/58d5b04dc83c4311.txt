@@ -1,0 +1,79 @@
+struct book
+{
+   int         number;
+   char        writer[26];
+   struct book *VAR__NEXT;
+}
+main()
+{
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR__NUM[26] = { 0 };
+   int         nu[26];
+   int         VAR__819283;
+   int         VAR__19328;
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct book *)malloc(LEN));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%s", &ANOTHER_POINTER->number, &ANOTHER_POINTER->writer);
+      for ( VAR__21230 = 0; VAR__21230 < strlen(ANOTHER_POINTER->writer); VAR__21230++ )
+      {
+         ++VAR__NUM[ANOTHER_POINTER->writer[VAR__21230] - 65];
+      }
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct book *)malloc(LEN);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      nu[VAR__53647] = VAR__53647;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 25; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( 25 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230] < VAR__NUM[VAR__21230 + 1] )
+         {
+            VAR__819283              = nu[VAR__21230];
+            nu[VAR__21230]           = nu[VAR__21230 + 1];
+            nu[VAR__21230 + 1]       = VAR__819283;
+            VAR__19328               = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__NUM[VAR__21230 + 1];
+            VAR__NUM[VAR__21230 + 1] = VAR__19328;
+         }
+      }
+   }
+
+   printf("%c\n%d\n", nu[0] + 65, VAR__NUM[0]);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(VAR__HEAD->writer); VAR__21230++ )
+      {
+         if ( VAR__HEAD->writer[VAR__21230] == (((char)nu[0] ) + 65 ))
+         {
+            printf("%d\n", VAR__HEAD->number);
+            break;
+         }
+      }
+
+      VAR__HEAD = VAR__HEAD->VAR__NEXT;
+   }
+}

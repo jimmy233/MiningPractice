@@ -1,0 +1,118 @@
+int main()
+{
+   int  l1;
+   int  l2;
+   int  VAR__1111;
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  VAR_9Q8Q90;
+   int  VAR__127322;
+   char ANOTHER_STRING[250];
+   char YET_ANOTHER_STRING[250];
+   char str3[252];
+   char str4[251];
+
+   gets(ANOTHER_STRING);
+   gets(YET_ANOTHER_STRING);
+   l1 = strlen(ANOTHER_STRING);
+   l2 = strlen(YET_ANOTHER_STRING);
+
+   if (((( l1 == 1 ) && ( l2 == 1 )) && ( ANOTHER_STRING[0] == '0' )) && ( YET_ANOTHER_STRING[0] == '0' ))
+   {
+      printf("%s", ANOTHER_STRING);
+   }
+   else
+   {
+      if ( l1 > l2 )
+      {
+         VAR__1111    = l1;
+         VAR__1238129 = l1 - l2;
+         for ( VAR__53647 = VAR__1238129; VAR__53647 <= ( VAR__1111 - 1 ); VAR__53647++ )
+         {
+            str4[VAR__53647] = YET_ANOTHER_STRING[VAR__53647 - VAR__1238129];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+         {
+            YET_ANOTHER_STRING[VAR__53647] = '0';
+         }
+
+         for ( VAR__53647 = VAR__1238129; VAR__53647 <= ( VAR__1111 - 1 ); VAR__53647++ )
+         {
+            YET_ANOTHER_STRING[VAR__53647] = str4[VAR__53647];
+         }
+
+         YET_ANOTHER_STRING[VAR__1111] = '\0';
+      }
+      else
+      {
+         VAR__1111    = l2;
+         VAR__1238129 = l2 - l1;
+         for ( VAR__53647 = VAR__1238129; VAR__53647 <= ( VAR__1111 - 1 ); VAR__53647++ )
+         {
+            str4[VAR__53647] = ANOTHER_STRING[VAR__53647 - VAR__1238129];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+         {
+            ANOTHER_STRING[VAR__53647] = '0';
+         }
+
+         for ( VAR__53647 = VAR__1238129; VAR__53647 <= ( VAR__1111 - 1 ); VAR__53647++ )
+         {
+            ANOTHER_STRING[VAR__53647] = str4[VAR__53647];
+         }
+
+         ANOTHER_STRING[VAR__1111] = '\0';
+      }
+
+      VAR_9Q8Q90 = 0;
+      for ( VAR__53647 = VAR__1111 - 1; VAR__53647 != ( -1 ); VAR__53647 = VAR__53647 - 1 )
+      {
+         if (((( ANOTHER_STRING[VAR__53647] + YET_ANOTHER_STRING[VAR__53647] ) + VAR_9Q8Q90 ) - 48 ) > '9' )
+         {
+            str3[VAR__53647 + 1] = (( VAR_9Q8Q90 + ANOTHER_STRING[VAR__53647] ) + YET_ANOTHER_STRING[VAR__53647] ) - 58;
+            VAR_9Q8Q90           = 1;
+         }
+         else
+         {
+            str3[VAR__53647 + 1] = (( ANOTHER_STRING[VAR__53647] + YET_ANOTHER_STRING[VAR__53647] ) + VAR_9Q8Q90 ) - 48;
+            VAR_9Q8Q90           = 0;
+         }
+      }
+
+      str3[VAR__1111 + 1] = '\0';
+      VAR__8444594        = 0;
+
+      if ( VAR_9Q8Q90 == 1 )
+      {
+         str3[0] = '1';
+      }
+
+      if ( VAR_9Q8Q90 == 0 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= VAR__1111; VAR__53647++ )
+         {
+            str3[VAR__53647] = str3[VAR__53647 + 1];
+         }
+      }
+
+      for ( VAR__53647 = 0; ; VAR__53647++ )
+      {
+         if ( str3[VAR__53647] != '0' )
+         {
+            break;
+         }
+
+         VAR__8444594 = VAR__8444594 + 1;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= VAR__1111; VAR__53647++ )
+      {
+         str3[VAR__53647] = str3[VAR__53647 + VAR__8444594];
+      }
+
+      printf("%s\n", str3);
+   }
+}

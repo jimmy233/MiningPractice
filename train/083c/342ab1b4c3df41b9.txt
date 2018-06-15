@@ -1,0 +1,72 @@
+long toDex(int VAR__819283, char VAR_1238123[]);
+int toB(long Dn, int VAR__19328, char answer[]);
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   char VAR_1238123[50] = { "0" };
+   char answer[50]      = { "0" };
+   long Dn;
+
+   scanf("%d%s%d", &VAR__819283, VAR_1238123, &VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(VAR_1238123) - 1 ); VAR__53647++ )
+   {
+      VAR_1238123[VAR__53647] = toupper(VAR_1238123[VAR__53647]);
+   }
+
+   Dn         = toDex(VAR__819283, VAR_1238123);
+   LEN_OF_STH = toB(Dn, VAR__19328, answer);
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", answer[VAR__53647]);
+   }
+}
+
+
+long toDex(int VAR__819283, char VAR_1238123[])
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   long Dn = 0;
+   long sqr;
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_1238123); VAR__53647++ )
+   {
+      sqr = 1;
+      for ( VAR__21230 = 0; VAR__21230 < (( strlen(VAR_1238123) - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         sqr *= VAR__819283;
+      }
+
+      if (((int)VAR_1238123[VAR__53647] ) >= 65 )
+      {
+         Dn += sqr * (((int)VAR_1238123[VAR__53647] ) - 55 );
+      }
+      else
+      {
+         Dn += sqr * (((int)VAR_1238123[VAR__53647] ) - 48 );
+      }
+   }
+
+   return Dn;
+}
+
+
+int toB(long Dn, int VAR__19328, char answer[])
+{
+   long shang      = Dn;
+   int  VAR__53647 = 0;
+   int  yu;
+
+   do
+   {
+      yu = shang % VAR__19328;
+      ( yu >= 10 ) ? ( answer[VAR__53647] = ((char)yu ) + 55 ) : ( answer[VAR__53647] = ((char)yu ) + 48 );
+      VAR__53647++;
+      shang = shang / VAR__19328;
+   } while ( shang != 0 );
+   return VAR__53647;
+}

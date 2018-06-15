@@ -1,0 +1,67 @@
+const int VAR__NUM[9] = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000 };
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int l1;
+   int l2;
+   int VAR_FLAG;
+   int VAR__temp;
+   int res[1000];
+
+   scanf("%d%d", &VAR__819283, &VAR__19328);
+   res[0] = 0;
+   for ( l1 = VAR__819283; l1 <= VAR__19328; l1++ )
+   {
+      VAR_FLAG = l1 - 1;
+      for ( l2 = 2; l2 <= ((int)sqrt(l1)); l2++ )
+      {
+         if (( l1 % l2 ) == 0 )
+         {
+            VAR_FLAG = 0;
+            break;
+         }
+      }
+
+
+      if ( VAR_FLAG == 0 )
+      {
+         continue;
+      }
+
+      VAR__temp = ((int)log10(l1)) + 1;
+      for ( l2 = 1; l2 <= ( VAR__temp / 2 ); l2++ )
+      {
+         if ((( l1 % VAR__NUM[l2] ) / VAR__NUM[l2 - 1] ) != (( l1 % VAR__NUM[( VAR__temp - l2 ) + 1] ) / VAR__NUM[(( VAR__temp - l2 ) + 1 ) - 1] ))
+         {
+            VAR_FLAG = 0;
+            break;
+         }
+      }
+
+
+      if ( VAR_FLAG == 0 )
+      {
+         continue;
+      }
+
+      res[0]++;
+      res[res[0]] = l1;
+   }
+
+   for ( l1 = 1; l1 <= ( res[0] - 1 ); l1++ )
+   {
+      printf("%d,", res[l1]);
+   }
+
+   if ( res[0] == 0 )
+   {
+      printf("no\n");
+   }
+   else
+   {
+      printf("%d\n", res[res[0]]);
+   }
+
+   return 0;
+}

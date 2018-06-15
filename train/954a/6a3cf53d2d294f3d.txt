@@ -1,0 +1,72 @@
+struct profile
+{
+   char name[20];
+   int  grade;
+   int  approval;
+   char west;
+   char manager;
+   int  paper;
+   int  prize;
+};
+int prizetoget(int gra, int app, char VAR_21983012, char ma, int pa)
+{
+   int initial = 0;
+
+   if (( pa >= 1 ) && ( gra > 80 ))
+   {
+      initial += Principal;
+   }
+
+   if (( gra > 85 ) && ( app > 80 ))
+   {
+      initial += Wusi;
+   }
+
+   if ( gra > 90 )
+   {
+      initial += Highmark;
+   }
+
+   if (( gra > 85 ) && ( VAR_21983012 == 'Y' ))
+   {
+      initial += Western;
+   }
+
+   if (( app > 80 ) && ( ma == 'Y' ))
+   {
+      initial += Devotion;
+   }
+
+   return initial;
+}
+
+
+int main()
+{
+   struct profile student[100];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            most = 0;
+   int            No;
+   int            VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c%d", student[VAR__53647].name, &student[VAR__53647].grade, &student[VAR__53647].approval, &student[VAR__53647].manager, &student[VAR__53647].west, &student[VAR__53647].paper);
+      student[VAR__53647].prize = prizetoget(student[VAR__53647].grade, student[VAR__53647].approval, student[VAR__53647].west, student[VAR__53647].manager, student[VAR__53647].paper);
+      VAR__SUM += student[VAR__53647].prize;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( student[VAR__53647].prize > most )
+      {
+         most = student[VAR__53647].prize;
+         No   = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d", student[No].name, most, VAR__SUM);
+   return 0;
+}

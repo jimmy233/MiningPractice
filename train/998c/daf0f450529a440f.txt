@@ -1,0 +1,88 @@
+char VAR__819283[252];
+char VAR__19328[252];
+void VAR__SUM(int VAR_1238123)
+{
+   int  VAR_FLAG   = 0;
+   int  VAR__21230 = VAR_1238123 - 1;
+   char VAR__4857423[252];
+   char tem = '0';
+
+   while ( VAR__21230 >= 0 )
+   {
+      VAR__4857423[VAR__21230 + 1] = ((((( VAR__819283[VAR__21230] + VAR__19328[VAR__21230] ) - 48 ) - 48 ) + ( tem - 48 )) % 10 ) + 48;
+      tem = 48 + ((((( VAR__819283[VAR__21230] + VAR__19328[VAR__21230] ) - 48 ) - 48 ) + ( tem - 48 )) / 10 );
+      VAR__21230--;
+   }
+
+   if ( tem == '0' )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if (( VAR__4857423[VAR__53647] != '0' ) || ( VAR_FLAG != 0 ))
+         {
+            cout << VAR__4857423[VAR__53647];
+            VAR_FLAG = 1;
+         }
+      }
+   }
+
+   else
+   {
+      VAR__4857423[0] = tem;
+      for ( int VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if (( VAR__4857423[VAR__53647] != '0' ) || ( VAR_FLAG != 0 ))
+         {
+            cout << VAR__4857423[VAR__53647];
+            VAR_FLAG = 1;
+         }
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      cout << "0";
+   }
+}
+
+
+int main()
+{
+   cin.getline(VAR__819283, 252);
+   cin.getline(VAR__19328, 252);
+   int la;
+   int lb;
+   la = strlen(VAR__819283);
+   lb = strlen(VAR__19328);
+
+   if ( la > lb )
+   {
+      for ( int VAR__53647 = la - 1; VAR__53647 >= ( la - lb ); VAR__53647-- )
+      {
+         VAR__19328[VAR__53647] = VAR__19328[( VAR__53647 - la ) + lb];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < ( la - lb ); VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = '0';
+      }
+
+      VAR__SUM(la);
+   }
+   else
+   {
+      for ( int VAR__53647 = lb - 1; VAR__53647 >= ( lb - la ); VAR__53647-- )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[( VAR__53647 - lb ) + la];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < ( lb - la ); VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = '0';
+      }
+
+      VAR__SUM(lb);
+   }
+
+   return 0;
+}

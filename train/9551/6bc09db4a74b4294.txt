@@ -1,0 +1,61 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR_SIZE[100];
+   int  zs[100];
+   int  VAR__53647;
+   int  VAR__8444594 = 0;
+   int  VAR__1238129;
+   int  VAR__819283;
+   char id[100][10];
+   char di[100][10];
+   char zfc[10];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", id[VAR__53647], &VAR_SIZE[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_SIZE[VAR__53647] >= 60 )
+      {
+         zs[VAR__8444594] = VAR_SIZE[VAR__53647];
+         strcpy(di[VAR__8444594], id[VAR__53647]);
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__1238129 = 0; VAR__1238129 < ( VAR__8444594 - 1 ); VAR__1238129++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR__8444594 - 1 ) - VAR__1238129 ); VAR__53647++ )
+      {
+         if ( zs[VAR__53647] < zs[VAR__53647 + 1] )
+         {
+            VAR__819283        = zs[VAR__53647];
+            zs[VAR__53647]     = zs[VAR__53647 + 1];
+            zs[VAR__53647 + 1] = VAR__819283;
+            strcpy(zfc, di[VAR__53647]);
+            strcpy(di[VAR__53647], di[VAR__53647 + 1]);
+            strcpy(di[VAR__53647 + 1], zfc);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_SIZE[VAR__53647] < 60 )
+      {
+         strcpy(di[VAR__8444594], id[VAR__53647]);
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", di[VAR__53647]);
+   }
+
+   return 0;
+}

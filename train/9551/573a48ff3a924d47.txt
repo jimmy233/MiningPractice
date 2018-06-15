@@ -1,0 +1,61 @@
+struct bing
+{
+   char id[10];
+   int  age;
+};
+void main()
+{
+   struct bing peo[120];
+   struct bing old[120];
+   struct bing young[120];
+   struct bing VAR__TEMP;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR_1238123;
+   int         num1 = 0;
+   int         num2 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", peo[VAR__53647].id, &peo[VAR__53647].age);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( peo[VAR__53647].age >= 60 )
+      {
+         old[num1] = peo[VAR__53647];
+         num1      = num1 + 1;
+      }
+      else
+      {
+         young[num2] = peo[VAR__53647];
+         num2        = num2 + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( num1 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( num1 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( old[VAR__21230].age < old[VAR__21230 + 1].age )
+         {
+            VAR__TEMP           = old[VAR__21230];
+            old[VAR__21230]     = old[VAR__21230 + 1];
+            old[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < num1; VAR__53647++ )
+   {
+      printf("%s\n", old[VAR__53647].id);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < num2; VAR__53647++ )
+   {
+      printf("%s\n", young[VAR__53647].id);
+   }
+}

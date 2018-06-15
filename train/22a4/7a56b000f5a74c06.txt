@@ -1,0 +1,39 @@
+int reverse(int VAR__NUM);
+
+int main()
+{
+   int VAR__53647;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < 6; VAR__53647++ )
+   {
+      scanf("%d", &VAR__TEMP);
+      printf("%d\n", reverse(VAR__TEMP));
+   }
+
+   return 0;
+}
+
+
+int reverse(int VAR__NUM)
+{
+   int LEN_OF_STH;
+   int sign;
+   int out = 0;
+   int VAR__53647;
+
+   if ( VAR__NUM == 0 )
+   {
+      return 0;
+   }
+
+   sign       = VAR__NUM / abs(VAR__NUM);
+   VAR__NUM   = abs(VAR__NUM);
+   LEN_OF_STH = ((int)log10(VAR__NUM)) + 1;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      out += (( VAR__NUM / ((int)pow(10, VAR__53647))) % 10 ) * pow(10, ( LEN_OF_STH - VAR__53647 ) - 1);
+   }
+
+   return sign * out;
+}

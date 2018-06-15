@@ -1,0 +1,65 @@
+int main()
+{
+   int VAR_1238123;
+
+   while ( 1 )
+   {
+      int tian[1000];
+      int qi[1000];
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tian[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qi[VAR__53647];
+      }
+
+      sort(tian, tian + VAR_1238123);
+      sort(qi, qi + VAR_1238123);
+      int ans       = 0;
+      int tianbig   = VAR_1238123 - 1;
+      int tiansmall = 0;
+      int qibig     = VAR_1238123 - 1;
+      int qismall   = 0;
+
+      while ( VAR_1238123-- )
+      {
+         if ( tian[tianbig] > qi[qibig] )
+         {
+            tianbig--;
+            qibig--;
+            ans += 200;
+         }
+         else
+         if ( tian[tiansmall] > qi[qismall] )
+         {
+            qismall++;
+            tiansmall++;
+            ans += 200;
+         }
+         else
+         {
+            if ( qi[qibig] > tian[tiansmall] )
+            {
+               ans -= 200;
+            }
+
+            tiansmall++;
+            qibig--;
+         }
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

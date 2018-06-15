@@ -1,0 +1,41 @@
+struct stu
+{
+   char       inf[100];
+   struct stu *VAR__NEXT;
+};
+void down(struct stu *now)
+{
+   if ( now->VAR__NEXT != 0 )
+   {
+      down(now->VAR__NEXT);
+   }
+
+   if ( now->VAR__NEXT != 0 )
+   {
+      printf("%s\n", now->inf);
+   }
+}
+
+
+int main()
+{
+   void down(struct stu *now);
+
+   struct stu *VAR__HEAD;
+   struct stu *now;
+   struct stu *neww;
+   VAR__HEAD            = (struct stu *)malloc(sizeof( struct stu ));
+   VAR__HEAD->VAR__NEXT = 0;
+   gets(VAR__HEAD->inf);
+   now = VAR__HEAD;
+   do
+   {
+      neww            = (struct stu *)malloc(sizeof( struct stu ));
+      neww->VAR__NEXT = 0;
+      gets(neww->inf);
+      now->VAR__NEXT = neww;
+      now            = neww;
+   } while ( strcmp(now->inf, "end") != 0 );
+   down(VAR__HEAD);
+   return 0;
+}

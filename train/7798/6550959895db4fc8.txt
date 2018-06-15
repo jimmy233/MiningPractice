@@ -1,0 +1,111 @@
+struct books
+{
+   int          VAR__NUM;
+   char         writer[26];
+   struct books *VAR__NEXT;
+};
+int VAR__1238129;
+struct books *creat()
+{
+   struct books *VAR__HEAD;
+   struct books *ANOTHER_POINTER;
+   struct books *YET_ANOTHER_POINTER;
+   int          VAR__53647;
+
+   YET_ANOTHER_POINTER = ( ANOTHER_POINTER = (struct books *)malloc(sizeof( struct books )));
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->writer);
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+      if ( VAR__53647 != VAR__1238129 )
+      {
+         ANOTHER_POINTER = (struct books *)malloc(sizeof( struct books ));
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int          character[26];
+   struct books *VAR__HEAD;
+   struct books *VAR_233;
+   int          VAR__53647;
+   int          VAR__MAX = 0;
+   int          imax;
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      character[VAR__53647] = 0;
+   }
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = creat();
+   VAR_233   = VAR__HEAD;
+
+   while ( 1 )
+   {
+      VAR__53647 = 0;
+
+      while ( *( VAR_233->writer + VAR__53647 ))
+      {
+         character[( *( VAR_233->writer + VAR__53647 )) - 'A']++;
+         VAR__53647++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+
+      if ( VAR_233 == NULL )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( character[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = character[VAR__53647];
+         imax     = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", imax + 'A', VAR__MAX);
+   VAR_233 = VAR__HEAD;
+
+   while ( 1 )
+   {
+      VAR__53647 = 0;
+
+      while ( *( VAR_233->writer + VAR__53647 ))
+      {
+         if (( *( VAR_233->writer + VAR__53647 )) == ( imax + 'A' ))
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+            break;
+         }
+
+         VAR__53647++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+
+      if ( VAR_233 == NULL )
+      {
+         break;
+      }
+   }
+}

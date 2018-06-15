@@ -1,0 +1,87 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int sections[50001][2];
+   int mark[50001];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d", &sections[VAR__53647][0], &sections[VAR__53647][1]);
+      mark[VAR__53647] = 0;
+   }
+
+   int left;
+   int right;
+   int nmin;
+   int node;
+   int VAR__COUNT;
+   VAR__COUNT = VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         nmin  = sections[0][0];
+         left  = sections[0][0];
+         right = sections[0][1];
+         node  = 0;
+      }
+      else
+      {
+         if ( sections[VAR__53647][0] < nmin )
+         {
+            nmin  = sections[VAR__53647][0];
+            left  = sections[VAR__53647][0];
+            right = sections[VAR__53647][1];
+            node  = VAR__53647;
+         }
+      }
+   }
+
+   mark[node] = 1;
+   VAR__COUNT--;
+   int VAR__TEMP = VAR__COUNT;
+   int VAR_FLAG  = 0;
+
+   while ( VAR__COUNT > 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( mark[VAR__53647] == 0 )
+         {
+            if ( sections[VAR__53647][1] <= right )
+            {
+               mark[VAR__53647] = 1;
+               VAR__COUNT--;
+            }
+            else
+            if ( sections[VAR__53647][0] <= right )
+            {
+               right            = sections[VAR__53647][1];
+               mark[VAR__53647] = 1;
+               VAR__COUNT--;
+            }
+         }
+      }
+
+      if (( VAR__COUNT != 0 ) && ( VAR__COUNT == VAR__TEMP ))
+      {
+         VAR_FLAG = 1;
+         break;
+      }
+
+      VAR__TEMP = VAR__COUNT;
+   }
+
+   if ( VAR_FLAG == 1 )
+   {
+      printf("no");
+   }
+   else
+   {
+      printf("%d %d", left, right);
+   }
+
+   return 0;
+}

@@ -1,0 +1,57 @@
+int func(int, int, int);
+
+int main()
+{
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+
+   ((((( cin >> startYear ) >> startMonth ) >> startDay ) >> endYear ) >> endMonth ) >> endDay;
+   cout << ( func(endYear, endMonth, endDay) - func(startYear, startMonth, startDay));
+   return 0;
+}
+
+
+int func(int year, int month, int day)
+{
+   int VAR__SUM = 0;
+   int VAR__53647;
+   int mping[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int mrun[12]  = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   for ( VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__SUM += 366;
+      }
+      else
+      {
+         VAR__SUM += 365;
+      }
+   }
+
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+      {
+         VAR__SUM += mrun[VAR__53647];
+      }
+   }
+
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+      {
+         VAR__SUM += mping[VAR__53647];
+      }
+   }
+
+
+   VAR__SUM += day;
+   return VAR__SUM;
+}

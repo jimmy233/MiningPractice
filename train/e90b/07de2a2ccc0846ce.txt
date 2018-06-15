@@ -1,0 +1,100 @@
+struct stu
+{
+   long       VAR__NUM;
+   int        score1;
+   int        score2;
+   struct stu *VAR__NEXT;
+};
+struct stu *creat(void)
+{
+   int        VAR_1238123;
+   int        VAR__53647 = 1;
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(LEN_OF_STH));
+   VAR__HEAD       = NULL;
+
+   while ( VAR__53647 <= VAR_1238123 )
+   {
+      scanf("%ld %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2);
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+
+      if ( VAR__53647 != VAR_1238123 )
+      {
+         ANOTHER_POINTER = ( YET_ANOTHER_POINTER->VAR__NEXT = (struct stu *)malloc(LEN_OF_STH));
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+
+      VAR__53647++;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void turn(struct stu *VAR__HEAD)
+{
+   int        VAR__temp  = 1;
+   int        VAR_129012 = 1;
+   int        VAR__819283;
+   struct stu *q1;
+   struct stu *q2;
+   struct stu *p3;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   for ( q1 = ( p3 = ( YET_ANOTHER_POINTER = VAR__HEAD )); q1->VAR__NEXT != NULL, VAR__temp <= 3; VAR__temp++ )
+   {
+      VAR__819283 = 0;
+      for ( q2 = ( ANOTHER_POINTER = q1->VAR__NEXT ), VAR_129012 = 1; q2 != NULL; q2 = q2->VAR__NEXT, VAR_129012++ )
+      {
+         if (( q1->score1 + q1->score2 ) < ( q2->score1 + q2->score2 ))
+         {
+            q1 = q2;
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+            VAR__819283         = 1;
+         }
+
+         if ( VAR_129012 != 1 )
+         {
+            ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+         }
+      }
+
+      printf("%ld %d\n", q1->VAR__NUM, q1->score1 + q1->score2);
+
+      if ( VAR__819283 == 1 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = q1->VAR__NEXT;
+         q1 = VAR__HEAD;
+      }
+      else
+      {
+         q1 = p3->VAR__NEXT;
+         p3 = q1;
+      }
+   }
+}
+
+
+void main()
+{
+   struct stu *ip;
+
+   ip = creat();
+   turn(ip);
+}

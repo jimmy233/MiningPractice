@@ -1,0 +1,124 @@
+int months1[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int months2[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int check(int year);
+
+int main()
+{
+   int year1;
+   int year2;
+   int month1;
+   int month2;
+   int day1;
+   int day2;
+   int VAR__53647;
+   int VAR__7685 = 0;
+   int VAR__SUM  = 0;
+
+   ((((( cin >> year1 ) >> month1 ) >> day1 ) >> year2 ) >> month2 ) >> day2;
+   for ( VAR__53647 = year1 + 1; VAR__53647 < year2; VAR__53647++ )
+   {
+      VAR__7685 = check(VAR__53647);
+
+      if ( VAR__7685 == 0 )
+      {
+         VAR__SUM = VAR__SUM + 365;
+      }
+      else
+      if ( VAR__7685 == 1 )
+      {
+         VAR__SUM = VAR__SUM + 366;
+      }
+   }
+
+   if ( year1 != year2 )
+   {
+      if ( check(year1))
+      {
+         for ( VAR__53647 = month1 + 1; VAR__53647 <= 12; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + months2[VAR__53647 - 1];
+         }
+
+         VAR__SUM = ( VAR__SUM + months2[month1 - 1] ) - day1;
+      }
+      else
+      {
+         for ( VAR__53647 = month1 + 1; VAR__53647 <= 12; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + months1[VAR__53647 - 1];
+         }
+
+         VAR__SUM = ( VAR__SUM + months1[month1 - 1] ) - day1;
+      }
+
+      if ( check(year2))
+      {
+         for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + months2[VAR__53647 - 1];
+         }
+
+         VAR__SUM = VAR__SUM + day2;
+      }
+      else
+      {
+         for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + months1[VAR__53647 - 1];
+         }
+
+         VAR__SUM = VAR__SUM + day2;
+      }
+   }
+   else
+   {
+      if ( check(year1))
+      {
+         for ( VAR__53647 = month1 + 1; VAR__53647 < month2; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + months2[VAR__53647 - 1];
+         }
+
+         if ( month1 != month2 )
+         {
+            VAR__SUM = (( VAR__SUM + months2[month1 - 1] ) - day1 ) + day2;
+         }
+         else
+         {
+            VAR__SUM = day2 - day1;
+         }
+      }
+      else
+      {
+         for ( VAR__53647 = month1 + 1; VAR__53647 < month2; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + months1[VAR__53647 - 1];
+         }
+
+         if ( month1 != month2 )
+         {
+            VAR__SUM = (( VAR__SUM + months1[month1 - 1] ) - day1 ) + day2;
+         }
+         else
+         {
+            VAR__SUM = day2 - day1;
+         }
+      }
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}
+
+
+int check(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

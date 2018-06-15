@@ -1,0 +1,64 @@
+int main()
+{
+   int x1;
+   int y1;
+   int x2;
+   int y2;
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   scanf("%d %d", &x1, &y1);
+   int **aa;
+   aa = (int **)malloc(( sizeof( int * )) * x1);
+   for ( VAR__53647 = 0; VAR__53647 < x1; VAR__53647++ )
+   {
+      aa[VAR__53647] = (int *)malloc(( sizeof( int )) * y1);
+      for ( VAR__21230 = 0; VAR__21230 < y1; VAR__21230++ )
+      {
+         scanf("%d", &aa[VAR__53647][VAR__21230]);
+      }
+   }
+
+   scanf("%d %d", &x2, &y2);
+   int **bb;
+   bb = (int **)malloc(( sizeof( int * )) * x2);
+   for ( VAR__53647 = 0; VAR__53647 < x2; VAR__53647++ )
+   {
+      bb[VAR__53647] = (int *)malloc(( sizeof( int )) * y2);
+      for ( VAR__21230 = 0; VAR__21230 < y2; VAR__21230++ )
+      {
+         scanf("%d", &bb[VAR__53647][VAR__21230]);
+      }
+   }
+
+   int **cc;
+   cc = (int **)malloc(( sizeof( int * )) * x1);
+   for ( VAR__53647 = 0; VAR__53647 < x1; VAR__53647++ )
+   {
+      cc[VAR__53647] = (int *)malloc(( sizeof( int )) * y2);
+      for ( VAR__21230 = 0; VAR__21230 < y2; VAR__21230++ )
+      {
+         cc[VAR__53647][VAR__21230] = 0;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < y2; VAR__21230++ )
+      {
+         for ( int VAR_233 = 0; VAR_233 < x2; VAR_233++ )
+         {
+            cc[VAR__53647][VAR__21230] += aa[VAR__53647][VAR_233] * bb[VAR_233][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < x1; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( y2 - 1 ); VAR__21230++ )
+      {
+         printf("%d ", cc[VAR__53647][VAR__21230]);
+      }
+
+      printf("%d\n", cc[VAR__53647][VAR__21230]);
+   }
+
+   return 0;
+}

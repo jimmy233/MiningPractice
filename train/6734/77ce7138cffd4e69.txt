@@ -1,0 +1,69 @@
+int calculate(int VAR_1238123, int VAR__1238129)
+{
+   int VAR__NUM;
+   int monkey[1000] = { 0 };
+   int *VAR_233;
+   int VAR__53647;
+
+   VAR__NUM = VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      monkey[VAR__53647] = 1;
+   }
+
+   VAR_233 = ( &monkey[0] ) - 1;
+
+   while ( VAR__NUM != 1 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+      {
+         VAR_233 += 1;
+
+         if ( VAR_233 > (( monkey + VAR_1238123 ) - 1 ))
+         {
+            VAR_233 -= VAR_1238123;
+         }
+
+         while (( *VAR_233 ) == 0 )
+         {
+            VAR_233 += 1;
+
+            if ( VAR_233 > (( monkey + VAR_1238123 ) - 1 ))
+            {
+               VAR_233 -= VAR_1238123;
+            }
+         }
+      }
+
+      *VAR_233  = 0;
+      VAR__NUM -= 1;
+   }
+
+   VAR__53647 = 0;
+
+   while ( monkey[VAR__53647] == 0 )
+   {
+      VAR__53647 += 1;
+   }
+
+   return VAR__53647 + 1;
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int king;
+
+   do
+   {
+      scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR_1238123 != 0 ) && ( VAR__1238129 != 0 ))
+      {
+         king = calculate(VAR_1238123, VAR__1238129);
+         printf("%d\n", king);
+      }
+   } while (( VAR_1238123 != 0 ) && ( VAR__1238129 != 0 ));
+}

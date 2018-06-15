@@ -1,0 +1,61 @@
+struct patient
+{
+   char id[10];
+   int  year;
+}
+pat[100];
+int arrange(struct patient peop[], int VAR__NUM);
+
+int main()
+{
+   int            VAR__53647;
+   int            VAR__21230 = 0;
+   int            VAR__8444594;
+   int            VAR_1238123;
+   int            VAR__MAX;
+   struct patient *ppat[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", pat[VAR__53647].id, &pat[VAR__53647].year);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pat[VAR__53647].year >= 60 )
+      {
+         ppat[VAR__21230] = pat + VAR__53647;
+         VAR__21230++;
+      }
+   }
+
+   struct patient *VAR_233;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < (( VAR__21230 - 1 ) - VAR__53647 ); VAR__8444594++ )
+      {
+         if (( *ppat[VAR__8444594] ).year < ( *ppat[VAR__8444594 + 1] ).year )
+         {
+            VAR_233                = ppat[VAR__8444594];
+            ppat[VAR__8444594]     = ppat[VAR__8444594 + 1];
+            ppat[VAR__8444594 + 1] = VAR_233;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%s\n", ppat[VAR__53647]->id);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pat[VAR__53647].year < 60 )
+      {
+         printf("%s\n", pat[VAR__53647].id);
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,63 @@
+int main()
+{
+   int nian;
+   int yue1;
+   int yue2;
+   int turn;
+   int VAR__53647;
+   int VAR__21230;
+   int days = 0;
+   int VAR__TEMP;
+   int szp[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int szr[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d", &turn);
+   for ( VAR__53647 = 0; VAR__53647 < turn; VAR__53647++ )
+   {
+      scanf("%d%d%d", &nian, &yue1, &yue2);
+
+      if ( yue1 > yue2 )
+      {
+         VAR__TEMP = yue1;
+         yue1      = yue2;
+         yue2      = VAR__TEMP;
+      }
+
+      if ((( nian % 4 ) != 0 ) || ((( nian % 400 ) != 0 ) && (( nian % 100 ) == 0 )))
+      {
+         days = szp[yue1 - 1];
+         for ( VAR__21230 = yue1; VAR__21230 < ( yue2 - 1 ); VAR__21230++ )
+         {
+            days += szp[VAR__21230];
+         }
+
+         if (( days % 7 ) == 0 )
+         {
+            printf("YES\n");
+         }
+         else
+         {
+            printf("NO\n");
+         }
+      }
+      else
+      {
+         days = szr[yue1 - 1];
+         for ( VAR__21230 = yue1; VAR__21230 < ( yue2 - 1 ); VAR__21230++ )
+         {
+            days += szr[VAR__21230];
+         }
+
+         if (( days % 7 ) == 0 )
+         {
+            printf("YES\n");
+         }
+         else
+         {
+            printf("NO\n");
+         }
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,78 @@
+int VAR__819283[200];
+int VAR__19328[200];
+int out[200];
+void init()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < 200; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 0;
+      VAR__19328[VAR__53647]  = 0;
+      out[VAR__53647]         = 0;
+   }
+}
+
+
+void load()
+{
+   char VAR__TEMP[201];
+
+   cin >> VAR__TEMP;
+   int begin = 200 - strlen(VAR__TEMP);
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__TEMP); VAR__53647++ )
+   {
+      VAR__819283[begin + VAR__53647] = VAR__TEMP[VAR__53647] - '0';
+   }
+
+   cin >> VAR__TEMP;
+   begin = 200 - strlen(VAR__TEMP);
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__TEMP); VAR__53647++ )
+   {
+      VAR__19328[begin + VAR__53647] = VAR__TEMP[VAR__53647] - '0';
+   }
+}
+
+
+void add()
+{
+   int carry      = 0;
+   int VAR__53647 = 0;
+
+   for ( VAR__53647 = 199; VAR__53647 >= 0; VAR__53647-- )
+   {
+      out[VAR__53647] = ( VAR__819283[VAR__53647] + VAR__19328[VAR__53647] ) + carry;
+
+      if ( out[VAR__53647] >= 10 )
+      {
+         out[VAR__53647] -= 10;
+         carry            = 1;
+      }
+      else
+      {
+         carry = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 199; VAR__53647++ )
+   {
+      if ( out[VAR__53647] != 0 )
+      {
+         break;
+      }
+   }
+
+   for ( ; VAR__53647 < 200; VAR__53647++ )
+   {
+      cout << out[VAR__53647];
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   init();
+   load();
+   add();
+   return 0;
+}

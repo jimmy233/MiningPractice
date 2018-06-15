@@ -1,0 +1,66 @@
+struct data
+{
+   char id[100];
+   int  age;
+};
+int main()
+{
+   struct data old[1000];
+   struct data young[1000];
+   struct data VAR__TEMP;
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR_233 = 0;
+   int         VAR_666 = 0;
+   int         len1;
+   int         len2;
+   int         VAR__8444594;
+   char        id[100];
+   int         age;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", id, &age);
+
+      if ( age >= 60 )
+      {
+         old[VAR_233].age = age;
+         strcpy(old[VAR_233].id, id);
+         VAR_233++;
+      }
+      else
+      {
+         young[VAR_666].age = age;
+         strcpy(young[VAR_666].id, id);
+         VAR_666++;
+      }
+   }
+
+   len1 = VAR_233;
+   len2 = VAR_666;
+   for ( VAR__8444594 = 1; VAR__8444594 < len1; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( len1 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( old[VAR__53647].age < old[VAR__53647 + 1].age )
+         {
+            VAR__TEMP           = old[VAR__53647 + 1];
+            old[VAR__53647 + 1] = old[VAR__53647];
+            old[VAR__53647]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      printf("%s\n", old[VAR__53647].id);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      printf("%s\n", young[VAR__53647].id);
+   }
+
+   return 0;
+}

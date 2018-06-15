@@ -1,0 +1,112 @@
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__1238129 = 0;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__8444594;
+   char  sex[40][10]  = { '\0' };
+   float VAR_2890[40] = { 0 };
+   float VAR__TEMP;
+   char  tsex[40];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", sex[VAR__53647], &VAR_2890[VAR__53647]);
+
+      if ( sex[VAR__53647][0] == 'm' )
+      {
+         VAR__1238129 = VAR__1238129 + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( sex[VAR__21230][0] == 'm' )
+         {
+            if (( sex[VAR__21230 + 1][0] == 'm' ) && ( VAR_2890[VAR__21230] > VAR_2890[VAR__21230 + 1] ))
+            {
+               VAR__TEMP                = VAR_2890[VAR__21230];
+               VAR_2890[VAR__21230]     = VAR_2890[VAR__21230 + 1];
+               VAR_2890[VAR__21230 + 1] = VAR__TEMP;
+            }
+         }
+         else
+         if ( sex[VAR__21230][0] == 'f' )
+         {
+            if ( sex[VAR__21230 + 1][0] == 'm' )
+            {
+               VAR__TEMP                = VAR_2890[VAR__21230];
+               VAR_2890[VAR__21230]     = VAR_2890[VAR__21230 + 1];
+               VAR_2890[VAR__21230 + 1] = VAR__TEMP;
+               strcpy(tsex, sex[VAR__21230 + 1]);
+               strcpy(sex[VAR__21230 + 1], sex[VAR__21230]);
+               strcpy(sex[VAR__21230], tsex);
+            }
+            else
+            if (( sex[VAR__21230 + 1][0] == 'f' ) && ( VAR_2890[VAR__21230] < VAR_2890[VAR__21230 + 1] ))
+            {
+               VAR__TEMP                = VAR_2890[VAR__21230];
+               VAR_2890[VAR__21230]     = VAR_2890[VAR__21230 + 1];
+               VAR_2890[VAR__21230 + 1] = VAR__TEMP;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( sex[VAR__21230][0] == 'm' )
+         {
+            if (( sex[VAR__21230 + 1][0] == 'm' ) && ( VAR_2890[VAR__21230] > VAR_2890[VAR__21230 + 1] ))
+            {
+               VAR__TEMP                = VAR_2890[VAR__21230];
+               VAR_2890[VAR__21230]     = VAR_2890[VAR__21230 + 1];
+               VAR_2890[VAR__21230 + 1] = VAR__TEMP;
+            }
+         }
+         else
+         if ( sex[VAR__21230][0] == 'f' )
+         {
+            if ( sex[VAR__21230 + 1][0] == 'm' )
+            {
+               VAR__TEMP                = VAR_2890[VAR__21230];
+               VAR_2890[VAR__21230]     = VAR_2890[VAR__21230 + 1];
+               VAR_2890[VAR__21230 + 1] = VAR__TEMP;
+               strcpy(tsex, sex[VAR__21230 + 1]);
+               strcpy(sex[VAR__21230 + 1], sex[VAR__21230]);
+               strcpy(sex[VAR__21230], tsex);
+            }
+            else
+            if (( sex[VAR__21230 + 1][0] == 'f' ) && ( VAR_2890[VAR__21230] < VAR_2890[VAR__21230 + 1] ))
+            {
+               VAR__TEMP                = VAR_2890[VAR__21230];
+               VAR_2890[VAR__21230]     = VAR_2890[VAR__21230 + 1];
+               VAR_2890[VAR__21230 + 1] = VAR__TEMP;
+            }
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0, VAR__53647 = 0; VAR__53647 < 40; VAR__53647++ )
+   {
+      if (( VAR_2890[VAR__53647] != 0 ) && ( VAR__8444594 != 0 ))
+      {
+         printf(" %.2f", VAR_2890[VAR__53647]);
+         VAR__8444594++;
+      }
+      else
+      if (( VAR_2890[VAR__53647] != 0 ) && ( VAR__8444594 == 0 ))
+      {
+         printf("%.2f", VAR_2890[VAR__53647]);
+         VAR__8444594++;
+      }
+   }
+
+   return 0;
+}

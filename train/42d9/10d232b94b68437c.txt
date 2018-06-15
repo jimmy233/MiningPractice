@@ -1,0 +1,71 @@
+struct zuobiao
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+};
+struct zuhe
+{
+   struct zuobiao dian1;
+   struct zuobiao dian2;
+   double         VAR_9494;
+};
+double juli(int x3, int y3, int z3, int x4, int y4, int z4)
+{
+   double VAR__12302;
+
+   VAR__12302 = ((( x4 - x3 ) * ( x4 - x3 )) + (( y4 - y3 ) * ( y4 - y3 ))) + (( z4 - z3 ) * ( z4 - z3 ));
+   VAR__12302 = sqrt(VAR__12302);
+   return VAR__12302;
+}
+
+
+int main()
+{
+   struct zuobiao dian[20];
+   struct zuhe    zu[100];
+   struct zuhe    VAR__4857423;
+   int            VAR_1238123;
+   int            VAR__1238129;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__8444594 = 0;
+   double         VAR__1111;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &dian[VAR__53647].VAR__7685, &dian[VAR__53647].VAR__3918907, &dian[VAR__53647].VAR__9290);
+   }
+
+   VAR__1238129 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__1111 = juli(dian[VAR__53647].VAR__7685, dian[VAR__53647].VAR__3918907, dian[VAR__53647].VAR__9290, dian[VAR__21230].VAR__7685, dian[VAR__21230].VAR__3918907, dian[VAR__21230].VAR__9290);
+         zu[VAR__8444594].dian1    = dian[VAR__53647];
+         zu[VAR__8444594].dian2    = dian[VAR__21230];
+         zu[VAR__8444594].VAR_9494 = VAR__1111;
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__1238129 - 1 ); VAR__21230++ )
+      {
+         if ( zu[VAR__21230].VAR_9494 < zu[VAR__21230 + 1].VAR_9494 )
+         {
+            VAR__4857423       = zu[VAR__21230];
+            zu[VAR__21230]     = zu[VAR__21230 + 1];
+            zu[VAR__21230 + 1] = VAR__4857423;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", zu[VAR__53647].dian1.VAR__7685, zu[VAR__53647].dian1.VAR__3918907, zu[VAR__53647].dian1.VAR__9290, zu[VAR__53647].dian2.VAR__7685, zu[VAR__53647].dian2.VAR__3918907, zu[VAR__53647].dian2.VAR__9290, zu[VAR__53647].VAR_9494);
+   }
+}

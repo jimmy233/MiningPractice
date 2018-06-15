@@ -1,0 +1,87 @@
+void input(int *ANOTHER_POINTER, int *YET_ANOTHER_POINTER, int **pA, int **pB)
+{
+   int VAR__53647;
+
+   scanf("%d %d", ANOTHER_POINTER, YET_ANOTHER_POINTER);
+   *pA = (int *)malloc(( *ANOTHER_POINTER ) * ( sizeof( int )));
+   *pB = (int *)malloc(( *YET_ANOTHER_POINTER ) * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < ( *ANOTHER_POINTER ); VAR__53647++ )
+   {
+      scanf("%d", ( *pA ) + VAR__53647);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( *YET_ANOTHER_POINTER ); VAR__53647++ )
+   {
+      scanf("%d", ( *pB ) + VAR__53647);
+   }
+}
+
+
+void sort(int VAR_233, int *pX)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_233 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( pX[VAR__21230] < pX[VAR__21230 - 1] )
+         {
+            VAR__TEMP          = pX[VAR__21230];
+            pX[VAR__21230]     = pX[VAR__21230 - 1];
+            pX[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void combine(int ANOTHER_POINTER, int YET_ANOTHER_POINTER, int *pA, int *pB, int **pC)
+{
+   *pC = (int *)malloc(( ANOTHER_POINTER + YET_ANOTHER_POINTER ) * ( sizeof( int )));
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < ANOTHER_POINTER; VAR__53647++ )
+   {
+      ( *pC )[VAR__53647] = pA[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < YET_ANOTHER_POINTER; VAR__53647++ )
+   {
+      ( *pC )[ANOTHER_POINTER + VAR__53647] = pB[VAR__53647];
+   }
+
+   free(pA);
+   free(pB);
+}
+
+
+void output(int VAR_233, int *pC)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_233 - 1 ); VAR__53647++ )
+   {
+      printf("%d ", pC[VAR__53647]);
+   }
+
+   printf("%d\n", pC[VAR_233 - 1]);
+   free(pC);
+}
+
+
+int main()
+{
+   int ANOTHER_POINTER;
+   int YET_ANOTHER_POINTER;
+   int *pA;
+   int *pB;
+   int *pC;
+
+   input(&ANOTHER_POINTER, &YET_ANOTHER_POINTER, &pA, &pB);
+   sort(ANOTHER_POINTER, pA);
+   sort(YET_ANOTHER_POINTER, pB);
+   combine(ANOTHER_POINTER, YET_ANOTHER_POINTER, pA, pB, &pC);
+   output(ANOTHER_POINTER + YET_ANOTHER_POINTER, pC);
+}

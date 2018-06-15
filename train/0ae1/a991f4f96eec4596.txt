@@ -1,0 +1,103 @@
+int after(int VAR__7685)
+{
+   int VAR__3918907;
+   int VAR__SUM;
+   int VAR__9290;
+   int VAR__1238129;
+
+   VAR__3918907 = ( VAR__7685 - 1 ) / 400;
+   VAR__1238129 = ( VAR__7685 - 1 ) / 100;
+   VAR__9290    = ( VAR__7685 - 1 ) / 4;
+   VAR__SUM     = ((( VAR__7685 - 1 ) + VAR__9290 ) - VAR__1238129 ) + VAR__3918907;
+   return VAR__SUM;
+}
+
+
+int date(int VAR__7685, int VAR__3918907, int VAR__9290)
+{
+   int VAR__SUM = 0;
+   int VAR__53647;
+
+   if ( VAR__3918907 == 1 )
+   {
+      VAR__SUM = VAR__9290;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < VAR__3918907; VAR__53647++ )
+      {
+         if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+         {
+            VAR__SUM += 31;
+         }
+
+         if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+         {
+            VAR__SUM += 30;
+         }
+
+         if ( VAR__53647 == 2 )
+         {
+            if (((( VAR__7685 % 4 ) == 0 ) && (( VAR__7685 % 100 ) != 0 )) || (( VAR__7685 % 400 ) == 0 ))
+            {
+               VAR__SUM += 29;
+            }
+            else
+            {
+               VAR__SUM += 28;
+            }
+         }
+      }
+
+      VAR__SUM += VAR__9290;
+   }
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+   int year;
+   int day;
+   int result;
+
+   scanf("%d%d%d", &VAR__819283, &VAR__19328, &VAR__4857423);
+   year   = after(VAR__819283);
+   day    = date(VAR__819283, VAR__19328, VAR__4857423);
+   result = ( year + day ) % 7;
+   switch ( result )
+   {
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+
+   case 0:
+      printf("Sun.");
+   }
+
+   return 0;
+}

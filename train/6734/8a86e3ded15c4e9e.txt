@@ -1,0 +1,70 @@
+struct Per
+{
+   int        VAR__NUM;
+   struct Per *VAR__NEXT;
+};
+int main()
+{
+   int        VAR_1238123;
+   int        VAR__1238129;
+   int        VAR__53647;
+   struct Per *VAR__HEAD;
+   struct Per *VAR_233;
+
+   while ( 1 )
+   {
+      scanf("%d %d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR_1238123 == 0 ) || ( VAR__1238129 == 0 ))
+      {
+         break;
+      }
+
+      if (( VAR_1238123 == 1 ) || ( VAR__1238129 == 1 ))
+      {
+         printf("%d\n", VAR_1238123);
+         continue;
+      }
+
+      VAR__HEAD = (struct Per *)malloc(LEN);
+      VAR_233   = VAR__HEAD;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         VAR_233->VAR__NUM = VAR__53647;
+
+         if ( VAR__53647 == VAR_1238123 )
+         {
+            VAR_233->VAR__NEXT = VAR__HEAD;
+         }
+         else
+         {
+            VAR_233->VAR__NEXT = (struct Per *)malloc(LEN);
+            VAR_233            = VAR_233->VAR__NEXT;
+         }
+      }
+
+      VAR_233 = VAR__HEAD;
+
+      while ( VAR_233 != VAR_233->VAR__NEXT )
+      {
+         for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+         {
+            if ( VAR__53647 == ( VAR__1238129 - 1 ))
+            {
+               VAR_233->VAR__NEXT = VAR_233->VAR__NEXT->VAR__NEXT;
+               VAR_233            = VAR_233->VAR__NEXT;
+            }
+            else
+            {
+               VAR_233 = VAR_233->VAR__NEXT;
+            }
+         }
+      }
+
+      printf("%d\n", VAR_233->VAR__NUM);
+   }
+
+   getchar();
+   getchar();
+   return 0;
+}

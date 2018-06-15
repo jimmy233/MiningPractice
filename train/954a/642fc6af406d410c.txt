@@ -1,0 +1,63 @@
+struct student
+{
+   char name[20];
+   int  pingjun;
+   int  pingyi;
+   char bgb[3];
+   char xb[3];
+   int  lunwen;
+   int  qian;
+};
+int main()
+{
+   struct student stu[100]  = { { "\0" } };
+   struct student total     = { "\0" };
+   struct student VAR__TEMP = { "\0" };
+   int            VAR_1238123;
+   int            VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d", stu[VAR__53647].name, &stu[VAR__53647].pingjun, &stu[VAR__53647].pingyi);
+      scanf("%s%s%d", &stu[VAR__53647].bgb, &stu[VAR__53647].xb, &stu[VAR__53647].lunwen);
+
+      if (( stu[VAR__53647].pingjun > 80 ) && ( stu[VAR__53647].lunwen >= 1 ))
+      {
+         stu[VAR__53647].qian = stu[VAR__53647].qian + 8000;
+      }
+
+      if (( stu[VAR__53647].pingjun > 85 ) && ( stu[VAR__53647].pingyi > 80 ))
+      {
+         stu[VAR__53647].qian = stu[VAR__53647].qian + 4000;
+      }
+
+      if ( stu[VAR__53647].pingjun > 90 )
+      {
+         stu[VAR__53647].qian = stu[VAR__53647].qian + 2000;
+      }
+
+      if (( stu[VAR__53647].pingjun > 85 ) && ( stu[VAR__53647].xb[0] == 'Y' ))
+      {
+         stu[VAR__53647].qian = stu[VAR__53647].qian + 1000;
+      }
+
+      if (( stu[VAR__53647].pingyi > 80 ) && ( stu[VAR__53647].bgb[0] == 'Y' ))
+      {
+         stu[VAR__53647].qian = stu[VAR__53647].qian + 850;
+      }
+
+      total.qian = total.qian + stu[VAR__53647].qian;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].qian > VAR__TEMP.qian )
+      {
+         VAR__TEMP = stu[VAR__53647];
+      }
+   }
+
+   printf("%s\n%d\n%d\n", VAR__TEMP.name, VAR__TEMP.qian, total.qian);
+   return 0;
+}

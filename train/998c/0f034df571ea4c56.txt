@@ -1,0 +1,83 @@
+int main()
+{
+   char a1[260];
+   char a2[260];
+   char result[260];
+
+   ( cin >> a1 ) >> a2;
+   int len1 = strlen(a1);
+   int len2 = strlen(a2);
+   memset(result, 0, sizeof( result ));
+   int VAR__53647   = len1 - 1;
+   int VAR__21230   = len2 - 1;
+   int VAR__8444594 = 0;
+
+   while (( VAR__53647 >= 0 ) && ( VAR__21230 >= 0 ))
+   {
+      result[VAR__8444594] += ( a1[VAR__53647] + a2[VAR__21230] ) - '0';
+
+      if ( result[VAR__8444594] > '9' )
+      {
+         result[VAR__8444594 + 1]++;
+         result[VAR__8444594] -= 10;
+      }
+
+      VAR__53647--;
+      VAR__21230--;
+      VAR__8444594++;
+   }
+
+   if ( VAR__53647 >= 0 )
+   {
+      while ( VAR__53647 >= 0 )
+      {
+         result[VAR__8444594] += a1[VAR__53647];
+
+         if ( result[VAR__8444594] > '9' )
+         {
+            result[VAR__8444594 + 1]++;
+            result[VAR__8444594] -= 10;
+         }
+
+         VAR__53647--;
+         VAR__8444594++;
+      }
+   }
+
+   if ( VAR__21230 >= 0 )
+   {
+      while ( VAR__21230 >= 0 )
+      {
+         result[VAR__8444594] += a2[VAR__21230];
+
+         if ( result[VAR__8444594] > '9' )
+         {
+            result[VAR__8444594 + 1]++;
+            result[VAR__8444594] -= 10;
+         }
+
+         VAR__21230--;
+         VAR__8444594++;
+      }
+   }
+
+   if ( result[VAR__8444594] != 0 )
+   {
+      result[VAR__8444594] += '0';
+      VAR__8444594++;
+   }
+
+   while (( result[VAR__8444594 - 1] == '0' ) && ( VAR__8444594 != 1 ))
+   {
+      VAR__8444594--;
+   }
+
+   char final[260];
+   memset(final, 0, sizeof( final ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      final[VAR__53647] = result[( VAR__8444594 - 1 ) - VAR__53647];
+   }
+
+   ( cout << final ) << endl;
+}

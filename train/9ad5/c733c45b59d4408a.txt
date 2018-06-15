@@ -1,0 +1,85 @@
+int col(int VAR__7685)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; ; VAR__53647++ )
+   {
+      if ( VAR__7685 <= ( pow(2, VAR__53647) - 1 ))
+      {
+         break;
+      }
+   }
+
+   return VAR__53647;
+}
+
+
+int row(int VAR__7685)
+{
+   int VAR__TEMP;
+
+   VAR__TEMP = col(VAR__7685);
+   return ( VAR__7685 - pow(2, VAR__TEMP - 1)) + 1;
+}
+
+
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+
+   scanf("%d %d", &VAR__819283, &VAR__19328);
+   int cola;
+   int rowa;
+   int colb;
+   int rowb;
+   cola = col(VAR__819283);
+   rowa = row(VAR__819283);
+   colb = col(VAR__19328);
+   rowb = row(VAR__19328);
+
+   if ( cola > colb )
+   {
+      while ( cola > colb )
+      {
+         cola--;
+
+         if (( rowa % 2 ) == 0 )
+         {
+            rowa = rowa / 2;
+         }
+         else
+         {
+            rowa = ( rowa + 1 ) / 2;
+         }
+      }
+   }
+
+   if ( cola < colb )
+   {
+      while ( cola < colb )
+      {
+         colb--;
+
+         if (( rowb % 2 ) == 0 )
+         {
+            rowb = rowb / 2;
+         }
+         else
+         {
+            rowb = ( rowb + 1 ) / 2;
+         }
+      }
+   }
+
+   while ( rowa != rowb )
+   {
+      rowa = ( rowa + 1 ) / 2;
+      rowb = ( rowb + 1 ) / 2;
+      cola--;
+      colb--;
+   }
+
+   cout << (( pow(2, cola - 1) + rowa ) - 1 );
+   return 0;
+}

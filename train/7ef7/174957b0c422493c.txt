@@ -1,0 +1,78 @@
+int VAR_1238123;
+int VAR__1238129;
+int imin;
+int matrix[110][110];
+void submin(int VAR__7685, int VAR__3918907, int dx, int dy)
+{
+   if (( VAR__7685 == VAR__1238129 ) || ( VAR__3918907 == VAR__1238129 ))
+   {
+      return;
+   }
+
+   if ( matrix[VAR__7685][VAR__3918907] < imin )
+   {
+      imin = matrix[VAR__7685][VAR__3918907];
+   }
+
+   submin(VAR__7685 + dx, VAR__3918907 + dy, dx, dy);
+   matrix[VAR__7685][VAR__3918907] = matrix[VAR__7685][VAR__3918907] - imin;
+}
+
+
+void sub()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         matrix[VAR__53647][VAR__21230] = matrix[VAR__53647][VAR__21230 + 1];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         matrix[VAR__21230][VAR__53647] = matrix[VAR__21230 + 1][VAR__53647];
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM;
+   int VAR__temp;
+
+   for ( cin >> VAR_1238123, VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> matrix[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__SUM = 0, VAR__1238129 = VAR_1238123; VAR__1238129 >= 1; VAR__1238129-- )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( 2 * VAR__1238129 ); VAR__53647++ )
+         {
+            imin = 10000;
+            submin(( VAR__53647 % VAR__1238129 ) * ( 1 - ( VAR__53647 / VAR__1238129 )), ( VAR__53647 % VAR__1238129 ) * ( VAR__53647 / VAR__1238129 ), VAR__53647 / VAR__1238129, 1 - ( VAR__53647 / VAR__1238129 ));
+         }
+
+         VAR__SUM = VAR__SUM + matrix[1][1];
+         sub();
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+}

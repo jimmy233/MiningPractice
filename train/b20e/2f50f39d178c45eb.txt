@@ -1,0 +1,101 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+   int qw[1001];
+   int tj[1001];
+   int tjif[1001];
+   int qwif[1001];
+
+   scanf("%d", &VAR_1238123);
+   int wincount;
+   wincount = 0;
+   int tiecount;
+   int VAR_129012;
+
+   while ( VAR_1238123 != 0 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tj[VAR__53647]);
+         tjif[VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qw[VAR__53647]);
+         qwif[VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( tj[VAR__53647] > tj[VAR__21230] )
+            {
+               VAR__temp      = tj[VAR__53647];
+               tj[VAR__53647] = tj[VAR__21230];
+               tj[VAR__21230] = VAR__temp;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( qw[VAR__53647] > qw[VAR__21230] )
+            {
+               VAR__temp      = qw[VAR__53647];
+               qw[VAR__53647] = qw[VAR__21230];
+               qw[VAR__21230] = VAR__temp;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR_1238123; VAR__21230 > 0; VAR__21230 = VAR__21230 - 1 )
+         {
+            if (( qw[VAR__21230] < tj[VAR__53647] ) && ( qwif[VAR__21230] == 0 ))
+            {
+               tjif[VAR__53647] = 1;
+               qwif[VAR__21230] = 1;
+               break;
+            }
+         }
+      }
+
+      wincount = 0;
+      for ( VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+      {
+         if ( tjif[VAR__8444594] == 1 )
+         {
+            wincount++;
+         }
+      }
+
+      tiecount = 0;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ((( tj[VAR__53647] == qw[VAR__21230] ) && ( qwif[VAR__21230] == 0 )) && ( tjif[VAR__53647] == 0 ))
+            {
+               tjif[VAR__53647] = 1;
+               qwif[VAR__21230] = 1;
+               tiecount++;
+            }
+         }
+      }
+
+      VAR_129012 = ( 200 * wincount ) - ( 200 * (( VAR_1238123 - wincount ) - tiecount ));
+      printf("%ld\n", VAR_129012);
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 0;
+}

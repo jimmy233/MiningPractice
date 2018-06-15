@@ -1,0 +1,92 @@
+struct student
+{
+   char           info[50];
+   struct student *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct student
+{
+   char           info[50];
+   struct student *VAR__NEXT;
+}
+    *YET_ANOTHER_POINTER;
+int VAR_1238123;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   gets(ANOTHER_POINTER->info);
+   VAR__HEAD = NULL;
+
+   while ( strcmp(ANOTHER_POINTER->info, "end"))
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      gets(ANOTHER_POINTER->info);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct student *turnback(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *newhead = NULL;
+
+   do
+   {
+      YET_ANOTHER_POINTER = NULL;
+      ANOTHER_POINTER     = VAR__HEAD;
+
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( newhead == NULL )
+      {
+         newhead = ANOTHER_POINTER;
+         VAR_233 = ( newhead->VAR__NEXT = YET_ANOTHER_POINTER );
+      }
+
+      VAR_233 = ( VAR_233->VAR__NEXT = YET_ANOTHER_POINTER );
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   } while ( VAR__HEAD->VAR__NEXT != NULL );
+   return newhead;
+}
+
+
+void output(struct student *outhead)
+{
+   for ( ANOTHER_POINTER = outhead; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      puts(ANOTHER_POINTER->info);
+   }
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   VAR__HEAD = turnback(VAR__HEAD);
+   output(VAR__HEAD);
+   printf("\n");
+}

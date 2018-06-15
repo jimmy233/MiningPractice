@@ -1,0 +1,125 @@
+int main()
+{
+   int year;
+   int month;
+   int date;
+   int VAR__temp;
+   int VAR__3918907;
+   int VAR__1238129;
+   int VAR__12302;
+   int VAR_9494;
+
+   scanf("%d %d %d", &year, &month, &date);
+   VAR__temp    = ( year - 1 ) / 400;
+   year         = year - ( VAR__temp * 400 );
+   VAR__temp    = ( year - 1 ) / 4;
+   VAR__3918907 = (( VAR__temp * 366 ) + ((( year - 1 ) - VAR__temp ) * 365 )) % 7;
+
+   if ( year > 300 )
+   {
+      VAR__3918907 = ( VAR__3918907 - 3 ) % 7;
+   }
+   else
+   if ( year > 200 )
+   {
+      VAR__3918907 = ( VAR__3918907 - 2 ) % 7;
+   }
+   else
+   if ( year > 100 )
+   {
+      VAR__3918907 = ( VAR__3918907 - 1 ) % 7;
+   }
+
+
+
+   switch ( month )
+   {
+   case 1:
+      VAR__1238129 = 0;
+      break;
+
+   case 2:
+      VAR__1238129 = 3;
+      break;
+
+   case 3:
+      VAR__1238129 = 3;
+      break;
+
+   case 4:
+      VAR__1238129 = 6;
+      break;
+
+   case 5:
+      VAR__1238129 = 1;
+      break;
+
+   case 6:
+      VAR__1238129 = 4;
+      break;
+
+   case 7:
+      VAR__1238129 = 6;
+      break;
+
+   case 8:
+      VAR__1238129 = 2;
+      break;
+
+   case 9:
+      VAR__1238129 = 5;
+      break;
+
+   case 10:
+      VAR__1238129 = 0;
+      break;
+
+   case 11:
+      VAR__1238129 = 3;
+      break;
+
+   case 12:
+      VAR__1238129 = 5;
+      break;
+   }
+
+   if ((((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 )) && ( month > 2 ))
+   {
+      VAR__1238129 = ( VAR__1238129 + 1 ) % 7;
+   }
+
+   VAR__12302 = date % 7;
+   VAR_9494   = (( VAR__1238129 + VAR__3918907 ) + VAR__12302 ) % 7;
+   switch ( VAR_9494 )
+   {
+   case 0:
+      printf("Sun.\n");
+      break;
+
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+   }
+
+   return 0;
+}

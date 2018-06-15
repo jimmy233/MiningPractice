@@ -1,0 +1,108 @@
+struct ren
+{
+   int VAR__7685;
+   int VAR__3918907;
+}
+VAR__819283[3000];
+int judge(struct ren VAR__819283, int VAR__temp)
+{
+   if (( VAR__temp < VAR__819283.VAR__3918907 ) && ( VAR__temp >= VAR__819283.VAR__7685 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   char line1[200000];
+   char line2[200000];
+   char VAR__19328[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_233          = 0;
+   int  VAR__NUM         = 0;
+   int  VAR__COUNT[1100] = { 0 };
+
+   memset(line1, 0, sizeof( line1 ));
+   memset(line2, 0, sizeof( line2 ));
+   memset(VAR__19328, 0, sizeof( VAR__19328 ));
+   cin.getline(line1, 200000);
+   cin.getline(line2, 200000);
+   int len1;
+   int len2;
+   len1 = strlen(line1);
+   len2 = strlen(line2);
+   int VAR__SUM = 1;
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      if ( line1[VAR__53647] == ',' )
+      {
+         VAR__SUM++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      if ( line1[VAR__53647] != ',' )
+      {
+         VAR__19328[VAR_233] = line1[VAR__53647];
+         VAR_233++;
+      }
+      else
+      {
+         VAR__819283[VAR__NUM].VAR__7685 = atoi(VAR__19328);
+         memset(VAR__19328, 0, sizeof( VAR__19328 ));
+         VAR_233 = 0;
+         VAR__NUM++;
+      }
+   }
+
+   VAR__819283[VAR__NUM].VAR__7685 = atoi(VAR__19328);
+   memset(VAR__19328, 0, sizeof( VAR__19328 ));
+   VAR_233  = 0;
+   VAR__NUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      if ( line2[VAR__53647] != ',' )
+      {
+         VAR__19328[VAR_233] = line2[VAR__53647];
+         VAR_233++;
+      }
+      else
+      {
+         VAR__819283[VAR__NUM].VAR__3918907 = atoi(VAR__19328);
+         memset(VAR__19328, 0, sizeof( VAR__19328 ));
+         VAR_233 = 0;
+         VAR__NUM++;
+      }
+   }
+
+   VAR__819283[VAR__NUM].VAR__3918907 = atoi(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 <= 1001; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__SUM; VAR__21230++ )
+      {
+         if ( judge(VAR__819283[VAR__21230], VAR__53647))
+         {
+            VAR__COUNT[VAR__53647]++;
+         }
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 1002; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__COUNT[VAR__53647] )
+      {
+         VAR__MAX = VAR__COUNT[VAR__53647];
+      }
+   }
+
+   ((( cout << VAR__SUM ) << " " ) << VAR__MAX ) << endl;
+   return 0;
+}

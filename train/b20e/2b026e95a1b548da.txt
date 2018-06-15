@@ -1,0 +1,82 @@
+int paixu(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int money = 0;
+   int VAR_9494;
+
+   for ( VAR_9494 = 0; VAR_9494 < 50; VAR_9494++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 > 0 )
+      {
+         int VAR__819283[VAR_1238123];
+         int VAR__19328[VAR_1238123];
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR__819283[VAR__53647]);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR__19328[VAR__53647]);
+         }
+
+         qsort(VAR__819283, VAR_1238123, sizeof( VAR__819283[0] ), paixu);
+         qsort(VAR__19328, VAR_1238123, sizeof( VAR__19328[0] ), paixu);
+         VAR__53647 = 0;
+         VAR__21230 = 0;
+         int VAR__7685;
+         int VAR__3918907;
+         int VAR__temp = 0;
+         VAR__7685    = VAR_1238123 - 1;
+         VAR__3918907 = VAR_1238123 - 1;
+
+         while ( VAR__temp < VAR_1238123 )
+         {
+            if ( VAR__819283[VAR__53647] > VAR__19328[VAR__21230] )
+            {
+               VAR__53647++;
+               VAR__21230++;
+               money += 200;
+               VAR__temp++;
+            }
+            else
+            if ( VAR__819283[VAR__7685] > VAR__19328[VAR__3918907] )
+            {
+               VAR__7685--;
+               VAR__3918907--;
+               money += 200;
+               VAR__temp++;
+            }
+            else
+            if ( VAR__819283[VAR__7685] == VAR__19328[VAR__21230] )
+            {
+               VAR__7685--;
+               VAR__21230++;
+               VAR__temp++;
+            }
+            else
+            {
+               money = money - 200;
+               VAR__7685--;
+               VAR__21230++;
+               VAR__temp++;
+            }
+         }
+
+         printf("%d\n", money);
+         money = 0;
+      }
+   }
+
+   return 0;
+}

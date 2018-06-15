@@ -1,0 +1,77 @@
+struct book
+{
+   int         VAR__NUM;
+   char        author[27];
+   struct book *VAR__NEXT;
+};
+void main()
+{
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__819283[26];
+   int VAR__SUM = 0;
+
+   for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+   {
+      VAR__819283[VAR__21230] = 0;
+   }
+
+   char aut;
+   scanf("%d", &VAR__1238129);
+   struct book *VAR__HEAD;
+   struct book *pb1;
+   struct book *pb2;
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      pb1 = (struct book *)malloc(sizeof( struct book ));
+      scanf("%d %s", &pb1->VAR__NUM, pb1->author);
+      for ( VAR__21230 = 0; pb1->author[VAR__21230] != '\0'; VAR__21230++ )
+      {
+         VAR__8444594 = pb1->author[VAR__21230] - 'A';
+         VAR__819283[VAR__8444594] += 1;
+      }
+
+      if ( VAR__HEAD == NULL )
+      {
+         VAR__HEAD      = pb1;
+         pb2            = pb1;
+         pb2->VAR__NEXT = NULL;
+      }
+      else
+      {
+         pb2->VAR__NEXT = pb1;
+         pb2            = pb1;
+         pb2->VAR__NEXT = NULL;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+   {
+      if ( VAR__819283[VAR__21230] > VAR__SUM )
+      {
+         VAR__SUM = VAR__819283[VAR__21230], VAR__8444594 = VAR__21230;
+      }
+   }
+
+   aut = (char)( 'A' + VAR__8444594 );
+   printf("%c\n", aut);
+   printf("%d\n", VAR__SUM);
+   pb1 = VAR__HEAD;
+
+   while ( pb1 )
+   {
+      for ( VAR__21230 = 0; pb1->author[VAR__21230] != '\0'; VAR__21230++ )
+      {
+         if ( pb1->author[VAR__21230] == aut )
+         {
+            printf("%d\n", pb1->VAR__NUM);
+         }
+      }
+
+
+      pb1 = pb1->VAR__NEXT;
+   }
+}

@@ -1,0 +1,62 @@
+struct hou
+{
+   int        VAR__8444594;
+   struct hou *VAR__NEXT;
+};
+int main(int argc, char *argv[])
+{
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR__8444594;
+   int        VAR_1238123;
+   int        VAR__1238129;
+   struct hou *VAR__HEAD;
+   struct hou *ANOTHER_POINTER;
+   struct hou *YET_ANOTHER_POINTER;
+
+   while ( 1 )
+   {
+      scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR_1238123 == 0 ) && ( VAR__1238129 == 0 ))
+      {
+         break;
+      }
+
+      VAR__HEAD       = (struct hou *)malloc(sizeof( struct hou ));
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__53647 == VAR_1238123 )
+         {
+            ANOTHER_POINTER->VAR__8444594 = VAR_1238123;
+            ANOTHER_POINTER->VAR__NEXT    = VAR__HEAD;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+            ANOTHER_POINTER     = (struct hou *)malloc(sizeof( struct hou ));
+            YET_ANOTHER_POINTER->VAR__8444594 = VAR__53647;
+            YET_ANOTHER_POINTER->VAR__NEXT    = ANOTHER_POINTER;
+         }
+      }
+
+      ANOTHER_POINTER     = VAR__HEAD;
+      YET_ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= ( VAR__1238129 - 1 ); VAR__21230++ )
+         {
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+            ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         }
+
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      printf("%d\n", ANOTHER_POINTER->VAR__8444594);
+   }
+
+   return 0;
+}

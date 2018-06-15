@@ -1,0 +1,130 @@
+struct book
+{
+   int         VAR__NUM;
+   char        writer[27];
+   struct book *VAR__NEXT;
+}
+    *VAR__HEAD;
+int times[26];
+void create(int VAR__1238129)
+{
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   int         VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct book *)malloc(sizeof( struct book ));
+      scanf("%d", &ANOTHER_POINTER->VAR__NUM);
+      scanf("%s", ANOTHER_POINTER->writer);
+
+      if ( !VAR__53647 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+}
+
+
+int VAR__COUNT()
+{
+   int         VAR__MAX;
+   int         VAR__1111;
+   int         VAR__53647;
+   char        VAR__TEMP[27];
+   struct book *ANOTHER_POINTER;
+
+   for ( VAR__53647 = 0; VAR__53647 <= 25; VAR__53647++ )
+   {
+      times[VAR__53647] = 0;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      VAR__1111 = strlen(ANOTHER_POINTER->writer);
+      strcpy(VAR__TEMP, ANOTHER_POINTER->writer);
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1111 - 1 ); VAR__53647++ )
+      {
+         times[VAR__TEMP[VAR__53647] - 65]++;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= 25; VAR__53647++ )
+   {
+      if ( times[VAR__53647] > times[VAR__MAX] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+
+   return VAR__MAX;
+}
+
+
+void print(int VAR__MAX)
+{
+   struct book *ANOTHER_POINTER;
+   int         abc[999];
+   int         total;
+   int         VAR__1111;
+   int         VAR__53647;
+   char        VAR__TEMP[27];
+
+   total = 0;
+   printf("%c\n", VAR__MAX + 65);
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      strcpy(VAR__TEMP, ANOTHER_POINTER->writer);
+      VAR__1111 = strlen(VAR__TEMP);
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1111 - 1 ); VAR__53647++ )
+      {
+         if (( VAR__MAX + 65 ) == VAR__TEMP[VAR__53647] )
+         {
+            break;
+         }
+      }
+
+
+      if ( VAR__53647 < VAR__1111 )
+      {
+         abc[total] = ANOTHER_POINTER->VAR__NUM;
+         total++;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   printf("%d\n", total);
+   for ( VAR__53647 = 0; VAR__53647 <= ( total - 1 ); VAR__53647++ )
+   {
+      printf("%d\n", abc[VAR__53647]);
+   }
+}
+
+
+void main()
+{
+   int VAR__MAX;
+   int VAR__1238129;
+
+   scanf("%d", &VAR__1238129);
+   create(VAR__1238129);
+   VAR__MAX = VAR__COUNT();
+   print(VAR__MAX);
+}

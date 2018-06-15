@@ -1,0 +1,89 @@
+int cmp(const void *e1, const void *e2)
+{
+   return ( *((int *)e1 )) - ( *((int *)e2 ));
+}
+
+
+int main()
+{
+   int tian[1000];
+   int qi[1000];
+   int VAR__53647;
+   int VAR_1238123;
+   int tf;
+   int tl;
+   int qf;
+   int ql;
+   int VAR__COUNT;
+
+   cin >> VAR_1238123;
+
+   while ( VAR_1238123 > 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qi[VAR__53647]);
+      }
+
+      qsort(tian, VAR_1238123, sizeof( int ), cmp);
+      qsort(qi, VAR_1238123, sizeof( int ), cmp);
+      tf         = 0;
+      qf         = 0;
+      tl         = VAR_1238123 - 1;
+      ql         = VAR_1238123 - 1;
+      VAR__COUNT = 0;
+
+      while ( VAR_1238123-- )
+      {
+         if ( tian[tf] > qi[qf] )
+         {
+            VAR__COUNT++;
+            tf++;
+            qf++;
+         }
+         else
+         if ( tian[tf] < qi[qf] )
+         {
+            tf++;
+            ql--;
+            VAR__COUNT--;
+         }
+         else
+         {
+            if ( tian[tl] > qi[ql] )
+            {
+               tl--;
+               ql--;
+               VAR__COUNT++;
+            }
+            else
+            if ( tian[tl] < qi[ql] )
+            {
+               VAR__COUNT--;
+               tf++;
+               ql--;
+            }
+            else
+            {
+               if ( tian[tf] < qi[ql] )
+               {
+                  VAR__COUNT--;
+               }
+
+               tf++;
+               ql--;
+            }
+         }
+      }
+
+      printf("%d\n", VAR__COUNT * 200);
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 0;
+}

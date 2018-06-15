@@ -1,0 +1,74 @@
+double sqrt(double VAR__7685);
+
+int main()
+{
+   int    VAR_1238123;
+   int    VAR_SIZE[10][3];
+   int    VAR__127322 = 0;
+   double jl[100];
+   int    zbx[100];
+   int    zby[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR_9494 = 0; VAR_9494 < VAR_1238123; VAR_9494++ )
+   {
+      for ( int VAR__4857423 = 0; VAR__4857423 < 3; VAR__4857423++ )
+      {
+         scanf("%d", &VAR_SIZE[VAR_9494][VAR__4857423]);
+      }
+   }
+
+   for ( int VAR_129012 = 0; VAR_129012 < VAR_1238123; VAR_129012++ )
+   {
+      for ( int VAR__temp = VAR_129012 + 1; VAR__temp < VAR_1238123; VAR__temp++ )
+      {
+         jl[VAR__127322]  = sqrt(((( VAR_SIZE[VAR_129012][0] - VAR_SIZE[VAR__temp][0] ) * ( VAR_SIZE[VAR_129012][0] - VAR_SIZE[VAR__temp][0] )) + (( VAR_SIZE[VAR_129012][1] - VAR_SIZE[VAR__temp][1] ) * ( VAR_SIZE[VAR_129012][1] - VAR_SIZE[VAR__temp][1] ))) + (( VAR_SIZE[VAR_129012][2] - VAR_SIZE[VAR__temp][2] ) * ( VAR_SIZE[VAR_129012][2] - VAR_SIZE[VAR__temp][2] )));
+         zbx[VAR__127322] = VAR_129012;
+         zby[VAR__127322] = VAR__temp;
+         VAR__127322++;
+      }
+   }
+
+   for ( int VAR__8444594 = 1; VAR__8444594 <= VAR__127322; VAR__8444594++ )
+   {
+      int    VAR__19328;
+      int    VAR_233;
+      double VAR__112390;
+      for ( int VAR__1238129 = 0; VAR__1238129 < ( VAR__127322 - VAR__8444594 ); VAR__1238129++ )
+      {
+         if ( jl[VAR__1238129] < jl[VAR__1238129 + 1] )
+         {
+            VAR__112390           = jl[VAR__1238129];
+            VAR__19328            = zbx[VAR__1238129];
+            VAR_233               = zby[VAR__1238129];
+            jl[VAR__1238129]      = jl[VAR__1238129 + 1];
+            zbx[VAR__1238129]     = zbx[VAR__1238129 + 1];
+            zby[VAR__1238129]     = zby[VAR__1238129 + 1];
+            jl[VAR__1238129 + 1]  = VAR__112390;
+            zbx[VAR__1238129 + 1] = VAR__19328;
+            zby[VAR__1238129 + 1] = VAR_233;
+         }
+      }
+   }
+
+   for ( int VAR_666 = 0; VAR_666 < VAR__127322; VAR_666++ )
+   {
+      printf("(");
+      for ( int VAR__1111 = 0; VAR__1111 < 2; VAR__1111++ )
+      {
+         printf("%d,", VAR_SIZE[zbx[VAR_666]][VAR__1111]);
+      }
+
+      printf("%d)", VAR_SIZE[zbx[VAR_666]][2]);
+      printf("-(");
+      for ( int VAR_2890 = 0; VAR_2890 < 2; VAR_2890++ )
+      {
+         printf("%d,", VAR_SIZE[zby[VAR_666]][VAR_2890]);
+      }
+
+      printf("%d)=", VAR_SIZE[zby[VAR_666]][2]);
+      printf("%.2lf\n", jl[VAR_666]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,79 @@
+void bacteria(int, int [9][9]);
+
+int main()
+{
+   int numBacteria;
+   int numDay;
+   int container[9][9] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+
+   ( cin >> numBacteria ) >> numDay;
+   container[4][4] = numBacteria;
+   bacteria(numDay, container);
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         cout << container[VAR__53647][VAR__21230];
+
+         if ( VAR__21230 != 8 )
+         {
+            cout << " ";
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}
+
+
+void bacteria(int numDay, int container[9][9])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int tempContainer[9][9] = { 0 };
+
+   if ( !numDay )
+   {
+      return;
+   }
+   else
+   {
+      bacteria(numDay - 1, container);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( container[VAR__53647][VAR__21230] )
+         {
+            tempContainer[VAR__53647 - 1][VAR__21230]     += container[VAR__53647][VAR__21230];
+            tempContainer[VAR__53647 + 1][VAR__21230]     += container[VAR__53647][VAR__21230];
+            tempContainer[VAR__53647][VAR__21230 - 1]     += container[VAR__53647][VAR__21230];
+            tempContainer[VAR__53647][VAR__21230 + 1]     += container[VAR__53647][VAR__21230];
+            tempContainer[VAR__53647 - 1][VAR__21230 - 1] += container[VAR__53647][VAR__21230];
+            tempContainer[VAR__53647 - 1][VAR__21230 + 1] += container[VAR__53647][VAR__21230];
+            tempContainer[VAR__53647 + 1][VAR__21230 - 1] += container[VAR__53647][VAR__21230];
+            tempContainer[VAR__53647 + 1][VAR__21230 + 1] += container[VAR__53647][VAR__21230];
+            tempContainer[VAR__53647][VAR__21230]         += 2 * container[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( tempContainer[VAR__53647][VAR__21230] )
+         {
+            container[VAR__53647][VAR__21230] = tempContainer[VAR__53647][VAR__21230];
+         }
+      }
+   }
+}

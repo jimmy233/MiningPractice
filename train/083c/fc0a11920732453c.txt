@@ -1,0 +1,71 @@
+int main()
+{
+   unsigned long shuz1;
+   unsigned long shuz2;
+   unsigned long total        = 0;
+   int           VAR__53647   = 0;
+   int           VAR__21230   = 0;
+   int           VAR__8444594 = 0;
+   int           length;
+   char          VAR_1238123[33];
+   char          result[33];
+
+   (( cin >> shuz1 ) >> VAR_1238123 ) >> shuz2;
+   for ( VAR__53647 = 0; VAR__53647 < 33; VAR__53647++ )
+   {
+      if ( VAR_1238123[VAR__53647] == '\0' )
+      {
+         length = VAR__53647;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if (( VAR_1238123[VAR__53647] > 60 ) && ( VAR_1238123[VAR__53647] < 93 ))
+      {
+         total += ( VAR_1238123[VAR__53647] - 55 ) * pow((double)shuz1, ( length - VAR__53647 ) - 1);
+      }
+      else
+      if ( VAR_1238123[VAR__53647] > 93 )
+      {
+         total += ( VAR_1238123[VAR__53647] - 87 ) * pow((double)shuz1, ( length - VAR__53647 ) - 1);
+      }
+      else
+      {
+         total += ( VAR_1238123[VAR__53647] - 48 ) * pow((double)shuz1, ( length - VAR__53647 ) - 1);
+      }
+   }
+
+   if ( total == 0 )
+   {
+      ( cout << 0 ) << endl;
+      return 0;
+   }
+
+   for ( VAR__21230 = 0; total > 0; VAR__21230++ )
+   {
+      result[VAR__21230] = total % shuz2;
+      total = ( total - result[VAR__21230] ) / shuz2;
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < 33; VAR__8444594++ )
+   {
+      if ( result[VAR__8444594] < 10 )
+      {
+         result[VAR__8444594] = result[VAR__8444594] + 48;
+      }
+      else
+      {
+         result[VAR__8444594] = result[VAR__8444594] + 55;
+      }
+   }
+
+   for ( VAR__8444594 = VAR__21230 - 1; VAR__8444594 >= 0; VAR__8444594-- )
+   {
+      cout << result[VAR__8444594];
+   }
+
+   cout << endl;
+   return 0;
+}

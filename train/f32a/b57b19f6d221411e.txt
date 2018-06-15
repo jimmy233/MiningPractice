@@ -1,0 +1,57 @@
+void order(char ch[], int LEN_OF_STH)
+{
+   int  VAR__53647;
+   char VAR__TEMP;
+
+   if ( LEN_OF_STH == 1 )
+   {
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if ( ch[VAR__53647] > ch[VAR__53647 + 1] )
+         {
+            VAR__TEMP          = ch[VAR__53647];
+            ch[VAR__53647]     = ch[VAR__53647 + 1];
+            ch[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+
+      order(ch, LEN_OF_STH - 1);
+   }
+}
+
+
+int main()
+{
+   char ch1[100];
+   char ch2[100];
+   int  len1;
+   int  len2;
+
+   scanf("%s %s", ch1, ch2);
+   len1 = strlen(ch1);
+   len2 = strlen(ch2);
+
+   if ( len1 != len2 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      order(ch1, len1);
+      order(ch2, len1);
+
+      if ( strcmp(ch1, ch2) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}

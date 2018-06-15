@@ -1,0 +1,80 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__SUM;
+   int year;
+   int month1;
+   int month2;
+   int nor[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int run[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      scanf("%d%d%d", &year, &month1, &month2);
+
+      if ((((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || ((( year % 4 ) == 0 ) && (( year % 400 ) == 0 ))) && ( month1 < month2 ))
+      {
+         for ( VAR__21230 = month1; VAR__21230 < month2; VAR__21230++ )
+         {
+            VAR__SUM += run[VAR__21230];
+         }
+      }
+      else
+      if ((((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || ((( year % 4 ) == 0 ) && (( year % 400 ) == 0 ))) && ( month1 > month2 ))
+      {
+         for ( VAR__21230 = month2; VAR__21230 < month1; VAR__21230++ )
+         {
+            VAR__SUM += run[VAR__21230];
+         }
+      }
+      else
+      if (((( year % 4 ) == 0 ) && (( year % 400 ) != 0 )) && ( month1 < month2 ))
+      {
+         for ( VAR__21230 = month1; VAR__21230 < month2; VAR__21230++ )
+         {
+            VAR__SUM += nor[VAR__21230];
+         }
+      }
+      else
+      if (((( year % 4 ) == 0 ) && (( year % 400 ) != 0 )) && ( month1 > month2 ))
+      {
+         for ( VAR__21230 = month2; VAR__21230 < month1; VAR__21230++ )
+         {
+            VAR__SUM += nor[VAR__21230];
+         }
+      }
+      else
+      if ((( year % 4 ) != 0 ) && ( month1 < month2 ))
+      {
+         for ( VAR__21230 = month1; VAR__21230 < month2; VAR__21230++ )
+         {
+            VAR__SUM += nor[VAR__21230];
+         }
+      }
+      else
+      if ((( year % 4 ) != 0 ) && ( month1 > month2 ))
+      {
+         for ( VAR__21230 = month2; VAR__21230 < month1; VAR__21230++ )
+         {
+            VAR__SUM += nor[VAR__21230];
+         }
+      }
+
+
+
+      if (( VAR__SUM % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}

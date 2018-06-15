@@ -1,0 +1,70 @@
+struct data
+{
+   char        VAR__NUM[200];
+   char        name[200];
+   char        sex;
+   char        add[200];
+   int         age;
+   char        score[200];
+   struct data *VAR__NEXT;
+};
+struct data *creat()
+{
+   struct data *VAR__HEAD;
+   struct data *ANOTHER_POINTER     = NULL;
+   struct data *YET_ANOTHER_POINTER = NULL;
+   int         VAR_1238123          = 0;
+
+   do
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct data *)malloc(sizeof( struct data ));
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if (( *ANOTHER_POINTER->VAR__NUM ) == 'e' )
+      {
+         VAR__HEAD = YET_ANOTHER_POINTER;
+         free(ANOTHER_POINTER);
+         break;
+      }
+
+      scanf("%s %c %d %s %s\n", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+
+      if ( VAR_1238123 == 0 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+
+      if ( VAR_1238123 != 0 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+
+      VAR_1238123 = 1;
+   } while ( 1 );
+   return VAR__HEAD;
+}
+
+
+void print(struct data *VAR__HEAD)
+{
+   struct data *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->add);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   struct data *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+   return 0;
+}

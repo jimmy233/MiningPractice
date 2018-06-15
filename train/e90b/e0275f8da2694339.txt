@@ -1,0 +1,40 @@
+struct student
+{
+   int no;
+   int yuwen;
+   int shuxue;
+   int total;
+};
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct student *VAR_233;
+   struct student *stu;
+   struct student VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   stu = (struct student *)calloc(VAR_1238123, sizeof( struct student ));
+   for ( VAR_233 = stu; ( VAR_233 - stu ) < VAR_1238123; VAR_233++ )
+   {
+      scanf("%d%d%d", &VAR_233->no, &VAR_233->yuwen, &VAR_233->shuxue);
+      VAR_233->total = VAR_233->yuwen + VAR_233->shuxue;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR_233 = ( stu + VAR_1238123 ) - 1; VAR_233 > ( stu + VAR__53647 ); VAR_233-- )
+      {
+         if ( VAR_233->total > ( VAR_233 - 1 )->total )
+         {
+            VAR__TEMP        = *VAR_233;
+            *VAR_233         = *( VAR_233 - 1 );
+            *( VAR_233 - 1 ) = VAR__TEMP;
+         }
+      }
+
+      printf("%d %d\n", VAR_233->no, VAR_233->total);
+   }
+
+   free(stu);
+}

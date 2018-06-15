@@ -1,0 +1,94 @@
+int VAR__MAX;
+int VAR_1238123;
+int VAR__7685;
+int VAR__19328[30] = { 0 };
+struct book
+{
+   int         VAR__NUM;
+   char        author[30];
+   struct book *VAR__NEXT;
+};
+struct book *creat()
+{
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+
+   YET_ANOTHER_POINTER = NULL;
+   VAR__HEAD           = (struct book *)malloc(LEN_OF_STH);
+   ANOTHER_POINTER     = VAR__HEAD;
+
+   while ( VAR_1238123 > 0 )
+   {
+      char VAR__819283[30];
+      int  VAR__53647;
+      int  VAR__21230;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      VAR__7685           = 0;
+      scanf("%d%s", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->author);
+      strcpy(VAR__819283, ANOTHER_POINTER->author);
+      VAR__MAX = VAR__19328[0];
+      for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         for ( VAR__21230 = 'A'; VAR__21230 <= 'Z'; VAR__21230++ )
+         {
+            if ( VAR__21230 == VAR__819283[VAR__53647] )
+            {
+               VAR__19328[VAR__21230]++;
+            }
+         }
+      }
+
+      for ( VAR__21230 = 'A'; VAR__21230 <= 'Z'; VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__21230] > VAR__MAX )
+         {
+            VAR__MAX  = VAR__19328[VAR__21230];
+            VAR__7685 = VAR__21230;
+         }
+      }
+
+      ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      VAR_1238123--;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   printf("%c\n%d\n", VAR__7685, VAR__MAX);
+   return VAR__HEAD;
+}
+
+
+struct book *print(struct book *VAR__HEAD, char VAR__7685)
+{
+   struct book *ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   int VAR__53647;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      char VAR__819283[30];
+      strcpy(VAR__819283, ANOTHER_POINTER->author);
+      for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == VAR__7685 )
+         {
+            printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   scanf("%d", &VAR_1238123);
+   struct book *VAR__HEAD;
+   VAR__HEAD = creat();
+   print(VAR__HEAD, VAR__7685);
+}

@@ -1,0 +1,55 @@
+struct stud
+{
+   char        VAR__NUM[20];
+   char        name[20];
+   char        sex;
+   int         age;
+   char        grade[10];
+   char        add[30];
+   struct stud *VAR__NEXT;
+};
+struct stud *creat(void)
+{
+   struct stud *VAR__HEAD;
+   struct stud *ANOTHER_POINTER;
+   struct stud *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stud *)malloc(sizeof( struct stud )));
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   VAR__HEAD = ANOTHER_POINTER;
+   for ( ; ; )
+   {
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if (( *( ANOTHER_POINTER->VAR__NUM + 2 )) == 'd' )
+      {
+         return VAR__HEAD;
+      }
+
+      scanf("%s %c %d %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->grade, ANOTHER_POINTER->add);
+      ANOTHER_POINTER            = (struct stud *)malloc(sizeof( struct stud ));
+      VAR__HEAD                  = YET_ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+   }
+}
+
+
+void print(struct stud *VAR__HEAD)
+{
+   struct stud *VAR_233;
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != 0; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->grade, VAR_233->add);
+   }
+}
+
+
+void main()
+{
+   struct stud *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+}

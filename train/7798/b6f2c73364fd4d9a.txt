@@ -1,0 +1,74 @@
+void main()
+{
+   struct book
+   {
+      char        VAR__NUM[20];
+      char        ren[30];
+      struct book *VAR__NEXT;
+   };
+   int         VAR_1238123;
+   int         VAR__819283[26] = { 0 };
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   int         VAR__53647;
+   int         VAR__21230;
+   char        tem;
+   char        VAR__19328[100][30];
+
+   ANOTHER_POINTER = (struct book *)malloc(L);
+   VAR__HEAD       = ANOTHER_POINTER;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%s", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->ren);
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER                = (struct book *)malloc(L);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(ANOTHER_POINTER->ren); VAR__21230++ )
+      {
+         int VAR__temp = ANOTHER_POINTER->ren[VAR__21230] - 'A';
+         VAR__819283[VAR__temp]++;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+         tem      = 'A' + VAR__53647;
+      }
+   }
+
+   printf("%c\n", tem);
+   ANOTHER_POINTER = VAR__HEAD;
+   int u = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(ANOTHER_POINTER->ren); VAR__21230++ )
+      {
+         if ( ANOTHER_POINTER->ren[VAR__21230] == tem )
+         {
+            strcpy(VAR__19328[u], ANOTHER_POINTER->VAR__NUM);
+            u++;
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   printf("%d\n", u);
+   for ( VAR__53647 = 0; VAR__53647 < u; VAR__53647++ )
+   {
+      printf("%s\n", VAR__19328[VAR__53647]);
+   }
+}

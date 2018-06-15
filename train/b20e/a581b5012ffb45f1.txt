@@ -1,0 +1,123 @@
+void bubble(int VAR__819283[], int VAR_1238123)
+{
+   int pass;
+   int hold;
+   int VAR__21230;
+
+   for ( pass = 1; pass <= ( VAR_1238123 - 1 ); pass++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 2 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] )
+         {
+            hold = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = hold;
+         }
+      }
+   }
+}
+
+
+int compare(const void *a1, const void *a2)
+{
+   int VAR__53647;
+
+   return ( *((int *)a2 )) - ( *((int *)a1 ));
+}
+
+
+int main()
+{
+   int I;
+
+   for ( I = 1; ; I++ )
+   {
+      int *VAR__819283;
+      int *VAR__19328;
+      int VAR__53647;
+      int VAR_1238123;
+      int as;
+      int ae;
+      int bs;
+      int be;
+      int money1 = 0;
+      int money2 = 0;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         VAR__819283 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         VAR__19328  = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            scanf("%d", &VAR__819283[VAR__53647]);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            scanf("%d", &VAR__19328[VAR__53647]);
+         }
+
+         bubble(VAR__819283, VAR_1238123);
+         qsort(VAR__19328, VAR_1238123, sizeof( VAR__19328[0] ), compare);
+         as = ( bs = 0 );
+         ae = ( be = VAR_1238123 - 1 );
+         for ( ; as <= ae; )
+         {
+            if ( VAR__819283[ae] > VAR__19328[be] )
+            {
+               money1++;
+               ae--;
+               be--;
+            }
+            else
+            if ( VAR__819283[ae] < VAR__19328[be] )
+            {
+               money2++;
+               ae--;
+               bs++;
+            }
+            else
+            if ( VAR__819283[as] > VAR__19328[bs] )
+            {
+               money1++;
+               as++;
+               bs++;
+            }
+            else
+            if ( VAR__819283[as] < VAR__19328[bs] )
+            {
+               money2++;
+               ae--;
+               bs++;
+            }
+            else
+            if ( VAR__819283[ae] < VAR__19328[bs] )
+            {
+               money2++;
+               ae--;
+               bs++;
+            }
+            else
+            if ( VAR__819283[ae] > VAR__19328[bs] )
+            {
+               money1++;
+               ae--;
+               bs++;
+            }
+            else
+            {
+               ae--;
+               as++;
+            }
+         }
+
+         printf("%d\n", 200 * ( money1 - money2 ));
+      }
+   }
+}

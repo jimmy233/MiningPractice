@@ -1,0 +1,75 @@
+struct reward
+{
+   char name[20];
+   int  fgra;
+   int  tgra;
+   char gb;
+   char xb;
+   int  lw;
+};
+int main()
+{
+   int           VAR_1238123;
+   int           *pr;
+   int           VAR__SUM = 0;
+   int           VAR__MAX;
+   struct reward *VAR_233;
+   struct reward VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   struct reward *rew  = (struct reward *)malloc(( sizeof( struct reward )) * VAR_1238123);
+   int           *trew = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   for ( VAR_233 = rew; VAR_233 < ( rew + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR_233->name, &VAR_233->fgra, &VAR_233->tgra, &VAR_233->gb, &VAR_233->xb, &VAR_233->lw);
+   }
+
+   for ( VAR_233 = rew, pr = trew; VAR_233 < ( rew + VAR_1238123 ); VAR_233++, pr++ )
+   {
+      *pr = 0;
+
+      if (( VAR_233->fgra > 80 ) && ( VAR_233->lw >= 1 ))
+      {
+         *pr      += 8000;
+         VAR__SUM += 8000;
+      }
+
+      if (( VAR_233->fgra > 85 ) && ( VAR_233->tgra > 80 ))
+      {
+         *pr      += 4000;
+         VAR__SUM += 4000;
+      }
+
+      if ( VAR_233->fgra > 90 )
+      {
+         *pr      += 2000;
+         VAR__SUM += 2000;
+      }
+
+      if (( VAR_233->fgra > 85 ) && ( VAR_233->xb == 'Y' ))
+      {
+         *pr      += 1000;
+         VAR__SUM += 1000;
+      }
+
+      if (( VAR_233->tgra > 80 ) && ( VAR_233->gb == 'Y' ))
+      {
+         *pr      += 850;
+         VAR__SUM += 850;
+      }
+   }
+
+   VAR__MAX  = *trew;
+   VAR__TEMP = *rew;
+   for ( VAR_233 = rew, pr = trew; VAR_233 < ( rew + VAR_1238123 ); VAR_233++, pr++ )
+   {
+      if (( *pr ) > VAR__MAX )
+      {
+         VAR__MAX  = *pr;
+         VAR__TEMP = *VAR_233;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", VAR__TEMP.name, VAR__MAX, VAR__SUM);
+   return 0;
+}

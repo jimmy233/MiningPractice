@@ -1,0 +1,37 @@
+struct student
+{
+   char           VAR__NUM[10];
+   char           name[30];
+   char           gender;
+   int            age;
+   char           score[10];
+   char           address[30];
+   struct student *before;
+};
+void main()
+{
+   struct student stu[1000];
+   struct student *tail;
+   struct student *VAR_233;
+   int            VAR__53647 = 0;
+   int            VAR__21230;
+
+   while ( scanf("%s %s %c %d %s %s", &stu[VAR__53647].VAR__NUM, &stu[VAR__53647].name, &stu[VAR__53647].gender, &stu[VAR__53647].age, &stu[VAR__53647].score, &stu[VAR__53647].address) != EOF )
+   {
+      VAR__53647++;
+   }
+
+   tail = &stu[VAR__53647 - 1];
+   for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      stu[VAR__21230].before = &stu[VAR__21230 - 1];
+   }
+
+   stu[0].before = 0;
+   VAR_233       = tail->before;
+   do
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->gender, VAR_233->age, VAR_233->score, VAR_233->address);
+      VAR_233 = VAR_233->before;
+   } while ( VAR_233 != 0 );
+}

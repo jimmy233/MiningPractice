@@ -1,0 +1,58 @@
+int mon;
+int day();
+
+int month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int year;
+   int month1;
+   int month2;
+   int days1;
+   int days2;
+   int daysbetween;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &year, &month1, &month2);
+
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         month[1]++;
+      }
+
+      days1       = day(month1);
+      days2       = day(month2);
+      daysbetween = days1 - days2;
+
+      if (( daysbetween % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+
+      month[1] = 28;
+   }
+
+   return 0;
+}
+
+
+int day(int mon)
+{
+   int VAR__8444594;
+   int days = 0;
+
+   for ( VAR__8444594 = 0; VAR__8444594 < ( mon - 1 ); VAR__8444594++ )
+   {
+      days += month[VAR__8444594];
+   }
+
+   return days;
+}

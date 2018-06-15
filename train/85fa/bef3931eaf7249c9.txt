@@ -1,0 +1,60 @@
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__SUM       = 0;
+   int VAR__12302[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d %d %d", &year, &month, &day);
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      if ( month > 2 )
+      {
+         VAR__SUM = ( VAR__SUM + 29 ) + 31;
+         for ( int VAR__8444594 = 3; VAR__8444594 < month; VAR__8444594++ )
+         {
+            VAR__SUM = VAR__SUM + VAR__12302[VAR__8444594];
+         }
+
+         VAR__SUM = VAR__SUM + day;
+      }
+      else
+      if ( month == 2 )
+      {
+         VAR__SUM = 31 + day;
+      }
+      else
+      {
+         VAR__SUM = day;
+      }
+   }
+   else
+   {
+      if ( month > 2 )
+      {
+         VAR__SUM = ( VAR__SUM + 28 ) + 31;
+         for ( int VAR__8444594 = 3; VAR__8444594 < month; VAR__8444594++ )
+         {
+            VAR__SUM = VAR__SUM + VAR__12302[VAR__8444594];
+         }
+
+         VAR__SUM = VAR__SUM + day;
+      }
+      else
+      if ( month == 2 )
+      {
+         VAR__SUM = 31 + day;
+      }
+      else
+      {
+         VAR__SUM = day;
+      }
+   }
+
+   printf("%d", VAR__SUM);
+   getchar();
+   getchar();
+   getchar();
+}

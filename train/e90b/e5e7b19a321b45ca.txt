@@ -1,0 +1,83 @@
+struct stu
+{
+   int        id;
+   int        eng;
+   int        math;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+}
+*VAR__HEAD;
+struct stu
+{
+   int        id;
+   int        eng;
+   int        math;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct stu
+{
+   int        id;
+   int        eng;
+   int        math;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+struct stu *order(int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( ANOTHER_POINTER->VAR__SUM < YET_ANOTHER_POINTER->VAR__SUM )
+         {
+            VAR__temp                     = ANOTHER_POINTER->id;
+            ANOTHER_POINTER->id           = YET_ANOTHER_POINTER->id;
+            YET_ANOTHER_POINTER->id       = VAR__temp;
+            VAR__temp                     = ANOTHER_POINTER->VAR__SUM;
+            ANOTHER_POINTER->VAR__SUM     = YET_ANOTHER_POINTER->VAR__SUM;
+            YET_ANOTHER_POINTER->VAR__SUM = VAR__temp;
+         }
+
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( VAR__HEAD = (struct stu *)malloc(sizeof( struct stu )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->eng, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->VAR__SUM      = ANOTHER_POINTER->eng + ANOTHER_POINTER->math;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER                = (struct stu *)malloc(sizeof( struct stu ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   ANOTHER_POINTER = order(VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%d %d\n", ANOTHER_POINTER->id, ANOTHER_POINTER->VAR__SUM);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

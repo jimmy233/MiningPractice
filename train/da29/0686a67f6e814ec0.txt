@@ -1,0 +1,87 @@
+int grids[100][100][100] = { 0 };
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  day;
+   int  illCount = 0;
+   char stat;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> stat;
+         switch ( stat )
+         {
+         case '.':
+            grids[0][VAR__53647][VAR__21230] = 1;
+            break;
+
+         case '#':
+            grids[0][VAR__53647][VAR__21230] = 0;
+            break;
+
+         case '@':
+            grids[0][VAR__53647][VAR__21230] = 2;
+            illCount++;
+            break;
+         }
+      }
+   }
+
+
+   cin >> day;
+   for ( VAR__53647 = 1; VAR__53647 < day; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            if ( grids[VAR__53647 - 1][VAR__21230][VAR__8444594] == 2 )
+            {
+               grids[VAR__53647][VAR__21230][VAR__8444594] = 2;
+
+               if ((( VAR__21230 != 0 ) && ( grids[VAR__53647 - 1][VAR__21230 - 1][VAR__8444594] == 1 )) && ( grids[VAR__53647][VAR__21230 - 1][VAR__8444594] != 2 ))
+               {
+                  illCount++;
+                  grids[VAR__53647][VAR__21230 - 1][VAR__8444594] = 2;
+               }
+
+               if ((( VAR__21230 != ( VAR_1238123 - 1 )) && ( grids[VAR__53647 - 1][VAR__21230 + 1][VAR__8444594] == 1 )) && ( grids[VAR__53647][VAR__21230 + 1][VAR__8444594] != 2 ))
+               {
+                  illCount++;
+                  grids[VAR__53647][VAR__21230 + 1][VAR__8444594] = 2;
+               }
+
+               if ((( VAR__8444594 != 0 ) && ( grids[VAR__53647 - 1][VAR__21230][VAR__8444594 - 1] == 1 )) && ( grids[VAR__53647][VAR__21230][VAR__8444594 - 1] != 2 ))
+               {
+                  illCount++;
+                  grids[VAR__53647][VAR__21230][VAR__8444594 - 1] = 2;
+               }
+
+               if ((( VAR__8444594 != ( VAR_1238123 - 1 )) && ( grids[VAR__53647 - 1][VAR__21230][VAR__8444594 + 1] == 1 )) && ( grids[VAR__53647][VAR__21230][VAR__8444594 + 1] != 2 ))
+               {
+                  illCount++;
+                  grids[VAR__53647][VAR__21230][VAR__8444594 + 1] = 2;
+               }
+            }
+            else
+            {
+               if ( grids[VAR__53647][VAR__21230][VAR__8444594] != 2 )
+               {
+                  grids[VAR__53647][VAR__21230][VAR__8444594] = grids[VAR__53647 - 1][VAR__21230][VAR__8444594];
+               }
+            }
+         }
+      }
+   }
+
+
+
+   cout << illCount;
+   return 0;
+}

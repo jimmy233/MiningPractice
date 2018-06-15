@@ -1,0 +1,74 @@
+char oneChar(const char *A_STRING)
+{
+   char          deq[26];
+   unsigned int  VAR__53647 = 0;
+   unsigned int  VAR__21230 = 0;
+   unsigned char letter[26];
+
+   memset(letter, 0, 26);
+
+   while (( *A_STRING ) != '\0' )
+   {
+      letter[( *A_STRING ) - 'a']++;
+
+      if ( letter[( *A_STRING ) - 'a'] == 1 )
+      {
+         deq[VAR__53647++] = *A_STRING;
+      }
+
+      A_STRING++;
+   }
+
+   for ( ; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      if ( letter[deq[VAR__21230] - 'a'] == 1 )
+      {
+         return deq[VAR__21230];
+      }
+   }
+
+
+   if ( VAR__53647 == VAR__21230 )
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   const unsigned int VAR__NUM;
+   unsigned int       VAR__53647;
+   char               ch;
+
+   scanf("%d", &VAR__NUM);
+   char *A_STRING[VAR__NUM];
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      A_STRING[VAR__53647] = (char *)malloc(MAX_LEN);
+      scanf("%s", A_STRING[VAR__53647]);
+      fflush(stdin);
+      tolower(A_STRING[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      ch = oneChar(A_STRING[VAR__53647]);
+
+      if ( ch == 0 )
+      {
+         printf("no\n", VAR__53647 + 1);
+      }
+      else
+      {
+         printf("%c\n", ch);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      free(A_STRING[VAR__53647]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,87 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283[1002];
+   int VAR__19328[1002];
+   int first1;
+   int first2;
+   int last1;
+   int last2;
+   int prize;
+   int VAR__53647;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      first1 = ( first2 = 0 );
+      last1  = ( last2 = VAR_1238123 - 1 );
+      prize  = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      sort(VAR__819283, VAR__819283 + VAR_1238123);
+      sort(VAR__19328, VAR__19328 + VAR_1238123);
+
+      while ( first1 <= last1 )
+      {
+         if ( VAR__819283[first1] > VAR__19328[first2] )
+         {
+            prize += 200;
+            first1++;
+            first2++;
+         }
+         else
+         if ( VAR__819283[first1] < VAR__19328[first2] )
+         {
+            prize -= 200;
+            first1++;
+            last2--;
+         }
+         else
+         {
+            while ( first1 <= last1 )
+            {
+               if ( VAR__819283[last1] > VAR__19328[last2] )
+               {
+                  prize += 200;
+                  last1--;
+                  last2--;
+               }
+               else
+               if ( VAR__819283[last1] <= VAR__19328[last2] )
+               {
+                  if ( VAR__819283[first1] < VAR__19328[last2] )
+                  {
+                     prize -= 200;
+                  }
+                  else
+                  if ( VAR__819283[first1] > VAR__19328[last2] )
+                  {
+                     prize += 200;
+                  }
+
+
+                  first1++;
+                  last2--;
+                  break;
+               }
+            }
+         }
+      }
+
+      ( cout << prize ) << endl;
+   }
+
+   return 0;
+}

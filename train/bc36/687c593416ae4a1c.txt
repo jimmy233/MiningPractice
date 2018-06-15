@@ -1,0 +1,71 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647   = 0;
+   int    VAR__21230   = 0;
+   int    VAR__127322  = 0;
+   int    VAR__1238129 = 0;
+   double VAR_2890;
+   double VAR__temp = 0;
+   double male[MAX] = { 0 };
+   double fe[MAX]   = { 0 };
+   char   VAR_9494[7];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%lf", VAR_9494, &VAR_2890);
+      int VAR_129012 = strcmp(VAR_9494, "female");
+
+      if ( VAR_129012 == 0 )
+      {
+         fe[VAR__127322] = VAR_2890;
+         VAR__127322++;
+      }
+      else
+      if ( VAR_129012 != 0 )
+      {
+         male[VAR__1238129] = VAR_2890;
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR__53647 = VAR__127322 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( fe[VAR__21230] < fe[VAR__21230 + 1] )
+         {
+            VAR__temp          = fe[VAR__21230];
+            fe[VAR__21230]     = fe[VAR__21230 + 1];
+            fe[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR__1238129 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( male[VAR__21230] > male[VAR__21230 + 1] )
+         {
+            VAR__temp            = male[VAR__21230 + 1];
+            male[VAR__21230 + 1] = male[VAR__21230];
+            male[VAR__21230]     = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("%.2lf ", male[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__127322 - 1 ); VAR__53647++ )
+   {
+      printf("%.2lf ", fe[VAR__53647]);
+   }
+
+   printf("%.2lf", fe[VAR__127322 - 1]);
+   return 0;
+}

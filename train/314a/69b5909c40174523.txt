@@ -1,0 +1,71 @@
+void cin_(int *VAR_233)
+{
+   char cin_temp[10000] = { 0 };
+
+   cin.getline(cin_temp, 10000, '\n');
+   int VAR__53647;
+   for ( VAR__53647 = 0; cin_temp[VAR__53647] != 0; )
+   {
+      int VAR__21230;
+      for ( VAR__21230 = 1; ( cin_temp[VAR__53647 + VAR__21230] != ',' ) && ( cin_temp[VAR__53647 + VAR__21230] != 0 ); VAR__21230++ )
+      {
+      }
+
+      int VAR__TEMP = 0;
+      for ( int VAR__8444594 = 1; VAR__8444594 <= VAR__21230; VAR__8444594++ )
+      {
+         VAR__TEMP = VAR__TEMP + (( cin_temp[( VAR__53647 + VAR__8444594 ) - 1] - '0' ) * ((int)pow(10.0, (double)( VAR__21230 - VAR__8444594 ))));
+      }
+
+      *VAR_233 = VAR__TEMP;
+      VAR_233++;
+      VAR__53647 = ( VAR__53647 + VAR__21230 ) + 1;
+   }
+}
+
+
+int main()
+{
+   int in[10000];
+   int out[10000];
+
+   for ( int VAR_2890 = 0; VAR_2890 < 10000; VAR_2890++ )
+   {
+      in[VAR_2890] = ( out[VAR_2890] = -1 );
+   }
+
+   cin_(in);
+   cin_(out);
+   int VAR__NUM;
+   for ( VAR__NUM = 0; ; VAR__NUM++ )
+   {
+      if ( in[VAR__NUM] == ( -1 ))
+      {
+         break;
+      }
+   }
+
+
+   int time[1001] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = in[VAR__53647]; VAR__21230 < out[VAR__53647]; VAR__21230++ )
+      {
+         time[VAR__21230]++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__21230 = 0; VAR__21230 < 1001; VAR__21230++ )
+   {
+      if ( time[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = time[VAR__21230];
+      }
+   }
+
+   (( cout << VAR__NUM ) << " " ) << VAR__MAX;
+   return 0;
+}

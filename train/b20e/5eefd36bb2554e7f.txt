@@ -1,0 +1,79 @@
+int VAR_1238123;
+int tian[1001];
+int king[1001];
+void sort(int VAR__819283[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__53647] )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230] = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int VAR__53647;
+
+   for ( scanf("%d", &VAR_1238123); VAR_1238123 > 0; scanf("%d", &VAR_1238123))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &king[VAR__53647]);
+      }
+
+      sort(tian);
+      sort(king);
+      int begin_tian = 0;
+      int end_tian   = VAR_1238123 - 1;
+      int begin_king = 0;
+      int end_king   = VAR_1238123 - 1;
+      int money      = 0;
+
+      while ( begin_tian <= end_tian )
+      {
+         while (( tian[begin_tian] > king[begin_king] ) && ( begin_tian <= end_tian ))
+         {
+            money = money + 200;
+            begin_tian++;
+            begin_king++;
+         }
+
+         while (( tian[end_tian] > king[end_king] ) && ( begin_tian <= end_tian ))
+         {
+            money = money + 200;
+            end_tian--;
+            end_king--;
+         }
+
+         if ( begin_tian <= end_tian )
+         {
+            if ( tian[begin_tian] < king[end_king] )
+            {
+               money = money - 200;
+            }
+
+            begin_tian++;
+            end_king--;
+         }
+      }
+
+      printf("%d\n", money);
+   }
+}

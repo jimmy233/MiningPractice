@@ -1,0 +1,47 @@
+int main()
+{
+   int  VAR__53647;
+   int  LEN_OF_STH = 0;
+   char A_STRING[32];
+   char VAR__TEMP[32];
+   char *A_POINTER;
+
+   cin.getline(A_STRING, 31);
+   A_POINTER = A_STRING;
+   for ( ; ( *A_POINTER ) != '\0'; ++A_POINTER )
+   {
+      if ( isdigit(*A_POINTER))
+      {
+         LEN_OF_STH++;
+      }
+      else
+      {
+         memset(VAR__TEMP, 0, sizeof( VAR__TEMP ));
+
+         if ( LEN_OF_STH == 0 )
+         {
+            continue;
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; ++VAR__53647 )
+         {
+            VAR__TEMP[( LEN_OF_STH - VAR__53647 ) - 1] = *(( A_POINTER - VAR__53647 ) - 1 );
+         }
+
+         LEN_OF_STH = 0;
+         ( cout << atoi(VAR__TEMP)) << endl;
+      }
+   }
+
+   if ( LEN_OF_STH )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; ++VAR__53647 )
+      {
+         VAR__TEMP[( LEN_OF_STH - VAR__53647 ) - 1] = *(( A_POINTER - VAR__53647 ) - 1 );
+      }
+
+      ( cout << atoi(VAR__TEMP)) << endl;
+   }
+
+   return 0;
+}

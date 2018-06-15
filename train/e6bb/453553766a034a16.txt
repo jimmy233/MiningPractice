@@ -1,0 +1,90 @@
+int dish[11][11];
+int die[11][11];
+int increase[11][11];
+void breed(int day, int VAR__COUNT)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR__COUNT > day )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+         {
+            ( cout << dish[VAR__53647][VAR__21230] ) << ' ';
+         }
+
+         ( cout << dish[VAR__53647][9] ) << endl;
+      }
+
+      return;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+         {
+            if ( dish[VAR__53647][VAR__21230] != 0 )
+            {
+               increase[VAR__53647][VAR__21230]         += 2 * dish[VAR__53647][VAR__21230];
+               increase[VAR__53647][VAR__21230 + 1]     += dish[VAR__53647][VAR__21230];
+               increase[VAR__53647][VAR__21230 - 1]     += dish[VAR__53647][VAR__21230];
+               increase[VAR__53647 - 1][VAR__21230]     += dish[VAR__53647][VAR__21230];
+               increase[VAR__53647 + 1][VAR__21230]     += dish[VAR__53647][VAR__21230];
+               increase[VAR__53647 + 1][VAR__21230 - 1] += dish[VAR__53647][VAR__21230];
+               increase[VAR__53647 + 1][VAR__21230 + 1] += dish[VAR__53647][VAR__21230];
+               increase[VAR__53647 - 1][VAR__21230 - 1] += dish[VAR__53647][VAR__21230];
+               increase[VAR__53647 - 1][VAR__21230 + 1] += dish[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+
+      for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+         {
+            dish[VAR__53647][VAR__21230] += increase[VAR__53647][VAR__21230];
+            dish[VAR__53647][VAR__21230] -= die[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+         {
+            die[VAR__53647][VAR__21230]      = increase[VAR__53647][VAR__21230];
+            increase[VAR__53647][VAR__21230] = 0;
+         }
+      }
+
+
+      breed(day, VAR__COUNT + 1);
+   }
+}
+
+
+int main()
+{
+   int VAR__NUM;
+   int day;
+   int VAR__53647;
+   int VAR__21230;
+
+   ( cin >> VAR__NUM ) >> day;
+   for ( VAR__53647 = 0; VAR__53647 < 11; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 11; VAR__21230++ )
+      {
+         dish[VAR__53647][VAR__21230] = ( die[VAR__53647][VAR__21230] = 0 );
+      }
+   }
+
+
+   dish[5][5] = ( die[5][5] = VAR__NUM );
+   breed(day, 1);
+   return 0;
+}

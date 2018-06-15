@@ -1,0 +1,100 @@
+struct patient
+{
+   char           VAR__NUM[10];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+int VAR_1238123;
+struct patient *creat(void)
+{
+   struct patient *VAR__HEAD;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+   int            VAR__NUM = 1;
+
+   VAR__HEAD = NULL;
+
+   while ( VAR__NUM <= VAR_1238123 )
+   {
+      ANOTHER_POINTER = (struct patient *)malloc(LEN);
+      scanf("%s %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+
+      if ( VAR__NUM == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      VAR__NUM++;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   struct patient *pt;
+   struct patient *VAR_233;
+   struct patient *pre;
+   int            VAR__53647;
+   int            VAR__MAX;
+   int            VAR__NUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   pt = creat();
+   for ( VAR_233 = pt; VAR_233; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->age >= 60 )
+      {
+         VAR__NUM++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      VAR__MAX = 59;
+      for ( VAR_233 = pt; VAR_233; VAR_233 = VAR_233->VAR__NEXT )
+      {
+         if ( VAR__MAX < VAR_233->age )
+         {
+            VAR__MAX = VAR_233->age;
+         }
+      }
+
+      for ( VAR_233 = ( pre = pt ); VAR_233; VAR_233 = VAR_233->VAR__NEXT )
+      {
+         if ( VAR_233->age != VAR__MAX )
+         {
+            pre = VAR_233;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      printf("%s\n", VAR_233->VAR__NUM);
+
+      if ( VAR_233 == pt )
+      {
+         pt = VAR_233->VAR__NEXT;
+      }
+      else
+      {
+         pre->VAR__NEXT = VAR_233->VAR__NEXT;
+      }
+   }
+
+   for ( VAR_233 = pt; VAR_233; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+   }
+
+   return 0;
+}

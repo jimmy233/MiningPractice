@@ -1,0 +1,56 @@
+int  an1[MAX_LEN + 10];
+int  an2[MAX_LEN + 10];
+char szLine1[MAX_LEN + 10];
+char szLine2[MAX_LEN + 10];
+int Add(int nMaxLen, int *an1, int *an2)
+{
+   int nHighestPos = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 < nMaxLen; VAR__53647++ )
+   {
+      an1[VAR__53647] += an2[VAR__53647];
+
+      if ( an1[VAR__53647] >= 10 )
+      {
+         an1[VAR__53647] -= 10;
+         an1[VAR__53647 + 1]++;
+      }
+
+      if ( an1[VAR__53647] )
+      {
+         nHighestPos = VAR__53647;
+      }
+   }
+
+   return nHighestPos;
+}
+
+
+int main()
+{
+   scanf("%s", szLine1);
+   scanf("%s", szLine2);
+   int VAR__53647;
+   int VAR__21230;
+   memset(an1, 0, sizeof( an1 ));
+   memset(an2, 0, sizeof( an2 ));
+   int nLen1 = strlen(szLine1);
+   for ( VAR__21230 = 0, VAR__53647 = nLen1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an1[VAR__21230++] = szLine1[VAR__53647] - '0';
+   }
+
+   int nLen2 = strlen(szLine2);
+   for ( VAR__21230 = 0, VAR__53647 = nLen2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an2[VAR__21230++] = szLine2[VAR__53647] - '0';
+   }
+
+   int nHighestPos = Add(MAX_LEN, an1, an2);
+   for ( VAR__53647 = nHighestPos; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", an1[VAR__53647]);
+   }
+
+   return 0;
+}

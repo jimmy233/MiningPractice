@@ -1,0 +1,95 @@
+void zhuanhuan(char VAR__819283[])
+{
+   char VAR__temp;
+   int  VAR__53647;
+   int  length;
+
+   length = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < ( length / 2 ); VAR__53647++ )
+   {
+      VAR__temp = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647] = VAR__819283[( length - VAR__53647 ) - 1];
+      VAR__819283[( length - VAR__53647 ) - 1] = VAR__temp;
+   }
+}
+
+
+void main()
+{
+   unsigned int VAR__53647 = 0;
+   int          VAR__SUM   = 0;
+   int          VAR__819283;
+   int          VAR__19328;
+   char         num_1[100];
+   char         num_2[100];
+
+   scanf("%d %s %d", &VAR__819283, num_1, &VAR__19328);
+
+   while ( num_1[VAR__53647] != '\0' )
+   {
+      if (( num_1[VAR__53647] >= '0' ) && ( num_1[VAR__53647] <= '9' ))
+      {
+         VAR__SUM = (( VAR__SUM * VAR__819283 ) + num_1[VAR__53647] ) - '0';
+      }
+      else
+      if (( num_1[VAR__53647] >= 'A' ) && ( num_1[VAR__53647] <= 'Z' ))
+      {
+         VAR__SUM = ((( VAR__SUM * VAR__819283 ) + num_1[VAR__53647] ) - 'A' ) + 10;
+      }
+      else
+      if (( num_1[VAR__53647] >= 'a' ) && ( num_1[VAR__53647] <= 'z' ))
+      {
+         VAR__SUM = ((( VAR__SUM * VAR__819283 ) + num_1[VAR__53647] ) - 'a' ) + 10;
+      }
+
+
+
+      VAR__53647++;
+   }
+
+   VAR__53647 = 0;
+
+   while (( VAR__SUM / VAR__19328 ) != 0 )
+   {
+      int yu = VAR__SUM % VAR__19328;
+
+      if (( yu >= 0 ) && ( yu <= 9 ))
+      {
+         num_2[VAR__53647] = '0' + yu;
+      }
+      else
+      if ( yu >= 10 )
+      {
+         num_2[VAR__53647] = ( 'A' + yu ) - 10;
+      }
+
+
+      VAR__SUM = VAR__SUM / VAR__19328;
+      VAR__53647++;
+   }
+
+   if (( VAR__SUM >= 0 ) && ( VAR__SUM <= 9 ))
+   {
+      num_2[VAR__53647] = '0' + VAR__SUM;
+   }
+
+   if ( VAR__SUM >= 10 )
+   {
+      num_2[VAR__53647] = ( 'A' + VAR__SUM ) - 10;
+   }
+
+   num_2[VAR__53647 + 1] = '\0';
+   zhuanhuan(num_2);
+
+   if ( num_2[0] != 0 )
+   {
+      puts(num_2);
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < ( strlen(num_2) - 1 ); VAR__53647++ )
+      {
+         printf("%c", num_2[VAR__53647]);
+      }
+   }
+}

@@ -1,0 +1,79 @@
+struct score
+{
+   int          VAR__NUM;
+   int          yuwen;
+   int          shuxue;
+   int          total;
+   struct score *VAR__NEXT;
+};
+int VAR_1238123;
+struct score *creat()
+{
+   struct score *ANOTHER_POINTER;
+   struct score *YET_ANOTHER_POINTER;
+   struct score *VAR__HEAD;
+
+   VAR__HEAD = ( YET_ANOTHER_POINTER = (struct score *)malloc(LEN_OF_STH));
+   scanf("%d%d%d", &YET_ANOTHER_POINTER->VAR__NUM, &YET_ANOTHER_POINTER->yuwen, &YET_ANOTHER_POINTER->shuxue);
+   YET_ANOTHER_POINTER->total = YET_ANOTHER_POINTER->shuxue + YET_ANOTHER_POINTER->yuwen;
+   VAR_1238123--;
+
+   while ( VAR_1238123-- )
+   {
+      ANOTHER_POINTER = (struct score *)malloc(LEN_OF_STH);
+      scanf("%d%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+      ANOTHER_POINTER->total         = ANOTHER_POINTER->shuxue + ANOTHER_POINTER->yuwen;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void search(struct score *VAR__HEAD)
+{
+   struct score *VAR_233;
+   int          VAR__53647;
+   int          VAR__MAX;
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      VAR__MAX = 0;
+      VAR_233  = VAR__HEAD;
+
+      while ( VAR_233 != NULL )
+      {
+         if ( VAR_233->total > VAR__MAX )
+         {
+            VAR__MAX = VAR_233->total;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      VAR_233 = VAR__HEAD;
+
+      while ( VAR_233 != NULL )
+      {
+         if ( VAR_233->total == VAR__MAX )
+         {
+            printf("%d %d\n", VAR_233->VAR__NUM, VAR_233->total);
+            VAR_233->total = 0;
+            break;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+}
+
+
+int main()
+{
+   scanf("%d", &VAR_1238123);
+   struct score *VAR__HEAD;
+   VAR__HEAD = creat();
+   search(VAR__HEAD);
+}

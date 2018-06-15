@@ -1,0 +1,85 @@
+int main()
+{
+   int starty;
+   int startm;
+   int startd;
+   int endy;
+   int endm;
+   int endd;
+   int days = 0;
+   int VAR__53647;
+
+   (( cin >> starty ) >> startm ) >> startd;
+   (( cin >> endy ) >> endm ) >> endd;
+
+   if ( starty != endy )
+   {
+      for ( VAR__53647 = starty + 1; VAR__53647 < endy; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            days = days + 366;
+         }
+         else
+         {
+            days = days + 365;
+         }
+      }
+   }
+
+   if ( !(( starty == endy ) && ( startm == endm )))
+   {
+      for ( VAR__53647 = startm; VAR__53647 <= 12; VAR__53647++ )
+      {
+         if ( VAR__53647 == 2 )
+         {
+            if (((( starty % 4 ) == 0 ) && (( starty % 100 ) != 0 )) || (( starty % 400 ) == 0 ))
+            {
+               days = days + 29;
+            }
+            else
+            {
+               days = days + 28;
+            }
+         }
+         else
+         if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+         {
+            days = days + 30;
+         }
+         else
+         {
+            days = days + 31;
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < endm; VAR__53647++ )
+      {
+         if ( VAR__53647 == 2 )
+         {
+            if (((( endy % 4 ) == 0 ) && (( endy % 100 ) != 0 )) || (( endy % 400 ) == 0 ))
+            {
+               days = days + 29;
+            }
+            else
+            {
+               days = days + 28;
+            }
+         }
+         else
+         if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+         {
+            days = days + 30;
+         }
+         else
+         {
+            days = days + 31;
+         }
+      }
+   }
+
+   days = days - startd;
+   days = days + endd;
+   cout << days;
+   return 0;
+}

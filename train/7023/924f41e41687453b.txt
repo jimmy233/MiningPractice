@@ -1,0 +1,80 @@
+int main()
+{
+   void align(char VAR__819283[]);
+   void substract(char VAR__819283[], char VAR__19328[], char VAR__4857423[]);
+
+   char VAR__819283[101];
+   char VAR__19328[101];
+   char VAR__4857423[101];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  VAR_1238123;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      getchar();
+      gets(VAR__819283);
+      gets(VAR__19328);
+      align(VAR__819283);
+      align(VAR__19328);
+      substract(VAR__819283, VAR__19328, VAR__4857423);
+      for ( VAR__21230 = 0; VAR__21230 < 100; VAR__21230++ )
+      {
+         if ( VAR__4857423[VAR__21230] != '0' )
+         {
+            VAR__temp = VAR__21230;
+            break;
+         }
+      }
+
+
+      for ( VAR__21230 = 0; VAR__21230 < ( 100 - VAR__temp ); VAR__21230++ )
+      {
+         VAR__4857423[VAR__21230] = VAR__4857423[VAR__21230 + VAR__temp];
+      }
+
+      VAR__4857423[100 - VAR__temp] = '\0';
+      puts(VAR__4857423);
+   }
+}
+
+
+void align(char VAR__819283[])
+{
+   int jump;
+   int VAR__1238129;
+
+   VAR__819283[100] = '\0';
+   jump             = 100 - strlen(VAR__819283);
+   for ( VAR__1238129 = 100 - jump; VAR__1238129 > 0; VAR__1238129-- )
+   {
+      VAR__819283[( VAR__1238129 + jump ) - 1] = VAR__819283[VAR__1238129 - 1];
+   }
+
+   for ( VAR__1238129 = 0; VAR__1238129 < jump; VAR__1238129++ )
+   {
+      VAR__819283[VAR__1238129] = '0';
+   }
+}
+
+
+void substract(char VAR__819283[], char VAR__19328[], char VAR__4857423[])
+{
+   int VAR__53647;
+   int carry = 0;
+
+   for ( VAR__53647 = 99; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( carry + VAR__19328[VAR__53647] ) > VAR__819283[VAR__53647] )
+      {
+         VAR__4857423[VAR__53647] = (( VAR__819283[VAR__53647] + 10 ) - ( VAR__19328[VAR__53647] + carry )) + '0';
+         carry = 1;
+      }
+      else
+      {
+         VAR__4857423[VAR__53647] = ( VAR__819283[VAR__53647] - ( VAR__19328[VAR__53647] + carry )) + '0';
+         carry = 0;
+      }
+   }
+}

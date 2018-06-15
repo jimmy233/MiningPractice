@@ -1,0 +1,100 @@
+int N1;
+int N2;
+int N3;
+int *ANOTHER_POINTER     = (int *)malloc(100 * ( sizeof( int )));
+int *YET_ANOTHER_POINTER = (int *)malloc(100 * ( sizeof( int )));
+int *p3 = (int *)malloc(100 * ( sizeof( int )));
+void inputnumbers()
+{
+   scanf("%d %d\n", &N1, &N2);
+   scanf("%d", ANOTHER_POINTER);
+   for ( int VAR__53647 = 1; VAR__53647 <= ( N1 - 1 ); VAR__53647++ )
+   {
+      scanf(" %d", ANOTHER_POINTER + VAR__53647);
+   }
+
+   scanf("\n%d", YET_ANOTHER_POINTER);
+   for ( int VAR__53647 = 1; VAR__53647 <= ( N2 - 1 ); VAR__53647++ )
+   {
+      scanf(" %d", YET_ANOTHER_POINTER + VAR__53647);
+   }
+}
+
+
+void seperatesort()
+{
+   for ( int VAR__53647 = 1; VAR__53647 <= ( N1 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 <= N1; VAR__21230++ )
+      {
+         if (( *(( ANOTHER_POINTER + VAR__53647 ) - 1 )) > ( *(( ANOTHER_POINTER + VAR__21230 ) - 1 )))
+         {
+            int VAR__TEMP = *(( ANOTHER_POINTER + VAR__53647 ) - 1 );
+            *(( ANOTHER_POINTER + VAR__53647 ) - 1 ) = *(( ANOTHER_POINTER + VAR__21230 ) - 1 );
+            *(( ANOTHER_POINTER + VAR__21230 ) - 1 ) = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= ( N2 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 <= N2; VAR__21230++ )
+      {
+         if (( *(( YET_ANOTHER_POINTER + VAR__53647 ) - 1 )) > ( *(( YET_ANOTHER_POINTER + VAR__21230 ) - 1 )))
+         {
+            int VAR__TEMP = *(( YET_ANOTHER_POINTER + VAR__53647 ) - 1 );
+            *(( YET_ANOTHER_POINTER + VAR__53647 ) - 1 ) = *(( YET_ANOTHER_POINTER + VAR__21230 ) - 1 );
+            *(( YET_ANOTHER_POINTER + VAR__21230 ) - 1 ) = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void combine()
+{
+   N3 = N1 + N2;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( N1 - 1 ); VAR__53647++ )
+   {
+      *( p3 + VAR__53647 ) = *( ANOTHER_POINTER + VAR__53647 );
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( N2 - 1 ); VAR__53647++ )
+   {
+      *(( p3 + N1 ) + VAR__53647 ) = *( YET_ANOTHER_POINTER + VAR__53647 );
+   }
+}
+
+
+void printresult2()
+{
+   printf("%d", *p3);
+   for ( int VAR__53647 = 1; VAR__53647 <= ( N3 - 1 ); VAR__53647++ )
+   {
+      printf(" %d", *( p3 + VAR__53647 ));
+   }
+}
+
+
+void printresult1()
+{
+   printf("%d", *ANOTHER_POINTER);
+   for ( int VAR__53647 = 1; VAR__53647 <= ( N1 - 1 ); VAR__53647++ )
+   {
+      printf(" %d", *( ANOTHER_POINTER + VAR__53647 ));
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( N2 - 1 ); VAR__53647++ )
+   {
+      printf(" %d", *( YET_ANOTHER_POINTER + VAR__53647 ));
+   }
+}
+
+
+int main()
+{
+   inputnumbers();
+   seperatesort();
+   combine();
+   printresult2();
+}

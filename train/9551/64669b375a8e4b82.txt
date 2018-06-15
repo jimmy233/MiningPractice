@@ -1,0 +1,62 @@
+struct patient
+{
+   char id[10];
+   int  age;
+};
+void bubble(struct patient VAR_233[], int VAR__1238129);
+
+void main()
+{
+   struct patient VAR_233[200];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__temp = 100;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", VAR_233[VAR__53647].id, &VAR_233[VAR__53647].age);
+
+      if ( VAR_233[VAR__53647].age >= 60 )
+      {
+         VAR_233[VAR__temp] = VAR_233[VAR__53647];
+         VAR__temp++;
+         VAR_233[VAR__53647].age = 0;
+      }
+   }
+
+   bubble(VAR_233, VAR__temp);
+   for ( VAR__53647 = 100; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233[VAR__53647].id);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_233[VAR__53647].age != 0 )
+      {
+         printf("%s\n", VAR_233[VAR__53647].id);
+      }
+   }
+}
+
+
+void bubble(struct patient VAR_233[], int VAR__1238129)
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   struct patient VAR__TEMP;
+
+   for ( VAR__21230 = 101; VAR__21230 < VAR__1238129; VAR__21230++ )
+   {
+      for ( VAR__53647 = 100; VAR__53647 < (( VAR__1238129 + 100 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( VAR_233[VAR__53647].age < VAR_233[VAR__53647 + 1].age )
+         {
+            VAR__TEMP               = VAR_233[VAR__53647];
+            VAR_233[VAR__53647]     = VAR_233[VAR__53647 + 1];
+            VAR_233[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}

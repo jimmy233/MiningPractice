@@ -1,0 +1,84 @@
+int       cell[15][15][2] = { 0 };
+const int dx[8] = { 1, 0, -1, 0, 1, 1, -1, -1 };
+const int dy[8] = { 0, 1, 0, -1, 1, -1, 1, -1 };
+int sur(int VAR__7685, int VAR__3918907)
+{
+   if ((((( VAR__7685 == 1 ) && ( VAR__3918907 == 1 )) || (( VAR__7685 == 1 ) && ( VAR__3918907 == 9 ))) || (( VAR__7685 == 9 ) && ( VAR__3918907 == 1 ))) || (( VAR__7685 == 9 ) && ( VAR__3918907 == 9 )))
+   {
+      return ( cell[VAR__7685][VAR__3918907][0] * 8 ) / 3;
+   }
+   else
+   if (((( VAR__7685 == 1 ) || ( VAR__3918907 == 1 )) || ( VAR__7685 == 9 )) || ( VAR__3918907 == 9 ))
+   {
+      return ( cell[VAR__7685][VAR__3918907][0] * 8 ) / 5;
+   }
+   else
+   {
+      return cell[VAR__7685][VAR__3918907][0];
+   }
+}
+
+
+void fer(int day)
+{
+   for ( int VAR__12302 = 1; VAR__12302 <= day; VAR__12302++ )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+         {
+            if ( cell[VAR__53647][VAR__21230][0] != 0 )
+            {
+               cell[VAR__53647][VAR__21230][1] += cell[VAR__53647][VAR__21230][0];
+               for ( int VAR__8444594 = 0; VAR__8444594 < 8; VAR__8444594++ )
+               {
+                  int VAR__7685    = VAR__53647 + dx[VAR__8444594];
+                  int VAR__3918907 = VAR__21230 + dy[VAR__8444594];
+
+                  if (((( VAR__7685 >= 1 ) && ( VAR__7685 <= 9 )) && ( VAR__3918907 >= 1 )) && ( VAR__3918907 <= 9 ))
+                  {
+                     cell[VAR__7685][VAR__3918907][1] += sur(VAR__53647, VAR__21230);
+                  }
+               }
+            }
+         }
+      }
+
+
+      for ( int VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+         {
+            cell[VAR__53647][VAR__21230][0] = cell[VAR__53647][VAR__21230][1];
+         }
+      }
+   }
+}
+
+
+void draw()
+{
+   for ( int VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= 8; VAR__21230++ )
+      {
+         ( cout << cell[VAR__53647][VAR__21230][0] ) << " ";
+      }
+
+      ( cout << cell[VAR__53647][9][0] ) << endl;
+   }
+}
+
+
+int main()
+{
+   int VAR__NUM;
+   int day;
+
+   ( cin >> VAR__NUM ) >> day;
+   cell[5][5][0] = VAR__NUM;
+   cell[5][5][1] = VAR__NUM;
+   fer(day);
+   draw();
+   return 0;
+}

@@ -1,0 +1,91 @@
+int cmp(const void *elem1, const void *elem2)
+{
+   return ( *((int *)elem1 )) - ( *((int *)elem2 ));
+}
+
+
+int cmpr(const void *elem1, const void *elem2)
+{
+   return ( *((int *)elem2 )) - ( *((int *)elem1 ));
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__COUNT;
+   int  king_h[MAXSIZE];
+   int  general_h[MAXSIZE];
+   char king_f[MAXSIZE];
+   char general_f[MAXSIZE];
+
+   while ( scanf("%d", &VAR_1238123) != ( -1 ))
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         scanf("%d", &general_h[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         scanf("%d", &king_h[VAR__53647]);
+      }
+
+      qsort(general_h, VAR_1238123, sizeof( int ), cmp);
+      qsort(king_h, VAR_1238123, sizeof( int ), cmpr);
+      memset(king_f, 0, ( sizeof( char )) * VAR_1238123);
+      memset(general_f, 0, ( sizeof( char )) * VAR_1238123);
+      VAR__COUNT = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; ++VAR__21230 )
+         {
+            if (( king_f[VAR__21230] == 0 ) && ( general_h[VAR__53647] > king_h[VAR__21230] ))
+            {
+               king_f[VAR__21230]    = 1;
+               general_f[VAR__53647] = 1;
+               ++VAR__COUNT;
+               break;
+            }
+         }
+      }
+
+      for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; --VAR__53647 )
+      {
+         if ( general_f[VAR__53647] == 1 )
+         {
+            continue;
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; ++VAR__21230 )
+         {
+            if (( king_f[VAR__21230] == 0 ) && ( king_h[VAR__21230] == general_h[VAR__53647] ))
+            {
+               king_f[VAR__21230]    = 1;
+               general_f[VAR__53647] = 1;
+               break;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         if ( general_f[VAR__53647] == 0 )
+         {
+            --VAR__COUNT;
+         }
+      }
+
+
+      printf("%d\n", VAR__COUNT * 200);
+   }
+
+   return 0;
+}

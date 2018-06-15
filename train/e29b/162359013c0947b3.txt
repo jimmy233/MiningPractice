@@ -1,0 +1,64 @@
+float my_abs(float VAR__819283)
+{
+   return ( VAR__819283 < 0 ) ? ( -VAR__819283 ) : ( VAR__819283 );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   float avg = 0;
+   float data[400];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%f", &data[VAR__53647]);
+      avg += data[VAR__53647];
+   }
+
+   avg /= VAR_1238123;
+   float dif[400];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      dif[VAR__53647] = my_abs(data[VAR__53647] - avg);
+   }
+
+   float maxDif = dif[0];
+   float maxIdx = 0;
+   for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( maxDif < dif[VAR__53647] )
+      {
+         maxDif = dif[VAR__53647];
+         maxIdx = VAR__53647;
+      }
+   }
+
+   int result[400];
+   int sp = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( dif[VAR__53647] == maxDif )
+      {
+         result[sp++] = data[VAR__53647];
+      }
+   }
+
+   if ( sp == 2 )
+   {
+      if ( result[0] > result[1] )
+      {
+         int VAR__TEMP = result[0];
+         result[0] = result[1];
+         result[1] = VAR__TEMP;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < sp; VAR__53647++ )
+   {
+      printf("%d%c", result[VAR__53647], ( VAR__53647 == ( sp - 1 )) ? ( '\n' ) : ( ',' ));
+   }
+
+   return 0;
+}

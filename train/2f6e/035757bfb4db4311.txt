@@ -1,0 +1,79 @@
+int main()
+{
+   void match(char A_STRING[100], int VAR__19328, int VAR__8444594, int bg[50][2]);
+
+   char A_STRING[100];
+   int  bg[50][2];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  total;
+   int  LEN_OF_STH;
+   int  VAR__TEMP;
+   cin.getline(A_STRING, 101, '\n');
+   LEN_OF_STH = strlen(A_STRING);
+   total      = LEN_OF_STH / 2;
+   match(A_STRING, 0, 0, bg);
+   for ( VAR__53647 = 1; VAR__53647 < total; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( total - VAR__53647 ); VAR__21230++ )
+      {
+         if ( bg[VAR__21230][1] > bg[VAR__21230 + 1][1] )
+         {
+            VAR__TEMP             = bg[VAR__21230][1];
+            bg[VAR__21230][1]     = bg[VAR__21230 + 1][1];
+            bg[VAR__21230 + 1][1] = VAR__TEMP;
+            VAR__TEMP             = bg[VAR__21230][0];
+            bg[VAR__21230][0]     = bg[VAR__21230 + 1][0];
+            bg[VAR__21230 + 1][0] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < total; VAR__53647++ )
+   {
+      ((( cout << bg[VAR__53647][0] ) << " " ) << bg[VAR__53647][1] ) << endl;
+   }
+
+   return 0;
+}
+
+
+void match(char A_STRING[100], int VAR__19328, int VAR__8444594, int bg[50][2])
+{
+   char ch = A_STRING[0];
+   int  VAR__53647;
+   int  LEN_OF_STH   = strlen(A_STRING);
+   int  VAR__1238129 = 1;
+
+   if ( A_STRING[VAR__19328] == ch )
+   {
+      for ( VAR__53647 = VAR__19328 + 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == ch )
+         {
+            VAR__1238129++;
+         }
+         else
+         {
+            VAR__1238129--;
+         }
+
+         if ( VAR__1238129 == 0 )
+         {
+            bg[VAR__8444594][0] = VAR__19328;
+            bg[VAR__8444594][1] = VAR__53647;
+            VAR__8444594++;
+            break;
+         }
+      }
+   }
+
+   VAR__19328++;
+
+   if ( VAR__19328 != LEN_OF_STH )
+   {
+      match(A_STRING, VAR__19328, VAR__8444594, bg);
+   }
+}

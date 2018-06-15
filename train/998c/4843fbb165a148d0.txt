@@ -1,0 +1,57 @@
+const int LEN = 301;
+int main()
+{
+   char ch1[LEN] = { 0 };
+   char ch2[LEN] = { 0 };
+   int  an1[LEN] = { 0 };
+   int  an2[LEN] = { 0 };
+
+   cin.getline(ch1, LEN, '\n');
+   cin.getline(ch2, LEN, '\n');
+   int VAR__53647;
+   int VAR__21230 = 0;
+   for ( VAR__53647 = strlen(ch1) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an1[VAR__21230++] = ch1[VAR__53647] - '0';
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = strlen(ch2) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an2[VAR__21230++] = ch2[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN; VAR__53647++ )
+   {
+      an1[VAR__53647] += an2[VAR__53647];
+
+      if ( an1[VAR__53647] >= 10 )
+      {
+         an1[VAR__53647]     -= 10;
+         an2[VAR__53647 + 1] += 1;
+      }
+   }
+
+   int judge = 0;
+   for ( VAR__53647 = LEN - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( an1[VAR__53647] != 0 )
+      {
+         for ( ; VAR__53647 >= 0; VAR__53647-- )
+         {
+            cout << an1[VAR__53647];
+         }
+
+         cout << endl;
+         judge = 1;
+         break;
+      }
+   }
+
+   if ( judge == 0 )
+   {
+      ( cout << "0" ) << endl;
+   }
+
+   return 0;
+}

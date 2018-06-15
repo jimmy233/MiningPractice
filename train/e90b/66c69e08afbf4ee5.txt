@@ -1,0 +1,90 @@
+int VAR_1238123;
+int VAR__53647;
+int VAR__MAX = 0;
+int VAR__12302;
+int VAR__temp = 0;
+struct stu
+{
+   int        id;
+   int        chi;
+   int        ma;
+   struct stu *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct stu
+{
+   int        id;
+   int        chi;
+   int        ma;
+   struct stu *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+struct stu *creat(void)
+{
+   struct stu *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   YET_ANOTHER_POINTER = ( ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->chi, &ANOTHER_POINTER->ma);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(sizeof( struct stu ));
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void find(struct stu *VAR__HEAD)
+{
+   while ( VAR__temp < 3 )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if (( ANOTHER_POINTER->chi + ANOTHER_POINTER->ma ) > VAR__MAX )
+         {
+            VAR__MAX   = ANOTHER_POINTER->chi + ANOTHER_POINTER->ma;
+            VAR__12302 = ANOTHER_POINTER->id;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      printf("%d %d\n", VAR__12302, VAR__MAX);
+      VAR__temp       = VAR__temp + 1;
+      VAR__MAX        = 0;
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( ANOTHER_POINTER->id == VAR__12302 )
+         {
+            ANOTHER_POINTER->chi = 0;
+            ANOTHER_POINTER->ma  = 0;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   find(VAR__HEAD);
+}

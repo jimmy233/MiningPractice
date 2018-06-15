@@ -1,0 +1,89 @@
+int reverse(int VAR__NUM);
+
+int main()
+{
+   int VAR__53647;
+   int VAR__819283;
+
+   for ( VAR__53647 = 1; VAR__53647 <= 6; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283);
+      printf("%d\n", reverse(VAR__819283));
+   }
+}
+
+
+int reverse(int VAR__NUM)
+{
+   int abs1;
+   int zhengfu = 1;
+   int ge      = 0;
+   int shi     = 0;
+   int bai     = 0;
+   int qian    = 0;
+   int wang    = 0;
+   int fanxu;
+
+   if ( abs(VAR__NUM) == 0 )
+   {
+      return 0;
+   }
+   else
+   if ( VAR__NUM < 0 )
+   {
+      zhengfu = -1;
+   }
+
+
+   abs1 = abs(VAR__NUM);
+
+   if (( 10000 <= abs1 ) && ( abs1 <= 32767 ))
+   {
+      ge    = abs1 % 10;
+      shi   = ( abs1 / 10 ) % 10;
+      bai   = ( abs1 / 100 ) % 10;
+      qian  = ( abs1 / 1000 ) % 10;
+      wang  = ( abs1 / 10000 ) % 10;
+      fanxu = (((( ge * 10000 ) + ( shi * 1000 )) + ( bai * 100 )) + ( qian * 10 )) + wang;
+   }
+
+   if (( 1000 <= abs1 ) && ( abs1 < 10000 ))
+   {
+      ge    = abs1 % 10;
+      shi   = ( abs1 / 10 ) % 10;
+      bai   = ( abs1 / 100 ) % 10;
+      qian  = ( abs1 / 1000 ) % 10;
+      fanxu = ((( ge * 1000 ) + ( shi * 100 )) + ( bai * 10 )) + qian;
+   }
+
+   if (( 100 <= abs1 ) && ( abs1 < 1000 ))
+   {
+      ge    = abs1 % 10;
+      shi   = ( abs1 / 10 ) % 10;
+      bai   = ( abs1 / 100 ) % 10;
+      fanxu = (( ge * 100 ) + ( shi * 10 )) + bai;
+   }
+
+   if (( 10 <= abs1 ) && ( abs1 < 100 ))
+   {
+      ge    = abs1 % 10;
+      shi   = ( abs1 / 10 ) % 10;
+      fanxu = ( ge * 10 ) + shi;
+   }
+
+   if (( 1 <= abs1 ) && ( abs1 < 10 ))
+   {
+      ge    = abs1 % 10;
+      fanxu = ge;
+   }
+
+   if ( zhengfu == 1 )
+   {
+      return fanxu;
+   }
+   else
+   if ( zhengfu == ( -1 ))
+   {
+      return ( -1 ) * fanxu;
+   }
+}

@@ -1,0 +1,95 @@
+struct dis
+{
+   int   place_p1;
+   int   ANOTHER_POINTER[3];
+   int   place_p2;
+   int   YET_ANOTHER_POINTER[3];
+   float distance;
+}
+VAR_233[45];
+void main()
+{
+   void exchange(struct dis *pa, struct dis *pb);
+
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__21230;
+   int        point[10][3];
+   int        VAR__COUNT = 0;
+   struct dis *po        = VAR_233;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &point[VAR__53647][0], &point[VAR__53647][1], &point[VAR__53647][2]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         po->place_p1               = VAR__53647;
+         po->ANOTHER_POINTER[0]     = point[VAR__53647][0];
+         po->ANOTHER_POINTER[1]     = point[VAR__53647][1];
+         po->ANOTHER_POINTER[2]     = point[VAR__53647][2];
+         po->place_p2               = VAR__21230;
+         po->YET_ANOTHER_POINTER[0] = point[VAR__21230][0];
+         po->YET_ANOTHER_POINTER[1] = point[VAR__21230][1];
+         po->YET_ANOTHER_POINTER[2] = point[VAR__21230][2];
+         float d1;
+         float d2;
+         float d3;
+         d1           = ((float)point[VAR__53647][0] ) - point[VAR__21230][0];
+         d2           = ((float)point[VAR__53647][1] ) - point[VAR__21230][1];
+         d3           = ((float)point[VAR__53647][2] ) - point[VAR__21230][2];
+         po->distance = sqrt((( d1 * d1 ) + ( d2 * d2 )) + ( d3 * d3 ));
+         po++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__21230++ )
+      {
+         if ( VAR_233[VAR__21230].distance < VAR_233[VAR__21230 + 1].distance )
+         {
+            exchange(&VAR_233[VAR__21230], &VAR_233[VAR__21230 + 1]);
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0, po = VAR_233; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++, po++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", po->ANOTHER_POINTER[0], po->ANOTHER_POINTER[1], po->ANOTHER_POINTER[2], po->YET_ANOTHER_POINTER[0], po->YET_ANOTHER_POINTER[1], po->YET_ANOTHER_POINTER[2], po->distance);
+   }
+}
+
+
+void exchange(struct dis *pa, struct dis *pb)
+{
+   float VAR__TEMP;
+   int   VAR__53647;
+   int   VAR__temp;
+
+   VAR__temp    = pa->place_p1;
+   pa->place_p1 = pb->place_p1;
+   pb->place_p1 = VAR__temp;
+   VAR__temp    = pa->place_p2;
+   pa->place_p2 = pb->place_p2;
+   pb->place_p2 = VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      VAR__temp = pa->ANOTHER_POINTER[VAR__53647];
+      pa->ANOTHER_POINTER[VAR__53647] = pb->ANOTHER_POINTER[VAR__53647];
+      pb->ANOTHER_POINTER[VAR__53647] = VAR__temp;
+      VAR__temp = pa->YET_ANOTHER_POINTER[VAR__53647];
+      pa->YET_ANOTHER_POINTER[VAR__53647] = pb->YET_ANOTHER_POINTER[VAR__53647];
+      pb->YET_ANOTHER_POINTER[VAR__53647] = VAR__temp;
+   }
+
+   VAR__TEMP    = pa->distance;
+   pa->distance = pb->distance;
+   pb->distance = VAR__TEMP;
+}

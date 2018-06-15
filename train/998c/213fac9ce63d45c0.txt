@@ -1,0 +1,73 @@
+int main()
+{
+   char ANOTHER_STRING[252];
+   char YET_ANOTHER_STRING[252];
+   char A_STRING[252];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_1238123;
+   int  n1;
+   int  n2;
+
+   scanf("%s", ANOTHER_STRING);
+   scanf("%s", YET_ANOTHER_STRING);
+   n1 = strlen(ANOTHER_STRING);
+   n2 = strlen(YET_ANOTHER_STRING);
+   for ( VAR__53647 = n1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      ANOTHER_STRING[( VAR__53647 + 251 ) - n1] = ANOTHER_STRING[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( 251 - n1 ); VAR__53647++ )
+   {
+      ANOTHER_STRING[VAR__53647] = '0';
+   }
+
+   for ( VAR__53647 = n2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      YET_ANOTHER_STRING[( VAR__53647 + 251 ) - n2] = YET_ANOTHER_STRING[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( 251 - n2 ); VAR__53647++ )
+   {
+      YET_ANOTHER_STRING[VAR__53647] = '0';
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 250; VAR__53647 >= 0; VAR__53647-- )
+   {
+      A_STRING[VAR__53647] = ((( ANOTHER_STRING[VAR__53647] + YET_ANOTHER_STRING[VAR__53647] ) - '0' ) - '0' ) + VAR__8444594;
+
+      if ( A_STRING[VAR__53647] > 9 )
+      {
+         VAR__8444594         = 1;
+         A_STRING[VAR__53647] = ( A_STRING[VAR__53647] + '0' ) - 10;
+      }
+
+      if ( A_STRING[VAR__53647] <= 9 )
+      {
+         VAR__8444594         = 0;
+         A_STRING[VAR__53647] = A_STRING[VAR__53647] + '0';
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 250; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] != '0' )
+      {
+         VAR_1238123 = VAR__53647;
+         break;
+      }
+   }
+
+   if ( VAR__53647 == 251 )
+   {
+      printf("0");
+   }
+
+   for ( VAR__53647 = VAR_1238123; VAR__53647 <= 250; VAR__53647++ )
+   {
+      printf("%c", A_STRING[VAR__53647]);
+   }
+}

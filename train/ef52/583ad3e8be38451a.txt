@@ -1,0 +1,61 @@
+int VAR__8444594;
+int VAR__819283[26] = { 0 };
+int VAR__19328[26] = { 0 };
+int VAR__MAX = 0;
+void VAR__NUM(int site, int height)
+{
+   int VAR__53647;
+   int amount = 0;
+   int VAR_2890;
+
+   if ( site == VAR__8444594 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647] == 1 )
+         {
+            amount++;
+         }
+      }
+
+      if ( VAR__MAX < amount )
+      {
+         VAR__MAX = amount;
+      }
+   }
+   else
+   {
+      if ( height < VAR__819283[site] )
+      {
+         VAR__NUM(site = site + 1, height);
+         site--;
+      }
+      else
+      {
+         VAR__NUM(site = site + 1, height);
+         site--;
+         VAR__19328[site] = 1;
+         VAR_2890         = height;
+         height           = VAR__819283[site];
+         VAR__NUM(site    = site + 1, height);
+         site--;
+         VAR__19328[site] = 0;
+         height           = VAR_2890;
+      }
+   }
+}
+
+
+void main()
+{
+   int VAR__53647;
+
+   scanf("%d", &VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+   }
+
+   VAR__NUM(0, 30000);
+   printf("%d", VAR__MAX);
+}

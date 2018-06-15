@@ -1,0 +1,88 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int total = 0;
+
+   cin >> VAR_1238123;
+   char   student[VAR_1238123];
+   double dorm[VAR_1238123 + 2][VAR_1238123 + 2];
+   double tempdorm[VAR_1238123 + 2][VAR_1238123 + 2];
+   for ( int VAR__53647 = 1; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+   {
+      cin >> student;
+      for ( int VAR_9494 = 1; VAR_9494 < ( VAR_1238123 + 1 ); VAR_9494++ )
+      {
+         if ( student[VAR_9494 - 1] == '.' )
+         {
+            dorm[VAR__53647][VAR_9494] = 1;
+         }
+
+         if ( student[VAR_9494 - 1] == '#' )
+         {
+            dorm[VAR__53647][VAR_9494] = 0;
+         }
+
+         if ( student[VAR_9494 - 1] == '@' )
+         {
+            dorm[VAR__53647][VAR_9494] = 2;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < ( VAR_1238123 + 1 ); VAR__21230++ )
+      {
+         tempdorm[VAR__53647][VAR__21230] = dorm[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   cin >> VAR__1238129;
+   for ( int VAR__12302 = 1; VAR__12302 < VAR__1238129; VAR__12302++ )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < ( VAR_1238123 + 1 ); VAR__21230++ )
+         {
+            if ( dorm[VAR__53647][VAR__21230] > 1 )
+            {
+               tempdorm[VAR__53647 - 1][VAR__21230] = dorm[VAR__53647 - 1][VAR__21230] * dorm[VAR__53647][VAR__21230];
+               tempdorm[VAR__53647 + 1][VAR__21230] = dorm[VAR__53647 + 1][VAR__21230] * dorm[VAR__53647][VAR__21230];
+               tempdorm[VAR__53647][VAR__21230 - 1] = dorm[VAR__53647][VAR__21230 - 1] * dorm[VAR__53647][VAR__21230];
+               tempdorm[VAR__53647][VAR__21230 + 1] = dorm[VAR__53647][VAR__21230 + 1] * dorm[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+
+
+      for ( int VAR__53647 = 1; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < ( VAR_1238123 + 1 ); VAR__21230++ )
+         {
+            if ( tempdorm[VAR__53647][VAR__21230] > 1 )
+            {
+               dorm[VAR__53647][VAR__21230] = 2;
+            }
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < ( VAR_1238123 + 1 ); VAR__21230++ )
+      {
+         if ( dorm[VAR__53647][VAR__21230] > 1 )
+         {
+            total++;
+         }
+      }
+   }
+
+
+
+   ( cout << total ) << endl;
+   return 0;
+}

@@ -1,0 +1,130 @@
+struct student
+{
+   char           name[20];
+   int            qimo;
+   int            banpin;
+   char           ganbu;
+   char           xibu;
+   int            lunwen;
+   double         VAR__SUM;
+   struct student *VAR__NEXT;
+};
+int    VAR_1238123;
+double total = 0;
+struct student *create()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN);
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->qimo, &ANOTHER_POINTER->banpin, &ANOTHER_POINTER->ganbu, &ANOTHER_POINTER->xibu, &ANOTHER_POINTER->lunwen);
+   ANOTHER_POINTER->VAR__SUM = 0;
+
+   if (( ANOTHER_POINTER->qimo > 80 ) && ( ANOTHER_POINTER->lunwen > 0 ))
+   {
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 8000;
+   }
+
+   if (( ANOTHER_POINTER->qimo > 85 ) && ( ANOTHER_POINTER->banpin > 80 ))
+   {
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 4000;
+   }
+
+   if ( ANOTHER_POINTER->qimo > 90 )
+   {
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 2000;
+   }
+
+   if (( ANOTHER_POINTER->xibu == 'Y' ) && ( ANOTHER_POINTER->qimo > 85 ))
+   {
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 1000;
+   }
+
+   if (( ANOTHER_POINTER->ganbu == 'Y' ) && ( ANOTHER_POINTER->banpin > 80 ))
+   {
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 850;
+   }
+
+   total                      = total + ANOTHER_POINTER->VAR__SUM;
+   VAR__HEAD                  = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   int VAR__53647 = 1;
+   do
+   {
+      if ( VAR__53647 == VAR_1238123 )
+      {
+         break;
+      }
+
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->qimo, &ANOTHER_POINTER->banpin, &ANOTHER_POINTER->ganbu, &ANOTHER_POINTER->xibu, &ANOTHER_POINTER->lunwen);
+      ANOTHER_POINTER->VAR__SUM = 0;
+
+      if (( ANOTHER_POINTER->qimo > 80 ) && ( ANOTHER_POINTER->lunwen > 0 ))
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 8000;
+      }
+
+      if (( ANOTHER_POINTER->qimo > 85 ) && ( ANOTHER_POINTER->banpin > 80 ))
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 4000;
+      }
+
+      if ( ANOTHER_POINTER->qimo > 90 )
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 2000;
+      }
+
+      if (( ANOTHER_POINTER->xibu == 'Y' ) && ( ANOTHER_POINTER->qimo > 85 ))
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 1000;
+      }
+
+      if (( ANOTHER_POINTER->ganbu == 'Y' ) && ( ANOTHER_POINTER->banpin > 80 ))
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 850;
+      }
+
+      total = total + ANOTHER_POINTER->VAR__SUM;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      VAR__53647++;
+   } while ( 1 );
+   return VAR__HEAD;
+}
+
+
+struct student *findmax(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *VAR__MAX;
+
+   VAR_233  = VAR__HEAD->VAR__NEXT;
+   VAR__MAX = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      if ( VAR_233->VAR__SUM > VAR__MAX->VAR__SUM )
+      {
+         VAR__MAX = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return VAR__MAX;
+}
+
+
+int main()
+{
+   scanf("%d", &VAR_1238123);
+   struct student *VAR__HEAD;
+   struct student *VAR__MAX;
+   VAR__HEAD = create();
+   VAR__MAX  = findmax(VAR__HEAD);
+   printf("%s\n%g\n%g", VAR__MAX->name, VAR__MAX->VAR__SUM, total);
+}

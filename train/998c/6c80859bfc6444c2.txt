@@ -1,0 +1,95 @@
+void cutzeros(char *VAR__819283)
+{
+   int VAR__53647;
+   int unzero    = 0;
+   int VAR__1111 = strlen(VAR__819283);
+
+   for ( VAR__53647 = VAR__1111 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__53647] != '0' )
+      {
+         VAR__819283[VAR__53647 + 1] = '\0';
+         unzero = 1;
+         break;
+      }
+   }
+
+   if ( unzero == 0 )
+   {
+      VAR__819283[0] = '0';
+      VAR__819283[1] = '\0';
+   }
+}
+
+
+void reorder(char *VAR__819283)
+{
+   int  VAR__53647;
+   char VAR__4857423;
+   int  VAR__1111 = strlen(VAR__819283);
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1111 / 2 ); VAR__53647++ )
+   {
+      VAR__4857423            = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647] = VAR__819283[( VAR__1111 - 1 ) - VAR__53647];
+      VAR__819283[( VAR__1111 - 1 ) - VAR__53647] = VAR__4857423;
+   }
+}
+
+
+char result[300];
+void plus(char *VAR__819283, char *VAR__19328)
+{
+   int VAR__53647;
+   int la = strlen(VAR__819283);
+   int lb = strlen(VAR__19328);
+   int VAR__1111;
+   int VAR_129012;
+   int left = 0;
+
+   if ( la <= lb )
+   {
+      VAR__1111 = lb;
+      for ( VAR__53647 = la; VAR__53647 <= lb; VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = '0';
+      }
+
+      VAR__19328[lb] = '0';
+   }
+   else
+   {
+      VAR__1111 = la;
+      for ( VAR__53647 = lb; VAR__53647 <= la; VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = '0';
+      }
+
+      VAR__819283[la] = '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      VAR_129012         = (( VAR__819283[VAR__53647] - '0' ) + ( VAR__19328[VAR__53647] - '0' )) + left;
+      result[VAR__53647] = ( VAR_129012 % 10 ) + '0';
+      left = VAR_129012 / 10;
+   }
+
+   result[VAR__1111 + 1] = '\0';
+}
+
+
+int main()
+{
+   char VAR__819283[260];
+   char VAR__19328[260];
+
+   scanf("%s%s", VAR__819283, VAR__19328);
+   reorder(VAR__819283);
+   reorder(VAR__19328);
+   plus(VAR__819283, VAR__19328);
+   cutzeros(result);
+   reorder(result);
+   printf("%s", result);
+   return 0;
+}

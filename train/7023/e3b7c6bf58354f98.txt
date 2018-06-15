@@ -1,0 +1,102 @@
+int main()
+{
+   char VAR__819283[101];
+   char VAR__19328[101];
+   int  ia[101];
+   int  ib[101];
+   int  VAR_1238123 = 0;
+   int  VAR__53647  = 0;
+   int  VAR__21230  = 0;
+   int  VAR_666     = 0;
+   int  len1        = 0;
+   int  len2        = 0;
+   int  VAR__temp   = 0;
+   int  ans[101]    = { 0 };
+
+   cin >> VAR_1238123;
+   for ( VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+   {
+      memset(VAR__819283, 0, sizeof( VAR__819283 ));
+      memset(VAR__19328, 0, sizeof( VAR__19328 ));
+      memset(ia, 0, sizeof( ia ));
+      memset(ib, 0, sizeof( ib ));
+      memset(ans, 0, sizeof( ans ));
+      ( cin >> VAR__819283 ) >> VAR__19328;
+      len1 = strlen(VAR__819283);
+      len2 = strlen(VAR__19328);
+      int VAR__8444594 = 0;
+      for ( VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         ia[VAR__8444594] = VAR__819283[VAR__53647] - '0';
+         VAR__8444594++;
+      }
+
+      VAR__8444594 = 0;
+      for ( VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         ib[VAR__8444594] = VAR__19328[VAR__53647] - '0';
+         VAR__8444594++;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+      {
+         if ( ia[VAR__53647] < ib[VAR__53647] )
+         {
+            if ( ia[VAR__53647 + 1] != 0 )
+            {
+               ia[VAR__53647 + 1]--;
+               ia[VAR__53647]  = ia[VAR__53647] + 10;
+               ans[VAR__53647] = ia[VAR__53647] - ib[VAR__53647];
+            }
+            else
+            {
+               for ( VAR__21230 = VAR__53647 + 2; VAR__21230 < len1; VAR__21230++ )
+               {
+                  if ( ia[VAR__21230] != 0 )
+                  {
+                     VAR_666 = VAR__21230;
+                     ia[VAR__21230]--;
+                     break;
+                  }
+               }
+
+               for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_666; VAR__21230++ )
+               {
+                  ia[VAR__21230] = 9;
+               }
+
+               ia[VAR__53647]  = ia[VAR__53647] + 10;
+               ans[VAR__53647] = ia[VAR__53647] - ib[VAR__53647];
+            }
+         }
+         else
+         {
+            ans[VAR__53647] = ia[VAR__53647] - ib[VAR__53647];
+         }
+      }
+
+      int VAR_233 = 0;
+      for ( VAR__53647 = len1; ; VAR__53647-- )
+      {
+         if ( ia[VAR__53647] != 0 )
+         {
+            VAR_233 = VAR__53647;
+            break;
+         }
+      }
+
+      for ( VAR__53647 = VAR_233; VAR__53647 >= len2; VAR__53647-- )
+      {
+         ans[VAR__53647] = ia[VAR__53647];
+      }
+
+      for ( VAR__53647 = VAR_233; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << ans[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

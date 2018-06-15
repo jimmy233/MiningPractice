@@ -1,0 +1,102 @@
+int compare(const void *elem1, const void *elem2)
+{
+   int *ANOTHER_POINTER     = (int *)elem1;
+   int *YET_ANOTHER_POINTER = (int *)elem2;
+
+   return ( *ANOTHER_POINTER ) - ( *YET_ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_9494;
+
+   do
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 != 0 )
+      {
+         ANOTHER_POINTER     = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         YET_ANOTHER_POINTER = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &ANOTHER_POINTER[VAR__53647]);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &YET_ANOTHER_POINTER[VAR__53647]);
+         }
+
+         qsort(ANOTHER_POINTER, VAR_1238123, sizeof( int ), compare);
+         qsort(YET_ANOTHER_POINTER, VAR_1238123, sizeof( int ), compare);
+         for ( VAR__53647 = 0, VAR_9494 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            if ( ANOTHER_POINTER[VAR__53647] > YET_ANOTHER_POINTER[VAR__53647] )
+            {
+               VAR_9494++;
+            }
+            else
+            if ( ANOTHER_POINTER[VAR__53647] == YET_ANOTHER_POINTER[VAR__53647] )
+            {
+               if ( VAR__53647 == ( VAR_1238123 - 1 ))
+               {
+                  break;
+               }
+               else
+               {
+                  for ( VAR__8444594 = VAR_1238123 - 1; VAR__8444594 > VAR__53647; VAR__8444594-- )
+                  {
+                     if ( ANOTHER_POINTER[VAR__8444594] > YET_ANOTHER_POINTER[VAR__8444594] )
+                     {
+                        VAR_9494++;
+                        for ( VAR__21230 = VAR_1238123 - 2; VAR__21230 >= VAR__53647; VAR__21230-- )
+                        {
+                           ANOTHER_POINTER[VAR__21230 + 1] = ANOTHER_POINTER[VAR__21230];
+                        }
+
+                        for ( VAR__21230 = VAR_1238123 - 2; VAR__21230 >= VAR__53647; VAR__21230-- )
+                        {
+                           YET_ANOTHER_POINTER[VAR__21230 + 1] = YET_ANOTHER_POINTER[VAR__21230];
+                        }
+
+                        VAR__53647++;
+                     }
+                     else
+                     {
+                        if ( ANOTHER_POINTER[VAR__53647] < YET_ANOTHER_POINTER[VAR__8444594] )
+                        {
+                           VAR_9494--;
+                        }
+
+                        for ( VAR__21230 = VAR_1238123 - 2; VAR__21230 >= VAR__53647; VAR__21230-- )
+                        {
+                           YET_ANOTHER_POINTER[VAR__21230 + 1] = YET_ANOTHER_POINTER[VAR__21230];
+                        }
+
+                        break;
+                     }
+                  }
+               }
+            }
+            else
+            {
+               VAR_9494--;
+               for ( VAR__21230 = VAR_1238123 - 2; VAR__21230 >= VAR__53647; VAR__21230-- )
+               {
+                  YET_ANOTHER_POINTER[VAR__21230 + 1] = YET_ANOTHER_POINTER[VAR__21230];
+               }
+            }
+         }
+
+         printf("%d\n", VAR_9494 * 200);
+      }
+   } while ( VAR_1238123 != 0 );
+}

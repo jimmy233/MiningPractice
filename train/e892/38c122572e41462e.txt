@@ -1,0 +1,93 @@
+void main()
+{
+   double VAR__8444594;
+   double VAR__temp;
+   double VAR__1238129;
+   double VAR__1111;
+   int    VAR_2890;
+   int    VAR_1238123;
+   double u[32768];
+   double v[32768];
+   double VAR_21983012[32768];
+   double VAR__112390[32768];
+   double VAR__127322[32768];
+   double VAR_9Q8Q90[32768];
+
+   scanf("%d", &VAR_1238123);
+   VAR_2890 = 1;
+
+   while ( VAR_2890 <= VAR_1238123 )
+   {
+      scanf("%lf %lf %lf", &u[VAR_2890], &v[VAR_2890], &VAR_21983012[VAR_2890]);
+      VAR__8444594 = ( v[VAR_2890] * v[VAR_2890] ) - (( 4 * u[VAR_2890] ) * VAR_21983012[VAR_2890] );
+      VAR__temp    = -VAR__8444594;
+
+      if ( VAR__8444594 > 0 )
+      {
+         VAR__112390[VAR_2890] = ( -v[VAR_2890] ) / ( 2 * u[VAR_2890] );
+         VAR__127322[VAR_2890] = sqrt(VAR__8444594) / ( 2 * u[VAR_2890] );
+         VAR_9Q8Q90[VAR_2890]  = 0;
+      }
+      else
+      if ( VAR__8444594 < 0 )
+      {
+         VAR__112390[VAR_2890] = ( -v[VAR_2890] ) / ( 2 * u[VAR_2890] );
+         VAR__127322[VAR_2890] = sqrt(VAR__temp) / ( 2 * u[VAR_2890] );
+         VAR_9Q8Q90[VAR_2890]  = 1;
+      }
+      else
+      {
+         VAR__112390[VAR_2890] = ( -v[VAR_2890] ) / ( 2 * u[VAR_2890] );
+         VAR__127322[VAR_2890] = 0;
+         VAR_9Q8Q90[VAR_2890]  = 2;
+      }
+
+
+      VAR_2890++;
+   }
+
+   VAR_2890 = 1;
+
+   while ( VAR_2890 <= VAR_1238123 )
+   {
+      VAR__1238129 = VAR__112390[VAR_2890] + VAR__127322[VAR_2890];
+      VAR__1111    = VAR__112390[VAR_2890] - VAR__127322[VAR_2890];
+
+      if ( fabs(VAR__1238129) < 1e-6 )
+      {
+         VAR__1238129 = 0;
+      }
+
+      if ( fabs(VAR__1111) < 1e-6 )
+      {
+         VAR__1111 = 0;
+      }
+
+      if ( fabs(VAR__112390[VAR_2890]) < 1e-6 )
+      {
+         VAR__112390[VAR_2890] = 0;
+      }
+
+      if ( fabs(VAR__127322[VAR_2890]) < 1e-6 )
+      {
+         VAR__127322[VAR_2890] = 0;
+      }
+
+      if ( VAR_9Q8Q90[VAR_2890] == 0 )
+      {
+         printf("x1=%.5f;x2=%.5f\n", VAR__1238129, VAR__1111);
+      }
+
+      if ( VAR_9Q8Q90[VAR_2890] == 1 )
+      {
+         printf("x1=%.5f+%.5fi;x2=%.5f-%.5fi\n", VAR__112390[VAR_2890], VAR__127322[VAR_2890], VAR__112390[VAR_2890], VAR__127322[VAR_2890]);
+      }
+
+      if ( VAR_9Q8Q90[VAR_2890] == 2 )
+      {
+         printf("x1=x2=%.5f\n", VAR__1238129);
+      }
+
+      VAR_2890++;
+   }
+}

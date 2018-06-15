@@ -1,0 +1,55 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+typedef struct
+{
+   int   sex;
+   float high;
+} Man;
+Man   man[41];
+float male[41];
+float female[41];
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int  VAR__53647;
+   char A_STRING[10];
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%f", A_STRING, &man[VAR__53647].high);
+
+      if ( strcmp(A_STRING, "male") == 0 )
+      {
+         man[VAR__53647].sex = 0;
+         male[VAR__21230++]  = man[VAR__53647].high;
+      }
+      else
+      {
+         man[VAR__53647].sex    = 1;
+         female[VAR__8444594++] = man[VAR__53647].high;
+      }
+   }
+
+   qsort(male, VAR__21230, sizeof( float ), cmp);
+   qsort(female, VAR__8444594, sizeof( float ), cmp);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%.2f ", male[VAR__53647]);
+   }
+
+   for ( VAR__53647 = VAR__8444594 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf("%.2f ", female[VAR__53647]);
+   }
+
+   printf("%.2f", female[VAR__53647]);
+   printf("\n");
+   return 0;
+}

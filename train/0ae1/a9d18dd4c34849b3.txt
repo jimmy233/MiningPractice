@@ -1,0 +1,80 @@
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int xingqi;
+   int VAR__8444594;
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+
+   scanf("%d%d%d", &year, &month, &day);
+   int VAR__12302[13] = { 0, 31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 };
+   VAR__8444594 = month;
+
+   if ( year == 1 )
+   {
+      for ( ; month > 1; month-- )
+      {
+         day += VAR__12302[month];
+      }
+
+      day = day % 7;
+   }
+   else
+   {
+      for ( ; month > 1; month-- )
+      {
+         day += VAR__12302[month];
+      }
+
+      day += ( year % 7 ) - 1;
+      day  = day % 7;
+
+      if ( VAR__8444594 < 3 )
+      {
+         year--;
+      }
+
+      VAR__819283  = year / 4;
+      VAR__19328   = year / 100;
+      VAR__4857423 = year / 400;
+      day          = (( day + VAR__819283 ) + VAR__4857423 ) - VAR__19328;
+      day          = day % 7;
+   }
+
+   xingqi = day;
+   switch ( xingqi )
+   {
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+
+   case 0:
+      printf("Sun.\n");
+      break;
+   }
+
+   return 0;
+}

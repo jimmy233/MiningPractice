@@ -1,0 +1,81 @@
+int VAR__53647;
+int VAR__21230;
+int n1;
+int n2;
+int a1[100];
+int a2[100];
+void scan()
+{
+   ( cin >> n1 ) >> n2;
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      cin >> a1[VAR__53647];
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < n2; VAR__21230++ )
+   {
+      cin >> a2[VAR__21230];
+   }
+}
+
+
+void adjust()
+{
+   int VAR_233;
+
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < n1; VAR__21230++ )
+      {
+         if ( a1[VAR__53647] > a1[VAR__21230] )
+         {
+            VAR_233        = a1[VAR__53647];
+            a1[VAR__53647] = a1[VAR__21230];
+            a1[VAR__21230] = VAR_233;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < n2; VAR__21230++ )
+      {
+         if ( a2[VAR__53647] > a2[VAR__21230] )
+         {
+            VAR_233        = a2[VAR__53647];
+            a2[VAR__53647] = a2[VAR__21230];
+            a2[VAR__21230] = VAR_233;
+         }
+      }
+   }
+}
+
+
+void combine()
+{
+   for ( VAR__53647 = n1; VAR__53647 < ( n1 + n2 ); VAR__53647++ )
+   {
+      a1[VAR__53647] = a2[VAR__53647 - n1];
+   }
+}
+
+
+void print()
+{
+   for ( VAR__53647 = 0; VAR__53647 < (( n1 + n2 ) - 1 ); VAR__53647++ )
+   {
+      ( cout << a1[VAR__53647] ) << " ";
+   }
+
+   ( cout << a1[( n1 + n2 ) - 1] ) << endl;
+}
+
+
+int main()
+{
+   scan();
+   adjust();
+   combine();
+   print();
+   return 0;
+}

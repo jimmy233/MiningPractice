@@ -1,0 +1,57 @@
+struct student
+{
+   int id;
+   int chi;
+   int math;
+};
+struct maxer
+{
+   int id;
+   int mark;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   struct student VAR__819283[100001];
+   struct student VAR__TEMP;
+   struct maxer   VAR__MAX;
+   struct maxer   top[3];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> VAR__819283[VAR__53647].id ) >> VAR__819283[VAR__53647].chi ) >> VAR__819283[VAR__53647].math;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 3; VAR__53647++ )
+   {
+      VAR__MAX.mark = 0;
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if (( VAR__819283[VAR__21230].chi + VAR__819283[VAR__21230].math ) > VAR__MAX.mark )
+         {
+            VAR__MAX.id   = VAR__819283[VAR__21230].id;
+            VAR__MAX.mark = VAR__819283[VAR__21230].chi + VAR__819283[VAR__21230].math;
+         }
+      }
+
+      top[VAR__53647 - 1]      = VAR__MAX;
+      VAR__TEMP                = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647]  = VAR__819283[VAR__MAX.id];
+      VAR__819283[VAR__MAX.id] = VAR__TEMP;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 2; VAR__53647++ )
+   {
+      (( cout << top[VAR__53647].id ) << ' ' ) << top[VAR__53647].mark;
+
+      if ( VAR__53647 != 2 )
+      {
+         cout << endl;
+      }
+   }
+
+   return 0;
+}

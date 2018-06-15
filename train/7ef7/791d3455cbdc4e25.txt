@@ -1,0 +1,102 @@
+int juzhen[100][100];
+int VAR__1238129;
+int VAR_1238123;
+int VAR__SUM;
+int VAR__21230;
+int min001 = 0;
+int min002 = 0;
+int min01[101];
+int min02[101];
+int min1(int VAR__819283)
+{
+   for ( int VAR_233 = 0; VAR_233 < VAR__1238129; VAR_233++ )
+   {
+      min01[VAR_233] = juzhen[VAR__819283][VAR_233];
+   }
+
+   sort(min01, min01 + VAR__1238129);
+   return min01[0];
+}
+
+
+int min2(int VAR__819283)
+{
+   for ( int VAR_233 = 0; VAR_233 < VAR__1238129; VAR_233++ )
+   {
+      min02[VAR_233] = juzhen[VAR_233][VAR__819283];
+   }
+
+   sort(min02, min02 + VAR__1238129);
+   return min02[0];
+}
+
+
+void jia(int VAR__7685, int VAR__3918907)
+{
+   if ( VAR__3918907 == 1 )
+   {
+      ( cout << VAR__SUM ) << endl;
+   }
+   else
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__3918907; VAR__21230++ )
+      {
+         min001 = min1(VAR__21230);
+         for ( int VAR__8444594 = 0; VAR__8444594 < VAR__3918907; VAR__8444594++ )
+         {
+            juzhen[VAR__21230][VAR__8444594] = juzhen[VAR__21230][VAR__8444594] - min001;
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR__3918907; VAR__21230++ )
+      {
+         min002 = min2(VAR__21230);
+         for ( int VAR__8444594 = 0; VAR__8444594 < VAR__3918907; VAR__8444594++ )
+         {
+            juzhen[VAR__8444594][VAR__21230] = juzhen[VAR__8444594][VAR__21230] - min002;
+         }
+      }
+
+      VAR__SUM = VAR__SUM + juzhen[1][1];
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR__3918907 - 1 ); VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 0; VAR__8444594 < VAR__3918907; VAR__8444594++ )
+         {
+            juzhen[VAR__21230][VAR__8444594] = juzhen[VAR__21230 + 1][VAR__8444594];
+         }
+      }
+
+      for ( VAR__21230 = 1; VAR__21230 < VAR__3918907; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 0; VAR__8444594 < ( VAR__3918907 - 1 ); VAR__8444594++ )
+         {
+            juzhen[VAR__8444594][VAR__21230] = juzhen[VAR__8444594][VAR__21230 + 1];
+         }
+      }
+
+      VAR__1238129 = VAR__1238129 - 1;
+      jia(VAR__7685, VAR__3918907 - 1);
+   }
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM     = 0;
+      VAR__1238129 = VAR_1238123;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            cin >> juzhen[VAR__21230][VAR__8444594];
+         }
+      }
+
+      jia(VAR__53647, VAR__1238129);
+   }
+
+   return 0;
+}

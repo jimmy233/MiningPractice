@@ -1,0 +1,85 @@
+int abs(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 <= VAR__19328 )
+   {
+      return VAR__19328 - VAR__819283;
+   }
+   else
+   {
+      return VAR__819283 - VAR__19328;
+   }
+}
+
+
+int Leap(int VAR__3918907)
+{
+   if (((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int Days(int VAR__3918907, int VAR__1238129, int VAR__12302)
+{
+   int days[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__53647;
+   int VAR_9494 = 0;
+
+   if ( Leap(VAR__3918907))
+   {
+      days[2] = 29;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR_9494 = VAR_9494 + days[VAR__53647];
+   }
+
+   VAR_9494 = VAR_9494 + VAR__12302;
+   return VAR_9494;
+}
+
+
+int main(int y1, int y2, int m1, int m2, int d1, int d2)
+{
+   int s1;
+   int s2;
+   int VAR_9494 = 0;
+   int VAR__53647;
+
+   scanf("%d %d %d", &y1, &m1, &d1);
+   scanf("%d %d %d", &y2, &m2, &d2);
+
+   if ( y1 == y2 )
+   {
+      s1       = Days(y1, m1, d1);
+      s2       = Days(y2, m2, d2);
+      VAR_9494 = abs(s1, s2);
+   }
+   else
+   if (( y2 - y1 ) == 1 )
+   {
+      s1       = Days(y1, 12, 31) - Days(y1, m1, d1);
+      s2       = Days(y2, m2, d2);
+      VAR_9494 = s1 + s2;
+   }
+   else
+   {
+      for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+      {
+         VAR_9494 = VAR_9494 + Days(VAR__53647, 12, 31);
+      }
+
+      s1       = Days(y1, 12, 31) - Days(y1, m1, d1);
+      s2       = Days(y2, m2, d2);
+      VAR_9494 = ( VAR_9494 + s1 ) + s2;
+   }
+
+
+   printf("%d\n", VAR_9494);
+}

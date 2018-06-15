@@ -1,0 +1,69 @@
+int main()
+{
+   int  VAR_1238123;
+   char moto[510];
+
+   char (*VAR__819283)[7];
+   scanf("%d", &VAR_1238123);
+   scanf("%s", moto);
+   int LEN_OF_STH;
+   LEN_OF_STH = strlen(moto);
+   int VAR__53647;
+   int VAR__21230;
+   VAR__819283 = ( char (*)[7] )malloc(( sizeof( char (*)[7] )) * (( LEN_OF_STH - VAR_1238123 ) + 1 ));
+   int VAR__temp[500];
+   for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+   {
+      VAR__temp[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; ( VAR__53647 + VAR_1238123 ) <= LEN_OF_STH; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         *(( *( VAR__819283 + VAR__53647 )) + VAR__21230 ) = *(( moto + VAR__53647 ) + VAR__21230 );
+      }
+
+      *(( *( VAR__819283 + VAR__53647 )) + VAR_1238123 ) = '\0';
+   }
+
+   LEN_OF_STH = ( LEN_OF_STH - VAR_1238123 ) + 1;
+   int  VAR__MAX = 1;
+   char zero[7]  = { '0' };
+   for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( strcmp(*( VAR__819283 + VAR__21230 ), *( VAR__819283 + VAR__53647 )) == 0 )
+         {
+            *( VAR__temp + VAR__21230 ) += 1;
+            strcpy(*( VAR__819283 + VAR__53647 ), zero);
+            break;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+   {
+      if (( *( VAR__temp + VAR__21230 )) > VAR__MAX )
+      {
+         VAR__MAX = *( VAR__temp + VAR__21230 );
+      }
+   }
+
+   if ( VAR__MAX > 1 )
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if (( *( VAR__temp + VAR__53647 )) == VAR__MAX )
+         {
+            printf("%s\n", *( VAR__819283 + VAR__53647 ));
+         }
+      }
+   }
+   else
+   {
+      printf("NO");
+   }
+}

@@ -1,0 +1,94 @@
+int main()
+{
+   int month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__SUM;
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+
+   scanf("%d %d %d", &startyear, &startmonth, &startday);
+   scanf("%d %d %d", &endyear, &endmonth, &endday);
+   VAR__SUM = 0;
+
+   if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+   {
+      month[1] = 29;
+   }
+
+   for ( VAR__53647 = startyear + 1; VAR__53647 < endyear; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__SUM = VAR__SUM + 366;
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + 365;
+      }
+   }
+
+   if ( startyear == endyear )
+   {
+      if ( startmonth == endmonth )
+      {
+         VAR__SUM = endday - startday;
+      }
+      else
+      {
+         for ( VAR__53647 = startday + 1; VAR__53647 <= month[startmonth - 1]; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + 1;
+         }
+
+         for ( VAR__53647 = startmonth + 1; VAR__53647 < endmonth; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + month[VAR__53647 - 1];
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 <= endday; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + 1;
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = startday + 1; VAR__53647 <= month[startmonth - 1]; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + 1;
+      }
+
+      for ( VAR__53647 = startmonth + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + month[VAR__53647 - 1];
+      }
+
+      if (((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 ))
+      {
+         month[1] = 29;
+      }
+      else
+      {
+         month[VAR__53647] = 28;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < endmonth; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + month[VAR__53647 - 1];
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= endday; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + 1;
+      }
+   }
+
+   printf("%d", VAR__SUM);
+   return 0;
+}

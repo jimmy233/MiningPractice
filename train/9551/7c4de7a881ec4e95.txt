@@ -1,0 +1,59 @@
+int main()
+{
+   char id[100][10];
+   char VAR__819283[10];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  age[100];
+   int  VAR__19328;
+
+   scanf("%d ", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf(" %s %d", &id[VAR__53647], &age[VAR__53647]);
+   }
+
+   for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 > 0; VAR__21230-- )
+   {
+      for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+      {
+         if (( age[VAR__53647] >= 60 ) && ( age[VAR__53647 - 1] >= 60 ))
+         {
+            if ( age[VAR__53647] > age[VAR__53647 - 1] )
+            {
+               strcpy(VAR__819283, id[VAR__53647]);
+               VAR__19328 = age[VAR__53647];
+               strcpy(id[VAR__53647], id[VAR__53647 - 1]);
+               age[VAR__53647] = age[VAR__53647 - 1];
+               strcpy(id[VAR__53647 - 1], VAR__819283);
+               age[VAR__53647 - 1] = VAR__19328;
+            }
+         }
+
+         if (( age[VAR__53647] >= 60 ) && ( age[VAR__53647 - 1] < 60 ))
+         {
+            strcpy(VAR__819283, id[VAR__53647]);
+            VAR__19328 = age[VAR__53647];
+            strcpy(id[VAR__53647], id[VAR__53647 - 1]);
+            age[VAR__53647] = age[VAR__53647 - 1];
+            strcpy(id[VAR__53647 - 1], VAR__819283);
+            age[VAR__53647 - 1] = VAR__19328;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         printf("%s", id[VAR__53647]);
+      }
+      else
+      {
+         printf("\n%s", id[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

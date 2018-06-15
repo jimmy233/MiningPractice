@@ -1,0 +1,70 @@
+double fuhao(double VAR__7685)
+{
+   double result;
+
+   if (( VAR__7685 < 0 ) && (( 0 - VAR__7685 ) < 0.00001 ))
+   {
+      result = 0;
+   }
+   else
+   {
+      result = VAR__7685;
+   }
+
+   return result;
+}
+
+
+int main()
+{
+   double VAR__819283[100];
+   double VAR__19328[100];
+   double VAR__4857423[100];
+   double x1[100];
+   double x2[100];
+   double delta[100];
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    decide[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf %lf %lf", &VAR__819283[VAR__53647], &VAR__19328[VAR__53647], &VAR__4857423[VAR__53647]);
+      delta[VAR__53647] = ( VAR__19328[VAR__53647] * VAR__19328[VAR__53647] ) - (( 4 * VAR__819283[VAR__53647] ) * VAR__4857423[VAR__53647] );
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( delta[VAR__53647] > 0 )
+      {
+         decide[VAR__53647] = 1;
+      }
+      else
+      if ( delta[VAR__53647] < 0 )
+      {
+         decide[VAR__53647] = -1;
+      }
+      else
+      {
+         decide[VAR__53647] = 0;
+      }
+
+
+      if ( decide[VAR__53647] == 1 )
+      {
+         printf("x1=%.5f;x2=%.5f\n", fuhao((( 0 - VAR__19328[VAR__53647] ) + sqrt(delta[VAR__53647])) / ( 2 * VAR__819283[VAR__53647] )), fuhao((( 0 - VAR__19328[VAR__53647] ) - sqrt(delta[VAR__53647])) / ( 2 * VAR__819283[VAR__53647] )));
+      }
+      else
+      if ( decide[VAR__53647] == 0 )
+      {
+         printf("x1=x2=%.5f\n", fuhao(( 0 - VAR__19328[VAR__53647] ) / ( 2 * VAR__819283[VAR__53647] )));
+      }
+      else
+      {
+         printf("x1=%.5f+%.5fi;x2=%.5f-%.5fi\n", fuhao(( 0 - VAR__19328[VAR__53647] ) / ( 2 * VAR__819283[VAR__53647] )), sqrt(-delta[VAR__53647]) / ( 2 * VAR__819283[VAR__53647] ), fuhao(( 0 - VAR__19328[VAR__53647] ) / ( 2 * VAR__819283[VAR__53647] )), sqrt(-delta[VAR__53647]) / ( 2 * VAR__819283[VAR__53647] ));
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,70 @@
+int strplus(char *strin1, char *strin2, char *strout);
+
+int main()
+{
+   char VAR__819283[251];
+   char VAR__19328[251];
+   char VAR__4857423[252];
+   int  VAR__53647;
+
+   scanf("%s", &VAR__819283[1]);
+   scanf("%s", &VAR__19328[1]);
+
+   if (((( VAR__819283[1] == '0' ) && ( VAR__19328[1] == '0' )) && ( VAR__819283[2] == 0 )) && ( VAR__19328[2] == 0 ))
+   {
+      printf("0");
+      return 0;
+   }
+
+   VAR__819283[0] = ( VAR__19328[0] = ( VAR__4857423[0] = '0' ));
+   strplus(VAR__819283, VAR__19328, VAR__4857423);
+   for ( VAR__53647 = 0; VAR__4857423[VAR__53647] == '0'; VAR__53647++ )
+   {
+   }
+
+   printf("%s", VAR__4857423 + VAR__53647);
+   return 0;
+}
+
+
+int strplus(char *strin1, char *strin2, char *strout)
+{
+   int strlen1;
+   int strlen2;
+   int strlen3;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__TEMP;
+   int carry = 0;
+
+   VAR__53647      = ( strlen1 = strlen(strin1));
+   VAR__21230      = ( strlen2 = strlen(strin2));
+   VAR__8444594    = ( strlen3 = ( strlen1 > strlen2 ) ? ( strlen1 ) : ( strlen2 ));
+   strout[strlen3] = 0;
+
+   while ( 1 )
+   {
+      if (( !VAR__53647 ) && ( !VAR__21230 ))
+      {
+         break;
+      }
+
+      if ( VAR__53647 )
+      {
+         VAR__53647--;
+      }
+
+      if ( VAR__21230 )
+      {
+         VAR__21230--;
+      }
+
+      VAR__8444594--;
+      VAR__TEMP            = ((( strin1[VAR__53647] - '0' ) + strin2[VAR__21230] ) - '0' ) + carry;
+      carry                = VAR__TEMP / 10;
+      strout[VAR__8444594] = ( VAR__TEMP % 10 ) + '0';
+   }
+
+   return 0;
+}

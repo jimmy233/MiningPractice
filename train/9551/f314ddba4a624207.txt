@@ -1,0 +1,44 @@
+struct people
+{
+   char          VAR__NUM[10];
+   int           age;
+   struct people *VAR__NEXT;
+};
+void main()
+{
+   struct people *VAR__HEAD;
+   struct people *p0;
+   struct people *VAR_233;
+   struct people *VAR_9494;
+
+   VAR__HEAD            = (struct people *)malloc(sizeof( struct people ));
+   VAR__HEAD->VAR__NEXT = NULL;
+   int VAR_1238123;
+   int VAR__53647;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      p0                  = VAR__HEAD;
+      VAR_233             = p0->VAR__NEXT;
+      VAR_9494            = (struct people *)malloc(sizeof( struct people ));
+      VAR_9494->VAR__NEXT = NULL;
+      scanf("%s %d", VAR_9494->VAR__NUM, &VAR_9494->age);
+
+      while (( VAR_233 != NULL ) && ((( VAR_9494->age >= 60 ) && ( VAR_9494->age <= VAR_233->age )) || ( VAR_9494->age < 60 )))
+      {
+         p0      = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      p0->VAR__NEXT       = VAR_9494;
+      VAR_9494->VAR__NEXT = VAR_233;
+   }
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

@@ -1,0 +1,86 @@
+void main()
+{
+   struct book
+   {
+      int         VAR__NUM;
+      char        author[27];
+      struct book *VAR__NEXT;
+   }
+   *VAR__HEAD = 0;
+   struct book
+   {
+      int         VAR__NUM;
+      char        author[27];
+      struct book *VAR__NEXT;
+   }
+   *ANOTHER_POINTER;
+   struct book
+   {
+      int         VAR__NUM;
+      char        author[27];
+      struct book *VAR__NEXT;
+   }
+       *YET_ANOTHER_POINTER;
+   int total;
+   int VAR__53647;
+   int VAR__21230;
+   int sumbook[26] = { 0 };
+   int LEN_OF_STH;
+   int VAR__MAX;
+
+   scanf("%d", &total);
+   for ( VAR__53647 = 0; VAR__53647 < total; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct book *)malloc(sizeof( struct book ));
+
+      if ( ANOTHER_POINTER == 0 )
+      {
+         printf("Memory request failed!\n");
+         exit(-1);
+      }
+
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->author);
+      LEN_OF_STH = strlen(ANOTHER_POINTER->author);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         sumbook[ANOTHER_POINTER->author[VAR__21230] - 'A']++;
+      }
+
+      if ( VAR__HEAD )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   ANOTHER_POINTER->VAR__NEXT = 0;
+   LEN_OF_STH = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( sumbook[VAR__53647] > LEN_OF_STH )
+      {
+         LEN_OF_STH = sumbook[VAR__53647];
+         VAR__MAX   = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", VAR__MAX + 'A', sumbook[VAR__MAX]);
+   VAR__MAX += 'A';
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      LEN_OF_STH = strlen(ANOTHER_POINTER->author);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( ANOTHER_POINTER->author[VAR__53647] == VAR__MAX )
+         {
+            printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+            break;
+         }
+      }
+   }
+}

@@ -1,0 +1,83 @@
+int main()
+{
+   int   VAR_1238123 = 0;
+   char  gender[8];
+   char  gen[40];
+   float height[40];
+   float male[40];
+   float female[40];
+   int   malenum      = 0;
+   int   femalenum    = 0;
+   int   VAR__53647   = 0;
+   int   VAR__21230   = 0;
+   int   VAR__8444594 = 0;
+   int   VAR__1111    = 0;
+   int   VAR__1238129 = 0;
+   float VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", &gender, &height[VAR__53647]);
+      gen[VAR__53647]    = gender[0];
+      male[VAR__53647]   = 0.0;
+      female[VAR__53647] = 0.0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( gen[VAR__53647] == 'm' )
+      {
+         male[VAR__21230] = height[VAR__53647];
+         VAR__21230++;
+      }
+      else
+      if ( gen[VAR__53647] == 'f' )
+      {
+         female[VAR__8444594] = height[VAR__53647];
+         VAR__8444594++;
+      }
+   }
+
+   malenum   = VAR__21230;
+   femalenum = VAR__8444594;
+
+   while ( VAR__21230-- )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < VAR__21230; VAR__1111++ )
+      {
+         if ( male[VAR__1111] > male[VAR__1111 + 1] )
+         {
+            VAR__TEMP           = male[VAR__1111 + 1];
+            male[VAR__1111 + 1] = male[VAR__1111];
+            male[VAR__1111]     = VAR__TEMP;
+         }
+      }
+   }
+
+   while ( VAR__8444594-- )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < VAR__8444594; VAR__1111++ )
+      {
+         if ( female[VAR__1111] < female[VAR__1111 + 1] )
+         {
+            VAR__TEMP             = female[VAR__1111 + 1];
+            female[VAR__1111 + 1] = female[VAR__1111];
+            female[VAR__1111]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < malenum; VAR__53647++ )
+   {
+      printf("%.2f ", male[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( femalenum - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", female[VAR__53647]);
+   }
+
+   printf("%.2f", female[VAR__53647]);
+   return 0;
+}

@@ -1,0 +1,75 @@
+struct ren
+{
+   char   sex[8];
+   double gao;
+}
+VAR__819283[45];
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", VAR__819283[VAR__53647].sex, &VAR__819283[VAR__53647].gao);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(VAR__819283[VAR__53647].sex, "female") == 0 )
+      {
+         VAR__819283[VAR__53647].gao = 10 - VAR__819283[VAR__53647].gao;
+      }
+   }
+
+   if ( VAR_1238123 > 2 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         struct ren VAR__TEMP;
+         for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230].gao < VAR__819283[VAR__21230 - 1].gao )
+            {
+               VAR__TEMP = VAR__819283[VAR__21230];
+               VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 - 1];
+               VAR__819283[VAR__21230 - 1] = VAR__TEMP;
+            }
+         }
+      }
+   }
+   else
+   {
+      struct ren VAR__TEMP;
+
+      if ( VAR__819283[0].gao > VAR__819283[1].gao )
+      {
+         VAR__TEMP      = VAR__819283[1];
+         VAR__819283[1] = VAR__819283[0];
+         VAR__819283[0] = VAR__TEMP;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(VAR__819283[VAR__53647].sex, "female") == 0 )
+      {
+         VAR__819283[VAR__53647].gao = 10 - VAR__819283[VAR__53647].gao;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         printf("%.2lf", VAR__819283[VAR__53647].gao);
+      }
+      else
+      {
+         printf(" %.2lf", VAR__819283[VAR__53647].gao);
+      }
+   }
+}

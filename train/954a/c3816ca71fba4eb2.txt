@@ -1,0 +1,124 @@
+int yuanshi(int VAR__819283, int VAR__19328)
+{
+   if (( VAR__819283 > 80 ) && ( VAR__19328 >= 1 ))
+   {
+      return 8000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int wusi(int VAR__819283, int VAR__19328)
+{
+   if (( VAR__819283 > 85 ) && ( VAR__19328 > 80 ))
+   {
+      return 4000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int chengji(int VAR__819283)
+{
+   if ( VAR__819283 > 90 )
+   {
+      return 2000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int xibu(int VAR__819283, char VAR__19328)
+{
+   if (( VAR__819283 > 85 ) && ( VAR__19328 == 'Y' ))
+   {
+      return 1000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int gongxian(int VAR__819283, char VAR__19328)
+{
+   if (( VAR__819283 > 80 ) && ( VAR__19328 == 'Y' ))
+   {
+      return 850;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   struct award
+   {
+      char name[20];
+      int  qimocj;
+      int  banpingcj;
+      char ynganbu;
+      char ynxibu;
+      int  lunwen;
+      int  jiangjin;
+   }
+   aw[100];
+   struct award
+   {
+      char name[20];
+      int  qimocj;
+      int  banpingcj;
+      char ynganbu;
+      char ynxibu;
+      int  lunwen;
+      int  jiangjin;
+   }
+       VAR__TEMP;
+   int N;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__SUM;
+
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      aw[VAR__53647].jiangjin = 0;
+      scanf("%s %d %d %c %c %d", &aw[VAR__53647].name, &aw[VAR__53647].qimocj, &aw[VAR__53647].banpingcj, &aw[VAR__53647].ynganbu, &aw[VAR__53647].ynxibu, &aw[VAR__53647].lunwen);
+      aw[VAR__53647].jiangjin = ((( yuanshi(aw[VAR__53647].qimocj, aw[VAR__53647].lunwen) + wusi(aw[VAR__53647].qimocj, aw[VAR__53647].banpingcj)) + chengji(aw[VAR__53647].qimocj)) + xibu(aw[VAR__53647].qimocj, aw[VAR__53647].ynxibu)) + gongxian(aw[VAR__53647].banpingcj, aw[VAR__53647].ynganbu);
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < ( N - 1 ); VAR__8444594++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( N - 1 ) - VAR__8444594 ); VAR__21230++ )
+      {
+         if ( aw[VAR__21230].jiangjin < aw[VAR__21230 + 1].jiangjin )
+         {
+            VAR__TEMP          = aw[VAR__21230];
+            aw[VAR__21230]     = aw[VAR__21230 + 1];
+            aw[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR__SUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + aw[VAR__53647].jiangjin;
+   }
+
+   printf("%s\n%d\n%d", aw[0].name, aw[0].jiangjin, VAR__SUM);
+}

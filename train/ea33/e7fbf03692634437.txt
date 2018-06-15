@@ -1,0 +1,69 @@
+int main()
+{
+   char A_STRING[11];
+   char substr[4];
+
+   while (( cin >> A_STRING ) >> substr )
+   {
+      char VAR__819283[14];
+      int  len_a = strlen(A_STRING);
+      int  len_b = strlen(substr);
+      int  VAR__53647;
+      int  VAR__21230;
+      char VAR__MAX = 0;
+      for ( VAR__53647 = 0; VAR__53647 < len_a; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX = A_STRING[VAR__53647];
+         }
+         else
+         {
+            continue;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < len_a; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == VAR__MAX )
+         {
+            if ( VAR__53647 == ( len_a - 1 ))
+            {
+               for ( VAR__21230 = len_a; VAR__21230 <= ( len_a + len_b ); VAR__21230++ )
+               {
+                  A_STRING[VAR__21230] = substr[VAR__21230 - len_a];
+               }
+            }
+            else
+            {
+               for ( VAR__21230 = 0; VAR__21230 < (( len_a - VAR__53647 ) - 1 ); VAR__21230++ )
+               {
+                  VAR__819283[VAR__21230] = A_STRING[( VAR__21230 + VAR__53647 ) + 1];
+               }
+
+               for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < (( VAR__53647 + len_b ) + 1 ); VAR__21230++ )
+               {
+                  A_STRING[VAR__21230] = substr[( VAR__21230 - VAR__53647 ) - 1];
+               }
+
+               for ( VAR__21230 = ( VAR__53647 + len_b ) + 1; VAR__21230 < ( len_a + len_b ); VAR__21230++ )
+               {
+                  A_STRING[VAR__21230] = VAR__819283[(( VAR__21230 - VAR__53647 ) - len_b ) - 1];
+               }
+
+               A_STRING[VAR__21230] = '\0';
+            }
+
+            break;
+         }
+         else
+         {
+            continue;
+         }
+      }
+
+      ( cout << A_STRING ) << endl;
+   }
+
+   return 0;
+}

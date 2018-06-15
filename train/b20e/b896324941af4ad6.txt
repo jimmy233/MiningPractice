@@ -1,0 +1,92 @@
+int compare(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   return ( *((int *)YET_ANOTHER_POINTER )) - ( *((int *)ANOTHER_POINTER ));
+}
+
+
+int VAR_9Q8Q90(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return 200;
+   }
+   else
+   if ( VAR__819283 == VAR__19328 )
+   {
+      return 0;
+   }
+   else
+   {
+      return -200;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int tian[1000];
+   int qi[1000];
+   int re[1001][1001];
+
+   cin >> VAR_1238123;
+
+   while ( VAR_1238123 != 0 )
+   {
+      if ( VAR_1238123 == 1 )
+      {
+         ( cin >> tian[0] ) >> qi[0];
+         ( cout << VAR_9Q8Q90(tian[0], qi[0])) << endl;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            cin >> tian[VAR__53647];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            cin >> qi[VAR__53647];
+         }
+
+         qsort(tian, VAR_1238123, sizeof( int ), compare);
+         qsort(qi, VAR_1238123, sizeof( int ), compare);
+         re[1][0] = VAR_9Q8Q90(tian[VAR_1238123 - 1], qi[0]);
+         re[1][1] = VAR_9Q8Q90(tian[0], qi[0]);
+         for ( VAR__53647 = 2; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+         {
+            re[VAR__53647][0] = re[VAR__53647 - 1][0] + VAR_9Q8Q90(tian[VAR_1238123 - VAR__53647], qi[VAR__53647 - 1]);
+            for ( VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+            {
+               if (( re[VAR__53647 - 1][VAR__21230 - 1] + VAR_9Q8Q90(tian[VAR__21230 - 1], qi[VAR__53647 - 1])) > ( re[VAR__53647 - 1][VAR__21230] + VAR_9Q8Q90(tian[( VAR_1238123 - VAR__53647 ) + VAR__21230], qi[VAR__53647 - 1])))
+               {
+                  re[VAR__53647][VAR__21230] = re[VAR__53647 - 1][VAR__21230 - 1] + VAR_9Q8Q90(tian[VAR__21230 - 1], qi[VAR__53647 - 1]);
+               }
+               else
+               {
+                  re[VAR__53647][VAR__21230] = re[VAR__53647 - 1][VAR__21230] + VAR_9Q8Q90(tian[( VAR_1238123 - VAR__53647 ) + VAR__21230], qi[VAR__53647 - 1]);
+               }
+            }
+
+            re[VAR__53647][VAR__53647] = re[VAR__53647 - 1][VAR__21230 - 1] + VAR_9Q8Q90(tian[VAR__53647 - 1], qi[VAR__53647 - 1]);
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+         {
+            if ( re[VAR_1238123][VAR__53647] > re[VAR_1238123][0] )
+            {
+               re[VAR_1238123][0] = re[VAR_1238123][VAR__53647];
+            }
+         }
+
+         ( cout << re[VAR_1238123][0] ) << endl;
+      }
+
+      cin >> VAR_1238123;
+   }
+
+   return 0;
+}

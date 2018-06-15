@@ -1,0 +1,65 @@
+int pymbg[11][11] = { 0 };
+int pymed[11][11] = { 0 };
+void peiyang(int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR_1238123 != 0 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+         {
+            pymed[VAR__53647][VAR__21230]         = pymed[VAR__53647][VAR__21230] + pymbg[VAR__53647][VAR__21230];
+            pymed[VAR__53647][VAR__21230 - 1]     = pymed[VAR__53647][VAR__21230 - 1] + pymbg[VAR__53647][VAR__21230];
+            pymed[VAR__53647][VAR__21230 + 1]     = pymed[VAR__53647][VAR__21230 + 1] + pymbg[VAR__53647][VAR__21230];
+            pymed[VAR__53647 + 1][VAR__21230]     = pymed[VAR__53647 + 1][VAR__21230] + pymbg[VAR__53647][VAR__21230];
+            pymed[VAR__53647 + 1][VAR__21230 - 1] = pymed[VAR__53647 + 1][VAR__21230 - 1] + pymbg[VAR__53647][VAR__21230];
+            pymed[VAR__53647 + 1][VAR__21230 + 1] = pymed[VAR__53647 + 1][VAR__21230 + 1] + pymbg[VAR__53647][VAR__21230];
+            pymed[VAR__53647 - 1][VAR__21230]     = pymed[VAR__53647 - 1][VAR__21230] + pymbg[VAR__53647][VAR__21230];
+            pymed[VAR__53647 - 1][VAR__21230 - 1] = pymed[VAR__53647 - 1][VAR__21230 - 1] + pymbg[VAR__53647][VAR__21230];
+            pymed[VAR__53647 - 1][VAR__21230 + 1] = pymed[VAR__53647 - 1][VAR__21230 + 1] + pymbg[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+         {
+            pymbg[VAR__53647][VAR__21230] = pymed[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      VAR_1238123--;
+      peiyang(VAR_1238123);
+   }
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   pymbg[5][5] = VAR__1238129;
+   pymed[5][5] = VAR__1238129;
+   peiyang(VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+      {
+         ( cout << pymbg[VAR__53647][VAR__21230] ) << ' ';
+      }
+
+      cout << pymbg[VAR__53647][9];
+      cout << '\n';
+   }
+
+   return 0;
+}

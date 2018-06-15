@@ -1,0 +1,59 @@
+int VAR_9494(int year, int month, int date)
+{
+   int VAR_9494 = 0;
+   int VAR__53647;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 100 ) != 0 ) & (( year % 4 ) == 0 )))
+   {
+      int VAR_1238123[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+      for ( VAR__53647 = 0; ( VAR__53647 + 1 ) < month; VAR__53647++ )
+      {
+         VAR_9494 += VAR_1238123[VAR__53647];
+      }
+
+      VAR_9494 = VAR_9494 + date;
+   }
+   else
+   {
+      int VAR_1238123[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+      for ( VAR__53647 = 0; ( VAR__53647 + 1 ) < month; VAR__53647++ )
+      {
+         VAR_9494 += VAR_1238123[VAR__53647];
+      }
+
+      VAR_9494 = VAR_9494 + date;
+   }
+
+   return VAR_9494;
+}
+
+
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int year;
+   int month1;
+   int month2;
+   int VAR__819283;
+   int VAR__19328;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &year, &month1, &month2);
+      VAR__819283 = VAR_9494(year, month1, 1);
+      VAR__19328  = VAR_9494(year, month2, 1);
+
+      if ((( VAR__819283 - VAR__19328 ) % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}

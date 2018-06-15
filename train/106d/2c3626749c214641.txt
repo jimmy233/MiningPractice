@@ -1,0 +1,74 @@
+int leapyear(int VAR__3918907);
+int monthday(int VAR__3918907, int VAR__1238129);
+
+void main()
+{
+   int VAR_1238123;
+   int year;
+   int month1;
+   int month2;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+   int VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &year, &month1, &month2);
+
+      if ( month1 > month2 )
+      {
+         VAR__TEMP = month1;
+         month1    = month2;
+         month2    = VAR__TEMP;
+      }
+
+      for ( VAR__21230 = month1; VAR__21230 < month2; VAR__21230++ )
+      {
+         VAR__SUM += monthday(year, VAR__21230);
+      }
+
+      if (( VAR__SUM % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+
+      VAR__SUM = 0;
+   }
+}
+
+
+int leapyear(int VAR__3918907)
+{
+   if ((( VAR__3918907 % 400 ) == 0 ) || ((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int monthday(int VAR__3918907, int VAR__1238129)
+{
+   if ((((((( VAR__1238129 == 1 ) || ( VAR__1238129 == 3 )) || ( VAR__1238129 == 5 )) || ( VAR__1238129 == 7 )) || ( VAR__1238129 == 8 )) || ( VAR__1238129 == 10 )) || ( VAR__1238129 == 12 ))
+   {
+      return 31;
+   }
+   else
+   if ( VAR__1238129 == 2 )
+   {
+      return 28 + leapyear(VAR__3918907);
+   }
+   else
+   {
+      return 30;
+   }
+}

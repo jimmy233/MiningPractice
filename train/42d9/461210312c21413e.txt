@@ -1,0 +1,80 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int VAR__7685[100];
+   int VAR__3918907[100];
+   int VAR__9290[100];
+   int nlx[100];
+   int nly[100];
+   int nlz[100];
+   int nfx[100];
+   int nfy[100];
+   int nfz[100];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   double VAR__12302;
+   double jl[45];
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__8444594 = VAR__53647 + 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         VAR__12302      = ((( 1.0 * ( VAR__7685[VAR__53647] - VAR__7685[VAR__8444594] )) * ( VAR__7685[VAR__53647] - VAR__7685[VAR__8444594] )) + (( 1.0 * ( VAR__3918907[VAR__53647] - VAR__3918907[VAR__8444594] )) * ( VAR__3918907[VAR__53647] - VAR__3918907[VAR__8444594] ))) + (( 1.0 * ( VAR__9290[VAR__53647] - VAR__9290[VAR__8444594] )) * ( VAR__9290[VAR__53647] - VAR__9290[VAR__8444594] ));
+         jl[VAR__21230]  = sqrt(VAR__12302);
+         nfx[VAR__21230] = VAR__7685[VAR__53647];
+         nfy[VAR__21230] = VAR__3918907[VAR__53647];
+         nfz[VAR__21230] = VAR__9290[VAR__53647];
+         nlx[VAR__21230] = VAR__7685[VAR__8444594];
+         nly[VAR__21230] = VAR__3918907[VAR__8444594];
+         nlz[VAR__21230] = VAR__9290[VAR__8444594];
+         VAR__21230++;
+      }
+   }
+
+   int result;
+   result = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   for ( int VAR__8444594 = 1; VAR__8444594 <= result; VAR__8444594++ )
+   {
+      double VAR__112390;
+      for ( VAR__21230 = 0; VAR__21230 < ( result - VAR__8444594 ); VAR__21230++ )
+      {
+         if ( jl[VAR__21230] < jl[VAR__21230 + 1] )
+         {
+            VAR__112390         = jl[VAR__21230 + 1];
+            jl[VAR__21230 + 1]  = jl[VAR__21230];
+            jl[VAR__21230]      = VAR__112390;
+            VAR__112390         = nfx[VAR__21230 + 1];
+            nfx[VAR__21230 + 1] = nfx[VAR__21230];
+            nfx[VAR__21230]     = VAR__112390;
+            VAR__112390         = nfy[VAR__21230 + 1];
+            nfy[VAR__21230 + 1] = nfy[VAR__21230];
+            nfy[VAR__21230]     = VAR__112390;
+            VAR__112390         = nfz[VAR__21230 + 1];
+            nfz[VAR__21230 + 1] = nfz[VAR__21230];
+            nfz[VAR__21230]     = VAR__112390;
+            VAR__112390         = nlx[VAR__21230 + 1];
+            nlx[VAR__21230 + 1] = nlx[VAR__21230];
+            nlx[VAR__21230]     = VAR__112390;
+            VAR__112390         = nly[VAR__21230 + 1];
+            nly[VAR__21230 + 1] = nly[VAR__21230];
+            nly[VAR__21230]     = VAR__112390;
+            VAR__112390         = nlz[VAR__21230 + 1];
+            nlz[VAR__21230 + 1] = nlz[VAR__21230];
+            nlz[VAR__21230]     = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < result; VAR__21230++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", nfx[VAR__21230], nfy[VAR__21230], nfz[VAR__21230], nlx[VAR__21230], nly[VAR__21230], nlz[VAR__21230], jl[VAR__21230]);
+   }
+
+   return 0;
+}

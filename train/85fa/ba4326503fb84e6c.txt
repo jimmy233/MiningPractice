@@ -1,0 +1,31 @@
+int days_of_month[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+int is_leap_year(int year)
+{
+   if (((( year % 100 ) != 0 ) && (( year % 4 ) == 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int year;
+   int month;
+   int day;
+
+   scanf("%d%d%d", &year, &month, &day);
+   int index = is_leap_year(year);
+   int days  = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      days += days_of_month[index][VAR__53647];
+   }
+
+   days += day;
+   printf("%d", days);
+}

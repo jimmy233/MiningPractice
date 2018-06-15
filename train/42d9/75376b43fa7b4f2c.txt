@@ -1,0 +1,57 @@
+int main()
+{
+   int    VAR__7685[20]    = { 0 };
+   int    VAR__3918907[20] = { 0 };
+   int    VAR__9290[20]    = { 0 };
+   int    VAR_1238123;
+   int    flag1[200];
+   int    flag2[200];
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594 = 1;
+   int    VAR_233;
+   double distance[200];
+   double VAR__temp;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> VAR__7685[VAR__53647] ) >> VAR__3918907[VAR__53647] ) >> VAR__9290[VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++, VAR__8444594++ )
+      {
+         distance[VAR__8444594] = sqrt(( pow(VAR__7685[VAR__53647] - VAR__7685[VAR__21230], 2.0) + pow(VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230], 2.0)) + pow(VAR__9290[VAR__53647] - VAR__9290[VAR__21230], 2.0));
+         flag1[VAR__8444594]    = VAR__53647;
+         flag2[VAR__8444594]    = VAR__21230;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__8444594++ )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= (((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) + 1 ) - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( distance[VAR__53647] < distance[VAR__53647 + 1] )
+         {
+            VAR__temp                = distance[VAR__53647];
+            distance[VAR__53647]     = distance[VAR__53647 + 1];
+            distance[VAR__53647 + 1] = VAR__temp;
+            VAR_233               = flag1[VAR__53647];
+            flag1[VAR__53647]     = flag1[VAR__53647 + 1];
+            flag1[VAR__53647 + 1] = VAR_233;
+            VAR_233               = flag2[VAR__53647];
+            flag2[VAR__53647]     = flag2[VAR__53647 + 1];
+            flag2[VAR__53647 + 1] = VAR_233;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      (((((((((((((((( cout << "(" ) << VAR__7685[flag1[VAR__53647]] ) << "," ) << VAR__3918907[flag1[VAR__53647]] ) << "," ) << VAR__9290[flag1[VAR__53647]] ) << ")-(" ) << VAR__7685[flag2[VAR__53647]] ) << "," ) << VAR__3918907[flag2[VAR__53647]] ) << "," ) << VAR__9290[flag2[VAR__53647]] ) << ")=" ) << fixed ) << setprecision(2)) << distance[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

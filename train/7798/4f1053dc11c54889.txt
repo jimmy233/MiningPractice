@@ -1,0 +1,101 @@
+int cishu[26];
+struct shu
+{
+   int        VAR__NUM;
+   char       name[26];
+   struct shu *VAR__NEXT;
+};
+struct shu *app(int VAR_1238123)
+{
+   int        VAR__53647;
+   int        LEN_OF_STH;
+   int        VAR__21230;
+   struct shu *newnode;
+   struct shu *VAR_233;
+   struct shu *VAR__HEAD;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      newnode = (struct shu *)malloc(sizeof( struct shu ));
+      scanf("%d %s", &newnode->VAR__NUM, newnode->name);
+      LEN_OF_STH = strlen(newnode->name);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         cishu[newnode->name[VAR__21230] - 'A']++;
+      }
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = newnode;
+      }
+      else
+      {
+         VAR_233->VAR__NEXT = newnode;
+      }
+
+      VAR_233 = newnode;
+   }
+
+   VAR_233->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+int VAR__MAX(void)
+{
+   int VAR__1238129 = 0;
+   int VAR__53647;
+   int VAR__7685;
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( cishu[VAR__53647] > VAR__1238129 )
+      {
+         VAR__1238129 = cishu[VAR__53647];
+         VAR__7685    = VAR__53647;
+      }
+   }
+
+   return VAR__7685;
+}
+
+
+int cunzai(char VAR__819283[], int kk)
+{
+   int VAR__1111;
+   int VAR__53647;
+
+   VAR__1111 = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == ( kk + 'A' ))
+      {
+         return 1;
+      }
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int        VAR_1238123;
+   int        kk;
+   struct shu *VAR__HEAD;
+   struct shu *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = app(VAR_1238123);
+   kk        = VAR__MAX();
+   printf("%c\n%d\n", 'A' + kk, cishu[kk]);
+   for ( VAR_233 = VAR__HEAD; VAR_233 != 0; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( cunzai(VAR_233->name, kk))
+      {
+         printf("%d\n", VAR_233->VAR__NUM);
+      }
+   }
+
+   return 0;
+}

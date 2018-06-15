@@ -1,0 +1,72 @@
+char num_1[200] = { 0 };
+char num_2[200] = { 0 };
+int  VAR__53647;
+int  VAR__21230;
+int  VAR__8444594;
+int  num1[200] = { 0 };
+int  num2[200] = { 0 };
+int  num3[200] = { 0 };
+int Greater(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return VAR__819283;
+   }
+
+   return VAR__19328;
+}
+
+
+void print(int LEN_OF_STH)
+{
+   for ( VAR__53647 = LEN_OF_STH; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << num3[VAR__53647];
+   }
+}
+
+
+void addition(int LEN_OF_STH)
+{
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      num3[VAR__53647]      = ( num1[VAR__53647] + num2[VAR__53647] ) + num3[VAR__53647];
+      num3[VAR__53647 + 1] += num3[VAR__53647] / 10;
+      num3[VAR__53647]      = num3[VAR__53647] % 10;
+   }
+
+   int VAR__TEMP = LEN_OF_STH;
+   for ( VAR__53647 = LEN_OF_STH; VAR__53647 > 0; VAR__53647-- )
+   {
+      if ( num3[VAR__53647] == 0 )
+      {
+         VAR__TEMP = VAR__53647 - 1;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   print(VAR__TEMP);
+}
+
+
+int main()
+{
+   cin >> num_1;
+   cin >> num_2;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(num_1); VAR__53647++ )
+   {
+      num1[VAR__53647] = num_1[( strlen(num_1) - 1 ) - VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(num_2); VAR__53647++ )
+   {
+      num2[VAR__53647] = num_2[( strlen(num_2) - 1 ) - VAR__53647] - '0';
+   }
+
+   int LEN_OF_STH = Greater(strlen(num_1), strlen(num_2));
+   addition(LEN_OF_STH);
+   return 0;
+}

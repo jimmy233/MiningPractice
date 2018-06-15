@@ -1,0 +1,69 @@
+int myfunc(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   return ( VAR__819283 > VAR__19328 ) ? ( VAR__819283 ) : ( VAR__19328 );
+}
+
+
+int main()
+{
+   int VAR__temp[2000];
+   int VAR_666[1000];
+   int VAR_1238123;
+   int VAR__53647;
+   int start;
+   int VAR__SUM;
+   int tmp;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", VAR__temp + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", VAR_666 + VAR__53647);
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), myfunc);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), myfunc);
+      memcpy(VAR__temp + VAR_1238123, VAR__temp, VAR_1238123);
+      VAR__SUM = -0xFFFFFFF;
+      for ( start = 0; start < VAR_1238123; start++ )
+      {
+         tmp = 0;
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            if ( VAR__temp[start + VAR__53647] < VAR_666[VAR__53647] )
+            {
+               tmp -= 200;
+            }
+
+            if ( VAR__temp[start + VAR__53647] > VAR_666[VAR__53647] )
+            {
+               tmp += 200;
+            }
+         }
+
+         VAR__SUM = VAR__MAX(VAR__SUM, tmp);
+      }
+
+      printf("%d\n", VAR__SUM);
+   }
+
+   return 0;
+}

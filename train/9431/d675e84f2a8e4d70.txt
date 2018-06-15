@@ -1,0 +1,29 @@
+struct stu
+{
+   char       infor[50];
+   struct stu *previous;
+};
+void main()
+{
+   struct stu *VAR_233;
+   struct stu *VAR_666;
+   struct stu *VAR__HEAD;
+
+   VAR_233           = (struct stu *)malloc(sizeof( struct stu ));
+   VAR_233->previous = NULL;
+   gets(VAR_233->infor);
+
+   while ( strcmp(VAR_233->infor, "end") != 0 )
+   {
+      VAR_666           = (struct stu *)malloc(sizeof( struct stu ));
+      VAR_666->previous = VAR_233;
+      VAR_233           = VAR_666;
+      gets(VAR_233->infor);
+   }
+
+   VAR__HEAD = VAR_233->previous;
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->previous )
+   {
+      puts(VAR_233->infor);
+   }
+}

@@ -1,0 +1,28 @@
+int main()
+{
+   int  VAR__SUM = 0;
+   int  year;
+   int  month;
+   int  day;
+   int  VAR__53647;
+   int  VAR__TEMP   = 0;
+   int  yue[12]     = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   char week[7][14] = { "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun." };
+
+   scanf("%d %d %d", &year, &month, &day);
+   VAR__SUM += ((((( year - 1 ) / 4 ) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 )) + year ) - 1;
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      yue[1] = 29;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( month - 2 ); VAR__53647++ )
+   {
+      VAR__SUM += yue[VAR__53647];
+   }
+
+   VAR__SUM  = ( VAR__SUM + day ) - 1;
+   VAR__SUM %= 7;
+   printf("%s", week[VAR__SUM]);
+}

@@ -1,0 +1,78 @@
+struct student
+{
+   int            xuehao;
+   int            yuwen;
+   int            shuxue;
+   int            mark;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *creat(int VAR__MAX)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%d %d %d", &ANOTHER_POINTER->xuehao, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+   VAR__HEAD = ANOTHER_POINTER;
+
+   while ( VAR_1238123 < ( VAR__MAX - 1 ))
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 != 1 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%d %d %d", &ANOTHER_POINTER->xuehao, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = 0;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int            VAR__MAX;
+   int            VAR__53647;
+   struct student *table;
+
+   scanf("%d", &VAR__MAX);
+   table = creat(VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      int            mmax = 0;
+      int            mark = 0;
+      struct student *VAR_233;
+      VAR_233 = table;
+      do
+      {
+         if ((( VAR_233->shuxue + VAR_233->yuwen ) > mmax ) && ( VAR_233->mark != ( -1 )))
+         {
+            mark++;
+            VAR_233->mark = mark;
+            mmax          = VAR_233->shuxue + VAR_233->yuwen;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != 0 );
+      VAR_233 = table;
+      do
+      {
+         if ( VAR_233->mark == mark )
+         {
+            printf("%d %d\n", VAR_233->xuehao, VAR_233->shuxue + VAR_233->yuwen);
+            VAR_233->mark = -1;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != 0 );
+   }
+}

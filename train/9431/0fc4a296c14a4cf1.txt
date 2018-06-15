@@ -1,0 +1,78 @@
+struct stu
+{
+   char       VAR__NUM[30];
+   char       name[30];
+   char       sex;
+   int        age;
+   float      score;
+   char       add[30];
+   struct stu *VAR__NEXT;
+};
+struct stu *ANOTHER_POINTER;
+struct stu *YET_ANOTHER_POINTER;
+struct stu *VAR__HEAD;
+int main()
+{
+   void result(struct stu *);
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   scanf("%s ", ANOTHER_POINTER->VAR__NUM);
+   scanf("%s ", ANOTHER_POINTER->name);
+   scanf("%c", &ANOTHER_POINTER->sex);
+   scanf("%d", &ANOTHER_POINTER->age);
+   scanf("%g", &ANOTHER_POINTER->score);
+   scanf("%s", ANOTHER_POINTER->add);
+   VAR__HEAD            = ANOTHER_POINTER;
+   VAR__HEAD->VAR__NEXT = 0;
+   for ( ; ; )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ((( ANOTHER_POINTER->VAR__NUM[0] == 'e' ) && ( ANOTHER_POINTER->VAR__NUM[1] == 'n' )) && ( ANOTHER_POINTER->VAR__NUM[2] == 'd' ))
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = 0;
+         goto print;
+      }
+
+      scanf("%s ", ANOTHER_POINTER->name);
+      scanf("%c", &ANOTHER_POINTER->sex);
+      scanf("%d", &ANOTHER_POINTER->age);
+      scanf("%g", &ANOTHER_POINTER->score);
+      scanf("%s", ANOTHER_POINTER->add);
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+print:
+   result(VAR__HEAD);
+
+   return 0;
+}
+
+
+void result(struct stu *VAR__7685)
+{
+   if ( VAR__7685->VAR__NEXT == 0 )
+   {
+      printf("%s ", VAR__7685->VAR__NUM);
+      printf("%s ", VAR__7685->name);
+      printf("%c", VAR__7685->sex);
+      printf(" %d", VAR__7685->age);
+      printf(" %g", VAR__7685->score);
+      printf(" %s", VAR__7685->add);
+      printf("\n");
+   }
+   else
+   {
+      result(VAR__7685->VAR__NEXT);
+      printf("%s ", VAR__7685->VAR__NUM);
+      printf("%s ", VAR__7685->name);
+      printf("%c", VAR__7685->sex);
+      printf(" %d", VAR__7685->age);
+      printf(" %g", VAR__7685->score);
+      printf(" %s", VAR__7685->add);
+   }
+
+   printf("\n");
+}

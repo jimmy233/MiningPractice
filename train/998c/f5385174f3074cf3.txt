@@ -1,0 +1,74 @@
+int main()
+{
+   int  res[300];
+   int  ls;
+   int  lt;
+   int  VAR__53647;
+   int  VAR__MAX;
+   int  s1[300];
+   int  t1[300];
+   char VAR_9494[300];
+   char VAR__temp[300];
+
+   memset(VAR_9494, 0, sizeof( VAR_9494 ));
+   memset(res, 0, sizeof( res ));
+   scanf("%s", VAR_9494);
+   scanf("%s", VAR__temp);
+   {
+      ls = strlen(VAR_9494);
+      lt = strlen(VAR__temp);
+      memset(s1, 0, sizeof( s1 ));
+      memset(t1, 0, sizeof( t1 ));
+      s1[0] = ls;
+      for ( VAR__53647 = 1; VAR__53647 <= ls; VAR__53647++ )
+      {
+         s1[VAR__53647] = VAR_9494[ls - VAR__53647] - '0';
+      }
+
+      t1[0] = lt;
+      for ( VAR__53647 = 1; VAR__53647 <= lt; VAR__53647++ )
+      {
+         t1[VAR__53647] = VAR__temp[lt - VAR__53647] - '0';
+      }
+
+      VAR__MAX = ( s1[0] > t1[0] ) ? ( s1[0] ) : ( t1[0] );
+      for ( VAR__53647 = 1; VAR__53647 <= VAR__MAX; VAR__53647++ )
+      {
+         res[VAR__53647] += s1[VAR__53647] + t1[VAR__53647];
+
+         if ( res[VAR__53647] >= 10 )
+         {
+            res[VAR__53647 + 1] += res[VAR__53647] / 10;
+            res[VAR__53647]     %= 10;
+         }
+
+         if ( res[VAR__MAX + 1] != 0 )
+         {
+            res[0] = VAR__MAX + 1;
+         }
+         else
+         {
+            res[0] = VAR__MAX;
+         }
+      }
+   }
+   for ( VAR__53647 = res[0]; res[VAR__53647] == 0; VAR__53647-- )
+   {
+   }
+
+   if ( VAR__53647 == 0 )
+   {
+      printf("0");
+   }
+   else
+   {
+      for ( ; VAR__53647 >= 1; VAR__53647-- )
+      {
+         printf("%d", res[VAR__53647]);
+      }
+   }
+
+
+   printf("\n");
+   return 0;
+}

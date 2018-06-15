@@ -1,0 +1,52 @@
+void subtraction(char big[100], char small[100], int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = VAR_1238123; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( big[VAR__53647] - small[VAR__53647] ) >= 0 )
+      {
+         big[VAR__53647] = ( big[VAR__53647] - small[VAR__53647] ) + '0';
+      }
+      else
+      {
+         big[VAR__53647]       = (( big[VAR__53647] - small[VAR__53647] ) + 10 ) + '0';
+         small[VAR__53647 - 1] = small[VAR__53647 - 1] + 1;
+      }
+   }
+}
+
+
+void main()
+{
+   char numbig[100];
+   char numsmall[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  lennumbig;
+   int  lennumsmall;
+   int  VAR_1238123;
+   int  VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      scanf("%s", &numbig);
+      scanf("%s", &numsmall);
+      getchar();
+      lennumbig   = strlen(numbig);
+      lennumsmall = strlen(numsmall);
+      for ( VAR__53647 = lennumbig, VAR__21230 = lennumsmall; VAR__53647 >= ( lennumbig - lennumsmall ); VAR__53647--, VAR__21230-- )
+      {
+         numsmall[VAR__53647] = numsmall[VAR__21230];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( lennumbig - lennumsmall ); VAR__53647++ )
+      {
+         numsmall[VAR__53647] = '0';
+      }
+
+      subtraction(numbig, numsmall, lennumbig - 1);
+      puts(numbig);
+   }
+}

@@ -1,0 +1,54 @@
+int main()
+{
+   char zfc[102];
+   char ip[2][50];
+
+   gets(zfc);
+   int LEN_OF_STH   = strlen(zfc);
+   int VAR__21230   = 0;
+   int VAR__8444594 = 0;
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH + 1 ); VAR__53647++ )
+   {
+      if (( zfc[VAR__53647] != ' ' ) && ( zfc[VAR__53647] != '\0' ))
+      {
+         ip[VAR__21230][VAR__8444594] = zfc[VAR__53647];
+         VAR__8444594++;
+      }
+      else
+      if (( zfc[VAR__53647] == ' ' ) || ( zfc[VAR__53647] == '\0' ))
+      {
+         ip[VAR__21230][VAR__8444594] = '\0';
+         VAR__21230++;
+         VAR__8444594 = 0;
+      }
+   }
+
+   int len1 = strlen(ip[1]);
+   int len2 = strlen(ip[0]);
+   int VAR_21983012;
+   for ( VAR__53647 = 0, VAR__21230 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      if ( ip[1][VAR__53647] == ip[0][VAR__21230] )
+      {
+         VAR_21983012 = VAR__53647;
+         for ( VAR__8444594 = 1; VAR__8444594 < len2; VAR__8444594++ )
+         {
+            if ( ip[1][VAR__53647 + VAR__8444594] != ip[0][VAR__21230 + VAR__8444594] )
+            {
+               VAR__21230   = 0;
+               VAR_21983012 = 0;
+               break;
+            }
+         }
+
+         if ( VAR_21983012 = VAR__53647 )
+         {
+            break;
+         }
+      }
+   }
+
+   printf("%d", VAR_21983012);
+   return 0;
+}

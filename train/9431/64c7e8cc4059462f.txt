@@ -1,0 +1,59 @@
+struct stu
+{
+   char       stunum[10];
+   char       name[20];
+   char       sex[3];
+   char       age[10];
+   char       mark[10];
+   char       add[20];
+   struct stu *VAR__NEXT;
+   struct stu *before;
+};
+void main()
+{
+   struct stu *VAR_233;
+   struct stu *pt;
+   struct stu *VAR__HEAD;
+   int        VAR__53647  = 0;
+   int        VAR_1238123 = 0;
+   char       VAR__819283[4];
+
+   strcpy(VAR__819283, "end");
+   pt = ( VAR_233 = ( VAR__HEAD = (struct stu *)malloc(Len)));
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      scanf("%s", &VAR_233->stunum);
+
+      if ( strcmp(VAR_233->stunum, VAR__819283) == 0 )
+      {
+         pt->VAR__NEXT = NULL;
+         break;
+      }
+
+      scanf("%s %s %s %s %s", &VAR_233->name, &VAR_233->sex, &VAR_233->age, &VAR_233->mark, &VAR_233->add);
+      pt              = VAR_233;
+      VAR_233         = (struct stu *)malloc(Len);
+      pt->VAR__NEXT   = VAR_233;
+      VAR_233->before = pt;
+   }
+
+   VAR_233 = pt;
+
+   if ( VAR_233 != VAR__HEAD )
+   {
+      for ( VAR__53647 = 0; ; VAR__53647++ )
+      {
+         printf("%s %s %s %s %s %s", &VAR_233->stunum, &VAR_233->name, &VAR_233->sex, &VAR_233->age, &VAR_233->mark, &VAR_233->add);
+
+         if ( VAR_233 == VAR__HEAD )
+         {
+            break;
+         }
+
+         printf("\n");
+         VAR_233 = VAR_233->before;
+      }
+   }
+
+   printf("\n");
+}

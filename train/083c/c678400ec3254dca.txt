@@ -1,0 +1,81 @@
+int main()
+{
+   int  lenth;
+   int  VAR__819283;
+   int  VAR__19328;
+   long shinumber = 0;
+   long VAR__TEMP;
+   long bwei;
+   long VAR__53647;
+   char VAR__NUM[1000];
+   char final[1000];
+   int  numshi[1000] = { 0 };
+
+   scanf("%d %s %d", &VAR__819283, VAR__NUM, &VAR__19328);
+   lenth = strlen(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < lenth; VAR__53647++ )
+   {
+      if (( VAR__NUM[VAR__53647] >= '0' ) && ( VAR__NUM[VAR__53647] <= '9' ))
+      {
+         numshi[VAR__53647] = VAR__NUM[VAR__53647] - '0';
+      }
+
+      if (( VAR__NUM[VAR__53647] >= 'a' ) && ( VAR__NUM[VAR__53647] <= 'z' ))
+      {
+         numshi[VAR__53647] = ( VAR__NUM[VAR__53647] - 'a' ) + 10;
+      }
+
+      if (( VAR__NUM[VAR__53647] >= 'A' ) && ( VAR__NUM[VAR__53647] <= 'Z' ))
+      {
+         numshi[VAR__53647] = ( VAR__NUM[VAR__53647] - 'A' ) + 10;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < lenth; VAR__53647++ )
+   {
+      shinumber += numshi[VAR__53647] * pow(VAR__819283, ( lenth - VAR__53647 ) - 1);
+   }
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      VAR__TEMP = shinumber / pow(VAR__19328, VAR__53647);
+
+      if ( VAR__TEMP == 0 )
+      {
+         bwei = VAR__53647;
+         break;
+      }
+   }
+
+   VAR__TEMP = shinumber;
+   for ( VAR__53647 = 0; VAR__53647 < bwei; VAR__53647++ )
+   {
+      numshi[VAR__53647] = VAR__TEMP / pow(VAR__19328, ( bwei - VAR__53647 ) - 1);
+      VAR__TEMP         -= numshi[VAR__53647] * pow(VAR__19328, ( bwei - VAR__53647 ) - 1);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < bwei; VAR__53647++ )
+   {
+      if ( numshi[VAR__53647] < 10 )
+      {
+         final[VAR__53647] = numshi[VAR__53647] + '0';
+      }
+      else
+      {
+         final[VAR__53647] = ( numshi[VAR__53647] - 10 ) + 'A';
+      }
+   }
+
+   if ( shinumber != 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < bwei; VAR__53647++ )
+      {
+         printf("%c", final[VAR__53647]);
+      }
+   }
+
+   else
+   {
+      printf("0");
+   }
+}

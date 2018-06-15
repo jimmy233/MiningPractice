@@ -1,0 +1,91 @@
+char ANOTHER_STRING[150];
+char YET_ANOTHER_STRING[50];
+char str3[50];
+char *ANOTHER_POINTER     = ANOTHER_STRING;
+char *YET_ANOTHER_POINTER = YET_ANOTHER_STRING;
+char *p3 = str3;
+int compare(char *local, int LEN_OF_STH)
+{
+   YET_ANOTHER_POINTER = YET_ANOTHER_STRING;
+   char *VAR_233;
+   int  VAR_FLAG = 1;
+   for ( VAR_233 = local; ((( *YET_ANOTHER_POINTER ) != '\0' ) && ( VAR_FLAG == 1 )) && ( VAR_233 < ( local + LEN_OF_STH )); YET_ANOTHER_POINTER++, VAR_233++ )
+   {
+      if (( *VAR_233 ) != ( *YET_ANOTHER_POINTER ))
+      {
+         VAR_FLAG = 0;
+      }
+   }
+
+
+   if ((( *YET_ANOTHER_POINTER ) == '\0' ) && ( VAR_233 == ( local + LEN_OF_STH )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   char newline[150];
+   char *news = newline;
+   char *local;
+   char *VAR_233;
+   int  VAR_FLAG   = 1;
+   int  LEN_OF_STH = 0;
+
+   gets(ANOTHER_POINTER);
+   gets(YET_ANOTHER_POINTER);
+   gets(p3);
+   for ( ANOTHER_POINTER = ANOTHER_STRING; ANOTHER_POINTER <= ( ANOTHER_STRING + strlen(ANOTHER_STRING)); ANOTHER_POINTER++ )
+   {
+      if ( isalpha(*ANOTHER_POINTER))
+      {
+         if ( VAR_FLAG == 1 )
+         {
+            VAR_FLAG = 0, LEN_OF_STH = 1, local = ANOTHER_POINTER;
+         }
+         else
+         {
+            LEN_OF_STH++;
+         }
+      }
+
+      else
+      if ( VAR_FLAG == 0 )
+      {
+         VAR_FLAG = 1;
+
+         if ( compare(local, LEN_OF_STH))
+         {
+            for ( p3 = str3; ( *p3 ) != '\0'; p3++, news++ )
+            {
+               *news = *p3;
+            }
+         }
+
+         else
+         {
+            for ( VAR_233 = local; VAR_233 < ( local + LEN_OF_STH ); VAR_233++, news++ )
+            {
+               *news = *VAR_233;
+            }
+         }
+
+
+         *( news++ ) = *ANOTHER_POINTER;
+      }
+   }
+
+   *news = '\0';
+   for ( news = newline; ( *news ) != '\0'; news++ )
+   {
+      printf("%c", *news);
+   }
+
+   return 0;
+}

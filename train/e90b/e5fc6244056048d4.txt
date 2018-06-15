@@ -1,0 +1,80 @@
+struct student
+{
+   int            VAR__NUM;
+   int            chinese;
+   int            maths;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+int max0;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+   VAR__HEAD       = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->maths);
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   scanf("%d%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->maths);
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+void VAR__MAX(struct student *VAR__HEAD, int VAR__7685, int VAR__3918907)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *VAR__TEMP;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__TEMP          = (struct student *)malloc(sizeof( struct student ));
+   VAR__TEMP->chinese = ( VAR__TEMP->maths = 0 );
+   for ( YET_ANOTHER_POINTER = VAR__HEAD; YET_ANOTHER_POINTER != NULL; YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT )
+   {
+      if (( YET_ANOTHER_POINTER->chinese + YET_ANOTHER_POINTER->maths ) == VAR__7685 )
+      {
+         break;
+      }
+   }
+
+
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if (((( ANOTHER_POINTER->chinese + ANOTHER_POINTER->maths ) > ( VAR__TEMP->chinese + VAR__TEMP->maths )) && ((( ANOTHER_POINTER->chinese + ANOTHER_POINTER->maths ) != VAR__7685 ) || ((( ANOTHER_POINTER->chinese + ANOTHER_POINTER->maths ) == VAR__7685 ) && ( ANOTHER_POINTER->VAR__NUM != YET_ANOTHER_POINTER->VAR__NUM )))) && (( ANOTHER_POINTER->chinese + ANOTHER_POINTER->maths ) != VAR__3918907 ))
+      {
+         VAR__TEMP->chinese  = ANOTHER_POINTER->chinese;
+         VAR__TEMP->maths    = ANOTHER_POINTER->maths;
+         VAR__TEMP->VAR__NUM = ANOTHER_POINTER->VAR__NUM;
+      }
+   }
+
+
+   max0 = VAR__TEMP->chinese + VAR__TEMP->maths;
+   printf("%d %d\n", VAR__TEMP->VAR__NUM, max0);
+}
+
+
+int main()
+{
+   struct student *VAR__HEAD;
+   int            max1;
+   int            max2;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat();
+   VAR__MAX(VAR__HEAD, 0, 0);
+   max1 = max0;
+   VAR__MAX(VAR__HEAD, max1, 0);
+   max2 = max0;
+   VAR__MAX(VAR__HEAD, max1, max2);
+}

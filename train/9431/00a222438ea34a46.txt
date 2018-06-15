@@ -1,0 +1,42 @@
+struct student
+{
+   char           info[100];
+   struct student *before;
+}
+student[10000];
+int main()
+{
+   void print(struct student *VAR_233);
+
+   int  VAR__53647 = 0;
+   int  VAR__21230;
+   char VAR__819283[10000][100];
+   gets(VAR__819283[0]);
+
+   while ( VAR__819283[VAR__53647][0] != 'e' )
+   {
+      strcpy(student[VAR__53647].info, VAR__819283[VAR__53647]);
+      VAR__53647++;
+      gets(VAR__819283[VAR__53647]);
+   }
+
+   student[0].before = NULL;
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+   {
+      student[VAR__21230 + 1].before = &student[VAR__21230];
+   }
+
+   print(&student[VAR__53647 - 1]);
+   return 0;
+}
+
+
+void print(struct student *VAR_233)
+{
+   printf("%s\n", VAR_233->info);
+
+   if ( VAR_233->before != NULL )
+   {
+      print(VAR_233->before);
+   }
+}

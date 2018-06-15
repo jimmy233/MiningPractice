@@ -1,0 +1,91 @@
+int main()
+{
+   struct book
+   {
+      int         No;
+      char        author[27];
+      int         yes;
+      struct book *VAR__NEXT;
+   };
+   struct book *VAR__HEAD;
+   struct book *VAR_233;
+   int         VAR__1238129;
+   int         VAR__53647;
+   int         *VAR__MAX;
+   int         *VAR__COUNT;
+
+   VAR__COUNT = (int *)malloc(26 * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      *( VAR__COUNT + VAR__53647 ) = 0;
+   }
+
+   VAR_233   = (struct book *)malloc(sizeof( struct book ));
+   VAR__HEAD = VAR_233;
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d%s", &VAR_233->No, VAR_233->author);
+
+      if ( VAR__53647 == ( VAR__1238129 - 1 ))
+      {
+         VAR_233->VAR__NEXT = NULL;
+      }
+      else
+      {
+         VAR_233->VAR__NEXT = (struct book *)malloc(sizeof( struct book ));
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      char *point;
+      point = VAR_233->author;
+
+      while (( *point ) != '\0' )
+      {
+         ( *( VAR__COUNT + (( *point ) - 65 )))++;
+         point++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR__MAX = VAR__COUNT;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if (( *( VAR__COUNT + VAR__53647 )) > ( *VAR__MAX ))
+      {
+         VAR__MAX = VAR__COUNT + VAR__53647;
+      }
+   }
+
+
+   printf("%c\n", ( VAR__MAX - VAR__COUNT ) + 65);
+   printf("%d\n", *VAR__MAX);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      char *point;
+      point = VAR_233->author;
+
+      while (( *point ) != '\0' )
+      {
+         if (( *point ) == (( VAR__MAX - VAR__COUNT ) + 65 ))
+         {
+            printf("%d\n", VAR_233->No);
+         }
+
+         point++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return 0;
+}

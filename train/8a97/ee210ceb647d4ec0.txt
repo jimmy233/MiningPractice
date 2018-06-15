@@ -1,0 +1,36 @@
+int main(int argc, char *argv[])
+{
+   int    group = 0;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    amount = 0;
+   double *VAR__NUM;
+   double ave = 0;
+   double dev = 0;
+
+   scanf("%d", &group);
+   for ( VAR__53647 = 0; VAR__53647 < group; VAR__53647++ )
+   {
+      scanf("%d", &amount);
+      VAR__NUM = (double *)malloc(amount * ( sizeof( double )));
+      for ( VAR__21230 = 0; VAR__21230 < amount; VAR__21230++ )
+      {
+         scanf("%lf", VAR__NUM + VAR__21230);
+         ave += VAR__NUM[VAR__21230];
+      }
+
+      ave = ave / amount;
+      for ( VAR__21230 = 0; VAR__21230 < amount; VAR__21230++ )
+      {
+         dev += ( VAR__NUM[VAR__21230] - ave ) * ( VAR__NUM[VAR__21230] - ave );
+      }
+
+      dev = sqrt(dev / amount);
+      printf("%.5lf\n", dev);
+      dev = 0;
+      ave = 0;
+      free(VAR__NUM);
+   }
+
+   return 0;
+}

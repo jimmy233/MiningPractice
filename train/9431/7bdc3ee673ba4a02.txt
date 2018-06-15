@@ -1,0 +1,66 @@
+struct stu
+{
+   char       VAR__NUM[50];
+   char       name[50];
+   char       gentle;
+   int        age;
+   int        score;
+   char       add[50];
+   struct stu *VAR__NEXT;
+};
+int VAR_1238123;
+struct stu *creat(void)
+{
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   gets(ANOTHER_POINTER->VAR__NUM);
+   VAR__HEAD = NULL;
+
+   while ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0 )
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 == 1 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      VAR__HEAD           = YET_ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(sizeof( struct stu ));
+      gets(ANOTHER_POINTER->VAR__NUM);
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct stu *VAR__HEAD)
+{
+   struct stu *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+}

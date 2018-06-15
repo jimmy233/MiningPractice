@@ -1,0 +1,72 @@
+struct distance
+{
+   int    sp1x;
+   int    sp1y;
+   int    sp1z;
+   int    sp2x;
+   int    sp2y;
+   int    sp2z;
+   double dis;
+}
+dis[999999];
+struct distance
+{
+   int    sp1x;
+   int    sp1y;
+   int    sp1z;
+   int    sp2x;
+   int    sp2y;
+   int    sp2z;
+   double dis;
+}
+VAR__TEMP;
+int main()
+{
+   int VAR_1238123;
+   int spot[9999][3] = { 0 };
+   int VAR__temp     = 0;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> spot[VAR__53647][0] ) >> spot[VAR__53647][1] ) >> spot[VAR__53647][2];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__temp].sp1x = spot[VAR__53647][0];
+         dis[VAR__temp].sp1y = spot[VAR__53647][1];
+         dis[VAR__temp].sp1z = spot[VAR__53647][2];
+         dis[VAR__temp].sp2x = spot[VAR__21230][0];
+         dis[VAR__temp].sp2y = spot[VAR__21230][1];
+         dis[VAR__temp].sp2z = spot[VAR__21230][2];
+         dis[VAR__temp].dis  = sqrt(( pow(spot[VAR__53647][0] - spot[VAR__21230][0], 2.0) + pow(spot[VAR__53647][1] - spot[VAR__21230][1], 2.0)) + pow(spot[VAR__53647][2] - spot[VAR__21230][2], 2.0));
+         VAR__temp++;
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 2 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 <= (( VAR__temp - 2 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230].dis < dis[VAR__21230 + 1].dis )
+         {
+            VAR__TEMP           = dis[VAR__21230];
+            dis[VAR__21230]     = dis[VAR__21230 + 1];
+            dis[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      (((((((((((((((( cout << "(" ) << dis[VAR__53647].sp1x ) << "," ) << dis[VAR__53647].sp1y ) << "," ) << dis[VAR__53647].sp1z ) << ")-(" ) << dis[VAR__53647].sp2x ) << "," ) << dis[VAR__53647].sp2y ) << "," ) << dis[VAR__53647].sp2z ) << ")=" ) << fixed ) << setprecision(2)) << dis[VAR__53647].dis ) << endl;
+   }
+
+   return 0;
+}

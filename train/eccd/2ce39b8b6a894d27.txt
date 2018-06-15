@@ -1,0 +1,64 @@
+int main()
+{
+   int VAR_SIZE[ROW][COL];
+   int nr;
+   int nc;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int Rm[ROW];
+   int Cm[COL];
+   int exist = 0;
+
+   scanf("%d,%d", &nr, &nc);
+   for ( VAR__53647 = 0; VAR__53647 < nr; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < nc; VAR__21230++ )
+      {
+         scanf("%d", &VAR_SIZE[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nr; VAR__53647++ )
+   {
+      Rm[VAR__53647] = VAR_SIZE[VAR__53647][0];
+      for ( VAR__21230 = 0; VAR__21230 < nc; VAR__21230++ )
+      {
+         if ( VAR_SIZE[VAR__53647][VAR__21230] > Rm[VAR__53647] )
+         {
+            Rm[VAR__53647] = VAR_SIZE[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < nc; VAR__21230++ )
+   {
+      Cm[VAR__21230] = VAR_SIZE[0][VAR__21230];
+      for ( VAR__53647 = 0; VAR__53647 < nr; VAR__53647++ )
+      {
+         if ( VAR_SIZE[VAR__53647][VAR__21230] < Cm[VAR__21230] )
+         {
+            Cm[VAR__21230] = VAR_SIZE[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nr; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < nc; VAR__21230++ )
+      {
+         if ( Rm[VAR__53647] == Cm[VAR__21230] )
+         {
+            printf("%d+%d", VAR__53647, VAR__21230);
+            exist = exist + 1;
+         }
+      }
+   }
+
+   if ( exist == 0 )
+   {
+      printf("No");
+   }
+
+   return 0;
+}

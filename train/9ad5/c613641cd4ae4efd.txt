@@ -1,0 +1,112 @@
+struct node
+{
+   int VAR__7685;
+   int layer;
+   int VAR__temp;
+}
+VAR__819283[3];
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int tmp;
+   int sign  = 0;
+   int sign1 = 0;
+   int sign2 = 0;
+
+   scanf("%d %d", &VAR__819283[1].VAR__7685, &VAR__819283[2].VAR__7685);
+
+   if ( VAR__819283[1].VAR__7685 == VAR__819283[2].VAR__7685 )
+   {
+      printf("%d\n", VAR__819283[1].VAR__7685);
+   }
+   else
+   {
+      if (( VAR__819283[1].VAR__7685 == 1 ) || ( VAR__819283[2].VAR__7685 == 1 ))
+      {
+         printf("1\n");
+      }
+      else
+      {
+         if ( VAR__819283[1].VAR__7685 < VAR__819283[2].VAR__7685 )
+         {
+            tmp = VAR__819283[1].VAR__7685;
+            VAR__819283[1].VAR__7685 = VAR__819283[2].VAR__7685;
+            VAR__819283[2].VAR__7685 = tmp;
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 <= 10; VAR__53647++ )
+         {
+            if (( VAR__819283[1].VAR__7685 >= pow(2, VAR__53647)) && ( VAR__819283[1].VAR__7685 < pow(2, VAR__53647 + 1)))
+            {
+               VAR__819283[1].layer = VAR__53647 + 1;
+               sign1 = 1;
+            }
+
+            if (( VAR__819283[2].VAR__7685 >= pow(2, VAR__53647)) && ( VAR__819283[2].VAR__7685 < pow(2, VAR__53647 + 1)))
+            {
+               VAR__819283[2].layer = VAR__53647 + 1;
+               sign2 = 1;
+            }
+
+            if ( sign1 )
+            {
+               if ( sign2 )
+               {
+                  break;
+               }
+            }
+         }
+
+         VAR__819283[1].VAR__temp = VAR__819283[1].VAR__7685;
+         VAR__819283[2].VAR__temp = VAR__819283[2].VAR__7685;
+         for ( VAR__53647 = VAR__819283[1].layer, VAR__21230 = VAR__819283[2].layer; VAR__53647 >= 1; )
+         {
+            if ( VAR__819283[1].VAR__temp % 2 )
+            {
+               VAR__819283[1].VAR__temp = ( VAR__819283[1].VAR__temp - 1 ) / 2;
+            }
+            else
+            {
+               VAR__819283[1].VAR__temp = VAR__819283[1].VAR__temp / 2;
+            }
+
+            VAR__53647--;
+
+            if ( VAR__53647 == VAR__819283[2].layer )
+            {
+               if ( VAR__819283[1].VAR__temp == VAR__819283[2].VAR__temp )
+               {
+                  printf("%d\n", VAR__819283[1].VAR__temp);
+                  sign = 1;
+                  break;
+               }
+            }
+            else
+            if ( VAR__53647 < VAR__819283[2].layer )
+            {
+               do
+               {
+                  if ( VAR__819283[2].VAR__temp % 2 )
+                  {
+                     VAR__819283[2].VAR__temp = ( VAR__819283[2].VAR__temp - 1 ) / 2;
+                  }
+                  else
+                  {
+                     VAR__819283[2].VAR__temp = VAR__819283[2].VAR__temp / 2;
+                  }
+
+                  VAR__21230--;
+               } while ( VAR__21230 > VAR__53647 );
+
+               if ( VAR__819283[2].VAR__temp == VAR__819283[1].VAR__temp )
+               {
+                  printf("%d\n", VAR__819283[1].VAR__temp);
+                  sign = 1;
+                  break;
+               }
+            }
+         }
+      }
+   }
+}

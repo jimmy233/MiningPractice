@@ -1,0 +1,44 @@
+struct student
+{
+   char           VAR__NUM[100];
+   struct student *prev;
+};
+int main()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR_FLAG = 0;
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      gets(ANOTHER_POINTER->VAR__NUM);
+
+      if (( *ANOTHER_POINTER->VAR__NUM ) == 'e' )
+      {
+         break;
+      }
+      else
+      {
+         if ( VAR_FLAG == 0 )
+         {
+            YET_ANOTHER_POINTER   = ANOTHER_POINTER;
+            ANOTHER_POINTER->prev = NULL;
+            VAR_FLAG = 1;
+         }
+         else
+         {
+            ANOTHER_POINTER->prev = YET_ANOTHER_POINTER;
+            YET_ANOTHER_POINTER   = ANOTHER_POINTER;
+         }
+      }
+   }
+
+   while ( YET_ANOTHER_POINTER != NULL )
+   {
+      printf("%s\n", YET_ANOTHER_POINTER->VAR__NUM);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->prev;
+   }
+
+   return 0;
+}

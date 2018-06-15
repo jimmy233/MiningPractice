@@ -1,0 +1,55 @@
+int main()
+{
+   char A_STRING[10000];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  max1;
+   int  max2;
+   int  VAR__MIN;
+   int  now;
+
+   max1     = -1;
+   max2     = -1;
+   VAR__MIN = 65535;
+   gets(A_STRING);
+   strcat(A_STRING, ",");
+   VAR_1238123 = strlen(A_STRING);
+   now         = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == ',' )
+      {
+         if ( now > max1 )
+         {
+            max2 = max1;
+            max1 = now;
+         }
+         else
+         if (( now > max2 ) && ( now < max1 ))
+         {
+            max2 = now;
+         }
+
+
+         if ( now < VAR__MIN )
+         {
+            VAR__MIN = now;
+         }
+
+         now = 0;
+      }
+      else
+      {
+         now = (( now * 10 ) + A_STRING[VAR__53647] ) - 48;
+      }
+   }
+
+   if (( max1 == VAR__MIN ) || ( max2 < 0 ))
+   {
+      printf("No\n");
+   }
+   else
+   {
+      printf("%d\n", max2);
+   }
+}

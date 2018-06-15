@@ -1,0 +1,91 @@
+struct student
+{
+   char           name[20];
+   int            ave;
+   int            cla;
+   char           VAR_9Q8Q90;
+   char           VAR__7685;
+   int            VAR__NUM;
+   int            qian;
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   int zong;
+   int VAR__MAX = 0;
+   int VAR__53647;
+   int VAR__21230;
+
+   zong = 0;
+   struct student *VAR_233;
+   struct student *VAR__HEAD;
+   struct student *YET_ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ( VAR_233 = ( VAR__HEAD = (struct student *)malloc(sizeof( struct student ))));
+   int N;
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR_233->name, &VAR_233->ave, &VAR_233->cla, &VAR_233->VAR_9Q8Q90, &VAR_233->VAR__7685, &VAR_233->VAR__NUM);
+      VAR_233->qian = 0;
+
+      if (( VAR_233->ave > 80 ) && ( VAR_233->VAR__NUM >= 1 ))
+      {
+         VAR_233->qian += 8000;
+      }
+
+      if (( VAR_233->ave > 85 ) && ( VAR_233->cla > 80 ))
+      {
+         VAR_233->qian += 4000;
+      }
+
+      if ( VAR_233->ave > 90 )
+      {
+         VAR_233->qian += 2000;
+      }
+
+      if (( VAR_233->VAR__7685 == 'Y' ) && ( VAR_233->ave > 85 ))
+      {
+         VAR_233->qian += 1000;
+      }
+
+      if (( VAR_233->VAR_9Q8Q90 == 'Y' ) && ( VAR_233->cla > 80 ))
+      {
+         VAR_233->qian += 850;
+      }
+
+      zong += VAR_233->qian;
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = VAR_233;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = VAR_233;
+      YET_ANOTHER_POINTER            = VAR_233;
+      VAR_233 = (struct student *)malloc(sizeof( struct student ));
+   }
+
+   YET_ANOTHER_POINTER = NULL;
+   VAR_233             = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      VAR__21230 = VAR_233->qian;
+      VAR__MAX   = ( VAR__21230 > VAR__MAX ) ? ( VAR__21230 ) : ( VAR__MAX );
+      VAR_233    = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( VAR_233->qian == VAR__MAX )
+      {
+         printf("%s\n", VAR_233->name);
+         break;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d\n", VAR__MAX);
+   printf("%d", zong);
+}

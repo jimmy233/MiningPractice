@@ -1,0 +1,76 @@
+int shirunnian(int VAR__12302)
+{
+   if (( VAR__12302 % 4 ) == 0 )
+   {
+      if (( VAR__12302 % 100 ) == 0 )
+      {
+         if (( VAR__12302 % 400 ) == 0 )
+         {
+            return 1;
+         }
+         else
+         {
+            return 0;
+         }
+      }
+      else
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int dijitian(int VAR__819283, int VAR__19328, int VAR__4857423)
+{
+   int VAR__53647;
+   int VAR__SUM = 0;
+   int days     = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__19328; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         days += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         days += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ( shirunnian(VAR__819283) == 1 )
+         {
+            days += 29;
+         }
+         else
+         if ( shirunnian(VAR__819283) == 0 )
+         {
+            days += 28;
+         }
+      }
+   }
+
+   VAR__SUM = days + VAR__4857423;
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int tianshu = 0;
+
+   scanf("%d%d%d", &year, &month, &day);
+   tianshu = dijitian(year, month, day);
+   printf("%d", tianshu);
+   return 0;
+}

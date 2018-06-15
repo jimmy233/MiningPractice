@@ -1,0 +1,66 @@
+int high(int *, int *, int);
+
+const int maxmax = 200;
+char      VAR__819283[maxmax + 1];
+char      VAR__19328[maxmax + 1];
+int       aa[maxmax + 1];
+int       bb[maxmax];
+int main()
+{
+   cin.getline(VAR__819283, 201);
+   cin.getline(VAR__19328, 201);
+   memset(aa, 0, sizeof( aa ));
+   memset(bb, 0, sizeof( bb ));
+   int length1 = strlen(VAR__819283);
+   int length2 = strlen(VAR__19328);
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0, VAR__21230 = length1 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      aa[VAR__53647++] = VAR__819283[VAR__21230] - '0';
+   }
+
+   for ( VAR__53647 = 0, VAR__21230 = length2 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      bb[VAR__53647++] = VAR__19328[VAR__21230] - '0';
+   }
+
+   if (( aa[0] == 0 ) && ( bb[0] == 0 ))
+   {
+      ( cout << 0 ) << endl;
+   }
+   else
+   {
+      int highest = high(aa, bb, maxmax + 1);
+      for ( VAR__53647 = highest; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << aa[VAR__53647];
+      }
+   }
+
+   return 0;
+}
+
+
+int high(int *a1, int *b1, int VAR__1238129)
+{
+   int VAR__12302;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      a1[VAR__53647] += b1[VAR__53647];
+
+      if ( a1[VAR__53647] >= 10 )
+      {
+         a1[VAR__53647]     -= 10;
+         a1[VAR__53647 + 1] += 1;
+      }
+
+      if ( a1[VAR__53647] != 0 )
+      {
+         VAR__12302 = VAR__53647;
+      }
+   }
+
+   return VAR__12302;
+}

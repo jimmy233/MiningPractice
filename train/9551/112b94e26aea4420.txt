@@ -1,0 +1,65 @@
+void main()
+{
+   char ID[100][10]       = { '\0' };
+   char young[100][10]    = { '\0' };
+   char old[100][10]      = { '\0' };
+   char wae[100]          = { '\0' };
+   int  age[100]          = { 0 };
+   int  VAR__3918907[100] = { 0 };
+   int  o[100]            = { 0 };
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__1238129 = 0;
+   int  VAR__8444594 = 0;
+   int  VAR__TEMP    = 0;
+   int  VAR__819283;
+   int  VAR__19328;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", ID[VAR__53647], &age[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( age[VAR__53647] < 60 )
+      {
+         strcpy(young[VAR__1238129], ID[VAR__53647]);
+         VAR__3918907[VAR__1238129] = age[VAR__53647];
+         VAR__1238129++;
+      }
+      else
+      {
+         strcpy(old[VAR__8444594], ID[VAR__53647]);
+         o[VAR__8444594] = age[VAR__53647];
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__819283 = 0; VAR__819283 < ( VAR__8444594 - 1 ); VAR__819283++ )
+   {
+      for ( VAR__19328 = 0; VAR__19328 < (( VAR__8444594 - VAR__819283 ) - 1 ); VAR__19328++ )
+      {
+         if ( o[VAR__19328] < o[VAR__19328 + 1] )
+         {
+            VAR__TEMP         = o[VAR__19328];
+            o[VAR__19328]     = o[VAR__19328 + 1];
+            o[VAR__19328 + 1] = VAR__TEMP;
+            strcpy(wae, old[VAR__19328]);
+            strcpy(old[VAR__19328], old[VAR__19328 + 1]);
+            strcpy(old[VAR__19328 + 1], wae);
+         }
+      }
+   }
+
+   for ( VAR__819283 = 0; VAR__819283 < VAR__8444594; VAR__819283++ )
+   {
+      printf("%s\n", old[VAR__819283]);
+   }
+
+   for ( VAR__19328 = 0; VAR__19328 < VAR__1238129; VAR__19328++ )
+   {
+      printf("%s\n", young[VAR__19328]);
+   }
+}

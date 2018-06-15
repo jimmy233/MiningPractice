@@ -1,0 +1,86 @@
+int main()
+{
+   struct point
+   {
+      char VAR__7685[10];
+      int  VAR__3918907;
+   }
+   VAR_SIZE[100];
+   struct po
+   {
+      char VAR__819283[10];
+      int  VAR__19328;
+      int  VAR__4857423;
+   }
+        lnr[100];
+   int  VAR_1238123;
+   int  VAR__TEMP;
+   int  tag = 0;
+   char tem[100];
+   int  VAR__COUNT = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", VAR_SIZE[VAR__53647].VAR__7685, &VAR_SIZE[VAR__53647].VAR__3918907);
+   }
+
+   for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( int VAR__8444594 = tag; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         if ( VAR_SIZE[VAR__8444594].VAR__3918907 >= 60 )
+         {
+            lnr[VAR__21230].VAR__4857423 = VAR__8444594;
+            lnr[VAR__21230].VAR__19328   = VAR_SIZE[VAR__8444594].VAR__3918907;
+            strcpy(lnr[VAR__21230].VAR__819283, VAR_SIZE[VAR__8444594].VAR__7685);
+            tag = VAR__8444594 + 1;
+            VAR__COUNT++;
+            break;
+         }
+      }
+   }
+
+   for ( int VAR__1111 = 0; VAR__1111 < ( VAR__COUNT - 1 ); VAR__1111++ )
+   {
+      for ( int VAR__1238129 = VAR__COUNT - 1; VAR__1238129 > VAR__1111; VAR__1238129-- )
+      {
+         if ( lnr[VAR__1238129].VAR__19328 > lnr[VAR__1238129 - 1].VAR__19328 )
+         {
+            VAR__TEMP = lnr[VAR__1238129 - 1].VAR__19328;
+            lnr[VAR__1238129 - 1].VAR__19328 = lnr[VAR__1238129].VAR__19328;
+            lnr[VAR__1238129].VAR__19328     = VAR__TEMP;
+            strcpy(tem, lnr[VAR__1238129 - 1].VAR__819283);
+            strcpy(lnr[VAR__1238129 - 1].VAR__819283, lnr[VAR__1238129].VAR__819283);
+            strcpy(lnr[VAR__1238129].VAR__819283, tem);
+         }
+      }
+   }
+
+   tag = VAR_1238123 - 1;
+   for ( int o = VAR_1238123 - 1; o > ( VAR__COUNT - 1 ); o-- )
+   {
+      for ( int VAR_233 = tag; VAR_233 >= 0; VAR_233-- )
+      {
+         if ( VAR_SIZE[VAR_233].VAR__3918907 < 60 )
+         {
+            VAR_SIZE[o].VAR__3918907 = VAR_SIZE[VAR_233].VAR__3918907;
+            strcpy(VAR_SIZE[o].VAR__7685, VAR_SIZE[VAR_233].VAR__7685);
+            tag = VAR_233 - 1;
+            break;
+         }
+      }
+   }
+
+   for ( int VAR_666 = 0; VAR_666 < VAR__COUNT; VAR_666++ )
+   {
+      printf("%s\n", lnr[VAR_666].VAR__819283);
+   }
+
+   for ( int VAR_129012 = VAR__COUNT; VAR_129012 < VAR_1238123; VAR_129012++ )
+   {
+      printf("%s\n", VAR_SIZE[VAR_129012].VAR__7685);
+   }
+
+   return 0;
+}

@@ -1,0 +1,58 @@
+const int dx[8] = { -1, -1, 0, 1, 1, 1, 0, -1 };
+const int dy[8] = { 0, -1, -1, -1, 0, 1, 1, 1 };
+int       VAR__819283[9][9];
+int number(int VAR__7685, int VAR__3918907, int day)
+{
+   if ( day == 0 )
+   {
+      return VAR__819283[VAR__7685][VAR__3918907];
+   }
+
+   int v = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < 8; ++VAR__53647 )
+   {
+      if ((((( VAR__7685 + dx[VAR__53647] ) >= 0 ) && (( VAR__7685 + dx[VAR__53647] ) < 9 )) && (( VAR__3918907 + dy[VAR__53647] ) >= 0 )) && (( VAR__3918907 + dy[VAR__53647] ) < 9 ))
+      {
+         v += number(VAR__7685 + dx[VAR__53647], VAR__3918907 + dy[VAR__53647], day - 1);
+      }
+   }
+
+
+   v += 2 * number(VAR__7685, VAR__3918907, day - 1);
+   return v;
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   for ( int VAR__21230 = 0; VAR__21230 < 9; ++VAR__21230 )
+   {
+      for ( int VAR__8444594 = 0; VAR__8444594 < 9; ++VAR__8444594 )
+      {
+         VAR__819283[VAR__21230][VAR__8444594] = 0;
+      }
+   }
+
+
+   VAR__819283[4][4] = VAR__1238129;
+   for ( int VAR__21230 = 0; VAR__21230 < 9; ++VAR__21230 )
+   {
+      for ( int VAR__8444594 = 0; VAR__8444594 < 9; ++VAR__8444594 )
+      {
+         if ( VAR__8444594 != 0 )
+         {
+            cout << " ";
+         }
+
+         cout << number(VAR__21230, VAR__8444594, VAR_1238123);
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

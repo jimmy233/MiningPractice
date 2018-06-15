@@ -1,0 +1,75 @@
+int VAR__NUM[9][9][5];
+int day;
+int zz(int VAR__12302)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR__12302 == ( day + 1 ))
+   {
+      return 0;
+   }
+
+   if ( VAR__12302 != ( day + 1 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            VAR__NUM[VAR__53647][VAR__21230][VAR__12302]         += 2 * VAR__NUM[VAR__53647][VAR__21230][VAR__12302 - 1];
+            VAR__NUM[VAR__53647 - 1][VAR__21230 - 1][VAR__12302] += VAR__NUM[VAR__53647][VAR__21230][VAR__12302 - 1];
+            VAR__NUM[VAR__53647 - 1][VAR__21230][VAR__12302]     += VAR__NUM[VAR__53647][VAR__21230][VAR__12302 - 1];
+            VAR__NUM[VAR__53647 - 1][VAR__21230 + 1][VAR__12302] += VAR__NUM[VAR__53647][VAR__21230][VAR__12302 - 1];
+            VAR__NUM[VAR__53647 + 1][VAR__21230 - 1][VAR__12302] += VAR__NUM[VAR__53647][VAR__21230][VAR__12302 - 1];
+            VAR__NUM[VAR__53647 + 1][VAR__21230][VAR__12302]     += VAR__NUM[VAR__53647][VAR__21230][VAR__12302 - 1];
+            VAR__NUM[VAR__53647 + 1][VAR__21230 + 1][VAR__12302] += VAR__NUM[VAR__53647][VAR__21230][VAR__12302 - 1];
+            VAR__NUM[VAR__53647][VAR__21230 + 1][VAR__12302]     += VAR__NUM[VAR__53647][VAR__21230][VAR__12302 - 1];
+            VAR__NUM[VAR__53647][VAR__21230 - 1][VAR__12302]     += VAR__NUM[VAR__53647][VAR__21230][VAR__12302 - 1];
+         }
+      }
+   }
+
+   zz(VAR__12302 + 1);
+   return 0;
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   ( cin >> VAR__1238129 ) >> day;
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < day; VAR__8444594++ )
+         {
+            VAR__NUM[VAR__53647][VAR__21230][VAR__8444594] = 0;
+         }
+      }
+   }
+
+   VAR__NUM[4][4][0] = VAR__1238129;
+   zz(1);
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( VAR__21230 != 8 )
+         {
+            ( cout << VAR__NUM[VAR__53647][VAR__21230][day] ) << " ";
+         }
+
+         if ( VAR__21230 == 8 )
+         {
+            ( cout << VAR__NUM[VAR__53647][VAR__21230][day] ) << '\n';
+         }
+      }
+   }
+
+   return 0;
+}

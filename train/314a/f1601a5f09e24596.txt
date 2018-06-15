@@ -1,0 +1,97 @@
+int main()
+{
+   char VAR__819283[10000];
+   char VAR__19328[10000];
+
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   memset(VAR__19328, 0, sizeof( VAR__19328 ));
+   cin.getline(VAR__819283, 10000);
+   cin.getline(VAR__19328, 10000);
+   double aa[10000];
+   double bb[10000];
+   memset(aa, 0, sizeof( aa ));
+   memset(bb, 0, sizeof( bb ));
+   int    sum1 = 1;
+   int    sum2 = 1;
+   int    VAR__53647;
+   int    VAR__21230;
+   double VAR__MIN = 0;
+   double VAR__MAX = 0;
+   aa[1] = atof(VAR__819283);
+   bb[1] = atof(VAR__19328);
+   for ( VAR__53647 = 1; ; VAR__53647++ )
+   {
+      if ((( VAR__819283[VAR__53647] != ',' ) && ( VAR__819283[VAR__53647] != 0 )) && ( VAR__819283[VAR__53647 - 1] == ',' ))
+      {
+         sum1++;
+         aa[sum1] = atof(&VAR__819283[VAR__53647]);
+
+         if ( aa[sum1] > VAR__MAX )
+         {
+            VAR__MAX = aa[sum1];
+         }
+
+         if ( aa[sum1] < VAR__MIN )
+         {
+            VAR__MIN = aa[sum1];
+         }
+      }
+
+      if ( VAR__819283[VAR__53647] == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 1; ; VAR__53647++ )
+   {
+      if ((( VAR__19328[VAR__53647] != ',' ) && ( VAR__19328[VAR__53647] != 0 )) && ( VAR__19328[VAR__53647 - 1] == ',' ))
+      {
+         sum2++;
+         bb[sum2] = atof(&VAR__19328[VAR__53647]);
+
+         if ( bb[sum2] > VAR__MAX )
+         {
+            VAR__MAX = bb[sum2];
+         }
+
+         if ( bb[sum2] < VAR__MIN )
+         {
+            VAR__MIN = bb[sum2];
+         }
+      }
+
+      if ( VAR__19328[VAR__53647] == 0 )
+      {
+         break;
+      }
+   }
+
+   ( cout << sum1 ) << " ";
+   int people[10000];
+   memset(people, 0, sizeof( people ));
+   VAR__MIN = (int)VAR__MIN;
+   VAR__MAX = (int)VAR__MAX;
+   for ( VAR__53647 = VAR__MIN; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= sum1; VAR__21230++ )
+      {
+         if (( VAR__53647 >= aa[VAR__21230] ) && ( VAR__53647 < bb[VAR__21230] ))
+         {
+            people[VAR__53647]++;
+         }
+      }
+   }
+
+   int Max = 0;
+   for ( VAR__53647 = VAR__MIN; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      if ( people[VAR__53647] > Max )
+      {
+         Max = people[VAR__53647];
+      }
+   }
+
+   cout << Max;
+   return 0;
+}

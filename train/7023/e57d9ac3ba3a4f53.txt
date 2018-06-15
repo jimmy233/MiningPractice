@@ -1,0 +1,112 @@
+int  ANOTHER_POINTER;
+int  YET_ANOTHER_POINTER;
+int  p3;
+int  VAR__53647;
+int  VAR_1238123;
+int  VAR__21230;
+char VAR__819283[1000];
+char VAR__19328[1000];
+char VAR__4857423[1000];
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return VAR__19328;
+   }
+}
+
+
+int za(int VAR__1238129)
+{
+   if ( VAR__1238129 < 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      return VAR__819283[VAR__1238129] - '0';
+   }
+}
+
+
+int zb(int VAR__1238129)
+{
+   if ( VAR__1238129 < 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      return VAR__19328[VAR__1238129] - '0';
+   }
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= 999; VAR__53647++ )
+      {
+         VAR__819283[VAR__53647]  = '\0';
+         VAR__19328[VAR__53647]   = '\0';
+         VAR__4857423[VAR__53647] = '\0';
+      }
+
+      cin >> VAR__819283;
+      cin >> VAR__19328;
+      ANOTHER_POINTER = 0;
+
+      while ( VAR__819283[ANOTHER_POINTER] != '\0' )
+      {
+         ANOTHER_POINTER++;
+      }
+
+      ANOTHER_POINTER--;
+      YET_ANOTHER_POINTER = 0;
+
+      while ( VAR__19328[YET_ANOTHER_POINTER] != '\0' )
+      {
+         YET_ANOTHER_POINTER++;
+      }
+
+      YET_ANOTHER_POINTER--;
+      VAR__4857423[0] = 0;
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR__MAX(ANOTHER_POINTER, YET_ANOTHER_POINTER) + 1 ); VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647] = za(ANOTHER_POINTER - VAR__53647) - zb(YET_ANOTHER_POINTER - VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR__MAX(ANOTHER_POINTER, YET_ANOTHER_POINTER) + 1 ); VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647 + 1] += (( VAR__4857423[VAR__53647] + 10 ) / 10 ) - 1;
+         VAR__4857423[VAR__53647]      = ( VAR__4857423[VAR__53647] + 10 ) % 10;
+      }
+
+      p3 = 900;
+
+      while (( VAR__4857423[p3] == 0 ) && ( p3 >= 0 ))
+      {
+         p3--;
+      }
+
+      for ( VAR__53647 = p3; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << ((int)VAR__4857423[VAR__53647] );
+      }
+
+      if ( p3 <= 0 )
+      {
+         cout << 0;
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

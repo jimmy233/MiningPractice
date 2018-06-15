@@ -1,0 +1,59 @@
+int  total;
+int  VAR__53647;
+int  VAR__21230;
+char boy;
+char girl;
+char child[100];
+int  VAR_FLAG[100];
+void departure();
+
+int main()
+{
+   cin >> child;
+   total = strlen(child);
+   boy   = child[0];
+   girl  = child[total - 1];
+   for ( VAR__53647 = 0; VAR__53647 <= ( total - 1 ); VAR__53647++ )
+   {
+      VAR_FLAG[VAR__53647] = VAR__53647;
+   }
+
+   departure();
+   return 0;
+}
+
+
+void departure()
+{
+   if ( total == 0 )
+   {
+      return;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( total - 1 ); VAR__53647++ )
+      {
+         if (( child[VAR__53647] == girl ) && ( child[VAR__53647 - 1] == boy ))
+         {
+            ((( cout << VAR_FLAG[VAR__53647 - 1] ) << ' ' ) << VAR_FLAG[VAR__53647] ) << endl;
+
+            if ( VAR__53647 != ( total - 1 ))
+            {
+               for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( total - 1 ); VAR__21230++ )
+               {
+                  child[VAR__21230 - 2]    = child[VAR__21230];
+                  VAR_FLAG[VAR__21230 - 2] = VAR_FLAG[VAR__21230];
+               }
+
+               total -= 2;
+            }
+            else
+            {
+               total -= 2;
+            }
+
+            departure();
+         }
+      }
+   }
+}

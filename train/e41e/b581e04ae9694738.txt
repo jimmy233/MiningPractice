@@ -1,0 +1,168 @@
+int posi(char *data, int VAR__8444594, int pos)
+{
+   for ( int ii = 0; ii < VAR__8444594; ii++ )
+   {
+      if ( data[(( pos + VAR__8444594 ) - ii ) - 1] < 10 )
+      {
+         data[(( pos + VAR__8444594 ) - ii ) - 2]--;
+         data[(( pos + VAR__8444594 ) - ii ) - 1] += 10;
+      }
+   }
+
+   return 1;
+}
+
+
+int convert(char *data)
+{
+   int VAR__8444594 = strlen(data);
+
+   for ( int co = 0; co < VAR__8444594; co++ )
+   {
+      data[co] = ( data[co] - '0' ) + 10;
+   }
+
+   return 0;
+}
+
+
+int compare(char *data1, char *data2, int pos)
+{
+   int VAR__21230   = strlen(data1);
+   int VAR__8444594 = strlen(data2);
+
+   if ( VAR__21230 < ( VAR__8444594 + pos ))
+   {
+      return 3;
+   }
+
+   if ( pos >= 1 )
+   {
+      if ( data1[pos - 1] > 10 )
+      {
+         return 1;
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( data1[VAR__53647 + pos] > data2[VAR__53647] )
+      {
+         return 1;
+      }
+
+      if ( data1[VAR__53647 + pos] < data2[VAR__53647] )
+      {
+         return 0;
+      }
+   }
+
+   return 1;
+}
+
+
+int out(char *data1, char *data2, int pos)
+{
+   int VAR__8444594 = strlen(data2);
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      data1[VAR__53647 + pos] -= data2[VAR__53647] - 10;
+   }
+
+   posi(data1, VAR__8444594, pos);
+   return 0;
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   char data1[450];
+   char data2[450] = "13";
+   char VAR_129012[450];
+
+   scanf("%s", data1);
+   int VAR__21230;
+   int VAR__8444594;
+   VAR__21230   = strlen(data1);
+   VAR__8444594 = strlen(data2);
+   convert(data1);
+   convert(data2);
+   int kk;
+   int pp = 0;
+   for ( kk = 0; ; kk++ )
+   {
+      int pd = 0;
+
+      if ( compare(data1, data2, kk) == 3 )
+      {
+         break;
+      }
+
+      for ( ; ; pd++ )
+      {
+         if ( compare(data1, data2, kk) == 1 )
+         {
+            out(data1, data2, kk);
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      VAR_129012[kk - pp] = pd + 10;
+
+      if (( kk == 0 ) && ( pd == 0 ))
+      {
+         pp++;
+      }
+   }
+
+   VAR_129012[kk - pp] = 0;
+   int VAR_21983012 = strlen(VAR_129012);
+   for ( int rr = 0; rr < VAR_21983012; rr++ )
+   {
+      printf("%d", VAR_129012[rr] - 10);
+   }
+
+   if ( VAR_21983012 == 0 )
+   {
+      printf("0");
+   }
+
+   printf("\n");
+   VAR_21983012 = strlen(data1);
+   int qq = 1;
+   for ( int rr = 0; rr < VAR_21983012; rr++ )
+   {
+      if ( qq )
+      {
+         if ( data1[rr] != 10 )
+         {
+            printf("%d", data1[rr] - 10);
+            qq = 0;
+         }
+         else
+         {
+         }
+      }
+
+      else
+      {
+         printf("%d", data1[rr] - 10);
+      }
+   }
+
+   if ( qq )
+   {
+      printf("0");
+   }
+
+   if ( VAR_21983012 == 0 )
+   {
+      printf("0");
+   }
+}

@@ -1,0 +1,65 @@
+struct SCL
+{
+   char stu[20];
+   int  avg;
+   int  rev;
+   char ldr;
+   char wst;
+   int  ppr;
+   int  VAR__SUM;
+}
+SCL[100];
+int main()
+{
+   int        VAR_1238123;
+   int        VAR__MAX = 0;
+   int        VAR__SUM = 0;
+   char       *name;
+   struct SCL *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR_233 = SCL; VAR_233 < ( SCL + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR_233->stu, &VAR_233->avg, &VAR_233->rev, &VAR_233->ldr, &VAR_233->wst, &VAR_233->ppr);
+      VAR_233->VAR__SUM = 0;
+
+      if (( VAR_233->avg > 80 ) && ( VAR_233->ppr > 0 ))
+      {
+         VAR_233->VAR__SUM += 8000;
+      }
+
+      if (( VAR_233->avg > 85 ) && ( VAR_233->rev > 80 ))
+      {
+         VAR_233->VAR__SUM += 4000;
+      }
+
+      if ( VAR_233->avg > 90 )
+      {
+         VAR_233->VAR__SUM += 2000;
+      }
+
+      if (( VAR_233->avg > 85 ) && ( VAR_233->wst == 'Y' ))
+      {
+         VAR_233->VAR__SUM += 1000;
+      }
+
+      if (( VAR_233->rev > 80 ) && ( VAR_233->ldr == 'Y' ))
+      {
+         VAR_233->VAR__SUM += 850;
+      }
+   }
+
+   for ( VAR_233 = SCL; VAR_233 < ( SCL + VAR_1238123 ); VAR_233++ )
+   {
+      if ( VAR_233->VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->VAR__SUM;
+         name     = VAR_233->stu;
+      }
+
+      VAR__SUM += VAR_233->VAR__SUM;
+   }
+
+   printf("%s\n%d\n%d\n", name, VAR__MAX, VAR__SUM);
+   return 0;
+}

@@ -1,0 +1,62 @@
+char s1[10]    = { '\0' };
+char s2[10]    = { '\0' };
+char out[10]   = { '\0' };
+int  used[10]  = { 0 };
+int  length    = 0;
+int  VAR__7685 = 0;
+int  VAR__SUM  = 0;
+void ranker(int VAR_1238123)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if ( !used[VAR__53647] )
+      {
+         out[VAR_1238123] = s1[VAR__53647];
+         used[VAR__53647] = 1;
+         ranker(VAR_1238123 + 1);
+         used[VAR__53647] = 0;
+      }
+   }
+
+   if ( VAR_1238123 == ( length - 1 ))
+   {
+      if ( strcmp(out, s2) == 0 )
+      {
+         VAR__7685 = 1;
+      }
+      else
+      {
+         VAR__7685 = 0;
+      }
+
+      VAR__SUM = VAR__SUM + VAR__7685;
+   }
+}
+
+
+int main()
+{
+   ( cin >> s1 ) >> s2;
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < 10; VAR__53647++ )
+   {
+      if ( s1[VAR__53647] != '\0' )
+      {
+         length++;
+      }
+   }
+
+
+   ranker(0);
+
+   if ( VAR__SUM != 0 )
+   {
+      ( cout << "YES" ) << endl;
+   }
+   else
+   {
+      ( cout << "NO" ) << endl;
+   }
+
+   return 0;
+}

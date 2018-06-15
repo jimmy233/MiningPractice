@@ -1,0 +1,72 @@
+float male[50];
+int   nm = 0;
+float fema[50];
+int   nf = 0;
+int mcmp(const void *VAR__819283, const void *VAR__19328)
+{
+   float VAR__7685    = *((float *)VAR__819283 );
+   float VAR__3918907 = *((float *)VAR__19328 );
+
+   if ( VAR__7685 > VAR__3918907 )
+   {
+      return 1;
+   }
+
+   if ( VAR__7685 == VAR__3918907 )
+   {
+      return 0;
+   }
+
+   if ( VAR__7685 < VAR__3918907 )
+   {
+      return -1;
+   }
+}
+
+
+int fcmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return -mcmp(VAR__819283, VAR__19328);
+}
+
+
+void main()
+{
+   char  buf[100];
+   char  *VAR_233;
+   int   VAR_1238123;
+   int   VAR__53647;
+   float VAR__819283;
+
+   fgets(buf, sizeof( buf ), stdin);
+   VAR_1238123 = atoi(buf);
+   for ( ; VAR_1238123 > 0; VAR_1238123-- )
+   {
+      fgets(buf, sizeof( buf ), stdin);
+      VAR_233     = strtok(buf, " ");
+      VAR__819283 = atof(strtok(NULL, " "));
+
+      if ( strcmp(VAR_233, "male") == 0 )
+      {
+         male[nm++] = VAR__819283;
+      }
+      else
+      {
+         fema[nf++] = VAR__819283;
+      }
+   }
+
+   qsort(male, nm, sizeof( float ), mcmp);
+   qsort(fema, nf, sizeof( float ), fcmp);
+   for ( VAR__53647 = 0; VAR__53647 < nm; VAR__53647++ )
+   {
+      printf("%.2f ", male[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( nf - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", fema[VAR__53647]);
+   }
+
+   printf("%.2f", fema[VAR__53647]);
+}

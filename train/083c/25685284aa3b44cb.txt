@@ -1,0 +1,85 @@
+char     VAR_1238123[10000000];
+char     result[10000000];
+long int exchange = 0;
+void change(int VAR__819283, char VAR__temp[], int VAR__19328)
+{
+   int LEN_OF_STH;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__TEMP;
+   int temp2;
+   int pow = 1;
+
+   LEN_OF_STH = strlen(VAR__temp);
+   VAR__53647 = LEN_OF_STH - 1;
+   VAR__21230 = 0;
+
+   while ( VAR__53647 >= 0 )
+   {
+      if (( VAR__temp[VAR__53647] >= 'A' ) && ( VAR__temp[VAR__53647] <= 'Z' ))
+      {
+         VAR__TEMP = ( 10 + VAR__temp[VAR__53647] ) - 'A';
+      }
+      else
+      {
+         if (( VAR__temp[VAR__53647] >= 'a' ) && ( VAR__temp[VAR__53647] <= 'z' ))
+         {
+            VAR__TEMP = ( 10 + VAR__temp[VAR__53647] ) - 'a';
+         }
+         else
+         {
+            VAR__TEMP = VAR__temp[VAR__53647] - '0';
+         }
+      }
+
+      exchange = exchange + ( VAR__TEMP * pow );
+      pow      = VAR__819283 * pow;
+      VAR__53647--;
+      VAR__21230++;
+   }
+
+   if ( exchange == 0 )
+   {
+      cout << 0;
+   }
+   else
+   {
+      VAR__21230 = 9999999;
+
+      while ( exchange != 0 )
+      {
+         temp2 = exchange % VAR__19328;
+
+         if (( temp2 >= 0 ) && ( temp2 <= 9 ))
+         {
+            result[VAR__21230] = temp2 + 48;
+         }
+         else
+         {
+            result[VAR__21230] = temp2 + 55;
+         }
+
+         exchange = exchange / VAR__19328;
+         VAR__21230--;
+      }
+
+      for ( VAR__8444594 = VAR__21230 + 1; VAR__8444594 < 10000000; VAR__8444594++ )
+      {
+         cout << result[VAR__8444594];
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+
+   cin >> VAR__819283;
+   cin >> VAR_1238123;
+   cin >> VAR__19328;
+   change(VAR__819283, VAR_1238123, VAR__19328);
+   return 0;
+}

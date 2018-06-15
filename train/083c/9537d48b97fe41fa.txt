@@ -1,0 +1,80 @@
+void main()
+{
+   int  length;
+   int  original;
+   int  then;
+   int  change[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_9494 = 0;
+   int  VAR__1238129;
+   int  length2;
+   char input[100];
+   char output[100];
+
+   scanf("%d %s %d", &original, input, &then);
+   length = strlen(input);
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if ( input[VAR__53647] <= '9' )
+      {
+         change[VAR__53647] = input[VAR__53647] - 48;
+      }
+      else
+      if ( input[VAR__53647] >= 'a' )
+      {
+         change[VAR__53647] = input[VAR__53647] - 87;
+      }
+      else
+      {
+         change[VAR__53647] = input[VAR__53647] - 55;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      VAR_9494 = VAR_9494 + ( pow(original, ( length - VAR__53647 ) - 1) * change[VAR__53647] );
+   }
+
+   for ( VAR__21230 = 0; ; VAR__21230++ )
+   {
+      VAR__1238129 = VAR_9494 % then;
+      VAR_9494     = VAR_9494 / then;
+      {
+         if ( VAR_9494 == 0 )
+         {
+            if (( VAR__1238129 <= 9 ) && ( VAR__1238129 >= 0 ))
+            {
+               output[VAR__21230] = VAR__1238129 + 48;
+               break;
+            }
+            else
+            if (( VAR__1238129 > 9 ) && ( VAR__1238129 <= 35 ))
+            {
+               output[VAR__21230] = VAR__1238129 + 55;
+               break;
+            }
+         }
+         else
+         {
+            if (( VAR__1238129 <= 9 ) && ( VAR__1238129 >= 0 ))
+            {
+               output[VAR__21230] = VAR__1238129 + 48;
+            }
+            else
+            if (( VAR__1238129 > 9 ) && ( VAR__1238129 <= 35 ))
+            {
+               output[VAR__21230] = VAR__1238129 + 55;
+            }
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__21230 + 1 ); VAR__8444594++ )
+   {
+      printf("%c", output[VAR__21230 - VAR__8444594]);
+   }
+
+   printf("\n");
+}

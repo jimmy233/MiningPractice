@@ -1,0 +1,69 @@
+struct list
+{
+   int  VAR__NUM;
+   char author[26];
+};
+struct number
+{
+   int VAR__819283;
+   int time;
+};
+int main()
+{
+   int           VAR__53647;
+   int           VAR__21230;
+   int           VAR__1238129;
+   int           VAR__8444594;
+   int           length;
+   struct list   book[100];
+   struct number name[26];
+   struct number most;
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &book[VAR__53647].VAR__NUM, book[VAR__53647].author);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      name[VAR__53647].VAR__819283 = VAR__53647;
+      name[VAR__53647].time        = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      length = strlen(book[VAR__53647].author);
+      for ( VAR__21230 = 0; VAR__21230 < length; VAR__21230++ )
+      {
+         VAR__8444594 = book[VAR__53647].author[VAR__21230];
+         name[VAR__8444594 - 65].time++;
+      }
+   }
+
+   most = name[0];
+   for ( VAR__53647 = 1; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( name[VAR__53647].time > most.time )
+      {
+         most = name[VAR__53647];
+      }
+   }
+
+   printf("%c\n%d\n", most.VAR__819283 + 65, most.time);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      length = strlen(book[VAR__53647].author);
+      for ( VAR__21230 = 0; VAR__21230 < length; VAR__21230++ )
+      {
+         VAR__8444594 = book[VAR__53647].author[VAR__21230];
+
+         if (( most.VAR__819283 + 65 ) == VAR__8444594 )
+         {
+            printf("%d\n", book[VAR__53647].VAR__NUM);
+         }
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,50 @@
+int zuob[12][3];
+int vis[12][12];
+int main()
+{
+   double distance[12][12];
+
+   memset(vis, sizeof( vis ), 0);
+   int VAR_1238123;
+   int ii;
+   int jj;
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> zuob[VAR__53647][0] ) >> zuob[VAR__53647][1] ) >> zuob[VAR__53647][2];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         distance[VAR__53647][VAR__21230] = sqrt(((( zuob[VAR__53647][0] - zuob[VAR__21230][0] ) * ( zuob[VAR__53647][0] - zuob[VAR__21230][0] )) + (( zuob[VAR__53647][1] - zuob[VAR__21230][1] ) * ( zuob[VAR__53647][1] - zuob[VAR__21230][1] ))) + (( zuob[VAR__53647][2] - zuob[VAR__21230][2] ) * ( zuob[VAR__53647][2] - zuob[VAR__21230][2] )));
+      }
+   }
+
+
+   for ( int VAR__9290 = 0; VAR__9290 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__9290++ )
+   {
+      double VAR__MAX = -1;
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if (( vis[VAR__53647][VAR__21230] == 0 ) && ( distance[VAR__53647][VAR__21230] > VAR__MAX ))
+            {
+               VAR__MAX = distance[VAR__53647][VAR__21230];
+               ii       = VAR__53647;
+               jj       = VAR__21230;
+            }
+         }
+      }
+
+
+
+      ((((((((((((((( cout << "(" ) << zuob[ii][0] ) << "," ) << zuob[ii][1] ) << "," ) << zuob[ii][2] ) << ")" ) << "-" ) << "(" ) << zuob[jj][0] ) << "," ) << zuob[jj][1] ) << "," ) << zuob[jj][2] ) << ")" ) << "=";
+      printf("%.2lf\n", VAR__MAX);
+      vis[ii][jj] = 1;
+   }
+
+   return 0;
+}

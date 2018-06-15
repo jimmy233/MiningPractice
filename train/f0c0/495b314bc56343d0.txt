@@ -1,0 +1,64 @@
+int hash[6]     = { 0 };
+int rank[6]     = { 0 };
+int ans[6]      = { 0 };
+int VAR_FLAG[6] = { 0 };
+void find(int VAR_1238123)
+{
+   if ( VAR_1238123 == 6 )
+   {
+      int sign = 1;
+      VAR_FLAG[1] = rank[5] == 1;
+      VAR_FLAG[2] = ( rank[2] == 1 ) || ( rank[2] == 2 );
+      VAR_FLAG[3] = rank[1] == 5;
+      VAR_FLAG[4] = rank[3] != 1;
+      VAR_FLAG[5] = rank[4] == 1;
+      for ( int VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+      {
+         if ( rank[VAR__53647] > 2 )
+         {
+            VAR_FLAG[VAR__53647] ^= 1;
+         }
+
+         sign = sign & VAR_FLAG[VAR__53647];
+      }
+
+      if ( sign )
+      {
+         for ( int VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+         {
+            ans[VAR__53647] = rank[VAR__53647];
+         }
+      }
+
+
+      return;
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+   {
+      if ( hash[VAR__53647] == 0 )
+      {
+         hash[VAR__53647]  = 1;
+         rank[VAR_1238123] = VAR__53647;
+
+         if (( VAR_1238123 != 5 ) || ((( VAR_1238123 == 5 ) && ( VAR__53647 != 2 )) && ( VAR__53647 != 3 )))
+         {
+            find(VAR_1238123 + 1);
+         }
+
+         hash[VAR__53647]  = 0;
+         rank[VAR_1238123] = 0;
+      }
+   }
+}
+
+
+int main()
+{
+   find(1);
+   cout << ans[1];
+   for ( int VAR__53647 = 2; VAR__53647 <= 5; VAR__53647++ )
+   {
+      ( cout << ' ' ) << ans[VAR__53647];
+   }
+}

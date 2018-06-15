@@ -1,0 +1,82 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__COUNT = 0;
+   int VAR__819283[1000];
+   int VAR__19328[1000];
+   int min1;
+   int min2;
+   int max1;
+   int max2;
+   int VAR__53647;
+   int VAR__NUM;
+
+   while ( scanf("%d", &VAR_1238123) && VAR_1238123 )
+   {
+      min1 = 0;
+      min2 = 0;
+      max1 = VAR_1238123 - 1;
+      max2 = VAR_1238123 - 1;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      sort(VAR__819283, VAR__819283 + VAR_1238123);
+      sort(VAR__19328, VAR__19328 + VAR_1238123);
+      VAR__COUNT = 0;
+      VAR__NUM   = 0;
+
+      while ( ++VAR__COUNT )
+      {
+         if ( VAR__COUNT == ( VAR_1238123 + 1 ))
+         {
+            break;
+         }
+
+         if ( VAR__819283[max1] > VAR__19328[max2] )
+         {
+            VAR__NUM += 200;
+            max1--;
+            max2--;
+         }
+         else
+         if ( VAR__819283[max1] < VAR__19328[max2] )
+         {
+            VAR__NUM -= 200;
+            min1++;
+            max2--;
+         }
+         else
+         {
+            if ( VAR__819283[min1] > VAR__19328[min2] )
+            {
+               min1++;
+               min2++;
+               VAR__NUM += 200;
+            }
+            else
+            if ( VAR__819283[min1] == VAR__19328[max2] )
+            {
+               min1++;
+               max2--;
+            }
+            else
+            {
+               min1++;
+               max2--;
+               VAR__NUM -= 200;
+            }
+         }
+      }
+
+      printf("%d\n", VAR__NUM);
+   }
+
+   return 0;
+}

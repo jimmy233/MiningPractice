@@ -1,0 +1,84 @@
+struct list
+{
+   int  VAR_1238123;
+   char *A_STRING;
+};
+typedef struct list *plist;
+plist create()
+{
+   plist p1list = (plist)malloc(sizeof( struct list ));
+
+   if ( p1list != NULL )
+   {
+      p1list->A_STRING = (char *)malloc(( sizeof( int )) * maxnum);
+
+      if ( p1list->A_STRING )
+      {
+         return p1list;
+      }
+   }
+
+   return NULL;
+}
+
+
+int VAR__1111 = 0;
+void plusdzs(plist palist, plist pblist, plist pclist)
+{
+   int VAR__819283;
+   int VAR__19328;
+   int l1;
+   int l2;
+   int VAR__53647;
+
+   l1 = (int)strlen(palist->A_STRING);
+   l2 = (int)strlen(pblist->A_STRING);
+
+   while (( l1 > 0 ) || ( l2 > 0 ))
+   {
+      VAR__819283 = ( l1 > 0 ) ? ( palist->A_STRING[l1 - 1] - '0' ) : ( 0 );
+      VAR__19328  = ( l2 > 0 ) ? ( pblist->A_STRING[l2 - 1] - '0' ) : ( 0 );
+
+      if ( VAR__1111 == 0 )
+      {
+         pclist->A_STRING[VAR__1111 + 1] = ( VAR__819283 + VAR__19328 ) / 10;
+         pclist->A_STRING[VAR__1111]     = ( VAR__819283 + VAR__19328 ) % 10;
+      }
+      else
+      {
+         pclist->A_STRING[VAR__1111 + 1] = (( pclist->A_STRING[VAR__1111] + VAR__819283 ) + VAR__19328 ) / 10;
+         pclist->A_STRING[VAR__1111]     = (( pclist->A_STRING[VAR__1111] + VAR__819283 ) + VAR__19328 ) % 10;
+      }
+
+      l1--;
+      l2--;
+      VAR__1111++;
+   }
+}
+
+
+void printout(plist pclist, int VAR__1111)
+{
+   while (( VAR__1111 > 0 ) && ( pclist->A_STRING[VAR__1111] == 0 ))
+   {
+      VAR__1111--;
+   }
+
+   int VAR__53647;
+   for ( VAR__53647 = VAR__1111; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", pclist->A_STRING[VAR__53647]);
+   }
+}
+
+
+int main()
+{
+   plist palist = create();
+   plist pblist = create();
+   plist pclist = create();
+
+   scanf("%s%s", palist->A_STRING, pblist->A_STRING);
+   plusdzs(palist, pblist, pclist);
+   printout(pclist, VAR__1111);
+}

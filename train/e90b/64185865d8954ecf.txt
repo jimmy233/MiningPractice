@@ -1,0 +1,121 @@
+struct stud
+{
+   int         VAR__NUM;
+   int         score;
+   int         score1;
+   int         score2;
+   struct stud *VAR__NEXT;
+}
+VAR__HEAD;
+struct stud
+{
+   int         VAR__NUM;
+   int         score;
+   int         score1;
+   int         score2;
+   struct stud *VAR__NEXT;
+}
+end;
+void create(int VAR_1238123)
+{
+   int         VAR__53647;
+   struct stud *ANOTHER_POINTER;
+   struct stud *YET_ANOTHER_POINTER;
+
+   VAR__HEAD.VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct stud *)malloc(sizeof( struct stud ));
+
+      if ( !VAR__53647 )
+      {
+         VAR__HEAD.VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      scanf("%d", &ANOTHER_POINTER->VAR__NUM);
+      scanf("%d", &ANOTHER_POINTER->score1);
+      scanf("%d", &ANOTHER_POINTER->score2);
+      ANOTHER_POINTER->score = ANOTHER_POINTER->score1 + ANOTHER_POINTER->score2;
+      YET_ANOTHER_POINTER    = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = &end;
+}
+
+
+void find()
+{
+   struct stud *max1;
+   struct stud *max2;
+   struct stud *max3;
+   struct stud *ANOTHER_POINTER;
+   struct stud *swap;
+
+   max1            = VAR__HEAD.VAR__NEXT;
+   max2            = max1->VAR__NEXT;
+   max3            = max2->VAR__NEXT;
+   ANOTHER_POINTER = max3->VAR__NEXT;
+
+   if ( max1->score < max2->score )
+   {
+      swap = max1;
+      max1 = max2;
+      max2 = swap;
+   }
+
+   if ( max2->score < max3->score )
+   {
+      swap = max2;
+      max2 = max3;
+      max3 = swap;
+   }
+
+   if ( max1->score < max2->score )
+   {
+      swap = max1;
+      max1 = max2;
+      max2 = swap;
+   }
+
+   while ( ANOTHER_POINTER != ( &end ))
+   {
+      if ( ANOTHER_POINTER->score > max3->score )
+      {
+         max3 = ANOTHER_POINTER;
+      }
+
+      if ( max3->score > max2->score )
+      {
+         swap = max3;
+         max3 = max2;
+         max2 = swap;
+      }
+
+      if ( max2->score > max1->score )
+      {
+         swap = max1;
+         max1 = max2;
+         max2 = swap;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   printf("%d %d\n", max1->VAR__NUM, max1->score);
+   printf("%d %d\n", max2->VAR__NUM, max2->score);
+   printf("%d %d\n", max3->VAR__NUM, max3->score);
+}
+
+
+void main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   create(VAR_1238123);
+   find();
+}

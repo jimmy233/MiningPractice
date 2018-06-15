@@ -1,0 +1,62 @@
+struct guahao
+{
+   char VAR__NUM[20];
+   int  year;
+};
+int main()
+{
+   int           VAR_1238123;
+   int           VAR__53647;
+   int           VAR__1238129;
+   struct guahao VAR__TEMP;
+   struct guahao *VAR_233;
+   struct guahao *VAR__temp;
+   struct guahao *ANOTHER_POINTER;
+
+   scanf("%d", &VAR_1238123);
+   VAR__1238129 = VAR_1238123;
+   struct guahao *bingren  = (struct guahao *)malloc(( sizeof( struct guahao )) * VAR_1238123);
+   struct guahao *bingren1 = (struct guahao *)malloc(( sizeof( struct guahao )) * VAR__1238129);
+   VAR_233         = bingren;
+   ANOTHER_POINTER = bingren1;
+   for ( ; VAR_233 < ( bingren + VAR_1238123 ); VAR_233++, ANOTHER_POINTER++ )
+   {
+      scanf("%s %d", VAR_233->VAR__NUM, &VAR_233->year);
+      *ANOTHER_POINTER = *VAR_233;
+   }
+
+   VAR_233 = bingren;
+   for ( VAR__53647 = 0; VAR_233 < (( bingren + VAR_1238123 ) - 1 ); VAR_233++, VAR__53647++ )
+   {
+      for ( VAR__temp = bingren; VAR__temp < ((( bingren + VAR_1238123 ) - 1 ) - VAR__53647 ); VAR__temp++ )
+      {
+         if (( *VAR__temp ).year < ( *( VAR__temp + 1 )).year )
+         {
+            VAR__TEMP          = *VAR__temp;
+            *VAR__temp         = *( VAR__temp + 1 );
+            *( VAR__temp + 1 ) = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR_233 = bingren;
+   for ( ; VAR_233 < ( bingren + VAR_1238123 ); VAR_233++ )
+   {
+      if (( *VAR_233 ).year >= 60 )
+      {
+         printf("%s\n", VAR_233->VAR__NUM);
+      }
+   }
+
+   for ( ANOTHER_POINTER = bingren1; ANOTHER_POINTER < ( bingren1 + VAR__1238129 ); ANOTHER_POINTER++ )
+   {
+      if (( *ANOTHER_POINTER ).year < 60 )
+      {
+         printf("%s\n", ANOTHER_POINTER->VAR__NUM);
+      }
+   }
+
+   free(bingren);
+   free(bingren1);
+   return 0;
+}

@@ -1,0 +1,84 @@
+int VAR__819283[N];
+int VAR__19328[N];
+int VAR__4857423[N];
+int na;
+int nb;
+int nc;
+int VAR__53647;
+int VAR__21230;
+void input()
+{
+   char ac[N];
+   char bc[N];
+
+   scanf("%s", ac);
+   na = strlen(ac);
+   scanf("%s", bc);
+   nb = strlen(bc);
+   for ( VAR__53647 = 0; VAR__53647 < na; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = ac[( na - 1 ) - VAR__53647] - 48;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nb; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = bc[( nb - 1 ) - VAR__53647] - 48;
+   }
+}
+
+
+void jian(int VAR__819283[], int VAR__19328[], int na, int nb)
+{
+   nc = ( na > nb ) ? ( na ) : ( nb );
+   for ( VAR__53647 = 0; VAR__53647 < nc; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] += VAR__819283[VAR__53647] - VAR__19328[VAR__53647];
+
+      if ( VAR__4857423[VAR__53647] < 0 )
+      {
+         VAR__4857423[VAR__53647]     += 10;
+         VAR__4857423[VAR__53647 + 1] -= 1;
+      }
+   }
+}
+
+
+void print()
+{
+   if ( VAR__4857423[nc] != 0 )
+   {
+      printf("%d", VAR__4857423[nc]);
+   }
+
+   for ( VAR__53647 = nc - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", VAR__4857423[VAR__53647]);
+   }
+}
+
+
+void main()
+{
+   int cishu;
+   int VAR__8444594;
+
+   scanf("%d", &cishu);
+   for ( VAR__8444594 = 1; VAR__8444594 <= cishu; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         VAR__19328[VAR__53647]  = 0;
+         VAR__819283[VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647] = 0;
+      }
+
+      input();
+      jian(VAR__819283, VAR__19328, na, nb);
+      print();
+      printf("\n");
+   }
+}

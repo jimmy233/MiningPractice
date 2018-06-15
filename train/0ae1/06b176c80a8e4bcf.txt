@@ -1,0 +1,83 @@
+int main()
+{
+   unsigned long year;
+   unsigned long month;
+   unsigned long date;
+   unsigned long VAR__53647;
+   unsigned long days;
+   unsigned long total  = 0;
+   unsigned long sumrun = 0;
+
+   scanf("%d%d%d", &year, &month, &date);
+   days = (((( year - 1 ) * ( 365 % 7 )) + (( year - 1 ) / 4 )) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 );
+
+   if ( month == 1 )
+   {
+      total = days + date;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+      {
+         if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+         {
+            total += 31;
+         }
+         else
+         if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+         {
+            total += 30;
+         }
+         else
+         {
+            if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+            {
+               total += 29;
+            }
+            else
+            {
+               total += 28;
+            }
+         }
+      }
+
+      total = ( total + days ) + date;
+   }
+
+   if (( total % 7 ) == 1 )
+   {
+      printf("Mon.");
+   }
+
+   if (( total % 7 ) == 2 )
+   {
+      printf("Tue.");
+   }
+
+   if (( total % 7 ) == 3 )
+   {
+      printf("Wed.");
+   }
+
+   if (( total % 7 ) == 4 )
+   {
+      printf("Thu.");
+   }
+
+   if (( total % 7 ) == 5 )
+   {
+      printf("Fri.");
+   }
+
+   if (( total % 7 ) == 6 )
+   {
+      printf("Sat.");
+   }
+
+   if (( total % 7 ) == 0 )
+   {
+      printf("Sun.\n");
+   }
+
+   return 0;
+}

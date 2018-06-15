@@ -1,0 +1,100 @@
+char VAR__819283[100];
+char sub[1000][100];
+int  VAR__1111;
+int  sublen;
+int  cnt = 0;
+void jud(char VAR__temp[100])
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   char s1[50];
+   char s2[50];
+
+   memset(s1, '\0', sizeof( s1 ));
+   memset(s2, '\0', sizeof( s2 ));
+
+   if (( strlen(VAR__temp) % 2 ) == 1 )
+   {
+      for ( VAR__53647 = ( strlen(VAR__temp) / 2 ) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         s1[(( strlen(VAR__temp) / 2 ) - 1 ) - VAR__53647] = VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = ( strlen(VAR__temp) / 2 ) + 1; VAR__53647 < strlen(VAR__temp); VAR__53647++ )
+      {
+         s2[( VAR__53647 - ( strlen(VAR__temp) / 2 )) - 1] = VAR__temp[VAR__53647];
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = ( strlen(VAR__temp) / 2 ) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         s1[(( strlen(VAR__temp) / 2 ) - 1 ) - VAR__53647] = VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = strlen(VAR__temp) / 2; VAR__53647 < strlen(VAR__temp); VAR__53647++ )
+      {
+         s2[VAR__53647 - ( strlen(VAR__temp) / 2 )] = VAR__temp[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= cnt; VAR__53647++ )
+   {
+      if (( strcmp(sub[VAR__53647], VAR__temp) == 0 ) || ( strlen(VAR__temp) == 1 ))
+      {
+         break;
+      }
+      else
+      {
+         if ( strcmp(s1, s2) == 0 )
+         {
+            ( cout << VAR__temp ) << endl;
+         }
+
+         break;
+      }
+   }
+}
+
+
+void fen(int sl)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1111 - sl ); VAR__53647++ )
+   {
+      cnt++;
+      for ( VAR__21230 = 0; VAR__21230 < sl; VAR__21230++ )
+      {
+         sub[cnt][VAR__21230] = VAR__819283[VAR__53647 + VAR__21230];
+      }
+   }
+}
+
+
+void VAR__12302()
+{
+   int VAR__53647;
+
+   VAR__1111 = strlen(VAR__819283);
+   memset(sub, '\0', sizeof( sub ));
+   for ( sublen = 2; sublen <= VAR__1111; sublen++ )
+   {
+      fen(sublen);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= cnt; VAR__53647++ )
+   {
+      jud(sub[VAR__53647]);
+   }
+}
+
+
+int main()
+{
+   cin >> VAR__819283;
+   VAR__12302();
+   return 0;
+}

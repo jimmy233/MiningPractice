@@ -1,0 +1,75 @@
+int main()
+{
+   char A_STRING[10000];
+   char VAR__1238129[10000];
+   long VAR__819283;
+   long VAR__19328;
+   long VAR__53647;
+   long VAR__21230;
+   long VAR_1238123[10000];
+   long VAR__SUM = 0;
+
+   scanf("%d %s %d", &VAR__819283, A_STRING, &VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] <= 'z' ) && ( A_STRING[VAR__53647] >= 'a' ))
+      {
+         A_STRING[VAR__53647] -= 32;
+      }
+      else
+      {
+         A_STRING[VAR__53647] += 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if (( '0' <= A_STRING[VAR__53647] ) && ( A_STRING[VAR__53647] <= '9' ))
+      {
+         A_STRING[VAR__53647] -= 48;
+      }
+      else
+      {
+         A_STRING[VAR__53647] -= 55;
+      }
+
+      VAR_1238123[VAR__53647] = A_STRING[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      VAR__SUM += VAR_1238123[VAR__53647] * pow(VAR__819283, ( strlen(A_STRING) - VAR__53647 ) - 1);
+   }
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      VAR_1238123[VAR__53647] = VAR__SUM % VAR__19328;
+      VAR__SUM /= VAR__19328;
+
+      if ( VAR__SUM == 0 )
+      {
+         break;
+      }
+      else
+      {
+         continue;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+   {
+      if ( VAR_1238123[VAR__21230] < 10 )
+      {
+         VAR__1238129[VAR__21230] = VAR_1238123[VAR__21230] + 48;
+      }
+      else
+      {
+         VAR__1238129[VAR__21230] = VAR_1238123[VAR__21230] + 55;
+      }
+   }
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+   {
+      printf("%c", VAR__1238129[VAR__21230]);
+   }
+}

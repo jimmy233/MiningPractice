@@ -1,0 +1,82 @@
+int  xa[300];
+int  xb[300];
+int  xx[300];
+char VAR__819283[300];
+char VAR__19328[300];
+int main()
+{
+   int lena;
+   int lenb;
+   int LEN_OF_STH;
+   int VAR__53647;
+
+   gets(VAR__819283);
+   gets(VAR__19328);
+   lena = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= 250; VAR__53647++ )
+   {
+      xa[VAR__53647] = 0;
+      xb[VAR__53647] = 0;
+      xx[VAR__53647] = 0;
+   }
+
+   while ( VAR__819283[lena] != '\0' )
+   {
+      xa[lena] = VAR__819283[lena] - '0';
+      lena++;
+   }
+
+   lenb = 0;
+
+   while ( VAR__19328[lenb] != '\0' )
+   {
+      xb[lenb] = VAR__19328[lenb] - '0';
+      lenb++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( lena / 2 ); VAR__53647++ )
+   {
+      int VAR__TEMP = xa[VAR__53647];
+      xa[VAR__53647] = xa[( lena - VAR__53647 ) - 1];
+      xa[( lena - VAR__53647 ) - 1] = VAR__TEMP;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( lenb / 2 ); VAR__53647++ )
+   {
+      int VAR__TEMP = xb[VAR__53647];
+      xb[VAR__53647] = xb[( lenb - VAR__53647 ) - 1];
+      xb[( lenb - VAR__53647 ) - 1] = VAR__TEMP;
+   }
+
+   if ( lena > lenb )
+   {
+      LEN_OF_STH = lena;
+   }
+   else
+   {
+      LEN_OF_STH = lenb;
+   }
+
+   int VAR__7685 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__7685      = ( VAR__7685 + xa[VAR__53647] ) + xb[VAR__53647];
+      xx[VAR__53647] = VAR__7685 % 10;
+      VAR__7685      = VAR__7685 / 10;
+   }
+
+   xx[LEN_OF_STH] = VAR__7685;
+
+   while (( xx[LEN_OF_STH] == 0 ) && ( LEN_OF_STH > 0 ))
+   {
+      LEN_OF_STH--;
+   }
+
+   for ( VAR__53647 = LEN_OF_STH; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", xx[VAR__53647]);
+   }
+
+   printf("\n");
+   return 0;
+}

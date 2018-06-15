@@ -1,0 +1,92 @@
+int main()
+{
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int VAR__53647;
+   int VAR__SUM;
+   int VAR__819283[13];
+
+   VAR__SUM = 0;
+   scanf("%d%d%d\n%d%d%d", &startyear, &startmonth, &startday, &endyear, &endmonth, &endday);
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         VAR__819283[VAR__53647] = 31;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         VAR__819283[VAR__53647] = 28;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         VAR__819283[VAR__53647] = 30;
+      }
+   }
+
+   if ( startyear == endyear )
+   {
+      while (( startmonth < endmonth ) || (( startmonth == endmonth ) && ( startday < endday )))
+      {
+         if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+         {
+            VAR__819283[2]++;
+         }
+
+         startday++;
+         VAR__SUM = VAR__SUM + 1;
+
+         if ( endday > VAR__819283[startmonth] )
+         {
+            startday   = 0;
+            startmonth = startmonth + 1;
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = startyear + 1; VAR__53647 <= ( endyear - 1 ); VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            VAR__SUM = VAR__SUM + 366;
+         }
+         else
+         {
+            VAR__SUM = VAR__SUM + 365;
+         }
+      }
+
+      VAR__SUM = ( VAR__SUM + VAR__819283[startmonth] ) - startday;
+      for ( VAR__53647 = startmonth + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+      }
+
+      if (( startmonth == 1 ) && (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 )))
+      {
+         VAR__SUM++;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= ( endmonth - 1 ); VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+      }
+
+      if (( endmonth > 2 ) && (((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 )))
+      {
+         VAR__SUM++;
+      }
+
+      VAR__SUM += endday;
+   }
+
+   printf("%d", VAR__SUM);
+   return 0;
+}

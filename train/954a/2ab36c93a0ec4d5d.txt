@@ -1,0 +1,67 @@
+void main()
+{
+   struct s
+   {
+      char name[20];
+      int  gpa;
+      int  cgpa;
+      char official;
+      char west;
+      int  paper;
+   }
+        stu[100];
+   int  VAR__1238129[100] = { 0 };
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__MAX = 0;
+   int  VAR__NUM = 0;
+   long VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", stu[VAR__53647].name);
+      scanf("%d", &stu[VAR__53647].gpa);
+      scanf("%d", &stu[VAR__53647].cgpa);
+      getchar();
+      scanf("%c", &stu[VAR__53647].official);
+      getchar();
+      scanf("%c", &stu[VAR__53647].west);
+      scanf("%d", &stu[VAR__53647].paper);
+
+      if (( stu[VAR__53647].gpa > 80 ) && ( stu[VAR__53647].paper > 0 ))
+      {
+         VAR__1238129[VAR__53647] = VAR__1238129[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].gpa > 85 ) && ( stu[VAR__53647].cgpa > 80 ))
+      {
+         VAR__1238129[VAR__53647] = VAR__1238129[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].gpa > 90 )
+      {
+         VAR__1238129[VAR__53647] = VAR__1238129[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].gpa > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         VAR__1238129[VAR__53647] = VAR__1238129[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].cgpa > 80 ) && ( stu[VAR__53647].official == 'Y' ))
+      {
+         VAR__1238129[VAR__53647] = VAR__1238129[VAR__53647] + 850;
+      }
+
+      VAR__SUM = VAR__SUM + VAR__1238129[VAR__53647];
+
+      if ( VAR__1238129[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__1238129[VAR__53647];
+         VAR__NUM = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", stu[VAR__NUM].name, VAR__MAX, VAR__SUM);
+}

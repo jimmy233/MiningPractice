@@ -1,0 +1,47 @@
+int main()
+{
+   char VAR__819283[200];
+
+   cin.getline(VAR__819283, 200);
+   int VAR__19328[200]   = { 0 };
+   int VAR__4857423[200] = { 0 };
+   int LEN_OF_STH        = strlen(VAR__819283);
+   for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = (int)( VAR__819283[VAR__53647] - '0' );
+   }
+
+   int VAR__SUM = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] >= 13 )
+      {
+         VAR__4857423[VAR__SUM] = VAR__19328[VAR__53647] / 13, VAR__19328[VAR__53647 + 1] += ( VAR__19328[VAR__53647] % 13 ) * 10;
+         VAR__SUM++;
+      }
+      else
+      {
+         if ( VAR__SUM == 0 )
+         {
+            VAR__19328[VAR__53647 + 1] += VAR__19328[VAR__53647] * 10;
+         }
+         else
+         {
+            VAR__4857423[VAR__SUM]      = 0;
+            VAR__19328[VAR__53647 + 1] += VAR__19328[VAR__53647] * 10;
+            VAR__SUM++;
+         }
+      }
+   }
+
+   VAR__4857423[VAR__SUM]      = VAR__19328[LEN_OF_STH - 1] / 13;
+   VAR__19328[LEN_OF_STH - 1] %= 13;
+   for ( int VAR__53647 = 0; VAR__53647 <= VAR__SUM; VAR__53647++ )
+   {
+      cout << VAR__4857423[VAR__53647];
+   }
+
+   cout << endl;
+   ( cout << VAR__19328[LEN_OF_STH - 1] ) << endl;
+   return 0;
+}

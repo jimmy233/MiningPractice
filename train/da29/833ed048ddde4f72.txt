@@ -1,0 +1,81 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  ans = 0;
+   int  qx[10002];
+   int  qy[10002];
+   int  VAR_2890  = 0;
+   int  VAR__temp = 0;
+   int  tt        = 0;
+   char map[102][102];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> map[VAR__53647][VAR__21230];
+
+         if ( map[VAR__53647][VAR__21230] == '@' )
+         {
+            ans++;
+            qx[VAR__temp]   = VAR__53647;
+            qy[VAR__temp++] = VAR__21230;
+            tt++;
+         }
+      }
+   }
+
+
+   cin >> VAR__1238129;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_2890; VAR__21230 < VAR__temp; VAR__21230++ )
+      {
+         if ( map[qx[VAR__21230] + 1][qy[VAR__21230]] == '.' )
+         {
+            map[qx[VAR__21230] + 1][qy[VAR__21230]] = '@';
+            ans++;
+            qx[tt] = qx[VAR__21230] + 1;
+            qy[tt] = qy[VAR__21230];
+            tt++;
+         }
+
+         if ( map[qx[VAR__21230] - 1][qy[VAR__21230]] == '.' )
+         {
+            map[qx[VAR__21230] - 1][qy[VAR__21230]] = '@';
+            ans++;
+            qx[tt] = qx[VAR__21230] - 1;
+            qy[tt] = qy[VAR__21230];
+            tt++;
+         }
+
+         if ( map[qx[VAR__21230]][qy[VAR__21230] + 1] == '.' )
+         {
+            map[qx[VAR__21230]][qy[VAR__21230] + 1] = '@';
+            ans++;
+            qx[tt] = qx[VAR__21230];
+            qy[tt] = qy[VAR__21230] + 1;
+            tt++;
+         }
+
+         if ( map[qx[VAR__21230]][qy[VAR__21230] - 1] == '.' )
+         {
+            map[qx[VAR__21230]][qy[VAR__21230] - 1] = '@';
+            ans++;
+            qx[tt] = qx[VAR__21230];
+            qy[tt] = qy[VAR__21230] - 1;
+            tt++;
+         }
+      }
+
+      VAR_2890  = VAR__temp;
+      VAR__temp = tt;
+   }
+
+   ( cout << ans ) << endl;
+   return 0;
+}

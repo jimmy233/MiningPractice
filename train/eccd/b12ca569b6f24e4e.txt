@@ -1,0 +1,72 @@
+int VAR__819283[8][8];
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int hang;
+   int lie;
+   int VAR__19328;
+   int VAR__12302;
+   int VAR__MAX;
+
+   int panduan(int VAR__53647, int VAR__21230, int hang);
+
+   scanf("%d,%d", &hang, &lie);
+   for ( VAR__53647 = 0; VAR__53647 <= ( hang - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( lie - 1 ); VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( hang - 1 ); VAR__53647++ )
+   {
+      VAR__MAX = VAR__819283[VAR__53647][0], VAR__19328 = 0;
+      for ( VAR__21230 = 1; VAR__21230 <= ( lie - 1 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] > VAR__MAX )
+         {
+            VAR__MAX   = VAR__819283[VAR__53647][VAR__21230];
+            VAR__19328 = VAR__21230;
+         }
+      }
+
+      VAR__12302 = panduan(VAR__53647, VAR__19328, hang);
+
+      if ( VAR__12302 )
+      {
+         printf("%d+%d", VAR__53647, VAR__19328);
+         break;
+      }
+
+      if (( VAR__53647 == ( hang - 1 )) && ( VAR__12302 == 0 ))
+      {
+         printf("No");
+      }
+   }
+}
+
+
+int panduan(int VAR__53647, int VAR__21230, int hang)
+{
+   int VAR__8444594;
+   int VAR__MIN;
+   int VAR__12302 = 0;
+
+   VAR__MIN = VAR__819283[0][VAR__21230];
+   for ( VAR__8444594 = 1; VAR__8444594 <= ( hang - 1 ); VAR__8444594++ )
+   {
+      if ( VAR__819283[VAR__8444594][VAR__21230] < VAR__MIN )
+      {
+         VAR__MIN = VAR__819283[VAR__8444594][VAR__21230];
+      }
+   }
+
+   if ( VAR__819283[VAR__53647][VAR__21230] == VAR__MIN )
+   {
+      VAR__12302 = 1;
+   }
+
+   return VAR__12302;
+}

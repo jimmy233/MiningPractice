@@ -1,0 +1,100 @@
+int TianJi[1000] = { 0 };
+int QiWang[1000] = { 0 };
+int cmp(const void *elem1, const void *elem2)
+{
+   int *ANOTHER_POINTER     = (int *)elem1;
+   int *YET_ANOTHER_POINTER = (int *)elem2;
+
+   if (( *ANOTHER_POINTER ) < ( *YET_ANOTHER_POINTER ))
+   {
+      return -1;
+   }
+   else
+   if (( *ANOTHER_POINTER ) == ( *YET_ANOTHER_POINTER ))
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM;
+   int equalnum;
+   int equalhorse;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &TianJi[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &QiWang[VAR__53647]);
+      }
+
+      qsort(TianJi, VAR_1238123, sizeof( int ), cmp);
+      qsort(QiWang, VAR_1238123, sizeof( int ), cmp);
+      VAR__21230 = 0;
+      VAR__SUM   = 0;
+      equalnum   = 0;
+      equalhorse = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( TianJi[VAR__53647] > QiWang[VAR__21230] )
+         {
+            VAR__SUM += 200;
+            VAR__21230++;
+         }
+         else
+         if ( TianJi[VAR__53647] == QiWang[VAR__21230] )
+         {
+            if ( equalnum > 0 )
+            {
+               if ( TianJi[VAR__53647] > equalhorse )
+               {
+                  equalnum--;
+                  VAR__SUM += 200;
+                  continue;
+               }
+            }
+
+            equalhorse = TianJi[VAR__53647];
+            equalnum++;
+            VAR__21230++;
+         }
+         else
+         {
+            if ( equalnum > 0 )
+            {
+               if ( TianJi[VAR__53647] > equalhorse )
+               {
+                  equalnum--;
+                  VAR__SUM += 200;
+               }
+            }
+         }
+      }
+
+      VAR__SUM = VAR__SUM - (( VAR_1238123 - VAR__21230 ) * 200 );
+      printf("%d\n", VAR__SUM);
+   }
+
+   return 0;
+}

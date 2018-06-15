@@ -1,0 +1,78 @@
+float man[40];
+float woman[40];
+int   VAR_1238123;
+int compare1(const void *VAR__819283, const void *VAR__19328)
+{
+   float *VAR_233 = (float *)VAR__819283;
+   float *VAR_666 = (float *)VAR__19328;
+
+   if (( *VAR_233 ) > ( *VAR_666 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int compare2(const void *VAR__819283, const void *VAR__19328)
+{
+   float *VAR_233 = (float *)VAR__819283;
+   float *VAR_666 = (float *)VAR__19328;
+
+   if (( *VAR_233 ) > ( *VAR_666 ))
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+int main()
+{
+   int   VAR__53647   = 0;
+   int   VAR__21230   = 0;
+   int   VAR__8444594 = 0;
+   int   VAR__7685    = 0;
+   int   VAR__3918907 = 0;
+   char  sex[10];
+   float height;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      scanf("%s", sex);
+      scanf("%f", &height);
+
+      if ( strcmp(sex, "female") == 0 )
+      {
+         woman[VAR__21230] = height;
+         VAR__21230       += 1;
+      }
+      else
+      {
+         man[VAR__8444594] = height;
+         VAR__8444594     += 1;
+      }
+   }
+
+   qsort(man, VAR__8444594, sizeof( float ), compare1);
+   qsort(woman, VAR__21230, sizeof( float ), compare2);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; ++VAR__53647 )
+   {
+      printf("%.2f ", man[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - 1 ); ++VAR__53647 )
+   {
+      printf("%.2f ", woman[VAR__53647]);
+   }
+
+   printf("%.2f\n", woman[VAR__53647]);
+   return 0;
+}

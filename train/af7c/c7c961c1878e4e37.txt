@@ -1,0 +1,70 @@
+void ySwap(int VAR__819283[], int VAR__53647, int VAR__21230)
+{
+   int VAR__temp = VAR__819283[VAR__53647];
+
+   VAR__819283[VAR__53647] = VAR__819283[VAR__21230];
+   VAR__819283[VAR__21230] = VAR__temp;
+}
+
+
+void yQsort(int VAR__819283[], int left, int right)
+{
+   if ( left > right )
+   {
+      return;
+   }
+
+   int key        = VAR__819283[left];
+   int VAR__53647 = left;
+   int VAR__21230 = right;
+
+   while ( VAR__53647 < VAR__21230 )
+   {
+      while (( VAR__53647 < VAR__21230 ) && ( VAR__819283[VAR__21230] >= key ))
+      {
+         VAR__21230--;
+      }
+
+      ySwap(VAR__819283, VAR__53647, VAR__21230);
+
+      while (( VAR__53647 < VAR__21230 ) && ( VAR__819283[VAR__53647] <= key ))
+      {
+         VAR__53647++;
+      }
+
+      ySwap(VAR__819283, VAR__53647, VAR__21230);
+   }
+
+   yQsort(VAR__819283, left, VAR__53647 - 1);
+   yQsort(VAR__819283, VAR__53647 + 1, right);
+}
+
+
+int main(int argc, const char *argv[])
+{
+   int VAR_1238123 = 0;
+
+   cin >> VAR_1238123;
+   int VAR__53647 = 0;
+   int VAR__temp  = 0;
+   int VAR__819283[VAR_1238123];
+   int countOfUnevens = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__temp;
+
+      if (( VAR__temp % 2 ) != 0 )
+      {
+         VAR__819283[countOfUnevens] = VAR__temp;
+         countOfUnevens++;
+      }
+   }
+
+   yQsort(VAR__819283, 0, countOfUnevens - 1);
+   for ( VAR__53647 = 0; VAR__53647 < ( countOfUnevens - 1 ); VAR__53647++ )
+   {
+      ( cout << VAR__819283[VAR__53647] ) << ",";
+   }
+
+   cout << VAR__819283[VAR__53647];
+}

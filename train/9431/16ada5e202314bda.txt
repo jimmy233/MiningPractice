@@ -1,0 +1,84 @@
+struct student
+{
+   char           ID[20];
+   char           name[20];
+   char           sex;
+   int            age;
+   char           score[20];
+   char           address[20];
+   struct student *VAR__NEXT;
+   struct student *before;
+};
+struct student *create()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *end;
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN);
+   scanf("%s", ANOTHER_POINTER->ID);
+
+   if ( strcmp(ANOTHER_POINTER->ID, "end") == 0 )
+   {
+      free(ANOTHER_POINTER);
+      VAR__HEAD = NULL;
+      end       = NULL;
+   }
+   else
+   {
+      VAR__HEAD = ANOTHER_POINTER;
+      scanf("%s %c %d %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+      ANOTHER_POINTER->before    = NULL;
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+      do
+      {
+         ANOTHER_POINTER            = (struct student *)malloc(LEN);
+         ANOTHER_POINTER->before    = YET_ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+         scanf("%s", ANOTHER_POINTER->ID);
+
+         if ( strcmp(ANOTHER_POINTER->ID, "end") == 0 )
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+            end = YET_ANOTHER_POINTER;
+            free(ANOTHER_POINTER);
+            break;
+         }
+         else
+         {
+            scanf("%s %c %d %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            ANOTHER_POINTER->before        = YET_ANOTHER_POINTER;
+            ANOTHER_POINTER->VAR__NEXT     = NULL;
+            YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         }
+      } while ( 1 );
+   }
+
+   return end;
+}
+
+
+void print(struct student *end)
+{
+   struct student *VAR_233;
+
+   VAR_233 = end;
+
+   while ( VAR_233 )
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->ID, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->address);
+      VAR_233 = VAR_233->before;
+   }
+}
+
+
+int main()
+{
+   struct student *end;
+
+   end = create();
+   print(end);
+}

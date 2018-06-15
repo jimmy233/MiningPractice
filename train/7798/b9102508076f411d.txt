@@ -1,0 +1,86 @@
+struct book
+{
+   int         VAR__NUM;
+   char        writer[26];
+   struct book *VAR__NEXT;
+};
+void main()
+{
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR__819283[26] = { 0 };
+   int         VAR__MAX;
+   int         VAR__TEMP;
+   char        VAR__4857423;
+   struct book *VAR_233;
+   struct book *VAR__HEAD;
+   struct book *tail;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = NULL;
+   tail      = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct book *)malloc(LEN_OF_STH);
+      scanf("%d %s", &VAR_233->VAR__NUM, VAR_233->writer);
+
+      if ( VAR__HEAD == NULL )
+      {
+         VAR__HEAD = ( tail = VAR_233 );
+      }
+      else
+      {
+         tail->VAR__NEXT = VAR_233;
+         tail            = VAR_233;
+      }
+   }
+
+   for ( VAR__4857423 = 'A'; VAR__4857423 <= 'Z'; VAR__4857423++ )
+   {
+      for ( VAR__53647 = 0, VAR_233 = VAR__HEAD; VAR__53647 < VAR_1238123; VAR__53647++, VAR_233 = VAR_233->VAR__NEXT )
+      {
+         for ( VAR__21230 = 0; VAR_233->writer[VAR__21230] != '\0'; VAR__21230++ )
+         {
+            if ( VAR_233->writer[VAR__21230] == VAR__4857423 )
+            {
+               VAR__819283[VAR__4857423 - 'A']++;
+            }
+         }
+      }
+   }
+
+   VAR__MAX = VAR__819283[0];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__MAX )
+      {
+         break;
+      }
+   }
+
+
+   VAR__4857423 = VAR__53647 + 'A';
+   printf("%c\n", VAR__4857423);
+   printf("%d\n", VAR__819283[VAR__53647]);
+   for ( VAR__53647 = 0, VAR_233 = VAR__HEAD; VAR__53647 < VAR_1238123; VAR__53647++, VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__21230 = 0; VAR_233->writer[VAR__21230] != '\0'; VAR__21230++ )
+      {
+         if ( VAR_233->writer[VAR__21230] == VAR__4857423 )
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+            break;
+         }
+      }
+   }
+}

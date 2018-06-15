@@ -1,0 +1,119 @@
+int arr[100][100];
+void solve(int VAR_1238123);
+void arrayin(int VAR_1238123);
+int down_cast(int VAR_1238123);
+void matrix_out(int VAR_1238123);
+
+int main(int argc, char **argv)
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      solve(VAR_1238123);
+   }
+
+   return 0;
+}
+
+
+void arrayin(int VAR_1238123)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> arr[VAR__53647][VAR__21230];
+      }
+   }
+}
+
+
+void solve(int VAR_1238123)
+{
+   arrayin(VAR_1238123);
+   ( cout << down_cast(VAR_1238123)) << endl;
+}
+
+
+int down_cast(int VAR_1238123)
+{
+   if ( VAR_1238123 == 1 )
+   {
+      return 0;
+   }
+
+   int VAR__MIN;
+   int res;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN = 65535;
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( arr[VAR__53647][VAR__21230] < VAR__MIN )
+         {
+            VAR__MIN = arr[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         arr[VAR__53647][VAR__21230] -= VAR__MIN;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN = 65535;
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( arr[VAR__21230][VAR__53647] < VAR__MIN )
+         {
+            VAR__MIN = arr[VAR__21230][VAR__53647];
+         }
+      }
+
+
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         arr[VAR__21230][VAR__53647] -= VAR__MIN;
+      }
+   }
+
+   res = arr[1][1];
+   for ( int VAR__53647 = 2; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         arr[VAR__53647 - 1][VAR__21230] = arr[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( int VAR__53647 = 2; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         arr[VAR__21230][VAR__53647 - 1] = arr[VAR__21230][VAR__53647];
+      }
+   }
+
+
+   return res + down_cast(VAR_1238123 - 1);
+}
+
+
+void matrix_out(int VAR_1238123)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         ( cout << arr[VAR__53647][VAR__21230] ) << " ";
+      }
+
+      cout << endl;
+   }
+}

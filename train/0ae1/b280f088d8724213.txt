@@ -1,0 +1,49 @@
+void main()
+{
+   int  month1[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int  month2[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int  year;
+   int  month;
+   int  day;
+   char out[7][5] = { "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun." };
+   int  VAR__53647;
+   int  days = 1;
+   int  VAR__TEMP;
+
+   scanf("%d%d%d", &year, &month, &day);
+   VAR__TEMP = ( year % 400 ) + 400;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR__TEMP; VAR__53647++ )
+   {
+      if ((((( VAR__53647 - 1 ) % 4 ) == 0 ) && ((( VAR__53647 - 1 ) % 100 ) != 0 )) || ((( VAR__53647 - 1 ) % 400 ) == 0 ))
+      {
+         days = ( days + 366 ) % 7;
+      }
+      else
+      {
+         days = ( days + 365 ) % 7;
+      }
+   }
+
+   for ( VAR__53647 = 2; VAR__53647 <= month; VAR__53647++ )
+   {
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         days = ( days + month2[VAR__53647 - 2] ) % 7;
+      }
+      else
+      {
+         days = ( days + month1[VAR__53647 - 2] ) % 7;
+      }
+   }
+
+   days = (( days + day ) - 1 ) % 7;
+
+   if ( days == 0 )
+   {
+      printf("%s\n", out[6]);
+   }
+   else
+   {
+      printf("%s\n", out[days - 1]);
+   }
+}

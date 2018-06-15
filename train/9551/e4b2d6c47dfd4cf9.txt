@@ -1,0 +1,93 @@
+struct sick
+{
+   char        *VAR__NUM;
+   int         age;
+   struct sick *VAR__NEXT;
+};
+struct sick *range(int N)
+{
+   struct sick *pnew;
+   struct sick *ppre;
+   struct sick *VAR_233;
+   struct sick *VAR__HEAD;
+   struct sick *last;
+
+   pnew            = (struct sick *)malloc(LEN_OF_STH);
+   pnew->VAR__NUM  = (char *)malloc(100 * ( sizeof( char )));
+   pnew->VAR__NEXT = NULL;
+   scanf("%s %d", pnew->VAR__NUM, &pnew->age);
+   VAR__HEAD = ( last = pnew );
+   int VAR__53647;
+   for ( VAR__53647 = 2; VAR__53647 <= N; VAR__53647++ )
+   {
+      pnew            = (struct sick *)malloc(LEN_OF_STH);
+      pnew->VAR__NUM  = (char *)malloc(100 * ( sizeof( char )));
+      pnew->VAR__NEXT = NULL;
+      scanf("%s %d", pnew->VAR__NUM, &pnew->age);
+      int VAR__21230;
+
+      if ( pnew->age < 60 )
+      {
+         last->VAR__NEXT = pnew;
+         last            = pnew;
+      }
+      else
+      {
+         if ( pnew->age > VAR__HEAD->age )
+         {
+            pnew->VAR__NEXT = VAR__HEAD;
+            VAR__HEAD       = pnew;
+         }
+         else
+         {
+            ppre    = VAR__HEAD;
+            VAR_233 = VAR__HEAD->VAR__NEXT;
+            for ( VAR__21230 = 2; VAR_233 != NULL; VAR__21230++ )
+            {
+               if ( pnew->age > VAR_233->age )
+               {
+                  ppre->VAR__NEXT = pnew;
+                  pnew->VAR__NEXT = VAR_233;
+                  break;
+               }
+               else
+               {
+                  ppre    = ppre->VAR__NEXT;
+                  VAR_233 = VAR_233->VAR__NEXT;
+               }
+            }
+         }
+
+         if ( pnew->VAR__NEXT == NULL )
+         {
+            last->VAR__NEXT = pnew;
+            last            = pnew;
+         }
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct sick *VAR__HEAD, int N)
+{
+   struct sick *VAR_233 = VAR__HEAD;
+   int         VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 <= N; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   int N;
+
+   scanf("%d", &N);
+   struct sick *VAR__HEAD = range(N);
+   print(VAR__HEAD, N);
+}

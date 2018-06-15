@@ -1,0 +1,106 @@
+int main()
+{
+   int GongJiTian(int, int, int);
+
+   int year1;
+   int month1;
+   int day1;
+   int year2;
+   int month2;
+   int day2;
+   scanf("%d %d %d", &year1, &month1, &day1);
+   scanf("%d %d %d", &year2, &month2, &day2);
+   int result;
+   int VAR__819283;
+   int VAR__19328;
+   VAR__819283 = GongJiTian(year1, month1, day1);
+   VAR__19328  = GongJiTian(year2, month2, day2);
+
+   if ( VAR__819283 > VAR__19328 )
+   {
+      result = VAR__819283 - VAR__19328;
+   }
+   else
+   {
+      result = VAR__19328 - VAR__819283;
+   }
+
+   printf("%d", result);
+   return 0;
+}
+
+
+int DiJiTian(int year, int month, int day)
+{
+   int isRunNian(int);
+
+   int result = 0;
+   int VAR__53647;
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         result += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         result += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ( isRunNian(year))
+         {
+            result += 29;
+         }
+         else
+         {
+            result += 28;
+         }
+      }
+   }
+
+   result += day;
+   return result;
+}
+
+
+int isRunNian(int year)
+{
+   int result;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      result = 1;
+   }
+   else
+   {
+      result = 0;
+   }
+
+   return result;
+}
+
+
+int GongJiTian(int year, int month, int day)
+{
+   int DiJiTian(int, int, int);
+
+   int result = 0;
+   int VAR__53647;
+   for ( VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+   {
+      if ( isRunNian(VAR__53647))
+      {
+         result += 366;
+      }
+      else
+      {
+         result += 365;
+      }
+   }
+
+   result += DiJiTian(year, month, day);
+   return result;
+}

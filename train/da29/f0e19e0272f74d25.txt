@@ -1,0 +1,78 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  room[101][101];
+   int  VAR__NUM = 0;
+   char condition;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> condition;
+         switch ( condition )
+         {
+         case '.':
+            room[VAR__53647][VAR__21230] = -1;
+            break;
+
+         case '#':
+            room[VAR__53647][VAR__21230] = 0;
+            break;
+
+         case '@':
+            room[VAR__53647][VAR__21230] = 1;
+            VAR__NUM++;
+            break;
+         }
+      }
+   }
+
+
+   int VAR__1238129;
+   int VAR__8444594 = 1;
+   cin >> VAR__1238129;
+
+   while ( VAR__8444594 < VAR__1238129 )
+   {
+      VAR__8444594++;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( room[VAR__53647][VAR__21230] == ( VAR__8444594 - 1 ))
+            {
+               if ((( VAR__53647 + 1 ) <= VAR_1238123 ) && ( room[VAR__53647 + 1][VAR__21230] == ( -1 )))
+               {
+                  room[VAR__53647 + 1][VAR__21230] = VAR__8444594;
+                  VAR__NUM++;
+               }
+
+               if ((( VAR__21230 + 1 ) <= VAR_1238123 ) && ( room[VAR__53647][VAR__21230 + 1] == ( -1 )))
+               {
+                  room[VAR__53647][VAR__21230 + 1] = VAR__8444594;
+                  VAR__NUM++;
+               }
+
+               if ((( VAR__53647 - 1 ) >= 1 ) && ( room[VAR__53647 - 1][VAR__21230] == ( -1 )))
+               {
+                  room[VAR__53647 - 1][VAR__21230] = VAR__8444594;
+                  VAR__NUM++;
+               }
+
+               if ((( VAR__21230 - 1 ) >= 1 ) && ( room[VAR__53647][VAR__21230 - 1] == ( -1 )))
+               {
+                  room[VAR__53647][VAR__21230 - 1] = VAR__8444594;
+                  VAR__NUM++;
+               }
+            }
+         }
+      }
+   }
+
+   ( cout << VAR__NUM ) << endl;
+   return 0;
+}

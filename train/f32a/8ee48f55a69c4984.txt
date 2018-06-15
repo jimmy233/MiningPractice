@@ -1,0 +1,121 @@
+int judge(char VAR__819283[50], char VAR__19328[50])
+{
+   int  LEN_OF_STH;
+   int  lena;
+   int  lenb;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  na;
+   int  nb;
+   int  pp = 1;
+   char ma;
+
+   lena = strlen(VAR__819283);
+   lenb = strlen(VAR__19328);
+
+   if ( lena != lenb )
+   {
+      return 0;
+   }
+   else
+   {
+      LEN_OF_STH = lena;
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if (( VAR__819283[VAR__53647] >= 97 ) && ( VAR__819283[VAR__53647] <= 122 ))
+         {
+            ma = VAR__819283[VAR__53647];
+            na = 1;
+            nb = 0;
+            for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+            {
+               if ( VAR__819283[VAR__21230] == ma )
+               {
+                  na++;
+                  VAR__819283[VAR__21230] = 0;
+               }
+            }
+
+
+            for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+            {
+               if ( VAR__19328[VAR__21230] == ma )
+               {
+                  nb++;
+               }
+            }
+
+
+            if ( na != nb )
+            {
+               return 0;
+
+               pp = 0;
+               break;
+            }
+         }
+      }
+
+
+      if ( pp == 1 )
+      {
+         return 1;
+      }
+   }
+
+   return 1;
+}
+
+
+int main()
+{
+   char inp[200];
+   char VAR__819283[50];
+   char VAR__19328[50];
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  ma = 0;
+
+   gets(inp);
+   LEN_OF_STH = strlen(inp);
+   for ( VAR__53647 = 0; VAR__53647 < 50; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 0;
+      VAR__19328[VAR__53647]  = 0;
+   }
+
+   for ( VAR__53647 = 0, VAR__21230 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( ma == 0 )
+      {
+         if ( inp[VAR__53647] != 32 )
+         {
+            VAR__819283[VAR__53647] = inp[VAR__53647];
+         }
+         else
+         {
+            ma = 1;
+            continue;
+         }
+      }
+
+      if ( ma == 1 )
+      {
+         if ( inp[VAR__53647] != 32 )
+         {
+            VAR__19328[VAR__21230] = inp[VAR__53647];
+            VAR__21230++;
+         }
+      }
+   }
+
+   if ( judge(VAR__819283, VAR__19328) == 0 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("YES\n");
+   }
+}

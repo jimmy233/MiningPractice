@@ -1,0 +1,48 @@
+struct aa
+{
+   char      data[100];
+   struct aa *VAR__NEXT;
+};
+void print(struct aa *VAR_233)
+{
+   if ( VAR_233->VAR__NEXT != NULL )
+   {
+      print(VAR_233->VAR__NEXT);
+   }
+
+   ( cout << VAR_233->data ) << endl;
+}
+
+
+int main()
+{
+   struct aa *VAR__HEAD;
+   struct aa *VAR_233;
+   struct aa *VAR_666;
+   int       si = sizeof( struct aa );
+
+   VAR__HEAD = (struct aa *)malloc(si);
+   VAR_233   = VAR__HEAD;
+   VAR_666   = VAR__HEAD;
+   char VAR_9494[100];
+
+   while ( cin.getline(VAR_9494, 100))
+   {
+      if ( strcmp(VAR_9494, "end"))
+      {
+         VAR_666            = (struct aa *)malloc(si);
+         VAR_233->VAR__NEXT = VAR_666;
+         strcpy(VAR_666->data, VAR_9494);
+         VAR_666->VAR__NEXT = NULL;
+         VAR_233            = VAR_666;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+
+   print(VAR__HEAD->VAR__NEXT);
+   return 0;
+}

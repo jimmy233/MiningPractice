@@ -1,0 +1,59 @@
+void main()
+{
+   int days[13]      = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int leap_days[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__SUM;
+   int sum1;
+   int sum2;
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+
+   scanf("%d %d %d\n%d %d %d", &startyear, &startmonth, &startday, &endyear, &endmonth, &endday);
+   int totalfromfirstday(int year1, int month1, int day1, int year2, int month2, int day2);
+
+   sum1     = totalfromfirstday(startyear, 1, 1, startyear, startmonth, startday);
+   sum2     = totalfromfirstday(startyear, 1, 1, endyear, endmonth, endday);
+   VAR__SUM = sum2 - sum1;
+   printf("%d", VAR__SUM);
+}
+
+
+int totalfromfirstday(int year1, int month1, int day1, int year2, int month2, int day2)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM;
+   int days[13]      = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int leap_days[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   VAR__SUM = day2;
+   for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+   {
+      if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+      {
+         VAR__SUM = VAR__SUM + leap_days[VAR__53647];
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + days[VAR__53647];
+      }
+   }
+
+   for ( VAR__21230 = year1; VAR__21230 < year2; VAR__21230++ )
+   {
+      if (((( VAR__21230 % 4 ) == 0 ) && (( VAR__21230 % 100 ) != 0 )) || (( VAR__21230 % 400 ) == 0 ))
+      {
+         VAR__SUM = VAR__SUM + 366;
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + 365;
+      }
+   }
+
+   return VAR__SUM;
+}

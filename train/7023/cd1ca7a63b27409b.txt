@@ -1,0 +1,66 @@
+void Inverse(char VAR__819283[])
+{
+   int LEN_OF_STH = strlen(VAR__819283);
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH / 2 ); VAR__53647++ )
+   {
+      char VAR__TEMP;
+      VAR__TEMP = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647] = VAR__819283[( LEN_OF_STH - 1 ) - VAR__53647];
+      VAR__819283[( LEN_OF_STH - 1 ) - VAR__53647] = VAR__TEMP;
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[110];
+   char VAR__19328[110];
+   int  VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin.get();
+      cin.getline(VAR__819283, 101);
+      cin.getline(VAR__19328, 101);
+      Inverse(VAR__819283);
+      Inverse(VAR__19328);
+      int VAR__21230;
+      for ( VAR__21230 = 0; VAR__19328[VAR__21230] != '\0'; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] >= VAR__19328[VAR__21230] )
+         {
+            VAR__819283[VAR__21230] = ( VAR__819283[VAR__21230] - VAR__19328[VAR__21230] ) + '0';
+         }
+         else
+         {
+            VAR__819283[VAR__21230 + 1]--;
+            VAR__819283[VAR__21230] = (( VAR__819283[VAR__21230] + 10 ) - VAR__19328[VAR__21230] ) + '0';
+         }
+      }
+
+      while (( VAR__819283[VAR__21230] < '0' ) && ( VAR__819283[VAR__21230] != '\0' ))
+      {
+         VAR__819283[VAR__21230 + 1]--;
+         VAR__819283[VAR__21230] = (( VAR__819283[VAR__21230] + 10 ) - VAR__19328[VAR__21230] ) + '0';
+      }
+
+      Inverse(VAR__819283);
+      VAR__21230 = 0;
+
+      while ( VAR__819283[VAR__21230] == '0' )
+      {
+         VAR__21230++;
+      }
+
+      while ( VAR__819283[VAR__21230] != '\0' )
+      {
+         cout << VAR__819283[VAR__21230++];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

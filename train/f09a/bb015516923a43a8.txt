@@ -1,0 +1,73 @@
+void sort(int A_STRING[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( A_STRING[VAR__21230] < A_STRING[VAR__8444594] )
+         {
+            VAR__8444594 = VAR__21230;
+         }
+      }
+
+
+      VAR__temp = A_STRING[VAR__8444594];
+      A_STRING[VAR__8444594] = A_STRING[VAR__53647];
+      A_STRING[VAR__53647]   = VAR__temp;
+   }
+}
+
+
+void gather(int ANOTHER_STRING[], int YET_ANOTHER_STRING[])
+{
+   int VAR__temp = 0;
+   int VAR__53647;
+
+   while ( ANOTHER_STRING[VAR__temp] != '\0' )
+   {
+      VAR__temp++;
+   }
+
+   for ( VAR__53647 = VAR__temp; YET_ANOTHER_STRING[VAR__53647 - VAR__temp] != '\0'; VAR__53647++ )
+   {
+      ANOTHER_STRING[VAR__53647] = YET_ANOTHER_STRING[VAR__53647 - VAR__temp];
+   }
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int n1;
+   int n2;
+   int ANOTHER_STRING[100];
+   int YET_ANOTHER_STRING[100];
+
+   scanf("%d%d", &n1, &n2);
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      scanf("%d", &ANOTHER_STRING[VAR__53647]);
+   }
+
+   scanf("\n");
+   for ( VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      scanf("%d", &YET_ANOTHER_STRING[VAR__53647]);
+   }
+
+   sort(ANOTHER_STRING, n1);
+   sort(YET_ANOTHER_STRING, n2);
+   gather(ANOTHER_STRING, YET_ANOTHER_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < (( n1 + n2 ) - 1 ); VAR__53647++ )
+   {
+      printf("%d ", ANOTHER_STRING[VAR__53647]);
+   }
+
+   printf("%d", ANOTHER_STRING[( n1 + n2 ) - 1]);
+}

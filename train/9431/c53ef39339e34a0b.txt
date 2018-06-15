@@ -1,0 +1,107 @@
+struct student
+{
+   char           VAR__NUM[20];
+   char           name[20];
+   char           sex;
+   int            age;
+   char           score[20];
+   char           adress[20];
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *input(void)
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *VAR__HEAD;
+   int            VAR_1238123 = 0;
+
+   VAR_233 = ( VAR_666 = (struct student *)malloc(sizeof( struct student )));
+   scanf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, &VAR_233->sex, &VAR_233->age, VAR_233->score, VAR_233->adress);
+   VAR__HEAD = null;
+
+   while ( strcmp(VAR_233->VAR__NUM, "end") != 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = VAR_233;
+      }
+      else
+      {
+         VAR_666->VAR__NEXT = VAR_233;
+      }
+
+      VAR_666 = VAR_233;
+      VAR_233 = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, &VAR_233->sex, &VAR_233->age, VAR_233->score, VAR_233->adress);
+   }
+
+   VAR_666->VAR__NEXT = null;
+   return VAR__HEAD;
+}
+
+
+void output(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != null )
+   {
+      do
+      {
+         printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->adress);
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != null );
+   }
+}
+
+
+struct student *exchange(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *VAR_1238123;
+   struct student *nhead = null;
+
+   do
+   {
+      VAR_666 = null;
+      VAR_233 = VAR__HEAD;
+
+      while ( VAR_233->VAR__NEXT != null )
+      {
+         VAR_666 = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      if ( nhead == null )
+      {
+         nhead       = VAR_233;
+         VAR_1238123 = ( nhead->VAR__NEXT = VAR_666 );
+      }
+
+      VAR_1238123        = ( VAR_1238123->VAR__NEXT = VAR_666 );
+      VAR_666->VAR__NEXT = null;
+   } while ( VAR__HEAD->VAR__NEXT != null );
+   return nhead;
+}
+
+
+int main()
+{
+   struct student *input(void);
+   struct student *exchange(struct student *);
+
+   void output(struct student *);
+
+   struct student *VAR__819283;
+   struct student *VAR__19328;
+   VAR__819283 = input();
+   VAR__19328  = exchange(VAR__819283);
+   output(VAR__19328);
+   return 0;
+}

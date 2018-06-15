@@ -1,0 +1,82 @@
+int len1;
+int len2;
+int array1[100];
+int array2[100];
+int sa[100];
+void zp1(int a1[100], int l1)
+{
+   int cur1;
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( l1 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < (( l1 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( a1[VAR__21230] > a1[VAR__21230 + 1] )
+         {
+            cur1               = a1[VAR__21230];
+            a1[VAR__21230]     = a1[VAR__21230 + 1];
+            a1[VAR__21230 + 1] = cur1;
+         }
+      }
+   }
+}
+
+
+void zp2(int a2[100], int l2)
+{
+   int cur2;
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( l2 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < (( l2 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( a2[VAR__21230] > a2[VAR__21230 + 1] )
+         {
+            cur2               = a2[VAR__21230];
+            a2[VAR__21230]     = a2[VAR__21230 + 1];
+            a2[VAR__21230 + 1] = cur2;
+         }
+      }
+   }
+}
+
+
+void connection(int a1[100], int a2[100])
+{
+   for ( int VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      sa[VAR__53647] = array1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = len1; VAR__53647 < ( len1 + len2 ); VAR__53647++ )
+   {
+      sa[VAR__53647] = array2[VAR__53647 - len1];
+   }
+}
+
+
+int main()
+{
+   ( cin >> len1 ) >> len2;
+   for ( int VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      cin >> array1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      cin >> array2[VAR__53647];
+   }
+
+   zp1(array1, len1);
+   zp2(array2, len2);
+   connection(array1, array2);
+   cout << sa[0];
+   for ( int VAR__53647 = 1; VAR__53647 < ( len1 + len2 ); VAR__53647++ )
+   {
+      ( cout << " " ) << sa[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

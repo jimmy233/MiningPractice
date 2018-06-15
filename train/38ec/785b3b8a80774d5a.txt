@@ -1,0 +1,72 @@
+int main()
+{
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int year;
+   int VAR__SUM = 0;
+   int VAR__53647;
+   int m1[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int m2[] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   ((((( cin >> startyear ) >> startmonth ) >> startday ) >> endyear ) >> endmonth ) >> endday;
+   year = startyear;
+
+   while ( year < endyear )
+   {
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         VAR__SUM += 366;
+      }
+      else
+      {
+         VAR__SUM += 365;
+      }
+
+      year++;
+   }
+
+   if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < startmonth; VAR__53647++ )
+      {
+         VAR__SUM -= m2[VAR__53647];
+      }
+
+      VAR__SUM -= startday;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < startmonth; VAR__53647++ )
+      {
+         VAR__SUM -= m1[VAR__53647];
+      }
+
+      VAR__SUM -= startday;
+   }
+
+   if (((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < endmonth; VAR__53647++ )
+      {
+         VAR__SUM += m2[VAR__53647];
+      }
+
+      VAR__SUM += endday;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < endmonth; VAR__53647++ )
+      {
+         VAR__SUM += m1[VAR__53647];
+      }
+
+      VAR__SUM += endday;
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

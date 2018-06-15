@@ -1,0 +1,70 @@
+void solve(char A_STRING[], char VAR__1238129, char VAR__127322)
+{
+   int VAR__1111;
+   int VAR_FLAG = 1;
+   int VAR__53647;
+   int VAR__8444594;
+
+   VAR__1111 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] == VAR__1238129 ) || ( A_STRING[VAR__53647] == VAR__127322 ))
+      {
+         VAR_FLAG = 0;
+         break;
+      }
+   }
+
+   if ( VAR_FLAG )
+   {
+      return;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if (( VAR_FLAG == 1 ) && ( A_STRING[VAR__53647] == VAR__127322 ))
+      {
+         ((( cout << VAR__8444594 ) << " " ) << VAR__53647 ) << endl;
+         VAR_FLAG = 0;
+         A_STRING[VAR__8444594] = ' ';
+         A_STRING[VAR__53647]   = ' ';
+         break;
+      }
+
+      if ( A_STRING[VAR__53647] == VAR__1238129 )
+      {
+         VAR_FLAG     = 1;
+         VAR__8444594 = VAR__53647;
+      }
+
+      if ( A_STRING[VAR__53647] == VAR__127322 )
+      {
+         VAR_FLAG = 0;
+      }
+   }
+
+   solve(A_STRING, VAR__1238129, VAR__127322);
+}
+
+
+int main()
+{
+   char A_STRING[100];
+   char VAR__1238129;
+   char VAR__127322;
+   char *VAR_233;
+
+   cin.getline(A_STRING, 100, '\n');
+   VAR__1238129 = A_STRING[0];
+   for ( VAR_233 = A_STRING; VAR_233 < ( A_STRING + strlen(A_STRING)); VAR_233++ )
+   {
+      if (( *VAR_233 ) != VAR__1238129 )
+      {
+         VAR__127322 = *VAR_233;
+         break;
+      }
+   }
+
+   solve(A_STRING, VAR__1238129, VAR__127322);
+   return 0;
+}

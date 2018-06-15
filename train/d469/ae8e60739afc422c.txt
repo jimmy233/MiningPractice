@@ -1,0 +1,45 @@
+char *reverse(char *pt);
+
+int main()
+{
+   char source[501];
+   char sub[501];
+   char term[501];
+   int  LEN_OF_STH;
+   int  sublen;
+   char *VAR_233 = source;
+
+   gets(source);
+   LEN_OF_STH = strlen(source);
+   for ( sublen = 2; sublen <= LEN_OF_STH; sublen++ )
+   {
+      for ( VAR_233 = source; VAR_233 < ((( source + LEN_OF_STH ) - sublen ) + 1 ); VAR_233++ )
+      {
+         strncpy(sub, VAR_233, sublen);
+         *( sub + sublen ) = '\0';
+         strcpy(term, sub);
+
+         if ( strcmp(sub, reverse(term)) == 0 )
+         {
+            printf("%s\n", sub);
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+char *reverse(char *pt)
+{
+   char term[501];
+   int  VAR__53647;
+
+   strcpy(term, pt);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(pt); VAR__53647++ )
+   {
+      *( pt + VAR__53647 ) = *((( term + strlen(pt)) - VAR__53647 ) - 1 );
+   }
+
+   return pt;
+}

@@ -1,0 +1,79 @@
+struct student
+{
+   char           VAR__NUM[20];
+   char           name[20];
+   char           gender;
+   int            age;
+   char           score[20];
+   char           add[200];
+   struct student *prev;
+   struct student *VAR__NEXT;
+}
+*VAR__HEAD = 0;
+struct student
+{
+   char           VAR__NUM[20];
+   char           name[20];
+   char           gender;
+   int            age;
+   char           score[20];
+   char           add[200];
+   struct student *prev;
+   struct student *VAR__NEXT;
+}
+*tail = 0;
+void add_node(char *VAR__819283, char *VAR__19328, char VAR__4857423, int VAR__12302, char *VAR__112390, char *VAR__127322)
+{
+   if ( VAR__HEAD == 0 )
+   {
+      VAR__HEAD       = ( tail = (struct student *)malloc(sizeof( struct student )));
+      tail->VAR__NEXT = ( tail->prev = 0 );
+   }
+   else
+   {
+      struct student *tmp = tail;
+      tail            = ( tail->VAR__NEXT = (struct student *)malloc(sizeof( struct student )));
+      tail->prev      = tmp;
+      tail->VAR__NEXT = 0;
+   }
+
+   strcpy(tail->VAR__NUM, VAR__819283);
+   strcpy(tail->name, VAR__19328);
+   strcpy(tail->add, VAR__127322);
+   strcpy(tail->score, VAR__112390);
+   tail->gender = VAR__4857423;
+   tail->age    = VAR__12302;
+}
+
+
+void print()
+{
+   while ( tail )
+   {
+      printf("%s %s %c %d %s %s\n", tail->VAR__NUM, tail->name, tail->gender, tail->age, tail->score, tail->add);
+      tail = tail->prev;
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[20];
+   char VAR__19328[20];
+   char VAR__4857423;
+   int  VAR__12302;
+   char VAR__112390[20];
+   char VAR__127322[200];
+
+   scanf("%s", VAR__819283);
+
+   while ( strcmp(VAR__819283, "end"))
+   {
+      scanf("%s %c %d %s %s", VAR__19328, &VAR__4857423, &VAR__12302, VAR__112390, VAR__127322);
+      add_node(VAR__819283, VAR__19328, VAR__4857423, VAR__12302, VAR__112390, VAR__127322);
+      scanf("%s", VAR__819283);
+   }
+
+   print();
+   return 0;
+}

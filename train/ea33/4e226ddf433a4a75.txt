@@ -1,0 +1,56 @@
+int VAR__819283(char A_STRING[])
+{
+   int VAR__53647;
+   int VAR__8444594 = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( strlen(A_STRING) - 1 ); VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] > A_STRING[VAR__8444594] )
+      {
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+
+   return VAR__8444594;
+}
+
+
+void VAR__19328(char A_STRING[], char substr[], int VAR__8444594)
+{
+   char YET_ANOTHER_STRING[100];
+   int  VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= (( strlen(A_STRING) - 2 ) - VAR__8444594 ); VAR__53647++ )
+   {
+      YET_ANOTHER_STRING[VAR__53647] = A_STRING[( VAR__53647 + VAR__8444594 ) + 1];
+   }
+
+   YET_ANOTHER_STRING[VAR__53647] = 0;
+   A_STRING[VAR__8444594 + 1]     = '\0';
+   strcat(A_STRING, substr);
+   strcat(A_STRING, YET_ANOTHER_STRING);
+}
+
+
+int main()
+{
+   int  VAR__8444594;
+   int  VAR__53647 = 0;
+   char A_STRING[100];
+   char substr[100];
+   char ANOTHER_STRING[100][100];
+
+   while ( scanf("%s%s", A_STRING, substr) != EOF )
+   {
+      VAR__8444594 = VAR__819283(A_STRING);
+      VAR__19328(A_STRING, substr, VAR__8444594);
+      VAR__53647++;
+      strcpy(ANOTHER_STRING[VAR__53647], A_STRING);
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR__53647; VAR__8444594++ )
+   {
+      puts(ANOTHER_STRING[VAR__8444594]);
+   }
+}

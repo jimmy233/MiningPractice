@@ -1,0 +1,66 @@
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR_FLAG[300];
+   int   VAR__temp;
+   int   VAR__1238129;
+   float ave;
+   float VAR__SUM = 0.0;
+   float VAR__MAX = 0.0;
+   float VAR__4857423[300];
+   int   VAR__819283[300];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+   }
+
+   ave = VAR__SUM / VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = fabs(VAR__819283[VAR__53647] - ave);
+
+      if (( VAR__4857423[VAR__53647] - VAR__MAX ) > 1e-6 )
+      {
+         VAR__MAX    = VAR__4857423[VAR__53647];
+         VAR_FLAG[0] = VAR__53647;
+      }
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( fabs(VAR__4857423[VAR__53647] - VAR__MAX) < 1e-6 )
+      {
+         VAR_FLAG[VAR__21230] = VAR__53647;
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__1238129 = 0; VAR__1238129 < (( VAR__21230 - 1 ) - VAR__53647 ); VAR__1238129++ )
+      {
+         if ( VAR_FLAG[VAR__1238129] > VAR_FLAG[VAR__1238129 + 1] )
+         {
+            VAR__temp = VAR_FLAG[VAR__1238129];
+            VAR_FLAG[VAR__1238129]     = VAR_FLAG[VAR__1238129 + 1];
+            VAR_FLAG[VAR__1238129 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      ( cout << VAR__819283[VAR_FLAG[VAR__53647]] ) << ",";
+   }
+
+   ( cout << VAR__819283[VAR_FLAG[VAR__21230 - 1]] ) << endl;
+   return 0;
+}

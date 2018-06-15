@@ -1,0 +1,119 @@
+struct ro
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR_9494;
+}
+room[11111];
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  VAR__1238129;
+   int  VAR__819283[101][101] = { 0 };
+   int  VAR__temp             = 0;
+   int  day = 1;
+   int  cu  = 0;
+   char VAR__4857423[102][102] = { 0 };
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> VAR__4857423[VAR__53647][VAR__21230];
+
+         if ( VAR__4857423[VAR__53647][VAR__21230] == '#' )
+         {
+            VAR__819283[VAR__53647][VAR__21230] = 9999;
+         }
+
+         if ( VAR__4857423[VAR__53647][VAR__21230] == '@' )
+         {
+            VAR__819283[VAR__53647][VAR__21230] = 1;
+            room[VAR__temp].VAR_9494            = 0;
+            room[VAR__temp].VAR__7685           = VAR__53647;
+            room[VAR__temp].VAR__3918907        = VAR__21230;
+            VAR__temp++;
+         }
+      }
+   }
+
+
+   cin >> VAR__1238129;
+
+   if ( VAR__temp == 0 )
+   {
+      cout << 0;
+      return 0;
+   }
+
+   while ( 1 )
+   {
+      if (( VAR__4857423[room[cu].VAR__7685 + 1][room[cu].VAR__3918907] == '.' ) && ( VAR__819283[room[cu].VAR__7685 + 1][room[cu].VAR__3918907] == 0 ))
+      {
+         room[VAR__temp].VAR_9494 = room[cu].VAR_9494 + 1;
+         VAR__819283[room[cu].VAR__7685 + 1][room[cu].VAR__3918907] = room[VAR__temp].VAR_9494;
+         room[VAR__temp].VAR__7685    = room[cu].VAR__7685 + 1;
+         room[VAR__temp].VAR__3918907 = room[cu].VAR__3918907;
+         VAR__temp++;
+      }
+
+      if (( VAR__4857423[room[cu].VAR__7685 - 1][room[cu].VAR__3918907] == '.' ) && ( VAR__819283[room[cu].VAR__7685 - 1][room[cu].VAR__3918907] == 0 ))
+      {
+         room[VAR__temp].VAR_9494 = room[cu].VAR_9494 + 1;
+         VAR__819283[room[cu].VAR__7685 - 1][room[cu].VAR__3918907] = room[VAR__temp].VAR_9494;
+         room[VAR__temp].VAR__7685    = room[cu].VAR__7685 - 1;
+         room[VAR__temp].VAR__3918907 = room[cu].VAR__3918907;
+         VAR__temp++;
+      }
+
+      if (( VAR__4857423[room[cu].VAR__7685][room[cu].VAR__3918907 + 1] == '.' ) && ( VAR__819283[room[cu].VAR__7685][room[cu].VAR__3918907 + 1] == 0 ))
+      {
+         room[VAR__temp].VAR_9494 = room[cu].VAR_9494 + 1;
+         VAR__819283[room[cu].VAR__7685][room[cu].VAR__3918907 + 1] = room[VAR__temp].VAR_9494;
+         room[VAR__temp].VAR__7685    = room[cu].VAR__7685;
+         room[VAR__temp].VAR__3918907 = room[cu].VAR__3918907 + 1;
+         VAR__temp++;
+      }
+
+      if (( VAR__4857423[room[cu].VAR__7685][room[cu].VAR__3918907 - 1] == '.' ) && ( VAR__819283[room[cu].VAR__7685][room[cu].VAR__3918907 - 1] == 0 ))
+      {
+         room[VAR__temp].VAR_9494 = room[cu].VAR_9494 + 1;
+         VAR__819283[room[cu].VAR__7685][room[cu].VAR__3918907 - 1] = room[VAR__temp].VAR_9494;
+         room[VAR__temp].VAR__7685    = room[cu].VAR__7685;
+         room[VAR__temp].VAR__3918907 = room[cu].VAR__3918907 - 1;
+         VAR__temp++;
+      }
+
+      if ( room[cu].VAR_9494 > VAR__1238129 )
+      {
+         break;
+      }
+
+      if ( cu > 9999 )
+      {
+         break;
+      }
+
+      cu++;
+   }
+
+   int VAR__SUM = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if (( VAR__819283[VAR__53647][VAR__21230] >= 1 ) && ( VAR__819283[VAR__53647][VAR__21230] < VAR__1238129 ))
+         {
+            VAR__SUM++;
+         }
+      }
+   }
+
+
+
+   cout << VAR__SUM;
+   return 0;
+}

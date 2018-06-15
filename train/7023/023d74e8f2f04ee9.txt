@@ -1,0 +1,82 @@
+char VAR__819283[100];
+void fuc(char *num0, int VAR_1238123)
+{
+   if ( num0[VAR_1238123] > '0' )
+   {
+      num0[VAR_1238123] = num0[VAR_1238123] - 1;
+   }
+   else
+   {
+      num0[VAR_1238123] = '9';
+      fuc(num0, VAR_1238123 - 1);
+   }
+}
+
+
+void minus(char num0[], char num1[])
+{
+   int last[2];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   last[0] = strlen(num0) - 1;
+   last[1] = strlen(num1) - 1;
+   VAR__819283[last[0] + 1] = '\0';
+   for ( VAR__53647 = last[1], VAR__21230 = last[0]; VAR__21230 >= 0; VAR__53647--, VAR__21230-- )
+   {
+      if ( VAR__53647 >= 0 )
+      {
+         if (( num0[VAR__21230] - num1[VAR__53647] ) >= 0 )
+         {
+            VAR__819283[VAR__21230] = ( num0[VAR__21230] - num1[VAR__53647] ) + '0';
+         }
+         else
+         {
+            VAR__819283[VAR__21230] = (( num0[VAR__21230] - num1[VAR__53647] ) + '0' ) + 10;
+            fuc(num0, VAR__21230 - 1);
+         }
+      }
+      else
+      {
+         VAR__819283[VAR__21230] = num0[VAR__21230];
+      }
+   }
+
+   if ( VAR__819283[0] == '0' )
+   {
+      for ( VAR__53647 = 0; ; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == '0' )
+         {
+            continue;
+         }
+         else
+         {
+            VAR__21230 = VAR__53647;
+            for ( VAR__8444594 = VAR__21230; VAR__8444594 <= ( last[0] + 1 ); VAR__8444594++ )
+            {
+               VAR__819283[VAR__8444594 - VAR__21230] = VAR__819283[VAR__8444594];
+            }
+
+            break;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   char VAR__NUM[3][100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %s", VAR__NUM[0], VAR__NUM[1]);
+      minus(VAR__NUM[0], VAR__NUM[1]);
+      printf("%s\n", VAR__819283);
+   }
+}

@@ -1,0 +1,81 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__819283 = 0;
+   int    VAR__19328  = 0;
+   int    VAR__8444594;
+   int    VAR_666;
+   int    VAR_233;
+   double sg[100];
+   double VAR__112390;
+   double nan[100];
+   double nv[100];
+   char   xb[100][100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", xb[VAR__53647], &sg[VAR__53647]);
+      VAR_233 = strlen(xb[VAR__53647]);
+
+      if ( VAR_233 == 4 )
+      {
+         nan[VAR__819283] = sg[VAR__53647];
+         VAR__819283      = VAR__819283 + 1;
+      }
+
+      if ( VAR_233 == 6 )
+      {
+         nv[VAR__19328] = sg[VAR__53647];
+         VAR__19328     = VAR__19328 + 1;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR__819283; VAR__8444594++ )
+   {
+      for ( VAR_666 = 0; VAR_666 < ( VAR__819283 - VAR__8444594 ); VAR_666++ )
+      {
+         if ( nan[VAR_666] < nan[VAR_666 + 1] )
+         {
+            VAR__112390      = nan[VAR_666 + 1];
+            nan[VAR_666 + 1] = nan[VAR_666];
+            nan[VAR_666]     = VAR__112390;
+         }
+      }
+   }
+
+   VAR__8444594 = 1;
+   VAR_666      = 0;
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR__19328; VAR__8444594++ )
+   {
+      for ( VAR_666 = 0; VAR_666 < ( VAR__19328 - VAR__8444594 ); VAR_666++ )
+      {
+         if ( nv[VAR_666] < nv[VAR_666 + 1] )
+         {
+            VAR__112390     = nv[VAR_666 + 1];
+            nv[VAR_666 + 1] = nv[VAR_666];
+            nv[VAR_666]     = VAR__112390;
+         }
+      }
+   }
+
+   for ( int VAR_129012 = 0; VAR_129012 < VAR__819283; VAR_129012++ )
+   {
+      printf("%.2lf ", nan[( VAR__819283 - VAR_129012 ) - 1]);
+   }
+
+   for ( int VAR__temp = 0; VAR__temp < VAR__19328; VAR__temp++ )
+   {
+      if ( VAR__temp < ( VAR__19328 - 1 ))
+      {
+         printf("%.2lf ", nv[VAR__temp]);
+      }
+      else
+      {
+         printf("%.2lf", nv[VAR__temp]);
+      }
+   }
+
+   return 0;
+}

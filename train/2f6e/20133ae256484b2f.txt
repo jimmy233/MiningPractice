@@ -1,0 +1,62 @@
+int VAR__SUM(int line2[], int VAR__819283, int VAR__19328)
+{
+   int VAR__53647;
+   int VAR__4857423 = 0;
+
+   for ( VAR__53647 = VAR__819283; VAR__53647 <= VAR__19328; VAR__53647++ )
+   {
+      VAR__4857423 += line2[VAR__53647];
+   }
+
+   return VAR__4857423;
+}
+
+
+int main()
+{
+   char line[100];
+   int  line1[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  line3[50][2] = { 0 };
+
+   scanf("%s", line);
+   VAR__8444594 = ( strlen(line) / 2 ) - 1;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(line); VAR__53647++ )
+   {
+      if ( line[VAR__53647] == line[0] )
+      {
+         line1[VAR__53647] = 1;
+      }
+
+      if ( line[VAR__53647] == line[strlen(line) - 1] )
+      {
+         line1[VAR__53647] = -1;
+      }
+   }
+
+   for ( VAR__53647 = strlen(line) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( line1[VAR__53647] == ( -1 ))
+      {
+         for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( VAR__SUM(line1, VAR__21230, VAR__53647) == 0 )
+            {
+               line3[VAR__8444594][0] = VAR__21230;
+               line3[VAR__8444594][1] = VAR__53647;
+               VAR__8444594--;
+               break;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( strlen(line) / 2 ); VAR__53647++ )
+   {
+      printf("%d %d\n", line3[VAR__53647][0], line3[VAR__53647][1]);
+   }
+
+   return 0;
+}

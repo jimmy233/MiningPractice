@@ -1,0 +1,76 @@
+int VAR__1238129;
+int VAR__SUM;
+int maxim;
+int VAR__temp;
+int bo[25] = { 0 };
+int meishu(int VAR_1238123, int VAR__819283[])
+{
+   int VAR__21230;
+
+   if ( VAR_1238123 == ( VAR__1238129 - 1 ))
+   {
+      return VAR__SUM;
+   }
+   else
+   {
+      for ( VAR__21230 = VAR_1238123 + 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR_1238123] >= VAR__819283[VAR__21230] )
+         {
+            bo[VAR__21230] = 1;
+            VAR__SUM++;
+            VAR__temp = meishu(VAR__21230, VAR__819283);
+
+            if ( maxim < VAR__temp )
+            {
+               maxim = VAR__temp;
+            }
+
+            VAR__SUM--;
+         }
+      }
+
+
+      if (( VAR__21230 == VAR__1238129 ) && ( VAR__SUM != 1 ))
+      {
+         return VAR__SUM;
+      }
+      else
+      if ( VAR__SUM == 1 )
+      {
+         return maxim;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__819283[25];
+   int maxi = 0;
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( bo[VAR__53647] == 0 )
+      {
+         VAR__SUM = 1;
+         maxim    = 1;
+
+         if ( maxi < meishu(VAR__53647, VAR__819283))
+         {
+            maxi = meishu(VAR__53647, VAR__819283);
+         }
+      }
+   }
+
+
+   printf("%d", maxi);
+   return 0;
+}

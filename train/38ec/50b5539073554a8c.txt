@@ -1,0 +1,86 @@
+int RunNian(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int Dijitian(int year, int month, int day)
+{
+   int total = 0;
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         total += 31;
+      }
+
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         total += 30;
+      }
+
+      if ( VAR__53647 == 2 )
+      {
+         if ( RunNian(year))
+         {
+            total += 29;
+         }
+         else
+         {
+            total += 28;
+         }
+      }
+   }
+
+   total += day;
+   return total;
+}
+
+
+int main()
+{
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+
+   scanf("%d %d %d", &startYear, &startMonth, &startDay);
+   scanf("%d %d %d", &endYear, &endMonth, &endDay);
+   int VAR__NUM = 0;
+
+   if ( startYear == endYear )
+   {
+      VAR__NUM = Dijitian(endYear, endMonth, endDay) - Dijitian(startYear, startMonth, startDay);
+   }
+   else
+   {
+      int VAR__53647;
+      for ( VAR__53647 = startYear; VAR__53647 < endYear; VAR__53647++ )
+      {
+         if ( RunNian(VAR__53647))
+         {
+            VAR__NUM += 366;
+         }
+         else
+         {
+            VAR__NUM += 365;
+         }
+      }
+
+      VAR__NUM += Dijitian(endYear, endMonth, endDay) - Dijitian(startYear, startMonth, startDay);
+   }
+
+   printf("%d\n", VAR__NUM);
+   return 0;
+}

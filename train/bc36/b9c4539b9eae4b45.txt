@@ -1,0 +1,71 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    nan = 0;
+   int    nv  = 0;
+   char   VAR_9494[10];
+   double VAR_2890;
+   double male[40];
+   double female[40];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%lf", VAR_9494, &VAR_2890);
+
+      if ( strlen(VAR_9494) == 4 )
+      {
+         nan++;
+         male[nan - 1] = VAR_2890;
+      }
+      else
+      if ( strlen(VAR_9494) == 6 )
+      {
+         nv++;
+         female[nv - 1] = VAR_2890;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= nan; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( nan - VAR__53647 ); VAR__21230++ )
+      {
+         if ( male[VAR__21230] > male[VAR__21230 + 1] )
+         {
+            double VAR__112390;
+            VAR__112390          = male[VAR__21230];
+            male[VAR__21230]     = male[VAR__21230 + 1];
+            male[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= nv; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( nv - VAR__53647 ); VAR__21230++ )
+      {
+         if ( female[VAR__21230] < female[VAR__21230 + 1] )
+         {
+            double VAR__112390;
+            VAR__112390            = female[VAR__21230];
+            female[VAR__21230]     = female[VAR__21230 + 1];
+            female[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   printf("%.2lf", male[0]);
+   for ( VAR__53647 = 1; VAR__53647 < nan; VAR__53647++ )
+   {
+      printf(" %.2lf", male[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nv; VAR__53647++ )
+   {
+      printf(" %.2lf", female[VAR__53647]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,97 @@
+struct point1
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+point[10];
+struct comb1
+{
+   struct point1 po1;
+   struct point1 po2;
+   double        distant;
+}
+comb[50];
+struct comb1
+{
+   struct point1 po1;
+   struct point1 po2;
+   double        distant;
+}
+VAR__temp;
+int abs(int VAR__819283)
+{
+   if ( VAR__819283 >= 0 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return -VAR__819283;
+   }
+}
+
+
+double dis(struct point1 VAR__819283, struct point1 VAR__19328)
+{
+   int    VAR_233;
+   int    VAR_666;
+   int    VAR_129012;
+   double ans;
+
+   VAR_233    = ( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 ) * ( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 );
+   VAR_666    = ( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 ) * ( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 );
+   VAR_129012 = ( VAR__819283.VAR__9290 - VAR__19328.VAR__9290 ) * ( VAR__819283.VAR__9290 - VAR__19328.VAR__9290 );
+   ans        = sqrt(( VAR_233 + VAR_666 ) + VAR_129012);
+   return ans;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &point[VAR__53647].VAR__7685, &point[VAR__53647].VAR__3918907, &point[VAR__53647].VAR__9290);
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         comb[VAR__8444594].po1     = point[VAR__53647];
+         comb[VAR__8444594].po2     = point[VAR__21230];
+         comb[VAR__8444594].distant = dis(comb[VAR__8444594].po1, comb[VAR__8444594].po2);
+         VAR__8444594++;
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__8444594 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( comb[VAR__21230].distant < comb[VAR__21230 + 1].distant )
+         {
+            VAR__temp            = comb[VAR__21230];
+            comb[VAR__21230]     = comb[VAR__21230 + 1];
+            comb[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", comb[VAR__53647].po1.VAR__7685, comb[VAR__53647].po1.VAR__3918907, comb[VAR__53647].po1.VAR__9290, comb[VAR__53647].po2.VAR__7685, comb[VAR__53647].po2.VAR__3918907, comb[VAR__53647].po2.VAR__9290, comb[VAR__53647].distant);
+   }
+
+   return 0;
+}

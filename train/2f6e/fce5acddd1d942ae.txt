@@ -1,0 +1,40 @@
+int out(char A_STRING[100], char VAR__819283, char VAR__19328)
+{
+   if ( A_STRING[0] == '!' )
+   {
+      return 1;
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] == VAR__19328 )
+         {
+            A_STRING[VAR__53647] = '!';
+            for ( int VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ( A_STRING[VAR__21230] == '!' )
+               {
+                  continue;
+               }
+               else
+               {
+                  ((( cout << VAR__21230 ) << ' ' ) << VAR__53647 ) << endl;
+                  A_STRING[VAR__21230] = '!';
+                  return out(A_STRING, VAR__819283, VAR__19328);
+               }
+            }
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   char line[100];
+
+   cin >> line;
+   out(line, line[0], line[strlen(line) - 1]);
+   return 0;
+}

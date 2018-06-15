@@ -1,0 +1,127 @@
+struct student
+{
+   int            VAR__NUM;
+   int            score1;
+   int            score2;
+   char           name[50];
+   char           west;
+   char           ganbu;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *create(void)
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   VAR__HEAD       = NULL;
+   VAR__53647      = 1;
+   scanf("%s %d %d %c %c %d", &ANOTHER_POINTER->name, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2, &ANOTHER_POINTER->ganbu, &ANOTHER_POINTER->west, &ANOTHER_POINTER->VAR__NUM);
+
+   while ( 1 )
+   {
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+      if ( VAR__53647 == VAR_1238123 )
+      {
+         break;
+      }
+
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d", &ANOTHER_POINTER->name, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2, &ANOTHER_POINTER->ganbu, &ANOTHER_POINTER->west, &ANOTHER_POINTER->VAR__NUM);
+      VAR__53647++;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int *VAR__7685;
+   int amount;
+   int VAR__MAX;
+
+   char (*VAR__3918907)[50];
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD       = create();
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+   VAR__7685       = (int *)malloc(100 * ( sizeof( int )));
+   VAR__3918907    = ( char (*)[50] )calloc(100, 50 * ( sizeof( char )));
+   VAR__53647      = 0;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      *( VAR__7685 + VAR__53647 ) = 0;
+
+      if (( ANOTHER_POINTER->score1 > 80 ) && ( ANOTHER_POINTER->VAR__NUM > 0 ))
+      {
+         *( VAR__7685 + VAR__53647 ) = ( *( VAR__7685 + VAR__53647 )) + 8000;
+      }
+
+      if (( ANOTHER_POINTER->score1 > 85 ) && ( ANOTHER_POINTER->score2 > 80 ))
+      {
+         *( VAR__7685 + VAR__53647 ) = ( *( VAR__7685 + VAR__53647 )) + 4000;
+      }
+
+      if ( ANOTHER_POINTER->score1 > 90 )
+      {
+         *( VAR__7685 + VAR__53647 ) = ( *( VAR__7685 + VAR__53647 )) + 2000;
+      }
+
+      if (( ANOTHER_POINTER->score1 > 85 ) && ( ANOTHER_POINTER->west == 'Y' ))
+      {
+         *( VAR__7685 + VAR__53647 ) = ( *( VAR__7685 + VAR__53647 )) + 1000;
+      }
+
+      if (( ANOTHER_POINTER->score2 > 80 ) && ( ANOTHER_POINTER->ganbu == 'Y' ))
+      {
+         *( VAR__7685 + VAR__53647 ) = ( *( VAR__7685 + VAR__53647 )) + 850;
+      }
+
+      strcpy(*( VAR__3918907 + VAR__53647 ), ANOTHER_POINTER->name);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      VAR__53647++;
+   }
+
+   VAR__21230 = 0;
+   amount     = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      amount = amount + ( *( VAR__7685 + VAR__53647 ));
+   }
+
+   VAR__MAX = *VAR__7685;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *( VAR__7685 + VAR__53647 )) > VAR__MAX )
+      {
+         VAR__MAX   = *( VAR__7685 + VAR__53647 );
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+
+   printf("%s\n", *( VAR__3918907 + VAR__21230 ));
+   printf("%d\n", VAR__MAX);
+   printf("%d\n", amount);
+}

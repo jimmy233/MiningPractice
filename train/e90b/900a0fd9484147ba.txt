@@ -1,0 +1,55 @@
+struct stu
+{
+   char name[20];
+   int  sbu[3];
+};
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int        VAR__53647;
+   int        VAR__21230 = 0;
+   int        j2         = 0;
+   int        j3         = 0;
+   int        VAR__MIN   = 0;
+   struct stu stu[100000];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d", stu[VAR__53647].name, &stu[VAR__53647].sbu[0], &stu[VAR__53647].sbu[1]);
+      stu[VAR__53647].sbu[2] = stu[VAR__53647].sbu[0] + stu[VAR__53647].sbu[1];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].sbu[2] > VAR__MIN )
+      {
+         VAR__MIN   = stu[VAR__53647].sbu[2];
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+   printf("%s %d\n", stu[VAR__21230].name, VAR__MIN);
+   VAR__MIN = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((( stu[VAR__53647].sbu[2] <= stu[VAR__21230].sbu[2] ) && ( stu[VAR__53647].sbu[2] > VAR__MIN )) && ( VAR__53647 != VAR__21230 ))
+      {
+         VAR__MIN = stu[VAR__53647].sbu[2];
+         j2       = VAR__53647;
+      }
+   }
+
+   printf("%s %d\n", stu[j2].name, VAR__MIN);
+   VAR__MIN = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((( stu[VAR__53647].sbu[2] <= stu[j2].sbu[2] ) && ( stu[VAR__53647].sbu[2] > VAR__MIN )) && (( VAR__53647 != VAR__21230 ) & ( VAR__53647 != j2 )))
+      {
+         VAR__MIN = stu[VAR__53647].sbu[2];
+         j3       = VAR__53647;
+      }
+   }
+
+   printf("%s %d\n", stu[j3].name, VAR__MIN);
+}

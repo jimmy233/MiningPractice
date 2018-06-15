@@ -1,0 +1,96 @@
+int VAR__MAX = 0;
+struct student
+{
+   char           id[20];
+   int            chinese;
+   int            math;
+   int            VAR__SUM;
+   int            VAR_FLAG;
+   struct student *VAR__NEXT;
+};
+struct student *VAR_2890;
+int            VAR_1238123;
+int            VAR__53647;
+struct student *creat()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__53647      = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+   ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->chinese + ANOTHER_POINTER->math;
+   ANOTHER_POINTER->VAR_FLAG = 0;
+   VAR__HEAD = NULL;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      VAR__53647 = VAR__53647 + 1;
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->chinese + ANOTHER_POINTER->math;
+      ANOTHER_POINTER->VAR_FLAG = 0;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct student *compare()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *p3;
+
+   ANOTHER_POINTER = VAR_2890;
+   VAR__MAX        = ANOTHER_POINTER->VAR__SUM;
+   do
+   {
+      if (( ANOTHER_POINTER->VAR__SUM > VAR__MAX ) && ( ANOTHER_POINTER->VAR_FLAG == 0 ))
+      {
+         VAR__MAX = ANOTHER_POINTER->VAR__SUM;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER->VAR__NEXT != NULL );
+   ANOTHER_POINTER = VAR_2890;
+   do
+   {
+      if (( ANOTHER_POINTER->VAR__SUM == VAR__MAX ) && ( ANOTHER_POINTER->VAR_FLAG == 0 ))
+      {
+         p3 = ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR_FLAG = 1;
+         break;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER->VAR__NEXT != NULL );
+   return p3;
+}
+
+
+void main()
+{
+   int            VAR__21230;
+   struct student *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR_2890 = creat();
+   for ( VAR__21230 = 1; VAR__21230 <= 3; VAR__21230++ )
+   {
+      VAR_233 = compare();
+      printf("%s %d\n", VAR_233->id, VAR_233->VAR__SUM);
+   }
+}

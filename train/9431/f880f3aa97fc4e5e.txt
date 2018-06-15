@@ -1,0 +1,61 @@
+struct stdnt
+{
+   char         VAR__NUM[20];
+   char         name[20];
+   char         gndr;
+   int          age;
+   double       score;
+   char         adrs[30];
+   struct stdnt *VAR__NEXT;
+};
+int VAR_1238123;
+struct stdnt *creat()
+{
+   struct stdnt *ANOTHER_POINTER;
+   struct stdnt *YET_ANOTHER_POINTER = 0;
+
+   ANOTHER_POINTER = (struct stdnt *)malloc(LEN);
+   for ( VAR_1238123 = 0; ; VAR_1238123++ )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = 0;
+      }
+
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") == 0 )
+      {
+         break;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+
+      scanf("%s %c%d%lf %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->gndr, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->adrs);
+      ANOTHER_POINTER            = (struct stdnt *)malloc(LEN);
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+   }
+
+   return ANOTHER_POINTER->VAR__NEXT;
+}
+
+
+void output(struct stdnt *VAR_233)
+{
+   while ( VAR_233 != 0 )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->gndr, VAR_233->age, VAR_233->score, VAR_233->adrs);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   struct stdnt *VAR_233;
+
+   VAR_233 = creat();
+   output(VAR_233);
+}

@@ -1,0 +1,73 @@
+int main()
+{
+   int    count1;
+   int    count2;
+   int    all;
+   int    VAR__53647;
+   int    VAR_233;
+   double height1[40];
+   double height2[40];
+   double exchange;
+   double preheight;
+   char   input[7];
+
+   scanf("%d", &all);
+   count1 = 0;
+   count2 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < all; VAR__53647++ )
+   {
+      scanf("%s", input);
+      scanf("%lf", &preheight);
+
+      if ( strlen(input) == 4 )
+      {
+         height1[count1] = preheight;
+         count1++;
+      }
+
+      if ( strlen(input) == 6 )
+      {
+         height2[count2] = preheight;
+         count2++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count1; VAR__53647++ )
+   {
+      for ( VAR_233 = 0; VAR_233 < ( count1 - 1 ); VAR_233++ )
+      {
+         if ( height1[VAR_233] > height1[VAR_233 + 1] )
+         {
+            exchange             = height1[VAR_233];
+            height1[VAR_233]     = height1[VAR_233 + 1];
+            height1[VAR_233 + 1] = exchange;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count2; VAR__53647++ )
+   {
+      for ( VAR_233 = 0; VAR_233 < ( count2 - 1 ); VAR_233++ )
+      {
+         if ( height2[VAR_233] < height2[VAR_233 + 1] )
+         {
+            exchange             = height2[VAR_233];
+            height2[VAR_233]     = height2[VAR_233 + 1];
+            height2[VAR_233 + 1] = exchange;
+         }
+      }
+   }
+
+   printf("%.2lf", height1[0]);
+   for ( VAR__53647 = 1; VAR__53647 < count1; VAR__53647++ )
+   {
+      printf(" %.2lf", height1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count2; VAR__53647++ )
+   {
+      printf(" %.2lf", height2[VAR__53647]);
+   }
+
+   return 0;
+}

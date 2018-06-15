@@ -1,0 +1,71 @@
+struct suanshi
+{
+   int   VAR__819283[3];
+   int   VAR__19328[3];
+   int   no;
+   float VAR__7685;
+}
+dian[45];
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   struct suanshi *aa = (struct suanshi *)VAR__819283;
+   struct suanshi *bb = (struct suanshi *)VAR__19328;
+
+   if ( aa->VAR__7685 < bb->VAR__7685 )
+   {
+      return 1;
+   }
+
+   if ( aa->VAR__7685 > bb->VAR__7685 )
+   {
+      return -1;
+   }
+   else
+   {
+      return aa->no - bb->no;
+   }
+}
+
+
+void main()
+{
+   int point[11][3];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &point[VAR__53647][0], &point[VAR__53647][1], &point[VAR__53647][2]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dian[VAR__temp].no             = VAR__temp + 1;
+         dian[VAR__temp].VAR__819283[0] = point[VAR__53647][0];
+         dian[VAR__temp].VAR__819283[1] = point[VAR__53647][1];
+         dian[VAR__temp].VAR__819283[2] = point[VAR__53647][2];
+         dian[VAR__temp].VAR__19328[0]  = point[VAR__21230][0];
+         dian[VAR__temp].VAR__19328[1]  = point[VAR__21230][1];
+         dian[VAR__temp].VAR__19328[2]  = point[VAR__21230][2];
+         dian[VAR__temp].VAR__7685      = sqrt(((( point[VAR__53647][0] - point[VAR__21230][0] ) * ( point[VAR__53647][0] - point[VAR__21230][0] )) + (( point[VAR__53647][1] - point[VAR__21230][1] ) * ( point[VAR__53647][1] - point[VAR__21230][1] ))) + (( point[VAR__53647][2] - point[VAR__21230][2] ) * ( point[VAR__53647][2] - point[VAR__21230][2] )));
+         VAR__temp++;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR_1238123 > 0; )
+   {
+      VAR_1238123--;
+      VAR__21230 += VAR_1238123;
+   }
+
+   qsort(dian, VAR__21230, sizeof( struct suanshi ), cmp);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", dian[VAR__53647].VAR__819283[0], dian[VAR__53647].VAR__819283[1], dian[VAR__53647].VAR__819283[2], dian[VAR__53647].VAR__19328[0], dian[VAR__53647].VAR__19328[1], dian[VAR__53647].VAR__19328[2], dian[VAR__53647].VAR__7685);
+   }
+}

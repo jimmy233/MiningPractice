@@ -1,0 +1,106 @@
+int main()
+{
+   int VAR__SUM = 0;
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+   int VAR__53647;
+
+   ((((( cin >> startYear ) >> startMonth ) >> startDay ) >> endYear ) >> endMonth ) >> endDay;
+   int runmonth[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int pinmonth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if ( startYear == endYear )
+   {
+      if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || (( startYear % 400 ) == 0 ))
+      {
+         if ( startMonth == endMonth )
+         {
+            VAR__SUM = ( VAR__SUM + endDay ) - startDay;
+         }
+         else
+         {
+            for ( VAR__53647 = startMonth + 1; VAR__53647 < endMonth; VAR__53647++ )
+            {
+               VAR__SUM = VAR__SUM + runmonth[VAR__53647 - 1];
+            }
+
+            VAR__SUM = ( runmonth[startMonth - 1] - startDay ) + endDay;
+         }
+      }
+      else
+      {
+         if ( startMonth == endMonth )
+         {
+            VAR__SUM = ( VAR__SUM + endDay ) - startDay;
+         }
+         else
+         {
+            for ( VAR__53647 = startMonth + 1; VAR__53647 < endMonth; VAR__53647++ )
+            {
+               VAR__SUM = VAR__SUM + pinmonth[VAR__53647 - 1];
+            }
+
+            VAR__SUM = ( pinmonth[startMonth - 1] - startDay ) + endDay;
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = startYear + 1; VAR__53647 < endYear; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            VAR__SUM = VAR__SUM + 366;
+         }
+         else
+         {
+            VAR__SUM = VAR__SUM + 365;
+         }
+      }
+
+      if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || (( startYear % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = startMonth + 1; VAR__53647 <= 12; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + runmonth[VAR__53647 - 1];
+         }
+
+         VAR__SUM = ( VAR__SUM + runmonth[startMonth - 1] ) - startDay;
+      }
+      else
+      {
+         for ( VAR__53647 = startMonth + 1; VAR__53647 <= 12; VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + pinmonth[VAR__53647 - 1];
+         }
+
+         VAR__SUM = ( VAR__SUM + pinmonth[startMonth - 1] ) - startDay;
+      }
+
+      if (((( endYear % 4 ) == 0 ) && (( endYear % 100 ) != 0 )) || (( endYear % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + runmonth[VAR__53647];
+         }
+
+         VAR__SUM = VAR__SUM + endDay;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + pinmonth[VAR__53647];
+         }
+
+         VAR__SUM = VAR__SUM + endDay;
+      }
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

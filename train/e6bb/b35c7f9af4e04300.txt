@@ -1,0 +1,103 @@
+void judge(int VAR__1238129, int VAR_1238123, int (*VAR_233)[9])
+{
+   int A_STRING[9][9];
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR_1238123 == 0 )
+   {
+      return;
+   }
+
+   memcpy(A_STRING, VAR_233, sizeof( A_STRING ));
+   for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         if ( A_STRING[VAR__53647][VAR__21230] != 0 )
+         {
+            if ( VAR__53647 != 0 )
+            {
+               if ( VAR__21230 != 0 )
+               {
+                  VAR_233[VAR__53647 - 1][VAR__21230 - 1] += A_STRING[VAR__53647][VAR__21230];
+               }
+
+               if ( VAR__21230 != 8 )
+               {
+                  VAR_233[VAR__53647 - 1][VAR__21230 + 1] += A_STRING[VAR__53647][VAR__21230];
+               }
+
+               VAR_233[VAR__53647 - 1][VAR__21230] += A_STRING[VAR__53647][VAR__21230];
+            }
+
+            if ( VAR__53647 != 8 )
+            {
+               if ( VAR__21230 != 0 )
+               {
+                  VAR_233[VAR__53647 + 1][VAR__21230 - 1] += A_STRING[VAR__53647][VAR__21230];
+               }
+
+               if ( VAR__21230 != 8 )
+               {
+                  VAR_233[VAR__53647 + 1][VAR__21230 + 1] += A_STRING[VAR__53647][VAR__21230];
+               }
+
+               VAR_233[VAR__53647 + 1][VAR__21230] += A_STRING[VAR__53647][VAR__21230];
+            }
+
+            if ( VAR__21230 != 0 )
+            {
+               VAR_233[VAR__53647][VAR__21230 - 1] += A_STRING[VAR__53647][VAR__21230];
+            }
+
+            if ( VAR__21230 != 8 )
+            {
+               VAR_233[VAR__53647][VAR__21230 + 1] += A_STRING[VAR__53647][VAR__21230];
+            }
+
+            VAR_233[VAR__53647][VAR__21230] += A_STRING[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   judge(VAR__1238129, VAR_1238123 - 1, VAR_233);
+}
+
+
+void output(int (*VAR_233)[9])
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         cout << VAR_233[VAR__53647][VAR__21230];
+
+         if ( VAR__21230 != 8 )
+         {
+            cout << " ";
+         }
+         else
+         {
+            cout << endl;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR_233[9][9] = { 0 };
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   VAR_233[4][4] = VAR__1238129;
+   judge(VAR__1238129, VAR_1238123, VAR_233);
+   output(VAR_233);
+   return 0;
+}

@@ -1,0 +1,99 @@
+struct patient
+{
+   char           id[10];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+struct patient *sort(struct patient *VAR__HEAD, char VAR__12302[10], int VAR__819283)
+{
+   struct patient *pp;
+   struct patient *VAR_233;
+   struct patient *VAR_9494;
+
+   VAR_233  = VAR__HEAD;
+   pp       = VAR_233;
+   VAR_233  = VAR_233->VAR__NEXT;
+   VAR_9494 = (struct patient *)malloc(LEN);
+   strcpy(VAR_9494->id, VAR__12302);
+   VAR_9494->age = VAR__819283;
+
+   while (( VAR_233 != NULL ) && ( VAR_233->age >= VAR__819283 ))
+   {
+      pp      = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_9494->VAR__NEXT = VAR_233;
+   pp->VAR__NEXT       = VAR_9494;
+}
+
+
+struct patient *creat(struct patient *hhead, char VAR__12302[10], int VAR__819283)
+{
+   struct patient *VAR_233;
+   struct patient *pp;
+   struct patient *VAR_9494;
+
+   VAR_233 = hhead;
+   pp      = VAR_233;
+   VAR_233 = VAR_233->VAR__NEXT;
+
+   while ( VAR_233 != NULL )
+   {
+      pp      = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_9494      = (struct patient *)malloc(LEN);
+   VAR_9494->age = VAR__819283;
+   strcpy(VAR_9494->id, VAR__12302);
+   VAR_9494->VAR__NEXT = VAR_233;
+   pp->VAR__NEXT       = VAR_9494;
+}
+
+
+void main()
+{
+   struct patient *VAR__HEAD;
+   struct patient *hhead;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+   int            VAR_1238123;
+   int            VAR__819283;
+   int            VAR__53647;
+   char           VAR__12302[10];
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD            = (struct patient *)malloc(LEN);
+   VAR__HEAD->VAR__NEXT = NULL;
+   hhead            = (struct patient *)malloc(LEN);
+   hhead->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d\n", VAR__12302, &VAR__819283);
+
+      if ( VAR__819283 >= 60 )
+      {
+         sort(VAR__HEAD, VAR__12302, VAR__819283);
+      }
+      else
+      {
+         creat(hhead, VAR__12302, VAR__819283);
+      }
+   }
+
+   ANOTHER_POINTER     = VAR__HEAD->VAR__NEXT;
+   YET_ANOTHER_POINTER = hhead->VAR__NEXT;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      printf("%s\n", ANOTHER_POINTER->id);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   while ( YET_ANOTHER_POINTER != NULL )
+   {
+      printf("%s\n", YET_ANOTHER_POINTER->id);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+   }
+}

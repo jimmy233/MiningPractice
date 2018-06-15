@@ -1,0 +1,74 @@
+char pain[101][102][102];
+void trans(int, int, int);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int day;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> pain[1][VAR__53647][VAR__21230];
+      }
+   }
+
+
+   cin >> day;
+   for ( VAR__temp = 2; VAR__temp <= day; VAR__temp++ )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            pain[VAR__temp][VAR__53647][VAR__21230] = pain[VAR__temp - 1][VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( pain[VAR__temp - 1][VAR__53647][VAR__21230] == '@' )
+            {
+               trans(VAR__temp, VAR__53647 - 1, VAR__21230);
+               trans(VAR__temp, VAR__53647 + 1, VAR__21230);
+               trans(VAR__temp, VAR__53647, VAR__21230 - 1);
+               trans(VAR__temp, VAR__53647, VAR__21230 + 1);
+            }
+         }
+      }
+   }
+
+   int VAR__COUNT = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( pain[day][VAR__53647][VAR__21230] == '@' )
+         {
+            VAR__COUNT++;
+         }
+      }
+   }
+
+
+
+   ( cout << VAR__COUNT ) << endl;
+   return 0;
+}
+
+
+void trans(int VAR__temp, int VAR__53647, int VAR__21230)
+{
+   if ( pain[VAR__temp - 1][VAR__53647][VAR__21230] == '.' )
+   {
+      pain[VAR__temp][VAR__53647][VAR__21230] = '@';
+   }
+}

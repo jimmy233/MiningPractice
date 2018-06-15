@@ -1,0 +1,67 @@
+int main()
+{
+   char string[200];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR_233;
+   int  VAR__7685[100];
+   int  VAR__3918907[100];
+   int  VAR_666;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  VAR__1238129;
+
+   gets(string);
+   VAR_1238123 = strlen(string);
+   char c1;
+   char c2;
+   c1 = string[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( string[VAR__53647] != c1 )
+      {
+         c2 = string[VAR__53647];
+         break;
+      }
+   }
+
+   VAR_233 = 1;
+   VAR_666 = 1;
+   for ( VAR_233 = 1; VAR_233 < VAR_1238123; VAR_233 = VAR_233 + 2 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if (( string[VAR__53647] == c1 ) && ( string[VAR__53647 + VAR_233] == c2 ))
+         {
+            string[VAR__53647]           = 'a';
+            string[VAR__53647 + VAR_233] = 'a';
+            VAR__7685[VAR_666]           = VAR__53647;
+            VAR__3918907[VAR_666]        = VAR__53647 + VAR_233;
+            VAR_666++;
+         }
+      }
+   }
+
+   for ( VAR_666 = 1; VAR_666 <= ( VAR_1238123 / 2 ); VAR_666++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= (( VAR_1238123 / 2 ) - VAR_666 ); VAR__21230++ )
+      {
+         if ( VAR__3918907[VAR__21230] > VAR__3918907[VAR__21230 + 1] )
+         {
+            VAR__temp = VAR__3918907[VAR__21230];
+            VAR__3918907[VAR__21230]     = VAR__3918907[VAR__21230 + 1];
+            VAR__3918907[VAR__21230 + 1] = VAR__temp;
+            VAR__1238129              = VAR__7685[VAR__21230];
+            VAR__7685[VAR__21230]     = VAR__7685[VAR__21230 + 1];
+            VAR__7685[VAR__21230 + 1] = VAR__1238129;
+         }
+      }
+   }
+
+   for ( VAR_666 = 1; VAR_666 <= ( VAR_1238123 / 2 ); VAR_666++ )
+   {
+      printf("%d %d\n", VAR__7685[VAR_666], VAR__3918907[VAR_666]);
+   }
+
+   return 0;
+}

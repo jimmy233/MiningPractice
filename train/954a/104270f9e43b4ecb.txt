@@ -1,0 +1,90 @@
+struct student
+{
+   char name[20];
+   int  qimo;
+   int  banji;
+   char leader;
+   char west;
+   int  essay;
+}
+stu[1000];
+struct money
+{
+   long VAR_233;
+   int  VAR_666;
+}
+money[1000];
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__MAX[1000] = { 0 };
+   int  mmax;
+   int  VAR__8444594 = 0;
+   long VAR__SUM     = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].qimo, &stu[VAR__53647].banji, &stu[VAR__53647].leader, &stu[VAR__53647].west, &stu[VAR__53647].essay);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      money[VAR__53647].VAR_233 = 0;
+      money[VAR__53647].VAR_666 = VAR__53647;
+
+      if (( stu[VAR__53647].qimo > 80 ) && ( stu[VAR__53647].essay >= 1 ))
+      {
+         money[VAR__53647].VAR_233 = money[VAR__53647].VAR_233 + 8000;
+      }
+
+      if (( stu[VAR__53647].qimo > 85 ) && ( stu[VAR__53647].banji > 80 ))
+      {
+         money[VAR__53647].VAR_233 = money[VAR__53647].VAR_233 + 4000;
+      }
+
+      if ( stu[VAR__53647].qimo > 90 )
+      {
+         money[VAR__53647].VAR_233 = money[VAR__53647].VAR_233 + 2000;
+      }
+
+      if (( stu[VAR__53647].qimo > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         money[VAR__53647].VAR_233 = money[VAR__53647].VAR_233 + 1000;
+      }
+
+      if (( stu[VAR__53647].banji > 80 ) && ( stu[VAR__53647].leader == 'Y' ))
+      {
+         money[VAR__53647].VAR_233 = money[VAR__53647].VAR_233 + 850;
+      }
+   }
+
+   VAR__21230 = VAR__53647;
+   mmax       = money[0].VAR_233;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      if ( mmax < money[VAR__53647].VAR_233 )
+      {
+         mmax = money[VAR__53647].VAR_233;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      if ( mmax == money[VAR__53647].VAR_233 )
+      {
+         VAR__8444594 = money[VAR__53647].VAR_666;
+         break;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + money[VAR__53647].VAR_233;
+   }
+
+   printf("%s\n%ld\n%ld", stu[VAR__8444594].name, money[VAR__8444594].VAR_233, VAR__SUM);
+}

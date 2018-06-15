@@ -1,0 +1,46 @@
+int factoring(int VAR__819283, int VAR__19328)
+{
+   int VAR__53647;
+   int kind = 0;
+
+   if ( VAR__819283 == 1 )
+   {
+      kind = 1;
+   }
+   else
+   {
+      for ( VAR__53647 = VAR__19328; VAR__53647 <= VAR__819283; VAR__53647++ )
+      {
+         if (( VAR__819283 % VAR__53647 ) == 0 )
+         {
+            kind = factoring(VAR__819283 / VAR__53647, VAR__53647) + kind;
+         }
+      }
+   }
+
+   return kind;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283[30000] = { 0 };
+   int VAR__19328[30000]  = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+      VAR__19328[VAR__53647] = factoring(VAR__819283[VAR__53647], 2);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%d\n", VAR__19328[VAR__53647]);
+   }
+
+   return 0;
+}

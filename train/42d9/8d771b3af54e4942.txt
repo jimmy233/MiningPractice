@@ -1,0 +1,95 @@
+double distance(int xa, int ya, int za, int xb, int yb, int zb);
+
+double distance(int xa, int ya, int za, int xb, int yb, int zb)
+{
+   int    VAR__SUM;
+   double dis;
+
+   VAR__SUM = ((( xb - xa ) * ( xb - xa )) + (( yb - ya ) * ( yb - ya ))) + (( zb - za ) * ( zb - za ));
+   dis      = sqrt(VAR__SUM);
+   return dis;
+}
+
+
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__temp;
+   int    VAR__21230;
+   int    VAR__19328   = 0;
+   int    VAR_21983012 = 0;
+   int    te;
+   double td;
+
+   scanf("%d", &VAR_1238123);
+   struct point
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   point[10];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &point[VAR__53647].VAR__7685, &point[VAR__53647].VAR__3918907, &point[VAR__53647].VAR__9290);
+   }
+
+   struct
+   {
+      int    VAR_233;
+      int    VAR_666;
+      double dist;
+   }
+   VAR__TEMP[45];
+   for ( VAR__53647 = 0; VAR__53647 < 45; VAR__53647++ )
+   {
+      VAR__TEMP[VAR__53647].dist = -1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         VAR__TEMP[VAR_21983012].VAR_233 = VAR__53647;
+         VAR__TEMP[VAR_21983012].VAR_666 = VAR__21230;
+         VAR__TEMP[VAR_21983012].dist    = distance(point[VAR__53647].VAR__7685, point[VAR__53647].VAR__3918907, point[VAR__53647].VAR__9290, point[VAR__21230].VAR__7685, point[VAR__21230].VAR__3918907, point[VAR__21230].VAR__9290);
+         VAR_21983012 = VAR_21983012 + 1;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 45; VAR__53647++ )
+   {
+      for ( VAR_21983012 = 0; VAR_21983012 < 44; VAR_21983012++ )
+      {
+         if ( VAR__TEMP[VAR_21983012].dist < VAR__TEMP[VAR_21983012 + 1].dist )
+         {
+            te = VAR__TEMP[VAR_21983012 + 1].VAR_233;
+            VAR__TEMP[VAR_21983012 + 1].VAR_233 = VAR__TEMP[VAR_21983012].VAR_233;
+            VAR__TEMP[VAR_21983012].VAR_233     = te;
+            te = VAR__TEMP[VAR_21983012 + 1].VAR_666;
+            VAR__TEMP[VAR_21983012 + 1].VAR_666 = VAR__TEMP[VAR_21983012].VAR_666;
+            VAR__TEMP[VAR_21983012].VAR_666     = te;
+            td = VAR__TEMP[VAR_21983012 + 1].dist;
+            VAR__TEMP[VAR_21983012 + 1].dist = VAR__TEMP[VAR_21983012].dist;
+            VAR__TEMP[VAR_21983012].dist     = td;
+         }
+      }
+   }
+
+
+
+   for ( VAR_21983012 = 0; VAR_21983012 < 45; VAR_21983012++ )
+   {
+      if ( VAR__TEMP[VAR_21983012].dist != ( -1 ))
+      {
+         printf("(%d,%d,%d)-", point[VAR__TEMP[VAR_21983012].VAR_666].VAR__7685, point[VAR__TEMP[VAR_21983012].VAR_666].VAR__3918907, point[VAR__TEMP[VAR_21983012].VAR_666].VAR__9290);
+         printf("(%d,%d,%d)=", point[VAR__TEMP[VAR_21983012].VAR_233].VAR__7685, point[VAR__TEMP[VAR_21983012].VAR_233].VAR__3918907, point[VAR__TEMP[VAR_21983012].VAR_233].VAR__9290);
+         printf("%.2lf\n", VAR__TEMP[VAR_21983012].dist);
+      }
+   }
+
+
+   return 0;
+}

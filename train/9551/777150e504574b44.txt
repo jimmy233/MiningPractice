@@ -1,0 +1,61 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  sr = 0;
+   int  jr = 0;
+   int  age;
+   int  srage[100];
+   int  jrage[100];
+   char VAR__NUM[10];
+   char srnum[100][10];
+   char jrnum[100][10];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", &VAR__NUM, &age);
+
+      if ( age < 60 )
+      {
+         strcpy(jrnum[jr], VAR__NUM);
+         jrage[jr] = age;
+         jr++;
+      }
+      else
+      {
+         strcpy(srnum[sr], VAR__NUM);
+         srage[sr] = age;
+         sr++;
+      }
+   }
+
+   for ( VAR__53647 = sr - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( srage[VAR__21230] < srage[VAR__21230 + 1] )
+         {
+            age = srage[VAR__21230];
+            srage[VAR__21230]     = srage[VAR__21230 + 1];
+            srage[VAR__21230 + 1] = age;
+            strcpy(VAR__NUM, srnum[VAR__21230]);
+            strcpy(srnum[VAR__21230], srnum[VAR__21230 + 1]);
+            strcpy(srnum[VAR__21230 + 1], VAR__NUM);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < sr; VAR__53647++ )
+   {
+      printf("%s\n", srnum[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < jr; VAR__53647++ )
+   {
+      printf("%s\n", jrnum[VAR__53647]);
+   }
+
+   return 0;
+}

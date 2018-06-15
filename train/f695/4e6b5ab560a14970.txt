@@ -1,0 +1,78 @@
+int main()
+{
+   int VAR_21983012;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_FLAG;
+   int day[12][31] = { 0 };
+   int date[366];
+
+   scanf("%d", &VAR_21983012);
+   for ( VAR__53647 = 0; VAR__53647 < 365; VAR__53647++ )
+   {
+      if (( VAR_21983012 + VAR__53647 ) < 8 )
+      {
+         date[VAR__53647] = ( VAR_21983012 + VAR__53647 ) - 1;
+      }
+   }
+
+   for ( VAR_FLAG = 0; VAR_FLAG < 365; VAR_FLAG++ )
+   {
+      date[( VAR_FLAG + 8 ) - VAR_21983012] = VAR_FLAG % 7;
+   }
+
+   VAR_FLAG = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 12; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 31; VAR__21230++ )
+      {
+         if (( VAR__53647 == 1 ) && ( VAR__21230 > 27 ))
+         {
+            continue;
+         }
+         else
+         if (( VAR__53647 == 3 ) && ( VAR__21230 > 29 ))
+         {
+            continue;
+         }
+         else
+         if (( VAR__53647 == 5 ) && ( VAR__21230 > 29 ))
+         {
+            continue;
+         }
+         else
+         if (( VAR__53647 == 8 ) && ( VAR__21230 > 29 ))
+         {
+            continue;
+         }
+         else
+         if (( VAR__53647 == 10 ) && ( VAR__21230 > 29 ))
+         {
+            continue;
+         }
+         else
+         {
+            day[VAR__53647][VAR__21230] = date[VAR_FLAG];
+         }
+
+
+
+         VAR_FLAG++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 12; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 31; VAR__21230++ )
+      {
+         if (( VAR__21230 == 12 ) && ( day[VAR__53647][VAR__21230] == 4 ))
+         {
+            printf("%d\n", VAR__53647 + 1);
+         }
+      }
+   }
+
+   getchar();
+   getchar();
+   return 0;
+}

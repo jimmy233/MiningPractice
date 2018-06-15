@@ -1,0 +1,62 @@
+int main()
+{
+   char zfc[3000];
+   int  board[300];
+   int  LEN_OF_STH = 0;
+   int  VAR__COUNT = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1111;
+   int  VAR__8444594 = 0;
+
+   gets(zfc);
+   for ( VAR__53647 = 0; zfc[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < 32; VAR__1111++ )
+      {
+         if (( zfc[VAR__53647] == ' ' ) && ( zfc[VAR__53647 + 1] == ' ' ))
+         {
+            for ( VAR__21230 = VAR__53647 + 1; zfc[VAR__21230] != '\0'; VAR__21230++ )
+            {
+               zfc[VAR__21230] = zfc[VAR__21230 + 1];
+            }
+         }
+      }
+   }
+
+   LEN_OF_STH = strlen(zfc);
+   for ( VAR__53647 = 0; zfc[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( zfc[VAR__53647] == ' ' ) && ( zfc[VAR__53647 + 1] != ' ' ))
+      {
+         VAR__COUNT++;
+      }
+   }
+
+   for ( VAR__21230 = 0; zfc[VAR__21230] != '\0'; VAR__21230++ )
+   {
+      if (( zfc[VAR__21230] == ' ' ) && ( zfc[VAR__21230 + 1] != ' ' ))
+      {
+         board[VAR__8444594] = VAR__21230;
+         VAR__8444594++;
+      }
+   }
+
+   if ( VAR__COUNT == 0 )
+   {
+      printf("%d", LEN_OF_STH);
+   }
+
+   if ( VAR__COUNT > 0 )
+   {
+      printf("%d,", board[0]);
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+      {
+         printf("%d,", ( board[VAR__53647 + 1] - board[VAR__53647] ) - 1);
+      }
+
+      printf("%d", ( LEN_OF_STH - board[VAR__COUNT - 1] ) - 1);
+   }
+
+   return 0;
+}

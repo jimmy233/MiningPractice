@@ -1,0 +1,102 @@
+int main()
+{
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__NUM[600] = { 0 };
+   int  VAR_FLAG;
+   char chuan[600]  = { '\0' };
+   char cha[600][7] = { '\0' };
+   char comp[7]     = { '\0' };
+
+   ( cin >> VAR_1238123 ) >> chuan;
+   LEN_OF_STH = strlen(chuan);
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      VAR__8444594 = 0;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + VAR_1238123 ); VAR__21230++ )
+      {
+         comp[VAR__8444594] = chuan[VAR__21230];
+         VAR__8444594++;
+      }
+
+      VAR__21230 = 0;
+      VAR_FLAG   = 0;
+
+      while ( VAR__NUM[VAR__21230] != 0 )
+      {
+         if ( strcmp(comp, cha[VAR__21230]) == 0 )
+         {
+            VAR__NUM[VAR__21230]++;
+            VAR_FLAG = 1;
+            break;
+         }
+
+         VAR__21230++;
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            cha[VAR__21230][VAR__8444594] = comp[VAR__8444594];
+         }
+
+         VAR__NUM[VAR__21230]++;
+      }
+   }
+
+   VAR__53647 = 0;
+
+   while ( VAR__NUM[VAR__53647] != 0 )
+   {
+      VAR__53647++;
+   }
+
+   LEN_OF_STH = VAR__53647;
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__21230 = 1; VAR__21230 < ( LEN_OF_STH - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230] == 0 )
+         {
+            break;
+         }
+
+         if ( VAR__NUM[VAR__21230 - 1] < VAR__NUM[VAR__21230] )
+         {
+            VAR__8444594             = VAR__NUM[VAR__21230 - 1];
+            VAR__NUM[VAR__21230 - 1] = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__8444594;
+            strcpy(comp, cha[VAR__21230 - 1]);
+            strcpy(cha[VAR__21230 - 1], cha[VAR__21230]);
+            strcpy(cha[VAR__21230], comp);
+         }
+      }
+   }
+
+   if ( VAR__NUM[0] == 1 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   {
+      VAR__53647 = 0;
+      ( cout << VAR__NUM[0] ) << endl;
+
+      while ( VAR__NUM[VAR__53647] == VAR__NUM[0] )
+      {
+         ( cout << cha[VAR__53647] ) << endl;
+         VAR__53647++;
+      }
+   }
+
+   return 0;
+}

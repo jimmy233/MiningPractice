@@ -1,0 +1,74 @@
+int speed[1024];
+int ano[1024];
+int fight(int myId, int anoId)
+{
+   if ( speed[myId] < ano[anoId] )
+   {
+      return -1;
+   }
+   else
+   if ( speed[myId] == ano[anoId] )
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while (( scanf("%d", &VAR_1238123) == 1 ) && ( VAR_1238123 != 0 ))
+   {
+      int VAR__SUM = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         scanf("%d", speed + VAR__53647);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         scanf("%d", ano + VAR__53647);
+      }
+
+      sort(speed, speed + VAR_1238123);
+      sort(ano, ano + VAR_1238123);
+      int myLow   = 0;
+      int myHigh  = VAR_1238123 - 1;
+      int anoLow  = 0;
+      int anoHigh = VAR_1238123 - 1;
+
+      while ( myLow <= myHigh )
+      {
+         if ( speed[myLow] > ano[anoLow] )
+         {
+            VAR__SUM += fight(myLow, anoLow);
+            ++myLow, ++anoLow;
+         }
+         else
+         if ( speed[myLow] < ano[anoLow] )
+         {
+            VAR__SUM += fight(myLow, anoHigh);
+            ++myLow, --anoHigh;
+         }
+         else
+         if ( speed[myHigh] > ano[anoHigh] )
+         {
+            VAR__SUM += fight(myHigh, anoHigh);
+            --myHigh, --anoHigh;
+         }
+         else
+         if ( speed[myHigh] <= ano[anoHigh] )
+         {
+            VAR__SUM += fight(myLow, anoHigh);
+            ++myLow, --anoHigh;
+         }
+      }
+
+      printf("%d\n", VAR__SUM * 200);
+   }
+}

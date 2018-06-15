@@ -1,0 +1,48 @@
+int main()
+{
+   int  s_n[128];
+   char n_s[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   char in[255];
+   char out[255] = "0";
+   int  VAR__53647;
+   int  from;
+   int  to;
+   int  LEN_OF_STH = 0;
+   long VAR__NUM   = 0;
+
+   for ( VAR__53647 = '0'; VAR__53647 <= '9'; VAR__53647++ )
+   {
+      s_n[VAR__53647] = VAR__53647 - '0';
+   }
+
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'Z'; VAR__53647++ )
+   {
+      s_n[VAR__53647] = ( VAR__53647 - 'A' ) + 10;
+   }
+
+   for ( VAR__53647 = 'a'; VAR__53647 < 'z'; VAR__53647++ )
+   {
+      s_n[VAR__53647] = ( VAR__53647 - 'a' ) + 10;
+   }
+
+   scanf("%d %s %d", &from, in, &to);
+   for ( VAR__53647 = 0; in[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      VAR__NUM = ( VAR__NUM * from ) + s_n[in[VAR__53647]];
+   }
+
+   LEN_OF_STH = ( VAR__NUM == 0 ) ? ( 1 ) : ( 0 );
+
+   while ( VAR__NUM > 0 )
+   {
+      out[LEN_OF_STH++] = n_s[VAR__NUM % to];
+      VAR__NUM          = VAR__NUM / to;
+   }
+
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", out[VAR__53647]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,62 @@
+int main()
+{
+   char A_STRING[500];
+   char s1;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  boy[500];
+   int  girl[500];
+   int  VAR_233     = 0;
+   int  VAR_1238123 = 0;
+   int  list[500];
+
+   gets(A_STRING);
+   s1 = A_STRING[0];
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == s1 )
+      {
+         VAR_233++;
+         list[VAR_233] = VAR__53647;
+      }
+      else
+      {
+         VAR_1238123++;
+         girl[VAR_1238123] = VAR__53647;
+         boy[VAR_1238123]  = list[VAR_233];
+         VAR_233--;
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( girl[VAR__53647] < girl[VAR__21230] )
+         {
+            VAR__temp        = girl[VAR__53647];
+            girl[VAR__53647] = girl[VAR__21230];
+            girl[VAR__21230] = VAR__temp;
+            VAR__temp        = boy[VAR__53647];
+            boy[VAR__53647]  = boy[VAR__21230];
+            boy[VAR__21230]  = VAR__temp;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      (( cout << boy[VAR__53647] ) << " " ) << girl[VAR__53647];
+
+      if ( VAR__53647 != VAR_1238123 )
+      {
+         cout << endl;
+      }
+   }
+
+   return 0;
+}

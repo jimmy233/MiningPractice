@@ -1,0 +1,107 @@
+struct queue
+{
+   char          ID[11];
+   int           age;
+   struct number *VAR__NEXT;
+};
+int          VAR_129012 = 1;
+struct queue *AppendNewNode(int VAR_1238123);
+
+void main()
+{
+   int          VAR_1238123;
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__819283[100] = { 0 };
+   int          VAR__TEMP;
+   char         temp_2[11] = { "" };
+   struct queue *VAR__HEAD;
+   struct queue *VAR_233;
+   struct queue *pf;
+   struct queue *temp_1;
+
+   scanf("%ld", &VAR_1238123);
+   VAR__HEAD = AppendNewNode(VAR_1238123);
+   VAR_233   = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      scanf("%s %d\n", &VAR_233->ID, &VAR_233->age);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR_233->age;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = VAR__HEAD;
+   pf      = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if (( VAR__819283[VAR__21230 + 1] >= 60 ) && ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] ))
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+            pf           = VAR_233->VAR__NEXT;
+            VAR__TEMP    = VAR_233->age;
+            VAR_233->age = pf->age;
+            pf->age      = VAR__TEMP;
+            strcpy(temp_2, VAR_233->ID);
+            strcpy(VAR_233->ID, pf->ID);
+            strcpy(pf->ID, temp_2);
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+         else
+         {
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+      }
+
+      VAR_233 = VAR__HEAD;
+   }
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->ID);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+struct queue *AppendNewNode(int VAR_1238123)
+{
+   struct queue *VAR__HEAD = NULL;
+   struct queue *newNode;
+   struct queue *thisNode;
+
+   do
+   {
+      newNode = (struct number *)malloc(sizeof( struct queue ));
+
+      if ( VAR_129012 == 1 )
+      {
+         VAR__HEAD = newNode;
+         thisNode  = VAR__HEAD;
+      }
+      else
+      {
+         thisNode->VAR__NEXT = newNode;
+      }
+
+      if ( VAR_129012 <= VAR_1238123 )
+      {
+         thisNode = newNode;
+         VAR_129012++;
+      }
+   } while ( VAR_129012 <= VAR_1238123 );
+   thisNode->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}

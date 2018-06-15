@@ -1,0 +1,60 @@
+int main()
+{
+   char setline[400];
+   int  an[400];
+   int  res[400];
+
+   while ( cin >> setline )
+   {
+      int VAR__53647;
+      int VAR__21230;
+      int VAR__8444594;
+      int LEN_OF_STH;
+      int len2;
+      memset(an, 0, 400);
+      memset(res, 0, 400);
+      LEN_OF_STH = strlen(setline);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         an[VAR__53647] = setline[VAR__53647] - '0';
+      }
+
+      res[0] = an[0] / 13;
+      for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         res[VAR__53647 + 1] = ((( an[VAR__53647] % 13 ) * 10 ) + an[VAR__53647 + 1] ) / 13;
+         an[VAR__53647 + 1]  = (( an[VAR__53647] % 13 ) * 10 ) + an[VAR__53647 + 1];
+      }
+
+      len2 = an[LEN_OF_STH - 1] % 13;
+
+      if ( LEN_OF_STH == 1 )
+      {
+         cout << 0;
+      }
+      else
+      if (( LEN_OF_STH == 2 ) && ( an[1] < 13 ))
+      {
+         cout << 0;
+      }
+      else
+      {
+         VAR__53647 = 0;
+
+         while ( res[VAR__53647] == 0 )
+         {
+            VAR__53647++;
+         }
+
+         for ( VAR__53647; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+         {
+            cout << res[VAR__53647];
+         }
+      }
+
+
+      (( cout << endl ) << len2 ) << endl;
+   }
+
+   return 0;
+}

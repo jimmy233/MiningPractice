@@ -1,0 +1,63 @@
+struct monkey
+{
+   int           VAR__NUM;
+   struct monkey *VAR__NEXT;
+}
+monkey[300];
+void main()
+{
+   struct monkey *VAR__HEAD;
+   struct monkey *VAR_233;
+   struct monkey *VAR_666;
+   int           VAR_1238123;
+   int           VAR__53647;
+   int           VAR__1238129;
+   int           VAR__21230;
+   int           VAR__8444594;
+
+   for ( VAR__53647 = 0; VAR__53647 < 300; VAR__53647++ )
+   {
+      monkey[VAR__53647].VAR__NUM = VAR__53647 + 1;
+   }
+
+   for ( VAR__21230 = 0; ; VAR__21230++ )
+   {
+      scanf("%d %d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR_1238123 == 0 ) && ( VAR__1238129 == 0 ))
+      {
+         break;
+      }
+
+      VAR__HEAD = &monkey[0];
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         monkey[VAR__53647].VAR__NEXT = &monkey[VAR__53647 + 1];
+      }
+
+      monkey[VAR_1238123 - 1].VAR__NEXT = &monkey[0];
+      VAR_233 = VAR__HEAD;
+
+      if ( VAR__1238129 != 1 )
+      {
+         while ( VAR_233 != VAR_233->VAR__NEXT )
+         {
+            for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__1238129 - 2 ); VAR__8444594++ )
+            {
+               VAR_233 = VAR_233->VAR__NEXT;
+            }
+
+            VAR_666            = VAR_233->VAR__NEXT;
+            VAR_233->VAR__NEXT = VAR_666->VAR__NEXT;
+            VAR_233            = VAR_666->VAR__NEXT;
+         }
+
+         printf("%d\n", VAR_233->VAR__NUM);
+      }
+
+      if ( VAR__1238129 == 1 )
+      {
+         printf("%d\n", monkey[VAR_1238123 - 1].VAR__NUM);
+      }
+   }
+}

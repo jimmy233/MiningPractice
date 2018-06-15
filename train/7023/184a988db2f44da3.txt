@@ -1,0 +1,84 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   scanf("\n");
+   char ***VAR_233;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   VAR_233 = (char ***)malloc(VAR_1238123 * ( sizeof( char ** )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = (char **)malloc(2 * ( sizeof( char * )));
+      for ( VAR__21230 = 0; VAR__21230 < 2; VAR__21230++ )
+      {
+         VAR_233[VAR__53647][VAR__21230] = (char *)malloc(100 * ( sizeof( char )));
+         scanf("%s", VAR_233[VAR__53647][VAR__21230]);
+
+         if ( VAR__21230 == 0 )
+         {
+            scanf("\n");
+         }
+         else
+         if (( VAR__21230 == 1 ) && ( VAR__53647 == ( VAR_1238123 - 1 )))
+         {
+         }
+         else
+         {
+            scanf("\n\n");
+         }
+      }
+   }
+
+   int tuiwei;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int VAR__819283 = strlen(VAR_233[VAR__53647][0]);
+      int VAR__19328  = strlen(VAR_233[VAR__53647][1]);
+      for ( VAR__21230 = VAR__819283 - 1, tuiwei = 0; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ( VAR__21230 >= ( VAR__819283 - VAR__19328 ))
+         {
+            VAR__8444594 = VAR__21230 - ( VAR__819283 - VAR__19328 );
+
+            if ( VAR_233[VAR__53647][0][VAR__21230] >= ( VAR_233[VAR__53647][1][VAR__8444594] + tuiwei ))
+            {
+               VAR_233[VAR__53647][0][VAR__21230] = (( VAR_233[VAR__53647][0][VAR__21230] - VAR_233[VAR__53647][1][VAR__8444594] ) - tuiwei ) + '0';
+               tuiwei = 0;
+            }
+            else
+            {
+               VAR_233[VAR__53647][0][VAR__21230] = ((( VAR_233[VAR__53647][0][VAR__21230] + 10 ) - VAR_233[VAR__53647][1][VAR__8444594] ) - tuiwei ) + '0';
+               tuiwei = 1;
+            }
+         }
+         else
+         {
+            if ( VAR_233[VAR__53647][0][VAR__21230] >= tuiwei )
+            {
+               VAR_233[VAR__53647][0][VAR__21230] = VAR_233[VAR__53647][0][VAR__21230] - tuiwei;
+               tuiwei = 0;
+            }
+            else
+            {
+               VAR_233[VAR__53647][0][VAR__21230] = ( VAR_233[VAR__53647][0][VAR__21230] + 10 ) - tuiwei;
+               tuiwei = 1;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 <= ( VAR_1238123 - 2 ))
+      {
+         printf("%s\n", VAR_233[VAR__53647][0]);
+      }
+      else
+      {
+         printf("%s", VAR_233[VAR__53647][0]);
+      }
+   }
+}

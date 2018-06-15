@@ -1,0 +1,74 @@
+int main()
+{
+   int VAR__819283[5][5];
+   int VAR__19328[5][5];
+   int site[5][5];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_9494;
+   int tmp;
+
+   VAR_9494 = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= 4; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 4; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+         site[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 4; VAR__53647++ )
+   {
+      tmp = 0;
+      site[VAR__53647][tmp] = 1;
+      for ( VAR__21230 = 0; VAR__21230 <= 4; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][tmp] < VAR__819283[VAR__53647][VAR__21230] )
+         {
+            site[VAR__53647][tmp]        = 0;
+            site[VAR__53647][VAR__21230] = 1;
+            tmp = VAR__21230;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= 4; VAR__21230++ )
+   {
+      tmp = 0;
+      site[tmp][VAR__21230] = site[tmp][VAR__21230] && 1;
+      for ( VAR__53647 = 1; VAR__53647 <= 4; VAR__53647++ )
+      {
+         if ( VAR__819283[tmp][VAR__21230] > VAR__819283[VAR__53647][VAR__21230] )
+         {
+            site[tmp][VAR__21230]        = 0;
+            site[VAR__53647][VAR__21230] = site[VAR__53647][VAR__21230] && 1;
+            tmp = VAR__53647;
+         }
+         else
+         {
+            site[VAR__53647][VAR__21230] = 0;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 4; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 4; VAR__21230++ )
+      {
+         if ( site[VAR__53647][VAR__21230] == 1 )
+         {
+            printf("%d %d %d\n", VAR__53647 + 1, VAR__21230 + 1, VAR__819283[VAR__53647][VAR__21230]);
+            VAR_9494++;
+            break;
+         }
+      }
+   }
+
+   if ( VAR_9494 == 0 )
+   {
+      printf("not found");
+   }
+
+   return 0;
+}

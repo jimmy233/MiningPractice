@@ -1,0 +1,74 @@
+int main()
+{
+   int N;
+
+   scanf("%d", &N);
+   struct std
+   {
+      char name[21];
+      int  pin;
+      int  yi;
+      char gan;
+      char west;
+      int  VAR_1238123;
+   }
+       std[100];
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", std[VAR__53647].name, &std[VAR__53647].pin, &std[VAR__53647].yi, &std[VAR__53647].gan, &std[VAR__53647].west, &std[VAR__53647].VAR_1238123);
+   }
+
+   int VAR__SUM[100];
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if (( std[VAR__53647].pin > 80 ) && ( std[VAR__53647].VAR_1238123 > 0 ))
+      {
+         VAR__SUM[VAR__53647] += 8000;
+      }
+
+      if (( std[VAR__53647].pin > 85 ) && ( std[VAR__53647].yi > 80 ))
+      {
+         VAR__SUM[VAR__53647] += 4000;
+      }
+
+      if ( std[VAR__53647].pin > 90 )
+      {
+         VAR__SUM[VAR__53647] += 2000;
+      }
+
+      if (( std[VAR__53647].pin > 85 ) && ( std[VAR__53647].west == 'Y' ))
+      {
+         VAR__SUM[VAR__53647] += 1000;
+      }
+
+      if (( std[VAR__53647].yi > 80 ) && ( std[VAR__53647].gan == 'Y' ))
+      {
+         VAR__SUM[VAR__53647] += 850;
+      }
+   }
+
+   int VAR__MAX     = VAR__SUM[0];
+   int VAR__8444594 = 0;
+   int he           = VAR__SUM[0];
+   for ( VAR__53647 = 1; VAR__53647 < N; VAR__53647++ )
+   {
+      he += VAR__SUM[VAR__53647];
+
+      if ( VAR__MAX < VAR__SUM[VAR__53647] )
+      {
+         VAR__MAX     = VAR__SUM[VAR__53647];
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   printf("%s\n", std[VAR__8444594].name);
+   printf("%d\n", VAR__MAX);
+   printf("%d\n", he);
+   return 0;
+}

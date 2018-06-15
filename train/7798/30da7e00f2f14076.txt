@@ -1,0 +1,81 @@
+struct A
+{
+   char VAR__NUM[1000];
+   char B[27];
+};
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__819283;
+   int  VAR__8444594;
+   int  VAR__temp;
+   int  sb[27]  = { 0 };
+   int  sb2[27] = { 0 };
+   char VAR__7685;
+
+   scanf("%d", &VAR_1238123);
+   struct A book[999] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%s", book[VAR__53647].VAR__NUM, book[VAR__53647].B);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; ; VAR__8444594++ )
+      {
+         VAR__819283 = book[VAR__53647].B[VAR__8444594];
+
+         if (( book[VAR__53647].B[VAR__8444594] <= 'Z' ) && ( book[VAR__53647].B[VAR__8444594] >= 'A' ))
+         {
+            sb[VAR__819283 - 64]++;
+         }
+         else
+         {
+            break;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 26; VAR__53647++ )
+   {
+      sb2[VAR__53647] = sb[VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( sb[VAR__53647] > sb[VAR__53647 + 1] )
+      {
+         VAR__819283        = sb[VAR__53647];
+         sb[VAR__53647]     = sb[VAR__53647 + 1];
+         sb[VAR__53647 + 1] = VAR__819283;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 26; VAR__53647++ )
+   {
+      if ( sb2[VAR__53647] == sb[26] )
+      {
+         VAR__temp = VAR__53647;
+      }
+   }
+
+   VAR__7685 = ( 'A' + VAR__temp ) - 1;
+   printf("%c\n%d\n", VAR__7685, sb[26]);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; ; VAR__8444594++ )
+      {
+         if ( book[VAR__53647].B[VAR__8444594] == '\0' )
+         {
+            break;
+         }
+         else
+         if ( book[VAR__53647].B[VAR__8444594] == VAR__7685 )
+         {
+            printf("%s\n", book[VAR__53647].VAR__NUM);
+         }
+      }
+   }
+}

@@ -1,0 +1,90 @@
+int sushu(int VAR_1238123)
+{
+   int VAR__53647;
+
+   if ( VAR_1238123 == 2 )
+   {
+      return 1;
+   }
+
+   if (( VAR_1238123 % 2 ) == 0 )
+   {
+      return 0;
+   }
+
+   for ( VAR__53647 = 3; VAR__53647 <= sqrt(VAR_1238123); VAR__53647 += 2 )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         return 0;
+      }
+   }
+
+
+   return 1;
+}
+
+
+int huiwen(int VAR_1238123)
+{
+   int VAR__1111;
+   int VAR__819283[10];
+   int VAR__53647;
+   int VAR__1238129;
+   int VAR_233;
+
+   VAR__1111 = log10(VAR_1238123) + 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      VAR_233 = pow(10, VAR__53647);
+      VAR__819283[VAR__53647 - 1] = ( VAR_1238123 % VAR_233 ) / pow(10, VAR__53647 - 1);
+   }
+
+   for ( VAR__53647 = 0, VAR__1238129 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      VAR__1238129 += VAR__819283[( VAR__1111 - 1 ) - VAR__53647] * pow(10, VAR__53647);
+   }
+
+   if ( VAR_1238123 == VAR__1238129 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__21230;
+   int VAR__8444594;
+   int out[100];
+
+   scanf("%d%d", &VAR__819283, &VAR__19328);
+   for ( VAR__21230 = VAR__819283, VAR__8444594 = 0; VAR__21230 <= VAR__19328; VAR__21230++ )
+   {
+      if ( sushu(VAR__21230) && huiwen(VAR__21230))
+      {
+         out[VAR__8444594] = VAR__21230;
+         VAR__8444594++;
+      }
+   }
+
+   if ( VAR__8444594 == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__8444594 - 1 ); VAR__21230++ )
+      {
+         printf("%d,", out[VAR__21230]);
+      }
+
+      printf("%d", out[VAR__8444594 - 1]);
+   }
+}

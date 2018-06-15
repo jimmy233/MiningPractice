@@ -1,0 +1,65 @@
+int chs(int *p0, int VAR__NUM, int *A_POINTER, int skip);
+
+int main()
+{
+   int VAR_1238123  = 0;
+   int VAR__1238129 = 0;
+   int ppl[1000];
+   int king;
+   int VAR__53647;
+
+   scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+   while (( VAR_1238123 != 0 ) && ( VAR__1238129 != 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         ppl[VAR__53647] = VAR__53647 + 1;
+      }
+
+      for ( VAR__53647 = VAR_1238123; VAR__53647 < 1000; VAR__53647++ )
+      {
+         ppl[VAR__53647] = 0;
+      }
+
+      king = chs(ppl, VAR_1238123, ppl, VAR__1238129);
+      printf("%d\n", king);
+      scanf("%d%d", &VAR_1238123, &VAR__1238129);
+   }
+
+   return 0;
+}
+
+
+int chs(int *p0, int VAR__NUM, int *pchs, int skip)
+{
+   int *VAR__53647 = NULL;
+
+   pchs = ( pchs + skip ) - 1;
+
+   while (( pchs - p0 ) >= VAR__NUM )
+   {
+      pchs = pchs - VAR__NUM;
+   }
+
+   if ( VAR__NUM == 1 )
+   {
+      return *pchs;
+   }
+   else
+   {
+      if (( pchs - p0 ) == ( VAR__NUM - 1 ))
+      {
+         return chs(p0, VAR__NUM - 1, p0, skip);
+      }
+      else
+      {
+         for ( VAR__53647 = pchs; ( VAR__53647 - p0 ) < ( VAR__NUM - 1 ); VAR__53647++ )
+         {
+            *VAR__53647 = *( VAR__53647 + 1 );
+         }
+
+         return chs(p0, VAR__NUM - 1, pchs, skip);
+      }
+   }
+}

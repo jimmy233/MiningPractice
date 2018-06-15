@@ -1,0 +1,52 @@
+int main()
+{
+   int    VAR__819283[10][3];
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   double ans[10][10];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; ++VAR__21230 )
+      {
+         cin >> VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; ++VAR__21230 )
+      {
+         ans[VAR__53647][VAR__21230] = sqrt(( pow(((double)VAR__819283[VAR__53647][0] ) - VAR__819283[VAR__21230][0], 2) + pow(((double)VAR__819283[VAR__53647][1] ) - VAR__819283[VAR__21230][1], 2)) + pow(((double)VAR__819283[VAR__53647][2] ) - VAR__819283[VAR__21230][2], 2));
+      }
+   }
+
+   int VAR__SUM = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+
+   while ( VAR__SUM > 0 )
+   {
+      VAR__SUM--;
+      int maxI = 0;
+      int maxJ = 1;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; ++VAR__21230 )
+         {
+            if ( ans[VAR__53647][VAR__21230] > ans[maxI][maxJ] )
+            {
+               maxI = VAR__53647;
+               maxJ = VAR__21230;
+            }
+         }
+      }
+
+      (((((((((((((((( cout << "(" ) << VAR__819283[maxI][0] ) << "," ) << VAR__819283[maxI][1] ) << "," ) << VAR__819283[maxI][2] ) << ")-(" ) << VAR__819283[maxJ][0] ) << "," ) << VAR__819283[maxJ][1] ) << "," ) << VAR__819283[maxJ][2] ) << ")=" ) << fixed ) << setprecision(2)) << ans[maxI][maxJ] ) << endl;
+      ans[maxI][maxJ] = -9999999;
+   }
+
+   cin >> VAR__53647;
+   return 0;
+}

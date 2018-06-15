@@ -1,0 +1,62 @@
+int main()
+{
+   float point[10][3];
+   float lon[100];
+   float tem1;
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__SUM = 0;
+   int   VAR__7685[100];
+   int   VAR__3918907[100];
+   int   tem;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> point[VAR__53647][0] ) >> point[VAR__53647][1] ) >> point[VAR__53647][2];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         lon[VAR__SUM]            = sqrt(((( point[VAR__53647][0] - point[VAR__21230][0] ) * ( point[VAR__53647][0] - point[VAR__21230][0] )) + (( point[VAR__53647][1] - point[VAR__21230][1] ) * ( point[VAR__53647][1] - point[VAR__21230][1] ))) + (( point[VAR__53647][2] - point[VAR__21230][2] ) * ( point[VAR__53647][2] - point[VAR__21230][2] )));
+         VAR__7685[VAR__SUM]      = VAR__53647;
+         VAR__3918907[VAR__SUM++] = VAR__21230;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__SUM - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__SUM - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( lon[VAR__21230] < lon[VAR__21230 + 1] )
+         {
+            tem1                = lon[VAR__21230];
+            lon[VAR__21230]     = lon[VAR__21230 + 1];
+            lon[VAR__21230 + 1] = tem1;
+            tem = VAR__7685[VAR__21230];
+            VAR__7685[VAR__21230]     = VAR__7685[VAR__21230 + 1];
+            VAR__7685[VAR__21230 + 1] = tem;
+            tem = VAR__3918907[VAR__21230];
+            VAR__3918907[VAR__21230]     = VAR__3918907[VAR__21230 + 1];
+            VAR__3918907[VAR__21230 + 1] = tem;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__SUM; VAR__53647++ )
+   {
+      cout << '(';
+      ((((( cout << point[VAR__7685[VAR__53647]][0] ) << ',' ) << point[VAR__7685[VAR__53647]][1] ) << ',' ) << point[VAR__7685[VAR__53647]][2] ) << ')';
+      cout << '-';
+      cout << '(';
+      ((((( cout << point[VAR__3918907[VAR__53647]][0] ) << ',' ) << point[VAR__3918907[VAR__53647]][1] ) << ',' ) << point[VAR__3918907[VAR__53647]][2] ) << ')';
+      cout << '=';
+      printf("%.2f", lon[VAR__53647]);
+      cout << endl;
+   }
+}

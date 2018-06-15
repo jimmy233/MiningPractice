@@ -1,0 +1,80 @@
+int runnian(int VAR__819283)
+{
+   if ((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+
+   if ((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int tian(int nian, int yue, int ri)
+{
+   int VAR__SUM = 0;
+   int VAR__53647;
+   int run[12]    = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int feirun[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if ( runnian(nian) == 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( yue - 2 ); VAR__53647++ )
+      {
+         VAR__SUM += run[VAR__53647];
+      }
+
+      VAR__SUM += ri;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( yue - 2 ); VAR__53647++ )
+      {
+         VAR__SUM += feirun[VAR__53647];
+      }
+
+      VAR__SUM += ri;
+   }
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int nian;
+   int yue;
+   int ri;
+   int all = 0;
+   int VAR__53647;
+
+   (( cin >> nian ) >> yue ) >> ri;
+
+   if ( nian > 2000 )
+   {
+      nian = nian % 2000;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < nian; VAR__53647++ )
+   {
+      if ( runnian(VAR__53647) == 1 )
+      {
+         all += 366;
+      }
+      else
+      {
+         all += 365;
+      }
+   }
+
+   all += tian(nian, yue, ri);
+   char xingqi[7][5] = { "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun." };
+   ( cout << xingqi[( all - 1 ) % 7] ) << endl;
+   return 0;
+}

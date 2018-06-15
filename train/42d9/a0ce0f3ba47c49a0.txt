@@ -1,0 +1,79 @@
+struct point
+{
+   double VAR__7685;
+   double VAR__3918907;
+   double VAR__9290;
+};
+struct points
+{
+   double x1;
+   double y1;
+   double z1;
+   double x2;
+   double y2;
+   double z2;
+   double LEN_OF_STH;
+};
+double length(struct point VAR__819283, struct point VAR__19328)
+{
+   return sqrt(((( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 ) * ( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 )) + (( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 ) * ( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 ))) + (( VAR__819283.VAR__9290 - VAR__19328.VAR__9290 ) * ( VAR__819283.VAR__9290 - VAR__19328.VAR__9290 )));
+}
+
+
+void main()
+{
+   int           VAR__1238129;
+   int           VAR_1238123;
+   int           VAR__53647;
+   int           VAR__21230;
+   int           VAR__8444594;
+   struct point  VAR_233[11];
+   struct points ps[101];
+   struct points pst;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf%lf%lf", &VAR_233[VAR__53647].VAR__7685, &VAR_233[VAR__53647].VAR__3918907, &VAR_233[VAR__53647].VAR__9290);
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__53647 == VAR__21230 )
+         {
+            continue;
+         }
+
+         ps[VAR__8444594].x1         = VAR_233[VAR__53647].VAR__7685;
+         ps[VAR__8444594].y1         = VAR_233[VAR__53647].VAR__3918907;
+         ps[VAR__8444594].z1         = VAR_233[VAR__53647].VAR__9290;
+         ps[VAR__8444594].x2         = VAR_233[VAR__21230].VAR__7685;
+         ps[VAR__8444594].y2         = VAR_233[VAR__21230].VAR__3918907;
+         ps[VAR__8444594].z2         = VAR_233[VAR__21230].VAR__9290;
+         ps[VAR__8444594].LEN_OF_STH = length(VAR_233[VAR__53647], VAR_233[VAR__21230]);
+         VAR__8444594++;
+      }
+   }
+
+   VAR__1238129 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__1238129 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( ps[VAR__21230].LEN_OF_STH < ps[VAR__21230 + 1].LEN_OF_STH )
+         {
+            pst                = ps[VAR__21230];
+            ps[VAR__21230]     = ps[VAR__21230 + 1];
+            ps[VAR__21230 + 1] = pst;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("(%g,%g,%g)-(%g,%g,%g)=%.2lf\n", ps[VAR__53647].x1, ps[VAR__53647].y1, ps[VAR__53647].z1, ps[VAR__53647].x2, ps[VAR__53647].y2, ps[VAR__53647].z2, ps[VAR__53647].LEN_OF_STH);
+   }
+}

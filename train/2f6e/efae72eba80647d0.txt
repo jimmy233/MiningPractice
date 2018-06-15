@@ -1,0 +1,67 @@
+struct ranking
+{
+   int sex;
+   int order;
+}
+stu[100];
+void check(int LEN_OF_STH)
+{
+   int VAR__7685;
+   int VAR__3918907;
+
+   for ( VAR__7685 = 0; VAR__7685 < ( LEN_OF_STH - 1 ); VAR__7685++ )
+   {
+      if (( stu[VAR__7685].sex == 1 ) && ( stu[VAR__7685 + 1].sex == 0 ))
+      {
+         ((( cout << stu[VAR__7685].order ) << " " ) << stu[VAR__7685 + 1].order ) << endl;
+         for ( VAR__3918907 = VAR__7685; VAR__3918907 < ( LEN_OF_STH - 2 ); VAR__3918907++ )
+         {
+            stu[VAR__3918907] = stu[VAR__3918907 + 2];
+         }
+
+         return;
+      }
+   }
+}
+
+
+int main(int argc, char *argv[])
+{
+   char ary[100];
+   char boy;
+   char girl;
+   int  LEN_OF_STH;
+   int  order[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+
+   gets(ary);
+   LEN_OF_STH = strlen(ary);
+
+   if (( LEN_OF_STH % 2 ) == 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         order[VAR__53647] = ( ary[VAR__53647] == ary[0] ) ? ( 1 ) : ( 0 );
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         stu[VAR__21230].sex   = order[VAR__21230];
+         stu[VAR__21230].order = VAR__21230;
+      }
+
+      while ( LEN_OF_STH != 0 )
+      {
+         check(LEN_OF_STH);
+         LEN_OF_STH -= 2;
+      }
+   }
+   else
+   {
+      ( cout << "wrong input" ) << endl;
+   }
+
+   return EXIT_SUCCESS;
+}

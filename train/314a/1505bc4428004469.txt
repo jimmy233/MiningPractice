@@ -1,0 +1,79 @@
+int main()
+{
+   char cx[10000];
+   char cy[10000];
+   int  ix[10000] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  iy[10000]    = { 0 };
+   int  people[1000] = { 0 };
+   int  lenx;
+   int  leny;
+   int  VAR_233  = 1;
+   int  VAR__MAX = 0;
+   int  maxy     = 0;
+   int  VAR__NUM = 1;
+
+   ( cin >> cx ) >> cy;
+   for ( VAR__53647 = 0; cx[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( cx[VAR__53647] == ',' )
+      {
+         VAR__NUM++;
+      }
+   }
+
+   lenx = strlen(cx);
+   leny = strlen(cy);
+   for ( VAR__53647 = lenx - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( cx[VAR__53647] != ',' )
+      {
+         ix[VAR__21230] += ( cx[VAR__53647] - '0' ) * VAR_233;
+         VAR_233        *= 10;
+      }
+      else
+      {
+         VAR__21230++;
+         VAR_233 = 1;
+      }
+   }
+
+   for ( VAR__53647 = leny - 1, VAR__21230 = 0, VAR_233 = 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( cy[VAR__53647] != ',' )
+      {
+         iy[VAR__21230] += ( cy[VAR__53647] - '0' ) * VAR_233;
+         VAR_233        *= 10;
+      }
+      else
+      {
+         VAR__21230++;
+         VAR_233 = 1;
+      }
+
+      if ( iy[VAR__21230] > maxy )
+      {
+         maxy = iy[VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = ix[VAR__53647]; VAR__21230 < iy[VAR__53647]; VAR__21230++ )
+      {
+         people[VAR__21230]++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= maxy; VAR__53647++ )
+   {
+      if ( people[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = people[VAR__53647];
+      }
+   }
+
+   (( cout << VAR__NUM ) << " " ) << VAR__MAX;
+   return 0;
+}

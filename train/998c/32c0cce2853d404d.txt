@@ -1,0 +1,70 @@
+int birev(char *VAR_9494, int *sr)
+{
+   int VAR__53647;
+   int LEN_OF_STH = strlen(VAR_9494);
+
+   for ( VAR__53647 = 0; VAR_9494[VAR__53647]; VAR__53647++ )
+   {
+      sr[( LEN_OF_STH - 1 ) - VAR__53647] = VAR_9494[VAR__53647] - '0';
+   }
+
+   return LEN_OF_STH;
+}
+
+
+int bisum(int *ar, int alen, int *br, int blen, int *VAR__SUM)
+{
+   int LEN_OF_STH = ( alen > blen ) ? ( alen ) : ( blen );
+   int VAR__53647;
+   int VAR__TEMP = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647] = (( ar[VAR__53647] + br[VAR__53647] ) + VAR__TEMP ) % 10;
+      VAR__TEMP            = (( ar[VAR__53647] + br[VAR__53647] ) + VAR__TEMP ) / 10;
+   }
+
+   if ( VAR__TEMP != 0 )
+   {
+      VAR__SUM[VAR__53647] = 1;
+      LEN_OF_STH++;
+   }
+
+   return LEN_OF_STH;
+}
+
+
+void biprt(int *VAR__SUM, int sumlen)
+{
+   while (( VAR__SUM[sumlen - 1] == 0 ) && ( sumlen > 1 ))
+   {
+      sumlen--;
+   }
+
+   while ( sumlen )
+   {
+      printf("%d", VAR__SUM[sumlen - 1]);
+      sumlen--;
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[300];
+   char VAR__19328[300];
+   int  ar[300] = { 0 };
+   int  br[300] = { 0 };
+   int  VAR__SUM[300];
+   int  alen;
+   int  blen;
+   int  sumlen;
+
+   gets(VAR__819283);
+   gets(VAR__19328);
+   alen   = birev(VAR__819283, ar);
+   blen   = birev(VAR__19328, br);
+   sumlen = bisum(ar, alen, br, blen, VAR__SUM);
+   biprt(VAR__SUM, sumlen);
+   return 0;
+}

@@ -1,0 +1,78 @@
+struct student
+{
+   char name[21];
+   int  pingjun;
+   int  banyi;
+   char ganbu;
+   char west;
+   int  paper;
+}
+stu[120];
+void scholar(struct student *VAR_233, int VAR__819283);
+
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct student *pointer1;
+
+   pointer1 = stu;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].pingjun, &stu[VAR__53647].banyi, &stu[VAR__53647].ganbu, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   scholar(pointer1, VAR_1238123);
+   return 0;
+}
+
+
+void scholar(struct student *VAR_233, int VAR__819283)
+{
+   int sums;
+   int VAR__SUM = 0;
+   int VAR__MAX = 0;
+   int VAR__21230;
+   int jishu = 0;
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__819283; VAR__21230++ )
+   {
+      sums = 0;
+
+      if ((( VAR_233 + VAR__21230 )->pingjun > 80 ) && (( VAR_233 + VAR__21230 )->paper > 0 ))
+      {
+         sums += 8000;
+      }
+
+      if ((( VAR_233 + VAR__21230 )->pingjun > 85 ) && (( VAR_233 + VAR__21230 )->banyi > 80 ))
+      {
+         sums += 4000;
+      }
+
+      if (( VAR_233 + VAR__21230 )->pingjun > 90 )
+      {
+         sums += 2000;
+      }
+
+      if ((( VAR_233 + VAR__21230 )->pingjun > 85 ) && (( VAR_233 + VAR__21230 )->west == 'Y' ))
+      {
+         sums += 1000;
+      }
+
+      if ((( VAR_233 + VAR__21230 )->banyi > 80 ) && (( VAR_233 + VAR__21230 )->ganbu == 'Y' ))
+      {
+         sums += 850;
+      }
+
+      VAR__SUM += sums;
+
+      if ( sums > VAR__MAX )
+      {
+         VAR__MAX = sums;
+         jishu    = VAR__21230;
+      }
+   }
+
+   printf("%s\n%d\n%d", ( VAR_233 + jishu )->name, VAR__MAX, VAR__SUM);
+}

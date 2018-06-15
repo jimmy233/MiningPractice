@@ -1,0 +1,67 @@
+int main()
+{
+   int VAR__temp;
+   int xh;
+
+   cin >> VAR__temp;
+   for ( xh = 1; xh <= VAR__temp; xh++ )
+   {
+      char VAR_9494[100005];
+      int  VAR__53647;
+      int  VAR__21230;
+      int  VAR_233[26]    = { 0 };
+      int  VAR__COUNT[26] = { 0 };
+      cin >> VAR_9494;
+      for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 100001; VAR__21230++ )
+         {
+            if ( VAR_9494[VAR__21230] == (( '0' + 49 ) + VAR__53647 ))
+            {
+               VAR_233[VAR__53647] = VAR__21230;
+               break;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 100001; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == '\0' )
+         {
+            break;
+         }
+
+         VAR__COUNT[VAR_9494[VAR__53647] - 97]++;
+      }
+
+      char VAR__9290;
+      int  VAR_FLAG = 0;
+      for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+      {
+         if (( VAR__COUNT[VAR__53647] == 1 ) && ( VAR_FLAG == 0 ))
+         {
+            VAR__9290 = VAR_9494[VAR_233[VAR__53647]];
+            VAR_FLAG  = 1;
+         }
+
+         if (( VAR__COUNT[VAR__53647] == 1 ) && ( VAR_FLAG == 1 ))
+         {
+            if ( VAR_233[VAR__53647] < VAR_233[VAR__9290 - 97] )
+            {
+               VAR__9290 = VAR_9494[VAR_233[VAR__53647]];
+            }
+         }
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         ( cout << "no" ) << endl;
+      }
+      else
+      {
+         ( cout << VAR__9290 ) << endl;
+      }
+   }
+
+   return 0;
+}

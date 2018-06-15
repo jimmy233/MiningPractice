@@ -1,0 +1,79 @@
+struct number
+{
+   int           VAR__NUM;
+   struct number *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct number
+{
+   int           VAR__NUM;
+   struct number *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+struct number
+{
+   int           VAR__NUM;
+   struct number *VAR__NEXT;
+}
+*VAR__HEAD;
+void main()
+{
+   int VAR_1238123;
+   int VAR__8444594;
+   int VAR__53647;
+
+   scanf("%d\n", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct number *)malloc(sizeof( struct number )));
+   VAR__HEAD       = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &ANOTHER_POINTER->VAR__NUM);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct number *)malloc(sizeof( struct number ));
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   scanf("%d", &VAR__8444594);
+   YET_ANOTHER_POINTER = ( ANOTHER_POINTER = VAR__HEAD );
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      if ( VAR__8444594 != ANOTHER_POINTER->VAR__NUM )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+      else
+      {
+         if ( ANOTHER_POINTER == VAR__HEAD )
+         {
+            VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+            free(ANOTHER_POINTER);
+            ANOTHER_POINTER = VAR__HEAD;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+            free(ANOTHER_POINTER);
+            ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+         }
+      }
+   }
+
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER->VAR__NEXT != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      printf("%d ", ANOTHER_POINTER->VAR__NUM);
+   }
+
+   printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+}

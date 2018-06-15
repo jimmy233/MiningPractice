@@ -1,0 +1,49 @@
+int chu(int VAR__53647, int VAR_1238123);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d", &VAR__1238129);
+      VAR__SUM[VAR__53647] = 0;
+      for ( VAR__21230 = 2; VAR__21230 <= sqrt(VAR__1238129); VAR__21230++ )
+      {
+         if (( VAR__1238129 % VAR__21230 ) == 0 )
+         {
+            VAR__SUM[VAR__53647] += chu(VAR__21230, VAR__1238129 / VAR__21230);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      printf("%d\n", VAR__SUM[VAR__53647] + 1);
+   }
+}
+
+
+int chu(int VAR__53647, int VAR_1238123)
+{
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR__temp;
+
+   VAR__temp    = 1;
+   VAR__1238129 = VAR_1238123;
+   for ( VAR__21230 = VAR__53647; VAR__21230 <= sqrt(VAR__1238129); VAR__21230++ )
+   {
+      if (( VAR__1238129 % VAR__21230 ) == 0 )
+      {
+         VAR__temp += chu(VAR__21230, VAR__1238129 / VAR__21230);
+      }
+   }
+
+   return VAR__temp;
+}

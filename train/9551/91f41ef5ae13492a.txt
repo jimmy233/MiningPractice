@@ -1,0 +1,119 @@
+struct p
+{
+   char     VAR__53647[10];
+   int      VAR__819283;
+   struct p *VAR__NEXT;
+};
+void main()
+{
+   struct p *ANOTHER_POINTER;
+   struct p *YET_ANOTHER_POINTER;
+   struct p *VAR__HEAD;
+   struct p *head2;
+   struct p *q1;
+   struct p *q2;
+   int      VAR_1238123;
+   int      VAR__53647;
+   int      VAR__8444594 = 0;
+   int      VAR__19328   = 0;
+   int      VAR__7685    = 0;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct p *)malloc(LEN_OF_STH));
+   scanf("%s %d", ANOTHER_POINTER->VAR__53647, &ANOTHER_POINTER->VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__8444594++;
+
+      if ( VAR__8444594 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct p *)malloc(LEN_OF_STH);
+      scanf("%s %d", ANOTHER_POINTER->VAR__53647, &ANOTHER_POINTER->VAR__819283);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if ( ANOTHER_POINTER->VAR__819283 >= 60 )
+      {
+         VAR__7685++;
+      }
+   }
+
+
+   VAR__8444594 = 0;
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if (( ANOTHER_POINTER->VAR__819283 >= 60 ) && ( ANOTHER_POINTER->VAR__819283 > VAR__19328 ))
+      {
+         VAR__19328          = ANOTHER_POINTER->VAR__819283;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+   }
+
+
+   q1 = ( q2 = (struct p *)malloc(LEN_OF_STH));
+   strcpy(q1->VAR__53647, YET_ANOTHER_POINTER->VAR__53647);
+   q1->VAR__819283 = YET_ANOTHER_POINTER->VAR__819283;
+   YET_ANOTHER_POINTER->VAR__819283 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__7685 - 1 ); VAR__53647++ )
+   {
+      VAR__8444594++;
+
+      if ( VAR__8444594 == 1 )
+      {
+         head2 = q1;
+      }
+      else
+      {
+         q2->VAR__NEXT = q1;
+      }
+
+      q2         = q1;
+      VAR__19328 = 0;
+      for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+      {
+         if (( ANOTHER_POINTER->VAR__819283 >= 60 ) && ( ANOTHER_POINTER->VAR__819283 > VAR__19328 ))
+         {
+            VAR__19328          = ANOTHER_POINTER->VAR__819283;
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         }
+      }
+
+
+      q1 = (struct p *)malloc(LEN_OF_STH);
+      strcpy(q1->VAR__53647, YET_ANOTHER_POINTER->VAR__53647);
+      q1->VAR__819283 = YET_ANOTHER_POINTER->VAR__819283;
+      YET_ANOTHER_POINTER->VAR__819283 = 0;
+   }
+
+   q2->VAR__NEXT = q1;
+   q2            = q1;
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if ( ANOTHER_POINTER->VAR__819283 > 0 )
+      {
+         q1 = (struct p *)malloc(LEN_OF_STH);
+         strcpy(q1->VAR__53647, ANOTHER_POINTER->VAR__53647);
+         q1->VAR__819283 = ANOTHER_POINTER->VAR__819283;
+         ANOTHER_POINTER->VAR__819283 = 0;
+         q2->VAR__NEXT = q1;
+         q2            = q1;
+      }
+   }
+
+
+   q2->VAR__NEXT = NULL;
+   for ( q1 = head2; q1 != NULL; q1 = q1->VAR__NEXT )
+   {
+      printf("%s\n", q1->VAR__53647);
+   }
+}

@@ -1,0 +1,80 @@
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   float tmp;
+   float VAR__819283[40] = { 0 };
+   float VAR__19328[40]  = { 0 };
+   int   VAR__temp       = 0;
+   int   VAR_9494        = 0;
+
+   struct
+   {
+      char  sex[5];
+      float high;
+   }
+   stu[40];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", &stu[VAR__53647].sex);
+      scanf("%f", &stu[VAR__53647].high);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(stu[VAR__53647].sex, "male") == 0 )
+      {
+         VAR__819283[VAR__temp] = stu[VAR__53647].high;
+         VAR__temp = VAR__temp + 1;
+      }
+      else
+      {
+         VAR__19328[VAR_9494] = stu[VAR__53647].high;
+         VAR_9494             = VAR_9494 + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__temp; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647] > VAR__819283[VAR__21230] )
+         {
+            tmp = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647] = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230] = tmp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_9494 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_9494; VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__53647] < VAR__19328[VAR__21230] )
+         {
+            tmp = VAR__19328[VAR__53647];
+            VAR__19328[VAR__53647] = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230] = tmp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      stu[VAR__53647].high = VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = VAR__temp; VAR__53647 < ( VAR_9494 + VAR__temp ); VAR__53647++ )
+   {
+      stu[VAR__53647].high = VAR__19328[VAR__53647 - VAR__temp];
+   }
+
+   printf("%.2f", stu[0].high);
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_9494 + VAR__temp ); VAR__53647++ )
+   {
+      printf("% .2f", stu[VAR__53647].high);
+   }
+}

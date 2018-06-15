@@ -1,0 +1,43 @@
+unsigned int VAR_2890[26];
+unsigned int VAR_1238123;
+int go(int maxh, int cp)
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__MAX;
+
+   while ( VAR_2890[cp] > maxh )
+   {
+      cp = cp + 1;
+   }
+
+   if ( VAR_2890[cp] == 0 )
+   {
+      return 0;
+   }
+
+   VAR__7685    = go(maxh, cp + 1);
+   maxh         = VAR_2890[cp];
+   VAR__3918907 = 1 + go(maxh, cp + 1);
+   VAR__MAX     = ( VAR__7685 > VAR__3918907 ) ? ( VAR__7685 ) : ( VAR__3918907 );
+   return VAR__MAX;
+}
+
+
+int main()
+{
+   unsigned int VAR__53647;
+   unsigned int VAR__4857423;
+   unsigned int VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR_2890[VAR__53647]);
+   }
+
+   VAR_2890[VAR_1238123] = 0;
+   VAR__temp             = go(65535, 0);
+   printf("%d", VAR__temp);
+   return 0;
+}

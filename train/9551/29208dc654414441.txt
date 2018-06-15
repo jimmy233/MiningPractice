@@ -1,0 +1,104 @@
+struct p
+{
+   char     id[11];
+   int      VAR__3918907;
+   struct p *VAR__NEXT;
+};
+int VAR_1238123;
+struct p *creat(void)
+{
+   struct p *VAR__HEAD;
+   struct p *ANOTHER_POINTER;
+   struct p *YET_ANOTHER_POINTER;
+   int      VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct p *)malloc(LEN));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d\n", ANOTHER_POINTER->id, &ANOTHER_POINTER->VAR__3918907);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct p *)malloc(LEN);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void px(struct p *VAR__HEAD)
+{
+   struct p *VAR_233;
+   int      VAR__8444594;
+   int      VAR__temp;
+
+leap:
+   VAR__temp = 0;
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != 0; )
+   {
+      if ( VAR_233->VAR__3918907 >= 60 )
+      {
+         VAR__temp = 1;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   if ( VAR__temp == 1 )
+   {
+      VAR_233      = VAR__HEAD;
+      VAR__8444594 = VAR_233->VAR__3918907;
+      for ( ; VAR_233 != 0; )
+      {
+         if ( VAR_233->VAR__3918907 > VAR__8444594 )
+         {
+            VAR__8444594 = VAR_233->VAR__3918907;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      for ( VAR_233 = VAR__HEAD; VAR_233 != 0; )
+      {
+         if ( VAR_233->VAR__3918907 == VAR__8444594 )
+         {
+            printf("%s\n", VAR_233->id);
+            VAR_233->VAR__3918907 = 0;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      goto leap;
+   }
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != 0; )
+   {
+      if ( VAR_233->VAR__3918907 != 0 )
+      {
+         printf("%s\n", VAR_233->id);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct p *VAR_233;
+
+   VAR_233 = creat();
+   px(VAR_233);
+}

@@ -1,0 +1,79 @@
+struct book
+{
+   char        writer[26];
+   int         VAR__NUM;
+   struct book *VAR__NEXT;
+};
+struct book *creat()
+{
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   int         VAR__53647;
+   int         VAR__1238129;
+
+   scanf("%d", &VAR__1238129);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct book *)malloc(sizeof( struct book )));
+   VAR__HEAD       = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct book *)malloc(sizeof( struct book ));
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->writer);
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int         VAR_1238123;
+   int         VAR__819283[26][1000] = { 0 };
+   int         VAR__19328[26]        = { 0 };
+   int         VAR__53647;
+   int         VAR__MAX;
+   int         VAR__8444594;
+   struct book *VAR__HEAD;
+   struct book *VAR_233;
+   char        *VAR_666;
+
+   VAR__HEAD = creat();
+   for ( VAR_233 = VAR__HEAD->VAR__NEXT; VAR_233; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      VAR_1238123 = strlen(VAR_233->writer);
+      for ( VAR__53647 = 0, VAR_666 = VAR_233->writer; VAR__53647 < VAR_1238123; VAR__53647++, VAR_666++ )
+      {
+         VAR__819283[( *VAR_666 ) - 65][VAR__19328[( *VAR_666 ) - 65]] = VAR_233->VAR__NUM;
+         VAR__19328[( *VAR_666 ) - 65]++;
+      }
+   }
+
+   VAR__MAX     = VAR__19328[0];
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX     = VAR__19328[VAR__53647];
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", VAR__8444594 + 65, VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      printf("%d\n", VAR__819283[VAR__8444594][VAR__53647]);
+   }
+}

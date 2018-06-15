@@ -1,0 +1,84 @@
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__12302;
+   int  VAR__112390;
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  carry                = 0;
+   char VAR__819283[101]     = { 0 };
+   char VAR__19328[101]      = { 0 };
+   char VAR__4857423[101]    = { 0 };
+   char *ANOTHER_POINTER     = VAR__819283;
+   char *YET_ANOTHER_POINTER = VAR__19328;
+
+   void move(char *VAR_233, int VAR__1238129);
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      gets(VAR__819283);
+      gets(VAR__819283);
+      gets(VAR__19328);
+      VAR__12302  = strlen(VAR__819283);
+      VAR__112390 = strlen(VAR__19328);
+      move(ANOTHER_POINTER, VAR__12302);
+      move(YET_ANOTHER_POINTER, VAR__112390);
+      for ( VAR__8444594 = ( 99 - VAR__12302 ) + 1; VAR__8444594 <= ( 99 - VAR__112390 ); VAR__8444594++ )
+      {
+         VAR__19328[VAR__8444594] = '0';
+      }
+
+      for ( VAR__8444594 = 99; VAR__8444594 >= (( 99 - VAR__12302 ) + 1 ); VAR__8444594-- )
+      {
+         VAR__19328[VAR__8444594]  = VAR__19328[VAR__8444594] - '0';
+         VAR__819283[VAR__8444594] = VAR__819283[VAR__8444594] - '0';
+
+         if (( carry + VAR__19328[VAR__8444594] ) > VAR__819283[VAR__8444594] )
+         {
+            VAR__4857423[VAR__8444594] = (( VAR__819283[VAR__8444594] - VAR__19328[VAR__8444594] ) + 10 ) - carry;
+            carry = 1;
+         }
+         else
+         {
+            VAR__4857423[VAR__8444594] = ( VAR__819283[VAR__8444594] - VAR__19328[VAR__8444594] ) - carry;
+            carry = 0;
+         }
+
+         VAR__4857423[VAR__8444594] = VAR__4857423[VAR__8444594] + '0';
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 <= 99; VAR__8444594++ )
+      {
+         if ( VAR__4857423[VAR__8444594] != 0 )
+         {
+            printf("%c", VAR__4857423[VAR__8444594]);
+         }
+      }
+
+      printf("\n");
+      for ( VAR__8444594 = 0; VAR__8444594 <= 100; VAR__8444594++ )
+      {
+         VAR__4857423[VAR__8444594] = 0;
+      }
+
+      carry = 0;
+   }
+}
+
+
+void move(char *VAR_233, int VAR__1238129)
+{
+   int VAR_2890;
+
+   *( VAR_233 + 100 ) = 0;
+   for ( VAR_2890 = 99; VAR_2890 >= (( 99 - VAR__1238129 ) + 1 ); VAR_2890-- )
+   {
+      *( VAR_233 + VAR_2890 ) = *((( VAR_233 + VAR_2890 ) - 100 ) + VAR__1238129 );
+   }
+
+   for ( VAR_2890 = 0; VAR_2890 <= ( 99 - VAR__1238129 ); VAR_2890++ )
+   {
+      *( VAR_233 + VAR_2890 ) = 0;
+   }
+}

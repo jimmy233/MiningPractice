@@ -1,0 +1,72 @@
+struct stu
+{
+   char name[20];
+   int  aver;
+   int  sugg;
+   char ganbu;
+   char xibu;
+   int  amount;
+   int  money;
+}
+stu[100];
+int main()
+{
+   int VAR__8444594 = 0;
+   int VAR__21230;
+   int N;
+   int M = 0;
+
+   scanf("%d", &N);
+   for ( VAR__8444594 = 0; VAR__8444594 < N; VAR__8444594++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__8444594].name, &stu[VAR__8444594].aver, &stu[VAR__8444594].sugg, &stu[VAR__8444594].ganbu, &stu[VAR__8444594].xibu, &stu[VAR__8444594].amount);
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < N; VAR__8444594++ )
+   {
+      stu[VAR__8444594].money = 0;
+
+      if (( stu[VAR__8444594].aver > 80 ) && ( stu[VAR__8444594].amount >= 1 ))
+      {
+         stu[VAR__8444594].money += 8000;
+      }
+
+      if (( stu[VAR__8444594].aver > 85 ) && ( stu[VAR__8444594].sugg > 80 ))
+      {
+         stu[VAR__8444594].money += 4000;
+      }
+
+      if ( stu[VAR__8444594].aver > 90 )
+      {
+         stu[VAR__8444594].money += 2000;
+      }
+
+      if (( stu[VAR__8444594].aver > 85 ) && ( stu[VAR__8444594].xibu == 'Y' ))
+      {
+         stu[VAR__8444594].money += 1000;
+      }
+
+      if (( stu[VAR__8444594].sugg > 80 ) && ( stu[VAR__8444594].ganbu == 'Y' ))
+      {
+         stu[VAR__8444594].money += 850;
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < N; VAR__21230++ )
+   {
+      if ( stu[VAR__21230].money > stu[VAR__8444594].money )
+      {
+         VAR__8444594 = VAR__21230;
+      }
+   }
+
+
+   printf("%s\n", stu[VAR__8444594].name);
+   printf("%d\n", stu[VAR__8444594].money);
+   for ( VAR__21230 = 0; VAR__21230 < N; VAR__21230++ )
+   {
+      M += stu[VAR__21230].money;
+   }
+
+   printf("%d\n", M);
+}

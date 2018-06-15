@@ -1,0 +1,68 @@
+int main()
+{
+   struct student
+   {
+      char name[20];
+      int  qimo;
+      int  banji;
+      char ganbu;
+      char xibu;
+      int  lunwen;
+   };
+   int VAR__53647;
+   int VAR_1238123;
+   int VAR__COUNT[100] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   struct student *pp;
+   pp = (struct student *)malloc(( sizeof( student )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", ( pp + VAR__53647 )->name, &( pp + VAR__53647 )->qimo, &( pp + VAR__53647 )->banji, &( pp + VAR__53647 )->ganbu, &( pp + VAR__53647 )->xibu, &( pp + VAR__53647 )->lunwen);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( pp[VAR__53647].qimo > 80 ) && ( pp[VAR__53647].lunwen >= 1 ))
+      {
+         VAR__COUNT[VAR__53647] += 8000;
+      }
+
+      if (( pp[VAR__53647].qimo > 85 ) && ( pp[VAR__53647].banji > 80 ))
+      {
+         VAR__COUNT[VAR__53647] += 4000;
+      }
+
+      if ( pp[VAR__53647].qimo > 90 )
+      {
+         VAR__COUNT[VAR__53647] += 2000;
+      }
+
+      if (( pp[VAR__53647].qimo > 85 ) && ( pp[VAR__53647].xibu == 'Y' ))
+      {
+         VAR__COUNT[VAR__53647] += 1000;
+      }
+
+      if (( pp[VAR__53647].banji > 80 ) && ( pp[VAR__53647].ganbu == 'Y' ))
+      {
+         VAR__COUNT[VAR__53647] += 850;
+      }
+   }
+
+   int VAR__MAX = VAR__COUNT[0];
+   int VAR_233  = 0;
+   int VAR__SUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += VAR__COUNT[VAR__53647];
+
+      if ( VAR__MAX < VAR__COUNT[VAR__53647] )
+      {
+         VAR__MAX = VAR__COUNT[VAR__53647];
+         VAR_233  = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", ( pp + VAR_233 )->name, VAR__MAX, VAR__SUM);
+   return 0;
+}

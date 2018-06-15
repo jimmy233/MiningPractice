@@ -1,0 +1,120 @@
+struct stu
+{
+   long       xh;
+   int        yw;
+   int        sx;
+   int        zh;
+   struct stu *VAR__NEXT;
+};
+struct stu *scan()
+{
+   long       VAR_1238123;
+   long       VAR__NUM = 0;
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   scanf("%ld", &VAR_1238123);
+   VAR__HEAD = ANOTHER_POINTER;
+
+   while ( VAR__NUM < VAR_1238123 )
+   {
+      scanf("%ld", &ANOTHER_POINTER->xh);
+      scanf("%d", &ANOTHER_POINTER->yw);
+      scanf("%d", &ANOTHER_POINTER->sx);
+      ANOTHER_POINTER->zh            = ANOTHER_POINTER->yw + ANOTHER_POINTER->sx;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER                = (struct stu *)malloc(sizeof( struct stu ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NEXT     = 0;
+      VAR__NUM++;
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct stu *del(struct stu *VAR__HEAD, int VAR__MAX)
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while (( VAR__MAX != ANOTHER_POINTER->zh ) && ( ANOTHER_POINTER->VAR__NEXT != 0 ))
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   if ( VAR__MAX == ANOTHER_POINTER->zh )
+   {
+      if ( ANOTHER_POINTER == VAR__HEAD )
+      {
+         VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct stu *VAR__HEAD)
+{
+   struct stu *VAR_233;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *p3;
+   struct stu *VAR_21983012;
+   int        VAR__MAX = 0;
+   int        VAR__NUM = 0;
+
+   while ( VAR__NUM < 3 )
+   {
+      for ( VAR_233 = VAR__HEAD; VAR_233 != 0; VAR_233 = VAR_233->VAR__NEXT )
+      {
+         if ( VAR_233->zh > VAR__MAX )
+         {
+            VAR__MAX     = VAR_233->zh;
+            VAR_21983012 = VAR_233;
+         }
+      }
+
+      VAR__NUM++;
+
+      if ( VAR__NUM == 1 )
+      {
+         ANOTHER_POINTER = VAR_21983012;
+         VAR__HEAD       = del(VAR__HEAD, VAR__MAX);
+         VAR__MAX        = 0;
+      }
+
+      if ( VAR__NUM == 2 )
+      {
+         YET_ANOTHER_POINTER = VAR_21983012;
+         VAR__HEAD           = del(VAR__HEAD, VAR__MAX);
+         VAR__MAX            = 0;
+      }
+
+      if ( VAR__NUM == 3 )
+      {
+         p3 = VAR_21983012;
+      }
+   }
+
+   printf("%ld %d\n%ld %d\n%ld %d\n", ANOTHER_POINTER->xh, ANOTHER_POINTER->zh, YET_ANOTHER_POINTER->xh, YET_ANOTHER_POINTER->zh, p3->xh, p3->zh);
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+
+   VAR__HEAD = scan();
+   print(VAR__HEAD);
+}

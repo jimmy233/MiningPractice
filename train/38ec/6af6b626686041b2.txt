@@ -1,0 +1,42 @@
+int DateToDay(int year, int month, int day)
+{
+   int VAR__819283[] = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
+   int VAR__19328[]  = { 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366 };
+   int d1;
+   int d2;
+   int d3;
+   int leap;
+
+   leap = ((( year - 1 ) / 4 ) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 );
+   d1   = ( leap * 366 ) + ((( year - 1 ) - leap ) * 365 );
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      d2 = VAR__19328[month - 1];
+   }
+   else
+   {
+      d2 = VAR__819283[month - 1];
+   }
+
+   d3 = day;
+   return ( d1 + d2 ) + d3;
+}
+
+
+int main()
+{
+   int starty;
+   int startm;
+   int startd;
+   int endy;
+   int endm;
+   int endd;
+   int distance;
+
+   (( cin >> starty ) >> startm ) >> startd;
+   (( cin >> endy ) >> endm ) >> endd;
+   distance = DateToDay(endy, endm, endd) - DateToDay(starty, startm, startd);
+   ( cout << distance ) << endl;
+   return 0;
+}

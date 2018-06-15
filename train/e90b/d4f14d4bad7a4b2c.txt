@@ -1,0 +1,98 @@
+struct stu
+{
+   int        VAR__NUM;
+   int        ch;
+   int        math;
+   struct stu *VAR__NEXT;
+};
+void main()
+{
+   int        VAR_1238123;
+   int        VAR__1238129 = 0;
+   int        VAR__MAX     = 0;
+   int        max2         = 0;
+   int        max3         = 0;
+   int        no           = 0;
+   int        no2          = 0;
+   int        no3          = 0;
+   struct stu *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR__HEAD;
+   ANOTHER_POINTER = (struct stu *)malloc(LEN);
+   scanf("%d%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->math);
+   VAR__HEAD = NULL;
+
+   while ( VAR_1238123 - 1 )
+   {
+      VAR__1238129 = VAR__1238129 + 1;
+
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(LEN);
+      scanf("%d%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->math);
+      VAR_1238123--;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      VAR_233->ch = VAR_233->math + VAR_233->ch;
+      VAR_233     = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->ch > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->ch;
+         no       = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", no, VAR__MAX);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if ((( VAR_233->ch <= VAR__MAX ) && ( VAR_233->ch > max2 )) && ( VAR_233->VAR__NUM != no ))
+      {
+         max2 = VAR_233->ch;
+         no2  = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", no2, max2);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if (((( VAR_233->ch <= max2 ) && ( VAR_233->ch > max3 )) && ( VAR_233->VAR__NUM != no )) && ( VAR_233->VAR__NUM != no2 ))
+      {
+         max3 = VAR_233->ch;
+         no3  = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d", no3, max3);
+}

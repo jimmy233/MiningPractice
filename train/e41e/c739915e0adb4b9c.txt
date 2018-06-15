@@ -1,0 +1,60 @@
+int main()
+{
+   char      beichushu[101];
+   char      shang[100];
+   const int chushu = 13;
+   int       VAR__819283;
+   int       VAR__19328;
+   int       VAR__53647;
+   int       VAR__4857423;
+   int       VAR__12302;
+
+   gets(beichushu);
+   VAR__819283 = strlen(beichushu);
+
+   if ( VAR__819283 == 1 )
+   {
+      printf("0\n%s", beichushu);
+   }
+   else
+   if ( VAR__819283 == 2 )
+   {
+      VAR__4857423 = (((( beichushu[0] - '0' ) * 10 ) + beichushu[1] ) - '0' ) / chushu;
+      VAR__12302   = (((( beichushu[0] - '0' ) * 10 ) + beichushu[1] ) - '0' ) % chushu;
+      printf("%d\n%d", VAR__4857423, VAR__12302);
+   }
+   else
+   {
+      VAR__19328 = (( beichushu[0] - '0' ) * 10 ) + ( beichushu[1] - '0' );
+
+      if ( VAR__19328 < 13 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR__819283 - 3 ); VAR__53647++ )
+         {
+            VAR__19328        = (( VAR__19328 * 10 ) + beichushu[VAR__53647 + 2] ) - '0';
+            shang[VAR__53647] = ( VAR__19328 / chushu ) + '0';
+            VAR__19328        = VAR__19328 % chushu;
+         }
+
+         shang[VAR__819283 - 2] = '\0';
+         printf("%s\n%d", shang, VAR__19328);
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR__819283 - 3 ); VAR__53647++ )
+         {
+            shang[VAR__53647] = ( VAR__19328 / chushu ) + '0';
+            VAR__19328        = VAR__19328 % chushu;
+            VAR__19328        = (( VAR__19328 * 10 ) + beichushu[VAR__53647 + 2] ) - '0';
+         }
+
+         shang[VAR__819283 - 2] = ( VAR__19328 / chushu ) + '0';
+         VAR__19328             = VAR__19328 % chushu;
+         shang[VAR__819283 - 1] = '\0';
+         printf("%s\n%d", shang, VAR__19328);
+      }
+   }
+
+
+   return 0;
+}

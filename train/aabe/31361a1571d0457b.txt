@@ -1,0 +1,44 @@
+int main()
+{
+   int VAR__NUM;
+   int VAR__53647;
+   int VAR__21230;
+   int *relation;
+
+   scanf("%d", &VAR__NUM);
+   relation = (int *)malloc((( sizeof( int )) * VAR__NUM ) * VAR__NUM);
+   assert(relation != NULL);
+   memset(relation, 0, ( VAR__NUM * VAR__NUM ) * ( sizeof( int )));
+   VAR__53647 = 1;
+   VAR__21230 = 1;
+
+   while ( !(( VAR__53647 == 0 ) && ( VAR__21230 == 0 )))
+   {
+      scanf("%d %d", &VAR__53647, &VAR__21230);
+      relation[( VAR__21230 * VAR__NUM ) + VAR__53647] = 1;
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( !relation[( VAR__21230 * VAR__NUM ) + VAR__53647] )
+      {
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( VAR__53647 != VAR__21230 )
+      {
+         if ( !relation[( VAR__21230 * VAR__NUM ) + VAR__53647] )
+         {
+            printf("NOT FOUND");
+            return 0;
+         }
+      }
+   }
+
+   printf("%d", VAR__21230);
+   return 0;
+}

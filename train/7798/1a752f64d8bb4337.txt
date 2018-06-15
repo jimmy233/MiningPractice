@@ -1,0 +1,110 @@
+struct books
+{
+   int          VAR__NUM;
+   char         name[100];
+   struct books *VAR__NEXT;
+};
+struct books *create(int VAR_1238123)
+{
+   struct books *VAR__HEAD;
+   struct books *ANOTHER_POINTER;
+   struct books *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct books *)malloc(Len);
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+   while ( --VAR_1238123 )
+   {
+      ANOTHER_POINTER = (struct books *)malloc(Len);
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int          VAR_1238123;
+   int          VAR__53647;
+   int          VAR__MAX;
+   int          VAR__8444594;
+   char         *VAR_233;
+   int          VAR__NUM[26] = { 0 };
+   char         name[26]     = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+   struct books *ANOTHER_POINTER;
+   struct books *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD       = create(VAR_1238123);
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+      VAR_233         = ANOTHER_POINTER->name;
+      do
+      {
+         if (( *VAR_233 ) == name[VAR__53647] )
+         {
+            VAR__NUM[VAR__53647]++;
+            ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+            VAR_233         = ANOTHER_POINTER->name;
+         }
+         else
+         {
+            if (( *VAR_233 ) == '\0' )
+            {
+               ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+               VAR_233         = ANOTHER_POINTER->name;
+            }
+            else
+            {
+               VAR_233++;
+            }
+         }
+      } while ( ANOTHER_POINTER != NULL );
+   }
+
+   VAR__MAX = VAR__NUM[0];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] >= VAR__MAX )
+      {
+         VAR__8444594 = VAR__53647;
+         VAR__MAX     = VAR__NUM[VAR__53647];
+      }
+   }
+
+   printf("%c\n", name[VAR__8444594]);
+   printf("%d\n", VAR__NUM[VAR__8444594]);
+   ANOTHER_POINTER = VAR__HEAD;
+   VAR_233         = ANOTHER_POINTER->name;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      if (( *VAR_233 ) == name[VAR__8444594] )
+      {
+         printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+         VAR_233         = ANOTHER_POINTER->name;
+      }
+      else
+      {
+         if (( *VAR_233 ) == '\0' )
+         {
+            ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+            VAR_233         = ANOTHER_POINTER->name;
+         }
+         else
+         {
+            VAR_233++;
+         }
+      }
+   }
+}

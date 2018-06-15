@@ -1,0 +1,273 @@
+int shuru[1000000];
+int xiaoshuchangdu[10];
+int changdu[10];
+int zhengshuchangdu[10];
+int fuzhu;
+int wuaoshu;
+int VAR__819283[10][1000000];
+int VAR_1238123 = 0;
+void clear(int VAR__8444594)
+{
+   for ( int VAR__53647 = 0; VAR__53647 <= 999999; VAR__53647++ )
+   {
+      VAR__819283[VAR__8444594][VAR__53647] = 0;
+   }
+
+   xiaoshuchangdu[VAR__8444594]  = 0;
+   changdu[VAR__8444594]         = 1;
+   zhengshuchangdu[VAR__8444594] = 1;
+}
+
+
+void xieru(int VAR__8444594)
+{
+   fuzhu = 0;
+   for ( int VAR__53647 = 1; ; VAR__53647++ )
+   {
+      shuru[VAR__53647] = getchar();
+
+      if ( shuru[VAR__53647] == 10 )
+      {
+         changdu[VAR__8444594] = VAR__53647 - 1;
+         break;
+      }
+
+      if ( shuru[VAR__53647] == 46 )
+      {
+         fuzhu = 1;
+         xiaoshuchangdu[VAR__8444594]--;
+         VAR__53647--;
+      }
+
+      VAR__819283[VAR__8444594][VAR__53647] = shuru[VAR__53647] - 48;
+
+      if ( fuzhu == 1 )
+      {
+         xiaoshuchangdu[VAR__8444594]++;
+      }
+   }
+
+   zhengshuchangdu[VAR__8444594] = changdu[VAR__8444594] - xiaoshuchangdu[VAR__8444594];
+}
+
+
+void shuchu(int VAR__1238129)
+{
+   for ( int VAR__53647 = 1; VAR__53647 <= zhengshuchangdu[VAR__1238129]; VAR__53647++ )
+   {
+      cout << VAR__819283[VAR__1238129][VAR__53647];
+   }
+
+   if ( xiaoshuchangdu[VAR__1238129] > 0 )
+   {
+      cout << ".";
+      for ( int VAR__53647 = zhengshuchangdu[VAR__1238129] + 1; VAR__53647 <= changdu[VAR__1238129]; VAR__53647++ )
+      {
+         cout << VAR__819283[VAR__1238129][VAR__53647];
+      }
+   }
+}
+
+
+void jiafa(int VAR__8444594, int VAR__1111, int VAR__1238129)
+{
+   clear(VAR__1238129);
+   int fzheng = VAR__MAX(zhengshuchangdu[VAR__8444594], zhengshuchangdu[VAR__1111]) + 1;
+   int fxiao  = VAR__MAX(xiaoshuchangdu[VAR__8444594], xiaoshuchangdu[VAR__1111]);
+   for ( int VAR__53647 = fxiao + fzheng; VAR__53647 >= 1; VAR__53647-- )
+   {
+      VAR__819283[VAR__1238129][VAR__53647]     = VAR__819283[VAR__1238129][VAR__53647] + ( VAR__819283[VAR__8444594][( zhengshuchangdu[VAR__8444594] + VAR__53647 ) - fzheng] + VAR__819283[VAR__1111][( zhengshuchangdu[VAR__1111] + VAR__53647 ) - fzheng] );
+      VAR__819283[VAR__1238129][VAR__53647 - 1] = VAR__819283[VAR__1238129][VAR__53647 - 1] + ( VAR__819283[VAR__1238129][VAR__53647] / 10 );
+      VAR__819283[VAR__1238129][VAR__53647]     = VAR__819283[VAR__1238129][VAR__53647] % 10;
+   }
+
+   while ( 1 )
+   {
+      if ( VAR__819283[VAR__1238129][1] != 0 )
+      {
+         break;
+      }
+
+      if (( fzheng + fxiao ) == 1 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 <= ( fxiao + fzheng ); VAR__53647++ )
+      {
+         VAR__819283[VAR__1238129][VAR__53647] = VAR__819283[VAR__1238129][VAR__53647 + 1];
+      }
+
+      fzheng = fzheng - 1;
+   }
+
+   for ( int VAR__53647 = fzheng + fxiao; VAR__53647 >= 1; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__1238129][VAR__53647] != 0 )
+      {
+         break;
+      }
+
+      fxiao = fxiao - 1;
+   }
+
+   zhengshuchangdu[VAR__1238129] = fzheng;
+   xiaoshuchangdu[VAR__1238129]  = fxiao;
+   changdu[VAR__1238129]         = fxiao + fzheng;
+}
+
+
+void jiandancheng(int VAR_1238123, int VAR__8444594, int VAR__1238129)
+{
+   clear(VAR__1238129);
+   int fzheng = zhengshuchangdu[VAR__8444594] + 1;
+   int fxiao  = xiaoshuchangdu[VAR__8444594];
+   for ( int VAR__53647 = fxiao + fzheng; VAR__53647 >= 1; VAR__53647-- )
+   {
+      VAR__819283[VAR__1238129][VAR__53647]     = VAR__819283[VAR__1238129][VAR__53647] + ( VAR__819283[VAR__8444594][( zhengshuchangdu[VAR__8444594] + VAR__53647 ) - fzheng] * VAR_1238123 );
+      VAR__819283[VAR__1238129][VAR__53647 - 1] = VAR__819283[VAR__1238129][VAR__53647 - 1] + ( VAR__819283[VAR__1238129][VAR__53647] / 10 );
+      VAR__819283[VAR__1238129][VAR__53647]     = VAR__819283[VAR__1238129][VAR__53647] % 10;
+   }
+
+   while ( 1 )
+   {
+      if ( VAR__819283[VAR__1238129][1] != 0 )
+      {
+         break;
+      }
+
+      if (( fzheng + fxiao ) == 1 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 <= ( fxiao + fzheng ); VAR__53647++ )
+      {
+         VAR__819283[VAR__1238129][VAR__53647] = VAR__819283[VAR__1238129][VAR__53647 + 1];
+      }
+
+      fzheng = fzheng - 1;
+   }
+
+   for ( int VAR__53647 = fzheng + fxiao; VAR__53647 >= 1; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__1238129][VAR__53647] != 0 )
+      {
+         break;
+      }
+
+      fxiao = fxiao - 1;
+   }
+
+   zhengshuchangdu[VAR__1238129] = fzheng;
+   xiaoshuchangdu[VAR__1238129]  = fxiao;
+   changdu[VAR__1238129]         = fxiao + fzheng;
+}
+
+
+void chengfa(int VAR__8444594, int VAR__1111, int VAR__1238129)
+{
+   int fxiao;
+   int fzheng;
+
+   clear(VAR__1238129);
+   for ( int VAR__53647 = 1; VAR__53647 <= changdu[VAR__1111]; VAR__53647++ )
+   {
+      jiandancheng(VAR__819283[VAR__1111][VAR__53647], VAR__8444594, 9);
+      jiafa(VAR__1238129, 9, 8);
+
+      if ( VAR__53647 == changdu[VAR__1111] )
+      {
+         jiandancheng(1, 8, VAR__1238129);
+         break;
+      }
+
+      jiandancheng(10, 8, VAR__1238129);
+   }
+
+   fxiao  = xiaoshuchangdu[VAR__8444594] + xiaoshuchangdu[VAR__1111];
+   fzheng = changdu[VAR__1238129] - fxiao;
+
+   while ( 1 )
+   {
+      if ( VAR__819283[VAR__1238129][1] != 0 )
+      {
+         break;
+      }
+
+      if (( fzheng + fxiao ) == 1 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 <= ( fxiao + fzheng ); VAR__53647++ )
+      {
+         VAR__819283[VAR__1238129][VAR__53647] = VAR__819283[VAR__1238129][VAR__53647 + 1];
+      }
+
+      fzheng = fzheng - 1;
+   }
+
+   for ( int VAR__53647 = fzheng + fxiao; VAR__53647 >= 1; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__1238129][VAR__53647] != 0 )
+      {
+         break;
+      }
+
+      fxiao = fxiao - 1;
+   }
+
+   zhengshuchangdu[VAR__1238129] = fzheng;
+   xiaoshuchangdu[VAR__1238129]  = fxiao;
+   changdu[VAR__1238129]         = fxiao + fzheng;
+}
+
+
+void chengfang(int VAR__8444594, int VAR_1238123, int VAR__1238129)
+{
+   ( cout << VAR_1238123 ) << endl;
+
+   if ( wuaoshu == 0 )
+   {
+      clear(6);
+      VAR__819283[6][1] = 1;
+      wuaoshu           = 1;
+   }
+
+   clear(7);
+   jiandancheng(1, VAR__8444594, 7);
+   jiandancheng(1, VAR__8444594, VAR__1238129);
+
+   if (( VAR_1238123 % 2 ) == 0 )
+   {
+      VAR_1238123 = VAR_1238123 / 2;
+      chengfa(VAR__1238129, 7, VAR__8444594);
+      chengfang(VAR__8444594, VAR_1238123, VAR__1238129);
+   }
+   else
+   {
+      if ((( VAR_1238123 % 2 ) == 1 ) && ( VAR_1238123 != 1 ))
+      {
+         VAR_1238123 = VAR_1238123 - 1;
+         chengfa(6, VAR__8444594, 7);
+         jiandancheng(1, 7, 6);
+         chengfang(VAR__8444594, VAR_1238123, VAR__1238129);
+      }
+      else
+      {
+         chengfa(6, VAR__1238129, 7);
+         jiandancheng(1, 7, VAR__1238129);
+      }
+   }
+}
+
+
+int main()
+{
+   xieru(1);
+   xieru(2);
+   jiafa(1, 2, 3);
+   shuchu(3);
+   return 0;
+}

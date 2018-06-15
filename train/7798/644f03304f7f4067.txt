@@ -1,0 +1,100 @@
+struct book
+{
+   int         VAR__NUM;
+   char        aut[27];
+   struct book *VAR__NEXT;
+};
+int VAR_1238123;
+struct book *creat(int amount)
+{
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+
+   VAR_1238123         = 0;
+   ANOTHER_POINTER     = (struct book *)malloc(sizeof( struct book ));
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->aut);
+
+   while ( VAR_1238123 < ( amount - 1 ))
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct book *)malloc(sizeof( struct book ));
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->aut);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER, ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int         amount;
+   int         VAR__53647;
+   int         VAR__819283[26] = { 0 };
+   int         VAR__MAX;
+   int         maxn;
+   struct book *VAR_233;
+   struct book *headp;
+   char        *auth;
+   char        name[26] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+   scanf("%d", &amount);
+   VAR_233 = creat(amount);
+   headp   = VAR_233;
+   for ( VAR_233 = headp; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( auth = VAR_233->aut; ( *auth ) != '\0'; auth++ )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+         {
+            if ( name[VAR__53647] == ( *auth ))
+            {
+               break;
+            }
+         }
+
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0, VAR__MAX = VAR__819283[0], maxn = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647], maxn = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", name[maxn], VAR__MAX);
+   for ( VAR_233 = headp; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( auth = VAR_233->aut; ( *auth ) != '\0'; auth++ )
+      {
+         if (( *auth ) == name[maxn] )
+         {
+            break;
+         }
+      }
+
+      if (( *auth ) == '\0' )
+      {
+      }
+      else
+      {
+         printf("%d\n", VAR_233->VAR__NUM);
+      }
+   }
+}

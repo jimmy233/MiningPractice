@@ -1,0 +1,59 @@
+int isodd(int VAR__NUM)
+{
+   int VAR__53647;
+   int VAR_FLAG = 1;
+
+   if (( VAR__NUM % 2 ) == 0 )
+   {
+      VAR_FLAG = 0;
+   }
+   else
+   {
+      if ((( VAR__NUM == 3 ) || ( VAR__NUM == 5 )) || ( VAR__NUM == 7 ))
+      {
+         VAR_FLAG = 1;
+      }
+      else
+      {
+         for ( VAR__53647 = 3; VAR__53647 <= sqrt(VAR__NUM); VAR__53647 = VAR__53647 + 2 )
+         {
+            if (( VAR__NUM % VAR__53647 ) == 0 )
+            {
+               VAR_FLAG = 0;
+               break;
+            }
+         }
+      }
+   }
+
+   return VAR_FLAG;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int temp1;
+   int temp2;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 6; VAR__53647 <= VAR_1238123; VAR__53647 = VAR__53647 + 2 )
+   {
+      for ( temp1 = 3; temp1 <= ( VAR_1238123 / 2 ); temp1 = temp1 + 2 )
+      {
+         if ( isodd(temp1))
+         {
+            temp2 = VAR__53647 - temp1;
+
+            if ( isodd(temp2))
+            {
+               printf("%d=%d+%d\n", VAR__53647, temp1, temp2);
+               break;
+            }
+         }
+      }
+   }
+
+   return 0;
+}

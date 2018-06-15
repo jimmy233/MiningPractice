@@ -1,0 +1,79 @@
+int ans[110];
+int VAR__NUM[110];
+int sig = 0;
+void devide(int VAR__819283, int VAR__19328, int tag)
+{
+   ans[sig]             = (( VAR__NUM[VAR__819283] * 10 ) + VAR__NUM[VAR__19328] ) / 13;
+   VAR__NUM[VAR__19328] = (( VAR__NUM[VAR__819283] * 10 ) + VAR__NUM[VAR__19328] ) % 13;
+   sig++;
+
+   if ( VAR__19328 == ( tag - 1 ))
+   {
+      if ( sig == 1 )
+      {
+         ( cout << ans[0] ) << endl;
+      }
+      else
+      {
+         int VAR_FLAG = 0;
+         for ( int VAR__53647 = 0; VAR__53647 < sig; VAR__53647++ )
+         {
+            if ( ans[VAR__53647] != 0 )
+            {
+               VAR_FLAG = 1;
+            }
+
+            if (( VAR__53647 != ( sig - 1 )) && ( VAR_FLAG != 0 ))
+            {
+               cout << ans[VAR__53647];
+            }
+            else
+            if (( VAR__53647 == ( sig - 1 )) && ( VAR_FLAG != 0 ))
+            {
+               ( cout << ans[VAR__53647] ) << endl;
+            }
+         }
+      }
+
+      ( cout << VAR__NUM[VAR__19328] ) << endl;
+      return;
+   }
+   else
+   {
+      devide(VAR__19328, VAR__19328 + 1, tag);
+   }
+}
+
+
+int main()
+{
+   int  tag = 0;
+   char A_STRING[110];
+   char VAR__7685;
+
+   VAR__7685 = getchar();
+
+   while (( VAR__7685 != '\n' ) && ( VAR__7685 != ' ' ))
+   {
+      A_STRING[tag] = VAR__7685;
+      tag++;
+      VAR__7685 = getchar();
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < tag; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = A_STRING[VAR__53647] - '0';
+   }
+
+   if ( tag == 1 )
+   {
+      ( cout << "0" ) << endl;
+      ( cout << VAR__NUM[0] ) << endl;
+   }
+   else
+   {
+      devide(0, 1, tag);
+   }
+
+   return 0;
+}

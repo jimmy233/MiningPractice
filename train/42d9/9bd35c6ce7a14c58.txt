@@ -1,0 +1,71 @@
+struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+point[10];
+struct jl
+{
+   int   VAR__4857423;
+   int   VAR__12302;
+   float VAR__127322;
+}
+jl[45];
+int main()
+{
+   int       VAR_1238123;
+   int       VAR__53647;
+   int       VAR__21230;
+   struct jl VAR__temp;
+
+   float juli(struct point VAR__819283, struct point VAR__19328);
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &point[VAR__53647].VAR__7685, &point[VAR__53647].VAR__3918907, &point[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         jl[(((( VAR_1238123 * VAR__53647 ) - (( VAR__53647 * ( VAR__53647 + 1 )) / 2 )) + VAR__21230 ) - VAR__53647 ) - 1].VAR__127322  = juli(point[VAR__53647], point[VAR__21230]);
+         jl[(((( VAR_1238123 * VAR__53647 ) - (( VAR__53647 * ( VAR__53647 + 1 )) / 2 )) + VAR__21230 ) - VAR__53647 ) - 1].VAR__4857423 = VAR__53647;
+         jl[(((( VAR_1238123 * VAR__53647 ) - (( VAR__53647 * ( VAR__53647 + 1 )) / 2 )) + VAR__21230 ) - VAR__53647 ) - 1].VAR__12302   = VAR__21230;
+      }
+   }
+
+
+   for ( VAR__21230 = 1; VAR__21230 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( jl[VAR__53647].VAR__127322 < jl[VAR__53647 + 1].VAR__127322 )
+         {
+            VAR__temp          = jl[VAR__53647];
+            jl[VAR__53647]     = jl[VAR__53647 + 1];
+            jl[VAR__53647 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", point[jl[VAR__53647].VAR__4857423].VAR__7685, point[jl[VAR__53647].VAR__4857423].VAR__3918907, point[jl[VAR__53647].VAR__4857423].VAR__9290, point[jl[VAR__53647].VAR__12302].VAR__7685, point[jl[VAR__53647].VAR__12302].VAR__3918907, point[jl[VAR__53647].VAR__12302].VAR__9290, jl[VAR__53647].VAR__127322);
+   }
+
+   return 0;
+}
+
+
+float juli(struct point VAR__819283, struct point VAR__19328)
+{
+   float VAR__8444594;
+
+   VAR__8444594 = sqrt(((( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 ) * ( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 )) + (( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 ) * ( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 ))) + (( VAR__819283.VAR__9290 - VAR__19328.VAR__9290 ) * ( VAR__819283.VAR__9290 - VAR__19328.VAR__9290 )));
+   return VAR__8444594;
+}

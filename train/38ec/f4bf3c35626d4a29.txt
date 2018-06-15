@@ -1,0 +1,135 @@
+int main(int argc, char *argv[])
+{
+   const int month1[14] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   const int month2[14] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int       startYear;
+   int       startMonth;
+   int       startDay;
+   int       endYear;
+   int       endMonth;
+   int       endDay;
+   int       VAR__53647;
+   int       VAR__8444594;
+   int       days;
+   int       VAR_FLAG;
+
+   scanf("%d%d%d", &startYear, &startMonth, &startDay);
+   scanf("%d%d%d", &endYear, &endMonth, &endDay);
+   days = 0;
+
+   if ( startYear == endYear )
+   {
+      if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || (( startYear % 400 ) == 0 ))
+      {
+         if ( startMonth == endMonth )
+         {
+            days = endDay - startDay;
+         }
+         else
+         {
+            for ( VAR__8444594 = startMonth; VAR__8444594 < endMonth; VAR__8444594++ )
+            {
+               days += month2[VAR__8444594];
+            }
+
+            days += endDay - startDay;
+         }
+      }
+      else
+      {
+         if ( startMonth == endMonth )
+         {
+            days = endDay - startDay;
+         }
+         else
+         {
+            for ( VAR__8444594 = startMonth; VAR__8444594 < endMonth; VAR__8444594++ )
+            {
+               days += month1[VAR__8444594];
+            }
+
+            days += endDay - startDay;
+         }
+      }
+
+      printf("%d", days);
+      return 0;
+   }
+
+   for ( VAR__53647 = startYear; VAR__53647 <= endYear; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR_FLAG = 1;
+      }
+      else
+      {
+         VAR_FLAG = 0;
+      }
+
+      if ( VAR__53647 == startYear )
+      {
+         if ( VAR_FLAG == 1 )
+         {
+            for ( VAR__8444594 = startMonth; VAR__8444594 <= 12; VAR__8444594++ )
+            {
+               days += month2[VAR__8444594];
+            }
+         }
+
+         else
+         {
+            for ( VAR__8444594 = startMonth; VAR__8444594 <= 12; VAR__8444594++ )
+            {
+               days += month1[VAR__8444594];
+            }
+         }
+
+
+         days -= startDay;
+      }
+      else
+      if ( VAR__53647 == endYear )
+      {
+         if ( VAR_FLAG == 1 )
+         {
+            for ( VAR__8444594 = 1; VAR__8444594 < endMonth; VAR__8444594++ )
+            {
+               days += month2[VAR__8444594];
+            }
+         }
+
+         else
+         {
+            for ( VAR__8444594 = 1; VAR__8444594 < endMonth; VAR__8444594++ )
+            {
+               days += month1[VAR__8444594];
+            }
+         }
+
+
+         days += endDay;
+      }
+      else
+      {
+         if ( VAR_FLAG == 1 )
+         {
+            for ( VAR__8444594 = 1; VAR__8444594 <= 12; VAR__8444594++ )
+            {
+               days += month2[VAR__8444594];
+            }
+         }
+
+         else
+         {
+            for ( VAR__8444594 = 1; VAR__8444594 <= 12; VAR__8444594++ )
+            {
+               days += month1[VAR__8444594];
+            }
+         }
+      }
+   }
+
+   printf("%d", days);
+   return 0;
+}

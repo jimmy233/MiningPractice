@@ -1,0 +1,116 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int days1     = 0;
+   int days2     = 0;
+   int days      = 0;
+   int leap_year = 0;
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+   int year[2]   = { 365, 366 };
+   int month[24] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> startYear ) >> startMonth ) >> startDay;
+   (( cin >> endYear ) >> endMonth ) >> endDay;
+
+   if ( startYear == endYear )
+   {
+      if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || (( startYear % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+         {
+            days1 = days1 + month[12 + VAR__53647];
+         }
+
+         days1 = days1 + startDay;
+         for ( VAR__21230 = 0; VAR__21230 < ( endMonth - 1 ); VAR__21230++ )
+         {
+            days2 = days2 + month[12 + VAR__21230];
+         }
+
+         days2 = days2 + endDay;
+         days  = days2 - days1;
+         ( cout << days ) << endl;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+         {
+            days1 = days1 + month[VAR__53647];
+         }
+
+         days1 = days1 + startDay;
+         for ( VAR__21230 = 0; VAR__21230 < ( endMonth - 1 ); VAR__21230++ )
+         {
+            days2 = days2 + month[VAR__21230];
+         }
+
+         days2 = days2 + endDay;
+         days  = days2 - days1;
+         ( cout << days ) << endl;
+      }
+   }
+
+   if ( startYear != endYear )
+   {
+      VAR__8444594 = startYear;
+
+      while ( VAR__8444594 < endYear )
+      {
+         leap_year = ((( VAR__8444594 % 4 ) == 0 ) && (( VAR__8444594 % 100 ) != 0 )) || (( VAR__8444594 % 400 ) == 0 );
+         days      = days + year[leap_year];
+         VAR__8444594++;
+      }
+
+      if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || (( startYear % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+         {
+            days1 = days1 + month[12 + VAR__53647];
+         }
+
+         days1 = days1 + startDay;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+         {
+            days1 = days1 + month[VAR__53647];
+         }
+
+         days1 = days1 + startDay;
+      }
+
+      days = days - days1;
+
+      if (((( endYear % 4 ) == 0 ) && (( endYear % 100 ) != 0 )) || (( endYear % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+         {
+            days2 = days2 + month[12 + VAR__53647];
+         }
+
+         days2 = days2 + endDay;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+         {
+            days2 = days2 + month[VAR__53647];
+         }
+
+         days2 = days2 + endDay;
+      }
+
+      days = days + days2;
+      ( cout << days ) << endl;
+   }
+
+   return 0;
+}

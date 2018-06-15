@@ -1,0 +1,67 @@
+int main()
+{
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+   int total = 0;
+   int VAR__53647;
+   int day[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> startYear ) >> startMonth ) >> startDay;
+   (( cin >> endYear ) >> endMonth ) >> endDay;
+
+   if ( startYear == endYear )
+   {
+      total -= startDay;
+      total += endDay;
+
+      if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || (((( startYear % 400 ) == 0 ) && ( startMonth <= 2 )) && ( endMonth > 2 )))
+      {
+         day[1]++;
+      }
+
+      for ( VAR__53647 = startMonth; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+      {
+         total += day[VAR__53647];
+      }
+   }
+   else
+   {
+      total = (( endYear - startYear ) - 1 ) * 365;
+      for ( int year = startYear + 1; year < endYear; year++ )
+      {
+         if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+         {
+            total++;
+         }
+      }
+
+      total -= startDay;
+      total += endDay;
+      for ( VAR__53647 = startMonth - 1; VAR__53647 < 12; VAR__53647++ )
+      {
+         total += day[VAR__53647];
+      }
+
+      if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || ((( startYear % 400 ) == 0 ) && ( startMonth <= 2 )))
+      {
+         total++;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+      {
+         total += day[VAR__53647];
+      }
+
+      if (((( endYear % 4 ) == 0 ) && (( endYear % 100 ) != 0 )) || ((( endYear % 400 ) == 0 ) && ( endMonth > 2 )))
+      {
+         total++;
+      }
+   }
+
+   ( cout << total ) << endl;
+   return 0;
+}

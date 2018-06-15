@@ -1,0 +1,99 @@
+char VAR__7685[100000];
+char VAR__3918907[100000];
+char range[100000];
+char VAR_FLAG[100000];
+int  time[100000];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__8444594 = 0;
+
+   while ( VAR__8444594 < VAR_1238123 )
+   {
+      scanf("%s", VAR__7685);
+      int LEN_OF_STH = strlen(VAR__7685);
+      strcpy(VAR__3918907, VAR__7685);
+      char VAR__temp;
+      for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( LEN_OF_STH - 1 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( VAR__3918907[VAR__21230] > VAR__3918907[VAR__21230 + 1] )
+            {
+               VAR__temp = VAR__3918907[VAR__21230];
+               VAR__3918907[VAR__21230]     = VAR__3918907[VAR__21230 + 1];
+               VAR__3918907[VAR__21230 + 1] = VAR__temp;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 100000; VAR__53647++ )
+      {
+         time[VAR__53647] = 1;
+      }
+
+      VAR_FLAG[0] = VAR__3918907[0];
+      int VAR_233 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if ( VAR__3918907[VAR__53647] == VAR__3918907[VAR__53647 + 1] )
+         {
+            time[VAR_233]++;
+         }
+         else
+         {
+            VAR_FLAG[++VAR_233] = VAR__3918907[VAR__53647 + 1];
+         }
+      }
+
+      int VAR__1238129 = 0;
+      int biaoji       = 0;
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_233; VAR__53647++ )
+      {
+         if ( time[VAR__53647] == 1 )
+         {
+            range[VAR__1238129++] = VAR_FLAG[VAR__53647];
+            biaoji = 1;
+         }
+      }
+
+      int ting = 0;
+
+      if ( biaoji == 0 )
+      {
+         printf("no\n");
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+            {
+               if ( VAR__7685[VAR__53647] == range[VAR__21230] )
+               {
+                  printf("%c\n", VAR__7685[VAR__53647]);
+                  ting = 1;
+                  break;
+               }
+            }
+
+            if ( ting == 1 )
+            {
+               break;
+            }
+         }
+      }
+
+      VAR__8444594++;
+      memset(VAR__7685, 0, sizeof( VAR__7685 ));
+      memset(VAR__3918907, 0, sizeof( VAR__3918907 ));
+      memset(range, 0, sizeof( range ));
+      memset(VAR_FLAG, 0, sizeof( VAR_FLAG ));
+   }
+
+   return 0;
+}

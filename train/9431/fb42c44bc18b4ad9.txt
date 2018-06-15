@@ -1,0 +1,48 @@
+int main()
+{
+   struct student
+   {
+      char           No[9];
+      char           name[20];
+      char           sex;
+      int            age;
+      char           score[8];
+      char           add[20];
+      struct student *VAR__NEXT;
+      struct student *last;
+   };
+   struct student *VAR_233;
+   struct student *VAR__HEAD;
+   struct student *tail;
+
+   VAR_233         = (struct student *)malloc(sizeof( struct student ));
+   VAR__HEAD       = VAR_233;
+   VAR__HEAD->last = NULL;
+   do
+   {
+      scanf("%s", VAR_233->No);
+
+      if ( VAR_233->No[0] == 'e' )
+      {
+         VAR_233->VAR__NEXT = NULL;
+         tail = VAR_233->last;
+      }
+      else
+      {
+         scanf("%s %c%d%s%s", VAR_233->name, &VAR_233->sex, &VAR_233->age, &VAR_233->score, VAR_233->add);
+         VAR_233->VAR__NEXT       = (struct student *)malloc(sizeof( struct student ));
+         VAR_233->VAR__NEXT->last = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != NULL );
+   VAR_233 = tail;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->No, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->add);
+      VAR_233 = VAR_233->last;
+   }
+
+   return 0;
+}

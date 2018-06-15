@@ -1,0 +1,69 @@
+float male[N];
+float female[N];
+int main(int argc, char *argv[])
+{
+   int   VAR__53647  = 0;
+   int   VAR__21230  = 0;
+   int   VAR_1238123 = 0;
+   char  VAR_233[10] = "H";
+   float VAR_2890    = 0;
+   int   ii          = 0;
+   int   jj          = 0;
+
+   freopen("in.txt", "r", stdin);
+   freopen("out.txt", "w", stdout);
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123-- )
+   {
+      scanf("%s%f", VAR_233, &VAR_2890);
+
+      if ( 0 == strcmp(VAR_233, "male"))
+      {
+         male[VAR__53647++] = VAR_2890;
+      }
+      else
+      {
+         female[VAR__21230++] = VAR_2890;
+      }
+   }
+
+   for ( ii = 0; ii < VAR__53647; ii++ )
+   {
+      for ( jj = ii + 1; jj < VAR__53647; jj++ )
+      {
+         if ( male[ii] > male[jj] )
+         {
+            VAR_2890 = male[ii];
+            male[ii] = male[jj];
+            male[jj] = VAR_2890;
+         }
+      }
+   }
+
+   for ( ii = 0; ii < VAR__21230; ii++ )
+   {
+      for ( jj = ii + 1; jj < VAR__21230; jj++ )
+      {
+         if ( female[ii] < female[jj] )
+         {
+            VAR_2890   = female[ii];
+            female[ii] = female[jj];
+            female[jj] = VAR_2890;
+         }
+      }
+   }
+
+   for ( ii = 0; ii < VAR__53647; ii++ )
+   {
+      printf("%.2lf ", male[ii]);
+   }
+
+   for ( jj = 0; jj < ( VAR__21230 - 1 ); jj++ )
+   {
+      printf("%.2lf ", female[jj]);
+   }
+
+   printf("%.2lf\n", female[jj]);
+   return 0;
+}

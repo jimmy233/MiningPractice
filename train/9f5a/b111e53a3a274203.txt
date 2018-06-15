@@ -1,0 +1,63 @@
+int ROW;
+int COL;
+int row = -1;
+int col = 1;
+int array[100][100];
+int move()
+{
+   row++;
+   col--;
+   printf("%d\n", array[row][col]);
+   return 0;
+}
+
+
+int big_move()
+{
+   if (( row + col ) < ( COL - 1 ))
+   {
+      col = ( row + col ) + 1;
+      row = 0;
+   }
+   else
+   {
+      row = (( row + col ) - COL ) + 2;
+      col = COL - 1;
+   }
+
+   printf("%d\n", array[row][col]);
+   return 0;
+}
+
+
+int main()
+{
+   scanf("%d%d", &ROW, &COL);
+   int VAR_129012;
+   int VAR__4857423;
+   for ( VAR_129012 = 0; VAR_129012 < ROW; VAR_129012++ )
+   {
+      for ( VAR__4857423 = 0; VAR__4857423 < COL; VAR__4857423++ )
+      {
+         scanf("%d", &array[VAR_129012][VAR__4857423]);
+      }
+   }
+
+   if (( ROW == 1 ) && ( COL == 1 ))
+   {
+      printf("%d", array[0][0]);
+      return 0;
+   }
+
+   while (( row != ( ROW - 1 )) || ( col != ( COL - 1 )))
+   {
+      while (( col != 0 ) && ( row != ( ROW - 1 )))
+      {
+         move();
+      }
+
+      big_move();
+   }
+
+   return 0;
+}

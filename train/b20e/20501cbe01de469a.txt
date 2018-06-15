@@ -1,0 +1,70 @@
+int TianJi[M];
+int King[M];
+int dp[M][M];
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int profit(int VAR__7685, int VAR__3918907)
+{
+   if ( TianJi[VAR__7685] > King[VAR__3918907] )
+   {
+      return 200;
+   }
+   else
+   if ( TianJi[VAR__7685] < King[VAR__3918907] )
+   {
+      return -200;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+
+   while ( scanf("%d", &VAR_1238123) && ( VAR_1238123 != 0 ))
+   {
+      memset(dp, 0, sizeof( dp ));
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &TianJi[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &King[VAR__53647]);
+      }
+
+      qsort(TianJi + 1, VAR_1238123, sizeof( TianJi[0] ), cmp);
+      qsort(King + 1, VAR_1238123, sizeof( King[0] ), cmp);
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         dp[VAR__53647][0]          = dp[VAR__53647 - 1][0] + profit(( VAR_1238123 - VAR__53647 ) + 1, VAR__53647);
+         dp[VAR__53647][VAR__53647] = dp[VAR__53647 - 1][VAR__53647 - 1] + profit(VAR__53647, VAR__53647);
+         for ( VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            dp[VAR__53647][VAR__21230] = VAR__MAX(dp[VAR__53647 - 1][VAR__21230] + profit(( VAR_1238123 - ( VAR__53647 - VAR__21230 )) + 1, VAR__53647), dp[VAR__53647 - 1][VAR__21230 - 1] + profit(VAR__21230, VAR__53647));
+         }
+      }
+
+      int ans = -99999999;
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( ans < dp[VAR_1238123][VAR__53647] )
+         {
+            ans = dp[VAR_1238123][VAR__53647];
+         }
+      }
+
+      printf("%d\n", ans);
+   }
+}

@@ -1,0 +1,70 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   double VAR__NUM[400] = { 0.0 };
+   double num2[400]     = { 0.0 };
+   double VAR__SUM      = 0.0;
+   double ave           = 0.0;
+   int    counter       = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      cin >> VAR__NUM[VAR__53647];
+      VAR__SUM = VAR__SUM + VAR__NUM[VAR__53647];
+   }
+
+   ave = VAR__SUM / VAR_1238123;
+   double Max       = 0.0;
+   double VAR__TEMP = 0.0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__TEMP = fabs(VAR__NUM[VAR__53647] - ave);
+
+      if ( VAR__TEMP > Max )
+      {
+         Max = VAR__TEMP;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( fabs(fabs(VAR__NUM[VAR__53647] - ave) - Max) <= 0.00001 )
+      {
+         num2[counter] = VAR__NUM[VAR__53647];
+         counter++;
+      }
+   }
+
+
+   if ( counter == 1 )
+   {
+      cout << num2[0];
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( counter - 2 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( counter - 1 ); VAR__21230++ )
+         {
+            if ( num2[VAR__53647] > num2[VAR__21230] )
+            {
+               VAR__TEMP            = num2[VAR__53647];
+               num2[VAR__53647]     = VAR__NUM[VAR__21230];
+               VAR__NUM[VAR__21230] = VAR__TEMP;
+            }
+         }
+      }
+
+
+      cout << num2[0];
+      for ( VAR__53647 = 1; VAR__53647 <= ( counter - 1 ); VAR__53647++ )
+      {
+         ( cout << "," ) << num2[VAR__53647];
+      }
+   }
+
+   return 0;
+}

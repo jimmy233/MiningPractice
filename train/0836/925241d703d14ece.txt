@@ -1,0 +1,59 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__8444594;
+   int VAR__1238129;
+
+   int cal(int monkey, int rest);
+
+   scanf("%d %d", &VAR_1238123, &VAR__8444594);
+   VAR__1238129 = cal(VAR_1238123, VAR__8444594);
+   printf("%d\n", VAR__1238129);
+   return 0;
+}
+
+
+int cal(int monkey, int rest)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__NUM;
+   int nummin;
+   int VAR__819283[10000];
+
+   for ( VAR__53647 = 0; VAR__53647 < 10000; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 0;
+   }
+
+   nummin = 1;
+
+   while ( nummin >= 1 )
+   {
+      VAR__NUM = nummin;
+      VAR__NUM = ( VAR__NUM * monkey ) + rest;
+      for ( VAR__53647 = 2; VAR__53647 <= monkey; VAR__53647++ )
+      {
+         VAR__NUM = (( VAR__NUM * monkey ) / ( monkey - 1 )) + rest;
+         VAR__819283[VAR__53647] = VAR__NUM;
+
+         if (( VAR__NUM % monkey ) != rest )
+         {
+            nummin++;
+            for ( VAR__21230 = 0; VAR__21230 <= monkey; VAR__21230++ )
+            {
+               VAR__819283[VAR__21230] = 0;
+            }
+
+            break;
+         }
+      }
+
+      if (( VAR__819283[monkey] % monkey ) == rest )
+      {
+         break;
+      }
+   }
+
+   return VAR__NUM;
+}

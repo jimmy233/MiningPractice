@@ -1,0 +1,144 @@
+struct node
+{
+   int         VAR__NUM;
+   char        number[20];
+   char        name[20];
+   char        sex[10];
+   char        age[10];
+   char        score[10];
+   char        address[20];
+   struct node *VAR__NEXT;
+};
+struct node *creat(int VAR_1238123);
+struct node *insert(struct node *VAR__HEAD, struct node *VAR_666);
+void list(struct node *VAR__HEAD);
+struct node *fv(struct node *VAR__HEAD);
+
+int main(void)
+{
+   struct node *VAR_233;
+
+   VAR_233 = creat(0);
+   int VAR__53647;
+   for ( VAR__53647 = 1; VAR__53647 < 1000; VAR__53647++ )
+   {
+      struct node *VAR_666;
+      VAR_666 = creat(VAR__53647);
+
+      if ( strcmp("end", VAR_666->number) != 0 )
+      {
+         VAR_233 = insert(VAR_233, VAR_666);
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   VAR_233 = fv(VAR_233);
+   list(VAR_233);
+   return 0;
+}
+
+
+struct node *creat(int VAR_1238123)
+{
+   struct node *ps;
+
+   ps = (struct node *)malloc(sizeof( struct node ));
+   scanf("%s %s %s %s %s %s\n", &ps->number, &ps->name, &ps->age, &ps->sex, &ps->score, &ps->address);
+   fflush(stdin);
+   ps->VAR__NUM = VAR_1238123;
+   return ps;
+}
+
+
+struct node *insert(struct node *VAR__HEAD, struct node *VAR_666)
+{
+   struct node *VAR__1238129;
+   struct node *VAR_1238123;
+
+   VAR__1238129 = VAR__HEAD;
+
+   if ( VAR__HEAD == 0 )
+   {
+      VAR__HEAD          = VAR_666;
+      VAR_666->VAR__NEXT = 0;
+   }
+   else
+   {
+      if ( VAR_666->VAR__NUM <= VAR__HEAD->VAR__NUM )
+      {
+         VAR_666->VAR__NEXT = VAR__HEAD;
+         VAR__HEAD          = VAR_666;
+      }
+      else
+      {
+         while (( VAR_666->VAR__NUM > VAR__1238129->VAR__NUM ) && ( VAR__1238129->VAR__NEXT != 0 ))
+         {
+            VAR_1238123  = VAR__1238129;
+            VAR__1238129 = VAR__1238129->VAR__NEXT;
+         }
+
+         if ( VAR_666->VAR__NUM <= VAR__1238129->VAR__NUM )
+         {
+            VAR_1238123->VAR__NEXT = VAR_666;
+            VAR_666->VAR__NEXT     = VAR__1238129;
+         }
+         else
+         {
+            VAR__1238129->VAR__NEXT = VAR_666;
+            VAR_666->VAR__NEXT      = 0;
+         }
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct node *fv(struct node *VAR__HEAD)
+{
+   struct node *VAR_233;
+   struct node *VAR_666;
+   struct node *VAR__8444594;
+   struct node *VAR__1111;
+
+   VAR__1111          = VAR__HEAD;
+   VAR_233            = (struct node *)malloc(sizeof( struct node ));
+   VAR_233->VAR__NEXT = VAR__1111;
+   VAR__8444594       = VAR_233->VAR__NEXT;
+
+   while ( VAR__8444594 != 0 )
+   {
+      VAR_666            = VAR_233;
+      VAR_233            = VAR__8444594;
+      VAR__8444594       = VAR_233->VAR__NEXT;
+      VAR_233->VAR__NEXT = VAR_666;
+   }
+
+   VAR_233->VAR__NEXT = VAR_666;
+   VAR_666            = VAR_233;
+
+   while ( VAR_666->VAR__NUM != VAR__HEAD->VAR__NUM )
+   {
+      VAR_666 = VAR_666->VAR__NEXT;
+   }
+
+   VAR_666->VAR__NEXT = 0;
+   return VAR_233;
+}
+
+
+void list(struct node *VAR__HEAD)
+{
+   struct node *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != 0 )
+   {
+      printf("%s %s %s %s %s %s\n", &VAR_233->number, &VAR_233->name, &VAR_233->age, &VAR_233->sex, &VAR_233->score, &VAR_233->address);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

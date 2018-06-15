@@ -1,0 +1,48 @@
+struct student
+{
+   char           xh[20];
+   char           name[20];
+   char           sex;
+   int            age;
+   float          score;
+   char           dizhi[30];
+   struct student *VAR__NEXT;
+};
+struct student *append(void)
+{
+   int            VAR_1238123;
+   struct student *VAR__HEAD;
+   struct student *newnode;
+   struct student *thisnode = NULL;
+
+   for ( VAR_1238123 = 1; ; VAR_1238123++ )
+   {
+      newnode = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s", &newnode->xh);
+
+      if ( newnode->xh[0] == 'e' )
+      {
+         VAR__HEAD = thisnode;
+         break;
+      }
+      else
+      {
+         scanf(" %s %c %d %f %s\n", &newnode->name, &newnode->sex, &newnode->age, &newnode->score, &newnode->dizhi);
+         newnode->VAR__NEXT = thisnode;
+         thisnode           = newnode;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR_233;
+
+   for ( VAR_233 = append(); VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->xh, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->dizhi);
+   }
+}

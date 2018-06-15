@@ -1,0 +1,62 @@
+int leap(int VAR__819283)
+{
+   if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int year[2]      = { 365, 366 };
+int month[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+int main()
+{
+   int y1;
+   int m1;
+   int d1;
+
+   (( cin >> y1 ) >> m1 ) >> d1;
+   int y2;
+   int m2;
+   int d2;
+   (( cin >> y2 ) >> m2 ) >> d2;
+   int day = 0;
+   int VAR__53647;
+   for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+   {
+      day = day + year[leap(VAR__53647)];
+   }
+
+   if ( y1 < y2 )
+   {
+      for ( VAR__53647 = m1; VAR__53647 < 12; VAR__53647++ )
+      {
+         day = day + month[leap(y1)][VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( m2 - 1 ); VAR__53647++ )
+      {
+         day = day + month[leap(y2)][VAR__53647];
+      }
+
+      day = ( day + 31 ) - d1;
+      day = day + d2;
+   }
+   else
+   if ( y1 == y2 )
+   {
+      for ( VAR__53647 = m1; VAR__53647 < ( m2 - 1 ); VAR__53647++ )
+      {
+         day = day + month[leap(y1)][VAR__53647];
+      }
+
+      day = ( day + d2 ) - d1;
+   }
+
+
+   cout << day;
+}

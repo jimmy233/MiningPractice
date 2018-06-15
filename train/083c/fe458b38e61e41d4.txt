@@ -1,0 +1,103 @@
+int pow(int di, int mi)
+{
+   int VAR__8444594;
+   int VAR_233 = 1;
+
+   if ( mi >= 1 )
+   {
+      for ( VAR__8444594 = 1; VAR__8444594 <= mi; VAR__8444594++ )
+      {
+         VAR_233 *= di;
+      }
+   }
+
+   return VAR_233;
+}
+
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__NUM = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR_1238123[100];
+   int  VAR__1238129[100];
+
+   (( cin >> VAR__819283 ) >> VAR_1238123 ) >> VAR__19328;
+   for ( VAR__53647 = 0; VAR__53647 <= 100; VAR__53647++ )
+   {
+      if ( VAR_1238123[VAR__53647] == '\0' )
+      {
+         break;
+      }
+
+      VAR__1238129[VAR__53647] = (int)VAR_1238123[VAR__53647];
+
+      if (( VAR_1238123[VAR__53647] <= 57 ) && ( VAR_1238123[VAR__53647] >= 48 ))
+      {
+         VAR__1238129[VAR__53647] = VAR__1238129[VAR__53647] - 48;
+      }
+
+      if (( VAR_1238123[VAR__53647] <= 90 ) && ( VAR_1238123[VAR__53647] >= 65 ))
+      {
+         VAR__1238129[VAR__53647] = VAR__1238129[VAR__53647] - 55;
+      }
+
+      if (( VAR_1238123[VAR__53647] <= 122 ) && ( VAR_1238123[VAR__53647] >= 97 ))
+      {
+         VAR__1238129[VAR__53647] = VAR__1238129[VAR__53647] - 87;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__53647 >= 1; VAR__21230++ )
+   {
+      VAR__NUM = VAR__NUM + ( VAR__1238129[VAR__21230] * pow(VAR__819283, VAR__53647 - 1));
+      VAR__53647--;
+   }
+
+   if ( VAR__NUM == 0 )
+   {
+      ( cout << '0' ) << endl;
+   }
+   else
+   {
+      int  VAR_666;
+      int  VAR_21983012;
+      char VAR_129012[100];
+      int  VAR__temp[100];
+      for ( VAR_666 = 0; VAR_666 < 100; VAR_666++ )
+      {
+         if ( VAR__NUM == 0 )
+         {
+            break;
+         }
+
+         VAR__temp[VAR_666] = VAR__NUM % VAR__19328;
+         VAR__NUM           = VAR__NUM / VAR__19328;
+      }
+
+      for ( VAR_21983012 = 0; VAR_666 >= 1; VAR_21983012++ )
+      {
+         VAR_129012[VAR_21983012] = (char)VAR__temp[VAR_666 - 1];
+
+         if (( 0 <= VAR__temp[VAR_666 - 1] ) && ( VAR__temp[VAR_666 - 1] <= 9 ))
+         {
+            VAR_129012[VAR_21983012] += 48;
+         }
+
+         if (( 10 <= VAR__temp[VAR_666 - 1] ) && ( VAR__temp[VAR_666 - 1] <= 35 ))
+         {
+            VAR_129012[VAR_21983012] += 55;
+         }
+
+         VAR_666--;
+      }
+
+      VAR_129012[VAR_21983012] = '\0';
+      ( cout << VAR_129012 ) << endl;
+   }
+
+   return 0;
+}

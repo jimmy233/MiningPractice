@@ -1,0 +1,78 @@
+void main()
+{
+   int  VAR_1238123 = 20;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__7685;
+   int  VAR__3918907;
+   int  VAR__9290;
+   char **VAR_233 = (char **)malloc(VAR_1238123 * ( sizeof( char * )));
+
+   scanf("%d", &VAR_1238123);
+
+   if ( VAR_233 != NULL )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 20; VAR__53647++ )
+      {
+         VAR_233[VAR__53647] = (char *)malloc(100 * ( sizeof( char )));
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( 2 * VAR_1238123 ); VAR__53647++ )
+      {
+         scanf("%s", VAR_233[VAR__53647]);
+
+         if (( VAR__53647 % 2 ) == 1 )
+         {
+            VAR__7685    = strlen(VAR_233[VAR__53647 - 1]);
+            VAR__3918907 = strlen(VAR_233[VAR__53647]);
+            for ( VAR__21230 = VAR__7685 - 1; VAR__21230 >= 0; VAR__21230-- )
+            {
+               if ((( VAR__21230 - VAR__7685 ) + VAR__3918907 ) >= 0 )
+               {
+                  VAR__9290 = VAR_233[VAR__53647 - 1][VAR__21230] - VAR_233[VAR__53647][( VAR__21230 - VAR__7685 ) + VAR__3918907];
+
+                  if ( VAR__9290 < 0 )
+                  {
+                     VAR_233[VAR__53647 - 1][VAR__21230] = ( '9' + 1 ) + VAR__9290;
+                     VAR_233[VAR__53647 - 1][VAR__21230 - 1]--;
+                  }
+                  else
+                  {
+                     VAR_233[VAR__53647 - 1][VAR__21230] = '0' + VAR__9290;
+                  }
+               }
+               else
+               {
+                  VAR__9290 = VAR_233[VAR__53647 - 1][VAR__21230] - '0';
+
+                  if ( VAR__9290 < 0 )
+                  {
+                     VAR_233[VAR__53647 - 1][VAR__21230] = ( '9' + 1 ) + VAR__9290;
+                     VAR_233[VAR__53647 - 1][VAR__21230 - 1]--;
+                  }
+                  else
+                  {
+                     VAR_233[VAR__53647 - 1][VAR__21230] = '0' + VAR__9290;
+                  }
+               }
+            }
+
+            for ( VAR__9290 = 0; ; VAR__9290++ )
+            {
+               if ( VAR_233[VAR__53647 - 1][VAR__9290] != '0' )
+               {
+                  break;
+               }
+            }
+
+
+            for ( VAR__21230 = VAR__9290; VAR__21230 < VAR__7685; VAR__21230++ )
+            {
+               printf("%c", VAR_233[VAR__53647 - 1][VAR__21230]);
+            }
+
+            printf("\n");
+         }
+      }
+   }
+}

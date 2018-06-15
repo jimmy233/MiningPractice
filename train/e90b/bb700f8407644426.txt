@@ -1,0 +1,76 @@
+struct stu
+{
+   int        ID;
+   int        yuwen;
+   int        shuxue;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+};
+struct stu *creat(long VAR_1238123)
+{
+   long       VAR__53647;
+   struct stu *VAR_233;
+   struct stu *VAR_666;
+   struct stu *VAR__HEAD;
+
+   VAR_233   = (struct stu *)malloc(LEN);
+   VAR__HEAD = ( VAR_666 = VAR_233 );
+   scanf("%d %d %d", &VAR_233->ID, &VAR_233->yuwen, &VAR_233->shuxue), VAR_233->VAR__SUM = VAR_233->shuxue + VAR_233->yuwen;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct stu *)malloc(LEN);
+      scanf("%d %d %d", &VAR_233->ID, &VAR_233->yuwen, &VAR_233->shuxue), VAR_233->VAR__SUM = VAR_233->shuxue + VAR_233->yuwen;
+      VAR_666->VAR__NEXT = VAR_233, VAR_666 = VAR_233;
+   }
+
+   VAR_233->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   long VAR__53647;
+   long VAR_1238123;
+
+   scanf("%ld", &VAR_1238123);
+   struct stu *VAR_2890;
+   struct stu *VAR_233;
+   struct stu *q1;
+   struct stu *q2;
+   struct stu *q3;
+   VAR_2890 = creat(VAR_1238123);
+   int m1;
+   int m2;
+   int m3;
+   for ( VAR_233 = VAR_2890, m1 = VAR_233->VAR__SUM; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->VAR__SUM > m1 )
+      {
+         m1 = VAR_233->VAR__SUM, q1 = VAR_233;
+      }
+   }
+
+
+   printf("%d %d", q1->ID, q1->VAR__SUM);
+   for ( VAR_233 = VAR_2890, m2 = VAR_233->VAR__SUM; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if (( VAR_233->VAR__SUM > m2 ) && ( VAR_233 != q1 ))
+      {
+         m2 = VAR_233->VAR__SUM, q2 = VAR_233;
+      }
+   }
+
+
+   printf("\n%d %d", q2->ID, q2->VAR__SUM);
+   for ( VAR_233 = VAR_2890, m3 = VAR_233->VAR__SUM; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ((( VAR_233->VAR__SUM > m3 ) && ( VAR_233 != q1 )) && ( VAR_233 != q2 ))
+      {
+         m3 = VAR_233->VAR__SUM, q3 = VAR_233;
+      }
+   }
+
+
+   printf("\n%d %d", q3->ID, q3->VAR__SUM);
+}

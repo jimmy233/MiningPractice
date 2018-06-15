@@ -1,0 +1,55 @@
+int data[1000] = { 0 };
+int VAR_1238123 = 0;
+int VAR__1238129 = 0;
+void cir_move(int dir, int left, int right, int step)
+{
+   if (( left == right ) || ( step == 0 ))
+   {
+      return;
+   }
+
+   int LEN_OF_STH = ( right - left ) + 1;
+   step = step % LEN_OF_STH;
+
+   if ( step > ( LEN_OF_STH / 2 ))
+   {
+      cir_move(dir ^ 1, left, right, LEN_OF_STH - step);
+      return;
+   }
+
+   int VAR__21230   = 0;
+   int VAR__8444594 = LEN_OF_STH - step;
+   for ( int VAR__53647 = left; VAR__53647 < ( left + step ); VAR__53647++ )
+   {
+      VAR__21230       = data[VAR__53647];
+      data[VAR__53647] = data[VAR__53647 + VAR__8444594];
+      data[VAR__53647 + VAR__8444594] = VAR__21230;
+   }
+
+   if ( dir == 0 )
+   {
+      cir_move(dir, left, right - step, step);
+   }
+   else
+   {
+      cir_move(dir, left + step, right, step);
+   }
+}
+
+
+int main()
+{
+   ( cin >> VAR_1238123 ) >> VAR__1238129;
+   VAR__1238129 = VAR__1238129 % VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin >> data[VAR__53647];
+   }
+
+   cir_move(1, 1, VAR_1238123, VAR__1238129);
+   cout << data[1];
+   for ( int VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ( cout << ' ' ) << data[VAR__53647];
+   }
+}

@@ -1,0 +1,53 @@
+int main()
+{
+   int x1;
+   int y1;
+   int x2;
+   int y2;
+
+   scanf("%d", &x1);
+   scanf("%d", &y1);
+   int *ANOTHER_POINTER = (int *)malloc(( x1 * y1 ) * ( sizeof( int )));
+   for ( int VAR__53647 = 0; VAR__53647 < ( x1 * y1 ); VAR__53647++ )
+   {
+      scanf("%d", &ANOTHER_POINTER[VAR__53647]);
+   }
+
+   scanf("%d", &x2);
+   scanf("%d", &y2);
+   int *YET_ANOTHER_POINTER = (int *)malloc(( x2 * y2 ) * ( sizeof( int )));
+   for ( int VAR__53647 = 0; VAR__53647 < ( x2 * y2 ); VAR__53647++ )
+   {
+      scanf("%d", &YET_ANOTHER_POINTER[VAR__53647]);
+   }
+
+   int *p3 = (int *)malloc(( x1 * y2 ) * ( sizeof( int )));
+   for ( int VAR__53647 = 0; VAR__53647 < x1; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < y2; VAR__21230++ )
+      {
+         p3[( VAR__53647 * y2 ) + VAR__21230] = 0;
+         for ( int VAR__8444594 = 0; VAR__8444594 < y1; VAR__8444594++ )
+         {
+            p3[( VAR__53647 * y2 ) + VAR__21230] = p3[( VAR__53647 * y2 ) + VAR__21230] + ( ANOTHER_POINTER[( VAR__53647 * y1 ) + VAR__8444594] * YET_ANOTHER_POINTER[( VAR__8444594 * y2 ) + VAR__21230] );
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < x1; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < y2; VAR__21230++ )
+      {
+         if ( VAR__21230 < ( y2 - 1 ))
+         {
+            printf("%d ", p3[( VAR__53647 * y2 ) + VAR__21230]);
+         }
+         else
+         {
+            printf("%d\n", p3[( VAR__53647 * y2 ) + VAR__21230]);
+         }
+      }
+   }
+
+   return 0;
+}

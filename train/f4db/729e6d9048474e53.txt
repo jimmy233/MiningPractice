@@ -1,0 +1,62 @@
+int calcSum(int *matrix, int row, int col);
+
+int main()
+{
+   int VAR__8444594;
+
+   scanf("%d", &VAR__8444594);
+   int *result    = (int *)malloc(VAR__8444594 * ( sizeof( int )));
+   int VAR__53647 = 0;
+   int row;
+   int col;
+   int VAR__SUM;
+   int VAR__1238129;
+   int VAR_1238123;
+   int *matrix;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      scanf("%d %d", &VAR__1238129, &VAR_1238123);
+      matrix = (int *)malloc(( VAR__1238129 * VAR_1238123 ) * ( sizeof( int )));
+      for ( row = 0; row < VAR__1238129; row++ )
+      {
+         for ( col = 0; col < VAR_1238123; col++ )
+         {
+            scanf("%d", ( matrix + ( row * VAR_1238123 )) + col);
+         }
+      }
+
+
+      *( result + VAR__53647 ) = calcSum(matrix, VAR__1238129, VAR_1238123);
+      free(matrix);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      printf("%d\n", *( result + VAR__53647 ));
+   }
+
+   printf("%d", *( result + VAR__53647 ));
+   return 0;
+}
+
+
+int calcSum(int *matrix, int row, int col)
+{
+   int VAR__SUM = 0;
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         if (((( VAR__53647 == 0 ) || ( VAR__53647 == ( row - 1 ))) || ( VAR__21230 == 0 )) || ( VAR__21230 == ( col - 1 )))
+         {
+            VAR__SUM += *(( matrix + ( VAR__53647 * col )) + VAR__21230 );
+         }
+      }
+   }
+
+
+   return VAR__SUM;
+}

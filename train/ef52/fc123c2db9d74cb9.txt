@@ -1,0 +1,46 @@
+int dp[100];
+int main(void)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int *VAR_2890;
+   int VAR__MAX;
+
+   scanf("%d", &VAR__8444594);
+   VAR_2890 = (int *)malloc(( VAR__8444594 + 1 ) * ( sizeof( int )));
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      scanf("%d", &VAR_2890[VAR__53647]);
+   }
+
+   dp[VAR__8444594] = 0;
+   for ( VAR__53647 = VAR__8444594 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__MAX = 0;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR__8444594; VAR__21230++ )
+      {
+         if ( VAR_2890[VAR__53647] >= VAR_2890[VAR__21230] )
+         {
+            if (( dp[VAR__21230] + 1 ) > VAR__MAX )
+            {
+               VAR__MAX = dp[VAR__21230] + 1;
+            }
+         }
+      }
+
+      dp[VAR__53647] = VAR__MAX;
+   }
+
+   int VAR__1238129 = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      if ( dp[VAR__53647] > VAR__1238129 )
+      {
+         VAR__1238129 = dp[VAR__53647];
+      }
+   }
+
+   printf("%d", VAR__1238129 + 1);
+   return 0;
+}

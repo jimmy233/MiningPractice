@@ -1,0 +1,87 @@
+int bijiao(const void *VAR__7685, const void *VAR__3918907)
+{
+   return ( *((int *)VAR__3918907 )) - ( *((int *)VAR__7685 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( scanf("%d", &VAR_1238123) && ( VAR_1238123 != 0 ))
+   {
+      int VAR__53647;
+      int *tj;
+      int *qw;
+      int VAR__SUM = 0;
+      tj = (int *)malloc(4 * VAR_1238123);
+      qw = (int *)malloc(4 * VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", tj + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", qw + VAR__53647);
+      }
+
+      qsort(tj, VAR_1238123, 4, bijiao);
+      qsort(qw, VAR_1238123, 4, bijiao);
+      int tmax = 0;
+      int qmax = 0;
+      int tmin = VAR_1238123 - 1;
+      int qmin = VAR_1238123 - 1;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if (( *( tj + tmax )) > ( *( qw + qmax )))
+         {
+            VAR__SUM += 200;
+            tmax++;
+            qmax++;
+         }
+         else
+         if (( *( tj + tmax )) < ( *( qw + qmax )))
+         {
+            VAR__SUM -= 200;
+            tmin--;
+            qmax++;
+         }
+         else
+         {
+            if (( *( tj + tmin )) > ( *( qw + qmin )))
+            {
+               VAR__SUM += 200;
+               tmin--;
+               qmin--;
+            }
+            else
+            if (( *( tj + tmin )) < ( *( qw + qmin )))
+            {
+               VAR__SUM -= 200;
+               tmin--;
+               qmax++;
+            }
+            else
+            {
+               if (( *( tj + tmax )) == ( *( qw + qmin )))
+               {
+                  break;
+               }
+               else
+               {
+                  VAR__SUM -= 200;
+                  tmin--;
+                  qmax++;
+               }
+            }
+         }
+      }
+
+      printf("%d\n", VAR__SUM);
+      free(tj);
+      free(qw);
+   }
+
+   return 0;
+}

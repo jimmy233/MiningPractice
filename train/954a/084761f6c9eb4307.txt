@@ -1,0 +1,80 @@
+struct
+{
+   char name[20];
+   int  final;
+   int  cla;
+   char gan;
+   char west;
+   int  thesis;
+   int  money;
+}
+stu[120];
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM = 0;
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d\n", &stu[VAR__53647].name, &stu[VAR__53647].final, &stu[VAR__53647].cla, &stu[VAR__53647].gan, &stu[VAR__53647].west, &stu[VAR__53647].thesis);
+   }
+
+   scanf("%s %d %d %c %c %d", &stu[VAR_1238123 - 1].name, &stu[VAR_1238123 - 1].final, &stu[VAR_1238123 - 1].cla, &stu[VAR_1238123 - 1].gan, &stu[VAR_1238123 - 1].west, &stu[VAR_1238123 - 1].thesis);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].money = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].final > 80 ) && ( stu[VAR__53647].thesis >= 1 ))
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 8000;
+      }
+
+      if (( stu[VAR__53647].final > 85 ) && ( stu[VAR__53647].cla > 80 ))
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 4000;
+      }
+
+      if ( stu[VAR__53647].final > 90 )
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 2000;
+      }
+
+      if (( stu[VAR__53647].final > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 1000;
+      }
+
+      if (( stu[VAR__53647].cla > 80 ) && ( stu[VAR__53647].gan == 'Y' ))
+      {
+         stu[VAR__53647].money = stu[VAR__53647].money + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( stu[VAR__21230].money < stu[VAR__21230 + 1].money )
+         {
+            stu[119]            = stu[VAR__21230];
+            stu[VAR__21230]     = stu[VAR__21230 + 1];
+            stu[VAR__21230 + 1] = stu[119];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + stu[VAR__53647].money;
+   }
+
+   printf("%s\n", stu[0].name);
+   printf("%d\n", stu[0].money);
+   printf("%d\n", VAR__SUM);
+}

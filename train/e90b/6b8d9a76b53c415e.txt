@@ -1,0 +1,77 @@
+struct stu
+{
+   int Num;
+   int scoreC;
+   int scoreM;
+   int all;
+};
+struct stu stu[100005];
+void fsort(int first, int last)
+{
+   int chosen1;
+   int chosen2;
+   int VAR_233;
+   int VAR_666;
+
+   if ( first >= last )
+   {
+      return;
+   }
+
+   chosen1 = stu[first].all;
+   chosen2 = stu[first].Num;
+   VAR_233 = first;
+   VAR_666 = last;
+
+   while ( VAR_233 < VAR_666 )
+   {
+      while (( VAR_233 < VAR_666 ) && ( stu[VAR_666].all >= chosen1 ))
+      {
+         VAR_666--;
+      }
+
+      if ( VAR_233 < VAR_666 )
+      {
+         stu[VAR_233].all = stu[VAR_666].all;
+         stu[VAR_233].Num = stu[VAR_666].Num;
+         VAR_233++;
+      }
+
+      while (( VAR_233 < VAR_666 ) && ( stu[VAR_233].all < chosen1 ))
+      {
+         VAR_233++;
+      }
+
+      if ( VAR_233 < VAR_666 )
+      {
+         stu[VAR_666].all = stu[VAR_233].all;
+         stu[VAR_666].Num = stu[VAR_233].Num;
+         VAR_666--;
+      }
+   }
+
+   stu[VAR_233].all = chosen1;
+   stu[VAR_233].Num = chosen2;
+   fsort(first, VAR_233 - 1);
+   fsort(VAR_233 + 1, last);
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR__53647;
+
+   cin >> VAR__1238129;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      (( cin >> stu[VAR__53647].Num ) >> stu[VAR__53647].scoreC ) >> stu[VAR__53647].scoreM;
+      stu[VAR__53647].all = stu[VAR__53647].scoreC + stu[VAR__53647].scoreM;
+   }
+
+   fsort(1, VAR__1238129);
+   ((( cout << stu[VAR__1238129].Num ) << " " ) << stu[VAR__1238129].all ) << endl;
+   ((( cout << stu[VAR__1238129 - 1].Num ) << " " ) << stu[VAR__1238129 - 1].all ) << endl;
+   ((( cout << stu[VAR__1238129 - 2].Num ) << " " ) << stu[VAR__1238129 - 2].all ) << endl;
+   return 0;
+}

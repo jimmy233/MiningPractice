@@ -1,0 +1,65 @@
+int Greedy(int Tj[], int Kg[], int VAR_1238123)
+{
+   int VAR__COUNT = 0;
+   int Tj_fa      = VAR_1238123 - 1;
+   int Tj_lo      = 0;
+   int Kg_fa      = VAR_1238123 - 1;
+   int Kg_lo      = 0;
+
+   while ( Tj_lo <= Tj_fa )
+   {
+      if ( Tj[Tj_fa] > Kg[Kg_fa] )
+      {
+         VAR__COUNT++;
+         Tj_fa--;
+         Kg_fa--;
+      }
+      else
+      if ( Tj[Tj_lo] > Kg[Kg_lo] )
+      {
+         VAR__COUNT++;
+         Tj_lo++;
+         Kg_lo++;
+      }
+      else
+      {
+         if ( Tj[Tj_lo] < Kg[Kg_fa] )
+         {
+            VAR__COUNT--;
+         }
+
+         Tj_lo++;
+         Kg_fa--;
+      }
+   }
+
+   return VAR__COUNT;
+}
+
+
+int main()
+{
+   int T[1002];
+   int K[1002];
+   int VAR_1238123;
+
+   while (( cin >> VAR_1238123 ) && VAR_1238123 )
+   {
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> T[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> K[VAR__53647];
+      }
+
+      sort(T, T + VAR_1238123);
+      sort(K, K + VAR_1238123);
+      ( cout << ( Greedy(T, K, VAR_1238123) * 200 )) << endl;
+   }
+
+   return 0;
+}

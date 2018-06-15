@@ -1,0 +1,76 @@
+struct student
+{
+   long           id;
+   int            chinese;
+   int            math;
+   int            score;
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   int            VAR__NUM;
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *VAR_666;
+
+   VAR_666   = NULL;
+   VAR__HEAD = (struct student *)malloc(LEN_OF_STH);
+   VAR_233   = VAR__HEAD;
+   scanf("%d", &VAR__NUM);
+
+   while ( VAR__NUM > 0 )
+   {
+      VAR_666 = VAR_233;
+      scanf("%ld%d%d", &VAR_233->id, &VAR_233->chinese, &VAR_233->math);
+      VAR_233->score     = VAR_233->chinese + VAR_233->math;
+      VAR_233            = (struct student *)malloc(LEN_OF_STH);
+      VAR_666->VAR__NEXT = VAR_233;
+      VAR__NUM--;
+   }
+
+   VAR_233->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int            VAR__53647;
+   struct student *VAR_233;
+   struct student *VAR__HEAD;
+   struct student *VAR__MAX[3];
+
+   VAR__HEAD = creat();
+   VAR_233   = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 <= 2; VAR__53647++ )
+   {
+      VAR__MAX[VAR__53647]        = (struct student *)malloc(LEN_OF_STH);
+      VAR__MAX[VAR__53647]->score = 0;
+   }
+
+   for ( ; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->score > VAR__MAX[0]->score )
+      {
+         VAR__MAX[2] = VAR__MAX[1];
+         VAR__MAX[1] = VAR__MAX[0];
+         VAR__MAX[0] = VAR_233;
+      }
+      else
+      if ( VAR_233->score > VAR__MAX[1]->score )
+      {
+         VAR__MAX[2] = VAR__MAX[1];
+         VAR__MAX[1] = VAR_233;
+      }
+      else
+      if ( VAR_233->score > VAR__MAX[2]->score )
+      {
+         VAR__MAX[2] = VAR_233;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 2; VAR__53647++ )
+   {
+      printf("%ld %d\n", VAR__MAX[VAR__53647]->id, VAR__MAX[VAR__53647]->score);
+   }
+}

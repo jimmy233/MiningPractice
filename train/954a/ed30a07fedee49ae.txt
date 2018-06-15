@@ -1,0 +1,81 @@
+void main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+   struct student
+   {
+      char xing[20];
+      int  qi;
+      int  ban;
+      char gan;
+      char xi;
+      int  lun;
+      int  qian;
+   }
+   stu[100];
+   struct student
+   {
+      char xing[20];
+      int  qi;
+      int  ban;
+      char gan;
+      char xi;
+      int  lun;
+      int  qian;
+   }
+   mid;
+
+   scanf("%d", &VAR__819283);
+   for ( VAR__19328 = 0; VAR__19328 < VAR__819283; VAR__19328++ )
+   {
+      stu[VAR__19328].qian = 0;
+      scanf("%s%d%d %c %c%d", stu[VAR__19328].xing, &stu[VAR__19328].qi, &stu[VAR__19328].ban, &stu[VAR__19328].gan, &stu[VAR__19328].xi, &stu[VAR__19328].lun);
+
+      if (( stu[VAR__19328].qi > 80 ) && ( stu[VAR__19328].lun >= 1 ))
+      {
+         stu[VAR__19328].qian = stu[VAR__19328].qian + 8000;
+      }
+
+      if (( stu[VAR__19328].qi > 85 ) && ( stu[VAR__19328].ban > 80 ))
+      {
+         stu[VAR__19328].qian = stu[VAR__19328].qian + 4000;
+      }
+
+      if ( stu[VAR__19328].qi > 90 )
+      {
+         stu[VAR__19328].qian = stu[VAR__19328].qian + 2000;
+      }
+
+      if (( stu[VAR__19328].qi > 85 ) && ( stu[VAR__19328].xi == 'Y' ))
+      {
+         stu[VAR__19328].qian = stu[VAR__19328].qian + 1000;
+      }
+
+      if (( stu[VAR__19328].ban > 80 ) && ( stu[VAR__19328].gan == 'Y' ))
+      {
+         stu[VAR__19328].qian = stu[VAR__19328].qian + 850;
+      }
+   }
+
+   for ( VAR__19328 = 0; VAR__19328 < ( VAR__819283 - 1 ); VAR__19328++ )
+   {
+      for ( VAR__4857423 = 0; VAR__4857423 < (( VAR__819283 - VAR__19328 ) - 1 ); VAR__4857423++ )
+      {
+         if ( stu[VAR__4857423].qian < stu[VAR__4857423 + 1].qian )
+         {
+            mid = stu[VAR__4857423];
+            stu[VAR__4857423]     = stu[VAR__4857423 + 1];
+            stu[VAR__4857423 + 1] = mid;
+         }
+      }
+   }
+
+   VAR__4857423 = 0;
+   for ( VAR__19328 = 0; VAR__19328 < VAR__819283; VAR__19328++ )
+   {
+      VAR__4857423 = VAR__4857423 + stu[VAR__19328].qian;
+   }
+
+   printf("%s\n%d\n%d", stu[0].xing, stu[0].qian, VAR__4857423);
+}

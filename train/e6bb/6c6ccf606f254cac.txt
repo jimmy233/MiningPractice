@@ -1,0 +1,41 @@
+int main()
+{
+   int bat[5][11][11] = { 0 };
+   int days;
+
+   ( cin >> bat[0][5][5] ) >> days;
+   for ( int VAR__53647 = 1; VAR__53647 <= days; VAR__53647++ )
+   {
+      for ( int row = 1; row <= 9; row++ )
+      {
+         for ( int col = 1; col <= 9; col++ )
+         {
+            if ( bat[VAR__53647 - 1][col][row] != 0 )
+            {
+               bat[VAR__53647][col][row]         += 2 * bat[VAR__53647 - 1][col][row];
+               bat[VAR__53647][col - 1][row - 1] += bat[VAR__53647 - 1][col][row];
+               bat[VAR__53647][col - 1][row]     += bat[VAR__53647 - 1][col][row];
+               bat[VAR__53647][col - 1][row + 1] += bat[VAR__53647 - 1][col][row];
+               bat[VAR__53647][col][row - 1]     += bat[VAR__53647 - 1][col][row];
+               bat[VAR__53647][col][row + 1]     += bat[VAR__53647 - 1][col][row];
+               bat[VAR__53647][col + 1][row - 1] += bat[VAR__53647 - 1][col][row];
+               bat[VAR__53647][col + 1][row]     += bat[VAR__53647 - 1][col][row];
+               bat[VAR__53647][col + 1][row + 1] += bat[VAR__53647 - 1][col][row];
+            }
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      cout << bat[days][VAR__53647][1];
+      for ( int VAR__21230 = 2; VAR__21230 <= 9; VAR__21230++ )
+      {
+         ( cout << ' ' ) << bat[days][VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

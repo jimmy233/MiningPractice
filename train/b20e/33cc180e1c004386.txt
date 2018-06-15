@@ -1,0 +1,89 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP = 0;
+   int VAR__NUM  = 0;
+   int sum1      = 0;
+   int sum2      = 0;
+   int money     = 0;
+   int tian[1000];
+   int qi[1000];
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      VAR__TEMP = 0, VAR__NUM = 0, sum1 = 0, sum2 = 0, money = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &qi[VAR__21230]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 >= 1; VAR__21230-- )
+         {
+            if ( tian[VAR__21230] > tian[VAR__21230 - 1] )
+            {
+               VAR__TEMP            = tian[VAR__21230];
+               tian[VAR__21230]     = tian[VAR__21230 - 1];
+               tian[VAR__21230 - 1] = VAR__TEMP;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 >= 1; VAR__21230-- )
+         {
+            if ( qi[VAR__21230] > qi[VAR__21230 - 1] )
+            {
+               VAR__TEMP          = qi[VAR__21230];
+               qi[VAR__21230]     = qi[VAR__21230 - 1];
+               qi[VAR__21230 - 1] = VAR__TEMP;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__NUM = VAR__53647;
+         for ( VAR__21230 = VAR__NUM; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( tian[VAR__21230] > qi[VAR__53647] )
+            {
+               sum1             = sum1 + 1;
+               tian[VAR__21230] = 0;
+               qi[VAR__53647]   = 0;
+               break;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if (( tian[VAR__53647] == qi[VAR__21230] ) && ( tian[VAR__53647] != 0 ))
+            {
+               sum2++;
+               break;
+            }
+         }
+      }
+
+      money = 200 * ( sum1 - (( VAR_1238123 - sum1 ) - sum2 ));
+      printf("%d\n", money);
+      scanf("%d", &VAR_1238123);
+   }
+
+   getchar();
+   getchar();
+}

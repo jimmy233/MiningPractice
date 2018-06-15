@@ -1,0 +1,75 @@
+void read_words(char words[][WSIZE], int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", words[VAR__53647]);
+   }
+}
+
+
+int split_lines(char words[][WSIZE], int lines[], int VAR_1238123)
+{
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   lines[VAR__21230] = 0;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      int LEN_OF_STH = strlen(words[VAR__53647]);
+
+      while ( LEN_OF_STH <= MAX_LINE )
+      {
+         VAR__53647++;
+
+         if ( VAR__53647 < VAR_1238123 )
+         {
+            LEN_OF_STH += 1 + strlen(words[VAR__53647]);
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      VAR__21230++;
+      lines[VAR__21230] = VAR__53647;
+   }
+
+   return VAR__21230;
+}
+
+
+void print_words(char words[][WSIZE], int lines[], int line_num)
+{
+   int VAR__53647;
+   int VAR__112390;
+   int VAR__8444594;
+
+   for ( VAR__8444594 = 0; VAR__8444594 < line_num; VAR__8444594++ )
+   {
+      VAR__112390 = lines[VAR__8444594 + 1] - 1;
+      for ( VAR__53647 = lines[VAR__8444594]; VAR__53647 < VAR__112390; VAR__53647++ )
+      {
+         printf("%s ", words[VAR__53647]);
+      }
+
+      printf("%s\n", words[VAR__112390]);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   char words[VAR_1238123][WSIZE];
+   read_words(words, VAR_1238123);
+   int lines[VAR_1238123];
+   int line_num = split_lines(words, lines, VAR_1238123);
+   print_words(words, lines, line_num);
+   return 0;
+}

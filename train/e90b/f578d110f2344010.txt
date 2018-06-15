@@ -1,0 +1,86 @@
+struct linknode *CreateLinkList();
+void DisplayLinkList(struct linknode *linklist1);
+void qiansan(struct linknode *linklist2);
+
+struct linknode
+{
+   int             id;
+   int             chinese;
+   int             math;
+   int             total;
+   int             mark;
+   struct linknode *VAR__NEXT;
+};
+int main()
+{
+   qiansan(CreateLinkList());
+}
+
+
+struct linknode *CreateLinkList()
+{
+   long            VAR_1238123;
+   long            VAR__53647;
+   struct linknode *VAR__HEAD;
+   struct linknode *VAR_233;
+
+   scanf("%ld", &VAR_1238123);
+   VAR__HEAD = (struct linknode *)malloc(sizeof( struct linknode ));
+   VAR_233   = VAR__HEAD;
+
+   if ( VAR_233 == NULL )
+   {
+      printf("fail");
+      exit(-1);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR_233->id, &VAR_233->chinese, &VAR_233->math);
+      VAR_233->total = VAR_233->chinese + VAR_233->math;
+      VAR_233->mark  = 0;
+
+      if ( VAR__53647 == VAR_1238123 )
+      {
+         VAR_233->VAR__NEXT = NULL;
+      }
+      else
+      {
+         VAR_233->VAR__NEXT = (struct linknode *)malloc(sizeof( struct linknode ));
+         VAR_233            = VAR_233->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void qiansan(struct linknode *linklist2)
+{
+   struct linknode *VAR__HEAD;
+   struct linknode *VAR_233;
+   struct linknode *VAR__MAX;
+
+   VAR__HEAD = linklist2;
+   VAR_233   = VAR__HEAD;
+   VAR__MAX  = (struct linknode *)malloc(sizeof( struct linknode ));
+   int VAR__21230;
+   for ( VAR__21230 = 1; VAR__21230 <= 3; VAR__21230++ )
+   {
+      VAR_233         = VAR__HEAD;
+      VAR__MAX->total = 0;
+
+      while ( VAR_233 != NULL )
+      {
+         if (( VAR_233->total > VAR__MAX->total ) && ( VAR_233->mark == 0 ))
+         {
+            VAR__MAX = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      VAR__MAX->mark = 1;
+      printf("%d %d\n", VAR__MAX->id, VAR__MAX->total);
+   }
+}

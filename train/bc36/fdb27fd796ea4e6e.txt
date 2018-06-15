@@ -1,0 +1,80 @@
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__7685 = 0;
+   float VAR_129012;
+   float VAR__1238129[40] = { 0 };
+   float VAR__127322[40]  = { 0 };
+   struct person
+   {
+      char  gender[7];
+      float height;
+   }
+   person[40];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%f", person[VAR__53647].gender, &person[VAR__53647].height);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strlen(person[VAR__53647].gender) == 4 )
+      {
+         VAR__1238129[VAR__53647] = person[VAR__53647].height;
+      }
+      else
+      {
+         VAR__127322[VAR__53647] = person[VAR__53647].height;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 40; VAR__53647++ )
+   {
+      for ( VAR__21230 = 40 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( VAR__1238129[VAR__53647] > VAR__1238129[VAR__21230] )
+         {
+            VAR_129012 = VAR__1238129[VAR__53647];
+            VAR__1238129[VAR__53647] = VAR__1238129[VAR__21230];
+            VAR__1238129[VAR__21230] = VAR_129012;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 40; VAR__53647++ )
+   {
+      for ( VAR__21230 = 40 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( VAR__127322[VAR__53647] < VAR__127322[VAR__21230] )
+         {
+            VAR_129012 = VAR__127322[VAR__53647];
+            VAR__127322[VAR__53647] = VAR__127322[VAR__21230];
+            VAR__127322[VAR__21230] = VAR_129012;
+         }
+      }
+   }
+
+   VAR__53647 = 0;
+   do
+   {
+      VAR__53647++;
+   } while ( VAR__1238129[VAR__53647] == 0 );
+   printf("%.2f", VAR__1238129[VAR__53647]);
+   VAR__7685 = VAR__53647;
+   for ( VAR__53647 = VAR__7685 + 1; VAR__53647 < 40; VAR__53647++ )
+   {
+      printf(" %.2f", VAR__1238129[VAR__53647]);
+   }
+
+   VAR__53647 = 0;
+
+   while ( VAR__127322[VAR__53647] != 0 )
+   {
+      printf(" %.2f", VAR__127322[VAR__53647]);
+      VAR__53647++;
+   }
+}

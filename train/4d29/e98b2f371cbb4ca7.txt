@@ -1,0 +1,117 @@
+struct arr
+{
+   long int   VAR__NUM;
+   struct arr *VAR__NEXT;
+};
+int VAR_1238123;
+struct arr *create(int VAR__1238129)
+{
+   struct arr *VAR__HEAD;
+   struct arr *ANOTHER_POINTER;
+   struct arr *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 1;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct arr *)malloc(LEN));
+   scanf("%ld", &ANOTHER_POINTER->VAR__NUM);
+   VAR__HEAD = ANOTHER_POINTER;
+
+   while ( VAR_1238123 < VAR__1238129 )
+   {
+      ANOTHER_POINTER = (struct arr *)malloc(LEN);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      VAR_1238123++;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      scanf("%ld", &ANOTHER_POINTER->VAR__NUM);
+   }
+
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct arr *VAR__HEAD)
+{
+   struct arr *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      if ( VAR_233 == VAR__HEAD )
+      {
+         printf("%ld", VAR_233->VAR__NUM);
+      }
+      else
+      {
+         printf(" %ld", VAR_233->VAR__NUM);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void freelist(struct arr *VAR__HEAD)
+{
+   struct arr *VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      VAR__HEAD = VAR__HEAD->VAR__NEXT;
+      free(VAR_233);
+      VAR_233 = VAR__HEAD;
+   }
+}
+
+
+struct arr *del(struct arr *VAR__HEAD, long int dnum)
+{
+   struct arr *ANOTHER_POINTER;
+   struct arr *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+
+   while (( ANOTHER_POINTER != NULL ) && ( ANOTHER_POINTER->VAR__NUM == dnum ))
+   {
+      VAR__HEAD           = ANOTHER_POINTER->VAR__NEXT;
+      YET_ANOTHER_POINTER = VAR__HEAD;
+      free(ANOTHER_POINTER);
+      ANOTHER_POINTER = VAR__HEAD;
+   }
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+
+      while (( ANOTHER_POINTER != NULL ) && ( ANOTHER_POINTER->VAR__NUM == dnum ))
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+         free(ANOTHER_POINTER);
+         ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int        VAR__1238129;
+   struct arr *VAR__HEAD;
+   struct arr *VAR_233;
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = create(VAR__1238129);
+   VAR_233   = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      VAR_233->VAR__NEXT = del(VAR_233->VAR__NEXT, VAR_233->VAR__NUM);
+      VAR_233            = VAR_233->VAR__NEXT;
+   }
+
+   print(VAR__HEAD);
+   freelist(VAR__HEAD);
+}

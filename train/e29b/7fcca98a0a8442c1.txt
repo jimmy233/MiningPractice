@@ -1,0 +1,74 @@
+int VAR__NUM[310];
+int main()
+{
+   int VAR_1238123;
+   int VAR__SUM = 0;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__NUM[VAR__53647];
+      VAR__SUM = VAR__SUM + VAR__NUM[VAR__53647];
+   }
+
+   double ave = VAR__SUM / ( VAR_1238123 * 1.0 );
+   double away[310];
+   int    use;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      away[VAR__53647] = abs(( VAR__NUM[VAR__53647] * 1.0 ) - ave);
+   }
+
+   double use2;
+   for ( int VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( away[VAR__21230] < away[VAR__21230 + 1] )
+         {
+            use2                 = away[VAR__21230];
+            away[VAR__21230]     = away[VAR__21230 + 1];
+            away[VAR__21230 + 1] = use2;
+            use = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__NUM[VAR__21230 + 1];
+            VAR__NUM[VAR__21230 + 1] = use;
+         }
+      }
+   }
+
+
+
+   int VAR__1238129;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( away[VAR__53647 + 1] != away[VAR__53647] )
+      {
+         VAR__1238129 = VAR__53647;
+         break;
+      }
+   }
+
+
+   for ( int VAR__53647 = 1; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= ( VAR__1238129 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230] > VAR__NUM[VAR__21230 + 1] )
+         {
+            use = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__NUM[VAR__21230 + 1];
+            VAR__NUM[VAR__21230 + 1] = use;
+         }
+      }
+   }
+
+
+
+   for ( int VAR__53647 = 1; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      ( cout << VAR__NUM[VAR__53647] ) << ",";
+   }
+
+   cout << VAR__NUM[VAR__1238129];
+   return 0;
+}

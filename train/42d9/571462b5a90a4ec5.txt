@@ -1,0 +1,85 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 0;
+   int Nline;
+   int dx;
+   int dy;
+   int dz;
+
+   scanf("%d", &VAR_1238123);
+   struct Dot
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   dots[VAR_1238123];
+   Nline = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &dots[VAR__53647].VAR__7685, &dots[VAR__53647].VAR__3918907, &dots[VAR__53647].VAR__9290);
+   }
+
+   struct Line
+   {
+      int   x1;
+      int   y1;
+      int   z1;
+      int   x2;
+      int   y2;
+      int   z2;
+      float dist;
+   }
+   lines[Nline];
+   struct Line
+   {
+      int   x1;
+      int   y1;
+      int   z1;
+      int   x2;
+      int   y2;
+      int   z2;
+      float dist;
+   }
+   VAR__TEMP;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         lines[VAR__8444594].x1 = dots[VAR__53647].VAR__7685;
+         lines[VAR__8444594].y1 = dots[VAR__53647].VAR__3918907;
+         lines[VAR__8444594].z1 = dots[VAR__53647].VAR__9290;
+         lines[VAR__8444594].x2 = dots[VAR__21230].VAR__7685;
+         lines[VAR__8444594].y2 = dots[VAR__21230].VAR__3918907;
+         lines[VAR__8444594].z2 = dots[VAR__21230].VAR__9290;
+         dx = lines[VAR__8444594].x1 - lines[VAR__8444594].x2;
+         dy = lines[VAR__8444594].y1 - lines[VAR__8444594].y2;
+         dz = lines[VAR__8444594].z1 - lines[VAR__8444594].z2;
+         lines[VAR__8444594].dist = sqrt((( dx * dx ) + ( dy * dy )) + ( dz * dz ));
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( Nline - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( Nline - VAR__53647 ); VAR__21230++ )
+      {
+         if ( lines[VAR__21230].dist < lines[VAR__21230 + 1].dist )
+         {
+            VAR__TEMP             = lines[VAR__21230];
+            lines[VAR__21230]     = lines[VAR__21230 + 1];
+            lines[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < Nline; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", lines[VAR__53647].x1, lines[VAR__53647].y1, lines[VAR__53647].z1, lines[VAR__53647].x2, lines[VAR__53647].y2, lines[VAR__53647].z2, lines[VAR__53647].dist);
+   }
+
+   return 0;
+}

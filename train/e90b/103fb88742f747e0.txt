@@ -1,0 +1,93 @@
+struct student
+{
+   long           VAR__NUM;
+   int            yuwen;
+   int            shuxue;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+void main()
+{
+   struct student *creat(void);
+
+   void shuchu(struct student *VAR__HEAD);
+
+   int            VAR__53647;
+   struct student *VAR__HEAD;
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat();
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      shuchu(VAR__HEAD);
+   }
+}
+
+
+struct student *creat(void)
+{
+   int            VAR__53647;
+   int            VAR__8444594 = 0;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH));
+   scanf("%ld%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+   ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->shuxue + ANOTHER_POINTER->yuwen;
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__8444594++;
+
+      if ( VAR__8444594 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN_OF_STH);
+      scanf("%ld%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->shuxue);
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->shuxue + ANOTHER_POINTER->yuwen;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void shuchu(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   int            VAR__MAX;
+   int            VAR__53647;
+
+   VAR_233  = VAR__HEAD;
+   VAR__MAX = VAR_233->VAR__SUM;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_233->VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->VAR__SUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_233->VAR__SUM == VAR__MAX )
+      {
+         printf("%ld %d\n", VAR_233->VAR__NUM, VAR_233->VAR__SUM);
+         VAR_233->VAR__SUM = 0;
+         break;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

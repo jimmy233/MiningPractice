@@ -1,0 +1,87 @@
+int main()
+{
+   int VAR_1238123[100];
+   int VAR__1238129[100];
+   int VAR__819283[300];
+   int VAR__COUNT = 0;
+
+   while ( 1 )
+   {
+      scanf("%d %d", VAR_1238123 + VAR__COUNT, VAR__1238129 + VAR__COUNT);
+
+      if (( VAR_1238123[VAR__COUNT] == 0 ) && ( VAR__1238129[VAR__COUNT] == 0 ))
+      {
+         break;
+      }
+
+      VAR__COUNT++;
+   }
+
+   int VAR__53647   = 0;
+   int VAR__21230   = 0;
+   int VAR__8444594 = 0;
+   int VAR__1111    = 0;
+   int VAR_233      = 0;
+   int kill         = 0;
+   int kill2        = 0;
+   int start        = 0;
+   int now          = 0;
+   int minmj        = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123[VAR__53647]; VAR__8444594++ )
+      {
+         VAR__819283[VAR__8444594] = 1;
+      }
+
+      start = 0;
+      for ( VAR__21230 = VAR_1238123[VAR__53647]; VAR__21230 > 1; VAR__21230-- )
+      {
+         kill = VAR__1238129[VAR__53647] % VAR__21230;
+
+         if ( kill == 0 )
+         {
+            minmj = VAR__1238129[VAR__53647];
+
+            if ( VAR__21230 < minmj )
+            {
+               minmj = VAR__21230;
+            }
+
+            kill = minmj;
+         }
+
+         kill2 = 0;
+         for ( VAR__1111 = start; VAR__1111 < ( start + VAR_1238123[VAR__53647] ); VAR__1111++ )
+         {
+            now   = VAR__1111 % VAR_1238123[VAR__53647];
+            kill2 = kill2 + VAR__819283[now];
+
+            if ( kill2 == kill )
+            {
+               VAR__819283[now] = 0;
+               for ( VAR_233 = now + 1; VAR_233 < ( now + VAR_1238123[VAR__53647] ); VAR_233++ )
+               {
+                  if ( VAR__819283[VAR_233 % VAR_1238123[VAR__53647]] == 1 )
+                  {
+                     start = VAR_233 % VAR_1238123[VAR__53647];
+                     break;
+                  }
+               }
+
+               break;
+            }
+         }
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123[VAR__53647]; VAR__8444594++ )
+      {
+         if ( VAR__819283[VAR__8444594] == 1 )
+         {
+            printf("%d\n", VAR__8444594 + 1);
+         }
+      }
+   }
+
+   return 0;
+}

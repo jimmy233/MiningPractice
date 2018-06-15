@@ -1,0 +1,81 @@
+int sort(int arr[], int VAR_1238123);
+int bubblesort(int arr[], int VAR_1238123);
+
+int bubblesort(int arr[], int VAR_1238123)
+{
+   int sorted = 0;
+
+   while ( sorted < ( VAR_1238123 - 1 ))
+   {
+      int changed = 0;
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - sorted ) - 1 ); VAR__53647++ )
+      {
+         if ( arr[VAR__53647] > arr[VAR__53647 + 1] )
+         {
+            int VAR__temp = arr[VAR__53647 + 1];
+            arr[VAR__53647 + 1] = arr[VAR__53647];
+            arr[VAR__53647]     = VAR__temp;
+            changed             = 1;
+         }
+      }
+
+      if ( !changed )
+      {
+         break;
+      }
+
+      sorted++;
+   }
+
+   return arr[VAR_1238123 - 1];
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int arr[100000];
+   int VAR__8444594;
+   int VAR__53647 = 0;
+   int index      = 0;
+
+   scanf("%d%d", &VAR_1238123, &VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &arr[VAR__53647]);
+   }
+
+   bubblesort(arr, VAR_1238123);
+
+   if ((( arr[0] + arr[1] ) > VAR__8444594 ) || (( arr[VAR_1238123 - 1] + arr[VAR_1238123 - 2] ) < VAR__8444594 ))
+   {
+      printf("no");
+      return 0;
+   }
+
+   int VAR_FLAG = 0;
+   int n1       = 0;
+   int n2       = VAR_1238123 - 1;
+
+   while ( n1 < n2 )
+   {
+      if (( arr[n1] + arr[n2] ) == VAR__8444594 )
+      {
+         printf("yes");
+         return 0;
+      }
+
+      if (( arr[n1] + arr[n2] ) > VAR__8444594 )
+      {
+         n2--;
+      }
+      else
+      {
+         n1++;
+      }
+   }
+
+   printf("no");
+   return 0;
+}

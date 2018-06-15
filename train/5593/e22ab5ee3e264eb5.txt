@@ -1,0 +1,83 @@
+int su(long VAR__7685)
+{
+   int VAR__53647;
+   int VAR__21230 = 0;
+
+   for ( VAR__53647 = 2; VAR__53647 <= sqrt(VAR__7685); VAR__53647++ )
+   {
+      if (( VAR__7685 % VAR__53647 ) == 0 )
+      {
+         return 0;
+
+         VAR__21230 = 1;
+         break;
+      }
+   }
+
+
+   if ( VAR__21230 == 0 )
+   {
+      return 1;
+   }
+}
+
+
+int hui(long VAR__7685)
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   long VAR__3918907 = 0;
+   long VAR_233;
+
+   VAR_233 = VAR__7685;
+
+   while ( VAR__7685 > 0 )
+   {
+      VAR__3918907 = ( 10 * VAR__3918907 ) + ( VAR__7685 % 10 );
+      VAR__7685    = VAR__7685 / 10;
+   }
+
+   if ( VAR_233 == VAR__3918907 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   long VAR__819283;
+   long VAR__19328;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__SUM       = 0;
+   int  VAR_9494[1000] = { 0 };
+
+   scanf("%d%d", &VAR__819283, &VAR__19328);
+   for ( VAR__53647 = VAR__819283; VAR__53647 <= VAR__19328; VAR__53647++ )
+   {
+      if (( hui(VAR__53647) == 1 ) && ( su(VAR__53647) == 1 ))
+      {
+         VAR__SUM++;
+         VAR_9494[VAR__SUM] = VAR__53647;
+      }
+   }
+
+   if ( VAR__SUM == 0 )
+   {
+      printf("no\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < VAR__SUM; VAR__53647++ )
+      {
+         printf("%ld,", VAR_9494[VAR__53647]);
+      }
+
+      printf("%ld\n", VAR_9494[VAR__SUM]);
+   }
+}

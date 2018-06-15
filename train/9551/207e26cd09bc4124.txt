@@ -1,0 +1,83 @@
+struct patient
+{
+   char name[11];
+   int  age;
+   int  order;
+};
+int main()
+{
+   struct patient peo[NO];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__COUNT = 0;
+   int            COUNT;
+   int            VAR__21230;
+   int            VAR__8444594;
+   int            VAR__112390;
+   int            agedata[NO];
+   int            VAR__819283 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", &peo[VAR__53647].name);
+      scanf("%d", &peo[VAR__53647].age);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( peo[VAR__53647].age >= 60 )
+      {
+         VAR__COUNT++;
+         agedata[VAR__819283] = peo[VAR__53647].age;
+         VAR__819283++;
+      }
+   }
+
+   COUNT = VAR__COUNT;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( peo[VAR__53647].age < 60 )
+      {
+         peo[VAR__53647].order = VAR__COUNT;
+         VAR__COUNT++;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 < COUNT; VAR__8444594++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( COUNT - VAR__8444594 ); VAR__21230++ )
+      {
+         if ( agedata[VAR__21230] < agedata[VAR__21230 + 1] )
+         {
+            VAR__112390             = agedata[VAR__21230 + 1];
+            agedata[VAR__21230 + 1] = agedata[VAR__21230];
+            agedata[VAR__21230]     = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < COUNT; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( peo[VAR__21230].age == agedata[VAR__53647] )
+         {
+            peo[VAR__21230].order = VAR__53647;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( peo[VAR__21230].order == VAR__53647 )
+         {
+            printf("%s\n", peo[VAR__21230].name);
+         }
+      }
+   }
+
+   return 0;
+}

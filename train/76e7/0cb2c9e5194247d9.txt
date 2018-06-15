@@ -1,0 +1,72 @@
+int main()
+{
+   int O[5][5];
+   int I[5][5];
+   int J[5][5];
+
+   memset(I, 0, sizeof( I ));
+   memset(J, 0, sizeof( J ));
+   for ( int VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 5; VAR__21230++ )
+      {
+         cin >> O[VAR__53647][VAR__21230];
+      }
+   }
+
+   int maxX;
+   int minY;
+   int VAR__7685;
+   int VAR__3918907;
+   for ( int VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      maxX      = 0;
+      minY      = 100000;
+      VAR__7685 = ( VAR__3918907 = 0 );
+      for ( int VAR__21230 = 0; VAR__21230 < 5; VAR__21230++ )
+      {
+         if ( O[VAR__53647][VAR__21230] > maxX )
+         {
+            maxX      = O[VAR__53647][VAR__21230];
+            VAR__7685 = VAR__21230;
+         }
+
+         if ( O[VAR__21230][VAR__53647] < minY )
+         {
+            minY         = O[VAR__21230][VAR__53647];
+            VAR__3918907 = VAR__21230;
+         }
+      }
+
+      I[VAR__53647][VAR__7685]    = 1;
+      J[VAR__3918907][VAR__53647] = 1;
+   }
+
+   int OK  = 0;
+   int OKX = 0;
+   int OKY = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 5; VAR__21230++ )
+      {
+         if ( I[VAR__53647][VAR__21230] && J[VAR__53647][VAR__21230] )
+         {
+            OK  = 1;
+            OKX = VAR__53647 + 1;
+            OKY = VAR__21230 + 1;
+            break;
+         }
+      }
+   }
+
+   if ( OK )
+   {
+      (((( cout << OKX ) << ' ' ) << OKY ) << ' ' ) << O[OKX - 1][OKY - 1];
+   }
+   else
+   {
+      cout << "not found";
+   }
+
+   return 0;
+}

@@ -1,0 +1,118 @@
+struct staff
+{
+   char         id[20];
+   int          age;
+   struct staff *VAR__NEXT;
+};
+void main()
+{
+   int          VAR_1238123;
+   int          VAR__8444594 = 0;
+   int          VAR__MAX     = 59;
+   struct staff *VAR__HEAD;
+   struct staff *VAR_233;
+   struct staff *VAR_666;
+   struct staff *pre;
+
+   scanf("%d", &VAR_1238123);
+   struct staff *ANOTHER_POINTER;
+   struct staff *YET_ANOTHER_POINTER;
+   ANOTHER_POINTER = (struct staff *)malloc(LEN);
+   scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+   VAR__HEAD = ( YET_ANOTHER_POINTER = ANOTHER_POINTER );
+
+   if ( ANOTHER_POINTER->age >= 60 )
+   {
+      VAR__8444594++;
+   }
+
+   while ( VAR_1238123 - 1 )
+   {
+      VAR_1238123--;
+      ANOTHER_POINTER = (struct staff *)malloc(LEN);
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+
+      if ( ANOTHER_POINTER->age >= 60 )
+      {
+         VAR__8444594++;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+
+   while ( VAR__8444594 )
+   {
+      VAR_233 = VAR__HEAD;
+      VAR__8444594--;
+
+      while ( VAR_233 )
+      {
+         if ( VAR_233->age > VAR__MAX )
+         {
+            VAR__MAX = VAR_233->age;
+            VAR_666  = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      printf("%s\n", VAR_666->id);
+
+      if ( VAR_666 == VAR__HEAD )
+      {
+         VAR__HEAD = VAR_666->VAR__NEXT;
+         free(VAR_666);
+      }
+      else
+      {
+         if ( VAR_666->VAR__NEXT == NULL )
+         {
+            VAR_233 = VAR__HEAD;
+
+            while ( VAR_233 )
+            {
+               pre     = VAR_233;
+               VAR_233 = VAR_233->VAR__NEXT;
+
+               if ( VAR_233 == VAR_666 )
+               {
+                  free(VAR_666);
+                  pre->VAR__NEXT = NULL;
+                  break;
+               }
+            }
+         }
+         else
+         {
+            VAR_233 = VAR__HEAD;
+
+            while ( VAR_233 )
+            {
+               pre     = VAR_233;
+               VAR_233 = VAR_233->VAR__NEXT;
+
+               if ( VAR_233 == VAR_666 )
+               {
+                  VAR_233        = VAR_233->VAR__NEXT;
+                  pre->VAR__NEXT = VAR_233;
+                  free(VAR_666);
+                  break;
+               }
+            }
+         }
+      }
+
+      VAR__MAX = 59;
+   }
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

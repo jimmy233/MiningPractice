@@ -1,0 +1,46 @@
+struct stu *create();
+int compare(const void *VAR__819283, const void *VAR__19328);
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct stu
+   {
+      int VAR__NUM;
+      int chi;
+      int math;
+      int total;
+   };
+   struct stu *VAR_233     = (struct stu *)calloc(VAR_1238123, sizeof( struct stu ));
+   struct stu *VAR__819283 = VAR_233;
+   int        *tot         = (int *)calloc(VAR_1238123, sizeof( int ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR_233->VAR__NUM, &VAR_233->chi, &VAR_233->math);
+      *( tot + VAR__53647 ) = ( VAR_233->total = VAR_233->chi + VAR_233->math );
+      VAR_233++;
+   }
+
+   qsort(tot, VAR_1238123, sizeof( int ), compare);
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++, VAR__21230 = 0 )
+   {
+      while (( VAR__819283 + ( VAR__21230++ ))->total != ( *( tot + VAR__53647 )))
+      {
+      }
+
+      printf("%d %d\n", (( VAR__819283 + VAR__21230 ) - 1 )->VAR__NUM, (( VAR__819283 + VAR__21230 ) - 1 )->total);
+      (( VAR__819283 + VAR__21230 ) - 1 )->total = -1;
+   }
+
+   return 0;
+}
+
+
+int compare(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}

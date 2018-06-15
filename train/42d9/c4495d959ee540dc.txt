@@ -1,0 +1,83 @@
+int main()
+{
+   struct jl
+   {
+      int   a1;
+      int   b1;
+      int   c1;
+      int   a2;
+      int   b2;
+      int   c2;
+      float VAR__12302;
+   }
+   hz[100];
+   struct jl
+   {
+      int   a1;
+      int   b1;
+      int   c1;
+      int   a2;
+      int   b2;
+      int   c2;
+      float VAR__12302;
+   }
+          VAR__temp;
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__819283[10];
+   int    VAR__19328[10];
+   int    VAR__4857423[10];
+   int    VAR__8444594 = 0;
+   double VAR_21983012;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__819283[VAR__53647], &VAR__19328[VAR__53647], &VAR__4857423[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR_21983012                = sqrt(((( VAR__819283[VAR__53647] - VAR__819283[VAR__21230] ) * ( VAR__819283[VAR__53647] - VAR__819283[VAR__21230] )) + (( VAR__19328[VAR__53647] - VAR__19328[VAR__21230] ) * ( VAR__19328[VAR__53647] - VAR__19328[VAR__21230] ))) + (( VAR__4857423[VAR__53647] - VAR__4857423[VAR__21230] ) * ( VAR__4857423[VAR__53647] - VAR__4857423[VAR__21230] )));
+         hz[VAR__8444594].a1         = VAR__819283[VAR__53647];
+         hz[VAR__8444594].b1         = VAR__19328[VAR__53647];
+         hz[VAR__8444594].c1         = VAR__4857423[VAR__53647];
+         hz[VAR__8444594].a2         = VAR__819283[VAR__21230];
+         hz[VAR__8444594].b2         = VAR__19328[VAR__21230];
+         hz[VAR__8444594].c2         = VAR__4857423[VAR__21230];
+         hz[VAR__8444594].VAR__12302 = VAR_21983012;
+         VAR__8444594++;
+      }
+   }
+
+   if ( VAR__8444594 == 1 )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR__819283[0], VAR__19328[0], VAR__4857423[0], VAR__819283[1], VAR__19328[1], VAR__4857423[1], VAR_21983012);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR__8444594 - VAR__53647 ) - 1 ); VAR__21230++ )
+         {
+            if ( hz[VAR__21230].VAR__12302 < hz[VAR__21230 + 1].VAR__12302 )
+            {
+               VAR__temp          = hz[VAR__21230];
+               hz[VAR__21230]     = hz[VAR__21230 + 1];
+               hz[VAR__21230 + 1] = VAR__temp;
+            }
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", hz[VAR__53647].a1, hz[VAR__53647].b1, hz[VAR__53647].c1, hz[VAR__53647].a2, hz[VAR__53647].b2, hz[VAR__53647].c2, hz[VAR__53647].VAR__12302);
+      }
+   }
+
+   return 0;
+}

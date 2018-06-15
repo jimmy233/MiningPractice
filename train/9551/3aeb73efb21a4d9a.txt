@@ -1,0 +1,61 @@
+int main()
+{
+   int  VAR_1238123;
+   int  age[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   char id[100][10];
+
+   scanf("%d", &VAR_1238123);
+   int  VAR__8444594 = 0;
+   char shuchu[100][10];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", id[VAR__53647], &age[VAR__53647]);
+
+      if ( age[VAR__53647] < 60 )
+      {
+         strcpy(shuchu[VAR__8444594++], id[VAR__53647]);
+      }
+   }
+
+   char mid[100][10];
+   int  VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( age[VAR__21230] < age[VAR__21230 + 1] )
+         {
+            VAR__temp           = age[VAR__21230];
+            age[VAR__21230]     = age[VAR__21230 + 1];
+            age[VAR__21230 + 1] = VAR__temp;
+            strcpy(mid[VAR__21230], id[VAR__21230]);
+            strcpy(id[VAR__21230], id[VAR__21230 + 1]);
+            strcpy(id[VAR__21230 + 1], mid[VAR__21230]);
+         }
+      }
+   }
+
+   if ( age[0] < 60 )
+   {
+      goto E;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; age[VAR__53647] >= 60; VAR__53647++ )
+      {
+         printf("%s\n", id[VAR__53647]);
+      }
+   }
+
+E:
+   ;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", shuchu[VAR__53647]);
+   }
+
+   return 0;
+}

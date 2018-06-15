@@ -1,0 +1,43 @@
+int main()
+{
+   int  year;
+   int  month;
+   int  day;
+   int  montable[12] = { 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5 };
+   char print[7][5]  = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+   int  sumday;
+   int  VAR__53647;
+
+   sumday = 0;
+   scanf("%d%d%d", &year, &month, &day);
+   year %= 400;
+
+   if ( year )
+   {
+      sumday = year + 6;
+   }
+   else
+   {
+      sumday += 5;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+   {
+      if ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 ))
+      {
+         sumday++;
+         continue;
+      }
+   }
+
+   sumday += montable[month - 1];
+
+   if ((((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 )) && ( month > 2 ))
+   {
+      sumday++;
+   }
+
+   sumday += day;
+   printf("%s", print[sumday % 7]);
+   return 0;
+}

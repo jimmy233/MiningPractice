@@ -1,0 +1,70 @@
+struct dist
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+};
+int main()
+{
+   struct dist VAR__819283[11];
+   int         VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR__819283[VAR__53647].VAR__7685, &VAR__819283[VAR__53647].VAR__3918907, &VAR__819283[VAR__53647].VAR__9290);
+   }
+
+   float VAR__12302[10][10];
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         VAR__12302[VAR__53647][VAR__21230] = sqrt(((( VAR__819283[VAR__53647].VAR__7685 - VAR__819283[VAR__21230].VAR__7685 ) * ( VAR__819283[VAR__53647].VAR__7685 - VAR__819283[VAR__21230].VAR__7685 )) + (( VAR__819283[VAR__53647].VAR__3918907 - VAR__819283[VAR__21230].VAR__3918907 ) * ( VAR__819283[VAR__53647].VAR__3918907 - VAR__819283[VAR__21230].VAR__3918907 ))) + (( VAR__819283[VAR__53647].VAR__9290 - VAR__819283[VAR__21230].VAR__9290 ) * ( VAR__819283[VAR__53647].VAR__9290 - VAR__819283[VAR__21230].VAR__9290 )));
+      }
+   }
+
+   float VAR__temp;
+   int   fx1;
+   int   fx2;
+   int   fy1;
+   int   fy2;
+   int   fz1;
+   int   fz2;
+   int   i0;
+   int   j0;
+   VAR__8444594 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+
+   while ( VAR__8444594 != 0 )
+   {
+      VAR__temp = 0.0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            if ( VAR__12302[VAR__53647][VAR__21230] > VAR__temp )
+            {
+               VAR__temp = VAR__12302[VAR__53647][VAR__21230];
+               i0        = VAR__53647;
+               j0        = VAR__21230;
+               fx1       = VAR__819283[VAR__21230].VAR__7685;
+               fy1       = VAR__819283[VAR__21230].VAR__3918907;
+               fz1       = VAR__819283[VAR__21230].VAR__9290;
+               fx2       = VAR__819283[VAR__53647].VAR__7685;
+               fy2       = VAR__819283[VAR__53647].VAR__3918907;
+               fz2       = VAR__819283[VAR__53647].VAR__9290;
+            }
+         }
+      }
+
+      VAR__12302[i0][j0] = 0;
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", fx1, fy1, fz1, fx2, fy2, fz2, VAR__temp);
+      VAR__8444594--;
+   }
+
+   getchar();
+   getchar();
+}

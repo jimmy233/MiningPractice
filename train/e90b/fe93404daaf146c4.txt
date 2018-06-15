@@ -1,0 +1,186 @@
+struct record
+{
+   int   stuID;
+   short YuWen;
+   short math;
+   short total;
+};
+struct YyxNode
+{
+   struct record  m_rec;
+   struct YyxNode *VAR__NEXT;
+};
+struct YyxLink
+{
+   int            VAR_1238123;
+   struct YyxNode *VAR__HEAD;
+   struct YyxNode *tail;
+};
+struct YyxLink *CreateNewLink()
+{
+   struct YyxLink *newLn;
+
+   if (( newLn = (struct YyxLink *)malloc(sizeof( struct YyxLink ))) == NULL )
+   {
+      printf("Error: memory out! (1)\n");
+      exit(-1);
+   }
+
+   newLn->VAR_1238123 = 0;
+   newLn->VAR__HEAD   = NULL;
+   newLn->tail        = NULL;
+   return newLn;
+}
+
+
+struct YyxLink *AddNode(struct YyxLink *ln, const struct record *rec)
+{
+   struct YyxNode *newNode;
+
+   if (( newNode = (struct YyxNode *)malloc(sizeof( struct YyxNode ))) == NULL )
+   {
+      printf("Error: memory out! (2)\n");
+      exit(-1);
+   }
+
+   newNode->m_rec     = *rec;
+   newNode->VAR__NEXT = NULL;
+
+   if ( ln->VAR_1238123 == 0 )
+   {
+      ln->VAR__HEAD = newNode;
+      ln->tail      = newNode;
+   }
+   else
+   {
+      ln->tail->VAR__NEXT = newNode;
+      ln->tail            = newNode;
+   }
+
+   ln->VAR_1238123++;
+   return ln;
+}
+
+
+int myCompare(const struct record *rec1, const struct record *rec2)
+{
+   return rec2->total - rec1->total;
+}
+
+
+struct YyxNode *Search(struct YyxLink *ln, const struct record *rec)
+{
+   struct YyxNode *nd = ln->VAR__HEAD;
+
+   while (( nd != NULL ) && myCompare(&nd->m_rec, rec))
+   {
+      nd = nd->VAR__NEXT;
+   }
+
+   return nd;
+}
+
+
+struct YyxLink *ClearLink(struct YyxLink *ln)
+{
+   struct YyxNode *delNode = ln->VAR__HEAD;
+   struct YyxNode *nextNode;
+
+   while ( delNode != NULL )
+   {
+      nextNode = delNode->VAR__NEXT;
+      free(delNode);
+      delNode = nextNode;
+   }
+
+   ln->VAR_1238123 = 0;
+   ln->VAR__HEAD   = NULL;
+   ln->tail        = NULL;
+   return ln;
+}
+
+
+int main()
+{
+   struct YyxLink *mainLn;
+   struct record  stu;
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct record  *max1;
+   struct record  *max2;
+   struct record  *max3;
+   struct YyxNode *VAR__TEMP;
+
+   mainLn = CreateNewLink();
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &stu.stuID, &stu.YuWen, &stu.math);
+      stu.total = stu.YuWen + stu.math;
+      AddNode(mainLn, &stu);
+   }
+
+   max1      = ( max2 = ( max3 = &mainLn->VAR__HEAD->m_rec ));
+   VAR__TEMP = mainLn->VAR__HEAD;
+
+   while ( VAR__TEMP != NULL )
+   {
+      if ( max1->total < VAR__TEMP->m_rec.total )
+      {
+         max1 = &VAR__TEMP->m_rec;
+      }
+
+      VAR__TEMP = VAR__TEMP->VAR__NEXT;
+   }
+
+   VAR__TEMP = mainLn->VAR__HEAD;
+
+   if ( max2 == max1 )
+   {
+      VAR__TEMP = mainLn->VAR__HEAD->VAR__NEXT;
+      max2      = &VAR__TEMP->m_rec;
+   }
+
+   while ( VAR__TEMP != NULL )
+   {
+      if ( max2->total < VAR__TEMP->m_rec.total )
+      {
+         if ( max1 != ( &VAR__TEMP->m_rec ))
+         {
+            max2 = &VAR__TEMP->m_rec;
+         }
+      }
+
+
+      VAR__TEMP = VAR__TEMP->VAR__NEXT;
+   }
+
+   VAR__TEMP = mainLn->VAR__HEAD;
+
+   while ((( &VAR__TEMP->m_rec ) == max1 ) || (( &VAR__TEMP->m_rec ) == max2 ))
+   {
+      VAR__TEMP = VAR__TEMP->VAR__NEXT;
+   }
+
+   max3 = &VAR__TEMP->m_rec;
+
+   while ( VAR__TEMP != NULL )
+   {
+      if ( max3->total < VAR__TEMP->m_rec.total )
+      {
+         if (( max1 != ( &VAR__TEMP->m_rec )) && ( max2 != ( &VAR__TEMP->m_rec )))
+         {
+            max3 = &VAR__TEMP->m_rec;
+         }
+      }
+
+
+      VAR__TEMP = VAR__TEMP->VAR__NEXT;
+   }
+
+   printf("%d %d\n", max1->stuID, max1->total);
+   printf("%d %d\n", max2->stuID, max2->total);
+   printf("%d %d\n", max3->stuID, max3->total);
+   free(ClearLink(mainLn));
+   return 0;
+}

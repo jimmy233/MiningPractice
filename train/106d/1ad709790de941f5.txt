@@ -1,0 +1,51 @@
+int runnian(int VAR__819283)
+{
+   if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__3918907;
+   int m1;
+   int m2;
+   int result1      = 0;
+   int result2      = 0;
+   int month[2][12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+   {
+      scanf("%d%d%d", &VAR__3918907, &m1, &m2);
+      for ( VAR__53647 = 0; VAR__53647 < ( m1 - 1 ); VAR__53647++ )
+      {
+         result1 += month[runnian(VAR__3918907)][VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( m2 - 1 ); VAR__53647++ )
+      {
+         result2 += month[runnian(VAR__3918907)][VAR__53647];
+      }
+
+      if (( abs(result2 - result1) % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+
+      result1 = ( result2 = 0 );
+   }
+}

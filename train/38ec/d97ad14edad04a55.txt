@@ -1,0 +1,60 @@
+int runnian(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 366;
+   }
+   else
+   {
+      return 365;
+   }
+}
+
+
+int dijitian(int year, int month, int date)
+{
+   int VAR__819283[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__53647;
+   int VAR__SUM = 0;
+
+   if ( runnian(year) == 366 )
+   {
+      VAR__819283[1] = 29;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      VAR__SUM += VAR__819283[VAR__53647];
+   }
+
+   VAR__SUM += date;
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+
+   scanf("%d %d %d", &sy, &sm, &sd);
+   scanf("%d %d %d", &ey, &em, &ed);
+   int sa;
+   int sb;
+   sa = dijitian(sy, sm, sd);
+   sb = dijitian(ey, em, ed);
+   int VAR__53647;
+   int days = 0;
+   for ( VAR__53647 = sy; VAR__53647 < ey; VAR__53647++ )
+   {
+      days += runnian(VAR__53647);
+   }
+
+   days = ( days - sa ) + sb;
+   printf("%d\n", days);
+   return 0;
+}

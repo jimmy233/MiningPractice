@@ -1,0 +1,135 @@
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int VAR__53647;
+   int VAR__NUM = 0;
+   int VAR__8444594;
+
+   ((((( cin >> sy ) >> sm ) >> sd ) >> ey ) >> em ) >> ed;
+
+   if ( sm <= 2 )
+   {
+      for ( VAR__53647 = sy; VAR__53647 < ey; VAR__53647++ )
+      {
+         VAR__NUM += 365;
+
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            ++VAR__NUM;
+         }
+      }
+
+      if (( sm == 2 ) && ( sd == 29 ))
+      {
+         --VAR__NUM;
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = sy + 1; VAR__53647 <= ey; VAR__53647++ )
+      {
+         VAR__NUM += 365;
+
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            ++VAR__NUM;
+         }
+      }
+   }
+
+   if ( em > sm )
+   {
+      VAR__NUM = VAR__NUM + (( em - sm ) * 30 );
+      for ( VAR__53647 = sm; VAR__53647 < em; VAR__53647++ )
+      {
+         switch ( VAR__53647 )
+         {
+         case 1:
+
+         case 3:
+
+         case 5:
+
+         case 7:
+
+         case 8:
+
+         case 10:
+
+         case 12:
+            ++VAR__NUM;
+            break;
+
+         case 2:
+
+            if (((( ey % 4 ) == 0 ) && (( ey % 100 ) != 0 )) || (( ey % 400 ) == 0 ))
+            {
+               VAR__NUM = VAR__NUM - 1;
+            }
+            else
+            {
+               VAR__NUM = VAR__NUM - 2;
+            }
+
+            break;
+
+         default:
+            break;
+         }
+      }
+
+      VAR__NUM = ( VAR__NUM + ed ) - sd;
+   }
+   else
+   {
+      VAR__8444594 = ( sm - em ) * 30;
+      for ( VAR__53647 = em; VAR__53647 < sm; VAR__53647++ )
+      {
+         switch ( VAR__53647 )
+         {
+         case 1:
+
+         case 3:
+
+         case 5:
+
+         case 7:
+
+         case 8:
+
+         case 10:
+
+         case 12:
+            ++VAR__8444594;
+            break;
+
+         case 2:
+
+            if (((( ey % 4 ) == 0 ) && (( ey % 100 ) != 0 )) || (( ey % 400 ) == 0 ))
+            {
+               VAR__8444594 = VAR__8444594 - 1;
+            }
+            else
+            {
+               VAR__8444594 = VAR__8444594 - 2;
+            }
+
+            break;
+
+         default:
+            break;
+         }
+      }
+
+      VAR__8444594 = ( sd - ed ) + VAR__8444594;
+      VAR__NUM     = VAR__NUM - VAR__8444594;
+   }
+
+   ( cout << VAR__NUM ) << endl;
+   return 0;
+}

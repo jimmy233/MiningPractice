@@ -1,0 +1,74 @@
+typedef struct
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+} point3D;
+typedef struct
+{
+   int   firstPointIndex;
+   int   lastPointIndex;
+   float distance;
+} result;
+float getDistance(point3D ANOTHER_POINTER, point3D YET_ANOTHER_POINTER)
+{
+   int VAR__TEMP;
+
+   VAR__TEMP = ((( ANOTHER_POINTER.VAR__7685 - YET_ANOTHER_POINTER.VAR__7685 ) * ( ANOTHER_POINTER.VAR__7685 - YET_ANOTHER_POINTER.VAR__7685 )) + (( ANOTHER_POINTER.VAR__3918907 - YET_ANOTHER_POINTER.VAR__3918907 ) * ( ANOTHER_POINTER.VAR__3918907 - YET_ANOTHER_POINTER.VAR__3918907 ))) + (( ANOTHER_POINTER.VAR__9290 - YET_ANOTHER_POINTER.VAR__9290 ) * ( ANOTHER_POINTER.VAR__9290 - YET_ANOTHER_POINTER.VAR__9290 ));
+   return sqrtf((float)VAR__TEMP);
+}
+
+
+int main()
+{
+   point3D points[MAXPOINTS];
+   result  results[MAXRESULTS];
+   int     VAR__53647;
+   int     VAR__21230;
+   int     VAR__8444594;
+   int     pointNum;
+   int     resultNum;
+   result  VAR__TEMP;
+
+   scanf("%d", &pointNum);
+   resultNum = ( pointNum * ( pointNum - 1 )) / 2;
+   for ( VAR__53647 = 0; VAR__53647 < pointNum; VAR__53647++ )
+   {
+      scanf("%d", &points[VAR__53647].VAR__7685);
+      scanf("%d", &points[VAR__53647].VAR__3918907);
+      scanf("%d", &points[VAR__53647].VAR__9290);
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < pointNum; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < pointNum; VAR__21230++ )
+      {
+         results[VAR__8444594].firstPointIndex = VAR__53647;
+         results[VAR__8444594].lastPointIndex  = VAR__21230;
+         results[VAR__8444594].distance        = getDistance(points[VAR__53647], points[VAR__21230]);
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( resultNum - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( resultNum - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( results[VAR__21230].distance < results[VAR__21230 + 1].distance )
+         {
+            VAR__TEMP               = results[VAR__21230];
+            results[VAR__21230]     = results[VAR__21230 + 1];
+            results[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < resultNum; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", points[results[VAR__53647].firstPointIndex].VAR__7685, points[results[VAR__53647].firstPointIndex].VAR__3918907, points[results[VAR__53647].firstPointIndex].VAR__9290, points[results[VAR__53647].lastPointIndex].VAR__7685, points[results[VAR__53647].lastPointIndex].VAR__3918907, points[results[VAR__53647].lastPointIndex].VAR__9290, results[VAR__53647].distance);
+   }
+
+   return 0;
+}

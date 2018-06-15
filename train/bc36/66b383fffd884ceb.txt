@@ -1,0 +1,94 @@
+int compmale(const void *a1, const void *a2)
+{
+   float *ANOTHER_POINTER;
+   float *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (float *)a1;
+   YET_ANOTHER_POINTER = (float *)a2;
+
+   if ((( *ANOTHER_POINTER ) - ( *YET_ANOTHER_POINTER )) >= 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      return -1;
+   }
+}
+
+
+int compfemale(const void *a1, const void *a2)
+{
+   float *ANOTHER_POINTER;
+   float *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (float *)a1;
+   YET_ANOTHER_POINTER = (float *)a2;
+
+   if ((( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER )) >= 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      return -1;
+   }
+}
+
+
+struct person
+{
+   char  sex[10];
+   float VAR_2890;
+}
+mate[40];
+int main()
+{
+   float VAR__1238129[40];
+   float VAR__127322[40];
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__819283 = 0;
+   int   VAR__19328  = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", mate[VAR__53647].sex, &mate[VAR__53647].VAR_2890);
+
+      if ( strcmp(mate[VAR__53647].sex, "male") == 0 )
+      {
+         VAR__1238129[VAR__819283] = mate[VAR__53647].VAR_2890;
+         VAR__819283++;
+      }
+      else
+      if ( strcmp(mate[VAR__53647].sex, "female") == 0 )
+      {
+         VAR__127322[VAR__19328] = mate[VAR__53647].VAR_2890;
+         VAR__19328++;
+      }
+   }
+
+   qsort(VAR__1238129, VAR__819283, sizeof( float ), compmale);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      printf("%1.2f ", VAR__1238129[VAR__53647]);
+   }
+
+   qsort(VAR__127322, VAR__19328, sizeof( float ), compfemale);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__19328; VAR__53647++ )
+   {
+      if ( VAR__53647 < ( VAR__19328 - 1 ))
+      {
+         printf("%1.2f ", VAR__127322[VAR__53647]);
+      }
+      else
+      {
+         printf("%1.2f", VAR__127322[VAR__53647]);
+      }
+   }
+
+   getchar();
+   getchar();
+}

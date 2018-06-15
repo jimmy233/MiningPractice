@@ -1,0 +1,79 @@
+int VAR__4857423[202];
+int aa[200];
+int bb[200];
+int main()
+{
+   int add(char *VAR__819283, char *VAR__19328);
+
+   char VAR__819283[200];
+   char VAR__19328[200];
+   int  cclen;
+   int  VAR__21230;
+   gets(VAR__819283);
+   gets(VAR__19328);
+   cclen = add(VAR__819283, VAR__19328);
+   for ( VAR__21230 = cclen; VAR__21230 >= 0; VAR__21230-- )
+   {
+      printf("%d", VAR__4857423[VAR__21230]);
+   }
+}
+
+
+int add(char *VAR__819283, char *VAR__19328)
+{
+   int VAR__53647;
+   int VAR__8444594;
+   int LEN_OF_STH;
+   int alen = strlen(VAR__819283);
+   int blen = strlen(VAR__19328);
+
+   LEN_OF_STH   = ( alen > blen ) ? ( alen ) : ( blen );
+   VAR__8444594 = 0;
+   for ( VAR__53647 = alen - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      aa[VAR__8444594] = VAR__819283[VAR__53647] - '0';
+      VAR__8444594++;
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = blen - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      bb[VAR__8444594] = VAR__19328[VAR__53647] - '0';
+      VAR__8444594++;
+   }
+
+   VAR__4857423[0] = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__53647 < alen )
+      {
+         VAR__4857423[VAR__53647] += aa[VAR__53647];
+      }
+
+      if ( VAR__53647 < blen )
+      {
+         VAR__4857423[VAR__53647] += bb[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647 + 1] += VAR__4857423[VAR__53647] / 10;
+      VAR__4857423[VAR__53647]      = VAR__4857423[VAR__53647] % 10;
+   }
+
+   VAR__8444594 = LEN_OF_STH;
+   for ( VAR__53647 = LEN_OF_STH; VAR__53647 > 0; VAR__53647-- )
+   {
+      if ( VAR__4857423[VAR__53647] == 0 )
+      {
+         VAR__8444594--;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   return VAR__8444594;
+}

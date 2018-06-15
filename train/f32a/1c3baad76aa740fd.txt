@@ -1,0 +1,55 @@
+void rank(char *VAR__53647);
+
+void rank(char *VAR__53647)
+{
+   for ( ; ( *VAR__53647 ) != '\0'; VAR__53647++ )
+   {
+      int  VAR_1238123;
+      int  VAR__8444594 = 0;
+      char VAR__temp;
+      for ( VAR_1238123 = 1; ( *( VAR__53647 + VAR_1238123 )) != '\0'; VAR_1238123++ )
+      {
+         if (( *( VAR__53647 + VAR__8444594 )) > ( *( VAR__53647 + VAR_1238123 )))
+         {
+            VAR__8444594 = VAR_1238123;
+         }
+      }
+
+      if ( VAR__8444594 != 0 )
+      {
+         VAR__temp   = *VAR__53647;
+         *VAR__53647 = *( VAR__53647 + VAR__8444594 );
+         *( VAR__53647 + VAR__8444594 ) = VAR__temp;
+      }
+   }
+}
+
+
+void main()
+{
+   char VAR__819283[100];
+   char VAR__19328[100];
+   char *VAR__53647;
+   char *VAR__21230;
+   int  VAR_FLAG = 0;
+
+   scanf("%s%s", VAR__819283, VAR__19328);
+   VAR__53647 = &VAR__819283[0];
+   VAR__21230 = &VAR__19328[0];
+   rank(VAR__53647);
+   rank(VAR__21230);
+   for ( VAR__53647 = &VAR__819283[0], VAR__21230 = &VAR__19328[0]; ( *VAR__53647 ) != '\0'; VAR__53647++, VAR__21230++ )
+   {
+      if (( *VAR__53647 ) != ( *VAR__21230 ))
+      {
+         printf("NO");
+         VAR_FLAG = 1;
+         break;
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("YES");
+   }
+}

@@ -1,0 +1,64 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283[50000];
+   int VAR__19328[50000];
+   int VAR_SIZE[10000];
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      scanf("%d%d", &VAR__819283[VAR__21230], &VAR__19328[VAR__21230]);
+   }
+
+   int VAR__MIN = VAR__819283[0];
+   for ( int VAR__1238129 = 0; VAR__1238129 < ( VAR_1238123 - 1 ); VAR__1238129++ )
+   {
+      if ( VAR__MIN > VAR__819283[VAR__1238129 + 1] )
+      {
+         VAR__MIN = VAR__819283[VAR__1238129 + 1];
+      }
+   }
+
+   int VAR__MAX = VAR__19328[0];
+   for ( int VAR__8444594 = 0; VAR__8444594 < ( VAR_1238123 - 1 ); VAR__8444594++ )
+   {
+      if ( VAR__MAX < VAR__19328[VAR__8444594 + 1] )
+      {
+         VAR__MAX = VAR__19328[VAR__8444594 + 1];
+      }
+   }
+
+   int    VAR__53647 = 0;
+   double ts;
+   for ( VAR__53647 = VAR__MIN; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      VAR_SIZE[VAR__53647] = 0;
+      ts = ( 1.0 * VAR__53647 ) + 0.5;
+      for ( int VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+      {
+         if (( ts <= VAR__19328[VAR__temp] ) && ( ts >= VAR__819283[VAR__temp] ))
+         {
+            VAR_SIZE[VAR__53647] = 1;
+            break;
+         }
+      }
+   }
+
+   int ans = VAR_SIZE[VAR__MIN];
+   for ( VAR__53647 = VAR__MIN + 1; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      ans *= VAR_SIZE[VAR__53647];
+   }
+
+   if ( ans == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      printf("%d %d", VAR__MIN, VAR__MAX);
+   }
+
+   return 0;
+}

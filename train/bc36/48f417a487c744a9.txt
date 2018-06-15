@@ -1,0 +1,89 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594 = 0;
+   int    kk           = 0;
+   char   zs[9];
+   double xb[999];
+   double sg[999];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", zs);
+
+      if ( zs[0] == 'm' )
+      {
+         xb[VAR__53647] = 1;
+      }
+
+      if ( zs[0] == 'f' )
+      {
+         xb[VAR__53647] = 0;
+      }
+
+      scanf("%lf", &sg[VAR__53647]);
+   }
+
+   int sx[999];
+   int xs[999];
+   int VAR__112390;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( xb[VAR__53647] == 1 )
+      {
+         VAR__8444594++;
+         sx[VAR__8444594] = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR__8444594 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( sg[sx[VAR__21230]] > sg[sx[VAR__21230 + 1]] )
+         {
+            VAR__112390        = sx[VAR__21230];
+            sx[VAR__21230]     = sx[VAR__21230 + 1];
+            sx[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( xb[VAR__53647] == 0 )
+      {
+         kk++;
+         xs[kk] = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( kk - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( kk - VAR__53647 ); VAR__21230++ )
+      {
+         if ( sg[xs[VAR__21230]] > sg[xs[VAR__21230 + 1]] )
+         {
+            VAR__112390        = xs[VAR__21230];
+            xs[VAR__21230]     = xs[VAR__21230 + 1];
+            xs[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   printf("%.2lf", sg[sx[1]]);
+   for ( VAR__53647 = 2; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      printf(" %.2lf", sg[sx[VAR__53647]]);
+   }
+
+   for ( VAR__53647 = kk; VAR__53647 >= 1; VAR__53647-- )
+   {
+      printf(" %.2lf", sg[xs[VAR__53647]]);
+   }
+
+   return 0;
+}

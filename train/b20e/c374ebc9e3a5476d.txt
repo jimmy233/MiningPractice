@@ -1,0 +1,97 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR__temp[1000];
+   int VAR_21983012[1000];
+   int N;
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__1111;
+   int win;
+   int re;
+   int tfast;
+   int tslow;
+   int wfast;
+   int wslow;
+
+   while ( scanf("%d", &N) && ( N != 0 ))
+   {
+      for ( VAR__1111 = 0; VAR__1111 < 1000; VAR__1111++ )
+      {
+         VAR__temp[VAR__1111]    = 0;
+         VAR_21983012[VAR__1111] = 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         scanf("%d", &VAR_21983012[VAR__53647]);
+      }
+
+      qsort(VAR__temp, N, sizeof( int ), cmp);
+      qsort(VAR_21983012, N, sizeof( int ), cmp);
+      win   = 0;
+      tfast = 0;
+      wfast = 0;
+      tslow = N - 1;
+      wslow = N - 1;
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         if ( VAR__temp[tfast] == VAR_21983012[wfast] )
+         {
+            if ( VAR__temp[tslow] > VAR_21983012[wslow] )
+            {
+               win++;
+               tslow--;
+               wslow--;
+            }
+            else
+            if ( VAR__temp[tslow] < VAR_21983012[wslow] )
+            {
+               win--;
+               tslow--;
+               wfast++;
+            }
+            else
+            if ( VAR__temp[tslow] == VAR_21983012[wslow] )
+            {
+               if ( VAR__temp[tslow] < VAR_21983012[wfast] )
+               {
+                  win--;
+                  tslow--;
+                  wfast++;
+               }
+               else
+               if ( VAR__temp[tslow] == VAR_21983012[wfast] )
+               {
+                  break;
+               }
+            }
+         }
+         else
+         if ( VAR__temp[tfast] > VAR_21983012[wfast] )
+         {
+            win++;
+            tfast++;
+            wfast++;
+         }
+         else
+         {
+            win--;
+            tslow--;
+            wfast++;
+         }
+      }
+
+      printf("%d\n", win * 200);
+   }
+}

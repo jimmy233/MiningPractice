@@ -1,0 +1,87 @@
+int zhi(int VAR__819283);
+int yin(int VAR__1238129, int VAR__temp);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647 = 0;
+   int A_STRING[10000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &A_STRING[VAR__53647]);
+   }
+
+   VAR__53647 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%d\n", yin(A_STRING[VAR__53647], 2));
+   }
+
+   return 0;
+}
+
+
+int zhi(int VAR__819283)
+{
+   int VAR__8444594 = 2;
+   int VAR_FLAG     = 0;
+
+   for ( VAR__8444594 = 2; VAR__8444594 <= ( VAR__819283 / 2 ); VAR__8444594++ )
+   {
+      if (( VAR__819283 % VAR__8444594 ) == 0 )
+      {
+         VAR_FLAG = 1;
+         break;
+      }
+   }
+
+   return VAR_FLAG;
+}
+
+
+int yin(int VAR__1238129, int VAR__temp)
+{
+   int VAR__21230   = VAR__temp;
+   int VAR__4857423 = 0;
+   int VAR__19328   = 0;
+   int VAR__7685    = 0;
+   int ANOTHER_STRING[10000][2];
+
+   if (( VAR__1238129 < VAR__temp ) && ( VAR__1238129 != 1 ))
+   {
+      return 0;
+   }
+   else
+   if ( VAR__1238129 == 1 )
+   {
+      return 1;
+   }
+   else
+   if ( zhi(VAR__1238129) == 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      for ( VAR__21230 = VAR__temp; VAR__21230 <= VAR__1238129; VAR__21230++ )
+      {
+         if (( VAR__1238129 % VAR__21230 ) == 0 )
+         {
+            ANOTHER_STRING[VAR__4857423][0] = VAR__1238129 / VAR__21230;
+            ANOTHER_STRING[VAR__4857423][1] = VAR__21230;
+            VAR__4857423++;
+         }
+      }
+   }
+
+
+
+   for ( VAR__19328 = 0; VAR__19328 < VAR__4857423; VAR__19328++ )
+   {
+      VAR__7685 += yin(ANOTHER_STRING[VAR__19328][0], ANOTHER_STRING[VAR__19328][1]);
+   }
+
+   return VAR__7685;
+}

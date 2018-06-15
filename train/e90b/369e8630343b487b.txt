@@ -1,0 +1,123 @@
+struct stu
+{
+   char       VAR__NUM[15];
+   int        chi;
+   int        math;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+};
+int VAR_1238123;
+struct stu *creat(void)
+{
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+   struct stu *VAR_9Q8Q90;
+   struct stu *VAR_2890;
+   int        VAR__53647;
+   int        VAR__21230;
+
+   VAR_233 = (struct stu *)malloc(LEN);
+   scanf("%s %d %d", VAR_233->VAR__NUM, &VAR_233->chi, &VAR_233->math);
+   VAR_233->VAR__SUM = VAR_233->chi + VAR_233->math;
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD            = VAR_233;
+         VAR__HEAD->VAR__NEXT = NULL;
+      }
+      else
+      if ( VAR__53647 < 3 )
+      {
+         for ( VAR_2890 = VAR__HEAD, VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            if ( VAR_233->VAR__SUM > VAR_2890->VAR__SUM )
+            {
+               break;
+            }
+            else
+            {
+               VAR_9Q8Q90 = VAR_2890;
+               VAR_2890   = VAR_2890->VAR__NEXT;
+            }
+         }
+
+         if ( VAR__21230 == 0 )
+         {
+            VAR_233->VAR__NEXT = VAR__HEAD;
+            VAR__HEAD          = VAR_233;
+         }
+         else
+         if ( VAR__21230 == VAR__53647 )
+         {
+            VAR_9Q8Q90->VAR__NEXT = VAR_233;
+            VAR_233->VAR__NEXT    = NULL;
+         }
+         else
+         {
+            VAR_9Q8Q90->VAR__NEXT = VAR_233;
+            VAR_233->VAR__NEXT    = VAR_2890;
+         }
+      }
+      else
+      {
+         for ( VAR_2890 = VAR__HEAD, VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+         {
+            if ( VAR_233->VAR__SUM > VAR_2890->VAR__SUM )
+            {
+               break;
+            }
+            else
+            {
+               VAR_9Q8Q90 = VAR_2890;
+               VAR_2890   = VAR_2890->VAR__NEXT;
+            }
+         }
+
+         if ( VAR__21230 == 0 )
+         {
+            VAR_233->VAR__NEXT = VAR__HEAD;
+            VAR__HEAD          = VAR_233;
+         }
+         else
+         {
+            VAR_9Q8Q90->VAR__NEXT = VAR_233;
+            VAR_233->VAR__NEXT    = VAR_2890;
+         }
+      }
+
+
+      if ( VAR__53647 == ( VAR_1238123 - 1 ))
+      {
+         break;
+      }
+
+      VAR_233 = (struct stu *)malloc(LEN);
+      scanf("%s %d %d", VAR_233->VAR__NUM, &VAR_233->chi, &VAR_233->math);
+      VAR_233->VAR__SUM = VAR_233->chi + VAR_233->math;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct stu *VAR__HEAD)
+{
+   struct stu *VAR_233;
+   int        VAR__53647;
+
+   for ( VAR_233 = VAR__HEAD, VAR__53647 = 0; VAR__53647 < 3; VAR__53647++, VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s %d\n", VAR_233->VAR__NUM, VAR_233->VAR__SUM);
+   }
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+}

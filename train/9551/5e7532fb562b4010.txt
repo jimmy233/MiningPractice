@@ -1,0 +1,69 @@
+struct person
+{
+   char ID[10];
+   int  age;
+}
+per[100];
+int main()
+{
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__21230;
+   int  VAR__8444594     = 0;
+   int  VAR__819283[100] = { 0 };
+   int  VAR__NUM         = 0;
+   int  temp1;
+   char VAR__19328[100][10] = { 0 };
+   char temp2[10]           = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", per[VAR__53647].ID, &per[VAR__53647].age);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( per[VAR__53647].age >= 60 )
+      {
+         VAR__819283[VAR__8444594] = per[VAR__53647].age;
+         strcpy(VAR__19328[VAR__8444594], per[VAR__53647].ID);
+         VAR__8444594++;
+         VAR__NUM++;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__NUM; VAR__21230++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__NUM - VAR__21230 ); VAR__8444594++ )
+      {
+         if ( VAR__819283[VAR__8444594] < VAR__819283[VAR__8444594 + 1] )
+         {
+            temp1 = VAR__819283[VAR__8444594];
+            VAR__819283[VAR__8444594]     = VAR__819283[VAR__8444594 + 1];
+            VAR__819283[VAR__8444594 + 1] = temp1;
+            strcpy(temp2, VAR__19328[VAR__8444594]);
+            strcpy(VAR__19328[VAR__8444594], VAR__19328[VAR__8444594 + 1]);
+            strcpy(VAR__19328[VAR__8444594 + 1], temp2);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0, VAR__8444594 = VAR__NUM; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( per[VAR__53647].age < 60 )
+      {
+         VAR__819283[VAR__8444594] = per[VAR__53647].age;
+         strcpy(VAR__19328[VAR__8444594], per[VAR__53647].ID);
+         VAR__8444594++;
+         VAR__NUM++;
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__NUM - 1 ); VAR__8444594++ )
+   {
+      printf("%s\n", VAR__19328[VAR__8444594]);
+   }
+
+   printf("%s", VAR__19328[VAR__NUM - 1]);
+}

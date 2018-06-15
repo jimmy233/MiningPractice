@@ -1,0 +1,46 @@
+char row[100];
+void pipei(int VAR__53647, char boy, char girl)
+{
+   int VAR__21230;
+
+   if ( row[VAR__53647] == girl )
+   {
+      for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ( row[VAR__21230] == boy )
+         {
+            ((( cout << VAR__21230 ) << " " ) << VAR__53647 ) << endl;
+            row[VAR__21230] = ' ';
+            row[VAR__53647] = ' ';
+            break;
+         }
+      }
+   }
+
+   if ( row[VAR__53647 + 1] != '\0' )
+   {
+      pipei(VAR__53647 + 1, boy, girl);
+   }
+}
+
+
+int main()
+{
+   char girl;
+   char boy;
+
+   cin.getline(row, 100);
+   boy = row[0];
+   int VAR__53647;
+   for ( VAR__53647 = 0; row[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( row[VAR__53647] != boy )
+      {
+         girl = row[VAR__53647];
+         break;
+      }
+   }
+
+   pipei(1, boy, girl);
+   return 0;
+}

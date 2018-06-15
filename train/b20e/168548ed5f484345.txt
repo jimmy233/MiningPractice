@@ -1,0 +1,121 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283[1000];
+   int VAR__19328[1000];
+   int circle;
+   int VAR__53647;
+   int VAR__21230;
+   int i1;
+   int i2;
+   int j1;
+   int j2;
+   int VAR__COUNT;
+   int win;
+   int VAR__temp;
+
+   for ( circle = 0; ; circle++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] )
+            {
+               VAR__temp = VAR__819283[VAR__21230];
+               VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+               VAR__819283[VAR__21230 + 1] = VAR__temp;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( VAR__19328[VAR__21230] < VAR__19328[VAR__21230 + 1] )
+            {
+               VAR__temp = VAR__19328[VAR__21230];
+               VAR__19328[VAR__21230]     = VAR__19328[VAR__21230 + 1];
+               VAR__19328[VAR__21230 + 1] = VAR__temp;
+            }
+         }
+      }
+
+      win        = 0;
+      VAR__COUNT = 0;
+      i1         = 0;
+      i2         = VAR_1238123 - 1;
+      j1         = 0;
+      j2         = VAR_1238123 - 1;
+
+      while ( VAR__COUNT < VAR_1238123 )
+      {
+         for ( ; i1 <= (( VAR_1238123 - 1 ) - (( VAR_1238123 - 1 ) - i2 )); i1++, j1++ )
+         {
+            if ( VAR__819283[i1] > VAR__19328[j1] )
+            {
+               win++;
+               VAR__COUNT++;
+            }
+            else
+            {
+               j1++;
+               break;
+            }
+         }
+
+         if ( VAR__COUNT == VAR_1238123 )
+         {
+            break;
+         }
+
+         for ( ; j2 >= 0; i2--, j2-- )
+         {
+            if ( VAR__819283[i2] > VAR__19328[j2] )
+            {
+               win++;
+               VAR__COUNT++;
+            }
+            else
+            {
+               i2--;
+               break;
+            }
+         }
+
+         if ( VAR__COUNT == VAR_1238123 )
+         {
+            break;
+         }
+
+         if ( VAR__819283[i2 + 1] < VAR__19328[j1 - 1] )
+         {
+            win--;
+         }
+
+         VAR__COUNT++;
+      }
+
+      printf("%d\n", win * 200);
+   }
+
+   return 0;
+}

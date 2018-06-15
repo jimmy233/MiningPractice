@@ -1,0 +1,34 @@
+int main()
+{
+   int  year;
+   int  month;
+   int  day;
+   int  VAR__53647;
+   int  VAR__TEMP;
+   int  day_year      = 365 % 7;
+   int  day_month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   char week[7][5]    = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+
+   scanf("%d%d%d", &year, &month, &day);
+   VAR__TEMP  = day_year * ( year - 1 );
+   VAR__TEMP += (( year / 4 ) - ( year / 100 )) + ( year / 400 );
+   for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      VAR__TEMP += day_month[VAR__53647];
+   }
+
+   VAR__TEMP += day;
+
+   if ((( year % 100 ) == 0 ) && (( year % 400 ) == 0 ))
+   {
+      if ( month <= 2 )
+      {
+         VAR__TEMP--;
+      }
+   }
+
+
+   VAR__TEMP = VAR__TEMP % 7;
+   printf("%s\n", week[VAR__TEMP]);
+   return 0;
+}

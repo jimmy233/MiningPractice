@@ -1,0 +1,62 @@
+struct info
+{
+   double height;
+   char   sex[10];
+}
+       VAR_233[41];
+double pm[41];
+double pf[41];
+int comp_m(const void *VAR__819283, const void *VAR__19328)
+{
+   return ((( *((double *)VAR__819283 )) - ( *((double *)VAR__19328 ))) > 0 ) ? ( 1 ) : (((( *((double *)VAR__819283 )) - ( *((double *)VAR__19328 ))) < 0 ) ? ( -1 ) : ( 0 ));
+}
+
+
+int comp_f(const void *VAR__819283, const void *VAR__19328)
+{
+   return ((( *((double *)VAR__19328 )) - ( *((double *)VAR__819283 ))) > 0 ) ? ( 1 ) : (((( *((double *)VAR__19328 )) - ( *((double *)VAR__819283 ))) < 0 ) ? ( -1 ) : ( 0 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int index_m;
+   int index_f;
+
+   while ( cin >> VAR_1238123 )
+   {
+      index_m = 0;
+      index_f = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         ( cin >> VAR_233[VAR__53647].sex ) >> VAR_233[VAR__53647].height;
+
+         if ( !strcmp(VAR_233[VAR__53647].sex, "male"))
+         {
+            pm[index_m++] = VAR_233[VAR__53647].height;
+         }
+         else
+         {
+            pf[index_f++] = VAR_233[VAR__53647].height;
+         }
+      }
+
+      qsort(pm, index_m, sizeof( double ), comp_m);
+      qsort(pf, index_f, sizeof( double ), comp_f);
+      for ( VAR__53647 = 0; VAR__53647 < index_m; VAR__53647++ )
+      {
+         printf("%.2f ", pm[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( index_f - 1 ); VAR__53647++ )
+      {
+         printf("%.2f ", pf[VAR__53647]);
+      }
+
+      printf("%.2f", pf[VAR__53647]);
+   }
+
+   return 0;
+}

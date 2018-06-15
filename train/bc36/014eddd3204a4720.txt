@@ -1,0 +1,80 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   double nan[100] = { 0 };
+   double nv[100]  = { 0 };
+   char   zfc[100];
+   double gao[100];
+   double VAR__112390;
+   int    VAR__21230   = 0;
+   int    VAR__1238129 = 0;
+   int    VAR__8444594;
+   int    VAR_9494;
+   int    VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%lf", zfc, &gao[VAR__53647]);
+
+      if ( zfc[0] == 'm' )
+      {
+         nv[VAR__21230] = gao[VAR__53647];
+         VAR__21230++;
+      }
+      else
+      if ( zfc[0] == 'f' )
+      {
+         nan[VAR__1238129] = gao[VAR__53647];
+         VAR__1238129++;
+      }
+   }
+
+   VAR_9494 = VAR__21230;
+   VAR_233  = VAR__1238129;
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR_9494; VAR__8444594++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_9494 - VAR__8444594 ); VAR__21230++ )
+      {
+         if ( nv[VAR__21230] > nv[VAR__21230 + 1] )
+         {
+            VAR__112390        = nv[VAR__21230];
+            nv[VAR__21230]     = nv[VAR__21230 + 1];
+            nv[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_9494; VAR__8444594++ )
+   {
+      if ( VAR__8444594 == 0 )
+      {
+         printf("%.2lf", nv[VAR__8444594]);
+      }
+      else
+      {
+         printf(" %.2lf", nv[VAR__8444594]);
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR_233; VAR__8444594++ )
+   {
+      for ( VAR__1238129 = 0; VAR__1238129 < ( VAR_233 - VAR__8444594 ); VAR__1238129++ )
+      {
+         if ( nan[VAR__1238129] > nan[VAR__1238129 + 1] )
+         {
+            VAR__112390           = nan[VAR__1238129];
+            nan[VAR__1238129]     = nan[VAR__1238129 + 1];
+            nan[VAR__1238129 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = VAR_233 - 1; VAR__8444594 >= 0; VAR__8444594-- )
+   {
+      printf(" %.2lf", nan[VAR__8444594]);
+   }
+
+   return 0;
+}

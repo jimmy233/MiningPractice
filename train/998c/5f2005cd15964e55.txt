@@ -1,0 +1,363 @@
+struct node
+{
+   int         VAR__7685;
+   struct node *pb;
+   struct node *pn;
+};
+void jianli(struct node *ph, int *VAR__127322, int *VAR_21983012, struct node **pl)
+{
+   char VAR__4857423;
+
+   *VAR__127322  = 1;
+   *VAR_21983012 = 1;
+   struct node *VAR_233;
+   struct node *VAR_666;
+   VAR__4857423 = getchar();
+
+   if ( VAR__4857423 == '-' )
+   {
+      *VAR__127322 = -1;
+      VAR__4857423 = getchar();
+   }
+
+   VAR_666 = ph;
+
+   if ( VAR__4857423 == '0' )
+   {
+      for ( ; ; )
+      {
+         if ( VAR__4857423 != '0' )
+         {
+            break;
+         }
+         else
+         {
+            VAR__4857423 = getchar();
+         }
+      }
+
+      if (( VAR__4857423 < '0' ) || ( VAR__4857423 > '9' ))
+      {
+         VAR_233            = (struct node *)malloc(sizeof( struct node ));
+         VAR_233->pn        = VAR_666->pn;
+         VAR_233->pb        = VAR_666;
+         VAR_666->pn        = VAR_233;
+         VAR_666            = VAR_233;
+         VAR_233->VAR__7685 = 0;
+         *VAR_21983012      = 1;
+         *pl = VAR_233;
+         return;
+      }
+   }
+
+   for ( ; ; )
+   {
+      if (( VAR__4857423 < '0' ) || ( VAR__4857423 > '9' ))
+      {
+         *pl = VAR_233;
+         return;
+      }
+
+      VAR_233            = (struct node *)malloc(sizeof( struct node ));
+      VAR_233->pn        = VAR_666->pn;
+      VAR_233->pb        = VAR_666;
+      VAR_666->pn        = VAR_233;
+      VAR_666            = VAR_233;
+      VAR_233->VAR__7685 = VAR__4857423 - '0';
+      *VAR_21983012      = ( *VAR_21983012 ) + 1;
+      VAR__4857423       = getchar();
+   }
+}
+
+
+void shanchu(struct node *ph)
+{
+   struct node *VAR_233;
+   struct node *VAR_666;
+
+   VAR_233 = ph;
+   for ( ; ; )
+   {
+      if ( VAR_233 == NULL )
+      {
+         return;
+      }
+
+      VAR_666 = VAR_233->pn;
+      free(VAR_233);
+      VAR_233 = VAR_666;
+   }
+}
+
+
+void jia(struct node *pl1, struct node *pl2, struct node *p3)
+{
+   struct node *VAR__819283;
+   struct node *VAR__19328;
+   struct node *VAR_233;
+   struct node *VAR_129012;
+   int         VAR__4857423;
+   int         VAR__21230 = 0;
+
+   VAR__819283 = pl1;
+   VAR__19328  = pl2;
+   for ( ; ; )
+   {
+      if (( VAR__819283->pb == NULL ) && ( VAR__19328->pb == NULL ))
+      {
+         if ( VAR__21230 == 1 )
+         {
+            VAR_233            = (struct node *)malloc(sizeof( struct node ));
+            VAR_233->pn        = p3->pn;
+            VAR_233->pb        = p3;
+            p3->pn             = VAR_233;
+            VAR_233->VAR__7685 = 1;
+         }
+
+         return;
+      }
+      else
+      if ( VAR__819283->pb == NULL )
+      {
+         VAR_129012  = VAR__819283;
+         VAR__819283 = VAR__19328;
+         VAR__19328  = VAR_129012;
+      }
+
+
+      if ( VAR__19328->pb == NULL )
+      {
+         VAR__4857423 = VAR__819283->VAR__7685 + VAR__21230;
+         VAR__21230   = 0;
+
+         if ( VAR__4857423 > 9 )
+         {
+            VAR__21230   = 1;
+            VAR__4857423 = VAR__4857423 - 10;
+         }
+
+         VAR_233            = (struct node *)malloc(sizeof( struct node ));
+         VAR_233->pn        = p3->pn;
+         VAR_233->pb        = p3;
+         p3->pn             = VAR_233;
+         VAR_233->VAR__7685 = VAR__4857423;
+         VAR__819283        = VAR__819283->pb;
+         continue;
+      }
+
+      VAR__4857423 = ( VAR__819283->VAR__7685 + VAR__19328->VAR__7685 ) + VAR__21230;
+      VAR__21230   = 0;
+
+      if ( VAR__4857423 > 9 )
+      {
+         VAR__21230   = 1;
+         VAR__4857423 = VAR__4857423 - 10;
+      }
+
+      VAR_233            = (struct node *)malloc(sizeof( struct node ));
+      VAR_233->pn        = p3->pn;
+      VAR_233->pb        = p3;
+      p3->pn             = VAR_233;
+      VAR_233->VAR__7685 = VAR__4857423;
+      VAR__819283        = VAR__819283->pb;
+      VAR__19328         = VAR__19328->pb;
+   }
+}
+
+
+void jian(struct node *pl1, struct node *pl2, struct node *p3)
+{
+   struct node *VAR__819283;
+   struct node *VAR__19328;
+   struct node *VAR_233;
+   struct node *VAR_129012;
+   int         VAR__4857423;
+   int         VAR__21230 = 0;
+
+   VAR__819283 = pl1;
+   VAR__19328  = pl2;
+   for ( ; ; )
+   {
+      if (( VAR__819283->pb == NULL ) && ( VAR__19328->pb == NULL ))
+      {
+         return;
+      }
+
+      if ( VAR__19328->pb == NULL )
+      {
+         VAR__4857423 = VAR__819283->VAR__7685 - VAR__21230;
+         VAR__21230   = 0;
+
+         if ( VAR__4857423 < 0 )
+         {
+            VAR__21230   = 1;
+            VAR__4857423 = VAR__4857423 + 10;
+         }
+
+         VAR_233            = (struct node *)malloc(sizeof( struct node ));
+         VAR_233->pn        = p3->pn;
+         VAR_233->pb        = p3;
+         p3->pn             = VAR_233;
+         VAR_233->VAR__7685 = VAR__4857423;
+         VAR__819283        = VAR__819283->pb;
+         continue;
+      }
+
+      VAR__4857423 = ( VAR__819283->VAR__7685 - VAR__19328->VAR__7685 ) - VAR__21230;
+      VAR__21230   = 0;
+
+      if ( VAR__4857423 < 0 )
+      {
+         VAR__21230   = 1;
+         VAR__4857423 = VAR__4857423 + 10;
+      }
+
+      VAR_233            = (struct node *)malloc(sizeof( struct node ));
+      VAR_233->pn        = p3->pn;
+      VAR_233->pb        = p3;
+      p3->pn             = VAR_233;
+      VAR_233->VAR__7685 = VAR__4857423;
+      VAR__819283        = VAR__819283->pb;
+      VAR__19328         = VAR__19328->pb;
+   }
+}
+
+
+void shuchu(struct node *p3, int VAR__127322)
+{
+   struct node *VAR_233;
+
+   VAR_233 = p3->pn;
+   for ( ; ; )
+   {
+      if (( VAR_233 == NULL ) || ( VAR_233->VAR__7685 != 0 ))
+      {
+         break;
+      }
+      else
+      {
+         VAR_233 = VAR_233->pn;
+      }
+   }
+
+   if ( VAR_233 == NULL )
+   {
+      printf("0\n");
+   }
+   else
+   {
+      if ( VAR__127322 == ( -1 ))
+      {
+         printf("-");
+      }
+
+      for ( ; ; )
+      {
+         if ( VAR_233 == NULL )
+         {
+            printf("\n");
+            break;
+         }
+         else
+         {
+            printf("%d", VAR_233->VAR__7685);
+            VAR_233 = VAR_233->pn;
+         }
+      }
+   }
+}
+
+
+int bijiao(struct node *ANOTHER_POINTER, struct node *YET_ANOTHER_POINTER, int w1, int w2)
+{
+   struct node *VAR__819283;
+   struct node *VAR__19328;
+
+   if ( w1 != w2 )
+   {
+      return w1 - w2;
+   }
+   else
+   {
+      VAR__819283 = ANOTHER_POINTER->pn;
+      VAR__19328  = YET_ANOTHER_POINTER->pn;
+      for ( ; ; )
+      {
+         if ( VAR__819283 == NULL )
+         {
+            return 0;
+         }
+
+         if ( VAR__819283->VAR__7685 != VAR__19328->VAR__7685 )
+         {
+            return VAR__819283->VAR__7685 - VAR__19328->VAR__7685;
+         }
+         else
+         {
+            VAR__819283 = VAR__819283->pn;
+            VAR__19328  = VAR__19328->pn;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int         f1;
+   int         f2;
+   int         w1;
+   int         w2;
+   int         VAR__127322;
+   struct node *ANOTHER_POINTER     = (struct node *)malloc(sizeof( struct node ));
+   struct node *YET_ANOTHER_POINTER = (struct node *)malloc(sizeof( struct node ));
+   struct node *p3 = (struct node *)malloc(sizeof( struct node ));
+   struct node *pl1;
+   struct node *pl2;
+   struct node *VAR_233;
+
+   ANOTHER_POINTER->pn     = NULL;
+   YET_ANOTHER_POINTER->pn = NULL;
+   p3->pn = NULL;
+   ANOTHER_POINTER->pb     = NULL;
+   YET_ANOTHER_POINTER->pb = NULL;
+   p3->pb = NULL;
+   jianli(ANOTHER_POINTER, &f1, &w1, &pl1);
+   jianli(YET_ANOTHER_POINTER, &f2, &w2, &pl2);
+
+   if (( f1 * f2 ) == 1 )
+   {
+      jia(pl1, pl2, p3);
+      shuchu(p3, f1);
+   }
+   else
+   {
+      if ( bijiao(ANOTHER_POINTER, YET_ANOTHER_POINTER, w1, w2) == 0 )
+      {
+         printf("0\n");
+      }
+      else
+      {
+         if ( bijiao(ANOTHER_POINTER, YET_ANOTHER_POINTER, w1, w2) < 0 )
+         {
+            VAR__127322         = f1;
+            f1                  = f2;
+            f2                  = VAR__127322;
+            VAR_233             = ANOTHER_POINTER;
+            ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+            YET_ANOTHER_POINTER = VAR_233;
+            VAR_233             = pl1;
+            pl1                 = pl2;
+            pl2                 = VAR_233;
+         }
+
+         jian(pl1, pl2, p3);
+         shuchu(p3, f1);
+      }
+   }
+
+   shanchu(ANOTHER_POINTER);
+   shanchu(YET_ANOTHER_POINTER);
+   shanchu(p3);
+   return 0;
+}

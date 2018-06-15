@@ -1,0 +1,82 @@
+int R(int *VAR_233, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__1238129 = 0;
+
+   if ( VAR_233[VAR_1238123] == 0 )
+   {
+      for ( VAR__53647 = 2; VAR__53647 <= ((int)sqrt(VAR_1238123)); VAR__53647++ )
+      {
+         if (( VAR_1238123 % VAR__53647 ) == 0 )
+         {
+            VAR__1238129++;
+         }
+      }
+
+
+      if ( VAR__1238129 == 0 )
+      {
+         VAR_233[VAR_1238123] = 1;
+      }
+      else
+      {
+         VAR_233[VAR_1238123] = 2;
+      }
+   }
+
+   if ( VAR_233[VAR_1238123] == 1 )
+   {
+      return 1;
+   }
+   else
+   if ( VAR_233[VAR_1238123] == 2 )
+   {
+      return 2;
+   }
+}
+
+
+void Find(int *VAR_233, int VAR_1238123)
+{
+   int VAR__53647;
+
+   if ( R(VAR_233, VAR_1238123 - 2) == 1 )
+   {
+      printf("%d=%d+%d\n", VAR_1238123, 2, VAR_1238123 - 2);
+   }
+   else
+   {
+      for ( VAR__53647 = 3; VAR__53647 <= ( VAR_1238123 / 2 ); VAR__53647 += 2 )
+      {
+         if (( R(VAR_233, VAR__53647) == 1 ) && ( R(VAR_233, VAR_1238123 - VAR__53647) == 1 ))
+         {
+            break;
+         }
+      }
+
+
+      if (( R(VAR_233, VAR__53647) == 1 ) && ( R(VAR_233, VAR_1238123 - VAR__53647) == 1 ))
+      {
+         printf("%d=%d+%d\n", VAR_1238123, VAR__53647, VAR_1238123 - VAR__53647);
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int *VAR_233;
+
+   scanf("%d", &VAR__1238129);
+   VAR_233 = (int *)malloc(VAR__1238129 * ( sizeof( int )));
+   memset(VAR_233, 0, sizeof( VAR_233 ));
+   VAR_233[2] = 1;
+   for ( VAR_1238123 = 6; VAR_1238123 <= VAR__1238129; VAR_1238123 += 2 )
+   {
+      Find(VAR_233, VAR_1238123);
+   }
+
+   free(VAR_233);
+}

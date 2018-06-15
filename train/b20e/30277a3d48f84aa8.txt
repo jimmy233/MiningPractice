@@ -1,0 +1,87 @@
+int compare(const void *elem1, const void *elem2)
+{
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (int *)elem1;
+   YET_ANOTHER_POINTER = (int *)elem2;
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR__4857423;
+
+   for ( VAR__4857423 = 1; ; VAR__4857423++ )
+   {
+      int VAR_1238123;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         int VAR__12302;
+         int match;
+         int f1 = 0;
+         int f2 = 0;
+         int b1 = 0;
+         int b2 = 0;
+         int money;
+         int VAR_21983012 = 0;
+         int VAR__temp    = 0;
+         int VAR__1111    = 0;
+         int T[VAR_1238123];
+         int Q[VAR_1238123];
+         for ( VAR__12302 = 0; VAR__12302 < VAR_1238123; VAR__12302++ )
+         {
+            scanf("%d", &T[VAR__12302]);
+         }
+
+         qsort(T, VAR_1238123, sizeof( int ), compare);
+         for ( VAR__12302 = 0; VAR__12302 < VAR_1238123; VAR__12302++ )
+         {
+            scanf("%d", &Q[VAR__12302]);
+         }
+
+         qsort(Q, VAR_1238123, sizeof( int ), compare);
+         for ( match = 0; match < VAR_1238123; match++ )
+         {
+            if ( T[f1] > Q[f2] )
+            {
+               VAR_21983012++;
+               f2++;
+               f1++;
+            }
+            else
+            {
+               if ( T[( VAR_1238123 - 1 ) - b1] > Q[( VAR_1238123 - 1 ) - b2] )
+               {
+                  VAR_21983012++;
+                  b1++;
+                  b2++;
+               }
+               else
+               {
+                  if ( T[( VAR_1238123 - 1 ) - b1] == Q[f2] )
+                  {
+                     break;
+                  }
+                  else
+                  {
+                     VAR__1111++;
+                     b1++;
+                     f2++;
+                  }
+               }
+            }
+         }
+
+         money = 200 * ( VAR_21983012 - VAR__1111 );
+         printf("%d\n", money);
+      }
+   }
+}

@@ -1,0 +1,106 @@
+int zhi(int VAR__NUM[][100], int VAR_1238123);
+
+int main()
+{
+   int in;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int cal[100][100] = { 0 };
+
+   cin >> in;
+   for ( VAR__8444594 = 0; VAR__8444594 < in; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < in; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < in; VAR__21230++ )
+         {
+            cin >> cal[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      ( cout << zhi(cal, in)) << endl;
+   }
+
+   return 0;
+}
+
+
+int zhi(int VAR__NUM[][100], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MIN[100];
+   int VAR__SUM = 0;
+   int VAR__TEMP;
+
+   if ( VAR_1238123 == 1 )
+   {
+      return 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN[VAR__53647] = VAR__NUM[VAR__53647][0];
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__53647][VAR__21230] < VAR__MIN[VAR__53647] )
+         {
+            VAR__MIN[VAR__53647] = VAR__NUM[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__NUM[VAR__53647][VAR__21230] = VAR__NUM[VAR__53647][VAR__21230] - VAR__MIN[VAR__53647];
+      }
+   }
+
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      VAR__MIN[VAR__21230] = VAR__NUM[0][VAR__21230];
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647][VAR__21230] < VAR__MIN[VAR__21230] )
+         {
+            VAR__MIN[VAR__21230] = VAR__NUM[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647][VAR__21230] = VAR__NUM[VAR__53647][VAR__21230] - VAR__MIN[VAR__21230];
+      }
+   }
+
+
+   VAR__TEMP = VAR__NUM[1][1];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__NUM[VAR__53647][VAR__21230] = VAR__NUM[VAR__53647][VAR__21230 + 1];
+      }
+   }
+
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647][VAR__21230] = VAR__NUM[VAR__53647 + 1][VAR__21230];
+      }
+   }
+
+
+   VAR__SUM = zhi(VAR__NUM, VAR_1238123 - 1) + VAR__TEMP;
+   return VAR__SUM;
+}

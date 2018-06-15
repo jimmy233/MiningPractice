@@ -1,0 +1,55 @@
+int N;
+int M;
+int data[10][10];
+int mincol[10];
+int maxrow[10];
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_FLAG = 0;
+
+   scanf("%d,%d", &N, &M);
+   for ( VAR__53647 = 0; VAR__53647 < 10; VAR__53647++ )
+   {
+      mincol[VAR__53647] = 2147483647;
+      maxrow[VAR__53647] = -2147483647;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < M; VAR__21230++ )
+      {
+         scanf("%d", &data[VAR__53647][VAR__21230]);
+
+         if ( data[VAR__53647][VAR__21230] < mincol[VAR__21230] )
+         {
+            mincol[VAR__21230] = data[VAR__53647][VAR__21230];
+         }
+
+         if ( data[VAR__53647][VAR__21230] > maxrow[VAR__53647] )
+         {
+            maxrow[VAR__53647] = data[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < M; VAR__21230++ )
+      {
+         if (( mincol[VAR__21230] == data[VAR__53647][VAR__21230] ) && ( maxrow[VAR__53647] == data[VAR__53647][VAR__21230] ))
+         {
+            VAR_FLAG = 1;
+            printf("%d+%d\n", VAR__53647, VAR__21230);
+         }
+      }
+   }
+
+   if ( !VAR_FLAG )
+   {
+      printf("No\n");
+   }
+
+   return 0;
+}

@@ -1,0 +1,109 @@
+int array[100][100];
+int (*VAR_233)[100] = array;
+int VAR__SUM;
+int VAR_1238123;
+int times;
+void zero()
+{
+   int xmin = 10000;
+   int ymin = 10000;
+
+   for ( int VAR__53647 = 0; VAR__53647 <= (( VAR_1238123 - 1 ) - times ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 <= (( VAR_1238123 - 1 ) - times ); VAR__21230++ )
+      {
+         if (( *(( *( VAR_233 + VAR__53647 )) + VAR__21230 )) < xmin )
+         {
+            xmin = *(( *( VAR_233 + VAR__53647 )) + VAR__21230 );
+         }
+      }
+
+
+      for ( int VAR__21230 = 0; VAR__21230 <= (( VAR_1238123 - 1 ) - times ); VAR__21230++ )
+      {
+         *(( *( VAR_233 + VAR__53647 )) + VAR__21230 ) -= xmin;
+      }
+
+      xmin = 10000;
+   }
+
+   for ( int VAR__21230 = 0; VAR__21230 <= (( VAR_1238123 - 1 ) - times ); VAR__21230++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 <= (( VAR_1238123 - 1 ) - times ); VAR__53647++ )
+      {
+         if (( *(( *( VAR_233 + VAR__53647 )) + VAR__21230 )) < ymin )
+         {
+            ymin = *(( *( VAR_233 + VAR__53647 )) + VAR__21230 );
+         }
+      }
+
+
+      for ( int VAR__53647 = 0; VAR__53647 <= (( VAR_1238123 - 1 ) - times ); VAR__53647++ )
+      {
+         *(( *( VAR_233 + VAR__53647 )) + VAR__21230 ) -= ymin;
+      }
+
+      ymin = 10000;
+   }
+
+   VAR__SUM += *(( *( VAR_233 + 1 )) + 1 );
+}
+
+
+void decline()
+{
+   for ( int VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         *(( *( VAR_233 + VAR__53647 )) + VAR__21230 ) = *(( *(( VAR_233 + VAR__53647 ) + 1 )) + VAR__21230 );
+      }
+   }
+
+
+   for ( int VAR__21230 = 1; VAR__21230 <= ( VAR_1238123 - 2 ); VAR__21230++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+      {
+         *(( *( VAR_233 + VAR__53647 )) + VAR__21230 ) = *((( *( VAR_233 + VAR__53647 )) + VAR__21230 ) + 1 );
+      }
+   }
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   int time = 0;
+
+   while ( true )
+   {
+      if ( time == VAR_1238123 )
+      {
+         break;
+      }
+
+      times    = 0;
+      VAR__SUM = 0;
+      for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            cin >> ( *(( *( VAR_233 + VAR__53647 )) + VAR__21230 ));
+         }
+      }
+
+
+      for ( int VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         zero();
+         decline();
+         times++;
+      }
+
+      ( cout << VAR__SUM ) << endl;
+      time++;
+   }
+
+   return 0;
+}

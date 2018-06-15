@@ -1,0 +1,95 @@
+int main()
+{
+   int  VAR__3918907 = 0;
+   int  VAR__8444594;
+   int  VAR__7685;
+   int  VAR__TEMP;
+   int  VAR_233;
+   int  VAR_666;
+   int  VAR__temp;
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  boy[100];
+   int  girl[100];
+   char VAR__819283[100];
+   char sex[2];
+
+   cin >> VAR__819283;
+   sex[0] = VAR__819283[0];
+   for ( VAR__53647 = 1; ; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] != VAR__819283[0] )
+      {
+         sex[1] = VAR__819283[VAR__53647];
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__819283[VAR__8444594] != '\0'; VAR__8444594++ )
+      {
+         if ( VAR__819283[VAR__8444594] != '*' )
+         {
+            VAR__3918907 = 1;
+         }
+      }
+
+      if ( VAR__3918907 == 0 )
+      {
+         break;
+      }
+
+      VAR__3918907 = 0;
+
+      if ( VAR__819283[VAR__53647] == '*' )
+      {
+         continue;
+      }
+
+      if ( VAR__819283[VAR__53647 + 1] == '\0' )
+      {
+         VAR__53647 = -1;
+         continue;
+      }
+
+      if ( VAR__819283[VAR__53647] == sex[0] )
+      {
+         for ( VAR__8444594 = VAR__53647 + 1; VAR__819283[VAR__8444594] != sex[0]; VAR__8444594++ )
+         {
+            if ( VAR__819283[VAR__8444594] == sex[1] )
+            {
+               VAR__819283[VAR__53647]   = '*';
+               VAR__819283[VAR__8444594] = '*';
+               boy[VAR__21230]           = VAR__53647;
+               girl[VAR__21230]          = VAR__8444594;
+               VAR__21230++;
+               break;
+            }
+         }
+      }
+   }
+
+   for ( VAR_233 = 0; VAR_233 < ( VAR__21230 - 1 ); VAR_233++ )
+   {
+      for ( VAR_666 = 0; VAR_666 < (( VAR__21230 - 1 ) - VAR_233 ); VAR_666++ )
+      {
+         if ( girl[VAR_666] > girl[VAR_666 + 1] )
+         {
+            VAR__TEMP         = girl[VAR_666 + 1];
+            girl[VAR_666 + 1] = girl[VAR_666];
+            girl[VAR_666]     = VAR__TEMP;
+            VAR__TEMP         = boy[VAR_666 + 1];
+            boy[VAR_666 + 1]  = boy[VAR_666];
+            boy[VAR_666]      = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__7685 = 0; VAR__7685 <= ( VAR__21230 - 1 ); VAR__7685++ )
+   {
+      ((( cout << boy[VAR__7685] ) << " " ) << girl[VAR__7685] ) << endl;
+   }
+
+   return 0;
+}

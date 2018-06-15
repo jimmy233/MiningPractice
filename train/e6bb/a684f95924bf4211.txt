@@ -1,0 +1,71 @@
+int VAR__819283[10][10] = { 0 };
+int biaoji[10][10]      = { 0 };
+void VAR__127322(int VAR_1238123)
+{
+   int VAR_233;
+   int VAR_666;
+   int u;
+   int v;
+
+   if ( VAR_1238123 == 0 )
+   {
+      return;
+   }
+
+   for ( VAR_233 = 1; VAR_233 <= 9; VAR_233++ )
+   {
+      for ( VAR_666 = 1; VAR_666 <= 9; VAR_666++ )
+      {
+         if ( VAR__819283[VAR_233][VAR_666] != 0 )
+         {
+            biaoji[VAR_233][VAR_666]         += 2 * VAR__819283[VAR_233][VAR_666];
+            biaoji[VAR_233 - 1][VAR_666 + 1] += VAR__819283[VAR_233][VAR_666];
+            biaoji[VAR_233 - 1][VAR_666]     += VAR__819283[VAR_233][VAR_666];
+            biaoji[VAR_233 - 1][VAR_666 - 1] += VAR__819283[VAR_233][VAR_666];
+            biaoji[VAR_233][VAR_666 - 1]     += VAR__819283[VAR_233][VAR_666];
+            biaoji[VAR_233][VAR_666 + 1]     += VAR__819283[VAR_233][VAR_666];
+            biaoji[VAR_233 + 1][VAR_666 - 1] += VAR__819283[VAR_233][VAR_666];
+            biaoji[VAR_233 + 1][VAR_666]     += VAR__819283[VAR_233][VAR_666];
+            biaoji[VAR_233 + 1][VAR_666 + 1] += VAR__819283[VAR_233][VAR_666];
+         }
+      }
+   }
+
+
+   for ( u = 1; u <= 9; u++ )
+   {
+      for ( v = 1; v <= 9; v++ )
+      {
+         VAR__819283[u][v] = biaoji[u][v];
+      }
+   }
+
+
+   memset(biaoji, 0, sizeof( biaoji ));
+   VAR__127322(VAR_1238123 - 1);
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   VAR__819283[5][5] = VAR__1238129;
+   VAR__127322(VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      cout << VAR__819283[VAR__53647][1];
+      for ( VAR__21230 = 2; VAR__21230 <= 9; VAR__21230++ )
+      {
+         ( cout << " " ) << VAR__819283[VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

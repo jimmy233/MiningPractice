@@ -1,0 +1,78 @@
+int main()
+{
+   int hang[6][6];
+   int lie[6][6];
+   int VAR__819283[6][6];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int hmax = -1000000;
+   int lmin = 1000000;
+   int hangh;
+   int hangl;
+   int lieh;
+   int liel;
+   int VAR__TEMP   = 0;
+   int VAR_1238123 = 5;
+
+   memset(hang, 0, sizeof( hang ));
+   memset(lie, 0, sizeof( lie ));
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] > hmax )
+         {
+            hangh = VAR__53647;
+            hangl = VAR__21230;
+            hmax  = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+      hang[hangh][hangl] = 1;
+      hmax = -1000000;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230][VAR__53647] < lmin )
+         {
+            lieh = VAR__21230;
+            liel = VAR__53647;
+            lmin = VAR__819283[VAR__21230][VAR__53647];
+         }
+      }
+
+      lie[lieh][liel] = 1;
+      lmin            = 1000000;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 5; VAR__21230++ )
+      {
+         if (( hang[VAR__53647][VAR__21230] == 1 ) && ( lie[VAR__53647][VAR__21230] == 1 ))
+         {
+            printf("%d %d %d\n", VAR__53647, VAR__21230, VAR__819283[VAR__53647][VAR__21230]);
+            VAR__TEMP++;
+         }
+      }
+   }
+
+
+   if ( VAR__TEMP == 0 )
+   {
+      printf("not found");
+   }
+}

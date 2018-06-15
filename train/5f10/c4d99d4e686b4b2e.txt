@@ -1,0 +1,65 @@
+void main()
+{
+   int  VAR_1238123;
+   int  total;
+   char in[550];
+   char sp[510][500];
+
+   scanf("%d%s", &VAR_1238123, in);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   total = ( strlen(in) - VAR_1238123 ) + 1;
+   for ( VAR__53647 = 0; VAR__53647 < total; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         sp[VAR__53647][VAR__8444594] = in[VAR__53647 + VAR__8444594];
+      }
+
+      sp[VAR__53647][VAR__8444594] = 0;
+   }
+
+   int VAR_FLAG[510]   = { 0 };
+   int VAR__COUNT[510] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < total; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < total; VAR__21230++ )
+      {
+         if ( VAR_FLAG[VAR__21230] == 0 )
+         {
+            if ( strcmp(sp[VAR__53647], sp[VAR__21230]) == 0 )
+            {
+               VAR_FLAG[VAR__21230] = 1;
+               VAR__COUNT[VAR__53647]++;
+            }
+         }
+      }
+   }
+
+   int VAR__MAX;
+   VAR__MAX = VAR__COUNT[0];
+   for ( VAR__53647 = 0; VAR__53647 < total; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX != 1 )
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < total; VAR__53647++ )
+      {
+         if ( VAR__COUNT[VAR__53647] == VAR__MAX )
+         {
+            printf("%s\n", sp[VAR__53647]);
+         }
+      }
+   }
+   else
+   {
+      printf("NO\n");
+   }
+}

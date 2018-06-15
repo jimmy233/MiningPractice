@@ -1,0 +1,73 @@
+int main()
+{
+   char integral[120];
+   char divide[120];
+   int  mod;
+   int  VAR__53647;
+   int  int1;
+   int  int2;
+   int  LEN_OF_STH;
+   int  lendivide;
+
+   scanf("%s", integral);
+   LEN_OF_STH = strlen(integral);
+   int1       = (int)( integral[0] - '0' );
+   int2       = (int)( integral[1] - '0' );
+
+   if ( LEN_OF_STH == 1 )
+   {
+      printf("0\n");
+      printf("%d\n", int1);
+   }
+
+   if (( LEN_OF_STH == 2 ) && ((( int1 * 10 ) + int2 ) < 13 ))
+   {
+      printf("0\n");
+      printf("%d\n", ( int1 * 10 ) + int2);
+   }
+
+   if ((( LEN_OF_STH == 2 ) && ((( int1 * 10 ) + int2 ) >= 13 )) || ( LEN_OF_STH > 2 ))
+   {
+      lendivide = ((( int1 * 10 ) + int2 ) < 13 ) ? ( LEN_OF_STH - 2 ) : ( LEN_OF_STH - 1 );
+
+      if ( lendivide == ( LEN_OF_STH - 1 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < lendivide; VAR__53647++ )
+         {
+            if ( VAR__53647 == 0 )
+            {
+               divide[VAR__53647] = (char)((((((int)( integral[VAR__53647] - '0' )) * 10 ) + ((int)( integral[VAR__53647 + 1] - '0' ))) / 13 ) + 48 );
+               mod = ((((int)( integral[VAR__53647] - '0' )) * 10 ) + ((int)( integral[VAR__53647 + 1] - '0' ))) % 13;
+            }
+            else
+            {
+               divide[VAR__53647] = (char)(((( mod * 10 ) + ((int)( integral[VAR__53647 + 1] - '0' ))) / 13 ) + 48 );
+               mod = (( mod * 10 ) + ((int)( integral[VAR__53647 + 1] - '0' ))) % 13;
+            }
+         }
+      }
+
+      if (( lendivide == ( LEN_OF_STH - 2 )) && ( lendivide != 0 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < lendivide; VAR__53647++ )
+         {
+            if ( VAR__53647 == 0 )
+            {
+               divide[VAR__53647] = (char)(((((((int)( integral[VAR__53647] - '0' )) * 100 ) + (((int)( integral[VAR__53647 + 1] - '0' )) * 10 )) + ((int)( integral[VAR__53647 + 2] - '0' ))) / 13 ) + 48 );
+               mod = (((((int)( integral[VAR__53647] - '0' )) * 100 ) + (((int)( integral[VAR__53647 + 1] - '0' )) * 10 )) + ((int)( integral[VAR__53647 + 2] - '0' ))) % 13;
+            }
+            else
+            {
+               divide[VAR__53647] = (char)(((( mod * 10 ) + ((int)( integral[VAR__53647 + 2] - '0' ))) / 13 ) + 48 );
+               mod = (( mod * 10 ) + ((int)( integral[VAR__53647 + 2] - '0' ))) % 13;
+            }
+         }
+      }
+
+      divide[lendivide] = '\0';
+      printf("%s\n", divide);
+      printf("%d\n", mod);
+   }
+
+   return 0;
+}

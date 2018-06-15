@@ -1,0 +1,72 @@
+struct point
+{
+   int VAR__7685[3];
+}
+pt[10];
+struct str
+{
+   struct point po[2];
+   float        distance;
+}
+dis[50];
+struct str
+{
+   struct point po[2];
+   float        distance;
+}
+VAR__TEMP;
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__NUM;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 2; VAR__21230++ )
+      {
+         scanf("%d", &pt[VAR__53647].VAR__7685[VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 50; VAR__53647++ )
+   {
+      dis[VAR__53647].distance = 0.0;
+   }
+
+   for ( VAR__53647 = 0, VAR__NUM = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__NUM].po[0]    = pt[VAR__53647];
+         dis[VAR__NUM].po[1]    = pt[VAR__21230];
+         dis[VAR__NUM].distance = sqrt((( abs(pt[VAR__53647].VAR__7685[0] - pt[VAR__21230].VAR__7685[0]) * abs(pt[VAR__53647].VAR__7685[0] - pt[VAR__21230].VAR__7685[0])) + ( abs(pt[VAR__53647].VAR__7685[1] - pt[VAR__21230].VAR__7685[1]) * abs(pt[VAR__53647].VAR__7685[1] - pt[VAR__21230].VAR__7685[1]))) + ( abs(pt[VAR__53647].VAR__7685[2] - pt[VAR__21230].VAR__7685[2]) * abs(pt[VAR__53647].VAR__7685[2] - pt[VAR__21230].VAR__7685[2])));
+         VAR__NUM++;
+      }
+   }
+
+   for ( VAR__NUM = 0, VAR__53647 = 0; dis[VAR__53647].distance > 0.01; VAR__53647++ )
+   {
+      VAR__NUM++;
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < VAR__NUM; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__NUM - VAR__21230 ); VAR__53647++ )
+      {
+         if (( dis[VAR__53647 + 1].distance - dis[VAR__53647].distance ) > 0.01 )
+         {
+            VAR__TEMP           = dis[VAR__53647];
+            dis[VAR__53647]     = dis[VAR__53647 + 1];
+            dis[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", dis[VAR__53647].po[0].VAR__7685[0], dis[VAR__53647].po[0].VAR__7685[1], dis[VAR__53647].po[0].VAR__7685[2], dis[VAR__53647].po[1].VAR__7685[0], dis[VAR__53647].po[1].VAR__7685[1], dis[VAR__53647].po[1].VAR__7685[2], dis[VAR__53647].distance);
+   }
+}

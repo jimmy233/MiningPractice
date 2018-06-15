@@ -1,0 +1,92 @@
+struct student
+{
+   char           VAR__NUM[50];
+   char           name[50];
+   char           sex;
+   int            year;
+   char           score[50];
+   char           add[50];
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *Create()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER     = NULL;
+   struct student *YET_ANOTHER_POINTER = NULL;
+
+   VAR_1238123         = 0;
+   ANOTHER_POINTER     = (struct student *)malloc(LEN);
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+   if ( ANOTHER_POINTER == NULL )
+   {
+      printf("\nCann't create it, try it again in a moment!\n");
+      return NULL;
+   }
+   else
+   {
+      VAR__HEAD = NULL;
+      scanf("%s %s %c %d %s %s", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->year, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+   }
+
+   int VAR__21230 = 0;
+   for ( ; ; VAR__21230++ )
+   {
+      VAR_1238123 += 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+         VAR__HEAD = YET_ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") == 0 )
+      {
+         VAR__HEAD = YET_ANOTHER_POINTER;
+         break;
+      }
+
+      scanf("%s %c %d %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->year, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+   }
+
+   VAR__HEAD = YET_ANOTHER_POINTER;
+   free(ANOTHER_POINTER);
+   ANOTHER_POINTER = NULL;
+   return VAR__HEAD;
+}
+
+
+void Print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->year, VAR_233->score, VAR_233->add);
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+   }
+}
+
+
+int main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = Create();
+   Print(VAR__HEAD);
+   return 0;
+}

@@ -1,0 +1,91 @@
+int tian[1000];
+int wang[1000];
+int VAR__TEMP[1000];
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( 1 )
+   {
+      int VAR__53647;
+      int VAR__NUM = 0;
+      int t_first;
+      int q_first;
+      int t_last;
+      int q_last;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &wang[VAR__53647]);
+      }
+
+      qsort(tian, VAR_1238123, sizeof( int ), cmp);
+      qsort(wang, VAR_1238123, sizeof( int ), cmp);
+      t_first = ( q_first = 0 );
+      t_last  = ( q_last = VAR_1238123 - 1 );
+
+      while ( t_last >= t_first )
+      {
+         if ( tian[t_first] > wang[q_first] )
+         {
+            VAR__NUM++;
+            t_first++;
+            q_first++;
+         }
+         else
+         if ( tian[t_first] < wang[q_first] )
+         {
+            VAR__NUM--;
+            t_first++;
+            q_last--;
+         }
+         else
+         {
+            if ( tian[t_last] > wang[q_last] )
+            {
+               VAR__NUM++;
+               t_last--;
+               q_last--;
+            }
+            else
+            if ( tian[t_last] < wang[q_last] )
+            {
+               VAR__NUM--;
+               t_first++;
+               q_last--;
+            }
+            else
+            {
+               if ( tian[t_first] < wang[q_last] )
+               {
+                  VAR__NUM--;
+               }
+
+               t_first++;
+               q_last--;
+            }
+         }
+      }
+
+      printf("%d\n", VAR__NUM * 200);
+   }
+
+   return 0;
+}

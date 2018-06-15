@@ -1,0 +1,78 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__MAX               = 1;
+   char VAR__7685[600]         = { 0 };
+   char VAR__3918907[600][600] = { 0 };
+
+   scanf("%d%s", &VAR_1238123, VAR__7685);
+   int LEN_OF_STH = strlen(VAR__7685);
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__3918907[VAR__53647][VAR__21230] = VAR__7685[VAR__53647 + VAR__21230];
+      }
+   }
+
+   int VAR_FLAG[600] = { 0 };
+   int time[600];
+   for ( VAR__53647 = 0; VAR__53647 < 600; VAR__53647++ )
+   {
+      time[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( VAR_FLAG[VAR__53647] == 1 )
+      {
+         continue;
+      }
+
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         if ( strcmp(VAR__3918907[VAR__53647], VAR__3918907[VAR__21230]) == 0 )
+         {
+            time[VAR__21230]++;
+            time[VAR__53647]++;
+            VAR_FLAG[VAR__21230] = 1;
+         }
+      }
+
+      if ( time[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = time[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( strcmp(VAR__3918907[VAR__21230], VAR__3918907[VAR__53647]) == 0 )
+            {
+               goto L;
+            }
+         }
+
+         if ( VAR__MAX == time[VAR__53647] )
+         {
+            printf("%s\n", VAR__3918907[VAR__53647]);
+         }
+
+L:
+         ;
+      }
+   }
+
+   return 0;
+}

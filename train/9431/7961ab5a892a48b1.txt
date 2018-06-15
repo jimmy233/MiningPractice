@@ -1,0 +1,86 @@
+struct student
+{
+   char           VAR__NUM[20];
+   char           name[20];
+   char           sex[5];
+   char           age[5];
+   char           score[10];
+   char           address[20];
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *end;
+   char           VAR__4857423;
+   int            i1;
+   int            n1;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+   scanf("%s%s%s%s%s", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score);
+   i1 = 0;
+
+   while (( VAR__4857423 = getchar()) != '\n' )
+   {
+      ANOTHER_POINTER->address[i1] = VAR__4857423;
+      i1++;
+   }
+
+   for ( ; i1 <= 19; i1++ )
+   {
+      ANOTHER_POINTER->address[i1] = '\0';
+   }
+
+   VAR__HEAD = ANOTHER_POINTER;
+   n1        = 0;
+
+   while ( ANOTHER_POINTER->VAR__NUM[0] != 'e' )
+   {
+      n1 = n1 + 1;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s", &ANOTHER_POINTER->VAR__NUM);
+
+      if ( ANOTHER_POINTER->VAR__NUM[0] == 'e' )
+      {
+         break;
+      }
+
+      scanf("%s%s%s%s", &ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, &ANOTHER_POINTER->score);
+      i1 = 0;
+
+      while (( VAR__4857423 = getchar()) != '\n' )
+      {
+         ANOTHER_POINTER->address[i1] = VAR__4857423;
+         i1++;
+      }
+
+      for ( ; i1 <= 19; i1++ )
+      {
+         ANOTHER_POINTER->address[i1] = '\0';
+      }
+
+      if ( n1 == 1 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+   }
+
+   end             = YET_ANOTHER_POINTER;
+   ANOTHER_POINTER = end;
+   i1 = 0;
+
+   while ( ANOTHER_POINTER != VAR__HEAD )
+   {
+      printf("%s %s %s %s %s%s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   printf("%s %s %s %s %s%s", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+}

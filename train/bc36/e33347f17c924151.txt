@@ -1,0 +1,70 @@
+int main()
+{
+   char  gender[10];
+   float high_male[40];
+   float high_female[40];
+   int   counter_male   = 0;
+   int   counter_female = 0;
+   int   VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin >> gender;
+      switch ( gender[0] )
+      {
+      case 'f':
+         cin >> high_female[counter_female];
+         counter_female++;
+         break;
+
+      case 'm':
+         cin >> high_male[counter_male];
+         counter_male++;
+         break;
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= counter_male; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < ( counter_male - VAR__53647 ); VAR__21230++ )
+      {
+         if ( high_male[VAR__21230] > high_male[VAR__21230 + 1] )
+         {
+            float VAR__TEMP = high_male[VAR__21230];
+            high_male[VAR__21230]     = high_male[VAR__21230 + 1];
+            high_male[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( int VAR__53647 = 1; VAR__53647 <= counter_female; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < ( counter_female - VAR__53647 ); VAR__21230++ )
+      {
+         if ( high_female[VAR__21230] < high_female[VAR__21230 + 1] )
+         {
+            float VAR__TEMP = high_female[VAR__21230];
+            high_female[VAR__21230]     = high_female[VAR__21230 + 1];
+            high_female[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < counter_male; VAR__53647++ )
+   {
+      ((( cout << fixed ) << setprecision(2)) << high_male[VAR__53647] ) << " ";
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( counter_female - 1 ); VAR__53647++ )
+   {
+      ( cout << high_female[VAR__53647] ) << " ";
+   }
+
+   cout << high_female[counter_female - 1];
+   return 0;
+}

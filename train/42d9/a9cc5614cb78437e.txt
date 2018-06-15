@@ -1,0 +1,79 @@
+int sq(int VAR__819283, int VAR__19328)
+{
+   int VAR_129012;
+
+   VAR_129012 = ( VAR__819283 - VAR__19328 ) * ( VAR__819283 - VAR__19328 );
+   return VAR_129012;
+}
+
+
+float dis(int VAR__819283[3], int VAR__19328[3])
+{
+   int   VAR__53647;
+   float VAR_9494 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      VAR_9494 += sq(VAR__819283[VAR__53647], VAR__19328[VAR__53647]);
+   }
+
+   VAR_9494 = sqrt(VAR_9494);
+   return VAR_9494;
+}
+
+
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__819283[10][3];
+   int   VAR__temp = 0;
+   int   VAR__8444594;
+   int   VAR__21230;
+   int   VAR_233;
+   float VAR_9494[50][3];
+   float VAR_129012;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__819283[VAR__53647][0], &VAR__819283[VAR__53647][1], &VAR__819283[VAR__53647][2]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR_9494[VAR__temp][0] = VAR__53647;
+         VAR_9494[VAR__temp][1] = VAR__21230;
+         VAR_9494[VAR__temp][2] = dis(VAR__819283[VAR__53647], VAR__819283[VAR__21230]);
+         VAR__temp++;
+      }
+   }
+
+
+   for ( VAR__21230 = 1; VAR__21230 <= ( VAR__temp - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__temp - VAR__21230 ); VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647][2] < VAR_9494[VAR__53647 + 1][2] )
+         {
+            for ( VAR_233 = 0; VAR_233 < 3; VAR_233++ )
+            {
+               VAR_129012 = VAR_9494[VAR__53647][VAR_233];
+               VAR_9494[VAR__53647][VAR_233]     = VAR_9494[VAR__53647 + 1][VAR_233];
+               VAR_9494[VAR__53647 + 1][VAR_233] = VAR_129012;
+            }
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      VAR__21230   = VAR_9494[VAR__53647][0];
+      VAR__8444594 = VAR_9494[VAR__53647][1];
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", VAR__819283[VAR__21230][0], VAR__819283[VAR__21230][1], VAR__819283[VAR__21230][2], VAR__819283[VAR__8444594][0], VAR__819283[VAR__8444594][1], VAR__819283[VAR__8444594][2], VAR_9494[VAR__53647][2]);
+   }
+}

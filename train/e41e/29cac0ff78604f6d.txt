@@ -1,0 +1,46 @@
+int main()
+{
+   char beichu[110];
+   int  shang[110];
+
+   scanf("%s", beichu);
+   int sheng;
+   int VAR__53647;
+   sheng    = beichu[0] - '0';
+   shang[0] = 0;
+   for ( VAR__53647 = 1; VAR__53647 < strlen(beichu); VAR__53647++ )
+   {
+      if (((( sheng * 10 ) + beichu[VAR__53647] ) - '0' ) >= 13 )
+      {
+         shang[VAR__53647] = ((( sheng * 10 ) + beichu[VAR__53647] ) - '0' ) / 13;
+         sheng             = ((( sheng * 10 ) + beichu[VAR__53647] ) - '0' ) % 13;
+      }
+      else
+      {
+         sheng             = (( sheng * 10 ) + beichu[VAR__53647] ) - '0';
+         shang[VAR__53647] = 0;
+      }
+   }
+
+   int VAR_FLAG = 0;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(beichu); VAR__53647++ )
+   {
+      if ( shang[VAR__53647] != 0 )
+      {
+         VAR_FLAG = 1;
+      }
+
+      if ( VAR_FLAG == 1 )
+      {
+         printf("%d", shang[VAR__53647]);
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("0");
+   }
+
+   printf("\n%d\n", sheng);
+   return 0;
+}

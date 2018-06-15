@@ -1,0 +1,68 @@
+int main()
+{
+   struct student
+   {
+      char name[20];
+      int  grade1;
+      int  grade2;
+      char jerk;
+      char west;
+      int  paper;
+   };
+   struct student nerd[100];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            blame[100] = { 0 };
+   int            VAR__MAX   = 0;
+   int            sin        = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", nerd[VAR__53647].name, &nerd[VAR__53647].grade1, &nerd[VAR__53647].grade2, &nerd[VAR__53647].jerk, &nerd[VAR__53647].west, &nerd[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( nerd[VAR__53647].grade1 > 80 ) && ( nerd[VAR__53647].paper >= 1 ))
+      {
+         blame[VAR__53647] += 8000;
+      }
+
+      if (( nerd[VAR__53647].grade1 > 85 ) && ( nerd[VAR__53647].grade2 > 80 ))
+      {
+         blame[VAR__53647] += 4000;
+      }
+
+      if ( nerd[VAR__53647].grade1 > 90 )
+      {
+         blame[VAR__53647] += 2000;
+      }
+
+      if (( nerd[VAR__53647].grade1 > 85 ) && ( nerd[VAR__53647].west == 'Y' ))
+      {
+         blame[VAR__53647] += 1000;
+      }
+
+      if (( nerd[VAR__53647].grade2 > 80 ) && ( nerd[VAR__53647].jerk == 'Y' ))
+      {
+         blame[VAR__53647] += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( blame[VAR__53647] > VAR__MAX )
+      {
+         VAR__21230 = VAR__53647;
+         VAR__MAX   = blame[VAR__53647];
+      }
+
+      sin += blame[VAR__53647];
+   }
+
+   printf("%s\n", nerd[VAR__21230].name);
+   printf("%d\n%d", VAR__MAX, sin);
+   return 0;
+}

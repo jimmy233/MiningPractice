@@ -1,0 +1,49 @@
+int ss = 0;
+void check(char *ps)
+{
+   static int VAR__8444594;
+   static int VAR__1238129;
+
+   if ((( *ps ) == ' ' ) || (( *ps ) == '\0' ))
+   {
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__1238129 = 0;
+
+         if ( ss == 0 )
+         {
+            ss = 1;
+            printf("%d", VAR__8444594);
+         }
+         else
+         {
+            printf(",%d", VAR__8444594);
+         }
+
+         VAR__1238129 = 0;
+         VAR__8444594 = 0;
+      }
+
+      if (( *ps ) == '\0' )
+      {
+         return;
+      }
+   }
+   else
+   {
+      VAR__1238129 = 1;
+      VAR__8444594++;
+   }
+
+   check(ps + 1);
+}
+
+
+int main()
+{
+   char *VAR_233;
+
+   VAR_233 = (char *)malloc(10000 * ( sizeof( char )));
+   gets(VAR_233);
+   check(VAR_233);
+}

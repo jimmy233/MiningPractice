@@ -1,0 +1,145 @@
+struct student
+{
+   char           VAR__NUM[20];
+   int            score;
+   struct student *VAR__NEXT;
+};
+int            VAR_1238123 = 0;
+struct student *creat(int numb);
+void print(struct student *VAR__HEAD);
+struct student *maopao(struct student *VAR__HEAD);
+
+int main()
+{
+   int            VAR_1238123;
+   char           ch;
+   struct student *VAR__HEAD;
+
+   scanf("%d%c", &VAR_1238123, &ch);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR__HEAD = maopao(VAR__HEAD);
+   print(VAR__HEAD);
+   free(VAR__HEAD);
+}
+
+
+struct student *creat(int numb)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->score);
+   VAR__HEAD = NULL;
+
+   while ( VAR_1238123 < ( numb - 1 ))
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->score);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+struct student *maopao(struct student *VAR__HEAD)
+{
+   struct student *p0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *tem;
+   int            VAR__TEMP = 0;
+   int            VAR__53647;
+   int            VAR__21230;
+
+   p0 = VAR__HEAD;
+   ANOTHER_POINTER     = VAR__HEAD;
+   YET_ANOTHER_POINTER = VAR__HEAD;
+
+   if ( VAR__HEAD == NULL )
+   {
+      return VAR__HEAD;
+   }
+   else
+   if ( p0->VAR__NEXT == NULL )
+   {
+      return VAR__HEAD;
+   }
+   else
+   if ( p0->VAR__NEXT != NULL )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647 = VAR__53647 + 1 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230 = VAR__21230 + 1 )
+         {
+            if ((( ANOTHER_POINTER->score < ANOTHER_POINTER->VAR__NEXT->score ) && ( VAR__21230 != 0 )) && ( ANOTHER_POINTER->VAR__NEXT->score >= 60 ))
+            {
+               tem = ANOTHER_POINTER->VAR__NEXT;
+               YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+               ANOTHER_POINTER->VAR__NEXT     = tem->VAR__NEXT;
+               tem->VAR__NEXT      = ANOTHER_POINTER;
+               YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+            }
+            else
+            if ((( ANOTHER_POINTER->score < ANOTHER_POINTER->VAR__NEXT->score ) && ( VAR__21230 == 0 )) && ( ANOTHER_POINTER->VAR__NEXT->score >= 60 ))
+            {
+               tem = ANOTHER_POINTER->VAR__NEXT;
+               p0  = tem;
+               YET_ANOTHER_POINTER        = tem;
+               ANOTHER_POINTER->VAR__NEXT = tem->VAR__NEXT;
+               tem->VAR__NEXT             = ANOTHER_POINTER;
+               YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+               ANOTHER_POINTER            = ANOTHER_POINTER->VAR__NEXT;
+            }
+            else
+            {
+               YET_ANOTHER_POINTER = ANOTHER_POINTER;
+               ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+            }
+         }
+
+         VAR__TEMP           = VAR__TEMP + 1;
+         ANOTHER_POINTER     = p0;
+         YET_ANOTHER_POINTER = p0;
+      }
+   }
+
+
+
+   return p0;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *tempo;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         tempo = VAR_233->VAR__NEXT;
+         printf("%s\n", VAR_233->VAR__NUM);
+         VAR_233 = tempo;
+      } while ( VAR_233 != NULL );
+   }
+}

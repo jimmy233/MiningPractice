@@ -1,0 +1,65 @@
+void main()
+{
+   struct stu
+   {
+      char name[20];
+      int  fen;
+      int  pin;
+      char gan;
+      char sheng;
+      int  lun;
+      int  jiang;
+   }
+       VAR__819283[100];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__MAX;
+   int VAR__8444594;
+   int VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].fen, &VAR__819283[VAR__53647].pin, &VAR__819283[VAR__53647].gan, &VAR__819283[VAR__53647].sheng, &VAR__819283[VAR__53647].lun);
+      VAR__819283[VAR__53647].jiang = 0;
+
+      if (( VAR__819283[VAR__53647].fen > 80 ) && ( VAR__819283[VAR__53647].lun > 0 ))
+      {
+         VAR__819283[VAR__53647].jiang = VAR__819283[VAR__53647].jiang + 8000;
+      }
+
+      if (( VAR__819283[VAR__53647].fen > 85 ) && ( VAR__819283[VAR__53647].pin > 80 ))
+      {
+         VAR__819283[VAR__53647].jiang = VAR__819283[VAR__53647].jiang + 4000;
+      }
+
+      if ( VAR__819283[VAR__53647].fen > 90 )
+      {
+         VAR__819283[VAR__53647].jiang = VAR__819283[VAR__53647].jiang + 2000;
+      }
+
+      if (( VAR__819283[VAR__53647].fen > 85 ) && ( VAR__819283[VAR__53647].sheng == 'Y' ))
+      {
+         VAR__819283[VAR__53647].jiang = VAR__819283[VAR__53647].jiang + 1000;
+      }
+
+      if (( VAR__819283[VAR__53647].pin > 80 ) && ( VAR__819283[VAR__53647].gan == 'Y' ))
+      {
+         VAR__819283[VAR__53647].jiang = VAR__819283[VAR__53647].jiang + 850;
+      }
+
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647].jiang;
+   }
+
+   for ( VAR__53647 = 1, VAR__8444594 = 0, VAR__MAX = VAR__819283[0].jiang; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647].jiang > VAR__MAX )
+      {
+         VAR__MAX     = VAR__819283[VAR__53647].jiang;
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+
+   printf("%s\n%d\n%d", VAR__819283[VAR__8444594].name, VAR__819283[VAR__8444594].jiang, VAR__SUM);
+}

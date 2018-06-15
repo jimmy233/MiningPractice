@@ -1,0 +1,83 @@
+int main()
+{
+   struct s
+   {
+      int id;
+      int ch;
+      int ma;
+   }
+            VAR_9494;
+   long int VAR_1238123;
+   int      VAR__53647 = 0;
+   int      VAR__21230;
+   int      zong;
+   int      VAR__4857423   = 0;
+   int      VAR__819283[3] = { 0 };
+   int      VAR__19328[3]  = { 0 };
+   int      VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR_9494.id, &VAR_9494.ch, &VAR_9494.ma);
+      VAR__819283[VAR__53647] = VAR__53647 + 1;
+      VAR__19328[VAR__53647]  = VAR_9494.ma + VAR_9494.ch;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 2; VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] > VAR__19328[1 + VAR__53647] )
+      {
+         VAR__temp = VAR__19328[VAR__53647];
+         VAR__19328[VAR__53647]     = VAR__19328[VAR__53647 + 1];
+         VAR__19328[VAR__53647 + 1] = VAR__temp;
+         VAR__temp = VAR__819283[VAR__53647];
+         VAR__819283[VAR__53647]     = VAR__819283[VAR__53647 + 1];
+         VAR__819283[VAR__53647 + 1] = VAR__temp;
+      }
+   }
+
+   for ( VAR__53647 = 3; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR_9494.id, &VAR_9494.ch, &VAR_9494.ma);
+      zong = VAR_9494.ch + VAR_9494.ma;
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         if ( zong > VAR__19328[VAR__21230] )
+         {
+            VAR__4857423++;
+         }
+      }
+
+      if ( VAR__4857423 == 1 )
+      {
+         VAR__819283[0] = VAR_9494.id;
+         VAR__19328[0]  = zong;
+      }
+
+      if ( VAR__4857423 == 2 )
+      {
+         VAR__819283[0] = VAR__819283[1];
+         VAR__19328[0]  = VAR__19328[1];
+         VAR__819283[1] = VAR_9494.id;
+         VAR__19328[1]  = zong;
+      }
+
+      if ( VAR__4857423 == 3 )
+      {
+         VAR__819283[0] = VAR__819283[1];
+         VAR__819283[1] = VAR__819283[2];
+         VAR__819283[2] = VAR_9494.id;
+         VAR__19328[0]  = VAR__19328[1];
+         VAR__19328[1]  = VAR__19328[2];
+         VAR__19328[2]  = zong;
+      }
+
+      VAR__4857423 = 0;
+   }
+
+   for ( VAR__53647 = 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d %d\n", VAR__819283[VAR__53647], VAR__19328[VAR__53647]);
+   }
+}

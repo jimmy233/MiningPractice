@@ -1,0 +1,95 @@
+struct node
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+VAR_233[10];
+struct d
+{
+   double VAR__12302;
+   int    ANOTHER_POINTER;
+   int    YET_ANOTHER_POINTER;
+}
+    dis[45];
+int VAR_1238123;
+int VAR__temp = 0;
+double dist(int VAR__7685, int VAR__3918907)
+{
+   int dx = VAR_233[VAR__7685].VAR__7685 - VAR_233[VAR__3918907].VAR__7685;
+   int dy = VAR_233[VAR__7685].VAR__3918907 - VAR_233[VAR__3918907].VAR__3918907;
+   int dz = VAR_233[VAR__7685].VAR__9290 - VAR_233[VAR__3918907].VAR__9290;
+
+   return sqrt(((( 1.0 * dx ) * dx ) + (( 1.0 * dy ) * dy )) + (( 1.0 * dz ) * dz ));
+}
+
+
+void swap(int VAR__53647, int VAR__21230)
+{
+   struct d tmp = dis[VAR__53647];
+
+   dis[VAR__53647] = dis[VAR__21230];
+   dis[VAR__21230] = tmp;
+}
+
+
+void init()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR_233[VAR__53647].VAR__7685, &VAR_233[VAR__53647].VAR__3918907, &VAR_233[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__temp].ANOTHER_POINTER     = VAR__53647;
+         dis[VAR__temp].YET_ANOTHER_POINTER = VAR__21230;
+         dis[VAR__temp].VAR__12302          = dist(VAR__53647, VAR__21230);
+         VAR__temp++;
+      }
+   }
+}
+
+
+void solve()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__temp - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230].VAR__12302 < dis[VAR__21230 + 1].VAR__12302 )
+         {
+            swap(VAR__21230, VAR__21230 + 1);
+         }
+      }
+   }
+}
+
+
+void print()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR_233[dis[VAR__53647].ANOTHER_POINTER].VAR__7685, VAR_233[dis[VAR__53647].ANOTHER_POINTER].VAR__3918907, VAR_233[dis[VAR__53647].ANOTHER_POINTER].VAR__9290, VAR_233[dis[VAR__53647].YET_ANOTHER_POINTER].VAR__7685, VAR_233[dis[VAR__53647].YET_ANOTHER_POINTER].VAR__3918907, VAR_233[dis[VAR__53647].YET_ANOTHER_POINTER].VAR__9290, dis[VAR__53647].VAR__12302);
+   }
+}
+
+
+int main()
+{
+   init();
+   solve();
+   print();
+   return 0;
+}

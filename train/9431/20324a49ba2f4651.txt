@@ -1,0 +1,36 @@
+int main()
+{
+   struct student
+   {
+      char           VAR__NUM[100];
+      char           name[100];
+      char           sex[10];
+      char           age[10];
+      char           score[10];
+      char           address[100];
+      struct student *VAR__NEXT;
+   };
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+   VAR__HEAD       = NULL;
+   scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+   while ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0 )
+   {
+      scanf("%s%s%s%s%s", ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+      ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+      VAR__HEAD       = ANOTHER_POINTER;
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      printf("%s %s %s %s %s %s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

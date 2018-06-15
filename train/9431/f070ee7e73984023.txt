@@ -1,0 +1,38 @@
+struct stu
+{
+   char       inf[50];
+   struct stu *VAR__NEXT;
+};
+struct stu *VAR__HEAD;
+struct stu *ANOTHER_POINTER;
+struct stu *YET_ANOTHER_POINTER;
+int output(struct stu *point);
+
+int main()
+{
+   ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+   VAR__HEAD       = ANOTHER_POINTER;
+
+   while ( gets(( *ANOTHER_POINTER ).inf) != NULL )
+   {
+      YET_ANOTHER_POINTER            = (struct stu *)malloc(sizeof( struct stu ));
+      ( *ANOTHER_POINTER ).VAR__NEXT = YET_ANOTHER_POINTER;
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+   }
+
+   ( *ANOTHER_POINTER ).VAR__NEXT = NULL;
+   output(VAR__HEAD);
+   return 0;
+}
+
+
+int output(struct stu *point)
+{
+   if ( strcmp(point->VAR__NEXT->inf, "end") != 0 )
+   {
+      output(point->VAR__NEXT);
+   }
+
+   puts(( *point ).inf);
+   return 0;
+}

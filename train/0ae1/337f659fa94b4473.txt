@@ -1,0 +1,73 @@
+void dayprint(int VAR__819283)
+{
+   switch ( VAR__819283 )
+   {
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+
+   case 7:
+      printf("Sun.");
+      break;
+   }
+}
+
+
+int main()
+{
+   int VAR__3918907;
+   int VAR__1238129;
+   int VAR__12302;
+   int VAR__53647;
+   int VAR__819283;
+   int VAR__SUM;
+   int days[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d %d %d", &VAR__3918907, &VAR__1238129, &VAR__12302);
+   VAR__SUM = ((( VAR__3918907 % 7 ) + ( VAR__3918907 / 4 )) - ( VAR__3918907 / 100 )) + ( VAR__3918907 / 400 );
+
+   if ((( VAR__3918907 % 400 ) == 0 ) || ((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )))
+   {
+      days[1] = 29;
+      VAR__SUM--;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__SUM += days[VAR__53647 - 1];
+   }
+
+   VAR__SUM += VAR__12302 - 1;
+
+   if (( VAR__SUM % 7 ) == 0 )
+   {
+      VAR__819283 = 7;
+   }
+   else
+   {
+      VAR__819283 = VAR__SUM % 7;
+   }
+
+   dayprint(VAR__819283);
+   return 0;
+}

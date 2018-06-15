@@ -1,0 +1,104 @@
+struct monkey
+{
+   int           VAR__819283;
+   struct monkey *VAR__NEXT;
+};
+int main()
+{
+   int           VAR_1238123;
+   int           VAR__1238129;
+   struct monkey *creat(int VAR_1238123);
+   struct monkey *delet(struct monkey *VAR__HEAD, int VAR__1238129, int VAR_1238123);
+
+   scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+   if ( VAR_1238123 != 0 )
+   {
+      do
+      {
+         if ( VAR__1238129 != 1 )
+         {
+            struct monkey *VAR__HEAD;
+            VAR__HEAD = creat(VAR_1238123);
+            VAR__HEAD = delet(VAR__HEAD, VAR__1238129, VAR_1238123);
+            printf("%d\n", VAR__HEAD->VAR__819283);
+         }
+         else
+         {
+            printf("%d\n", VAR_1238123);
+         }
+
+         scanf("%d%d", &VAR_1238123, &VAR__1238129);
+      } while ( VAR_1238123 != 0 );
+   }
+
+   return 0;
+}
+
+
+struct monkey *creat(int VAR_1238123)
+{
+   struct monkey *ANOTHER_POINTER;
+   struct monkey *YET_ANOTHER_POINTER;
+   struct monkey *VAR__HEAD;
+   int           VAR__53647;
+
+   VAR__HEAD = ( ANOTHER_POINTER = (struct monkey *)malloc(LEN));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER->VAR__819283 = VAR__53647 + 1;
+      YET_ANOTHER_POINTER          = ANOTHER_POINTER;
+      ANOTHER_POINTER = (struct monkey *)malloc(LEN);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+   return VAR__HEAD;
+}
+
+
+struct monkey *delet(struct monkey *VAR__HEAD, int VAR__1238129, int VAR_1238123)
+{
+   struct monkey *YET_ANOTHER_POINTER = VAR__HEAD;
+   int           VAR__53647;
+
+   while ( VAR__HEAD->VAR__NEXT != VAR__HEAD )
+   {
+      if (( VAR__1238129 != 2 ) && ( VAR__1238129 <= VAR_1238123 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+         {
+            YET_ANOTHER_POINTER = VAR__HEAD;
+            VAR__HEAD           = VAR__HEAD->VAR__NEXT;
+         }
+
+         YET_ANOTHER_POINTER->VAR__NEXT = VAR__HEAD->VAR__NEXT;
+         VAR__HEAD = VAR__HEAD->VAR__NEXT;
+      }
+      else
+      {
+         if ( VAR__1238129 > VAR_1238123 )
+         {
+            for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+            {
+               YET_ANOTHER_POINTER = VAR__HEAD;
+               VAR__HEAD           = VAR__HEAD->VAR__NEXT;
+            }
+
+            YET_ANOTHER_POINTER->VAR__NEXT = VAR__HEAD->VAR__NEXT;
+            VAR__HEAD = VAR__HEAD->VAR__NEXT;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER            = VAR__HEAD;
+            VAR__HEAD                      = VAR__HEAD->VAR__NEXT;
+            YET_ANOTHER_POINTER->VAR__NEXT = VAR__HEAD->VAR__NEXT;
+            VAR__HEAD                      = VAR__HEAD->VAR__NEXT;
+         }
+      }
+
+      VAR_1238123 = VAR_1238123 - 1;
+   }
+
+   return VAR__HEAD;
+}

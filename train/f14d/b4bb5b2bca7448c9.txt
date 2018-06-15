@@ -1,0 +1,93 @@
+int main()
+{
+   int MyStrCmp(char *pStr1, char *pStr2);
+
+   char a1[81];
+   char a2[81];
+   int  VAR__temp;
+   gets(a1);
+   gets(a2);
+   VAR__temp = MyStrCmp(a1, a2);
+
+   if ( VAR__temp == 1 )
+   {
+      printf(">");
+   }
+
+   if ( VAR__temp == 0 )
+   {
+      printf("=");
+   }
+
+   if ( VAR__temp == ( -1 ))
+   {
+      printf("<");
+   }
+
+   printf("\n");
+   return 0;
+}
+
+
+int MyStrCmp(char *pStr1, char *pStr2)
+{
+   int  VAR__53647;
+   int  VAR__temp;
+   char b1[81];
+   char b2[81];
+
+   for ( VAR__53647 = 0; pStr1[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( pStr1[VAR__53647] >= 'A' ) && ( pStr1[VAR__53647] <= 'Z' ))
+      {
+         *( pStr1 + VAR__53647 ) = ( *( pStr1 + VAR__53647 )) + 32;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; pStr2[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( pStr2[VAR__53647] >= 'A' ) && ( pStr2[VAR__53647] <= 'Z' ))
+      {
+         *( pStr2 + VAR__53647 ) = ( *( pStr2 + VAR__53647 )) + 32;
+      }
+   }
+
+
+   VAR__temp = 0;
+
+   if ( strlen(pStr1) > strlen(pStr2))
+   {
+      VAR__temp = 1;
+   }
+
+   if ( strlen(pStr1) < strlen(pStr2))
+   {
+      VAR__temp = -1;
+   }
+
+   if ( strlen(pStr1) == strlen(pStr2))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < strlen(pStr1); VAR__53647++ )
+      {
+         if (( *( pStr1 + VAR__53647 )) > ( *( pStr2 + VAR__53647 )))
+         {
+            VAR__temp = 1;
+            break;
+         }
+
+         if (( *( pStr1 + VAR__53647 )) < ( *( pStr2 + VAR__53647 )))
+         {
+            VAR__temp = -1;
+            break;
+         }
+
+         if (( *( pStr1 + VAR__53647 )) == ( *( pStr2 + VAR__53647 )))
+         {
+            continue;
+         }
+      }
+   }
+
+   return VAR__temp;
+}

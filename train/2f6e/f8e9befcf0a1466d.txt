@@ -1,0 +1,61 @@
+void bubble(int array[], int VAR_1238123);
+
+void main()
+{
+   struct answer
+   {
+      int girl;
+      int boy;
+   };
+   char          test[MAXSIZE] = { '\0' };
+   char          boy;
+   char          girl;
+   int           LEN_OF_STH;
+   int           VAR__53647;
+   int           VAR__21230;
+   int           VAR_233;
+   struct answer ans[MAXSIZE] = { 0, 0 };
+   struct answer VAR__TEMP;
+
+   scanf("%s", test);
+   LEN_OF_STH = strlen(test);
+   boy        = test[0];
+   girl       = test[LEN_OF_STH - 1];
+   VAR_233    = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( test[VAR__53647] == girl )
+      {
+         for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( test[VAR__21230] == boy )
+            {
+               ans[VAR_233].boy  = VAR__21230;
+               ans[VAR_233].girl = VAR__53647;
+               test[VAR__53647]  = girl + boy;
+               test[VAR__21230]  = girl + boy;
+               VAR_233++;
+               break;
+            }
+         }
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= VAR_233; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_233 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( ans[VAR__53647].girl > ans[VAR__53647 + 1].girl )
+         {
+            VAR__TEMP           = ans[VAR__53647];
+            ans[VAR__53647]     = ans[VAR__53647 + 1];
+            ans[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      printf("%d %d\n", ans[VAR__53647].boy, ans[VAR__53647].girl);
+   }
+}

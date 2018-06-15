@@ -1,0 +1,75 @@
+char zimu[28] = "ABCDEFGJIJKLMNOPQRSTUVWXYZ";
+char writer[10000][10000];
+int  times[26];
+int  id[1000];
+int  VAR__53647;
+int  LEN_OF_STH[10000];
+int  book = 0;
+int  VAR_1238123;
+int  VAR__21230;
+int  VAR__8444594;
+int  tmax;
+int  VAR__MAX = 0;
+int main()
+{
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%s", &id[VAR__53647], &writer[VAR__53647]);
+      LEN_OF_STH[VAR__53647] = strlen(writer[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      times[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH[VAR__53647]; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < 26; VAR__8444594++ )
+         {
+            if ( writer[VAR__53647][VAR__21230] == zimu[VAR__8444594] )
+            {
+               times[VAR__8444594]++;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( times[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = times[VAR__53647];
+         tmax     = VAR__53647;
+      }
+   }
+
+   printf("%c\n", zimu[tmax]);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH[VAR__53647]; VAR__21230++ )
+      {
+         if ( writer[VAR__53647][VAR__21230] == zimu[tmax] )
+         {
+            book++;
+         }
+      }
+   }
+
+   printf("%d\n", book);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH[VAR__53647]; VAR__21230++ )
+      {
+         if ( writer[VAR__53647][VAR__21230] == zimu[tmax] )
+         {
+            printf("%d\n", id[VAR__53647]);
+         }
+      }
+   }
+
+   return 0;
+}

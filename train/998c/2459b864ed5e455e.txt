@@ -1,0 +1,117 @@
+char num1[270];
+char num2[270];
+int  VAR__53647;
+int  VAR__21230;
+int  n1;
+int  n2;
+int  ans[270]      = { 0 };
+int  VAR__NUM[270] = { 0 };
+void sup(int, int);
+
+int main(void)
+{
+   ( cin >> num1 ) >> num2;
+   int n1 = strlen(num1);
+   int n2 = strlen(num2);
+   ans[0] = 0;
+
+   if ( n1 > n2 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+      {
+         ans[VAR__53647 + 1] = ((int)num1[VAR__53647] ) - 48;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647] = ((int)num2[VAR__53647] ) - 48;
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+      {
+         ans[VAR__53647 + 1] = ((int)num2[VAR__53647] ) - 48;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647] = ((int)num1[VAR__53647] ) - 48;
+      }
+   }
+
+   int VAR_1238123 = VAR__MIN(n1, n2);
+   int VAR__1111   = VAR__MAX(n1, n2);
+   sup(VAR_1238123, VAR__1111);
+   return 0;
+}
+
+
+int it;
+void sup(int VAR_1238123, int VAR__1111)
+{
+   if (( VAR_1238123 == 0 ) && ( VAR__1111 > 0 ))
+   {
+      for ( VAR__53647 = VAR__MAX(strlen(num1), strlen(num2)); VAR__53647 > 0; VAR__53647-- )
+      {
+         if ( ans[VAR__53647] >= 10 )
+         {
+            ans[VAR__53647]     %= 10;
+            ans[VAR__53647 - 1] += 1;
+         }
+      }
+
+      for ( VAR__53647 = 0; ( ans[VAR__53647] == 0 ) && VAR__MAX(strlen(num1), strlen(num2)); VAR__53647++ )
+      {
+      }
+
+      if ( VAR__53647 == VAR__MAX(strlen(num1), strlen(num2)))
+      {
+         cout << 0;
+      }
+      else
+      {
+         for ( ; VAR__53647 <= VAR__MAX(strlen(num1), strlen(num2)); VAR__53647++ )
+         {
+            cout << ans[VAR__53647];
+         }
+      }
+   }
+   else
+   if ( VAR_1238123 == 0 )
+   {
+      for ( VAR__53647 = 0; ( ans[VAR__53647] == 0 ) && ( VAR__53647 < VAR__MAX(strlen(num1), strlen(num2))); VAR__53647++ )
+      {
+      }
+
+      if ( VAR__53647 == VAR__MAX(strlen(num1), strlen(num2)))
+      {
+         cout << 0;
+      }
+      else
+      {
+         for ( ; VAR__53647 <= VAR__MAX(strlen(num1), strlen(num2)); VAR__53647++ )
+         {
+            cout << ans[VAR__53647];
+         }
+      }
+
+      return;
+   }
+   else
+   {
+      it = ans[VAR__1111] + VAR__NUM[VAR_1238123 - 1];
+
+      if ( it < 10 )
+      {
+         ans[VAR__1111] = it;
+      }
+      else
+      {
+         ans[VAR__1111]      = it % 10;
+         ans[VAR__1111 - 1] += 1;
+      }
+
+      sup(VAR_1238123 - 1, VAR__1111 - 1);
+   }
+}

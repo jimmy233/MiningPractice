@@ -1,0 +1,119 @@
+int year1;
+int month1;
+int day1;
+int year2;
+int month2;
+int day2;
+int month[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+   int dis1;
+   int dis2;
+   int VAR__SUM;
+
+   scanf("%d%d%d", &year1, &month1, &day1);
+   scanf("%d%d%d", &year2, &month2, &day2);
+   int cmpa;
+   int ru(int year);
+
+   if ( cmpa == 0 )
+   {
+      VAR__TEMP = year1;
+      year1     = year2;
+      year2     = VAR__TEMP;
+      VAR__TEMP = month1;
+      month1    = month2;
+      month2    = VAR__TEMP;
+      VAR__TEMP = day1;
+      day1      = day2;
+      day2      = VAR__TEMP;
+   }
+
+   dis1 = 0;
+   for ( VAR__53647 = 1; VAR__53647 < month1; VAR__53647++ )
+   {
+      if (( VAR__53647 == 2 ) && ( ru(year1) == 1 ))
+      {
+         dis1++;
+      }
+
+      dis1 = dis1 + month[VAR__53647];
+   }
+
+   dis1 = dis1 + day1;
+   dis2 = 0;
+   for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+   {
+      if (( VAR__53647 == 2 ) && ( ru(year2) == 1 ))
+      {
+         dis2++;
+      }
+
+      dis2 = dis2 + month[VAR__53647];
+   }
+
+   dis2     = dis2 + day2;
+   VAR__SUM = dis2 - dis1;
+   for ( VAR__53647 = year1; VAR__53647 < year2; VAR__53647++ )
+   {
+      if ( ru(VAR__53647) == 1 )
+      {
+         VAR__SUM = VAR__SUM + 366;
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + 365;
+      }
+   }
+
+
+   printf("%d", VAR__SUM);
+   return 0;
+}
+
+
+int cmpa()
+{
+   if ( year1 < year2 )
+   {
+      return 1;
+   }
+
+   if ( year1 > year2 )
+   {
+      return 0;
+   }
+
+   if ( month1 < month2 )
+   {
+      return 1;
+   }
+
+   if ( month1 > month2 )
+   {
+      return 0;
+   }
+
+   if ( day1 < day2 )
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int ru(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

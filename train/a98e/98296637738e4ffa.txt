@@ -1,0 +1,53 @@
+void main()
+{
+   char VAR_9494[10000];
+   char VAR_21983012[10000];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__NEXT[10000];
+
+   scanf("%s%s", VAR_9494, VAR_21983012);
+   int ls = strlen(VAR_9494);
+   int lw = strlen(VAR_21983012);
+   VAR__NEXT[0] = -1;
+   VAR__21230   = 0;
+   VAR__8444594 = -1;
+
+   while ( VAR__21230 <= ls )
+   {
+      if (( VAR__8444594 == ( -1 )) || ( VAR_9494[VAR__21230] == VAR_9494[VAR__8444594] ))
+      {
+         VAR__21230++;
+         VAR__8444594++;
+         VAR__NEXT[VAR__21230] = VAR__8444594;
+      }
+      else
+      {
+         VAR__8444594 = VAR__NEXT[VAR__8444594];
+      }
+   }
+
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+
+   while ( VAR__53647 < lw )
+   {
+      if (( VAR__21230 == ( -1 )) || ( VAR_21983012[VAR__53647] == VAR_9494[VAR__21230] ))
+      {
+         VAR__53647++;
+         VAR__21230++;
+      }
+      else
+      {
+         VAR__21230 = VAR__NEXT[VAR__21230];
+      }
+
+      if ( VAR__21230 >= ls )
+      {
+         break;
+      }
+   }
+
+   printf("%d", VAR__53647 - ls);
+}

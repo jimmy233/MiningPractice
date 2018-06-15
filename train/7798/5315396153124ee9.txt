@@ -1,0 +1,95 @@
+struct tushu
+{
+   int          VAR__NUM;
+   char         name[26];
+   struct tushu *VAR__NEXT;
+};
+struct tushu *creat(int VAR_1238123)
+{
+   struct tushu *VAR__HEAD;
+   struct tushu *ANOTHER_POINTER;
+   struct tushu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct tushu *)malloc(LEN));
+   scanf("%d%s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+   VAR__HEAD = ANOTHER_POINTER;
+   int VAR__53647;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct tushu *)malloc(LEN);
+      scanf("%d%s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__NUM[26] = { 0 };
+   int  *VAR_233;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__MAX = 0;
+   char *VAR__819283;
+
+   scanf("%d", &VAR_1238123);
+   struct tushu *VAR__HEAD;
+   struct tushu *ANOTHER_POINTER;
+   VAR__HEAD = creat(VAR_1238123);
+   VAR_233   = VAR__NUM;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+      VAR__819283     = ANOTHER_POINTER->name;
+
+      while ( ANOTHER_POINTER != NULL )
+      {
+         for ( VAR__21230 = 0; ( *( VAR__819283 + VAR__21230 )) != '\0'; VAR__21230++ )
+         {
+            if (( *( VAR__819283 + VAR__21230 )) == ( VAR__53647 + 65 ))
+            {
+               *( VAR_233 + VAR__53647 ) = ( *( VAR_233 + VAR__53647 )) + 1;
+               break;
+            }
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+         VAR__819283     = ANOTHER_POINTER->name;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 26; VAR__53647++ )
+   {
+      if (( *( VAR_233 + VAR__MAX )) < ( *( VAR_233 + VAR__53647 )))
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+   printf("%c\n", VAR__MAX + 65);
+   printf("%d\n", *( VAR_233 + VAR__MAX ));
+   ANOTHER_POINTER = VAR__HEAD;
+   VAR__819283     = ANOTHER_POINTER->name;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      for ( VAR__53647 = 0; ( *( VAR__819283 + VAR__53647 )) != '\0'; VAR__53647++ )
+      {
+         if (( *( VAR__819283 + VAR__53647 )) == ( VAR__MAX + 65 ))
+         {
+            printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+            break;
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      VAR__819283     = ANOTHER_POINTER->name;
+   }
+
+   return 0;
+}

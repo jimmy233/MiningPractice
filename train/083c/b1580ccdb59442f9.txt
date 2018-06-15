@@ -1,0 +1,64 @@
+int main()
+{
+   int  n1;
+   int  n2;
+   int  VAR__1111;
+   int  VAR__temp;
+   long VAR_9494 = 0;
+   char number1[40];
+   char number2[40];
+   char *VAR_233;
+
+   scanf("%d %s %d", &n1, number1, &n2);
+   VAR__1111 = strlen(number1);
+   for ( VAR_233 = number1; VAR_233 < ( number1 + VAR__1111 ); VAR_233++ )
+   {
+      if ((( *VAR_233 ) >= '0' ) && (( *VAR_233 ) <= '9' ))
+      {
+         VAR__temp = ( *VAR_233 ) - '0';
+      }
+      else
+      if ((( *VAR_233 ) >= 'a' ) && (( *VAR_233 ) <= 'z' ))
+      {
+         VAR__temp = (( *VAR_233 ) - 'a' ) + 10;
+      }
+      else
+      if ((( *VAR_233 ) >= 'A' ) && (( *VAR_233 ) <= 'Z' ))
+      {
+         VAR__temp = (( *VAR_233 ) - 'A' ) + 10;
+      }
+
+
+
+      VAR_9494 = ( VAR_9494 * n1 ) + VAR__temp;
+   }
+
+   for ( VAR_233 = number2; 1; VAR_233++ )
+   {
+      if ((( VAR_9494 % n2 ) >= 0 ) && (( VAR_9494 % n2 ) <= 9 ))
+      {
+         *VAR_233 = ( VAR_9494 % n2 ) + 48;
+      }
+      else
+      if (( VAR_9494 % n2 ) > 9 )
+      {
+         *VAR_233 = ( VAR_9494 % n2 ) + 55;
+      }
+
+
+      VAR_9494 = VAR_9494 / n2;
+
+      if ( VAR_9494 == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( ; VAR_233 >= number2; VAR_233-- )
+   {
+      printf("%c", *VAR_233);
+   }
+
+   printf("\n");
+   return 0;
+}

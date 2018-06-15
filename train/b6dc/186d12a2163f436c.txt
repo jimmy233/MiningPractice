@@ -1,0 +1,52 @@
+struct data
+{
+   char        VAR__4857423;
+   struct data *pt;
+};
+struct data *create(void)
+{
+   struct data *VAR__HEAD;
+   struct data *ANOTHER_POINTER;
+   struct data *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct data *)malloc(sizeof( struct data )));
+   VAR__HEAD       = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__4857423 = getchar();
+   for ( ; YET_ANOTHER_POINTER->VAR__4857423 != '\n'; )
+   {
+      ANOTHER_POINTER = (struct data *)malloc(sizeof( struct data ));
+      ANOTHER_POINTER->VAR__4857423 = getchar();
+      YET_ANOTHER_POINTER->pt       = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER           = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER->pt       = NULL;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct data *headi;
+   struct data *A_POINTER;
+   int         VAR_FLAG = 0;
+
+   headi = create();
+   for ( A_POINTER = headi; A_POINTER != NULL; A_POINTER = A_POINTER->pt )
+   {
+      if (( '9' >= A_POINTER->VAR__4857423 ) && ( '0' <= A_POINTER->VAR__4857423 ))
+      {
+         putchar(A_POINTER->VAR__4857423), VAR_FLAG++;
+      }
+      else
+      {
+         if ( A_POINTER->pt != NULL )
+         {
+            if ((( '9' >= A_POINTER->pt->VAR__4857423 ) && ( '0' <= A_POINTER->pt->VAR__4857423 )) && ( VAR_FLAG != 0 ))
+            {
+               putchar('\n');
+            }
+         }
+      }
+   }
+}

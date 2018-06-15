@@ -1,0 +1,75 @@
+int main()
+{
+   char     S[N];
+   char     T[N];
+   long int VAR__819283;
+   long int VAR_1238123;
+   long int VAR__19328;
+   long int S10          = 0;
+   long int VAR__12302   = 1;
+   long int VAR__1111    = 1;
+   long int VAR__1238129 = 1;
+   long int VAR__NUM[N];
+   int      VAR__53647;
+   int      VAR__21230;
+   int      VAR__8444594;
+   int      VAR_129012;
+   int      VAR__temp;
+
+   scanf("%d %s %d", &VAR__819283, S, &VAR__19328);
+   VAR__temp = strlen(S);
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR__temp - 1 ); VAR__21230++ )
+   {
+      VAR__12302 = VAR__12302 * VAR__819283;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      if ( S[VAR__53647] <= '9' )
+      {
+         VAR__1111  = S[VAR__53647] - '0';
+         S10        = S10 + ( VAR__1111 * VAR__12302 );
+         VAR__12302 = VAR__12302 / VAR__819283;
+      }
+
+      if ( S[VAR__53647] > '9' )
+      {
+         if ( S[VAR__53647] > ( 'a' - 1 ))
+         {
+            S[VAR__53647] = ( S[VAR__53647] - 'a' ) + 'A';
+         }
+
+         VAR__1111  = ( 10 + S[VAR__53647] ) - 'A';
+         S10        = S10 + ( VAR__1111 * VAR__12302 );
+         VAR__12302 = VAR__12302 / VAR__819283;
+      }
+   }
+
+   for ( VAR__8444594 = 0; ; VAR__8444594++ )
+   {
+      VAR__NUM[VAR__8444594] = S10 % VAR__19328;
+      S10 = S10 / VAR__19328;
+
+      if ( S10 == 0 )
+      {
+         break;
+      }
+   }
+
+   VAR__temp = VAR__8444594;
+   for ( VAR_129012 = 0; VAR_129012 <= VAR__temp; VAR_129012++, VAR__8444594-- )
+   {
+      if ( VAR__NUM[VAR__8444594] <= ( '9' - '0' ))
+      {
+         T[VAR_129012] = '0' + VAR__NUM[VAR__8444594];
+      }
+
+      if ( VAR__NUM[VAR__8444594] > ( '9' - '0' ))
+      {
+         T[VAR_129012] = ( 'A' + VAR__NUM[VAR__8444594] ) - 10;
+      }
+   }
+
+   T[VAR_129012] = '\0';
+   printf("%s", T);
+}

@@ -1,0 +1,67 @@
+int VAR_1238123;
+struct student
+{
+   int            VAR__NUM;
+   int            chn;
+   int            math;
+   int            ovr;
+   struct student *VAR__NEXT;
+};
+struct student *creat()
+{
+   int            VAR__53647;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__HEAD       = (struct student *)malloc(sizeof( struct student ));
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER                = (struct student *)malloc(sizeof( struct student ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      scanf("%d %d %d", &YET_ANOTHER_POINTER->VAR__NUM, &YET_ANOTHER_POINTER->chn, &YET_ANOTHER_POINTER->math);
+      YET_ANOTHER_POINTER->ovr = YET_ANOTHER_POINTER->chn + YET_ANOTHER_POINTER->math;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int            VAR__53647;
+   int            no1;
+   int            ovr1 = 0;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD       = creat();
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+
+      while ( ANOTHER_POINTER->VAR__NEXT != 0 )
+      {
+         if ( ANOTHER_POINTER->ovr > ovr1 )
+         {
+            ovr1 = ANOTHER_POINTER->ovr;
+            no1  = ANOTHER_POINTER->VAR__NUM;
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      printf("%d %d\n", no1, ovr1);
+      YET_ANOTHER_POINTER->ovr = 0;
+      ovr1 = 0;
+   }
+
+   return 0;
+}

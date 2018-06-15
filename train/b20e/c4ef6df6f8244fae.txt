@@ -1,0 +1,89 @@
+void Sort(int *VAR_SIZE, int VAR_1238123)
+{
+   int VAR__112390;
+   int VAR__8444594;
+   int VAR__53647;
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( VAR_SIZE[VAR__53647] < VAR_SIZE[VAR__53647 + 1] )
+         {
+            VAR__112390 = VAR_SIZE[VAR__53647 + 1];
+            VAR_SIZE[VAR__53647 + 1] = VAR_SIZE[VAR__53647];
+            VAR_SIZE[VAR__53647]     = VAR__112390;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR__8444594;
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__SUM;
+   int king[1000];
+   int tian[1000];
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", tian + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", king + VAR__53647);
+      }
+
+      Sort(tian, VAR_1238123);
+      Sort(king, VAR_1238123);
+      VAR__SUM     = 0;
+      VAR__temp    = 0;
+      VAR__8444594 = 0;
+      for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+      {
+         if (( *( tian + VAR__temp )) > ( *( king + VAR__8444594 )))
+         {
+            VAR__SUM += 200;
+            VAR__temp++;
+            VAR__8444594++;
+         }
+         else
+         if (( *( tian + VAR__temp )) < ( *( king + VAR__8444594 )))
+         {
+            VAR__SUM -= 200;
+            VAR__8444594++;
+         }
+         else
+         {
+            for ( VAR__21230 = ( VAR__8444594 - VAR__temp ) + 1; VAR__21230 < (( VAR_1238123 - VAR__temp ) + 1 ); VAR__21230++ )
+            {
+               if ((( *(( tian + VAR_1238123 ) - VAR__21230 )) <= ( *(((( king + VAR_1238123 ) + VAR__8444594 ) - VAR__temp ) - VAR__21230 ))) && (( *(( tian + VAR_1238123 ) - VAR__21230 )) < ( *( king + VAR__8444594 ))))
+               {
+                  VAR__SUM -= 200;
+                  VAR__temp--;
+                  break;
+               }
+            }
+
+            VAR__temp++;
+            VAR__8444594++;
+         }
+      }
+
+      printf("%d\n", VAR__SUM);
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 0;
+}

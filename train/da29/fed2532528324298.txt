@@ -1,0 +1,97 @@
+int  VAR__SUM = 0;
+int  VAR_1238123;
+int  VAR__temp = 1;
+char room[101][101];
+void F(int VAR__7685, int VAR__3918907)
+{
+   if (( VAR__7685 - 1 ) >= 0 )
+   {
+      if ( room[VAR__7685 - 1][VAR__3918907] == 0 )
+      {
+         VAR__SUM++;
+         room[VAR__7685 - 1][VAR__3918907] = VAR__temp + 1;
+      }
+   }
+
+   if (( VAR__3918907 - 1 ) >= 0 )
+   {
+      if ( room[VAR__7685][VAR__3918907 - 1] == 0 )
+      {
+         VAR__SUM++;
+         room[VAR__7685][VAR__3918907 - 1] = VAR__temp + 1;
+      }
+   }
+
+   if (( VAR__7685 + 1 ) < VAR_1238123 )
+   {
+      if ( room[VAR__7685 + 1][VAR__3918907] == 0 )
+      {
+         VAR__SUM++;
+         room[VAR__7685 + 1][VAR__3918907] = VAR__temp + 1;
+      }
+   }
+
+   if (( VAR__3918907 + 1 ) < VAR_1238123 )
+   {
+      if ( room[VAR__7685][VAR__3918907 + 1] == 0 )
+      {
+         VAR__SUM++;
+         room[VAR__7685][VAR__3918907 + 1] = VAR__temp + 1;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> room[VAR__53647][VAR__21230];
+         switch ( room[VAR__53647][VAR__21230] )
+         {
+         case '@':
+            room[VAR__53647][VAR__21230] = 1;
+            VAR__SUM++;
+            break;
+
+         case '.':
+            room[VAR__53647][VAR__21230] = 0;
+            break;
+
+         case '#':
+            room[VAR__53647][VAR__21230] = -1;
+            break;
+         }
+      }
+   }
+
+
+   cin >> VAR__1238129;
+
+   while ( VAR__temp < VAR__1238129 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( room[VAR__53647][VAR__21230] == VAR__temp )
+            {
+               F(VAR__53647, VAR__21230);
+            }
+         }
+      }
+
+
+      VAR__temp++;
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

@@ -1,0 +1,52 @@
+void main()
+{
+   int rearrange(char s1[], char s2[]);
+
+   char s1[300];
+   char s2[300];
+   int  VAR__8444594;
+   scanf("%s%s", s1, s2);
+   VAR__8444594 = rearrange(s1, s2);
+
+   if ( VAR__8444594 )
+   {
+      printf("YES\n");
+   }
+   else
+   {
+      printf("NO\n");
+   }
+}
+
+
+int rearrange(char s1[], char s2[])
+{
+   int count1[128] = { 0 };
+   int count2[128] = { 0 };
+   int len1;
+   int VAR__TEMP;
+
+   len1      = strlen(s1);
+   VAR__TEMP = strlen(s2);
+
+   if ( len1 != VAR__TEMP )
+   {
+      return 0;
+   }
+
+   for ( VAR__TEMP = 0; VAR__TEMP < len1; VAR__TEMP++ )
+   {
+      count1[s1[VAR__TEMP]]++;
+      count2[s2[VAR__TEMP]]++;
+   }
+
+   for ( VAR__TEMP = 0; VAR__TEMP < 128; VAR__TEMP++ )
+   {
+      if ( count1[VAR__TEMP] != count2[VAR__TEMP] )
+      {
+         return 0;
+      }
+   }
+
+   return 1;
+}

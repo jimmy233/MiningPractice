@@ -1,0 +1,71 @@
+int win[1001][1001];
+inline int Play(int VAR__7685, int VAR__3918907)
+{
+   if ( VAR__7685 > VAR__3918907 )
+   {
+      return 1;
+   }
+
+   if ( VAR__7685 < VAR__3918907 )
+   {
+      return -1;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int qw[1000];
+   int tj[1000];
+   int VAR__53647;
+   int VAR__21230;
+
+   while (( cin >> VAR_1238123 ) && VAR_1238123 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         cin >> tj[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         cin >> qw[VAR__53647];
+      }
+
+      sort(tj, tj + VAR_1238123);
+      sort(qw, qw + VAR_1238123);
+      win[0][0] = 0;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+      {
+         win[VAR__53647][0] = win[VAR__53647 - 1][0] + Play(tj[VAR__53647 - 1], qw[VAR_1238123 - VAR__53647]);
+         for ( VAR__21230 = 1; VAR__21230 < VAR__53647; ++VAR__21230 )
+         {
+            win[VAR__53647][VAR__21230] = win[VAR__53647 - 1][VAR__21230] + Play(tj[( VAR__53647 - VAR__21230 ) - 1], qw[VAR_1238123 - VAR__53647]);
+
+            if ( win[VAR__53647][VAR__21230] < ( win[VAR__53647 - 1][VAR__21230 - 1] + Play(tj[VAR_1238123 - VAR__21230], qw[VAR_1238123 - VAR__53647])))
+            {
+               win[VAR__53647][VAR__21230] = win[VAR__53647 - 1][VAR__21230 - 1] + Play(tj[VAR_1238123 - VAR__21230], qw[VAR_1238123 - VAR__53647]);
+            }
+         }
+
+         win[VAR__53647][VAR__53647] = win[VAR__53647 - 1][VAR__53647 - 1] + Play(tj[VAR_1238123 - VAR__53647], qw[VAR_1238123 - VAR__53647]);
+      }
+
+      VAR__21230 = 0;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+      {
+         if ( win[VAR_1238123][VAR__53647] > win[VAR_1238123][VAR__21230] )
+         {
+            VAR__21230 = VAR__53647;
+         }
+      }
+
+
+      ( cout << ( win[VAR_1238123][VAR__21230] * 200 )) << endl;
+   }
+
+   return 0;
+}

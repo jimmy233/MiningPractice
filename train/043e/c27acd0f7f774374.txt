@@ -1,0 +1,85 @@
+void main()
+{
+   char VAR_9494[300];
+   char VAR__819283[200];
+   char VAR__19328[200];
+   char *VAR__TEMP;
+   char *ps;
+   char *pa;
+   char *pb;
+   int  VAR_FLAG;
+   int  ls;
+   int  la;
+   int  lb;
+
+   gets(VAR_9494);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   ls = strlen(VAR_9494);
+   la = strlen(VAR__819283);
+   lb = strlen(VAR__19328);
+   ps = VAR_9494;
+   pa = VAR__819283;
+   pb = VAR__19328;
+
+   while ( ps < ( VAR_9494 + ls ))
+   {
+      VAR_FLAG = 1;
+      for ( pa = VAR__819283; (( *ps ) != ' ' ) && (( *ps ) != '\0' ); ps++, pa++ )
+      {
+         if (( *ps ) != ( *pa ))
+         {
+            VAR_FLAG = 0;
+         }
+      }
+
+
+      if ( VAR_FLAG && ( pa == ( VAR__819283 + la )))
+      {
+         if ( la >= lb )
+         {
+            ps = ps - la;
+
+            while (( *pb ) != '\0' )
+            {
+               *( ps++ ) = *( pb++ );
+            }
+
+            if ( la > lb )
+            {
+               while (( *(( ps + la ) - lb )) != '\0' )
+               {
+                  *ps = *(( ps + la ) - lb );
+                  ps++;
+               }
+
+               *ps = '\0';
+            }
+         }
+         else
+         {
+            VAR__TEMP = ps;
+            for ( ps = VAR_9494 + ls; ps >= VAR__TEMP; ps-- )
+            {
+               *(( ps + lb ) - la ) = *ps;
+            }
+
+            ps = ( ps - la ) + 1;
+
+            while (( *pb ) != '\0' )
+            {
+               *( ps++ ) = *( pb++ );
+            }
+         }
+
+         pa = VAR__819283;
+         pb = VAR__19328;
+         ls = strlen(VAR_9494);
+      }
+
+      ps++;
+   }
+
+   ps = VAR_9494;
+   printf("%s", ps);
+}

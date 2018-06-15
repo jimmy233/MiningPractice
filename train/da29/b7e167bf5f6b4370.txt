@@ -1,0 +1,99 @@
+char B[102][102][102];
+int  VAR_1238123;
+int  VAR__1238129;
+void ini()
+{
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> B[VAR__53647][VAR__21230][0];
+      }
+   }
+}
+
+
+void inf(int VAR__53647, int VAR__21230, int VAR__temp)
+{
+   if ( B[VAR__53647][VAR__21230][VAR__temp] == '@' )
+   {
+      if ( B[VAR__53647 + 1][VAR__21230][VAR__temp] == '.' )
+      {
+         B[VAR__53647 + 1][VAR__21230][VAR__temp + 1] = '@';
+      }
+
+      if ( B[VAR__53647 - 1][VAR__21230][VAR__temp] == '.' )
+      {
+         B[VAR__53647 - 1][VAR__21230][VAR__temp + 1] = '@';
+      }
+
+      if ( B[VAR__53647][VAR__21230 + 1][VAR__temp] == '.' )
+      {
+         B[VAR__53647][VAR__21230 + 1][VAR__temp + 1] = '@';
+      }
+
+      if ( B[VAR__53647][VAR__21230 - 1][VAR__temp] == '.' )
+      {
+         B[VAR__53647][VAR__21230 - 1][VAR__temp + 1] = '@';
+      }
+   }
+}
+
+
+void ill(int VAR__temp)
+{
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         B[VAR__53647][VAR__21230][VAR__temp + 1] = B[VAR__53647][VAR__21230][VAR__temp];
+      }
+   }
+
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         inf(VAR__53647, VAR__21230, VAR__temp);
+      }
+   }
+
+
+   if ( VAR__temp != VAR__1238129 )
+   {
+      ill(VAR__temp + 1);
+   }
+}
+
+
+int stat(int VAR__temp)
+{
+   int Amount = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( B[VAR__53647][VAR__21230][VAR__temp] == '@' )
+         {
+            Amount++;
+         }
+      }
+   }
+
+
+
+   return Amount;
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   ini();
+   cin >> VAR__1238129;
+   ill(0);
+   cout << stat(VAR__1238129 - 1);
+   return 0;
+}

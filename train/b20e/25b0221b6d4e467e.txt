@@ -1,0 +1,69 @@
+int qw[MAX];
+int tj[MAX];
+int VAR_1238123;
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   for ( scanf("%d", &VAR_1238123); VAR_1238123 != 0; scanf("%d", &VAR_1238123))
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tj[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qw[VAR__53647]);
+      }
+
+      qsort(qw, VAR_1238123, sizeof( int ), cmp);
+      qsort(tj, VAR_1238123, sizeof( int ), cmp);
+      int tjs;
+      int tje = VAR_1238123 - 1;
+      int qws = 0;
+      int qwe = VAR_1238123 - 1;
+      for ( tjs = 0; qw[qws] > tj[tjs]; tje--, qws++ )
+      {
+      }
+
+      int win  = 0;
+      int lose = qws;
+      for ( ; tjs <= tje; )
+      {
+         if ( tj[tjs] > qw[qws] )
+         {
+            win++, tjs++, qws++;
+         }
+         else
+         if ( tj[tjs] < qw[qws] )
+         {
+            lose++, tje--, qws++;
+         }
+         else
+         {
+            if ( tj[tje] > qw[qwe] )
+            {
+               win++, tje--, qwe--;
+            }
+            else
+            {
+               if ( tj[tje] < qw[qws] )
+               {
+                  lose++, tje--, qws++;
+               }
+               else
+               {
+                  tje--, qws++;
+               }
+            }
+         }
+      }
+
+      printf("%d\n", ( win - lose ) * 200);
+   }
+}

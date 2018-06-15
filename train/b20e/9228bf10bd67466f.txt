@@ -1,0 +1,115 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__temp;
+   int input[2][1000];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int win;
+   int money;
+
+   for ( ; ; )
+   {
+      win = 0;
+      scanf("%d", &VAR_1238123);
+
+      if ( 0 == VAR_1238123 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 2; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            scanf("%d", &input[VAR__53647][VAR__21230]);
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( input[1][VAR__53647] < input[1][VAR__21230] )
+            {
+               VAR__temp            = input[1][VAR__53647];
+               input[1][VAR__53647] = input[1][VAR__21230];
+               input[1][VAR__21230] = VAR__temp;
+            }
+
+            if ( input[0][VAR__53647] < input[0][VAR__21230] )
+            {
+               VAR__temp            = input[0][VAR__53647];
+               input[0][VAR__53647] = input[0][VAR__21230];
+               input[0][VAR__21230] = VAR__temp;
+            }
+         }
+      }
+
+      while ( VAR_1238123 > 0 )
+      {
+         if ( input[0][VAR_1238123 - 1] > input[1][VAR_1238123 - 1] )
+         {
+            win++;
+            VAR_1238123--;
+         }
+         else
+         if ( input[0][VAR_1238123 - 1] < input[1][VAR_1238123 - 1] )
+         {
+            win--;
+            for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+            {
+               input[1][VAR__53647] = input[1][VAR__53647 + 1];
+            }
+
+            VAR_1238123--;
+         }
+         else
+         {
+            if ( input[0][0] < input[1][0] )
+            {
+               win--;
+               for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+               {
+                  input[1][VAR__53647] = input[1][VAR__53647 + 1];
+               }
+
+               VAR_1238123--;
+            }
+            else
+            if ( input[0][0] > input[1][0] )
+            {
+               win++;
+               for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+               {
+                  input[0][VAR__53647] = input[0][VAR__53647 + 1];
+                  input[1][VAR__53647] = input[1][VAR__53647 + 1];
+               }
+
+               VAR_1238123--;
+            }
+            else
+            {
+               if ( input[0][VAR_1238123 - 1] < input[1][0] )
+               {
+                  win--;
+                  for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+                  {
+                     input[1][VAR__53647] = input[1][VAR__53647 + 1];
+                  }
+
+                  VAR_1238123--;
+               }
+               else
+               {
+                  VAR_1238123--;
+               }
+            }
+         }
+      }
+
+      money = win * 200;
+      printf("%d\n", money);
+   }
+}

@@ -1,0 +1,130 @@
+struct patient
+{
+   char           id[11];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+int main()
+{
+   struct patient *VAR__HEAD;
+   struct patient *create(int VAR_1238123);
+
+   void sort(struct patient *VAR__HEAD);
+
+   int VAR_1238123;
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create(VAR_1238123);
+   sort(VAR__HEAD);
+   return 0;
+}
+
+
+struct patient *create(int VAR_1238123)
+{
+   int            VAR__53647;
+   struct patient *VAR__HEAD;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (struct patient *)malloc(LEN_OF_STH);
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct patient *)malloc(LEN_OF_STH);
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+
+      if ( VAR__53647 == ( VAR_1238123 - 1 ))
+      {
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void sort(struct patient *VAR__HEAD)
+{
+   int            VAR__1238129;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+
+   for ( ; ; )
+   {
+      ANOTHER_POINTER     = VAR__HEAD;
+      YET_ANOTHER_POINTER = VAR__HEAD;
+      VAR__1238129        = 0;
+      for ( ; ; )
+      {
+         if ( ANOTHER_POINTER->age > VAR__1238129 )
+         {
+            VAR__1238129 = ANOTHER_POINTER->age;
+         }
+
+         if ( ANOTHER_POINTER->VAR__NEXT == NULL )
+         {
+            break;
+         }
+         else
+         {
+            ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+         }
+      }
+
+      if ( VAR__1238129 < 60 )
+      {
+         break;
+      }
+
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( ; ; )
+      {
+         if ( ANOTHER_POINTER->age == VAR__1238129 )
+         {
+            printf("%s\n", ANOTHER_POINTER->id);
+
+            if ( ANOTHER_POINTER == VAR__HEAD )
+            {
+               VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+            }
+            else
+            {
+               YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+            }
+
+            break;
+         }
+         else
+         {
+            if ( ANOTHER_POINTER != YET_ANOTHER_POINTER )
+            {
+               YET_ANOTHER_POINTER = ANOTHER_POINTER;
+               ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+            }
+            else
+            {
+               ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+            }
+         }
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( ; ; )
+   {
+      printf("%s\n", ANOTHER_POINTER->id);
+
+      if ( ANOTHER_POINTER->VAR__NEXT == NULL )
+      {
+         break;
+      }
+      else
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+}

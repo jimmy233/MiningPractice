@@ -1,0 +1,51 @@
+struct stud
+{
+   char        no[50];
+   char        name[50];
+   char        sex;
+   int         VAR__3918907;
+   char        sc[30];
+   char        addr[50];
+   struct stud *pre;
+};
+struct stud *creat()
+{
+   struct stud *ANOTHER_POINTER;
+   struct stud *YET_ANOTHER_POINTER;
+   char        *VAR_9Q8Q90 = "end";
+
+   ANOTHER_POINTER      = ( YET_ANOTHER_POINTER = (struct stud *)malloc(LEN));
+   ANOTHER_POINTER->pre = NULL;
+   scanf("%s", ANOTHER_POINTER->no);
+
+   while ( strcmp(ANOTHER_POINTER->no, VAR_9Q8Q90))
+   {
+      scanf("%s %c %d %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->VAR__3918907, ANOTHER_POINTER->sc, ANOTHER_POINTER->addr);
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stud *)malloc(LEN);
+
+      if ( ANOTHER_POINTER == NULL )
+      {
+         return NULL;
+      }
+
+      ANOTHER_POINTER->pre = YET_ANOTHER_POINTER;
+      scanf("%s", ANOTHER_POINTER->no);
+   }
+
+   return ANOTHER_POINTER->pre;
+}
+
+
+void main()
+{
+   struct stud *pt;
+
+   pt = creat();
+
+   while ( pt != NULL )
+   {
+      printf("%s %s %c %d %s %s\n", pt->no, pt->name, pt->sex, pt->VAR__3918907, pt->sc, pt->addr);
+      pt = pt->pre;
+   }
+}

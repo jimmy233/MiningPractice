@@ -1,0 +1,79 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   char VAR_9494[501] = { ' ' };
+   scanf("%s", VAR_9494);
+   int LEN_OF_STH;
+   LEN_OF_STH = strlen(VAR_9494);
+   struct substring
+   {
+      char ss[5];
+      int  VAR__COUNT;
+   }
+       sub[500];
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+   {
+      memset(sub[VAR__53647].ss, ' ', sizeof( sub[VAR__53647].ss ));
+      sub[VAR__53647].VAR__COUNT = 0;
+   }
+
+   int entry = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      char bank[5] = { ' ' };
+      int  curr;
+      for ( curr = 0; curr < VAR_1238123; curr++ )
+      {
+         bank[curr] = VAR_9494[curr + VAR__53647];
+      }
+
+      int same = 0;
+      int VAR__8444594;
+      for ( VAR__8444594 = 0; VAR__8444594 < entry; VAR__8444594++ )
+      {
+         if ( strcmp(bank, sub[VAR__8444594].ss) == 0 )
+         {
+            sub[VAR__8444594].VAR__COUNT += 1;
+            same = 1;
+            break;
+         }
+      }
+
+      if ( same == 0 )
+      {
+         strcpy(sub[entry].ss, bank);
+         sub[entry].VAR__COUNT = 1;
+         entry++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < entry; VAR__53647++ )
+   {
+      if ( sub[VAR__53647].VAR__COUNT > VAR__MAX )
+      {
+         VAR__MAX = sub[VAR__53647].VAR__COUNT;
+      }
+   }
+
+   if ( VAR__MAX < 2 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < entry; VAR__53647++ )
+      {
+         if ( sub[VAR__53647].VAR__COUNT == VAR__MAX )
+         {
+            printf("\n%s", sub[VAR__53647].ss);
+         }
+      }
+   }
+
+   return 0;
+}

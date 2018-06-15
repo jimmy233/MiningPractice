@@ -1,0 +1,224 @@
+int run(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int day(int year, int month, int date)
+{
+   int VAR__53647;
+   int VAR__8444594 = 2001;
+   int VAR__NUM     = 0;
+
+   while ( VAR__8444594 > 0 )
+   {
+      if ( year < VAR__8444594 )
+      {
+         VAR__53647 = VAR__8444594 - 2000;
+         break;
+      }
+      else
+      {
+         VAR__8444594 += 2000;
+      }
+   }
+
+   for ( ; VAR__53647 < year; VAR__53647++ )
+   {
+      if ( run(VAR__53647) == 1 )
+      {
+         VAR__NUM += 366;
+      }
+      else
+      if ( run(VAR__53647) == 0 )
+      {
+         VAR__NUM += 365;
+      }
+   }
+
+   if ( run(year) == 1 )
+   {
+      if ( month == 1 )
+      {
+         VAR__NUM += date;
+      }
+      else
+      if ( month == 2 )
+      {
+         VAR__NUM += 31 + date;
+      }
+      else
+      if ( month == 3 )
+      {
+         VAR__NUM += 60 + date;
+      }
+      else
+      if ( month == 4 )
+      {
+         VAR__NUM += 91 + date;
+      }
+      else
+      if ( month == 5 )
+      {
+         VAR__NUM += 121 + date;
+      }
+      else
+      if ( month == 6 )
+      {
+         VAR__NUM += 152 + date;
+      }
+      else
+      if ( month == 7 )
+      {
+         VAR__NUM += 182 + date;
+      }
+      else
+      if ( month == 8 )
+      {
+         VAR__NUM += 213 + date;
+      }
+      else
+      if ( month == 9 )
+      {
+         VAR__NUM += 244 + date;
+      }
+      else
+      if ( month == 10 )
+      {
+         VAR__NUM += 274 + date;
+      }
+      else
+      if ( month == 11 )
+      {
+         VAR__NUM += 305 + date;
+      }
+      else
+      if ( month == 12 )
+      {
+         VAR__NUM += 335 + date;
+      }
+   }
+   else
+   if ( run(year) == 0 )
+   {
+      if ( month == 1 )
+      {
+         VAR__NUM += date;
+      }
+      else
+      if ( month == 2 )
+      {
+         VAR__NUM += 31 + date;
+      }
+      else
+      if ( month == 3 )
+      {
+         VAR__NUM += 59 + date;
+      }
+      else
+      if ( month == 4 )
+      {
+         VAR__NUM += 90 + date;
+      }
+      else
+      if ( month == 5 )
+      {
+         VAR__NUM += 120 + date;
+      }
+      else
+      if ( month == 6 )
+      {
+         VAR__NUM += 151 + date;
+      }
+      else
+      if ( month == 7 )
+      {
+         VAR__NUM += 181 + date;
+      }
+      else
+      if ( month == 8 )
+      {
+         VAR__NUM += 212 + date;
+      }
+      else
+      if ( month == 9 )
+      {
+         VAR__NUM += 243 + date;
+      }
+      else
+      if ( month == 10 )
+      {
+         VAR__NUM += 273 + date;
+      }
+      else
+      if ( month == 11 )
+      {
+         VAR__NUM += 304 + date;
+      }
+      else
+      if ( month == 12 )
+      {
+         VAR__NUM += 334 + date;
+      }
+   }
+
+
+   return VAR__NUM;
+}
+
+
+void week(int year, int month, int date)
+{
+   if (( day(year, month, date) % 7 ) == 0 )
+   {
+      printf("Sun.\n");
+   }
+   else
+   if (( day(year, month, date) % 7 ) == 1 )
+   {
+      printf("Mon.\n");
+   }
+   else
+   if (( day(year, month, date) % 7 ) == 2 )
+   {
+      printf("Tue.\n");
+   }
+   else
+   if (( day(year, month, date) % 7 ) == 3 )
+   {
+      printf("Wed.\n");
+   }
+   else
+   if (( day(year, month, date) % 7 ) == 4 )
+   {
+      printf("Thu.\n");
+   }
+   else
+   if (( day(year, month, date) % 7 ) == 5 )
+   {
+      printf("Fri.\n");
+   }
+   else
+   if (( day(year, month, date) % 7 ) == 6 )
+   {
+      printf("Sat.\n");
+   }
+}
+
+
+void main()
+{
+   int year;
+   int month;
+   int date;
+
+   scanf("%d %d %d", &year, &month, &date);
+   week(year, month, date);
+}

@@ -1,0 +1,66 @@
+int main()
+{
+   long int VAR__819283;
+   long int VAR__19328;
+   long int VAR__SUM;
+   long int VAR__4857423 = 0;
+   char     A_STRING[100];
+   char     ANOTHER_STRING[100];
+
+   (( cin >> VAR__819283 ) >> A_STRING ) >> VAR__19328;
+   for ( int VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= 'a' ) && ( A_STRING[VAR__53647] <= 'z' ))
+      {
+         A_STRING[VAR__53647] -= 32;
+      }
+   }
+
+
+   VAR__SUM = strlen(A_STRING);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__SUM; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= '0' ) && ( A_STRING[VAR__53647] <= '9' ))
+      {
+         VAR__4857423 += ((int)pow((double)VAR__819283, (double)(( VAR__SUM - 1 ) - VAR__53647 ))) * ( A_STRING[VAR__53647] - 48 );
+      }
+
+      if (( A_STRING[VAR__53647] >= 'A' ) && ( A_STRING[VAR__53647] <= 'Z' ))
+      {
+         VAR__4857423 += ((int)pow((double)VAR__819283, (double)(( VAR__SUM - 1 ) - VAR__53647 ))) * ( A_STRING[VAR__53647] - 55 );
+      }
+   }
+
+   int Len = 0;
+
+   if ( VAR__4857423 == 0 )
+   {
+      cout << "0";
+   }
+   else
+   {
+      while ( VAR__4857423 > 0 )
+      {
+         int VAR__temp = VAR__4857423 % VAR__19328;
+
+         if ( VAR__temp >= 10 )
+         {
+            ANOTHER_STRING[Len] = ( 'A' + VAR__temp ) - 10;
+         }
+         else
+         {
+            ANOTHER_STRING[Len] = '0' + VAR__temp;
+         }
+
+         VAR__4857423 /= VAR__19328;
+         Len++;
+      }
+
+      for ( int VAR__21230 = Len - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         cout << ANOTHER_STRING[VAR__21230];
+      }
+   }
+
+   return 0;
+}

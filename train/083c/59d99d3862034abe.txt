@@ -1,0 +1,83 @@
+int VAR__temp[100] = { 0 };
+int VAR__819283;
+int VAR__19328;
+unsigned long int atoten(char *VAR_233)
+{
+   unsigned long int VAR_9494 = 0;
+   int               LEN_OF_STH;
+   int               VAR__53647;
+
+   LEN_OF_STH = strlen(VAR_233);
+   VAR_233    = ( VAR_233 + LEN_OF_STH ) - 1;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++, VAR_233-- )
+   {
+      if ((( *VAR_233 ) >= '0' ) && (( *VAR_233 ) <= '9' ))
+      {
+         VAR_9494 = VAR_9494 + ((( *VAR_233 ) - '0' ) * pow(VAR__819283, VAR__53647));
+      }
+      else
+      if ((( *VAR_233 ) >= 'a' ) && (( *VAR_233 ) <= 'z' ))
+      {
+         VAR_9494 = VAR_9494 + (((( *VAR_233 ) - 'a' ) + 10 ) * pow(VAR__819283, VAR__53647));
+      }
+      else
+      {
+         VAR_9494 = VAR_9494 + (((( *VAR_233 ) - 'A' ) + 10 ) * pow(VAR__819283, VAR__53647));
+      }
+   }
+
+   return VAR_9494;
+}
+
+
+int tentob(unsigned long int VAR_9494)
+{
+   int VAR__53647;
+   int VAR__8444594;
+
+   for ( VAR__53647 = 0; VAR_9494 != 0; VAR__53647++ )
+   {
+      VAR__temp[VAR__53647] = VAR_9494 % VAR__19328;
+      VAR_9494 = VAR_9494 / VAR__19328;
+   }
+
+   VAR__8444594 = VAR__53647 - 1;
+   return VAR__8444594;
+}
+
+
+void print(int VAR__8444594)
+{
+   int VAR__53647;
+
+   if ( VAR__8444594 < 0 )
+   {
+      printf("0");
+   }
+
+   for ( VAR__53647 = VAR__8444594; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__temp[VAR__53647] > 9 )
+      {
+         VAR__temp[VAR__53647] += 'A' - 10;
+         printf("%c", VAR__temp[VAR__53647]);
+      }
+      else
+      {
+         printf("%d", VAR__temp[VAR__53647]);
+      }
+   }
+}
+
+
+void main()
+{
+   unsigned long int VAR_9494;
+   char              VAR_1238123[100] = { '\0' };
+   int               VAR__8444594;
+
+   scanf("%d %s %d", &VAR__819283, VAR_1238123, &VAR__19328);
+   VAR_9494     = atoten(VAR_1238123);
+   VAR__8444594 = tentob(VAR_9494);
+   print(VAR__8444594);
+}

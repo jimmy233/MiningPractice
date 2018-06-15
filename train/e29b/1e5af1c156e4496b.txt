@@ -1,0 +1,57 @@
+int main()
+{
+   int    A_STRING[301];
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__TEMP;
+   int    VAR_FLAG   = 0;
+   double VAR__COUNT = 0;
+   double max_num;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin >> A_STRING[VAR__53647];
+   }
+
+   for ( VAR__53647 = VAR_1238123; VAR__53647 >= 2; VAR__53647-- )
+   {
+      for ( VAR__21230 = 2; VAR__21230 <= VAR__53647; VAR__21230++ )
+      {
+         if ( A_STRING[VAR__21230] < A_STRING[VAR__21230 - 1] )
+         {
+            VAR__TEMP = A_STRING[VAR__21230 - 1];
+            A_STRING[VAR__21230 - 1] = A_STRING[VAR__21230];
+            A_STRING[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__COUNT += A_STRING[VAR__53647];
+   }
+
+   max_num = VAR__MAX(A_STRING[VAR_1238123] - ( VAR__COUNT / VAR_1238123 ), ( VAR__COUNT / VAR_1238123 ) - A_STRING[1]);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( fabs(A_STRING[VAR__53647] - ( VAR__COUNT / VAR_1238123 )) > max_num ) || ( fabs(fabs(A_STRING[VAR__53647] - ( VAR__COUNT / VAR_1238123 )) - max_num) <= 1e-5 ))
+      {
+         if ( VAR_FLAG == 0 )
+         {
+            cout << A_STRING[VAR__53647];
+            VAR_FLAG = 1;
+         }
+         else
+         {
+            ( cout << "," ) << A_STRING[VAR__53647];
+         }
+      }
+   }
+
+
+   return 0;
+}

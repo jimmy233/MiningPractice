@@ -1,0 +1,110 @@
+struct student
+{
+   long int       id;
+   int            yuwen;
+   int            shuxue;
+   int            total;
+   struct student *VAR__NEXT;
+};
+long int VAR_1238123;
+int main()
+{
+   struct student *p0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   int            VAR__53647;
+
+   scanf("%ld\n", &VAR_1238123);
+   p0 = (struct student *)malloc(sizeof( struct student ));
+   scanf("%ld %d %d", &p0->id, &p0->yuwen, &p0->shuxue);
+   p0->total       = p0->yuwen + p0->shuxue;
+   VAR__HEAD       = p0;
+   ANOTHER_POINTER = p0;
+   p0 = (struct student *)malloc(sizeof( struct student ));
+   scanf("%ld %d %d", &p0->id, &p0->yuwen, &p0->shuxue);
+   p0->total = p0->yuwen + p0->shuxue;
+
+   if ( p0->total <= ANOTHER_POINTER->total )
+   {
+      ANOTHER_POINTER->VAR__NEXT = p0;
+      ANOTHER_POINTER            = p0;
+   }
+   else
+   {
+      VAR__HEAD     = p0;
+      p0->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   p0 = (struct student *)malloc(sizeof( struct student ));
+   scanf("%ld %d %d", &p0->id, &p0->yuwen, &p0->shuxue);
+   p0->total = p0->yuwen + p0->shuxue;
+
+   if ( p0->total <= ANOTHER_POINTER->total )
+   {
+      ANOTHER_POINTER->VAR__NEXT = p0;
+      YET_ANOTHER_POINTER        = p0;
+   }
+   else
+   if (( p0->total > ANOTHER_POINTER->total ) && ( p0->total <= VAR__HEAD->total ))
+   {
+      VAR__HEAD->VAR__NEXT = p0;
+      p0->VAR__NEXT        = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER  = ANOTHER_POINTER;
+      ANOTHER_POINTER      = p0;
+   }
+   else
+   if ( p0->total > VAR__HEAD->total )
+   {
+      p0->VAR__NEXT       = VAR__HEAD;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = VAR__HEAD;
+      VAR__HEAD           = p0;
+   }
+
+
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( VAR__53647 = 3; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      p0 = (struct student *)malloc(sizeof( struct student ));
+      scanf("%ld %d %d", &p0->id, &p0->yuwen, &p0->shuxue);
+      p0->total = p0->yuwen + p0->shuxue;
+
+      if ( p0->total > YET_ANOTHER_POINTER->total )
+      {
+         if ( p0->total <= ANOTHER_POINTER->total )
+         {
+            ANOTHER_POINTER->VAR__NEXT = p0;
+            p0->VAR__NEXT       = NULL;
+            YET_ANOTHER_POINTER = p0;
+         }
+         else
+         if (( p0->total > ANOTHER_POINTER->total ) && ( p0->total <= VAR__HEAD->total ))
+         {
+            VAR__HEAD->VAR__NEXT       = p0;
+            p0->VAR__NEXT              = ANOTHER_POINTER;
+            ANOTHER_POINTER->VAR__NEXT = NULL;
+            ANOTHER_POINTER            = YET_ANOTHER_POINTER;
+            p0 = ANOTHER_POINTER;
+         }
+         else
+         if ( p0->total > VAR__HEAD->total )
+         {
+            p0->VAR__NEXT = VAR__HEAD;
+            ANOTHER_POINTER->VAR__NEXT = NULL;
+            YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+            ANOTHER_POINTER            = VAR__HEAD;
+            VAR__HEAD = p0;
+         }
+      }
+   }
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%ld %d\n", VAR_233->id, VAR_233->total);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

@@ -1,0 +1,103 @@
+int Compare(const void *elem1, const void *elem2)
+{
+   return ( *((int *)elem2 )) - ( *((int *)elem1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647   = 0;
+   int VAR__21230   = 0;
+   int counter      = 0;
+   int VAR__4857423 = 0;
+   int lose         = 0;
+   int VAR__8444594 = 0;
+   int VAR__1111    = 0;
+   int VAR__1238129 = 0;
+   int money[1000]  = { 0 };
+
+   for ( VAR__8444594 = 0; ; VAR__8444594++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         int VAR_666[1000]   = { 0 };
+         int VAR__temp[1000] = { 0 };
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR__temp[VAR__53647]);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR_666[VAR__53647]);
+         }
+
+         qsort(VAR__temp, VAR_1238123, sizeof( int ), Compare);
+         qsort(VAR_666, VAR_1238123, sizeof( int ), Compare);
+         VAR__1238129 = 0;
+         for ( VAR__21230 = 0; VAR_1238123 > 0; VAR__21230++ )
+         {
+            counter = 0, VAR__4857423 = 0, lose = 0;
+            for ( VAR__53647 = 0; ( VAR_666[VAR__53647] < VAR__temp[VAR__53647] ) && ( VAR__53647 < VAR_1238123 ); VAR__53647++ )
+            {
+               counter = counter + 1;
+            }
+
+            for ( VAR__53647 = 0; VAR__53647 <= (( VAR_1238123 - counter ) - 1 ); VAR__53647++ )
+            {
+               VAR_666[VAR__53647]   = VAR_666[VAR__53647 + counter];
+               VAR__temp[VAR__53647] = VAR__temp[VAR__53647 + counter];
+            }
+
+            VAR_1238123  = VAR_1238123 - counter;
+            VAR__1238129 = VAR__1238129 + counter;
+
+            if ( VAR_1238123 == 0 )
+            {
+               break;
+            }
+
+            for ( VAR__53647 = VAR_1238123 - 1; VAR_666[VAR__53647] < VAR__temp[VAR__53647]; VAR__53647-- )
+            {
+               VAR__4857423++;
+            }
+
+            VAR_1238123  = VAR_1238123 - VAR__4857423;
+            VAR__1238129 = VAR__1238129 + VAR__4857423;
+
+            if ( VAR_1238123 == 0 )
+            {
+               break;
+            }
+
+            if ( VAR_666[0] > VAR__temp[VAR_1238123 - 1] )
+            {
+               lose++;
+            }
+
+            VAR__1238129 = VAR__1238129 - lose;
+            for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+            {
+               VAR_666[VAR__53647] = VAR_666[VAR__53647 + 1];
+            }
+
+            VAR_1238123 = VAR_1238123 - 1;
+         }
+
+         money[VAR__8444594] = 200 * VAR__1238129;
+         VAR__1111++;
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__1111; VAR__8444594++ )
+   {
+      printf("%d\n", money[VAR__8444594]);
+   }
+}

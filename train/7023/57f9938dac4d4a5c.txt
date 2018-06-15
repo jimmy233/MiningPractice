@@ -1,0 +1,126 @@
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   int VAR__4857423;
+
+   if ( VAR__819283 > VAR__19328 )
+   {
+      VAR__4857423 = VAR__819283;
+   }
+   else
+   {
+      VAR__4857423 = VAR__19328;
+   }
+
+   return VAR__4857423;
+}
+
+
+void main()
+{
+   char ANOTHER_STRING[100];
+   char YET_ANOTHER_STRING[100];
+   char VAR__TEMP;
+   char VAR__4857423[100] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_1238123;
+   int  VAR__1111;
+   int  VAR_FLAG;
+   int  VAR__7685;
+   int  VAR__3918907;
+
+   VAR_FLAG = 0;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647]       = '0';
+      ANOTHER_STRING[VAR__53647]     = '0';
+      YET_ANOTHER_STRING[VAR__53647] = '0';
+   }
+
+   for ( VAR__1111 = 0; VAR__1111 < VAR_1238123; VAR__1111++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647]       = '0';
+         ANOTHER_STRING[VAR__53647]     = '0';
+         YET_ANOTHER_STRING[VAR__53647] = '0';
+      }
+
+      scanf("%s", ANOTHER_STRING);
+      scanf("%s", YET_ANOTHER_STRING);
+      VAR__7685    = strlen(ANOTHER_STRING);
+      VAR__3918907 = strlen(YET_ANOTHER_STRING);
+      VAR__8444594 = VAR__MAX(VAR__7685, VAR__3918907);
+      ANOTHER_STRING[VAR__7685]        = '0';
+      YET_ANOTHER_STRING[VAR__3918907] = '0';
+      for ( VAR__53647 = 0; VAR__53647 <= (( VAR__7685 - 1 ) / 2 ); VAR__53647++ )
+      {
+         VAR__4857423[0]            = ANOTHER_STRING[VAR__53647];
+         ANOTHER_STRING[VAR__53647] = ANOTHER_STRING[( VAR__7685 - 1 ) - VAR__53647];
+         ANOTHER_STRING[( VAR__7685 - 1 ) - VAR__53647] = VAR__4857423[0];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= (( VAR__3918907 - 1 ) / 2 ); VAR__53647++ )
+      {
+         VAR__TEMP = YET_ANOTHER_STRING[VAR__53647];
+         YET_ANOTHER_STRING[VAR__53647] = YET_ANOTHER_STRING[( VAR__3918907 - 1 ) - VAR__53647];
+         YET_ANOTHER_STRING[( VAR__3918907 - 1 ) - VAR__53647] = VAR__TEMP;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if ( VAR_FLAG == 1 )
+         {
+            ANOTHER_STRING[VAR__53647] -= 1;
+            VAR_FLAG = 0;
+         }
+
+         if ( ANOTHER_STRING[VAR__53647] < YET_ANOTHER_STRING[VAR__53647] )
+         {
+            VAR__4857423[VAR__53647] = (( 10 + ( ANOTHER_STRING[VAR__53647] - '0' )) - ( YET_ANOTHER_STRING[VAR__53647] - '0' )) + '0';
+            VAR_FLAG = 1;
+         }
+         else
+         if ( ANOTHER_STRING[VAR__53647] >= YET_ANOTHER_STRING[VAR__53647] )
+         {
+            VAR__4857423[VAR__53647] = (( ANOTHER_STRING[VAR__53647] - '0' ) - ( YET_ANOTHER_STRING[VAR__53647] - '0' )) + '0';
+         }
+      }
+
+      if ( VAR__4857423[VAR__8444594 - 1] == '0' )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= (( VAR__8444594 - 2 ) / 2 ); VAR__53647++ )
+         {
+            VAR__TEMP = VAR__4857423[VAR__53647];
+            VAR__4857423[VAR__53647] = VAR__4857423[( VAR__8444594 - 2 ) - VAR__53647];
+            VAR__4857423[( VAR__8444594 - 2 ) - VAR__53647] = VAR__TEMP;
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+         {
+            printf("%c", VAR__4857423[VAR__53647]);
+         }
+
+         printf("\n");
+      }
+
+      if ( VAR__4857423[VAR__8444594 - 1] != '0' )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= (( VAR__8444594 - 1 ) / 2 ); VAR__53647++ )
+         {
+            VAR__TEMP = VAR__4857423[VAR__53647];
+            VAR__4857423[VAR__53647] = VAR__4857423[( VAR__8444594 - 1 ) - VAR__53647];
+            VAR__4857423[( VAR__8444594 - 1 ) - VAR__53647] = VAR__TEMP;
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+         {
+            printf("%c", VAR__4857423[VAR__53647]);
+         }
+
+         printf("\n");
+      }
+   }
+}

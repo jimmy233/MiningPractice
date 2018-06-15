@@ -1,0 +1,67 @@
+int main()
+{
+   char VAR_1238123[100];
+   int  VAR__NUM[100];
+   int  VAR_666[99];
+   int  VAR__53647;
+   int  VAR__1111;
+   int  l2         = 0;
+   int  VAR_129012 = 0;
+
+   cin.getline(VAR_1238123, 100);
+   VAR__1111 = strlen(VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = VAR_1238123[VAR__53647] - '0';
+   }
+
+   if ( VAR__1111 == 2 )
+   {
+      VAR_129012 = (( VAR__NUM[0] * 10 ) + VAR__NUM[1] ) % 13;
+      VAR_666[0] = (( VAR__NUM[0] * 10 ) + VAR__NUM[1] ) / 13;
+      l2++;
+   }
+   else
+   if ( VAR__1111 == 1 )
+   {
+      VAR_666[0] = 0;
+      VAR_129012 = VAR__NUM[0];
+      l2++;
+   }
+   else
+   if ((( VAR__NUM[0] * 10 ) + VAR__NUM[1] ) < 13 )
+   {
+      VAR_666[0] = ((( VAR__NUM[0] * 100 ) + ( VAR__NUM[1] * 10 )) + VAR__NUM[2] ) / 13;
+      VAR_129012 = ((( VAR__NUM[0] * 100 ) + ( VAR__NUM[1] * 10 )) + VAR__NUM[2] ) % 13;
+      l2++;
+      for ( VAR__53647 = 2; VAR__53647 < ( VAR__1111 - 1 ); VAR__53647++ )
+      {
+         VAR_666[VAR__53647 - 1] = (( VAR_129012 * 10 ) + VAR__NUM[VAR__53647 + 1] ) / 13;
+         VAR_129012 = (( VAR_129012 * 10 ) + VAR__NUM[VAR__53647 + 1] ) - ( VAR_666[VAR__53647 - 1] * 13 );
+         l2++;
+      }
+   }
+   else
+   {
+      VAR_666[0] = (( VAR__NUM[0] * 10 ) + VAR__NUM[1] ) / 13;
+      VAR_129012 = (( VAR__NUM[0] * 10 ) + VAR__NUM[1] ) - ( VAR_666[0] * 13 );
+      l2++;
+      for ( VAR__53647 = 1; VAR__53647 < ( VAR__1111 - 1 ); VAR__53647++ )
+      {
+         VAR_666[VAR__53647] = (( VAR_129012 * 10 ) + VAR__NUM[VAR__53647 + 1] ) / 13;
+         VAR_129012          = (( VAR_129012 * 10 ) + VAR__NUM[VAR__53647 + 1] ) - ( VAR_666[VAR__53647] * 13 );
+         l2++;
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < l2; VAR__53647++ )
+   {
+      cout << VAR_666[VAR__53647];
+   }
+
+   cout << endl;
+   ( cout << VAR_129012 ) << endl;
+   return 0;
+}

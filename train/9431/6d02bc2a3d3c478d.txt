@@ -1,0 +1,58 @@
+struct link
+{
+   char        VAR__819283[10][100];
+   struct link *VAR__NEXT;
+};
+struct link *now;
+struct link *past;
+int         VAR__53647;
+int         VAR_1238123 = 1;
+void build()
+{
+   while ( 1 )
+   {
+      now = (struct link *)malloc(sizeof( struct link ));
+      scanf("%s", now->VAR__819283[0]);
+
+      if ( strcmp(now->VAR__819283[0], "end") == 0 )
+      {
+         return;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < 6; VAR__53647++ )
+      {
+         scanf("%s", now->VAR__819283[VAR__53647]);
+      }
+
+      if ( VAR_1238123 == 1 )
+      {
+         now->VAR__NEXT = NULL;
+      }
+      else
+      {
+         now->VAR__NEXT = past;
+      }
+
+      past = now;
+      VAR_1238123++;
+   }
+}
+
+
+void main()
+{
+   build();
+   now = past;
+
+   while ( now != NULL )
+   {
+      printf("%s", now->VAR__819283[0]);
+      for ( VAR__53647 = 1; VAR__53647 < 6; VAR__53647++ )
+      {
+         printf(" %s", now->VAR__819283[VAR__53647]);
+      }
+
+      printf("\n");
+      now = now->VAR__NEXT;
+   }
+}

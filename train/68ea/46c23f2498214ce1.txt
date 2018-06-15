@@ -1,0 +1,66 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  zimu[27] = { 0 };
+   int  loci[27] = { 0 };
+   int  minadr   = 100009;
+   int  VAR_FLAG = 0;
+   char A_STRING[100001];
+   char VAR__NUM[10];
+   char *A_POINTER;
+   char list[27];
+
+   gets(VAR__NUM);
+   VAR_1238123 = atoi(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      gets(A_STRING);
+      for ( VAR__21230 = 0; ( *( VAR__21230 + A_STRING )) != '\0'; VAR__21230++ )
+      {
+         A_POINTER = VAR__21230 + A_STRING;
+         *((( zimu + ( *A_POINTER )) - 'a' ) + 1 ) += 1;
+
+         if (( *((( zimu + ( *A_POINTER )) - 'a' ) + 1 )) == 1 )
+         {
+            *((( loci + ( *A_POINTER )) - 'a' ) + 1 ) = VAR__21230;
+         }
+      }
+
+      for ( VAR__21230 = 1; VAR__21230 < 27; VAR__21230++ )
+      {
+         if (( *( zimu + VAR__21230 )) == 1 )
+         {
+            if (( *( loci + VAR__21230 )) < minadr )
+            {
+               minadr = *( loci + VAR__21230 );
+            }
+
+            VAR_FLAG = 1;
+         }
+      }
+
+      if ( VAR_FLAG )
+      {
+         printf("%c\n", *( A_STRING + minadr ));
+      }
+      else
+      {
+         printf("no\n");
+      }
+
+      for ( VAR__21230 = 1; VAR__21230 < 27; VAR__21230++ )
+      {
+         *( zimu + VAR__21230 ) = 0;
+         *( loci + VAR__21230 ) = 0;
+         minadr   = 100009;
+         VAR_FLAG = 0;
+      }
+
+      minadr   = 100009;
+      VAR_FLAG = 0;
+   }
+
+   return 0;
+}

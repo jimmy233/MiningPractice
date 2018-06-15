@@ -1,0 +1,80 @@
+int main()
+{
+   int year[2];
+   int month[2];
+   int day[2];
+   int days     = 0;
+   int VAR_FLAG = 0;
+   int VAR__53647;
+   int VAR__21230;
+
+   ((((( cin >> year[0] ) >> month[0] ) >> day[0] ) >> year[1] ) >> month[1] ) >> day[1];
+   int leap_year[2][12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   for ( VAR__53647 = year[0] + 1; VAR__53647 < year[1]; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         days += 366;
+      }
+      else
+      {
+         days += 365;
+      }
+   }
+
+   if ( year[0] != year[1] )
+   {
+      for ( VAR__53647 = month[0]; VAR__53647 < 12; VAR__53647++ )
+      {
+         if (((( year[0] % 4 ) == 0 ) && (( year[0] % 100 ) != 0 )) || (( year[0] % 400 ) == 0 ))
+         {
+            days    += leap_year[1][VAR__53647];
+            VAR_FLAG = 1;
+         }
+         else
+         {
+            days += leap_year[0][VAR__53647];
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( month[1] - 1 ); VAR__53647++ )
+      {
+         if (((( year[1] % 4 ) == 0 ) && (( year[1] % 100 ) != 0 )) || (( year[1] % 400 ) == 0 ))
+         {
+            days += leap_year[1][VAR__53647];
+         }
+         else
+         {
+            days += leap_year[0][VAR__53647];
+         }
+      }
+
+      days = (( days + day[1] ) + leap_year[VAR_FLAG][month[0] - 1] ) - day[0];
+   }
+   else
+   if ( month[0] != month[1] )
+   {
+      for ( VAR__53647 = month[0]; VAR__53647 < ( month[1] - 1 ); VAR__53647++ )
+      {
+         if (((( year[0] % 4 ) == 0 ) && (( year[0] % 100 ) != 0 )) || (( year[0] % 400 ) == 0 ))
+         {
+            days    += leap_year[1][VAR__53647];
+            VAR_FLAG = 1;
+         }
+         else
+         {
+            days += leap_year[0][VAR__53647];
+         }
+      }
+
+      days = (( days + day[1] ) + leap_year[VAR_FLAG][month[0] - 1] ) - day[0];
+   }
+   else
+   {
+      days = ( days + day[1] ) - day[0];
+   }
+
+
+   ( cout << days ) << endl;
+   return 0;
+}

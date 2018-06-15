@@ -1,0 +1,68 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__temp;
+   int  shang;
+   int  yu;
+   int  VAR__TEMP = 0;
+   char mult1[LEN_OF_STH];
+
+   scanf("%s", mult1);
+   int len1 = strlen(mult1);
+   int *c1  = (int *)malloc(( sizeof( int )) * len1);
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      c1[VAR__53647] = ((int)mult1[VAR__53647] ) - 48;
+   }
+
+   int *result = (int *)malloc(( sizeof( int )) * len1);
+
+   if (((( len1 == 2 ) && ( c1[len1 - 2] == 1 )) && ( c1[len1 - 1] < 3 )) || ( len1 == 1 ))
+   {
+      printf("0\n");
+
+      if ( len1 == 2 )
+      {
+         printf("%d", c1[len1 - 1] + ( c1[len1 - 2] * 10 ));
+      }
+      else
+      {
+         printf("%d", c1[len1 - 1]);
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( len1 - 1 ); VAR__53647++ )
+      {
+         VAR__temp          = ( c1[VAR__53647] * 10 ) + c1[VAR__53647 + 1];
+         shang              = VAR__temp / 13;
+         result[VAR__21230] = shang;
+         VAR__21230++;
+         yu = VAR__temp % 13;
+         c1[VAR__53647 + 1] = yu;
+      }
+
+      if ( result[0] != 0 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( len1 - 1 ); VAR__53647++ )
+         {
+            printf("%d", result[VAR__53647]);
+         }
+      }
+      else
+      {
+         for ( VAR__53647 = 1; VAR__53647 < ( len1 - 1 ); VAR__53647++ )
+         {
+            printf("%d", result[VAR__53647]);
+         }
+      }
+
+      printf("\n");
+      printf("%d", yu);
+   }
+
+   free(c1);
+   free(result);
+   return 0;
+}

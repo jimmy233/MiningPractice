@@ -1,0 +1,87 @@
+int main()
+{
+   char zfc[10000];
+   char VAR__819283[100];
+   char VAR__19328[100];
+   int  VAR__53647;
+   int  lone;
+   int  ltwo;
+   int  lthree;
+   int  VAR__8444594;
+   int  shuzu[10000] = { 0 };
+   int  VAR_233      = 0;
+   int  VAR__COUNT[10000];
+
+   gets(zfc);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   lone   = strlen(zfc);
+   ltwo   = strlen(VAR__819283);
+   lthree = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < (( lone - ltwo ) + 1 ); VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < ltwo; VAR__8444594++ )
+         {
+            if ( zfc[VAR__8444594] == VAR__819283[VAR__8444594] )
+            {
+               VAR__COUNT[VAR__53647] += 1;
+            }
+         }
+
+         if (( VAR__COUNT[VAR__53647] == ltwo ) && ( zfc[ltwo] == ' ' ))
+         {
+            shuzu[VAR__53647] = 1;
+         }
+      }
+      else
+      if (( VAR__53647 > 0 ) && ( VAR__53647 < ( lone - ltwo )))
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < ltwo; VAR__8444594++ )
+         {
+            if ( zfc[VAR__8444594 + VAR__53647] == VAR__819283[VAR__8444594] )
+            {
+               VAR__COUNT[VAR__53647] += 1;
+            }
+         }
+
+         if ((( VAR__COUNT[VAR__53647] == ltwo ) && ( zfc[VAR__53647 + ltwo] == ' ' )) && ( zfc[VAR__53647 - 1] == ' ' ))
+         {
+            shuzu[VAR__53647] = 1;
+         }
+      }
+      else
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < ltwo; VAR__8444594++ )
+         {
+            if ( zfc[VAR__8444594 + VAR__53647] == VAR__819283[VAR__8444594] )
+            {
+               VAR__COUNT[VAR__53647] += 1;
+            }
+         }
+
+         if (( VAR__COUNT[VAR__53647] == ltwo ) && ( zfc[VAR__53647 - 1] == ' ' ))
+         {
+            shuzu[VAR__53647] = 1;
+         }
+      }
+   }
+
+   while ( VAR_233 < lone )
+   {
+      if ( shuzu[VAR_233] == 0 )
+      {
+         printf("%c", zfc[VAR_233]);
+      }
+      else
+      {
+         printf("%s", VAR__19328);
+         VAR_233 = ( VAR_233 + ltwo ) - 1;
+      }
+
+      VAR_233++;
+   }
+
+   return 0;
+}

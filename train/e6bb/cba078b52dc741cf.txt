@@ -1,0 +1,55 @@
+int board[11][11]     = { 0 };
+int VAR__TEMP[11][11] = { 0 };
+void increase(int day)
+{
+   if ( day == 0 )
+   {
+      return;
+   }
+
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < 10; VAR__21230++ )
+      {
+         VAR__TEMP[VAR__53647 + 1][VAR__21230 + 1] += board[VAR__53647][VAR__21230];
+         VAR__TEMP[VAR__53647 + 1][VAR__21230 - 1] += board[VAR__53647][VAR__21230];
+         VAR__TEMP[VAR__53647 - 1][VAR__21230 - 1] += board[VAR__53647][VAR__21230];
+         VAR__TEMP[VAR__53647 - 1][VAR__21230 + 1] += board[VAR__53647][VAR__21230];
+         VAR__TEMP[VAR__53647 - 1][VAR__21230]     += board[VAR__53647][VAR__21230];
+         VAR__TEMP[VAR__53647 + 1][VAR__21230]     += board[VAR__53647][VAR__21230];
+         VAR__TEMP[VAR__53647][VAR__21230 - 1]     += board[VAR__53647][VAR__21230];
+         VAR__TEMP[VAR__53647][VAR__21230 + 1]     += board[VAR__53647][VAR__21230];
+         VAR__TEMP[VAR__53647][VAR__21230]         += board[VAR__53647][VAR__21230];
+      }
+   }
+
+   memcpy(board, VAR__TEMP, ( sizeof( int )) * 121);
+   return increase(day - 1);
+}
+
+
+int main()
+{
+   int VAR__NUM;
+   int day;
+   int VAR__53647;
+   int VAR__21230;
+
+   ( cin >> VAR__NUM ) >> day;
+   board[5][5]     = VAR__NUM;
+   VAR__TEMP[5][5] = VAR__NUM;
+   increase(day);
+   for ( VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+      {
+         ( cout << VAR__TEMP[VAR__53647][VAR__21230] ) << " ";
+      }
+
+      ( cout << VAR__TEMP[VAR__53647][VAR__21230] ) << endl;
+   }
+
+   return 0;
+}

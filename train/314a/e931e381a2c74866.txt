@@ -1,0 +1,89 @@
+int main()
+{
+   int  timepoint[1000] = { 0 };
+   int  npeople         = 0;
+   char ch[10000]       = { '\0' };
+   int  intime[1000]    = { 0 };
+   int  outtime[1000]   = { 0 };
+   char intimech[1000][1000];
+   char outtimech[1000][1000];
+
+   for ( int VAR__53647 = 0; VAR__53647 <= 999; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 <= 999; VAR__21230++ )
+      {
+         intimech[VAR__53647][VAR__21230]  = '\0';
+         outtimech[VAR__53647][VAR__21230] = '\0';
+      }
+   }
+
+
+   cin.getline(ch, 10000);
+   int i1 = 0;
+   int i2 = 0;
+   for ( int VAR__53647 = 0; VAR__53647 <= strlen(ch); VAR__53647++ )
+   {
+      if ( ch[VAR__53647] != ',' )
+      {
+         intimech[i1][i2] = ch[VAR__53647];
+         i2++;
+      }
+
+      if ( ch[VAR__53647] == ',' )
+      {
+         i1++;
+         i2 = 0;
+         npeople++;
+      }
+   }
+
+   npeople = npeople + 1;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( npeople - 1 ); VAR__53647++ )
+   {
+      intime[VAR__53647] = atoi(intimech[VAR__53647]);
+   }
+
+   memset(ch, '\0', 10000);
+   cin.getline(ch, 10000);
+   i1 = 0;
+   i2 = 0;
+   for ( int VAR__53647 = 0; VAR__53647 <= strlen(ch); VAR__53647++ )
+   {
+      if ( ch[VAR__53647] != ',' )
+      {
+         outtimech[i1][i2] = ch[VAR__53647];
+         i2++;
+      }
+
+      if ( ch[VAR__53647] == ',' )
+      {
+         i1++;
+         i2 = 0;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( npeople - 1 ); VAR__53647++ )
+   {
+      outtime[VAR__53647] = atoi(outtimech[VAR__53647]);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( npeople - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = intime[VAR__53647]; VAR__21230 <= ( outtime[VAR__53647] - 1 ); VAR__21230++ )
+      {
+         timepoint[VAR__21230]++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( int VAR__53647 = 0; VAR__53647 <= 999; VAR__53647++ )
+   {
+      if ( timepoint[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = timepoint[VAR__53647];
+      }
+   }
+
+   ((( cout << npeople ) << " " ) << VAR__MAX ) << endl;
+   return 0;
+}

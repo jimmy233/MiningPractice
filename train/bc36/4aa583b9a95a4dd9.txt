@@ -1,0 +1,86 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct student
+   {
+      char  gender[7];
+      float VAR_2890;
+   };
+   struct student stu[40];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", stu[VAR__53647].gender, &stu[VAR__53647].VAR_2890);
+   }
+
+   float VAR__819283[40];
+   float VAR__19328[40];
+   char  VAR__1238129[5] = "male";
+   int   VAR__21230      = 0;
+   int   VAR__temp       = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(stu[VAR__53647].gender, VAR__1238129) == 0 )
+      {
+         VAR__819283[VAR__21230] = stu[VAR__53647].VAR_2890;
+         VAR__21230++;
+      }
+      else
+      {
+         VAR__19328[VAR__temp] = stu[VAR__53647].VAR_2890;
+         VAR__temp++;
+      }
+   }
+
+   int   VAR__8444594;
+   int   VAR_666;
+   float VAR__112390;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR_666 = VAR__53647 + 1; VAR_666 < VAR__21230; VAR_666++ )
+      {
+         if ( VAR__819283[VAR__8444594] > VAR__819283[VAR_666] )
+         {
+            VAR__8444594 = VAR_666;
+         }
+      }
+
+
+      VAR__112390 = VAR__819283[VAR__8444594];
+      VAR__819283[VAR__8444594] = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647]   = VAR__112390;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR_666 = VAR__53647 + 1; VAR_666 < VAR__temp; VAR_666++ )
+      {
+         if ( VAR__19328[VAR__8444594] < VAR__19328[VAR_666] )
+         {
+            VAR__8444594 = VAR_666;
+         }
+      }
+
+
+      VAR__112390 = VAR__19328[VAR__8444594];
+      VAR__19328[VAR__8444594] = VAR__19328[VAR__53647];
+      VAR__19328[VAR__53647]   = VAR__112390;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%.2f ", VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", VAR__19328[VAR__53647]);
+   }
+
+   printf("%.2f", VAR__19328[VAR__temp - 1]);
+   return 0;
+}

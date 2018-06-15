@@ -1,0 +1,72 @@
+struct bingren
+{
+   char id[20];
+   int  age;
+}
+bing[100] = { '\0', 0 };
+struct laoren
+{
+   char oid[20];
+   int  oage;
+}
+lao[100] = { '\0', 0 };
+void main()
+{
+   int           VAR_1238123;
+   int           VAR__53647;
+   int           VAR__21230 = 0;
+   int           VAR__1111;
+   struct laoren VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", bing[VAR__53647].id);
+      scanf("%d", &bing[VAR__53647].age);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( bing[VAR__53647].age >= 60 )
+      {
+         strcpy(lao[VAR__21230].oid, bing[VAR__53647].id);
+         lao[VAR__21230].oage = bing[VAR__53647].age;
+         bing[VAR__53647].age = -1;
+         VAR__21230++;
+      }
+      else
+      {
+         continue;
+      }
+   }
+
+   for ( VAR__1111 = 0; VAR__1111 < VAR__21230; VAR__1111++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - VAR__1111 ); VAR__53647++ )
+      {
+         if ( lao[VAR__53647].oage < lao[VAR__53647 + 1].oage )
+         {
+            VAR__TEMP           = lao[VAR__53647];
+            lao[VAR__53647]     = lao[VAR__53647 + 1];
+            lao[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 + 1 ); VAR__53647++ )
+   {
+      printf("%s\n", lao[VAR__53647].oid);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( bing[VAR__53647].age >= 0 )
+      {
+         printf("%s\n", bing[VAR__53647].id);
+      }
+      else
+      {
+         continue;
+      }
+   }
+}

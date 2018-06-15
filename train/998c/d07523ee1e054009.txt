@@ -1,0 +1,71 @@
+int main()
+{
+   char s1[1000];
+   char s2[1000];
+   char ANOTHER_STRING[1000];
+   char YET_ANOTHER_STRING[1000];
+   int  VAR__53647;
+   int  len1;
+   int  len2;
+   int  VAR__21230;
+   int  VAR__SUM[1000] = { 0 };
+   int  VAR__MAX;
+   int  num1[1000] = { 0 };
+   int  num2[1000] = { 0 };
+   int  hash       = 0;
+
+   cin.getline(s1, 1000);
+   cin.getline(s2, 1000);
+   len1 = strlen(s1);
+   len2 = strlen(s2);
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      ANOTHER_STRING[VAR__53647] = s1[( len1 - 1 ) - VAR__53647];
+      num1[VAR__53647]           = (int)( ANOTHER_STRING[VAR__53647] - '0' );
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      YET_ANOTHER_STRING[VAR__53647] = s2[( len2 - 1 ) - VAR__53647];
+      num2[VAR__53647] = (int)( YET_ANOTHER_STRING[VAR__53647] - '0' );
+   }
+
+   if ( len1 >= len2 )
+   {
+      VAR__MAX = len1;
+   }
+   else
+   {
+      VAR__MAX = len2;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647] += num1[VAR__53647] + num2[VAR__53647];
+
+      if ( VAR__SUM[VAR__53647] >= 10 )
+      {
+         VAR__SUM[VAR__53647 + 1] += 1;
+         VAR__SUM[VAR__53647]     -= 10;
+      }
+   }
+
+   while ( VAR__SUM[VAR__MAX] )
+   {
+      VAR__MAX++;
+   }
+
+   while (( VAR__MAX > 1 ) && ( !VAR__SUM[VAR__MAX - 1] ))
+   {
+      VAR__MAX--;
+   }
+
+   for ( VAR__53647 = VAR__MAX - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << VAR__SUM[VAR__53647];
+   }
+
+   int VAR__7685;
+   cin >> VAR__7685;
+   return 0;
+}

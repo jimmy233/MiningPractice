@@ -1,0 +1,71 @@
+int xToTen(int VAR__7685, char VAR__4857423[])
+{
+   int VAR__53647;
+   int lenth;
+   int ten;
+   int VAR__NUM;
+
+   lenth = strlen(VAR__4857423);
+   for ( VAR__53647 = 0, ten = 0; VAR__53647 < lenth; VAR__53647++ )
+   {
+      if (( VAR__4857423[VAR__53647] >= '0' ) && ( VAR__4857423[VAR__53647] <= '9' ))
+      {
+         VAR__NUM = VAR__4857423[VAR__53647] - '0';
+      }
+
+      if (( VAR__4857423[VAR__53647] >= 'A' ) && ( VAR__4857423[VAR__53647] <= 'Z' ))
+      {
+         VAR__NUM = ( VAR__4857423[VAR__53647] - 'A' ) + 10;
+      }
+
+      if (( VAR__4857423[VAR__53647] >= 'a' ) && ( VAR__4857423[VAR__53647] <= 'z' ))
+      {
+         VAR__NUM = ( VAR__4857423[VAR__53647] - 'a' ) + 10;
+      }
+
+      ten = ( ten * VAR__7685 ) + VAR__NUM;
+   }
+
+   return ten;
+}
+
+
+void tenToYout(int ten, int VAR__3918907)
+{
+   int VAR__819283[100];
+   int VAR__53647;
+   int lenth;
+
+   for ( lenth = 0; ten >= VAR__3918907; lenth++ )
+   {
+      VAR__819283[lenth] = ten % VAR__3918907;
+      ten /= VAR__3918907;
+   }
+
+   VAR__819283[lenth] = ten;
+   for ( VAR__53647 = lenth; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__53647] < 10 )
+      {
+         cout << VAR__819283[VAR__53647];
+      }
+      else
+      {
+         cout << ((char)(( VAR__819283[VAR__53647] - 10 ) + 'A' ));
+      }
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   char VAR__4857423[100];
+   int  VAR__7685;
+   int  VAR__3918907;
+
+   (( cin >> VAR__7685 ) >> VAR__4857423 ) >> VAR__3918907;
+   tenToYout(xToTen(VAR__7685, VAR__4857423), VAR__3918907);
+   return 0;
+}

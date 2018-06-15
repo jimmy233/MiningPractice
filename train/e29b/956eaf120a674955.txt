@@ -1,0 +1,65 @@
+float gap(int VAR__7685, float VAR__3918907)
+{
+   float VAR__9290;
+
+   if ( VAR__7685 > VAR__3918907 )
+   {
+      VAR__9290 = VAR__7685 - VAR__3918907;
+   }
+   else
+   {
+      VAR__9290 = VAR__3918907 - VAR__7685;
+   }
+
+   return VAR__9290;
+}
+
+
+void main()
+{
+   int   VAR__NUM[300];
+   float VAR_9Q8Q90;
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230 = 0;
+   float ave        = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__NUM[VAR__53647]);
+      ave += VAR__NUM[VAR__53647];
+   }
+
+   ave = ave / VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if (( gap(VAR__NUM[VAR__53647], ave) < gap(VAR__NUM[VAR__53647 + 1], ave)) && ( gap(VAR__NUM[VAR__53647 + 1], ave) > VAR_9Q8Q90 ))
+      {
+         VAR_9Q8Q90 = gap(VAR__NUM[VAR__53647 + 1], ave);
+      }
+
+      if (( gap(VAR__NUM[VAR__53647], ave) > gap(VAR__NUM[VAR__53647 + 1], ave)) && ( gap(VAR__NUM[VAR__53647], ave) > VAR_9Q8Q90 ))
+      {
+         VAR_9Q8Q90 = gap(VAR__NUM[VAR__53647], ave);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( gap(VAR__NUM[VAR__53647], ave) == VAR_9Q8Q90 )
+      {
+         printf("%d", VAR__NUM[VAR__53647]);
+         VAR__21230 = VAR__53647 + 1;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = VAR__21230; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( gap(VAR__NUM[VAR__53647], ave) == VAR_9Q8Q90 )
+      {
+         printf(",%d", VAR__NUM[VAR__53647]);
+      }
+   }
+}

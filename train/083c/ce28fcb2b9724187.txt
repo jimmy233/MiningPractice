@@ -1,0 +1,73 @@
+int turn(char VAR__NUM)
+{
+   if (( VAR__NUM >= '0' ) && ( VAR__NUM <= '9' ))
+   {
+      return VAR__NUM - 48;
+   }
+
+   if (( VAR__NUM >= 'a' ) && ( VAR__NUM <= 'z' ))
+   {
+      return VAR__NUM - 87;
+   }
+
+   if (( VAR__NUM >= 'A' ) && ( VAR__NUM <= 'Z' ))
+   {
+      return VAR__NUM - 55;
+   }
+}
+
+
+char turn(int VAR__NUM)
+{
+   if (( VAR__NUM >= 0 ) && ( VAR__NUM <= 9 ))
+   {
+      return VAR__NUM + 48;
+   }
+
+   if (( VAR__NUM >= 10 ) && ( VAR__NUM <= 36 ))
+   {
+      return VAR__NUM + 55;
+   }
+}
+
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647 = -1;
+   int  VAR__21230 = 0;
+   int  VAR_9494;
+   long VAR__TEMP = 0;
+   long temp1     = 0;
+   char VAR__NUM[8 * ( sizeof( long ))] = { '\0' };
+   int  num1[8 * ( sizeof( long ))]     = { 0 };
+
+   cin >> VAR__819283;
+   cin.get();
+   do
+   {
+      VAR__53647++;
+      VAR__NUM[VAR__53647] = cin.get();
+   } while ( VAR__NUM[VAR__53647] != ' ' );
+   cin >> VAR__19328;
+   for ( ; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      VAR__TEMP += turn(VAR__NUM[VAR__21230]) * pow((double)VAR__819283, ( VAR__53647 - VAR__21230 ) - 1);
+   }
+
+   temp1 = VAR__TEMP;
+   for ( VAR__53647 = 0; temp1 > 0; VAR__53647++ )
+   {
+      num1[VAR__53647] = temp1 % VAR__19328;
+      temp1            = temp1 / VAR__19328;
+   }
+
+   for ( VAR__21230 = VAR__53647 - 1; VAR__21230 > 0; VAR__21230-- )
+   {
+      cout << turn(num1[VAR__21230]);
+   }
+
+   cout << turn(num1[0]);
+   return 0;
+}

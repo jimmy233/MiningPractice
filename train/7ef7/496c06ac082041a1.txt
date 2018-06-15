@@ -1,0 +1,97 @@
+int VAR__819283[100][100];
+int VAR_1238123;
+int juzhen()
+{
+   int j1;
+   int j2;
+   int j3;
+   int j4;
+   int j5;
+   int VAR__MIN;
+   int VAR__SUM = 0;
+
+   for ( j1 = VAR_1238123; j1 > 1; j1-- )
+   {
+      for ( j2 = 0; j2 < j1; j2++ )
+      {
+         VAR__MIN = VAR__819283[j2][0];
+         for ( j3 = 0; j3 < j1; j3++ )
+         {
+            if ( VAR__819283[j2][j3] < VAR__MIN )
+            {
+               VAR__MIN = VAR__819283[j2][j3];
+            }
+         }
+
+         for ( j3 = 0; j3 < j1; j3++ )
+         {
+            VAR__819283[j2][j3] = VAR__819283[j2][j3] - VAR__MIN;
+         }
+      }
+
+      for ( j4 = 0; j4 < j1; j4++ )
+      {
+         VAR__MIN = VAR__819283[0][j4];
+         for ( j5 = 0; j5 < j1; j5++ )
+         {
+            if ( VAR__819283[j5][j4] < VAR__MIN )
+            {
+               VAR__MIN = VAR__819283[j5][j4];
+            }
+         }
+
+         for ( j5 = 0; j5 < j1; j5++ )
+         {
+            VAR__819283[j5][j4] = VAR__819283[j5][j4] - VAR__MIN;
+         }
+      }
+
+      VAR__SUM = VAR__SUM + VAR__819283[1][1];
+      for ( j2 = 0; j2 < j1; j2++ )
+      {
+         for ( j3 = 0; j3 < j1; j3++ )
+         {
+            if (( j2 == 0 ) && ( j3 > 1 ))
+            {
+               VAR__819283[j2][j3 - 1] = VAR__819283[j2][j3];
+            }
+
+            if (( j3 == 0 ) && ( j2 > 1 ))
+            {
+               VAR__819283[j2 - 1][j3] = VAR__819283[j2][j3];
+            }
+
+            if (( j2 > 1 ) && ( j3 > 1 ))
+            {
+               VAR__819283[j2 - 1][j3 - 1] = VAR__819283[j2][j3];
+            }
+         }
+      }
+   }
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int m1;
+   int m2;
+   int m3;
+   int VAR__SUM;
+
+   cin >> VAR_1238123;
+   for ( m1 = 1; m1 <= VAR_1238123; m1++ )
+   {
+      for ( m2 = 0; m2 < VAR_1238123; m2++ )
+      {
+         for ( m3 = 0; m3 < VAR_1238123; m3++ )
+         {
+            cin >> VAR__819283[m2][m3];
+         }
+      }
+
+      VAR__SUM = juzhen();
+      ( cout << VAR__SUM ) << endl;
+   }
+}

@@ -1,0 +1,74 @@
+int main()
+{
+   int fnum = 0;
+   int mnum = 0;
+   int VAR__NUM;
+
+   cin >> VAR__NUM;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__8444594;
+   float VAR__TEMP;
+   float fe[50];
+   float ma[50];
+   float height;
+   float res[50];
+   char  xinbie[50][10];
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      scanf("%s %f", &xinbie[VAR__53647], &height);
+
+      if ( xinbie[VAR__53647][0] == 'f' )
+      {
+         fnum    += 1;
+         fe[fnum] = height;
+      }
+      else
+      {
+         mnum    += 1;
+         ma[mnum] = height;
+      }
+   }
+
+   for ( VAR__53647 = fnum; VAR__53647 > 1; VAR__53647-- )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( fe[VAR__21230] > fe[VAR__21230 + 1] )
+         {
+            VAR__TEMP          = fe[VAR__21230];
+            fe[VAR__21230]     = fe[VAR__21230 + 1];
+            fe[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = mnum; VAR__53647 > 1; VAR__53647-- )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( ma[VAR__21230] > ma[VAR__21230 + 1] )
+         {
+            VAR__TEMP          = ma[VAR__21230];
+            ma[VAR__21230]     = ma[VAR__21230 + 1];
+            ma[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   char out[10];
+   for ( VAR__53647 = 1; VAR__53647 <= mnum; VAR__53647++ )
+   {
+      printf("%.2f ", ma[VAR__53647]);
+   }
+
+   for ( VAR__53647 = fnum; VAR__53647 >= 2; VAR__53647-- )
+   {
+      printf("%.2f ", fe[VAR__53647]);
+   }
+
+   printf("%.2f", fe[1]);
+   return 0;
+}

@@ -1,0 +1,96 @@
+int compare(const void *VAR__819283, const void *VAR__19328)
+{
+   if (( *((float *)VAR__819283 )) > ( *((float *)VAR__19328 )))
+   {
+      return 1;
+   }
+
+   if (( *((float *)VAR__819283 )) < ( *((float *)VAR__19328 )))
+   {
+      return -1;
+   }
+
+   if (( *((float *)VAR__819283 )) == ( *((float *)VAR__19328 )))
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int   N;
+   int   VAR__53647;
+   int   v;
+   int   VAR__temp;
+   int   VAR__21230;
+   float VAR_129012;
+
+   scanf("%d", &N);
+   struct kids
+   {
+      char  VAR_9494[10];
+      float VAR_2890;
+   }
+        kid[40];
+   char VAR__4857423;
+   for ( VAR__53647 = 0; VAR__53647 <= ( N - 1 ); VAR__53647++ )
+   {
+      scanf("%s ", kid[VAR__53647].VAR_9494);
+      scanf("%f", &kid[VAR__53647].VAR_2890);
+   }
+
+   float hm[40];
+   float fm[40];
+   for ( VAR__53647 = 0, VAR__temp = 0, v = 0; VAR__53647 <= ( N - 1 ); VAR__53647++ )
+   {
+      if ( strcmp(kid[VAR__53647].VAR_9494, "male") == 0 )
+      {
+         hm[VAR__temp] = kid[VAR__53647].VAR_2890;
+         VAR__temp     = VAR__temp + 1;
+      }
+
+      if ( strcmp(kid[VAR__53647].VAR_9494, "female") == 0 )
+      {
+         fm[v] = kid[VAR__53647].VAR_2890;
+         v     = v + 1;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= (( VAR__temp - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( hm[VAR__21230] >= hm[VAR__21230 + 1] )
+         {
+            VAR_129012         = hm[VAR__21230];
+            hm[VAR__21230]     = hm[VAR__21230 + 1];
+            hm[VAR__21230 + 1] = VAR_129012;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( v - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= (( v - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( fm[VAR__21230] <= fm[VAR__21230 + 1] )
+         {
+            VAR_129012         = fm[VAR__21230];
+            fm[VAR__21230]     = fm[VAR__21230 + 1];
+            fm[VAR__21230 + 1] = VAR_129012;
+         }
+      }
+   }
+
+   printf("%.2f", hm[0]);
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      printf(" %.2f", hm[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( v - 1 ); VAR__53647++ )
+   {
+      printf(" %.2f", fm[VAR__53647]);
+   }
+}

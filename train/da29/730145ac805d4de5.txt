@@ -1,0 +1,69 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__1238129;
+   int  VAR__SUM = 0;
+   char VAR__7685;
+   char room[N][N];
+   char room2[N][N];
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> room[VAR__53647][VAR__21230];
+      }
+   }
+
+   memcpy(room2, room, N * N);
+   cin >> VAR__1238129;
+   for ( int VAR__127322 = 1; VAR__127322 <= ( VAR__1238129 - 1 ); VAR__127322++ )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( room[VAR__53647][VAR__21230] == '@' )
+            {
+               if ( room[VAR__53647 + 1][VAR__21230] == '.' )
+               {
+                  room2[VAR__53647 + 1][VAR__21230] = '@';
+               }
+
+               if ( room[VAR__53647 - 1][VAR__21230] == '.' )
+               {
+                  room2[VAR__53647 - 1][VAR__21230] = '@';
+               }
+
+               if ( room[VAR__53647][VAR__21230 + 1] == '.' )
+               {
+                  room2[VAR__53647][VAR__21230 + 1] = '@';
+               }
+
+               if ( room[VAR__53647][VAR__21230 - 1] == '.' )
+               {
+                  room2[VAR__53647][VAR__21230 - 1] = '@';
+               }
+            }
+         }
+      }
+
+      memcpy(room, room2, N * N);
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( room2[VAR__53647][VAR__21230] == '@' )
+         {
+            VAR__SUM++;
+         }
+      }
+   }
+
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

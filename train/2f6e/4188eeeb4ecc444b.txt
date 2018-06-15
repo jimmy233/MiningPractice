@@ -1,0 +1,55 @@
+int lefts(char *, char *);
+
+char boy;
+char girl;
+int main()
+{
+   char children[105] = { '\0' };
+   int  VAR__53647;
+   int  left;
+   int  right;
+   int  VAR__SUM;
+
+   cin >> children;
+   VAR__SUM = strlen(children);
+   boy      = children[0];
+   girl     = children[VAR__SUM - 1];
+   for ( VAR__53647 = 0; VAR__53647 < VAR__SUM; VAR__53647++ )
+   {
+      if ( children[VAR__53647] == girl )
+      {
+         right = VAR__53647;
+         left  = lefts(children, children + VAR__53647);
+
+         if ( VAR__53647 < ( VAR__SUM - 1 ))
+         {
+            ((( cout << left ) << " " ) << right ) << endl;
+         }
+         else
+         {
+            (( cout << left ) << " " ) << right;
+         }
+
+         children[left] = ' ';
+      }
+   }
+
+   return 0;
+}
+
+
+int lefts(char *VAR__HEAD, char *VAR_233)
+{
+   int left;
+
+   if (( *VAR_233 ) != boy )
+   {
+      left = lefts(VAR__HEAD, VAR_233 - 1);
+   }
+   else
+   {
+      left = VAR_233 - VAR__HEAD;
+   }
+
+   return left;
+}

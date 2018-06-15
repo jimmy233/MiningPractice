@@ -1,0 +1,82 @@
+struct book
+{
+   int         VAR__819283;
+   char        VAR__19328[30];
+   struct book *VAR__NEXT;
+};
+void main()
+{
+   int         VAR__53647;
+   int         VAR__8444594;
+   int         VAR__1238129;
+   int         VAR__MAX = 0;
+   int         VAR__temp;
+   char        VAR__21230;
+   char        ch;
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+
+   scanf("%d", &VAR__1238129);
+   ANOTHER_POINTER = (struct book *)calloc(1, sizeof( struct book ));
+   VAR__HEAD       = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &ANOTHER_POINTER->VAR__819283, ANOTHER_POINTER->VAR__19328);
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+      if ( VAR__53647 == ( VAR__1238129 - 1 ))
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER = (struct book *)calloc(1, sizeof( struct book ));
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+   }
+
+   for ( VAR__21230 = 'A'; VAR__21230 <= 'Z'; VAR__21230++ )
+   {
+      VAR__temp       = 0;
+      ANOTHER_POINTER = VAR__HEAD;
+
+      while ( ANOTHER_POINTER )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < strlen(ANOTHER_POINTER->VAR__19328); VAR__8444594++ )
+         {
+            if ( ANOTHER_POINTER->VAR__19328[VAR__8444594] == VAR__21230 )
+            {
+               VAR__temp++;
+            }
+         }
+
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( VAR__temp > VAR__MAX )
+      {
+         VAR__MAX = VAR__temp;
+         ch       = VAR__21230;
+      }
+   }
+
+   printf("%c\n", ch);
+   printf("%d\n", VAR__MAX);
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < strlen(ANOTHER_POINTER->VAR__19328); VAR__8444594++ )
+      {
+         if ( ANOTHER_POINTER->VAR__19328[VAR__8444594] == ch )
+         {
+            printf("%d\n", ANOTHER_POINTER->VAR__819283);
+         }
+      }
+
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

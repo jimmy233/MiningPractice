@@ -1,0 +1,58 @@
+int findmax(char VAR__819283[15])
+{
+   int maxnum = 0;
+   int VAR__MAX;
+
+   VAR__MAX = VAR__819283[0];
+   int VAR__53647;
+   int LEN_OF_STH;
+   LEN_OF_STH = strlen(VAR__819283);
+   int comp;
+   comp = VAR__819283[0];
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647 + 1] > VAR__MAX )
+      {
+         maxnum   = VAR__53647 + 1;
+         VAR__MAX = VAR__819283[VAR__53647 + 1];
+      }
+   }
+
+   return maxnum;
+}
+
+
+void main()
+{
+   int  lstr;
+   int  mnum;
+   int  VAR__53647;
+   char A_STRING[15] = { 0 };
+   char substr[5]    = { 0 };
+
+   while ( scanf("%s %s", A_STRING, substr) != EOF )
+   {
+      mnum = findmax(A_STRING);
+      lstr = strlen(A_STRING);
+      for ( VAR__53647 = lstr - 1; VAR__53647 > mnum; VAR__53647-- )
+      {
+         A_STRING[VAR__53647 + 3] = A_STRING[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+      {
+         A_STRING[( mnum + VAR__53647 ) + 1] = substr[VAR__53647];
+      }
+
+      printf("%s\n", A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 < 15; VAR__53647++ )
+      {
+         A_STRING[VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+      {
+         substr[VAR__53647] = 0;
+      }
+   }
+}

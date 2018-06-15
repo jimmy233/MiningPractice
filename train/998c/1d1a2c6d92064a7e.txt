@@ -1,0 +1,74 @@
+char s1[200];
+char s2[200];
+int  VAR__819283[200];
+int  VAR__19328[200];
+int  VAR__4857423[200];
+int  alen;
+int  blen;
+int  clen;
+int str2bigint(char *A_STRING, int *VAR__temp)
+{
+   int LEN_OF_STH = (int)strlen(A_STRING);
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__temp[VAR__53647] = A_STRING[( LEN_OF_STH - VAR__53647 ) - 1] - '0';
+   }
+
+   return LEN_OF_STH;
+}
+
+
+void print_int(int *VAR__819283)
+{
+   int VAR__8444594 = 199;
+   int VAR__53647;
+
+   while (( VAR__819283[VAR__8444594] == 0 ) && ( VAR__8444594 > 0 ))
+   {
+      VAR__8444594 = VAR__8444594 - 1;
+   }
+
+   for ( VAR__53647 = VAR__8444594; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+}
+
+
+int add_bigint(int *VAR__819283, int alen, int *VAR__19328, int blen, int *VAR__4857423)
+{
+   int VAR__53647;
+   int VAR__TEMP  = 0;
+   int tmpsum     = 0;
+   int LEN_OF_STH = ( alen > blen ) ? ( alen ) : ( blen );
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      tmpsum = ( VAR__819283[VAR__53647] + VAR__19328[VAR__53647] ) + VAR__TEMP;
+      VAR__4857423[VAR__53647] = tmpsum % 10;
+      VAR__TEMP = tmpsum / 10;
+   }
+
+   if ( VAR__TEMP != 0 )
+   {
+      VAR__4857423[LEN_OF_STH] = VAR__TEMP;
+      return LEN_OF_STH + 1;
+   }
+   else
+   {
+      return LEN_OF_STH;
+   }
+}
+
+
+int main(int argc, char *argv[])
+{
+   scanf("%s%s", s1, s2);
+   alen = str2bigint(s1, VAR__819283);
+   blen = str2bigint(s2, VAR__19328);
+   clen = add_bigint(VAR__819283, alen, VAR__19328, blen, VAR__4857423);
+   print_int(VAR__4857423);
+   return 0;
+}

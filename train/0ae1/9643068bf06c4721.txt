@@ -1,0 +1,98 @@
+int lp(int VAR__7685, int VAR__3918907)
+{
+   int VAR__9290 = 0;
+
+   if (( VAR__7685 > 2 ) && (((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 )))
+   {
+      VAR__9290 = 1;
+   }
+
+   return VAR__9290;
+}
+
+
+int main()
+{
+   unsigned int year;
+   unsigned int month;
+   unsigned int day;
+   unsigned int v        = 0;
+   unsigned int VAR__NUM = 0;
+   unsigned int VAR__53647;
+   unsigned int VAR__21230;
+   unsigned int VAR__8444594;
+   unsigned int VAR_1238123[11] = { 3, 0, 3, 2, 3, 2, 3, 3, 2, 3, 2 };
+
+   scanf("%d%d%d", &year, &month, &day);
+   VAR__21230   = ( year - 1 ) / 400;
+   VAR__8444594 = year - ( VAR__21230 * 400 );
+
+   if ( VAR__8444594 >= 100 )
+   {
+      if ( VAR__8444594 >= 200 )
+      {
+         if ( VAR__8444594 >= 300 )
+         {
+            VAR__53647 = 3;
+         }
+         else
+         {
+            VAR__53647 = 2;
+         }
+      }
+      else
+      {
+         VAR__53647 = 1;
+      }
+   }
+   else
+   {
+      VAR__53647 = 0;
+   }
+
+   v        = ((( year - 1 ) / 4 ) - ( 3 * VAR__21230 )) - VAR__53647;
+   VAR__NUM = (( year - 1 ) - v ) + ( 2 * v );
+   for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      VAR__NUM += VAR_1238123[VAR__53647];
+   }
+
+   if ( lp(month, year) == 1 )
+   {
+      VAR__NUM += 1;
+   }
+
+   VAR__NUM += day;
+   switch ( VAR__NUM % 7 )
+   {
+   case 0:
+      printf("Sun.\n");
+      break;
+
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+   }
+
+   return 0;
+}

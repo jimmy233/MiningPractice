@@ -1,0 +1,70 @@
+int tian[1001];
+int king[1001];
+int horses;
+int VAR__127322[1001][1001];
+void init()
+{
+   int VAR__53647;
+
+   memset(VAR__127322, 0xff, sizeof( VAR__127322 ));
+   for ( VAR__53647 = 0; VAR__53647 < horses; VAR__53647++ )
+   {
+      cin >> tian[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < horses; VAR__53647++ )
+   {
+      cin >> king[VAR__53647];
+   }
+
+   sort(tian, tian + horses);
+   sort(king, king + horses);
+}
+
+
+int getf(int VAR__7685, int VAR__3918907)
+{
+   if ( VAR__127322[VAR__7685][VAR__3918907] != ( -1 ))
+   {
+      return VAR__127322[VAR__7685][VAR__3918907];
+   }
+
+   if (( VAR__7685 >= horses ) || ( VAR__3918907 >= horses ))
+   {
+      return VAR__127322[VAR__7685][VAR__3918907] = 0;
+   }
+
+   if ( tian[VAR__7685] > king[VAR__3918907] )
+   {
+      return VAR__127322[VAR__7685][VAR__3918907] = getf(VAR__7685 + 1, VAR__3918907 + 1) + 200;
+   }
+
+   if ( tian[VAR__7685] < king[VAR__3918907] )
+   {
+      return VAR__127322[VAR__7685][VAR__3918907] = getf(VAR__7685 + 1, VAR__3918907) - 200;
+   }
+
+   if ( tian[VAR__7685] == king[VAR__3918907] )
+   {
+      return VAR__127322[VAR__7685][VAR__3918907] = VAR__MAX(getf(VAR__7685 + 1, VAR__3918907 + 1), getf(VAR__7685 + 1, VAR__3918907) - 200);
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   while ( cin >> horses )
+   {
+      if ( horses == 0 )
+      {
+         break;
+      }
+
+      init();
+      ( cout << getf(0, 0)) << endl;
+   }
+
+   return 0;
+}

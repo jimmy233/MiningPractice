@@ -1,0 +1,44 @@
+struct information
+{
+   char               info[50];
+   struct information *VAR__NEXT;
+};
+struct information *creat()
+{
+   struct information *VAR__HEAD;
+   struct information *ANOTHER_POINTER;
+   struct information *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER            = ( YET_ANOTHER_POINTER = (struct information *)malloc(LEN_OF_STH));
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   gets(ANOTHER_POINTER->info);
+
+   while ( strcmp(ANOTHER_POINTER->info, "end") != 0 )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct information *)malloc(LEN_OF_STH);
+      gets(ANOTHER_POINTER->info);
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+   }
+
+   return YET_ANOTHER_POINTER;
+}
+
+
+void print(struct information *VAR__HEAD)
+{
+   while ( VAR__HEAD != NULL )
+   {
+      printf("%s\n", VAR__HEAD->info);
+      VAR__HEAD = VAR__HEAD->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   struct information *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+}

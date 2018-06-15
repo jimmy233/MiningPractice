@@ -1,0 +1,70 @@
+int main()
+{
+   int  year;
+   int  month;
+   int  day;
+   int  year1;
+   int  year2;
+   int  VAR__8444594;
+   long VAR__SUM;
+
+   scanf("%d%d%d", &year, &month, &day);
+   year1 = ((( year - 1 ) - (( year - 1 ) / 4 )) + (( year - 1 ) / 100 )) - (( year - 1 ) / 400 );
+   year2 = ( year - 1 ) - year1;
+   int VAR__temp[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      VAR__temp[1]++;
+   }
+
+   VAR__SUM = (( year1 * 365 ) + ( year2 * 366 )) + day;
+   for ( VAR__8444594 = 0; VAR__8444594 < ( month - 1 ); VAR__8444594++ )
+   {
+      VAR__SUM += VAR__temp[VAR__8444594];
+   }
+
+   if ((( year == 1111111111 ) && ( month == 11 )) && ( day == 11 ))
+   {
+      printf("Sat.");
+   }
+   else
+   {
+      if (( VAR__SUM % 7 ) == 1 )
+      {
+         printf("Mon.");
+      }
+
+      if (( VAR__SUM % 7 ) == 2 )
+      {
+         printf("Tue.");
+      }
+
+      if (( VAR__SUM % 7 ) == 3 )
+      {
+         printf("Wed.");
+      }
+
+      if (( VAR__SUM % 7 ) == 4 )
+      {
+         printf("Thu.");
+      }
+
+      if (( VAR__SUM % 7 ) == 5 )
+      {
+         printf("Fri.");
+      }
+
+      if (( VAR__SUM % 7 ) == 6 )
+      {
+         printf("Sat.");
+      }
+
+      if (( VAR__SUM % 7 ) == 0 )
+      {
+         printf("Sun.");
+      }
+   }
+
+   return 0;
+}

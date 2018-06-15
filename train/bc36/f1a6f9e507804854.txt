@@ -1,0 +1,58 @@
+char  sex[45][7];
+float height[45];
+int   seq[45];
+int compare(const void *VAR__819283, const void *VAR__19328)
+{
+   int VAR__53647 = *((int *)VAR__819283 );
+   int VAR__21230 = *((int *)VAR__19328 );
+
+   if (( strcmp(sex[VAR__53647], "male") == 0 ) && ( strcmp(sex[VAR__21230], "female") == 0 ))
+   {
+      return 0;
+   }
+
+   if (( strcmp(sex[VAR__53647], "female") == 0 ) && ( strcmp(sex[VAR__21230], "male") == 0 ))
+   {
+      return 1;
+   }
+
+   if (( strcmp(sex[VAR__53647], "male") == 0 ) && ( strcmp(sex[VAR__21230], "male") == 0 ))
+   {
+      return height[VAR__53647] > height[VAR__21230];
+   }
+
+   if (( strcmp(sex[VAR__53647], "female") == 0 ) && ( strcmp(sex[VAR__21230], "female") == 0 ))
+   {
+      return height[VAR__53647] < height[VAR__21230];
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> sex[VAR__53647] ) >> height[VAR__53647];
+      seq[VAR__53647] = VAR__53647;
+   }
+
+   qsort(seq, VAR_1238123, sizeof( int ), compare);
+   int startFlag = true;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( startFlag )
+      {
+         printf("%.2f", height[seq[VAR__53647]]);
+         startFlag = false;
+      }
+      else
+      {
+         printf(" %.2f", height[seq[VAR__53647]]);
+      }
+   }
+
+   cout << endl;
+}

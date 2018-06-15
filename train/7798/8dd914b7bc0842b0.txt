@@ -1,0 +1,116 @@
+struct a
+{
+   int      number;
+   char     authors[26];
+   struct a *VAR__NEXT;
+};
+int VAR_1238123;
+int VAR__MAX = 0;
+int main()
+{
+   struct a *create(void);
+
+   char VAR__SUM(struct a *);
+   void pr(char VAR__7685, struct a *VAR__HEAD);
+
+   struct a *VAR__HEAD;
+   char     VAR__7685;
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create();
+   VAR__7685 = VAR__SUM(VAR__HEAD);
+   pr(VAR__7685, VAR__HEAD);
+}
+
+
+struct a *create(void)
+{
+   struct a *VAR__HEAD;
+   struct a *ANOTHER_POINTER;
+   struct a *YET_ANOTHER_POINTER;
+   int      VAR__53647;
+
+   ANOTHER_POINTER     = LEN_OF_STH;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %s", &ANOTHER_POINTER->number, ANOTHER_POINTER->authors);
+
+      if ( VAR__53647 != ( VAR_1238123 - 1 ))
+      {
+         ANOTHER_POINTER = LEN_OF_STH;
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = null;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+char VAR__SUM(struct a *VAR__HEAD)
+{
+   struct a *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   int  VAR__819283[26] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   char zd;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; ( *( VAR_233->authors + VAR__21230 )) != '\0'; VAR__21230++ )
+      {
+         VAR__819283[( *( VAR_233->authors + VAR__21230 )) - 65]++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+         zd       = VAR__53647;
+      }
+   }
+
+
+   printf("%c\n%d", zd + 65, VAR__819283[zd]);
+   return zd + 65;
+}
+
+
+void pr(char VAR__7685, struct a *VAR__HEAD)
+{
+   int      VAR__53647;
+   int      VAR__21230;
+   int      VAR__NUM;
+   struct a *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__NUM = 0;
+      for ( VAR__21230 = 0; ( *( VAR_233->authors + VAR__21230 )) != '\0'; VAR__21230++ )
+      {
+         if (( *( VAR_233->authors + VAR__21230 )) == VAR__7685 )
+         {
+            VAR__NUM = 1;
+         }
+      }
+
+
+      if ( VAR__NUM )
+      {
+         printf("\n%d", VAR_233->number);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

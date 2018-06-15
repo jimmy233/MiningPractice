@@ -1,0 +1,74 @@
+struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+             input[10] = { 0 };
+struct point u;
+struct point v;
+struct total
+{
+   struct point u;
+   struct point v;
+   double       result;
+}
+output[45] = { 0 };
+double distance(struct point VAR__819283, struct point VAR__19328)
+{
+   return sqrt(((( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 ) * ( VAR__819283.VAR__7685 - VAR__19328.VAR__7685 )) + (( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 ) * ( VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907 ))) + (( VAR__819283.VAR__9290 - VAR__19328.VAR__9290 ) * ( VAR__819283.VAR__9290 - VAR__19328.VAR__9290 )));
+}
+
+
+void sort(struct total VAR__4857423[], int VAR__12302)
+{
+   int          VAR__1238129;
+   int          VAR_1238123;
+   struct total VAR__TEMP;
+
+   for ( VAR__1238129 = 1; VAR__1238129 < VAR__12302; VAR__1238129++ )
+   {
+      for ( VAR_1238123 = 0; VAR_1238123 < ( VAR__12302 - VAR__1238129 ); VAR_1238123++ )
+      {
+         if ( VAR__4857423[VAR_1238123].result < VAR__4857423[VAR_1238123 + 1].result )
+         {
+            VAR__TEMP = VAR__4857423[VAR_1238123];
+            VAR__4857423[VAR_1238123]     = VAR__4857423[VAR_1238123 + 1];
+            VAR__4857423[VAR_1238123 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &input[VAR__53647].VAR__7685, &input[VAR__53647].VAR__3918907, &input[VAR__53647].VAR__9290);
+   }
+
+   VAR_233 = -1;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR_233++;
+         output[VAR_233].u      = input[VAR__53647];
+         output[VAR_233].v      = input[VAR__21230];
+         output[VAR_233].result = distance(output[VAR_233].u, output[VAR_233].v);
+      }
+   }
+
+   sort(output, VAR_233 + 1);
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_233; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", output[VAR__53647].u.VAR__7685, output[VAR__53647].u.VAR__3918907, output[VAR__53647].u.VAR__9290, output[VAR__53647].v.VAR__7685, output[VAR__53647].v.VAR__3918907, output[VAR__53647].v.VAR__9290, output[VAR__53647].result);
+   }
+}

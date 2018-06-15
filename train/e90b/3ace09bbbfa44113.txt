@@ -1,0 +1,73 @@
+struct student
+{
+   int            id;
+   int            chinese;
+   int            math;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *creat()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH));
+   scanf("%d", &VAR_1238123);
+   scanf("%d%d%d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+   ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->chinese + ANOTHER_POINTER->math;
+   VAR__HEAD = NULL;
+   for ( ; ANOTHER_POINTER->id < VAR_1238123; )
+   {
+      if ( ANOTHER_POINTER->id == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+      scanf("%d%d%d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->VAR__SUM      = ANOTHER_POINTER->chinese + ANOTHER_POINTER->math;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   struct student *VAR_233;
+
+   VAR__HEAD = creat();
+   for ( VAR_233 = VAR__HEAD, ANOTHER_POINTER = VAR__HEAD, YET_ANOTHER_POINTER = VAR__HEAD, p3 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->VAR__SUM > ANOTHER_POINTER->VAR__SUM )
+      {
+         p3 = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = VAR_233;
+      }
+      else
+      if ( VAR_233->VAR__SUM > YET_ANOTHER_POINTER->VAR__SUM )
+      {
+         p3 = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = VAR_233;
+      }
+      else
+      if ( VAR_233->VAR__SUM > p3->VAR__SUM )
+      {
+         p3 = VAR_233;
+      }
+   }
+
+   printf("%d %d\n", ANOTHER_POINTER->id, ANOTHER_POINTER->VAR__SUM);
+   printf("%d %d\n", YET_ANOTHER_POINTER->id, YET_ANOTHER_POINTER->VAR__SUM);
+   printf("%d %d\n", p3->id, p3->VAR__SUM);
+}

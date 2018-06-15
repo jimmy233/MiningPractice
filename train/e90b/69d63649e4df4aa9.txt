@@ -1,0 +1,46 @@
+int main(int argc, char *argv[])
+{
+   struct grades
+   {
+      int id;
+      int yuwen;
+      int shuxue;
+      int zongfen;
+   }
+       grades[100007];
+   int VAR__53647;
+   int VAR_1238123;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR_9494;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &grades[VAR__53647].id, &grades[VAR__53647].yuwen, &grades[VAR__53647].shuxue);
+      grades[VAR__53647].zongfen = grades[VAR__53647].yuwen + grades[VAR__53647].shuxue;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( grades[VAR__21230].zongfen >= grades[VAR__21230 + 1].zongfen )
+         {
+            VAR__temp = grades[VAR__21230].zongfen;
+            grades[VAR__21230].zongfen     = grades[VAR__21230 + 1].zongfen;
+            grades[VAR__21230 + 1].zongfen = VAR__temp;
+            VAR_9494 = grades[VAR__21230].id;
+            grades[VAR__21230].id     = grades[VAR__21230 + 1].id;
+            grades[VAR__21230 + 1].id = VAR_9494;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= ( VAR_1238123 - 3 ); VAR__53647-- )
+   {
+      printf("%d %d\n", grades[VAR__53647].id, grades[VAR__53647].zongfen);
+   }
+
+   return 0;
+}

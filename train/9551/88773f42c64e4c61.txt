@@ -1,0 +1,75 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230 = 0;
+
+   scanf("%d", &VAR_1238123);
+   char **id = (char **)malloc(( sizeof( char * )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      id[VAR__53647] = (char *)malloc(( sizeof( char )) * 10);
+   }
+
+   int VAR_233 = 0;
+   int *year   = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", id[VAR__53647], &year[VAR__53647]);
+
+      if ( year[VAR__53647] >= 60 )
+      {
+         VAR_233++;
+      }
+   }
+
+   char **idolder = (char **)malloc(( sizeof( char * )) * VAR_233);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      idolder[VAR__53647] = (char *)malloc(( sizeof( char )) * 10);
+   }
+
+   int *yearolder = (int *)malloc(( sizeof( int )) * VAR_233);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( year[VAR__53647] >= 60 )
+      {
+         idolder[VAR__21230]   = id[VAR__53647];
+         yearolder[VAR__21230] = year[VAR__53647];
+         VAR__21230++;
+      }
+   }
+
+   int  VAR__112390;
+   char *id1 = (char *)malloc(( sizeof( char )) * 10);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_233; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_233 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( yearolder[VAR__21230 + 1] > yearolder[VAR__21230] )
+         {
+            id1 = idolder[VAR__21230];
+            idolder[VAR__21230]       = idolder[VAR__21230 + 1];
+            idolder[VAR__21230 + 1]   = id1;
+            VAR__112390               = yearolder[VAR__21230];
+            yearolder[VAR__21230]     = yearolder[VAR__21230 + 1];
+            yearolder[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      printf("%s\n", idolder[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( year[VAR__53647] < 60 )
+      {
+         printf("%s\n", id[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

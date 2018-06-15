@@ -1,0 +1,58 @@
+struct student
+{
+   char           VAR__819283[20];
+   char           VAR__19328[40];
+   char           VAR__4857423;
+   int            VAR__12302;
+   float          VAR__112390;
+   char           VAR__127322[20];
+   struct student *before;
+};
+int VAR_1238123;
+struct student *hh()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s ", &ANOTHER_POINTER->VAR__819283);
+   VAR__HEAD = NULL;
+
+   while ( strcmp(ANOTHER_POINTER->VAR__819283, "end"))
+   {
+      scanf("%s %c %d %f %s ", &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->VAR__4857423, &ANOTHER_POINTER->VAR__12302, &ANOTHER_POINTER->VAR__112390, &ANOTHER_POINTER->VAR__127322);
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         ANOTHER_POINTER->before = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->before = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s ", &ANOTHER_POINTER->VAR__819283);
+   }
+
+   VAR__HEAD = YET_ANOTHER_POINTER;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR_233;
+
+   VAR_233 = hh();
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->VAR__819283, VAR_233->VAR__19328, VAR_233->VAR__4857423, VAR_233->VAR__12302, VAR_233->VAR__112390, VAR_233->VAR__127322);
+      VAR_233 = VAR_233->before;
+   }
+}

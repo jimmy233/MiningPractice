@@ -1,0 +1,53 @@
+int VAR_2890[25];
+int VAR_1238123;
+int hack(int VAR__53647, int VAR_21983012)
+{
+   if ( VAR__53647 == ( VAR_1238123 - 1 ))
+   {
+      if ( VAR_2890[VAR__53647] <= VAR_21983012 )
+      {
+         return 1;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+
+   int VAR__19328   = hack(VAR__53647 + 1, VAR_21983012);
+   int VAR__4857423 = 0;
+
+   if ( VAR_2890[VAR__53647] <= VAR_21983012 )
+   {
+      VAR__4857423 = 1 + hack(VAR__53647 + 1, VAR_2890[VAR__53647]);
+   }
+
+   if ( VAR__19328 > VAR__4857423 )
+   {
+      return VAR__19328;
+   }
+   else
+   {
+      return VAR__4857423;
+   }
+}
+
+
+int main()
+{
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR_2890[VAR__53647]);
+
+      if ( VAR_2890[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR_2890[VAR__53647];
+      }
+   }
+
+   printf("%d", hack(0, VAR__MAX));
+   return 0;
+}

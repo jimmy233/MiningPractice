@@ -1,0 +1,92 @@
+int VAR__819283[100][100];
+int zero(int);
+void reduce(int);
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            cin >> VAR__819283[VAR__21230][VAR__8444594];
+         }
+      }
+
+
+      ( cout << zero(VAR_1238123)) << endl;
+   }
+
+   return 0;
+}
+
+
+int zero(int VAR__COUNT)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM = 0;
+
+   while ( VAR__COUNT >= 2 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+      {
+         int VAR__MIN = VAR__819283[VAR__53647][0];
+         for ( VAR__21230 = 1; VAR__21230 < VAR__COUNT; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__53647][VAR__21230] < VAR__MIN )
+            {
+               VAR__MIN = VAR__819283[VAR__53647][VAR__21230];
+            }
+         }
+
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR__COUNT; VAR__21230++ )
+         {
+            VAR__819283[VAR__53647][VAR__21230] -= VAR__MIN;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+      {
+         int VAR__MIN = VAR__819283[0][VAR__53647];
+         for ( VAR__21230 = 1; VAR__21230 < VAR__COUNT; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230][VAR__53647] < VAR__MIN )
+            {
+               VAR__MIN = VAR__819283[VAR__21230][VAR__53647];
+            }
+         }
+
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR__COUNT; VAR__21230++ )
+         {
+            VAR__819283[VAR__21230][VAR__53647] -= VAR__MIN;
+         }
+      }
+
+      VAR__SUM += VAR__819283[1][1];
+      reduce(VAR__COUNT);
+      VAR__COUNT--;
+   }
+
+   return VAR__SUM;
+}
+
+
+void reduce(int VAR__COUNT)
+{
+   for ( int VAR__53647 = 1; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+   {
+      VAR__819283[0][VAR__53647] = VAR__819283[0][VAR__53647 + 1];
+      VAR__819283[VAR__53647][0] = VAR__819283[VAR__53647 + 1][0];
+      for ( int VAR__21230 = 1; VAR__21230 < ( VAR__COUNT - 1 ); VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647 + 1][VAR__21230 + 1];
+      }
+   }
+}

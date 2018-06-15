@@ -1,0 +1,121 @@
+int R(int year);
+
+int main()
+{
+   int year1;
+   int month;
+   int day;
+   int total1;
+   int year;
+   int total2;
+   int tianshu;
+   int year2;
+   int month2;
+   int day2;
+   int VAR__53647;
+
+   scanf("%d%d%d", &year1, &month, &day);
+   scanf("%d%d%d", &year2, &month2, &day2);
+   total1 = 0;
+   total2 = 0;
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         total1 += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         total1 += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         year = year1;
+
+         if ( R(year))
+         {
+            total1 += 29;
+         }
+         else
+         {
+            total1 += 28;
+         }
+      }
+   }
+
+   total1 += day;
+   for ( year = 1; year < year1; year++ )
+   {
+      if ( R(year))
+      {
+         total1 += 366;
+      }
+      else
+      {
+         total1 += 365;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         total2 += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         total2 += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         year = year2;
+
+         if ( R(year))
+         {
+            total2 += 29;
+         }
+         else
+         {
+            total2 += 28;
+         }
+      }
+   }
+
+   total2 += day2;
+   for ( year = 1; year < year2; year++ )
+   {
+      if ( R(year))
+      {
+         total2 += 366;
+      }
+      else
+      {
+         total2 += 365;
+      }
+   }
+
+   tianshu = (( total2 - total1 ) > 0 ) ? ( total2 - total1 ) : ( total1 - total2 );
+   printf("%d", tianshu);
+   return 0;
+}
+
+
+int R(int year)
+{
+   int result;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      result = 1;
+   }
+   else
+   {
+      result = 0;
+   }
+
+   return result;
+}

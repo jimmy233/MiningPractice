@@ -1,0 +1,122 @@
+int know(int **VAR__819283, int VAR_1238123, int VAR__53647, int VAR__21230)
+{
+   return ( VAR__819283[( VAR__53647 % VAR_1238123 ) >> 5][VAR__21230 % VAR_1238123] & ( 1 << (( VAR__53647 % VAR_1238123 ) & 0x1f ))) ? ( 1 ) : ( 0 );
+}
+
+
+void set(int **VAR__819283, int VAR_1238123, int VAR__53647, int VAR__21230)
+{
+   VAR__819283[( VAR__53647 % VAR_1238123 ) >> 5][VAR__21230 % VAR_1238123] |= 1 << (( VAR__53647 % VAR_1238123 ) & 0x1f );
+}
+
+
+int **read_data(int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int **VAR__819283 = (int **)malloc(( VAR_1238123 * ( sizeof( int * ))) / 32);
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 / 32 ); VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+      memset(VAR__819283[VAR__53647], 0, VAR_1238123 * ( sizeof( int )));
+   }
+
+   for ( ; ; )
+   {
+      scanf("%d%d", &VAR__53647, &VAR__21230);
+
+      if (( VAR__53647 == 0 ) && ( VAR__21230 == 0 ))
+      {
+         break;
+      }
+
+      set(VAR__819283, VAR_1238123, VAR__53647, VAR__21230);
+   }
+
+   return VAR__819283;
+}
+
+
+void free_data(int **VAR__819283, int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 / 32 ); VAR__53647++ )
+   {
+      free(VAR__819283[VAR__53647]);
+   }
+
+   free(VAR__819283);
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__NEXT;
+   int VAR__8444594;
+   int wrong;
+   int candidate;
+
+   scanf("%d", &VAR_1238123);
+   int **VAR__819283 = read_data(VAR_1238123);
+   VAR__53647 = 0;
+   VAR__21230 = 1;
+   VAR__NEXT  = 2;
+
+   while ( VAR__NEXT <= VAR_1238123 )
+   {
+      if ( know(VAR__819283, VAR_1238123, VAR__53647, VAR__21230))
+      {
+         VAR__53647 = VAR__NEXT;
+      }
+      else
+      {
+         VAR__21230 = VAR__NEXT;
+      }
+
+      VAR__NEXT++;
+   }
+
+   if ( VAR__53647 == VAR_1238123 )
+   {
+      candidate = VAR__21230;
+   }
+   else
+   {
+      candidate = VAR__53647;
+   }
+
+   wrong        = 0;
+   VAR__8444594 = 0;
+
+   while (( !wrong ) && ( VAR__8444594 < VAR_1238123 ))
+   {
+      if ( know(VAR__819283, VAR_1238123, candidate, VAR__8444594) && ( candidate != VAR__8444594 ))
+      {
+         wrong = 1;
+      }
+
+      if (( !know(VAR__819283, VAR_1238123, VAR__8444594, candidate)) && ( candidate != VAR__8444594 ))
+      {
+         wrong = 1;
+      }
+
+      VAR__8444594++;
+   }
+
+   if ( !wrong )
+   {
+      printf("%d", candidate);
+   }
+   else
+   {
+      printf("NOT FOUND");
+   }
+
+   free_data(VAR__819283, VAR_1238123);
+   return 0;
+}

@@ -1,0 +1,70 @@
+int main()
+{
+   int  line;
+   int  row;
+   int  maxLine[8] = { 0 };
+   int  minRow[8]  = { 0 };
+   int  VAR__NUM[8][8];
+   char VAR__4857423;
+
+   (( cin >> line ) >> VAR__4857423 ) >> row;
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 != line; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 != row; VAR__21230++ )
+      {
+         cin >> VAR__NUM[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 != line; VAR__53647++ )
+   {
+      int maxl = -32767;
+      for ( VAR__21230 = 0; VAR__21230 != row; VAR__21230++ )
+      {
+         if ( maxl < VAR__NUM[VAR__53647][VAR__21230] )
+         {
+            maxl = VAR__NUM[VAR__53647][VAR__21230];
+            maxLine[VAR__53647] = VAR__21230;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 != row; VAR__21230++ )
+   {
+      int minr = 32767;
+      for ( VAR__53647 = 0; VAR__53647 != line; VAR__53647++ )
+      {
+         if ( minr > VAR__NUM[VAR__53647][VAR__21230] )
+         {
+            minr = VAR__NUM[VAR__53647][VAR__21230];
+            minRow[VAR__21230] = VAR__53647;
+         }
+      }
+   }
+
+   int ansline = -1;
+   int ansrow  = -1;
+   for ( VAR__53647 = 0; VAR__53647 != line; VAR__53647++ )
+   {
+      if ( minRow[maxLine[VAR__53647]] == VAR__53647 )
+      {
+         ansline = VAR__53647;
+         ansrow  = maxLine[VAR__53647];
+      }
+   }
+
+
+   if ( ansline != ( -1 ))
+   {
+      (( cout << ansline ) << "+" ) << ansrow;
+   }
+   else
+   {
+      cout << "No";
+   }
+
+   return 0;
+}

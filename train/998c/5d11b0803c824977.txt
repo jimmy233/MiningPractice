@@ -1,0 +1,155 @@
+struct node
+{
+   char        data;
+   struct node *VAR__NEXT;
+};
+int VAR__1111[2] = { 0, 0 };
+int VAR__8444594 = 0;
+int VAR_1238123;
+typedef struct node Node;
+Node *create()
+{
+   Node *ANOTHER_POINTER;
+   Node *YET_ANOTHER_POINTER;
+   Node *VAR__HEAD;
+
+   VAR__HEAD           = null;
+   ANOTHER_POINTER     = (Node *)malloc(LEN_OF_STH);
+   YET_ANOTHER_POINTER = (Node *)malloc(LEN_OF_STH);
+   scanf("%c", &ANOTHER_POINTER->data);
+   VAR__HEAD = null;
+
+   while ( ANOTHER_POINTER->data != '\n' )
+   {
+      VAR__1111[VAR__8444594]++;
+
+      if ( VAR__1111[VAR__8444594] == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (Node *)malloc(LEN_OF_STH);
+      scanf("%c", &ANOTHER_POINTER->data);
+   }
+
+   VAR__8444594++;
+   YET_ANOTHER_POINTER->VAR__NEXT = null;
+   return VAR__HEAD;
+}
+
+
+Node *add(Node *s1, Node *s2)
+{
+   Node *ANOTHER_POINTER;
+   Node *YET_ANOTHER_POINTER;
+   Node *ans;
+   Node *VAR_233;
+   Node *pp;
+
+   ans                 = null;
+   ANOTHER_POINTER     = s1;
+   YET_ANOTHER_POINTER = s2;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423 = 0;
+   int VAR__12302;
+   VAR_1238123 = ( VAR__1111[0] > VAR__1111[1] ) ? ( VAR__1111[0] ) : ( VAR__1111[1] );
+   VAR_233     = (Node *)malloc(LEN_OF_STH);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__1111[0] - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__1111[1] - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      VAR__819283   = ( VAR__53647 >= VAR__1111[0] ) ? ( 0 ) : ( ANOTHER_POINTER->data - '0' );
+      VAR__19328    = ( VAR__53647 >= VAR__1111[1] ) ? ( 0 ) : ( YET_ANOTHER_POINTER->data - '0' );
+      VAR__12302    = (( VAR__819283 + VAR__19328 ) + VAR__4857423 ) % 10;
+      VAR__4857423  = (( VAR__819283 + VAR__19328 ) + VAR__4857423 ) / 10;
+      VAR_233->data = VAR__12302 + '0';
+
+      if ( VAR__53647 == 0 )
+      {
+         ans = VAR_233;
+      }
+      else
+      {
+         pp->VAR__NEXT = VAR_233;
+      }
+
+      pp                  = VAR_233;
+      VAR_233             = (Node *)malloc(LEN_OF_STH);
+      ANOTHER_POINTER     = s1;
+      YET_ANOTHER_POINTER = s2;
+   }
+
+   if ( VAR__4857423 == 1 )
+   {
+      VAR_233->data = '1';
+      pp->VAR__NEXT = VAR_233;
+      pp            = VAR_233;
+      VAR_1238123++;
+   }
+
+   pp->VAR__NEXT = null;
+   return ans;
+}
+
+
+void put(Node *VAR__HEAD)
+{
+   Node *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   int VAR__53647;
+   int VAR_FLAG = 0;
+   for ( ; VAR_1238123 != 0; )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      if (( VAR_FLAG == 0 ) && ( VAR_233->data == '0' ))
+      {
+         VAR_233 = VAR__HEAD;
+         VAR_1238123--;
+         continue;
+      }
+
+      printf("%c", VAR_233->data);
+      VAR_FLAG = 1;
+      VAR_233  = VAR__HEAD;
+      VAR_1238123--;
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("0");
+   }
+}
+
+
+int main()
+{
+   Node *s1;
+   Node *s2;
+   Node *ans;
+
+   s1  = create();
+   s2  = create();
+   ans = add(s1, s2);
+   put(ans);
+}

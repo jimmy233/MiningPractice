@@ -1,0 +1,44 @@
+int main()
+{
+   const int last = 1000;
+   char      VAR_9494[1050];
+
+   scanf("%s", VAR_9494);
+   int VAR__NUM[1050];
+   int LEN_OF_STH = strlen(VAR_9494);
+   int VAR__53647;
+   VAR__53647 = last + 1;
+   for ( int VAR__21230 = LEN_OF_STH - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      VAR__53647--;
+      VAR__NUM[VAR__53647] = VAR_9494[VAR__21230] - '0';
+   }
+
+   int st = VAR__53647;
+   VAR__NUM[last + 1] = 0;
+
+   while ( VAR__53647 <= last )
+   {
+      VAR__NUM[VAR__53647 + 1] += ( VAR__NUM[VAR__53647] % 13 ) * 10;
+      VAR__NUM[VAR__53647]      = VAR__NUM[VAR__53647] / 13;
+      VAR__53647++;
+   }
+
+   while ( VAR__NUM[st] == 0 )
+   {
+      st++;
+   }
+
+   if ( st > last )
+   {
+      printf("0");
+   }
+
+   for ( VAR__53647 = st; VAR__53647 <= last; VAR__53647++ )
+   {
+      printf("%c", VAR__NUM[VAR__53647] + '0');
+   }
+
+   printf("\n");
+   printf("%d", VAR__NUM[last + 1] / 10);
+}

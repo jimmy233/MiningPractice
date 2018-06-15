@@ -1,0 +1,50 @@
+struct DP
+{
+   int height;
+   int VAR__NUM;
+}
+dp[26];
+int main()
+{
+   int VAR__8444594;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_2890[26];
+   int Max;
+
+   cin >> VAR__8444594;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      cin >> VAR_2890[VAR__53647];
+   }
+
+   dp[0].height   = INT_MAX;
+   dp[0].VAR__NUM = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      dp[VAR__53647].height = VAR_2890[VAR__53647];
+      Max = INT_MIN;
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if (( Max < dp[VAR__21230].VAR__NUM ) && ( dp[VAR__21230].height >= dp[VAR__53647].height ))
+         {
+            Max = dp[VAR__21230].VAR__NUM;
+         }
+      }
+
+      dp[VAR__53647].VAR__NUM = Max + 1;
+   }
+
+   Max = INT_MIN;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      if ( Max < dp[VAR__53647].VAR__NUM )
+      {
+         Max = dp[VAR__53647].VAR__NUM;
+      }
+   }
+
+
+   ( cout << Max ) << endl;
+   return 0;
+}

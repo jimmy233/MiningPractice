@@ -1,0 +1,68 @@
+struct student
+{
+   char name[21];
+   int  term;
+   int  access;
+   char ganbu;
+   char west;
+   int  paper;
+   int  all;
+}
+stu[100];
+int main()
+{
+   int N;
+
+   scanf("%d", &N);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s%d%d%s%s%d", &stu[VAR__53647].name, &stu[VAR__53647].term, &stu[VAR__53647].access, &stu[VAR__53647].ganbu, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      stu[VAR__53647].all = 0;
+
+      if (( stu[VAR__53647].term > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         stu[VAR__53647].all = stu[VAR__53647].all + 8000;
+      }
+
+      if (( stu[VAR__53647].term > 85 ) && ( stu[VAR__53647].access > 80 ))
+      {
+         stu[VAR__53647].all = stu[VAR__53647].all + 4000;
+      }
+
+      if ( stu[VAR__53647].term > 90 )
+      {
+         stu[VAR__53647].all = stu[VAR__53647].all + 2000;
+      }
+
+      if (( stu[VAR__53647].term > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].all = stu[VAR__53647].all + 1000;
+      }
+
+      if (( stu[VAR__53647].ganbu == 'Y' ) && ( stu[VAR__53647].access > 80 ))
+      {
+         stu[VAR__53647].all = stu[VAR__53647].all + 850;
+      }
+   }
+
+   int VAR__MAX = 0;
+   int total    = 0;
+   int VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      total += stu[VAR__53647].all;
+
+      if ( VAR__MAX < stu[VAR__53647].all )
+      {
+         VAR__MAX     = stu[VAR__53647].all;
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", stu[VAR__8444594].name, stu[VAR__8444594].all, total);
+}

@@ -1,0 +1,47 @@
+struct student
+{
+   char           info[100];
+   struct student *pre;
+};
+struct student *creat()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__HEAD       = (struct student *)malloc(sizeof( struct student ));
+   ANOTHER_POINTER = VAR__HEAD;
+   VAR__HEAD->pre  = 0;
+
+   while ( 1 )
+   {
+      gets(ANOTHER_POINTER->info);
+
+      if ( ANOTHER_POINTER->info[0] == 'e' )
+      {
+         return ANOTHER_POINTER->pre;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER      = (struct student *)malloc(sizeof( struct student ));
+         YET_ANOTHER_POINTER->pre = ANOTHER_POINTER;
+         ANOTHER_POINTER          = YET_ANOTHER_POINTER;
+      }
+   }
+}
+
+
+int main()
+{
+   struct student *VAR_233;
+
+   VAR_233 = creat();
+
+   while ( VAR_233 != 0 )
+   {
+      printf("%s\n", VAR_233->info);
+      VAR_233 = VAR_233->pre;
+   }
+
+   return 0;
+}

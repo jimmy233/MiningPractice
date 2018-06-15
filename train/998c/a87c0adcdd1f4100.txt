@@ -1,0 +1,90 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  len1;
+   int  len2;
+   char ANOTHER_STRING[255];
+   char YET_ANOTHER_STRING[255];
+   char str3[255];
+   char VAR__4857423 = '0';
+
+   scanf("%s %s", ANOTHER_STRING, YET_ANOTHER_STRING);
+   char VAR__TEMP[255];
+
+   if ( strlen(ANOTHER_STRING) < strlen(YET_ANOTHER_STRING))
+   {
+      strcpy(VAR__TEMP, ANOTHER_STRING);
+      strcpy(ANOTHER_STRING, YET_ANOTHER_STRING);
+      strcpy(YET_ANOTHER_STRING, VAR__TEMP);
+   }
+
+   len1       = strlen(ANOTHER_STRING);
+   len2       = strlen(YET_ANOTHER_STRING);
+   str3[len1] = '\0';
+   int jinwei = 0;
+   for ( VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__53647 >= ( len1 - len2 ))
+      {
+         if ((((( ANOTHER_STRING[VAR__53647] + YET_ANOTHER_STRING[( VAR__53647 - len1 ) + len2] ) - '0' ) - '0' ) + jinwei ) < 10 )
+         {
+            str3[VAR__53647] = (( ANOTHER_STRING[VAR__53647] + YET_ANOTHER_STRING[( VAR__53647 - len1 ) + len2] ) - '0' ) + jinwei;
+            jinwei           = 0;
+         }
+         else
+         {
+            str3[VAR__53647] = ((( ANOTHER_STRING[VAR__53647] + YET_ANOTHER_STRING[( VAR__53647 - len1 ) + len2] ) - '0' ) + jinwei ) - 10;
+            jinwei           = 1;
+         }
+      }
+      else
+      {
+         if ((( ANOTHER_STRING[VAR__53647] - '0' ) + jinwei ) < 10 )
+         {
+            str3[VAR__53647] = ANOTHER_STRING[VAR__53647] + jinwei;
+            jinwei           = 0;
+         }
+         else
+         {
+            str3[VAR__53647] = ( ANOTHER_STRING[VAR__53647] + jinwei ) - 10;
+            jinwei           = 1;
+         }
+      }
+   }
+
+   int VAR__3918907 = 0;
+
+   if ( jinwei == 1 )
+   {
+      VAR__4857423 = '1';
+      printf("%c%s", VAR__4857423, str3);
+   }
+   else
+   {
+      if (( len1 == 1 ) && ( len2 == 1 ))
+      {
+         printf("%c", str3[0]);
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+         {
+            if ( VAR__3918907 == 1 )
+            {
+               printf("%c", str3[VAR__53647]);
+            }
+            else
+            {
+               if ( str3[VAR__53647] > '0' )
+               {
+                  VAR__3918907 = 1;
+                  printf("%c", str3[VAR__53647]);
+               }
+            }
+         }
+      }
+   }
+
+   return 0;
+}

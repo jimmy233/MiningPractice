@@ -1,0 +1,71 @@
+int main()
+{
+   int   spot[11][3];
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR_1238123;
+   int   VAR__COUNT = 0;
+   int   VAR__7685;
+   int   VAR__3918907;
+   int   VAR__9290;
+   float dis[4951][3];
+   float VAR__8444594;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         cin >> spot[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         VAR__COUNT++;
+         VAR__7685          = spot[VAR__53647][0] - spot[VAR__21230][0];
+         VAR__3918907       = spot[VAR__53647][1] - spot[VAR__21230][1];
+         VAR__9290          = spot[VAR__53647][2] - spot[VAR__21230][2];
+         dis[VAR__COUNT][0] = sqrt((( VAR__7685 * VAR__7685 ) + ( VAR__3918907 * VAR__3918907 )) + ( VAR__9290 * VAR__9290 ));
+         dis[VAR__COUNT][1] = VAR__53647;
+         dis[VAR__COUNT][2] = VAR__21230;
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR__COUNT - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230][0] < dis[VAR__21230 + 1][0] )
+         {
+            VAR__8444594           = dis[VAR__21230][0];
+            dis[VAR__21230][0]     = dis[VAR__21230 + 1][0];
+            dis[VAR__21230 + 1][0] = VAR__8444594;
+            VAR__8444594           = dis[VAR__21230][1];
+            dis[VAR__21230][1]     = dis[VAR__21230 + 1][1];
+            dis[VAR__21230 + 1][1] = VAR__8444594;
+            VAR__8444594           = dis[VAR__21230][2];
+            dis[VAR__21230][2]     = dis[VAR__21230 + 1][2];
+            dis[VAR__21230 + 1][2] = VAR__8444594;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      (((((( cout << "(" ) << spot[(int)dis[VAR__53647][1]][0] ) << "," ) << spot[(int)dis[VAR__53647][1]][1] ) << "," ) << spot[(int)dis[VAR__53647][1]][2] ) << ")";
+      cout << "-";
+      (((((( cout << "(" ) << spot[(int)dis[VAR__53647][2]][0] ) << "," ) << spot[(int)dis[VAR__53647][2]][1] ) << "," ) << spot[(int)dis[VAR__53647][2]][2] ) << ")";
+      cout << "=";
+      printf("%.2f", dis[VAR__53647][0]);
+      cout << endl;
+   }
+
+   return 0;
+}

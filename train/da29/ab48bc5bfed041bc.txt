@@ -1,0 +1,74 @@
+const int move[8] = { -1, 0, 1, 0, 0, -1, 0, 1 };
+struct pnt
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int day;
+}
+     st[100050];
+char map[128][128];
+int  ans;
+int  VAR__1238129;
+int  VAR_1238123;
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1111  = 0;
+   int VAR_129012 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf(" %c", &map[VAR__53647][VAR__21230]);
+
+         if ( map[VAR__53647][VAR__21230] == '@' )
+         {
+            st[VAR_129012].VAR__7685    = VAR__53647;
+            st[VAR_129012].VAR__3918907 = VAR__21230;
+            st[VAR_129012].day          = 1;
+            VAR_129012++;
+         }
+      }
+   }
+
+
+   scanf("%d", &VAR__1238129);
+   ans = VAR_129012;
+   int xt;
+   int yt;
+
+   while ( VAR_129012 > VAR__1111 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 4; VAR__53647++ )
+      {
+         xt = st[VAR__1111].VAR__7685 + move[2 * VAR__53647];
+         yt = st[VAR__1111].VAR__3918907 + move[( 2 * VAR__53647 ) + 1];
+
+         if ( map[xt][yt] != '.' )
+         {
+            continue;
+         }
+
+         ans++;
+         map[xt][yt] = '@';
+
+         if ( st[VAR__1111].day == ( VAR__1238129 - 1 ))
+         {
+            continue;
+         }
+
+         st[VAR_129012].VAR__7685    = xt;
+         st[VAR_129012].VAR__3918907 = yt;
+         st[VAR_129012].day          = st[VAR__1111].day + 1;
+         VAR_129012++;
+      }
+
+      VAR__1111++;
+   }
+
+   printf("%d\n", ans);
+   return 0;
+}

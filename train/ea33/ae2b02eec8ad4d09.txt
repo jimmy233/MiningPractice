@@ -1,0 +1,70 @@
+int VAR__127322(char A_STRING[])
+{
+   int  VAR__53647;
+   int  VAR__819283;
+   int  VAR_1238123;
+   char nul = '0';
+
+   VAR__819283 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__819283 - 4 ); VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] > nul )
+      {
+         nul         = A_STRING[VAR__53647];
+         VAR_1238123 = VAR__53647;
+      }
+   }
+
+   return VAR_1238123;
+}
+
+
+void main()
+{
+   int  VAR__53647 = 0;
+   int  VAR_1238123;
+   int  VAR__21230;
+   int  VAR__819283[100];
+   int  length[100];
+   char A_STRING[100][50];
+   char ANOTHER_STRING[100][50];
+
+   do
+   {
+      gets(A_STRING[VAR__53647]);
+      length[VAR__53647] = strlen(A_STRING[VAR__53647]);
+      VAR__53647++;
+   } while ( length[VAR__53647 - 1] != 0 );
+   VAR_1238123 = VAR__53647 - 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR__127322(A_STRING[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__21230 < 50; VAR__21230++ )
+      {
+         if ( VAR__21230 < ( VAR__819283[VAR__53647] + 1 ))
+         {
+            ANOTHER_STRING[VAR__53647][VAR__21230] = A_STRING[VAR__53647][VAR__21230];
+         }
+         else
+         if (( VAR__21230 > VAR__819283[VAR__53647] ) && ( VAR__21230 < ( VAR__819283[VAR__53647] + 4 )))
+         {
+            ANOTHER_STRING[VAR__53647][VAR__21230] = A_STRING[VAR__53647][(( length[VAR__53647] + VAR__21230 ) - 4 ) - VAR__819283[VAR__53647]];
+         }
+         else
+         if (( VAR__21230 > ( VAR__819283[VAR__53647] + 3 )) && ( VAR__21230 < ( length[VAR__53647] - 1 )))
+         {
+            ANOTHER_STRING[VAR__53647][VAR__21230] = A_STRING[VAR__53647][VAR__21230 - 3];
+         }
+         else
+         if ( VAR__21230 >= ( length[VAR__53647] - 1 ))
+         {
+            ANOTHER_STRING[VAR__53647][VAR__21230] = '\0';
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", ANOTHER_STRING[VAR__53647]);
+   }
+}

@@ -1,0 +1,73 @@
+struct point
+{
+   int    VAR__819283[3];
+   int    VAR__19328[3];
+   double distant;
+}
+VAR_233[45];
+struct point
+{
+   int    VAR__819283[3];
+   int    VAR__19328[3];
+   double distant;
+}
+change;
+void swap(struct point VAR_233[], int VAR__8444594);
+
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 0;
+   int VAR_1238123;
+   int VAR__7685[10];
+   int VAR__3918907[10];
+   int VAR__9290[10];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = VAR__21230 + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR_233[VAR__8444594].VAR__819283[0] = VAR__7685[VAR__21230];
+         VAR_233[VAR__8444594].VAR__819283[1] = VAR__3918907[VAR__21230];
+         VAR_233[VAR__8444594].VAR__819283[2] = VAR__9290[VAR__21230];
+         VAR_233[VAR__8444594].VAR__19328[0]  = VAR__7685[VAR__53647];
+         VAR_233[VAR__8444594].VAR__19328[1]  = VAR__3918907[VAR__53647];
+         VAR_233[VAR__8444594].VAR__19328[2]  = VAR__9290[VAR__53647];
+         VAR_233[VAR__8444594++].distant      = sqrt(( pow(VAR__7685[VAR__21230] - VAR__7685[VAR__53647], 2) + pow(VAR__3918907[VAR__21230] - VAR__3918907[VAR__53647], 2)) + pow(VAR__9290[VAR__21230] - VAR__9290[VAR__53647], 2));
+      }
+   }
+
+
+   swap(VAR_233, VAR__8444594 - 1);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR_233[VAR__53647].VAR__819283[0], VAR_233[VAR__53647].VAR__819283[1], VAR_233[VAR__53647].VAR__819283[2], VAR_233[VAR__53647].VAR__19328[0], VAR_233[VAR__53647].VAR__19328[1], VAR_233[VAR__53647].VAR__19328[2], VAR_233[VAR__53647].distant);
+   }
+}
+
+
+void swap(struct point VAR_233[], int VAR__8444594)
+{
+   int VAR_129012;
+   int VAR_666;
+
+   for ( VAR_129012 = 0; VAR_129012 < VAR__8444594; VAR_129012++ )
+   {
+      for ( VAR_666 = 0; VAR_666 < ( VAR__8444594 - VAR_129012 ); VAR_666++ )
+      {
+         if ( VAR_233[VAR_666].distant < VAR_233[VAR_666 + 1].distant )
+         {
+            change               = VAR_233[VAR_666];
+            VAR_233[VAR_666]     = VAR_233[VAR_666 + 1];
+            VAR_233[VAR_666 + 1] = change;
+         }
+      }
+   }
+}

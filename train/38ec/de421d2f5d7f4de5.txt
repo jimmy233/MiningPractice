@@ -1,0 +1,128 @@
+struct date
+{
+   int year;
+   int month;
+   int day;
+}
+    data[3];
+int pingrun[3]       = { 0, 365, 366 };
+int LEN_OF_STH[3]    = { 0 };
+int monthDays[3][13] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+int nian;
+int yue;
+int ri;
+int leap[3];
+int jiange[3];
+int VAR__53647;
+int VAR__21230;
+int compute(int, int, int);
+void canliang(char [], int);
+
+int main()
+{
+   long int VAR__SUM = 0;
+   long int res;
+
+   data[1].year = ( data[1].month = ( data[1].day = 0 ));
+   data[2].year = ( data[2].month = ( data[2].day = 0 ));
+   char rizi1[500];
+   char rizi2[500];
+   cin.getline(rizi1, 12);
+   cin.getline(rizi2, 12);
+   canliang(rizi1, 1);
+   canliang(rizi2, 2);
+   nian = abs(data[2].year - data[1].year);
+
+   if ( nian == 0 )
+   {
+      ( cout << abs(jiange[2] - jiange[1])) << endl;
+   }
+   else
+   if ( nian == 1 )
+   {
+      ( cout << (( pingrun[leap[1] + 1] - jiange[1] ) + jiange[2] )) << endl;
+   }
+   else
+   if ( nian >= 2 )
+   {
+      for ( VAR__53647 = data[1].year + 1; VAR__53647 < data[2].year; VAR__53647++ )
+      {
+         res       = ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 );
+         VAR__SUM += pingrun[res + 1];
+      }
+
+      VAR__SUM += jiange[2];
+      res       = pingrun[leap[1] + 1] - jiange[1];
+      VAR__SUM += res;
+      ( cout << VAR__SUM ) << endl;
+   }
+
+
+
+   return 0;
+}
+
+
+int compute(int VAR__7685, int VAR__3918907, int VAR__9290)
+{
+   int cd         = 0;
+   int VAR__53647 = 1;
+
+   if ( VAR__7685 == 1 )
+   {
+      return VAR__3918907;
+   }
+
+   while ( VAR__53647 < VAR__7685 )
+   {
+      cd += monthDays[1 + VAR__9290][VAR__53647];
+      VAR__53647++;
+   }
+
+   return cd + VAR__3918907;
+}
+
+
+void canliang(char A_STRING[], int VAR__7685)
+{
+   int LEN_OF_STH;
+   int VAR__53647 = 0;
+
+   LEN_OF_STH = strlen(A_STRING);
+
+   while ( A_STRING[VAR__53647] == ' ' )
+   {
+      VAR__53647++;
+   }
+
+   while ( isdigit(A_STRING[VAR__53647]))
+   {
+      data[VAR__7685].year = (( data[VAR__7685].year * 10 ) + A_STRING[VAR__53647] ) - '0';
+      VAR__53647++;
+   }
+
+   while ( A_STRING[VAR__53647] == ' ' )
+   {
+      VAR__53647++;
+   }
+
+   while ( isdigit(A_STRING[VAR__53647]))
+   {
+      data[VAR__7685].month = (( data[VAR__7685].month * 10 ) + A_STRING[VAR__53647] ) - '0';
+      VAR__53647++;
+   }
+
+   while ( A_STRING[VAR__53647] == ' ' )
+   {
+      VAR__53647++;
+   }
+
+   while ((( A_STRING[VAR__53647] >= '0' ) && ( A_STRING[VAR__53647] <= '9' )) && ( VAR__53647 < LEN_OF_STH ))
+   {
+      data[VAR__7685].day = (( data[VAR__7685].day * 10 ) + A_STRING[VAR__53647] ) - '0';
+      VAR__53647++;
+   }
+
+   leap[VAR__7685]   = ((( data[VAR__7685].year % 4 ) == 0 ) && (( data[VAR__7685].year % 100 ) != 0 )) || (( data[VAR__7685].year % 400 ) == 0 );
+   jiange[VAR__7685] = compute(data[VAR__7685].month, data[VAR__7685].day, leap[VAR__7685]);
+}

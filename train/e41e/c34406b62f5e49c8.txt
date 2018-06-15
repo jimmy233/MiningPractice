@@ -1,0 +1,90 @@
+int main()
+{
+   int  VAR__819283[100];
+   int  VAR__19328[100];
+   int  blength;
+   int  VAR__53647;
+   int  alength;
+   int  VAR__SUM;
+   int  zero;
+   int  test;
+   char VAR_9494[100];
+
+   scanf("%s", VAR_9494);
+   alength = strlen(VAR_9494);
+   blength = 0;
+   zero    = 0;
+   test    = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= alength; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647 - 1] = VAR_9494[VAR__53647 - 1] - '0';
+   }
+
+   for ( VAR__53647 = alength; VAR__53647 >= 1; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__53647 - 1] == 0 )
+      {
+         zero++;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( alength - 1 ); VAR__53647++ )
+   {
+      VAR__SUM = ( VAR__819283[VAR__53647 - 1] * 10 ) + VAR__819283[VAR__53647];
+
+      if ( VAR__SUM >= 13 )
+      {
+         VAR__819283[VAR__53647] = VAR__SUM % 13;
+         VAR__19328[blength]     = ( VAR__SUM - VAR__819283[VAR__53647] ) / 13;
+         blength++;
+
+         if ( VAR__53647 == (( alength - 1 ) - zero ))
+         {
+            test = 1;
+            break;
+         }
+      }
+      else
+      {
+         VAR__819283[VAR__53647] += VAR__819283[VAR__53647 - 1] * 10;
+
+         if (( alength <= 2 ) && ( VAR__SUM < 13 ))
+         {
+            blength       = 1;
+            VAR__19328[0] = 0;
+            break;
+         }
+
+         if ( blength != 0 )
+         {
+            VAR__19328[blength] = 0;
+            blength++;
+         }
+      }
+   }
+
+   if ( alength == 1 )
+   {
+      blength       = 1;
+      VAR__19328[0] = 0;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= blength; VAR__53647++ )
+   {
+      printf("%d", VAR__19328[VAR__53647 - 1]);
+   }
+
+   if (( zero != 0 ) && ( test == 1 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= zero; VAR__53647++ )
+      {
+         printf("0");
+      }
+   }
+
+   printf("\n%d", VAR__819283[alength - 1]);
+}

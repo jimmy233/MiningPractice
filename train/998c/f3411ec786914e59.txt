@@ -1,0 +1,81 @@
+int main()
+{
+   char VAR__1238129[250];
+   char VAR_1238123[250];
+   char VAR__7685[250];
+   char total[255];
+   int  sl1 = 0;
+   int  sl2 = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__819283;
+   int  tmp       = 0;
+   int  VAR__HEAD = 0;
+
+   gets(VAR__1238129);
+   gets(VAR_1238123);
+   strcpy(VAR__7685, VAR__1238129);
+   for ( VAR__53647 = 0; ( VAR__1238129[VAR__53647] != 0 ) && (( VAR__1238129[VAR__53647] >= '0' ) && ( VAR__1238129[VAR__53647] <= '9' )); VAR__53647++ )
+   {
+      sl1++;
+   }
+
+   for ( VAR__53647 = 0; ( VAR_1238123[VAR__53647] != 0 ) && (( VAR_1238123[VAR__53647] >= '0' ) && ( VAR_1238123[VAR__53647] <= '9' )); VAR__53647++ )
+   {
+      sl2++;
+   }
+
+   if ( sl1 < sl2 )
+   {
+      strcpy(VAR__1238129, VAR_1238123);
+      strcpy(VAR_1238123, VAR__7685);
+      VAR__819283 = sl1;
+      sl1         = sl2;
+      sl2         = VAR__819283;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= sl2; VAR__21230++ )
+   {
+      VAR_1238123[sl1 - VAR__21230] = VAR_1238123[sl2 - VAR__21230];
+   }
+
+   for ( VAR__21230 = sl2 + 1; VAR__21230 <= sl1; VAR__21230++ )
+   {
+      VAR_1238123[sl1 - VAR__21230] = '0';
+   }
+
+   for ( VAR__53647 = sl1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ((((( VAR__1238129[VAR__53647] - '0' ) + VAR_1238123[VAR__53647] ) - '0' ) + tmp ) > 9 )
+      {
+         total[VAR__53647] = '0' + ((((( VAR__1238129[VAR__53647] - '0' ) + VAR_1238123[VAR__53647] ) - '0' ) + tmp ) % 10 );
+         tmp = 1;
+      }
+      else
+      {
+         total[VAR__53647] = (( VAR__1238129[VAR__53647] + VAR_1238123[VAR__53647] ) + tmp ) - '0';
+         tmp = 0;
+      }
+   }
+
+   if ( tmp == 1 )
+   {
+      printf("1");
+      VAR__HEAD = 1;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < sl1; VAR__21230++ )
+   {
+      if ((( total[VAR__21230] == '0' ) && ( VAR__HEAD == 0 )) && ( VAR__21230 != ( sl1 - 1 )))
+      {
+         VAR__HEAD = 0;
+         continue;
+      }
+
+      VAR__HEAD = 1;
+      printf("%c", total[VAR__21230]);
+   }
+
+   printf("\n");
+   return 0;
+}

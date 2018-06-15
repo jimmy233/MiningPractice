@@ -1,0 +1,68 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__NUM[301];
+   int    out[301]   = { 0 };
+   int    VAR__21230 = 0;
+   int    VAR_233;
+   int    VAR_666;
+   int    VAR__TEMP;
+   double VAR__SUM = 0;
+   double avr;
+   double dif[301];
+   double VAR__MAX = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__NUM[VAR__53647]);
+      VAR__SUM += VAR__NUM[VAR__53647];
+   }
+
+   avr = VAR__SUM / VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      dif[VAR__53647] = fabs(VAR__NUM[VAR__53647] - avr);
+
+      if ( dif[VAR__53647] > VAR__MAX )
+      {
+         int out[301] = { 0 };
+         VAR__21230 = 0;
+         VAR__MAX   = dif[VAR__53647];
+      }
+
+      if ( dif[VAR__53647] == VAR__MAX )
+      {
+         out[VAR__21230] = VAR__NUM[VAR__53647];
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR_233 = 0; VAR_233 < ( VAR__21230 - 1 ); VAR_233++ )
+   {
+      for ( VAR_666 = VAR__21230 - 1; VAR_666 > VAR_233; VAR_666-- )
+      {
+         if ( out[VAR_666] < out[VAR_666 - 1] )
+         {
+            VAR__TEMP        = out[VAR_666];
+            out[VAR_666]     = out[VAR_666 - 1];
+            out[VAR_666 - 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      if ( VAR__53647 == ( VAR__21230 - 1 ))
+      {
+         printf("%d\n", out[VAR__53647]);
+      }
+      else
+      {
+         printf("%d,", out[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,70 @@
+int   VAR_9494[50];
+float VAR__1111[50];
+char  A_STRING[10];
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   float VAR__temp;
+   int   tp;
+   int   VAR__19328;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", A_STRING, &VAR__1111[VAR__53647]);
+
+      if ( A_STRING[0] == 'm' )
+      {
+         VAR_9494[VAR__53647] = 1;
+      }
+      else
+      {
+         VAR_9494[VAR__53647] = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( VAR__1111[VAR__21230] > VAR__1111[VAR__21230 + 1] )
+         {
+            VAR__temp                 = VAR__1111[VAR__21230];
+            VAR__1111[VAR__21230]     = VAR__1111[VAR__21230 + 1];
+            VAR__1111[VAR__21230 + 1] = VAR__temp;
+            tp = VAR_9494[VAR__21230];
+            VAR_9494[VAR__21230]     = VAR_9494[VAR__21230 + 1];
+            VAR_9494[VAR__21230 + 1] = tp;
+         }
+      }
+   }
+
+   VAR__19328 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] == 1 )
+      {
+         VAR__19328++;
+         printf("%.2f ", VAR__1111[VAR__53647]);
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR_9494[VAR__53647] == 0 )
+      {
+         printf("%.2f", VAR__1111[VAR__53647]);
+         VAR__19328++;
+      }
+
+      if (( VAR__19328 != VAR_1238123 ) && ( VAR_9494[VAR__53647] == 0 ))
+      {
+         printf(" ");
+      }
+   }
+
+   printf("\n");
+   return 0;
+}

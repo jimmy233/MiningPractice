@@ -1,0 +1,68 @@
+int re(int VAR__819283[100][100], int row, int col, int VAR__19328[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 0;
+   int VAR_233;
+   int mm;
+   int VAR__1238129;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( row / 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; ( VAR__21230 < ( col - VAR__53647 )) && ( VAR__8444594 < ( row * col )); VAR__21230++ )
+      {
+         VAR__19328[VAR__8444594] = VAR__819283[VAR__53647][VAR__21230];
+         VAR__8444594++;
+      }
+
+      for ( VAR_233 = VAR__53647 + 1; ( VAR_233 < ( row - VAR__53647 )) && ( VAR__8444594 < ( row * col )); VAR_233++ )
+      {
+         VAR__19328[VAR__8444594] = VAR__819283[VAR_233][VAR__21230 - 1];
+         VAR__8444594++;
+      }
+
+      for ( mm = ( col - 2 ) - VAR__53647; ( mm >= VAR__53647 ) && ( VAR__8444594 < ( row * col )); )
+      {
+         VAR__19328[VAR__8444594] = VAR__819283[( row - VAR__53647 ) - 1][mm];
+         VAR__8444594++;
+         mm--;
+      }
+
+      for ( VAR__1238129 = ( row - 2 ) - VAR__53647; ( VAR__1238129 > VAR__53647 ) && ( VAR__8444594 < ( row * col )); VAR__1238129-- )
+      {
+         VAR__19328[VAR__8444594] = VAR__819283[VAR__1238129][VAR__53647];
+         VAR__8444594++;
+      }
+   }
+
+   return VAR__8444594;
+}
+
+
+int main()
+{
+   int VAR__819283[100][100];
+   int VAR__19328[10000];
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int xx;
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+   xx = re(VAR__819283, row, col, VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < xx; VAR__53647++ )
+   {
+      printf("%d\n", VAR__19328[VAR__53647]);
+   }
+
+   return 0;
+}

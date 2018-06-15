@@ -1,0 +1,75 @@
+int main()
+{
+   char A_STRING[100];
+
+   cin.getline(A_STRING, 101);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp = 0;
+   int number[51][2];
+   int VAR_1238123 = 0;
+
+   while ( true )
+   {
+      if ( A_STRING[VAR_1238123] == '\0' )
+      {
+         break;
+      }
+
+      VAR_1238123++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( A_STRING[0] == '\0' )
+      {
+         break;
+      }
+
+      if ( A_STRING[VAR__53647] == A_STRING[0] )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( A_STRING[VAR__21230] != A_STRING[0] )
+            {
+               for ( VAR__8444594 = VAR__21230; VAR__8444594 >= 0; VAR__8444594-- )
+               {
+                  if ( A_STRING[VAR__8444594] == A_STRING[0] )
+                  {
+                     break;
+                  }
+               }
+
+               A_STRING[VAR__21230]   = ( A_STRING[VAR__8444594] = '\0' );
+               number[VAR__temp][0]   = VAR__8444594;
+               number[VAR__temp++][1] = VAR__21230;
+            }
+         }
+      }
+   }
+
+   int VAR__12302;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__temp; VAR__21230++ )
+      {
+         if ( number[VAR__53647][1] > number[VAR__21230][1] )
+         {
+            VAR__12302            = number[VAR__53647][1];
+            number[VAR__21230][1] = number[VAR__53647][1];
+            number[VAR__53647][1] = VAR__12302;
+            VAR__12302            = number[VAR__53647][0];
+            number[VAR__21230][0] = number[VAR__53647][0];
+            number[VAR__53647][0] = VAR__12302;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      ((( cout << number[VAR__53647][0] ) << " " ) << number[VAR__53647][1] ) << endl;
+   }
+
+   return 0;
+}

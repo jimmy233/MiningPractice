@@ -1,0 +1,70 @@
+int main()
+{
+   int    sys2;
+   int    oct = 0;
+   int    homo;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__temp;
+   double sys1;
+   double length;
+   char   VAR__NUM[32];
+
+   (( cin >> sys1 ) >> VAR__NUM ) >> sys2;
+   length = strlen(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = (char)toupper(VAR__NUM[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if (( VAR__NUM[VAR__53647] >= 48 ) && ( VAR__NUM[VAR__53647] <= 57 ))
+      {
+         homo = VAR__NUM[VAR__53647] - 48;
+      }
+      else
+      {
+         homo = VAR__NUM[VAR__53647] - 55;
+      }
+
+      oct = oct + ( homo * pow(sys1, ( length - VAR__53647 ) - 1));
+   }
+
+   int change[32];
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      change[VAR__53647] = oct % sys2;
+      oct = oct / sys2;
+
+      if ( oct == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - VAR__21230 ); VAR__21230++ )
+   {
+      VAR__temp          = change[VAR__21230];
+      change[VAR__21230] = change[VAR__53647 - VAR__21230];
+      change[VAR__53647 - VAR__21230] = VAR__temp;
+   }
+
+   char ans[32];
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+   {
+      if ( change[VAR__21230] >= 10 )
+      {
+         ans[VAR__21230] = change[VAR__21230] + 55;
+      }
+      else
+      {
+         ans[VAR__21230] = change[VAR__21230] + 48;
+      }
+
+      cout << ans[VAR__21230];
+   }
+
+   cout << endl;
+   return 0;
+}

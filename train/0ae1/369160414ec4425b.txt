@@ -1,0 +1,102 @@
+int Is_Runinian(int year)
+{
+   if ((( year % 400 ) == 0 ) || ((( year % 100 ) != 0 ) && (( year % 4 ) == 0 )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int year;
+   int month;
+   int day;
+
+   scanf("%d%d%d", &year, &month, &day);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   VAR__8444594 = ( year - 1 ) % 400;
+   int VAR__1238129 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( Is_Runinian(VAR__53647 + 1) == 1 )
+      {
+         VAR__1238129 += 366 % 7;
+      }
+      else
+      {
+         VAR__1238129 += 365 % 7;
+      }
+   }
+
+   VAR__1238129 = VAR__1238129 % 7;
+   for ( VAR__21230 = 1; VAR__21230 < month; VAR__21230++ )
+   {
+      if ((( VAR__21230 < 8 ) && (( VAR__21230 % 2 ) == 1 )) || (( VAR__21230 > 7 ) && (( VAR__21230 % 2 ) == 0 )))
+      {
+         VAR__1238129 += 31 % 7;
+      }
+      else
+      if (((( VAR__21230 < 8 ) && ( VAR__21230 > 2 )) && (( VAR__21230 % 2 ) == 0 )) || (( VAR__21230 > 7 ) && (( VAR__21230 % 2 ) == 1 )))
+      {
+         VAR__1238129 += 30 % 7;
+      }
+      else
+      if (( VAR__21230 == 2 ) && ( Is_Runinian(year) == 1 ))
+      {
+         VAR__1238129 += 29 % 7;
+      }
+      else
+      {
+         VAR__1238129 += 28 % 7;
+      }
+   }
+
+   VAR__1238129  = VAR__1238129 % 7;
+   VAR__1238129 += day % 7;
+   VAR__1238129  = VAR__1238129 % 7;
+
+   if ( VAR__1238129 == 0 )
+   {
+      printf("Sun.");
+   }
+   else
+   if ( VAR__1238129 == 1 )
+   {
+      printf("Mon.");
+   }
+   else
+   if ( VAR__1238129 == 2 )
+   {
+      printf("Tue.");
+   }
+   else
+   if ( VAR__1238129 == 3 )
+   {
+      printf("Wed.");
+   }
+   else
+   if ( VAR__1238129 == 4 )
+   {
+      printf("Thu.");
+   }
+   else
+   if ( VAR__1238129 == 5 )
+   {
+      printf("Fri.");
+   }
+   else
+   {
+      printf("Sat.");
+   }
+
+
+
+   return 0;
+}

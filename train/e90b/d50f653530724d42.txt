@@ -1,0 +1,41 @@
+struct student
+{
+   int   VAR__NUM;
+   float chinese;
+   float math;
+   float VAR__SUM;
+};
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct student *pt;
+   struct student *VAR_233;
+   struct student VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   pt = (struct student *)malloc(VAR_1238123 * LEN);
+   for ( VAR_233 = pt; VAR_233 < ( pt + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%d%f%f", &VAR_233->VAR__NUM, &VAR_233->chinese, &VAR_233->math);
+      VAR_233->VAR__SUM = VAR_233->chinese + VAR_233->math;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR_233 = pt; VAR_233 < ((( pt + VAR_1238123 ) - 1 ) - VAR__53647 ); VAR_233++ )
+      {
+         if ( VAR_233->VAR__SUM >= ( VAR_233 + 1 )->VAR__SUM )
+         {
+            VAR__TEMP        = *VAR_233;
+            *VAR_233         = *( VAR_233 + 1 );
+            *( VAR_233 + 1 ) = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR_233 = ( pt + VAR_1238123 ) - 1; VAR_233 > (( pt + VAR_1238123 ) - 4 ); VAR_233-- )
+   {
+      printf("%d %g\n", VAR_233->VAR__NUM, VAR_233->VAR__SUM);
+   }
+}

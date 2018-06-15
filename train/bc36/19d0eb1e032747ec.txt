@@ -1,0 +1,73 @@
+void sort(float *ANOTHER_POINTER, float *YET_ANOTHER_POINTER, int cri)
+{
+   if (((( *ANOTHER_POINTER ) - ( *YET_ANOTHER_POINTER )) * cri ) > 0 )
+   {
+      float VAR__TEMP = *ANOTHER_POINTER;
+      *ANOTHER_POINTER     = *YET_ANOTHER_POINTER;
+      *YET_ANOTHER_POINTER = VAR__TEMP;
+   }
+}
+
+
+int main()
+{
+   int VAR__8444594;
+   int boynum;
+   int VAR__19328;
+   int VAR_9Q8Q90;
+
+   VAR__19328 = 0;
+   VAR_9Q8Q90 = 0;
+   float tempheight;
+   char  tempsex[7];
+   scanf("%d", &VAR__8444594);
+   float boy[VAR__8444594];
+   float girl[VAR__8444594];
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      scanf("%s %f", tempsex, &tempheight);
+
+      if ( strcmp(tempsex, "male\0") == 0 )
+      {
+         boy[VAR__19328] = tempheight;
+         VAR__19328++;
+      }
+      else
+      {
+         girl[VAR_9Q8Q90] = tempheight;
+         VAR_9Q8Q90++;
+      }
+
+      if ( VAR__53647 == VAR__8444594 )
+      {
+         boynum = VAR__19328;
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= ( boynum - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 <= boynum; VAR__21230++ )
+      {
+         sort(&boy[VAR__53647 - 1], &boy[VAR__21230 - 1], 1);
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= (( VAR__8444594 - boynum ) - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( VAR__8444594 - boynum ); VAR__21230++ )
+      {
+         sort(&girl[VAR__53647 - 1], &girl[VAR__21230 - 1], -1);
+      }
+   }
+
+   printf("%.2f", boy[0]);
+   for ( int VAR__53647 = 2; VAR__53647 <= boynum; VAR__53647++ )
+   {
+      printf(" %.2f", boy[VAR__53647 - 1]);
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= ( VAR__8444594 - boynum ); VAR__53647++ )
+   {
+      printf(" %.2f", girl[VAR__53647 - 1]);
+   }
+}

@@ -1,0 +1,61 @@
+int main()
+{
+   char   VAR_9494[100][10];
+   char   tmp[10];
+   double VAR_2890[100];
+   double tmp2;
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    first = 1;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", VAR_9494[VAR__53647], &VAR_2890[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; ( VAR__21230 + VAR__53647 ) < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( VAR_2890[VAR__21230] > VAR_2890[VAR__21230 + 1] )
+         {
+            tmp2 = VAR_2890[VAR__21230];
+            VAR_2890[VAR__21230]     = VAR_2890[VAR__21230 + 1];
+            VAR_2890[VAR__21230 + 1] = tmp2;
+            strcpy(tmp, VAR_9494[VAR__21230]);
+            strcpy(VAR_9494[VAR__21230], VAR_9494[VAR__21230 + 1]);
+            strcpy(VAR_9494[VAR__21230 + 1], tmp);
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647][0] == 'm' )
+      {
+         if ( first == 0 )
+         {
+            printf(" ");
+         }
+
+         first = 0;
+         printf("%.2lf", VAR_2890[VAR__53647]);
+      }
+   }
+
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR_9494[VAR__53647][0] == 'f' )
+      {
+         printf(" %.2lf", VAR_2890[VAR__53647]);
+      }
+   }
+
+
+   return 0;
+}

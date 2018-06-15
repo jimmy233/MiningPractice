@@ -1,0 +1,97 @@
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__12302;
+   int VAR__21230;
+   int sum1;
+   int sum2;
+   int year[200];
+   int mon1[200];
+   int mon2[200];
+   int VAR__COUNT[200];
+   int ping[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int leap[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &year[VAR__53647], &mon1[VAR__53647], &mon2[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( year[VAR__53647] % 4 ) != 0 )
+      {
+         VAR__COUNT[VAR__53647] = 0;
+      }
+      else
+      if (( year[VAR__53647] % 100 ) != 0 )
+      {
+         VAR__COUNT[VAR__53647] = 1;
+      }
+      else
+      if (( year[VAR__53647] % 400 ) != 0 )
+      {
+         VAR__COUNT[VAR__53647] = 0;
+      }
+      else
+      {
+         VAR__COUNT[VAR__53647] = 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      sum1       = 0;
+      sum2       = 0;
+      VAR__12302 = 0;
+
+      if ( VAR__COUNT[VAR__53647] == 0 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < mon1[VAR__53647]; VAR__21230++ )
+         {
+            sum1 += ping[VAR__21230];
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < mon2[VAR__53647]; VAR__21230++ )
+         {
+            sum2 += ping[VAR__21230];
+         }
+
+         VAR__12302 = sum2 - sum1;
+
+         if (( VAR__12302 % 7 ) == 0 )
+         {
+            printf("YES\n");
+         }
+         else
+         {
+            printf("NO\n");
+         }
+      }
+      else
+      {
+         for ( VAR__21230 = 0; VAR__21230 < mon1[VAR__53647]; VAR__21230++ )
+         {
+            sum1 += leap[VAR__21230];
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < mon2[VAR__53647]; VAR__21230++ )
+         {
+            sum2 += leap[VAR__21230];
+         }
+
+         VAR__12302 = sum2 - sum1;
+
+         if (( VAR__12302 % 7 ) == 0 )
+         {
+            printf("YES\n");
+         }
+         else
+         {
+            printf("NO\n");
+         }
+      }
+   }
+}

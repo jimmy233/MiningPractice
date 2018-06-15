@@ -1,0 +1,25 @@
+struct STUDENT
+{
+   char           student[100];
+   struct STUDENT *former;
+};
+int main()
+{
+   struct STUDENT *ANOTHER_POINTER = (struct STUDENT *)malloc(sizeof( struct STUDENT ));
+   struct STUDENT *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER->former = NULL;
+   for ( gets(ANOTHER_POINTER->student); ANOTHER_POINTER->student[0] != 'e'; gets(ANOTHER_POINTER->student))
+   {
+      YET_ANOTHER_POINTER     = ANOTHER_POINTER;
+      ANOTHER_POINTER         = (struct STUDENT *)malloc(sizeof( struct STUDENT ));
+      ANOTHER_POINTER->former = YET_ANOTHER_POINTER;
+   }
+
+   for ( ANOTHER_POINTER = ANOTHER_POINTER->former; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->former )
+   {
+      printf("%s\n", ANOTHER_POINTER->student);
+   }
+
+   return 0;
+}

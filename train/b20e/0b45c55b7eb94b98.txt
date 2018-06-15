@@ -1,0 +1,115 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR_9494;
+   int VAR__53647;
+   int VAR__21230;
+   int sub      = 0;
+   int VAR__SUM = 0;
+   int tfast;
+   int tslow;
+   int wfast;
+   int wslow;
+   int VAR__temp[1000];
+   int VAR_21983012[1000];
+
+   while ( scanf("%d", &VAR_1238123) && ( VAR_1238123 != 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_21983012[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( VAR__temp[VAR__21230] < VAR__temp[VAR__21230 + 1] )
+            {
+               VAR_9494 = VAR__temp[VAR__21230];
+               VAR__temp[VAR__21230]     = VAR__temp[VAR__21230 + 1];
+               VAR__temp[VAR__21230 + 1] = VAR_9494;
+            }
+         }
+      }
+
+
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( VAR_21983012[VAR__21230] < VAR_21983012[VAR__21230 + 1] )
+            {
+               VAR_9494 = VAR_21983012[VAR__21230];
+               VAR_21983012[VAR__21230]     = VAR_21983012[VAR__21230 + 1];
+               VAR_21983012[VAR__21230 + 1] = VAR_9494;
+            }
+         }
+      }
+
+
+
+      tfast = 0;
+      tslow = VAR_1238123 - 1;
+      wfast = 0;
+      wslow = VAR_1238123 - 1;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__temp[tfast] == VAR_21983012[wfast] )
+         {
+            if ( VAR__temp[tslow] > VAR_21983012[wslow] )
+            {
+               sub++;
+               tslow--;
+               wslow--;
+            }
+            else
+            if ( VAR__temp[tslow] < VAR_21983012[wslow] )
+            {
+               sub--;
+               tslow--;
+               wfast++;
+            }
+            else
+            if ( VAR__temp[tslow] == VAR_21983012[wslow] )
+            {
+               if ( VAR__temp[tslow] < VAR_21983012[wfast] )
+               {
+                  sub--;
+                  tslow--;
+                  wfast++;
+               }
+               else
+               if ( VAR__temp[tslow] == VAR_21983012[wfast] )
+               {
+                  break;
+               }
+            }
+         }
+         else
+         if ( VAR__temp[tfast] > VAR_21983012[wfast] )
+         {
+            sub++;
+            tfast++;
+            wfast++;
+         }
+         else
+         {
+            sub--;
+            tslow--;
+            wfast++;
+         }
+      }
+
+      VAR__SUM = sub * 200;
+      printf("%d\n", VAR__SUM);
+      sub      = 0;
+      VAR__SUM = 0;
+   }
+}

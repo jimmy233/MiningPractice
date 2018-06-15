@@ -1,0 +1,68 @@
+int money[100];
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__819283[100];
+   int  VAR__19328[100];
+   int  VAR__4857423[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__9290 = 0;
+   char name[100][30];
+   char ganbu[100];
+   char xibu[100];
+   char VAR__temp[30];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d%s%s%d", name[VAR__53647], &VAR__819283[VAR__53647], &VAR__19328[VAR__53647], &ganbu[VAR__53647], &xibu[VAR__53647], &VAR__4857423[VAR__53647]);
+
+      if (( VAR__819283[VAR__53647] > 80 ) && ( VAR__4857423[VAR__53647] != 0 ))
+      {
+         money[VAR__53647] = money[VAR__53647] + 8000;
+      }
+
+      if (( VAR__819283[VAR__53647] > 85 ) && ( VAR__19328[VAR__53647] > 80 ))
+      {
+         money[VAR__53647] = money[VAR__53647] + 4000;
+      }
+
+      if ( VAR__819283[VAR__53647] > 90 )
+      {
+         money[VAR__53647] = money[VAR__53647] + 2000;
+      }
+
+      if (( VAR__819283[VAR__53647] > 85 ) && ( xibu[VAR__53647] == 'Y' ))
+      {
+         money[VAR__53647] = money[VAR__53647] + 1000;
+      }
+
+      if (( VAR__19328[VAR__53647] > 80 ) && ( ganbu[VAR__53647] == 'Y' ))
+      {
+         money[VAR__53647] = money[VAR__53647] + 850;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      VAR__9290 = VAR__9290 + money[VAR__21230];
+   }
+
+   for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 > 0; VAR__21230-- )
+   {
+      if ( money[VAR__21230] > money[VAR__21230 - 1] )
+      {
+         VAR__8444594          = money[VAR__21230];
+         money[VAR__21230]     = money[VAR__21230 - 1];
+         money[VAR__21230 - 1] = VAR__8444594;
+         strcpy(VAR__temp, name[VAR__21230]);
+         strcpy(name[VAR__21230], name[VAR__21230 - 1]);
+         strcpy(name[VAR__21230 - 1], VAR__temp);
+      }
+   }
+
+   printf("%s\n%d\n%d\n", name[0], money[0], VAR__9290);
+   return 0;
+}

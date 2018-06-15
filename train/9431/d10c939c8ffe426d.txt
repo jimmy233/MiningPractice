@@ -1,0 +1,59 @@
+int VAR__NUM = 0;
+void main()
+{
+   struct student
+   {
+      char           xh[100];
+      char           xm[100];
+      char           xb;
+      int            nl;
+      float          df;
+      char           dz[100];
+      struct student *af;
+      struct student *bf;
+   };
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__8444594;
+   int            VAR__1238129;
+   int            VAR_1238123;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   struct student *p4;
+   struct student *VAR__HEAD;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+   scanf("%s %s %c %d %f %s", ANOTHER_POINTER->xh, ANOTHER_POINTER->xm, &ANOTHER_POINTER->xb, &ANOTHER_POINTER->nl, &ANOTHER_POINTER->df, ANOTHER_POINTER->dz);
+   ANOTHER_POINTER->bf = 0;
+
+   while ( strcmp(YET_ANOTHER_POINTER->xh, "end") != 0 )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s", ANOTHER_POINTER->xh);
+
+      if ( strcmp(ANOTHER_POINTER->xh, "end") == 0 )
+      {
+         VAR__HEAD               = YET_ANOTHER_POINTER;
+         ANOTHER_POINTER->bf     = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER->af = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER     = ANOTHER_POINTER;
+         VAR__NUM++;
+         ANOTHER_POINTER->af = 0;
+         break;
+      }
+
+      scanf("%s %c %d %f %s", ANOTHER_POINTER->xm, &ANOTHER_POINTER->xb, &ANOTHER_POINTER->nl, &ANOTHER_POINTER->df, ANOTHER_POINTER->dz);
+      ANOTHER_POINTER->bf     = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER->af = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER     = ANOTHER_POINTER;
+      VAR__NUM++;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      printf("%s %s %c %d %g %s\n", ANOTHER_POINTER->xh, ANOTHER_POINTER->xm, ANOTHER_POINTER->xb, ANOTHER_POINTER->nl, ANOTHER_POINTER->df, ANOTHER_POINTER->dz);
+      ANOTHER_POINTER = ANOTHER_POINTER->bf;
+   }
+}

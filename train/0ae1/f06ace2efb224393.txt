@@ -1,0 +1,78 @@
+int run(int VAR__819283)
+{
+   if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int date(int yy, int mm, int dd)
+{
+   int isr         = run(yy);
+   int VAR_233[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int days        = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < mm; VAR__53647++ )
+   {
+      days = days + VAR_233[VAR__53647];
+   }
+
+   days = days + dd;
+
+   if (( isr == 1 ) && ( mm >= 3 ))
+   {
+      days++;
+   }
+
+   return days;
+}
+
+
+int main()
+{
+   int yy;
+   int mm;
+   int dd;
+
+   (( cin >> yy ) >> mm ) >> dd;
+   yy = yy % 2800;
+   int days = ( yy - 1 ) * 365;
+   days += ((( yy - 1 ) / 4 ) - (( yy - 1 ) / 100 )) + (( yy - 1 ) / 400 );
+   days += date(yy, mm, dd);
+   int day = days % 7;
+   switch ( day )
+   {
+   case 0:
+      cout << "Sun.";
+      break;
+
+   case 1:
+      cout << "Mon.";
+      break;
+
+   case 2:
+      cout << "Tue.";
+      break;
+
+   case 3:
+      cout << "Wed.";
+      break;
+
+   case 4:
+      cout << "Thu.";
+      break;
+
+   case 5:
+      cout << "Fri.";
+      break;
+
+   case 6:
+      cout << "Sat.";
+      break;
+   }
+}

@@ -1,0 +1,71 @@
+int    point[MAX][3];
+double VAR__12302;
+struct
+{
+   int    x1;
+   int    x2;
+   int    y1;
+   int    y2;
+   int    z1;
+   int    z2;
+   double VAR__12302;
+}
+dis[DISTANCE];
+struct
+{
+   int    x1;
+   int    x2;
+   int    y1;
+   int    y2;
+   int    z1;
+   int    z2;
+   double VAR__12302;
+}
+    mid;
+int VAR_1238123;
+int VAR__1238129 = 0;
+int VAR__53647;
+int VAR__21230;
+int main()
+{
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d%d%d", &point[VAR__53647][0], &point[VAR__53647][1], &point[VAR__53647][2]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         dis[VAR__1238129].x1         = point[VAR__53647][0];
+         dis[VAR__1238129].x2         = point[VAR__21230][0];
+         dis[VAR__1238129].y1         = point[VAR__53647][1];
+         dis[VAR__1238129].y2         = point[VAR__21230][1];
+         dis[VAR__1238129].z1         = point[VAR__53647][2];
+         dis[VAR__1238129].z2         = point[VAR__21230][2];
+         dis[VAR__1238129].VAR__12302 = sqrt(((( dis[VAR__1238129].x1 - dis[VAR__1238129].x2 ) * ( dis[VAR__1238129].x1 - dis[VAR__1238129].x2 )) + (( dis[VAR__1238129].y1 - dis[VAR__1238129].y2 ) * ( dis[VAR__1238129].y1 - dis[VAR__1238129].y2 ))) + (( dis[VAR__1238129].z1 - dis[VAR__1238129].z2 ) * ( dis[VAR__1238129].z1 - dis[VAR__1238129].z2 )));
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__1238129 - 1 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230].VAR__12302 < dis[VAR__21230 + 1].VAR__12302 )
+         {
+            mid                 = dis[VAR__21230];
+            dis[VAR__21230]     = dis[VAR__21230 + 1];
+            dis[VAR__21230 + 1] = mid;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", dis[VAR__53647].x1, dis[VAR__53647].y1, dis[VAR__53647].z1, dis[VAR__53647].x2, dis[VAR__53647].y2, dis[VAR__53647].z2, dis[VAR__53647].VAR__12302);
+   }
+
+   return 0;
+}

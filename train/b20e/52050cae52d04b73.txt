@@ -1,0 +1,82 @@
+int VAR_1238123;
+int tj[1001];
+int qw[1001];
+int main()
+{
+   void sort(int speed[]);
+
+   int VAR__53647;
+   for ( scanf("%d", &VAR_1238123); VAR_1238123 > 0; scanf("%d", &VAR_1238123))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tj[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qw[VAR__53647]);
+      }
+
+      sort(tj);
+      sort(qw);
+      int start_tj = 0;
+      int end_tj   = VAR_1238123 - 1;
+      int start_qw = 0;
+      int end_qw   = VAR_1238123 - 1;
+      int money    = 0;
+
+      while ( start_tj <= end_tj )
+      {
+         while (( tj[start_tj] > qw[start_qw] ) && ( start_tj <= end_tj ))
+         {
+            money = money + 200;
+            start_tj++;
+            start_qw++;
+         }
+
+         while (( tj[end_tj] > qw[end_qw] ) && ( start_tj <= end_tj ))
+         {
+            money = money + 200;
+            end_tj--;
+            end_qw--;
+         }
+
+         if ( start_tj <= end_tj )
+         {
+            if ( tj[start_tj] < qw[end_qw] )
+            {
+               money = money - 200;
+            }
+
+            start_tj++;
+            end_qw--;
+         }
+      }
+
+      printf("%d\n", money);
+   }
+
+   return 0;
+}
+
+
+void sort(int speed[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( speed[VAR__21230] < speed[VAR__53647] )
+         {
+            VAR__TEMP         = speed[VAR__21230];
+            speed[VAR__21230] = speed[VAR__53647];
+            speed[VAR__53647] = VAR__TEMP;
+         }
+      }
+   }
+}

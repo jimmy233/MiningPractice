@@ -1,0 +1,82 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    nan = 0;
+   int    nv  = 0;
+   double VAR_2890[100];
+   double VAR__819283[100];
+   double VAR__19328[100];
+   double VAR__temp;
+   char   sex[100];
+
+   scanf("%d", &VAR_1238123);
+   VAR__21230   = 1;
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", sex, &VAR_2890[VAR__53647]);
+
+      if ( strcmp(sex, "male") == 0 )
+      {
+         VAR__819283[VAR__21230] = VAR_2890[VAR__53647];
+         VAR__21230++;
+         nan++;
+      }
+
+      if ( strcmp(sex, "female") == 0 )
+      {
+         VAR__19328[VAR__8444594] = VAR_2890[VAR__53647];
+         VAR__8444594++;
+         nv++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nv; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( nv - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__21230] < VAR__19328[VAR__21230 + 1] )
+         {
+            VAR__temp = VAR__19328[VAR__21230 + 1];
+            VAR__19328[VAR__21230 + 1] = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= nan; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( nan - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__temp = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= nan; VAR__53647++ )
+   {
+      if ( VAR__53647 == 1 )
+      {
+         printf("%.2lf", VAR__819283[VAR__53647]);
+      }
+      else
+      {
+         printf(" %.2lf", VAR__819283[VAR__53647]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nv; VAR__53647++ )
+   {
+      printf(" %.2lf", VAR__19328[VAR__53647]);
+   }
+
+   printf("\n");
+   return 0;
+}

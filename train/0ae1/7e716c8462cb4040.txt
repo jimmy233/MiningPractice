@@ -1,0 +1,94 @@
+int leap(int VAR__3918907)
+{
+   if (((( VAR__3918907 % 100 ) == 0 ) && (( VAR__3918907 % 400 ) == 0 )) || ((( VAR__3918907 % 100 ) != 0 ) && (( VAR__3918907 % 4 ) == 0 )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int days(int VAR__3918907, int VAR__12302, int VAR_129012)
+{
+   int VAR__819283[13] = { 0, 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 };
+
+   if ( leap(VAR__3918907))
+   {
+      VAR__819283[3] = 29;
+   }
+
+   int ans = 0;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR__12302; VAR__53647++ )
+   {
+      ans += VAR__819283[VAR__53647];
+   }
+
+   return ans + VAR_129012;
+}
+
+
+int daysf(int VAR__3918907, int VAR__12302, int VAR_129012)
+{
+   int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if ( leap(VAR__3918907))
+   {
+      VAR__819283[2] = 29;
+   }
+
+   if (((( VAR__12302 >= 1 ) && ( VAR__12302 <= 12 )) && ( VAR_129012 >= 1 )) && ( VAR_129012 <= VAR__819283[VAR__12302] ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   long long VAR__3918907;
+   long long VAR__12302;
+   long long VAR_129012;
+   long long VAR_1238123;
+
+   (( cin >> VAR__3918907 ) >> VAR__12302 ) >> VAR_129012;
+   VAR__3918907--;
+   switch ((((( VAR__3918907 * 365 ) + ( VAR__3918907 / 4 )) - (( VAR__3918907 / 100 ) - ( VAR__3918907 / 400 ))) + days(VAR__3918907 + 1, VAR__12302, VAR_129012)) % 7 )
+   {
+   case 0:
+      cout << "Sun.";
+      break;
+
+   case 1:
+      cout << "Mon.";
+      break;
+
+   case 2:
+      cout << "Tue.";
+      break;
+
+   case 3:
+      cout << "Wed.";
+      break;
+
+   case 4:
+      cout << "Thu.";
+      break;
+
+   case 5:
+      cout << "Fri.";
+      break;
+
+   case 6:
+      cout << "Sat.";
+      break;
+   }
+
+   cin >> VAR__3918907;
+}

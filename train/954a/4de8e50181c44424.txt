@@ -1,0 +1,67 @@
+struct
+{
+   char name[20];
+   int  qimo;
+   int  banji;
+   char gb;
+   char xb;
+   int  paper;
+}
+stu[101];
+void main()
+{
+   int N;
+   int VAR__53647;
+   int VAR__MAX = 0;
+   int VAR_233  = 0;
+   int total    = 0;
+   int sch[101] = { 0 };
+
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].qimo, &stu[VAR__53647].banji, &stu[VAR__53647].gb, &stu[VAR__53647].xb, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].qimo > 80 ) && ( stu[VAR__53647].paper > 0 ))
+      {
+         sch[VAR__53647] += 8000;
+      }
+
+      if (( stu[VAR__53647].qimo > 85 ) && ( stu[VAR__53647].banji > 80 ))
+      {
+         sch[VAR__53647] += 4000;
+      }
+
+      if ( stu[VAR__53647].qimo > 90 )
+      {
+         sch[VAR__53647] += 2000;
+      }
+
+      if (( stu[VAR__53647].qimo > 85 ) && ( stu[VAR__53647].xb == 'Y' ))
+      {
+         sch[VAR__53647] += 1000;
+      }
+
+      if (( stu[VAR__53647].banji > 80 ) && ( stu[VAR__53647].gb == 'Y' ))
+      {
+         sch[VAR__53647] += 850;
+      }
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( sch[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = sch[VAR__53647];
+         VAR_233  = VAR__53647;
+      }
+
+      total = total + sch[VAR__53647];
+   }
+
+   printf("%s\n%d\n%d\n", stu[VAR_233].name, sch[VAR_233], total);
+}

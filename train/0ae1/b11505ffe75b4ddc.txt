@@ -1,0 +1,63 @@
+int isLeapYear(int VAR__3918907)
+{
+   if ((( VAR__3918907 % 400 ) == 0 ) || ((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )))
+   {
+      return true;
+   }
+   else
+   {
+      return false;
+   }
+}
+
+
+int main()
+{
+   char week[][5] = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+   int  days[12]  = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int  VAR__3918907;
+   int  VAR__1238129;
+   int  VAR__12302;
+   int  VAR__SUM = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  index;
+
+   scanf("%d %d %d", &VAR__3918907, &VAR__1238129, &VAR__12302);
+   VAR__21230 = VAR__3918907 - 1;
+
+   if ( VAR__3918907 > 400 )
+   {
+      VAR__SUM   = 5;
+      VAR__21230 = VAR__3918907 % 400;
+   }
+
+   for ( VAR__53647 = VAR__3918907 - VAR__21230; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      if ( isLeapYear(VAR__53647))
+      {
+         VAR__SUM += 2;
+      }
+      else
+      {
+         VAR__SUM += 1;
+      }
+
+      VAR__SUM %= 7;
+   }
+
+   if ( isLeapYear(VAR__3918907))
+   {
+      days[1]++;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__SUM += days[VAR__53647 - 1];
+   }
+
+   VAR__SUM += VAR__12302;
+   index     = VAR__SUM % 7;
+   printf("%s", week[index]);
+   return 0;
+}

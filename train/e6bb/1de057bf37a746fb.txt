@@ -1,0 +1,104 @@
+void change(int, int [][10]);
+void print(int [][10]);
+
+int VAR__1238129;
+int VAR_1238123;
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int fb[10][10];
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         fb[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+
+   fb[5][5] = VAR__1238129;
+   change(1, fb);
+   return 0;
+}
+
+
+void change(int day, int VAR__TEMP[][10])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp[10][10];
+
+   if ( day == ( VAR_1238123 + 1 ))
+   {
+      print(VAR__TEMP);
+      return;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         VAR__temp[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         if ( VAR__TEMP[VAR__53647][VAR__21230] != 0 )
+         {
+            VAR__temp[VAR__53647][VAR__21230]         = VAR__temp[VAR__53647][VAR__21230] + VAR__TEMP[VAR__53647][VAR__21230];
+            VAR__temp[VAR__53647 + 1][VAR__21230]     = VAR__temp[VAR__53647 + 1][VAR__21230] + VAR__TEMP[VAR__53647][VAR__21230];
+            VAR__temp[VAR__53647 + 1][VAR__21230 + 1] = VAR__temp[VAR__53647 + 1][VAR__21230 + 1] + VAR__TEMP[VAR__53647][VAR__21230];
+            VAR__temp[VAR__53647 + 1][VAR__21230 - 1] = VAR__temp[VAR__53647 + 1][VAR__21230 - 1] + VAR__TEMP[VAR__53647][VAR__21230];
+            VAR__temp[VAR__53647][VAR__21230 + 1]     = VAR__temp[VAR__53647][VAR__21230 + 1] + VAR__TEMP[VAR__53647][VAR__21230];
+            VAR__temp[VAR__53647][VAR__21230 - 1]     = VAR__temp[VAR__53647][VAR__21230 - 1] + VAR__TEMP[VAR__53647][VAR__21230];
+            VAR__temp[VAR__53647 - 1][VAR__21230]     = VAR__temp[VAR__53647 - 1][VAR__21230] + VAR__TEMP[VAR__53647][VAR__21230];
+            VAR__temp[VAR__53647 - 1][VAR__21230 + 1] = VAR__temp[VAR__53647 - 1][VAR__21230 + 1] + VAR__TEMP[VAR__53647][VAR__21230];
+            VAR__temp[VAR__53647 - 1][VAR__21230 - 1] = VAR__temp[VAR__53647 - 1][VAR__21230 - 1] + VAR__TEMP[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         VAR__TEMP[VAR__53647][VAR__21230] = VAR__TEMP[VAR__53647][VAR__21230] + VAR__temp[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   change(day + 1, VAR__TEMP);
+}
+
+
+void print(int array[][10])
+{
+   int VAR__53647 = 1;
+   int VAR__21230;
+
+   while ( 1 )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 8; VAR__21230++ )
+      {
+         ( cout << array[VAR__53647][VAR__21230] ) << " ";
+      }
+
+      ( cout << array[VAR__53647][9] ) << endl;
+
+      if ( VAR__53647 == 9 )
+      {
+         break;
+      }
+
+      VAR__53647++;
+   }
+}

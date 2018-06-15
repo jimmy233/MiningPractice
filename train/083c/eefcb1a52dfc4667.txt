@@ -1,0 +1,68 @@
+int main()
+{
+   long int VAR__819283;
+   long int VAR__19328;
+   long int VAR__53647;
+   long int VAR__21230;
+   long int VAR_1238123;
+   long int digit;
+   long int VAR__SUM;
+   long int remain[1000];
+   char     VAR__NUM[1000];
+   char     VAR__4857423;
+
+   scanf("%d %s %d", &VAR__819283, VAR__NUM, &VAR__19328);
+   VAR_1238123 = strlen(VAR__NUM);
+   VAR__SUM    = 0;
+   for ( VAR__53647 = 0; ( VAR__4857423 = VAR__NUM[VAR__53647] ) != '\0'; VAR__53647++ )
+   {
+      if ( isupper(VAR__4857423) != 0 )
+      {
+         digit = (int)(( VAR__4857423 - 'A' ) + 10 );
+      }
+
+      if ( islower(VAR__4857423) != 0 )
+      {
+         digit = (int)(( VAR__4857423 - 'a' ) + 10 );
+      }
+
+      if ( isdigit(VAR__4857423) != 0 )
+      {
+         digit = (int)( VAR__4857423 - '0' );
+      }
+
+      VAR__SUM += (int)( digit * pow(VAR__819283, ( VAR_1238123 - VAR__53647 ) - 1));
+   }
+
+   if ( VAR__SUM == 0 )
+   {
+      printf("%d", VAR__SUM);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__SUM != 0; VAR__53647++ )
+      {
+         remain[VAR__53647] = VAR__SUM % VAR__19328;
+         VAR__SUM           = VAR__SUM / VAR__19328;
+      }
+
+      for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ( remain[VAR__21230] <= 9 )
+         {
+            printf("%d", remain[VAR__21230]);
+         }
+
+         if ( remain[VAR__21230] > 9 )
+         {
+            remain[VAR__21230] = ( remain[VAR__21230] - 10 ) + ((int)'A' );
+            printf("%c", remain[VAR__21230]);
+         }
+      }
+
+      printf("\n");
+   }
+
+   getchar();
+   getchar();
+}

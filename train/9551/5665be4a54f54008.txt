@@ -1,0 +1,72 @@
+int main()
+{
+   int  VAR_1238123;
+   int  amount_lao   = 0;
+   int  amount_yiban = 0;
+   char VAR__4857423[11];
+   int  shuru;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_9494;
+   int  VAR_233;
+   struct xinxi
+   {
+      char id[11];
+      int  age;
+   };
+   struct xinxi laoren[100];
+   struct xinxi common[100];
+   struct xinxi VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR_233 = 0; VAR_233 < VAR_1238123; VAR_233++ )
+   {
+      scanf("%s %d", VAR__4857423, &shuru);
+
+      if ( shuru < 60 )
+      {
+         strcpy(common[amount_yiban].id, VAR__4857423);
+         common[amount_yiban].age = shuru;
+         amount_yiban++;
+      }
+      else
+      if ( shuru >= 60 )
+      {
+         strcpy(laoren[amount_lao].id, VAR__4857423);
+         laoren[amount_lao].age = shuru;
+         amount_lao++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( amount_lao - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( amount_lao - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( laoren[VAR__21230].age < laoren[VAR__21230 + 1].age )
+         {
+            strcpy(VAR__TEMP.id, laoren[VAR__21230].id);
+            VAR__TEMP.age = laoren[VAR__21230].age;
+            strcpy(laoren[VAR__21230].id, laoren[VAR__21230 + 1].id);
+            laoren[VAR__21230].age = laoren[VAR__21230 + 1].age;
+            strcpy(laoren[VAR__21230 + 1].id, VAR__TEMP.id);
+            laoren[VAR__21230 + 1].age = VAR__TEMP.age;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < amount_lao; VAR__8444594++ )
+   {
+      puts(laoren[VAR__8444594].id);
+      printf("\n");
+   }
+
+   for ( VAR_9494 = 0; VAR_9494 < amount_yiban; VAR_9494++ )
+   {
+      puts(common[VAR_9494].id);
+      printf("\n");
+   }
+
+   getchar();
+   getchar();
+}

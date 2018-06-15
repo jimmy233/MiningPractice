@@ -1,0 +1,85 @@
+int Tj[1001] = { 0 };
+int Qw[1001] = { 0 };
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int N;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP  = 200;
+   int VAR__COUNT = 0;
+
+   while (( cin >> N ) && ( N != 0 ))
+   {
+      VAR__COUNT = N;
+      int start1 = 0;
+      int start2 = 0;
+      int end1   = N - 1;
+      int end2   = N - 1;
+      int win    = 0;
+      int lose   = 0;
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         cin >> Tj[VAR__53647];
+      }
+
+      qsort(Tj, N, sizeof( int ), cmp);
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         cin >> Qw[VAR__53647];
+      }
+
+      qsort(Qw, N, sizeof( int ), cmp);
+
+      while ( VAR__COUNT-- )
+      {
+         if ( Tj[start1] > Qw[start2] )
+         {
+            start1++;
+            start2++;
+            win++;
+         }
+         else
+         if ( Tj[end1] > Qw[end2] )
+         {
+            end1--;
+            end2--;
+            win++;
+         }
+         else
+         if ( Tj[start1] < Qw[start2] )
+         {
+            start1++;
+            end2--;
+            lose++;
+         }
+         else
+         if ( Tj[end1] < Qw[end2] )
+         {
+            start1++;
+            end2--;
+            lose++;
+         }
+         else
+         if ( Tj[end1] == Qw[end2] )
+         {
+            if ( Tj[start1] < Qw[end2] )
+            {
+               start1++;
+               end2--;
+               lose++;
+            }
+         }
+      }
+
+      int VAR__SUM = VAR__TEMP * ( win - lose );
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,75 @@
+const int N = 1001;
+int       VAR_1238123;
+int       tj[N];
+int       qw[N];
+int       VAR__7685;
+int       VAR__3918907;
+int       VAR__819283;
+int       VAR__19328;
+int       ans;
+void fight(int VAR_9494, int VAR__temp)
+{
+   if ( tj[VAR_9494] < qw[VAR__temp] )
+   {
+      ans--;
+   }
+   else
+   if ( tj[VAR_9494] > qw[VAR__temp] )
+   {
+      ans++;
+   }
+}
+
+
+int main()
+{
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tj[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qw[VAR__53647];
+      }
+
+      sort(tj, tj + VAR_1238123);
+      sort(qw, qw + VAR_1238123);
+      VAR__7685    = ( VAR__819283 = 0 );
+      VAR__3918907 = ( VAR__19328 = VAR_1238123 - 1 );
+      ans          = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( qw[VAR__3918907] < tj[VAR__19328] )
+         {
+            fight(VAR__19328--, VAR__3918907--);
+         }
+         else
+         if ( qw[VAR__3918907] > tj[VAR__19328] )
+         {
+            fight(VAR__819283++, VAR__3918907--);
+         }
+         else
+         {
+            if ( qw[VAR__7685] >= tj[VAR__819283] )
+            {
+               fight(VAR__819283++, VAR__3918907--);
+            }
+            else
+            if ( qw[VAR__7685] < tj[VAR__819283] )
+            {
+               fight(VAR__819283++, VAR__7685++);
+            }
+         }
+      }
+
+      ( cout << ( ans * 200 )) << endl;
+   }
+}

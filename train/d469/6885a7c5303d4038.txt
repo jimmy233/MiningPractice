@@ -1,0 +1,53 @@
+int main()
+{
+   int judge(char ch[]);
+
+   char A_STRING[501];
+   char sub[501];
+   int  LEN_OF_STH;
+   int  start;
+   int  end;
+   int  VAR__53647;
+   int  VAR__1111;
+   gets(A_STRING);
+   LEN_OF_STH = strlen(A_STRING);
+   for ( VAR__1111 = 2; VAR__1111 <= LEN_OF_STH; VAR__1111++ )
+   {
+      for ( start = 0, end = start + VAR__1111; end <= LEN_OF_STH; start++, end++ )
+      {
+         for ( VAR__53647 = start; VAR__53647 < end; VAR__53647++ )
+         {
+            sub[VAR__53647 - start] = A_STRING[VAR__53647];
+         }
+
+         sub[end - start] = '\0';
+
+         if ( judge(sub) == 1 )
+         {
+            puts(sub);
+            printf("\n");
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+int judge(char ch[])
+{
+   int begin;
+   int finish;
+   int lenth;
+
+   lenth = strlen(ch);
+   for ( begin = 0, finish = lenth - 1; begin < finish; begin++, finish-- )
+   {
+      if ( ch[begin] != ch[finish] )
+      {
+         return 0;
+      }
+   }
+
+   return 1;
+}

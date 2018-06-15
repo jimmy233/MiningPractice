@@ -1,0 +1,63 @@
+int main()
+{
+   struct point
+   {
+      char   VAR__819283[100];
+      double VAR__19328;
+   }
+          points[100];
+   int    VAR_1238123;
+   int    VAR__53647   = 0;
+   int    VAR__8444594 = 1;
+   char   VAR_233[100];
+   double VAR__12302;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%lf", points[VAR__53647].VAR__819283, &points[VAR__53647].VAR__19328);
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( points[VAR__53647].VAR__19328 > points[VAR__53647 + 1].VAR__19328 )
+         {
+            VAR__12302 = points[VAR__53647 + 1].VAR__19328;
+            points[VAR__53647 + 1].VAR__19328 = points[VAR__53647].VAR__19328;
+            points[VAR__53647].VAR__19328     = VAR__12302;
+            strcpy(VAR_233, points[VAR__53647 + 1].VAR__819283);
+            strcpy(points[VAR__53647 + 1].VAR__819283, points[VAR__53647].VAR__819283);
+            strcpy(points[VAR__53647].VAR__819283, VAR_233);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(points[VAR__53647].VAR__819283, "male") == 0 )
+      {
+         printf("%.2lf", points[VAR__53647].VAR__19328);
+         break;
+      }
+   }
+
+   for ( VAR__53647 = VAR__53647 + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(points[VAR__53647].VAR__819283, "male") == 0 )
+      {
+         printf(" %.2lf", points[VAR__53647].VAR__19328);
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( strcmp(points[VAR__53647].VAR__819283, "female") == 0 )
+      {
+         printf(" %.2lf", points[VAR__53647].VAR__19328);
+      }
+   }
+
+   return 0;
+}

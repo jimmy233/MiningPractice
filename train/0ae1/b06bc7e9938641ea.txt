@@ -1,0 +1,117 @@
+int main()
+{
+   long VAR__3918907;
+   long VAR__1238129;
+   long dd;
+   long ak = 0;
+   long VAR__53647;
+   long ans;
+
+   scanf("%d%d%d", &VAR__3918907, &VAR__1238129, &dd);
+   for ( VAR__53647 = 1; VAR__53647 <= 400; VAR__53647++ )
+   {
+      if (( VAR__53647 % 4 ) != 0 )
+      {
+         ak = ( ak + 365 ) % 7;
+      }
+      else
+      if ((( VAR__53647 % 400 ) == 0 ) || (( VAR__53647 % 100 ) != 0 ))
+      {
+         ak = ( ak + 366 ) % 7;
+      }
+      else
+      {
+         ak = ( ak + 365 ) % 7;
+      }
+   }
+
+   ans           = ((( VAR__3918907 - 1 ) / 400 ) * ak ) % 7;
+   VAR__3918907 %= 400;
+
+   if ( VAR__3918907 == 0 )
+   {
+      VAR__3918907 = 400;
+   }
+
+   ak = ans;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      if (( VAR__53647 % 4 ) != 0 )
+      {
+         ak = ( ak + 365 ) % 7;
+      }
+      else
+      if ((( VAR__53647 % 400 ) == 0 ) || (( VAR__53647 % 100 ) != 0 ))
+      {
+         ak = ( ak + 366 ) % 7;
+      }
+      else
+      {
+         ak = ( ak + 365 ) % 7;
+      }
+   }
+
+   ans = ak;
+   int VAR__21230;
+   int VAR__12302 = 0;
+   for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+   {
+      if ((((((( VAR__21230 == 1 ) || ( VAR__21230 == 3 )) || ( VAR__21230 == 5 )) || ( VAR__21230 == 7 )) || ( VAR__21230 == 8 )) || ( VAR__21230 == 10 )) || ( VAR__21230 == 12 ))
+      {
+         VAR__12302 += 31;
+      }
+
+      if (((( VAR__21230 == 4 ) || ( VAR__21230 == 6 )) || ( VAR__21230 == 9 )) || ( VAR__21230 == 11 ))
+      {
+         VAR__12302 += 30;
+      }
+
+      if ( VAR__21230 == 2 )
+      {
+         if ((( VAR__3918907 % 400 ) == 0 ) || ((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )))
+         {
+            VAR__12302 += 29;
+         }
+         else
+         {
+            VAR__12302 += 28;
+         }
+      }
+   }
+
+   VAR__12302 += dd;
+   ans        += VAR__12302;
+   ans        %= 7;
+   switch ( ans )
+   {
+   case 0:
+      printf("Sun.");
+      break;
+
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wen.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+   }
+
+   return 0;
+}

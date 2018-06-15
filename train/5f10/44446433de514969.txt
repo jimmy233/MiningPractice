@@ -1,0 +1,86 @@
+int main(int argc, char *argv[])
+{
+   int  VAR__MAX;
+   int  mark[700];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  LEN_OF_STH;
+   int  VAR__8444594;
+   int  VAR__21230;
+   int  VAR__NUM[700];
+   char VAR_SIZE[700];
+   char gram[700][10];
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", VAR_SIZE);
+   LEN_OF_STH = strlen(VAR_SIZE);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 + 1 ); VAR__21230++ )
+      {
+         if ( VAR__21230 != VAR_1238123 )
+         {
+            gram[VAR__53647][VAR__21230] = VAR_SIZE[VAR__53647 + VAR__21230];
+         }
+         else
+         {
+            gram[VAR__53647][VAR__21230] = '\0';
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         if ( strcmp(gram[VAR__53647], gram[VAR__21230]) == 0 )
+         {
+            VAR__NUM[VAR__53647]++;
+         }
+      }
+   }
+
+   VAR__MAX     = 1;
+   VAR__8444594 = -1;
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX           = VAR__NUM[VAR__53647];
+         VAR__8444594       = 0;
+         mark[VAR__8444594] = VAR__53647;
+      }
+      else
+      if (( VAR__NUM[VAR__53647] == VAR__MAX ) && ( VAR__MAX != 1 ))
+      {
+         VAR__8444594++;
+         mark[VAR__8444594] = VAR__53647;
+      }
+   }
+
+   if ( VAR__8444594 == ( -1 ))
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= VAR__8444594; VAR__53647++ )
+      {
+         if ( VAR__53647 == 0 )
+         {
+            printf("%d\n%s\n", VAR__NUM[mark[0]], gram[mark[0]]);
+         }
+         else
+         {
+            printf("%s\n", gram[mark[VAR__53647]]);
+         }
+      }
+   }
+
+   return 0;
+}

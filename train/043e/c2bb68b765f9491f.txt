@@ -1,0 +1,82 @@
+char sen[200];
+char VAR__819283[100];
+char VAR__19328[100];
+char re[400];
+int  alen;
+int  blen;
+int test(int VAR_1238123)
+{
+   int  VAR__21230 = 0;
+   char *ANOTHER_POINTER;
+   char *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = sen + VAR_1238123;
+   YET_ANOTHER_POINTER = VAR__819283;
+
+   if ( VAR_1238123 != 0 )
+   {
+      if (( *( ANOTHER_POINTER - 1 )) != ' ' )
+      {
+         return 0;
+      }
+   }
+
+   do
+   {
+      if (( *ANOTHER_POINTER ) != ( *YET_ANOTHER_POINTER ))
+      {
+         VAR__21230 = 1;
+      }
+
+      ANOTHER_POINTER++;
+      YET_ANOTHER_POINTER++;
+   } while (( YET_ANOTHER_POINTER - VAR__819283 ) < alen );
+
+   if ((( *ANOTHER_POINTER ) != ' ' ) && (( *ANOTHER_POINTER ) != '\0' ))
+   {
+      return 0;
+   }
+
+   if ( VAR__21230 == 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   int        VAR__1111;
+   char       *write = re;
+   const char *read  = sen;
+
+   gets(sen);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   alen = strlen(VAR__819283);
+   blen = strlen(VAR__19328);
+   for ( ; ( read - sen ) < 200; read++ )
+   {
+      if ( test(read - sen) == 1 )
+      {
+         for ( VAR__1111 = 0; VAR__1111 < blen; VAR__1111++ )
+         {
+            *( write + VAR__1111 ) = VAR__19328[VAR__1111];
+         }
+
+         write += blen;
+         read  += alen - 1;
+      }
+      else
+      {
+         *write = *read;
+         write++;
+      }
+   }
+
+   printf("%s", re);
+}

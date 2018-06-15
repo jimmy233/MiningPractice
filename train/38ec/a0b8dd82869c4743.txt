@@ -1,0 +1,142 @@
+int main()
+{
+   int mon[13];
+
+   mon[1]  = 31;
+   mon[2]  = 28;
+   mon[3]  = 31;
+   mon[4]  = 30;
+   mon[5]  = 31;
+   mon[6]  = 30;
+   mon[7]  = 31;
+   mon[8]  = 31;
+   mon[9]  = 30;
+   mon[10] = 31;
+   mon[11] = 30;
+   mon[12] = 31;
+   int lmon[13];
+   lmon[1]  = 31;
+   lmon[2]  = 29;
+   lmon[3]  = 31;
+   lmon[4]  = 30;
+   lmon[5]  = 31;
+   lmon[6]  = 30;
+   lmon[7]  = 31;
+   lmon[8]  = 31;
+   lmon[9]  = 30;
+   lmon[10] = 31;
+   lmon[11] = 30;
+   lmon[12] = 31;
+   int y1;
+   int y2;
+   int m1;
+   int m2;
+   int d1;
+   int d2;
+   int days = 0;
+   int VAR__53647;
+   (( cin >> y1 ) >> m1 ) >> d1;
+   (( cin >> y2 ) >> m2 ) >> d2;
+
+   if (( y2 == y1 ) && (((( y1 % 4 ) == 0 ) && (( y1 % 100 ) != 0 )) || (( y1 % 400 ) == 0 )))
+   {
+      if ( m1 != m2 )
+      {
+         for ( VAR__53647 = m1 + 1; VAR__53647 < m2; VAR__53647++ )
+         {
+            days = lmon[VAR__53647] + days;
+         }
+
+         days = ( lmon[m1] - d1 ) + days;
+         days = days + d2;
+         cout << days;
+         return 0;
+      }
+      else
+      {
+         cout << ( d2 - d1 );
+      }
+   }
+   else
+   if ( y1 == y2 )
+   {
+      if ( m1 != m2 )
+      {
+         for ( VAR__53647 = m1 + 1; VAR__53647 < m2; VAR__53647++ )
+         {
+            days = mon[VAR__53647] + days;
+         }
+
+         days = ( mon[m1] - d1 ) + days;
+         days = days + d2;
+         cout << days;
+         return 0;
+      }
+      else
+      {
+         cout << ( d2 - d1 );
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            days = days + 366;
+         }
+         else
+         {
+            days = days + 365;
+         }
+      }
+
+
+      if (((( y1 % 4 ) == 0 ) && (( y1 % 100 ) != 0 )) || (( y1 % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = m1 + 1; VAR__53647 < 13; VAR__53647++ )
+         {
+            days = lmon[VAR__53647] + days;
+         }
+
+         days = ( lmon[m1] - d1 ) + days;
+      }
+      else
+      if ( !(((( y1 % 4 ) == 0 ) && (( y1 % 100 ) != 0 )) || (( y1 % 400 ) == 0 )))
+      {
+         for ( VAR__53647 = m1 + 1; VAR__53647 < 13; VAR__53647++ )
+         {
+            days = mon[VAR__53647] + days;
+         }
+
+         days = ( mon[m1] - d1 ) + days;
+      }
+
+
+      if (((( y2 % 4 ) == 0 ) && (( y2 % 100 ) != 0 )) || (( y2 % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 1; VAR__53647 < m2; VAR__53647++ )
+         {
+            days = lmon[VAR__53647] + days;
+         }
+
+         days = days + d2;
+      }
+      else
+      if ( !(((( y2 % 4 ) == 0 ) && (( y2 % 100 ) != 0 )) || (( y2 % 400 ) == 0 )))
+      {
+         for ( VAR__53647 = 1; VAR__53647 < m2; VAR__53647++ )
+         {
+            days = mon[VAR__53647] + days;
+         }
+
+         days = days + d2;
+      }
+
+
+      cout << days;
+   }
+
+
+   return 0;
+}

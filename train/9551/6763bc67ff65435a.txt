@@ -1,0 +1,126 @@
+struct man
+{
+   char       VAR__NUM[10];
+   int        age;
+   int        nu;
+   struct man *VAR__NEXT;
+};
+int VAR__127322(char *VAR__819283, int VAR__19328, int n1, char *VAR__4857423, int VAR__12302, int n2)
+{
+   int VAR__SUM;
+
+   if (( VAR__19328 >= 60 ) && ( VAR__12302 >= 60 ))
+   {
+      if ( VAR__19328 > VAR__12302 )
+      {
+         VAR__SUM = 1;
+      }
+      else
+      if ( VAR__19328 < VAR__12302 )
+      {
+         VAR__SUM = -1;
+      }
+      else
+      {
+         VAR__SUM = n2 - n1;
+      }
+   }
+   else
+   if (( VAR__19328 >= 60 ) && ( VAR__12302 < 60 ))
+   {
+      VAR__SUM = 1;
+   }
+   else
+   if (( VAR__19328 < 60 ) && ( VAR__12302 >= 60 ))
+   {
+      VAR__SUM = -1;
+   }
+   else
+   {
+      VAR__SUM = n2 - n1;
+   }
+
+
+
+   return VAR__SUM;
+}
+
+
+struct man *insert(struct man *VAR__HEAD, struct man *stud, int VAR_1238123)
+{
+   struct man *p0;
+   struct man *ANOTHER_POINTER;
+   struct man *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = stud;
+   scanf("%s %d", p0->VAR__NUM, &p0->age);
+   p0->nu        = VAR_1238123 + 1;
+   p0->VAR__NEXT = NULL;
+
+   if ( VAR__HEAD == NULL )
+   {
+      VAR__HEAD = p0;
+   }
+   else
+   {
+      while (( VAR__127322(p0->VAR__NUM, p0->age, p0->nu, ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->age, ANOTHER_POINTER->nu) < 0 ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( VAR__127322(p0->VAR__NUM, p0->age, p0->nu, ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->age, ANOTHER_POINTER->nu) > 0 )
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            VAR__HEAD = p0;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         }
+
+         p0->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct man *VAR__HEAD, int VAR_1238123)
+{
+   struct man *VAR_233;
+   int        VAR__8444594;
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   int        VAR_1238123;
+   int        VAR__8444594;
+   struct man *VAR__HEAD;
+   struct man *stu;
+
+   VAR__HEAD = NULL;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      stu       = (struct man *)malloc(LEN);
+      VAR__HEAD = insert(VAR__HEAD, stu, VAR__8444594);
+   }
+
+   print(VAR__HEAD, VAR_1238123);
+}

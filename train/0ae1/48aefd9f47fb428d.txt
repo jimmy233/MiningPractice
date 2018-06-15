@@ -1,0 +1,95 @@
+int isRunNian(int year);
+
+void main()
+{
+   int iday;
+   int imonth;
+   int iyear;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__NUM;
+   int t1;
+   int VAR__SUM;
+
+   scanf("%d%d%d", &iyear, &imonth, &iday);
+   VAR__SUM = 0;
+   VAR__SUM = (((( iyear - 1 ) * ( 365 % 7 )) + (( iyear - 1 ) / 4 )) - (( iyear - 1 ) / 100 )) + (( iyear - 1 ) / 400 );
+   for ( VAR__53647 = 1; VAR__53647 < imonth; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         VAR__SUM += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         VAR__SUM += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ( isRunNian(iyear))
+         {
+            VAR__SUM += 29;
+         }
+         else
+         {
+            VAR__SUM += 28;
+         }
+      }
+   }
+
+   VAR__SUM  += iday;
+   VAR__21230 = VAR__SUM % 7;
+   switch ( VAR__21230 )
+   {
+   case 0:
+      printf("Sun.\n");
+      break;
+
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+
+   case 7:
+      printf("Sun.\n");
+      break;
+   }
+}
+
+
+int isRunNian(int year)
+{
+   int result;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      result = 1;
+   }
+   else
+   {
+      result = 0;
+   }
+
+   return result;
+}

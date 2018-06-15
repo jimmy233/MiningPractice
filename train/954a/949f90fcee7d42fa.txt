@@ -1,0 +1,81 @@
+struct student
+{
+   char           name[20];
+   int            scorefinal;
+   int            scoreclass;
+   char           gan;
+   char           xi;
+   int            lun;
+   int            money;
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__21230;
+   int            VAR__SUM = 0;
+   int            VAR_FLAG = 0;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p5;
+   struct student *p4;
+   struct student *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER        = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   ANOTHER_POINTER->money = 0;
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->scorefinal, &ANOTHER_POINTER->scoreclass, &ANOTHER_POINTER->gan, &ANOTHER_POINTER->xi, &ANOTHER_POINTER->lun);
+   VAR__HEAD = ANOTHER_POINTER;
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      ANOTHER_POINTER                = (struct student *)malloc(LEN);
+      ANOTHER_POINTER->money         = 0;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->scorefinal, &ANOTHER_POINTER->scoreclass, &ANOTHER_POINTER->gan, &ANOTHER_POINTER->xi, &ANOTHER_POINTER->lun);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   p5 = VAR__HEAD;
+   for ( ; p5 != NULL; p5 = p5->VAR__NEXT )
+   {
+      if (( p5->scorefinal > 80 ) && ( p5->lun >= 1 ))
+      {
+         p5->money = p5->money + 8000;
+      }
+
+      if (( p5->scorefinal > 85 ) && ( p5->scoreclass > 80 ))
+      {
+         p5->money = p5->money + 4000;
+      }
+
+      if ( p5->scorefinal > 90 )
+      {
+         p5->money = p5->money + 2000;
+      }
+
+      if (( p5->scorefinal > 85 ) && ( p5->xi == 'Y' ))
+      {
+         p5->money = p5->money + 1000;
+      }
+
+      if (( p5->scoreclass > 80 ) && ( p5->gan == 'Y' ))
+      {
+         p5->money = p5->money + 850;
+      }
+
+      VAR__SUM = VAR__SUM + p5->money;
+   }
+
+   for ( p4 = VAR__HEAD; p4 != NULL; p4 = p4->VAR__NEXT )
+   {
+      if ( p4->money > VAR_FLAG )
+      {
+         VAR_FLAG = p4->money;
+         VAR_233  = p4;
+      }
+   }
+
+   printf("%s\n%d\n%d", VAR_233->name, VAR_FLAG, VAR__SUM);
+}

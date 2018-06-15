@@ -1,0 +1,71 @@
+int convert1(char VAR__819283)
+{
+   if (( VAR__819283 >= '0' ) && ( VAR__819283 <= '9' ))
+   {
+      return VAR__819283 - '0';
+   }
+
+   if (( VAR__819283 >= 'a' ) && ( VAR__819283 <= 'z' ))
+   {
+      return ( VAR__819283 - 'a' ) + 10;
+   }
+
+   if (( VAR__819283 >= 'A' ) && ( VAR__819283 <= 'Z' ))
+   {
+      return ( VAR__819283 - 'A' ) + 10;
+   }
+}
+
+
+char convert2(int VAR__819283)
+{
+   if (( VAR__819283 >= 0 ) && ( VAR__819283 <= 9 ))
+   {
+      return VAR__819283 + 48;
+   }
+   else
+   {
+      return VAR__819283 + 55;
+   }
+}
+
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  LEN_OF_STH;
+   int  VAR__8444594 = 1;
+   int  VAR__53647;
+   int  VAR__21230;
+   long VAR__temp = 0;
+   char VAR__NUM[100];
+   char VAR_233;
+   int  num1[100];
+
+   (( cin >> VAR__819283 ) >> VAR__NUM ) >> VAR__19328;
+   LEN_OF_STH = strlen(VAR__NUM);
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__temp    = VAR__temp + ( VAR__8444594 * convert1(VAR__NUM[VAR__53647]));
+      VAR__8444594 = VAR__8444594 * VAR__819283;
+   }
+
+   VAR__53647 = 1;
+
+   while ( VAR__temp >= VAR__19328 )
+   {
+      num1[VAR__53647] = VAR__temp % VAR__19328;
+      VAR__53647++;
+      VAR__temp = VAR__temp / VAR__19328;
+   }
+
+   num1[VAR__53647] = VAR__temp;
+   for ( VAR__21230 = VAR__53647; VAR__21230 >= 1; VAR__21230-- )
+   {
+      VAR_233 = convert2(num1[VAR__21230]);
+      cout << VAR_233;
+   }
+
+   return 0;
+}

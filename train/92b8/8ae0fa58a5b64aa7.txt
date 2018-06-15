@@ -1,0 +1,60 @@
+struct Interval
+{
+   int VAR__819283;
+   int VAR__19328;
+}
+interval[MAXLEN];
+struct Interval
+{
+   int VAR__819283;
+   int VAR__19328;
+}
+output[MAXLEN];
+int cmp(const void *__a, const void *__b)
+{
+   struct Interval *_a = (struct Interval *)__a;
+   struct Interval *_b = (struct Interval *)__b;
+
+   if ( _a->VAR__819283 == _b->VAR__819283 )
+   {
+      return _a->VAR__19328 - _b->VAR__19328;
+   }
+
+   return _a->VAR__819283 - _b->VAR__819283;
+}
+
+
+int main()
+{
+   int cases;
+   int left;
+   int right;
+   int cnt;
+   int VAR__53647;
+
+   scanf("%d", &cases);
+   for ( VAR__53647 = 0; VAR__53647 < cases; VAR__53647++ )
+   {
+      scanf("%d %d", &interval[VAR__53647].VAR__819283, &interval[VAR__53647].VAR__19328);
+   }
+
+   qsort(interval, cases, sizeof( struct Interval ), cmp);
+   left  = interval[0].VAR__819283;
+   right = interval[0].VAR__19328;
+   cnt   = 0;
+   for ( VAR__53647 = 1; VAR__53647 < cases; VAR__53647++ )
+   {
+      if ( interval[VAR__53647].VAR__819283 > right )
+      {
+         printf("no\n");
+         return 0;
+      }
+      else
+      {
+         right = MAX(right, interval[VAR__53647].VAR__19328);
+      }
+   }
+
+   printf("%d %d\n", left, right);
+   return 0;
+}

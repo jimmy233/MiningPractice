@@ -1,0 +1,96 @@
+void main()
+{
+   char VAR_9494[500][500];
+   char VAR__temp[500][500];
+   int  VAR__8444594;
+   int  VAR_FLAG;
+   int  VAR__1111;
+   int  VAR__MAX;
+   int  VAR__7685[500] = { 0 };
+   char VAR__819283[500];
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__4857423;
+   int  VAR__21230;
+   int  zichuanshu;
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", VAR__819283);
+   VAR__4857423 = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__4857423 - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         VAR_9494[VAR__53647][VAR__21230] = VAR__819283[VAR__53647 + VAR__21230];
+      }
+   }
+
+   zichuanshu = VAR__53647;
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      VAR__temp[0][VAR__21230] = VAR_9494[0][VAR__21230];
+   }
+
+   VAR__8444594 = 1;
+   VAR__7685[0] = 0;
+   for ( VAR__53647 = 1; VAR__53647 < zichuanshu; VAR__53647++ )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < VAR__8444594; VAR__1111++ )
+      {
+         VAR_FLAG = 0;
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR_9494[VAR__53647][VAR__21230] != VAR__temp[VAR__1111][VAR__21230] )
+            {
+               VAR_FLAG = 1;
+            }
+         }
+
+         if ( VAR_FLAG == 0 )
+         {
+            VAR__7685[VAR__1111]++;
+            break;
+         }
+      }
+
+      if ( VAR_FLAG == 1 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__temp[VAR__8444594][VAR__21230] = VAR_9494[VAR__53647][VAR__21230];
+         }
+
+         VAR__8444594++;
+      }
+   }
+
+   VAR__MAX = VAR__7685[0];
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__7685[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__7685[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX == 0 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX + 1);
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR__8444594 - 1 ); VAR__53647++ )
+      {
+         if ( VAR__7685[VAR__53647] == VAR__MAX )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+            {
+               printf("%c", VAR__temp[VAR__53647][VAR__21230]);
+            }
+
+            printf("%c\n", VAR__temp[VAR__53647][VAR_1238123 - 1]);
+         }
+      }
+   }
+}

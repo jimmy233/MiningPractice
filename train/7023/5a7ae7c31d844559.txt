@@ -1,0 +1,67 @@
+int main()
+{
+   const int N = 110;
+   int       T;
+   int       VAR__53647;
+   int       l1;
+   int       l2;
+   int       tw = 0;
+   int       VAR__819283[N];
+   int       VAR__19328[N];
+   int       VAR__4857423[N];
+   char      s1[N];
+   char      s2[N];
+
+   cin >> T;
+   cin.get();
+
+   while ( T-- )
+   {
+      cin.getline(s1, 100);
+      cin.getline(s2, 100);
+      l1 = strlen(s1);
+      l2 = strlen(s2);
+      memset(VAR__819283, 0, sizeof( VAR__819283 ));
+      memset(VAR__19328, 0, sizeof( VAR__19328 ));
+      memset(VAR__4857423, 0, sizeof( VAR__4857423 ));
+      for ( VAR__53647 = 1; VAR__53647 <= l1; VAR__53647++ )
+      {
+         VAR__819283[N - VAR__53647] = s1[l1 - VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= l2; VAR__53647++ )
+      {
+         VAR__19328[N - VAR__53647] = s2[l2 - VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = N - 1; VAR__53647 >= ( N - l1 ); VAR__53647-- )
+      {
+         VAR__4857423[VAR__53647] = ( VAR__819283[VAR__53647] - VAR__19328[VAR__53647] ) - tw;
+
+         if ( VAR__4857423[VAR__53647] < 0 )
+         {
+            VAR__4857423[VAR__53647] += 10;
+            tw = 1;
+         }
+         else
+         {
+            tw = 0;
+         }
+      }
+
+      while ( VAR__4857423[VAR__53647] == 0 )
+      {
+         VAR__53647++;
+      }
+
+      for ( ; VAR__53647 < N; VAR__53647++ )
+      {
+         cout << VAR__4857423[VAR__53647];
+      }
+
+      cout << endl;
+      cin.get();
+   }
+
+   return 0;
+}

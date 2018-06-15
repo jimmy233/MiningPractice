@@ -1,0 +1,97 @@
+void main()
+{
+   int   VAR__1238129;
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__temp;
+   int   VAR__8444594;
+   int   VAR_129012[100] = { 0 };
+   int   tag;
+   int   VAR__COUNT = 0;
+   int   VAR_9494   = 0;
+   int   sub;
+   int   VAR__7685;
+   int   VAR__MIN;
+   int   minin;
+   int   temp2;
+   int   VAR__3918907;
+   float VAR__TEMP;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      tag       = 1;
+      VAR__TEMP = sqrt(VAR__53647);
+      for ( VAR__21230 = 2; VAR__21230 <= VAR__TEMP; VAR__21230++ )
+      {
+         if (( VAR__53647 % VAR__21230 ) == 0 )
+         {
+            tag = 0;
+            break;
+         }
+      }
+
+      if ( tag == 1 )
+      {
+         VAR__temp = VAR__53647;
+         sub       = 0;
+         VAR_9494  = 0;
+
+         while ( VAR__temp != 0 )
+         {
+            VAR__temp = VAR__temp / 10;
+            sub++;
+         }
+
+         VAR__3918907 = VAR__53647;
+         for ( VAR__8444594 = 0; VAR__8444594 < sub; VAR__8444594++ )
+         {
+            VAR__7685    = VAR__3918907 % 10;
+            VAR_9494     = ( VAR_9494 * 10 ) + VAR__7685;
+            VAR__3918907 = VAR__3918907 / 10;
+         }
+
+         if ( VAR_9494 == VAR__53647 )
+         {
+            VAR_129012[VAR__COUNT] = VAR__53647;
+            VAR__COUNT++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      VAR__MIN = VAR_129012[VAR__53647];
+      minin    = VAR__53647;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < VAR__COUNT; VAR__21230++ )
+      {
+         if ( VAR_129012[VAR__21230] < VAR__MIN )
+         {
+            minin    = VAR__21230;
+            VAR__MIN = VAR_129012[minin];
+         }
+      }
+
+      if ( VAR__MIN != VAR_129012[VAR__53647] )
+      {
+         temp2 = VAR_129012[VAR__53647];
+         VAR_129012[VAR__53647] = VAR_129012[minin];
+         VAR_129012[minin]      = temp2;
+      }
+   }
+
+   if ( VAR__COUNT == 0 )
+   {
+      printf("no\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+      {
+         printf("%d,", VAR_129012[VAR__53647]);
+      }
+
+      printf("%d\n", VAR_129012[VAR__53647]);
+   }
+}

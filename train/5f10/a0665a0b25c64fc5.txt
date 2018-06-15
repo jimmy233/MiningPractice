@@ -1,0 +1,73 @@
+int main()
+{
+   char VAR__4857423[505];
+   char VAR__12302[505][6];
+   char VAR__112390[505][6];
+
+   memset(VAR__4857423, 0, sizeof( VAR__4857423 ));
+   memset(VAR__12302, 0, sizeof( VAR__12302 ));
+   int VAR_1238123;
+   int tmp       = 0;
+   int VAR__MAX  = 0;
+   int VAR__TEMP = 0;
+   cin >> VAR_1238123;
+   cin.get();
+   cin.getline(VAR__4857423, 505);
+   for ( int VAR__53647 = 0; VAR__53647 <= ( strlen(VAR__4857423) - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__12302[VAR__53647][VAR__21230] = VAR__4857423[VAR__53647 + VAR__21230];
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( strlen(VAR__4857423) - VAR_1238123 ); VAR__53647++ )
+   {
+      tmp = 1;
+
+      if ( VAR__12302[VAR__53647][0] != 0 )
+      {
+         for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( strlen(VAR__4857423) - VAR_1238123 ); VAR__21230++ )
+         {
+            if ( strcmp(VAR__12302[VAR__53647], VAR__12302[VAR__21230]) == 0 )
+            {
+               tmp++;
+               memset(VAR__12302[VAR__21230], 0, 6);
+            }
+         }
+      }
+      else
+      {
+         continue;
+      }
+
+      if ( tmp > VAR__MAX )
+      {
+         VAR__MAX  = tmp;
+         VAR__TEMP = 0;
+         memset(VAR__112390, 0, sizeof( VAR__112390 ));
+         strcpy(VAR__112390[VAR__TEMP], VAR__12302[VAR__53647]);
+      }
+
+      if ( tmp == VAR__MAX )
+      {
+         strcpy(VAR__112390[VAR__TEMP], VAR__12302[VAR__53647]);
+         VAR__TEMP++;
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   {
+      ( cout << VAR__MAX ) << endl;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__TEMP; VAR__53647++ )
+      {
+         ( cout << VAR__112390[VAR__53647] ) << endl;
+      }
+   }
+
+   return 0;
+}

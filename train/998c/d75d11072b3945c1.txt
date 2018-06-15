@@ -1,0 +1,58 @@
+int  an1[MAXLEN + 10];
+int  an2[MAXLEN + 10];
+char sline1[MAXLEN + 10];
+char sline2[MAXLEN + 10];
+int ADD(int nMAXLEN, int *a1, int *a2)
+{
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   int highest;
+
+   for ( VAR__53647 = 0; VAR__53647 <= nMAXLEN; VAR__53647++ )
+   {
+      a1[VAR__53647] += a2[VAR__53647];
+
+      if ( a1[VAR__53647] >= 10 )
+      {
+         a1[VAR__53647] -= 10;
+         a1[VAR__53647 + 1]++;
+      }
+
+      if ( a1[VAR__53647] > 0 )
+      {
+         highest = VAR__53647;
+      }
+   }
+
+   return highest;
+}
+
+
+int main()
+{
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   memset(an1, 0, sizeof( an1 ));
+   memset(an2, 0, sizeof( an2 ));
+   ( cin >> sline1 ) >> sline2;
+   int len1 = strlen(sline1);
+   for ( VAR__21230 = 0, VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an1[VAR__21230++] = sline1[VAR__53647] - '0';
+   }
+
+   int len2 = strlen(sline2);
+   for ( VAR__21230 = 0, VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an2[VAR__21230++] = sline2[VAR__53647] - '0';
+   }
+
+   int VAR__8444594 = ADD(MAXLEN, an1, an2);
+   for ( VAR__53647 = VAR__8444594; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << an1[VAR__53647];
+   }
+
+   return 0;
+}

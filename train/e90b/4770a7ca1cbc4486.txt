@@ -1,0 +1,55 @@
+struct student
+{
+   int id;
+   int chinese;
+   int math;
+   int total;
+};
+int main()
+{
+   int            VAR__53647;
+   int            VAR__NUM;
+   struct student stu[100000];
+   int            max_0 = 0;
+   int            max_1 = 0;
+   int            max_2 = 0;
+   int            max_0_id;
+   int            max_1_id;
+   int            max_2_id;
+
+   scanf("%d", &VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; ++VAR__53647 )
+   {
+      scanf("%d %d %d", &stu[VAR__53647].id, &stu[VAR__53647].chinese, &stu[VAR__53647].math);
+      stu[VAR__53647].total = stu[VAR__53647].chinese + stu[VAR__53647].math;
+
+      if ( stu[VAR__53647].total > max_0 )
+      {
+         max_2    = max_1;
+         max_2_id = max_1_id;
+         max_1    = max_0;
+         max_1_id = max_0_id;
+         max_0    = stu[VAR__53647].total;
+         max_0_id = stu[VAR__53647].id;
+      }
+      else
+      if ( stu[VAR__53647].total > max_1 )
+      {
+         max_2    = max_1;
+         max_2_id = max_1_id;
+         max_1    = stu[VAR__53647].total;
+         max_1_id = stu[VAR__53647].id;
+      }
+      else
+      if ( stu[VAR__53647].total > max_2 )
+      {
+         max_2    = stu[VAR__53647].total;
+         max_2_id = stu[VAR__53647].id;
+      }
+   }
+
+   printf("%d %d\n", max_0_id, max_0);
+   printf("%d %d\n", max_1_id, max_1);
+   printf("%d %d\n", max_2_id, max_2);
+   return 0;
+}

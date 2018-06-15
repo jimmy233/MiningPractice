@@ -1,0 +1,81 @@
+char CHR[120];
+int  ANOTHER_POINTER;
+int  YET_ANOTHER_POINTER;
+int  p3;
+int  VAR__NUM;
+int deal(char Q)
+{
+   if (( Q >= '0' ) && ( Q <= '9' ))
+   {
+      return Q - '0';
+   }
+
+   if (( Q >= 'A' ) && ( Q <= 'Z' ))
+   {
+      return ( Q - 'A' ) + 10;
+   }
+
+   return -1;
+}
+
+
+char laed(int Q)
+{
+   if (( Q >= 0 ) && ( Q <= 9 ))
+   {
+      return '0' + Q;
+   }
+
+   if ( Q > 9 )
+   {
+      return ( 'A' + Q ) - 10;
+   }
+}
+
+
+void output(int ans)
+{
+   if ( ans == 0 )
+   {
+      return;
+   }
+   else
+   {
+      output(ans / p3);
+      cout << laed(ans % p3);
+   }
+}
+
+
+int main()
+{
+   cin >> ANOTHER_POINTER;
+   cin.get();
+   YET_ANOTHER_POINTER = 0;
+   VAR__NUM            = 0;
+
+   while (( CHR[YET_ANOTHER_POINTER] = cin.get()) != ' ' )
+   {
+      if (( CHR[YET_ANOTHER_POINTER] >= 'a' ) && ( CHR[YET_ANOTHER_POINTER] <= 'z' ))
+      {
+         CHR[YET_ANOTHER_POINTER] = ( CHR[YET_ANOTHER_POINTER] - 'a' ) + 'A';
+      }
+
+      VAR__NUM = ( VAR__NUM * ANOTHER_POINTER ) + deal(CHR[YET_ANOTHER_POINTER]);
+      YET_ANOTHER_POINTER++;
+   }
+
+   cin >> p3;
+
+   if ( VAR__NUM == 0 )
+   {
+      cout << 0;
+   }
+   else
+   {
+      output(VAR__NUM);
+   }
+
+   cout << endl;
+   return 0;
+}

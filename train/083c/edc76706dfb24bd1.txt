@@ -1,0 +1,148 @@
+long long nta(long long VAR__819283)
+{
+   if ( VAR__819283 >= 10 )
+   {
+      char VAR__19328;
+      VAR__19328 = (char)(( 'A' - 10 ) + VAR__819283 );
+      return (char)VAR__19328;
+   }
+   else
+   {
+      char VAR__19328;
+      VAR__19328 = (char)(( '1' - 1 ) + VAR__819283 );
+      return (char)VAR__19328;
+   }
+}
+
+
+long long atn(char VAR__53647)
+{
+   long long VAR__21230 = VAR__53647;
+
+   if ( VAR__21230 > 96 )
+   {
+      VAR__21230 = ( VAR__21230 - 'a' ) + 10;
+   }
+   else
+   {
+      if (( VAR__21230 > 33 ) && ( VAR__21230 < 58 ))
+      {
+         VAR__21230 = ( VAR__21230 - '1' ) + 1;
+      }
+      else
+      {
+         VAR__21230 = ( VAR__21230 - 'A' ) + 10;
+      }
+   }
+
+   return (long long)VAR__21230;
+}
+
+
+long long ten(long long VAR__8444594)
+{
+   long long VAR__1111;
+   long long VAR__1238129;
+
+   VAR__1111 = VAR__8444594;
+   for ( long long VAR_1238123 = 0; VAR_1238123 < 69; VAR_1238123++ )
+   {
+      VAR__1111 = VAR__1111 / 10;
+
+      if ( VAR__1111 > 0 )
+      {
+         VAR__1238129 = VAR_1238123 + 1;
+      }
+   }
+
+   return VAR__1238129;
+}
+
+
+long long loe(long long VAR__temp, long long v)
+{
+   long long u;
+   long long VAR_21983012 = 0;
+
+   u = VAR__temp;
+   for ( long long VAR__7685 = 0; VAR__7685 < 69; VAR__7685++ )
+   {
+      u = u / v;
+
+      if ( u > 0 )
+      {
+         VAR_21983012 = VAR__7685 + 1;
+      }
+   }
+
+   return VAR_21983012;
+}
+
+
+long long lth(char o[])
+{
+   long long VAR__127322 = 0;
+
+   for ( long long VAR_9Q8Q90 = 0; VAR_9Q8Q90 < 69; VAR_9Q8Q90++ )
+   {
+      if (( o[VAR_9Q8Q90] != 0 ) && ( o[VAR_9Q8Q90] != 32 ))
+      {
+         VAR__127322 = VAR__127322 + 1;
+      }
+   }
+
+   return VAR__127322;
+}
+
+
+int main()
+{
+   long long VAR__12302;
+   long long VAR__112390;
+   char      VAR_2890[70];
+
+   memset(VAR_2890, 0, sizeof( VAR_2890 ));
+   (( cin >> VAR__12302 ) >> VAR_2890 ) >> VAR__112390;
+   long long VAR_233;
+   VAR_233 = lth(VAR_2890);
+   long long VAR_9494 = 0;
+   long long ae[100];
+   ae[0] = 1;
+   for ( long long af = 1; af < 20; af++ )
+   {
+      ae[af] = ae[af - 1] * VAR__12302;
+   }
+
+   for ( long long VAR_666 = VAR_233 - 1; VAR_666 >= 0; VAR_666-- )
+   {
+      VAR_9494 = VAR_9494 + ( atn(VAR_2890[VAR_666]) * ae[( VAR_233 - 1 ) - VAR_666] );
+   }
+
+   long long VAR__3918907;
+   VAR__3918907 = loe(VAR_9494, VAR__112390);
+   char aa[70];
+   memset(aa, 0, sizeof( aa ));
+   long long ab = VAR_9494;
+   long long ac = 0;
+   for ( long long VAR__9290 = 0; VAR__9290 < ( VAR__3918907 + 1 ); VAR__9290++ )
+   {
+      ac = ab;
+      ab = ab / VAR__112390;
+
+      if ( ab > 0 )
+      {
+         aa[VAR__9290] = nta(ac % VAR__112390);
+      }
+      else
+      {
+         aa[VAR__9290] = nta(ac);
+      }
+   }
+
+   for ( long long ad = 0; ad < ( VAR__3918907 + 1 ); ad++ )
+   {
+      cout << aa[VAR__3918907 - ad];
+   }
+
+   return 0;
+}

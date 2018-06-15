@@ -1,0 +1,95 @@
+void main()
+{
+   char A_STRING[10000];
+   int  VAR__53647;
+   int  VAR__NUM[300];
+   int  VAR__21230;
+   int  add        = 0;
+   int  VAR__COUNT = 0;
+   int  no;
+   int  tag = 0;
+   int  VAR_FLAG;
+   int  VAR__MAX;
+
+   for ( VAR__53647 = 0; VAR__53647 < 300; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = 0;
+   }
+
+   scanf("%s", A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == 44 )
+      {
+         VAR__COUNT++;
+      }
+   }
+
+   VAR__53647 = 0;
+   for ( VAR__21230 = 0; VAR__21230 < VAR__COUNT; VAR__21230++ )
+   {
+      for ( ; A_STRING[VAR__53647] != 44; VAR__53647++ )
+      {
+         add = (( add * 10 ) + A_STRING[VAR__53647] ) - '0';
+      }
+
+      VAR__53647++;
+      VAR__NUM[VAR__21230] = add;
+      add = 0;
+   }
+
+   for ( ; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      VAR__NUM[VAR__21230] = (( 10 * VAR__NUM[VAR__21230] ) + A_STRING[VAR__53647] ) - '0';
+   }
+
+   if ( VAR__21230 == 1 )
+   {
+      printf("No\n");
+   }
+
+   no = VAR__21230 + 1;
+   for ( VAR__53647 = 0, VAR_FLAG = 1; ( VAR__53647 < no ) && VAR_FLAG; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] != VAR__NUM[0] )
+      {
+         VAR_FLAG = 0;
+      }
+   }
+
+   if ( VAR_FLAG )
+   {
+      printf("No\n");
+   }
+   else
+   {
+      VAR__MAX = 0;
+      for ( VAR__53647 = 0; VAR__53647 < no; VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647] >= VAR__MAX )
+         {
+            VAR__MAX = VAR__NUM[VAR__53647];
+            tag      = VAR__53647;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < no; VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647] == VAR__NUM[tag] )
+         {
+            VAR__NUM[VAR__53647] = 0;
+         }
+      }
+
+      for ( VAR__53647 = 0, VAR__MAX = VAR__NUM[0]; VAR__53647 < no; VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX = VAR__NUM[VAR__53647];
+            tag      = VAR__53647;
+         }
+      }
+
+      printf("%d\n", VAR__MAX);
+   }
+}

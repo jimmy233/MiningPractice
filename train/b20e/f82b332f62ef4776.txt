@@ -1,0 +1,109 @@
+int wis[MAX];
+int king[MAX];
+int comp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__COUNT;
+   int VAR__53647;
+   int imax;
+   int imin;
+   int jmax;
+   int jmin;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", wis + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", king + VAR__53647);
+      }
+
+      qsort(wis, VAR_1238123, sizeof( int ), comp);
+      qsort(king, VAR_1238123, sizeof( int ), comp);
+      imin       = 0;
+      imax       = VAR_1238123 - 1;
+      jmin       = 0;
+      jmax       = VAR_1238123 - 1;
+      VAR__COUNT = 0;
+
+      while ( jmin < jmax )
+      {
+         if ( wis[imin] > king[jmin] )
+         {
+            VAR__COUNT++;
+            imin++;
+            jmin++;
+         }
+         else
+         if ( wis[imin] < king[jmin] )
+         {
+            VAR__COUNT--;
+            imin++;
+            jmax--;
+         }
+         else
+         {
+            while ( jmin < jmax )
+            {
+               if ( wis[imax] > king[jmax] )
+               {
+                  VAR__COUNT++;
+                  imax--;
+                  jmax--;
+               }
+               else
+               if ( wis[imax] < king[jmax] )
+               {
+                  VAR__COUNT--;
+                  imin++;
+                  jmax--;
+               }
+               else
+               {
+                  if ( wis[imin] < king[jmax] )
+                  {
+                     VAR__COUNT--;
+                  }
+
+                  imin++;
+                  jmax--;
+                  break;
+               }
+            }
+         }
+      }
+
+      if ( wis[imax] > king[jmax] )
+      {
+         VAR__COUNT++;
+      }
+      else
+      if ( wis[imax] < king[jmax] )
+      {
+         VAR__COUNT--;
+      }
+
+
+      VAR__COUNT *= 200;
+      printf("%d\n", VAR__COUNT);
+   }
+
+   return 0;
+}

@@ -1,0 +1,83 @@
+int main()
+{
+   int VAR_1238123;
+   int times = 0;
+
+   cin >> VAR_1238123;
+
+   while ( true )
+   {
+      char ch1[100];
+      char ch2[100];
+      char ch3[100];
+      char VAR__TEMP;
+      memset(ch1, 0, 100);
+      memset(ch2, 0, 100);
+      memset(ch3, 0, 100);
+      cin >> ch1;
+      cin >> ch2;
+      int len1 = strlen(ch1);
+      int len2 = strlen(ch2);
+      for ( int VAR__53647 = 0; VAR__53647 <= (( len1 / 2 ) - 1 ); VAR__53647++ )
+      {
+         VAR__TEMP       = ch1[VAR__53647];
+         ch1[VAR__53647] = ch1[( len1 - VAR__53647 ) - 1];
+         ch1[( len1 - VAR__53647 ) - 1] = VAR__TEMP;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 <= (( len2 / 2 ) - 1 ); VAR__53647++ )
+      {
+         VAR__TEMP       = ch2[VAR__53647];
+         ch2[VAR__53647] = ch2[( len2 - VAR__53647 ) - 1];
+         ch2[( len2 - VAR__53647 ) - 1] = VAR__TEMP;
+      }
+
+      for ( int VAR__53647 = len2; VAR__53647 <= ( len1 - 1 ); VAR__53647++ )
+      {
+         ch2[VAR__53647] = '0';
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 <= ( len1 - 1 ); VAR__53647++ )
+      {
+         ch3[VAR__53647] = ( ch1[VAR__53647] - ch2[VAR__53647] ) + 48;
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= len1; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 <= ( len1 - 1 ); VAR__21230++ )
+         {
+            if ( ch3[VAR__21230] < '0' )
+            {
+               ch3[VAR__21230]     += 10;
+               ch3[VAR__21230 + 1] -= 1;
+            }
+         }
+      }
+
+      if ( ch3[len1 - 1] == '0' )
+      {
+         for ( int VAR__53647 = len1 - 2; VAR__53647 >= 0; VAR__53647-- )
+         {
+            cout << ch3[VAR__53647];
+         }
+      }
+      else
+      {
+         for ( int VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+         {
+            cout << ch3[VAR__53647];
+         }
+      }
+
+      cout << endl;
+      cin.get();
+      times++;
+
+      if ( times == VAR_1238123 )
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

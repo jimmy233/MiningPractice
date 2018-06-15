@@ -1,0 +1,81 @@
+void main()
+{
+   char A_STRING[200];
+   char VAR__819283[101];
+   char VAR__19328[101];
+   char *ptemp;
+   char *pstr;
+   char *pa;
+   char *pb;
+   int  VAR_FLAG;
+   int  lstr;
+   int  la;
+   int  lb;
+
+   pstr = A_STRING;
+   pa   = VAR__819283;
+   pb   = VAR__19328;
+   gets(pstr);
+   gets(pa);
+   gets(pb);
+   lstr = strlen(pstr);
+   la   = strlen(pa);
+   lb   = strlen(pb);
+   for ( ; pstr <= (( A_STRING + lstr ) - 1 ); pstr++ )
+   {
+      VAR_FLAG = 1;
+
+      while ((( *pstr ) != ' ' ) && (( *pstr ) != '\0' ))
+      {
+         if (( *pstr ) != ( *pa ))
+         {
+            VAR_FLAG = 0;
+         }
+
+         pstr++;
+         pa++;
+      }
+
+      if ( VAR_FLAG && ( pa == ( VAR__819283 + la )))
+      {
+         ptemp = pstr;
+
+         if ( la < lb )
+         {
+            for ( pstr = A_STRING + lstr; pstr >= ptemp; pstr-- )
+            {
+               *(( pstr + lb ) - la ) = *pstr;
+            }
+
+            for ( pstr = ptemp - la; pb <= (( VAR__19328 + lb ) - 1 ); pb++, pstr++ )
+            {
+               *pstr = *pb;
+            }
+
+            pb   = VAR__19328;
+            lstr = ( lstr + lb ) - la;
+         }
+
+         if ( la >= lb )
+         {
+            for ( pstr = ( ptemp - la ) + lb; pstr <= ((( A_STRING + lstr ) - la ) + lb ); pstr++ )
+            {
+               *pstr = *(( pstr + la ) - lb );
+            }
+
+            for ( pstr = ptemp - la; pb <= (( VAR__19328 + lb ) - 1 ); pb++, pstr++ )
+            {
+               *pstr = *pb;
+            }
+
+            pb   = VAR__19328;
+            lstr = ( lstr - la ) + lb;
+         }
+      }
+
+      pa = VAR__819283;
+   }
+
+   pstr = A_STRING;
+   printf("%s", pstr);
+}

@@ -1,0 +1,74 @@
+int convertor(char A[], int code, int right)
+{
+   if ( right == 0 )
+   {
+      return A[0];
+   }
+   else
+   {
+      return A[right] + ( code * convertor(A, code, right - 1));
+   }
+}
+
+
+void main()
+{
+   int  shuzhi1;
+   int  shuzhi2;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  VAR__1111;
+   char num1[20];
+   char num2[20];
+
+   scanf("%d", &shuzhi1);
+   scanf("%s", num1);
+   scanf("%d", &shuzhi2);
+   VAR_1238123 = strlen(num1);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( num1[VAR__53647] >= 'A' ) && ( num1[VAR__53647] <= 'Z' ))
+      {
+         num1[VAR__53647] = ( num1[VAR__53647] - 'A' ) + 10;
+      }
+      else
+      if (( num1[VAR__53647] >= 'a' ) && ( num1[VAR__53647] <= 'z' ))
+      {
+         num1[VAR__53647] = ( num1[VAR__53647] - 'a' ) + 10;
+      }
+      else
+      if (( num1[VAR__53647] >= '0' ) && ( num1[VAR__53647] <= '9' ))
+      {
+         num1[VAR__53647] = num1[VAR__53647] - '0';
+      }
+   }
+
+   VAR__1111  = convertor(num1, shuzhi1, VAR_1238123 - 1);
+   VAR__21230 = 0;
+
+   while (( VAR__1111 / shuzhi2 ) > 0 )
+   {
+      num2[VAR__21230] = VAR__1111 % shuzhi2;
+      VAR__1111        = VAR__1111 / shuzhi2;
+      VAR__21230++;
+   }
+
+   num2[VAR__21230] = VAR__1111;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__21230; VAR__53647++ )
+   {
+      if ( num2[VAR__53647] > 9 )
+      {
+         num2[VAR__53647] = ( num2[VAR__53647] - 10 ) + 'A';
+      }
+      else
+      {
+         num2[VAR__53647] = num2[VAR__53647] + '0';
+      }
+   }
+
+   for ( VAR__53647 = VAR__21230; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", num2[VAR__53647]);
+   }
+}

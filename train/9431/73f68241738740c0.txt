@@ -1,0 +1,82 @@
+struct student
+{
+   char           VAR__4857423[100];
+   struct student *VAR__NEXT;
+};
+struct student *creat()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR_233;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+   VAR_233         = ANOTHER_POINTER;
+   gets(ANOTHER_POINTER->VAR__4857423);
+
+   while ( strcmp(ANOTHER_POINTER->VAR__4857423, "end") != 0 )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      gets(ANOTHER_POINTER->VAR__4857423);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__4857423, "end") == 0 )
+      {
+         break;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR_233;
+}
+
+
+struct student *change(struct student *VAR_233)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+
+   ANOTHER_POINTER     = VAR_233;
+   YET_ANOTHER_POINTER = VAR_233;
+   p3 = NULL;
+
+   while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+   {
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER->VAR__NEXT;
+      ANOTHER_POINTER->VAR__NEXT = p3;
+      p3 = ANOTHER_POINTER;
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+   }
+
+   ANOTHER_POINTER->VAR__NEXT = p3;
+   return ANOTHER_POINTER;
+}
+
+
+void print(struct student *VAR_233)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR_233;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      printf("%s\n", ANOTHER_POINTER->VAR__4857423);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct student *VAR_233;
+   struct student *ANOTHER_POINTER;
+
+   VAR_233 = creat();
+   VAR_233 = change(VAR_233);
+   print(VAR_233);
+}

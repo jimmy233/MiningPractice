@@ -1,0 +1,108 @@
+int paixu(int *VAR__7685, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if (( *( VAR__7685 + VAR__21230 )) < ( *(( VAR__7685 + VAR__21230 ) + 1 )))
+         {
+            VAR__TEMP = *( VAR__7685 + VAR__21230 );
+            *( VAR__7685 + VAR__21230 )        = *(( VAR__7685 + VAR__21230 ) + 1 );
+            *(( VAR__7685 + VAR__21230 ) + 1 ) = VAR__TEMP;
+         }
+      }
+   }
+
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int tj[1000];
+   int *ANOTHER_POINTER = tj;
+   int qw[1000];
+   int *YET_ANOTHER_POINTER = qw;
+   int VAR__53647;
+   int VAR__SUM;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      VAR__SUM = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", ANOTHER_POINTER + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", YET_ANOTHER_POINTER + VAR__53647);
+      }
+
+      paixu(ANOTHER_POINTER, VAR_1238123);
+      paixu(YET_ANOTHER_POINTER, VAR_1238123);
+      int maxtj = 0;
+      int mintj = VAR_1238123 - 1;
+      int maxqw = 0;
+      int minqw = VAR_1238123 - 1;
+
+      while ( mintj >= maxtj )
+      {
+         if (( *( ANOTHER_POINTER + mintj )) > ( *( YET_ANOTHER_POINTER + minqw )))
+         {
+            VAR__SUM++;
+            mintj--;
+            minqw--;
+         }
+         else
+         if (( *( ANOTHER_POINTER + mintj )) < ( *( YET_ANOTHER_POINTER + minqw )))
+         {
+            VAR__SUM--;
+            mintj--;
+            maxqw++;
+         }
+         else
+         {
+            if (( *( ANOTHER_POINTER + maxtj )) > ( *( YET_ANOTHER_POINTER + maxqw )))
+            {
+               VAR__SUM++;
+               maxtj++;
+               maxqw++;
+            }
+            else
+            if (( *( ANOTHER_POINTER + maxtj )) < ( *( YET_ANOTHER_POINTER + maxqw )))
+            {
+               VAR__SUM--;
+               mintj--;
+               maxqw++;
+            }
+            else
+            if (( *( ANOTHER_POINTER + mintj )) == ( *( YET_ANOTHER_POINTER + maxqw )))
+            {
+               mintj--;
+               maxqw++;
+            }
+            else
+            {
+               VAR__SUM--;
+               mintj--;
+               maxqw++;
+            }
+         }
+      }
+
+      printf("%d", VAR__SUM * 200);
+      printf("\n");
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 0;
+}

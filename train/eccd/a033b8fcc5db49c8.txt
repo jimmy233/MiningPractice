@@ -1,0 +1,81 @@
+int main()
+{
+   int row;
+   int col;
+   int rownum;
+   int colnum;
+   int VAR__53647 = 20;
+   int VAR__21230 = 20;
+   int rowmax[SIZE];
+   int colmin[SIZE];
+   int VAR__NUM[SIZE][SIZE];
+
+   scanf("%d,%d", &rownum, &colnum);
+   for ( row = 0; row < rownum; row++ )
+   {
+      for ( col = 0; col < colnum; col++ )
+      {
+         scanf("%d", &VAR__NUM[row][col]);
+      }
+   }
+
+   for ( row = 0; row < rownum; row++ )
+   {
+      rowmax[row] = VAR__NUM[row][0];
+      for ( col = 0; col < colnum; col++ )
+      {
+         if ( rowmax[row] < VAR__NUM[row][col] )
+         {
+            rowmax[row] = VAR__NUM[row][col];
+         }
+         else
+         {
+            continue;
+         }
+      }
+   }
+
+   for ( col = 0; col < colnum; col++ )
+   {
+      colmin[col] = VAR__NUM[0][col];
+      for ( row = 0; row < rownum; row++ )
+      {
+         if ( colmin[col] > VAR__NUM[row][col] )
+         {
+            colmin[col] = VAR__NUM[row][col];
+         }
+         else
+         {
+            continue;
+         }
+      }
+   }
+
+   for ( row = 0; row < rownum; row++ )
+   {
+      for ( col = 0; col < colnum; col++ )
+      {
+         if ( rowmax[row] == colmin[col] )
+         {
+            VAR__53647 = row;
+            VAR__21230 = col;
+            break;
+         }
+         else
+         {
+            continue;
+         }
+      }
+   }
+
+   if (( VAR__53647 == 20 ) && ( VAR__21230 == 20 ))
+   {
+      printf("No");
+   }
+   else
+   {
+      printf("%d+%d", VAR__53647, VAR__21230);
+   }
+
+   return 0;
+}

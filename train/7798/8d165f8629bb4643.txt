@@ -1,0 +1,131 @@
+struct book
+{
+   int         VAR__NUM;
+   char        author[26];
+   struct book *VAR__NEXT;
+};
+struct book *creat()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int         VAR__53647 = 1;
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   ANOTHER_POINTER = (struct book *)malloc(LEN);
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->author);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+
+   if ( VAR__53647 >= VAR_1238123 )
+   {
+      free(ANOTHER_POINTER);
+      VAR__HEAD = NULL;
+      return VAR__HEAD;
+   }
+   else
+   {
+      VAR__HEAD           = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+      while ( VAR__53647 < VAR_1238123 )
+      {
+         ANOTHER_POINTER = (struct book *)malloc(LEN);
+         scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->author);
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+         VAR__53647++;
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         }
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      return VAR__HEAD;
+   }
+}
+
+
+int VAR__MAX(char letter, struct book *VAR__HEAD)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   VAR__53647 = 0;
+   struct book *VAR_666;
+   VAR_666 = VAR__HEAD;
+
+   while ( VAR_666 != NULL )
+   {
+      VAR__8444594 = strlen(VAR_666->author);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( VAR_666->author[VAR__21230] == letter )
+         {
+            VAR__53647++;
+         }
+      }
+
+      VAR_666 = VAR_666->VAR__NEXT;
+   }
+
+   return VAR__53647;
+}
+
+
+void outbook(char letter, struct book *VAR__HEAD)
+{
+   int         VAR__21230;
+   int         VAR__8444594;
+   struct book *VAR_666;
+
+   VAR_666 = VAR__HEAD;
+
+   while ( VAR_666 != NULL )
+   {
+      VAR__8444594 = strlen(VAR_666->author);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( VAR_666->author[VAR__21230] == letter )
+         {
+            printf("%d\n", VAR_666->VAR__NUM);
+         }
+      }
+
+      VAR_666 = VAR_666->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   int         VAR__53647;
+   int         VAR__1238129;
+   int         VAR_9494;
+   struct book *p0;
+   struct book *ANOTHER_POINTER;
+
+   p0 = ( ANOTHER_POINTER = creat());
+   int VAR__SUM[26];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647] = VAR__MAX(VAR__53647 + 65, p0);
+   }
+
+   VAR_9494     = 0;
+   VAR__1238129 = VAR__SUM[0];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] > VAR__1238129 )
+      {
+         VAR__1238129 = VAR__SUM[VAR__53647];
+         VAR_9494     = VAR__53647;
+      }
+   }
+
+   printf("%c\n", VAR_9494 + 65);
+   printf("%d\n", VAR__1238129);
+   outbook(VAR_9494 + 65, ANOTHER_POINTER);
+}

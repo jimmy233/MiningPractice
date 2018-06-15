@@ -1,0 +1,62 @@
+struct list
+{
+   char         no[10];
+   char         name[20];
+   char         gene;
+   unsigned int age;
+   float        score;
+   char         add[20];
+   struct list  *VAR__NEXT;
+};
+struct list *creat()
+{
+   struct list *ANOTHER_POINTER     = NULL;
+   struct list *YET_ANOTHER_POINTER = NULL;
+   struct list *VAR__HEAD;
+   int         VAR_1238123 = 0;
+
+   do
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct list *)malloc(sizeof( struct list ));
+      scanf("%s", ANOTHER_POINTER->no);
+
+      if (( *ANOTHER_POINTER->no ) == 'e' )
+      {
+         VAR__HEAD = YET_ANOTHER_POINTER;
+         free(ANOTHER_POINTER);
+         break;
+      }
+
+      scanf("%s %c %d %f %s\n", ANOTHER_POINTER->name, &ANOTHER_POINTER->gene, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+
+      if ( VAR_1238123 == 0 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+
+      if ( VAR_1238123 != 0 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+
+      VAR_1238123 = 1;
+   } while ( 1 );
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   struct list *VAR_233;
+
+   VAR_233 = creat();
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->no, VAR_233->name, VAR_233->gene, VAR_233->age, VAR_233->score, VAR_233->add);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return 0;
+}

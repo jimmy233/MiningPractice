@@ -1,0 +1,112 @@
+struct patient
+{
+   char           ID[11];
+   int            age;
+   struct patient *VAR__NEXT;
+}
+main()
+{
+   int            VAR__53647;
+   int            VAR_1238123;
+   struct patient *old;
+   struct patient *young;
+   struct patient *ot;
+   struct patient *yt;
+   struct patient *VAR_233;
+   struct patient *paixu(struct patient *VAR_2890);
+
+   scanf("%d", &VAR_1238123);
+   ot = NULL;
+   yt = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct patient *)malloc(LEN_OF_STH);
+      scanf("%s %d", VAR_233->ID, &VAR_233->age);
+      VAR_233->VAR__NEXT = NULL;
+
+      if ( VAR_233->age < 60 )
+      {
+         if ( yt )
+         {
+            yt->VAR__NEXT = VAR_233;
+         }
+         else
+         {
+            young = VAR_233;
+         }
+
+         yt = VAR_233;
+      }
+      else
+      {
+         if ( ot )
+         {
+            ot->VAR__NEXT = VAR_233;
+         }
+         else
+         {
+            old = VAR_233;
+         }
+
+         ot = VAR_233;
+      }
+   }
+
+   old = paixu(old);
+
+   while ( old )
+   {
+      printf("%s\n", old->ID);
+      old = old->VAR__NEXT;
+   }
+
+   while ( young )
+   {
+      printf("%s\n", young->ID);
+      young = young->VAR__NEXT;
+   }
+}
+
+struct patient *paixu(struct patient *VAR_2890)
+{
+   struct patient *hh = VAR_2890;
+   struct patient *before;
+   struct patient *after;
+
+   VAR_2890      = VAR_2890->VAR__NEXT;
+   hh->VAR__NEXT = NULL;
+
+   while ( VAR_2890 )
+   {
+      before = hh;
+
+      if ( before->age < VAR_2890->age )
+      {
+         hh    = VAR_2890;
+         after = VAR_2890->VAR__NEXT;
+         VAR_2890->VAR__NEXT = before;
+         VAR_2890            = after;
+      }
+      else
+      {
+         while ( before->VAR__NEXT )
+         {
+            if ( before->VAR__NEXT->age >= VAR_2890->age )
+            {
+               before = before->VAR__NEXT;
+            }
+            else
+            {
+               break;
+            }
+         }
+
+         after = VAR_2890->VAR__NEXT;
+         VAR_2890->VAR__NEXT = before->VAR__NEXT;
+         before->VAR__NEXT   = VAR_2890;
+         VAR_2890            = after;
+      }
+   }
+
+   return hh;
+}

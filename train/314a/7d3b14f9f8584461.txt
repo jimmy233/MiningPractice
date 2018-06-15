@@ -1,0 +1,86 @@
+int g_num;
+int g_minn = 5000;
+int g_maxx = 0;
+void trans(int num1[], char A_STRING[5000])
+{
+   int LEN_OF_STH;
+   int VAR__53647;
+   int ii;
+   int jj;
+   int kk;
+   int VAR_9494;
+   int VAR_666[5000];
+
+   LEN_OF_STH = strlen(A_STRING);
+   VAR__53647 = 0;
+   g_num      = 0;
+
+   while ( VAR__53647 < LEN_OF_STH )
+   {
+      VAR_9494 = 1;
+      g_num++;
+      ii = VAR__53647;
+      jj = 1;
+
+      while (( A_STRING[ii] != ',' ) && ( ii < LEN_OF_STH ))
+      {
+         VAR_666[jj] = A_STRING[ii] - '0';
+         jj++;
+         ii++;
+      }
+
+      for ( kk = jj - 1; kk >= 1; kk-- )
+      {
+         num1[g_num] += VAR_9494 * VAR_666[kk];
+         VAR_9494    *= 10;
+      }
+
+      if ( num1[g_num] < g_minn )
+      {
+         g_minn = num1[g_num];
+      }
+
+      if ( num1[g_num] > g_maxx )
+      {
+         g_maxx = num1[g_num];
+      }
+
+      VAR__53647 = ii + 1;
+   }
+}
+
+
+int main()
+{
+   char VAR__7685[5000];
+   char VAR__3918907[5000];
+   int  xx[5000]        = { 0 };
+   int  yy[5000]        = { 0 };
+   int  VAR__temp[5000] = { 0 };
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  most = 0;
+
+   cin >> VAR__7685;
+   cin >> VAR__3918907;
+   trans(xx, VAR__7685);
+   trans(yy, VAR__3918907);
+   for ( VAR__21230 = 1; VAR__21230 <= g_num; VAR__21230++ )
+   {
+      for ( VAR__8444594 = xx[VAR__21230]; VAR__8444594 < yy[VAR__21230]; VAR__8444594++ )
+      {
+         VAR__temp[VAR__8444594]++;
+      }
+   }
+
+   for ( VAR__8444594 = g_minn; VAR__8444594 <= g_maxx; VAR__8444594++ )
+   {
+      if ( VAR__temp[VAR__8444594] > most )
+      {
+         most = VAR__temp[VAR__8444594];
+      }
+   }
+
+   ((( cout << g_num ) << " " ) << most ) << endl;
+   return 0;
+}

@@ -1,0 +1,65 @@
+struct d
+{
+   int   VAR_666[2];
+   float dis;
+};
+int main()
+{
+   int      VAR_1238123;
+   int      VAR__53647;
+   int      VAR__21230;
+   int      VAR__8444594 = 0;
+   int      t2[2];
+   struct d dist[100];
+   float    VAR__819283[10][3];
+   float    t1;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         scanf("%f", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dist[VAR__8444594].dis        = sqrtf(((( VAR__819283[VAR__53647][0] - VAR__819283[VAR__21230][0] ) * ( VAR__819283[VAR__53647][0] - VAR__819283[VAR__21230][0] )) + (( VAR__819283[VAR__53647][1] - VAR__819283[VAR__21230][1] ) * ( VAR__819283[VAR__53647][1] - VAR__819283[VAR__21230][1] ))) + (( VAR__819283[VAR__53647][2] - VAR__819283[VAR__21230][2] ) * ( VAR__819283[VAR__53647][2] - VAR__819283[VAR__21230][2] )));
+         dist[VAR__8444594].VAR_666[0] = VAR__53647;
+         dist[VAR__8444594].VAR_666[1] = VAR__21230;
+         VAR__8444594++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - 1; VAR__21230 > 0; VAR__21230-- )
+      {
+         if ( dist[VAR__21230 - 1].dis < dist[VAR__21230].dis )
+         {
+            t1    = dist[VAR__21230 - 1].dis;
+            t2[0] = dist[VAR__21230 - 1].VAR_666[0];
+            t2[1] = dist[VAR__21230 - 1].VAR_666[1];
+            dist[VAR__21230 - 1].dis        = dist[VAR__21230].dis;
+            dist[VAR__21230 - 1].VAR_666[0] = dist[VAR__21230].VAR_666[0];
+            dist[VAR__21230 - 1].VAR_666[1] = dist[VAR__21230].VAR_666[1];
+            dist[VAR__21230].dis            = t1;
+            dist[VAR__21230].VAR_666[0]     = t2[0];
+            dist[VAR__21230].VAR_666[1]     = t2[1];
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", (int)VAR__819283[dist[VAR__53647].VAR_666[0]][0], (int)VAR__819283[dist[VAR__53647].VAR_666[0]][1], (int)VAR__819283[dist[VAR__53647].VAR_666[0]][2], (int)VAR__819283[dist[VAR__53647].VAR_666[1]][0], (int)VAR__819283[dist[VAR__53647].VAR_666[1]][1], (int)VAR__819283[dist[VAR__53647].VAR_666[1]][2], dist[VAR__53647].dis);
+   }
+
+   return 0;
+}

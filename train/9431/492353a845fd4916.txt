@@ -1,0 +1,42 @@
+struct info
+{
+   char        VAR__NUM[10];
+   char        name[20];
+   char        sex;
+   int         age;
+   float       grade;
+   char        address[10];
+   struct info *link;
+};
+int main()
+{
+   struct info *ANOTHER_POINTER;
+   struct info *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = NULL );
+   ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+   scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+   if ( ANOTHER_POINTER->VAR__NUM[0] == 'e' )
+   {
+      return 0;
+   }
+
+   do
+   {
+      scanf("%s %c%d%f%s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->grade, ANOTHER_POINTER->address);
+      ANOTHER_POINTER->link = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER   = ANOTHER_POINTER;
+      ANOTHER_POINTER       = (struct info *)malloc(sizeof( struct info ));
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+   } while ( ANOTHER_POINTER->VAR__NUM[0] != 'e' );
+
+   while ( YET_ANOTHER_POINTER != NULL )
+   {
+      printf("%s %s %c %d %g %s\n", YET_ANOTHER_POINTER->VAR__NUM, YET_ANOTHER_POINTER->name, YET_ANOTHER_POINTER->sex, YET_ANOTHER_POINTER->age, YET_ANOTHER_POINTER->grade, YET_ANOTHER_POINTER->address);
+      ANOTHER_POINTER     = YET_ANOTHER_POINTER->link;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   return 0;
+}

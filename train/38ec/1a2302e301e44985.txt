@@ -1,0 +1,92 @@
+int main()
+{
+   int VAR__819283[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+   int year1;
+   int month1;
+   int date1;
+   int year2;
+   int month2;
+   int date2;
+   int day = 0;
+   int year;
+
+   ((((( cin >> year1 ) >> month1 ) >> date1 ) >> year2 ) >> month2 ) >> date2;
+
+   if ( year1 == year2 )
+   {
+      if ( month1 == month2 )
+      {
+         day += date2 - date1;
+      }
+      else
+      if ( month1 < month2 )
+      {
+         if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+         {
+            year = 1;
+         }
+         else
+         {
+            year = 0;
+         }
+
+         day += VAR__819283[year][month1 - 1] - date1;
+         for ( int VAR__53647 = month1 + 1; VAR__53647 < month2; VAR__53647++ )
+         {
+            day += VAR__819283[year][VAR__53647 - 1];
+         }
+
+         day += date2;
+      }
+   }
+   else
+   if ( year1 < year2 )
+   {
+      if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+      {
+         year = 1;
+      }
+      else
+      {
+         year = 0;
+      }
+
+      day += VAR__819283[year][month1 - 1] - date1;
+      for ( int VAR__53647 = month1 + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         day += VAR__819283[year][VAR__53647 - 1];
+      }
+
+      for ( int VAR__53647 = year1 + 1; VAR__53647 < year2; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            day += 366;
+         }
+         else
+         {
+            day += 365;
+         }
+      }
+
+      if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+      {
+         year = 1;
+      }
+      else
+      {
+         year = 0;
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+      {
+         day += VAR__819283[year][VAR__53647 - 1];
+      }
+
+      day += date2;
+   }
+
+
+   ( cout << day ) << endl;
+   return 0;
+}

@@ -1,0 +1,58 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int ay;
+   int am;
+   int ad;
+   int by;
+   int bm;
+   int bd;
+   int day        = 0;
+   int moutha[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int mouthb[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> ay ) >> am ) >> ad;
+   (( cin >> by ) >> bm ) >> bd;
+   for ( VAR__53647 = ay; VAR__53647 < by; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         day += 366;
+      }
+      else
+      {
+         day += 365;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( bm - 1 ); VAR__53647++ )
+   {
+      if (((( by % 4 ) == 0 ) && (( by % 100 ) != 0 )) || (( by % 400 ) == 0 ))
+      {
+         day += mouthb[VAR__53647];
+      }
+      else
+      {
+         day += moutha[VAR__53647];
+      }
+   }
+
+   day += bd;
+   for ( VAR__53647 = 0; VAR__53647 < ( am - 1 ); VAR__53647++ )
+   {
+      if (((( ay % 4 ) == 0 ) && (( ay % 100 ) != 0 )) || (( ay % 400 ) == 0 ))
+      {
+         day -= mouthb[VAR__53647];
+      }
+      else
+      {
+         day -= moutha[VAR__53647];
+      }
+   }
+
+   day -= ad;
+   ( cout << day ) << endl;
+   return 0;
+}

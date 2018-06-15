@@ -1,0 +1,89 @@
+int main()
+{
+   int monp[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int monr[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int year1;
+   int year2;
+   int mon1;
+   int mon2;
+   int day1;
+   int day2;
+   int np = 0;
+   int nr = 0;
+   int VAR__53647;
+   int VAR__NUM = 0;
+
+   (( cin >> year1 ) >> mon1 ) >> day1;
+   (( cin >> year2 ) >> mon2 ) >> day2;
+   for ( VAR__53647 = year1 + 1; VAR__53647 < year2; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         nr++;
+      }
+      else
+      {
+         np++;
+      }
+   }
+
+   if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < mon1; VAR__53647++ )
+      {
+         VAR__NUM += monr[VAR__53647];
+      }
+
+      VAR__NUM += day1;
+
+      if ( year1 < year2 )
+      {
+         VAR__NUM = 366 - VAR__NUM;
+      }
+      else
+      {
+         VAR__NUM = -VAR__NUM;
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < mon1; VAR__53647++ )
+      {
+         VAR__NUM += monp[VAR__53647];
+      }
+
+      VAR__NUM += day1;
+
+      if ( year1 < year2 )
+      {
+         VAR__NUM = 365 - VAR__NUM;
+      }
+      else
+      {
+         VAR__NUM = -VAR__NUM;
+      }
+   }
+
+   if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < mon2; VAR__53647++ )
+      {
+         VAR__NUM += monr[VAR__53647];
+      }
+
+      VAR__NUM += day2;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < mon2; VAR__53647++ )
+      {
+         VAR__NUM += monp[VAR__53647];
+      }
+
+      VAR__NUM += day2;
+   }
+
+   VAR__NUM += ( nr * 366 ) + ( np * 365 );
+   ( cout << VAR__NUM ) << endl;
+   return 0;
+}

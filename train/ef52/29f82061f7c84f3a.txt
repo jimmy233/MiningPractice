@@ -1,0 +1,52 @@
+int Height[26];
+int MaxLen[26];
+void LIS(int VAR__8444594)
+{
+   memset(MaxLen, 0, sizeof( MaxLen ));
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      MaxLen[VAR__53647] = 1;
+      for ( int VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( Height[VAR__53647] <= Height[VAR__21230] )
+         {
+            int preMax = MaxLen[VAR__21230] + 1;
+
+            if ( preMax > MaxLen[VAR__53647] )
+            {
+               MaxLen[VAR__53647] = preMax;
+            }
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int N;
+   int VAR__53647;
+
+   scanf("%d", &N);
+   for ( VAR__53647 = 1; VAR__53647 <= N; VAR__53647++ )
+   {
+      scanf("%d", &Height[VAR__53647]);
+   }
+
+   LIS(N);
+   int Max = -1;
+   for ( VAR__53647 = 1; VAR__53647 <= N; VAR__53647++ )
+   {
+      if ( Max < MaxLen[VAR__53647] )
+      {
+         Max = MaxLen[VAR__53647];
+      }
+   }
+
+   if ( N != 0 )
+   {
+      printf("%d\n", Max);
+   }
+
+   return 0;
+}

@@ -1,0 +1,85 @@
+struct mouse
+{
+   int          weight;
+   char         color[11];
+   struct mouse *VAR__NEXT;
+   struct mouse *before;
+};
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__MAX;
+
+   scanf("%d", &VAR_1238123);
+   struct mouse *VAR__1238129;
+   struct mouse *VAR__HEAD;
+   struct mouse *ANOTHER_POINTER;
+   struct mouse *YET_ANOTHER_POINTER;
+   struct mouse *fin;
+   VAR__HEAD = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct mouse *)malloc(sizeof( struct mouse ))));
+   scanf("%s %d", ANOTHER_POINTER->color, &ANOTHER_POINTER->weight);
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct mouse *)malloc(sizeof( struct mouse ));
+      scanf("%s %d", ANOTHER_POINTER->color, &ANOTHER_POINTER->weight);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER->before        = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   fin = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__MAX        = 0;
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__21230 = 1; VAR__21230 <= (( VAR_1238123 + 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( ANOTHER_POINTER->weight > VAR__MAX )
+         {
+            VAR__MAX     = ANOTHER_POINTER->weight;
+            VAR__1238129 = ANOTHER_POINTER;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( VAR__1238129->weight < 60 )
+      {
+         break;
+      }
+
+      printf("%s\n", VAR__1238129->color);
+
+      if ( VAR__1238129 == VAR__HEAD )
+      {
+         VAR__HEAD = VAR__HEAD->VAR__NEXT;
+         continue;
+      }
+
+      if ( VAR__1238129 == fin )
+      {
+         fin            = fin->before;
+         fin->VAR__NEXT = NULL;
+         continue;
+      }
+
+      if (( VAR__1238129 != VAR__HEAD ) && ( VAR__1238129 != fin ))
+      {
+         ANOTHER_POINTER            = VAR__1238129->before;
+         ANOTHER_POINTER->VAR__NEXT = VAR__1238129->VAR__NEXT;
+         VAR__1238129         = VAR__1238129->VAR__NEXT;
+         VAR__1238129->before = ANOTHER_POINTER;
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   printf("%s\n", VAR__HEAD->color);
+   for ( ; ANOTHER_POINTER->VAR__NEXT != NULL; )
+   {
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      printf("%s\n", ANOTHER_POINTER->color);
+   }
+}

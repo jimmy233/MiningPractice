@@ -1,0 +1,59 @@
+void reverse(int VAR_1238123, char *ANOTHER_POINTER, char *YET_ANOTHER_POINTER)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      *( YET_ANOTHER_POINTER + VAR__53647 ) = *((( ANOTHER_POINTER + VAR_1238123 ) - VAR__53647 ) - 1 );
+   }
+
+   *( YET_ANOTHER_POINTER + VAR_1238123 ) = '\0';
+}
+
+
+void recopy(int VAR_1238123, char *ANOTHER_POINTER, char *YET_ANOTHER_POINTER)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      *( YET_ANOTHER_POINTER + VAR__53647 ) = *( ANOTHER_POINTER + VAR__53647 );
+   }
+
+   *( YET_ANOTHER_POINTER + VAR_1238123 ) = '\0';
+}
+
+
+void process(char *VAR_233)
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR__19328[strlen(VAR_233) + 1];
+   char VAR__4857423[strlen(VAR_233) + 1];
+
+   for ( VAR__53647 = 2; VAR__53647 <= strlen(VAR_233); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= (( strlen(VAR_233) - VAR__53647 ) + 1 ); VAR__21230++ )
+      {
+         reverse(VAR__53647, ( VAR_233 + VAR__21230 ) - 1, VAR__19328);
+         recopy(VAR__53647, ( VAR_233 + VAR__21230 ) - 1, VAR__4857423);
+
+         if ( strcmp(VAR__19328, VAR__4857423) == 0 )
+         {
+            printf("%s\n", VAR__4857423);
+         }
+      }
+   }
+}
+
+
+int main(int argc, char *argv[])
+{
+   char VAR__819283[500];
+
+   scanf("%s", VAR__819283);
+   char *VAR_233;
+   VAR_233 = VAR__819283;
+   process(VAR_233);
+   return 0;
+}

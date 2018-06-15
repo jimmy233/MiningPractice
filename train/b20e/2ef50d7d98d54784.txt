@@ -1,0 +1,97 @@
+int compare(const void *e1, const void *e2)
+{
+   return ( *((int *)e2 )) - ( *((int *)e1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int ql;
+   int qr;
+   int tl;
+   int tr;
+   int total = 0;
+   int VAR__temp[1000];
+   int VAR_666[1000];
+
+   while (( cin >> VAR_1238123 ) && VAR_1238123 )
+   {
+      total = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_666[VAR__53647];
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), compare);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), compare);
+      ql = 0;
+      qr = VAR_1238123 - 1;
+      tl = 0;
+      tr = VAR_1238123 - 1;
+
+      while ( ql <= qr )
+      {
+         if ( VAR_666[ql] > VAR__temp[tl] )
+         {
+            tr--;
+            ql++;
+            total -= 200;
+            continue;
+         }
+
+         if ( VAR_666[ql] < VAR__temp[tl] )
+         {
+            ql++;
+            tl++;
+            total += 200;
+            continue;
+         }
+
+         if ( VAR_666[qr] > VAR__temp[tr] )
+         {
+            ql++;
+            tr--;
+            total -= 200;
+            continue;
+         }
+
+         if ( VAR_666[qr] < VAR__temp[tr] )
+         {
+            qr--;
+            tr--;
+            total += 200;
+            continue;
+         }
+
+         int VAR_FLAG = 0;
+         for ( VAR__53647 = ql; ( VAR__53647 + 1 ) <= qr; VAR__53647++ )
+         {
+            if ( VAR_666[VAR__53647] != VAR_666[VAR__53647 + 1] )
+            {
+               VAR_FLAG = 1;
+               break;
+            }
+         }
+
+         if ( VAR_FLAG == 0 )
+         {
+            break;
+         }
+
+         ql++;
+         tr--;
+         total -= 200;
+      }
+
+      ( cout << total ) << endl;
+   }
+
+   return 0;
+}

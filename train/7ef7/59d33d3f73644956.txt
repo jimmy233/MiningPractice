@@ -1,0 +1,100 @@
+int Matrix[100][100];
+int VAR__819283[100] = { 0 };
+int VAR__19328[100]  = { 0 };
+int N = 0;
+void VAR__127322(int VAR_1238123)
+{
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = Matrix[VAR__53647][0];
+      for ( int VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         if ( VAR__819283[VAR__53647] > Matrix[VAR__53647][VAR__8444594] )
+         {
+            VAR__819283[VAR__53647] = Matrix[VAR__53647][VAR__8444594];
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         Matrix[VAR__53647][VAR__21230] -= VAR__819283[VAR__53647];
+      }
+   }
+}
+
+
+void VAR_9Q8Q90(int VAR_1238123)
+{
+   memset(VAR__19328, 0, sizeof( VAR__19328 ));
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = Matrix[0][VAR__53647];
+      for ( int VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         if ( VAR__19328[VAR__53647] > Matrix[VAR__8444594][VAR__53647] )
+         {
+            VAR__19328[VAR__53647] = Matrix[VAR__8444594][VAR__53647];
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         Matrix[VAR__21230][VAR__53647] -= VAR__19328[VAR__53647];
+      }
+   }
+}
+
+
+int VAR_2890(int VAR_1238123)
+{
+   int VAR__8444594 = 0;
+
+   VAR__127322(VAR_1238123);
+   VAR_9Q8Q90(VAR_1238123);
+   VAR__8444594 = Matrix[1][1];
+
+   if ( VAR_1238123 == 2 )
+   {
+      return VAR__8444594;
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      Matrix[0][VAR__53647] = Matrix[0][VAR__53647 + 1];
+      Matrix[VAR__53647][0] = Matrix[VAR__53647 + 1][0];
+      for ( int VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         Matrix[VAR__53647][VAR__21230] = Matrix[VAR__53647 + 1][VAR__21230 + 1];
+      }
+   }
+
+   return VAR__8444594 + VAR_2890(VAR_1238123 - 1);
+}
+
+
+int main()
+{
+   scanf("%d", &N);
+   for ( int VAR__21230 = 0; VAR__21230 < N; VAR__21230++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < N; VAR__21230++ )
+         {
+            scanf("%d", &Matrix[VAR__53647][VAR__21230]);
+         }
+      }
+
+
+      printf("%d\n", VAR_2890(N));
+   }
+
+   return 0;
+}

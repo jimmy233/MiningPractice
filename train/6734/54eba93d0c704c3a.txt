@@ -1,0 +1,66 @@
+struct monkey
+{
+   int VAR__NUM;
+   int nextmonk;
+};
+void countoff(int VAR_1238123, int VAR__1238129)
+{
+   struct monkey *monk = (struct monkey *)malloc(LEN * VAR_1238123);
+   int           VAR__53647;
+   int           VAR__21230;
+   int           VAR__SUM = VAR_1238123;
+   int           last;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      monk[VAR__53647].VAR__NUM = VAR__53647;
+      monk[VAR__53647].nextmonk = VAR__53647 + 1;
+   }
+
+   monk[VAR_1238123].nextmonk = 1;
+   last = ( VAR__53647 = VAR_1238123 );
+
+   while ( VAR__SUM > 1 )
+   {
+      VAR__21230 = 0;
+
+      while ( VAR__21230 != VAR__1238129 )
+      {
+         VAR__53647 = monk[VAR__53647].nextmonk;
+
+         if ( monk[VAR__53647].VAR__NUM )
+         {
+            VAR__21230++;
+
+            if ( VAR__21230 != VAR__1238129 )
+            {
+               last = monk[VAR__53647].VAR__NUM;
+            }
+         }
+      }
+
+      monk[VAR__53647].VAR__NUM = 0;
+      VAR__SUM--;
+   }
+
+   printf("%d\n", last);
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+
+   while ( 1 )
+   {
+      scanf("%d %d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR__1238129 == 0 ) && ( VAR_1238123 == 0 ))
+      {
+         break;
+      }
+
+      countoff(VAR_1238123, VAR__1238129);
+   }
+}

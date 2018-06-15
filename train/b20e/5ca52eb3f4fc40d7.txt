@@ -1,0 +1,112 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__8444594;
+   int money;
+   int tf;
+   int ts;
+   int wf;
+   int ws;
+   int tj[1000];
+   int qw[1000];
+
+   money = 0;
+
+   while ( scanf("%d", &VAR_1238123) && ( VAR_1238123 != 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tj[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qw[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( tj[VAR__21230] < tj[VAR__21230 + 1] )
+            {
+               VAR__8444594       = tj[VAR__21230];
+               tj[VAR__21230]     = tj[VAR__21230 + 1];
+               tj[VAR__21230 + 1] = VAR__8444594;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( qw[VAR__21230] < qw[VAR__21230 + 1] )
+            {
+               VAR__8444594       = qw[VAR__21230];
+               qw[VAR__21230]     = qw[VAR__21230 + 1];
+               qw[VAR__21230 + 1] = VAR__8444594;
+            }
+         }
+      }
+
+      tf = 0;
+      ts = VAR_1238123 - 1;
+      wf = 0;
+      ws = VAR_1238123 - 1;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( tj[tf] == qw[wf] )
+         {
+            if ( tj[ts] > qw[ws] )
+            {
+               money += 200;
+               ts--;
+               ws--;
+            }
+            else
+            if ( tj[ts] < qw[ws] )
+            {
+               money -= 200;
+               ts--;
+               wf++;
+            }
+            else
+            if ( tj[ts] == qw[ws] )
+            {
+               if ( tj[ts] < qw[wf] )
+               {
+                  money -= 200;
+                  ts--;
+                  wf++;
+               }
+               else
+               if ( tj[ts] == qw[wf] )
+               {
+                  break;
+               }
+            }
+         }
+         else
+         if ( tj[tf] > qw[wf] )
+         {
+            money += 200;
+            tf++;
+            wf++;
+         }
+         else
+         {
+            money -= 200;
+            ts--;
+            wf++;
+         }
+      }
+
+      printf("%d\n", money);
+      money = 0;
+   }
+
+   return 0;
+}

@@ -1,0 +1,56 @@
+typedef struct area
+{
+   char  sex[8];
+   float hight;
+} area;
+area VAR__819283[100];
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   area *aa = (area *)VAR__819283;
+   area *bb = (area *)VAR__19328;
+
+   if (( aa->sex[0] == 'm' ) && ( bb->sex[0] == 'f' ))
+   {
+      return -1;
+   }
+   else
+   if (( aa->sex[0] == 'f' ) && ( bb->sex[0] == 'm' ))
+   {
+      return 1;
+   }
+   else
+   if ( aa->sex[0] == 'm' )
+   {
+      return ( aa->hight < bb->hight ) ? ( -1 ) : ( 1 );
+   }
+   else
+   {
+      return ( aa->hight < bb->hight ) ? ( 1 ) : ( -1 );
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%f", &VAR__819283[VAR__53647].sex, &VAR__819283[VAR__53647].hight);
+   }
+
+   qsort(VAR__819283, VAR_1238123, sizeof( area ), cmp);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%.2f", VAR__819283[VAR__53647].hight);
+
+      if ( VAR__53647 < ( VAR_1238123 - 1 ))
+      {
+         printf(" ");
+      }
+   }
+
+   return 0;
+}

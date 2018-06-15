@@ -1,0 +1,78 @@
+void main()
+{
+   char name[100][21];
+   char gan[100];
+   char west[100];
+   char temp1[21];
+   int  end[100];
+   int  cls[100];
+   int  esy[100];
+   int  rmb[100];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__SUM;
+   int  temp2;
+   char VAR__819283 = 'Y';
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", name[VAR__53647], &end[VAR__53647], &cls[VAR__53647], &gan[VAR__53647], &west[VAR__53647], &esy[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      rmb[VAR__53647] = 0;
+
+      if (( end[VAR__53647] > 80 ) && ( esy[VAR__53647] > 0 ))
+      {
+         rmb[VAR__53647] += 8000;
+      }
+
+      if (( end[VAR__53647] > 85 ) && ( cls[VAR__53647] > 80 ))
+      {
+         rmb[VAR__53647] += 4000;
+      }
+
+      if ( end[VAR__53647] > 90 )
+      {
+         rmb[VAR__53647] += 2000;
+      }
+
+      if (( end[VAR__53647] > 85 ) && ( west[VAR__53647] == VAR__819283 ))
+      {
+         rmb[VAR__53647] += 1000;
+      }
+
+      if (( cls[VAR__53647] > 80 ) && ( gan[VAR__53647] == VAR__819283 ))
+      {
+         rmb[VAR__53647] += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0, VAR__SUM = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += rmb[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( rmb[VAR__21230] >= rmb[VAR__21230 + 1] )
+         {
+            temp2               = rmb[VAR__21230];
+            rmb[VAR__21230]     = rmb[VAR__21230 + 1];
+            rmb[VAR__21230 + 1] = temp2;
+            strcpy(temp1, name[VAR__21230]);
+            strcpy(name[VAR__21230], name[VAR__21230 + 1]);
+            strcpy(name[VAR__21230 + 1], temp1);
+         }
+      }
+   }
+
+   printf("%s\n", name[VAR_1238123 - 1]);
+   printf("%d\n", rmb[VAR_1238123 - 1]);
+   printf("%d\n", VAR__SUM);
+}

@@ -1,0 +1,117 @@
+float dist(int VAR__819283, int VAR__19328, int VAR__4857423, int a1, int b1, int c1);
+int toi(int fi, int ni);
+int toj(int fj, int nj);
+
+int main()
+{
+   int   VAR__7685[10];
+   int   VAR__3918907[10];
+   int   VAR__9290[10];
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   o = 1;
+   int   VAR_FLAG;
+   int   ansi;
+   int   ansj;
+   float VAR__12302[46];
+   float VAR__MAX;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__12302[o] = dist(VAR__7685[VAR__53647], VAR__3918907[VAR__53647], VAR__9290[VAR__53647], VAR__7685[VAR__21230], VAR__3918907[VAR__21230], VAR__9290[VAR__21230]);
+         o++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < o; VAR__53647++ )
+   {
+      VAR__MAX = 0;
+      for ( VAR__21230 = 1; VAR__21230 < o; VAR__21230++ )
+      {
+         if ( VAR__12302[VAR__21230] > VAR__MAX )
+         {
+            VAR__MAX = VAR__12302[VAR__21230];
+            VAR_FLAG = VAR__21230;
+         }
+         else
+         {
+            continue;
+         }
+      }
+
+      ansi = toi(VAR_FLAG, VAR_1238123);
+      ansj = toj(VAR_FLAG, VAR_1238123);
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", VAR__7685[ansi], VAR__3918907[ansi], VAR__9290[ansi], VAR__7685[ansj], VAR__3918907[ansj], VAR__9290[ansj], VAR__MAX);
+      VAR__12302[VAR_FLAG] = 0;
+   }
+
+   return 0;
+}
+
+
+float dist(int VAR__819283, int VAR__19328, int VAR__4857423, int a1, int b1, int c1)
+{
+   float D;
+
+   D = sqrt(((( VAR__819283 - a1 ) * ( VAR__819283 - a1 )) + (( VAR__19328 - b1 ) * ( VAR__19328 - b1 ))) + (( VAR__4857423 - c1 ) * ( VAR__4857423 - c1 )));
+   return D;
+}
+
+
+int toi(int fi, int ni)
+{
+   int ai;
+   int testfi;
+   int qi;
+
+   testfi = fi;
+   qi     = 1;
+   do
+   {
+      if (( testfi - ( ni - qi )) <= 0 )
+      {
+         ai = qi - 1;
+         break;
+      }
+      else
+      {
+         testfi -= ni - qi;
+         qi++;
+      }
+   } while ( qi < ni );
+   return ai;
+}
+
+
+int toj(int fj, int nj)
+{
+   int aj;
+   int testfj;
+   int qj;
+
+   testfj = fj;
+   qj     = 1;
+   do
+   {
+      if (( testfj - ( nj - qj )) <= 0 )
+      {
+         aj = ( testfj + qj ) - 1;
+         break;
+      }
+      else
+      {
+         testfj -= nj - qj;
+         qj++;
+      }
+   } while ( qj < nj );
+   return aj;
+}

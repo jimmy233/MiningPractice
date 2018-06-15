@@ -1,0 +1,95 @@
+int hangzuida(int VAR_SIZE, int hmax);
+int liezuixiao(int VAR_SIZE, int lmin);
+
+int main()
+{
+   int VAR_SIZE[10][10];
+   int H;
+   int L;
+
+   scanf("%d,%d", &H, &L);
+   int VAR_2890;
+   int VAR__1111;
+   for ( VAR_2890 = 0; VAR_2890 < H; VAR_2890++ )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < L; VAR__1111++ )
+      {
+         scanf("%d", &VAR_SIZE[VAR_2890][VAR__1111]);
+      }
+   }
+
+   int hmax[10] = { 0 };
+   int lmin[10];
+   for ( VAR__1111 = 0; VAR__1111 < L; VAR__1111++ )
+   {
+      lmin[VAR__1111] = 200;
+   }
+
+   for ( VAR_2890 = 0; VAR_2890 < H; VAR_2890++ )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < L; VAR__1111++ )
+      {
+         if ( VAR_SIZE[VAR_2890][VAR__1111] > hmax[VAR_2890] )
+         {
+            hmax[VAR_2890] = VAR_SIZE[VAR_2890][VAR__1111];
+         }
+      }
+   }
+
+   for ( VAR__1111 = 0; VAR__1111 < L; VAR__1111++ )
+   {
+      for ( VAR_2890 = 0; VAR_2890 < H; VAR_2890++ )
+      {
+         if ( VAR_SIZE[VAR_2890][VAR__1111] < lmin[VAR__1111] )
+         {
+            lmin[VAR__1111] = VAR_SIZE[VAR_2890][VAR__1111];
+         }
+      }
+   }
+
+   int VAR__4857423 = 0;
+   for ( VAR_2890 = 0; VAR_2890 < H; VAR_2890++ )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < L; VAR__1111++ )
+      {
+         if ( hangzuida(VAR_SIZE[VAR_2890][VAR__1111], hmax[VAR_2890]) && liezuixiao(VAR_SIZE[VAR_2890][VAR__1111], lmin[VAR__1111]))
+         {
+            printf("%d+%d", VAR_2890, VAR__1111);
+            VAR__4857423 = 1;
+         }
+      }
+   }
+
+   if ( VAR__4857423 == 0 )
+   {
+      printf("No");
+   }
+
+   return 0;
+}
+
+
+int hangzuida(int VAR_SIZE, int hmax)
+{
+   if ( VAR_SIZE == hmax )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int liezuixiao(int VAR_SIZE, int lmin)
+{
+   if ( VAR_SIZE == lmin )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

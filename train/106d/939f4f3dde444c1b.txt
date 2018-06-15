@@ -1,0 +1,62 @@
+int main()
+{
+   int tianshu(int nian, int yue);
+
+   int VAR__53647;
+   int VAR_1238123;
+   int nian;
+   int yue1;
+   int yue2;
+   int dur;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &nian, &yue1, &yue2);
+      dur = tianshu(nian, yue2) - tianshu(nian, yue1);
+
+      if (( dur % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}
+
+
+int tianshu(int nian, int yue)
+{
+   int VAR__53647;
+   int result = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( yue - 1 ); VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         result = result + 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         result = result + 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if (((( nian % 4 ) == 0 ) && (( nian % 100 ) != 0 )) || (( nian % 400 ) == 0 ))
+         {
+            result = result + 29;
+         }
+         else
+         {
+            result = result + 28;
+         }
+      }
+   }
+
+   return result;
+}

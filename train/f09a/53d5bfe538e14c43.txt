@@ -1,0 +1,89 @@
+int len1;
+int len2;
+int *sz1;
+int *sz2;
+void read()
+{
+   int VAR__53647;
+
+   scanf("%d%d", &len1, &len2);
+   sz1 = (int *)malloc(LEN * ( len1 + len2 ));
+   sz2 = (int *)malloc(LEN * len2);
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      scanf("%d", sz1 + VAR__53647);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      scanf("%d", sz2 + VAR__53647);
+   }
+}
+
+
+void sort()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < len1; VAR__21230++ )
+      {
+         if ( sz1[VAR__53647] > sz1[VAR__21230] )
+         {
+            VAR__TEMP       = sz1[VAR__53647];
+            sz1[VAR__53647] = sz1[VAR__21230];
+            sz1[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < len2; VAR__21230++ )
+      {
+         if ( sz2[VAR__53647] > sz2[VAR__21230] )
+         {
+            VAR__TEMP       = sz2[VAR__53647];
+            sz2[VAR__53647] = sz2[VAR__21230];
+            sz2[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void combine()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      sz1[len1 + VAR__53647] = sz2[VAR__53647];
+   }
+}
+
+
+void print()
+{
+   int VAR__53647;
+
+   printf("%d", sz1[0]);
+   for ( VAR__53647 = 1; VAR__53647 < ( len1 + len2 ); VAR__53647++ )
+   {
+      printf(" %d", sz1[VAR__53647]);
+   }
+
+   printf("\n");
+}
+
+
+void main()
+{
+   read();
+   sort();
+   combine();
+   print();
+}

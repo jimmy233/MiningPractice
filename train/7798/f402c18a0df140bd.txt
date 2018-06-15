@@ -1,0 +1,71 @@
+struct list
+{
+   int  book;
+   char name[30];
+};
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   int         VAR__819283[26];
+   struct list shelf[VAR_1238123];
+   for ( VAR__53647 = 0; VAR__53647 <= 25; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d%s", &shelf[VAR__53647].book, shelf[VAR__53647].name);
+      for ( VAR__21230 = 0; VAR__21230 <= ( strlen(shelf[VAR__53647].name) - 1 ); VAR__21230++ )
+      {
+         VAR__819283[shelf[VAR__53647].name[VAR__21230] - 'A']++;
+      }
+   }
+
+   int VAR__MAX;
+   int VAR_FLAG  = 0;
+   int add       = 0;
+   int VAR__TEMP = 0;
+   VAR__MAX = VAR__819283[0];
+   for ( VAR__53647 = 0; VAR__53647 <= 25; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__819283[VAR__53647] )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+         VAR_FLAG = VAR__53647;
+      }
+   }
+
+   printf("%c\n", VAR_FLAG + 'A');
+   printf("%d\n", VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( strlen(shelf[VAR__53647].name) - 1 ); VAR__21230++ )
+      {
+         if ( shelf[VAR__53647].name[VAR__21230] == ( VAR_FLAG + 'A' ))
+         {
+            add++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( strlen(shelf[VAR__53647].name) - 1 ); VAR__21230++ )
+      {
+         if ( shelf[VAR__53647].name[VAR__21230] == ( VAR_FLAG + 'A' ))
+         {
+            printf("%d", shelf[VAR__53647].book);
+            VAR__TEMP++;
+            ( VAR__TEMP < add ) ? ( printf("\n")) : ( printf(""));
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

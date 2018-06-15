@@ -1,0 +1,64 @@
+void main()
+{
+   struct student
+   {
+      char name[30];
+      char gb;
+      char west;
+      int  sco1;
+      int  sco2;
+      int  paper;
+      int  money;
+   }
+        stu[100];
+   int  VAR_1238123;
+   int  VAR__53647;
+   long VAR__SUM = 0;
+   long VAR__MAX = 0;
+   char maxs[30];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].sco1, &stu[VAR__53647].sco2, &stu[VAR__53647].gb, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+      stu[VAR__53647].money = 0;
+
+      if (( stu[VAR__53647].sco1 > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         stu[VAR__53647].money += 8000;
+      }
+
+      if (( stu[VAR__53647].sco1 > 85 ) && ( stu[VAR__53647].sco2 > 80 ))
+      {
+         stu[VAR__53647].money += 4000;
+      }
+
+      if ( stu[VAR__53647].sco1 > 90 )
+      {
+         stu[VAR__53647].money += 2000;
+      }
+
+      if (( stu[VAR__53647].sco1 > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].money += 1000;
+      }
+
+      if (( stu[VAR__53647].sco2 > 80 ) && ( stu[VAR__53647].gb == 'Y' ))
+      {
+         stu[VAR__53647].money += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += stu[VAR__53647].money;
+
+      if ( stu[VAR__53647].money > VAR__MAX )
+      {
+         VAR__MAX = stu[VAR__53647].money;
+         strcpy(maxs, stu[VAR__53647].name);
+      }
+   }
+
+   printf("%s\n%ld\n%ld", maxs, VAR__MAX, VAR__SUM);
+}

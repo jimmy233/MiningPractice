@@ -1,0 +1,85 @@
+double swap(double *VAR__7685, double *VAR__3918907);
+
+int main()
+{
+   int    VAR_233;
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   double VAR_666;
+   double VAR__7685[11];
+   double VAR__3918907[11];
+   double VAR__9290[11];
+   double px;
+   double py;
+   double pz;
+   double x1[46];
+   double y1[46];
+   double z1[46];
+   double x2[46];
+   double y2[46];
+   double z2[46];
+   double VAR__1111[46] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf%lf%lf", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   VAR_233 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         x1[VAR_233]        = VAR__7685[VAR__53647];
+         y1[VAR_233]        = VAR__3918907[VAR__53647];
+         z1[VAR_233]        = VAR__9290[VAR__53647];
+         x2[VAR_233]        = VAR__7685[VAR__21230];
+         y2[VAR_233]        = VAR__3918907[VAR__21230];
+         z2[VAR_233]        = VAR__9290[VAR__21230];
+         px                 = VAR__7685[VAR__53647] - VAR__7685[VAR__21230];
+         py                 = VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230];
+         pz                 = VAR__9290[VAR__53647] - VAR__9290[VAR__21230];
+         VAR_666            = ( pow(px, 2) + pow(py, 2)) + pow(pz, 2);
+         VAR__1111[VAR_233] = pow(VAR_666, 0.5);
+         VAR_233++;
+      }
+   }
+
+   VAR_233--;
+   for ( VAR__53647 = VAR_233; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_233; VAR__21230++ )
+      {
+         if ( VAR__1111[VAR__21230] < VAR__1111[VAR__21230 + 1] )
+         {
+            swap(&VAR__1111[VAR__21230], &VAR__1111[VAR__21230 + 1]);
+            swap(&x1[VAR__21230], &x1[VAR__21230 + 1]);
+            swap(&y1[VAR__21230], &y1[VAR__21230 + 1]);
+            swap(&z1[VAR__21230], &z1[VAR__21230 + 1]);
+            swap(&x2[VAR__21230], &x2[VAR__21230 + 1]);
+            swap(&y2[VAR__21230], &y2[VAR__21230 + 1]);
+            swap(&z2[VAR__21230], &z2[VAR__21230 + 1]);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_233; VAR__53647++ )
+   {
+      printf("(%g,%g,%g)-(%g,%g,%g)=%.2lf\n", x1[VAR__53647], y1[VAR__53647], z1[VAR__53647], x2[VAR__53647], y2[VAR__53647], z2[VAR__53647], VAR__1111[VAR__53647]);
+   }
+
+   return 0;
+}
+
+
+double swap(double *VAR__7685, double *VAR__3918907)
+{
+   double VAR__temp;
+
+   VAR__temp     = *VAR__7685;
+   *VAR__7685    = *VAR__3918907;
+   *VAR__3918907 = VAR__temp;
+   return 0;
+}

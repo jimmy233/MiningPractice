@@ -1,0 +1,98 @@
+int main()
+{
+   struct student
+   {
+      int VAR__NUM;
+      int yuwen;
+      int math;
+      int zong;
+   };
+   struct student stu[100000];
+   struct student *VAR_233;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   struct student *p4;
+   int            VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR_233 = stu; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%d", &VAR_233->VAR__NUM);
+      scanf("%d", &VAR_233->yuwen);
+      scanf("%d", &VAR_233->math);
+   }
+
+   for ( VAR_233 = stu; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      VAR_233->zong = VAR_233->yuwen + VAR_233->math;
+   }
+
+   ANOTHER_POINTER     = &stu[0];
+   YET_ANOTHER_POINTER = &stu[1];
+   p3 = &stu[2];
+   p4 = ANOTHER_POINTER;
+
+   if ( YET_ANOTHER_POINTER->zong > ANOTHER_POINTER->zong )
+   {
+      p4 = ANOTHER_POINTER;
+      ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = p4;
+   }
+   else
+   {
+      ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   if ( p3->zong > ANOTHER_POINTER->zong )
+   {
+      p4 = ANOTHER_POINTER;
+      ANOTHER_POINTER = p3;
+      p3 = p4;
+   }
+   else
+   {
+      ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   if ( p3->zong > YET_ANOTHER_POINTER->zong )
+   {
+      p4 = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = p3;
+      p3 = p4;
+   }
+   else
+   {
+      ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   for ( VAR_233 = stu + 3; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      if ( VAR_233->zong > ANOTHER_POINTER->zong )
+      {
+         p3 = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = VAR_233;
+      }
+      else
+      if ( VAR_233->zong > YET_ANOTHER_POINTER->zong )
+      {
+         p3 = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = VAR_233;
+      }
+      else
+      if ( VAR_233->zong > p3->zong )
+      {
+         p3 = VAR_233;
+      }
+      else
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+   }
+
+   printf("%d %d\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->zong);
+   printf("%d %d\n", YET_ANOTHER_POINTER->VAR__NUM, YET_ANOTHER_POINTER->zong);
+   printf("%d %d", p3->VAR__NUM, p3->zong);
+   return 0;
+}

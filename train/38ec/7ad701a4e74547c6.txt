@@ -1,0 +1,89 @@
+int mon1[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int mon2[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int cal(int VAR__3918907, int VAR__1238129, int VAR__12302)
+{
+   int VAR__NUM = 0;
+   int VAR__53647;
+
+   while ( VAR__3918907 > 400 )
+   {
+      VAR__3918907 -= 400;
+      VAR__NUM     += 146097;
+   }
+
+   if ( VAR__3918907 == 400 )
+   {
+      VAR__NUM += 145731;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+      {
+         VAR__NUM += mon2[VAR__53647];
+      }
+
+      VAR__NUM += VAR__12302;
+   }
+   else
+   {
+      while ( VAR__3918907 > 100 )
+      {
+         VAR__3918907 -= 100;
+         VAR__NUM     += 36524;
+      }
+
+      if ( VAR__3918907 == 100 )
+      {
+         VAR__NUM += 36159;
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+         {
+            VAR__NUM += mon1[VAR__53647];
+         }
+
+         VAR__NUM += VAR__12302;
+      }
+      else
+      {
+         while ( VAR__3918907 > 4 )
+         {
+            VAR__3918907 -= 4;
+            VAR__NUM     += 1461;
+         }
+
+         if ( VAR__3918907 == 4 )
+         {
+            VAR__NUM += 365 * 3;
+            for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+            {
+               VAR__NUM += mon2[VAR__53647];
+            }
+
+            VAR__NUM += VAR__12302;
+         }
+         else
+         {
+            VAR__NUM += 365 * ( VAR__3918907 - 1 );
+            for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+            {
+               VAR__NUM += mon1[VAR__53647];
+            }
+
+            VAR__NUM += VAR__12302;
+         }
+      }
+   }
+
+   return VAR__NUM;
+}
+
+
+int main()
+{
+   int y1;
+   int y2;
+   int m1;
+   int m2;
+   int d1;
+   int d2;
+
+   ((((( cin >> y1 ) >> m1 ) >> d1 ) >> y2 ) >> m2 ) >> d2;
+   ( cout << ( cal(y2, m2, d2) - cal(y1, m1, d1))) << endl;
+   return 0;
+}

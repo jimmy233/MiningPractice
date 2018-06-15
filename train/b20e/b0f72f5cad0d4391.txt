@@ -1,0 +1,72 @@
+int Compare(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR_666[1000];
+   int VAR__temp[1000];
+   int VAR__53647;
+   int mon;
+   int qmax;
+   int tmax;
+   int qmin;
+   int tmin;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         return 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_666[VAR__53647];
+      }
+
+      mon = 0;
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), Compare);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), Compare);
+      tmin = ( qmin = 0 );
+      tmax = ( qmax = VAR_1238123 - 1 );
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__temp[tmax] > VAR_666[qmax] )
+         {
+            mon += 200;
+            tmax--;
+            qmax--;
+         }
+         else
+         if ( VAR__temp[tmin] > VAR_666[qmin] )
+         {
+            mon += 200;
+            tmin++;
+            qmin++;
+         }
+         else
+         {
+            if ( VAR__temp[tmin] != VAR_666[qmax] )
+            {
+               mon -= 200;
+            }
+
+            tmin++;
+            qmax--;
+         }
+      }
+
+      ( cout << mon ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,65 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   struct book
+   {
+      int  no;
+      char as[10];
+   }
+   bk;
+
+   scanf("%d", &VAR_1238123);
+   struct book *books = (struct book *)malloc(( sizeof( struct book )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %s", &bk.no, bk.as);
+      books[VAR__53647] = bk;
+   }
+
+   int cnts[256] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      bk = books[VAR__53647];
+      for ( VAR__21230 = 0; bk.as[VAR__21230]; VAR__21230++ )
+      {
+         cnts[bk.as[VAR__21230]]++;
+      }
+   }
+
+   int VAR__COUNT = 0;
+   for ( int VAR__MAX = 1000; VAR__MAX > 0; VAR__MAX-- )
+   {
+      for ( char VAR__4857423 = 'A'; VAR__4857423 <= 'Z'; VAR__4857423++ )
+      {
+         if ( cnts[VAR__4857423] == VAR__MAX )
+         {
+            printf("%c\n%d\n", VAR__4857423, VAR__MAX);
+            for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+            {
+               bk = books[VAR__53647];
+               for ( VAR__21230 = 0; bk.as[VAR__21230]; VAR__21230++ )
+               {
+                  if ( bk.as[VAR__21230] == VAR__4857423 )
+                  {
+                     printf("%d\n", bk.no);
+                     break;
+                  }
+               }
+            }
+
+            VAR__COUNT++;
+         }
+      }
+
+      if ( VAR__COUNT == 1 )
+      {
+         free(books);
+         return 0;
+      }
+   }
+
+   free(books);
+   return -1;
+}

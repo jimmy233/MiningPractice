@@ -1,0 +1,96 @@
+int VAR__53647;
+int VAR__21230;
+int VAR__temp;
+int VAR_1238123;
+int VAR__SUM;
+int VAR__819283[100][100];
+int VAR__127322(int VAR__7685)
+{
+   for ( int ii = 0; ii < VAR__7685; ii++ )
+   {
+      int minn = VAR__819283[ii][0];
+      for ( int ij = 0; ij < VAR__7685; ij++ )
+      {
+         if ( VAR__819283[ii][ij] < minn )
+         {
+            minn = VAR__819283[ii][ij];
+         }
+      }
+
+
+      for ( int ij = 0; ij < VAR__7685; ij++ )
+      {
+         VAR__819283[ii][ij] = VAR__819283[ii][ij] - minn;
+      }
+   }
+}
+
+
+int VAR_9Q8Q90(int VAR__7685)
+{
+   for ( int ii = 0; ii < VAR__7685; ii++ )
+   {
+      int minn = VAR__819283[0][ii];
+      for ( int ij = 0; ij < VAR__7685; ij++ )
+      {
+         if ( VAR__819283[ij][ii] < minn )
+         {
+            minn = VAR__819283[ij][ii];
+         }
+      }
+
+
+      for ( int ij = 0; ij < VAR__7685; ij++ )
+      {
+         VAR__819283[ij][ii] = VAR__819283[ij][ii] - minn;
+      }
+   }
+}
+
+
+int VAR_2890(int VAR__7685)
+{
+   VAR__SUM = VAR__SUM + VAR__819283[1][1];
+   for ( int ii = 0; ii < VAR__7685; ii++ )
+   {
+      for ( int jj = 1; jj < VAR__7685; jj++ )
+      {
+         VAR__819283[ii][jj] = VAR__819283[ii][jj + 1];
+      }
+   }
+
+   for ( int ii = 0; ii < VAR__7685; ii++ )
+   {
+      for ( int jj = 1; jj < VAR__7685; jj++ )
+      {
+         VAR__819283[jj][ii] = VAR__819283[jj + 1][ii];
+      }
+   }
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( int qqq = 0; qqq < VAR_1238123; qqq++ )
+   {
+      VAR__SUM = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__53647 = VAR_1238123; VAR__53647 > 1; VAR__53647-- )
+      {
+         VAR__127322(VAR__53647);
+         VAR_9Q8Q90(VAR__53647);
+         VAR_2890(VAR__53647);
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+}

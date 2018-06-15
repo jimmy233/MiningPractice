@@ -1,0 +1,96 @@
+int main()
+{
+   char num1[300];
+   char num2[300];
+   int  l1;
+   int  l2;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__SUM[300] = { 0 };
+
+   while ( 1 )
+   {
+      cin.getline(num1, 300);
+      cin.getline(num2, 300);
+      l1 = strlen(num1);
+      l2 = strlen(num2);
+
+      if ( num1[0] == '\0' )
+      {
+         break;
+      }
+
+      if ( l1 < l2 )
+      {
+         char huan[300];
+         strcpy(huan, num1);
+         strcpy(num1, num2);
+         strcpy(num2, huan);
+         int VAR__8444594;
+         VAR__8444594 = l1, l1 = l2, l2 = VAR__8444594;
+      }
+
+      for ( VAR__53647 = l1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         num1[VAR__53647 + 1] = num1[VAR__53647];
+      }
+
+      for ( VAR__53647 = l2 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         num2[(( VAR__53647 + l1 ) - l2 ) + 1] = num2[VAR__53647];
+      }
+
+      num1[0] = '0';
+      for ( VAR__53647 = 0; VAR__53647 <= ( l1 - l2 ); VAR__53647++ )
+      {
+         num2[VAR__53647] = '0';
+      }
+
+      for ( VAR__53647 = l1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         int n1;
+         int n2;
+         n1 = (int)( num1[VAR__53647] - '0' );
+         n2 = (int)( num2[VAR__53647] - '0' );
+         VAR__SUM[VAR__53647] = n1 + n2;
+      }
+
+      for ( VAR__53647 = l1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( VAR__SUM[VAR__53647] > 9 )
+         {
+            VAR__SUM[VAR__53647 - 1]++;
+            VAR__SUM[VAR__53647] = VAR__SUM[VAR__53647] - 10;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= l1; VAR__53647++ )
+      {
+         if ( VAR__SUM[VAR__53647] == 0 )
+         {
+            continue;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      if ( VAR__53647 == ( l1 + 1 ))
+      {
+         ( cout << "0" ) << endl;
+      }
+      else
+      {
+         for ( VAR__21230 = VAR__53647; VAR__21230 <= l1; VAR__21230++ )
+         {
+            cout << VAR__SUM[VAR__21230];
+         }
+
+         cout << endl;
+      }
+   }
+
+   return 0;
+}

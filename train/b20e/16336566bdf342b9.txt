@@ -1,0 +1,107 @@
+int cmpsmall(const void *e1, const void *e2)
+{
+   const int *i1 = (const int *)e1;
+   const int *i2 = (const int *)e2;
+
+   return ( *i1 ) - ( *i2 );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int tian[1005];
+   int king[1005];
+
+   while (( cin >> VAR_1238123 ) && ( VAR_1238123 > 0 ))
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tian[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> king[VAR__53647];
+      }
+
+      qsort(tian, VAR_1238123, sizeof( int ), cmpsmall);
+      qsort(king, VAR_1238123, sizeof( int ), cmpsmall);
+      int tianSlow = 0;
+      int tianFast = VAR_1238123 - 1;
+      int kingSlow = 0;
+      int kingFast = VAR_1238123 - 1;
+      int win      = 0;
+      int lose     = 0;
+      int draw     = 0;
+
+      while (( tianSlow < tianFast ) && ( kingSlow < kingFast ))
+      {
+         if ( tian[tianSlow] > king[kingSlow] )
+         {
+            win++;
+            tianSlow++;
+            kingSlow++;
+            continue;
+         }
+         else
+         if ( tian[tianSlow] < king[kingSlow] )
+         {
+            lose++;
+            tianSlow++;
+            kingFast--;
+            continue;
+         }
+         else
+         if ( tian[tianFast] > king[kingFast] )
+         {
+            win++;
+            tianFast--;
+            kingFast--;
+            continue;
+         }
+         else
+         if ( tian[tianFast] < king[kingFast] )
+         {
+            lose++;
+            tianSlow++;
+            kingFast--;
+            continue;
+         }
+         else
+         {
+            if ( tian[tianSlow] < king[kingFast] )
+            {
+               lose++;
+            }
+            else
+            {
+               draw++;
+            }
+
+            tianSlow++;
+            kingFast--;
+            continue;
+         }
+      }
+
+      if ( tian[tianSlow] < king[kingSlow] )
+      {
+         lose++;
+      }
+      else
+      if ( tian[tianSlow] == king[kingSlow] )
+      {
+         draw++;
+      }
+      else
+      {
+         win++;
+      }
+
+
+      ( cout << (( win - lose ) * 200 )) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,56 @@
+struct student
+{
+   char           number[15];
+   char           name[20];
+   char           gender[3];
+   int            age;
+   float          score;
+   char           address[30];
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   int            VAR__53647 = 1;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER = (struct student *)malloc(LEN);
+
+   VAR__HEAD            = ANOTHER_POINTER;
+   VAR__HEAD->VAR__NEXT = NULL;
+   scanf("%s%s%s%d%f%s", ANOTHER_POINTER->number, ANOTHER_POINTER->name, ANOTHER_POINTER->gender, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%s", ANOTHER_POINTER->number);
+
+      if (( VAR__53647 = strcmp(ANOTHER_POINTER->number, "end")) == 0 )
+      {
+         break;
+      }
+
+      scanf("%s%s%d%f%s", ANOTHER_POINTER->name, ANOTHER_POINTER->gender, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+      ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+      VAR__HEAD = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR_233)
+{
+   do
+   {
+      printf("%s %s %s %d %g %s\n", VAR_233->number, VAR_233->name, VAR_233->gender, VAR_233->age, VAR_233->score, VAR_233->address);
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233->VAR__NEXT != NULL );
+   printf("%s %s %s %d %g %s\n", VAR_233->number, VAR_233->name, VAR_233->gender, VAR_233->age, VAR_233->score, VAR_233->address);
+}
+
+
+void main()
+{
+   struct student *VAR_233 = creat();
+
+   print(VAR_233);
+}

@@ -1,0 +1,105 @@
+struct student
+{
+   char           number[20];
+   char           name[20];
+   char           VAR__4857423;
+   int            age;
+   float          score;
+   char           address[30];
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__1238129;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   VAR__HEAD       = NULL;
+   scanf("%s", ANOTHER_POINTER->number);
+   for ( VAR__1238129 = 0; ; VAR__1238129++ )
+   {
+      if ( strcmp(ANOTHER_POINTER->number, "end") != 0 )
+      {
+         scanf("%s %c %d %f %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->VAR__4857423, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+         VAR_1238123 = VAR_1238123 + 1;
+
+         if ( VAR_1238123 == 1 )
+         {
+            VAR__HEAD = ANOTHER_POINTER;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         }
+
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      }
+      else
+      {
+         break;
+      }
+
+      scanf("%s", ANOTHER_POINTER->number);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct student *del(struct student *VAR__HEAD, char *A_STRING)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while (( strcmp(A_STRING, ANOTHER_POINTER->number) != 0 ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   if ( strcmp(A_STRING, ANOTHER_POINTER->number) == 0 )
+   {
+      if ( ANOTHER_POINTER == VAR__HEAD )
+      {
+         VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      VAR_1238123 = VAR_1238123 - 1;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+
+   VAR__HEAD = creat();
+
+   while ( VAR__HEAD != NULL )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      printf("%s %s %c %d %g %s\n", ANOTHER_POINTER->number, ANOTHER_POINTER->name, ANOTHER_POINTER->VAR__4857423, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+      VAR__HEAD = del(VAR__HEAD, ANOTHER_POINTER->number);
+   }
+}

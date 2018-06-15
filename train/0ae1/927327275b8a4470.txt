@@ -1,0 +1,50 @@
+void main()
+{
+   char VAR_1238123[7][5] = { "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun." };
+   int  VAR__3918907;
+   int  VAR__1238129;
+   int  VAR__12302;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  day[12]    = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int  VAR__COUNT = 0;
+   int  total      = 0;
+   int  VAR_233;
+
+   scanf("%d%d%d", &VAR__3918907, &VAR__1238129, &VAR__12302);
+
+   if (((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 ))
+   {
+      day[1] = 29;
+   }
+
+   VAR_233      = ( VAR__3918907 - ( VAR__3918907 % 400 )) / 400;
+   VAR__3918907 = ( VAR__3918907 % 400 ) + 400;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__COUNT = VAR__COUNT + 2;
+      }
+      else
+      {
+         VAR__COUNT = VAR__COUNT + 1;
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+   {
+      total = total + day[VAR__21230 - 1];
+   }
+
+   total      = total + VAR__12302;
+   VAR__COUNT = VAR__COUNT + ( total % 7 );
+   VAR__COUNT = VAR__COUNT % 7;
+
+   if ( VAR__COUNT == 0 )
+   {
+      VAR__COUNT = 7;
+   }
+
+   printf("%s\n", VAR_1238123[VAR__COUNT - 1]);
+}

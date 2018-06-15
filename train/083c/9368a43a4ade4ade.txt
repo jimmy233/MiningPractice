@@ -1,0 +1,76 @@
+const int size = 500;
+char      inda[size];
+char      outda[size];
+int       indata[size];
+int       yu[2 * size];
+int       ddd[size];
+int main()
+{
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   double inbase;
+   double outbase;
+   double la;
+   double dec = 0;
+   int    map[300];
+   char   rmap[65];
+
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'Z'; VAR__53647++ )
+   {
+      map[VAR__53647] = ( VAR__53647 - 'A' ) + 10;
+      rmap[( VAR__53647 - 'A' ) + 10] = VAR__53647;
+   }
+
+   for ( VAR__53647 = 'a'; VAR__53647 <= 'z'; VAR__53647++ )
+   {
+      map[VAR__53647] = ( VAR__53647 - 'a' ) + 10;
+      rmap[( VAR__53647 - 'a' ) + 36] = VAR__53647;
+   }
+
+   for ( VAR__53647 = '0'; VAR__53647 <= '9'; VAR__53647++ )
+   {
+      map[VAR__53647]        = VAR__53647 - '0';
+      rmap[VAR__53647 - '0'] = VAR__53647;
+   }
+
+   (( cin >> inbase ) >> inda ) >> outbase;
+   la = strlen(inda);
+   for ( VAR__53647 = 0; VAR__53647 <= ( la - 1 ); VAR__53647++ )
+   {
+      indata[VAR__53647] = map[inda[VAR__53647]];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( la - 1 ); VAR__53647++ )
+   {
+      dec = dec + ( indata[VAR__53647] * pow(inbase, ( la - VAR__53647 ) - 1));
+   }
+
+   ddd[0]     = dec;
+   VAR__53647 = 0;
+
+   while ( true )
+   {
+      if (( VAR__53647 > 0 ) && ( ddd[VAR__53647] == 0 ))
+      {
+         break;
+      }
+
+      ddd[VAR__53647 + 1] = ddd[VAR__53647] / outbase;
+      yu[VAR__53647]      = ddd[VAR__53647] % ((int)outbase );
+      VAR__53647++;
+   }
+
+   yu[VAR__53647] = ddd[VAR__53647] % ((int)outbase );
+   for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+   {
+      outda[VAR__21230] = rmap[yu[VAR__21230]];
+   }
+
+   for ( VAR__8444594 = VAR__53647 - 1; VAR__8444594 >= 0; VAR__8444594-- )
+   {
+      cout << outda[VAR__8444594];
+   }
+
+   return 0;
+}

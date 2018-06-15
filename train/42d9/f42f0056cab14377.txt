@@ -1,0 +1,65 @@
+struct dist
+{
+   int   VAR__53647;
+   int   VAR__21230;
+   float VAR__12302;
+}
+VAR__12302[45];
+struct node
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+VAR__819283[10];
+void main()
+{
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR__COUNT = 0;
+   struct dist VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < 45; VAR__53647++ )
+   {
+      VAR__12302[VAR__53647].VAR__12302 = 0.0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR__819283[VAR__53647].VAR__7685, &VAR__819283[VAR__53647].VAR__3918907, &VAR__819283[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__12302[VAR__COUNT].VAR__53647 = VAR__53647;
+         VAR__12302[VAR__COUNT].VAR__21230 = VAR__21230;
+         VAR__12302[VAR__COUNT].VAR__12302 = sqrt(((( VAR__819283[VAR__53647].VAR__7685 - VAR__819283[VAR__21230].VAR__7685 ) * ( VAR__819283[VAR__53647].VAR__7685 - VAR__819283[VAR__21230].VAR__7685 )) + (( VAR__819283[VAR__53647].VAR__3918907 - VAR__819283[VAR__21230].VAR__3918907 ) * ( VAR__819283[VAR__53647].VAR__3918907 - VAR__819283[VAR__21230].VAR__3918907 ))) + (( VAR__819283[VAR__53647].VAR__9290 - VAR__819283[VAR__21230].VAR__9290 ) * ( VAR__819283[VAR__53647].VAR__9290 - VAR__819283[VAR__21230].VAR__9290 )));
+         VAR__COUNT++;
+      }
+   }
+
+
+   VAR__COUNT = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__COUNT - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( VAR__12302[VAR__21230].VAR__12302 < VAR__12302[VAR__21230 + 1].VAR__12302 )
+         {
+            VAR__TEMP = VAR__12302[VAR__21230];
+            VAR__12302[VAR__21230]     = VAR__12302[VAR__21230 + 1];
+            VAR__12302[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", VAR__819283[VAR__12302[VAR__53647].VAR__53647].VAR__7685, VAR__819283[VAR__12302[VAR__53647].VAR__53647].VAR__3918907, VAR__819283[VAR__12302[VAR__53647].VAR__53647].VAR__9290, VAR__819283[VAR__12302[VAR__53647].VAR__21230].VAR__7685, VAR__819283[VAR__12302[VAR__53647].VAR__21230].VAR__3918907, VAR__819283[VAR__12302[VAR__53647].VAR__21230].VAR__9290, VAR__12302[VAR__53647].VAR__12302);
+   }
+}

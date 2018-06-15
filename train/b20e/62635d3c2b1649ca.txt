@@ -1,0 +1,96 @@
+int cmp(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   int *e1;
+   int *e2;
+
+   e1 = (int *)ANOTHER_POINTER;
+   e2 = (int *)YET_ANOTHER_POINTER;
+   return (( *e1 ) > ( *e2 )) ? ( 1 ) : ( -1 );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int T[1001];
+   int E[1001];
+
+   while ( 1 )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> T[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> E[VAR__53647];
+      }
+
+      qsort(T, VAR_1238123, sizeof( int ), cmp);
+      qsort(E, VAR_1238123, sizeof( int ), cmp);
+      int ans = 0;
+      int lT  = 0;
+      int lE  = 0;
+      int rT  = VAR_1238123 - 1;
+      int rE  = VAR_1238123 - 1;
+
+      while ( lT <= rT )
+      {
+         if ( T[lT] > E[lE] )
+         {
+            ans += 200;
+            lT++;
+            lE++;
+         }
+         else
+         if ( T[lT] < E[lE] )
+         {
+            ans -= 200;
+            lT++;
+            rE--;
+         }
+         else
+         {
+            if ( T[rT] < E[rE] )
+            {
+               ans -= 200;
+               lT++;
+               rE--;
+            }
+            else
+            if ( T[rT] > E[rE] )
+            {
+               ans += 200;
+               rE--;
+               rT--;
+            }
+            else
+            {
+               if ( T[lT] < E[rE] )
+               {
+                  ans -= 200;
+                  lT++;
+                  rE--;
+               }
+               else
+               {
+                  lT++;
+                  rE--;
+               }
+            }
+         }
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

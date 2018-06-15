@@ -1,0 +1,112 @@
+int yuan(int VAR_233, int VAR_666)
+{
+   int VAR__9290 = 0;
+
+   if (( VAR_233 > 80 ) && ( VAR_666 >= 1 ))
+   {
+      VAR__9290 = 1;
+   }
+
+   return VAR__9290;
+}
+
+
+int wusi(int VAR_233, int VAR_666)
+{
+   int VAR__9290 = 0;
+
+   if (( VAR_233 > 85 ) && ( VAR_666 > 80 ))
+   {
+      VAR__9290 = 1;
+   }
+
+   return VAR__9290;
+}
+
+
+int youxiu(int VAR_233)
+{
+   int VAR__9290 = 0;
+
+   if ( VAR_233 > 90 )
+   {
+      VAR__9290 = 1;
+   }
+
+   return VAR__9290;
+}
+
+
+int xibu(int VAR_233, char ip)
+{
+   int VAR__9290 = 0;
+
+   if (( VAR_233 > 85 ) && ( ip == 'Y' ))
+   {
+      VAR__9290 = 1;
+   }
+
+   return VAR__9290;
+}
+
+
+int banji(int VAR_233, char ip)
+{
+   int VAR__9290 = 0;
+
+   if (( VAR_233 > 80 ) && ( ip == 'Y' ))
+   {
+      VAR__9290 = 1;
+   }
+
+   return VAR__9290;
+}
+
+
+void main()
+{
+   struct student
+   {
+      char name[20];
+      int  gpa;
+      int  arg;
+      char leader;
+      char xibu;
+      int  paper;
+      int  VAR__SUM;
+   }
+       *VAR_9494;
+   int VAR__53647;
+   int VAR_1238123;
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+   int VAR__12302;
+   int VAR__112390;
+   int VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   VAR_9494 = (struct student *)malloc(VAR_1238123 * ( sizeof( struct student )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &VAR_9494[VAR__53647].name, &( *( VAR_9494 + VAR__53647 )).gpa, &( *( VAR_9494 + VAR__53647 )).arg, &( *( VAR_9494 + VAR__53647 )).leader, &( *( VAR_9494 + VAR__53647 )).xibu, &( *( VAR_9494 + VAR__53647 )).paper);
+      ( *( VAR_9494 + VAR__53647 )).VAR__SUM = 0;
+      VAR__819283  = yuan(( *( VAR_9494 + VAR__53647 )).gpa, ( *( VAR_9494 + VAR__53647 )).paper);
+      VAR__19328   = wusi(( *( VAR_9494 + VAR__53647 )).gpa, ( *( VAR_9494 + VAR__53647 )).arg);
+      VAR__4857423 = youxiu(( *( VAR_9494 + VAR__53647 )).gpa);
+      VAR__12302   = xibu(( *( VAR_9494 + VAR__53647 )).gpa, ( *( VAR_9494 + VAR__53647 )).xibu);
+      VAR__112390  = banji(( *( VAR_9494 + VAR__53647 )).arg, ( *( VAR_9494 + VAR__53647 )).leader);
+      ( *( VAR_9494 + VAR__53647 )).VAR__SUM = (((( 8000 * VAR__819283 ) + ( 4000 * VAR__19328 )) + ( 2000 * VAR__4857423 )) + ( 1000 * VAR__12302 )) + ( 850 * VAR__112390 );
+      VAR__SUM = VAR__SUM + ( *( VAR_9494 + VAR__53647 )).VAR__SUM;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *( VAR_9494 + 0 )).VAR__SUM < ( *( VAR_9494 + VAR__53647 )).VAR__SUM )
+      {
+         *( VAR_9494 + 0 ) = *( VAR_9494 + VAR__53647 );
+      }
+   }
+
+   printf("%s\n%d\n%d", VAR_9494[0].name, ( *( VAR_9494 + 0 )).VAR__SUM, VAR__SUM);
+}

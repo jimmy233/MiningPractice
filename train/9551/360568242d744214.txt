@@ -1,0 +1,110 @@
+struct ill
+{
+   char       id[11];
+   int        age;
+   struct ill *VAR__NEXT;
+};
+struct ill *creat(int VAR_1238123)
+{
+   struct ill *VAR__HEAD;
+   struct ill *ANOTHER_POINTER;
+   struct ill *YET_ANOTHER_POINTER;
+   int        VAR__53647;
+
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct ill *)malloc(sizeof( struct ill ));
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct ill *arrang(struct ill *VAR__HEAD)
+{
+   int        VAR__temp;
+   int        tt;
+   char       VAR_9494[11];
+   char       ss[11];
+   struct ill *VAR_233;
+   struct ill *VAR_666;
+   struct ill *VAR__1238129;
+   struct ill *VAR_2890;
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->age >= 60 )
+      {
+         for ( VAR__1238129 = VAR_233, VAR_666 = VAR_233->VAR__NEXT; VAR_666 != NULL; VAR_666 = VAR_666->VAR__NEXT )
+         {
+            if (( VAR_666->age > VAR__1238129->age ) && ( VAR__1238129->age >= 60 ))
+            {
+               VAR__1238129 = VAR_666;
+            }
+         }
+
+
+         {
+            VAR__temp = ( tt = VAR_233->age );
+            strcpy(VAR_9494, VAR_233->id);
+            strcpy(ss, VAR_233->id);
+            for ( VAR_2890 = VAR_233->VAR__NEXT; VAR_2890 != VAR__1238129->VAR__NEXT; VAR_2890 = VAR_2890->VAR__NEXT )
+            {
+               tt = VAR_2890->age;
+               strcpy(ss, VAR_2890->id);
+               VAR_2890->age = VAR__temp;
+               strcpy(VAR_2890->id, VAR_9494);
+               VAR__temp = tt;
+               strcpy(VAR_9494, ss);
+            }
+
+            VAR_233->age = VAR__temp;
+            strcpy(VAR_233->id, VAR_9494);
+         }
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int        VAR_1238123;
+   struct ill *VAR__HEAD;
+   struct ill *VAR_2890;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR__HEAD = arrang(VAR__HEAD);
+   for ( VAR_2890 = VAR__HEAD; VAR_2890 != NULL; VAR_2890 = VAR_2890->VAR__NEXT )
+   {
+      if ( VAR_2890->age >= 60 )
+      {
+         printf("%s\n", VAR_2890->id);
+      }
+   }
+
+
+   for ( VAR_2890 = VAR__HEAD; VAR_2890 != NULL; VAR_2890 = VAR_2890->VAR__NEXT )
+   {
+      if ( VAR_2890->age < 60 )
+      {
+         printf("%s\n", VAR_2890->id);
+      }
+   }
+}

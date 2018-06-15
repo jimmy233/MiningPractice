@@ -1,0 +1,81 @@
+struct book
+{
+   char number[20];
+   char name[26];
+}
+books[1000];
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__COUNT[26] = { 0 };
+   int  VAR__TEMP;
+   int  base;
+   int  VAR__8444594 = 0;
+   char author;
+   int  pd = 0;
+   int  N  = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %s", &books[VAR__53647].number, &books[VAR__53647].name);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; ( books[VAR__53647].name[VAR__21230] >= 'A' ) && ( books[VAR__53647].name[VAR__21230] <= 'Z' ); VAR__21230++ )
+      {
+         VAR__TEMP = books[VAR__53647].name[VAR__21230] - 'A';
+         VAR__COUNT[VAR__TEMP]++;
+      }
+   }
+
+   base = VAR__COUNT[0];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] > base )
+      {
+         base         = VAR__COUNT[VAR__53647];
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   author = 'A' + VAR__8444594;
+   printf("%c\n", author);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      pd = 0;
+      for ( VAR__21230 = 0; ( books[VAR__53647].name[VAR__21230] >= 'A' ) && ( books[VAR__53647].name[VAR__21230] <= 'Z' ); VAR__21230++ )
+      {
+         if ( books[VAR__53647].name[VAR__21230] == author )
+         {
+            pd = 1;
+         }
+      }
+
+      if ( pd == 1 )
+      {
+         N++;
+      }
+   }
+
+   printf("%d\n", N);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      pd = 0;
+      for ( VAR__21230 = 0; ( books[VAR__53647].name[VAR__21230] >= 'A' ) && ( books[VAR__53647].name[VAR__21230] <= 'Z' ); VAR__21230++ )
+      {
+         if ( books[VAR__53647].name[VAR__21230] == author )
+         {
+            pd = 1;
+         }
+      }
+
+      if ( pd == 1 )
+      {
+         printf("%s\n", books[VAR__53647].number);
+      }
+   }
+}

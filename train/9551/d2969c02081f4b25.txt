@@ -1,0 +1,82 @@
+int main()
+{
+   char ID[N][L];
+   char IDup60[N][L];
+   char IDunder60[N][L];
+   char VAR_9494[L];
+   int  VAR__19328;
+   int  VAR_2890;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__1111;
+   int  VAR__1238129;
+   int  VAR__MAX = 0;
+   int  VAR_1238123;
+   int  o;
+   int  VAR_233;
+   int  VAR_666;
+   int  VAR__temp = 0;
+   int  u         = 0;
+   int  YearOld[N];
+   int  YearOldup60[N];
+   int  id[N];
+   int  idup60[N];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR_2890 = 0; VAR_2890 < VAR_1238123; VAR_2890++ )
+   {
+      scanf("%s %d", ID[VAR_2890], &YearOld[VAR_2890]);
+      id[VAR_2890] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; ID[VAR__53647][VAR__21230] != '\0'; VAR__21230++ )
+      {
+         id[VAR__53647] = 10 * id[VAR__53647];
+         id[VAR__53647] = id[VAR__53647] + ( ID[VAR__53647][VAR__21230] - '0' );
+      }
+   }
+
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+   {
+      if ( YearOld[VAR__1238129] > VAR__MAX )
+      {
+         VAR__MAX = YearOld[VAR__1238129];
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 <= VAR__MAX; VAR__8444594++ )
+   {
+      for ( VAR__1111 = 0; VAR__1111 < VAR_1238123; VAR__1111++ )
+      {
+         if (( YearOld[VAR__1111] == ( VAR__MAX - VAR__8444594 )) && (( VAR__MAX - VAR__8444594 ) >= 60 ))
+         {
+            YearOldup60[VAR__temp] = YearOld[VAR__1111];
+            idup60[VAR__temp]      = id[VAR__1111];
+            strcpy(IDup60[VAR__temp], ID[VAR__1111]);
+            VAR__temp++;
+         }
+      }
+   }
+
+   for ( VAR__19328 = 0; VAR__19328 < VAR_1238123; VAR__19328++ )
+   {
+      if ( YearOld[VAR__19328] < 60 )
+      {
+         strcpy(IDunder60[u], ID[VAR__19328]);
+         u++;
+      }
+   }
+
+   for ( VAR_233 = 0; VAR_233 < VAR__temp; VAR_233++ )
+   {
+      printf("%s\n", IDup60[VAR_233]);
+   }
+
+   for ( VAR_666 = 0; VAR_666 < u; VAR_666++ )
+   {
+      printf("%s\n", IDunder60[VAR_666]);
+   }
+}

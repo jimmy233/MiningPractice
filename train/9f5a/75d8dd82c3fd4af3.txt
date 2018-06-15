@@ -1,0 +1,151 @@
+int VAR__MIN(int VAR__7685, int VAR__3918907)
+{
+   if ( VAR__7685 <= VAR__3918907 )
+   {
+      return VAR__7685;
+   }
+   else
+   {
+      return VAR__3918907;
+   }
+}
+
+
+int main()
+{
+   int VAR__819283[100][100];
+   int row;
+   int col;
+   int ROW;
+   int COL;
+   int VAR__53647;
+   int VAR__1238129 = 1;
+   int VAR_1238123  = 0;
+   int VAR__7685;
+
+   scanf("%d%d", &ROW, &COL);
+   for ( row = 0; row < ROW; row++ )
+   {
+      for ( col = 0; col < COL; col++ )
+      {
+         scanf("%d", &VAR__819283[row][col]);
+      }
+   }
+
+   VAR__7685 = VAR__MIN(ROW, COL);
+   row       = 0;
+   col       = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__7685 + (( VAR__7685 * ( VAR__7685 - 1 )) / 2 )); VAR__53647++ )
+   {
+      printf("%d\n", VAR__819283[row][col]);
+      VAR_1238123++;
+
+      if ( VAR_1238123 != VAR__1238129 )
+      {
+         row++;
+         col--;
+      }
+      else
+      if ( VAR_1238123 == VAR__1238129 )
+      {
+         row  = 0;
+         col += VAR__1238129;
+         VAR__1238129++;
+         VAR_1238123 = 0;
+      }
+   }
+
+   if ( COL >= ROW )
+   {
+      row          = 0;
+      col          = ROW;
+      VAR__1238129 = col + 1;
+      for ( VAR__53647 = 0; VAR__53647 < ( ROW * ( COL - ROW )); VAR__53647++ )
+      {
+         printf("%d\n", VAR__819283[row][col]);
+
+         if ( row != ( ROW - 1 ))
+         {
+            row++;
+            col--;
+         }
+         else
+         {
+            row = 0;
+            col = VAR__1238129;
+            VAR__1238129++;
+         }
+      }
+
+      row          = 1;
+      col          = COL - 1;
+      VAR__1238129 = ROW - 1;
+      VAR_1238123  = 0;
+      for ( VAR__53647 = 0; VAR__53647 < (( ROW * ( ROW - 1 )) / 2 ); VAR__53647++ )
+      {
+         VAR_1238123++;
+         printf("%d\n", VAR__819283[row][col]);
+
+         if ( VAR_1238123 != VAR__1238129 )
+         {
+            row++;
+            col--;
+         }
+         else
+         {
+            row = ( ROW - VAR__1238129 ) + 1;
+            col = COL - 1;
+            VAR__1238129--;
+            VAR_1238123 = 0;
+         }
+      }
+   }
+
+   if ( COL < ROW )
+   {
+      row          = 1;
+      col          = COL - 1;
+      VAR__1238129 = 2;
+      for ( VAR__53647 = 0; VAR__53647 < ( COL * ( ROW - COL )); VAR__53647++ )
+      {
+         printf("%d\n", VAR__819283[row][col]);
+
+         if ( col != 0 )
+         {
+            row++;
+            col--;
+         }
+         else
+         {
+            row = VAR__1238129;
+            col = COL - 1;
+            VAR__1238129++;
+         }
+      }
+
+      row          = ( ROW - COL ) + 1;
+      col          = COL - 1;
+      VAR__1238129 = COL - 1;
+      VAR_1238123  = 0;
+      for ( VAR__53647 = 0; VAR__53647 < (( COL * ( COL - 1 )) / 2 ); VAR__53647++ )
+      {
+         VAR_1238123++;
+         printf("%d\n", VAR__819283[row][col]);
+
+         if ( VAR_1238123 != VAR__1238129 )
+         {
+            row++;
+            col--;
+         }
+         else
+         {
+            row = ( ROW - VAR__1238129 ) + 1;
+            col = COL - 1;
+            VAR__1238129--;
+            VAR_1238123 = 0;
+         }
+      }
+   }
+
+   return 0;
+}

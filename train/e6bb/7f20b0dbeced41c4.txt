@@ -1,0 +1,75 @@
+int VAR__NUM[9][9] = { 0 };
+int VAR_FLAG[9][9] = { 0 };
+int VAR__1238129;
+int main()
+{
+   int VAR_1238123;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   void fun(int);
+
+   VAR__NUM[4][4] = VAR__1238129;
+   fun(VAR_1238123);
+   return 0;
+}
+
+
+void fun(int VAR_1238123)
+{
+   if ( VAR_1238123 == 0 )
+   {
+      int VAR__53647;
+      int VAR__21230;
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         cout << VAR__NUM[VAR__53647][0];
+         for ( VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+         {
+            ( cout << " " ) << VAR__NUM[VAR__53647][VAR__21230];
+         }
+
+         cout << endl;
+      }
+   }
+   else
+   {
+      int VAR__53647;
+      int VAR__21230;
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            if ( VAR__NUM[VAR__53647][VAR__21230] != 0 )
+            {
+               VAR_FLAG[VAR__53647][VAR__21230 - 1]     += VAR__NUM[VAR__53647][VAR__21230];
+               VAR_FLAG[VAR__53647][VAR__21230 + 1]     += VAR__NUM[VAR__53647][VAR__21230];
+               VAR_FLAG[VAR__53647 + 1][VAR__21230]     += VAR__NUM[VAR__53647][VAR__21230];
+               VAR_FLAG[VAR__53647 - 1][VAR__21230]     += VAR__NUM[VAR__53647][VAR__21230];
+               VAR_FLAG[VAR__53647 + 1][VAR__21230 - 1] += VAR__NUM[VAR__53647][VAR__21230];
+               VAR_FLAG[VAR__53647 - 1][VAR__21230 - 1] += VAR__NUM[VAR__53647][VAR__21230];
+               VAR_FLAG[VAR__53647 + 1][VAR__21230 + 1] += VAR__NUM[VAR__53647][VAR__21230];
+               VAR_FLAG[VAR__53647 - 1][VAR__21230 + 1] += VAR__NUM[VAR__53647][VAR__21230];
+               VAR_FLAG[VAR__53647][VAR__21230]         += VAR__NUM[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            VAR__NUM[VAR__53647][VAR__21230] += VAR_FLAG[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            VAR_FLAG[VAR__53647][VAR__21230] = 0;
+         }
+      }
+
+      fun(VAR_1238123 - 1);
+   }
+}

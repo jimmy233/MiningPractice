@@ -1,0 +1,68 @@
+struct POINT
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+};
+struct DISTANCE
+{
+   int    pointx;
+   int    pointy;
+   double dis;
+};
+int cmp(const void *e1, const void *e2)
+{
+   struct DISTANCE *elem1 = (struct DISTANCE *)e1;
+   struct DISTANCE *elem2 = (struct DISTANCE *)e2;
+
+   if ( elem1->dis == elem2->dis )
+   {
+      return elem1->pointx - elem2->pointx;
+   }
+
+   if ( elem1->dis > elem2->dis )
+   {
+      return -1;
+   }
+
+   return 1;
+}
+
+
+int main()
+{
+   int             VAR_1238123;
+   struct POINT    data[11];
+   struct DISTANCE distance[10000];
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &data[VAR__53647].VAR__7685, &data[VAR__53647].VAR__3918907, &data[VAR__53647].VAR__9290);
+   }
+
+   int VAR__21230;
+   int cnt = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         distance[cnt].pointx = VAR__53647;
+         distance[cnt].pointy = VAR__21230;
+         distance[cnt].dis    = sqrt(((( data[VAR__53647].VAR__7685 - data[VAR__21230].VAR__7685 ) * ( data[VAR__53647].VAR__7685 - data[VAR__21230].VAR__7685 )) + (( data[VAR__53647].VAR__3918907 - data[VAR__21230].VAR__3918907 ) * ( data[VAR__53647].VAR__3918907 - data[VAR__21230].VAR__3918907 ))) + (( data[VAR__53647].VAR__9290 - data[VAR__21230].VAR__9290 ) * ( data[VAR__53647].VAR__9290 - data[VAR__21230].VAR__9290 )));
+         cnt++;
+      }
+   }
+
+
+   qsort(distance, cnt, sizeof( struct DISTANCE ), cmp);
+   for ( VAR__53647 = 0; VAR__53647 < cnt; VAR__53647++ )
+   {
+      int VAR__7685    = distance[VAR__53647].pointx;
+      int VAR__3918907 = distance[VAR__53647].pointy;
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", data[VAR__7685].VAR__7685, data[VAR__7685].VAR__3918907, data[VAR__7685].VAR__9290, data[VAR__3918907].VAR__7685, data[VAR__3918907].VAR__3918907, data[VAR__3918907].VAR__9290, distance[VAR__53647].dis);
+   }
+
+   return 0;
+}

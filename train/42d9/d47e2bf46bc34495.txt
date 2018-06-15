@@ -1,0 +1,103 @@
+double VAR__NUM[46][8];
+struct node
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+   int arr[11];
+};
+struct node arr[11];
+int main()
+{
+   int         VAR__53647;
+   int         VAR_1238123;
+   int         VAR__21230;
+   int         VAR__1238129;
+   struct node arr[11];
+
+   while ( scanf("%d", &VAR_1238123) != EOF )
+   {
+      memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+      memset(arr, 0, sizeof( arr ));
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d %d %d", &arr[VAR__53647].VAR__819283, &arr[VAR__53647].VAR__19328, &arr[VAR__53647].VAR__4857423);
+      }
+
+      int VAR_2890     = 0;
+      int VAR__8444594 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            double aa;
+            double bb;
+            double cc;
+            double dd;
+            aa = pow((double)( arr[VAR__53647].VAR__819283 - arr[VAR__21230].VAR__819283 ), (int)2);
+            bb = pow((double)( arr[VAR__53647].VAR__19328 - arr[VAR__21230].VAR__19328 ), (int)2);
+            cc = pow((double)( arr[VAR__53647].VAR__4857423 - arr[VAR__21230].VAR__4857423 ), (int)2);
+            dd = sqrt((double)(( aa + bb ) + cc ));
+            VAR__NUM[VAR_2890][0] = arr[VAR__53647].VAR__819283;
+            VAR__NUM[VAR_2890][1] = arr[VAR__53647].VAR__19328;
+            VAR__NUM[VAR_2890][2] = arr[VAR__53647].VAR__4857423;
+            VAR__NUM[VAR_2890][3] = arr[VAR__21230].VAR__819283;
+            VAR__NUM[VAR_2890][4] = arr[VAR__21230].VAR__19328;
+            VAR__NUM[VAR_2890][5] = arr[VAR__21230].VAR__4857423;
+            VAR__NUM[VAR_2890][6] = dd;
+            VAR__NUM[VAR_2890][7] = VAR__8444594;
+            VAR__8444594++;
+            VAR_2890++;
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_2890 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_2890; VAR__21230++ )
+         {
+            if ( VAR__NUM[VAR__53647][6] <= VAR__NUM[VAR__21230][6] )
+            {
+               double d1 = 0;
+               for ( VAR__1238129 = 0; VAR__1238129 <= 6; VAR__1238129++ )
+               {
+                  d1 = VAR__NUM[VAR__53647][VAR__1238129];
+                  VAR__NUM[VAR__53647][VAR__1238129] = VAR__NUM[VAR__21230][VAR__1238129];
+                  VAR__NUM[VAR__21230][VAR__1238129] = d1;
+               }
+            }
+         }
+      }
+
+
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_2890 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_2890; VAR__21230++ )
+         {
+            if ( VAR__NUM[VAR__53647][6] == VAR__NUM[VAR__21230][6] )
+            {
+               if ( VAR__NUM[VAR__53647][7] < VAR__NUM[VAR__21230][7] )
+               {
+                  double d1 = 0;
+                  for ( VAR__1238129 = 0; VAR__1238129 <= 7; VAR__1238129++ )
+                  {
+                     d1 = VAR__NUM[VAR__53647][VAR__1238129];
+                     VAR__NUM[VAR__53647][VAR__1238129] = VAR__NUM[VAR__21230][VAR__1238129];
+                     VAR__NUM[VAR__21230][VAR__1238129] = d1;
+                  }
+               }
+            }
+         }
+      }
+
+
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_2890; VAR__53647++ )
+      {
+         printf("(%.f,%.f,%.f)-(%.f,%.f,%.f)=%.2f\n", VAR__NUM[VAR__53647][0], VAR__NUM[VAR__53647][1], VAR__NUM[VAR__53647][2], VAR__NUM[VAR__53647][3], VAR__NUM[VAR__53647][4], VAR__NUM[VAR__53647][5], VAR__NUM[VAR__53647][6]);
+      }
+   }
+
+   return 0;
+}

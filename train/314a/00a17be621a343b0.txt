@@ -1,0 +1,121 @@
+int main()
+{
+   char time1[10000];
+   char time2[10000];
+   int  timein[1000];
+   int  timeout[1000];
+   int  sta[1000];
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__8444594;
+   int  VAR_FLAG = 0;
+   int  VAR__MAX = 0;
+   int  people   = 0;
+
+   cin.getline(time1, 10000);
+   cin.getline(time2, 10000);
+   for ( VAR__53647 = 0; VAR__53647 < 10000; VAR__53647++ )
+   {
+      if ( time1[VAR__53647] == ',' )
+      {
+         people++;
+      }
+      else
+      if ( time1[VAR__53647] == '\0' )
+      {
+         break;
+      }
+   }
+
+   if ( people != 0 )
+   {
+      people++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      timein[VAR__53647]  = -1;
+      timeout[VAR__53647] = -1;
+      sta[VAR__53647]     = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 10000; VAR__53647++ )
+   {
+      if ( time1[VAR__53647] == ',' )
+      {
+         timein[VAR__21230] = 0;
+         for ( VAR__8444594 = VAR__53647 - 1; VAR__8444594 >= VAR_FLAG; VAR__8444594-- )
+         {
+            timein[VAR__21230] = timein[VAR__21230] + (( time1[VAR__8444594] - '0' ) * ((int)pow(10.0, (double)(( VAR__53647 - 1 ) - VAR__8444594 ))));
+         }
+
+         VAR_FLAG = VAR__53647 + 1;
+         VAR__21230++;
+      }
+      else
+      if ( time1[VAR__53647] == '\0' )
+      {
+         timein[VAR__21230] = 0;
+         for ( VAR__8444594 = VAR__53647 - 1; VAR__8444594 >= VAR_FLAG; VAR__8444594-- )
+         {
+            timein[VAR__21230] = timein[VAR__21230] + (( time1[VAR__8444594] - '0' ) * ((int)pow(10.0, (double)(( VAR__53647 - 1 ) - VAR__8444594 ))));
+         }
+
+         break;
+      }
+   }
+
+   VAR_FLAG   = 0;
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 10000; VAR__53647++ )
+   {
+      if ( time2[VAR__53647] == ',' )
+      {
+         timeout[VAR__21230] = 0;
+         for ( VAR__8444594 = VAR__53647 - 1; VAR__8444594 >= VAR_FLAG; VAR__8444594-- )
+         {
+            timeout[VAR__21230] = timeout[VAR__21230] + (( time2[VAR__8444594] - '0' ) * ((int)pow(10.0, (double)(( VAR__53647 - 1 ) - VAR__8444594 ))));
+         }
+
+         VAR_FLAG = VAR__53647 + 1;
+         VAR__21230++;
+      }
+      else
+      if ( time2[VAR__53647] == '\0' )
+      {
+         timeout[VAR__21230] = 0;
+         for ( VAR__8444594 = VAR__53647 - 1; VAR__8444594 >= VAR_FLAG; VAR__8444594-- )
+         {
+            timeout[VAR__21230] = timeout[VAR__21230] + (( time2[VAR__8444594] - '0' ) * ((int)pow(10.0, (double)(( VAR__53647 - 1 ) - VAR__8444594 ))));
+         }
+
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if ( timein[VAR__53647] != ( -1 ))
+      {
+         for ( VAR__8444594 = timein[VAR__53647]; VAR__8444594 < timeout[VAR__53647]; VAR__8444594++ )
+         {
+            sta[VAR__8444594]++;
+         }
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if ( sta[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = sta[VAR__53647];
+      }
+   }
+
+   ((( cout << people ) << " " ) << VAR__MAX ) << endl;
+   return 0;
+}

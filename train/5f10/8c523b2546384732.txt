@@ -1,0 +1,97 @@
+int compare(char ANOTHER_STRING[], char YET_ANOTHER_STRING[], int VAR__7685)
+{
+   int VAR__53647;
+   int VAR__1111;
+
+   VAR__1111 = strlen(ANOTHER_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( ANOTHER_STRING[VAR__53647] == YET_ANOTHER_STRING[VAR__53647 + VAR__7685] )
+      {
+         continue;
+      }
+      else
+      {
+         return 1;
+      }
+   }
+
+   return 0;
+}
+
+
+void main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1111;
+   int  VAR__8444594;
+   int  VAR_1238123;
+   int  VAR__SUM;
+   int  VAR__MAX             = 0;
+   char VAR__819283[501]     = { '\0' };
+   char VAR__19328[6]        = { '\0' };
+   char VAR__4857423[100][6] = { '\0' };
+
+   scanf("%d\n", &VAR_1238123);
+   gets(VAR__819283);
+   VAR__1111 = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1111 - VAR_1238123 ); VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__19328[VAR__21230] = VAR__819283[VAR__53647 + VAR__21230];
+      }
+
+      VAR__19328[VAR_1238123] = '\0';
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR__1111 - VAR_1238123 ); VAR__21230++ )
+      {
+         if ( compare(VAR__19328, VAR__819283, VAR__21230) == 0 )
+         {
+            VAR__SUM++;
+         }
+      }
+
+      if ( VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX = VAR__SUM;
+      }
+   }
+
+   for ( VAR__8444594 = 0, VAR__53647 = 0; VAR__53647 <= ( VAR__1111 - VAR_1238123 ); VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__19328[VAR__21230] = VAR__819283[VAR__53647 + VAR__21230];
+      }
+
+      VAR__19328[VAR_1238123] = '\0';
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= ( VAR__1111 - VAR_1238123 ); VAR__21230++ )
+      {
+         if ( compare(VAR__19328, VAR__819283, VAR__21230) == 0 )
+         {
+            VAR__SUM++;
+         }
+      }
+
+      if ( VAR__SUM == VAR__MAX )
+      {
+         strcpy(VAR__4857423[VAR__8444594], VAR__19328);
+         VAR__8444594++;
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO");
+      return;
+   }
+
+   printf("%d\n", VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", VAR__4857423[VAR__53647]);
+   }
+}

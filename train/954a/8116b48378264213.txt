@@ -1,0 +1,142 @@
+void main()
+{
+   int  VAR_1238123;
+   int  qimo[100];
+   int  banji[100];
+   int  lunwen[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  jiangxuejing[100];
+   int  sunxu[100];
+   char xingming[100][20];
+   char ganbu[100];
+   char xibu[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", xingming[VAR__53647], &qimo[VAR__53647], &banji[VAR__53647], &ganbu[VAR__53647], &xibu[VAR__53647], &lunwen[VAR__53647]);
+      sunxu[VAR__53647] = VAR__53647;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      int VAR__819283  = 0;
+      int VAR__19328   = 0;
+      int VAR__4857423 = 0;
+      int VAR__12302   = 0;
+      int VAR__112390  = 0;
+
+      if (( qimo[VAR__53647] > 80 ) && ( lunwen[VAR__53647] >= 1 ))
+      {
+         VAR__819283 = VAR__819283 + 1;
+      }
+
+      if (( qimo[VAR__53647] > 85 ) && ( banji[VAR__53647] > 80 ))
+      {
+         VAR__19328 = VAR__19328 + 1;
+      }
+
+      if ( qimo[VAR__53647] > 90 )
+      {
+         VAR__4857423 = VAR__4857423 + 1;
+      }
+
+      if (( qimo[VAR__53647] > 85 ) && ( xibu[VAR__53647] == 'Y' ))
+      {
+         VAR__12302 = VAR__12302 + 1;
+      }
+
+      if (( banji[VAR__53647] > 80 ) && ( ganbu[VAR__53647] == 'Y' ))
+      {
+         VAR__112390 = VAR__112390 + 1;
+      }
+
+      jiangxuejing[VAR__53647] = (((( VAR__819283 * 8000 ) + ( VAR__19328 * 4000 )) + ( VAR__4857423 * 2000 )) + ( VAR__12302 * 1000 )) + ( VAR__112390 * 850 );
+   }
+
+   int  VAR__temp;
+   int  VAR__8444594;
+   int  VAR_233;
+   char VAR__4857423;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= (( VAR_1238123 - 2 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( jiangxuejing[VAR__21230] < jiangxuejing[VAR__21230 + 1] )
+         {
+            VAR__temp = jiangxuejing[VAR__21230];
+            jiangxuejing[VAR__21230]     = jiangxuejing[VAR__21230 + 1];
+            jiangxuejing[VAR__21230 + 1] = VAR__temp;
+            VAR_233               = sunxu[VAR__21230];
+            sunxu[VAR__21230]     = sunxu[VAR__21230 + 1];
+            sunxu[VAR__21230 + 1] = VAR_233;
+            for ( VAR__8444594 = 0; VAR__8444594 <= 19; VAR__8444594++ )
+            {
+               VAR__4857423 = xingming[VAR__21230][VAR__8444594];
+               xingming[VAR__21230][VAR__8444594]     = xingming[VAR__21230 + 1][VAR__8444594];
+               xingming[VAR__21230 + 1][VAR__8444594] = VAR__4857423;
+            }
+         }
+      }
+   }
+
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( jiangxuejing[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = jiangxuejing[VAR__53647];
+      }
+   }
+
+   int jishuqi = 0;
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      if ( jiangxuejing[VAR__21230] == VAR__MAX )
+      {
+         jishuqi = jishuqi + 1;
+      }
+   }
+
+   int VAR__1238129 = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__1238129 = VAR__1238129 + jiangxuejing[VAR__53647];
+   }
+
+   if ( jishuqi == 1 )
+   {
+      printf("%s\n", xingming[0]);
+      printf("%d\n", jiangxuejing[0]);
+      printf("%d\n", VAR__1238129);
+   }
+
+   if ( jishuqi > 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( jishuqi - 2 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= (( jishuqi - 2 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( sunxu[VAR__21230] > sunxu[VAR__21230 + 1] )
+            {
+               VAR__temp             = sunxu[VAR__21230];
+               sunxu[VAR__21230]     = sunxu[VAR__21230 + 1];
+               sunxu[VAR__21230 + 1] = VAR__temp;
+               for ( VAR__8444594 = 0; VAR__8444594 <= 99; VAR__8444594++ )
+               {
+                  VAR__4857423 = xingming[VAR__21230][VAR__8444594];
+                  xingming[VAR__21230][VAR__8444594]     = xingming[VAR__21230 + 1][VAR__8444594];
+                  xingming[VAR__21230 + 1][VAR__8444594] = VAR__4857423;
+               }
+            }
+         }
+      }
+
+
+      printf("%s\n", xingming[0]);
+      printf("%d\n", jiangxuejing[0]);
+      printf("%d\n", VAR__1238129);
+   }
+}

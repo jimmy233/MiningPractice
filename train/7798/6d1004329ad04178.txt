@@ -1,0 +1,103 @@
+int VAR__819283[30] = { 0 };
+int VAR__19328[30][1000];
+struct stu
+{
+   int        VAR__NUM;
+   char       name[30];
+   struct stu *VAR__NEXT;
+};
+struct stu *creat(int VAR_1238123)
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR__HEAD;
+   int        VAR__53647 = 0;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+   VAR__HEAD = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+      if ( VAR__53647 < ( VAR_1238123 - 1 ))
+      {
+         ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+         scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+      }
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+int check(struct stu *VAR__HEAD, int VAR_1238123)
+{
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR_9494;
+   int        VAR__12302  = 0;
+   int        VAR__127322 = 0;
+   char       *VAR__temp;
+   struct stu *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++, VAR_233 = VAR_233->VAR__NEXT )
+   {
+      VAR_9494  = strlen(VAR_233->name);
+      VAR__temp = VAR_233->name;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_9494; VAR__21230++ )
+      {
+         VAR__12302 = VAR__temp[VAR__21230] - 64;
+         VAR__819283[VAR__12302]++;
+         VAR__19328[VAR__12302][VAR__819283[VAR__12302] - 1] = VAR_233->VAR__NUM;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 26; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1, VAR__127322 = 0; VAR__21230 <= 26; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647] < VAR__819283[VAR__21230] )
+         {
+            VAR__127322 = 1;
+            break;
+         }
+      }
+
+      if ( VAR__127322 == 0 )
+      {
+         break;
+      }
+   }
+
+   return VAR__53647;
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD  = creat(VAR_1238123);
+   VAR__53647 = check(VAR__HEAD, VAR_1238123);
+   printf("%c\n%d\n", VAR__53647 + 64, VAR__819283[VAR__53647]);
+   for ( VAR__21230 = 0; VAR__21230 < VAR__819283[VAR__53647]; VAR__21230++ )
+   {
+      printf("%d\n", VAR__19328[VAR__53647][VAR__21230]);
+   }
+}

@@ -1,0 +1,77 @@
+int main()
+{
+   int number1[100] = { 0 };
+   int number2[100] = { 0 };
+   int len1         = 0;
+   int len2         = 0;
+
+   ( cin >> len1 ) >> len2;
+   void getarray(int number[], int LEN_OF_STH);
+   void rank(int number[], int LEN_OF_STH);
+   void add(int number1[], int number2[], int len1, int len2);
+   void print(int number[], int len1, int len2);
+
+   getarray(number1, len1);
+   getarray(number2, len2);
+   rank(number1, len1);
+   rank(number2, len2);
+   add(number1, number2, len1, len2);
+   print(number1, len1, len2);
+   return 0;
+}
+
+
+void getarray(int number[], int LEN_OF_STH)
+{
+   int VAR__53647 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      cin >> number[VAR__53647];
+   }
+}
+
+
+void rank(int number[], int LEN_OF_STH)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( number[VAR__53647] > number[VAR__21230] )
+         {
+            VAR__TEMP          = number[VAR__53647];
+            number[VAR__53647] = number[VAR__21230];
+            number[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void add(int number1[], int number2[], int len1, int len2)
+{
+   int VAR__53647 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      number1[VAR__53647 + len1] = number2[VAR__53647];
+   }
+}
+
+
+void print(int number[], int len1, int len2)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < (( len1 + len2 ) - 1 ); VAR__53647++ )
+   {
+      ( cout << number[VAR__53647] ) << ' ';
+   }
+
+   cout << number[( len1 + len2 ) - 1];
+}

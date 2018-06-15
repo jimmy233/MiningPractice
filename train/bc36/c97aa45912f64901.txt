@@ -1,0 +1,75 @@
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   float root[40];
+   float male[40];
+   float famale[40];
+   char  name[40][7];
+
+   scanf("%d", &VAR_1238123);
+   int VAR__8444594 = 0;
+   int VAR_233      = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", name[VAR__53647], &root[VAR__53647]);
+
+      if ( strcmp(name[VAR__53647], "male") == 0 )
+      {
+         male[VAR__8444594++] = root[VAR__53647];
+      }
+      else
+      {
+         famale[VAR_233++] = root[VAR__53647];
+      }
+   }
+
+   float VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__8444594 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( male[VAR__21230] > male[VAR__21230 + 1] )
+         {
+            VAR__temp            = male[VAR__21230];
+            male[VAR__21230]     = male[VAR__21230 + 1];
+            male[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_233 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( famale[VAR__21230] < famale[VAR__21230 + 1] )
+         {
+            VAR__temp              = famale[VAR__21230];
+            famale[VAR__21230]     = famale[VAR__21230 + 1];
+            famale[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%.2f ", male[VAR__53647]);
+   }
+
+   printf("%.2f", famale[0]);
+
+   if ( VAR_233 == 1 )
+   {
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < VAR_233; VAR__53647++ )
+      {
+         printf(" %.2f", famale[VAR__53647]);
+      }
+   }
+
+   printf("\n");
+   return 0;
+}

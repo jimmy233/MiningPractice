@@ -1,0 +1,80 @@
+void main()
+{
+   char A_STRING[10000];
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  LEN_OF_STH[300];
+   int  add = 0;
+   int  VAR_FLAG;
+
+   for ( VAR__53647 = 0; VAR__53647 < 300; VAR__53647++ )
+   {
+      LEN_OF_STH[VAR__53647] = 0;
+   }
+
+   gets(A_STRING);
+
+   if ( A_STRING[0] != 32 )
+   {
+      VAR_FLAG = 1;
+      add++;
+      for ( VAR__53647 = 1; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         if (( A_STRING[VAR__53647] != 32 ) && ( VAR__53647 < ( strlen(A_STRING) - 1 )))
+         {
+            add++;
+            VAR_FLAG = 1;
+         }
+         else
+         if (( A_STRING[VAR__53647] != 32 ) && ( VAR__53647 == ( strlen(A_STRING) - 1 )))
+         {
+            add++;
+            LEN_OF_STH[VAR__21230] = add;
+            VAR_FLAG = 0;
+            add      = 0;
+         }
+         else
+         if (( A_STRING[VAR__53647] == 32 ) && VAR_FLAG )
+         {
+            LEN_OF_STH[VAR__21230] = add;
+            VAR_FLAG = 0;
+            add      = 0;
+            VAR__21230++;
+         }
+      }
+   }
+   else
+   {
+      VAR_FLAG = 0;
+      for ( VAR__53647 = 1; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         if (( A_STRING[VAR__53647] != ' ' ) && VAR_FLAG )
+         {
+            add++;
+         }
+         else
+         if (( A_STRING[VAR__53647] != ' ' ) && ( VAR_FLAG == 0 ))
+         {
+            VAR_FLAG = 1;
+            add++;
+         }
+         else
+         if (( A_STRING[VAR__53647] == ' ' ) && VAR_FLAG )
+         {
+            LEN_OF_STH[VAR__21230] = add;
+            VAR_FLAG = 0;
+            add      = 0;
+            VAR__21230++;
+         }
+         else
+         {
+         }
+      }
+   }
+
+   printf("%d", LEN_OF_STH[0]);
+   for ( VAR__53647 = 1; LEN_OF_STH[VAR__53647]; VAR__53647++ )
+   {
+      printf(",%d", LEN_OF_STH[VAR__53647]);
+   }
+}

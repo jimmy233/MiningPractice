@@ -1,0 +1,70 @@
+struct book
+{
+   int  VAR__NUM;
+   char author[26];
+}
+shu[999];
+int main(int argc, char *argv[])
+{
+   int  VAR__1238129;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  *VAR_233;
+   char VAR__4857423;
+   int  writer[26];
+
+   char VAR__MAX(int *VAR_233);
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d%s", &shu[VAR__53647].VAR__NUM, shu[VAR__53647].author);
+   }
+
+   for ( VAR__4857423 = 'A', writer[VAR__4857423 - 'A'] = 0; VAR__4857423 <= 'Z'; VAR__4857423++ )
+   {
+      writer[VAR__4857423 - 'A'] = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         for ( VAR__19328 = 0; shu[VAR__53647].author[VAR__19328] != '\0'; VAR__19328++ )
+         {
+            if ( VAR__4857423 == shu[VAR__53647].author[VAR__19328] )
+            {
+               writer[VAR__4857423 - 'A']++;
+            }
+         }
+      }
+   }
+
+   VAR_233 = writer;
+   printf("%c\n%d\n", VAR__MAX(VAR_233), writer[VAR__MAX(VAR_233) - 'A']);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__19328 = 0; shu[VAR__53647].author[VAR__19328] != '\0'; VAR__19328++ )
+      {
+         if ( VAR__MAX(VAR_233) == shu[VAR__53647].author[VAR__19328] )
+         {
+            printf("%d\n", shu[VAR__53647].VAR__NUM);
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+char VAR__MAX(int *VAR_233)
+{
+   int  VAR__53647;
+   char VAR__MAX;
+
+   for ( VAR__53647 = 0, VAR__MAX = 'A'; VAR__53647 < 26; VAR__53647++ )
+   {
+      if (( *( VAR_233 + VAR__53647 )) > ( *(( VAR_233 + VAR__MAX ) - 'A' )))
+      {
+         VAR__MAX = VAR__53647 + 'A';
+      }
+   }
+
+   return VAR__MAX;
+}

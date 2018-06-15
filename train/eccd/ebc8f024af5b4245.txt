@@ -1,0 +1,76 @@
+int main()
+{
+   int VAR_2890;
+   int VAR__1111;
+   int VAR__temp = 1;
+   int fah       = -1;
+   int fal       = -1;
+
+   scanf("%d,%d", &VAR_2890, &VAR__1111);
+   int VAR__53647;
+   int VAR__21230;
+   int **word;
+   word = (int **)malloc(( sizeof( int * )) * VAR_2890);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_2890; VAR__53647++ )
+   {
+      word[VAR__53647] = (int *)malloc(( sizeof( int )) * VAR__1111);
+   }
+
+   int *VAR__MAX;
+   VAR__MAX = (int *)malloc(( sizeof( int )) * VAR_2890);
+   int *al;
+   al = (int *)malloc(( sizeof( int )) * VAR_2890);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_2890; VAR__53647++ )
+   {
+      VAR__MAX[VAR__53647] = 0;
+      al[VAR__53647]       = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_2890; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1111; VAR__21230++ )
+      {
+         scanf("%d", &word[VAR__53647][VAR__21230]);
+
+         if ( VAR__MAX[VAR__53647] < word[VAR__53647][VAR__21230] )
+         {
+            VAR__MAX[VAR__53647] = word[VAR__53647][VAR__21230];
+            al[VAR__53647]       = VAR__21230;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_2890; VAR__53647++ )
+   {
+      VAR__temp = 1;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_2890; VAR__21230++ )
+      {
+         if ( VAR__MAX[VAR__53647] > word[VAR__21230][al[VAR__53647]] )
+         {
+            VAR__temp = 0;
+            break;
+         }
+      }
+
+      if ( VAR__temp != 0 )
+      {
+         fah = VAR__53647;
+         fal = al[VAR__53647];
+         break;
+      }
+   }
+
+   if (( fah != ( -1 )) || ( fal != ( -1 )))
+   {
+      printf("%d+%d\n", fah, fal);
+   }
+   else
+   {
+      printf("No\n");
+   }
+
+   free(*word);
+   free(VAR__MAX);
+   free(al);
+   return 0;
+}

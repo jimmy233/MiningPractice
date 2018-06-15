@@ -1,0 +1,76 @@
+int main(int argc, char *argv[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int mingren = 0;
+   int VAR__COUNT;
+   int *person  = NULL;
+   int VAR__NUM = 0;
+   int temp1;
+   int temp2;
+
+   scanf("%d", &VAR__NUM);
+   VAR__COUNT = VAR__NUM;
+   int **relation = (int **)malloc(VAR__NUM * ( sizeof( int * )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      relation[VAR__53647] = (int *)malloc(VAR__NUM * ( sizeof( int )));
+   }
+
+   do
+   {
+      scanf("%d %d", &temp1, &temp2);
+      relation[temp1][temp2] = 1;
+   } while (( temp2 != 0 ) || ( temp1 != 0 ));
+   temp1 = 0;
+   temp2 = 1;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__NUM - 2 ); VAR__53647++ )
+   {
+      if ( relation[temp1][temp2] == 1 )
+      {
+         temp1 = ( VAR__NUM - 1 ) - VAR__53647;
+      }
+      else
+      {
+         temp2 = ( VAR__NUM - 1 ) - VAR__53647;
+      }
+   }
+
+   if ( relation[temp1][temp2] == 1 )
+   {
+      mingren = temp2;
+   }
+   else
+   {
+      mingren = temp1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( VAR__53647 != mingren )
+      {
+         if (( relation[VAR__53647][mingren] == 0 ) || ( relation[mingren][VAR__53647] == 1 ))
+         {
+            mingren = -1;
+            break;
+         }
+      }
+   }
+
+   if ( mingren == ( -1 ))
+   {
+      printf("NOT FOUND\n");
+   }
+   else
+   {
+      printf("%d\n", mingren);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      free(relation[VAR__53647]);
+   }
+
+   free(relation);
+   return 0;
+}

@@ -1,0 +1,74 @@
+int main()
+{
+   char x_in[10000];
+   char y_in[10000];
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  n1;
+   int  n2;
+   int  n3;
+   int  VAR__7685[10000]    = { 0 };
+   int  VAR__3918907[10000] = { 0 };
+   int  VAR__8444594        = 0;
+   int  VAR__COUNT[1000]    = { 0 };
+   int  VAR__MAX            = 0;
+
+   cin.getline(x_in, 10000, '\n');
+   cin.getline(y_in, 10000, '\n');
+   n1 = strlen(x_in);
+   n3 = strlen(y_in);
+   for ( VAR__53647 = n1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( x_in[VAR__53647] <= '9' ) && ( x_in[VAR__53647] >= '0' ))
+      {
+         VAR__7685[VAR__21230] = VAR__7685[VAR__21230] + (( x_in[VAR__53647] - '0' ) * pow(10.0, VAR__8444594));
+         VAR__8444594++;
+      }
+      else
+      if ((( x_in[VAR__53647 - 1] <= '9' ) && ( x_in[VAR__53647 - 1] >= '0' )) && (( x_in[VAR__53647] < '0' ) || ( x_in[VAR__53647] > '9' )))
+      {
+         VAR__8444594 = 0;
+         VAR__21230++;
+      }
+   }
+
+   n2           = VAR__21230;
+   VAR__21230   = 0;
+   VAR__8444594 = 0;
+   for ( VAR__53647 = n3; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( y_in[VAR__53647] <= '9' ) && ( y_in[VAR__53647] >= '0' ))
+      {
+         VAR__3918907[VAR__21230] = VAR__3918907[VAR__21230] + (( y_in[VAR__53647] - '0' ) * pow(10.0, VAR__8444594));
+         VAR__8444594++;
+      }
+      else
+      if ((( y_in[VAR__53647 - 1] <= '9' ) && ( y_in[VAR__53647 - 1] >= '0' )) && (( y_in[VAR__53647] < '0' ) || ( y_in[VAR__53647] > '9' )))
+      {
+         VAR__8444594 = 0;
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 1000; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= n2; VAR__21230++ )
+      {
+         if (( VAR__53647 >= VAR__7685[VAR__21230] ) && ( VAR__53647 < VAR__3918907[VAR__21230] ))
+         {
+            VAR__COUNT[VAR__53647]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT[VAR__53647];
+      }
+   }
+
+   ((( cout << n2 ) << " " ) << VAR__MAX ) << endl;
+   return 0;
+}

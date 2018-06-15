@@ -1,0 +1,72 @@
+int main()
+{
+   struct stu
+   {
+      char name[21];
+      int  qm;
+      int  cm;
+      char xs[21];
+      char west[21];
+      int  paper;
+      int  sp;
+   };
+   struct stu VAR__819283[101];
+   int        VAR__53647;
+   int        VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", &VAR__819283[VAR__53647].name);
+      scanf("%d", &VAR__819283[VAR__53647].qm);
+      scanf("%d", &VAR__819283[VAR__53647].cm);
+      scanf("%s", &VAR__819283[VAR__53647].xs);
+      scanf("%s", &VAR__819283[VAR__53647].west);
+      scanf("%d", &VAR__819283[VAR__53647].paper);
+      VAR__819283[VAR__53647].sp = 0;
+
+      if (( VAR__819283[VAR__53647].qm > 80 ) && ( VAR__819283[VAR__53647].paper > 0 ))
+      {
+         VAR__819283[VAR__53647].sp += 8000;
+      }
+
+      if (( VAR__819283[VAR__53647].qm > 85 ) && ( VAR__819283[VAR__53647].cm > 80 ))
+      {
+         VAR__819283[VAR__53647].sp += 4000;
+      }
+
+      if ( VAR__819283[VAR__53647].qm > 90 )
+      {
+         VAR__819283[VAR__53647].sp += 2000;
+      }
+
+      if (( VAR__819283[VAR__53647].qm > 85 ) && ( VAR__819283[VAR__53647].west[0] == 'Y' ))
+      {
+         VAR__819283[VAR__53647].sp += 1000;
+      }
+
+      if (( VAR__819283[VAR__53647].cm > 80 ) && ( VAR__819283[VAR__53647].xs[0] == 'Y' ))
+      {
+         VAR__819283[VAR__53647].sp += 850;
+      }
+   }
+
+   int VAR__MAX;
+   int total;
+   VAR__MAX = 0;
+   total    = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647].sp > VAR__819283[VAR__MAX].sp )
+      {
+         VAR__MAX = VAR__53647;
+      }
+
+      total = total + VAR__819283[VAR__53647].sp;
+   }
+
+   printf("%s\n", VAR__819283[VAR__MAX].name);
+   printf("%d\n", VAR__819283[VAR__MAX].sp);
+   printf("%d\n", total);
+   return 0;
+}

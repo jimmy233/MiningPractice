@@ -1,0 +1,138 @@
+struct data
+{
+   char        id[11];
+   int         age;
+   struct data *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct data
+{
+   char        id[11];
+   int         age;
+   struct data *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+struct data
+{
+   char        id[11];
+   int         age;
+   struct data *VAR__NEXT;
+}
+*VAR__HEAD;
+struct data
+{
+   char        id[11];
+   int         age;
+   struct data *VAR__NEXT;
+}
+*q1;
+struct data
+{
+   char        id[11];
+   int         age;
+   struct data *VAR__NEXT;
+}
+*q2;
+struct data
+{
+   char        id[11];
+   int         age;
+   struct data *VAR__NEXT;
+}
+*qhead;
+void main()
+{
+   int         VAR__53647;
+   int         VAR_1238123;
+   int         VAR__8444594 = 0;
+   struct data *sort(struct data *VAR__HEAD, int VAR_1238123);
+
+   void print(struct data *VAR__HEAD);
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD            = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct data *)malloc(LEN)));
+   VAR__HEAD->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct data *)malloc(LEN);
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+
+      if ( ANOTHER_POINTER->age >= 60 )
+      {
+         VAR__8444594++;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   qhead            = ( q1 = ( q2 = (struct data *)malloc(LEN)));
+   qhead->VAR__NEXT = NULL;
+   for ( VAR__53647 = VAR_1238123; VAR__53647 > ( VAR_1238123 - VAR__8444594 ); VAR__53647-- )
+   {
+      VAR__HEAD = sort(VAR__HEAD, VAR__53647);
+   }
+
+   q2->VAR__NEXT = NULL;
+   q2->VAR__NEXT = VAR__HEAD->VAR__NEXT;
+   free(VAR__HEAD);
+   print(qhead);
+}
+
+
+struct data *sort(struct data *VAR__HEAD, int VAR_1238123)
+{
+   int         VAR__MAX = 59;
+   int         VAR__53647;
+   struct data *ANOTHER_POINTER;
+   struct data *YET_ANOTHER_POINTER;
+   struct data *code;
+   struct data *pre;
+
+   YET_ANOTHER_POINTER = VAR__HEAD;
+   ANOTHER_POINTER     = VAR__HEAD->VAR__NEXT;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( ANOTHER_POINTER->age > VAR__MAX )
+      {
+         VAR__MAX = ANOTHER_POINTER->age;
+         code     = ANOTHER_POINTER;
+         pre      = YET_ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   q1 = (struct data *)malloc(LEN);
+   strcpy(q1->id, code->id);
+   q1->age       = code->age;
+   q2->VAR__NEXT = q1;
+   q2            = q1;
+
+   if ( pre == VAR__HEAD )
+   {
+      VAR__HEAD->VAR__NEXT = code->VAR__NEXT;
+   }
+   else
+   {
+      pre->VAR__NEXT = code->VAR__NEXT;
+   }
+
+   free(code);
+   return VAR__HEAD;
+}
+
+
+void print(struct data *qhead)
+{
+   struct data *VAR_666;
+
+   VAR_666 = qhead->VAR__NEXT;
+   do
+   {
+      printf("%s\n", VAR_666->id);
+      VAR_666 = VAR_666->VAR__NEXT;
+   } while ( VAR_666 != NULL );
+}

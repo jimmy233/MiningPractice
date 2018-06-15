@@ -1,0 +1,117 @@
+int N;
+int array[2][1001];
+int benefit[1001][1001] = { 0 };
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int cnt = 0;
+
+   while (( scanf("%d", &N) != EOF ) && N )
+   {
+      ++cnt;
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         scanf("%d", array[0] + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         scanf("%d", array[1] + VAR__53647);
+      }
+
+      sort(array[0], array[0] + N);
+      sort(array[1], array[1] + N);
+
+      if ( array[0][0] < array[1][N - 1] )
+      {
+         benefit[1][0] = -200;
+      }
+      else
+      if ( array[0][0] > array[1][N - 1] )
+      {
+         benefit[1][0] = 200;
+      }
+      else
+      {
+         benefit[1][0] = 0;
+      }
+
+
+      if ( array[0][N - 1] < array[1][N - 1] )
+      {
+         benefit[1][1] = -200;
+      }
+      else
+      if ( array[0][N - 1] > array[1][N - 1] )
+      {
+         benefit[1][1] = 200;
+      }
+      else
+      {
+         benefit[1][1] = 0;
+      }
+
+
+      for ( VAR__53647 = 2; VAR__53647 <= N; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+         {
+            int tmp1 = -INF;
+            int tmp2 = -INF;
+
+            if ( VAR__53647 > VAR__21230 )
+            {
+               tmp1 = benefit[VAR__53647 - 1][VAR__21230];
+
+               if ( array[0][( VAR__53647 - VAR__21230 ) - 1] > array[1][N - VAR__53647] )
+               {
+                  tmp1 += 200;
+               }
+               else
+               if ( array[0][( VAR__53647 - VAR__21230 ) - 1] < array[1][N - VAR__53647] )
+               {
+                  tmp1 -= 200;
+               }
+            }
+
+            if ( VAR__21230 > 0 )
+            {
+               tmp2 = benefit[VAR__53647 - 1][VAR__21230 - 1];
+
+               if ( array[0][N - VAR__21230] > array[1][N - VAR__53647] )
+               {
+                  tmp2 += 200;
+               }
+               else
+               if ( array[0][N - VAR__21230] < array[1][N - VAR__53647] )
+               {
+                  tmp2 -= 200;
+               }
+            }
+
+            benefit[VAR__53647][VAR__21230] = tmp1;
+
+            if ( benefit[VAR__53647][VAR__21230] < tmp2 )
+            {
+               benefit[VAR__53647][VAR__21230] = tmp2;
+            }
+         }
+      }
+
+
+      int m_benefit = -INF;
+      for ( VAR__21230 = 0; VAR__21230 <= N; VAR__21230++ )
+      {
+         if ( m_benefit < benefit[N][VAR__21230] )
+         {
+            m_benefit = benefit[N][VAR__21230];
+         }
+      }
+
+
+      printf("%d\n", m_benefit);
+   }
+
+   return 0;
+}

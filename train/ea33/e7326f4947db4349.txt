@@ -1,0 +1,54 @@
+void main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__MAX;
+   char A_STRING[11];
+   char substr[4];
+   char mix[14];
+
+   while ( scanf("%s%s", A_STRING, substr) != EOF )
+   {
+      VAR__819283 = strlen(A_STRING);
+      VAR__19328  = strlen(substr);
+      VAR__MAX    = 0;
+      VAR__21230  = 0;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__819283 + VAR__19328 ); VAR__53647++ )
+      {
+         mix[VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX   = A_STRING[VAR__53647];
+            VAR__21230 = VAR__53647;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__819283 + VAR__19328 ); VAR__53647++ )
+      {
+         if ( VAR__53647 <= VAR__21230 )
+         {
+            mix[VAR__53647] = A_STRING[VAR__53647];
+         }
+
+         if (( VAR__53647 > VAR__21230 ) && ( VAR__53647 <= ( VAR__21230 + VAR__19328 )))
+         {
+            mix[VAR__53647] = substr[( VAR__53647 - VAR__21230 ) - 1];
+         }
+
+         if (( VAR__53647 > ( VAR__21230 + VAR__19328 )) && ( VAR__53647 < ( VAR__819283 + VAR__19328 )))
+         {
+            mix[VAR__53647] = A_STRING[VAR__53647 - VAR__19328];
+         }
+
+         printf("%c", mix[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+}

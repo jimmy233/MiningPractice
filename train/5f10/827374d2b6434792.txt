@@ -1,0 +1,78 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1111;
+   char VAR_9494[MAX];
+   char zichuan[MAX][MAX];
+   char VAR__TEMP[MAX];
+
+   scanf("%d", &VAR_1238123);
+   getchar();
+   gets(VAR_9494);
+   int LEN_OF_STH      = strlen(VAR_9494);
+   int VAR__8444594    = 0;
+   int VAR__COUNT[500] = { 0 };
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      zichuan[0][VAR__21230] = VAR_9494[VAR__21230];
+   }
+
+   zichuan[0][VAR_1238123] = 0;
+   int VAR_FLAG;
+   for ( VAR__53647 = 1; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      VAR_FLAG = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__TEMP[VAR__21230] = VAR_9494[VAR__21230 + VAR__53647];
+      }
+
+      VAR__TEMP[VAR_1238123] = 0;
+      for ( VAR__1111 = 0; VAR__1111 <= VAR__8444594; VAR__1111++ )
+      {
+         if ( strcmp(zichuan[VAR__1111], VAR__TEMP) == 0 )
+         {
+            VAR__COUNT[VAR__1111]++;
+            VAR_FLAG = 1;
+            break;
+         }
+      }
+
+      if ( VAR_FLAG != 1 )
+      {
+         VAR__8444594++;
+         strcpy(zichuan[VAR__8444594], VAR__TEMP);
+      }
+   }
+
+   int maxcount = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] > maxcount )
+      {
+         maxcount = VAR__COUNT[VAR__53647];
+      }
+   }
+
+   maxcount++;
+
+   if ( maxcount == 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", maxcount);
+      for ( VAR__53647 = 0; VAR__53647 <= VAR__8444594; VAR__53647++ )
+      {
+         if ( VAR__COUNT[VAR__53647] == ( maxcount - 1 ))
+         {
+            printf("%s\n", zichuan[VAR__53647]);
+         }
+      }
+   }
+
+   return 0;
+}

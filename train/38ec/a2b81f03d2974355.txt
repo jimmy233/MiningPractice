@@ -1,0 +1,60 @@
+int main()
+{
+   int startYear;
+   int startMonth;
+   int stratDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+   int VAR__53647;
+   int VAR__SUM = 0;
+   int num1     = 0;
+   int num2     = 0;
+   int total;
+   int VAR_9Q8Q90[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR_9494[13]   = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> startYear ) >> startMonth ) >> stratDay;
+   (( cin >> endYear ) >> endMonth ) >> endDay;
+   for ( VAR__53647 = startYear; VAR__53647 < endYear; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__SUM = VAR__SUM + 366;
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + 365;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < startMonth; VAR__53647++ )
+   {
+      if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || (( startYear % 400 ) == 0 ))
+      {
+         num1 = num1 + VAR_9494[VAR__53647];
+      }
+      else
+      {
+         num1 = num1 + VAR_9Q8Q90[VAR__53647];
+      }
+   }
+
+   num1 = num1 + stratDay;
+   for ( VAR__53647 = 0; VAR__53647 < endMonth; VAR__53647++ )
+   {
+      if (((( endYear % 4 ) == 0 ) && (( endYear % 100 ) != 0 )) || (( endYear % 400 ) == 0 ))
+      {
+         num2 = num2 + VAR_9494[VAR__53647];
+      }
+      else
+      {
+         num2 = num2 + VAR_9Q8Q90[VAR__53647];
+      }
+   }
+
+   num2  = num2 + endDay;
+   total = ( VAR__SUM - num1 ) + num2;
+   ( cout << total ) << endl;
+   return 0;
+}

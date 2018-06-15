@@ -1,0 +1,59 @@
+typedef struct node
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+} node;
+typedef struct distance
+{
+   node   *pn1;
+   node   *pn2;
+   double v;
+} dis;
+int main()
+{
+   int  VAR_1238123;
+   node ns[MAX];
+   dis  ds[MAX * MAX];
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> ns[VAR__53647].VAR__7685 ) >> ns[VAR__53647].VAR__3918907 ) >> ns[VAR__53647].VAR__9290;
+   }
+
+   int VAR_233 = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         ds[VAR_233].pn1 = ns + VAR__53647;
+         ds[VAR_233].pn2 = ns + VAR__21230;
+         ds[VAR_233].v   = sqrt(((( ns[VAR__53647].VAR__7685 - ns[VAR__21230].VAR__7685 ) * ( ns[VAR__53647].VAR__7685 - ns[VAR__21230].VAR__7685 )) + (( ns[VAR__53647].VAR__3918907 - ns[VAR__21230].VAR__3918907 ) * ( ns[VAR__53647].VAR__3918907 - ns[VAR__21230].VAR__3918907 ))) + (( ns[VAR__53647].VAR__9290 - ns[VAR__21230].VAR__9290 ) * ( ns[VAR__53647].VAR__9290 - ns[VAR__21230].VAR__9290 )));
+         VAR_233++;
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR_233 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( ds[VAR__21230].v > ds[VAR__21230 - 1].v )
+         {
+            dis tmp = ds[VAR__21230];
+            ds[VAR__21230]     = ds[VAR__21230 - 1];
+            ds[VAR__21230 - 1] = tmp;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      ((((((( cout << '(' ) << ds[VAR__53647].pn1->VAR__7685 ) << ',' ) << ds[VAR__53647].pn1->VAR__3918907 ) << ',' ) << ds[VAR__53647].pn1->VAR__9290 ) << ')' ) << '-';
+      ((((((( cout << '(' ) << ds[VAR__53647].pn2->VAR__7685 ) << ',' ) << ds[VAR__53647].pn2->VAR__3918907 ) << ',' ) << ds[VAR__53647].pn2->VAR__9290 ) << ')' ) << '=';
+      ((( cout << setprecision(2)) << fixed ) << ds[VAR__53647].v ) << endl;
+   }
+
+   return 0;
+}

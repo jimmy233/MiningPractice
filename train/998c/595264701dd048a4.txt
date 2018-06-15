@@ -1,0 +1,186 @@
+struct SeqList
+{
+   int MAXNUM;
+   int VAR_1238123;
+   int *element;
+};
+typedef struct SeqList *pSeqList;
+pSeqList createNullList_Seq(int VAR__1238129)
+{
+   int      VAR__53647;
+   pSeqList palist = (pSeqList)malloc(sizeof( struct SeqList ));
+
+   if ( palist != NULL )
+   {
+      palist->element = (int *)malloc(( sizeof( int )) * VAR__1238129);
+
+      if ( palist->element )
+      {
+         palist->MAXNUM      = VAR__1238129;
+         palist->VAR_1238123 = 0;
+         for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+         {
+            palist->element[VAR__53647] = 0;
+         }
+
+         return palist;
+      }
+      else
+      {
+         free(palist);
+      }
+   }
+
+   ( cout << "Out of space!! " ) << endl;
+   return NULL;
+}
+
+
+int isNullList_Seq(pSeqList palist)
+{
+   return palist->VAR_1238123 == 0;
+}
+
+
+int initialList_Seq(pSeqList pblist)
+{
+   int VAR__53647;
+
+   if ( isNullList_Seq(pblist))
+   {
+      return -1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < pblist->VAR_1238123; VAR__53647++ )
+   {
+      pblist->element[VAR__53647] = 0;
+   }
+
+   return 0;
+}
+
+
+int insertEnd_Seq(pSeqList palist, int VAR__7685)
+{
+   if ( palist->VAR_1238123 >= palist->MAXNUM )
+   {
+      ( cout << "Overflow! " ) << endl;
+      return -1;
+   }
+
+   palist->element[palist->VAR_1238123] = VAR__7685;
+   palist->VAR_1238123 += 1;
+   return 0;
+}
+
+
+int add(pSeqList num1, pSeqList num2, pSeqList VAR__SUM)
+{
+   int VAR__819283 = initialList_Seq(VAR__SUM);
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < MAX_LEN; VAR__53647++ )
+   {
+      VAR__SUM->element[VAR__53647] = num1->element[VAR__53647] + num2->element[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= MAX_LEN; VAR__53647++ )
+   {
+      if ( VAR__SUM->element[VAR__53647] > 9 )
+      {
+         VAR__SUM->element[VAR__53647]     -= 10;
+         VAR__SUM->element[VAR__53647 + 1] += 1;
+      }
+   }
+
+
+   return 0;
+}
+
+
+int printList_Seq(pSeqList result)
+{
+   if ( isNullList_Seq(result) == 0 )
+   {
+      return -1;
+   }
+
+   int VAR__53647;
+   int VAR_FLAG = 0;
+   for ( VAR__53647 = MAX_LEN; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( result->element[VAR__53647] != 0 )
+      {
+         VAR_FLAG = 1;
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         continue;
+      }
+
+      cout << result->element[VAR__53647];
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      cout << 0;
+   }
+
+   cout << endl;
+   return 0;
+}
+
+
+int main()
+{
+   pSeqList element1 = createNullList_Seq(MAX_LEN);
+   pSeqList element2 = createNullList_Seq(MAX_LEN);
+   pSeqList result   = createNullList_Seq(MAX_LEN + 1);
+   char     szLine1[MAX_LEN + 10];
+   char     szLine2[MAX_LEN + 10];
+
+   ( cin >> szLine1 ) >> szLine2;
+   int lenth1 = strlen(szLine1);
+   int lenth2 = strlen(szLine2);
+
+   if (( lenth1 > MAX_LEN ) || ( lenth2 > MAX_LEN ))
+   {
+      ( cout << "Input error!!" ) << endl;
+      return 0;
+   }
+
+   int VAR__53647;
+   for ( VAR__53647 = lenth1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      int VAR__819283 = insertEnd_Seq(element1, szLine1[VAR__53647] - '0');
+
+      if ( VAR__819283 == ( -1 ))
+      {
+         ( cout << "Input error !! " ) << endl;
+         return 0;
+      }
+   }
+
+   for ( VAR__53647 = lenth2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      int VAR__19328 = insertEnd_Seq(element2, szLine2[VAR__53647] - '0');
+
+      if ( VAR__19328 == ( -1 ))
+      {
+         ( cout << "Input error !! " ) << endl;
+         return 0;
+      }
+   }
+
+   int VAR__4857423 = add(element1, element2, result);
+
+   if ( VAR__4857423 == ( -1 ))
+   {
+      ( cout << "Fail in add!! " ) << endl;
+      return 0;
+   }
+
+   printList_Seq(result);
+   return 0;
+}

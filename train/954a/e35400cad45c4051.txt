@@ -1,0 +1,73 @@
+void main()
+{
+   typedef struct stu
+   {
+      char name[22];
+      int  qm;
+      int  bj;
+      char gb;
+      char xb;
+      int  lw;
+      int  jxj;
+   } stu;
+   stu VAR_9494[100];
+   int VAR__53647;
+   int VAR_1238123;
+   int VAR__MAX;
+   int total;
+   memset(VAR_9494, 0, sizeof( VAR_9494 ));
+   VAR__MAX = 0;
+   total    = 0;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", ( VAR_9494 + VAR__53647 )->name, &( VAR_9494 + VAR__53647 )->qm, &( VAR_9494 + VAR__53647 )->bj, &( VAR_9494 + VAR__53647 )->gb, &( VAR_9494 + VAR__53647 )->xb, &( VAR_9494 + VAR__53647 )->lw);
+
+      if ((( VAR_9494 + VAR__53647 )->qm > 80 ) && ( VAR_9494 + VAR__53647 )->lw )
+      {
+         ( VAR_9494 + VAR__53647 )->jxj += 8000;
+      }
+
+      if ((( VAR_9494 + VAR__53647 )->qm > 85 ) && (( VAR_9494 + VAR__53647 )->bj > 80 ))
+      {
+         ( VAR_9494 + VAR__53647 )->jxj += 4000;
+      }
+
+      if (( VAR_9494 + VAR__53647 )->qm > 90 )
+      {
+         ( VAR_9494 + VAR__53647 )->jxj += 2000;
+      }
+
+      if ((( VAR_9494 + VAR__53647 )->qm > 85 ) && (( VAR_9494 + VAR__53647 )->xb == 'Y' ))
+      {
+         ( VAR_9494 + VAR__53647 )->jxj += 1000;
+      }
+
+      if ((( VAR_9494 + VAR__53647 )->bj > 80 ) && (( VAR_9494 + VAR__53647 )->gb == 'Y' ))
+      {
+         ( VAR_9494 + VAR__53647 )->jxj += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < ( VAR_9494 + VAR__53647 )->jxj )
+      {
+         VAR__MAX = ( VAR_9494 + VAR__53647 )->jxj;
+      }
+
+      total += ( VAR_9494 + VAR__53647 )->jxj;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX == ( VAR_9494 + VAR__53647 )->jxj )
+      {
+         printf("%s\n", ( VAR_9494 + VAR__53647 )->name);
+         break;
+      }
+   }
+
+
+   printf("%d\n%d\n", VAR__MAX, total);
+}

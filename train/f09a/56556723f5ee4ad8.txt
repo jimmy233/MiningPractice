@@ -1,0 +1,87 @@
+int VAR__819283[100] = { 0 };
+int VAR__19328[100]  = { 0 };
+int a_n;
+int b_n;
+int VAR__53647;
+void read()
+{
+   scanf("%d %d", &a_n, &b_n);
+   for ( VAR__53647 = 0; VAR__53647 < a_n; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < b_n; VAR__53647++ )
+   {
+      scanf("%d", &VAR__19328[VAR__53647]);
+   }
+}
+
+
+void sort(int VAR__819283[], int a_n, int VAR__19328[], int b_n)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int key;
+
+   for ( VAR__53647 = 1; VAR__53647 < a_n; VAR__53647++ )
+   {
+      key        = VAR__819283[VAR__53647];
+      VAR__21230 = VAR__53647 - 1;
+
+      while (( VAR__819283[VAR__21230] > key ) && ( VAR__21230 >= 0 ))
+      {
+         VAR__819283[VAR__21230 + 1] = VAR__819283[VAR__21230];
+         VAR__21230--;
+      }
+
+      VAR__819283[VAR__21230 + 1] = key;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < b_n; VAR__53647++ )
+   {
+      key        = VAR__19328[VAR__53647];
+      VAR__21230 = VAR__53647 - 1;
+
+      while (( VAR__19328[VAR__21230] > key ) && ( VAR__21230 >= 0 ))
+      {
+         VAR__19328[VAR__21230 + 1] = VAR__19328[VAR__21230];
+         VAR__21230--;
+      }
+
+      VAR__19328[VAR__21230 + 1] = key;
+   }
+}
+
+
+void merge(int VAR__819283[], int a_n, int VAR__19328[], int b_n)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < b_n; VAR__53647++ )
+   {
+      VAR__819283[a_n + VAR__53647] = VAR__19328[VAR__53647];
+   }
+}
+
+
+void write()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < (( a_n + b_n ) - 1 ); VAR__53647++ )
+   {
+      printf("%d ", VAR__819283[VAR__53647]);
+   }
+
+   printf("%d", VAR__819283[VAR__53647]);
+}
+
+
+void main()
+{
+   read();
+   sort(VAR__819283, a_n, VAR__19328, b_n);
+   merge(VAR__819283, a_n, VAR__19328, b_n);
+   write();
+}

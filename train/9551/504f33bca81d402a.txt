@@ -1,0 +1,142 @@
+struct s
+{
+   char     VAR__819283[100];
+   int      VAR__19328;
+   struct s *VAR__NEXT;
+};
+void main()
+{
+   struct s *ANOTHER_POINTER;
+   struct s *YET_ANOTHER_POINTER;
+   struct s *p0;
+   struct s *VAR__HEAD;
+   struct s *insert(struct s *VAR__HEAD, struct s *stud);
+
+   struct s *VAR_2890;
+   int      VAR__53647;
+   int      VAR__21230;
+   int      VAR__8444594;
+   int      VAR__1238129;
+   int      VAR_1238123;
+   int      VAR__temp;
+   int      VAR__7685;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD                  = 0;
+   ANOTHER_POINTER            = (struct s *)malloc(sizeof( struct s ));
+   VAR_2890                   = (struct s *)malloc(sizeof( struct s ));
+   YET_ANOTHER_POINTER        = ( VAR__HEAD = ANOTHER_POINTER );
+   ANOTHER_POINTER->VAR__NEXT = 0;
+   VAR__8444594               = 0;
+   VAR__21230                 = 0;
+   scanf("%s %d", ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328);
+   VAR__7685 = 0;
+
+   if ( ANOTHER_POINTER->VAR__19328 < 60 )
+   {
+      YET_ANOTHER_POINTER = ( VAR_2890 = ANOTHER_POINTER );
+      VAR__7685           = 1;
+   }
+   else
+   {
+      YET_ANOTHER_POINTER = VAR_2890;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      p0 = (struct s *)malloc(sizeof( struct s ));
+      scanf("%s %d", p0->VAR__819283, &p0->VAR__19328);
+
+      if ( p0->VAR__19328 >= 60 )
+      {
+         VAR__HEAD = insert(VAR__HEAD, p0);
+         VAR__8444594++;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         YET_ANOTHER_POINTER            = p0;
+         VAR__21230++;
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   if ( VAR__7685 == 0 )
+   {
+      VAR__53647 = -1;
+   }
+   else
+   {
+      VAR__53647 = 0;
+   }
+
+   for ( ; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", ANOTHER_POINTER->VAR__819283);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   if ( VAR__7685 == 0 )
+   {
+      YET_ANOTHER_POINTER = VAR_2890->VAR__NEXT;
+      VAR__53647          = 0;
+   }
+   else
+   {
+      YET_ANOTHER_POINTER = VAR_2890;
+      VAR__53647          = -1;
+   }
+
+   for ( ; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%s\n", YET_ANOTHER_POINTER->VAR__819283);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+   }
+}
+
+
+struct s *insert(struct s *VAR__HEAD, struct s *stud)
+{
+   struct s *p0;
+   struct s *ANOTHER_POINTER;
+   struct s *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = stud;
+
+   if ( VAR__HEAD == 0 )
+   {
+      VAR__HEAD     = p0;
+      p0->VAR__NEXT = 0;
+   }
+   else
+   {
+      while (( p0->VAR__19328 <= ANOTHER_POINTER->VAR__19328 ) && ( ANOTHER_POINTER->VAR__NEXT != 0 ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( p0->VAR__19328 > ANOTHER_POINTER->VAR__19328 )
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            VAR__HEAD = p0;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         }
+
+         p0->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = 0;
+      }
+   }
+
+   return VAR__HEAD;
+}

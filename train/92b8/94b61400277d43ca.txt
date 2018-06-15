@@ -1,0 +1,64 @@
+struct block
+{
+   int VAR__1111;
+   int VAR_129012;
+};
+int mysort(void *VAR__819283, void *VAR__19328)
+{
+   struct block *aa = (struct block *)VAR__819283;
+   struct block *bb = (struct block *)VAR__19328;
+
+   if ( aa->VAR__1111 == bb->VAR__1111 )
+   {
+      return bb->VAR_129012 - aa->VAR_129012;
+   }
+   else
+   {
+      return aa->VAR__1111 - bb->VAR__1111;
+   }
+}
+
+
+int main()
+{
+   struct block in[50000];
+   int          VAR_1238123;
+   int          VAR__53647;
+   int          left;
+   int          right;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      scanf("%d %d", &in[VAR__53647].VAR__1111, &in[VAR__53647].VAR_129012);
+   }
+
+   qsort(in, VAR_1238123, sizeof( in[0] ), mysort);
+   left  = in[0].VAR__1111;
+   right = in[0].VAR_129012;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      if ( in[VAR__53647].VAR_129012 > right )
+      {
+         if ( in[VAR__53647].VAR__1111 <= right )
+         {
+            right = in[VAR__53647].VAR_129012;
+         }
+         else
+         {
+            break;
+         }
+      }
+   }
+
+   if ( VAR__53647 == VAR_1238123 )
+   {
+      printf("%d %d", left, right);
+   }
+   else
+   {
+      printf("no\n");
+   }
+
+   return 0;
+}

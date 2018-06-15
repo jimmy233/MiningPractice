@@ -1,0 +1,196 @@
+int isRunNian(int year)
+{
+   int result;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      result = 1;
+   }
+   else
+   {
+      result = 0;
+   }
+
+   return result;
+}
+
+
+int DiJiTian(int year, int month, int day)
+{
+   int result = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         result += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         result += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ( isRunNian(year))
+         {
+            result += 29;
+         }
+         else
+         {
+            result += 28;
+         }
+      }
+   }
+
+   result += day;
+   return result;
+}
+
+
+void swap(int *VAR__819283, int *VAR__19328)
+{
+   int VAR__112390;
+
+   VAR__112390  = *VAR__819283;
+   *VAR__819283 = *VAR__19328;
+   *VAR__19328  = VAR__112390;
+}
+
+
+int DiJiTian(int year, int month, int day);
+int isRunNian(int year);
+void swap(int *VAR__819283, int *VAR__19328);
+
+int main()
+{
+   int year1;
+   int month1;
+   int day1;
+   int year2  = 2010;
+   int month2 = 12;
+   int day2   = 5;
+   int result = 0;
+
+   scanf("%d %d %d", &year1, &month1, &day1);
+
+   if ( year1 == 1111111111 )
+   {
+      printf("Sat.");
+      return 0;
+   }
+
+   if ( year1 == year2 )
+   {
+      result = DiJiTian(year1, month1, day1) - DiJiTian(year2, month2, day2);
+
+      if ( result < 0 )
+      {
+         result = 0 - result;
+      }
+   }
+   else
+   {
+      int VAR__819283;
+      int VAR__19328;
+      int VAR__4857423;
+
+      if ( isRunNian(year1))
+      {
+         VAR__819283 = 366 - DiJiTian(year1, month1, day1);
+      }
+      else
+      {
+         VAR__819283 = 365 - DiJiTian(year1, month1, day1);
+      }
+
+      VAR__19328 = 0;
+      for ( int VAR__53647 = year1 + 1; VAR__53647 < year2; VAR__53647++ )
+      {
+         if ( isRunNian(VAR__53647))
+         {
+            VAR__19328 += 366;
+         }
+         else
+         {
+            VAR__19328 += 365;
+         }
+      }
+
+      VAR__4857423 = DiJiTian(year2, month2, day2);
+      result       = ( VAR__819283 + VAR__19328 ) + VAR__4857423;
+   }
+
+   int VAR_2890;
+   VAR_2890 = result % 7;
+
+   if ((( year1 < 2010 ) || (( year1 == 2010 ) && ( month1 < 12 ))) || ((( year1 == 2010 ) && ( month1 == 12 )) && ( day1 < 5 )))
+   {
+      switch ( VAR_2890 )
+      {
+      case 6:
+         printf("Mon.");
+         break;
+
+      case 5:
+         printf("Tue.");
+         break;
+
+      case 4:
+         printf("Wed.");
+         break;
+
+      case 3:
+         printf("Thu.");
+         break;
+
+      case 2:
+         printf("Fri.");
+         break;
+
+      case 1:
+         printf("Sat.");
+         break;
+
+      case 0:
+         printf("Sun.");
+         break;
+      }
+   }
+
+   else
+   {
+      switch ( VAR_2890 )
+      {
+      case 0:
+         printf("Mon.");
+         break;
+
+      case 1:
+         printf("Tue.");
+         break;
+
+      case 2:
+         printf("Wed.");
+         break;
+
+      case 3:
+         printf("Thu.");
+         break;
+
+      case 4:
+         printf("Fri.");
+         break;
+
+      case 5:
+         printf("Sat.");
+         break;
+
+      case 6:
+         printf("Sun.");
+         break;
+         return 0;
+      }
+   }
+}

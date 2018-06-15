@@ -1,0 +1,66 @@
+struct patient
+{
+   char ID[10];
+   int  age;
+};
+void paixu(struct patient pat[], int VAR_1238123)
+{
+   struct patient VAR__temp;
+   int            VAR__53647;
+   int            VAR__8444594;
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( pat[VAR__53647].age < pat[VAR__53647 + 1].age )
+         {
+            VAR__temp           = pat[VAR__53647];
+            pat[VAR__53647]     = pat[VAR__53647 + 1];
+            pat[VAR__53647 + 1] = VAR__temp;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   struct patient pat;
+   struct patient oldpat[100];
+   struct patient youngpat[100];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__1238129 = 0;
+   int            VAR__8444594 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", pat.ID, &pat.age);
+
+      if ( pat.age >= 60 )
+      {
+         oldpat[VAR__1238129] = pat;
+         VAR__1238129++;
+      }
+      else
+      {
+         youngpat[VAR__8444594] = pat;
+         VAR__8444594++;
+      }
+   }
+
+   paixu(oldpat, VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("%s\n", oldpat[VAR__53647].ID);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", youngpat[VAR__53647].ID);
+   }
+
+   return 0;
+}

@@ -1,0 +1,99 @@
+int main()
+{
+   int    yushu;
+   int    VAR__SUM = 0;
+   int    beishu   = 1E7;
+   int    weishu   = 0;
+   double shenyu;
+   char   VAR__819283[100];
+
+   memset(VAR__819283, '@', sizeof( VAR__819283 ));
+   cin >> VAR__819283;
+   for ( int VAR_2890 = 0; VAR_2890 < 100; VAR_2890++ )
+   {
+      if (( VAR__819283[VAR_2890] <= '9' ) && ( VAR__819283[VAR_2890] >= '0' ))
+      {
+         weishu++;
+      }
+   }
+
+   shenyu = weishu;
+
+   if ( weishu < 8 )
+   {
+      beishu = pow(10, shenyu - 1);
+      for ( int VAR__53647 = 0; VAR__53647 < weishu; VAR__53647++ )
+      {
+         VAR__SUM += ( VAR__819283[VAR__53647] - '0' ) * beishu;
+         beishu    = beishu / 10;
+         shenyu--;
+      }
+
+      (( cout << ( VAR__SUM / 13 )) << endl ) << ( VAR__SUM % 13 );
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < 8; VAR__53647++ )
+      {
+         VAR__SUM += ( VAR__819283[VAR__53647] - '0' ) * beishu;
+         beishu    = beishu / 10;
+         shenyu--;
+      }
+
+      cout << ( VAR__SUM / 13 );
+      yushu = VAR__SUM % 13;
+      for ( int VAR__21230 = 8; VAR__21230 < 96; VAR__21230 += 8 )
+      {
+         if ( shenyu < 9 )
+         {
+            break;
+         }
+
+         beishu   = 1E7;
+         VAR__SUM = yushu * 1E8;
+         for ( int VAR__1111 = 0; VAR__1111 < 8; VAR__1111++ )
+         {
+            VAR__SUM += ( VAR__819283[VAR__1111 + VAR__21230] - '0' ) * beishu;
+            beishu    = beishu / 10;
+            shenyu--;
+
+            if (( VAR__1111 == 0 ) && (( VAR__SUM / 1E7 ) < 13 ))
+            {
+               cout << "0";
+            }
+
+            if (( VAR__1111 == 1 ) && (( VAR__SUM / 1E6 ) < 13 ))
+            {
+               cout << "0";
+            }
+         }
+
+         cout << ( VAR__SUM / 13 );
+         yushu = VAR__SUM % 13;
+      }
+
+      beishu   = pow(10, shenyu - 1);
+      VAR__SUM = yushu * pow(10, shenyu);
+      for ( shenyu; shenyu >= 1; shenyu-- )
+      {
+         VAR__SUM += ( VAR__819283[weishu - ((int)shenyu )] - '0' ) * beishu;
+         beishu    = beishu / 10;
+
+         if ((( weishu - ((int)shenyu )) == 0 ) && (( VAR__SUM / 1E7 ) < 13 ))
+         {
+            cout << "0";
+         }
+
+         if ((( weishu - ((int)shenyu )) == 1 ) && (( VAR__SUM / 1E6 ) < 13 ))
+         {
+            cout << "0";
+         }
+      }
+
+      ( cout << ( VAR__SUM / 13 )) << endl;
+      yushu = VAR__SUM % 13;
+      cout << yushu;
+   }
+
+   return 0;
+}

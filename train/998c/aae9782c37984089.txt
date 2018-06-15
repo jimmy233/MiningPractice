@@ -1,0 +1,89 @@
+int length(char *v);
+void diandao(char *v, int VAR__53647);
+
+int main()
+{
+   int  VAR__7685 = 0;
+   char VAR__819283[250];
+   char VAR__19328[250];
+   char VAR__4857423[250];
+
+   cin.getline(VAR__819283, 250);
+   cin.getline(VAR__19328, 250);
+   diandao(VAR__819283, length(VAR__819283));
+   diandao(VAR__19328, length(VAR__19328));
+   VAR__7685 = length(VAR__819283);
+
+   if ( VAR__7685 < length(VAR__19328))
+   {
+      VAR__7685 = length(VAR__19328);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = '0';
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647] < '0' ) || ( VAR__819283[VAR__53647] > '9' ))
+      {
+         VAR__819283[VAR__53647] = '0';
+      }
+
+      if (( VAR__19328[VAR__53647] < '0' ) || ( VAR__19328[VAR__53647] > '9' ))
+      {
+         VAR__19328[VAR__53647] = '0';
+      }
+
+      if (((((( VAR__819283[VAR__53647] - '0' ) + VAR__19328[VAR__53647] ) - '0' ) + VAR__4857423[VAR__53647] ) - '0' ) <= 9 )
+      {
+         VAR__4857423[VAR__53647] += ((( -'0' ) + VAR__819283[VAR__53647] ) - '0' ) + VAR__19328[VAR__53647];
+      }
+      else
+      {
+         VAR__4857423[VAR__53647]     = (((( VAR__4857423[VAR__53647] - '0' ) + VAR__819283[VAR__53647] ) - '0' ) + VAR__19328[VAR__53647] ) - 10;
+         VAR__4857423[VAR__53647 + 1] = '1';
+      }
+   }
+
+   diandao(VAR__4857423, length(VAR__4857423));
+   int VAR__8444594 = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < length(VAR__4857423); VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] != '0' )
+      {
+         VAR__8444594 = VAR__53647;
+         break;
+      }
+   }
+
+   for ( int VAR__53647 = VAR__8444594; VAR__53647 < length(VAR__4857423); VAR__53647++ )
+   {
+      cout << VAR__4857423[VAR__53647];
+   }
+
+   return 0;
+}
+
+
+int length(char *v)
+{
+   int VAR__7685;
+
+   for ( int VAR__53647 = 1; ( v[VAR__53647 - 1] >= '0' ) && ( v[VAR__53647 - 1] <= '9' ); VAR__53647++ )
+   {
+      VAR__7685 = VAR__53647;
+   }
+
+   return VAR__7685;
+}
+
+
+void diandao(char *v, int VAR__53647)
+{
+   for ( int VAR__21230 = 0; VAR__21230 < ( VAR__53647 / 2 ); VAR__21230++ )
+   {
+      swap(v[VAR__21230], v[( VAR__53647 - VAR__21230 ) - 1]);
+   }
+}

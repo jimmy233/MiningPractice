@@ -1,0 +1,93 @@
+int main()
+{
+   struct money
+   {
+      char name[20];
+      int  score1;
+      int  score2;
+      char VAR__819283[2];
+      char VAR__19328[2];
+      int  paper;
+      int  all;
+   };
+   struct money *VAR_233;
+   int          VAR_1238123;
+   int          VAR__1238129;
+   int          *pp;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = (struct money *)malloc(VAR_1238123 * ( sizeof( struct money )));
+   pp      = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+   {
+      pp[VAR__1238129] = 0;
+      scanf("%s", VAR_233[VAR__1238129].name);
+      scanf("%d %d", &VAR_233[VAR__1238129].score1, &VAR_233[VAR__1238129].score2);
+      scanf("%s %s", &VAR_233[VAR__1238129].VAR__819283, &VAR_233[VAR__1238129].VAR__19328);
+      scanf("%d", &VAR_233[VAR__1238129].paper);
+
+      if (( VAR_233[VAR__1238129].score1 > 80 ) && ( VAR_233[VAR__1238129].paper > 0 ))
+      {
+         pp[VAR__1238129] = pp[VAR__1238129] + 8000;
+      }
+
+      if (( VAR_233[VAR__1238129].score1 > 85 ) && ( VAR_233[VAR__1238129].score2 > 80 ))
+      {
+         pp[VAR__1238129] = pp[VAR__1238129] + 4000;
+      }
+
+      if ( VAR_233[VAR__1238129].score1 > 90 )
+      {
+         pp[VAR__1238129] = pp[VAR__1238129] + 2000;
+      }
+
+      if (( VAR_233[VAR__1238129].VAR__19328[0] == 'Y' ) && ( VAR_233[VAR__1238129].score1 > 85 ))
+      {
+         pp[VAR__1238129] = pp[VAR__1238129] + 1000;
+      }
+
+      if (( VAR_233[VAR__1238129].VAR__819283[0] == 'Y' ) && ( VAR_233[VAR__1238129].score2 > 80 ))
+      {
+         pp[VAR__1238129] = pp[VAR__1238129] + 850;
+      }
+
+      VAR_233[VAR__1238129].all = pp[VAR__1238129];
+   }
+
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_666 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( pp[VAR__21230] > pp[VAR__21230 + 1] )
+         {
+            VAR__8444594       = pp[VAR__21230];
+            pp[VAR__21230]     = pp[VAR__21230 + 1];
+            pp[VAR__21230 + 1] = VAR__8444594;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_666 = VAR_666 + pp[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_233[VAR__53647].all == pp[VAR_1238123 - 1] )
+      {
+         printf("%s\n%d\n%d\n", VAR_233[VAR__53647].name, VAR_233[VAR__53647].all, VAR_666);
+         break;
+      }
+   }
+
+
+   free(VAR_233);
+   free(pp);
+}

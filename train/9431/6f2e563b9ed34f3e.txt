@@ -1,0 +1,70 @@
+typedef struct student
+{
+   char           VAR__NUM[20];
+   char           name[20];
+   char           sex[2];
+   char           age[3];
+   char           mark[10];
+   char           add[30];
+   struct student *VAR__NEXT;
+} stu;
+int VAR_1238123;
+stu *rcreate()
+{
+   stu *VAR__HEAD;
+   stu *VAR_233;
+
+   VAR__HEAD = ( VAR_233 = (stu *)malloc(LEN));
+   scanf("%s", VAR_233->VAR__NUM);
+   VAR_233->VAR__NEXT = NULL;
+
+   if ( strcmp(VAR_233->VAR__NUM, "end") == 0 )
+   {
+      VAR__HEAD = NULL;
+      return NULL;
+   }
+
+   while ( strcmp(VAR_233->VAR__NUM, "end") != 0 )
+   {
+      scanf("%s %s %s %s %s", VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->mark, VAR_233->add);
+      VAR_233            = (stu *)malloc(LEN);
+      VAR_233->VAR__NEXT = VAR__HEAD;
+      VAR__HEAD          = VAR_233;
+      scanf("%s", VAR_233->VAR__NUM);
+   }
+
+   VAR__HEAD = VAR_233->VAR__NEXT;
+   free(VAR_233);
+   return VAR__HEAD;
+}
+
+
+void print(stu *VAR__HEAD)
+{
+   stu *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR_233 == NULL )
+   {
+      printf("list null!");
+      return;
+   }
+
+   while ( VAR_233->VAR__NEXT != NULL )
+   {
+      printf("%s %s %s %s %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->mark, VAR_233->add);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%s %s %s %s %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->mark, VAR_233->add);
+}
+
+
+void main()
+{
+   stu *VAR_2890;
+
+   VAR_2890 = rcreate();
+   print(VAR_2890);
+}

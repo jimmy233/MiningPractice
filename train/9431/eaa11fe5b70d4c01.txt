@@ -1,0 +1,76 @@
+struct student
+{
+   char           VAR__NUM[100];
+   char           name[30];
+   char           sex;
+   int            age;
+   float          grade;
+   char           adress[30];
+   struct student *VAR__NEXT;
+   struct student *before;
+};
+int VAR_1238123;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *end;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   char           A_STRING[5] = { "end" };
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %s %c %d %g %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->grade, ANOTHER_POINTER->adress);
+   VAR__HEAD = NULL;
+   do
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+         ANOTHER_POINTER->before = NULL;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         ANOTHER_POINTER->before        = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s", &ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__NUM, A_STRING) == 0 )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %g %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->grade, ANOTHER_POINTER->adress);
+   } while ( VAR_1238123 < 1000 );
+   end = YET_ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return end;
+}
+
+
+void print(struct student *end)
+{
+   struct student *VAR_233;
+
+   VAR_233 = end;
+   do
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->grade, VAR_233->adress);
+      VAR_233 = VAR_233->before;
+   } while ( VAR_233 != NULL );
+}
+
+
+void main()
+{
+   struct student *end;
+
+   end = creat();
+   print(end);
+}

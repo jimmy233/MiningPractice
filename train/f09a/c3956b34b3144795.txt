@@ -1,0 +1,87 @@
+int array_a[100];
+int array_b[100];
+int n_a;
+int n_b;
+void input()
+{
+   int VAR__53647;
+
+   scanf("%d%d", &n_a, &n_b);
+   for ( VAR__53647 = 0; VAR__53647 < n_a; VAR__53647++ )
+   {
+      scanf("%d", &array_a[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < n_b; VAR__53647++ )
+   {
+      scanf("%d", &array_b[VAR__53647]);
+   }
+}
+
+
+void order()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 1; VAR__53647 < n_a; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < (( n_a + 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( array_a[VAR__21230] < array_a[VAR__21230 - 1] )
+         {
+            VAR__TEMP               = array_a[VAR__21230];
+            array_a[VAR__21230]     = array_a[VAR__21230 - 1];
+            array_a[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 1; VAR__53647 < n_b; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < (( n_b - VAR__53647 ) + 1 ); VAR__21230++ )
+      {
+         if ( array_b[VAR__21230] < array_b[VAR__21230 - 1] )
+         {
+            VAR__TEMP               = array_b[VAR__21230];
+            array_b[VAR__21230]     = array_b[VAR__21230 - 1];
+            array_b[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void catenate()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < n_b; VAR__53647++ )
+   {
+      array_a[n_a + VAR__53647] = array_b[VAR__53647];
+   }
+}
+
+
+void print()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( n_a + n_b ); VAR__53647++ )
+   {
+      printf("%d%c", array_a[VAR__53647], ( VAR__53647 == (( n_a + n_b ) - 1 )) ? ( '\n' ) : ( ' ' ));
+   }
+}
+
+
+int main()
+{
+   input();
+   order();
+   catenate();
+   print();
+   return 0;
+}

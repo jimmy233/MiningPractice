@@ -1,0 +1,83 @@
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_233;
+   int VAR__8444594;
+   int VAR_2890;
+   int sh;
+   int ch;
+   int VAR__1111;
+   int o;
+   int VAR__7685 = 0;
+   int VAR__819283[10000];
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__21230 = 0;
+      VAR__1111  = VAR__53647;
+      VAR_233    = log10(VAR__53647);
+      for ( VAR__8444594 = VAR_233; VAR__8444594 >= 1; VAR__8444594-- )
+      {
+         sh = 1;
+         ch = 1;
+         for ( VAR_2890 = 1; VAR_2890 < (( VAR_233 - VAR__8444594 ) + 1 ); VAR_2890++ )
+         {
+            ch = ch * 10;
+         }
+
+         for ( VAR_2890 = 0; VAR_2890 < VAR__8444594; VAR_2890++ )
+         {
+            sh = sh * 10;
+         }
+
+         VAR__21230 = (( VAR__1111 / sh ) * ch ) + VAR__21230;
+         VAR__1111  = VAR__1111 - ( sh * ( VAR__1111 / sh ));
+      }
+
+      ch         = ch * 10;
+      VAR__21230 = ( VAR__1111 * ch ) + VAR__21230;
+      VAR__21230 = ( VAR__21230 + 1 ) - 1;
+
+      if ( VAR__53647 == VAR__21230 )
+      {
+         for ( o = 2; o <= sqrt(VAR__21230); o++ )
+         {
+            if (( VAR__21230 % o ) == 0 )
+            {
+               break;
+            }
+         }
+
+         if ( o == (((int)sqrt(VAR__21230)) + 1 ))
+         {
+            VAR__819283[VAR__7685] = VAR__21230;
+            VAR__7685 = VAR__7685 + 1;
+         }
+      }
+   }
+
+   if ( VAR__7685 == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+      {
+         if ( VAR__53647 != ( VAR__7685 - 1 ))
+         {
+            printf("%d,", VAR__819283[VAR__53647]);
+         }
+         else
+         {
+            printf("%d", VAR__819283[VAR__53647]);
+         }
+      }
+   }
+
+   return 0;
+}

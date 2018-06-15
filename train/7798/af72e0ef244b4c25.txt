@@ -1,0 +1,67 @@
+struct book
+{
+   int  VAR__NUM;
+   char edt[27];
+};
+struct total
+{
+   char name;
+   int  amount;
+};
+int main()
+{
+   int          VAR__1238129;
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__8444594;
+   struct book  bk[1000];
+   struct total to[27];
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &bk[VAR__53647].VAR__NUM, bk[VAR__53647].edt);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      to[VAR__53647].name   = 'A' + VAR__53647;
+      to[VAR__53647].amount = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(bk[VAR__53647].edt); VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < 26; VAR__8444594++ )
+         {
+            if ( bk[VAR__53647].edt[VAR__21230] == to[VAR__8444594].name )
+            {
+               to[VAR__8444594].amount++;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = ( VAR__8444594 = 0 ); VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( to[VAR__53647].amount > to[VAR__8444594].amount )
+      {
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", to[VAR__8444594].name, to[VAR__8444594].amount);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(bk[VAR__53647].edt); VAR__21230++ )
+      {
+         if ( bk[VAR__53647].edt[VAR__21230] == to[VAR__8444594].name )
+         {
+            printf("%d\n", bk[VAR__53647].VAR__NUM);
+         }
+      }
+   }
+
+   return 0;
+}

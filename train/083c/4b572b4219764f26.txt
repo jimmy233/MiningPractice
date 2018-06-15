@@ -1,0 +1,92 @@
+int change1(char VAR__819283, int VAR__19328, int VAR__4857423)
+{
+   int VAR__12302;
+
+   if (( VAR__819283 >= '0' ) && ( VAR__819283 <= '9' ))
+   {
+      VAR__819283 = VAR__819283 - '0';
+   }
+   else
+   if (( VAR__819283 >= 'a' ) && ( VAR__819283 <= 'z' ))
+   {
+      VAR__819283 = ( VAR__819283 - 'a' ) + 10;
+   }
+   else
+   if (( VAR__819283 >= 'A' ) && ( VAR__819283 <= 'Z' ))
+   {
+      VAR__819283 = ( VAR__819283 - 'A' ) + 10;
+   }
+
+
+
+   VAR__12302 = VAR__819283 * pow(VAR__4857423, VAR__19328);
+   return VAR__12302;
+}
+
+
+char change2(char VAR__819283)
+{
+   if (( VAR__819283 >= 0 ) && ( VAR__819283 <= 9 ))
+   {
+      VAR__819283 = VAR__819283 + '0';
+   }
+   else
+   if ( VAR__819283 >= 10 )
+   {
+      VAR__819283 = ( VAR__819283 + 'A' ) - 10;
+   }
+
+
+   return VAR__819283;
+}
+
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__4857423;
+   int  VAR__12302;
+   int  VAR__112390;
+   int  VAR__127322;
+   int  VAR_9Q8Q90;
+   int  VAR__SUM = 0;
+   char VAR_9494[30];
+   char s2[30];
+   char s3[30];
+
+   scanf("%d %s %d", &VAR__819283, VAR_9494, &VAR__19328);
+   VAR__4857423 = strlen(VAR_9494);
+   for ( VAR__12302 = 0; VAR__12302 < VAR__4857423; VAR__12302++ )
+   {
+      VAR__SUM += change1(VAR_9494[( VAR__4857423 - VAR__12302 ) - 1], VAR__12302, VAR__819283);
+   }
+
+   if ( VAR__SUM == 0 )
+   {
+      printf("0");
+      return 0;
+   }
+
+   for ( VAR__112390 = 0; ; VAR__112390++ )
+   {
+      s2[VAR__112390] = VAR__SUM % VAR__19328;
+      VAR__SUM        = VAR__SUM / VAR__19328;
+
+      if ( VAR__SUM < VAR__19328 )
+      {
+         s2[VAR__112390 + 1] = VAR__SUM;
+         break;
+      }
+   }
+
+   for ( VAR__127322 = 0; VAR__127322 < 30; VAR__127322++ )
+   {
+      s2[VAR__127322] = change2(s2[VAR__127322]);
+   }
+
+   for ( VAR_9Q8Q90 = VAR__112390 + 1; VAR_9Q8Q90 >= 0; VAR_9Q8Q90-- )
+   {
+      printf("%c", s2[VAR_9Q8Q90]);
+   }
+}

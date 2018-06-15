@@ -1,0 +1,83 @@
+int YET_ANOTHER_STRING(char *A_STRING, int *VAR__819283)
+{
+   int length = (int)strlen(A_STRING);
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      VAR__819283[( length - VAR__53647 ) - 1] = A_STRING[VAR__53647] - '0';
+   }
+
+   return length;
+}
+
+
+void print_b(int *VAR__819283, int length)
+{
+   int VAR__temp = length - 1;
+   int VAR__53647;
+
+   while (( VAR__819283[VAR__temp] == 0 ) && ( VAR__temp > 0 ))
+   {
+      VAR__temp--;
+   }
+
+   for ( VAR__53647 = VAR__temp; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+}
+
+
+int sub_b(int *VAR__819283, int alength, int *VAR__19328, int blength, int *VAR__4857423)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < alength; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__819283[VAR__53647];
+
+      if ( VAR__53647 < blength )
+      {
+         VAR__4857423[VAR__53647] -= VAR__19328[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < alength; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] < 0 )
+      {
+         VAR__4857423[VAR__53647 + 1]--;
+         VAR__4857423[VAR__53647] += 10;
+      }
+   }
+
+
+   return ( VAR__4857423[alength - 1] ) ? ( alength ) : ( alength - 1 );
+}
+
+
+void main()
+{
+   char s1[M];
+   char s2[M];
+   int  VAR__819283[M];
+   int  VAR__19328[M];
+   int  VAR__4857423[M];
+   int  alength;
+   int  blength;
+   int  clength;
+   int  VAR__53647;
+   int  VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %s", s1, s2);
+      alength = YET_ANOTHER_STRING(s1, VAR__819283);
+      blength = YET_ANOTHER_STRING(s2, VAR__19328);
+      clength = sub_b(VAR__819283, alength, VAR__19328, blength, VAR__4857423);
+      print_b(VAR__4857423, clength);
+      printf("\n");
+   }
+}

@@ -1,0 +1,89 @@
+int judge(int VAR__7685, int VAR__3918907, int VAR__9290)
+{
+   if (( VAR__7685 >= VAR__3918907 ) && ( VAR__7685 <= VAR__9290 ))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR__MAX;
+   int VAR__MIN;
+   int start[50000];
+   int end[500000];
+   int all;
+   int VAR__53647;
+   int VAR_233;
+   int ornot;
+
+   VAR__MAX = 0;
+   VAR__MIN = 9999;
+   scanf("%d", &all);
+   for ( VAR__53647 = 0; VAR__53647 < all; VAR__53647++ )
+   {
+      scanf("%d %d", &start[VAR__53647], &end[VAR__53647]);
+
+      if ( VAR__MAX < end[VAR__53647] )
+      {
+         VAR__MAX = end[VAR__53647];
+      }
+
+      if ( VAR__MIN > start[VAR__53647] )
+      {
+         VAR__MIN = start[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < all; VAR__53647++ )
+   {
+      ornot = 0;
+      for ( VAR_233 = 0; VAR_233 < all; VAR_233++ )
+      {
+         if (( VAR__53647 != VAR_233 ) && judge(start[VAR__53647], start[VAR_233], end[VAR_233]))
+         {
+            ornot = 1;
+         }
+
+         if ( start[VAR__53647] == VAR__MIN )
+         {
+            ornot = 1;
+         }
+      }
+
+      if ( ornot == 0 )
+      {
+         printf("no");
+         return 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < all; VAR__53647++ )
+   {
+      ornot = 0;
+      for ( VAR_233 = 0; VAR_233 < all; VAR_233++ )
+      {
+         if (( VAR__53647 != VAR_233 ) && judge(end[VAR__53647], start[VAR_233], end[VAR_233]))
+         {
+            ornot = 1;
+         }
+
+         if ( end[VAR__53647] == VAR__MAX )
+         {
+            ornot = 1;
+         }
+      }
+
+      if ( ornot == 0 )
+      {
+         printf("no");
+         return 0;
+      }
+   }
+
+   printf("%d %d", VAR__MIN, VAR__MAX);
+   return 0;
+}

@@ -1,0 +1,100 @@
+int main()
+{
+   int year1;
+   int year2;
+   int month1;
+   int month2;
+   int day1;
+   int day2;
+   int VAR_9494 = 0;
+   int s1       = 0;
+   int s2       = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__819283[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__19328[12]  = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d%d%d\n", &year1, &month1, &day1);
+   scanf("%d%d%d", &year2, &month2, &day2);
+   for ( VAR__53647 = year1; VAR__53647 <= year2; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR_9494 = VAR_9494 + 366;
+      }
+      else
+      {
+         VAR_9494 = VAR_9494 + 365;
+      }
+   }
+
+   if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+   {
+      for ( VAR__21230 = month1 - 1; VAR__21230 <= 11; VAR__21230++ )
+      {
+         if ( VAR__21230 == ( month1 - 1 ))
+         {
+            s1 = ( s1 + VAR__19328[VAR__21230] ) - day1;
+         }
+         else
+         {
+            s1 = s1 + VAR__19328[VAR__21230];
+         }
+      }
+
+      VAR_9494 = VAR_9494 - ( 366 - s1 );
+   }
+   else
+   {
+      for ( VAR__21230 = month1 - 1; VAR__21230 <= 11; VAR__21230++ )
+      {
+         if ( VAR__21230 == ( month1 - 1 ))
+         {
+            s1 = ( s1 + VAR__819283[VAR__21230] ) - day1;
+         }
+         else
+         {
+            s1 = s1 + VAR__819283[VAR__21230];
+         }
+      }
+
+      VAR_9494 = VAR_9494 - ( 365 - s1 );
+   }
+
+   if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+   {
+      for ( VAR__8444594 = month2 - 1; VAR__8444594 >= 0; VAR__8444594-- )
+      {
+         if ( VAR__8444594 == ( month2 - 1 ))
+         {
+            s2 = s2 + day2;
+         }
+         else
+         {
+            s2 = s2 + VAR__19328[VAR__8444594];
+         }
+      }
+
+      VAR_9494 = VAR_9494 - ( 366 - s2 );
+   }
+   else
+   {
+      for ( VAR__8444594 = month2 - 1; VAR__8444594 >= 0; VAR__8444594-- )
+      {
+         if ( VAR__8444594 == ( month2 - 1 ))
+         {
+            s2 = s2 + day2;
+         }
+         else
+         {
+            s2 = s2 + VAR__819283[VAR__8444594];
+         }
+      }
+
+      VAR_9494 = VAR_9494 - ( 365 - s2 );
+   }
+
+   printf("%d", VAR_9494);
+   return 0;
+}

@@ -1,0 +1,94 @@
+int yue(int VAR__1238129, int VAR_1238123)
+{
+   if ((((((( VAR_1238123 == 1 ) || ( VAR_1238123 == 3 )) || ( VAR_1238123 == 5 )) || ( VAR_1238123 == 7 )) || ( VAR_1238123 == 8 )) || ( VAR_1238123 == 10 )) || ( VAR_1238123 == 12 ))
+   {
+      return 31;
+   }
+   else
+   if (((( VAR_1238123 == 4 ) || ( VAR_1238123 == 6 )) || ( VAR_1238123 == 9 )) || ( VAR_1238123 == 11 ))
+   {
+      return 30;
+   }
+   else
+   if (((( VAR__1238129 % 4 ) == 0 ) && (( VAR__1238129 % 100 ) != 0 )) || ((( VAR__1238129 % 400 ) == 0 ) && ( VAR_1238123 == 2 )))
+   {
+      return 29;
+   }
+   else
+   {
+      return 28;
+   }
+}
+
+
+int nian(int VAR__1238129)
+{
+   if (((( VAR__1238129 % 4 ) == 0 ) && (( VAR__1238129 % 100 ) != 0 )) || (( VAR__1238129 % 400 ) == 0 ))
+   {
+      return 366;
+   }
+   else
+   {
+      return 365;
+   }
+}
+
+
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+   int VAR__12302;
+   int VAR__112390;
+   int VAR__127322;
+
+   (( cin >> VAR__819283 ) >> VAR__19328 ) >> VAR__4857423;
+   cout << endl;
+   (( cin >> VAR__12302 ) >> VAR__112390 ) >> VAR__127322;
+   int VAR__SUM  = 0;
+   int VAR__temp = 0;
+
+   if ( VAR__819283 == VAR__12302 )
+   {
+      for ( int VAR__53647 = VAR__19328; VAR__53647 < VAR__112390; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + yue(VAR__819283, VAR__53647);
+      }
+
+      cout << (( VAR__SUM + VAR__127322 ) - VAR__4857423 );
+   }
+   else
+   {
+      for ( int VAR__53647 = VAR__819283; VAR__53647 < VAR__12302; VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + nian(VAR__53647);
+      }
+
+      if ( VAR__19328 == VAR__112390 )
+      {
+         cout << (( VAR__SUM + VAR__127322 ) - VAR__4857423 );
+      }
+      else
+      if ( VAR__112390 > VAR__19328 )
+      {
+         for ( int VAR_9494 = VAR__19328; VAR_9494 < VAR__112390; VAR_9494++ )
+         {
+            VAR__SUM = VAR__SUM + yue(VAR__12302, VAR_9494);
+         }
+
+         cout << (( VAR__SUM + VAR__127322 ) - VAR__4857423 );
+      }
+      else
+      {
+         for ( int VAR_9494 = VAR__112390; VAR_9494 < VAR__19328; VAR_9494++ )
+         {
+            VAR__temp = VAR__temp + yue(VAR__12302, VAR_9494);
+         }
+
+         cout << ( VAR__SUM - (( VAR__temp + VAR__4857423 ) - VAR__127322 ));
+      }
+   }
+
+   return 0;
+}

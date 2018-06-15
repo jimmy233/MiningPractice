@@ -1,0 +1,51 @@
+struct patient
+{
+   int  order;
+   int  age;
+   char id[10];
+};
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   const struct patient *pa = (const struct patient *)VAR__819283;
+   const struct patient *pb = (const struct patient *)VAR__19328;
+
+   if (( pa->age >= 60 ) && ( pb->age < 60 ))
+   {
+      return -1;
+   }
+   else
+   if (( pa->age < 60 ) && ( pb->age >= 60 ))
+   {
+      return 1;
+   }
+   else
+   if (( pa->age >= 60 ) && ( pa->age != pb->age ))
+   {
+      return pb->age - pa->age;
+   }
+   else
+   {
+      return pa->order - pb->order;
+   }
+}
+
+
+int main()
+{
+   int            VAR__53647;
+   int            VAR__NUM;
+   struct patient pat[100];
+
+   scanf("%d", &VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; ++VAR__53647 )
+   {
+      pat[VAR__53647].order = VAR__53647;
+      scanf("%s %d", pat[VAR__53647].id, &pat[VAR__53647].age);
+   }
+
+   qsort(pat, VAR__NUM, sizeof( struct patient ), cmp);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; ++VAR__53647 )
+   {
+      printf("%s\n", pat[VAR__53647].id);
+   }
+}

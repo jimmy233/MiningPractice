@@ -1,0 +1,68 @@
+void main()
+{
+   int VAR__53647;
+   int ii;
+   int VAR__21230;
+   int jj;
+   int VAR__1238129;
+   int VAR_1238123;
+   int grid[9][9];
+   int real = 1;
+
+   scanf("%d,%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( ii = 0; ii < VAR_1238123; ii++ )
+      {
+         scanf("%d", &grid[VAR__53647][ii]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( ii = 0; ii < VAR_1238123; ii++ )
+      {
+         if ( real != 2 )
+         {
+            real = 1;
+         }
+
+         for ( jj = 0; jj < VAR_1238123; jj++ )
+         {
+            if ( jj == ii )
+            {
+               continue;
+            }
+
+            if ( real == 1 )
+            {
+               real = ( grid[VAR__53647][ii] > grid[VAR__53647][jj] ) ? ( 1 ) : ( 0 );
+            }
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+         {
+            if ( VAR__53647 == VAR__21230 )
+            {
+               continue;
+            }
+
+            if ( real == 1 )
+            {
+               real = ( grid[VAR__53647][ii] < grid[VAR__21230][ii] ) ? ( 1 ) : ( 0 );
+            }
+         }
+
+         if ( real == 1 )
+         {
+            printf("%d+%d", VAR__53647, ii);
+            real = 2;
+         }
+      }
+   }
+
+   if ( real == 0 )
+   {
+      printf("No");
+   }
+}

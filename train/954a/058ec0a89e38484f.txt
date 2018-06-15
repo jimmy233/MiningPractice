@@ -1,0 +1,77 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int VAR_9494;
+   int all = 0;
+
+   scanf("%d", &VAR_1238123);
+   struct student
+   {
+      char name[20];
+      int  avg;
+      int  cls;
+      char aso[2];
+      char wst[2];
+      int  pap;
+      int  mny;
+   };
+   struct student stu[101];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %s %s %d", stu[VAR__53647].name, &stu[VAR__53647].avg, &stu[VAR__53647].cls, stu[VAR__53647].aso, stu[VAR__53647].wst, &stu[VAR__53647].pap);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].mny = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].avg > 80 ) & ( stu[VAR__53647].pap >= 1 ))
+      {
+         stu[VAR__53647].mny = stu[VAR__53647].mny + 8000;
+      }
+
+      if (( stu[VAR__53647].avg > 85 ) & ( stu[VAR__53647].cls > 80 ))
+      {
+         stu[VAR__53647].mny = stu[VAR__53647].mny + 4000;
+      }
+
+      if ( stu[VAR__53647].avg > 90 )
+      {
+         stu[VAR__53647].mny = stu[VAR__53647].mny + 2000;
+      }
+
+      if (( stu[VAR__53647].avg > 85 ) & ( stu[VAR__53647].wst[0] == 'Y' ))
+      {
+         stu[VAR__53647].mny = stu[VAR__53647].mny + 1000;
+      }
+
+      if (( stu[VAR__53647].cls > 80 ) & ( stu[VAR__53647].aso[0] == 'Y' ))
+      {
+         stu[VAR__53647].mny = stu[VAR__53647].mny + 850;
+      }
+   }
+
+   VAR_9494 = stu[0].mny;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].mny > VAR_9494 )
+      {
+         VAR_9494   = stu[VAR__53647].mny;
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      all = all + stu[VAR__53647].mny;
+   }
+
+   printf("%s\n", stu[VAR__21230].name);
+   printf("%d\n", VAR_9494);
+   printf("%d", all);
+}

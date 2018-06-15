@@ -1,0 +1,122 @@
+int  number;
+char roms[MAXN][MAXN];
+void days_go();
+int VAR__COUNT();
+
+int main()
+{
+   int renshu;
+   int iter;
+   int days;
+
+   scanf("%d", &number);
+   for ( iter = 0; iter != number; ++iter )
+   {
+      scanf("%s", roms[iter]);
+   }
+
+   scanf("%d", &days);
+   for ( iter = 1; iter != days; ++iter )
+   {
+      days_go();
+   }
+
+   renshu = VAR__COUNT();
+   printf("%d", renshu);
+   return 0;
+}
+
+
+void days_go()
+{
+   int iterout;
+   int iterin;
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( iterout = 0; iterout != number; ++iterout )
+   {
+      for ( iterin = 0; iterin != number; ++iterin )
+      {
+         if ( '@' == roms[iterout][iterin] )
+         {
+            VAR__53647 = iterout - 1;
+
+            if (( -1 ) != VAR__21230 )
+            {
+               VAR__21230 = iterin;
+
+               if ( '.' == roms[VAR__53647][VAR__21230] )
+               {
+                  roms[VAR__53647][VAR__21230] = '!';
+               }
+            }
+
+            VAR__53647 = iterout;
+            VAR__21230 = iterin - 1;
+
+            if (( -1 ) != VAR__21230 )
+            {
+               if ( '.' == roms[VAR__53647][VAR__21230] )
+               {
+                  roms[VAR__53647][VAR__21230] = '!';
+               }
+            }
+
+            VAR__21230 = iterin + 1;
+
+            if ( number != VAR__21230 )
+            {
+               if ( '.' == roms[VAR__53647][VAR__21230] )
+               {
+                  roms[VAR__53647][VAR__21230] = '!';
+               }
+            }
+
+            VAR__53647 = iterout + 1;
+
+            if ( number != VAR__53647 )
+            {
+               VAR__21230 = iterin;
+
+               if ( '.' == roms[VAR__53647][VAR__21230] )
+               {
+                  roms[VAR__53647][VAR__21230] = '!';
+               }
+            }
+         }
+      }
+   }
+
+   for ( iterout = 0; iterout != number; ++iterout )
+   {
+      for ( iterin = 0; iterin != number; ++iterin )
+      {
+         if ( '!' == roms[iterout][iterin] )
+         {
+            roms[iterout][iterin] = '@';
+         }
+      }
+   }
+}
+
+
+int VAR__COUNT()
+{
+   int total = 0;
+   int iterout;
+   int iterin;
+
+   for ( iterout = 0; iterout != number; ++iterout )
+   {
+      for ( iterin = 0; iterin != number; ++iterin )
+      {
+         if ( '@' == roms[iterout][iterin] )
+         {
+            ++total;
+         }
+      }
+   }
+
+   return total;
+}

@@ -1,0 +1,58 @@
+struct loc
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+};
+int main()
+{
+   struct loc VAR__819283[10];
+   double     LEN_OF_STH[10][10];
+   double     VAR__MAX;
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR__8444594;
+   int        no1;
+   int        no2;
+
+   memset(LEN_OF_STH, 0, sizeof( LEN_OF_STH ));
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__819283[VAR__53647].VAR__7685, &VAR__819283[VAR__53647].VAR__3918907, &VAR__819283[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         LEN_OF_STH[VAR__53647][VAR__21230] = sqrt(((( VAR__819283[VAR__53647].VAR__7685 - VAR__819283[VAR__21230].VAR__7685 ) * ( VAR__819283[VAR__53647].VAR__7685 - VAR__819283[VAR__21230].VAR__7685 )) + (( VAR__819283[VAR__53647].VAR__3918907 - VAR__819283[VAR__21230].VAR__3918907 ) * ( VAR__819283[VAR__53647].VAR__3918907 - VAR__819283[VAR__21230].VAR__3918907 ))) + (( VAR__819283[VAR__53647].VAR__9290 - VAR__819283[VAR__21230].VAR__9290 ) * ( VAR__819283[VAR__53647].VAR__9290 - VAR__819283[VAR__21230].VAR__9290 )));
+      }
+   }
+
+
+   for ( VAR__8444594 = 0; VAR__8444594 < ((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ); VAR__8444594++ )
+   {
+      VAR__MAX = 0;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( LEN_OF_STH[VAR__53647][VAR__21230] > VAR__MAX )
+            {
+               VAR__MAX = LEN_OF_STH[VAR__53647][VAR__21230];
+               no1      = VAR__53647;
+               no2      = VAR__21230;
+            }
+         }
+      }
+
+
+
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", VAR__819283[no1].VAR__7685, VAR__819283[no1].VAR__3918907, VAR__819283[no1].VAR__9290, VAR__819283[no2].VAR__7685, VAR__819283[no2].VAR__3918907, VAR__819283[no2].VAR__9290, LEN_OF_STH[no1][no2]);
+      LEN_OF_STH[no1][no2] = 0;
+   }
+
+   return 0;
+}

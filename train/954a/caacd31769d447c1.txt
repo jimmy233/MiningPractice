@@ -1,0 +1,176 @@
+struct student
+{
+   char           name[20];
+   int            grade_1;
+   int            grade_2;
+   char           VAR__819283;
+   char           VAR__19328;
+   int            paper;
+   int            VAR__SUM;
+   int            VAR_FLAG;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+int VAR__8444594;
+int VAR__21230;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   VAR__21230      = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d %d %c %c %d", &ANOTHER_POINTER->name, &ANOTHER_POINTER->grade_1, &ANOTHER_POINTER->grade_2, &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->paper);
+   ANOTHER_POINTER->VAR__SUM = 0;
+   ANOTHER_POINTER->VAR_FLAG = 0;
+
+   if (( ANOTHER_POINTER->grade_1 > 80 ) && ( ANOTHER_POINTER->paper > 0 ))
+   {
+      ANOTHER_POINTER->VAR__SUM += 8000;
+   }
+
+   if (( ANOTHER_POINTER->grade_1 > 85 ) && ( ANOTHER_POINTER->grade_2 > 80 ))
+   {
+      ANOTHER_POINTER->VAR__SUM += 4000;
+   }
+
+   if ( ANOTHER_POINTER->grade_1 > 90 )
+   {
+      ANOTHER_POINTER->VAR__SUM += 2000;
+   }
+
+   if (( ANOTHER_POINTER->grade_1 > 85 ) && ( ANOTHER_POINTER->VAR__19328 == 'Y' ))
+   {
+      ANOTHER_POINTER->VAR__SUM += 1000;
+   }
+
+   if (( ANOTHER_POINTER->grade_2 > 80 ) && ( ANOTHER_POINTER->VAR__819283 == 'Y' ))
+   {
+      ANOTHER_POINTER->VAR__SUM += 850;
+   }
+
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      VAR__21230 = VAR__21230 + 1;
+
+      if ( VAR__21230 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+      if ( VAR__53647 >= ( VAR_1238123 - 1 ))
+      {
+         break;
+      }
+
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d", &ANOTHER_POINTER->name, &ANOTHER_POINTER->grade_1, &ANOTHER_POINTER->grade_2, &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->paper);
+      ANOTHER_POINTER->VAR__SUM = 0;
+      ANOTHER_POINTER->VAR_FLAG = 0;
+
+      if (( ANOTHER_POINTER->grade_1 > 80 ) && ( ANOTHER_POINTER->paper > 0 ))
+      {
+         ANOTHER_POINTER->VAR__SUM += 8000;
+      }
+
+      if (( ANOTHER_POINTER->grade_1 > 85 ) && ( ANOTHER_POINTER->grade_2 > 80 ))
+      {
+         ANOTHER_POINTER->VAR__SUM += 4000;
+      }
+
+      if ( ANOTHER_POINTER->grade_1 > 90 )
+      {
+         ANOTHER_POINTER->VAR__SUM += 2000;
+      }
+
+      if (( ANOTHER_POINTER->grade_1 > 85 ) && ( ANOTHER_POINTER->VAR__19328 == 'Y' ))
+      {
+         ANOTHER_POINTER->VAR__SUM += 1000;
+      }
+
+      if (( ANOTHER_POINTER->grade_2 > 80 ) && ( ANOTHER_POINTER->VAR__819283 == 'Y' ))
+      {
+         ANOTHER_POINTER->VAR__SUM += 850;
+      }
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void output(struct student *VAR_233)
+{
+   int            total;
+   int            VAR__53647;
+   int            VAR__MAX;
+   struct student *tmp;
+
+   tmp      = VAR_233;
+   VAR__MAX = 0;
+   total    = 0;
+   tmp      = VAR_233;
+
+   while ( tmp != NULL )
+   {
+      total += tmp->VAR__SUM;
+
+      if ( tmp->VAR_FLAG == 1 )
+      {
+         tmp = tmp->VAR__NEXT;
+         continue;
+      }
+
+      if ( VAR__MAX < tmp->VAR__SUM )
+      {
+         VAR__MAX = tmp->VAR__SUM;
+      }
+
+      tmp = tmp->VAR__NEXT;
+   }
+
+   tmp = VAR_233;
+
+   while ( tmp != NULL )
+   {
+      if ( tmp->VAR_FLAG == 1 )
+      {
+         tmp = tmp->VAR__NEXT;
+         continue;
+      }
+
+      if ( VAR__MAX != tmp->VAR__SUM )
+      {
+         tmp = tmp->VAR__NEXT;
+      }
+      else
+      {
+         tmp->VAR_FLAG = 1;
+         break;
+      }
+   }
+
+   if ( tmp->VAR_FLAG == 1 )
+   {
+      printf("%s\n", tmp->name);
+   }
+
+   printf("%d\n%d", VAR__MAX, total);
+}
+
+
+int main()
+{
+   scanf("%d", &VAR_1238123);
+   struct student *VAR_233 = creat();
+   output(VAR_233);
+}

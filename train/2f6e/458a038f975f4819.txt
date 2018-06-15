@@ -1,0 +1,123 @@
+struct ch
+{
+   int       VAR__8444594;
+   char      VAR__819283;
+   struct ch *VAR__NEXT;
+};
+void main()
+{
+   int       VAR__53647;
+   int       VAR__21230;
+   int       VAR__temp   = 0;
+   int       VAR_1238123 = 0;
+   int       N;
+   int       VAR__9290[50][2];
+   int       VAR__TEMP;
+   char      boy;
+   char      girl;
+   struct ch *ANOTHER_POINTER;
+   struct ch *YET_ANOTHER_POINTER;
+   struct ch *p3;
+   struct ch *VAR__HEAD;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct ch *)malloc(LEN));
+   boy             = ( ANOTHER_POINTER->VAR__819283 = getchar());
+   ANOTHER_POINTER->VAR__8444594 = 0;
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER           = ANOTHER_POINTER;
+      ANOTHER_POINTER               = (struct ch *)malloc(LEN);
+      ANOTHER_POINTER->VAR__819283  = getchar();
+      ANOTHER_POINTER->VAR__8444594 = VAR_1238123;
+
+      if (( ANOTHER_POINTER->VAR__819283 != '\n' ) && ( ANOTHER_POINTER->VAR__819283 != boy ))
+      {
+         girl = ANOTHER_POINTER->VAR__819283;
+      }
+
+      if ( ANOTHER_POINTER->VAR__819283 == '\n' )
+      {
+         N = ( VAR_1238123 = VAR_1238123 - 1 );
+         break;
+      }
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+
+   while ( VAR_1238123 > 1 )
+   {
+      ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD ), p3 = YET_ANOTHER_POINTER->VAR__NEXT;
+
+      while ( p3 != NULL )
+      {
+         if (( YET_ANOTHER_POINTER->VAR__819283 == boy ) && ( p3->VAR__819283 == girl ))
+         {
+            if ( YET_ANOTHER_POINTER == VAR__HEAD )
+            {
+               VAR__9290[VAR__temp][0] = YET_ANOTHER_POINTER->VAR__8444594, VAR__9290[VAR__temp][1] = p3->VAR__8444594, VAR__temp = VAR__temp + 1;
+
+               if ( p3->VAR__NEXT != NULL )
+               {
+                  VAR__HEAD = VAR__HEAD->VAR__NEXT->VAR__NEXT, ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD ), p3 = YET_ANOTHER_POINTER->VAR__NEXT;
+               }
+               else
+               {
+                  VAR__HEAD = NULL;
+               }
+
+               VAR_1238123 = VAR_1238123 - 2;
+            }
+            else
+            {
+               VAR__9290[VAR__temp][0] = YET_ANOTHER_POINTER->VAR__8444594, VAR__9290[VAR__temp][1] = p3->VAR__8444594, VAR__temp = VAR__temp + 1;
+
+               if ( p3->VAR__NEXT != NULL )
+               {
+                  ANOTHER_POINTER->VAR__NEXT = p3->VAR__NEXT, YET_ANOTHER_POINTER = p3->VAR__NEXT, p3 = YET_ANOTHER_POINTER->VAR__NEXT;
+               }
+               else
+               {
+                  ANOTHER_POINTER->VAR__NEXT = NULL;
+               }
+
+               VAR_1238123 = VAR_1238123 - 2;
+            }
+         }
+         else
+         {
+            ANOTHER_POINTER = YET_ANOTHER_POINTER, YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT, p3 = YET_ANOTHER_POINTER->VAR__NEXT;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__temp; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR__temp - VAR__21230 ) - 1 ); VAR__53647++ )
+      {
+         if ( VAR__9290[VAR__53647][1] > VAR__9290[VAR__53647 + 1][1] )
+         {
+            VAR__TEMP = VAR__9290[VAR__53647][0], VAR__9290[VAR__53647][0] = VAR__9290[VAR__53647 + 1][0], VAR__9290[VAR__53647 + 1][0] = VAR__TEMP;
+            VAR__TEMP = VAR__9290[VAR__53647][1], VAR__9290[VAR__53647][1] = VAR__9290[VAR__53647 + 1][1], VAR__9290[VAR__53647 + 1][1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      printf("%d %d\n", VAR__9290[VAR__53647][0], VAR__9290[VAR__53647][1]);
+   }
+
+   printf("0 %d\n", N);
+}

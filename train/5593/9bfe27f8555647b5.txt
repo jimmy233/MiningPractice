@@ -1,0 +1,92 @@
+int huiwen(int);
+int sushu(int);
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   int VAR__53647;
+   int VAR__8444594;
+   int *VAR_SIZE = (int *)malloc(( sizeof( int )) * ( VAR_1238123 - VAR__1238129 ));
+   VAR__8444594 = 0;
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( huiwen(VAR__53647))
+      {
+         if ( sushu(VAR__53647))
+         {
+            VAR_SIZE[VAR__8444594] = VAR__53647;
+            VAR__8444594++;
+         }
+      }
+   }
+
+   if ( VAR__8444594 == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      printf("%d", VAR_SIZE[0]);
+      for ( VAR__53647 = 1; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         printf(",%d", VAR_SIZE[VAR__53647]);
+      }
+   }
+
+   return 0;
+}
+
+
+int huiwen(int VAR__7685)
+{
+   int VAR__9290 = 0;
+   int VAR__3918907;
+   int wei[10];
+
+   for ( VAR__3918907 = VAR__7685; VAR__3918907 > 0; VAR__3918907 = VAR__3918907 / 10 )
+   {
+      wei[VAR__9290] = VAR__3918907 % 10;
+      VAR__9290++;
+   }
+
+   for ( VAR__3918907 = 0; VAR__3918907 < ( VAR__9290 / 2 ); VAR__3918907++ )
+   {
+      if ( wei[VAR__3918907] != wei[( VAR__9290 - 1 ) - VAR__3918907] )
+      {
+         return 0;
+      }
+   }
+
+   return 1;
+}
+
+
+int sushu(int VAR_21983012)
+{
+   if ( VAR_21983012 == 2 )
+   {
+      return 1;
+   }
+
+   int u;
+   int v = 0;
+   for ( u = 2; u < VAR_21983012; u++ )
+   {
+      if (( VAR_21983012 % u ) == 0 )
+      {
+         v++;
+      }
+   }
+
+   if ( v == 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

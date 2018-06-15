@@ -1,0 +1,73 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__1238129;
+   int    VAR__53647;
+   int    VAR__819283;
+   int    VAR__19328;
+   int    *VAR_SIZE;
+   int    *jd;
+   int    *wd;
+   double *VAR__12302;
+   double VAR__4857423;
+
+   scanf("%d", &VAR_1238123);
+   VAR__1238129 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__1238129 += ( VAR_1238123 - 1 ) - VAR__53647;
+   }
+
+   VAR_SIZE   = (int *)malloc((( sizeof( int )) * 3 ) * VAR_1238123);
+   VAR__12302 = (double *)malloc(( sizeof( double )) * VAR__1238129);
+   jd         = (int *)malloc(( sizeof( int )) * VAR__1238129);
+   wd         = (int *)malloc(( sizeof( int )) * VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < ( 3 * VAR_1238123 ); VAR__53647++ )
+   {
+      scanf("%d", &VAR_SIZE[VAR__53647]);
+   }
+
+   VAR__53647 = 0;
+   for ( VAR__819283 = 0; VAR__819283 < VAR_1238123; VAR__819283++ )
+   {
+      for ( VAR__19328 = VAR__819283 + 1; VAR__19328 < VAR_1238123; VAR__19328++ )
+      {
+         VAR__12302[VAR__53647] = sqrt(((( 1.0 * ( VAR_SIZE[( 3 * VAR__819283 ) + 0] - VAR_SIZE[( 3 * VAR__19328 ) + 0] )) * ( VAR_SIZE[( 3 * VAR__819283 ) + 0] - VAR_SIZE[( 3 * VAR__19328 ) + 0] )) + (( VAR_SIZE[( 3 * VAR__819283 ) + 1] - VAR_SIZE[( 3 * VAR__19328 ) + 1] ) * ( VAR_SIZE[( 3 * VAR__819283 ) + 1] - VAR_SIZE[( 3 * VAR__19328 ) + 1] ))) + (( VAR_SIZE[( 3 * VAR__819283 ) + 2] - VAR_SIZE[( 3 * VAR__19328 ) + 2] ) * ( VAR_SIZE[( 3 * VAR__819283 ) + 2] - VAR_SIZE[( 3 * VAR__19328 ) + 2] )));
+         jd[VAR__53647]         = VAR__819283;
+         wd[VAR__53647]         = VAR__19328;
+         VAR__53647++;
+      }
+   }
+
+   for ( VAR__819283 = 1; VAR__819283 <= VAR__1238129; VAR__819283++ )
+   {
+      for ( VAR__19328 = 0; VAR__19328 < ( VAR__1238129 - VAR__819283 ); VAR__19328++ )
+      {
+         if ( VAR__12302[VAR__19328] < VAR__12302[VAR__19328 + 1] )
+         {
+            VAR__4857423               = VAR__12302[VAR__19328];
+            VAR__12302[VAR__19328]     = VAR__12302[VAR__19328 + 1];
+            VAR__12302[VAR__19328 + 1] = VAR__4857423;
+            VAR__53647         = jd[VAR__19328];
+            jd[VAR__19328]     = jd[VAR__19328 + 1];
+            jd[VAR__19328 + 1] = VAR__53647;
+            VAR__53647         = wd[VAR__19328];
+            wd[VAR__19328]     = wd[VAR__19328 + 1];
+            wd[VAR__19328 + 1] = VAR__53647;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__819283 = jd[VAR__53647];
+      VAR__19328  = wd[VAR__53647];
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR_SIZE[( 3 * VAR__819283 ) + 0], VAR_SIZE[( 3 * VAR__819283 ) + 1], VAR_SIZE[( 3 * VAR__819283 ) + 2], VAR_SIZE[( 3 * VAR__19328 ) + 0], VAR_SIZE[( 3 * VAR__19328 ) + 1], VAR_SIZE[( 3 * VAR__19328 ) + 2], VAR__12302[VAR__53647]);
+   }
+
+   free(VAR_SIZE);
+   free(VAR__12302);
+   free(jd);
+   free(wd);
+   return 0;
+}

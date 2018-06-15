@@ -1,0 +1,67 @@
+int main()
+{
+   int    N          = 0;
+   double Num[300]   = { 0 };
+   double Diff[300]  = { 0 };
+   double Extre[300] = { 0 };
+   double Average    = 0;
+   double Sum        = 0;
+   double Max        = 0;
+
+   cin >> N;
+   for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      cin >> Num[VAR__53647];
+      Sum += Num[VAR__53647];
+   }
+
+   Average = Sum / ((double)N );
+   for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      Diff[VAR__53647] = Num[VAR__53647] - Average;
+
+      if ( Diff[VAR__53647] < 0 )
+      {
+         Diff[VAR__53647] = -Diff[VAR__53647];
+      }
+
+      if ( Max < Diff[VAR__53647] )
+      {
+         Max = Diff[VAR__53647];
+      }
+   }
+
+   int K = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( Diff[VAR__53647] == Max )
+      {
+         Extre[K] = Num[VAR__53647];
+         K++;
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < K; VAR__53647++ )
+   {
+      for ( int VAR__8444594 = 0; VAR__8444594 < ( K - 1 ); VAR__8444594++ )
+      {
+         if ( Extre[VAR__8444594] > Extre[VAR__8444594 + 1] )
+         {
+            double VAR__TEMP = Extre[VAR__8444594];
+            Extre[VAR__8444594]     = Extre[VAR__8444594 + 1];
+            Extre[VAR__8444594 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   cout << Extre[0];
+   for ( int VAR__53647 = 1; VAR__53647 < K; VAR__53647++ )
+   {
+      ( cout << ',' ) << Extre[VAR__53647];
+   }
+
+   return 0;
+}

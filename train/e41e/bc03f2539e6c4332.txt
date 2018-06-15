@@ -1,0 +1,82 @@
+char li[110];
+char up[110];
+int  VAR__NUM = 0;
+void chu(int VAR__53647)
+{
+   int bc;
+
+   bc = (((( li[VAR__53647] - '0' ) * 100 ) + (( li[VAR__53647 + 1] - '0' ) * 10 )) + li[VAR__53647 + 2] ) - '0';
+   int yu;
+   int jie;
+   jie = bc / 13;
+   yu  = bc % 13;
+
+   if (( VAR__NUM == 0 ) && ( jie > 10 ))
+   {
+      up[VAR__NUM] = ( jie / 10 ) + '0';
+      VAR__NUM     = VAR__NUM + 1;
+      up[VAR__NUM] = ( jie - (( jie / 10 ) * 10 )) + '0';
+      VAR__NUM     = VAR__NUM + 1;
+   }
+   else
+   {
+      up[VAR__NUM] = jie + '0';
+      VAR__NUM     = VAR__NUM + 1;
+   }
+
+   li[VAR__53647] = 0 + '0';
+
+   if ( yu > 10 )
+   {
+      li[VAR__53647 + 1] = ( yu / 10 ) + '0';
+      li[VAR__53647 + 2] = ( yu - 10 ) + '0';
+   }
+   else
+   {
+      li[VAR__53647 + 1] = '0';
+      li[VAR__53647 + 2] = yu + '0';
+   }
+}
+
+
+int main()
+{
+   memset(li, '\0', sizeof( li ));
+   memset(up, '\0', sizeof( up ));
+
+   while ( cin >> li )
+   {
+      VAR__NUM = 0;
+      int LEN_OF_STH;
+      LEN_OF_STH = strlen(li);
+
+      if ( LEN_OF_STH > 3 )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < ( LEN_OF_STH - 2 ); VAR__21230++ )
+         {
+            chu(VAR__21230);
+         }
+
+         ( cout << up ) << endl;
+
+         if ( li[LEN_OF_STH - 2] == '1' )
+         {
+            cout << '1';
+         }
+
+         ( cout << li[LEN_OF_STH - 1] ) << endl;
+      }
+      else
+      {
+         int VAR__temp;
+         VAR__temp = atoi(li);
+         ( cout << ( VAR__temp / 13 )) << endl;
+         ( cout << ( VAR__temp % 13 )) << endl;
+      }
+
+      memset(li, '\0', sizeof( li ));
+      memset(up, '\0', sizeof( up ));
+   }
+
+   return 0;
+}

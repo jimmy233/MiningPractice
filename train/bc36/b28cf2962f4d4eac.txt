@@ -1,0 +1,80 @@
+int comp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((float *)VAR__819283 )) - ( *((float *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int   VAR_1238123;
+   int   count1 = 0;
+   int   count2 = 0;
+   int   VAR__53647;
+   int   VAR__21230;
+   float VAR__NUM;
+   float VAR__819283[40];
+   float VAR__19328[40];
+   float VAR__TEMP;
+   char  string[10];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s", string);
+      scanf("%f", &VAR__NUM);
+
+      if ( string[0] == 'm' )
+      {
+         VAR__819283[count1++] = VAR__NUM;
+      }
+      else
+      if ( string[0] == 'f' )
+      {
+         VAR__19328[count2++] = VAR__NUM;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( count1 - 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= (( count1 - 2 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( count2 - 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= (( count2 - 2 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__21230] < VAR__19328[VAR__21230 + 1] )
+         {
+            VAR__TEMP = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__19328[VAR__21230 + 1];
+            VAR__19328[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( count1 - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", (float)VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( count2 - 2 ); VAR__53647++ )
+   {
+      printf("%.2f ", (float)VAR__19328[VAR__53647]);
+   }
+
+   printf("%.2f", (float)VAR__19328[count2 - 1]);
+   printf("\n");
+   return 0;
+}

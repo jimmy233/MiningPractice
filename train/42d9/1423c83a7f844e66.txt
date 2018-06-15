@@ -1,0 +1,84 @@
+typedef struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+} POINT;
+typedef struct disdence
+{
+   POINT  VAR__819283;
+   POINT  VAR__19328;
+   double dst;
+} PD;
+double Squ(double VAR__NUM)
+{
+   return VAR__NUM * VAR__NUM;
+}
+
+
+double Distance(POINT VAR__819283, POINT VAR__19328)
+{
+   return sqrt(( Squ(VAR__819283.VAR__7685 - VAR__19328.VAR__7685) + Squ(VAR__819283.VAR__3918907 - VAR__19328.VAR__3918907)) + Squ(VAR__819283.VAR__9290 - VAR__19328.VAR__9290));
+}
+
+
+int main()
+{
+   POINT pt[10];
+   PD    tmp;
+   PD    dst[45];
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__8444594;
+   int   VAR_1238123;
+   int   N;
+
+   scanf("%d", &VAR_1238123);
+
+   if ( VAR_1238123 > 10 )
+   {
+      VAR_1238123 = 10;
+   }
+
+   N = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &pt[VAR__53647].VAR__7685, &pt[VAR__53647].VAR__3918907, &pt[VAR__53647].VAR__9290);
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dst[VAR__8444594].VAR__819283 = pt[VAR__53647];
+         dst[VAR__8444594].VAR__19328  = pt[VAR__21230];
+         dst[VAR__8444594].dst         = Distance(pt[VAR__53647], pt[VAR__21230]);
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( N - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( N - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( dst[VAR__21230].dst < dst[VAR__21230 + 1].dst )
+         {
+            tmp                 = dst[VAR__21230];
+            dst[VAR__21230]     = dst[VAR__21230 + 1];
+            dst[VAR__21230 + 1] = tmp;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-", dst[VAR__53647].VAR__819283.VAR__7685, dst[VAR__53647].VAR__819283.VAR__3918907, dst[VAR__53647].VAR__819283.VAR__9290);
+      printf("(%d,%d,%d)=", dst[VAR__53647].VAR__19328.VAR__7685, dst[VAR__53647].VAR__19328.VAR__3918907, dst[VAR__53647].VAR__19328.VAR__9290);
+      printf("%.2lf\n", dst[VAR__53647].dst);
+   }
+
+   return 0;
+}

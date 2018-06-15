@@ -1,0 +1,62 @@
+int main()
+{
+   char A_STRING[100];
+   char ANOTHER_STRING[100];
+   char YET_ANOTHER_STRING[100];
+
+   gets(A_STRING);
+   gets(ANOTHER_STRING);
+   gets(YET_ANOTHER_STRING);
+   int  LEN_OF_STH  = strlen(A_STRING);
+   char **VAR__TEMP = (char **)malloc(LEN_OF_STH * ( sizeof( int * )));
+   int  VAR__53647;
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__TEMP[VAR__53647] = (char *)malloc(LEN_OF_STH * ( sizeof( int )));
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__53647 == ( LEN_OF_STH - 1 ))
+      {
+         VAR__TEMP[VAR__21230][VAR__8444594 + 1] = 0;
+      }
+
+      if ( A_STRING[VAR__53647] != ' ' )
+      {
+         VAR__TEMP[VAR__21230][VAR__8444594] = A_STRING[VAR__53647];
+         VAR__8444594++;
+      }
+      else
+      {
+         VAR__TEMP[VAR__21230][VAR__8444594] = 0;
+         VAR__21230++;
+         VAR__8444594 = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__21230; VAR__53647++ )
+   {
+      if ( strcmp(VAR__TEMP[VAR__53647], ANOTHER_STRING) == 0 )
+      {
+         strcpy(VAR__TEMP[VAR__53647], YET_ANOTHER_STRING);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      printf("%s", VAR__TEMP[VAR__53647]);
+      printf(" ");
+   }
+
+   printf("%s", VAR__TEMP[VAR__21230]);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      free(VAR__TEMP[VAR__53647]);
+   }
+
+   free(VAR__TEMP);
+   return 0;
+}

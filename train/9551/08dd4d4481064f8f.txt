@@ -1,0 +1,55 @@
+struct Info
+{
+   char sID[10];
+   int  nAge;
+};
+void main()
+{
+   int         VAR__53647;
+   int         VAR_1238123;
+   int         VAR__21230;
+   int         VAR__1111;
+   struct Info VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   struct Info patients[100];
+   struct Info overpatients[100];
+   VAR__1111 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", patients[VAR__53647].sID, &patients[VAR__53647].nAge);
+
+      if ( patients[VAR__53647].nAge >= 60 )
+      {
+         overpatients[VAR__1111] = patients[VAR__53647];
+         VAR__1111++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1111 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR__1111 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( overpatients[VAR__21230 - 1].nAge < overpatients[VAR__21230].nAge )
+         {
+            VAR__temp = overpatients[VAR__21230 - 1];
+            overpatients[VAR__21230 - 1] = overpatients[VAR__21230];
+            overpatients[VAR__21230]     = VAR__temp;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      printf("%s\n", overpatients[VAR__53647].sID);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( patients[VAR__53647].nAge < 60 )
+      {
+         printf("%s\n", patients[VAR__53647].sID);
+      }
+   }
+}

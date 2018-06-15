@@ -1,0 +1,65 @@
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   char  VAR_9494[10];
+   float VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   struct
+   {
+      char  sex[10];
+      float hei;
+   }
+   peo[VAR_1238123];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", peo[VAR__53647].sex, &peo[VAR__53647].hei);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 >= VAR__53647; VAR__21230-- )
+      {
+         if ( peo[VAR__21230].hei < peo[VAR__21230 - 1].hei )
+         {
+            VAR__8444594            = peo[VAR__21230].hei;
+            peo[VAR__21230].hei     = peo[VAR__21230 - 1].hei;
+            peo[VAR__21230 - 1].hei = VAR__8444594;
+            strcpy(VAR_9494, peo[VAR__21230].sex);
+            strcpy(peo[VAR__21230].sex, peo[VAR__21230 - 1].sex);
+            strcpy(peo[VAR__21230 - 1].sex, VAR_9494);
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(peo[VAR__53647].sex, "male") == 0 )
+      {
+         printf("%.2f", peo[VAR__53647].hei);
+         break;
+      }
+   }
+
+
+   for ( VAR__53647 = VAR__53647 + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(peo[VAR__53647].sex, "male") == 0 )
+      {
+         printf(" %.2f", peo[VAR__53647].hei);
+      }
+   }
+
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( strcmp(peo[VAR__53647].sex, "female") == 0 )
+      {
+         printf(" %.2f", peo[VAR__53647].hei);
+      }
+   }
+}

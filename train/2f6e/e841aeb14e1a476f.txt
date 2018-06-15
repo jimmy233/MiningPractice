@@ -1,0 +1,87 @@
+void solve();
+void paixu();
+
+char VAR__819283[1000];
+char VAR__1238129;
+int  length;
+int  VAR_FLAG[1000] = { 0 };
+int  VAR__19328[500][2];
+int  VAR__SUM = 0;
+int main()
+{
+   cin >> VAR__819283;
+   length       = strlen(VAR__819283);
+   VAR__1238129 = VAR__819283[0];
+   solve();
+   paixu();
+   return 0;
+}
+
+
+void solve()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( length - 1 ); VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647] == VAR__1238129 ) && ( VAR_FLAG[VAR__53647] == 0 ))
+      {
+         for ( VAR__21230 = 1; VAR__21230 < ( length - VAR__53647 ); VAR__21230++ )
+         {
+            if ( VAR_FLAG[VAR__53647 + VAR__21230] == 1 )
+            {
+               continue;
+            }
+            else
+            if ( VAR__819283[VAR__53647 + VAR__21230] == VAR__1238129 )
+            {
+               break;
+            }
+            else
+            {
+               VAR_FLAG[VAR__53647] = 1;
+               VAR_FLAG[VAR__53647 + VAR__21230] = 1;
+               VAR__19328[VAR__SUM][0]           = VAR__53647;
+               VAR__19328[VAR__SUM][1]           = VAR__53647 + VAR__21230;
+               VAR__SUM++;
+               break;
+            }
+         }
+      }
+   }
+
+   if ( VAR_FLAG[0] == 0 )
+   {
+      solve();
+   }
+}
+
+
+void paixu()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__21230 = 0; VAR__21230 < (( length / 2 ) - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ((( length / 2 ) - VAR__21230 ) - 1 ); VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647][1] > VAR__19328[VAR__53647 + 1][1] )
+         {
+            VAR__TEMP = VAR__19328[VAR__53647 + 1][1];
+            VAR__19328[VAR__53647 + 1][1] = VAR__19328[VAR__53647][1];
+            VAR__19328[VAR__53647][1]     = VAR__TEMP;
+            VAR__TEMP = VAR__19328[VAR__53647 + 1][0];
+            VAR__19328[VAR__53647 + 1][0] = VAR__19328[VAR__53647][0];
+            VAR__19328[VAR__53647][0]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( length / 2 ); VAR__53647++ )
+   {
+      ((( cout << VAR__19328[VAR__53647][0] ) << " " ) << VAR__19328[VAR__53647][1] ) << endl;
+   }
+}

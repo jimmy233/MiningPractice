@@ -1,0 +1,48 @@
+int main(int argc, char *argv[])
+{
+   int    VAR__COUNT;
+   int    sentry = 0;
+   int    *values;
+   int    VAR__53647;
+   int    VAR__SUM = 0;
+   double ave;
+   double VAR__TEMP;
+   double distance = 0;
+   int    *mid;
+
+   scanf(" %d ", &VAR__COUNT);
+   values = (int *)malloc(VAR__COUNT * ( sizeof( int )));
+   mid    = (int *)malloc(VAR__COUNT * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      scanf("%d", values + VAR__53647);
+      VAR__SUM += *( values + VAR__53647 );
+   }
+
+   ave = ( 1.0 * VAR__SUM ) / VAR__COUNT;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      VAR__TEMP = fabs(( 1.0 * values[VAR__53647] ) - ave);
+
+      if ( VAR__TEMP > distance )
+      {
+         distance = VAR__TEMP;
+         mid[0]   = values[VAR__53647];
+         sentry   = 0;
+      }
+      else
+      if ( VAR__TEMP == distance )
+      {
+         sentry++;
+         mid[sentry] = values[VAR__53647];
+      }
+   }
+
+   printf("%d", mid[0]);
+   for ( VAR__53647 = 1; VAR__53647 <= sentry; VAR__53647++ )
+   {
+      printf(",%d", mid[VAR__53647]);
+   }
+
+   return 0;
+}

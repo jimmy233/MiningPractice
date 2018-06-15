@@ -1,0 +1,57 @@
+int days[13]     = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int leapdays[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int leapyearornot(int year)
+{
+   return (( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 ));
+}
+
+
+int sumfromfirstday(int year, int month, int day)
+{
+   int VAR__53647;
+   int VAR__SUM = day;
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ( leapyearornot(year))
+      {
+         VAR__SUM += leapdays[VAR__53647];
+      }
+      else
+      {
+         VAR__SUM += days[VAR__53647];
+      }
+   }
+
+   return VAR__SUM;
+}
+
+
+int daysfromfirst(int startyear, int endyear, int endmonth, int endday)
+{
+   int VAR__53647;
+   int VAR__SUM = 0;
+
+   for ( VAR__53647 = startyear; VAR__53647 < endyear; VAR__53647++ )
+   {
+      VAR__SUM += ( leapyearornot(VAR__53647)) ? ( 366 ) : ( 365 );
+   }
+
+   VAR__SUM += sumfromfirstday(endyear, endmonth, endday);
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+
+   scanf("%d %d %d %d %d %d", &startyear, &startmonth, &startday, &endyear, &endmonth, &endday);
+   printf("%d", daysfromfirst(startyear, endyear, endmonth, endday) - daysfromfirst(startyear, startyear, startmonth, startday));
+   return 0;
+}

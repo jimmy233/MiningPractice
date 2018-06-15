@@ -1,0 +1,70 @@
+int sdw1(char s1[], int VAR__819283[])
+{
+   int LEN_OF_STH = strlen(s1);
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__819283[( LEN_OF_STH - 1 ) - VAR__53647] = s1[VAR__53647] - '0';
+   }
+
+   return LEN_OF_STH;
+}
+
+
+int add(int VAR__819283[], int VAR__19328[], int VAR__4857423[], int la, int lb)
+{
+   int VAR__53647;
+   int LEN_OF_STH = ( la > lb ) ? ( la ) : ( lb );
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__819283[VAR__53647] + VAR__19328[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] >= 10 )
+      {
+         VAR__4857423[VAR__53647 + 1] = VAR__4857423[VAR__53647 + 1] + 1;
+         VAR__4857423[VAR__53647]     = VAR__4857423[VAR__53647] % 10;
+      }
+   }
+
+   return ( VAR__4857423[LEN_OF_STH] != 0 ) ? ( LEN_OF_STH + 1 ) : ( LEN_OF_STH );
+}
+
+
+int main()
+{
+   char s1[300];
+   char s2[300];
+   int  VAR__819283[300]  = { 0 };
+   int  VAR__19328[300]   = { 0 };
+   int  VAR__4857423[300] = { 0 };
+   int  VAR__53647;
+   int  la;
+   int  lb;
+   int  LEN_OF_STH;
+   int  VAR_1238123 = 0;
+
+   scanf("%s%s", s1, s2);
+   la         = sdw1(s1, VAR__819283);
+   lb         = sdw1(s2, VAR__19328);
+   LEN_OF_STH = add(VAR__819283, VAR__19328, VAR__4857423, la, lb);
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      if ( VAR__4857423[VAR__53647] != 0 )
+      {
+         VAR_1238123 = VAR__53647;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123; VAR__53647 > ( -1 ); VAR__53647-- )
+   {
+      printf("%d", VAR__4857423[VAR__53647]);
+   }
+
+   return 0;
+}

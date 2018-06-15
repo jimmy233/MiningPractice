@@ -1,0 +1,78 @@
+void main()
+{
+   struct student
+   {
+      char name[20];
+      int  final;
+      int  classes;
+      char duty;
+      char west;
+      int  text;
+   };
+   struct student stu[100];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__NUM[100] = { 0 };
+   int all           = 0;
+   int VAR__819283[100];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].final, &stu[VAR__53647].classes, &stu[VAR__53647].duty, &stu[VAR__53647].west, &stu[VAR__53647].text);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].text > 0 ) && ( stu[VAR__53647].final > 80 ))
+      {
+         VAR__NUM[VAR__53647] = VAR__NUM[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].classes > 80 ) && ( stu[VAR__53647].final > 85 ))
+      {
+         VAR__NUM[VAR__53647] = VAR__NUM[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].final > 90 )
+      {
+         VAR__NUM[VAR__53647] = VAR__NUM[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].west == 'Y' ) && ( stu[VAR__53647].final > 85 ))
+      {
+         VAR__NUM[VAR__53647] = VAR__NUM[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].classes > 80 ) && ( stu[VAR__53647].duty == 'Y' ))
+      {
+         VAR__NUM[VAR__53647] = VAR__NUM[VAR__53647] + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR__NUM[VAR__53647];
+      all = all + VAR__NUM[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__819283[VAR__53647 + 1] )
+      {
+         VAR__819283[VAR__53647 + 1] = VAR__819283[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] == VAR__819283[VAR_1238123 - 1] )
+      {
+         VAR__temp = VAR__53647;
+         break;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", stu[VAR__temp].name, VAR__NUM[VAR__temp], all);
+}

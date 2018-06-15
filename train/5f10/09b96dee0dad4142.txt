@@ -1,0 +1,80 @@
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   char A_STRING[1000];
+   scanf("%s", A_STRING);
+   char VAR_9494[1000][100];
+   int  VAR__53647;
+   int  LEN_OF_STH;
+   int  VAR__9290;
+   int  VAR__819283[10000] = { 0 };
+   LEN_OF_STH = strlen(A_STRING);
+   int VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         VAR_9494[VAR__53647][VAR__8444594] = A_STRING[VAR__53647 + VAR__8444594];
+      }
+
+      VAR_9494[VAR__53647][VAR_1238123] = '\0';
+   }
+
+   char base[100];
+   for ( VAR__8444594 = 0; VAR__8444594 <= ( LEN_OF_STH - VAR_1238123 ); VAR__8444594++ )
+   {
+      strcpy(base, VAR_9494[VAR__8444594]);
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+      {
+         if ( strcmp(base, VAR_9494[VAR__53647]) == 0 )
+         {
+            VAR__819283[VAR__8444594]++;
+         }
+      }
+   }
+
+   int VAR__TEMP = 1;
+   for ( VAR__8444594 = 0; VAR__8444594 <= ( LEN_OF_STH - VAR_1238123 ); VAR__8444594++ )
+   {
+      if ( VAR__819283[VAR__8444594] > VAR__TEMP )
+      {
+         VAR__TEMP = VAR__819283[VAR__8444594];
+      }
+   }
+
+   char ch[100] = "AMA";
+
+   if ( VAR__TEMP == 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__TEMP);
+      for ( VAR__8444594 = 0; VAR__8444594 <= ( LEN_OF_STH - VAR_1238123 ); VAR__8444594++ )
+      {
+         if ( strcmp(ch, VAR_9494[VAR__8444594]) == 0 )
+         {
+            continue;
+         }
+         else
+         {
+            if ( VAR__819283[VAR__8444594] == VAR__TEMP )
+            {
+               printf("%s\n", VAR_9494[VAR__8444594]);
+               for ( VAR__9290 = VAR__8444594 + 1; VAR__9290 <= ( LEN_OF_STH - VAR_1238123 ); VAR__9290++ )
+               {
+                  if ( strcmp(VAR_9494[VAR__8444594], VAR_9494[VAR__9290]) == 0 )
+                  {
+                     strcpy(VAR_9494[VAR__9290], ch);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   return 0;
+}

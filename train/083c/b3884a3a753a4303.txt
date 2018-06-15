@@ -1,0 +1,51 @@
+int main(int argc, char *argv[])
+{
+   int  from;
+   int  to;
+   int  VAR__53647;
+   int  VAR__21230;
+   long VAR__SUM = 0;
+   char in[255];
+   char out[255] = "0";
+
+   scanf("%d%s%d", &from, in, &to);
+   char s10[100];
+   char VAR_9494[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   for ( VAR__53647 = '0'; VAR__53647 <= '9'; VAR__53647++ )
+   {
+      s10[VAR__53647] = VAR__53647 - '0';
+   }
+
+   for ( VAR__53647 = 'a'; VAR__53647 <= 'z'; VAR__53647++ )
+   {
+      s10[VAR__53647] = ( VAR__53647 - 'a' ) + 10;
+   }
+
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'Z'; VAR__53647++ )
+   {
+      s10[VAR__53647] = ( VAR__53647 - 'A' ) + 10;
+   }
+
+   for ( VAR__53647 = 0; in[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      VAR__SUM = ( VAR__SUM * from ) + s10[in[VAR__53647]];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 255; VAR__53647++ )
+   {
+      out[VAR__53647] = VAR_9494[VAR__SUM % to];
+      VAR__SUM        = VAR__SUM / to;
+
+      if ( VAR__SUM == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+   {
+      printf("%c", out[VAR__21230]);
+   }
+
+   return 0;
+}

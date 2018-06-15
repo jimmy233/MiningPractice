@@ -1,0 +1,60 @@
+struct patient
+{
+   char           id[10];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+void sort(struct patient *VAR__HEAD, struct patient *VAR_9494)
+{
+   struct patient *pre     = VAR__HEAD;
+   struct patient *VAR_233 = pre->VAR__NEXT;
+
+   if ( VAR_9494->age >= 60 )
+   {
+      while (( VAR_233 != NULL ) && ( VAR_9494->age <= VAR_233->age ))
+      {
+         pre     = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      pre->VAR__NEXT      = VAR_9494;
+      VAR_9494->VAR__NEXT = VAR_233;
+   }
+   else
+   {
+      while ( pre->VAR__NEXT != NULL )
+      {
+         pre = pre->VAR__NEXT;
+      }
+
+      pre->VAR__NEXT = VAR_9494;
+   }
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct patient *VAR__HEAD;
+   struct patient *VAR_233;
+   VAR__HEAD            = (struct patient *)malloc(LEN);
+   VAR__HEAD->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct patient *)malloc(LEN);
+      scanf("%s %d", VAR_233->id, &VAR_233->age);
+      VAR_233->VAR__NEXT = NULL;
+      sort(VAR__HEAD, VAR_233);
+   }
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", &VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

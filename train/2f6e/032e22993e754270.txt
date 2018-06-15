@@ -1,0 +1,40 @@
+char A_STRING[101];
+int test(int VAR__NUM, char sex)
+{
+   if ( A_STRING[VAR__NUM] != '\0' )
+   {
+      if ( A_STRING[VAR__NUM] == sex )
+      {
+         test(VAR__NUM + 1, sex);
+      }
+      else
+      {
+         int VAR__53647 = 0;
+         for ( VAR__53647 = VAR__NUM - 1; VAR__53647 >= 0; VAR__53647-- )
+         {
+            if ( A_STRING[VAR__53647] == sex )
+            {
+               ((( cout << VAR__53647 ) << " " ) << VAR__NUM ) << endl;
+               A_STRING[VAR__53647] = '!';
+               A_STRING[VAR__NUM]   = '!';
+               break;
+            }
+         }
+      }
+
+      test(VAR__NUM + 1, sex);
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   cin.getline(A_STRING, 101);
+   char boy = A_STRING[0];
+   test(1, boy);
+   return 0;
+}

@@ -1,0 +1,82 @@
+struct person
+{
+   char          VAR__4857423[10];
+   int           VAR__819283;
+   struct person *VAR__NEXT;
+};
+int main()
+{
+   int           VAR__53647;
+   int           VAR_1238123;
+   struct person *VAR__HEAD;
+   struct person *ANOTHER_POINTER;
+   struct person *YET_ANOTHER_POINTER;
+   struct person *VAR_233;
+   struct person *p0;
+   struct person *p3;
+
+   scanf("%d", &VAR_1238123);
+   VAR__53647 = 0;
+   VAR__HEAD  = NULL;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      ANOTHER_POINTER = (struct person *)malloc(LEN_OF_STH);
+      scanf("%s %d", ANOTHER_POINTER->VAR__4857423, &ANOTHER_POINTER->VAR__819283);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD           = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      }
+
+      VAR__53647++;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = ( p0 = VAR__HEAD );
+
+      while ( VAR_233 != NULL )
+      {
+         if ( VAR_233->VAR__819283 > p0->VAR__819283 )
+         {
+            p0 = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      if ( p0->VAR__819283 >= 60 )
+      {
+         printf("%s\n", p0->VAR__4857423);
+         VAR_233 = VAR__HEAD;
+
+         while ( VAR_233->VAR__819283 != p0->VAR__819283 )
+         {
+            p3      = VAR_233;
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         if ( VAR_233 == VAR__HEAD )
+         {
+            VAR__HEAD = VAR_233->VAR__NEXT;
+         }
+         else
+         {
+            p3->VAR__NEXT = VAR_233->VAR__NEXT;
+         }
+      }
+      else
+      {
+         printf("%s\n", VAR__HEAD->VAR__4857423);
+         VAR__HEAD = VAR__HEAD->VAR__NEXT;
+      }
+   }
+}

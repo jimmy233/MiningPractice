@@ -1,0 +1,86 @@
+int main()
+{
+   int    VAR__1238129;
+   int    VAR__53647;
+   int    dec       = 0;
+   double VAR__TEMP = 0;
+   double VAR__19328;
+   double VAR__819283;
+   char   VAR__NUM[32];
+   int    VAR_233[32];
+   int    VAR_666[32];
+
+   (( cin >> VAR__819283 ) >> VAR__NUM ) >> VAR__19328;
+   VAR__1238129 = strlen(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = VAR__NUM[VAR__53647];
+
+      if ( VAR_233[VAR__53647] < 58 )
+      {
+         VAR_233[VAR__53647] = VAR_233[VAR__53647] - 48;
+      }
+      else
+      if ( VAR_233[VAR__53647] < 91 )
+      {
+         VAR_233[VAR__53647] = VAR_233[VAR__53647] - 55;
+      }
+      else
+      if ( VAR_233[VAR__53647] < 123 )
+      {
+         VAR_233[VAR__53647] = VAR_233[VAR__53647] - 87;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      dec += VAR_233[VAR__53647] * pow(VAR__819283, ( VAR__1238129 - 1 ) - VAR__53647);
+   }
+
+   if ( dec == 0 )
+   {
+      cout << "0";
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 32; VAR__53647++ )
+      {
+         VAR__TEMP = pow(VAR__19328, VAR__53647);
+
+         if ( VAR__TEMP > dec )
+         {
+            VAR__1238129 = VAR__53647;
+            break;
+         }
+      }
+
+      VAR_666[0] = dec / pow(VAR__19328, VAR__1238129 - 1);
+      for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         VAR_666[VAR__53647] = ( dec - ( VAR_666[VAR__53647 - 1] * pow(VAR__19328, VAR__1238129 - VAR__53647))) / pow(VAR__19328, ( VAR__1238129 - 1 ) - VAR__53647);
+         dec = dec - ( VAR_666[VAR__53647 - 1] * pow(VAR__19328, VAR__1238129 - VAR__53647));
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         if ( VAR_666[VAR__53647] < 10 )
+         {
+            VAR_666[VAR__53647] = VAR_666[VAR__53647] + 48;
+         }
+         else
+         {
+            VAR_666[VAR__53647] = VAR_666[VAR__53647] + 55;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647] = VAR_666[VAR__53647];
+      }
+
+      VAR__NUM[VAR__1238129] = '\0';
+      cout << VAR__NUM;
+   }
+
+   return 0;
+}

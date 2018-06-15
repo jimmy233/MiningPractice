@@ -1,0 +1,70 @@
+struct monkey
+{
+   int           number;
+   int           selected;
+   struct monkey *VAR__NEXT;
+};
+void maintoo(int, int);
+
+void main()
+{
+   int VAR_1238123[20];
+   int VAR__1238129[20];
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      scanf("%d%d", &VAR_1238123[VAR__53647], &VAR__1238129[VAR__53647]);
+
+      if ( !VAR__1238129[VAR__53647] )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      maintoo(VAR_1238123[VAR__21230], VAR__1238129[VAR__21230]);
+   }
+}
+
+
+void maintoo(int VAR_1238123, int VAR__1238129)
+{
+   struct monkey *ANOTHER_POINTER;
+   struct monkey *p_this;
+   struct monkey *p_next;
+   int           VAR__53647;
+
+   ANOTHER_POINTER = (struct monkey *)malloc(sizeof( struct monkey ));
+   p_this          = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      p_this->number    = VAR__53647;
+      p_this->selected  = 1;
+      p_next            = (struct monkey *)malloc(sizeof( struct monkey ));
+      p_this->VAR__NEXT = p_next;
+      p_this            = p_next;
+   }
+
+   p_this->number    = VAR_1238123;
+   p_this->selected  = 1;
+   p_this->VAR__NEXT = ANOTHER_POINTER;
+   do
+   {
+      VAR__53647 = 0;
+      do
+      {
+         p_this = p_this->VAR__NEXT;
+
+         if ( p_this->selected )
+         {
+            VAR__53647++;
+         }
+      } while ( VAR__53647 < VAR__1238129 );
+      p_this->selected = 0;
+      VAR_1238123--;
+   } while ( VAR_1238123 > 0 );
+   printf("%d\n", p_this->number);
+}

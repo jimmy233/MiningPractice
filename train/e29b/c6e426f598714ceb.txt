@@ -1,0 +1,72 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__819283[300] = { 0 };
+   int    VAR__19328[300]  = { 0 };
+   int    VAR__53647;
+   int    VAR__SUM = 0;
+   int    VAR__21230;
+   int    VAR__TEMP;
+   double aver;
+   double dist;
+   double temp1;
+
+   scanf("%d\n", &VAR_1238123);
+   scanf("%d", &VAR__819283[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf(" %d", &VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += VAR__819283[VAR__53647];
+   }
+
+   aver = VAR__SUM / ((double)VAR_1238123 );
+   dist = fabs(VAR__819283[0] - aver);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( dist < fabs(VAR__819283[VAR__53647] - aver))
+      {
+         dist = fabs(VAR__819283[VAR__53647] - aver);
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( fabs(dist - fabs(VAR__819283[VAR__53647] - aver)) < 1e-9 )
+      {
+         printf("%d", VAR__819283[VAR__53647]);
+         break;
+      }
+   }
+
+
+   for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( fabs(dist - fabs(VAR__819283[VAR__21230] - aver)) < 1e-9 )
+      {
+         printf(",%d", VAR__819283[VAR__21230]);
+      }
+   }
+
+
+   printf("\n");
+}

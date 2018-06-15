@@ -1,0 +1,86 @@
+int compare(const void *VAR__819283, const void *VAR__19328)
+{
+   int *VAR__7685    = (int *)VAR__819283;
+   int *VAR__3918907 = (int *)VAR__19328;
+
+   return ( *VAR__3918907 ) - ( *VAR__7685 );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647   = 0;
+   int VAR__21230   = 0;
+   int VAR__8444594 = 0;
+   int king[1000];
+   int tianji[1000];
+   int win        = 0;
+   int lose       = 0;
+   int equal      = 0;
+   int game       = 0;
+   int VAR__COUNT = 0;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tianji[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> king[VAR__53647];
+      }
+
+      qsort(tianji, VAR_1238123, sizeof( tianji[0] ), compare);
+      qsort(king, VAR_1238123, sizeof( king[0] ), compare);
+      VAR__21230 = 0;
+      VAR__53647 = 0;
+
+      while (( VAR__21230 < game ) && ( tianji[VAR__21230] < king[VAR__53647] ))
+      {
+         VAR__53647++;
+      }
+
+      int VAR__MAX = -1000000;
+      for ( VAR__8444594 = VAR__53647; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         game       = ( -200 ) * VAR__8444594;
+         VAR__COUNT = 0;
+         for ( VAR__21230 = VAR__8444594; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( tianji[VAR__COUNT] < king[VAR__21230] )
+            {
+               game += -200;
+            }
+            else
+            if ( tianji[VAR__COUNT] == king[VAR__21230] )
+            {
+               game += 0;
+            }
+            else
+            {
+               game += 200;
+            }
+
+
+            VAR__COUNT++;
+         }
+
+         if ( game > VAR__MAX )
+         {
+            VAR__MAX = game;
+         }
+      }
+
+      ( cout << VAR__MAX ) << endl;
+   }
+
+   return 0;
+}

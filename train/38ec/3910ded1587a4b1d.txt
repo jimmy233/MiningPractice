@@ -1,0 +1,66 @@
+int main()
+{
+   int  startyear;
+   int  startmonth;
+   int  startday;
+   int  endyear;
+   int  endmonth;
+   int  endday;
+   int  VAR__53647;
+   int  dy;
+   int  add;
+   int  days1 = 0;
+   int  days2 = 0;
+   long days;
+
+   (( cin >> startyear ) >> startmonth ) >> startday;
+   (( cin >> endyear ) >> endmonth ) >> endday;
+   dy  = (( endyear - startyear ) > 1 ) ? (( endyear - startyear ) - 1 ) : ( 0 );
+   add = 0;
+   for ( VAR__53647 = startyear + 1; VAR__53647 < endyear; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         add++;
+      }
+   }
+
+   if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+   {
+      add++;
+   }
+
+   if (((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 ))
+   {
+      add++;
+   }
+
+   int month[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if ( startyear != endyear )
+   {
+      for ( VAR__53647 = startmonth; VAR__53647 < 13; VAR__53647++ )
+      {
+         days1 = days1 + month[VAR__53647];
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < endmonth; VAR__53647++ )
+      {
+         days2 = days2 + month[VAR__53647];
+      }
+
+      days = (((( 365 * dy ) + add ) + days1 ) + days2 ) + ( endday - startday );
+   }
+   else
+   {
+      for ( VAR__53647 = startmonth; VAR__53647 < endmonth; VAR__53647++ )
+      {
+         days1 = days1 + month[VAR__53647];
+      }
+
+      days = ( days1 + endday ) - startday;
+   }
+
+   ( cout << days ) << endl;
+   return 0;
+}

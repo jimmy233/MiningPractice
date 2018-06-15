@@ -1,0 +1,81 @@
+void main()
+{
+   char A_STRING[50][10]     = { 0 };
+   char substr[50][3]        = { 0 };
+   char VAR__819283[50][13]  = { 0 };
+   char VAR__MAX[50]         = { 0 };
+   char VAR__4857423[50][14] = { 0 };
+   int  LEN_OF_STH[50];
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__21230;
+   int  VAR__NUM[50];
+   int  VAR__8444594;
+   int  cl[50];
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      gets(VAR__4857423[VAR__53647]);
+      cl[VAR__53647] = strlen(VAR__4857423[VAR__53647]);
+
+      if ( cl[VAR__53647] == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < cl[VAR__53647]; VAR__21230++ )
+      {
+         if ( VAR__4857423[VAR__53647][VAR__21230] != ' ' )
+         {
+            A_STRING[VAR__53647][VAR__21230] = VAR__4857423[VAR__53647][VAR__21230];
+         }
+         else
+         {
+            VAR__8444594 = VAR__21230;
+            break;
+         }
+      }
+
+      for ( VAR__21230 = VAR__8444594 + 1; VAR__21230 < cl[VAR__53647]; VAR__21230++ )
+      {
+         substr[VAR__53647][( VAR__21230 - VAR__8444594 ) - 1] = VAR__4857423[VAR__53647][VAR__21230];
+      }
+   }
+
+   VAR_1238123 = VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      LEN_OF_STH[VAR__53647] = strlen(A_STRING[VAR__53647]);
+      for ( VAR__21230 = 0, VAR__MAX[VAR__53647] = A_STRING[VAR__53647][0]; VAR__21230 < LEN_OF_STH[VAR__53647]; VAR__21230++ )
+      {
+         if ( A_STRING[VAR__53647][VAR__21230] > VAR__MAX[VAR__53647] )
+         {
+            VAR__MAX[VAR__53647] = A_STRING[VAR__53647][VAR__21230];
+            VAR__NUM[VAR__53647] = VAR__21230;
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < ( LEN_OF_STH[VAR__53647] + 3 ); VAR__21230++ )
+      {
+         VAR__8444594 = ( VAR__21230 - VAR__NUM[VAR__53647] ) - 1;
+
+         if ( VAR__21230 <= VAR__NUM[VAR__53647] )
+         {
+            VAR__819283[VAR__53647][VAR__21230] = A_STRING[VAR__53647][VAR__21230];
+         }
+         else
+         {
+            if ( VAR__21230 <= ( VAR__NUM[VAR__53647] + 3 ))
+            {
+               VAR__819283[VAR__53647][VAR__21230] = substr[VAR__53647][VAR__8444594];
+            }
+            else
+            {
+               VAR__819283[VAR__53647][VAR__21230] = A_STRING[VAR__53647][VAR__21230 - 3];
+            }
+         }
+      }
+
+      printf("%s\n", VAR__819283[VAR__53647]);
+   }
+}

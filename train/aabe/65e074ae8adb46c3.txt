@@ -1,0 +1,81 @@
+int main()
+{
+   int mingliu(int VAR__8444594, int **pp, int VAR_1238123, int VAR__COUNT);
+
+   int **pp;
+   int VAR_1238123;
+   int mingliushu = 0;
+   scanf("%d", &VAR_1238123);
+   pp = (int **)malloc(((( sizeof( int * )) * VAR_1238123 ) * VAR_1238123 ) + 1);
+   int VAR_666 = 0;
+
+   while ( 1 )
+   {
+      pp[VAR_666] = (int *)malloc(( sizeof( int )) * 2);
+      scanf("%d %d", pp[VAR_666], pp[VAR_666] + 1);
+
+      if ((( *pp[VAR_666] ) == 0 ) && (( *( pp[VAR_666] + 1 )) == 0 ))
+      {
+         break;
+      }
+
+      VAR_666++;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+   {
+      if (( *( pp[VAR__53647] + 1 )) >= 0 )
+      {
+         mingliushu += mingliu(*( pp[VAR__53647] + 1 ), pp, VAR_1238123, VAR_666);
+      }
+   }
+
+   if ( mingliushu == 0 )
+   {
+      printf("NOT FOUND");
+   }
+
+   free(pp);
+   pp = NULL;
+   return 0;
+}
+
+
+int mingliu(int VAR__8444594, int **pp, int VAR_1238123, int VAR__COUNT)
+{
+   int *VAR__819283;
+
+   VAR__819283 = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      *( VAR__819283 + VAR__53647 ) = 0;
+   }
+
+   int value = 1;
+   for ( int VAR__21230 = 0; VAR__21230 < VAR__COUNT; VAR__21230++ )
+   {
+      if (( *( pp[VAR__21230] + 1 )) == VAR__8444594 )
+      {
+         *( pp[VAR__21230] + 1 ) = ( -VAR__8444594 ) - 1;
+         *( VAR__819283 + pp[VAR__21230][0] ) = 1;
+      }
+   }
+
+   *( VAR__819283 + VAR__8444594 ) = 1;
+   for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if (( *( VAR__819283 + VAR__21230 )) == 0 )
+      {
+         value = 0;
+         break;
+      }
+   }
+
+   if ( value == 1 )
+   {
+      printf("%d", VAR__8444594);
+   }
+
+   free(VAR__819283);
+   return value;
+}

@@ -1,0 +1,106 @@
+int main()
+{
+   int days[2][13] = { { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+   int syear;
+   int smonth;
+   int sday;
+   int eyear;
+   int emonth;
+   int eday;
+
+   ((((( cin >> syear ) >> smonth ) >> sday ) >> eyear ) >> emonth ) >> eday;
+   int VAR_129012;
+   int VAR__53647;
+   int year;
+   int end;
+   int VAR__NUM = 0;
+
+   if (((( syear % 4 ) == 0 ) && (( syear % 100 ) != 0 )) || (( syear % 400 ) == 0 ))
+   {
+      VAR_129012 = 1;
+   }
+   else
+   {
+      VAR_129012 = 0;
+   }
+
+   if ( eyear != syear )
+   {
+      VAR__NUM += days[VAR_129012][smonth] - sday;
+   }
+   else
+   {
+      if ( emonth != smonth )
+      {
+         VAR__NUM += days[VAR_129012][smonth] - sday;
+      }
+   }
+
+   if ( eyear == syear )
+   {
+      end = emonth - 1;
+   }
+   else
+   {
+      end = 12;
+   }
+
+   for ( VAR__53647 = smonth + 1; VAR__53647 <= end; VAR__53647++ )
+   {
+      VAR__NUM += days[VAR_129012][VAR__53647];
+   }
+
+   for ( year = syear + 1; year < eyear; year++ )
+   {
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         VAR_129012 = 1;
+      }
+      else
+      {
+         VAR_129012 = 0;
+      }
+
+      VAR__NUM += 365 + VAR_129012;
+   }
+
+   if (((( eyear % 4 ) == 0 ) && (( eyear % 100 ) != 0 )) || (( eyear % 400 ) == 0 ))
+   {
+      VAR_129012 = 1;
+   }
+   else
+   {
+      VAR_129012 = 0;
+   }
+
+   VAR__53647 = 1;
+
+   if ( eyear == syear )
+   {
+      VAR__53647 = smonth + 1;
+   }
+
+   for ( ; VAR__53647 < emonth; VAR__53647++ )
+   {
+      VAR__NUM += days[VAR_129012][VAR__53647];
+   }
+
+   if ( eyear != syear )
+   {
+      VAR__NUM += eday;
+   }
+   else
+   {
+      if ( emonth == smonth )
+      {
+         VAR__NUM += eday - sday;
+      }
+      else
+      {
+         VAR__NUM += eday;
+      }
+   }
+
+   ( cout << VAR__NUM ) << endl;
+   return 0;
+}

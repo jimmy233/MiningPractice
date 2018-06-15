@@ -1,0 +1,72 @@
+int month[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int startYear;
+int startMonth;
+int startDay;
+int endYear;
+int endMonth;
+int endDay;
+void main()
+{
+   scanf("%d %d %d", &startYear, &startMonth, &startDay);
+   scanf("%d %d %d", &endYear, &endMonth, &endDay);
+   int VAR__127322(int);
+   int h1(int);
+   int h2(int);
+   int VAR_9Q8Q90(int, int);
+
+   int VAR__53647;
+   int VAR__SUM = 0;
+   int result;
+
+   if ( startYear != endYear )
+   {
+      for ( VAR__53647 = startYear + 1; VAR__53647 < endYear; VAR__53647++ )
+      {
+         if ( VAR__127322(VAR__53647) == 1 )
+         {
+            VAR__SUM = VAR__SUM + 1;
+         }
+      }
+
+
+      result = ((((( 365 - VAR_9Q8Q90(startMonth, startDay)) + ( VAR__127322(startYear) && h1(startMonth))) + ((( endYear - startYear ) - 1 ) * 365 )) + VAR__SUM ) + VAR_9Q8Q90(endMonth, endDay)) + ( VAR__127322(endYear) && h2(endMonth));
+   }
+   else
+   {
+      result = ( VAR_9Q8Q90(endMonth, endDay) - VAR_9Q8Q90(startMonth, startDay)) + (( VAR__127322(startYear) && h1(startMonth)) && h2(endMonth));
+   }
+
+   printf("%d", result);
+}
+
+
+int VAR__127322(int year)
+{
+   return ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 );
+}
+
+
+int h1(int mon)
+{
+   return mon <= 2;
+}
+
+
+int h2(int mont)
+{
+   return mont > 2;
+}
+
+
+int VAR_9Q8Q90(int VAR__1238129, int VAR__12302)
+{
+   int VAR__53647;
+   int fromto = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      fromto = fromto + month[VAR__53647];
+   }
+
+   return fromto + VAR__12302;
+}

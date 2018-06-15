@@ -1,0 +1,125 @@
+const int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+const int VAR__19328[13]  = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int is_run(int VAR__7685)
+{
+   if (((( VAR__7685 % 100 ) != 0 ) && (( VAR__7685 % 4 ) == 0 )) || (( VAR__7685 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int f1[13][13];
+   int f2[13][13];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_1238123;
+   int year;
+   int mon1;
+   int mon2;
+   int VAR__SUM;
+
+   memset(f1, 0, sizeof( f1 ));
+   memset(f2, 0, sizeof( f2 ));
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= 12; VAR__21230++ )
+      {
+         VAR__SUM = 0;
+         for ( VAR__8444594 = VAR__53647; VAR__8444594 <= ( VAR__21230 - 1 ); VAR__8444594++ )
+         {
+            VAR__SUM += VAR__819283[VAR__8444594];
+         }
+
+         if (( VAR__SUM % 7 ) == 0 )
+         {
+            f1[VAR__53647][VAR__21230] = 1;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      f1[VAR__53647][VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         f1[VAR__53647][VAR__21230] = f1[VAR__21230][VAR__53647];
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= 12; VAR__21230++ )
+      {
+         VAR__SUM = 0;
+         for ( VAR__8444594 = VAR__53647; VAR__8444594 <= ( VAR__21230 - 1 ); VAR__8444594++ )
+         {
+            VAR__SUM += VAR__19328[VAR__8444594];
+         }
+
+         if (( VAR__SUM % 7 ) == 0 )
+         {
+            f2[VAR__53647][VAR__21230] = 1;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      f2[VAR__53647][VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         f2[VAR__53647][VAR__21230] = f2[VAR__21230][VAR__53647];
+      }
+   }
+
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &year, &mon1, &mon2);
+
+      if ( is_run(year) == 1 )
+      {
+         if ( f2[mon1][mon2] == 1 )
+         {
+            printf("YES\n");
+         }
+         else
+         {
+            printf("NO\n");
+         }
+      }
+      else
+      {
+         if ( f1[mon1][mon2] == 1 )
+         {
+            printf("YES\n");
+         }
+         else
+         {
+            printf("NO\n");
+         }
+      }
+   }
+
+   return 0;
+}

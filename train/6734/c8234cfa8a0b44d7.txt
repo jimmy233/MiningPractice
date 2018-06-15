@@ -1,0 +1,47 @@
+struct number
+{
+   int           VAR__NUM;
+   struct number *VAR__NEXT;
+};
+int main(void)
+{
+   int           VAR_1238123;
+   int           VAR__1238129;
+   int           VAR__53647;
+   struct number *VAR_233;
+   struct number *VAR__HEAD;
+   struct number *VAR_666;
+
+   while (( scanf("%d%d", &VAR_1238123, &VAR__1238129) && ( VAR_1238123 > 0 )) && ( VAR__1238129 > 0 ))
+   {
+      VAR_233   = (struct number *)malloc(LEN);
+      VAR__HEAD = VAR_233;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         VAR_233->VAR__NUM  = VAR__53647 + 1;
+         VAR_233->VAR__NEXT = (struct number *)malloc(LEN);
+         VAR_233            = VAR_233->VAR__NEXT;
+      }
+
+      VAR_233->VAR__NUM  = VAR_1238123;
+      VAR_233->VAR__NEXT = VAR__HEAD;
+      VAR_666            = VAR_233;
+
+      while ( VAR_233->VAR__NEXT != VAR_233 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+         {
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         VAR_666            = VAR_233;
+         VAR_233            = VAR_233->VAR__NEXT;
+         VAR_666->VAR__NEXT = VAR_233->VAR__NEXT;
+         VAR_233            = VAR_666;
+      }
+
+      printf("%d\n", VAR_233->VAR__NUM);
+   }
+
+   return 0;
+}

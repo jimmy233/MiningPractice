@@ -1,0 +1,65 @@
+typedef struct Point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+} Point;
+typedef struct Distance
+{
+   double LEN_OF_STH;
+   int    pt1;
+   int    pt2;
+} Distance;
+double CalDis(Point pt1, Point pt2)
+{
+   return sqrt(((((double)( pt1.VAR__7685 - pt2.VAR__7685 )) * ( pt1.VAR__7685 - pt2.VAR__7685 )) + (( pt1.VAR__3918907 - pt2.VAR__3918907 ) * ( pt1.VAR__3918907 - pt2.VAR__3918907 ))) + (( pt1.VAR__9290 - pt2.VAR__9290 ) * ( pt1.VAR__9290 - pt2.VAR__9290 )));
+}
+
+
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   if (( *((Distance *)VAR__19328 )).LEN_OF_STH != ( *((Distance *)VAR__819283 )).LEN_OF_STH )
+   {
+      return (( *((Distance *)VAR__19328 )).LEN_OF_STH > ( *((Distance *)VAR__819283 )).LEN_OF_STH ) ? ( 1 ) : ( -1 );
+   }
+   else
+   {
+      return (( *((Distance *)VAR__819283 )).pt1 > ( *((Distance *)VAR__19328 )).pt1 ) ? ( 1 ) : ( -1 );
+   }
+}
+
+
+Distance ds[N];
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__COUNT = 0;
+   int   VAR__53647;
+   int   VAR__21230;
+   Point pts[11];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &pts[VAR__53647].VAR__7685, &pts[VAR__53647].VAR__3918907, &pts[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         ds[VAR__COUNT].LEN_OF_STH = CalDis(pts[VAR__53647], pts[VAR__21230]);
+         ds[VAR__COUNT].pt1        = VAR__53647;
+         ds[VAR__COUNT++].pt2      = VAR__21230;
+      }
+   }
+
+
+   qsort(ds, VAR__COUNT, sizeof( ds[0] ), cmp);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", pts[ds[VAR__53647].pt1].VAR__7685, pts[ds[VAR__53647].pt1].VAR__3918907, pts[ds[VAR__53647].pt1].VAR__9290, pts[ds[VAR__53647].pt2].VAR__7685, pts[ds[VAR__53647].pt2].VAR__3918907, pts[ds[VAR__53647].pt2].VAR__9290, ds[VAR__53647].LEN_OF_STH);
+   }
+
+   return 0;
+}

@@ -1,0 +1,71 @@
+int VAR__7685;
+int VAR__3918907;
+int x1;
+int y1;
+void VAR__NEXT()
+{
+   if (( x1 == 0 ) && ( y1 == 1 ))
+   {
+      x1 = 1;
+      y1 = 0;
+   }
+   else
+   if (( x1 == 1 ) && ( y1 == 0 ))
+   {
+      x1 = 0;
+      y1 = -1;
+   }
+   else
+   if (( x1 == 0 ) && ( y1 == ( -1 )))
+   {
+      x1 = -1;
+      y1 = 0;
+   }
+   else
+   if (( x1 == ( -1 )) && ( y1 == 0 ))
+   {
+      x1 = 0;
+      y1 = 1;
+   }
+}
+
+
+void main()
+{
+   int VAR__819283[200][200] = { 0 };
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__COUNT;
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 1; VAR__53647 <= row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= col; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+   x1 = 0;
+   y1 = 1;
+   for ( VAR__7685 = 1, VAR__3918907 = 0, VAR__COUNT = 1; VAR__COUNT <= ( row * col ); )
+   {
+      VAR__7685    = VAR__7685 + x1;
+      VAR__3918907 = VAR__3918907 + y1;
+
+      if ( VAR__819283[VAR__7685][VAR__3918907] == 0 )
+      {
+         VAR__7685    = VAR__7685 - x1;
+         VAR__3918907 = VAR__3918907 - y1;
+         VAR__NEXT();
+      }
+      else
+      {
+         printf("%d\n", VAR__819283[VAR__7685][VAR__3918907]);
+         VAR__819283[VAR__7685][VAR__3918907] = 0;
+         VAR__COUNT++;
+      }
+   }
+}

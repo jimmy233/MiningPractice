@@ -1,0 +1,86 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int VAR__8444594;
+   int VAR__temp;
+   int s1[5000];
+   int s2[5000];
+   int s3[5000]     = { 0 };
+   int VAR__1238129 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &s1[VAR__53647], &s2[VAR__53647]);
+   }
+
+   int VAR__MAX = s2[0];
+   int VAR__MIN = s1[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( s1[VAR__53647] < VAR__MIN )
+      {
+         VAR__MIN = s1[VAR__53647];
+      }
+
+      if ( s2[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = s2[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR__53647; VAR__8444594++ )
+      {
+         if ( s1[VAR__8444594] > s1[VAR__8444594 + 1] )
+         {
+            VAR__temp            = s1[VAR__8444594];
+            s1[VAR__8444594]     = s1[VAR__8444594 + 1];
+            s1[VAR__8444594 + 1] = VAR__temp;
+            VAR__temp            = s2[VAR__8444594];
+            s2[VAR__8444594]     = s2[VAR__8444594 + 1];
+            s2[VAR__8444594 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if (( s2[VAR__53647] + 1 ) == s1[VAR__53647 + 1] )
+      {
+         VAR__temp = 1;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__8444594 = s1[VAR__53647]; VAR__8444594 <= s2[VAR__53647]; VAR__8444594++ )
+      {
+         s3[VAR__8444594] = 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      if ( s3[VAR__53647] == 1 )
+      {
+         VAR__1238129++;
+      }
+   }
+
+   if (( VAR__1238129 == (( VAR__MAX - VAR__MIN ) + 1 )) && ( VAR__temp != 1 ))
+   {
+      printf("%d %d", VAR__MIN, VAR__MAX);
+   }
+   else
+   {
+      printf("no");
+   }
+
+   return 0;
+}

@@ -1,0 +1,96 @@
+int Compare(const void *e1, const void *e2)
+{
+   return ( *((int *)e1 )) - ( *((int *)e2 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         int qi[1100];
+         int tian[1100];
+         int qhead = 1;
+         int qtail = VAR_1238123;
+         int thead = 1;
+         int ttail = VAR_1238123;
+         int VAR__53647;
+         int VAR__NUM = 0;
+         for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+         {
+            cin >> tian[VAR__53647];
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+         {
+            cin >> qi[VAR__53647];
+         }
+
+         qsort(tian + 1, VAR_1238123, sizeof( int ), Compare);
+         qsort(qi + 1, VAR_1238123, sizeof( int ), Compare);
+
+         while ( thead <= ttail )
+         {
+            if ( tian[thead] > qi[qhead] )
+            {
+               VAR__NUM += 200;
+               thead++;
+               qhead++;
+            }
+            else
+            if ( tian[thead] < qi[qhead] )
+            {
+               VAR__NUM -= 200;
+               thead++;
+               qtail--;
+            }
+            else
+            {
+               if ( tian[ttail] > qi[qtail] )
+               {
+                  ttail--;
+                  qtail--;
+                  VAR__NUM += 200;
+               }
+               else
+               if ( tian[ttail] == qi[qtail] )
+               {
+                  if ( tian[thead] == qi[qtail] )
+                  {
+                     thead++;
+                     qtail--;
+                  }
+                  else
+                  if ( tian[thead] < qi[qtail] )
+                  {
+                     VAR__NUM -= 200;
+                     thead++;
+                     qtail--;
+                  }
+               }
+               else
+               {
+                  if ( tian[thead] < qi[qtail] )
+                  {
+                     VAR__NUM -= 200;
+                     thead++;
+                     qtail--;
+                  }
+               }
+            }
+         }
+
+         ( cout << VAR__NUM ) << endl;
+      }
+   }
+
+   return 0;
+}

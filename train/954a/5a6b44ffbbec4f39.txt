@@ -1,0 +1,85 @@
+struct stu
+{
+   char       name[20];
+   int        mark1;
+   int        mark2;
+   char       gan;
+   char       west;
+   int        paper;
+   int        money;
+   struct stu *VAR__NEXT;
+};
+void main()
+{
+   int        VAR__53647;
+   int        VAR_1238123;
+   int        VAR__MAX = 0;
+   int        VAR__SUM = 0;
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR_233;
+
+   scanf("%d\n", &VAR_1238123);
+   ANOTHER_POINTER     = (struct stu *)malloc(sizeof( struct stu ));
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   VAR__HEAD           = ANOTHER_POINTER;
+   scanf("%s %d %d %c %c %d\n", ANOTHER_POINTER->name, &ANOTHER_POINTER->mark1, &ANOTHER_POINTER->mark2, &ANOTHER_POINTER->gan, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+   ANOTHER_POINTER->money = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      scanf("%s %d %d %c %c %d\n", ANOTHER_POINTER->name, &ANOTHER_POINTER->mark1, &ANOTHER_POINTER->mark2, &ANOTHER_POINTER->gan, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+      ANOTHER_POINTER->money = 0;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if (( VAR_233->mark1 > 80 ) && ( VAR_233->paper >= 1 ))
+      {
+         VAR_233->money += 8000;
+      }
+
+      if (( VAR_233->mark1 > 85 ) && ( VAR_233->mark2 > 80 ))
+      {
+         VAR_233->money += 4000;
+      }
+
+      if ( VAR_233->mark1 > 90 )
+      {
+         VAR_233->money += 2000;
+      }
+
+      if (( VAR_233->mark1 > 85 ) && ( VAR_233->west == 'Y' ))
+      {
+         VAR_233->money += 1000;
+      }
+
+      if (( VAR_233->mark2 > 80 ) && ( VAR_233->gan == 'Y' ))
+      {
+         VAR_233->money += 850;
+      }
+   }
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      VAR__SUM += VAR_233->money;
+
+      if ( VAR_233->money > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->money;
+      }
+   }
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->money == VAR__MAX )
+      {
+         printf("%s\n%d\n%d", VAR_233->name, VAR_233->money, VAR__SUM);
+         break;
+      }
+   }
+}

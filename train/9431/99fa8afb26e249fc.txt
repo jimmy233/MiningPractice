@@ -1,0 +1,110 @@
+struct student
+{
+   char           VAR__NUM[10];
+   char           s1[20];
+   char           sex;
+   int            age;
+   char           mark[20];
+   char           s2[20];
+   struct student *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct student
+{
+   char           VAR__NUM[10];
+   char           s1[20];
+   char           sex;
+   int            age;
+   char           mark[20];
+   char           s2[20];
+   struct student *VAR__NEXT;
+}
+    *YET_ANOTHER_POINTER;
+int VAR_1238123;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+   while ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0 )
+   {
+      scanf("%s %c %d %s %s", ANOTHER_POINTER->s1, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->mark, ANOTHER_POINTER->s2);
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct student *turnback(struct student *VAR__HEAD)
+{
+   struct student *newhead = NULL;
+   struct student *anew;
+
+   do
+   {
+      YET_ANOTHER_POINTER = NULL;
+      ANOTHER_POINTER     = VAR__HEAD;
+
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( newhead == NULL )
+      {
+         newhead = ANOTHER_POINTER;
+         anew    = ( newhead->VAR__NEXT = YET_ANOTHER_POINTER );
+      }
+
+      anew = ( anew->VAR__NEXT = YET_ANOTHER_POINTER );
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   } while ( VAR__HEAD->VAR__NEXT != NULL );
+   return newhead;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR_233 != NULL )
+   {
+      do
+      {
+         printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->s1, VAR_233->sex, VAR_233->age, VAR_233->mark, VAR_233->s2);
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+   }
+}
+
+
+int main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   VAR__HEAD = turnback(VAR__HEAD);
+   print(VAR__HEAD);
+   return 0;
+}

@@ -1,0 +1,60 @@
+struct author
+{
+   int  VAR__NUM;
+   char aut[27];
+}
+VAR__819283[999];
+void main()
+{
+   void search(struct author VAR__19328[], int VAR_1238123, char marker);
+
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  times[30] = { 0 };
+   int  length    = 0;
+   int  VAR__21230;
+   int  VAR__MAX = 0;
+   int  VAR_FLAG = 9;
+   char chac;
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &VAR__819283[VAR__53647].VAR__NUM, &VAR__819283[VAR__53647].aut);
+      length = strlen(VAR__819283[VAR__53647].aut);
+      for ( VAR__21230 = 0; VAR__21230 < length; VAR__21230++ )
+      {
+         chac = VAR__819283[VAR__53647].aut[VAR__21230];
+         times[chac - 'A']++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__MAX < times[VAR__53647] )
+      {
+         VAR__MAX = times[VAR__53647];
+         VAR_FLAG = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", (char)( VAR_FLAG + 'A' ), VAR__MAX);
+   search(VAR__819283, VAR__1238129, (char)( VAR_FLAG + 'A' ));
+}
+
+
+void search(struct author VAR__19328[], int VAR_1238123, char marker)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(VAR__19328[VAR__53647].aut); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__53647].aut[VAR__21230] == marker )
+         {
+            printf("%d\n", VAR__19328[VAR__53647].VAR__NUM);
+         }
+      }
+   }
+}

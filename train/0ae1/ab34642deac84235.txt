@@ -1,0 +1,59 @@
+void main()
+{
+   int  ping[12]   = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int  run[12]    = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   char week[7][5] = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+   int  year;
+   int  mon;
+   int  day;
+   int  result = 0;
+
+   scanf("%d %d %d", &year, &mon, &day);
+   int VAR__TEMP = year;
+   year    = year - 1;
+   result += ( year / 400 ) * FOURFUN;
+   year    = year % 400;
+   result += ( year / 100 ) * ONEFUN;
+   year    = year % 100;
+   result += ( year / 20 ) * TWEN;
+   year    = year % 20;
+   result += ( year / 4 ) * FOUR;
+   year    = year % 4;
+   result += ONE * year;
+   int VAR_FLAG = 0;
+
+   if (( VAR__TEMP % 400 ) == 0 )
+   {
+      VAR_FLAG = 1;
+   }
+   else
+   if ((( VAR__TEMP % 100 ) != 0 ) && (( VAR__TEMP % 4 ) == 0 ))
+   {
+      VAR_FLAG = 1;
+   }
+
+
+   if ( VAR_FLAG == 1 )
+   {
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < ( mon - 1 ); VAR__53647++ )
+      {
+         result += run[VAR__53647];
+      }
+
+      result += day;
+   }
+   else
+   {
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < ( mon - 1 ); VAR__53647++ )
+      {
+         result += ping[VAR__53647];
+      }
+
+      result += day;
+   }
+
+   result = result % 7;
+   printf("%s\n", week[result]);
+}

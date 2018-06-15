@@ -1,0 +1,121 @@
+int VAR__MIN(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__MIN = VAR__819283[1];
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MIN > VAR__819283[VAR__53647] )
+      {
+         VAR__MIN = VAR__819283[VAR__53647];
+      }
+   }
+
+   return VAR__MIN;
+}
+
+
+void main()
+{
+   int T[1100];
+   int Q[1100];
+   int VAR_1238123 = 1;
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__112390;
+   int VAR_9494;
+   int money = 0;
+   int first;
+   int endT;
+   int endQ;
+
+   while ( VAR_1238123 != 0 )
+   {
+      scanf("%d", &VAR_1238123);
+      first = 0, endT = VAR_1238123 - 1, endQ = VAR_1238123 - 1;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &T[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &Q[VAR__53647]);
+      }
+
+      for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+         {
+            if ( T[VAR__53647] < T[VAR__53647 + 1] )
+            {
+               VAR__112390       = T[VAR__53647];
+               T[VAR__53647]     = T[VAR__53647 + 1];
+               T[VAR__53647 + 1] = VAR__112390;
+            }
+
+            if ( Q[VAR__53647] < Q[VAR__53647 + 1] )
+            {
+               VAR__112390       = Q[VAR__53647];
+               Q[VAR__53647]     = Q[VAR__53647 + 1];
+               Q[VAR__53647 + 1] = VAR__112390;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( T[first] > Q[VAR__53647] )
+         {
+            first++;
+            money += 200;
+         }
+         else
+         if ( T[first] < Q[VAR__53647] )
+         {
+            endT--;
+            money -= 200;
+         }
+         else
+         if ( T[first] == Q[VAR__53647] )
+         {
+            for ( VAR__8444594 = endT, VAR_9494 = endQ; VAR__8444594 >= first; VAR__8444594--, VAR_9494-- )
+            {
+               if ( T[VAR__8444594] > Q[VAR_9494] )
+               {
+                  money += 200;
+                  endT--;
+                  endQ--;
+               }
+               else
+               {
+                  if ( T[VAR__8444594] < Q[VAR__53647] )
+                  {
+                     money -= 200;
+                  }
+
+                  endT = VAR__8444594 - 1;
+                  endQ = VAR_9494;
+                  break;
+               }
+            }
+         }
+
+
+
+         if ( first > endT )
+         {
+            break;
+         }
+      }
+
+      printf("%d\n", money);
+      money = 0;
+   }
+}

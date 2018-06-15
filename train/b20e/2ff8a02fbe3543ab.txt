@@ -1,0 +1,97 @@
+int main()
+{
+   int VAR_1238123[100]     = { 0 };
+   int VAR__temp[100][1005] = { 0 };
+   int VAR_666[100][1005]   = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__9290 = 0;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      scanf("%d", &VAR_1238123[VAR__53647]);
+
+      if ( VAR_1238123[VAR__53647] == 0 )
+      {
+         VAR__9290 = VAR__53647;
+         break;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123[VAR__53647] - 1 ); VAR__21230++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647][VAR__21230]);
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123[VAR__53647] - 1 ); VAR__21230++ )
+      {
+         scanf("%d", &VAR_666[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__9290 - 1 ); VAR__53647++ )
+   {
+      int change = 0;
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123[VAR__53647] - 1 ); VAR__21230++ )
+      {
+         for ( VAR__8444594 = VAR__21230 + 1; VAR__8444594 <= VAR_1238123[VAR__53647]; VAR__8444594++ )
+         {
+            if ( VAR__temp[VAR__53647][VAR__21230] < VAR__temp[VAR__53647][VAR__8444594] )
+            {
+               change = VAR__temp[VAR__53647][VAR__8444594];
+               VAR__temp[VAR__53647][VAR__8444594] = VAR__temp[VAR__53647][VAR__21230];
+               VAR__temp[VAR__53647][VAR__21230]   = change;
+            }
+
+            if ( VAR_666[VAR__53647][VAR__21230] < VAR_666[VAR__53647][VAR__8444594] )
+            {
+               change = VAR_666[VAR__53647][VAR__8444594];
+               VAR_666[VAR__53647][VAR__8444594] = VAR_666[VAR__53647][VAR__21230];
+               VAR_666[VAR__53647][VAR__21230]   = change;
+            }
+         }
+      }
+
+      int ft    = 0;
+      int fq    = 0;
+      int st    = VAR_1238123[VAR__53647] - 1;
+      int sq    = VAR_1238123[VAR__53647] - 1;
+      int money = 0;
+      for ( VAR__21230 = ft; VAR__21230 <= st; VAR__21230++ )
+      {
+         for ( VAR__8444594 = fq; VAR__8444594 <= sq; VAR__8444594++ )
+         {
+            if ( VAR__temp[VAR__53647][VAR__21230] > VAR_666[VAR__53647][VAR__8444594] )
+            {
+               money = money + 200;
+               fq    = fq + 1;
+               break;
+            }
+            else
+            if ( VAR__temp[VAR__53647][st] > VAR_666[VAR__53647][sq] )
+            {
+               money      = money + 200;
+               st         = st - 1;
+               sq         = sq - 1;
+               VAR__21230 = VAR__21230 - 1;
+               break;
+            }
+            else
+            if ( VAR__temp[VAR__53647][st] == VAR_666[VAR__53647][fq] )
+            {
+               break;
+            }
+            else
+            {
+               money      = money - 200;
+               fq         = fq + 1;
+               st         = st - 1;
+               VAR__21230 = VAR__21230 - 1;
+               break;
+            }
+         }
+      }
+
+      printf("%d\n", money);
+   }
+}

@@ -1,0 +1,87 @@
+int main()
+{
+   int    VAR_1238123;
+   float  distance[150];
+   int    VAR__8444594 = 1;
+   int    VAR__53647   = 1;
+   int    VAR__21230   = 1;
+   int    VAR__temp    = 1;
+   double VAR__TEMP;
+   struct point
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   stu1[12];
+   struct ttt
+   {
+      int x1;
+      int y1;
+      int z1;
+      int x2;
+      int y2;
+      int z2;
+   }
+   stu2[150];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &stu1[VAR__53647].VAR__7685, &stu1[VAR__53647].VAR__3918907, &stu1[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         distance[VAR__8444594] = (float)sqrt(((( stu1[VAR__53647].VAR__7685 - stu1[VAR__21230].VAR__7685 ) * ( stu1[VAR__53647].VAR__7685 - stu1[VAR__21230].VAR__7685 )) + (( stu1[VAR__53647].VAR__3918907 - stu1[VAR__21230].VAR__3918907 ) * ( stu1[VAR__53647].VAR__3918907 - stu1[VAR__21230].VAR__3918907 ))) + (( stu1[VAR__53647].VAR__9290 - stu1[VAR__21230].VAR__9290 ) * ( stu1[VAR__53647].VAR__9290 - stu1[VAR__21230].VAR__9290 )));
+         stu2[VAR__8444594].x1  = stu1[VAR__53647].VAR__7685;
+         stu2[VAR__8444594].y1  = stu1[VAR__53647].VAR__3918907;
+         stu2[VAR__8444594].z1  = stu1[VAR__53647].VAR__9290;
+         stu2[VAR__8444594].x2  = stu1[VAR__21230].VAR__7685;
+         stu2[VAR__8444594].y2  = stu1[VAR__21230].VAR__3918907;
+         stu2[VAR__8444594].z2  = stu1[VAR__21230].VAR__9290;
+         VAR__8444594++;
+      }
+   }
+
+   VAR__temp = VAR__8444594 - 1;
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__temp - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( VAR__temp - VAR__21230 ); VAR__53647++ )
+      {
+         if ( distance[VAR__53647] < distance[VAR__53647 + 1] )
+         {
+            VAR__TEMP                = distance[VAR__53647];
+            distance[VAR__53647]     = distance[VAR__53647 + 1];
+            distance[VAR__53647 + 1] = VAR__TEMP;
+            VAR__TEMP                = stu2[VAR__53647].x1;
+            stu2[VAR__53647].x1      = stu2[VAR__53647 + 1].x1;
+            stu2[VAR__53647 + 1].x1  = VAR__TEMP;
+            VAR__TEMP                = stu2[VAR__53647].y1;
+            stu2[VAR__53647].y1      = stu2[VAR__53647 + 1].y1;
+            stu2[VAR__53647 + 1].y1  = VAR__TEMP;
+            VAR__TEMP                = stu2[VAR__53647].z1;
+            stu2[VAR__53647].z1      = stu2[VAR__53647 + 1].z1;
+            stu2[VAR__53647 + 1].z1  = VAR__TEMP;
+            VAR__TEMP                = stu2[VAR__53647].x2;
+            stu2[VAR__53647].x2      = stu2[VAR__53647 + 1].x2;
+            stu2[VAR__53647 + 1].x2  = VAR__TEMP;
+            VAR__TEMP                = stu2[VAR__53647].y2;
+            stu2[VAR__53647].y2      = stu2[VAR__53647 + 1].y2;
+            stu2[VAR__53647 + 1].y2  = VAR__TEMP;
+            VAR__TEMP                = stu2[VAR__53647].z2;
+            stu2[VAR__53647].z2      = stu2[VAR__53647 + 1].z2;
+            stu2[VAR__53647 + 1].z2  = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR__temp; VAR__8444594++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", stu2[VAR__8444594].x1, stu2[VAR__8444594].y1, stu2[VAR__8444594].z1, stu2[VAR__8444594].x2, stu2[VAR__8444594].y2, stu2[VAR__8444594].z2, distance[VAR__8444594]);
+   }
+
+   return 0;
+}

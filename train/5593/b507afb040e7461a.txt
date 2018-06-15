@@ -1,0 +1,84 @@
+char isPrime(int VAR_1238123)
+{
+   char VAR_FLAG = 1;
+   int  VAR__53647;
+
+   for ( VAR__53647 = 2; VAR__53647 <= sqrt(VAR_1238123); VAR__53647++ )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         VAR_FLAG = 0;
+         break;
+      }
+   }
+
+   return VAR_FLAG;
+}
+
+
+int nDigits(int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR_1238123 != 0; VAR__53647++ )
+   {
+      VAR_1238123 /= 10;
+   }
+
+   return VAR__53647;
+}
+
+
+char isPalindrome(int VAR_1238123)
+{
+   char VAR_FLAG = 1;
+   int  VAR__12302;
+   int  VAR__53647;
+
+   for ( VAR__53647 = 0, VAR__12302 = nDigits(VAR_1238123) - 1; VAR__12302 > VAR__53647; VAR__53647++, VAR__12302-- )
+   {
+      if ((((int)( VAR_1238123 / pow(10, VAR__53647))) % 10 ) - (((int)( VAR_1238123 / pow(10, VAR__12302))) % 10 ))
+      {
+         VAR_FLAG = 0;
+      }
+   }
+
+   return VAR_FLAG;
+}
+
+
+int main()
+{
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__53647;
+   char VAR_FLAG = 1;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( isPrime(VAR__53647))
+      {
+         if ( isPalindrome(VAR__53647))
+         {
+            if ( VAR_FLAG )
+            {
+               printf("%d", VAR__53647);
+               VAR_FLAG = 0;
+            }
+            else
+            {
+               printf(",%d", VAR__53647);
+            }
+         }
+      }
+   }
+
+   if ( VAR_FLAG )
+   {
+      printf("no");
+   }
+
+   printf("\n");
+   return 0;
+}

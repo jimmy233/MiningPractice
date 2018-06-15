@@ -1,0 +1,69 @@
+struct Student
+{
+   char           VAR__NUM[20];
+   char           name[20];
+   char           gender;
+   int            age;
+   char           score[10];
+   char           address[20];
+   struct Student *VAR__NEXT;
+   struct Student *upper;
+};
+int VAR_1238123;
+struct Student *creat(void)
+{
+   struct Student *VAR__HEAD;
+   struct Student *end;
+   struct Student *ANOTHER_POINTER;
+   struct Student *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct Student *)malloc(LEN));
+   scanf("%s %s %c %d %s %s", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, &ANOTHER_POINTER->gender, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+   VAR__HEAD = NULL;
+
+   while ( ANOTHER_POINTER->VAR__NUM[0] != 'e' )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+         ANOTHER_POINTER->upper = NULL;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         ANOTHER_POINTER->upper         = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct Student *)malloc(LEN);
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( ANOTHER_POINTER->VAR__NUM[0] == 'e' )
+      {
+         end = YET_ANOTHER_POINTER;
+         break;
+      }
+
+      scanf("%s %c %d %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->gender, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return end;
+}
+
+
+int main()
+{
+   struct Student *pt;
+
+   pt = creat();
+   do
+   {
+      printf("%s %s %c %d %s %s\n", pt->VAR__NUM, pt->name, pt->gender, pt->age, pt->score, pt->address);
+      pt = pt->upper;
+   } while ( pt != NULL );
+   return 0;
+}

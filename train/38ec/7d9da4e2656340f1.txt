@@ -1,0 +1,97 @@
+int rYear(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 366;
+   }
+   else
+   {
+      return 365;
+   }
+}
+
+
+int MonthDay(int year, int month)
+{
+   int day;
+
+   switch ( month )
+   {
+   case 2:
+
+      if (( rYear(year) - 365 ) == 0 )
+      {
+         day = 28;
+      }
+      else
+      if (( rYear(year) - 365 ) == 1 )
+      {
+         day = 29;
+      }
+
+
+      break;
+
+   case 1:
+      ;
+
+   case 3:
+      ;
+
+   case 5:
+      ;
+
+   case 7:
+      ;
+
+   case 8:
+      ;
+
+   case 10:
+      ;
+
+   case 12:
+      day = 31;
+      break;
+
+   default:
+      day = 30;
+      break;
+   }
+
+   return day;
+}
+
+
+int main(void)
+{
+   int year1;
+   int month1;
+   int day1;
+   int year2;
+   int month2;
+   int day2;
+   int VAR__NUM = 0;
+
+   (( cin >> year1 ) >> month1 ) >> day1;
+   (( cin >> year2 ) >> month2 ) >> day2;
+   for ( int VAR__53647 = year1; VAR__53647 < year2; VAR__53647++ )
+   {
+      VAR__NUM += rYear(VAR__53647);
+   }
+
+   for ( int VAR__21230 = 1; VAR__21230 < month2; VAR__21230++ )
+   {
+      VAR__NUM += MonthDay(year2, VAR__21230);
+   }
+
+   for ( int VAR__8444594 = 1; VAR__8444594 < month1; VAR__8444594++ )
+   {
+      VAR__NUM -= MonthDay(year1, VAR__8444594);
+   }
+
+   VAR__NUM += day2;
+   VAR__NUM -= day1;
+   ( cout << VAR__NUM ) << endl;
+   return 0;
+}

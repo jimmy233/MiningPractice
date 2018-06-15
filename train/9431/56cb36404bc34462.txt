@@ -1,0 +1,72 @@
+struct Student
+{
+   char           id[9];
+   char           name[20];
+   char           gen;
+   int            age;
+   char           grade[10];
+   char           add[20];
+   struct Student *VAR__NEXT;
+};
+void main()
+{
+   struct Student *VAR__HEAD;
+   struct Student *YET_ANOTHER_POINTER;
+   struct Student *ANOTHER_POINTER;
+   struct Student *newstu;
+   struct Student *newhead;
+   int            VAR__53647;
+   int            VAR_1238123   = 1;
+   char           VAR__112390[] = { "end" };
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = ( VAR__HEAD = (struct Student *)malloc(sizeof( struct Student ))));
+   scanf("%s %s %c %d %s %s", &ANOTHER_POINTER->id, &ANOTHER_POINTER->name, &ANOTHER_POINTER->gen, &ANOTHER_POINTER->age, &ANOTHER_POINTER->grade, &ANOTHER_POINTER->add);
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct Student *)malloc(sizeof( struct Student ));
+      scanf("%s", &ANOTHER_POINTER->id);
+
+      if ( strcmp(ANOTHER_POINTER->id, VAR__112390) == 0 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+         break;
+      }
+      else
+      {
+         scanf(" %s %c %d %s %s", &ANOTHER_POINTER->name, &ANOTHER_POINTER->gen, &ANOTHER_POINTER->age, &ANOTHER_POINTER->grade, &ANOTHER_POINTER->add);
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         VAR_1238123++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ( ANOTHER_POINTER = VAR__HEAD );
+
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( VAR__53647 == 0 )
+      {
+         newhead = ( newstu = ANOTHER_POINTER );
+      }
+      else
+      {
+         newstu = ( newstu->VAR__NEXT = ANOTHER_POINTER );
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   }
+
+   ANOTHER_POINTER = newhead;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s %s %c %d %s %s\n", ANOTHER_POINTER->id, ANOTHER_POINTER->name, ANOTHER_POINTER->gen, ANOTHER_POINTER->age, ANOTHER_POINTER->grade, ANOTHER_POINTER->add);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

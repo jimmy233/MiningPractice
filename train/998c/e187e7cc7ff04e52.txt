@@ -1,0 +1,110 @@
+int main()
+{
+   char VAR__819283[250] = { 0 };
+   char VAR__19328[250]  = { 0 };
+   char VAR__SUM[250]    = { 0 };
+
+   scanf("%s", VAR__819283);
+   scanf("%s", VAR__19328);
+   int na;
+   int VAR__53647;
+   int nb;
+   for ( VAR__53647 = 0; VAR__53647 < 250; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '\0' )
+      {
+         na = VAR__53647 - 1;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 250; VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] == '\0' )
+      {
+         nb = VAR__53647 - 1;
+         break;
+      }
+   }
+
+   int VAR_1238123 = ( na > nb ) ? ( na ) : ( nb );
+
+   if ( na < VAR_1238123 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= na; VAR__53647++ )
+      {
+         VAR__819283[VAR_1238123 - VAR__53647] = VAR__819283[na - VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= (( VAR_1238123 - na ) - 1 ); VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = 48;
+      }
+   }
+
+   if ( nb < VAR_1238123 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= nb; VAR__53647++ )
+      {
+         VAR__19328[VAR_1238123 - VAR__53647] = VAR__19328[nb - VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= (( VAR_1238123 - nb ) - 1 ); VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = 48;
+      }
+   }
+
+   int VAR__temp = 0;
+   for ( VAR__53647 = VAR_1238123; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__SUM[VAR__53647 + 1] = (( VAR__819283[VAR__53647] + VAR__19328[VAR__53647] ) + VAR__temp ) - 48;
+
+      if (( VAR__SUM[VAR__53647 + 1] - 48 ) >= 10 )
+      {
+         VAR__SUM[VAR__53647 + 1] = VAR__SUM[VAR__53647 + 1] - 10;
+         VAR__temp = 1;
+      }
+      else
+      {
+         VAR__temp = 0;
+      }
+   }
+
+   if ( VAR__temp == 1 )
+   {
+      VAR__SUM[0] = 49;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         VAR__SUM[VAR__53647] = VAR__SUM[VAR__53647 + 1];
+      }
+
+      VAR__SUM[VAR_1238123 + 1] = 0;
+   }
+
+   if (( VAR__SUM[0] == 48 ) && ( VAR_1238123 > 0 ))
+   {
+      int VAR__7685;
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if (( VAR__SUM[VAR__53647] == 48 ) && ( VAR__SUM[VAR__53647 + 1] != 48 ))
+         {
+            VAR__7685 = VAR__53647;
+            break;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= (( VAR_1238123 - 1 ) - VAR__7685 ); VAR__53647++ )
+      {
+         VAR__SUM[VAR__53647] = VAR__SUM[( VAR__53647 + VAR__7685 ) + 1];
+      }
+
+      VAR__SUM[VAR_1238123 - VAR__7685] = 0;
+   }
+
+   printf("%s", VAR__SUM);
+   return 0;
+}

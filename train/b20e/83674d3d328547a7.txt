@@ -1,0 +1,92 @@
+int VAR__819283[1001];
+int VAR__19328[1001];
+void sort(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int win  = 0;
+   int lose = 0;
+   int maxa;
+   int maxb;
+   int mina;
+   int minb;
+   int money;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      win = ( lose = 0 );
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      sort(VAR__819283, VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      sort(VAR__19328, VAR_1238123);
+      maxa  = ( maxb = VAR_1238123 - 1 );
+      mina  = ( minb = 0 );
+      money = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__819283[mina] > VAR__19328[minb] )
+         {
+            win++;
+            mina++;
+            minb++;
+         }
+         else
+         if ( VAR__819283[maxa] > VAR__19328[maxb] )
+         {
+            win++;
+            maxa--;
+            maxb--;
+         }
+         else
+         if ( VAR__819283[mina] == VAR__19328[maxb] )
+         {
+            mina++;
+            maxb--;
+         }
+         else
+         if ( VAR__819283[mina] <= VAR__19328[minb] )
+         {
+            lose++;
+            mina++;
+            maxb--;
+         }
+      }
+
+      money = 200 * ( win - lose );
+      printf("%d\n", money);
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 0;
+}

@@ -1,0 +1,67 @@
+int main()
+{
+   int N;
+
+   scanf("%d", &N);
+   int   count1     = 0;
+   int   count2     = 0;
+   float male[40]   = { 0.0 };
+   float female[40] = { 0.0 };
+   char  judge[10]  = { '\0' };
+   for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s", judge);
+
+      if ( judge[0] == 'm' )
+      {
+         scanf("%f", &male[count1]);
+         count1++;
+      }
+      else
+      {
+         scanf("%f", &female[count2]);
+         count2++;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < count1; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < count1; VAR__21230++ )
+      {
+         float VAR__TEMP = 0.0;
+
+         if ( male[VAR__53647] > male[VAR__21230] )
+         {
+            VAR__TEMP        = male[VAR__53647];
+            male[VAR__53647] = male[VAR__21230];
+            male[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < count2; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < count2; VAR__21230++ )
+      {
+         float VAR__TEMP = 0.0;
+
+         if ( female[VAR__53647] < female[VAR__21230] )
+         {
+            VAR__TEMP          = female[VAR__53647];
+            female[VAR__53647] = female[VAR__21230];
+            female[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+   printf("%.2f", male[0]);
+   for ( int VAR__53647 = 1; VAR__53647 < count1; VAR__53647++ )
+   {
+      printf(" %.2f", male[VAR__53647]);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < count2; VAR__53647++ )
+   {
+      printf(" %.2f", female[VAR__53647]);
+   }
+}

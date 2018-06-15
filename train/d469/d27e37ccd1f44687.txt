@@ -1,0 +1,45 @@
+void srev(char A_STRING[500], int LEN_OF_STH)
+{
+   char rev[500];
+   int  VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      *( rev + VAR__53647 ) = *((( A_STRING + LEN_OF_STH ) - VAR__53647 ) - 1 );
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      *( A_STRING + VAR__53647 ) = *( rev + VAR__53647 );
+   }
+}
+
+
+int main()
+{
+   char VAR_9494[500];
+   char A_STRING[500];
+   char rev[500];
+
+   gets(VAR_9494);
+   int LEN_OF_STH = strlen(VAR_9494);
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 2; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( LEN_OF_STH - VAR__53647 ) + 1 ); VAR__21230++ )
+      {
+         strncpy(A_STRING, VAR_9494 + VAR__21230, VAR__53647);
+         strncpy(rev, VAR_9494 + VAR__21230, VAR__53647);
+         A_STRING[VAR__53647] = ( rev[VAR__53647] = '\0' );
+         srev(rev, VAR__53647);
+
+         if ( strcmp(A_STRING, rev) == 0 )
+         {
+            puts(A_STRING);
+         }
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,63 @@
+int main()
+{
+   struct pa
+   {
+      char ID[10];
+      int  age;
+   }
+       *VAR_233;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__NUM     = 0;
+   int VAR__1238129 = 0;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = (struct pa *)malloc(( sizeof( struct pa )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", VAR_233[VAR__53647].ID, &VAR_233[VAR__53647].age);
+
+      if ( VAR_233[VAR__53647].age >= 60 )
+      {
+         VAR__NUM++;
+      }
+   }
+
+   int VAR_21983012 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_233[VAR__53647].age >= 60 )
+      {
+         struct pa VAR_666 = VAR_233[VAR__53647];
+         for ( VAR__8444594 = VAR__53647; VAR__8444594 > VAR_21983012; VAR__8444594-- )
+         {
+            VAR_233[VAR__8444594] = VAR_233[VAR__8444594 - 1];
+         }
+
+         VAR_233[VAR_21983012] = VAR_666;
+         VAR_21983012++;
+      }
+   }
+
+   for ( VAR__53647 = VAR__NUM - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR__53647; VAR__8444594++ )
+      {
+         if ( VAR_233[VAR__8444594].age < VAR_233[VAR__8444594 + 1].age )
+         {
+            struct pa VAR_666 = VAR_233[VAR__8444594];
+            VAR_233[VAR__8444594]     = VAR_233[VAR__8444594 + 1];
+            VAR_233[VAR__8444594 + 1] = VAR_666;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233[VAR__53647].ID);
+   }
+
+   free(VAR_233);
+   return 0;
+}

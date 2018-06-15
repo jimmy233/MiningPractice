@@ -1,0 +1,136 @@
+int VAR__819283[100][100];
+void guiling(void);
+void xiaojian(int);
+
+int g_n;
+int main()
+{
+   cin >> g_n;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   for ( VAR__53647 = 1; VAR__53647 <= g_n; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( g_n - 1 ); VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 <= ( g_n - 1 ); VAR__8444594++ )
+         {
+            cin >> VAR__819283[VAR__21230][VAR__8444594];
+         }
+      }
+
+      int cishu    = 1;
+      int VAR__SUM = 0;
+      for ( ; VAR__819283[g_n - 1][0] >= 0; cishu++ )
+      {
+         guiling();
+         VAR__SUM = VAR__SUM + VAR__819283[cishu][cishu];
+         xiaojian(cishu);
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}
+
+
+void guiling()
+{
+   int VAR__53647   = 0;
+   int VAR__21230   = 0;
+   int VAR__8444594 = 0;
+   int VAR_FLAG     = 0;
+   int VAR__MIN     = 1000;
+   int VAR_233      = 0;
+
+   for ( VAR_233 = 0; VAR_233 <= ( g_n - 1 ); VAR_233++ )
+   {
+      VAR_FLAG = 0;
+      VAR__MIN = 1000;
+
+      if ( VAR__819283[VAR_233][0] >= 0 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= ( g_n - 1 ); VAR__53647++ )
+         {
+            VAR_FLAG = 0;
+            VAR__MIN = 1000;
+            for ( VAR__21230 = 0; VAR__21230 <= ( g_n - 1 ); VAR__21230++ )
+            {
+               if ( VAR__819283[VAR__53647][VAR__21230] < 0 )
+               {
+                  continue;
+               }
+
+               if ( VAR__819283[VAR__53647][VAR__21230] == 0 )
+               {
+                  VAR_FLAG = 1;
+                  break;
+               }
+
+               if ( VAR__819283[VAR__53647][VAR__21230] < VAR__MIN )
+               {
+                  VAR__MIN = VAR__819283[VAR__53647][VAR__21230];
+               }
+            }
+
+            if ( !VAR_FLAG )
+            {
+               for ( VAR__8444594 = 0; VAR__8444594 <= ( g_n - 1 ); VAR__8444594++ )
+               {
+                  VAR__819283[VAR__53647][VAR__8444594] = VAR__819283[VAR__53647][VAR__8444594] - VAR__MIN;
+               }
+            }
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 <= ( g_n - 1 ); VAR__21230++ )
+         {
+            VAR_FLAG = 0;
+            VAR__MIN = 1000;
+            for ( VAR__53647 = 0; VAR__53647 <= ( g_n - 1 ); VAR__53647++ )
+            {
+               if ( VAR__819283[VAR__53647][VAR__21230] < 0 )
+               {
+                  continue;
+               }
+
+               if ( VAR__819283[VAR__53647][VAR__21230] == 0 )
+               {
+                  VAR_FLAG = 1;
+                  break;
+               }
+
+               if ( VAR__819283[VAR__53647][VAR__21230] < VAR__MIN )
+               {
+                  VAR__MIN = VAR__819283[VAR__53647][VAR__21230];
+               }
+            }
+
+            if ( !VAR_FLAG )
+            {
+               for ( VAR__8444594 = 0; VAR__8444594 <= ( g_n - 1 ); VAR__8444594++ )
+               {
+                  VAR__819283[VAR__8444594][VAR__21230] = VAR__819283[VAR__8444594][VAR__21230] - VAR__MIN;
+               }
+            }
+         }
+      }
+   }
+}
+
+
+void xiaojian(int cishu)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( g_n - 1 ); VAR__53647++ )
+   {
+      VAR__819283[VAR__53647][cishu] = -1;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= ( g_n - 1 ); VAR__21230++ )
+   {
+      VAR__819283[cishu][VAR__21230] = -1;
+   }
+}

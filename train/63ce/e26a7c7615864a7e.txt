@@ -1,0 +1,86 @@
+int VAR__1238129;
+int VAR__NUM;
+int make(int VAR__819283);
+int pan(int VAR__819283);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283;
+   int VAR__53647;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__819283;
+      VAR__NUM     = 0;
+      VAR__1238129 = VAR__819283;
+      ( cout << make(VAR__819283)) << endl;
+   }
+
+   return 0;
+}
+
+
+int pan(int VAR__819283)
+{
+   int VAR_1238123 = 0;
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 <= sqrt(VAR__819283); VAR__53647++ )
+   {
+      if (( VAR__819283 % VAR__53647 ) == 0 )
+      {
+         VAR_1238123++;
+      }
+   }
+
+   if ( VAR_1238123 == 1 )
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+int make(int VAR__819283)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int ans;
+
+   ans = sqrt(VAR__819283);
+
+   if ( pan(VAR__819283) == 0 )
+   {
+      VAR__NUM++;
+      return VAR__NUM;
+   }
+   else
+   {
+      VAR__NUM++;
+      for ( VAR__53647 = VAR__1238129 / VAR__819283; VAR__53647 <= ans; VAR__53647++ )
+      {
+         if ( VAR__53647 == 1 )
+         {
+            continue;
+         }
+
+         if (( VAR__819283 % VAR__53647 ) == 0 )
+         {
+            VAR__1238129 = VAR__819283;
+            VAR__NUM     = make(VAR__819283 / VAR__53647);
+         }
+      }
+
+      if ( VAR__53647 == ( ans + 1 ))
+      {
+         return VAR__NUM;
+      }
+   }
+
+   return VAR__NUM;
+}

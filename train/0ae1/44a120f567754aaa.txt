@@ -1,0 +1,106 @@
+void main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__8444594;
+   int VAR_1238123;
+   int VAR__1111[4];
+
+   scanf("%d%d%d", &year, &month, &day);
+   VAR_1238123  = (((( year - 1 ) % 7 ) + (( year - 1 ) / 4 )) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 );
+   VAR__8444594 = 2 * ( month - 1 );
+   switch ( month - 1 )
+   {
+   case 1:
+      VAR__8444594++;
+      break;
+
+   case 2:
+      VAR__8444594--;
+      break;
+
+   case 5:
+      VAR__8444594++;
+      break;
+
+   case 6:
+      VAR__8444594++;
+      break;
+
+   case 7:
+      VAR__8444594 = VAR__8444594 + 2;
+      break;
+
+   case 8:
+      VAR__8444594 = VAR__8444594 + 3;
+      break;
+
+   case 9:
+      VAR__8444594 = VAR__8444594 + 3;
+      break;
+
+   case 10:
+      VAR__8444594 = VAR__8444594 + 4;
+      break;
+
+   case 11:
+      VAR__8444594 = VAR__8444594 + 4;
+      break;
+   }
+
+   VAR__1111[2] = (( VAR_1238123 + VAR__8444594 ) + day ) % 7;
+
+   if (( year % 4 ) == 0 )
+   {
+      if (( year % 100 ) == 0 )
+      {
+         if (( year % 400 ) == 0 )
+         {
+            if ( month > 2 )
+            {
+               VAR__1111[2]++;
+            }
+         }
+      }
+      else
+      {
+         if ( month > 2 )
+         {
+            VAR__1111[2]++;
+         }
+      }
+   }
+
+   VAR__1111[3] = VAR__1111[2] % 7;
+   switch ( VAR__1111[3] )
+   {
+   case 0:
+      printf("Sun.\n");
+      break;
+
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+   }
+}

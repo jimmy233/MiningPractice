@@ -1,0 +1,114 @@
+struct stu
+{
+   char       name[21];
+   int        final;
+   int        comment;
+   char       leader[2];
+   char       west[2];
+   int        paper;
+   struct stu *VAR__NEXT;
+   int        total;
+}
+*VAR__HEAD;
+struct stu
+{
+   char       name[21];
+   int        final;
+   int        comment;
+   char       leader[2];
+   char       west[2];
+   int        paper;
+   struct stu *VAR__NEXT;
+   int        total;
+}
+*ANOTHER_POINTER;
+struct stu
+{
+   char       name[21];
+   int        final;
+   int        comment;
+   char       leader[2];
+   char       west[2];
+   int        paper;
+   struct stu *VAR__NEXT;
+   int        total;
+}
+*YET_ANOTHER_POINTER;
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__MAX;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      scanf("%s%d%d%s%s%d", ANOTHER_POINTER->name, &ANOTHER_POINTER->final, &ANOTHER_POINTER->comment, ANOTHER_POINTER->leader, ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      ANOTHER_POINTER->total = 0;
+
+      if (( ANOTHER_POINTER->final > 80 ) && ( ANOTHER_POINTER->paper != 0 ))
+      {
+         ANOTHER_POINTER->total += 8000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->comment > 80 ))
+      {
+         ANOTHER_POINTER->total += 4000;
+      }
+
+      if ( ANOTHER_POINTER->final > 90 )
+      {
+         ANOTHER_POINTER->total += 2000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->west[0] == 'Y' ))
+      {
+         ANOTHER_POINTER->total += 1000;
+      }
+
+      if (( ANOTHER_POINTER->comment > 80 ) && ( ANOTHER_POINTER->leader[0] == 'Y' ))
+      {
+         ANOTHER_POINTER->total += 850;
+      }
+   }
+
+   VAR__MAX = VAR__HEAD->total;
+   for ( ANOTHER_POINTER = VAR__HEAD->VAR__NEXT; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      VAR__MAX = ( VAR__MAX > ANOTHER_POINTER->total ) ? ( VAR__MAX ) : ( ANOTHER_POINTER->total );
+   }
+
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if ( ANOTHER_POINTER->total == VAR__MAX )
+      {
+         break;
+      }
+   }
+
+   printf("%s\n%d\n", ANOTHER_POINTER->name, VAR__MAX);
+   VAR__MAX = 0;
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      VAR__MAX += ANOTHER_POINTER->total;
+   }
+
+   printf("%d\n", VAR__MAX);
+}

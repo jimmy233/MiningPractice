@@ -1,0 +1,117 @@
+void merge(int *array, int *VAR__TEMP, int left, int right, int middle)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int index1;
+   int index2;
+
+   for ( VAR__53647 = left; VAR__53647 <= middle; VAR__53647++ )
+   {
+      VAR__TEMP[VAR__53647] = array[VAR__53647];
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= ( right - middle ); VAR__21230++ )
+   {
+      VAR__TEMP[( right - VAR__21230 ) + 1] = array[VAR__21230 + middle];
+   }
+
+   for ( index1 = left, index2 = right, VAR__8444594 = left; VAR__8444594 <= right; VAR__8444594++ )
+   {
+      if ( VAR__TEMP[index1] <= VAR__TEMP[index2] )
+      {
+         array[VAR__8444594] = VAR__TEMP[index1++];
+      }
+      else
+      {
+         array[VAR__8444594] = VAR__TEMP[index2--];
+      }
+   }
+}
+
+
+void mergesort(int *array, int *VAR__TEMP, int left, int right)
+{
+   if ( left < right )
+   {
+      int middle = ( left + right ) / 2;
+      mergesort(array, VAR__TEMP, left, middle);
+      mergesort(array, VAR__TEMP, middle + 1, right);
+      merge(array, VAR__TEMP, left, right, middle);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+
+   if ( VAR_1238123 == 0 )
+   {
+      return 0;
+   }
+
+   int horse_q[1005] = { 0 };
+   int horse_t[1005] = { 0 };
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &horse_t[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &horse_q[VAR__53647]);
+   }
+
+   int temp_t[1005] = { 0 };
+   mergesort(horse_t, temp_t, 0, VAR_1238123 - 1);
+   int temp_q[1005] = { 0 };
+   mergesort(horse_q, temp_q, 0, VAR_1238123 - 1);
+   int t_head = VAR_1238123 - 1;
+   int t_last = 0;
+   int q_head = VAR_1238123 - 1;
+   int q_last = 0;
+   int ans    = 0;
+
+   while ( q_head >= q_last )
+   {
+      if ( horse_t[t_head] > horse_q[q_head] )
+      {
+         ans += 200;
+         t_head--;
+         q_head--;
+      }
+      else
+      if ( horse_t[t_head] < horse_q[q_head] )
+      {
+         ans -= 200;
+         t_last++;
+         q_head--;
+      }
+      else
+      {
+         if ( horse_t[t_last] > horse_q[q_last] )
+         {
+            ans += 200;
+            t_last++;
+            q_last++;
+         }
+         else
+         {
+            if ( horse_t[t_last] < horse_q[q_head] )
+            {
+               ans -= 200;
+            }
+
+            t_last++;
+            q_head--;
+         }
+      }
+   }
+
+   printf("%d\n", ans);
+   main();
+}

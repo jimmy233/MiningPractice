@@ -1,0 +1,46 @@
+int kMis;
+int Mis[30];
+int Array[30];
+void Lanjie(int iM)
+{
+   for ( int VAR__53647 = iM; VAR__53647 < kMis; VAR__53647++ )
+   {
+      if (( Mis[iM - 1] >= Mis[VAR__53647] ) && ( Array[iM - 1] <= Array[VAR__53647] ))
+      {
+         Array[iM - 1] = Array[VAR__53647] + 1;
+      }
+   }
+
+   if ( iM > 1 )
+   {
+      Lanjie(iM - 1);
+   }
+}
+
+
+int main()
+{
+   cin >> kMis;
+   for ( int VAR__53647 = 0; VAR__53647 < kMis; VAR__53647++ )
+   {
+      cin >> Mis[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < kMis; VAR__53647++ )
+   {
+      Array[VAR__53647] = 1;
+   }
+
+   Lanjie(kMis);
+   int MaxLen = -1;
+   for ( int VAR__53647 = 0; VAR__53647 < kMis; VAR__53647++ )
+   {
+      if ( MaxLen < Array[VAR__53647] )
+      {
+         MaxLen = Array[VAR__53647];
+      }
+   }
+
+
+   ( cout << MaxLen ) << endl;
+}

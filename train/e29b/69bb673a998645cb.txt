@@ -1,0 +1,65 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283[300] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+      VAR__SUM += VAR__819283[VAR__53647];
+   }
+
+   double VAR__MAX = abs(( VAR__819283[0] * VAR_1238123 ) - VAR__SUM);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( abs(( VAR__819283[VAR__53647] * VAR_1238123 ) - VAR__SUM) > VAR__MAX )
+      {
+         VAR__MAX = abs(( VAR__819283[VAR__53647] * VAR_1238123 ) - VAR__SUM);
+      }
+   }
+
+
+   int    save[300]   = { 0 };
+   int    VAR__COUNT  = 0;
+   double VAR__112390 = 0.00001;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( abs(( VAR__819283[VAR__53647] * VAR_1238123 ) - VAR__SUM) == VAR__MAX )
+      {
+         save[VAR__COUNT++] = VAR__53647;
+      }
+   }
+
+
+   int temp1;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__COUNT; VAR__21230++ )
+      {
+         if ( VAR__819283[save[VAR__53647]] > VAR__819283[save[VAR__21230]] )
+         {
+            temp1 = VAR__819283[save[VAR__53647]];
+            VAR__819283[save[VAR__53647]] = VAR__819283[save[VAR__21230]];
+            VAR__819283[save[VAR__21230]] = temp1;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      cout << VAR__819283[save[VAR__53647]];
+
+      if ( VAR__53647 != ( VAR__COUNT - 1 ))
+      {
+         cout << ',';
+      }
+   }
+
+   return 0;
+}

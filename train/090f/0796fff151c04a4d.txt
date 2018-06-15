@@ -1,0 +1,67 @@
+int comp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ((int *)VAR__819283 ) - ((int *)VAR__19328 );
+}
+
+
+int main(void)
+{
+   int result[301];
+   int VAR__53647 = 1;
+   int VAR__21230;
+
+   scanf("%d", &result[0]);
+
+   while ( scanf(",%d", &result[VAR__53647++]) == 1 )
+   {
+   }
+
+   qsort(result, VAR__53647, sizeof( result[0] ), comp);
+
+   if ( find2nd(VAR__53647 - 1, result) == ( -1 ))
+   {
+      printf("No");
+   }
+   else
+   {
+      printf("%d", find2nd(VAR__53647 - 1, result));
+   }
+
+   return 0;
+}
+
+
+int find2nd(int VAR__NUM, int result[])
+{
+   int VAR__8444594;
+   int second   = -1;
+   int VAR__MAX = result[0];
+
+   if ( VAR__NUM == 1 )
+   {
+      return -1;
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__NUM; VAR__8444594++ )
+   {
+      if ( result[VAR__8444594] > VAR__MAX )
+      {
+         second   = VAR__MAX;
+         VAR__MAX = result[VAR__8444594];
+      }
+      else
+      if (( result[VAR__8444594] > second ) && ( result[VAR__8444594] < VAR__MAX ))
+      {
+         second = result[VAR__8444594];
+      }
+   }
+
+   if ( second == VAR__MAX )
+   {
+      return -1;
+   }
+   else
+   {
+      return second;
+   }
+}

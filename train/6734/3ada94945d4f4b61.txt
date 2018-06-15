@@ -1,0 +1,53 @@
+int main()
+{
+   int VAR_SIZE[100][2];
+   int VAR__NUM[100][100];
+   int result[100];
+   int row;
+   int col;
+   int VAR__53647;
+
+   for ( row = 0; row < 100; row++ )
+   {
+      for ( col = 0; col < 2; col++ )
+      {
+         scanf("%d", &VAR_SIZE[row][col]);
+      }
+
+      if ( VAR_SIZE[row][1] == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( row = 0; row < 100; row++ )
+   {
+      if ( VAR_SIZE[row][0] == 0 )
+      {
+         break;
+      }
+
+      VAR__NUM[row][0] = 1;
+
+      if ( VAR_SIZE[row][0] == 1 )
+      {
+         result[row] = 1;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < VAR_SIZE[row][0]; VAR__53647++ )
+      {
+         VAR__NUM[row][VAR__53647] = ( VAR__NUM[row][VAR__53647 - 1] + VAR_SIZE[row][1] ) % ( VAR__53647 + 1 );
+
+         if ( VAR__NUM[row][VAR__53647] == 0 )
+         {
+            VAR__NUM[row][VAR__53647] = VAR__53647 + 1;
+         }
+
+         result[row] = VAR__NUM[row][VAR__53647];
+      }
+
+      printf("%d\n", result[row]);
+   }
+
+   return 0;
+}

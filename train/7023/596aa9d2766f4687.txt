@@ -1,0 +1,59 @@
+char imim[101];
+char isub[101];
+char istore[101];
+int  carry    = 0;
+char *VAR_233 = NULL;
+char *VAR_666 = NULL;
+void subtraction()
+{
+   if ( VAR_666 == isub )
+   {
+      *VAR_233 = ((( *VAR_233 ) - ( *VAR_666 )) - carry ) + '0';
+   }
+   else
+   {
+      if (( *VAR_233 ) >= (( *VAR_666 ) + carry ))
+      {
+         *VAR_233 = ((( *VAR_233 ) - ( *VAR_666 )) - carry ) + '0';
+         carry    = 0;
+      }
+      else
+      {
+         *VAR_233 = (((( *VAR_233 ) + 10 ) - ( *VAR_666 )) - carry ) + '0';
+         carry    = 1;
+      }
+
+      VAR_233--;
+      VAR_666--;
+      subtraction();
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123 = 0;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      memset(imim, '0', sizeof( imim ));
+      memset(isub, '0', sizeof( isub ));
+      memset(istore, '0', sizeof( istore ));
+      carry = 0;
+      ( cin >> imim ) >> istore;
+      int gap = 0;
+      gap = strlen(imim) - strlen(istore);
+      for ( int VAR__53647 = 0; VAR__53647 <= strlen(istore); VAR__53647++ )
+      {
+         isub[VAR__53647 + gap] = istore[VAR__53647];
+      }
+
+      VAR_233 = ( imim + strlen(imim)) - 1;
+      VAR_666 = ( isub + strlen(isub)) - 1;
+      subtraction();
+      ( cout << imim ) << endl;
+   }
+
+   return 0;
+}

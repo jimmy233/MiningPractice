@@ -1,0 +1,47 @@
+void main()
+{
+   char A_STRING[10000][100];
+   char substr[10000][100];
+   char VAR__MAX;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_1238123 = 0;
+   int  VAR_233;
+
+   VAR__53647 = 0;
+
+   while ( scanf("%s", &A_STRING[VAR__53647]) != EOF )
+   {
+      scanf("%s", &substr[VAR__53647]);
+      VAR__MAX = A_STRING[VAR__53647][0];
+      VAR_233  = 0;
+      for ( VAR__21230 = 1; VAR__21230 <= ( strlen(A_STRING[VAR__53647]) - 1 ); VAR__21230++ )
+      {
+         if ( A_STRING[VAR__53647][VAR__21230] > VAR__MAX )
+         {
+            VAR__MAX = A_STRING[VAR__53647][VAR__21230];
+            VAR_233  = VAR__21230;
+         }
+      }
+
+
+      for ( VAR__8444594 = strlen(A_STRING[VAR__53647]); VAR__8444594 >= ( VAR_233 + 1 ); VAR__8444594-- )
+      {
+         A_STRING[VAR__53647][VAR__8444594 + 3] = A_STRING[VAR__53647][VAR__8444594];
+      }
+
+      for ( VAR__8444594 = VAR_233 + 1; VAR__8444594 <= ( VAR_233 + 3 ); VAR__8444594++ )
+      {
+         A_STRING[VAR__53647][VAR__8444594] = substr[VAR__53647][( VAR__8444594 - VAR_233 ) - 1];
+      }
+
+      VAR__53647++;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+   {
+      puts(A_STRING[VAR__21230]);
+      printf("\n");
+   }
+}

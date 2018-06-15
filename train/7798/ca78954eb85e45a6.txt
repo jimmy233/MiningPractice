@@ -1,0 +1,103 @@
+int VAR__819283[26] = { 0 };
+int VAR_1238123;
+int VAR__MAX;
+int hao;
+struct chushu
+{
+   int           VAR__NUM;
+   char          VAR_9494[30];
+   struct chushu *VAR__NEXT;
+};
+struct chushu *create()
+{
+   int           VAR__21230 = 0;
+   int           VAR_666;
+   int           VAR__53647   = 0;
+   int           VAR__8444594 = 0;
+   struct chushu *VAR__HEAD;
+   struct chushu *ANOTHER_POINTER;
+   struct chushu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct chushu *)malloc(LEN_OF_STH);
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR_9494);
+   for ( VAR__53647 = 0; ANOTHER_POINTER->VAR_9494[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      VAR__21230 = ANOTHER_POINTER->VAR_9494[VAR__53647] - 65;
+      VAR__819283[VAR__21230] = VAR__819283[VAR__21230] + 1;
+   }
+
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+   while ( VAR__8444594 < ( VAR_1238123 - 1 ))
+   {
+      VAR__8444594++;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct chushu *)malloc(LEN_OF_STH);
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR_9494);
+      for ( VAR__53647 = 0; ANOTHER_POINTER->VAR_9494[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         VAR__21230 = ANOTHER_POINTER->VAR_9494[VAR__53647] - 65;
+         VAR__819283[VAR__21230] = VAR__819283[VAR__21230] + 1;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void search(struct chushu *VAR__HEAD)
+{
+   int           VAR__53647;
+   struct chushu *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233->VAR__NEXT != NULL )
+   {
+      for ( VAR__53647 = 0; VAR_233->VAR_9494[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if (( hao + 65 ) == VAR_233->VAR_9494[VAR__53647] )
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+         }
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0; VAR_233->VAR_9494[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( hao + 65 ) == VAR_233->VAR_9494[VAR__53647] )
+      {
+         printf("%d\n", VAR_233->VAR__NUM);
+      }
+   }
+}
+
+
+void main()
+{
+   int           VAR__53647;
+   struct chushu *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233  = create();
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+         hao      = VAR__53647;
+      }
+   }
+
+   printf("%c\n", hao + 65);
+   printf("%d\n", VAR__MAX);
+   search(VAR_233);
+}

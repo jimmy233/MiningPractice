@@ -1,0 +1,55 @@
+struct yasuohou
+{
+   char letter;
+   int  VAR__COUNT;
+}
+yasuohou;
+int main()
+{
+   char            A_STRING[100];
+   struct yasuohou lettercount[100];
+   int             VAR__53647;
+   int             VAR__21230;
+
+   gets(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= 97 ) && ( A_STRING[VAR__53647] <= 122 ))
+      {
+         A_STRING[VAR__53647] = A_STRING[VAR__53647] - 32;
+      }
+   }
+
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+   lettercount[VAR__21230].letter     = A_STRING[VAR__53647];
+   lettercount[VAR__21230].VAR__COUNT = 1;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647 + 1] == A_STRING[VAR__53647] )
+      {
+         lettercount[VAR__21230].VAR__COUNT++;
+      }
+      else
+      if (( A_STRING[VAR__53647 + 1] != '\0' ) && ( A_STRING[VAR__53647 + 1] != A_STRING[VAR__53647] ))
+      {
+         lettercount[VAR__21230].VAR__COUNT++;
+         VAR__21230++;
+         lettercount[VAR__21230].letter     = A_STRING[VAR__53647 + 1];
+         lettercount[VAR__21230].VAR__COUNT = 1;
+      }
+      else
+      if ( A_STRING[VAR__53647 + 1] == '\0' )
+      {
+         lettercount[VAR__21230].VAR__COUNT++;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__21230; VAR__53647++ )
+   {
+      printf("(%c%c%d)", lettercount[VAR__53647].letter, ',', lettercount[VAR__53647].VAR__COUNT - 1);
+   }
+
+   return 0;
+}

@@ -1,0 +1,109 @@
+struct pa
+{
+   char      name[10];
+   int       age;
+   struct pa *VAR__NEXT;
+};
+void sort(struct pa *VAR__HEAD, struct pa *VAR_9494)
+{
+   struct pa *ANOTHER_POINTER;
+   struct pa *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = VAR__HEAD->VAR__NEXT;
+   YET_ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER && ( ANOTHER_POINTER->age >= VAR_9494->age ))
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = VAR_9494;
+   VAR_9494->VAR__NEXT            = ANOTHER_POINTER;
+}
+
+
+void creat(struct pa *VAR__HEAD, struct pa *VAR_9494)
+{
+   struct pa *YET_ANOTHER_POINTER;
+   struct pa *ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = VAR__HEAD->VAR__NEXT;
+   YET_ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = VAR_9494;
+   VAR_9494->VAR__NEXT            = ANOTHER_POINTER;
+}
+
+
+struct pa *input()
+{
+   int       VAR__53647;
+   int       VAR_1238123;
+   struct pa *VAR_9494;
+   struct pa *head1;
+   struct pa *head2;
+   struct pa *ANOTHER_POINTER;
+   struct pa *YET_ANOTHER_POINTER;
+
+   head1            = (struct pa *)malloc(LEN_OF_STH);
+   head2            = (struct pa *)malloc(LEN_OF_STH);
+   head1->VAR__NEXT = NULL;
+   head2->VAR__NEXT = NULL;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_9494 = (struct pa *)malloc(LEN_OF_STH);
+      scanf("%s%d", VAR_9494->name, &VAR_9494->age);
+
+      if ( VAR_9494->age >= 60 )
+      {
+         sort(head1, VAR_9494);
+      }
+      else
+      {
+         creat(head2, VAR_9494);
+      }
+   }
+
+   ANOTHER_POINTER     = head1->VAR__NEXT;
+   YET_ANOTHER_POINTER = head1;
+
+   while ( ANOTHER_POINTER )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = head2->VAR__NEXT;
+   return head1;
+}
+
+
+void print(struct pa *VAR__HEAD)
+{
+   struct pa *VAR_233;
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 )
+   {
+      printf("%s\n", VAR_233->name);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct pa *VAR__HEAD;
+
+   VAR__HEAD = input();
+   print(VAR__HEAD);
+}

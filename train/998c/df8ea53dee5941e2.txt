@@ -1,0 +1,85 @@
+int main()
+{
+   int  stop;
+   int  VAR__53647;
+   int  VAR__COUNT;
+   int  VAR__1111;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  mid;
+   int  l1;
+   int  l2;
+   int  judge;
+   int  b2[210] = { 0 };
+   int  b1[210] = { 0 };
+   int  re[210] = { 0 };
+   char a1[210] = { 0 };
+   char a2[210] = { 0 };
+
+   VAR__COUNT = 0;
+   judge      = 0;
+   scanf("%s%s", a1, a2);
+   l1 = strlen(a1);
+   l2 = strlen(a2);
+   for ( VAR__53647 = 210 - l1; VAR__53647 < 210; VAR__53647++ )
+   {
+      b1[VAR__53647] = a1[VAR__COUNT] - '0';
+      VAR__COUNT++;
+   }
+
+   VAR__COUNT = 0;
+   for ( VAR__53647 = 210 - l2; VAR__53647 < 210; VAR__53647++ )
+   {
+      b2[VAR__53647] = a2[VAR__COUNT] - '0';
+      VAR__COUNT++;
+   }
+
+   if ( l2 > l1 )
+   {
+      VAR__1111 = l2 + 1;
+   }
+   else
+   {
+      VAR__1111 = l1 + 1;
+   }
+
+   for ( VAR__53647 = 209; VAR__53647 >= ( 210 - VAR__1111 ); VAR__53647-- )
+   {
+      re[VAR__53647] += b1[VAR__53647] + b2[VAR__53647];
+
+      if ( re[VAR__53647] >= 10 )
+      {
+         re[VAR__53647] -= 10;
+         re[VAR__53647 - 1]++;
+      }
+   }
+
+   for ( VAR__53647 = 210 - VAR__1111; VAR__53647 < 210; VAR__53647++ )
+   {
+      if (( re[VAR__53647] == 0 ) && ( judge == 0 ))
+      {
+         continue;
+      }
+
+      if ( judge == 0 )
+      {
+         if ( re[VAR__53647] != 0 )
+         {
+            judge++;
+         }
+      }
+
+      if ( judge != 0 )
+      {
+         printf("%d", re[VAR__53647]);
+      }
+   }
+
+   if (( b1[209] == 0 ) && ( b2[209] == 0 ))
+   {
+      printf("0");
+   }
+
+   scanf("%d", &stop);
+   return 0;
+}

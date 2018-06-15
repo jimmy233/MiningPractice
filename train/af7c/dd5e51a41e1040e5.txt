@@ -1,0 +1,65 @@
+int main()
+{
+   int maxIndex;
+   int VAR__112390;
+   int LEN;
+   int VAR__8444594;
+   int VAR__53647;
+   int VAR_SIZE[1000];
+   int js[1000];
+
+   scanf("%d", &LEN);
+   for ( VAR__53647 = 0; VAR__53647 < LEN; VAR__53647++ )
+   {
+      scanf("%d", &VAR_SIZE[VAR__53647]);
+   }
+
+   for ( int VAR__8444594 = 1; VAR__8444594 <= LEN; VAR__8444594++ )
+   {
+      maxIndex = 0;
+      for ( int VAR__53647 = 0; VAR__53647 <= ( LEN - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( VAR_SIZE[VAR__53647] > VAR_SIZE[maxIndex] )
+         {
+            maxIndex = VAR__53647;
+         }
+      }
+
+      if ( maxIndex != ( LEN - VAR__8444594 ))
+      {
+         VAR__112390                  = VAR_SIZE[maxIndex];
+         VAR_SIZE[maxIndex]           = VAR_SIZE[LEN - VAR__8444594];
+         VAR_SIZE[LEN - VAR__8444594] = VAR__112390;
+      }
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN; VAR__53647++ )
+   {
+      if (( VAR_SIZE[VAR__53647] % 2 ) != 0 )
+      {
+         js[VAR__8444594] = VAR_SIZE[VAR__53647];
+         VAR__8444594++;
+      }
+   }
+
+   if ( VAR__8444594 < 2 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         printf("%d", js[VAR__53647]);
+      }
+   }
+
+   if ( VAR__8444594 > 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+      {
+         printf("%d,", js[VAR__53647]);
+      }
+
+      printf("%d", js[VAR__8444594 - 1]);
+   }
+
+   return 0;
+}

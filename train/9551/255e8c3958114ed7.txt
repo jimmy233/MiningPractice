@@ -1,0 +1,91 @@
+struct pa
+{
+   char      id[11];
+   int       age;
+   struct pa *VAR__NEXT;
+};
+struct pa *insert(struct pa *VAR__HEAD, struct pa *new1)
+{
+   struct pa *p0;
+   struct pa *ANOTHER_POINTER;
+   struct pa *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = new1;
+
+   if ( VAR__HEAD == NULL )
+   {
+      VAR__HEAD     = p0;
+      p0->VAR__NEXT = NULL;
+   }
+   else
+   if ( p0->age >= 60 )
+   {
+      while (( ANOTHER_POINTER->age >= p0->age ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( p0->age > ANOTHER_POINTER->age )
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            VAR__HEAD = p0;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         }
+
+         p0->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = NULL;
+      }
+   }
+   else
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+
+      while ( ANOTHER_POINTER != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = p0;
+      p0->VAR__NEXT = NULL;
+   }
+
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct pa *VAR_233;
+   struct pa *VAR__HEAD;
+   int       VAR_1238123;
+   int       VAR__53647;
+
+   VAR__HEAD = NULL;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct pa *)malloc(sizeof( struct pa ));
+      scanf("%s%d\n", VAR_233->id, &VAR_233->age);
+      VAR__HEAD = insert(VAR__HEAD, VAR_233);
+   }
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

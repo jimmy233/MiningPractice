@@ -1,0 +1,61 @@
+int VAR__MAX(int *data, int lens)
+{
+   int VAR_129012 = *data;
+
+   for ( int VAR__21230 = 0; VAR__21230 < lens; VAR__21230++ )
+   {
+      if (( *( data + VAR__21230 )) > VAR_129012 )
+      {
+         VAR_129012 = *( data + VAR__21230 );
+      }
+   }
+
+
+   return VAR_129012;
+}
+
+
+int VAR__127322(int *data, int lens, int height)
+{
+   int tempResult[25];
+
+   if ( lens == 0 )
+   {
+      return 0;
+   }
+
+   int VAR__COUNT = 0;
+   int tempHeight = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < lens; VAR__53647++ )
+   {
+      if (( data[VAR__53647] <= height ) && ( data[VAR__53647] >= tempHeight ))
+      {
+         tempHeight             = data[VAR__53647];
+         tempResult[VAR__COUNT] = VAR__127322(( data + VAR__53647 ) + 1, ( lens - VAR__53647 ) - 1, data[VAR__53647]);
+         VAR__COUNT++;
+      }
+   }
+
+   if ( VAR__COUNT == 0 )
+   {
+      return 0;
+   }
+
+   return VAR__MAX(tempResult, VAR__COUNT) + 1;
+}
+
+
+int main()
+{
+   int data[25];
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> data[VAR__53647];
+   }
+
+   cout << VAR__127322(data, VAR_1238123, VAR__MAX(data, VAR_1238123));
+   return 0;
+}

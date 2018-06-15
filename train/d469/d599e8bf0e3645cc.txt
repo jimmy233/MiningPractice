@@ -1,0 +1,63 @@
+void search();
+void check(char same[]);
+
+char A_STRING[500];
+int  lenstr;
+int main()
+{
+   cin >> A_STRING;
+   lenstr = strlen(A_STRING);
+   search();
+}
+
+
+void search()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int LEN_OF_STH;
+   int VAR__temp;
+
+   for ( LEN_OF_STH = 2; LEN_OF_STH <= lenstr; LEN_OF_STH = LEN_OF_STH + 2 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( lenstr - LEN_OF_STH ); VAR__53647++ )
+      {
+         char spr[500];
+         for ( VAR__21230 = VAR__53647, VAR__temp = 0; VAR__21230 <= (( VAR__53647 + LEN_OF_STH ) - 1 ); VAR__21230++, VAR__temp++ )
+         {
+            spr[VAR__temp] = A_STRING[VAR__21230];
+         }
+
+         spr[VAR__21230] = '\0';
+         check(spr);
+      }
+   }
+}
+
+
+void check(char same[500])
+{
+   int lensame;
+
+   lensame = strlen(same);
+   int VAR__53647;
+   int VAR_FLAG = 1;
+   for ( VAR__53647 = 0; VAR__53647 <= (( lensame / 2 ) - 1 ); VAR__53647++ )
+   {
+      if ( same[( lensame - 1 ) - VAR__53647] != same[VAR__53647] )
+      {
+         VAR_FLAG = 0;
+         break;
+      }
+   }
+
+   if ( VAR_FLAG == 1 )
+   {
+      for ( VAR__53647 = 0; same[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         cout << same[VAR__53647];
+      }
+
+      cout << endl;
+   }
+}

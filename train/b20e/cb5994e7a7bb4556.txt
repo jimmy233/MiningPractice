@@ -1,0 +1,105 @@
+int main()
+{
+   int qw[1000];
+   int tj[1000];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__NUM;
+   int VAR__TEMP;
+   int win;
+   int pt;
+   int lose;
+   int btmtj;
+   int btmqw;
+   int toptj;
+   int topqw;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      VAR_1238123--;
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tj[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qw[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( tj[VAR__53647] > tj[VAR__21230] )
+            {
+               VAR__TEMP      = tj[VAR__53647];
+               tj[VAR__53647] = tj[VAR__21230];
+               tj[VAR__21230] = VAR__TEMP;
+            }
+
+            if ( qw[VAR__53647] > qw[VAR__21230] )
+            {
+               VAR__TEMP      = qw[VAR__53647];
+               qw[VAR__53647] = qw[VAR__21230];
+               qw[VAR__21230] = VAR__TEMP;
+            }
+         }
+      }
+
+
+      win      = 0;
+      VAR__NUM = 0;
+      pt       = 0;
+      lose     = 0;
+      btmtj    = ( btmqw = 0 );
+      toptj    = ( topqw = VAR_1238123 );
+
+      while (( topqw >= btmqw ) && ( toptj >= btmtj ))
+      {
+         if ( qw[btmqw] < tj[btmtj] )
+         {
+            btmqw++;
+            btmtj++;
+            win++;
+            continue;
+         }
+
+         if ( qw[btmqw] > tj[btmtj] )
+         {
+            topqw--;
+            btmtj++;
+            lose++;
+            continue;
+         }
+
+         if ( qw[topqw] < tj[toptj] )
+         {
+            topqw--;
+            toptj--;
+            win++;
+            continue;
+         }
+
+         if ( qw[topqw] >= tj[toptj] )
+         {
+            if ( qw[topqw] != tj[btmtj] )
+            {
+               lose++;
+            }
+
+            topqw--;
+            btmtj++;
+            continue;
+         }
+      }
+
+      VAR_1238123++;
+      printf("%d\n", ( win * 200 ) - ( lose * 200 ));
+      scanf("%d", &VAR_1238123);
+   }
+}

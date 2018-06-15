@@ -1,0 +1,57 @@
+int main()
+{
+   struct dot1
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+         dot[10];
+   float dis[10][10] = { 0, 0 };
+   float distance;
+   int   row;
+   int   col;
+   int   sign = 0;
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &dot[VAR__53647].VAR__7685, &dot[VAR__53647].VAR__3918907, &dot[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__53647][VAR__21230] = ((((float)( dot[VAR__53647].VAR__7685 - dot[VAR__21230].VAR__7685 )) * ((float)( dot[VAR__53647].VAR__7685 - dot[VAR__21230].VAR__7685 ))) + (((float)( dot[VAR__53647].VAR__3918907 - dot[VAR__21230].VAR__3918907 )) * ((float)( dot[VAR__53647].VAR__3918907 - dot[VAR__21230].VAR__3918907 )))) + (((float)( dot[VAR__53647].VAR__9290 - dot[VAR__21230].VAR__9290 )) * ((float)( dot[VAR__53647].VAR__9290 - dot[VAR__21230].VAR__9290 )));
+         dis[VAR__53647][VAR__21230] = sqrt((float)dis[VAR__53647][VAR__21230]);
+      }
+   }
+
+   do
+   {
+      distance = dis[0][1];
+      row      = 0;
+      col      = 1;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( distance < dis[VAR__53647][VAR__21230] )
+            {
+               distance = dis[VAR__53647][VAR__21230];
+               row      = VAR__53647;
+               col      = VAR__21230;
+            }
+         }
+      }
+
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", dot[row].VAR__7685, dot[row].VAR__3918907, dot[row].VAR__9290, dot[col].VAR__7685, dot[col].VAR__3918907, dot[col].VAR__9290, distance);
+      dis[row][col] = 0;
+      sign         += 1;
+   } while ( sign != ((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ));
+   return 0;
+}

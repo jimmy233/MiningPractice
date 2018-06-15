@@ -1,0 +1,70 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   char   sex[100][30];
+   double high[100];
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+   {
+      ( cin >> sex[VAR__53647] ) >> high[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+   {
+      for ( int VAR__temp = 1; VAR__temp <= VAR_1238123; ++VAR__temp )
+      {
+         double VAR_9494;
+         char   VAR__4857423[30];
+
+         if ( high[VAR__temp] > high[VAR__53647] )
+         {
+            VAR_9494         = high[VAR__temp];
+            high[VAR__temp]  = high[VAR__53647];
+            high[VAR__53647] = VAR_9494;
+            strcpy(VAR__4857423, sex[VAR__53647]);
+            strcpy(sex[VAR__53647], sex[VAR__temp]);
+            strcpy(sex[VAR__temp], VAR__4857423);
+         }
+      }
+   }
+
+   int step = 0;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+   {
+      if ( strcmp(sex[VAR__53647], "female") == 0 )
+      {
+         continue;
+      }
+
+      if ( step != ( VAR_1238123 - 1 ))
+      {
+         printf("%.2f ", high[VAR__53647]);
+         step = step + 1;
+      }
+      else
+      {
+         printf("%.2f", high[VAR__53647]);
+      }
+   }
+
+   for ( int VAR__53647 = VAR_1238123; VAR__53647 >= 1; --VAR__53647 )
+   {
+      if ( strcmp(sex[VAR__53647], "male") == 0 )
+      {
+         continue;
+      }
+
+      if ( step != ( VAR_1238123 - 1 ))
+      {
+         printf("%.2f ", high[VAR__53647]);
+         step = step + 1;
+      }
+      else
+      {
+         printf("%.2f", high[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

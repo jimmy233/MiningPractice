@@ -1,0 +1,80 @@
+char room[100][100];
+int  VAR__SUM = 0;
+int  row[10000];
+int  col[10000];
+void spread(int counts, char VAR__819283[100][100])
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__SUM; VAR__53647++ )
+   {
+      if ( VAR__819283[row[VAR__53647] + 1][col[VAR__53647]] == '.' )
+      {
+         VAR__819283[row[VAR__53647] + 1][col[VAR__53647]] = '@';
+         row[counts] = row[VAR__53647] + 1;
+         col[counts] = col[VAR__53647];
+         counts++;
+      }
+
+      if ( VAR__819283[row[VAR__53647] - 1][col[VAR__53647]] == '.' )
+      {
+         VAR__819283[row[VAR__53647] - 1][col[VAR__53647]] = '@';
+         row[counts] = row[VAR__53647] - 1;
+         col[counts] = col[VAR__53647];
+         counts++;
+      }
+
+      if ( VAR__819283[row[VAR__53647]][col[VAR__53647] + 1] == '.' )
+      {
+         VAR__819283[row[VAR__53647]][col[VAR__53647] + 1] = '@';
+         col[counts] = col[VAR__53647] + 1;
+         row[counts] = row[VAR__53647];
+         counts++;
+      }
+
+      if ( VAR__819283[row[VAR__53647]][col[VAR__53647] - 1] == '.' )
+      {
+         VAR__819283[row[VAR__53647]][col[VAR__53647] - 1] = '@';
+         col[counts] = col[VAR__53647] - 1;
+         row[counts] = row[VAR__53647];
+         counts++;
+      }
+   }
+
+   VAR__SUM = counts;
+}
+
+
+int main()
+{
+   memset(row, -1, sizeof( row ));
+   memset(col, -1, sizeof( col ));
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   cin >> VAR_1238123;
+   memset(room, '\0', sizeof( room ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> room[VAR__53647][VAR__21230];
+
+         if ( room[VAR__53647][VAR__21230] == '@' )
+         {
+            row[VAR__SUM] = VAR__53647;
+            col[VAR__SUM] = VAR__21230;
+            VAR__SUM++;
+         }
+      }
+   }
+
+
+   cin >> VAR__1238129;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      spread(VAR__SUM, room);
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

@@ -1,0 +1,75 @@
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   struct score
+   {
+      int VAR__NUM;
+      int verbal;
+      int math;
+      int VAR__SUM;
+   };
+   struct score VAR__819283[4];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= 2; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__819283[VAR__53647].VAR__NUM, &VAR__819283[VAR__53647].verbal, &VAR__819283[VAR__53647].math);
+      VAR__819283[VAR__53647].VAR__SUM = VAR__819283[VAR__53647].verbal + VAR__819283[VAR__53647].math;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 1; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( 2 - VAR__53647 ); VAR__21230++ )
+      {
+         if (( VAR__819283[VAR__53647].verbal + VAR__819283[VAR__53647].math ) < ( VAR__819283[VAR__53647 + VAR__21230].verbal + VAR__819283[VAR__53647 + VAR__21230].math ))
+         {
+            VAR__temp = VAR__819283[VAR__53647].VAR__NUM;
+            VAR__819283[VAR__53647].VAR__NUM = VAR__819283[VAR__53647 + VAR__21230].VAR__NUM;
+            VAR__819283[VAR__53647 + VAR__21230].VAR__NUM = VAR__temp;
+            VAR__temp = VAR__819283[VAR__53647].VAR__SUM;
+            VAR__819283[VAR__53647].VAR__SUM = VAR__819283[VAR__53647 + VAR__21230].VAR__SUM;
+            VAR__819283[VAR__53647 + VAR__21230].VAR__SUM = VAR__temp;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 3; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__819283[3].VAR__NUM, &VAR__819283[3].verbal, &VAR__819283[3].math);
+
+      if (( VAR__819283[3].verbal + VAR__819283[3].math ) > VAR__819283[0].VAR__SUM )
+      {
+         VAR__temp = VAR__819283[1].VAR__NUM;
+         VAR__819283[1].VAR__NUM = VAR__819283[0].VAR__NUM;
+         VAR__819283[2].VAR__NUM = VAR__temp;
+         VAR__819283[0].VAR__NUM = VAR__819283[3].VAR__NUM;
+         VAR__temp = VAR__819283[1].VAR__SUM;
+         VAR__819283[1].VAR__SUM = VAR__819283[0].VAR__SUM;
+         VAR__819283[2].VAR__SUM = VAR__temp;
+         VAR__819283[0].VAR__SUM = VAR__819283[3].verbal + VAR__819283[3].math;
+      }
+      else
+      if (( VAR__819283[3].verbal + VAR__819283[3].math ) > VAR__819283[1].VAR__SUM )
+      {
+         VAR__819283[2].VAR__NUM = VAR__819283[1].VAR__NUM;
+         VAR__819283[1].VAR__NUM = VAR__819283[3].VAR__NUM;
+         VAR__819283[2].VAR__SUM = VAR__819283[1].VAR__SUM;
+         VAR__819283[1].VAR__SUM = VAR__819283[3].verbal + VAR__819283[3].math;
+      }
+      else
+      if (( VAR__819283[3].verbal + VAR__819283[3].math ) > VAR__819283[2].VAR__SUM )
+      {
+         VAR__819283[2].VAR__NUM = VAR__819283[3].VAR__NUM;
+         VAR__819283[2].VAR__SUM = VAR__819283[3].verbal + VAR__819283[3].math;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 2; VAR__53647++ )
+   {
+      printf("%d %d\n", VAR__819283[VAR__53647].VAR__NUM, VAR__819283[VAR__53647].VAR__SUM);
+   }
+}

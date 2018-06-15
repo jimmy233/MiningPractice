@@ -1,0 +1,44 @@
+int main()
+{
+   struct student
+   {
+      int StudentNumber;
+      int ChineseGrades;
+      int MathGrades;
+      int Total;
+   };
+   struct student Stu[100000];
+   struct student sTemp;
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      (( cin >> Stu[VAR__53647].StudentNumber ) >> Stu[VAR__53647].ChineseGrades ) >> Stu[VAR__53647].MathGrades;
+      Stu[VAR__53647].Total = Stu[VAR__53647].ChineseGrades + Stu[VAR__53647].MathGrades;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 2; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 >= ( VAR__53647 + 1 ); VAR__21230-- )
+      {
+         if ( Stu[VAR__21230].Total > Stu[VAR__21230 - 1].Total )
+         {
+            sTemp               = Stu[VAR__21230];
+            Stu[VAR__21230]     = Stu[VAR__21230 - 1];
+            Stu[VAR__21230 - 1] = sTemp;
+         }
+      }
+   }
+
+   (( cout << Stu[0].StudentNumber ) << " " ) << Stu[0].Total;
+   for ( VAR__53647 = 1; VAR__53647 <= 2; VAR__53647++ )
+   {
+      cout << endl;
+      (( cout << Stu[VAR__53647].StudentNumber ) << " " ) << Stu[VAR__53647].Total;
+   }
+
+   return 0;
+}

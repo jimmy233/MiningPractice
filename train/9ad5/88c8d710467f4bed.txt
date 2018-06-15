@@ -1,0 +1,81 @@
+int find(int VAR__819283, int VAR__19328[])
+{
+   int VAR__53647;
+   int VAR__21230[100];
+   int VAR__8444594;
+   int VAR__1111 = VAR__819283;
+
+   VAR__21230[0] = 1;
+   for ( VAR__53647 = 1; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR__21230[VAR__53647] = 2 * VAR__21230[VAR__53647 - 1];
+   }
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if ( VAR__819283 > VAR__21230[VAR__53647] )
+      {
+         VAR__819283 = VAR__819283 - VAR__21230[VAR__53647];
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   VAR__8444594  = VAR__53647 + 1;
+   VAR__19328[0] = VAR__1111;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if (( VAR__19328[VAR__53647 - 1] % 2 ) == 0 )
+      {
+         VAR__19328[VAR__53647] = VAR__19328[VAR__53647 - 1] / 2;
+      }
+      else
+      {
+         VAR__19328[VAR__53647] = ( VAR__19328[VAR__53647 - 1] - 1 ) / 2;
+      }
+   }
+
+   return VAR__8444594;
+}
+
+
+int main()
+{
+   int sx[1000];
+   int sy[1000];
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int xi = 0;
+
+   scanf("%d %d", &VAR__7685, &VAR__3918907);
+
+   if ( VAR__7685 == VAR__3918907 )
+   {
+      xi = VAR__7685;
+   }
+   else
+   {
+      VAR__53647 = find(VAR__7685, sx);
+      VAR__21230 = find(VAR__3918907, sy);
+      for ( VAR__8444594 = VAR__53647, VAR__1111 = VAR__21230; ; VAR__8444594--, VAR__1111-- )
+      {
+         if ( sx[VAR__8444594] != sy[VAR__1111] )
+         {
+            xi = sx[VAR__8444594 + 1];
+         }
+
+         if ( xi != 0 )
+         {
+            break;
+         }
+      }
+   }
+
+   printf("%d\n", xi);
+}

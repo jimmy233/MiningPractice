@@ -1,0 +1,87 @@
+char res[Max + 1];
+char VAR__819283[Max];
+char VAR__19328[Max];
+int  len1;
+int  len2;
+void Init(char *VAR__819283)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < Max; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = '0';
+   }
+}
+
+
+void Long_Add(char *res, char *newone)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int LEN_OF_STH;
+   int tempsum;
+   int carry = 0;
+
+   LEN_OF_STH = strlen(newone);
+   for ( VAR__53647 = Max - 1, VAR__21230 = LEN_OF_STH - 1; VAR__53647 >= 0, VAR__21230 >= 0; VAR__53647--, VAR__21230-- )
+   {
+      tempsum         = ((( res[VAR__53647] - '0' ) + newone[VAR__21230] ) - '0' ) + carry;
+      res[VAR__53647] = ( tempsum % 10 ) + '0';
+      carry           = tempsum / 10;
+   }
+
+   while ( carry > 0 )
+   {
+      tempsum         = ( res[VAR__53647] - '0' ) + carry;
+      res[VAR__53647] = ( tempsum % 10 ) + '0';
+      carry           = tempsum / 10;
+      VAR__53647--;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < Max; VAR__53647++ )
+   {
+      if ( res[VAR__53647] != '0' )
+      {
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 == Max )
+   {
+      printf("0");
+   }
+   else
+   {
+      int VAR_1238123 = VAR__53647;
+      for ( VAR_1238123; VAR_1238123 < Max; VAR_1238123++ )
+      {
+         putchar(res[VAR_1238123]);
+      }
+   }
+}
+
+
+void Input(char *VAR__819283, char *VAR__19328)
+{
+   int VAR__53647;
+   int LEN_OF_STH;
+
+   scanf("%s %s", VAR__819283, VAR__19328);
+   len1 = strlen(VAR__819283);
+   len2 = strlen(VAR__19328);
+   Init(res);
+   LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      res[( Max + VAR__53647 ) - LEN_OF_STH] = VAR__819283[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   Input(VAR__819283, VAR__19328);
+   Long_Add(res, VAR__19328);
+   return 0;
+}

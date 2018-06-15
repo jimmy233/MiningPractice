@@ -1,0 +1,70 @@
+int main()
+{
+   int VAR_1238123 = 0;
+
+   cin >> VAR_1238123;
+   int   dis[10][3];
+   float ans[1000][7];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         cin >> dis[VAR__53647][VAR__21230];
+      }
+   }
+
+   int VAR__NUM = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 0; VAR__8444594 < 3; VAR__8444594++ )
+         {
+            ans[VAR__NUM][VAR__8444594] = dis[VAR__53647][VAR__8444594];
+         }
+
+         for ( int VAR__8444594 = 0; VAR__8444594 < 3; VAR__8444594++ )
+         {
+            ans[VAR__NUM][VAR__8444594 + 3] = dis[VAR__21230][VAR__8444594];
+         }
+
+         ans[VAR__NUM][6] = 0.0;
+         for ( int VAR__8444594 = 0; VAR__8444594 < 3; VAR__8444594++ )
+         {
+            ans[VAR__NUM][6] += ( dis[VAR__53647][VAR__8444594] - dis[VAR__21230][VAR__8444594] ) * ( dis[VAR__53647][VAR__8444594] - dis[VAR__21230][VAR__8444594] );
+         }
+
+         ans[VAR__NUM][6] = sqrt(ans[VAR__NUM][6]);
+         VAR__NUM++;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__NUM - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( ans[VAR__21230][6] > ans[VAR__21230 - 1][6] )
+         {
+            for ( int VAR__8444594 = 0; VAR__8444594 < 7; VAR__8444594++ )
+            {
+               float tmp = ans[VAR__21230][VAR__8444594];
+               ans[VAR__21230][VAR__8444594]     = ans[VAR__21230 - 1][VAR__8444594];
+               ans[VAR__21230 - 1][VAR__8444594] = tmp;
+            }
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      (((((((((((( cout << '(' ) << ans[VAR__53647][0] ) << ',' ) << ans[VAR__53647][1] ) << ',' ) << ans[VAR__53647][2] ) << ")-(" ) << ans[VAR__53647][3] ) << ',' ) << ans[VAR__53647][4] ) << ',' ) << ans[VAR__53647][5] ) << ")=";
+      printf("%.2f", ans[VAR__53647][6]);
+
+      if ( VAR__53647 < ( VAR__NUM - 1 ))
+      {
+         cout << endl;
+      }
+   }
+
+   return 0;
+}

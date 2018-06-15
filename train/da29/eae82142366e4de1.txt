@@ -1,0 +1,91 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  day;
+   int  VAR__COUNT = 0;
+   int  iday[100][100];
+   char room[100][100];
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 100; VAR__21230++ )
+      {
+         iday[VAR__53647][VAR__21230] = 200;
+      }
+   }
+
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%c", &room[VAR__53647][VAR__21230]);
+
+         while (( room[VAR__53647][VAR__21230] == ' ' ) || ( room[VAR__53647][VAR__21230] == '\n' ))
+         {
+            scanf("%c", &room[VAR__53647][VAR__21230]);
+         }
+
+         if ( room[VAR__53647][VAR__21230] == '@' )
+         {
+            iday[VAR__53647][VAR__21230] = 1;
+         }
+      }
+   }
+
+
+   scanf("%d", &VAR__1238129);
+   for ( day = 2; day <= VAR__1238129; day++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if (( room[VAR__53647][VAR__21230] == '@' ) && ( iday[VAR__53647][VAR__21230] < day ))
+            {
+               if (( room[VAR__53647][VAR__21230 + 1] == '.' ) && (( VAR__21230 + 1 ) < VAR_1238123 ))
+               {
+                  room[VAR__53647][VAR__21230 + 1] = '@';
+                  iday[VAR__53647][VAR__21230 + 1] = day;
+               }
+
+               if (( room[VAR__53647][VAR__21230 - 1] == '.' ) && (( VAR__21230 - 1 ) >= 0 ))
+               {
+                  room[VAR__53647][VAR__21230 - 1] = '@';
+                  iday[VAR__53647][VAR__21230 - 1] = day;
+               }
+
+               if (( room[VAR__53647 + 1][VAR__21230] == '.' ) && (( VAR__53647 + 1 ) < VAR_1238123 ))
+               {
+                  room[VAR__53647 + 1][VAR__21230] = '@';
+                  iday[VAR__53647 + 1][VAR__21230] = day;
+               }
+
+               if (( room[VAR__53647 - 1][VAR__21230] == '.' ) && (( VAR__53647 - 1 ) >= 0 ))
+               {
+                  room[VAR__53647 - 1][VAR__21230] = '@';
+                  iday[VAR__53647 - 1][VAR__21230] = day;
+               }
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( room[VAR__53647][VAR__21230] == '@' )
+         {
+            VAR__COUNT++;
+         }
+      }
+   }
+
+
+   printf("%d\n", VAR__COUNT);
+}

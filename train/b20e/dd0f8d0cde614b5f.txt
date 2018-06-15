@@ -1,0 +1,136 @@
+void main()
+{
+   int VAR_1238123;
+   int *tian;
+   int *lord;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__7685[500] = { 0 };
+   int VAR__temp;
+   int sumnum = 0;
+   int VAR__SUM;
+   int ta;
+   int tb;
+   int la;
+   int lb;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      tian = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+      lord = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", tian + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", lord + VAR__53647);
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - 1 ) - VAR__21230 ); VAR__53647++ )
+         {
+            if (( *( tian + VAR__53647 )) < ( *(( tian + VAR__53647 ) + 1 )))
+            {
+               VAR__temp = *( tian + VAR__53647 );
+               *( tian + VAR__53647 )        = *(( tian + VAR__53647 ) + 1 );
+               *(( tian + VAR__53647 ) + 1 ) = VAR__temp;
+            }
+         }
+      }
+
+
+
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - 1 ) - VAR__21230 ); VAR__53647++ )
+         {
+            if (( *( lord + VAR__53647 )) < ( *(( lord + VAR__53647 ) + 1 )))
+            {
+               VAR__temp = *( lord + VAR__53647 );
+               *( lord + VAR__53647 )        = *(( lord + VAR__53647 ) + 1 );
+               *(( lord + VAR__53647 ) + 1 ) = VAR__temp;
+            }
+         }
+      }
+
+
+
+      ta       = 0, la = 0, tb = VAR_1238123 - 1, lb = VAR_1238123 - 1;
+      VAR__SUM = 0;
+
+      while ( ta != tb )
+      {
+         if (( *( tian + tb )) < ( *( lord + lb )))
+         {
+            tb--;
+            la++;
+            VAR__SUM--;
+         }
+         else
+         if (( *( tian + tb )) > ( *( lord + lb )))
+         {
+            tb--;
+            lb--;
+            VAR__SUM++;
+         }
+         else
+         if (( *( tian + ta )) < ( *( lord + la )))
+         {
+            tb--;
+            la++;
+            VAR__SUM--;
+         }
+         else
+         if (( *( tian + ta )) > ( *( lord + la )))
+         {
+            ta++;
+            la++;
+            VAR__SUM++;
+         }
+         else
+         if (( *( tian + tb )) < ( *( lord + la )))
+         {
+            tb--;
+            la++;
+            VAR__SUM--;
+         }
+         else
+         if (( *( tian + tb )) > ( *( lord + la )))
+         {
+            tb--;
+            la++;
+            VAR__SUM++;
+         }
+         else
+         {
+            tb--;
+            la++;
+         }
+      }
+
+      if (( *( tian + ta )) > ( *( lord + la )))
+      {
+         VAR__SUM++;
+      }
+      else
+      if (( *( tian + ta )) < ( *( lord + la )))
+      {
+         VAR__SUM--;
+      }
+
+
+      VAR__7685[sumnum] = VAR__SUM;
+      sumnum++;
+      scanf("%d", &VAR_1238123);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < sumnum; VAR__53647++ )
+   {
+      printf("%d\n", VAR__7685[VAR__53647] * 200);
+   }
+}

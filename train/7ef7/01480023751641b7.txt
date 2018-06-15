@@ -1,0 +1,96 @@
+int juzhen[100][100];
+int VAR__SUM(int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR__MIN[VAR_1238123];
+
+   if ( VAR_1238123 != 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__MIN[VAR__53647] = juzhen[VAR__53647][0];
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( juzhen[VAR__53647][VAR__21230] < VAR__MIN[VAR__53647] )
+            {
+               VAR__MIN[VAR__53647] = juzhen[VAR__53647][VAR__21230];
+            }
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            juzhen[VAR__53647][VAR__21230] -= VAR__MIN[VAR__53647];
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__MIN[VAR__21230] = juzhen[0][VAR__21230];
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            if ( juzhen[VAR__53647][VAR__21230] < VAR__MIN[VAR__21230] )
+            {
+               VAR__MIN[VAR__21230] = juzhen[VAR__53647][VAR__21230];
+            }
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            juzhen[VAR__53647][VAR__21230] -= VAR__MIN[VAR__21230];
+         }
+      }
+
+      VAR__temp = juzhen[1][1];
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            juzhen[VAR__53647][VAR__21230] = juzhen[VAR__53647][VAR__21230 + 1];
+         }
+      }
+
+
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            juzhen[VAR__53647][VAR__21230] = juzhen[VAR__53647 + 1][VAR__21230];
+         }
+      }
+
+
+      return VAR__SUM(VAR_1238123 - 1) + VAR__temp;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int N;
+   int I;
+   int J;
+   int K;
+
+   cin >> N;
+   for ( K = 1; K <= N; K++ )
+   {
+      for ( I = 0; I < N; I++ )
+      {
+         for ( J = 0; J < N; J++ )
+         {
+            cin >> juzhen[I][J];
+         }
+      }
+
+
+      ( cout << VAR__SUM(N)) << endl;
+   }
+
+   return 0;
+}

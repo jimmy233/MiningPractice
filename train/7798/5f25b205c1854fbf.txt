@@ -1,0 +1,114 @@
+struct inf
+{
+   int        VAR__NUM;
+   char       name[26];
+   struct inf *VAR__NEXT;
+};
+int VAR__1238129;
+struct inf *creat(void)
+{
+   struct inf *VAR__HEAD;
+   struct inf *ANOTHER_POINTER;
+   struct inf *YET_ANOTHER_POINTER;
+   int        VAR_1238123;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct inf *)malloc(LEN));
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+   VAR__HEAD   = NULL;
+   VAR_1238123 = 0;
+
+   while ( 1 )
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+      if ( VAR_1238123 == VAR__1238129 )
+      {
+         break;
+      }
+      else
+      {
+         ANOTHER_POINTER = (struct inf *)malloc(LEN);
+         scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+      }
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void VAR__COUNT(struct inf *VAR__HEAD, int o)
+{
+   struct inf *q1;
+   int        *q2;
+   int        *q3;
+   int        *q4;
+   char       *t1;
+
+   q1 = VAR__HEAD;
+   q2 = (int *)malloc(26 * LEM);
+   for ( q3 = q2; q3 < ( q2 + 26 ); q3++ )
+   {
+      *q3 = 0;
+   }
+
+   while ( q1 != NULL )
+   {
+      for ( t1 = q1->name; ( *t1 ) != '\0'; t1++ )
+      {
+         *( q2 + (( *t1 ) - 'A' )) = ( *( q2 + (( *t1 ) - 'A' ))) + 1;
+      }
+
+      q1 = q1->VAR__NEXT;
+   }
+
+   q4 = q2;
+   for ( q3 = q2; q3 < ( q2 + 26 ); q3++ )
+   {
+      if (( *q4 ) < ( *q3 ))
+      {
+         q4 = q3;
+      }
+   }
+
+
+   printf("%c\n%d\n", ( q4 - q2 ) + 'A', *q4);
+   q1 = VAR__HEAD;
+
+   while ( q1 != NULL )
+   {
+      for ( t1 = q1->name; ( *t1 ) != '\0'; t1++ )
+      {
+         if (( *t1 ) == (( q4 - q2 ) + 'A' ))
+         {
+            printf("%d\n", q1->VAR__NUM);
+         }
+      }
+
+
+      q1 = q1->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct inf *VAR__HEAD;
+   struct inf *VAR_9494;
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = creat();
+   VAR_9494  = VAR__HEAD;
+   VAR__COUNT(VAR__HEAD, VAR__1238129);
+}

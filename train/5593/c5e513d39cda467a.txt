@@ -1,0 +1,157 @@
+int main()
+{
+   int judge(int VAR__819283, int VAR__19328, int VAR__4857423);
+   int sushu(int VAR_1238123);
+
+   int M;
+   int N;
+   int o;
+   int VAR__53647;
+   int VAR__1111;
+   int L;
+   int K;
+   int VAR_FLAG;
+   int VAR_1238123;
+   scanf("%d %d", &M, &N);
+   VAR_FLAG = 0;
+   for ( VAR_1238123 = M; VAR_1238123 <= N; VAR_1238123++ )
+   {
+      o = 1;
+      for ( VAR__53647 = 1; ; VAR__53647++ )
+      {
+         o = o * 10;
+
+         if ( o > VAR_1238123 )
+         {
+            VAR__1111 = VAR__53647;
+            break;
+         }
+      }
+
+      if (( VAR__1111 % 2 ) == 0 )
+      {
+         L = VAR__1111 / 2;
+      }
+      else
+      {
+         L = ( VAR__1111 - 1 ) / 2;
+      }
+
+      if ( sushu(VAR_1238123) && judge(VAR_1238123, L, VAR__1111))
+      {
+         printf("%d", VAR_1238123);
+         K        = VAR_1238123 + 1;
+         VAR_FLAG = 1;
+         break;
+      }
+   }
+
+   for ( VAR_1238123 = K; VAR_1238123 <= N; VAR_1238123++ )
+   {
+      o = 1;
+      for ( VAR__53647 = 1; ; VAR__53647++ )
+      {
+         o = o * 10;
+
+         if ( o > VAR_1238123 )
+         {
+            VAR__1111 = VAR__53647;
+            break;
+         }
+      }
+
+      if (( VAR__1111 % 2 ) == 0 )
+      {
+         L = VAR__1111 / 2;
+      }
+      else
+      {
+         L = ( VAR__1111 - 1 ) / 2;
+      }
+
+      if ( sushu(VAR_1238123) && judge(VAR_1238123, L, VAR__1111))
+      {
+         printf(",%d", VAR_1238123);
+         VAR_FLAG = VAR_FLAG + 1;
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("no\n");
+   }
+}
+
+
+int sushu(int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 2; VAR__53647 <= sqrt(VAR_1238123); VAR__53647++ )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         return 0;
+      }
+   }
+
+
+   return 1;
+}
+
+
+int judge(int VAR__819283, int VAR__19328, int VAR__4857423)
+{
+   int VAR__53647;
+   int VAR__7685;
+   int VAR__3918907;
+   int o;
+
+   VAR__53647 = ( VAR__7685 = ( VAR__3918907 = ( o = 1 )));
+
+   if ( VAR__19328 == 1 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( VAR__4857423 - 1 ); VAR__53647++ )
+      {
+         o = o * 10;
+      }
+
+      if (( VAR__819283 / o ) == ( VAR__819283 % 10 ))
+      {
+         return 1;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= ( VAR__19328 - 1 ); VAR__53647++ )
+      {
+         VAR__7685 = VAR__7685 * 10;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= ( VAR__4857423 - VAR__19328 ); VAR__53647++ )
+      {
+         VAR__3918907 = VAR__3918907 * 10;
+      }
+
+      if ((( VAR__819283 / VAR__3918907 ) % 10 ) == (( VAR__819283 / VAR__7685 ) % 10 ))
+      {
+         if ( judge(VAR__819283, VAR__19328 - 1, VAR__4857423))
+         {
+            return 1;
+         }
+         else
+         {
+            return 0;
+         }
+      }
+
+      else
+      {
+         return 0;
+      }
+   }
+}

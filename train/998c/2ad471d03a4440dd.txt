@@ -1,0 +1,79 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  MAXLEN;
+   int  VAR_FLAG = 0;
+   char s1[500];
+   char s2[500];
+   int  a1[500]          = { 0 };
+   int  a2[500]          = { 0 };
+   int  VAR__819283[500] = { 0 };
+
+   scanf("%s", s1);
+   scanf("%s", s2);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(s1); VAR__53647++ )
+   {
+      a1[( strlen(s1) - 1 ) - VAR__53647] = s1[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(s2); VAR__53647++ )
+   {
+      a2[( strlen(s2) - 1 ) - VAR__53647] = s2[VAR__53647] - '0';
+   }
+
+   MAXLEN = ( strlen(s1) >= strlen(s2)) ? ( strlen(s1)) : ( strlen(s2));
+   for ( VAR__53647 = 0; VAR__53647 < MAXLEN; VAR__53647++ )
+   {
+      VAR__temp = ( a1[VAR__53647] + a2[VAR__53647] ) + VAR__819283[VAR__53647];
+
+      if ( VAR__temp >= 10 )
+      {
+         if ( VAR__53647 != ( MAXLEN - 1 ))
+         {
+            VAR__819283[VAR__53647]     = VAR__temp % 10;
+            VAR__819283[VAR__53647 + 1] = 1;
+            VAR__21230 = MAXLEN;
+         }
+         else
+         {
+            VAR__819283[VAR__53647]     = VAR__temp % 10;
+            VAR__819283[VAR__53647 + 1] = 1;
+            VAR__21230 = MAXLEN + 1;
+         }
+      }
+      else
+      {
+         VAR__819283[VAR__53647] = VAR__temp;
+         VAR__21230 = MAXLEN;
+      }
+   }
+
+   for ( VAR__53647 = VAR__21230 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__53647] != 0 )
+      {
+         VAR_FLAG = 1;
+
+         if ( VAR_FLAG )
+         {
+            printf("%d", VAR__819283[VAR__53647]);
+         }
+      }
+      else
+      {
+         if ( VAR_FLAG )
+         {
+            printf("%d", VAR__819283[VAR__53647]);
+         }
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("0");
+   }
+
+   return 0;
+}

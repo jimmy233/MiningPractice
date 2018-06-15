@@ -1,0 +1,59 @@
+struct people
+{
+   char  VAR__819283[7];
+   float VAR__1111;
+};
+int main()
+{
+   int           VAR_1238123;
+   int           VAR__53647;
+   int           VAR__21230;
+   struct people *VAR_233;
+   struct people pp;
+   char          *v = "male";
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = (struct people *)malloc(VAR_1238123 * ( sizeof( struct people )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", VAR_233[VAR__53647].VAR__819283, &VAR_233[VAR__53647].VAR__1111);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( strcmp(VAR_233[VAR__53647].VAR__819283, VAR_233[VAR__21230].VAR__819283) < 0 )
+         {
+            pp = VAR_233[VAR__53647];
+            VAR_233[VAR__53647] = VAR_233[VAR__21230];
+            VAR_233[VAR__21230] = pp;
+         }
+         else
+         {
+            if ((( VAR_233[VAR__53647].VAR__1111 > VAR_233[VAR__21230].VAR__1111 ) && ( strcmp(VAR_233[VAR__53647].VAR__819283, v) == 0 )) && ( strcmp(VAR_233[VAR__21230].VAR__819283, v) == 0 ))
+            {
+               pp = VAR_233[VAR__53647];
+               VAR_233[VAR__53647] = VAR_233[VAR__21230];
+               VAR_233[VAR__21230] = pp;
+            }
+
+            if ((( VAR_233[VAR__53647].VAR__1111 < VAR_233[VAR__21230].VAR__1111 ) && ( strcmp(VAR_233[VAR__53647].VAR__819283, v) != 0 )) && ( strcmp(VAR_233[VAR__21230].VAR__819283, v) != 0 ))
+            {
+               pp = VAR_233[VAR__53647];
+               VAR_233[VAR__53647] = VAR_233[VAR__21230];
+               VAR_233[VAR__21230] = pp;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", VAR_233[VAR__53647].VAR__1111);
+   }
+
+   printf("%.2f", VAR_233[VAR_1238123 - 1].VAR__1111);
+   free(VAR_233);
+   return 0;
+}

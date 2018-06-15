@@ -1,0 +1,76 @@
+int main()
+{
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__8444594;
+   int   VAR__1111;
+   int   VAR__1238129;
+   int   VAR_1238123;
+   int   VAR__NUM;
+   int   tempi;
+   int   VAR__7685[10];
+   int   VAR__3918907[10];
+   int   VAR__9290[10];
+   float VAR__12302[100];
+   float tempd;
+   int   dp1[100];
+   int   dp2[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   VAR__NUM = -1;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__NUM++;
+         VAR__12302[VAR__NUM] = sqrt(((( VAR__7685[VAR__53647] - VAR__7685[VAR__21230] ) * ( VAR__7685[VAR__53647] - VAR__7685[VAR__21230] )) + (( VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230] ) * ( VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230] ))) + (( VAR__9290[VAR__53647] - VAR__9290[VAR__21230] ) * ( VAR__9290[VAR__53647] - VAR__9290[VAR__21230] )));
+         dp1[VAR__NUM]        = VAR__53647;
+         dp2[VAR__NUM]        = VAR__21230;
+      }
+   }
+
+
+   VAR__NUM++;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__NUM - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__NUM; VAR__21230++ )
+      {
+         if ( VAR__12302[VAR__21230] > VAR__12302[VAR__53647] )
+         {
+            tempd = VAR__12302[VAR__21230];
+            VAR__12302[VAR__21230] = VAR__12302[VAR__53647];
+            VAR__12302[VAR__53647] = tempd;
+            tempi           = dp1[VAR__53647];
+            dp1[VAR__53647] = dp1[VAR__21230];
+            dp1[VAR__21230] = tempi;
+            tempi           = dp2[VAR__53647];
+            dp2[VAR__53647] = dp2[VAR__21230];
+            dp2[VAR__21230] = tempi;
+         }
+
+         if (( VAR__12302[VAR__21230] == VAR__12302[VAR__53647] ) && (( dp1[VAR__21230] < dp1[VAR__53647] ) || (( dp1[VAR__21230] == dp1[VAR__53647] ) && ( dp2[VAR__21230] < dp2[VAR__53647] ))))
+         {
+            tempd = VAR__12302[VAR__21230];
+            VAR__12302[VAR__21230] = VAR__12302[VAR__53647];
+            VAR__12302[VAR__53647] = tempd;
+            tempi           = dp1[VAR__53647];
+            dp1[VAR__53647] = dp1[VAR__21230];
+            dp1[VAR__21230] = tempi;
+            tempi           = dp2[VAR__53647];
+            dp2[VAR__53647] = dp2[VAR__21230];
+            dp2[VAR__21230] = tempi;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", VAR__7685[dp1[VAR__53647]], VAR__3918907[dp1[VAR__53647]], VAR__9290[dp1[VAR__53647]], VAR__7685[dp2[VAR__53647]], VAR__3918907[dp2[VAR__53647]], VAR__9290[dp2[VAR__53647]], VAR__12302[VAR__53647]);
+   }
+}

@@ -1,0 +1,77 @@
+struct student
+{
+   int number;
+   int chinese;
+   int math;
+   int total;
+}
+stu[100000];
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &stu[VAR__53647].number, &stu[VAR__53647].chinese, &stu[VAR__53647].math);
+      stu[VAR__53647].total = stu[VAR__53647].chinese + stu[VAR__53647].math;
+   }
+
+   int VAR__819283  = stu[0].total;
+   int VAR__19328   = stu[0].total;
+   int VAR__4857423 = stu[0].total;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].total > VAR__819283 )
+      {
+         VAR__4857423 = VAR__19328;
+         VAR__19328   = VAR__819283;
+         VAR__819283  = stu[VAR__53647].total;
+         continue;
+      }
+
+      if (( stu[VAR__53647].total < VAR__819283 ) && ( stu[VAR__53647].total > VAR__19328 ))
+      {
+         VAR__4857423 = VAR__19328;
+         VAR__19328   = stu[VAR__53647].total;
+         continue;
+      }
+
+      if (( stu[VAR__53647].total < VAR__19328 ) && ( stu[VAR__53647].total > VAR__4857423 ))
+      {
+         VAR__4857423 = stu[VAR__53647].total;
+         continue;
+      }
+   }
+
+   int VAR__1238129 = 0;
+   for ( VAR__53647 = 0; ( VAR__53647 < VAR_1238123 ) && ( VAR__1238129 < 3 ); VAR__53647++ )
+   {
+      if ( stu[VAR__53647].total == VAR__819283 )
+      {
+         printf("%d %d\n", stu[VAR__53647].number, stu[VAR__53647].total);
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR__53647 = 0; ( VAR__53647 < VAR_1238123 ) && ( VAR__1238129 < 3 ); VAR__53647++ )
+   {
+      if ( stu[VAR__53647].total == VAR__19328 )
+      {
+         printf("%d %d\n", stu[VAR__53647].number, stu[VAR__53647].total);
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR__53647 = 0; ( VAR__53647 < VAR_1238123 ) && ( VAR__1238129 < 3 ); VAR__53647++ )
+   {
+      if ( stu[VAR__53647].total == VAR__4857423 )
+      {
+         printf("%d %d\n", stu[VAR__53647].number, stu[VAR__53647].total);
+         VAR__1238129++;
+      }
+   }
+
+   return 0;
+}

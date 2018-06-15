@@ -1,0 +1,57 @@
+int main()
+{
+   int y1;
+   int m1;
+   int d1;
+   int y2;
+   int m2;
+   int d2;
+   int ds1;
+   int ds2;
+   int VAR__SUM = 0;
+   int VAR__53647;
+
+   scanf("%d %d %d", &y1, &m1, &d1);
+   scanf("%d %d %d", &y2, &m2, &d2);
+   for ( VAR__53647 = y1; VAR__53647 < y2; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 100 ) != 0 ) && (( VAR__53647 % 4 ) == 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__SUM = VAR__SUM + 366;
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + 365;
+      }
+   }
+
+   int days(int VAR__7685, int VAR__3918907, int VAR__9290);
+
+   ds1      = days(y1, m1, d1);
+   ds2      = days(y2, m2, d2);
+   VAR__SUM = ( VAR__SUM + ds2 ) - ds1;
+   printf("%d", VAR__SUM);
+   return 0;
+}
+
+
+int days(int VAR__7685, int VAR__3918907, int VAR__9290)
+{
+   int VAR__SUM   = 0;
+   int Months[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if (((( VAR__7685 % 100 ) != 0 ) && (( VAR__7685 % 4 ) == 0 )) || (( VAR__7685 % 400 ) == 0 ))
+   {
+      Months[1]++;
+   }
+
+   VAR__3918907--;
+
+   while ( VAR__3918907-- )
+   {
+      VAR__SUM = VAR__SUM + Months[VAR__3918907];
+   }
+
+   VAR__SUM = VAR__SUM + VAR__9290;
+   return VAR__SUM;
+}

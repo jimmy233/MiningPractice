@@ -1,0 +1,77 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int tj[1005];
+   int qw[1005];
+   int win;
+   int tl;
+   int tr;
+   int ql;
+   int qr;
+
+   while (( cin >> VAR_1238123 ) && ( VAR_1238123 != 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tj[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qw[VAR__53647];
+      }
+
+      sort(tj, tj + VAR_1238123);
+      sort(qw, qw + VAR_1238123);
+      win = 0;
+      tl  = ( ql = 0 );
+      tr  = ( qr = VAR_1238123 - 1 );
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( qw[ql] < tj[tl] )
+         {
+            win++;
+            ql++;
+            tl++;
+         }
+         else
+         if ( qw[ql] > tj[tl] )
+         {
+            win--;
+            qr--;
+            tl++;
+         }
+         else
+         {
+            if ( qw[qr] < tj[tr] )
+            {
+               win++;
+               qr--;
+               tr--;
+            }
+            else
+            if ( qw[qr] > tj[tr] )
+            {
+               win--;
+               qr--;
+               tl++;
+            }
+            else
+            {
+               if ( qw[qr] > tj[tl] )
+               {
+                  win--;
+               }
+
+               qr--;
+               tl++;
+            }
+         }
+      }
+
+      ( cout << ( 200 * win )) << endl;
+   }
+
+   return 0;
+}

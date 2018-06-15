@@ -1,0 +1,67 @@
+struct student
+{
+   int id;
+   int yw;
+   int sx;
+}
+stu[100000];
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__SUM[100000];
+   int VAR__TEMP[3];
+   int VAR__MAX;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &stu[VAR__53647].id, &stu[VAR__53647].yw, &stu[VAR__53647].sx);
+      VAR__SUM[VAR__53647] = stu[VAR__53647].yw + stu[VAR__53647].sx;
+   }
+
+   for ( VAR__53647 = 0, VAR__MAX = -1, VAR__TEMP[0] = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX     = VAR__SUM[VAR__53647];
+         VAR__TEMP[0] = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0, VAR__MAX = -1, VAR__TEMP[1] = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == VAR__TEMP[0] )
+      {
+         continue;
+      }
+      else
+      {
+         if ( VAR__SUM[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX     = VAR__SUM[VAR__53647];
+            VAR__TEMP[1] = VAR__53647;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0, VAR__MAX = -1, VAR__TEMP[2] = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__53647 == VAR__TEMP[0] ) || ( VAR__53647 == VAR__TEMP[1] ))
+      {
+         continue;
+      }
+      else
+      {
+         if ( VAR__SUM[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX     = VAR__SUM[VAR__53647];
+            VAR__TEMP[2] = VAR__53647;
+         }
+      }
+   }
+
+   printf("%d %d\n", stu[VAR__TEMP[0]].id, VAR__SUM[VAR__TEMP[0]]);
+   printf("%d %d\n", stu[VAR__TEMP[1]].id, VAR__SUM[VAR__TEMP[1]]);
+   printf("%d %d", stu[VAR__TEMP[2]].id, VAR__SUM[VAR__TEMP[2]]);
+}

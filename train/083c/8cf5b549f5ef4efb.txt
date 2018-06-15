@@ -1,0 +1,95 @@
+int toten(int, char *);
+void tento(int, char *, int);
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__SUM;
+   char VAR__7685[100];
+
+   scanf("%d %s %d", &VAR__819283, VAR__7685, &VAR__19328);
+   VAR__SUM = toten(VAR__819283, VAR__7685);
+   tento(VAR__SUM, VAR__7685, VAR__19328);
+   puts(VAR__7685);
+   return 0;
+}
+
+
+int toten(int VAR__819283, char *VAR__7685)
+{
+   int  VAR_1238123 = strlen(VAR__7685);
+   char as[100];
+   int  VAR__SUM = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__4857423;
+   int  VAR__19328[100];
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( 'a' <= VAR__7685[VAR__53647] ) && ( VAR__7685[VAR__53647] <= 'z' ))
+      {
+         VAR__19328[VAR__53647] = ( VAR__7685[VAR__53647] - 'a' ) + 10;
+      }
+
+      if (( 'A' <= VAR__7685[VAR__53647] ) && ( VAR__7685[VAR__53647] <= 'Z' ))
+      {
+         VAR__19328[VAR__53647] = ( VAR__7685[VAR__53647] - 'A' ) + 10;
+      }
+
+      if (( '0' <= VAR__7685[VAR__53647] ) && ( VAR__7685[VAR__53647] <= '9' ))
+      {
+         VAR__19328[VAR__53647] = VAR__7685[VAR__53647] - '0';
+      }
+
+      VAR__SUM += VAR__19328[VAR__53647] * pow(VAR__819283 * 1.0, ( VAR_1238123 - VAR__53647 ) - 1);
+   }
+
+   return VAR__SUM;
+}
+
+
+void tento(int VAR__SUM, char *VAR__7685, int VAR__19328)
+{
+   int VAR__819283[100];
+   int VAR__53647 = 0;
+   int VAR__21230;
+   int VAR__4857423[100];
+
+   VAR__53647 = 0;
+
+   if ( VAR__SUM == 0 )
+   {
+      VAR__7685[0] = '0';
+      VAR__7685[1] = '\0';
+   }
+   else
+   {
+      while ( VAR__SUM > 0 )
+      {
+         VAR__819283[VAR__53647] = VAR__SUM % VAR__19328;
+         VAR__SUM = ( VAR__SUM - VAR__819283[VAR__53647] ) / VAR__19328;
+         VAR__53647++;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         VAR__4857423[VAR__21230] = VAR__819283[( VAR__53647 - 1 ) - VAR__21230];
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( VAR__4857423[VAR__21230] <= 9 )
+         {
+            VAR__7685[VAR__21230] = VAR__4857423[VAR__21230] + '0';
+         }
+         else
+         {
+            VAR__7685[VAR__21230] = ( VAR__4857423[VAR__21230] - 10 ) + 'A';
+         }
+      }
+
+      VAR__7685[VAR__53647] = '\0';
+   }
+}

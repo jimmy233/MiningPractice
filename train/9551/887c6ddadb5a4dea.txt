@@ -1,0 +1,68 @@
+int main(int argc, char *argv[])
+{
+   char id[100][100];
+   int  age[100];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", id[VAR__53647]);
+      scanf("%d", &age[VAR__53647]);
+   }
+
+   int  VAR__112390;
+   char VAR__temp[13];
+   char id1[100][13];
+   int  age1[100];
+   char id2[100][13];
+   int  age2[100];
+   int  VAR__7685    = 0;
+   int  VAR__3918907 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( age[VAR__53647] >= 60 )
+      {
+         age1[VAR__7685] = age[VAR__53647];
+         strcpy(id1[VAR__7685], id[VAR__53647]);
+         VAR__7685++;
+      }
+
+      if ( age[VAR__53647] < 60 )
+      {
+         age2[VAR__3918907] = age[VAR__53647];
+         strcpy(id2[VAR__3918907], id[VAR__53647]);
+         VAR__3918907++;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR__7685; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__7685 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( age1[VAR__53647] < age1[VAR__53647 + 1] )
+         {
+            VAR__112390          = age1[VAR__53647 + 1];
+            age1[VAR__53647 + 1] = age1[VAR__53647];
+            age1[VAR__53647]     = VAR__112390;
+            strcpy(VAR__temp, id1[VAR__53647 + 1]);
+            strcpy(id1[VAR__53647 + 1], id1[VAR__53647]);
+            strcpy(id1[VAR__53647], VAR__temp);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      printf("%s\n", id1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      printf("%s\n", id2[VAR__53647]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,58 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   char ANOTHER_STRING[251];
+   char YET_ANOTHER_STRING[251];
+
+   cin.getline(ANOTHER_STRING, 251);
+   cin.getline(YET_ANOTHER_STRING, 251);
+   int save1[252] = { 0 };
+   int save2[250] = { 0 };
+   int len1       = strlen(ANOTHER_STRING);
+   int len2       = strlen(YET_ANOTHER_STRING);
+   for ( VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      save1[( len1 - 1 ) - VAR__53647] = ANOTHER_STRING[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      save2[( len2 - 1 ) - VAR__53647] = YET_ANOTHER_STRING[VAR__53647] - '0';
+   }
+
+   int VAR__MAX = ( len1 > len2 ) ? ( len1 ) : ( len2 );
+   for ( VAR__53647 = 0; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      save1[VAR__53647] += save2[VAR__53647];
+
+      if ( save1[VAR__53647] >= 10 )
+      {
+         save1[VAR__53647 + 1] += 1;
+         save1[VAR__53647]     -= 10;
+      }
+   }
+
+   for ( VAR__53647 = 250; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( save1[VAR__53647] != 0 )
+      {
+         break;
+      }
+   }
+
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+   {
+      cout << save1[VAR__21230];
+   }
+
+   if ( VAR__53647 < 0 )
+   {
+      ( cout << 0 ) << endl;
+   }
+
+   return 0;
+}

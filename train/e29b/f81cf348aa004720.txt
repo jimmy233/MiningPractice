@@ -1,0 +1,73 @@
+int main()
+{
+   double VAR_9494[310];
+   double av          = 0;
+   double VAR_1238123 = 0;
+   double VAR__MAX    = 0;
+   double VAR__SUM    = 0;
+   double VAR_233[310];
+   double VAR__TEMP  = 0;
+   int    VAR__53647 = 0;
+   int    VAR__21230 = 0;
+   int    ge         = 1;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR_9494[VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += VAR_9494[VAR__53647];
+   }
+
+   av = VAR__SUM / VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647] > av ) && (( VAR_9494[VAR__53647] - av ) > VAR__MAX ))
+      {
+         VAR__MAX = VAR_9494[VAR__53647] - av;
+         continue;
+      }
+
+      if (( av > VAR_9494[VAR__53647] ) && (( av - VAR_9494[VAR__53647] ) > VAR__MAX ))
+      {
+         VAR__MAX = av - VAR_9494[VAR__53647];
+         continue;
+      }
+   }
+
+   ge = 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( abs(abs(VAR_9494[VAR__53647] - av) - VAR__MAX) < 0.00001 )
+      {
+         VAR_233[ge] = VAR_9494[VAR__53647];
+         ge++;
+         continue;
+      }
+   }
+
+   ge--;
+   for ( VAR__53647 = 1; VAR__53647 <= ge; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( ge - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR_233[VAR__21230] > VAR_233[VAR__21230 + 1] )
+         {
+            VAR__TEMP               = VAR_233[VAR__21230];
+            VAR_233[VAR__21230]     = VAR_233[VAR__21230 + 1];
+            VAR_233[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   cout << VAR_233[1];
+   for ( VAR__53647 = 2; VAR__53647 <= ge; VAR__53647++ )
+   {
+      ( cout << "," ) << VAR_233[VAR__53647];
+   }
+
+   return 0;
+}

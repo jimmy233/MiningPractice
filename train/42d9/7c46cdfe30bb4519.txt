@@ -1,0 +1,76 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__21230;
+   int VAR_666;
+
+   scanf("%d", &VAR_1238123);
+   struct zb
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   zb[1000];
+   for ( VAR_666 = 0; VAR_666 < VAR_1238123; VAR_666++ )
+   {
+      scanf("%d%d%d", &zb[VAR_666].VAR__7685, &zb[VAR_666].VAR__3918907, &zb[VAR_666].VAR__9290);
+   }
+
+   int VAR__53647 = 0;
+   struct jl
+   {
+      int    x1;
+      int    x2;
+      int    y1;
+      int    y2;
+      int    z1;
+      int    z2;
+      double VAR_9494;
+   }
+   jl[1000];
+   for ( VAR_666 = 0; VAR_666 < ( VAR_1238123 - 1 ); VAR_666++ )
+   {
+      for ( VAR__21230 = VAR_666 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         jl[VAR__53647].x1 = zb[VAR_666].VAR__7685;
+         jl[VAR__53647].x2 = zb[VAR__21230].VAR__7685;
+         jl[VAR__53647].y1 = zb[VAR_666].VAR__3918907;
+         jl[VAR__53647].y2 = zb[VAR__21230].VAR__3918907;
+         jl[VAR__53647].z1 = zb[VAR_666].VAR__9290;
+         jl[VAR__53647].z2 = zb[VAR__21230].VAR__9290;
+         int    VAR__819283;
+         int    VAR__19328;
+         int    VAR__4857423;
+         double VAR__127322;
+         VAR__819283             = jl[VAR__53647].x1 - jl[VAR__53647].x2;
+         VAR__19328              = jl[VAR__53647].y1 - jl[VAR__53647].y2;
+         VAR__4857423            = jl[VAR__53647].z1 - jl[VAR__53647].z2;
+         VAR__127322             = (( VAR__819283 * VAR__819283 ) + ( VAR__19328 * VAR__19328 )) + ( VAR__4857423 * VAR__4857423 );
+         jl[VAR__53647].VAR_9494 = sqrt(VAR__127322);
+         VAR__53647++;
+      }
+   }
+
+   int VAR__1238129;
+   VAR__1238129 = VAR__53647;
+   for ( VAR_666 = 1; VAR_666 <= VAR__1238129; VAR_666++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__1238129 - VAR_666 ); VAR__21230++ )
+      {
+         if ( jl[VAR__21230 + 1].VAR_9494 > jl[VAR__21230].VAR_9494 )
+         {
+            jl[1000]           = jl[VAR__21230 + 1];
+            jl[VAR__21230 + 1] = jl[VAR__21230];
+            jl[VAR__21230]     = jl[1000];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", jl[VAR__53647].x1, jl[VAR__53647].y1, jl[VAR__53647].z1, jl[VAR__53647].x2, jl[VAR__53647].y2, jl[VAR__53647].z2, jl[VAR__53647].VAR_9494);
+   }
+
+   return 0;
+}

@@ -1,0 +1,101 @@
+struct stu
+{
+   char       name[25];
+   int        score;
+   int        clas;
+   char       job;
+   char       west;
+   int        paper;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+};
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__1238129     = 0;
+   int  VAR__MAX         = 0;
+   int  all              = 0;
+   char VAR__4857423[25] = { '\0' };
+
+   scanf("%d", &VAR_1238123);
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+   ANOTHER_POINTER = (struct stu *)malloc(LEN);
+   scanf("%s%d%d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->score, &ANOTHER_POINTER->clas, &ANOTHER_POINTER->job, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+   ANOTHER_POINTER->VAR__SUM = 0;
+   VAR__HEAD = NULL;
+
+   while ( VAR_1238123 )
+   {
+      VAR__1238129 += 1;
+
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(LEN);
+      scanf("%s%d%d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->score, &ANOTHER_POINTER->clas, &ANOTHER_POINTER->job, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+      ANOTHER_POINTER->VAR__SUM = 0;
+      VAR_1238123--;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->clas > 80 )
+      {
+         if ( VAR_233->job == 'Y' )
+         {
+            VAR_233->VAR__SUM += 850;
+         }
+
+         if ( VAR_233->score > 85 )
+         {
+            VAR_233->VAR__SUM += 4000;
+         }
+      }
+
+      if ( VAR_233->score > 80 )
+      {
+         if ( VAR_233->paper )
+         {
+            VAR_233->VAR__SUM += 8000;
+         }
+
+         if ( VAR_233->score > 85 )
+         {
+            if ( VAR_233->west == 'Y' )
+            {
+               VAR_233->VAR__SUM += 1000;
+            }
+
+            if ( VAR_233->score > 90 )
+            {
+               VAR_233->VAR__SUM += 2000;
+            }
+         }
+      }
+
+      if ( VAR_233->VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->VAR__SUM;
+         strcpy(VAR__4857423, VAR_233->name);
+      }
+
+      all    += VAR_233->VAR__SUM;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   puts(VAR__4857423);
+   printf("%d\n%d", VAR__MAX, all);
+}

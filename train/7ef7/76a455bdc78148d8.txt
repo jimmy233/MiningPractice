@@ -1,0 +1,130 @@
+int VAR__819283[100][100];
+int search1(int VAR__NUM, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__MIN;
+
+   VAR__MIN = VAR__819283[VAR__NUM][0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__NUM][VAR__53647] < VAR__MIN )
+      {
+         VAR__MIN = VAR__819283[VAR__NUM][VAR__53647];
+      }
+   }
+
+
+   return VAR__MIN;
+}
+
+
+int search2(int VAR__NUM, int VAR_1238123)
+{
+   int VAR__21230;
+   int VAR__MIN;
+
+   VAR__MIN = VAR__819283[0][VAR__NUM];
+   for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( VAR__819283[VAR__21230][VAR__NUM] < VAR__MIN )
+      {
+         VAR__MIN = VAR__819283[VAR__21230][VAR__NUM];
+      }
+   }
+
+
+   return VAR__MIN;
+}
+
+
+void dele1(int VAR__NUM, int VAR_1238123, int VAR__7685)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__NUM][VAR__53647] = VAR__819283[VAR__NUM][VAR__53647] - VAR__7685;
+   }
+}
+
+
+void dele2(int VAR__NUM, int VAR_1238123, int VAR__7685)
+{
+   int VAR__21230;
+
+   for ( VAR__21230 = 0; VAR__21230 <= VAR_1238123; VAR__21230++ )
+   {
+      VAR__819283[VAR__21230][VAR__NUM] = VAR__819283[VAR__21230][VAR__NUM] - VAR__7685;
+   }
+}
+
+
+void move(int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647][VAR__21230 + 1];
+      }
+   }
+
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647 + 1][VAR__21230];
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__1111;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int ans;
+
+   cin >> VAR_1238123;
+   for ( VAR__1111 = 1; VAR__1111 <= VAR_1238123; VAR__1111++ )
+   {
+      VAR__1238129 = VAR_1238123;
+      ans          = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      while ( VAR__1238129 > 1 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+         {
+            dele1(VAR__53647, VAR__1238129, search1(VAR__53647, VAR__1238129));
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+         {
+            dele2(VAR__21230, VAR__1238129, search2(VAR__21230, VAR__1238129));
+         }
+
+         ans = ans + VAR__819283[1][1];
+         move(VAR__1238129);
+         VAR__1238129 = VAR__1238129 - 1;
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

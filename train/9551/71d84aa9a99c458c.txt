@@ -1,0 +1,61 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   char id[100][10];
+   int  age[100];
+   int  oldno = 0;
+   int  xu[100];
+   char shunxu[100][10];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", id[VAR__53647], &age[VAR__53647]);
+   }
+
+   for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( age[VAR__21230] >= 60 )
+      {
+         xu[oldno] = age[VAR__21230];
+         strcpy(shunxu[oldno], id[VAR__21230]);
+         oldno++;
+      }
+   }
+
+   int  VAR__NUM = oldno;
+   int  VAR__112390;
+   char tem[10];
+   for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( age[VAR__8444594] < 60 )
+      {
+         xu[oldno] = age[VAR__8444594];
+         strcpy(shunxu[oldno], id[VAR__8444594]);
+         oldno++;
+      }
+   }
+
+   for ( int VAR__7685 = 1; VAR__7685 <= VAR__NUM; VAR__7685++ )
+   {
+      for ( int VAR__3918907 = 0; VAR__3918907 < ( VAR__NUM - VAR__7685 ); VAR__3918907++ )
+      {
+         if ( xu[VAR__3918907] < xu[VAR__3918907 + 1] )
+         {
+            VAR__112390          = xu[VAR__3918907];
+            xu[VAR__3918907]     = xu[VAR__3918907 + 1];
+            xu[VAR__3918907 + 1] = VAR__112390;
+            strcpy(tem, shunxu[VAR__3918907]);
+            strcpy(shunxu[VAR__3918907], shunxu[VAR__3918907 + 1]);
+            strcpy(shunxu[VAR__3918907 + 1], tem);
+         }
+      }
+   }
+
+   for ( int VAR__9290 = 0; VAR__9290 < VAR_1238123; VAR__9290++ )
+   {
+      printf("%s\n", shunxu[VAR__9290]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,102 @@
+int VAR__SUM;
+int VAR_1238123;
+void r2z(int VAR__819283[][100], int VAR_1238123);
+void sub(int VAR__819283[][100], int VAR_1238123);
+
+int main()
+{
+   int VAR__53647;
+   int row;
+   int col;
+   int VAR__819283[100][100] = { 0 };
+
+   cin >> VAR_1238123;
+   int VAR__1238129 = VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__SUM    = 0;
+      VAR_1238123 = VAR__1238129;
+      for ( row = 0; row < VAR__1238129; row++ )
+      {
+         for ( col = 0; col < VAR__1238129; col++ )
+         {
+            cin >> VAR__819283[row][col];
+         }
+      }
+
+
+      r2z(VAR__819283, VAR_1238123);
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}
+
+
+void r2z(int VAR__819283[][100], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MIN[100];
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN[VAR__53647] = 10000;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] < VAR__MIN[VAR__53647] )
+         {
+            VAR__MIN[VAR__53647] = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] -= VAR__MIN[VAR__53647];
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      VAR__MIN[VAR__21230] = 10000;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] < VAR__MIN[VAR__21230] )
+         {
+            VAR__MIN[VAR__21230] = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] -= VAR__MIN[VAR__21230];
+      }
+   }
+
+   VAR__SUM += VAR__819283[1][1];
+   sub(VAR__819283, VAR_1238123);
+}
+
+
+void sub(int VAR__819283[][100], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__819283[0][VAR__53647] = VAR__819283[0][VAR__53647 + 1];
+      VAR__819283[VAR__53647][0] = VAR__819283[VAR__53647 + 1][0];
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647 + 1][VAR__21230 + 1];
+      }
+   }
+
+   VAR_1238123--;
+
+   if ( VAR_1238123 > 1 )
+   {
+      r2z(VAR__819283, VAR_1238123);
+   }
+}

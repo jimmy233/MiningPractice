@@ -1,0 +1,48 @@
+int main()
+{
+   struct student
+   {
+      char           VAR__NUM[20];
+      char           name[20];
+      char           sex;
+      int            age;
+      float          mark;
+      char           address[20];
+      struct student *VAR__NEXT;
+      struct student *pre;
+   };
+   struct student *stu;
+
+   stu      = (struct student *)malloc(LEN);
+   stu->pre = NULL;
+
+   while ( 1 )
+   {
+      scanf("%s", stu->VAR__NUM);
+
+      if ( strcmp(stu->VAR__NUM, "end") == 0 )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %f %s", stu->name, &stu->sex, &stu->age, &stu->mark, stu->address);
+      stu->VAR__NEXT      = (struct student *)malloc(LEN);
+      stu->VAR__NEXT->pre = stu;
+      stu = stu->VAR__NEXT;
+   }
+
+   stu = stu->pre;
+   free(stu->VAR__NEXT);
+   for ( ; stu != NULL; )
+   {
+      printf("%s %s %c %d %g %s\n", stu->VAR__NUM, stu->name, stu->sex, stu->age, stu->mark, stu->address);
+      stu = stu->pre;
+
+      if ( stu != NULL )
+      {
+         free(stu->VAR__NEXT);
+      }
+   }
+
+   return 0;
+}

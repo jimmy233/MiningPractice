@@ -1,0 +1,124 @@
+int main()
+{
+   int VAR__9290;
+   int totalhorse;
+   int tianwins[10000]  = { 0 };
+   int tianloses[10000] = { 0 };
+   int ANOTHER_POINTER;
+   int YET_ANOTHER_POINTER;
+   int p3;
+   int p4;
+   int qihorse[10000];
+   int tianhorse[10000];
+   int VAR__3918907;
+   int k1;
+   int m1;
+   int temp1;
+   int k2;
+   int m2;
+   int temp2;
+   int VAR__COUNT = 0;
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__9290 = 0; VAR__9290 <= 10000; VAR__9290++ )
+   {
+      scanf("%d", &totalhorse);
+
+      if ( totalhorse == 0 )
+      {
+         break;
+      }
+      else
+      {
+         VAR__COUNT++;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ( totalhorse - 1 ); VAR__53647++ )
+      {
+         scanf("%d", &tianhorse[VAR__53647]);
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= ( totalhorse - 1 ); VAR__21230++ )
+      {
+         scanf("%d", &qihorse[VAR__21230]);
+      }
+
+      for ( k1 = 0; k1 <= ( totalhorse - 1 ); k1++ )
+      {
+         for ( m1 = 0; m1 <= (( totalhorse - 2 ) - k1 ); m1++ )
+         {
+            if ( tianhorse[m1] < tianhorse[m1 + 1] )
+            {
+               temp1             = tianhorse[m1];
+               tianhorse[m1]     = tianhorse[m1 + 1];
+               tianhorse[m1 + 1] = temp1;
+            }
+         }
+      }
+
+      for ( k2 = 0; k2 <= ( totalhorse - 1 ); k2++ )
+      {
+         for ( m2 = 0; m2 <= (( totalhorse - 2 ) - k2 ); m2++ )
+         {
+            if ( qihorse[m2] < qihorse[m2 + 1] )
+            {
+               temp2           = qihorse[m2];
+               qihorse[m2]     = qihorse[m2 + 1];
+               qihorse[m2 + 1] = temp2;
+            }
+         }
+      }
+
+      ANOTHER_POINTER     = 0;
+      YET_ANOTHER_POINTER = 0;
+      p3 = totalhorse - 1;
+      p4 = totalhorse - 1;
+      for ( VAR__3918907 = 1; VAR__3918907 <= totalhorse; VAR__3918907++ )
+      {
+         if ( tianhorse[YET_ANOTHER_POINTER] > qihorse[ANOTHER_POINTER] )
+         {
+            tianwins[VAR__9290]++;
+            YET_ANOTHER_POINTER++;
+            ANOTHER_POINTER++;
+         }
+         else
+         {
+            if ( tianhorse[p4] > qihorse[p3] )
+            {
+               tianwins[VAR__9290]++;
+               p4--;
+               p3--;
+            }
+            else
+            if (( tianhorse[p4] == qihorse[p3] ) && ( tianhorse[p4] < qihorse[ANOTHER_POINTER] ))
+            {
+               tianloses[VAR__9290]++;
+               p4--;
+               ANOTHER_POINTER++;
+            }
+            else
+            if (( tianhorse[p4] == qihorse[p3] ) && ( tianhorse[p4] == qihorse[ANOTHER_POINTER] ))
+            {
+               tianloses[VAR__9290]++;
+               tianwins[VAR__9290]++;
+               p4--;
+               ANOTHER_POINTER++;
+            }
+            else
+            if ( tianhorse[p4] < qihorse[p3] )
+            {
+               tianloses[VAR__9290]++;
+               ANOTHER_POINTER++;
+               p4--;
+            }
+         }
+      }
+   }
+
+   int VAR__7685;
+   for ( VAR__7685 = 0; VAR__7685 <= ( VAR__COUNT - 1 ); VAR__7685++ )
+   {
+      printf("%d\n", ( tianwins[VAR__7685] - tianloses[VAR__7685] ) * 200);
+   }
+}

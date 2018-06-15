@@ -1,0 +1,84 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  number = 1;
+   int  time[1000];
+   int  high = 0;
+   char VAR_233[2][4000];
+
+   cin.getline(VAR_233[0], 4000);
+   cin.getline(VAR_233[1], 4000);
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      time[VAR__53647] = 0;
+   }
+
+   if ( VAR_233[0][0] == 0 )
+   {
+      number = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR_233[0][VAR__53647] != 0; VAR__53647++ )
+   {
+      if ( VAR_233[0][VAR__53647] == ',' )
+      {
+         number++;
+      }
+   }
+
+
+   const int VAR_1238123 = number;
+   int       come[VAR_1238123];
+   int       leave[VAR_1238123];
+   VAR__21230 = 0;
+   come[0]    = 0;
+   for ( VAR__53647 = 0; VAR_233[0][VAR__53647] != 0; VAR__53647++ )
+   {
+      if ( VAR_233[0][VAR__53647] == ',' )
+      {
+         VAR__21230++;
+         come[VAR__21230] = 0;
+      }
+      else
+      {
+         come[VAR__21230] = (( come[VAR__21230] * 10 ) + VAR_233[0][VAR__53647] ) - '0';
+      }
+   }
+
+   VAR__21230 = 0;
+   leave[0]   = 0;
+   for ( VAR__53647 = 0; VAR_233[1][VAR__53647] != 0; VAR__53647++ )
+   {
+      if ( VAR_233[1][VAR__53647] == ',' )
+      {
+         VAR__21230++;
+         leave[VAR__21230] = 0;
+      }
+      else
+      {
+         leave[VAR__21230] = (( leave[VAR__21230] * 10 ) + VAR_233[1][VAR__53647] ) - '0';
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < number; VAR__53647++ )
+   {
+      for ( VAR__21230 = come[VAR__53647]; VAR__21230 < leave[VAR__53647]; VAR__21230++ )
+      {
+         time[VAR__21230]++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if ( time[VAR__53647] > high )
+      {
+         high = time[VAR__53647];
+      }
+   }
+
+
+   ((( cout << number ) << ' ' ) << high ) << endl;
+   return 0;
+}

@@ -1,0 +1,74 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__TEMP;
+   int  num1 = 0;
+   int  num2 = 100;
+   int  age[100];
+   int  VAR_FLAG[100];
+   char id[100][10];
+   char A_STRING[10];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin.get();
+      ( cin >> id[VAR__53647] ) >> age[VAR__53647];
+
+      if ( age[VAR__53647] < 60 )
+      {
+         VAR_FLAG[VAR__53647] = num1++;
+      }
+      else
+      {
+         VAR_FLAG[VAR__53647] = num2++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if (( age[VAR__53647] < age[VAR__21230] ) && ( age[VAR__21230] >= 60 ))
+         {
+            VAR__TEMP            = VAR_FLAG[VAR__53647];
+            VAR_FLAG[VAR__53647] = VAR_FLAG[VAR__21230];
+            VAR_FLAG[VAR__21230] = VAR__TEMP;
+            VAR__TEMP            = age[VAR__53647];
+            age[VAR__53647]      = age[VAR__21230];
+            age[VAR__21230]      = VAR__TEMP;
+            strcpy(A_STRING, id[VAR__53647]);
+            strcpy(id[VAR__53647], id[VAR__21230]);
+            strcpy(id[VAR__21230], A_STRING);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ((((( age[VAR__53647] == age[VAR__21230] ) && ( age[VAR__53647] >= 60 )) && ( age[VAR__21230] >= 60 )) && ( VAR_FLAG[VAR__53647] > VAR_FLAG[VAR__21230] )) || ((( age[VAR__53647] < 60 ) && ( age[VAR__21230] < 60 )) && ( VAR_FLAG[VAR__53647] > VAR_FLAG[VAR__21230] )))
+         {
+            VAR__TEMP            = VAR_FLAG[VAR__53647];
+            VAR_FLAG[VAR__53647] = VAR_FLAG[VAR__21230];
+            VAR_FLAG[VAR__21230] = VAR__TEMP;
+            VAR__TEMP            = age[VAR__53647];
+            age[VAR__53647]      = age[VAR__21230];
+            age[VAR__21230]      = VAR__TEMP;
+            strcpy(A_STRING, id[VAR__53647]);
+            strcpy(id[VAR__53647], id[VAR__21230]);
+            strcpy(id[VAR__21230], A_STRING);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cout << id[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

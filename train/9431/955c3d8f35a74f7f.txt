@@ -1,0 +1,47 @@
+struct student
+{
+   char           xh[20];
+   char           name[50];
+   char           sex;
+   int            age;
+   char           gra[10];
+   char           adds[50];
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   struct student *pa;
+   struct student *pb;
+   int            VAR__53647;
+
+   pa = ( pb = (struct student *)malloc(VAR__1111));
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      scanf("%s", pa->xh);
+
+      if ( pa->xh[0] == 'e' )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %s %s", pa->name, &pa->sex, &pa->age, pa->gra, pa->adds);
+
+      if ( VAR__53647 == 0 )
+      {
+         pa->VAR__NEXT = NULL;
+      }
+      else
+      {
+         pa->VAR__NEXT = pb;
+      }
+
+      pb = pa;
+      pa = (struct student *)malloc(VAR__1111);
+   }
+
+   while ( pb != NULL )
+   {
+      printf("%s %s %c %d %s %s\n", pb->xh, pb->name, pb->sex, pb->age, pb->gra, pb->adds);
+      pb = pb->VAR__NEXT;
+   }
+}

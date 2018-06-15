@@ -1,0 +1,83 @@
+int main()
+{
+   char VAR__819283[260];
+   char VAR__19328[260];
+   char tmp[260];
+   int  VAR__53647;
+   int  VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < 260; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = '0';
+      VAR__19328[VAR__53647]  = '0';
+   }
+
+   cin >> tmp;
+   int lena = strlen(tmp);
+   for ( VAR__21230 = 0; VAR__21230 < lena; VAR__21230++ )
+   {
+      if ( tmp[VAR__21230] != '0' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = VAR__21230; VAR__53647 < lena; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647 - VAR__21230] = tmp[( lena - ( VAR__53647 - VAR__21230 )) - 1];
+   }
+
+   cin >> tmp;
+   lena -= VAR__21230;
+   int lenb = strlen(tmp);
+   for ( VAR__21230 = 0; VAR__21230 < lenb; VAR__21230++ )
+   {
+      if ( tmp[VAR__21230] != '0' )
+      {
+         break;
+      }
+   }
+
+
+   for ( VAR__53647 = VAR__21230; VAR__53647 < lenb; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647 - VAR__21230] = tmp[( lenb - ( VAR__53647 - VAR__21230 )) - 1];
+   }
+
+   lenb -= VAR__21230;
+   int VAR__4857423 = 0;
+   int LEN_OF_STH   = ( lena > lenb ) ? ( lena ) : ( lenb );
+   for ( VAR__53647 = 0; VAR__53647 < 260; VAR__53647++ )
+   {
+      if ((((( VAR__819283[VAR__53647] - '0' ) + VAR__19328[VAR__53647] ) - '0' ) + VAR__4857423 ) > 9 )
+      {
+         VAR__819283[VAR__53647] = ((((( VAR__819283[VAR__53647] - '0' ) + VAR__19328[VAR__53647] ) - '0' ) + VAR__4857423 ) - 10 ) + '0';
+         VAR__4857423            = 1;
+      }
+      else
+      {
+         VAR__819283[VAR__53647] = (((( VAR__819283[VAR__53647] - '0' ) + VAR__19328[VAR__53647] ) - '0' ) + VAR__4857423 ) + '0';
+         VAR__4857423            = 0;
+      }
+   }
+
+   if (( lena == 0 ) && ( lenb == 0 ))
+   {
+      cout << 0;
+   }
+   else
+   {
+      if ( VAR__819283[LEN_OF_STH] > '0' )
+      {
+         cout << VAR__819283[LEN_OF_STH];
+      }
+
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << VAR__819283[VAR__53647];
+      }
+   }
+
+   cout << endl;
+   return 0;
+}

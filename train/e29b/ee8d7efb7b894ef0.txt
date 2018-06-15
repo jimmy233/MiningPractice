@@ -1,0 +1,75 @@
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__TEMP;
+   int   inpnum[300];
+   int   VAR__MAX;
+   float VAR__SUM = 0;
+   float ave;
+   float distance[300];
+   float tmpf;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &inpnum[VAR__53647]);
+      VAR__SUM += inpnum[VAR__53647];
+   }
+
+   ave = VAR__SUM / VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( inpnum[VAR__53647] > ave )
+      {
+         distance[VAR__53647] = inpnum[VAR__53647] - ave;
+      }
+      else
+      {
+         distance[VAR__53647] = ave - inpnum[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( distance[VAR__21230] < distance[VAR__21230 + 1] )
+         {
+            tmpf = distance[VAR__21230];
+            distance[VAR__21230]     = distance[VAR__21230 + 1];
+            distance[VAR__21230 + 1] = tmpf;
+            VAR__TEMP              = inpnum[VAR__21230];
+            inpnum[VAR__21230]     = inpnum[VAR__21230 + 1];
+            inpnum[VAR__21230 + 1] = VAR__TEMP;
+         }
+         else
+         if (( distance[VAR__21230] == distance[VAR__21230 + 1] ) && ( inpnum[VAR__21230] > inpnum[VAR__21230 + 1] ))
+         {
+            tmpf = distance[VAR__21230];
+            distance[VAR__21230]     = distance[VAR__21230 + 1];
+            distance[VAR__21230 + 1] = tmpf;
+            VAR__TEMP              = inpnum[VAR__21230];
+            inpnum[VAR__21230]     = inpnum[VAR__21230 + 1];
+            inpnum[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR__MAX = distance[0];
+   printf("%d", inpnum[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( distance[VAR__53647] == VAR__MAX )
+      {
+         printf(",%d", inpnum[VAR__53647]);
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

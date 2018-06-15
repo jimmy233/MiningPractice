@@ -1,0 +1,84 @@
+struct student
+{
+   char name[20];
+   int  ave;
+   int  cla;
+   char leader;
+   char west;
+   int  paper;
+};
+void main()
+{
+   struct student stu[200];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__COUNT[200];
+   int            count2[200];
+   int            VAR__8444594;
+   int            VAR__21230;
+   int            VAR__TEMP;
+   int            VAR__1111;
+   int            all;
+   int            VAR__MAX;
+
+   all = 0;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__COUNT[VAR__53647] = 0;
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].ave, &stu[VAR__53647].cla, &stu[VAR__53647].leader, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+
+      if (( stu[VAR__53647].ave > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         VAR__COUNT[VAR__53647] = VAR__COUNT[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].ave > 85 ) && ( stu[VAR__53647].cla > 80 ))
+      {
+         VAR__COUNT[VAR__53647] = VAR__COUNT[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].ave > 90 )
+      {
+         VAR__COUNT[VAR__53647] = VAR__COUNT[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].ave > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         VAR__COUNT[VAR__53647] = VAR__COUNT[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].cla > 80 ) && ( stu[VAR__53647].leader == 'Y' ))
+      {
+         VAR__COUNT[VAR__53647] = VAR__COUNT[VAR__53647] + 850;
+      }
+
+      all = all + VAR__COUNT[VAR__53647];
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      count2[VAR__8444594] = VAR__COUNT[VAR__8444594];
+   }
+
+   VAR__MAX = VAR__COUNT[0];
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( VAR__COUNT[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT[VAR__21230];
+      }
+   }
+
+
+   for ( VAR__1111 = 0; VAR__1111 < VAR_1238123; VAR__1111++ )
+   {
+      if ( count2[VAR__1111] == VAR__MAX )
+      {
+         break;
+      }
+   }
+
+
+   printf("%s\n%d\n%d\n", stu[VAR__1111].name, VAR__MAX, all);
+}

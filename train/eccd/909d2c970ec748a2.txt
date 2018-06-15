@@ -1,0 +1,73 @@
+int main()
+{
+   int hang;
+   int lie;
+   int VAR_SIZE[8][8];
+   int VAR__COUNT = 0;
+   int VAR__53647;
+   int VAR__8444594;
+   int fz[8][8];
+   int VAR__MAX[8];
+   int VAR__MIN[8];
+   int VAR__112390;
+   int VAR__127322;
+
+   scanf("%d,%d", &hang, &lie);
+   for ( VAR__53647 = 0; VAR__53647 < hang; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < lie; VAR__8444594++ )
+      {
+         scanf("%d", &VAR_SIZE[VAR__53647][VAR__8444594]);
+         fz[VAR__53647][VAR__8444594] = VAR_SIZE[VAR__53647][VAR__8444594];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < hang; VAR__53647++ )
+   {
+      for ( VAR__8444594 = lie - 1; VAR__8444594 > 0; VAR__8444594-- )
+      {
+         if ( VAR_SIZE[VAR__53647][VAR__8444594] > VAR_SIZE[VAR__53647][VAR__8444594 - 1] )
+         {
+            VAR__112390 = VAR_SIZE[VAR__53647][VAR__8444594];
+            VAR_SIZE[VAR__53647][VAR__8444594]     = VAR_SIZE[VAR__53647][VAR__8444594 - 1];
+            VAR_SIZE[VAR__53647][VAR__8444594 - 1] = VAR__112390;
+         }
+      }
+
+      VAR__MAX[VAR__53647] = VAR_SIZE[VAR__53647][0];
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < lie; VAR__8444594++ )
+   {
+      for ( VAR__53647 = hang - 1; VAR__53647 > 0; VAR__53647-- )
+      {
+         if ( fz[VAR__53647][VAR__8444594] < fz[VAR__53647 - 1][VAR__8444594] )
+         {
+            VAR__127322 = fz[VAR__53647][VAR__8444594];
+            fz[VAR__53647][VAR__8444594]     = fz[VAR__53647 - 1][VAR__8444594];
+            fz[VAR__53647 - 1][VAR__8444594] = VAR__127322;
+         }
+      }
+
+      VAR__MIN[VAR__8444594] = fz[0][VAR__8444594];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < hang; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < lie; VAR__8444594++ )
+      {
+         if ( VAR__MAX[VAR__53647] == VAR__MIN[VAR__8444594] )
+         {
+            printf("%d+%d", VAR__53647, VAR__8444594);
+            VAR__COUNT = 1;
+         }
+      }
+   }
+
+   if ( VAR__COUNT == 0 )
+   {
+      printf("No");
+   }
+
+   return 0;
+}

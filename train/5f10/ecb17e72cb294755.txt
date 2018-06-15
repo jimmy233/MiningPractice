@@ -1,0 +1,92 @@
+typedef struct
+{
+   char ch[10];
+   int  ord;
+   int  times;
+   int  sign;
+} gram;
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   gram *pa;
+   gram *pb;
+
+   pa = (gram *)VAR__819283;
+   pb = (gram *)VAR__19328;
+
+   if ( pa->times != pb->times )
+   {
+      return ( pa->times < pb->times ) ? ( 1 ) : ( -1 );
+   }
+
+   return ( pa->ord > pb->ord ) ? ( 1 ) : ( -1 );
+}
+
+
+int main()
+{
+   char VAR__4857423[1000];
+   gram VAR__12302[1000];
+   char *VAR_233;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+
+   scanf("%d%s", &VAR_1238123, VAR__4857423);
+   VAR_233 = VAR__4857423;
+   for ( VAR__53647 = 0; VAR__53647 < (( strlen(VAR__4857423) + 1 ) - VAR_1238123 ); VAR__53647++ )
+   {
+      VAR__12302[VAR__53647].ord  = VAR__53647;
+      VAR__12302[VAR__53647].sign = 1;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__12302[VAR__53647].ch[VAR__21230] = *( VAR_233 + VAR__21230 );
+      }
+
+      VAR__12302[VAR__53647].ch[VAR_1238123] = '\0';
+      VAR_233++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( strlen(VAR__4857423) + 1 ) - VAR_1238123 ); VAR__53647++ )
+   {
+      VAR__8444594 = 1;
+      for ( VAR__21230 = 0; VAR__21230 < (( strlen(VAR__4857423) + 1 ) - VAR_1238123 ); VAR__21230++ )
+      {
+         if (( VAR__53647 != VAR__21230 ) && ( strcmp(VAR__12302[VAR__53647].ch, VAR__12302[VAR__21230].ch) == 0 ))
+         {
+            VAR__8444594++;
+         }
+      }
+
+
+      VAR__12302[VAR__53647].times = VAR__8444594;
+   }
+
+   qsort(VAR__12302, ( strlen(VAR__4857423) + 1 ) - VAR_1238123, sizeof( VAR__12302[0] ), cmp);
+   int VAR__1238129 = VAR__12302[0].times;
+
+   if ( VAR__1238129 == 1 )
+   {
+      printf("NO");
+      return 0;
+   }
+
+   printf("%d\n", VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < (( strlen(VAR__4857423) + 1 ) - VAR_1238123 ); VAR__53647++ )
+   {
+      if (( VAR__12302[VAR__53647].times == VAR__1238129 ) && VAR__12302[VAR__53647].sign )
+      {
+         printf("%s\n", VAR__12302[VAR__53647].ch);
+         for ( VAR__21230 = 0; VAR__21230 < (( strlen(VAR__4857423) + 1 ) - VAR_1238123 ); VAR__21230++ )
+         {
+            if (( VAR__53647 != VAR__21230 ) && ( strcmp(VAR__12302[VAR__53647].ch, VAR__12302[VAR__21230].ch) == 0 ))
+            {
+               VAR__12302[VAR__21230].sign = 0;
+            }
+         }
+      }
+   }
+
+
+   return 0;
+}

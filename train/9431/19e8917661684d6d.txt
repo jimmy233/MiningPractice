@@ -1,0 +1,69 @@
+struct student
+{
+   char           VAR__NUM[20];
+   char           name[30];
+   char           sex;
+   int            age;
+   float          score;
+   char           adress[30];
+   struct student *VAR__NEXT;
+   struct student *last;
+};
+int VAR_1238123 = 1;
+struct student *ANewNode(void)
+{
+   struct student *VAR__HEAD = NULL;
+   struct student *newnode;
+   struct student *thisnode;
+
+   do
+   {
+      newnode = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s", newnode->VAR__NUM);
+
+      if ( strcmp(newnode->VAR__NUM, "end") == 0 )
+      {
+         thisnode->VAR__NEXT = NULL;
+         VAR__HEAD           = thisnode;
+         break;
+      }
+      else
+      {
+      }
+
+      scanf("%s %c %d %f %s", newnode->name, &newnode->sex, &newnode->age, &newnode->score, newnode->adress);
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD      = newnode;
+         thisnode       = VAR__HEAD;
+         thisnode->last = NULL;
+      }
+      else
+      {
+         thisnode->VAR__NEXT = newnode;
+         newnode->last       = thisnode;
+      }
+
+      thisnode    = newnode;
+      VAR_1238123 = VAR_1238123 + 1;
+   } while ( strcmp(newnode->VAR__NUM, "enff") != 0 );
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+
+   VAR__HEAD = ANewNode();
+   VAR_233   = VAR__HEAD;
+   do
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->adress);
+      VAR_233 = VAR_233->last;
+   } while ( VAR_233 != NULL );
+   scanf("%d", &VAR_1238123);
+   return 0;
+}

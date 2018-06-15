@@ -1,0 +1,113 @@
+int main(void)
+{
+   int VAR__819283[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__19328[12]  = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int VAR__53647;
+   int VAR__SUM = 0;
+   int days     = 0;
+   int days1    = 0;
+   int days2    = 0;
+
+   (( cin >> sy ) >> sm ) >> sd;
+   (( cin >> ey ) >> em ) >> ed;
+   for ( VAR__53647 = sy + 1; VAR__53647 <= ( ey - 1 ); VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__SUM += 366;
+      }
+      else
+      {
+         VAR__SUM += 365;
+      }
+   }
+
+   if (( ey - sy ) != 0 )
+   {
+      if (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( sm - 1 ); VAR__53647++ )
+         {
+            days += VAR__19328[VAR__53647];
+         }
+
+         days     += sd;
+         VAR__SUM += 366 - days;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( sm - 1 ); VAR__53647++ )
+         {
+            days += VAR__819283[VAR__53647];
+         }
+
+         days     += sd;
+         VAR__SUM += 365 - days;
+      }
+
+      days = 0;
+
+      if (((( ey % 4 ) == 0 ) && (( ey % 100 ) != 0 )) || (( ey % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( em - 1 ); VAR__53647++ )
+         {
+            VAR__SUM += VAR__19328[VAR__53647];
+         }
+
+         VAR__SUM += ed;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( em - 1 ); VAR__53647++ )
+         {
+            VAR__SUM += VAR__819283[VAR__53647];
+         }
+
+         VAR__SUM += ed;
+      }
+   }
+   else
+   {
+      if (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( sm - 1 ); VAR__53647++ )
+         {
+            days1 += VAR__19328[VAR__53647];
+         }
+
+         days1 += sd;
+         for ( VAR__53647 = 0; VAR__53647 < ( em - 1 ); VAR__53647++ )
+         {
+            days2 += VAR__19328[VAR__53647];
+         }
+
+         days2   += ed;
+         VAR__SUM = days2 - days1;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( sm - 1 ); VAR__53647++ )
+         {
+            days1 += VAR__819283[VAR__53647];
+         }
+
+         days1 += sd;
+         for ( VAR__53647 = 0; VAR__53647 < ( em - 1 ); VAR__53647++ )
+         {
+            days2 += VAR__819283[VAR__53647];
+         }
+
+         days2   += ed;
+         VAR__SUM = days2 - days1;
+      }
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

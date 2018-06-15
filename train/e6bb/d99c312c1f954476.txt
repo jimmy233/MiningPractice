@@ -1,0 +1,91 @@
+int bacnum(int VAR__7685, int VAR__3918907, int day, int bacteria[9][9])
+{
+   int VAR__TEMP = 0;
+
+   if ( day == 0 )
+   {
+      return bacteria[VAR__7685][VAR__3918907];
+   }
+
+   VAR__TEMP = VAR__TEMP + ( 2 * bacnum(VAR__7685, VAR__3918907, day - 1, bacteria));
+
+   if (( VAR__7685 > 0 ) && ( VAR__3918907 > 0 ))
+   {
+      VAR__TEMP = VAR__TEMP + bacnum(VAR__7685 - 1, VAR__3918907 - 1, day - 1, bacteria);
+   }
+
+   if (( VAR__7685 > 0 ) && ( VAR__3918907 < 8 ))
+   {
+      VAR__TEMP = VAR__TEMP + bacnum(VAR__7685 - 1, VAR__3918907 + 1, day - 1, bacteria);
+   }
+
+   if (( VAR__7685 < 8 ) && ( VAR__3918907 > 0 ))
+   {
+      VAR__TEMP = VAR__TEMP + bacnum(VAR__7685 + 1, VAR__3918907 - 1, day - 1, bacteria);
+   }
+
+   if (( VAR__7685 < 8 ) && ( VAR__3918907 < 8 ))
+   {
+      VAR__TEMP = VAR__TEMP + bacnum(VAR__7685 + 1, VAR__3918907 + 1, day - 1, bacteria);
+   }
+
+   if ( VAR__7685 > 0 )
+   {
+      VAR__TEMP = VAR__TEMP + bacnum(VAR__7685 - 1, VAR__3918907, day - 1, bacteria);
+   }
+
+   if ( VAR__7685 < 8 )
+   {
+      VAR__TEMP = VAR__TEMP + bacnum(VAR__7685 + 1, VAR__3918907, day - 1, bacteria);
+   }
+
+   if ( VAR__3918907 > 0 )
+   {
+      VAR__TEMP = VAR__TEMP + bacnum(VAR__7685, VAR__3918907 - 1, day - 1, bacteria);
+   }
+
+   if ( VAR__3918907 < 8 )
+   {
+      VAR__TEMP = VAR__TEMP + bacnum(VAR__7685, VAR__3918907 + 1, day - 1, bacteria);
+   }
+
+   return VAR__TEMP;
+}
+
+
+int main()
+{
+   int bacteria[9][9];
+   int day;
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         bacteria[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+
+   ( cin >> bacteria[4][4] ) >> day;
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         cout << bacnum(VAR__53647, VAR__21230, day, bacteria);
+
+         if ( VAR__21230 < 8 )
+         {
+            cout << " ";
+         }
+         else
+         {
+            cout << endl;
+         }
+      }
+   }
+
+   return 0;
+}

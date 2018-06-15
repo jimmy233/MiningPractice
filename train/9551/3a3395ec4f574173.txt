@@ -1,0 +1,63 @@
+struct ID
+{
+   char idnum[100];
+   int  old;
+};
+int main()
+{
+   struct ID ido[100];
+   struct ID idy[100];
+   struct ID id[100];
+   struct ID VAR__112390;
+   int       VAR_1238123;
+   int       VAR__53647;
+   int       VAR__819283 = 0;
+   int       VAR__19328  = 0;
+   int       VAR__21230;
+   int       VAR__1111;
+   int       VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", id[VAR__53647].idnum, &id[VAR__53647].old);
+
+      if ( id[VAR__53647].old >= 60 )
+      {
+         strcpy(ido[VAR__819283].idnum, id[VAR__53647].idnum);
+         ido[VAR__819283].old = id[VAR__53647].old;
+         VAR__819283++;
+      }
+      else
+      {
+         strcpy(idy[VAR__19328].idnum, id[VAR__53647].idnum);
+         idy[VAR__19328].old = id[VAR__53647].old;
+         VAR__19328++;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR__819283; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__819283 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( ido[VAR__53647].old < ido[VAR__53647 + 1].old )
+         {
+            VAR__112390         = ido[VAR__53647 + 1];
+            ido[VAR__53647 + 1] = ido[VAR__53647];
+            ido[VAR__53647]     = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__819283; VAR__21230++ )
+   {
+      printf("%s\n", ido[VAR__21230].idnum);
+   }
+
+   for ( VAR__1111 = 0; VAR__1111 < VAR__19328; VAR__1111++ )
+   {
+      printf("%s\n", idy[VAR__1111].idnum);
+   }
+
+   return 0;
+}

@@ -1,0 +1,111 @@
+struct String
+{
+   int number;
+   int sequence;
+   int VAR_FLAG;
+}
+VAR__19328[26];
+struct String
+{
+   int number;
+   int sequence;
+   int VAR_FLAG;
+}
+VAR__4857423[26];
+int main()
+{
+   int  VAR__temp;
+   int  VAR__53647;
+   int  VAR__COUNT = 0;
+   int  VAR__7685;
+   char string[100];
+   int  VAR_FLAG = 1;
+
+   scanf("%d\n", &VAR__temp);
+
+   while ( VAR__COUNT < VAR__temp )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+      {
+         VAR__19328[VAR__53647].number   = 0;
+         VAR__19328[VAR__53647].sequence = 0;
+         VAR__19328[VAR__53647].VAR_FLAG = 1;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647].number   = 0;
+         VAR__4857423[VAR__53647].sequence = 0;
+         VAR__4857423[VAR__53647].VAR_FLAG = 1;
+      }
+
+      gets(string);
+      VAR__53647 = 0;
+
+      while ( string[VAR__53647] != '\0' )
+      {
+         VAR__7685 = string[VAR__53647] - 97;
+         VAR__19328[VAR__7685].number++;
+
+         if ( VAR__19328[VAR__7685].VAR_FLAG == 1 )
+         {
+            VAR__19328[VAR__7685].sequence = VAR__53647;
+            VAR__19328[VAR__7685].VAR_FLAG = 0;
+         }
+
+         VAR__53647++;
+      }
+
+      int VAR__21230 = 0;
+      int min_number;
+      for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647].number == 1 )
+         {
+            VAR_FLAG = 0;
+            break;
+         }
+         else
+         {
+            VAR_FLAG = 1;
+         }
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         for ( VAR__53647 = 0, VAR__21230 = 0; VAR__53647 < 26; VAR__53647++ )
+         {
+            if ( VAR__19328[VAR__53647].number == 1 )
+            {
+               VAR__4857423[VAR__21230].number   = VAR__53647;
+               VAR__4857423[VAR__21230].sequence = VAR__19328[VAR__53647].sequence;
+               VAR__21230++;
+            }
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+         {
+            int VAR__MIN = VAR__4857423[0].sequence;
+            min_number = VAR__4857423[0].number;
+
+            if ( VAR__4857423[VAR__53647].sequence < VAR__MIN )
+            {
+               VAR__MIN   = VAR__4857423[VAR__53647].sequence;
+               min_number = VAR__4857423[VAR__53647].number;
+            }
+         }
+
+         printf("%c\n", min_number + 97);
+      }
+      else
+      if ( VAR_FLAG == 1 )
+      {
+         printf("no\n");
+      }
+
+
+      VAR__COUNT++;
+   }
+
+   return 0;
+}

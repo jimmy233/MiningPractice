@@ -1,0 +1,94 @@
+void mysort1(float array[], int length)
+{
+   int    VAR__53647 = 0;
+   int    VAR__21230 = 0;
+   int    tmpindex   = 0;
+   double tmpvalue;
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      tmpindex = VAR__53647;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < length; VAR__21230++ )
+      {
+         if ( array[VAR__21230] < array[tmpindex] )
+         {
+            tmpindex = VAR__21230;
+         }
+      }
+
+      tmpvalue          = array[tmpindex];
+      array[tmpindex]   = array[VAR__53647];
+      array[VAR__53647] = tmpvalue;
+   }
+}
+
+
+void mysort2(float array[], int length)
+{
+   int    VAR__53647 = 0;
+   int    VAR__21230 = 0;
+   int    tmpindex   = 0;
+   double tmpvalue;
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      tmpindex = VAR__53647;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < length; VAR__21230++ )
+      {
+         if ( array[VAR__21230] > array[tmpindex] )
+         {
+            tmpindex = VAR__21230;
+         }
+      }
+
+      tmpvalue          = array[tmpindex];
+      array[tmpindex]   = array[VAR__53647];
+      array[VAR__53647] = tmpvalue;
+   }
+}
+
+
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647 = 0;
+   int   VAR__21230 = 0;
+   int   VAR__8444594;
+   int   VAR__1238129;
+   float marr[40];
+   float farr[40];
+   char  A_STRING[8];
+   float height;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      scanf("%s%f", A_STRING, &height);
+
+      if ( strcmp(A_STRING, "male") == 0 )
+      {
+         marr[VAR__53647] = height;
+         VAR__53647++;
+      }
+      else
+      {
+         farr[VAR__21230] = height;
+         VAR__21230++;
+      }
+   }
+
+   mysort1(marr, VAR__53647);
+   mysort2(farr, VAR__21230);
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR__53647; VAR__1238129++ )
+   {
+      printf("%.2f ", marr[VAR__1238129]);
+   }
+
+   for ( VAR__1238129 = 0; VAR__1238129 < ( VAR__21230 - 1 ); VAR__1238129++ )
+   {
+      printf("%.2f ", farr[VAR__1238129]);
+   }
+
+   printf("%.2f", farr[VAR__21230 - 1]);
+   return 0;
+}

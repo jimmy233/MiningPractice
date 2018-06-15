@@ -1,0 +1,80 @@
+struct
+{
+   int    id;
+   int    x1;
+   int    y1;
+   int    z1;
+   int    x2;
+   int    y2;
+   int    z2;
+   double distance;
+}
+data[55];
+struct
+{
+   int    id;
+   int    x1;
+   int    y1;
+   int    z1;
+   int    x2;
+   int    y2;
+   int    z2;
+   double distance;
+}
+VAR__temp;
+int main()
+{
+   int VAR_1238123;
+   int VAR__7685[10];
+   int VAR__3918907[10];
+   int VAR__9290[10];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> VAR__7685[VAR__53647] ) >> VAR__3918907[VAR__53647] ) >> VAR__9290[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         data[VAR__8444594].id       = VAR__8444594;
+         data[VAR__8444594].x1       = VAR__7685[VAR__53647];
+         data[VAR__8444594].y1       = VAR__3918907[VAR__53647];
+         data[VAR__8444594].z1       = VAR__9290[VAR__53647];
+         data[VAR__8444594].x2       = VAR__7685[VAR__21230];
+         data[VAR__8444594].y2       = VAR__3918907[VAR__21230];
+         data[VAR__8444594].z2       = VAR__9290[VAR__21230];
+         data[VAR__8444594].distance = ( pow(VAR__7685[VAR__53647] - VAR__7685[VAR__21230], 2.0) + pow(VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230], 2.0)) + pow(VAR__9290[VAR__53647] - VAR__9290[VAR__21230], 2.0);
+         VAR__8444594++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__8444594 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( data[VAR__21230].distance < data[VAR__21230 + 1].distance )
+         {
+            VAR__temp            = data[VAR__21230];
+            data[VAR__21230]     = data[VAR__21230 + 1];
+            data[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      (((((( cout << "(" ) << data[VAR__53647].x1 ) << "," ) << data[VAR__53647].y1 ) << "," ) << data[VAR__53647].z1 ) << ")-(";
+      ((((( cout << data[VAR__53647].x2 ) << "," ) << data[VAR__53647].y2 ) << "," ) << data[VAR__53647].z2 ) << ")=";
+      ((( cout << fixed ) << setprecision(2)) << sqrt(data[VAR__53647].distance)) << endl;
+   }
+
+   return 0;
+}

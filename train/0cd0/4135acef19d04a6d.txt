@@ -1,0 +1,72 @@
+int main()
+{
+   struct tiao
+   {
+      int *ln;
+      int VAR__8444594;
+      int sumt;
+   }
+       *tiao1;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   tiao1 = (struct tiao *)malloc(( sizeof( struct tiao )) * VAR_1238123);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__127322 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__127322 = 0;
+      scanf("%d", &tiao1[VAR__53647].VAR__8444594);
+      tiao1[VAR__53647].ln   = (int *)malloc(( sizeof( int )) * tiao1[VAR__53647].VAR__8444594);
+      tiao1[VAR__53647].sumt = 0;
+      for ( VAR__21230 = 0; VAR__21230 < tiao1[VAR__53647].VAR__8444594; VAR__21230++ )
+      {
+         scanf("%d", &tiao1[VAR__53647].ln[VAR__21230]);
+      }
+
+      if ( tiao1[VAR__53647].VAR__8444594 == 0 )
+      {
+         printf("60\n");
+         continue;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < tiao1[VAR__53647].VAR__8444594; VAR__21230++ )
+      {
+         tiao1[VAR__53647].sumt = tiao1[VAR__53647].ln[VAR__21230] + ( 3 * VAR__21230 );
+
+         if ( tiao1[VAR__53647].sumt >= 60 )
+         {
+            int tmp1;
+            tmp1 = tiao1[VAR__53647].ln[VAR__21230 - 1] + ( 3 * VAR__21230 );
+
+            if ( tmp1 >= 60 )
+            {
+               printf("%d\n", tiao1[VAR__53647].ln[VAR__21230 - 1]);
+            }
+
+            if (( tmp1 < 60 ) && (( 60 - tmp1 ) > 3 ))
+            {
+               tmp1 = ( 60 - tmp1 ) + tiao1[VAR__53647].ln[VAR__21230 - 1];
+               printf("%d\n", tmp1);
+            }
+
+            break;
+         }
+      }
+
+      if ( tiao1[VAR__53647].sumt < 57 )
+      {
+         tiao1[VAR__53647].sumt += 3;
+         VAR__21230--;
+         printf("%d\n", ( 60 - tiao1[VAR__53647].sumt ) + tiao1[VAR__53647].ln[VAR__21230]);
+      }
+
+      if (( tiao1[VAR__53647].sumt < 60 ) && ( tiao1[VAR__53647].sumt > 57 ))
+      {
+         printf("%d\n", tiao1[VAR__53647].ln[VAR__21230 - 1]);
+      }
+   }
+
+   return 0;
+}

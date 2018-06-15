@@ -1,0 +1,51 @@
+int findMax(char *A_STRING)
+{
+   int VAR__53647;
+   int VAR__MAX = *A_STRING;
+   int ret      = 0;
+
+   for ( VAR__53647 = 0; *( A_STRING + VAR__53647 ); VAR__53647++ )
+   {
+      if (( *( A_STRING + VAR__53647 )) > VAR__MAX )
+      {
+         VAR__MAX = *( A_STRING + VAR__53647 ), ret = VAR__53647;
+      }
+   }
+
+
+   return ret;
+}
+
+
+void insert(char *A_STRING, char *substr, int index)
+{
+   int  VAR__53647;
+   char *VAR_233;
+
+   for ( VAR_233 = A_STRING + strlen(A_STRING); VAR_233 > ( A_STRING + index ); VAR_233-- )
+   {
+      *( VAR_233 + strlen(substr)) = *VAR_233;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(substr); VAR__53647++ )
+   {
+      *((( A_STRING + index ) + 1 ) + VAR__53647 ) = *( substr + VAR__53647 );
+   }
+}
+
+
+int main()
+{
+   int  VAR__8444594;
+   char A_STRING[11];
+   char substr[4];
+
+   while ( scanf("%s%s", A_STRING, substr) != EOF )
+   {
+      VAR__8444594 = findMax(A_STRING);
+      insert(A_STRING, substr, VAR__8444594);
+      printf("%s\n", A_STRING);
+   }
+
+   return 0;
+}

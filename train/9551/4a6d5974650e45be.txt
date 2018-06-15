@@ -1,0 +1,124 @@
+struct patient
+{
+   char           ID[15];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+int VAR_1238123;
+struct patient *create()
+{
+   struct patient *VAR__HEAD;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct patient *)malloc(LEN);
+   scanf("%s %d", ANOTHER_POINTER->ID, &ANOTHER_POINTER->age);
+   VAR__HEAD                  = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   int VAR__53647 = 1;
+   do
+   {
+      if ( VAR__53647 == VAR_1238123 )
+      {
+         break;
+      }
+
+      ANOTHER_POINTER = (struct patient *)malloc(LEN);
+      scanf("%s %d", ANOTHER_POINTER->ID, &ANOTHER_POINTER->age);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      VAR__53647++;
+   } while ( 1 );
+   return VAR__HEAD;
+}
+
+
+struct patient *findmax(struct patient *VAR__HEAD)
+{
+   struct patient *VAR__MAX;
+   struct patient *VAR_233;
+
+   VAR__MAX = VAR__HEAD;
+   VAR_233  = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->age > VAR__MAX->age )
+      {
+         VAR__MAX = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return VAR__MAX;
+}
+
+
+struct patient *del(struct patient *VAR__HEAD, struct patient *needdel)
+{
+   struct patient *VAR_233;
+   struct patient *ppre;
+
+   printf("%s\n", needdel->ID);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 && ( needdel != VAR_233 ))
+   {
+      ppre    = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   if ( VAR_233 == VAR__HEAD )
+   {
+      VAR__HEAD = VAR_233->VAR__NEXT;
+      free(VAR_233);
+   }
+   else
+   if ( VAR_233 )
+   {
+      ppre->VAR__NEXT = VAR_233->VAR__NEXT;
+      free(VAR_233);
+   }
+
+
+   return VAR__HEAD;
+}
+
+
+void print(struct patient *VAR__HEAD)
+{
+   struct patient *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      printf("%s\n", VAR_233->ID);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   scanf("%d", &VAR_1238123);
+   struct patient *VAR__HEAD;
+   struct patient *VAR_233;
+   VAR__HEAD = create();
+   VAR_233   = VAR__HEAD;
+   do
+   {
+      VAR_233 = findmax(VAR__HEAD);
+
+      if ( VAR_233->age < 60 )
+      {
+         break;
+      }
+
+      VAR__HEAD = del(VAR__HEAD, VAR_233);
+   } while ( 1 );
+   print(VAR__HEAD);
+}

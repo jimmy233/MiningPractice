@@ -1,0 +1,42 @@
+int main(int argc, char *argv[])
+{
+   char A_STRING[50];
+   char ANOTHER_STRING[50];
+   char YET_ANOTHER_STRING[50][50];
+   int  len1;
+   int  len2;
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  VAR_1238123;
+
+   scanf("%s%s", A_STRING, ANOTHER_STRING);
+   len1        = strlen(A_STRING);
+   len2        = strlen(ANOTHER_STRING);
+   VAR_1238123 = ( len2 - len1 ) + 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      static int VAR__21230 = 0;
+      for ( VAR__8444594 = 0; VAR__21230 < len2, VAR__8444594 < len1; VAR__21230++, VAR__8444594++ )
+      {
+         YET_ANOTHER_STRING[VAR__53647][VAR__8444594] = *( ANOTHER_STRING + VAR__21230 );
+
+         if ( VAR__8444594 == ( len1 - 1 ))
+         {
+            YET_ANOTHER_STRING[VAR__53647][VAR__8444594 + 1] = '\0';
+            VAR__21230 = ( VAR__21230 - len1 ) + 2;
+            break;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(A_STRING, YET_ANOTHER_STRING[VAR__53647]) == 0 )
+      {
+         break;
+      }
+   }
+
+   printf("%d", VAR__53647);
+   return 0;
+}

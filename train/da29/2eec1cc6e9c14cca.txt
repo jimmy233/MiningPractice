@@ -1,0 +1,79 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__12302;
+   int  VAR__SUM = 0;
+   char VAR_129012;
+
+   cin >> VAR_1238123;
+   int VAR__819283[VAR_1238123 + 2][VAR_1238123 + 2];
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> VAR_129012;
+         switch ( VAR_129012 )
+         {
+         case '.':
+            VAR__819283[VAR__53647][VAR__21230] = 1;
+            break;
+
+         case '@':
+            VAR__819283[VAR__53647][VAR__21230] = 100;
+            break;
+
+         default:
+            break;
+         }
+      }
+   }
+
+
+   cin >> VAR__12302;
+   for ( int day = 1; day < VAR__12302; day++ )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__53647][VAR__21230] >= 100 )
+            {
+               VAR__819283[VAR__53647 - 1][VAR__21230] *= 2;
+               VAR__819283[VAR__53647 + 1][VAR__21230] *= 2;
+               VAR__819283[VAR__53647][VAR__21230 - 1] *= 2;
+               VAR__819283[VAR__53647][VAR__21230 + 1] *= 2;
+            }
+         }
+      }
+
+
+
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__53647][VAR__21230] >= 2 )
+            {
+               VAR__819283[VAR__53647][VAR__21230] = 100;
+            }
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] > 1 )
+         {
+            VAR__SUM++;
+         }
+      }
+   }
+
+
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

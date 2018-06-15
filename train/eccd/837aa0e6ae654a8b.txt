@@ -1,0 +1,64 @@
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int area[8][8] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__MAX[8];
+   int col[8];
+   int VAR__MIN[8];
+
+   scanf("%d,%d", &VAR__819283, &VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__19328; VAR__21230++ )
+      {
+         scanf("%d", &area[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__19328 - 1 ); VAR__21230++ )
+      {
+         VAR__MAX[VAR__53647] = area[VAR__53647][0];
+         col[VAR__53647]      = 0;
+
+         if ( area[VAR__53647][VAR__21230] < area[VAR__53647][VAR__21230 + 1] )
+         {
+            VAR__MAX[VAR__53647] = area[VAR__53647][VAR__21230 + 1];
+            col[VAR__53647]      = VAR__21230 + 1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__819283 - 1 ); VAR__8444594++ )
+      {
+         VAR__MIN[VAR__53647] = area[0][col[VAR__53647]];
+
+         if ( area[VAR__8444594][col[VAR__53647]] > area[VAR__8444594 + 1][col[VAR__53647]] )
+         {
+            VAR__MIN[VAR__53647] = area[VAR__8444594 + 1][col[VAR__53647]];
+         }
+      }
+
+      if ( VAR__MAX[VAR__53647] == VAR__MIN[VAR__53647] )
+      {
+         printf("%d+%d", col[VAR__53647], VAR__53647);
+         break;
+      }
+
+      if ( VAR__53647 != ( VAR__819283 - 1 ))
+      {
+         continue;
+      }
+
+      printf("No");
+   }
+
+   return 0;
+}

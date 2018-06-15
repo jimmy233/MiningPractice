@@ -1,0 +1,83 @@
+int main()
+{
+   int   VAR__8444594;
+   int   VAR__53647;
+   int   VAR__21230 = 0;
+   int   VAR_2890   = 0;
+   int   VAR__1238129;
+   int   VAR_FLAG = 0;
+   char  VAR_1238123[40][7];
+   float VAR_9494[40];
+   float VAR__819283[40];
+   float VAR__19328[40];
+   float VAR__TEMP;
+
+   cin >> VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      ( cin >> VAR_1238123[VAR__53647] ) >> VAR_9494[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( VAR_1238123[VAR__53647][0] == 'm' )
+      {
+         VAR__819283[VAR__21230] = VAR_9494[VAR__53647];
+         VAR__21230++;
+      }
+      else
+      {
+         VAR__19328[VAR_2890] = VAR_9494[VAR__53647];
+         VAR_2890++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__1238129 = 0; VAR__1238129 < (( VAR__21230 - VAR__53647 ) - 1 ); VAR__1238129++ )
+      {
+         if ( VAR__819283[VAR__1238129] > VAR__819283[VAR__1238129 + 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__1238129 + 1];
+            VAR__819283[VAR__1238129 + 1] = VAR__819283[VAR__1238129];
+            VAR__819283[VAR__1238129]     = VAR__TEMP;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_2890 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__1238129 = 0; VAR__1238129 < (( VAR_2890 - VAR__53647 ) - 1 ); VAR__1238129++ )
+      {
+         if ( VAR__19328[VAR__1238129] < VAR__19328[VAR__1238129 + 1] )
+         {
+            VAR__TEMP = VAR__19328[VAR__1238129 + 1];
+            VAR__19328[VAR__1238129 + 1] = VAR__19328[VAR__1238129];
+            VAR__19328[VAR__1238129]     = VAR__TEMP;
+         }
+      }
+   }
+
+
+   cout << fixed;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      if ( VAR_FLAG )
+      {
+         (( cout << " " ) << setprecision(2)) << VAR__819283[VAR__53647];
+      }
+      else
+      {
+         ( cout << setprecision(2)) << VAR__819283[VAR__53647];
+         VAR_FLAG = 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_2890; VAR__53647++ )
+   {
+      (( cout << " " ) << setprecision(2)) << VAR__19328[VAR__53647];
+   }
+
+   return 0;
+}

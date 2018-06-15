@@ -1,0 +1,65 @@
+int VAR__COUNT(char *VAR_233, int *pn, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 65; VAR__21230 < 91; VAR__21230++ )
+      {
+         if (( *( VAR_233 + VAR__53647 )) == VAR__21230 )
+         {
+            ( *(( pn + VAR__21230 ) - 65 ))++;
+         }
+      }
+
+      for ( VAR__21230 = 97; VAR__21230 < 123; VAR__21230++ )
+      {
+         if (( *( VAR_233 + VAR__53647 )) == VAR__21230 )
+         {
+            ( *((( pn + VAR__21230 ) - 97 ) + 26 ))++;
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   char z1[100];
+   char z2[100];
+
+   scanf("%s %s", z1, z2);
+   int  a1[52] = { 0 };
+   int  a2[52] = { 0 };
+   int  n1     = strlen(z1);
+   int  n2     = strlen(z2);
+   int  VAR__53647;
+   int  VAR_FLAG             = 0;
+   char *ANOTHER_POINTER     = z1;
+   char *YET_ANOTHER_POINTER = z2;
+   int  *pn1 = a1;
+   int  *pn2 = a2;
+   VAR__COUNT(ANOTHER_POINTER, pn1, n1);
+   VAR__COUNT(YET_ANOTHER_POINTER, pn2, n2);
+   for ( VAR__53647 = 0; VAR__53647 < 52; VAR__53647++ )
+   {
+      if ( a1[VAR__53647] != a2[VAR__53647] )
+      {
+         VAR_FLAG = 1;
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("YES");
+   }
+   else
+   {
+      printf("NO");
+   }
+
+   return 0;
+}

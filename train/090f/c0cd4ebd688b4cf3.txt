@@ -1,0 +1,92 @@
+int checkNum(char VAR__4857423)
+{
+   if (( VAR__4857423 >= 48 ) && ( VAR__4857423 <= 57 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void change(int *VAR_233, int *VAR_666)
+{
+   *VAR_233 = ( *VAR_233 ) + ( *VAR_666 );
+   *VAR_666 = ( *VAR_233 ) - ( *VAR_666 );
+   *VAR_233 = ( *VAR_233 ) - ( *VAR_666 );
+}
+
+
+int main()
+{
+   char VAR_9494[1000];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  VAR__819283[500];
+   int  VAR__COUNT = 0;
+
+   scanf("%s", VAR_9494);
+   VAR__53647 = 0;
+
+   while ( VAR_9494[VAR__53647] != '\0' )
+   {
+      if ( !checkNum(VAR_9494[VAR__53647]))
+      {
+         VAR__53647++;
+         continue;
+      }
+      else
+      {
+         VAR__temp = 0;
+
+         while ( checkNum(VAR_9494[VAR__53647]))
+         {
+            VAR__temp = (( VAR__temp * 10 ) + VAR_9494[VAR__53647] ) - 48;
+            VAR__53647++;
+         }
+
+         VAR__819283[VAR__COUNT] = VAR__temp;
+         VAR__COUNT++;
+      }
+   }
+
+   if ( VAR__COUNT == 1 )
+   {
+      printf("No\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__COUNT; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__53647] > VAR__819283[VAR__21230] )
+            {
+               change(&VAR__819283[VAR__53647], &VAR__819283[VAR__21230]);
+            }
+         }
+      }
+
+
+
+      VAR__53647 = VAR__COUNT - 2;
+      VAR__21230 = VAR__53647 + 1;
+
+      while (( VAR__819283[VAR__21230] == VAR__819283[VAR__53647] ) && ( VAR__53647 >= 0 ))
+      {
+         VAR__53647--;
+      }
+
+      if ( VAR__53647 < 0 )
+      {
+         printf("No\n");
+      }
+      else
+      {
+         printf("%d\n", VAR__819283[VAR__53647]);
+      }
+   }
+}

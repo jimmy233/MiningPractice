@@ -1,0 +1,52 @@
+struct patient
+{
+   char           id[10];
+   int            age;
+   struct patient *VAR__NEXT;
+   struct patient *last;
+};
+char VAR__TEMP[10];
+int main()
+{
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+   struct patient *VAR__HEAD;
+   struct patient VAR_233[N];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            tmp;
+
+   scanf("%d", &VAR_1238123);
+   memset(VAR_233, 0, sizeof( VAR_233 ));
+   VAR__HEAD = VAR_233 + 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", VAR_233[VAR__53647].id, &VAR_233[VAR__53647].age);
+      VAR_233[VAR__53647].last      = ( VAR_233 + VAR__53647 ) - 1;
+      VAR_233[VAR__53647].VAR__NEXT = ( VAR_233 + VAR__53647 ) + 1;
+   }
+
+   VAR__HEAD->last = NULL;
+   VAR_233[VAR__53647].VAR__NEXT = NULL;
+   for ( VAR__53647 = VAR_1238123; VAR__53647 > 1; VAR__53647-- )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if (((( VAR_233 + VAR__21230 ) + 1 )->age >= 60 ) && ((( VAR_233 + VAR__21230 ) + 1 )->age > ( VAR_233 + VAR__21230 )->age ))
+         {
+            memcpy(VAR__TEMP, ( VAR_233 + VAR__21230 )->id, sizeof( VAR__TEMP ));
+            memcpy(( VAR_233 + VAR__21230 )->id, (( VAR_233 + VAR__21230 ) + 1 )->id, sizeof( VAR__TEMP ));
+            memcpy((( VAR_233 + VAR__21230 ) + 1 )->id, VAR__TEMP, sizeof( VAR__TEMP ));
+            tmp = ( VAR_233 + VAR__21230 )->age;
+            ( VAR_233 + VAR__21230 )->age        = (( VAR_233 + VAR__21230 ) + 1 )->age;
+            (( VAR_233 + VAR__21230 ) + 1 )->age = tmp;
+         }
+      }
+   }
+
+   for ( ; VAR__HEAD != NULL; VAR__HEAD = VAR__HEAD->VAR__NEXT )
+   {
+      printf("%s\n", VAR__HEAD->id);
+   }
+}

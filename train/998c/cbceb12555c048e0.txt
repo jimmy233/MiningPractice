@@ -1,0 +1,59 @@
+int main(int argc, char *argv[])
+{
+   char VAR__819283[500] = { 0 };
+   char VAR__19328[500]  = { 0 };
+   char VAR__SUM[500]    = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+
+   ( cin >> VAR__819283 ) >> VAR__19328;
+   int la = strlen(VAR__819283);
+   int lb = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < ( la / 2 ); VAR__53647++ )
+   {
+      char VAR__TEMP;
+      VAR__TEMP = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647] = VAR__819283[( la - 1 ) - VAR__53647];
+      VAR__819283[( la - VAR__53647 ) - 1] = VAR__TEMP;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( lb / 2 ); VAR__53647++ )
+   {
+      char VAR__TEMP;
+      VAR__TEMP = VAR__19328[VAR__53647];
+      VAR__19328[VAR__53647] = VAR__19328[( lb - 1 ) - VAR__53647];
+      VAR__19328[( lb - VAR__53647 ) - 1] = VAR__TEMP;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] -= '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < lb; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] -= '0';
+   }
+
+   int carry = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+   {
+      int in = ( VAR__819283[VAR__53647] + VAR__19328[VAR__53647] ) + carry;
+      VAR__SUM[VAR__53647] = in % 10, carry = in / 10;
+   }
+
+   for ( VAR__53647 = 499; VAR__53647 > 0; VAR__53647-- )
+   {
+      if ( VAR__SUM[VAR__53647] != 0 )
+      {
+         break;
+      }
+   }
+
+   for ( ; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", VAR__SUM[VAR__53647] + '0');
+   }
+
+   return 0;
+}

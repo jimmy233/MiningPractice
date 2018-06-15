@@ -1,0 +1,55 @@
+struct student
+{
+   int number;
+   int math;
+   int chinese;
+   int total;
+};
+int main()
+{
+   struct student VAR__819283[100000];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            sf = 0;
+   int            ss = 0;
+   int            st = 0;
+   int            VAR__127322;
+   int            VAR_9494;
+   int            VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__819283[VAR__53647].number, &VAR__819283[VAR__53647].math, &VAR__819283[VAR__53647].chinese);
+      VAR__819283[VAR__53647].total = VAR__819283[VAR__53647].math + VAR__819283[VAR__53647].chinese;
+
+      if ( VAR__819283[VAR__53647].total > sf )
+      {
+         VAR__temp   = VAR_9494;
+         st          = ss;
+         VAR_9494    = VAR__127322;
+         ss          = sf;
+         VAR__127322 = VAR__53647;
+         sf          = VAR__819283[VAR__53647].total;
+      }
+      else
+      if ( VAR__819283[VAR__53647].total > ss )
+      {
+         VAR__temp = VAR_9494;
+         st        = ss;
+         VAR_9494  = VAR__53647;
+         ss        = VAR__819283[VAR__53647].total;
+      }
+      else
+      if ( VAR__819283[VAR__53647].total > st )
+      {
+         VAR__temp = VAR__53647;
+         st        = VAR__819283[VAR__53647].total;
+      }
+   }
+
+   printf("%d %d\n", VAR__127322 + 1, sf);
+   printf("%d %d\n", VAR_9494 + 1, ss);
+   printf("%d %d\n", VAR__temp + 1, st);
+   return 0;
+}

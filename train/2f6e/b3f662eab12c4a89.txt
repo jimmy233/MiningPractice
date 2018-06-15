@@ -1,0 +1,47 @@
+void out(char VAR_9494[], int VAR__819283[], char boy, int LEN_OF_STH)
+{
+   int VAR__53647;
+   int VAR__8444594;
+
+   if ( LEN_OF_STH == 2 )
+   {
+      ((( cout << VAR__819283[0] ) << ' ' ) << VAR__819283[1] ) << endl;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if (( VAR_9494[VAR__53647] == boy ) && ( VAR_9494[VAR__53647 + 1] != boy ))
+         {
+            ((( cout << VAR__819283[VAR__53647] ) << ' ' ) << VAR__819283[VAR__53647 + 1] ) << endl;
+            for ( VAR__8444594 = VAR__53647; VAR__8444594 < ( LEN_OF_STH - 2 ); VAR__8444594++ )
+            {
+               VAR_9494[VAR__8444594]    = VAR_9494[VAR__8444594 + 2];
+               VAR__819283[VAR__8444594] = VAR__819283[VAR__8444594 + 2];
+            }
+
+            out(VAR_9494, VAR__819283, boy, LEN_OF_STH - 2);
+            break;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   char VAR_9494[100];
+
+   cin >> VAR_9494;
+   int VAR__819283[100];
+   int VAR__53647;
+   int LEN_OF_STH = strlen(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR__53647;
+   }
+
+   char boy = VAR_9494[0];
+   out(VAR_9494, VAR__819283, boy, LEN_OF_STH);
+   return 0;
+}

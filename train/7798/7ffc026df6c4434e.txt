@@ -1,0 +1,99 @@
+struct book
+{
+   int         number;
+   char        VAR__819283[26];
+   int         la;
+   struct book *VAR__NEXT;
+};
+struct book *insert(struct book *VAR__HEAD, struct book *VAR__TEMP)
+{
+   struct book *p0;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = VAR__TEMP;
+
+   if ( VAR__HEAD == NULL )
+   {
+      VAR__HEAD     = p0;
+      p0->VAR__NEXT = NULL;
+   }
+   else
+   {
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER->VAR__NEXT = p0;
+      p0->VAR__NEXT = NULL;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct book *VAR_233;
+   struct book *VAR__TEMP;
+   struct book *VAR__HEAD = NULL;
+   int         VAR__53647;
+   int         VAR__1238129;
+   int         VAR__MAX;
+   int         VAR__19328[26] = { 0 };
+   char        writer;
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__TEMP = (struct book *)malloc(sizeof( struct book ));
+      scanf("%d ", &VAR__TEMP->number);
+      gets(VAR__TEMP->VAR__819283);
+      VAR__TEMP->la        = strlen(VAR__TEMP->VAR__819283);
+      VAR__TEMP->VAR__NEXT = NULL;
+      VAR__HEAD            = insert(VAR__HEAD, VAR__TEMP);
+   }
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_233->la; VAR__53647++ )
+      {
+         VAR__19328[VAR_233->VAR__819283[VAR__53647] - 65]++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR__MAX = VAR__19328[0];
+   writer   = 65;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__19328[VAR__53647];
+         writer   = VAR__53647 + 65;
+      }
+   }
+
+   printf("%c\n%d\n", writer, VAR__MAX);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_233->la; VAR__53647++ )
+      {
+         if ( VAR_233->VAR__819283[VAR__53647] == writer )
+         {
+            printf("%d\n", VAR_233->number);
+            break;
+         }
+      }
+
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

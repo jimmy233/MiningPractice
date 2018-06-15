@@ -1,0 +1,94 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__1111;
+   int  cmp;
+   int  VAR__COUNT;
+   int  site;
+   int  mid;
+   int  timer;
+   int  re[10];
+   int  VAR__NUM[510][2] = { 0 };
+   char scan[501];
+   char u[510][510];
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", scan);
+   VAR__COUNT = -1;
+   site       = -1;
+   cmp        = 0;
+   timer      = -1;
+   VAR__1111  = strlen(scan);
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR__1111 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      VAR__COUNT++;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + VAR_1238123 ); VAR__21230++ )
+      {
+         site++;
+         u[VAR__COUNT][site] = scan[VAR__21230];
+      }
+
+      u[VAR__COUNT][VAR_1238123] = 0;
+      site = -1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= VAR__COUNT; VAR__21230++ )
+      {
+         cmp = strcmp(u[VAR__53647], u[VAR__21230]);
+
+         if ( cmp == 0 )
+         {
+            VAR__NUM[VAR__53647][0]++;
+            VAR__NUM[VAR__53647][1]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__COUNT - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230][1] < VAR__NUM[VAR__21230 + 1][1] )
+         {
+            mid = VAR__NUM[VAR__21230][1];
+            VAR__NUM[VAR__21230][1]     = VAR__NUM[VAR__21230 + 1][1];
+            VAR__NUM[VAR__21230 + 1][1] = mid;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647][0] == VAR__NUM[0][1] )
+      {
+         timer++;
+         re[timer] = VAR__53647;
+      }
+   }
+
+   if ( VAR__NUM[0][1] > 1 )
+   {
+      printf("%d\n", VAR__NUM[0][1]);
+      for ( VAR__53647 = 0; VAR__53647 <= timer; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= VAR__COUNT; VAR__21230++ )
+         {
+            if ( VAR__21230 == re[VAR__53647] )
+            {
+               printf("%s\n", u[VAR__21230]);
+            }
+         }
+      }
+   }
+   else
+   {
+      printf("NO");
+   }
+
+   return 0;
+}

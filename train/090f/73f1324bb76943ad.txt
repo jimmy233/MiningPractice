@@ -1,0 +1,60 @@
+int main()
+{
+   int  VAR__819283[301] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_1238123 = 0;
+   int  posi[300]   = { 0 };
+   int  b1;
+   int  b2 = -1;
+   int  VAR__temp;
+   char VAR_9494[2000];
+
+   gets(VAR_9494);
+   posi[0] = 0;
+   for ( VAR__53647 = 1, VAR__21230 = 1; VAR__53647 <= ( strlen(VAR_9494) - 1 ); VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] == ',' )
+      {
+         posi[VAR__21230] = VAR__53647 + 1;
+         VAR__21230++;
+      }
+   }
+
+   posi[VAR__21230] = strlen(VAR_9494) + 1;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__8444594 = posi[VAR__53647]; VAR__8444594 <= ( posi[VAR__53647 + 1] - 2 ); VAR__8444594++ )
+      {
+         VAR__819283[VAR__53647] = ( VAR_9494[VAR__8444594] - 48 ) + ( 10 * VAR__819283[VAR__53647] );
+      }
+   }
+
+   b1 = VAR__819283[0];
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > b1 )
+      {
+         VAR__temp = b1;
+         b1        = VAR__819283[VAR__53647];
+         b2        = VAR__temp;
+      }
+      else
+      if (( VAR__819283[VAR__53647] < b1 ) && ( VAR__819283[VAR__53647] > b2 ))
+      {
+         b2 = VAR__819283[VAR__53647];
+      }
+   }
+
+   if ( b2 >= 0 )
+   {
+      printf("%d\n", b2);
+   }
+   else
+   {
+      printf("No\n");
+   }
+
+   return 0;
+}

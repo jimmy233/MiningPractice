@@ -1,0 +1,90 @@
+int prime(int VAR_1238123)
+{
+   int VAR_233;
+   int VAR__53647;
+
+   VAR_233 = 1;
+   for ( VAR__53647 = 2; VAR__53647 <= sqrt(VAR_1238123); VAR__53647++ )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         VAR_233 = 0;
+         break;
+      }
+   }
+
+
+   return VAR_233;
+}
+
+
+int back(int VAR_1238123)
+{
+   int VAR_666;
+   int VAR__53647;
+   int LEN_OF_STH;
+   int VAR__1111;
+   int VAR_9494;
+   int VAR__temp;
+
+   VAR_666    = 1;
+   LEN_OF_STH = log10(VAR_1238123) + 1;
+   VAR__1111  = LEN_OF_STH;
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__1111 / 2 ); VAR__53647++ )
+   {
+      VAR_9494  = VAR_1238123 / pow(10, LEN_OF_STH - 1);
+      VAR__temp = VAR_1238123 % 10;
+
+      if ( VAR_9494 != VAR__temp )
+      {
+         VAR_666 = 0;
+         break;
+      }
+
+      VAR_1238123 = ( VAR_1238123 - ( VAR_9494 * pow(10, LEN_OF_STH - 1))) / 10;
+      LEN_OF_STH -= 2;
+   }
+
+   return VAR_666;
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__53647;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( prime(VAR__53647) * back(VAR__53647)) == 1 )
+      {
+         printf("%d", VAR__53647);
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 == ( VAR_1238123 + 1 ))
+   {
+      goto end;
+   }
+
+   for ( VAR__53647 = VAR__53647 + 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( prime(VAR__53647) * back(VAR__53647)) == 1 )
+      {
+         printf(",%d", VAR__53647);
+      }
+   }
+
+
+   printf("\n");
+   goto ed;
+end:
+   printf("no\n");
+
+ed:
+   VAR_1238123 = VAR_1238123;
+}

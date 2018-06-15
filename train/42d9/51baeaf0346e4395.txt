@@ -1,0 +1,75 @@
+struct
+{
+   int abs;
+   int ver;
+   int ord;
+}
+coor[10];
+double fdis(int VAR__819283, int VAR__19328, int VAR__4857423, int VAR__12302, int VAR__112390, int VAR__127322)
+{
+   int    VAR__1238129;
+   double VAR_1238123;
+
+   VAR__1238129 = ((( VAR__819283 - VAR__12302 ) * ( VAR__819283 - VAR__12302 )) + (( VAR__19328 - VAR__112390 ) * ( VAR__19328 - VAR__112390 ))) + (( VAR__4857423 - VAR__127322 ) * ( VAR__4857423 - VAR__127322 ));
+   VAR_1238123  = sqrt((double)VAR__1238129);
+   return VAR_1238123;
+}
+
+
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594 = 0;
+   int    VAR_666;
+   int    flag1[45];
+   int    flag2[45];
+   int    VAR_9494;
+   int    VAR__temp;
+   double dis[45];
+   double tempt;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> coor[VAR__53647].abs ) >> coor[VAR__53647].ver ) >> coor[VAR__53647].ord;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__8444594]   = fdis(coor[VAR__53647].abs, coor[VAR__53647].ver, coor[VAR__53647].ord, coor[VAR__21230].abs, coor[VAR__21230].ver, coor[VAR__21230].ord);
+         flag1[VAR__8444594] = VAR__53647;
+         flag2[VAR__8444594] = VAR__21230;
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__8444594++ )
+   {
+      for ( VAR_666 = 0; VAR_666 < (((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR__8444594 ) - 1 ); VAR_666++ )
+      {
+         if (( dis[VAR_666] - dis[VAR_666 + 1] ) < ( -1e-6 ))
+         {
+            VAR_9494           = flag1[VAR_666];
+            flag1[VAR_666]     = flag1[VAR_666 + 1];
+            flag1[VAR_666 + 1] = VAR_9494;
+            VAR__temp          = flag2[VAR_666];
+            flag2[VAR_666]     = flag2[VAR_666 + 1];
+            flag2[VAR_666 + 1] = VAR__temp;
+            tempt            = dis[VAR_666];
+            dis[VAR_666]     = dis[VAR_666 + 1];
+            dis[VAR_666 + 1] = tempt;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__8444594++ )
+   {
+      ((((((((((((((((( cout << "(" ) << coor[flag1[VAR__8444594]].abs ) << "," ) << coor[flag1[VAR__8444594]].ver ) << "," ) << coor[flag1[VAR__8444594]].ord ) << ")-(" ) << coor[flag2[VAR__8444594]].abs ) << "," ) << coor[flag2[VAR__8444594]].ver ) << "," ) << coor[flag2[VAR__8444594]].ord ) << ")" ) << "=" ) << fixed ) << setprecision(2)) << dis[VAR__8444594] ) << endl;
+   }
+
+   return 0;
+}

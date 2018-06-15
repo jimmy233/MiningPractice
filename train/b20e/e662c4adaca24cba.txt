@@ -1,0 +1,112 @@
+int comp(const void *VAR_233, const void *VAR_666)
+{
+   return ( *((int *)VAR_666 )) - ( *((int *)VAR_233 ));
+}
+
+
+int main()
+{
+   int VAR_1238123[50];
+   int tianji[50][1000];
+   int qiwang[50][1000];
+   int result[50];
+   int VAR__53647;
+   int VAR__21230;
+   int ii;
+   int jj;
+   int VAR__MAX;
+   int max0;
+   int nmax;
+   int cmax;
+   int cnmax;
+   int tb;
+   int tm;
+   int qb;
+   int qm;
+
+   VAR__53647 = 0;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123[VAR__53647]);
+
+      if ( VAR_1238123[VAR__53647] == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123[VAR__53647]; VAR__21230++ )
+      {
+         scanf("%d", &tianji[VAR__53647][VAR__21230]);
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123[VAR__53647]; VAR__21230++ )
+      {
+         scanf("%d", &qiwang[VAR__53647][VAR__21230]);
+      }
+
+      qsort(tianji[VAR__53647], VAR_1238123[VAR__53647], sizeof( int ), comp);
+      qsort(qiwang[VAR__53647], VAR_1238123[VAR__53647], sizeof( int ), comp);
+      VAR__53647++;
+   }
+
+   for ( ii = 0; ii < VAR__53647; ii++ )
+   {
+      result[ii] = 0;
+      tb         = 0;
+      tm         = VAR_1238123[ii] - 1;
+      qm         = VAR_1238123[ii] - 1;
+      qb         = 0;
+      for ( VAR__21230 = VAR_1238123[ii] - 1; VAR__21230 >= tb; VAR__21230-- )
+      {
+         if ( tianji[ii][VAR__21230] > qiwang[ii][qm] )
+         {
+            tm--;
+            qm--;
+            result[ii] = result[ii] + 200;
+         }
+         else
+         if ( tianji[ii][VAR__21230] < qiwang[ii][qm] )
+         {
+            tm--;
+            qb++;
+            result[ii] = result[ii] - 200;
+         }
+         else
+         if ( tianji[ii][VAR__21230] == qiwang[ii][qm] )
+         {
+            while ( tianji[ii][tb] > qiwang[ii][qb] )
+            {
+               tb++;
+               qb++;
+               result[ii] = result[ii] + 200;
+            }
+
+            if ( tianji[ii][tb] < qiwang[ii][qb] )
+            {
+               tm--;
+               qb++;
+               result[ii] = result[ii] - 200;
+            }
+            else
+            if (( tianji[ii][tb] == qiwang[ii][qb] ) && ( VAR__21230 > tb ))
+            {
+               if ( tianji[ii][VAR__21230] < qiwang[ii][qb] )
+               {
+                  result[ii] = result[ii] - 200;
+               }
+
+               qb++;
+               tm--;
+            }
+         }
+      }
+
+      printf("%d\n", result[ii]);
+      getchar();
+      getchar();
+      getchar();
+   }
+
+   return 0;
+}

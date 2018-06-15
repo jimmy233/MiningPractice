@@ -1,0 +1,103 @@
+int pdhw(int VAR__53647);
+int pdss(int VAR__53647);
+
+void main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int cs = 0;
+   int VAR_2890;
+   int VAR_9494;
+   int VAR__53647;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_2890 = pdhw(VAR__53647);
+
+      if ( VAR_2890 == 1 )
+      {
+         VAR_9494 = pdss(VAR__53647);
+
+         if ( VAR_9494 == 1 )
+         {
+            if ( cs > 0 )
+            {
+               printf(",");
+            }
+
+            printf("%d", VAR__53647);
+            cs++;
+         }
+      }
+   }
+
+   if ( cs == 0 )
+   {
+      printf("no");
+   }
+}
+
+
+int pdhw(int VAR__53647)
+{
+   int VAR__12302  = 1;
+   int VAR__127322 = 0;
+   int VAR__21230  = 0;
+   int VAR__8444594;
+   int VAR_21983012;
+   int v = 0;
+   int VAR__19328[100] = { 0 };
+
+   do
+   {
+      VAR__12302  = VAR__12302 * 10;
+      VAR__127322 = VAR__53647 / VAR__12302;
+      VAR__21230++;
+   } while ( VAR__127322 != 0 );
+   VAR_21983012 = VAR__53647;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__21230; VAR__8444594++ )
+   {
+      VAR__19328[VAR__8444594] = VAR_21983012 % 10;
+      VAR_21983012             = VAR_21983012 / 10;
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__21230; VAR__8444594++ )
+   {
+      v = ( v * 10 ) + VAR__19328[VAR__8444594];
+   }
+
+   if ( v == VAR__53647 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int pdss(int VAR__53647)
+{
+   int VAR__21230;
+   int VAR_129012 = 0;
+
+   for ( VAR__21230 = 2; VAR__21230 <= sqrt(VAR__53647); VAR__21230++ )
+   {
+      if (( VAR__53647 % VAR__21230 ) == 0 )
+      {
+         VAR_129012 = 1;
+         break;
+      }
+   }
+
+   if ( VAR_129012 == 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

@@ -1,0 +1,101 @@
+int MAX(int, int);
+
+int main()
+{
+   char VAR__819283[251];
+   char VAR__19328[251];
+   char VAR__4857423[251];
+   int  VAR__temp = 0;
+   int  len1;
+   int  len2;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1238129;
+
+   scanf("%s%s", VAR__819283, VAR__19328);
+   len1 = strlen(VAR__819283);
+   len2 = strlen(VAR__19328);
+
+   if ( len1 < len2 )
+   {
+      for ( VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         VAR__819283[( VAR__53647 + len2 ) - len1] = VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= (( len2 - len1 ) - 1 ); VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = '0';
+      }
+   }
+   else
+   if ( len1 > len2 )
+   {
+      for ( VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         VAR__19328[( VAR__53647 + len1 ) - len2] = VAR__19328[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= (( len1 - len2 ) - 1 ); VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = '0';
+      }
+   }
+
+
+   VAR__1238129 = MAX(len1, len2);
+   for ( VAR__53647 = 0; VAR__53647 <= 250; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = '\0';
+   }
+
+   for ( VAR__53647 = VAR__1238129 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__4857423[VAR__53647] = ((((( VAR__819283[VAR__53647] - '0' ) + VAR__19328[VAR__53647] ) - '0' ) + VAR__temp ) % 10 ) + '0';
+      VAR__temp = (((( VAR__819283[VAR__53647] - '0' ) + VAR__19328[VAR__53647] ) - '0' ) + VAR__temp ) / 10;
+   }
+
+   if ( VAR__temp == 1 )
+   {
+      for ( VAR__53647 = VAR__1238129 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         VAR__4857423[VAR__53647 + 1] = VAR__4857423[VAR__53647];
+      }
+
+      VAR__4857423[0] = '1';
+   }
+
+   len2 = strlen(VAR__4857423);
+   for ( VAR__53647 = 0; VAR__53647 <= ( len2 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] != '0' )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__53647 == len2 )
+   {
+      printf("0");
+   }
+   else
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= ( len2 - 1 ); VAR__21230++ )
+      {
+         printf("%c", VAR__4857423[VAR__21230]);
+      }
+   }
+}
+
+
+int MAX(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 >= VAR__19328 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return VAR__19328;
+   }
+}

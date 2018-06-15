@@ -1,0 +1,65 @@
+int main()
+{
+   char seline1[100][100];
+   char seline2[100][100];
+   int  VAR_1238123;
+
+   cin >> VAR_1238123;
+   cin.get();
+   for ( int VAR__8444594 = 0; VAR__8444594 < ( VAR_1238123 - 1 ); VAR__8444594++ )
+   {
+      cin.getline(seline1[VAR__8444594], 100);
+      cin.getline(seline2[VAR__8444594], 100);
+      cin.get();
+   }
+
+   cin.getline(seline1[VAR_1238123 - 1], 100);
+   cin.getline(seline2[VAR_1238123 - 1], 100);
+   for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      int l1 = strlen(seline1[VAR__8444594]);
+      int an1[100];
+      int an2[100];
+      int l2 = strlen(seline2[VAR__8444594]);
+      memset(an1, 0, sizeof( an1 ));
+      memset(an2, 0, sizeof( an2 ));
+      for ( int VAR__53647 = 0; VAR__53647 < l1; VAR__53647++ )
+      {
+         an1[VAR__53647] = seline1[VAR__8444594][( l1 - VAR__53647 ) - 1] - '0';
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < l2; VAR__53647++ )
+      {
+         an2[VAR__53647] = seline2[VAR__8444594][( l2 - VAR__53647 ) - 1] - '0';
+      }
+
+      for ( int VAR__21230 = 0; VAR__21230 < l1; VAR__21230++ )
+      {
+         if ( an1[VAR__21230] >= an2[VAR__21230] )
+         {
+            an1[VAR__21230] -= an2[VAR__21230];
+         }
+         else
+         {
+            an1[VAR__21230 + 1]--;
+            an1[VAR__21230] = ( an1[VAR__21230] + 10 ) - an2[VAR__21230];
+         }
+      }
+
+      int VAR__temp = 99;
+
+      while ( an1[VAR__temp] == 0 )
+      {
+         VAR__temp--;
+      }
+
+      for ( ; VAR__temp >= 0; VAR__temp-- )
+      {
+         cout << an1[VAR__temp];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,43 @@
+void main()
+{
+   int    VAR_1238123;
+   int    *pm;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   double *pa[100];
+   double *psum;
+   double *pave;
+   double VAR_9494;
+   double VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   pm   = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   psum = (double *)malloc(( sizeof( double )) * VAR_1238123);
+   pave = (double *)malloc(( sizeof( double )) * VAR_1238123);
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      *( psum + VAR__8444594 ) = 0;
+      scanf("%d", pm + VAR__8444594);
+      pa[VAR__8444594] = (double *)malloc(( sizeof( double )) * ( *( pm + VAR__8444594 )));
+      for ( VAR__53647 = 0; VAR__53647 < ( *( pm + VAR__8444594 )); VAR__53647++ )
+      {
+         scanf("%lf", pa[VAR__8444594] + VAR__53647);
+         *( psum + VAR__8444594 ) = ( *( psum + VAR__8444594 )) + ( *( pa[VAR__8444594] + VAR__53647 ));
+      }
+
+      *( pave + VAR__8444594 ) = ( *( psum + VAR__8444594 )) / ( *( pm + VAR__8444594 ));
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      *( psum + VAR__8444594 ) = 0;
+      for ( VAR__53647 = 0; VAR__53647 < ( *( pm + VAR__8444594 )); VAR__53647++ )
+      {
+         *( psum + VAR__8444594 ) = ( *( psum + VAR__8444594 )) + ((( *( pa[VAR__8444594] + VAR__53647 )) - ( *( pave + VAR__8444594 ))) * (( *( pa[VAR__8444594] + VAR__53647 )) - ( *( pave + VAR__8444594 ))));
+      }
+
+      VAR_9494 = sqrt(( *( psum + VAR__8444594 )) / ( *( pm + VAR__8444594 )));
+      printf("%.5lf\n", VAR_9494);
+   }
+}

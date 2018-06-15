@@ -1,0 +1,57 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__112390;
+   int VAR_2890;
+   int VAR__8444594;
+   int VAR__1238129;
+   struct qujian
+   {
+      int ai;
+      int bi;
+   }
+   qj[10000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d", &qj[VAR__53647].ai, &qj[VAR__53647].bi);
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( qj[VAR__53647].ai > qj[VAR__53647 + 1].ai )
+         {
+            VAR__112390           = qj[VAR__53647 + 1].ai;
+            VAR_2890              = qj[VAR__53647 + 1].bi;
+            qj[VAR__53647 + 1].ai = qj[VAR__53647].ai;
+            qj[VAR__53647 + 1].bi = qj[VAR__53647].bi;
+            qj[VAR__53647].ai     = VAR__112390;
+            qj[VAR__53647].bi     = VAR_2890;
+         }
+      }
+   }
+
+   VAR__1238129 = qj[0].bi;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__1238129 >= qj[VAR__53647].ai )
+      {
+         if ( VAR__1238129 < qj[VAR__53647].bi )
+         {
+            VAR__1238129 = qj[VAR__53647].bi;
+         }
+      }
+      else
+      {
+         printf("no");
+         return 0;
+      }
+   }
+
+   printf("%d %d", qj[0].ai, VAR__1238129);
+   return 0;
+}

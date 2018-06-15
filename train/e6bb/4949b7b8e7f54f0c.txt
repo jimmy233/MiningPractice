@@ -1,0 +1,106 @@
+int board[9][9]     = { 0 };
+int VAR__TEMP[9][9] = { 0 };
+void spread();
+void turn();
+
+int main()
+{
+   int zhongxin;
+
+   cin >> zhongxin;
+   board[4][4] = zhongxin;
+   int days;
+   cin >> days;
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 1; VAR__53647 <= days; VAR__53647++ )
+   {
+      spread();
+      turn();
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      cout << board[VAR__53647][0];
+      for ( VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+      {
+         ( cout << " " ) << board[VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}
+
+
+void spread()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         VAR__TEMP[VAR__53647][VAR__21230] += 2 * board[VAR__53647][VAR__21230];
+
+         if ( VAR__53647 > 0 )
+         {
+            VAR__TEMP[VAR__53647 - 1][VAR__21230] += board[VAR__53647][VAR__21230];
+         }
+
+         if ( VAR__21230 > 0 )
+         {
+            VAR__TEMP[VAR__53647][VAR__21230 - 1] += board[VAR__53647][VAR__21230];
+         }
+
+         if ( VAR__53647 < 8 )
+         {
+            VAR__TEMP[VAR__53647 + 1][VAR__21230] += board[VAR__53647][VAR__21230];
+         }
+
+         if ( VAR__21230 < 8 )
+         {
+            VAR__TEMP[VAR__53647][VAR__21230 + 1] += board[VAR__53647][VAR__21230];
+         }
+
+         if (( VAR__53647 < 8 ) && ( VAR__21230 < 8 ))
+         {
+            VAR__TEMP[VAR__53647 + 1][VAR__21230 + 1] += board[VAR__53647][VAR__21230];
+         }
+
+         if (( VAR__53647 < 8 ) && ( VAR__21230 > 0 ))
+         {
+            VAR__TEMP[VAR__53647 + 1][VAR__21230 - 1] += board[VAR__53647][VAR__21230];
+         }
+
+         if (( VAR__53647 > 0 ) && ( VAR__21230 < 8 ))
+         {
+            VAR__TEMP[VAR__53647 - 1][VAR__21230 + 1] += board[VAR__53647][VAR__21230];
+         }
+
+         if (( VAR__53647 > 0 ) && ( VAR__21230 > 0 ))
+         {
+            VAR__TEMP[VAR__53647 - 1][VAR__21230 - 1] += board[VAR__53647][VAR__21230];
+         }
+      }
+   }
+}
+
+
+void turn()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         board[VAR__53647][VAR__21230] = VAR__TEMP[VAR__53647][VAR__21230];
+      }
+   }
+
+   memset(VAR__TEMP, 0, sizeof( VAR__TEMP ));
+}

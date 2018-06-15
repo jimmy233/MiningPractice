@@ -1,0 +1,59 @@
+int main(int argc, char *argv[])
+{
+   double VAR__819283[100][3];
+   double delta;
+   double x1;
+   double x2;
+   double real1;
+   double real2;
+   double imz1;
+   double imz2;
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 2; VAR__21230++ )
+      {
+         scanf("%lf", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+
+      delta = ( VAR__819283[VAR__53647][1] * VAR__819283[VAR__53647][1] ) - (( 4 * VAR__819283[VAR__53647][0] ) * VAR__819283[VAR__53647][2] );
+
+      if ( delta > 0 )
+      {
+         x1 = ((( -1 ) * VAR__819283[VAR__53647][1] ) + sqrt(delta)) / ( 2 * VAR__819283[VAR__53647][0] );
+         x2 = ((( -1 ) * VAR__819283[VAR__53647][1] ) - sqrt(delta)) / ( 2 * VAR__819283[VAR__53647][0] );
+         printf("x1=%.5lf;x2=%.5lf\n", x1, x2);
+      }
+      else
+      if ( fabs(delta) < 1e-5 )
+      {
+         x1 = (( -1 ) * VAR__819283[VAR__53647][1] ) / ( 2 * VAR__819283[VAR__53647][0] );
+         printf("x1=x2=%.5lf\n", x1);
+      }
+      else
+      {
+         real1 = (( -1 ) * VAR__819283[VAR__53647][1] ) / ( 2 * VAR__819283[VAR__53647][0] );
+         imz1  = sqrt(( -1 ) * delta) / ( 2 * VAR__819283[VAR__53647][0] );
+         real2 = (( -1 ) * VAR__819283[VAR__53647][1] ) / ( 2 * VAR__819283[VAR__53647][0] );
+         imz2  = sqrt(( -1 ) * delta) / ( 2 * VAR__819283[VAR__53647][0] );
+
+         if ( fabs(real1) < 1e-5 )
+         {
+            real1 = fabs(real1);
+         }
+
+         if ( fabs(real2) < 1e-5 )
+         {
+            real2 = fabs(real2);
+         }
+
+         printf("x1=%.5lf+%.5lfi;x2=%.5lf-%.5lfi\n", real1, imz1, real2, imz2);
+      }
+   }
+
+   return 0;
+}

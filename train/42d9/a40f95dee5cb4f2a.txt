@@ -1,0 +1,67 @@
+int main()
+{
+   int    dian[10][3];
+   int    VAR_1238123;
+   int    VAR__21230;
+   int    VAR__53647;
+   int    VAR__8444594;
+   int    diandui[1000][6];
+   double VAR__12302[1000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+      {
+         scanf("%d", &dian[VAR__21230][VAR__53647]);
+      }
+   }
+
+   int VAR_233 = 0;
+   for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR__21230; VAR__8444594++ )
+      {
+         int VAR__7685;
+         VAR__7685           = ((( dian[VAR__21230][0] - dian[VAR__8444594][0] ) * ( dian[VAR__21230][0] - dian[VAR__8444594][0] )) + (( dian[VAR__21230][1] - dian[VAR__8444594][1] ) * ( dian[VAR__21230][1] - dian[VAR__8444594][1] ))) + (( dian[VAR__21230][2] - dian[VAR__8444594][2] ) * ( dian[VAR__21230][2] - dian[VAR__8444594][2] ));
+         VAR__12302[VAR_233] = sqrt(VAR__7685);
+         diandui[VAR_233][0] = dian[VAR__8444594][0];
+         diandui[VAR_233][1] = dian[VAR__8444594][1];
+         diandui[VAR_233][2] = dian[VAR__8444594][2];
+         diandui[VAR_233][3] = dian[VAR__21230][0];
+         diandui[VAR_233][4] = dian[VAR__21230][1];
+         diandui[VAR_233][5] = dian[VAR__21230][2];
+         VAR_233++;
+      }
+   }
+
+   int VAR__819283;
+   int VAR__19328;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_233; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR_233 - VAR__8444594 ) - 1 ); VAR__53647++ )
+      {
+         double VAR__temp;
+
+         if ( VAR__12302[VAR__53647] < VAR__12302[VAR__53647 + 1] )
+         {
+            VAR__temp = VAR__12302[VAR__53647];
+            VAR__12302[VAR__53647]     = VAR__12302[VAR__53647 + 1];
+            VAR__12302[VAR__53647 + 1] = VAR__temp;
+            for ( VAR__819283 = 0; VAR__819283 < 6; VAR__819283++ )
+            {
+               VAR__19328 = diandui[VAR__53647][VAR__819283];
+               diandui[VAR__53647][VAR__819283]     = diandui[VAR__53647 + 1][VAR__819283];
+               diandui[VAR__53647 + 1][VAR__819283] = VAR__19328;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", diandui[VAR__53647][0], diandui[VAR__53647][1], diandui[VAR__53647][2], diandui[VAR__53647][3], diandui[VAR__53647][4], diandui[VAR__53647][5], VAR__12302[VAR__53647]);
+   }
+
+   return 0;
+}

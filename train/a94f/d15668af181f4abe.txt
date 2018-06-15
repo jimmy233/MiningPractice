@@ -1,0 +1,46 @@
+int main()
+{
+   int col;
+   int row;
+   int VAR__819283[100][100];
+   int state = 0;
+   int step[4];
+   int curstep;
+   int VAR_FLAG  = 1;
+   int dir[4][2] = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
+   int pos[2]    = { 0, 0 };
+
+   ( cin >> row ) >> col;
+   for ( int VAR__53647 = 0; VAR__53647 < row; ++VAR__53647 )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < col; ++VAR__21230 )
+      {
+         cin >> VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   step[0] = col;
+   step[1] = row - 1;
+   step[2] = col - 1;
+   step[3] = row - 2;
+   curstep = step[state];
+
+   while ( curstep > 0 )
+   {
+      for ( int VAR__53647 = 0 + VAR_FLAG; VAR__53647 < curstep; ++VAR__53647 )
+      {
+         ( cout << VAR__819283[pos[0]][pos[1]] ) << endl;
+         pos[0] += dir[state][0];
+         pos[1] += dir[state][1];
+      }
+
+      step[state] = step[state] - 2;
+      state       = ( state + 1 ) % 4;
+      curstep     = step[state];
+      VAR_FLAG    = 0;
+   }
+
+   ( cout << VAR__819283[pos[0]][pos[1]] ) << endl;
+   return 0;
+}

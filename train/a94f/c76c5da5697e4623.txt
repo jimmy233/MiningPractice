@@ -1,0 +1,91 @@
+struct node
+{
+   int over;
+   int data;
+};
+void main()
+{
+   int         row;
+   int         col;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         point = 1;
+   int         heng  = 0;
+   int         zong  = 0;
+   struct node VAR__7685[102][102];
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &VAR__7685[VAR__53647][VAR__21230].data);
+         VAR__7685[VAR__53647][VAR__21230].over = 1;
+      }
+   }
+
+   printf("%d\n", VAR__7685[0][0].data);
+   VAR__7685[0][0].over = 0;
+   for ( VAR__53647 = 1; VAR__53647 < ( row * col ); )
+   {
+      if (( point % 4 ) == 1 )
+      {
+         if (( VAR__7685[heng][zong + 1].over == 1 ) && (( zong + 1 ) < col ))
+         {
+            zong++;
+            printf("%d\n", VAR__7685[heng][zong].data);
+            VAR__7685[heng][zong].over = 0;
+            VAR__53647++;
+         }
+         else
+         {
+            point++;
+         }
+      }
+
+      if (( point % 4 ) == 2 )
+      {
+         if (( VAR__7685[heng + 1][zong].over == 1 ) && (( heng + 1 ) < row ))
+         {
+            heng++;
+            printf("%d\n", VAR__7685[heng][zong].data);
+            VAR__7685[heng][zong].over = 0;
+            VAR__53647++;
+         }
+         else
+         {
+            point++;
+         }
+      }
+
+      if (( point % 4 ) == 3 )
+      {
+         if (( VAR__7685[heng][zong - 1].over == 1 ) && (( zong - 1 ) >= 0 ))
+         {
+            zong--;
+            printf("%d\n", VAR__7685[heng][zong].data);
+            VAR__7685[heng][zong].over = 0;
+            VAR__53647++;
+         }
+         else
+         {
+            point++;
+         }
+      }
+
+      if (( point % 4 ) == 0 )
+      {
+         if (( VAR__7685[heng - 1][zong].over == 1 ) && (( heng - 1 ) >= 0 ))
+         {
+            heng--;
+            printf("%d\n", VAR__7685[heng][zong].data);
+            VAR__7685[heng][zong].over = 0;
+            VAR__53647++;
+         }
+         else
+         {
+            point++;
+         }
+      }
+   }
+}

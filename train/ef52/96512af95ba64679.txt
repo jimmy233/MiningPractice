@@ -1,0 +1,82 @@
+struct dian
+{
+   int VAR_2890;
+   int VAR__7685;
+};
+int Compare(const void *elem1, const void *elem2)
+{
+   struct dian *ANOTHER_POINTER;
+   struct dian *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (struct dian *)elem1;
+   YET_ANOTHER_POINTER = (struct dian *)elem2;
+   return ( *YET_ANOTHER_POINTER ).VAR_2890 - ( *ANOTHER_POINTER ).VAR_2890;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   struct dian *VAR__12302  = (struct dian *)malloc(( sizeof( struct dian )) * VAR_1238123);
+   int         *VAR__819283 = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__12302[VAR__53647].VAR_2890);
+      VAR__12302[VAR__53647].VAR__7685 = VAR__53647;
+   }
+
+   qsort(VAR__12302, VAR_1238123, sizeof( struct dian ), Compare);
+   for ( VAR__53647 = VAR_1238123 - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if (( VAR__12302[VAR__53647].VAR_2890 == VAR__12302[VAR__21230].VAR_2890 ) && ( VAR__12302[VAR__53647].VAR__7685 > VAR__12302[VAR__21230].VAR__7685 ))
+         {
+            struct dian VAR__4857423;
+            VAR__4857423.VAR__7685           = VAR__12302[VAR__53647].VAR__7685;
+            VAR__12302[VAR__53647].VAR__7685 = VAR__12302[VAR__21230].VAR__7685;
+            VAR__12302[VAR__21230].VAR__7685 = VAR__4857423.VAR__7685;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__12302[VAR__53647].VAR__7685 < VAR__12302[VAR__21230].VAR__7685 )
+         {
+            if ( VAR__819283[VAR__53647] < ( VAR__819283[VAR__21230] + 1 ))
+            {
+               VAR__819283[VAR__53647] = VAR__819283[VAR__21230] + 1;
+            }
+         }
+      }
+   }
+
+   int VAR__MAX = VAR__819283[0];
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( VAR__819283[VAR__8444594] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__8444594];
+      }
+   }
+
+   printf("%d", VAR__MAX);
+   free(VAR__12302);
+   free(VAR__819283);
+   getchar();
+   getchar();
+   getchar();
+}

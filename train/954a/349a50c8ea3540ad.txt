@@ -1,0 +1,71 @@
+void main()
+{
+   int N;
+
+   scanf("%d", &N);
+   struct student
+   {
+      char name[20];
+      int  qm;
+      int  py;
+      char gb;
+      char VAR_21983012;
+      int  lw;
+      int  jj;
+   }
+       stu[100];
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].qm, &stu[VAR__53647].py, &stu[VAR__53647].gb, &stu[VAR__53647].VAR_21983012, &stu[VAR__53647].lw);
+      stu[VAR__53647].jj = 0;
+
+      if ( stu[VAR__53647].qm > 90 )
+      {
+         stu[VAR__53647].jj += 2000;
+      }
+
+      if (( stu[VAR__53647].qm > 80 ) && ( stu[VAR__53647].lw >= 1 ))
+      {
+         stu[VAR__53647].jj += 8000;
+      }
+
+      if (( stu[VAR__53647].qm > 85 ) && ( stu[VAR__53647].VAR_21983012 == 'Y' ))
+      {
+         stu[VAR__53647].jj += 1000;
+      }
+
+      if (( stu[VAR__53647].qm > 85 ) && ( stu[VAR__53647].py > 80 ))
+      {
+         stu[VAR__53647].jj += 4000;
+      }
+
+      if (( stu[VAR__53647].py > 80 ) && ( stu[VAR__53647].gb == 'Y' ))
+      {
+         stu[VAR__53647].jj += 850;
+      }
+   }
+
+   int  trans1;
+   char trans2[20];
+   int  total = 0;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      total += stu[VAR__53647].jj;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( N - 1 ); VAR__53647++ )
+   {
+      if ( stu[VAR__53647].jj >= stu[VAR__53647 + 1].jj )
+      {
+         trans1 = stu[VAR__53647].jj;
+         strcpy(trans2, stu[VAR__53647].name);
+         strcpy(stu[VAR__53647].name, stu[VAR__53647 + 1].name);
+         stu[VAR__53647].jj = stu[VAR__53647 + 1].jj;
+         strcpy(stu[VAR__53647 + 1].name, trans2);
+         stu[VAR__53647 + 1].jj = trans1;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", stu[N - 1].name, stu[N - 1].jj, total);
+}

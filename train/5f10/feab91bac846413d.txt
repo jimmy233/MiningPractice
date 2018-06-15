@@ -1,0 +1,88 @@
+int main()
+{
+   short lens;
+   short VAR__53647;
+   short VAR__21230;
+   short VAR__8444594;
+   short VAR_1238123;
+   short top;
+   short pts;
+   short VAR__MAX;
+   char  VAR_9494[501];
+   char  lib[500][500];
+   short libc[500];
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", &VAR_9494);
+   for ( lens = 1; VAR_9494[lens] != '\0'; lens++ )
+   {
+   }
+
+   lens--;
+   top = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= 499; VAR__53647++ )
+   {
+      libc[VAR__53647] = 0;
+   }
+
+   for ( pts = 0; pts <= (( lens - VAR_1238123 ) + 1 ); pts++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= top; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            if ( lib[VAR__53647][VAR__21230] != VAR_9494[pts + VAR__21230] )
+            {
+               break;
+            }
+         }
+
+         if ( VAR__21230 == VAR_1238123 )
+         {
+            libc[VAR__53647]++;
+         }
+      }
+
+      if ( VAR__21230 != VAR_1238123 )
+      {
+         top++;
+         for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            lib[top][VAR__21230] = VAR_9494[pts + VAR__21230];
+         }
+
+         libc[VAR__53647]++;
+      }
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= top; VAR__53647++ )
+   {
+      if ( libc[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = libc[VAR__53647];
+      }
+   }
+
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 <= top; VAR__53647++ )
+      {
+         if ( libc[VAR__53647] == VAR__MAX )
+         {
+            for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+            {
+               printf("%c", lib[VAR__53647][VAR__21230]);
+            }
+
+            printf("\n");
+         }
+      }
+   }
+}

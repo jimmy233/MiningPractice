@@ -1,0 +1,75 @@
+int main()
+{
+   int VAR__819283[100][100];
+   int VAR_1238123;
+   int VAR__SUM;
+   int Min;
+
+   cin >> VAR_1238123;
+   for ( int VAR__NUM = 0; VAR__NUM < VAR_1238123; VAR__NUM++ )
+   {
+      VAR__SUM = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( int VAR__7685 = 1; VAR__7685 < VAR_1238123; VAR__7685++ )
+      {
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            Min = 10000;
+            for ( int col = 0; col < VAR_1238123; col++ )
+            {
+               if ( VAR__819283[VAR__53647][col] >= 0 )
+               {
+                  Min = ( Min < VAR__819283[VAR__53647][col] ) ? ( Min ) : ( VAR__819283[VAR__53647][col] );
+               }
+            }
+
+
+            for ( int col = 0; col < VAR_1238123; col++ )
+            {
+               VAR__819283[VAR__53647][col] -= Min;
+            }
+         }
+
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            Min = 10000;
+            for ( int row = 0; row < VAR_1238123; row++ )
+            {
+               if ( VAR__819283[row][VAR__53647] >= 0 )
+               {
+                  Min = ( Min < VAR__819283[row][VAR__53647] ) ? ( Min ) : ( VAR__819283[row][VAR__53647] );
+               }
+            }
+
+
+            for ( int row = 0; row < VAR_1238123; row++ )
+            {
+               VAR__819283[row][VAR__53647] -= Min;
+            }
+         }
+
+         VAR__SUM += VAR__819283[VAR__7685][VAR__7685];
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            VAR__819283[VAR__7685][VAR__53647] = -1;
+         }
+
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            VAR__819283[VAR__53647][VAR__7685] = -1;
+         }
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

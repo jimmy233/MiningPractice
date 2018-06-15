@@ -1,0 +1,92 @@
+int main()
+{
+   int grids[9][9] = { 0 };
+   int daysLeft;
+   int history[81][3];
+   int historyCount = 0;
+   int VAR__7685;
+   int VAR__3918907;
+
+   cin >> grids[4][4];
+   for ( cin >> daysLeft; daysLeft > 0; daysLeft-- )
+   {
+      historyCount = 0;
+      for ( VAR__3918907 = 0; VAR__3918907 < 9; VAR__3918907++ )
+      {
+         for ( VAR__7685 = 0; VAR__7685 < 9; VAR__7685++ )
+         {
+            if ( grids[VAR__7685][VAR__3918907] )
+            {
+               history[historyCount][0] = VAR__7685;
+               history[historyCount][1] = VAR__3918907;
+               history[historyCount][2] = grids[VAR__7685][VAR__3918907];
+               historyCount++;
+            }
+         }
+      }
+
+
+
+      for ( int VAR__53647 = 0; VAR__53647 < historyCount; VAR__53647++ )
+      {
+         VAR__7685    = history[VAR__53647][0];
+         VAR__3918907 = history[VAR__53647][1];
+         int val = history[VAR__53647][2];
+
+         if ( VAR__7685 > 0 )
+         {
+            grids[VAR__7685 - 1][VAR__3918907] += val;
+
+            if ( VAR__3918907 > 0 )
+            {
+               grids[VAR__7685 - 1][VAR__3918907 - 1] += val;
+            }
+
+            if ( VAR__3918907 < 8 )
+            {
+               grids[VAR__7685 - 1][VAR__3918907 + 1] += val;
+            }
+         }
+
+         if ( VAR__7685 < 8 )
+         {
+            grids[VAR__7685 + 1][VAR__3918907] += val;
+
+            if ( VAR__3918907 > 0 )
+            {
+               grids[VAR__7685 + 1][VAR__3918907 - 1] += val;
+            }
+
+            if ( VAR__3918907 < 8 )
+            {
+               grids[VAR__7685 + 1][VAR__3918907 + 1] += val;
+            }
+         }
+
+         if ( VAR__3918907 > 0 )
+         {
+            grids[VAR__7685][VAR__3918907 - 1] += val;
+         }
+
+         if ( VAR__3918907 < 8 )
+         {
+            grids[VAR__7685][VAR__3918907 + 1] += val;
+         }
+
+         grids[VAR__7685][VAR__3918907] += val;
+      }
+   }
+
+   for ( VAR__3918907 = 0; VAR__3918907 < 9; VAR__3918907++ )
+   {
+      cout << grids[0][VAR__3918907];
+      for ( VAR__7685 = 1; VAR__7685 < 9; VAR__7685++ )
+      {
+         ( cout << ' ' ) << grids[VAR__7685][VAR__3918907];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

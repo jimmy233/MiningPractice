@@ -1,0 +1,99 @@
+void sort(int VAR_SIZE[], int VAR_1238123)
+{
+   int VAR__8444594;
+   int VAR__112390;
+   int VAR__53647;
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( VAR_SIZE[VAR__53647] < VAR_SIZE[VAR__53647 + 1] )
+         {
+            VAR__112390 = VAR_SIZE[VAR__53647 + 1];
+            VAR_SIZE[VAR__53647 + 1] = VAR_SIZE[VAR__53647];
+            VAR_SIZE[VAR__53647]     = VAR__112390;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   while ( 1 )
+   {
+      int VAR_1238123;
+      int VAR__53647;
+      int VAR__21230;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int *tian = (int *)malloc(( sizeof( int )) * VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      int *king = (int *)malloc(( sizeof( int )) * VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &king[VAR__53647]);
+      }
+
+      sort(tian, VAR_1238123);
+      sort(king, VAR_1238123);
+      int win   = 0;
+      int twin  = 0;
+      int even  = 0;
+      int teven = 0;
+      int lose  = 10000;
+      int tlose = 0;
+      int VAR__TEMP;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__TEMP  = VAR__53647;
+         VAR__53647 = 0;
+         for ( VAR__21230 = VAR__TEMP; VAR__21230 < VAR_1238123; VAR__21230++, VAR__53647++ )
+         {
+            if ( tian[VAR__53647] > king[VAR__21230] )
+            {
+               twin++;
+            }
+            else
+            if ( tian[VAR__53647] < king[VAR__21230] )
+            {
+               tlose++;
+            }
+            else
+            {
+               teven++;
+            }
+         }
+
+         tlose += VAR__TEMP;
+
+         if (( twin - tlose ) > ( win - lose ))
+         {
+            win  = twin;
+            lose = tlose;
+            even = teven;
+         }
+
+         VAR__53647 = VAR__TEMP;
+         twin       = 0;
+         tlose      = 0;
+         teven      = 0;
+      }
+
+      printf("%d\n", 200 * ( win - lose ));
+      free(tian);
+      free(king);
+   }
+
+   return 0;
+}

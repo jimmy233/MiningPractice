@@ -1,0 +1,70 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) > ( *((int *)VAR__19328 ));
+}
+
+
+int L1;
+int L2;
+int ar1[MAX];
+int ar2[MAX];
+void read_array();
+void sort_array();
+void merge_array();
+void show_array();
+
+int main()
+{
+   read_array();
+   sort_array();
+   merge_array();
+   show_array();
+   return 0;
+}
+
+
+void read_array()
+{
+   memset(ar1, 0, sizeof( ar1 ));
+   memset(ar2, 0, sizeof( ar2 ));
+   ( cin >> L1 ) >> L2;
+   for ( int VAR__53647 = 0; VAR__53647 < L1; VAR__53647++ )
+   {
+      cin >> ar1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < L2; VAR__53647++ )
+   {
+      cin >> ar2[VAR__53647];
+   }
+}
+
+
+void sort_array()
+{
+   qsort(ar1, L1, sizeof( int ), cmp);
+   qsort(ar2, L2, sizeof( int ), cmp);
+}
+
+
+void merge_array()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < L2; VAR__53647++ )
+   {
+      ar1[L1 + VAR__53647] = ar2[VAR__53647];
+   }
+}
+
+
+void show_array()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < ( L1 + L2 ); VAR__53647++ )
+   {
+      cout << ar1[VAR__53647];
+
+      if ( VAR__53647 != (( L1 + L2 ) - 1 ))
+      {
+         cout << ' ';
+      }
+   }
+}

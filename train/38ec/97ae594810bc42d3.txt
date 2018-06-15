@@ -1,0 +1,86 @@
+int judge(int VAR__3918907)
+{
+   if (((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int same_year(int m1, int d1, int m2, int d2, int VAR__8444594)
+{
+   int day = 0;
+   int VAR__53647;
+
+   for ( VAR__53647 = m1; VAR__53647 < m2; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         day += 31;
+      }
+
+      if ( VAR__53647 == 2 )
+      {
+         day += 28 + VAR__8444594;
+      }
+
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         day += 30;
+      }
+   }
+
+   day = ( day - d1 ) + d2;
+   return day;
+}
+
+
+int main()
+{
+   int y1;
+   int y2;
+   int m1;
+   int m2;
+   int d1;
+   int d2;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int day = 0;
+
+   ((((( cin >> y1 ) >> m1 ) >> d1 ) >> y2 ) >> m2 ) >> d2;
+
+   if ( y1 == y2 )
+   {
+      VAR__8444594 = judge(y1);
+      day          = day + same_year(m1, d1, m2, d2, VAR__8444594);
+   }
+
+   if ( y1 == ( y2 - 1 ))
+   {
+      VAR__8444594 = judge(y1);
+      day          = ( day + same_year(m1, d1, 12, 31, VAR__8444594)) + 1;
+      VAR__8444594 = judge(y1);
+      day          = day + same_year(1, 1, m2, d2, VAR__8444594);
+   }
+
+   if ( y1 < ( y2 - 1 ))
+   {
+      VAR__8444594 = judge(y1);
+      day          = ( day + same_year(m1, d1, 12, 31, VAR__8444594)) + 1;
+      VAR__8444594 = judge(y2);
+      day          = day + same_year(1, 1, m2, d2, VAR__8444594);
+      for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+      {
+         VAR__8444594 = judge(VAR__53647);
+         day         += 365 + VAR__8444594;
+      }
+   }
+
+   cout << day;
+   return 0;
+}

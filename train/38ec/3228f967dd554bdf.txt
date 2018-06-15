@@ -1,0 +1,150 @@
+int main()
+{
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int year;
+   int month;
+   int VAR__1238129;
+   int VAR_9494 = 0;
+
+   scanf("%d%d%d%d%d%d", &startyear, &startmonth, &startday, &endyear, &endmonth, &endday);
+
+   if ( startyear != endyear )
+   {
+      for ( year = startyear + 1; year < endyear; year++ )
+      {
+         if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+         {
+            VAR_9494 = VAR_9494 + 366;
+         }
+         else
+         {
+            VAR_9494 = VAR_9494 + 365;
+         }
+      }
+
+      for ( month = 1; month < endmonth; month++ )
+      {
+         if ((((((( month == 1 ) || ( month == 3 )) || ( month == 5 )) || ( month == 7 )) || ( month == 8 )) || ( month == 10 )) || ( month == 12 ))
+         {
+            VAR_9494 = VAR_9494 + 31;
+         }
+         else
+         if (((( month == 4 ) || ( month == 6 )) || ( month == 9 )) || ( month == 11 ))
+         {
+            VAR_9494 = VAR_9494 + 30;
+         }
+         else
+         {
+            if (((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 ))
+            {
+               VAR_9494 = VAR_9494 + 29;
+            }
+            else
+            {
+               VAR_9494 = VAR_9494 + 28;
+            }
+         }
+      }
+
+      VAR_9494     = ( VAR_9494 + endday ) - 1;
+      VAR__1238129 = 0;
+      for ( month = 1; month < startmonth; month++ )
+      {
+         if ((((((( month == 1 ) || ( month == 3 )) || ( month == 5 )) || ( month == 7 )) || ( month == 8 )) || ( month == 10 )) || ( month == 12 ))
+         {
+            VAR__1238129 = VAR__1238129 + 31;
+         }
+         else
+         if (((( month == 4 ) || ( month == 6 )) || ( month == 9 )) || ( month == 11 ))
+         {
+            VAR__1238129 = VAR__1238129 + 30;
+         }
+         else
+         {
+            if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+            {
+               VAR__1238129 = VAR__1238129 + 29;
+            }
+            else
+            {
+               VAR__1238129 = VAR__1238129 + 28;
+            }
+         }
+      }
+
+      VAR__1238129 = ( VAR__1238129 + startday ) - 1;
+
+      if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+      {
+         VAR_9494 = ( VAR_9494 + 366 ) - VAR__1238129;
+      }
+      else
+      {
+         VAR_9494 = ( VAR_9494 + 365 ) - VAR__1238129;
+      }
+   }
+   else
+   {
+      if ( startmonth != endmonth )
+      {
+         for ( month = startmonth + 1; month < endmonth; month++ )
+         {
+            if ((((((( month == 1 ) || ( month == 3 )) || ( month == 5 )) || ( month == 7 )) || ( month == 8 )) || ( month == 10 )) || ( month == 12 ))
+            {
+               VAR_9494 = VAR_9494 + 31;
+            }
+            else
+            if (((( month == 4 ) || ( month == 6 )) || ( month == 9 )) || ( month == 11 ))
+            {
+               VAR_9494 = VAR_9494 + 30;
+            }
+            else
+            {
+               if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+               {
+                  VAR_9494 = VAR_9494 + 29;
+               }
+               else
+               {
+                  VAR_9494 = VAR_9494 + 28;
+               }
+            }
+         }
+
+         VAR_9494 = ( VAR_9494 + endday ) - 1;
+
+         if ((((((( startmonth == 1 ) || ( startmonth == 3 )) || ( startmonth == 5 )) || ( startmonth == 7 )) || ( startmonth == 8 )) || ( startmonth == 10 )) || ( startmonth == 12 ))
+         {
+            VAR_9494 = ( VAR_9494 + 31 ) - startday;
+         }
+         else
+         if (((( startmonth == 4 ) || ( startmonth == 6 )) || ( startmonth == 9 )) || ( startmonth == 11 ))
+         {
+            VAR_9494 = ( VAR_9494 + 30 ) - startday;
+         }
+         else
+         {
+            if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+            {
+               VAR_9494 = ( VAR_9494 + 29 ) - startday;
+            }
+            else
+            {
+               VAR_9494 = ( VAR_9494 + 28 ) - startday;
+            }
+         }
+      }
+      else
+      {
+         VAR_9494 = endday - startday;
+      }
+   }
+
+   printf("%d", VAR_9494);
+   return 0;
+}

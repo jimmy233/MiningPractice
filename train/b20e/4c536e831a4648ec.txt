@@ -1,0 +1,97 @@
+void array(int *VAR__819283, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int *VAR_233 = VAR__819283;
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if (( *( VAR_233 + VAR__21230 )) < ( *(( VAR_233 + VAR__21230 ) + 1 )))
+         {
+            VAR__temp = *( VAR_233 + VAR__21230 );
+            *( VAR_233 + VAR__21230 )        = *(( VAR_233 + VAR__21230 ) + 1 );
+            *(( VAR_233 + VAR__21230 ) + 1 ) = VAR__temp;
+         }
+      }
+   }
+}
+
+
+int result(int *VAR__819283, int *VAR__19328, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int item[5000] = { 0 };
+   int VAR__SUM   = -500;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         VAR__temp = ( VAR__53647 + VAR__21230 ) - 1;
+
+         if ( VAR__temp > VAR_1238123 )
+         {
+            VAR__temp = VAR__temp - VAR_1238123;
+         }
+
+         if ( VAR__819283[VAR__temp] > VAR__19328[VAR__21230] )
+         {
+            item[VAR__53647]++;
+         }
+
+         if ( VAR__819283[VAR__temp] < VAR__19328[VAR__21230] )
+         {
+            item[VAR__53647]--;
+         }
+      }
+
+      if ( item[VAR__53647] > VAR__SUM )
+      {
+         VAR__SUM = item[VAR__53647];
+      }
+   }
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   for ( ; ; )
+   {
+      int VAR_1238123;
+      int VAR__53647;
+      int VAR__21230;
+      int money;
+      int VAR__819283[5000];
+      int VAR__19328[5000];
+      memset(VAR__819283, 0, sizeof( VAR__819283 ));
+      memset(VAR__19328, 0, sizeof( VAR__19328 ));
+      scanf("%d", &VAR_1238123);
+
+      if ( 0 == VAR_1238123 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      array(VAR__819283, VAR_1238123);
+      array(VAR__19328, VAR_1238123);
+      money = result(VAR__819283, VAR__19328, VAR_1238123) * 200;
+      printf("%d\n", money);
+   }
+}

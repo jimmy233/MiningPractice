@@ -1,0 +1,136 @@
+int countyear(int VAR__819283, int VAR__19328)
+{
+   int VAR__53647;
+   int VAR__temp;
+
+   VAR__temp = 365 * (( VAR__19328 - VAR__819283 ) - 1 );
+   for ( VAR__53647 = VAR__819283 + 1; VAR__53647 < VAR__19328; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__temp += 1;
+      }
+   }
+
+
+   return VAR__temp;
+}
+
+
+int countday(int VAR__819283, int VAR__19328, int VAR__4857423)
+{
+   int VAR__temp;
+
+   switch ( VAR__19328 )
+   {
+   case 1:
+
+      if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+      {
+         VAR__temp = ( 366 - VAR__4857423 ) + 1;
+      }
+      else
+      {
+         VAR__temp = ( 365 - VAR__4857423 ) + 1;
+      }
+
+      break;
+
+   case 2:
+
+      if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+      {
+         VAR__temp = (( 366 - 31 ) - VAR__4857423 ) + 1;
+      }
+      else
+      {
+         VAR__temp = (( 365 - 31 ) - VAR__4857423 ) + 1;
+      }
+
+      break;
+
+   case 3:
+      VAR__temp = (((((((((( 31 - VAR__4857423 ) + 31 ) + 30 ) + 31 ) + 30 ) + 31 ) + 31 ) + 30 ) + 31 ) + 30 ) + 1;
+      break;
+
+   case 4:
+      VAR__temp = ((((((((( 30 - VAR__4857423 ) + 31 ) + 30 ) + 31 ) + 30 ) + 31 ) + 31 ) + 30 ) + 31 ) + 1;
+      break;
+
+   case 5:
+      VAR__temp = (((((((( 31 - VAR__4857423 ) + 31 ) + 30 ) + 31 ) + 30 ) + 31 ) + 31 ) + 30 ) + 1;
+      break;
+
+   case 6:
+      VAR__temp = ((((((( 30 - VAR__4857423 ) + 31 ) + 30 ) + 31 ) + 30 ) + 31 ) + 31 ) + 1;
+      break;
+
+   case 7:
+      VAR__temp = (((((( 31 - VAR__4857423 ) + 31 ) + 30 ) + 31 ) + 30 ) + 31 ) + 1;
+      break;
+
+   case 8:
+      VAR__temp = ((((( 31 - VAR__4857423 ) + 31 ) + 30 ) + 31 ) + 30 ) + 1;
+      break;
+
+   case 9:
+      VAR__temp = (((( 30 - VAR__4857423 ) + 31 ) + 30 ) + 31 ) + 1;
+      break;
+
+   case 10:
+      VAR__temp = ((( 31 - VAR__4857423 ) + 31 ) + 30 ) + 1;
+      break;
+
+   case 11:
+      VAR__temp = (( 30 - VAR__4857423 ) + 31 ) + 1;
+      break;
+
+   case 12:
+      VAR__temp = ( 31 - VAR__4857423 ) + 1;
+      break;
+
+   default:
+      break;
+   }
+
+   return VAR__temp;
+}
+
+
+void main()
+{
+   int year[2];
+   int month[2];
+   int day[2];
+   int VAR__SUM;
+   int VAR__819283;
+   int VAR__19328;
+
+   scanf("%d%d%d%d%d%d", &year[0], &month[0], &day[0], &year[1], &month[1], &day[1]);
+
+   if ( year[0] == year[1] )
+   {
+      VAR__SUM    = countday(year[0], month[0], day[0]);
+      VAR__819283 = countday(year[1], month[1], day[1]);
+      VAR__SUM    = VAR__SUM - VAR__819283;
+   }
+   else
+   {
+      VAR__SUM    = countyear(year[0], year[1]);
+      VAR__819283 = countday(year[0], month[0], day[0]);
+      VAR__19328  = countday(year[1], month[1], day[1]);
+
+      if (((( year[1] % 4 ) == 0 ) && (( year[1] % 100 ) != 0 )) || (( year[1] % 400 ) == 0 ))
+      {
+         VAR__19328 = 366 - VAR__19328;
+      }
+      else
+      {
+         VAR__19328 = 365 - VAR__19328;
+      }
+
+      VAR__SUM += VAR__819283 + VAR__19328;
+   }
+
+   printf("%d\n", VAR__SUM);
+}

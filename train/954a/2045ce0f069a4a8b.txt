@@ -1,0 +1,83 @@
+struct student
+{
+   char name[20];
+   int  qimo;
+   int  banji;
+   char xs;
+   char xb;
+   int  lw;
+};
+int VAR__127322(struct student *VAR_233)
+{
+   int VAR__NUM = 0;
+
+   if (( VAR_233->qimo > 80 ) && ( VAR_233->lw >= 1 ))
+   {
+      VAR__NUM = VAR__NUM + 8000;
+   }
+
+   if (( VAR_233->qimo > 85 ) && ( VAR_233->banji > 80 ))
+   {
+      VAR__NUM = VAR__NUM + 4000;
+   }
+
+   if ( VAR_233->qimo > 90 )
+   {
+      VAR__NUM = VAR__NUM + 2000;
+   }
+
+   if (( VAR_233->qimo > 85 ) && ( VAR_233->xb == 'Y' ))
+   {
+      VAR__NUM = VAR__NUM + 1000;
+   }
+
+   if (( VAR_233->banji > 80 ) && ( VAR_233->xs == 'Y' ))
+   {
+      VAR__NUM = VAR__NUM + 850;
+   }
+
+   return VAR__NUM;
+}
+
+
+void main()
+{
+   int VAR__127322(struct student *VAR_233);
+
+   struct student stu[100];
+   struct student *VAR_233;
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__819283[100] = { 0 };
+   int            *ap;
+   int            VAR__19328 = 0;
+   int            VAR__8444594;
+   int            VAR__1238129;
+   VAR_233 = stu;
+   ap      = VAR__819283;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR_233->name, &VAR_233->qimo, &VAR_233->banji, &VAR_233->xs, &VAR_233->xb, &VAR_233->lw);
+      VAR_233 = VAR_233 + 1;
+   }
+
+   VAR_233 = stu;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      *( ap + VAR__53647 ) = VAR__127322(VAR_233 + VAR__53647);
+      VAR__19328           = VAR__19328 + ( *( ap + VAR__53647 ));
+   }
+
+   VAR__8444594 = VAR__819283[0];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__8444594 )
+      {
+         VAR__8444594 = VAR__819283[VAR__53647];
+         VAR__1238129 = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", ( stu + VAR__1238129 )->name, VAR__8444594, VAR__19328);
+}

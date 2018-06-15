@@ -1,0 +1,55 @@
+int mysort(void *VAR__819283, void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int in[1000];
+   int VAR_1238123;
+   int VAR__8444594;
+   int VAR__53647;
+   int found = 0;
+
+   scanf("%d %d", &VAR_1238123, &VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+   {
+      scanf("%d", &in[VAR__53647]);
+   }
+
+   qsort(in, VAR_1238123, sizeof( int ), mysort);
+   int *lp = &in[0];
+   int *rp = &in[VAR_1238123 - 1];
+
+   while ( lp != rp )
+   {
+      VAR__53647 = ( *lp ) + ( *rp );
+
+      if ( VAR__53647 < VAR__8444594 )
+      {
+         ++lp;
+      }
+      else
+      if ( VAR__53647 > VAR__8444594 )
+      {
+         --rp;
+      }
+      else
+      {
+         found = 1;
+         break;
+      }
+   }
+
+   if ( found )
+   {
+      printf("yes\n");
+   }
+   else
+   {
+      printf("no\n");
+   }
+
+   return 0;
+}

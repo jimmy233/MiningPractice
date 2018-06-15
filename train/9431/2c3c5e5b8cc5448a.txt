@@ -1,0 +1,42 @@
+struct student
+{
+   char           VAR__NUM[1000];
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   struct student VAR_9494[1000];
+   struct student *VAR_233;
+   struct student *pheader;
+   int            VAR__53647 = 0;
+   int            VAR_1238123;
+   char           ch;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      gets(VAR_9494[VAR__53647].VAR__NUM);
+
+      if ( strcmp(VAR_9494[VAR__53647].VAR__NUM, "end") == 0 )
+      {
+         break;
+      }
+   }
+
+   VAR_1238123 = VAR__53647;
+   pheader     = &VAR_9494[VAR_1238123 - 1];
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+   {
+      VAR_9494[VAR__53647].VAR__NEXT = &VAR_9494[VAR__53647 - 1];
+   }
+
+   VAR_9494[0].VAR__NEXT = NULL;
+   VAR_233 = pheader;
+
+   while ( VAR_233 != NULL )
+   {
+      puts(VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return 0;
+}

@@ -1,0 +1,91 @@
+int compare(const void *a1, const void *a2)
+{
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (int *)a1;
+   YET_ANOTHER_POINTER = (int *)a2;
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR__8444594;
+
+   for ( VAR__8444594 = 1; ; VAR__8444594++ )
+   {
+      int VAR_1238123;
+      int VAR__21230;
+      int VAR__53647;
+      int VAR__4857423 = 0;
+      int VAR_233      = 200;
+      int money;
+      int VAR__1238129;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int *VAR__temp = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+      int *VAR_666   = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &VAR__temp[VAR__21230]);
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &VAR_666[VAR__21230]);
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), compare);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), compare);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__temp[VAR__53647] > VAR_666[VAR__53647] )
+         {
+            VAR__4857423++;
+         }
+         else
+         {
+            if ( VAR__temp[VAR_1238123 - 1] > VAR_666[VAR_1238123 - 1] )
+            {
+               VAR__4857423++;
+               for ( VAR__21230 = VAR_1238123 - 2; VAR__21230 >= VAR__53647; VAR__21230-- )
+               {
+                  VAR__temp[VAR__21230 + 1] = VAR__temp[VAR__21230];
+                  VAR_666[VAR__21230 + 1]   = VAR_666[VAR__21230];
+               }
+            }
+            else
+            {
+               if ( VAR__temp[VAR_1238123 - 1] < VAR_666[VAR__53647] )
+               {
+                  VAR__4857423--;
+                  for ( VAR__21230 = VAR_1238123 - 2; VAR__21230 >= VAR__53647; VAR__21230-- )
+                  {
+                     VAR__temp[VAR__21230 + 1] = VAR__temp[VAR__21230];
+                  }
+               }
+            }
+         }
+
+         money = VAR__4857423 * VAR_233;
+      }
+
+      printf("%d\n", money);
+   }
+
+   return 0;
+
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+}

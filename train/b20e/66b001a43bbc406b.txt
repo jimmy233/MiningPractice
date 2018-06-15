@@ -1,0 +1,103 @@
+int main()
+{
+   while ( 1 )
+   {
+      int VAR__53647;
+      int VAR_1238123;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int VAR__temp[1000] = { 0 };
+      int VAR_666[1000]   = { 0 };
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_666[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__temp[VAR__21230] > VAR__temp[VAR__53647] )
+            {
+               int VAR__TEMP = VAR__temp[VAR__21230];
+               VAR__temp[VAR__21230] = VAR__temp[VAR__53647];
+               VAR__temp[VAR__53647] = VAR__TEMP;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR_666[VAR__21230] > VAR_666[VAR__53647] )
+            {
+               int VAR__TEMP = VAR_666[VAR__21230];
+               VAR_666[VAR__21230] = VAR_666[VAR__53647];
+               VAR_666[VAR__53647] = VAR__TEMP;
+            }
+         }
+      }
+
+      int i1   = VAR_1238123 - 1;
+      int i2   = VAR_1238123 - 1;
+      int j1   = 0;
+      int j2   = 0;
+      int win  = 0;
+      int lose = 0;
+
+      while (( i1 >= j1 ) && ( i2 >= j2 ))
+      {
+         if ( VAR__temp[i1] > VAR_666[i2] )
+         {
+            win++;
+            i1--;
+            i2--;
+            continue;
+         }
+
+         if ( VAR__temp[i1] < VAR_666[i2] )
+         {
+            lose++;
+            i1--;
+            j2++;
+            continue;
+         }
+
+         if ( VAR__temp[i1] == VAR_666[i2] )
+         {
+            if ( VAR__temp[j1] > VAR_666[j2] )
+            {
+               win++;
+               j1++;
+               j2++;
+               continue;
+            }
+
+            if ( VAR__temp[i1] < VAR_666[j2] )
+            {
+               lose++;
+               i1--;
+               j2++;
+               continue;
+            }
+            else
+            {
+               break;
+            }
+         }
+      }
+
+      printf("%d\n", ( win - lose ) * 200);
+   }
+}

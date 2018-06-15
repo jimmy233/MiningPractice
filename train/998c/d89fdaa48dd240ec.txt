@@ -1,0 +1,61 @@
+int main()
+{
+   int  a1[266] = { 0 };
+   int  a2[266] = { 0 };
+   int  len1;
+   int  len2;
+   char b1[266];
+   char b2[266];
+
+   cin.getline(b1, 266);
+   cin.getline(b2, 266);
+   len1 = strlen(b1);
+   len2 = strlen(b2);
+
+   if (((( len1 == 1 ) && ( len2 == 1 )) && ( b1[0] == '0' )) && ( b2[0] == '0' ))
+   {
+      ( cout << 0 ) << endl;
+   }
+   else
+   {
+      int VAR__53647 = 0;
+      int VAR__21230 = 0;
+      for ( VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         a1[VAR__21230++] = b1[VAR__53647] - '0';
+      }
+
+      VAR__21230 = 0;
+      for ( VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         a2[VAR__21230++] = b2[VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= 266; VAR__53647++ )
+      {
+         a1[VAR__53647] += a2[VAR__53647];
+
+         if ( a1[VAR__53647] >= 10 )
+         {
+            a1[VAR__53647] -= 10;
+            a1[VAR__53647 + 1]++;
+         }
+      }
+
+      VAR__53647 = 265;
+
+      while ( a1[VAR__53647] == 0 )
+      {
+         VAR__53647--;
+      }
+
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << a1[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

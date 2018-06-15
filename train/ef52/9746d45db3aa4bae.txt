@@ -1,0 +1,47 @@
+int maxnum(int *VAR__819283, int VAR_1238123, int up)
+{
+   if ( VAR_1238123 == 0 )
+   {
+      return 0;
+   }
+
+   int VAR__53647;
+   int VAR__MAX = -1;
+   int VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__temp = up;
+
+      if (( VAR__819283[VAR__53647] <= up ) || ( up == ( -1 )))
+      {
+         VAR__temp = VAR__819283[VAR__53647];
+      }
+      else
+      {
+         continue;
+      }
+
+      if ( maxnum(( VAR__819283 + VAR__53647 ) + 1, ( VAR_1238123 - 1 ) - VAR__53647, VAR__temp) > VAR__MAX )
+      {
+         VAR__MAX = maxnum(( VAR__819283 + VAR__53647 ) + 1, ( VAR_1238123 - VAR__53647 ) - 1, VAR__temp);
+      }
+   }
+
+   return VAR__MAX + 1;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR_1238123;
+   int VAR__819283[25];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647];
+   }
+
+   cout << maxnum(VAR__819283, VAR_1238123, -1);
+}

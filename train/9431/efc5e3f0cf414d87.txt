@@ -1,0 +1,75 @@
+struct student
+{
+   char           A_STRING[100];
+   struct student *VAR__NEXT;
+};
+int isequal(char *VAR__819283);
+
+int main()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+   gets(ANOTHER_POINTER->A_STRING);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+
+   if ( isequal(ANOTHER_POINTER->A_STRING))
+   {
+      free(ANOTHER_POINTER);
+      VAR__HEAD = NULL;
+   }
+   else
+   {
+      VAR__HEAD           = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      do
+      {
+         ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+         gets(ANOTHER_POINTER->A_STRING);
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+
+         if ( isequal(ANOTHER_POINTER->A_STRING))
+         {
+            free(ANOTHER_POINTER);
+            break;
+         }
+         else
+         {
+            VAR__HEAD = ANOTHER_POINTER;
+            ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+            YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+         }
+      } while ( 1 );
+   }
+
+   struct student *VAR_233;
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      printf("%s", VAR_233->A_STRING);
+      VAR_233 = VAR_233->VAR__NEXT;
+
+      if ( VAR_233 != NULL )
+      {
+         printf("\n");
+      }
+   }
+
+   return 0;
+}
+
+
+int isequal(char *VAR__819283)
+{
+   if (((( VAR__819283[0] == 'e' ) && ( VAR__819283[1] == 'n' )) && ( VAR__819283[2] == 'd' )) && ( VAR__819283[3] == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

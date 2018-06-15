@@ -1,0 +1,110 @@
+void swap(int *VAR__7685, int *VAR__3918907)
+{
+   int VAR__9290;
+
+   VAR__9290     = *VAR__7685;
+   *VAR__7685    = *VAR__3918907;
+   *VAR__3918907 = VAR__9290;
+}
+
+
+int main(void)
+{
+   int VAR_1238123;
+   int ts;
+   int qs;
+   int te;
+   int qe;
+   int VAR__53647;
+   int VAR__21230;
+   int ans;
+   int VAR__temp[1005];
+   int VAR_666[1005];
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_666[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            if ( VAR__temp[VAR__53647] > VAR__temp[VAR__21230] )
+            {
+               swap(&VAR__temp[VAR__53647], &VAR__temp[VAR__21230]);
+            }
+
+            if ( VAR_666[VAR__53647] > VAR_666[VAR__21230] )
+            {
+               swap(&VAR_666[VAR__53647], &VAR_666[VAR__21230]);
+            }
+         }
+      }
+
+
+      ts  = ( qs = 0 );
+      te  = ( qe = VAR_1238123 - 1 );
+      ans = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__temp[te] > VAR_666[qe] )
+         {
+            ans++;
+            te--;
+            qe--;
+         }
+         else
+         if ( VAR__temp[te] < VAR_666[qe] )
+         {
+            ans--;
+            te--;
+            qs++;
+         }
+         else
+         {
+            if ( VAR__temp[ts] > VAR_666[qs] )
+            {
+               ans++;
+               ts++;
+               qs++;
+            }
+            else
+            if ( VAR__temp[ts] < VAR_666[qs] )
+            {
+               ans--;
+               te--;
+               qs++;
+            }
+            else
+            {
+               if ( VAR_666[qs] > VAR__temp[te] )
+               {
+                  ans--;
+               }
+
+               qs++;
+               te--;
+            }
+         }
+      }
+
+      printf("%d\n", ans * 200);
+   }
+
+   return 0;
+}

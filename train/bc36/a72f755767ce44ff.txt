@@ -1,0 +1,82 @@
+struct play
+{
+   char   sex[10];
+   double VAR_2890;
+};
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   double VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   struct play ab[VAR_1238123];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", ab[VAR__53647].sex, &ab[VAR__53647].VAR_2890);
+   }
+
+   int    ma = 0;
+   int    fe = 0;
+   double nan[50];
+   double nv[50];
+   for ( VAR__53647 = 0; VAR__53647 < 50; VAR__53647++ )
+   {
+      nan[VAR__53647] = 1.0;
+      nv[VAR__53647]  = 1.0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(ab[VAR__53647].sex, "male") == 0 )
+      {
+         nan[ma] = ab[VAR__53647].VAR_2890;
+         ma++;
+      }
+
+      if ( strcmp(ab[VAR__53647].sex, "female") == 0 )
+      {
+         nv[fe] = ab[VAR__53647].VAR_2890;
+         fe++;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( ma - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( ma - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( nan[VAR__53647] > nan[VAR__53647 + 1] )
+         {
+            VAR__temp           = nan[VAR__53647];
+            nan[VAR__53647]     = nan[VAR__53647 + 1];
+            nan[VAR__53647 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( fe - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( fe - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( nv[VAR__53647] < nv[VAR__53647 + 1] )
+         {
+            VAR__temp          = nv[VAR__53647];
+            nv[VAR__53647]     = nv[VAR__53647 + 1];
+            nv[VAR__53647 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ma; VAR__53647++ )
+   {
+      printf("%.2lf ", nan[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( fe - 1 ); VAR__53647++ )
+   {
+      printf("%.2lf ", nv[VAR__53647]);
+   }
+
+   printf("%.2lf", nv[fe - 1]);
+}

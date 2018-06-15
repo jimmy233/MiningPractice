@@ -1,0 +1,80 @@
+int dayfr(int VAR__1238129, int VAR__12302)
+{
+   int VAR__temp;
+   int VAR__819283[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   VAR__temp = VAR__819283[VAR__1238129 - 1] - VAR__12302;
+   for ( VAR__1238129 = VAR__1238129 + 1; VAR__1238129 <= 12; VAR__1238129++ )
+   {
+      VAR__temp = VAR__temp + VAR__819283[VAR__1238129 - 1];
+   }
+
+   return VAR__temp;
+}
+
+
+int dayr(int VAR__1238129, int VAR__12302)
+{
+   int VAR__temp;
+   int VAR__819283[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   VAR__temp = VAR__819283[VAR__1238129 - 1] - VAR__12302;
+   for ( VAR__1238129 = VAR__1238129 + 1; VAR__1238129 <= 12; VAR__1238129++ )
+   {
+      VAR__temp = VAR__temp + VAR__819283[VAR__1238129 - 1];
+   }
+
+   return VAR__temp;
+}
+
+
+void main()
+{
+   int y1;
+   int m1;
+   int d1;
+   int y2;
+   int m2;
+   int d2;
+   int year;
+   int VAR__temp;
+
+   scanf("%d%d%d", &y1, &m1, &d1);
+   scanf("%d%d%d", &y2, &m2, &d2);
+   year = y1;
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      VAR__temp = dayr(m1, d1);
+   }
+   else
+   {
+      VAR__temp = dayfr(m1, d1);
+   }
+
+   for ( year = y1 + 1; year <= y2; year++ )
+   {
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         VAR__temp = ( VAR__temp + dayr(1, 1)) + 1;
+      }
+      else
+      {
+         VAR__temp = ( VAR__temp + dayfr(1, 1)) + 1;
+      }
+   }
+
+
+   year = y2;
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      VAR__temp = VAR__temp - dayr(m2, d2);
+   }
+   else
+   {
+      VAR__temp = VAR__temp - dayfr(m2, d2);
+   }
+
+   printf("%d", VAR__temp);
+}

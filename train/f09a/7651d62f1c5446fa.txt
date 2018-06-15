@@ -1,0 +1,96 @@
+int n1;
+int n2;
+int a1[100];
+int a2[100];
+void main()
+{
+   void scan();
+   void rank();
+   void combine();
+   void print();
+
+   scan();
+   rank();
+   combine();
+   print();
+}
+
+
+void scan()
+{
+   int VAR__53647;
+
+   scanf("%d %d\n", &n1, &n2);
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      scanf("%d", &a1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      scanf("%d", &a2[VAR__53647]);
+   }
+}
+
+
+void rank()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int mid;
+
+   for ( VAR__21230 = 0; VAR__21230 < ( n1 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( n1 - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( a1[VAR__53647] > a1[VAR__53647 + 1] )
+         {
+            mid                = a1[VAR__53647];
+            a1[VAR__53647]     = a1[VAR__53647 + 1];
+            a1[VAR__53647 + 1] = mid;
+         }
+      }
+   }
+
+
+
+   for ( VAR__21230 = 0; VAR__21230 < ( n2 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( n2 - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( a2[VAR__53647] > a2[VAR__53647 + 1] )
+         {
+            mid                = a2[VAR__53647];
+            a2[VAR__53647]     = a2[VAR__53647 + 1];
+            a2[VAR__53647 + 1] = mid;
+         }
+      }
+   }
+}
+
+
+void combine()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = n1; VAR__53647 < ( n1 + n2 ); VAR__53647++ )
+   {
+      a1[VAR__53647] = a2[VAR__53647 - n1];
+   }
+}
+
+
+void print()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( n1 + n2 ); VAR__53647++ )
+   {
+      if ( VAR__53647 != 0 )
+      {
+         printf(" ");
+      }
+
+      printf("%d", a1[VAR__53647]);
+   }
+}

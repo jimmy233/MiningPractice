@@ -1,0 +1,68 @@
+int main()
+{
+   int starty;
+   int startm;
+   int startd;
+   int endy;
+   int endm;
+   int endd;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__3918907 = 0;
+   int m1           = 0;
+   int m2           = 0;
+   int year;
+   int year1;
+   int month1[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int month2[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> starty ) >> startm ) >> startd;
+   (( cin >> endy ) >> endm ) >> endd;
+   for ( year = starty; year < endy; year++ )
+   {
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         year1 = 366;
+      }
+      else
+      {
+         year1 = 365;
+      }
+
+      VAR__3918907 = VAR__3918907 + year1;
+   }
+
+   if (((( starty % 4 ) == 0 ) && (( starty % 100 ) != 0 )) || (( starty % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < startm; VAR__53647++ )
+      {
+         m1 = m1 + month2[VAR__53647];
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < startm; VAR__53647++ )
+      {
+         m1 = m1 + month1[VAR__53647];
+      }
+   }
+
+   if (((( endy % 4 ) == 0 ) && (( endy % 100 ) != 0 )) || (( endy % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 < endm; VAR__53647++ )
+      {
+         m2 = m2 + month2[VAR__53647];
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 < endm; VAR__53647++ )
+      {
+         m2 = m2 + month1[VAR__53647];
+      }
+   }
+
+   int VAR__SUM;
+   VAR__SUM = ((( VAR__3918907 + m2 ) - m1 ) + endd ) - startd;
+   cout << VAR__SUM;
+}

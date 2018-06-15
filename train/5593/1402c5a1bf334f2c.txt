@@ -1,0 +1,90 @@
+int zhishu(int VAR__7685)
+{
+   int VAR__19328;
+   int VAR__21230;
+
+   VAR__19328 = (int)sqrt(VAR__7685);
+   for ( VAR__21230 = 2; VAR__21230 <= VAR__19328; VAR__21230++ )
+   {
+      if (( VAR__7685 % VAR__21230 ) == 0 )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__21230 != ( VAR__19328 + 1 ))
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+int nixu(int VAR__7685, int VAR__9290)
+{
+   if ( VAR__7685 == 0 )
+   {
+      return VAR__9290;
+   }
+   else
+   {
+      return nixu(VAR__7685 / 10, ( VAR__9290 * 10 ) + ( VAR__7685 % 10 ));
+   }
+}
+
+
+int huiwen(int VAR__7685)
+{
+   if ( VAR__7685 == nixu(VAR__7685, 0))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__COUNT = 0;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( zhishu(VAR__53647) && huiwen(VAR__53647))
+      {
+         VAR__COUNT = VAR__53647;
+      }
+   }
+
+
+   if ( VAR__COUNT == 0 )
+   {
+      printf("no\n");
+   }
+   else
+   {
+      for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( zhishu(VAR__53647) && huiwen(VAR__53647))
+         {
+            printf("%d", VAR__53647);
+
+            if ( VAR__53647 != VAR__COUNT )
+            {
+               printf(",");
+            }
+         }
+      }
+   }
+
+   putchar(10);
+}

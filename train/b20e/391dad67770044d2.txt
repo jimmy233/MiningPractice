@@ -1,0 +1,105 @@
+int qi[1000];
+int tian[1000];
+int state[1001][1001];
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int match(int VAR__7685, int VAR__3918907)
+{
+   if ( VAR__7685 == VAR__3918907 )
+   {
+      return 0;
+   }
+   else
+   if ( VAR__7685 > VAR__3918907 )
+   {
+      return -200;
+   }
+   else
+   {
+      return 200;
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int tmp1;
+   int tmp2;
+   int maxi;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qi[VAR__53647]);
+      }
+
+      qsort(tian, VAR_1238123, sizeof( int ), cmp);
+      qsort(qi, VAR_1238123, sizeof( int ), cmp);
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         state[0][VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+         {
+            if ( VAR__21230 == 0 )
+            {
+               state[VAR__53647][VAR__21230] = state[VAR__53647 - 1][VAR__21230] + match(qi[VAR__53647 - 1], tian[( VAR_1238123 - VAR__53647 ) + VAR__21230]);
+            }
+            else
+            if ( VAR__53647 == VAR__21230 )
+            {
+               state[VAR__53647][VAR__21230] = state[VAR__53647 - 1][VAR__21230 - 1] + match(qi[VAR__53647 - 1], tian[VAR__21230 - 1]);
+            }
+            else
+            {
+               tmp1 = state[VAR__53647 - 1][VAR__21230 - 1] + match(qi[VAR__53647 - 1], tian[VAR__21230 - 1]);
+               tmp2 = state[VAR__53647 - 1][VAR__21230] + match(qi[VAR__53647 - 1], tian[( VAR_1238123 - VAR__53647 ) + VAR__21230]);
+
+               if ( tmp1 > tmp2 )
+               {
+                  state[VAR__53647][VAR__21230] = tmp1;
+               }
+               else
+               {
+                  state[VAR__53647][VAR__21230] = tmp2;
+               }
+            }
+         }
+      }
+
+
+      maxi = state[VAR_1238123][0];
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( state[VAR_1238123][VAR__53647] > maxi )
+         {
+            maxi = state[VAR_1238123][VAR__53647];
+         }
+      }
+
+      printf("%d\n", maxi);
+   }
+
+   return 0;
+}

@@ -1,0 +1,61 @@
+int prime(int VAR_1238123)
+{
+   int VAR__53647;
+   int judge = 1;
+
+   for ( VAR__53647 = 2; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         judge = 0;
+      }
+   }
+
+   return judge;
+}
+
+
+int function(int number, int VAR__7685)
+{
+   int VAR__TEMP = 0;
+   int VAR__53647;
+   int result = 0;
+
+   if ( !prime(number))
+   {
+      for ( VAR__53647 = VAR__7685; VAR__53647 <= number; VAR__53647++ )
+      {
+         if (( number % VAR__53647 ) == 0 )
+         {
+            VAR__7685 = VAR__53647;
+            VAR__TEMP = number / VAR__53647;
+            result   += function(VAR__TEMP, VAR__7685);
+         }
+      }
+   }
+   else
+   if ((( number >= VAR__7685 ) || ( number == 1 )) && prime(number))
+   {
+      result = 1;
+   }
+
+
+   return result;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int times;
+   int number;
+
+   cin >> times;
+   for ( VAR__53647 = 0; VAR__53647 < times; VAR__53647++ )
+   {
+      cin >> number;
+      ( cout << function(number, 2)) << endl;
+   }
+
+   return 0;
+}

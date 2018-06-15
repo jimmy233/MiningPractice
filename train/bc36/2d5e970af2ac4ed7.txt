@@ -1,0 +1,62 @@
+int cmp(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   float f1 = *((float *)ANOTHER_POINTER );
+   float f2 = *((float *)YET_ANOTHER_POINTER );
+
+   if ( f1 > f2 )
+   {
+      return 1;
+   }
+   else
+   {
+      return -1;
+   }
+}
+
+
+int main()
+{
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__8444594;
+   int   VAR_1238123;
+   float VAR_2890;
+   float h1[50];
+   float h2[50];
+
+   while ( scanf("%d", &VAR_1238123) != EOF )
+   {
+      char VAR__TEMP[20];
+      int  cnt0 = 0;
+      int  cnt1 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%s%f", VAR__TEMP, &VAR_2890);
+
+         if ( VAR__TEMP[0] == 'm' )
+         {
+            h1[cnt0++] = VAR_2890;
+         }
+         else
+         {
+            h2[cnt1++] = VAR_2890;
+         }
+      }
+
+      qsort(h1, cnt0, sizeof( h1[0] ), cmp);
+      qsort(h2, cnt1, sizeof( h2[0] ), cmp);
+      for ( VAR__53647 = 0; VAR__53647 < cnt0; VAR__53647++ )
+      {
+         printf("%.2f ", h1[VAR__53647]);
+      }
+
+      for ( VAR__53647 = cnt1 - 1; VAR__53647 > 0; VAR__53647-- )
+      {
+         printf("%.2f ", h2[VAR__53647]);
+      }
+
+      printf("%.2f\n", h2[0]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,128 @@
+int main()
+{
+   int  VAR__NUM[1000];
+   int  len1;
+   int  len2;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  sp       = 0;
+   int  VAR_233  = 0;
+   int  VAR__MAX = 0;
+   int  max1;
+   int  VAR__819283[1000];
+   int  entry[1000];
+   int  depart[1000];
+   char ANOTHER_STRING[10000];
+   char YET_ANOTHER_STRING[10000];
+   char VAR__TEMP[5];
+
+   cin >> ANOTHER_STRING;
+   len1 = strlen(ANOTHER_STRING);
+   for ( VAR__53647 = 0; VAR__53647 <= len1; VAR__53647++ )
+   {
+      if ( ANOTHER_STRING[VAR__53647] == ',' )
+      {
+         VAR__8444594 = 0;
+         memset(VAR__TEMP, '\0', sizeof( VAR__TEMP ));
+         for ( VAR__21230 = sp; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            VAR__TEMP[VAR__8444594++] = ANOTHER_STRING[VAR__21230];
+         }
+
+         entry[VAR_233] = atof(VAR__TEMP);
+         VAR_233       += 1;
+         sp             = VAR__53647 + 1;
+      }
+      else
+      if ( ANOTHER_STRING[VAR__53647] == '\0' )
+      {
+         VAR__8444594 = 0;
+         memset(VAR__TEMP, '\0', sizeof( VAR__TEMP ));
+         for ( VAR__21230 = sp; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            VAR__TEMP[VAR__8444594++] = ANOTHER_STRING[VAR__21230];
+         }
+
+         entry[VAR_233] = atof(VAR__TEMP);
+         sp             = 0;
+         VAR_233        = 0;
+      }
+      else
+      {
+         continue;
+      }
+   }
+
+   cin >> YET_ANOTHER_STRING;
+   len2 = strlen(YET_ANOTHER_STRING);
+   for ( VAR__53647 = 0; VAR__53647 <= len2; VAR__53647++ )
+   {
+      if ( YET_ANOTHER_STRING[VAR__53647] == ',' )
+      {
+         VAR__8444594 = 0;
+         memset(VAR__TEMP, '\0', sizeof( VAR__TEMP ));
+         for ( VAR__21230 = sp; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            VAR__TEMP[VAR__8444594++] = YET_ANOTHER_STRING[VAR__21230];
+         }
+
+         depart[VAR_233] = atof(VAR__TEMP);
+         VAR_233        += 1;
+         sp = VAR__53647 + 1;
+      }
+      else
+      if ( YET_ANOTHER_STRING[VAR__53647] == '\0' )
+      {
+         VAR__8444594 = 0;
+         memset(VAR__TEMP, '\0', sizeof( VAR__TEMP ));
+         for ( VAR__21230 = sp; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            VAR__TEMP[VAR__8444594++] = YET_ANOTHER_STRING[VAR__21230];
+         }
+
+         depart[VAR_233] = atof(VAR__TEMP);
+         VAR_233        += 1;
+         cout << VAR_233;
+      }
+      else
+      {
+         continue;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      if ( VAR__MAX < depart[VAR__53647] )
+      {
+         VAR__MAX = depart[VAR__53647];
+      }
+   }
+
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+   for ( VAR__21230 = 0; VAR__21230 < VAR__MAX; VAR__21230++ )
+   {
+      VAR__819283[VAR__21230] = VAR__21230 + 1;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+      {
+         if (( VAR__819283[VAR__21230] < depart[VAR__53647] ) && ( VAR__819283[VAR__21230] >= entry[VAR__53647] ))
+         {
+            VAR__NUM[VAR__21230] += 1;
+         }
+      }
+   }
+
+   max1 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      if ( max1 < VAR__NUM[VAR__53647] )
+      {
+         max1 = VAR__NUM[VAR__53647];
+      }
+   }
+
+
+   ( cout << " " ) << max1;
+   return 0;
+}

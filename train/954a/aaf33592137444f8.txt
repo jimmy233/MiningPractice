@@ -1,0 +1,75 @@
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__SUM;
+   int VAR__9290;
+   struct student
+   {
+      char name[20];
+      int  exam;
+      int  cla;
+      char lead;
+      char west;
+      int  theo;
+      int  sch;
+   };
+   struct student stu[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", stu[VAR__53647].name);
+      scanf("%d", &stu[VAR__53647].exam);
+      scanf("%d %c %c %d", &stu[VAR__53647].cla, &stu[VAR__53647].lead, &stu[VAR__53647].west, &stu[VAR__53647].theo);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].sch = 0;
+
+      if (( stu[VAR__53647].exam > 80 ) && ( stu[VAR__53647].theo > 0 ))
+      {
+         stu[VAR__53647].sch = stu[VAR__53647].sch + 8000;
+      }
+
+      if (( stu[VAR__53647].exam > 85 ) && ( stu[VAR__53647].cla > 80 ))
+      {
+         stu[VAR__53647].sch = stu[VAR__53647].sch + 4000;
+      }
+
+      if ( stu[VAR__53647].exam > 90 )
+      {
+         stu[VAR__53647].sch = stu[VAR__53647].sch + 2000;
+      }
+
+      if (( stu[VAR__53647].exam > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].sch = stu[VAR__53647].sch + 1000;
+      }
+
+      if (( stu[VAR__53647].cla > 80 ) && ( stu[VAR__53647].lead == 'Y' ))
+      {
+         stu[VAR__53647].sch = stu[VAR__53647].sch + 850;
+      }
+   }
+
+   VAR__9290 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].sch > stu[VAR__9290].sch )
+      {
+         VAR__9290 = VAR__53647;
+      }
+   }
+
+   VAR__SUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + stu[VAR__53647].sch;
+   }
+
+   printf("%s\n", stu[VAR__9290].name);
+   printf("%d\n", stu[VAR__9290].sch);
+   printf("%d\n", VAR__SUM);
+}

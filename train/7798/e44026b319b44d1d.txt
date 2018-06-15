@@ -1,0 +1,71 @@
+int main()
+{
+   struct fy
+   {
+      int       VAR__7685;
+      char      VAR__3918907[26];
+      int       VAR_9494[26];
+      struct fy *VAR__9290;
+   }
+   sl[1000];
+   struct fy
+   {
+      int       VAR__7685;
+      char      VAR__3918907[26];
+      int       VAR_9494[26];
+      struct fy *VAR__9290;
+   }
+        *VAR_233;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__19328[26] = { 0 };
+   char VAR__819283[100];
+
+   VAR_233 = &sl[0];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %s", &sl[VAR__53647].VAR__7685, sl[VAR__53647].VAR__3918907);
+      for ( VAR__21230 = 0; VAR__21230 < strlen(sl[VAR__53647].VAR__3918907); VAR__21230++ )
+      {
+         sl[VAR__53647].VAR_9494[sl[VAR__53647].VAR__3918907[VAR__21230] - 'A'] = 1;
+         VAR__19328[sl[VAR__53647].VAR__3918907[VAR__21230] - 'A']++;
+      }
+
+      sl[VAR__53647].VAR__9290 = &sl[VAR__53647 + 1];
+   }
+
+   sl[VAR_1238123 - 1].VAR__9290 = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__53647] < VAR__19328[VAR__21230] )
+         {
+            break;
+         }
+      }
+
+
+      if ( VAR__21230 == 26 )
+      {
+         VAR__21230 = VAR__53647;
+         break;
+      }
+   }
+
+   printf("%c\n%d\n", VAR__53647 + 'A', VAR__19328[VAR__21230]);
+
+   while ( VAR_233 != NULL )
+   {
+      if ( VAR_233->VAR_9494[VAR__53647] == 1 )
+      {
+         printf("%d\n", VAR_233->VAR__7685);
+      }
+
+      VAR_233 = VAR_233->VAR__9290;
+   }
+
+   return 0;
+}

@@ -1,0 +1,86 @@
+int main()
+{
+   struct stu
+   {
+      char     name[20];
+      int      qimo;
+      int      banping;
+      char     gb[2];
+      char     xb[2];
+      int      lw;
+      long int jxj;
+   }
+       stu[100];
+   int VAR_1238123;
+   int N;
+   int VAR__819283  = 0;
+   int VAR__19328   = 0;
+   int VAR__4857423 = 0;
+   int VAR__12302   = 0;
+   int VAR__112390  = 0;
+   int VAR__MAX;
+   int VAR__TEMP;
+   int totle = 0;
+
+   scanf("%d", &N);
+   for ( VAR_1238123 = 0; VAR_1238123 < N; VAR_1238123++ )
+   {
+      scanf("%s%d%d%s%s%d", &stu[VAR_1238123].name, &stu[VAR_1238123].qimo, &stu[VAR_1238123].banping, &stu[VAR_1238123].gb, &stu[VAR_1238123].xb, &stu[VAR_1238123].lw);
+   }
+
+   for ( VAR_1238123 = 0; VAR_1238123 < N; VAR_1238123++ )
+   {
+      VAR__819283  = 0;
+      VAR__19328   = 0;
+      VAR__4857423 = 0;
+      VAR__12302   = 0;
+      VAR__112390  = 0;
+
+      if (( stu[VAR_1238123].qimo > 80 ) && ( stu[VAR_1238123].lw >= 1 ))
+      {
+         VAR__819283 = 8000;
+      }
+
+      if (( stu[VAR_1238123].qimo > 85 ) && ( stu[VAR_1238123].banping > 80 ))
+      {
+         VAR__19328 = 4000;
+      }
+
+      if ( stu[VAR_1238123].qimo > 90 )
+      {
+         VAR__4857423 = 2000;
+      }
+
+      if (( stu[VAR_1238123].banping > 80 ) && ( strcmp(stu[VAR_1238123].gb, "Y") == 0 ))
+      {
+         VAR__112390 = 850;
+      }
+
+      if (( stu[VAR_1238123].qimo > 85 ) && ( strcmp("Y", stu[VAR_1238123].xb) == 0 ))
+      {
+         VAR__12302 = 1000;
+      }
+
+      stu[VAR_1238123].jxj = ((( VAR__819283 + VAR__19328 ) + VAR__4857423 ) + VAR__12302 ) + VAR__112390;
+   }
+
+   for ( VAR_1238123 = 0; VAR_1238123 < N; VAR_1238123++ )
+   {
+      totle += stu[VAR_1238123].jxj;
+   }
+
+   for ( VAR_1238123 = 1; VAR_1238123 < N; VAR_1238123++ )
+   {
+      if ( stu[VAR_1238123].jxj > stu[0].jxj )
+      {
+         VAR__TEMP            = stu[0].jxj;
+         stu[0].jxj           = stu[VAR_1238123].jxj;
+         stu[VAR_1238123].jxj = VAR__TEMP;
+         strcpy(stu[0].name, stu[VAR_1238123].name);
+      }
+   }
+
+
+   printf("%s\n%d\n%d\n", stu[0].name, stu[0].jxj, totle);
+   return 0;
+}

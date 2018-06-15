@@ -1,0 +1,73 @@
+int board[9][9] = { 0 };
+void production(int days)
+{
+   int separation[9][9];
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( days == 0 )
+   {
+      return;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            board[VAR__53647][VAR__21230]     *= 10;
+            separation[VAR__53647][VAR__21230] = ( board[VAR__53647][VAR__21230] - (( 2 * board[VAR__53647][VAR__21230] ) / 10 )) / 8;
+            board[VAR__53647][VAR__21230]      = ( 2 * board[VAR__53647][VAR__21230] ) / 10;
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            board[VAR__53647 + 1][VAR__21230]     += separation[VAR__53647][VAR__21230];
+            board[VAR__53647 - 1][VAR__21230]     += separation[VAR__53647][VAR__21230];
+            board[VAR__53647][VAR__21230 + 1]     += separation[VAR__53647][VAR__21230];
+            board[VAR__53647][VAR__21230 - 1]     += separation[VAR__53647][VAR__21230];
+            board[VAR__53647 + 1][VAR__21230 + 1] += separation[VAR__53647][VAR__21230];
+            board[VAR__53647 - 1][VAR__21230 + 1] += separation[VAR__53647][VAR__21230];
+            board[VAR__53647 + 1][VAR__21230 - 1] += separation[VAR__53647][VAR__21230];
+            board[VAR__53647 - 1][VAR__21230 - 1] += separation[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      production(days - 1);
+   }
+}
+
+
+int main()
+{
+   int VAR__NUM;
+   int days;
+   int VAR__53647;
+   int VAR__21230;
+
+   ( cin >> VAR__NUM ) >> days;
+   board[4][4] = VAR__NUM;
+   production(days);
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( VAR__21230 == 8 )
+         {
+            ( cout << board[VAR__53647][VAR__21230] ) << endl;
+         }
+         else
+         {
+            ( cout << board[VAR__53647][VAR__21230] ) << " ";
+         }
+      }
+   }
+
+
+   return 0;
+}

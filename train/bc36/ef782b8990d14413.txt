@@ -1,0 +1,60 @@
+struct stu
+{
+   char  gen[7];
+   float hei;
+};
+int main()
+{
+   struct stu stu[40];
+   struct stu VAR__temp;
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR_9494 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", stu[VAR__53647].gen, &stu[VAR__53647].hei);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( stu[VAR__53647].hei > stu[VAR__53647 + 1].hei )
+         {
+            VAR__temp           = stu[VAR__53647];
+            stu[VAR__53647]     = stu[VAR__53647 + 1];
+            stu[VAR__53647 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strlen(stu[VAR__53647].gen) == 4 )
+      {
+         if ( VAR_9494 == 0 )
+         {
+            printf("%.2f", stu[VAR__53647].hei);
+            VAR_9494++;
+         }
+         else
+         {
+            printf(" %.2f", stu[VAR__53647].hei);
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( strlen(stu[VAR__53647].gen) != 4 )
+      {
+         printf(" %.2f", stu[VAR__53647].hei);
+      }
+   }
+
+   return 0;
+}

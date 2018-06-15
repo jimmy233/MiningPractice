@@ -1,0 +1,55 @@
+int main()
+{
+   int VAR__819283[11][11] = { 0 };
+   int VAR__19328[11][11]  = { 0 };
+   int VAR__53647          = 1;
+   int VAR__21230          = 1;
+   int VAR__temp           = 1;
+   int number;
+   int time;
+
+   ( cin >> number ) >> time;
+   VAR__819283[5][5] = number;
+   for ( VAR__53647 = 1; VAR__53647 <= time; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         for ( VAR__temp = 1; VAR__temp <= 9; VAR__temp++ )
+         {
+            if ( VAR__819283[VAR__21230][VAR__temp] != 0 )
+            {
+               VAR__19328[VAR__21230][VAR__temp]         += 2 * VAR__819283[VAR__21230][VAR__temp];
+               VAR__19328[VAR__21230 + 1][VAR__temp]     += VAR__819283[VAR__21230][VAR__temp];
+               VAR__19328[VAR__21230 - 1][VAR__temp]     += VAR__819283[VAR__21230][VAR__temp];
+               VAR__19328[VAR__21230 + 1][VAR__temp + 1] += VAR__819283[VAR__21230][VAR__temp];
+               VAR__19328[VAR__21230 - 1][VAR__temp + 1] += VAR__819283[VAR__21230][VAR__temp];
+               VAR__19328[VAR__21230 + 1][VAR__temp - 1] += VAR__819283[VAR__21230][VAR__temp];
+               VAR__19328[VAR__21230 - 1][VAR__temp - 1] += VAR__819283[VAR__21230][VAR__temp];
+               VAR__19328[VAR__21230][VAR__temp + 1]     += VAR__819283[VAR__21230][VAR__temp];
+               VAR__19328[VAR__21230][VAR__temp - 1]     += VAR__819283[VAR__21230][VAR__temp];
+            }
+         }
+      }
+
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         for ( VAR__temp = 1; VAR__temp <= 9; VAR__temp++ )
+         {
+            VAR__819283[VAR__21230][VAR__temp] = VAR__19328[VAR__21230][VAR__temp];
+            VAR__19328[VAR__21230][VAR__temp]  = 0;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 8; VAR__21230++ )
+      {
+         ( cout << VAR__819283[VAR__53647][VAR__21230] ) << " ";
+      }
+
+      ( cout << VAR__819283[VAR__53647][9] ) << endl;
+   }
+
+   return 0;
+}

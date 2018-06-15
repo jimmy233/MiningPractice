@@ -1,0 +1,59 @@
+struct patient
+{
+   char id[20];
+   int  age;
+}
+pat[100];
+int main()
+{
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR_1238123;
+   int VAR__112390;
+   int ex[100];
+   int ex1[100];
+
+   VAR__53647   = 0;
+   VAR__8444594 = 0;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s%d", &pat[VAR__53647].id, &pat[VAR__53647].age);
+      ex[VAR__53647]  = pat[VAR__53647].age;
+      ex1[VAR__53647] = VAR__53647 + 1;
+   }
+
+   for ( VAR__8444594 = VAR_1238123 - 1; VAR__8444594 >= 1; VAR__8444594-- )
+   {
+      for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= ( VAR_1238123 - VAR__8444594 ); VAR__53647-- )
+      {
+         if (( ex[VAR__53647] > ex[VAR__53647 - 1] ) && ( ex[VAR__53647] >= 60 ))
+         {
+            VAR__112390         = ex[VAR__53647];
+            ex[VAR__53647]      = ex[VAR__53647 - 1];
+            ex[VAR__53647 - 1]  = VAR__112390;
+            VAR__112390         = ex1[VAR__53647];
+            ex1[VAR__53647]     = ex1[VAR__53647 - 1];
+            ex1[VAR__53647 - 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( ex[VAR__53647] >= 60 )
+      {
+         printf("%s\n", pat[ex1[VAR__53647] - 1].id);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( ex[VAR__53647] < 60 )
+      {
+         printf("%s\n", pat[ex1[VAR__53647] - 1].id);
+      }
+   }
+
+   return 0;
+}

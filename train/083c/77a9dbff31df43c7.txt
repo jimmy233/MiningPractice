@@ -1,0 +1,95 @@
+char VAR__7685[N];
+int Rtoten(int R, char shu[])
+{
+   int VAR__53647;
+   int VAR_9494     = 0;
+   int VAR__1238129 = strlen(shu);
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ((( shu[VAR__53647] >= 'A' ) && ( shu[VAR__53647] <= 'Z' )) || (( shu[VAR__53647] >= 'a' ) && ( shu[VAR__53647] <= 'z' )))
+      {
+         shu[VAR__53647] |= 0x20 -= 0x57;
+      }
+
+      if (( shu[VAR__53647] >= '0' ) && ( shu[VAR__53647] <= '9' ))
+      {
+         shu[VAR__53647] = shu[VAR__53647] - '0';
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR_9494 = ( VAR_9494 * R ) + shu[VAR__53647];
+   }
+
+   return VAR_9494;
+}
+
+
+void shiR(int VAR__4857423, int R)
+{
+   int VAR__53647;
+   int VAR__1238129;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__4857423; VAR__53647++ )
+   {
+      if (( VAR__7685[VAR__53647] = ( VAR__4857423 % R ) + '0' ) > '9' )
+      {
+         VAR__7685[VAR__53647] += 7;
+      }
+
+      VAR__4857423 = VAR__4857423 / R;
+   }
+
+   VAR__7685[VAR__53647] = '\0';
+   VAR__1238129          = strlen(VAR__7685);
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 / 2 ); VAR__53647++ )
+   {
+      VAR__TEMP             = VAR__7685[VAR__53647];
+      VAR__7685[VAR__53647] = VAR__7685[( VAR__1238129 - VAR__53647 ) - 1];
+      VAR__7685[( VAR__1238129 - VAR__53647 ) - 1] = VAR__TEMP;
+   }
+}
+
+
+int main(void)
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  VAR__4857423;
+   int  VAR__COUNT = 0;
+   char shu[N];
+
+   cin >> VAR__819283;
+   cin >> shu;
+   cin >> VAR__19328;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(shu); VAR__53647++ )
+   {
+      if ( shu[VAR__53647] == '0' )
+      {
+         VAR__COUNT++;
+      }
+   }
+
+   if ( VAR__COUNT == strlen(shu))
+   {
+      ( cout << "0" ) << endl;
+   }
+   else
+   {
+      VAR__4857423 = Rtoten(VAR__819283, shu);
+      shiR(VAR__4857423, VAR__19328);
+      int VAR__1238129 = strlen(VAR__7685);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         cout << VAR__7685[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

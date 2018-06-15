@@ -1,0 +1,76 @@
+int main()
+{
+   struct qj
+   {
+      int lp;
+      int rp;
+   }
+       qj[50000];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int maxr;
+   int minl;
+   int sig;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d", &qj[VAR__53647].lp, &qj[VAR__53647].rp);
+   }
+
+   minl = qj[0].lp;
+   maxr = qj[0].rp;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( minl > qj[VAR__53647].lp )
+      {
+         minl = qj[VAR__53647].lp;
+      }
+
+      if ( maxr < qj[VAR__53647].rp )
+      {
+         maxr = qj[VAR__53647].rp;
+      }
+   }
+
+   sig = 1;
+   int sign[50000] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__21230 != VAR__53647 )
+         {
+            if ( qj[VAR__53647].lp == minl )
+            {
+               sign[VAR__53647] = 1;
+            }
+
+            if (( qj[VAR__53647].lp <= qj[VAR__21230].rp ) && ( qj[VAR__53647].lp >= qj[VAR__21230].lp ))
+            {
+               sign[VAR__53647] = 1;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( sign[VAR__53647] == 0 )
+      {
+         sig = 0;
+      }
+   }
+
+   if ( sig == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      printf("%d %d", minl, maxr);
+   }
+
+   return 0;
+}

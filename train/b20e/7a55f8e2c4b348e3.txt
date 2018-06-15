@@ -1,0 +1,114 @@
+void main()
+{
+   int VAR__temp[1001];
+   int VAR_666[1001];
+   int VAR_1238123;
+   int ts;
+   int te;
+   int qs;
+   int qe;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+   int win;
+   int lose;
+   int equal;
+
+   for ( ; ; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         win = ( lose = ( equal = 0 ));
+         ts  = ( te = ( qs = ( qe = 0 )));
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR__temp[VAR__53647]);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR_666[VAR__53647]);
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - VAR__21230 ) - 1 ); VAR__53647++ )
+            {
+               if ( VAR__temp[VAR__53647] < VAR__temp[VAR__53647 + 1] )
+               {
+                  VAR__TEMP = VAR__temp[VAR__53647 + 1];
+                  VAR__temp[VAR__53647 + 1] = VAR__temp[VAR__53647];
+                  VAR__temp[VAR__53647]     = VAR__TEMP;
+               }
+               else
+               {
+               }
+
+               if ( VAR_666[VAR__53647] < VAR_666[VAR__53647 + 1] )
+               {
+                  VAR__TEMP = VAR_666[VAR__53647 + 1];
+                  VAR_666[VAR__53647 + 1] = VAR_666[VAR__53647];
+                  VAR_666[VAR__53647]     = VAR__TEMP;
+               }
+            }
+         }
+
+         while ((( lose + equal ) + win ) < VAR_1238123 )
+         {
+            if ( VAR__temp[ts] > VAR_666[qs] )
+            {
+               win++;
+               ts++;
+               qs++;
+            }
+            else
+            if ( VAR__temp[ts] == VAR_666[qs] )
+            {
+               if ( VAR__temp[( VAR_1238123 - te ) - 1] > VAR_666[( VAR_1238123 - qe ) - 1] )
+               {
+                  te++;
+                  qe++;
+                  win++;
+                  continue;
+               }
+               else
+               if ( VAR__temp[( VAR_1238123 - te ) - 1] == VAR_666[( VAR_1238123 - qe ) - 1] )
+               {
+                  if ( VAR__temp[( VAR_1238123 - te ) - 1] == VAR_666[qs] )
+                  {
+                     equal++;
+                     qs++;
+                     te++;
+                  }
+                  else
+                  {
+                     lose++;
+                     qs++;
+                     te++;
+                  }
+               }
+               else
+               {
+                  lose++;
+                  qs++;
+                  te++;
+               }
+            }
+            else
+            {
+               lose++;
+               te++;
+               qs++;
+            }
+         }
+      }
+
+      printf("%d\n", ( win - lose ) * 200);
+   }
+}

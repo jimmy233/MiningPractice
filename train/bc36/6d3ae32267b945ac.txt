@@ -1,0 +1,72 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_233;
+   int VAR_666;
+
+   scanf("%d", &VAR_1238123);
+   char  sex[50][7];
+   float height[50];
+   float heightofboy[50];
+   float heightofgirl[50];
+   float VAR__TEMP;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s %f", &sex[VAR__53647], &height[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0, VAR__21230 = 0, VAR__8444594 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( strcmp(sex[VAR__53647], "male") == 0 )
+      {
+         heightofboy[VAR__21230] = height[VAR__53647];
+         VAR__21230++;
+      }
+      else
+      {
+         heightofgirl[VAR__8444594] = height[VAR__53647];
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      for ( VAR_233 = 0; VAR_233 < (( VAR__21230 - VAR__53647 ) - 1 ); VAR_233++ )
+      {
+         if ( heightofboy[VAR_233] > heightofboy[VAR_233 + 1] )
+         {
+            VAR__TEMP                = heightofboy[VAR_233];
+            heightofboy[VAR_233]     = heightofboy[VAR_233 + 1];
+            heightofboy[VAR_233 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%.2f ", heightofboy[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR_666 = 0; VAR_666 < (( VAR__8444594 - VAR__53647 ) - 1 ); VAR_666++ )
+      {
+         if ( heightofgirl[VAR_666] < heightofgirl[VAR_666 + 1] )
+         {
+            VAR__TEMP                 = heightofgirl[VAR_666];
+            heightofgirl[VAR_666]     = heightofgirl[VAR_666 + 1];
+            heightofgirl[VAR_666 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", heightofgirl[VAR__53647]);
+   }
+
+   printf("%.2f", heightofgirl[VAR__8444594 - 1]);
+}

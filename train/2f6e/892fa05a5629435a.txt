@@ -1,0 +1,67 @@
+char A_STRING[100];
+int  sex[100]      = { 0 };
+int  VAR_FLAG[100] = { 0 };
+int requeue(int VAR_1238123)
+{
+   if ( VAR_1238123 == 0 )
+   {
+      return 0;
+   }
+
+   int VAR__53647;
+   int VAR__temp;
+   int VAR__1111;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if (( sex[VAR__53647] == 0 ) && ( sex[VAR__53647 + 1] == 1 ))
+      {
+         ((( cout << ( VAR__53647 + VAR_FLAG[VAR__53647] )) << " " ) << (( VAR__53647 + 1 ) + VAR_FLAG[VAR__53647 + 1] )) << endl;
+
+         if ( VAR__53647 == ( VAR_1238123 - 2 ))
+         {
+            break;
+         }
+         else
+         {
+            for ( VAR__temp = VAR__53647 + 2; VAR__temp < VAR_1238123; VAR__temp++ )
+            {
+               sex[VAR__temp - 2]   = sex[VAR__temp];
+               VAR_FLAG[VAR__temp] += 2;
+            }
+
+            for ( VAR__temp = VAR__53647; VAR__temp < ( VAR_1238123 - 2 ); VAR__temp++ )
+            {
+               VAR_FLAG[VAR__temp] = VAR_FLAG[VAR__temp + 2];
+            }
+
+            break;
+         }
+      }
+   }
+
+   return requeue(VAR_1238123 - 2);
+}
+
+
+int main()
+{
+   int VAR__21230;
+   int LEN_OF_STH;
+
+   cin.getline(A_STRING, 100);
+   LEN_OF_STH = strlen(A_STRING);
+   for ( VAR__21230 = 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+   {
+      if ( A_STRING[VAR__21230] == A_STRING[0] )
+      {
+         sex[VAR__21230] = 0;
+      }
+      else
+      {
+         sex[VAR__21230] = 1;
+      }
+   }
+
+   requeue(LEN_OF_STH);
+   return 0;
+}

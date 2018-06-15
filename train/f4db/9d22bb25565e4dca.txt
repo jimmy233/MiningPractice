@@ -1,0 +1,73 @@
+const int M = 100 + 10;
+const int N = 100 + 10;
+int       mat[M][N];
+int main(void)
+{
+   int cases;
+   int VAR__53647;
+   int VAR__21230;
+   int ans;
+   int VAR__1238129;
+   int VAR_1238123;
+
+   scanf("%d", &cases);
+
+   while ( cases-- )
+   {
+      ans = 0;
+      scanf("%d%d", &VAR__1238129, &VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; ++VAR__53647 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; ++VAR__21230 )
+         {
+            scanf("%d", mat[VAR__53647] + VAR__21230);
+         }
+      }
+
+      if (( VAR__1238129 == 0 ) || ( VAR_1238123 == 0 ))
+      {
+         printf("%d\n", 0);
+         continue;
+      }
+
+      if ( VAR__1238129 == 1 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+         {
+            ans += mat[0][VAR__53647];
+         }
+
+         printf("%d\n", ans);
+         continue;
+      }
+      else
+      if ( VAR_1238123 == 1 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; ++VAR__53647 )
+         {
+            ans += mat[VAR__53647][0];
+         }
+
+         printf("%d\n", ans);
+         continue;
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         ans += mat[0][VAR__53647];
+         ans += mat[VAR__1238129 - 1][VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; ++VAR__53647 )
+      {
+         ans += mat[VAR__53647][0];
+         ans += mat[VAR__53647][VAR_1238123 - 1];
+      }
+
+      ans -= (( mat[0][0] + mat[0][VAR_1238123 - 1] ) + mat[VAR__1238129 - 1][0] ) + mat[VAR__1238129 - 1][VAR_1238123 - 1];
+      printf("%d\n", ans);
+   }
+
+   return 0;
+}

@@ -1,0 +1,95 @@
+int main()
+{
+   long VAR__819283;
+   long VAR__19328;
+   long VAR__53647;
+   long VAR__21230;
+   long VAR__8444594;
+   long VAR__1111;
+   long VAR__9290;
+   long length;
+   long sum10;
+   long zhi;
+
+   VAR__53647   = 0;
+   VAR__21230   = 0;
+   VAR__8444594 = 1;
+   VAR__1111    = 0;
+   VAR__9290    = 0;
+   length       = 0;
+   sum10        = 0;
+   zhi          = 0;
+   char VAR_1238123[50];
+   char VAR_129012[50];
+   scanf("%d%s%d", &VAR__819283, VAR_1238123, &VAR__19328);
+   long VAR__1238129[50][2];
+   long o[50][2];
+   long n2[50];
+   length = strlen(VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if ( VAR_1238123[VAR__53647] <= '9' )
+      {
+         n2[VAR__53647] = VAR_1238123[VAR__53647] - '0';
+      }
+      else
+      if (( VAR_1238123[VAR__53647] < 'a' ) && ( VAR_1238123[VAR__53647] > '9' ))
+      {
+         n2[VAR__53647] = ( VAR_1238123[VAR__53647] - 'A' ) + 10;
+      }
+      else
+      {
+         n2[VAR__53647] = ( VAR_1238123[VAR__53647] - 'a' ) + 10;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      VAR__1238129[VAR__53647][0] = n2[VAR__53647];
+      VAR__1238129[VAR__53647][1] = ( length - VAR__53647 ) - 1;
+      zhi = VAR__1238129[VAR__53647][0];
+      for ( VAR__21230 = 1; VAR__21230 <= VAR__1238129[VAR__53647][1]; VAR__21230++ )
+      {
+         zhi = zhi * VAR__819283;
+      }
+
+      sum10 = sum10 + zhi;
+      zhi   = 0;
+   }
+
+   if ( sum10 == 0 )
+   {
+      printf("0");
+   }
+   else
+   {
+      VAR__8444594 = sum10;
+
+      while ( VAR__8444594 != 0 )
+      {
+         o[VAR__1111][0] = VAR__8444594 % VAR__19328;
+         VAR__8444594    = VAR__8444594 / VAR__19328;
+         o[VAR__1111][1] = VAR__1111;
+         VAR__1111++;
+      }
+
+      length = VAR__1111;
+      for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+      {
+         if ( o[( VAR__1111 - VAR__53647 ) - 1][0] <= 9 )
+         {
+            VAR_129012[VAR__53647] = 48 + o[( VAR__1111 - VAR__53647 ) - 1][0];
+         }
+         else
+         {
+            VAR_129012[VAR__53647] = ( o[( VAR__1111 - VAR__53647 ) - 1][0] - 10 ) + 65;
+         }
+      }
+
+      VAR_129012[length] = '\0';
+      puts(VAR_129012);
+   }
+
+   getchar();
+   getchar();
+}

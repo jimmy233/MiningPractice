@@ -1,0 +1,62 @@
+struct Student
+{
+   long Id;
+   int  yuwen;
+   int  shuxue;
+};
+int main()
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   long           VAR_1238123;
+   struct Student student[NUM];
+   struct Student VAR__TEMP;
+
+   scanf("%ld\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%ld%d%d", &student[VAR__53647].Id, &student[VAR__53647].yuwen, &student[VAR__53647].shuxue);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( 3 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if (( student[VAR__21230 + 1].yuwen + student[VAR__21230 + 1].shuxue ) > ( student[VAR__21230].yuwen + student[VAR__21230].shuxue ))
+         {
+            VAR__TEMP = student[VAR__21230 + 1];
+            student[VAR__21230 + 1] = student[VAR__21230];
+            student[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 3; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( student[VAR__53647].yuwen + student[VAR__53647].shuxue ) > ( student[2].yuwen + student[2].shuxue ))
+      {
+         student[2] = student[VAR__53647];
+      }
+
+      if (( student[VAR__53647].yuwen + student[VAR__53647].shuxue ) > ( student[1].yuwen + student[1].shuxue ))
+      {
+         VAR__TEMP  = student[1];
+         student[1] = student[VAR__53647];
+         student[2] = VAR__TEMP;
+      }
+
+      if (( student[VAR__53647].yuwen + student[VAR__53647].shuxue ) > ( student[0].yuwen + student[0].shuxue ))
+      {
+         VAR__TEMP  = student[0];
+         student[0] = student[VAR__53647];
+         student[1] = VAR__TEMP;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%ld %d\n", student[VAR__53647].Id, student[VAR__53647].shuxue + student[VAR__53647].yuwen);
+   }
+
+   return 0;
+}

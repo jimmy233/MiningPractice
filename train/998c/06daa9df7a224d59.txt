@@ -1,0 +1,133 @@
+void chengfa(char VAR__819283[], char VAR__19328[])
+{
+   char VAR__4857423[300] = { '\0' };
+   char VAR_9Q8Q90;
+   int  na;
+   int  nb;
+   int  nc;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  VAR__12302;
+
+   na = strlen(VAR__819283);
+   nb = strlen(VAR__19328);
+
+   if ( na == nb )
+   {
+      for ( VAR__53647 = 0, VAR__12302 = 0; VAR__53647 <= ( na - 1 ); VAR__53647++ )
+      {
+         VAR__temp = (( VAR__819283[( na - 1 ) - VAR__53647] - 48 ) + VAR__19328[( nb - 1 ) - VAR__53647] ) - 48;
+         VAR__temp = VAR__temp + VAR__12302;
+         VAR__4857423[VAR__53647] = ( VAR__temp % 10 ) + 48;
+         VAR__12302 = ( VAR__temp - ( VAR__temp % 10 )) / 10;
+      }
+
+      if ( VAR__12302 != 0 )
+      {
+         VAR__4857423[VAR__53647] = VAR__12302 + 48;
+      }
+   }
+   else
+   if ( na > nb )
+   {
+      for ( VAR__53647 = 0, VAR__12302 = 0; VAR__53647 <= ( nb - 1 ); VAR__53647++ )
+      {
+         VAR__temp = (( VAR__819283[( na - 1 ) - VAR__53647] - 48 ) + VAR__19328[( nb - 1 ) - VAR__53647] ) - 48;
+         VAR__temp = VAR__temp + VAR__12302;
+         VAR__4857423[VAR__53647] = ( VAR__temp % 10 ) + 48;
+         VAR__12302 = ( VAR__temp - ( VAR__temp % 10 )) / 10;
+      }
+
+      if ( VAR__12302 != 0 )
+      {
+         for ( VAR__53647 = nb; VAR__53647 <= ( na - 1 ); VAR__53647++ )
+         {
+            VAR__temp = ( VAR__819283[( na - 1 ) - VAR__53647] - 48 ) + VAR__12302;
+            VAR__4857423[VAR__53647] = ( VAR__temp % 10 ) + 48;
+            VAR__12302 = ( VAR__temp - ( VAR__temp % 10 )) / 10;
+         }
+
+         if ( VAR__12302 != 0 )
+         {
+            VAR__4857423[VAR__53647] = VAR__12302 + 48;
+         }
+      }
+      else
+      {
+         for ( VAR__53647 = nb; VAR__53647 <= ( na - 1 ); VAR__53647++ )
+         {
+            VAR__4857423[VAR__53647] = VAR__819283[( na - 1 ) - VAR__53647];
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0, VAR__12302 = 0; VAR__53647 <= ( na - 1 ); VAR__53647++ )
+      {
+         VAR__temp = (( VAR__819283[( na - 1 ) - VAR__53647] - 48 ) + VAR__19328[( nb - 1 ) - VAR__53647] ) - 48;
+         VAR__temp = VAR__temp + VAR__12302;
+         VAR__4857423[VAR__53647] = ( VAR__temp % 10 ) + 48;
+         VAR__12302 = ( VAR__temp - ( VAR__temp % 10 )) / 10;
+      }
+
+      if ( VAR__12302 != 0 )
+      {
+         for ( VAR__53647 = na; VAR__53647 <= ( nb - 1 ); VAR__53647++ )
+         {
+            VAR__temp = ( VAR__19328[( nb - 1 ) - VAR__53647] - 48 ) + VAR__12302;
+            VAR__4857423[VAR__53647] = ( VAR__temp % 10 ) + 48;
+            VAR__12302 = ( VAR__temp - ( VAR__temp % 10 )) / 10;
+         }
+
+         if ( VAR__12302 != 0 )
+         {
+            VAR__4857423[VAR__53647] = VAR__12302 + 48;
+         }
+      }
+      else
+      {
+         for ( VAR__53647 = na; VAR__53647 <= ( nb - 1 ); VAR__53647++ )
+         {
+            VAR__4857423[VAR__53647] = VAR__19328[( nb - 1 ) - VAR__53647];
+         }
+      }
+   }
+
+
+   nc = strlen(VAR__4857423);
+
+   while ( VAR__4857423[nc - 1] == 48 )
+   {
+      VAR__4857423[nc - 1] = '\0';
+      nc = strlen(VAR__4857423);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= (( nc - 1 ) / 2 ); VAR__53647++ )
+   {
+      VAR_9Q8Q90 = VAR__4857423[VAR__53647];
+      VAR__4857423[VAR__53647] = VAR__4857423[( nc - 1 ) - VAR__53647];
+      VAR__4857423[( nc - 1 ) - VAR__53647] = VAR_9Q8Q90;
+   }
+
+   if ( nc == 0 )
+   {
+      printf("0");
+   }
+   else
+   {
+      printf("%s", VAR__4857423);
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[300];
+   char VAR__19328[300];
+
+   scanf("%s", VAR__819283);
+   scanf("%s", VAR__19328);
+   chengfa(VAR__819283, VAR__19328);
+   return 0;
+}

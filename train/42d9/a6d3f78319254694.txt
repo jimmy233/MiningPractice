@@ -1,0 +1,88 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+
+   cin >> VAR_1238123;
+   VAR__1238129 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   int point[VAR_1238123][3];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> point[VAR__53647][0] ) >> point[VAR__53647][1] ) >> point[VAR__53647][2];
+   }
+
+   struct data
+   {
+      int   point1[3];
+      int   point2[3];
+      float LEN_OF_STH;
+      int   mark1;
+      int   mark2;
+   }
+   distance[VAR__1238129];
+   struct data
+   {
+      int   point1[3];
+      int   point2[3];
+      float LEN_OF_STH;
+      int   mark1;
+      int   mark2;
+   }
+   VAR__TEMP;
+   for ( VAR__8444594 = ( VAR__53647 = 0 ); VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++, VAR__8444594++ )
+      {
+         distance[VAR__8444594].LEN_OF_STH = 0;
+         for ( VAR__1111 = 0; VAR__1111 < 3; VAR__1111++ )
+         {
+            distance[VAR__8444594].mark1             = VAR__53647;
+            distance[VAR__8444594].mark2             = VAR__21230;
+            distance[VAR__8444594].point1[VAR__1111] = point[VAR__53647][VAR__1111];
+            distance[VAR__8444594].point2[VAR__1111] = point[VAR__21230][VAR__1111];
+            distance[VAR__8444594].LEN_OF_STH       += ( point[VAR__53647][VAR__1111] - point[VAR__21230][VAR__1111] ) * ( point[VAR__53647][VAR__1111] - point[VAR__21230][VAR__1111] );
+         }
+
+         distance[VAR__8444594].LEN_OF_STH = sqrt(distance[VAR__8444594].LEN_OF_STH);
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         if ( distance[VAR__53647].LEN_OF_STH < distance[VAR__21230].LEN_OF_STH )
+         {
+            VAR__TEMP            = distance[VAR__53647];
+            distance[VAR__53647] = distance[VAR__21230];
+            distance[VAR__21230] = VAR__TEMP;
+         }
+
+         if ( distance[VAR__53647].LEN_OF_STH == distance[VAR__21230].LEN_OF_STH )
+         {
+            if (( distance[VAR__53647].mark1 > distance[VAR__21230].mark1 ) || (( distance[VAR__53647].mark1 == distance[VAR__21230].mark1 ) && ( distance[VAR__53647].mark2 > distance[VAR__21230].mark2 )))
+            {
+               VAR__TEMP            = distance[VAR__53647];
+               distance[VAR__53647] = distance[VAR__21230];
+               distance[VAR__21230] = VAR__TEMP;
+            }
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      (((((( cout << '(' ) << distance[VAR__53647].point1[0] ) << ',' ) << distance[VAR__53647].point1[1] ) << ',' ) << distance[VAR__53647].point1[2] ) << ')';
+      cout << '-';
+      (((((( cout << '(' ) << distance[VAR__53647].point2[0] ) << ',' ) << distance[VAR__53647].point2[1] ) << ',' ) << distance[VAR__53647].point2[2] ) << ')';
+      printf("=%.2f\n", distance[VAR__53647].LEN_OF_STH);
+   }
+
+   return 0;
+}

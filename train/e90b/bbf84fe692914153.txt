@@ -1,0 +1,121 @@
+struct stu
+{
+   long       VAR__NUM;
+   int        Chi;
+   int        Math;
+   int        Sum;
+   struct stu *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct stu
+{
+   long       VAR__NUM;
+   int        Chi;
+   int        Math;
+   int        Sum;
+   struct stu *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+struct stu *creat(int VAR_1238123)
+{
+   struct stu *VAR__HEAD = NULL;
+   int        VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->Chi, &ANOTHER_POINTER->Math);
+      ANOTHER_POINTER->Sum = ANOTHER_POINTER->Chi + ANOTHER_POINTER->Math;
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD           = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct stu *Bigthree(struct stu *VAR__HEAD)
+{
+   int        VAR__temp;
+   struct stu *VAR__MAX;
+   struct stu *premax;
+   struct stu *New;
+   struct stu *Newhead = NULL;
+
+   for ( VAR__temp = 0; VAR__temp < 3; VAR__temp++ )
+   {
+      premax              = NULL;
+      VAR__MAX            = VAR__HEAD;
+      YET_ANOTHER_POINTER = VAR__HEAD;
+      ANOTHER_POINTER     = VAR__HEAD->VAR__NEXT;
+
+      while ( ANOTHER_POINTER != NULL )
+      {
+         if ( ANOTHER_POINTER->Sum > VAR__MAX->Sum )
+         {
+            premax   = YET_ANOTHER_POINTER;
+            VAR__MAX = ANOTHER_POINTER;
+         }
+
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( VAR__MAX == VAR__HEAD )
+      {
+         VAR__HEAD = VAR__HEAD->VAR__NEXT;
+      }
+      else
+      {
+         premax->VAR__NEXT = VAR__MAX->VAR__NEXT;
+      }
+
+      VAR__MAX->VAR__NEXT = NULL;
+
+      if ( VAR__temp == 0 )
+      {
+         Newhead = VAR__MAX;
+         New     = Newhead;
+      }
+      else
+      {
+         New = ( New->VAR__NEXT = VAR__MAX );
+      }
+   }
+
+   New->VAR__NEXT = NULL;
+   return Newhead;
+}
+
+
+void output(struct stu *VAR__HEAD)
+{
+   struct stu *VAR_233;
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; printf("%d %d\n", VAR_233->VAR__NUM, VAR_233->Sum), VAR_233 = VAR_233->VAR__NEXT )
+   {
+   }
+}
+
+
+void main()
+{
+   int        VAR_1238123;
+   struct stu *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR__HEAD = Bigthree(VAR__HEAD);
+   output(VAR__HEAD);
+}

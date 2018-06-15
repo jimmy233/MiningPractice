@@ -1,0 +1,80 @@
+struct couple
+{
+   int VAR__819283;
+   int VAR__19328;
+   int ans;
+}
+VAR__4857423[M];
+int vege(int VAR__8444594)
+{
+   int VAR__53647;
+   int ans = 1;
+
+   if (( VAR__8444594 == 2 ) || ( VAR__8444594 == 3 ))
+   {
+      ans = 1;
+   }
+   else
+   {
+      for ( VAR__53647 = 2; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if (( VAR__8444594 % VAR__53647 ) == 0 )
+         {
+            ans = 0;
+            break;
+         }
+      }
+   }
+
+   return ans;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int VAR_FLAG   = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 2; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+   {
+      int ans;
+      ans = vege(VAR__53647);
+
+      if ( ans == 1 )
+      {
+         VAR__4857423[VAR__21230].VAR__819283 = VAR__53647;
+         VAR__4857423[VAR__21230].VAR__19328  = VAR__53647 + 2;
+         VAR__4857423[VAR__21230].ans         = vege(VAR__4857423[VAR__21230].VAR__19328);
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647].ans == 1 )
+      {
+         VAR_FLAG = 1;
+         break;
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("empty\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+      {
+         if ( VAR__4857423[VAR__53647].ans == 1 )
+         {
+            printf("%d %d\n", VAR__4857423[VAR__53647].VAR__819283, VAR__4857423[VAR__53647].VAR__19328);
+         }
+      }
+   }
+
+   return 0;
+}

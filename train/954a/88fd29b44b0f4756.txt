@@ -1,0 +1,80 @@
+struct student
+{
+   char name[20];
+   int  qm;
+   int  bj;
+   char gb;
+   char xb;
+   int  lw;
+   int  jj;
+}
+stu[100];
+int main()
+{
+   char           VAR__4857423;
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__SUM = 0;
+   struct student *pstu    = stu;
+   struct student VAR__112390;
+
+   pstu = &stu[0];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].qm, &stu[VAR__53647].bj, &stu[VAR__53647].gb, &stu[VAR__53647].xb, &stu[VAR__53647].lw);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].jj = 0;
+
+      if (( stu[VAR__53647].qm > 80 ) && ( stu[VAR__53647].lw >= 1 ))
+      {
+         stu[VAR__53647].jj += 8000;
+      }
+
+      if (( stu[VAR__53647].qm > 85 ) && ( stu[VAR__53647].bj > 80 ))
+      {
+         stu[VAR__53647].jj += 4000;
+      }
+
+      if ( stu[VAR__53647].qm > 90 )
+      {
+         stu[VAR__53647].jj += 2000;
+      }
+
+      if (( stu[VAR__53647].qm > 85 ) && ( stu[VAR__53647].xb == 'Y' ))
+      {
+         stu[VAR__53647].jj += 1000;
+      }
+
+      if (( stu[VAR__53647].bj > 80 ) && ( stu[VAR__53647].gb == 'Y' ))
+      {
+         stu[VAR__53647].jj += 850;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( stu[VAR__53647].jj < stu[VAR__53647 + 1].jj )
+         {
+            VAR__112390                   = *( pstu + VAR__53647 );
+            *( pstu + VAR__53647 )        = *(( pstu + VAR__53647 ) + 1 );
+            *(( pstu + 1 ) + VAR__53647 ) = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += stu[VAR__53647].jj;
+   }
+
+   printf("%s\n%d\n%d\n", pstu->name, pstu->jj, VAR__SUM);
+   scanf("%s", VAR__4857423);
+   return 0;
+}

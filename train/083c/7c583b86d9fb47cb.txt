@@ -1,0 +1,83 @@
+long int cifang(int VAR__7685, int VAR__3918907)
+{
+   long int VAR__9290;
+   int      VAR__53647;
+
+   VAR__9290 = 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      VAR__9290 = VAR__9290 * VAR__7685;
+   }
+
+   return VAR__9290;
+}
+
+
+void main()
+{
+   int      VAR__819283;
+   int      VAR__19328;
+   int      VAR__temp;
+   int      VAR__53647;
+   int      mod[50] = { 0 };
+   char     VAR_1238123[10];
+   long int ten;
+
+   scanf("%ld", &VAR__819283);
+   scanf("%s", VAR_1238123);
+   scanf("%ld", &VAR__19328);
+   VAR__temp = 0;
+   ten       = 0;
+   for ( VAR__53647 = 0; VAR_1238123[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      VAR__temp++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      if (( VAR_1238123[VAR__53647] >= 48 ) && ( VAR_1238123[VAR__53647] <= 57 ))
+      {
+         ten = ten + (( VAR_1238123[VAR__53647] - 48 ) * cifang(VAR__819283, ( VAR__temp - VAR__53647 ) - 1));
+      }
+      else
+      if (( VAR_1238123[VAR__53647] >= 65 ) && ( VAR_1238123[VAR__53647] <= 90 ))
+      {
+         ten = ten + (( VAR_1238123[VAR__53647] - 55 ) * cifang(VAR__819283, ( VAR__temp - VAR__53647 ) - 1));
+      }
+      else
+      if (( VAR_1238123[VAR__53647] >= 97 ) && ( VAR_1238123[VAR__53647] <= 122 ))
+      {
+         ten = ten + (( VAR_1238123[VAR__53647] - 87 ) * cifang(VAR__819283, ( VAR__temp - VAR__53647 ) - 1));
+      }
+   }
+
+   VAR__temp = 0;
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      VAR__temp++;
+      mod[VAR__53647] = ten % VAR__19328;
+      ten             = ( ten - mod[VAR__53647] ) / VAR__19328;
+
+      if ( ten == 0 )
+      {
+         break;
+      }
+      else
+      {
+         continue;
+      }
+   }
+
+   for ( VAR__53647 = VAR__temp - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( mod[VAR__53647] <= 9 )
+      {
+         printf("%d", mod[VAR__53647]);
+      }
+      else
+      if ( mod[VAR__53647] > 9 )
+      {
+         printf("%c", mod[VAR__53647] + 55);
+      }
+   }
+}

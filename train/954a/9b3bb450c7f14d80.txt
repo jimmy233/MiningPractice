@@ -1,0 +1,73 @@
+struct student
+{
+   char name[30];
+   int  qimo;
+   int  banji;
+   char ganbu;
+   char xibu;
+   int  lunwen;
+   int  money;
+};
+int suan(struct student *VAR_9494)
+{
+   int mon = 0;
+
+   if (( VAR_9494->qimo > 80 ) && ( VAR_9494->lunwen >= 1 ))
+   {
+      mon += 8000;
+   }
+
+   if (( VAR_9494->qimo > 85 ) && ( VAR_9494->banji > 80 ))
+   {
+      mon += 4000;
+   }
+
+   if ( VAR_9494->qimo > 90 )
+   {
+      mon += 2000;
+   }
+
+   if (( VAR_9494->qimo > 85 ) && ( VAR_9494->xibu == 'Y' ))
+   {
+      mon += 1000;
+   }
+
+   if (( VAR_9494->banji > 80 ) && ( VAR_9494->ganbu == 'Y' ))
+   {
+      mon += 850;
+   }
+
+   return mon;
+}
+
+
+int main()
+{
+   long int       VAR_1238123;
+   long int       VAR__SUM = 0;
+   int            VAR__53647;
+   char           tmp;
+   struct student *stu;
+   struct student *VAR__MAX;
+
+   scanf("%d", &VAR_1238123);
+   stu = (struct student *)malloc(( sizeof( struct student )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d%c%c%c%c%d", stu[VAR__53647].name, &stu[VAR__53647].qimo, &stu[VAR__53647].banji, &tmp, &stu[VAR__53647].ganbu, &tmp, &stu[VAR__53647].xibu, &stu[VAR__53647].lunwen);
+      stu[VAR__53647].money = suan(stu + VAR__53647);
+      VAR__SUM += stu[VAR__53647].money;
+   }
+
+   VAR__MAX = ( stu + VAR_1238123 ) - 1;
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      if ( VAR__MAX->money <= stu[VAR__53647].money )
+      {
+         VAR__MAX = stu + VAR__53647;
+      }
+   }
+
+
+   printf("%s\n%d\n%d\n", VAR__MAX->name, VAR__MAX->money, VAR__SUM);
+}

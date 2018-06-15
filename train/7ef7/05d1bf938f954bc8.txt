@@ -1,0 +1,73 @@
+int mx[200][200];
+int nn;
+int VAR_1238123;
+int ans;
+int main()
+{
+   cin >> nn;
+   for ( int VAR_666 = 1; VAR_666 <= nn; VAR_666++ )
+   {
+      ans         = 0;
+      VAR_1238123 = nn;
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            cin >> mx[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( ; VAR_1238123 >= 2; VAR_1238123-- )
+      {
+         int smin;
+         for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+         {
+            smin = mx[VAR__53647][1];
+            for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+            {
+               smin = ( smin < mx[VAR__53647][VAR__21230] ) ? ( smin ) : ( mx[VAR__53647][VAR__21230] );
+            }
+
+            for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+            {
+               mx[VAR__53647][VAR__21230] -= smin;
+            }
+         }
+
+         for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+         {
+            smin = mx[1][VAR__53647];
+            for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+            {
+               smin = ( smin < mx[VAR__21230][VAR__53647] ) ? ( smin ) : ( mx[VAR__21230][VAR__53647] );
+            }
+
+            for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+            {
+               mx[VAR__21230][VAR__53647] -= smin;
+            }
+         }
+
+         ans += mx[2][2];
+         for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+         {
+            for ( int VAR__21230 = 2; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               mx[VAR__53647][VAR__21230] = mx[VAR__53647][VAR__21230 + 1];
+            }
+         }
+
+         for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+         {
+            for ( int VAR__21230 = 2; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               mx[VAR__21230][VAR__53647] = mx[VAR__21230 + 1][VAR__53647];
+            }
+         }
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

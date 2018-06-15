@@ -1,0 +1,78 @@
+int month[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int run(int year)
+{
+   if (( year % 4 ) != 0 )
+   {
+      return 0;
+   }
+
+   if (( year % 4 ) == 0 )
+   {
+      if (( year % 100 ) == 0 )
+      {
+         if (( year % 400 ) == 0 )
+         {
+            return 1;
+         }
+         else
+         {
+            return 0;
+         }
+      }
+      else
+      {
+         return 1;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int year;
+   int date1;
+   int date2;
+   int tem;
+   int day[201] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+   {
+      scanf("%d%d%d", &year, &date1, &date2);
+      month[2] = 28;
+
+      if ( run(year))
+      {
+         month[2] = 29;
+      }
+
+      if ( date1 > date2 )
+      {
+         tem   = date1;
+         date1 = date2;
+         date2 = tem;
+      }
+
+      for ( VAR__21230 = date1; VAR__21230 < date2; VAR__21230++ )
+      {
+         day[VAR__53647] += month[VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 + 1 ); VAR__53647++ )
+   {
+      if (( day[VAR__53647] % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}

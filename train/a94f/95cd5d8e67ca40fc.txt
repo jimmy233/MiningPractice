@@ -1,0 +1,95 @@
+int main()
+{
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__12302 = 1;
+   int VAR__COUNT = 0;
+   int VAR__127322[110][110];
+   int vis[110][110];
+
+   memset(vis, 0, sizeof( vis ));
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 1; VAR__53647 <= row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= col; VAR__21230++ )
+      {
+         scanf("%d", &VAR__127322[VAR__53647][VAR__21230]);
+      }
+   }
+
+   VAR__53647 = 1;
+   VAR__21230 = 1;
+   for ( ; ; )
+   {
+      printf("%d\n", VAR__127322[VAR__53647][VAR__21230]);
+      VAR__COUNT++;
+
+      if ( VAR__COUNT >= ( row * col ))
+      {
+         break;
+      }
+
+      vis[VAR__53647][VAR__21230] = 1;
+
+      if ( VAR__12302 == 1 )
+      {
+         if ((( VAR__21230 + 1 ) > col ) || vis[VAR__53647][VAR__21230 + 1] )
+         {
+            VAR__12302 = 2;
+            VAR__53647++;
+            continue;
+         }
+         else
+         {
+            VAR__21230++;
+         }
+      }
+
+      if ( VAR__12302 == 2 )
+      {
+         if ((( VAR__53647 + 1 ) > row ) || vis[VAR__53647 + 1][VAR__21230] )
+         {
+            VAR__12302 = 3;
+            VAR__21230--;
+            continue;
+         }
+         else
+         {
+            VAR__53647++;
+         }
+      }
+
+      if ( VAR__12302 == 3 )
+      {
+         if (( VAR__21230 < 2 ) || vis[VAR__53647][VAR__21230 - 1] )
+         {
+            VAR__12302 = 4;
+            VAR__53647--;
+            continue;
+         }
+         else
+         {
+            VAR__21230--;
+         }
+      }
+
+      if ( VAR__12302 == 4 )
+      {
+         if (( VAR__53647 < 1 ) || vis[VAR__53647 - 1][VAR__21230] )
+         {
+            VAR__12302 = 1;
+            VAR__21230++;
+            continue;
+         }
+         else
+         {
+            VAR__53647--;
+         }
+      }
+   }
+
+   scanf("%d", &VAR__53647);
+   return 0;
+}

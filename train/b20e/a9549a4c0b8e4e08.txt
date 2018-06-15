@@ -1,0 +1,122 @@
+int VAR_1238123;
+int VAR__819283[1001];
+int VAR__19328[1001];
+int win;
+int lose;
+int cmp(const void *e1, const void *e2)
+{
+   return ( *((int *)e1 )) - ( *((int *)e2 ));
+}
+
+
+void cal(int VAR__1238129)
+{
+   if ( VAR__1238129 == 0 )
+   {
+      return;
+   }
+
+   if ( VAR__819283[1] > VAR__19328[VAR__1238129] )
+   {
+      win += VAR__1238129;
+      return;
+   }
+
+   if ( VAR__19328[1] > VAR__819283[VAR__1238129] )
+   {
+      lose += VAR__1238129;
+   }
+
+   if ( VAR__819283[1] == VAR__19328[VAR__1238129] )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647 + 1];
+      }
+
+      cal(VAR__1238129 - 1);
+      return;
+   }
+
+   if ( VAR__19328[1] == VAR__819283[VAR__1238129] )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = VAR__19328[VAR__53647 + 1];
+      }
+
+      cal(VAR__1238129 - 1);
+      return;
+   }
+
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] <= VAR__19328[1] )
+      {
+         continue;
+      }
+
+      for ( VAR__21230 = 1; VAR__21230 <= VAR__1238129; VAR__21230++ )
+      {
+         if (( VAR__819283[VAR__53647] > VAR__19328[VAR__21230] ) && ( VAR__21230 < VAR__1238129 ))
+         {
+            continue;
+         }
+
+         if ( VAR__819283[VAR__53647] <= VAR__19328[VAR__21230] )
+         {
+            VAR__21230--;
+         }
+
+         for ( int VAR__temp = VAR__53647; VAR__temp < VAR__1238129; VAR__temp++ )
+         {
+            VAR__819283[VAR__temp] = VAR__819283[VAR__temp + 1];
+         }
+
+         for ( int VAR__temp = VAR__21230; VAR__temp < VAR__1238129; VAR__temp++ )
+         {
+            VAR__19328[VAR__temp] = VAR__19328[VAR__temp + 1];
+         }
+
+         win++;
+         cal(VAR__1238129 - 1);
+         return;
+      }
+   }
+}
+
+
+int main()
+{
+   while ( true )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      VAR__819283[0] = ( VAR__19328[0] = 0 );
+      qsort(VAR__819283, VAR_1238123 + 1, sizeof( int ), cmp);
+      qsort(VAR__19328, VAR_1238123 + 1, sizeof( int ), cmp);
+      win  = 0;
+      lose = 0;
+      cal(VAR_1238123);
+      ( cout << ( 200 * ( win - lose ))) << endl;
+   }
+
+   return 0;
+}

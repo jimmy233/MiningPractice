@@ -1,0 +1,114 @@
+int *arrange(int VAR__819283[], int VAR_1238123);
+
+int main()
+{
+   int money;
+   int VAR__NUM;
+
+   for ( ; ; )
+   {
+      money = 0;
+      scanf("%d", &VAR__NUM);
+
+      if ( VAR__NUM == 0 )
+      {
+         break;
+      }
+      else
+      {
+         int king[1000];
+         int tianji[1000];
+         int i1;
+         for ( i1 = 0; i1 <= ( VAR__NUM - 1 ); i1++ )
+         {
+            if ( i1 == 0 )
+            {
+               scanf("%d", &tianji[i1]);
+            }
+            else
+            {
+               scanf(" %d", &tianji[i1]);
+            }
+         }
+
+         for ( i1 = 0; i1 <= ( VAR__NUM - 1 ); i1++ )
+         {
+            if ( i1 == 0 )
+            {
+               scanf("%d", &king[i1]);
+            }
+            else
+            {
+               scanf(" %d", &king[i1]);
+            }
+         }
+
+         arrange(tianji, VAR__NUM);
+         arrange(king, VAR__NUM);
+         int tianhead = 0;
+         int kinghead = 0;
+         int tiantail = VAR__NUM - 1;
+         int kingtail = VAR__NUM - 1;
+         int VAR_FLAG = 1;
+         for ( ; VAR_FLAG; )
+         {
+            if ( tianhead == tiantail )
+            {
+               VAR_FLAG = 0;
+            }
+
+            if ( tianji[tianhead] > king[kinghead] )
+            {
+               money += 200;
+               tianhead++;
+               kinghead++;
+            }
+            else
+            if ( tianji[tiantail] > king[kingtail] )
+            {
+               money += 200;
+               tiantail--;
+               kingtail--;
+            }
+            else
+            {
+               if ( tianji[tiantail] < king[kinghead] )
+               {
+                  money -= 200;
+               }
+
+               tiantail--;
+               kinghead++;
+            }
+         }
+
+         printf("%d\n", money);
+      }
+   }
+
+   return 0;
+}
+
+
+int *arrange(int VAR__819283[], int VAR_1238123)
+{
+   int i1;
+   int position = VAR_1238123 - 1;
+
+   for ( i1 = 0; i1 <= ( VAR_1238123 - 1 ); i1++, position-- )
+   {
+      int i2;
+      for ( i2 = 0; i2 <= ( position - 1 ); i2++ )
+      {
+         if ( VAR__819283[i2] < VAR__819283[i2 + 1] )
+         {
+            int tmp;
+            tmp                 = VAR__819283[i2];
+            VAR__819283[i2]     = VAR__819283[i2 + 1];
+            VAR__819283[i2 + 1] = tmp;
+         }
+      }
+   }
+
+   return VAR__819283;
+}

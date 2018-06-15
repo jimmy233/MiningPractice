@@ -1,0 +1,116 @@
+void main()
+{
+   int VAR_1238123;
+   int tian[1000];
+   int qi[1000];
+   int VAR__53647;
+   int *VAR_233;
+   int *VAR_666;
+   int *ANOTHER_POINTER;
+   int *q1;
+   int VAR__SUM;
+   int VAR__temp;
+   int VAR__TEMP;
+
+   while ( 1 )
+   {
+      VAR__SUM = 0;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         return;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qi[VAR__53647]);
+      }
+
+      VAR__temp = VAR_1238123;
+
+      while ( VAR__temp-- )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+         {
+            if ( tian[VAR__53647] < tian[VAR__53647 + 1] )
+            {
+               VAR__TEMP            = tian[VAR__53647];
+               tian[VAR__53647]     = tian[VAR__53647 + 1];
+               tian[VAR__53647 + 1] = VAR__TEMP;
+            }
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+         {
+            if ( qi[VAR__53647] < qi[VAR__53647 + 1] )
+            {
+               VAR__TEMP          = qi[VAR__53647];
+               qi[VAR__53647]     = qi[VAR__53647 + 1];
+               qi[VAR__53647 + 1] = VAR__TEMP;
+            }
+         }
+      }
+
+      VAR_233         = ( tian + VAR_1238123 ) - 1;
+      ANOTHER_POINTER = tian;
+      VAR_666         = ( qi + VAR_1238123 ) - 1;
+      q1 = qi;
+
+      while ( VAR_233 >= ANOTHER_POINTER )
+      {
+         if (( *VAR_233 ) > ( *VAR_666 ))
+         {
+            VAR__SUM = VAR__SUM + 200;
+            VAR_233--;
+            VAR_666--;
+         }
+         else
+         if (( *VAR_233 ) < ( *VAR_666 ))
+         {
+            VAR__SUM = VAR__SUM - 200;
+            VAR_233--;
+            q1++;
+         }
+         else
+         if (( *VAR_233 ) == ( *VAR_666 ))
+         {
+            if (( *ANOTHER_POINTER ) > ( *q1 ))
+            {
+               VAR__SUM = VAR__SUM + 200;
+               ANOTHER_POINTER++;
+               q1++;
+            }
+            else
+            if (( *ANOTHER_POINTER ) < ( *q1 ))
+            {
+               VAR__SUM = VAR__SUM - 200;
+               VAR_233--;
+               q1++;
+            }
+            else
+            if (( *ANOTHER_POINTER ) == ( *q1 ))
+            {
+               if (( *ANOTHER_POINTER ) == ( *VAR_233 ))
+               {
+                  VAR__SUM = VAR__SUM + 0;
+                  break;
+               }
+               else
+               {
+                  VAR__SUM = VAR__SUM - 200;
+                  VAR_233--;
+                  q1++;
+               }
+            }
+         }
+      }
+
+      printf("%d\n", VAR__SUM);
+   }
+}

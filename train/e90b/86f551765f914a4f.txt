@@ -1,0 +1,94 @@
+struct student
+{
+   int            id;
+   int            chi;
+   int            math;
+   int            total;
+   struct student *VAR__NEXT;
+};
+int student_num;
+struct student *creat()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   int            VAR_1238123 = 0;
+
+   scanf("%d", &student_num);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+
+   while ( VAR_1238123 < student_num )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      if ( VAR_1238123 == ( student_num - 1 ))
+      {
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+
+      scanf("%d %d %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->chi, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->total         = ANOTHER_POINTER->chi + ANOTHER_POINTER->math;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER                = (struct student *)malloc(sizeof( struct student ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      VAR_1238123++;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   int            VAR__53647;
+   int            VAR_1238123 = 0;
+   int            first;
+   int            second;
+   int            third;
+   int            firstid;
+   int            secondid;
+   int            thirdid;
+
+   VAR__HEAD = creat();
+   first     = 0;
+   second    = 0;
+   third     = 0;
+   VAR_233   = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 <= student_num; VAR__53647++ )
+   {
+      if ( VAR_233->total > first )
+      {
+         third    = second;
+         second   = first;
+         first    = VAR_233->total;
+         thirdid  = secondid;
+         secondid = firstid;
+         firstid  = VAR_233->id;
+      }
+      else
+      if (( VAR_233->total <= first ) && ( VAR_233->total > second ))
+      {
+         third    = second;
+         second   = VAR_233->total;
+         thirdid  = secondid;
+         secondid = VAR_233->id;
+      }
+      else
+      if (( VAR_233->total <= second ) && ( VAR_233->total > third ))
+      {
+         third   = VAR_233->total;
+         thirdid = VAR_233->id;
+      }
+
+
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n%d %d\n%d %d\n", firstid, first, secondid, second, thirdid, third);
+}

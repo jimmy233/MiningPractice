@@ -1,0 +1,106 @@
+int main()
+{
+   int  VAR_1238123;
+   int  row;
+   int  col;
+   int  VAR__1238129;
+   int  VAR__8444594;
+   int  N[100];
+   int  VAR__12302;
+   char VAR__819283[100][100];
+   char VAR__19328[100][100];
+
+   scanf("%d", &VAR_1238123);
+   scanf("\n");
+   N[1] = 0;
+   for ( row = 1; row <= VAR_1238123; row++ )
+   {
+      for ( col = 1; col <= VAR_1238123; col++ )
+      {
+         scanf("%c", &VAR__819283[row][col]);
+         VAR__19328[row][col] = VAR__819283[row][col];
+
+         if ( VAR__819283[row][col] == '@' )
+         {
+            N[1]++;
+         }
+      }
+
+      scanf("\n");
+   }
+
+   scanf("%d", &VAR__1238129);
+   for ( row = 0; row <= ( VAR_1238123 + 1 ); row++ )
+   {
+      for ( col = 0; col <= ( VAR_1238123 + 1 ); col++ )
+      {
+         if (((( row == 0 ) || ( row == ( VAR_1238123 + 1 ))) || ( col == 0 )) || ( col == ( VAR_1238123 + 1 )))
+         {
+            VAR__819283[row][col] = '#';
+            VAR__19328[row][col]  = VAR__819283[row][col];
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= ( VAR__1238129 - 1 ); VAR__8444594++ )
+   {
+      VAR__12302          = 0;
+      N[VAR__8444594 + 1] = 0;
+      for ( row = 1; row <= VAR_1238123; row++ )
+      {
+         for ( col = 1; col <= VAR_1238123; col++ )
+         {
+            if ( VAR__819283[row][col] == '@' )
+            {
+               if ( VAR__819283[row][col + 1] == '.' )
+               {
+                  VAR__19328[row][col + 1] = '@';
+               }
+               else
+               {
+               }
+
+               if ( VAR__819283[row][col - 1] == '.' )
+               {
+                  VAR__19328[row][col - 1] = '@';
+               }
+               else
+               {
+               }
+
+               if ( VAR__819283[row - 1][col] == '.' )
+               {
+                  VAR__19328[row - 1][col] = '@';
+               }
+               else
+               {
+               }
+
+               if ( VAR__819283[row + 1][col] == '.' )
+               {
+                  VAR__19328[row + 1][col] = '@';
+               }
+               else
+               {
+               }
+            }
+         }
+      }
+
+      for ( row = 1; row <= VAR_1238123; row++ )
+      {
+         for ( col = 1; col <= VAR_1238123; col++ )
+         {
+            VAR__819283[row][col] = VAR__19328[row][col];
+
+            if ( VAR__819283[row][col] == '@' )
+            {
+               N[VAR__8444594 + 1]++;
+            }
+         }
+      }
+   }
+
+   printf("%d", N[VAR__1238129]);
+   return 0;
+}

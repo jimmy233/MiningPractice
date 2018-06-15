@@ -1,0 +1,66 @@
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   char VAR_9494[100] = { 0 };
+
+   scanf("%d ", &VAR__819283);
+   int VAR__53647;
+   int VAR_1238123 = 1;
+   scanf("%s", &VAR_9494);
+   scanf("%d", &VAR__19328);
+   VAR_1238123 = strlen(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647] >= 'a' ) && ( VAR_9494[VAR__53647] <= 'z' ))
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] - 32;
+      }
+
+      if (( VAR_9494[VAR__53647] >= 'A' ) && ( VAR_9494[VAR__53647] <= 'Z' ))
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] - 55;
+      }
+
+      if (( VAR_9494[VAR__53647] >= '0' ) && ( VAR_9494[VAR__53647] <= '9' ))
+      {
+         VAR_9494[VAR__53647] = VAR_9494[VAR__53647] - 48;
+      }
+   }
+
+   int VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__temp += (int)( VAR_9494[VAR__53647] * pow(VAR__819283, ( VAR_1238123 - VAR__53647 ) - 1));
+   }
+
+   char s2[100];
+   int  VAR__COUNT = 0;
+
+   if ( VAR__temp == 0 )
+   {
+      printf("0");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__temp != 0; VAR__53647++ )
+      {
+         s2[VAR__53647] = ( VAR__temp % VAR__19328 ) + 48;
+
+         if (( VAR__temp % VAR__19328 ) >= 10 )
+         {
+            s2[VAR__53647] = ( VAR__temp % VAR__19328 ) + 55;
+         }
+
+         VAR__COUNT++;
+         VAR__temp = VAR__temp / VAR__19328;
+      }
+
+      for ( VAR__53647 = VAR__COUNT - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         printf("%c", s2[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

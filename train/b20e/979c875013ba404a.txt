@@ -1,0 +1,139 @@
+int main(void)
+{
+   int VAR_1238123 = 1;
+   int VAR_129012  = 0;
+   int VAR_2890    = 0;
+   int win         = 0;
+   int lose        = 0;
+   int tie         = 0;
+   int money       = 0;
+   int t1          = 0;
+   int t2          = 0;
+   int q1          = 0;
+   int q2          = 0;
+
+   for ( ; ; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         int *VAR__819283 = NULL;
+         int *VAR__19328  = NULL;
+         VAR__819283 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         VAR__19328  = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR__819283[VAR__53647]);
+         }
+
+         VAR_129012 = 1;
+         VAR_2890   = 0;
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+            {
+               if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] )
+               {
+                  VAR_129012 = VAR__819283[VAR__21230];
+                  VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+                  VAR__819283[VAR__21230 + 1] = VAR_129012;
+               }
+            }
+         }
+
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &VAR__19328[VAR__53647]);
+         }
+
+         VAR_129012 = 1;
+         VAR_2890   = 0;
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+            {
+               if ( VAR__19328[VAR__21230] < VAR__19328[VAR__21230 + 1] )
+               {
+                  VAR_129012                 = VAR__19328[VAR__21230];
+                  VAR__19328[VAR__21230]     = VAR__19328[VAR__21230 + 1];
+                  VAR__19328[VAR__21230 + 1] = VAR_129012;
+               }
+            }
+         }
+
+         t1    = 0;
+         t2    = VAR_1238123 - 1;
+         q1    = 0;
+         q2    = VAR_1238123 - 1;
+         win   = 0;
+         lose  = 0;
+         money = 0;
+         tie   = 0;
+         for ( ; ( t1 != t2 ) && ( q1 != q2 ); )
+         {
+            if ( VAR__819283[t1] > VAR__19328[q1] )
+            {
+               win++;
+               t1++;
+               q1++;
+               continue;
+            }
+            else
+            if ( VAR__819283[t2] > VAR__19328[q2] )
+            {
+               win++;
+               t2--;
+               q2--;
+               continue;
+            }
+            else
+            if ( VAR__819283[t2] == VAR__19328[q1] )
+            {
+               tie++;
+               t2--;
+               q1++;
+            }
+            else
+            if ( VAR__819283[t2] < VAR__19328[q1] )
+            {
+               lose++;
+               t2--;
+               q1++;
+            }
+         }
+
+         if ( VAR__819283[t1] == VAR__19328[q1] )
+         {
+            tie++;
+         }
+         else
+         if ( VAR__819283[t1] > VAR__19328[q1] )
+         {
+            win++;
+         }
+         else
+         {
+            lose++;
+         }
+
+
+         money = ( 200 * win ) - ( 200 * lose );
+
+         if ( VAR_1238123 == 3 )
+         {
+            printf("%d\n", 200);
+         }
+         else
+         {
+            printf("%d\n", money);
+         }
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,116 @@
+void InsertSort(int [], int);
+int SaiMa(int [], int [], int);
+
+void main()
+{
+   int horse_n[100];
+   int horseTian[100][1000];
+   int horseQi[100][1000];
+   int horse_i = 0;
+   int VAR__53647;
+
+   scanf("%d", &horse_n[horse_i]);
+   do
+   {
+      for ( VAR__53647 = 0; VAR__53647 < horse_n[horse_i]; VAR__53647++ )
+      {
+         scanf("%d", &horseTian[horse_i][VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < horse_n[horse_i]; VAR__53647++ )
+      {
+         scanf("%d", &horseQi[horse_i][VAR__53647]);
+      }
+
+      horse_i++;
+      scanf("%d", &horse_n[horse_i]);
+   } while ( horse_n[horse_i] != 0 );
+   for ( VAR__53647 = 0; VAR__53647 < horse_i; VAR__53647++ )
+   {
+      InsertSort(horseTian[VAR__53647], horse_n[VAR__53647]);
+      InsertSort(horseQi[VAR__53647], horse_n[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < horse_i; VAR__53647++ )
+   {
+      printf("%d\n", SaiMa(horseTian[VAR__53647], horseQi[VAR__53647], horse_n[VAR__53647]));
+   }
+}
+
+
+void InsertSort(int Ptr[], int length)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int key;
+
+   for ( VAR__53647 = 1; VAR__53647 < length; VAR__53647++ )
+   {
+      key        = Ptr[VAR__53647];
+      VAR__21230 = VAR__53647 - 1;
+
+      while (( VAR__21230 >= 0 ) && ( Ptr[VAR__21230] < key ))
+      {
+         Ptr[VAR__21230 + 1] = Ptr[VAR__21230];
+         VAR__21230          = VAR__21230 - 1;
+      }
+
+      Ptr[VAR__21230 + 1] = key;
+   }
+}
+
+
+int SaiMa(int Tian[], int Qi[], int length)
+{
+   int VAR__1111[1000][1000];
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if ( Qi[VAR__53647] < Tian[0] )
+      {
+         VAR__1111[VAR__53647][0] = 1;
+      }
+      else
+      if ( Qi[VAR__53647] == Tian[0] )
+      {
+         VAR__1111[VAR__53647][0] = 0;
+      }
+      else
+      {
+         VAR__1111[VAR__53647][0] = -1;
+      }
+   }
+
+   for ( VAR__53647 = length - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < ( length - VAR__53647 ); VAR__21230++ )
+      {
+         if ( Qi[VAR__53647 + VAR__21230] < Tian[VAR__21230] )
+         {
+            VAR__1111[VAR__53647][VAR__21230] = VAR__1111[VAR__53647][VAR__21230 - 1] + 1;
+         }
+         else
+         {
+            if ( Qi[VAR__53647 + VAR__21230] > Tian[VAR__21230] )
+            {
+               VAR__1111[VAR__53647][VAR__21230] = VAR__1111[VAR__53647 + 1][VAR__21230 - 1] - 1;
+            }
+            else
+            {
+               if (( VAR__1111[VAR__53647 + 1][VAR__21230 - 1] - 1 ) > VAR__1111[VAR__53647][VAR__21230 - 1] )
+               {
+                  VAR__1111[VAR__53647][VAR__21230] = VAR__1111[VAR__53647 + 1][VAR__21230 - 1] - 1;
+               }
+               else
+               {
+                  VAR__1111[VAR__53647][VAR__21230] = VAR__1111[VAR__53647][VAR__21230 - 1];
+               }
+            }
+         }
+      }
+   }
+
+   return 200 * VAR__1111[0][length - 1];
+}

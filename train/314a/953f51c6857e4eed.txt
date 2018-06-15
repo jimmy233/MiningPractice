@@ -1,0 +1,85 @@
+void main()
+{
+   char VAR__819283[10000] = { 0 };
+   char VAR__19328[10000]  = { 0 };
+   int  VAR_1238123        = 1;
+   int  VAR__temp          = 0;
+   int  VAR_129012;
+   int  VAR__8444594 = 0;
+   int  alen;
+   int  blen;
+   int  VAR__21230;
+   int  VAR__53647;
+   int  atime[10000];
+   int  btime[10000];
+   int  time[1000];
+
+   gets(VAR__819283);
+   gets(VAR__19328);
+   alen = strlen(VAR__819283);
+   blen = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < 10000; VAR__53647++ )
+   {
+      atime[VAR__53647] = 0;
+      btime[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      time[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < alen; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == ',' )
+      {
+         VAR__8444594 = VAR__8444594 + 1;
+         VAR_1238123  = VAR_1238123 + 1;
+      }
+      else
+      {
+         atime[VAR__8444594] = ( atime[VAR__8444594] * 10 ) + ( VAR__819283[VAR__53647] - '0' );
+      }
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < blen; VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] == ',' )
+      {
+         VAR__8444594 = VAR__8444594 + 1;
+      }
+      else
+      {
+         btime[VAR__8444594] = ( btime[VAR__8444594] * 10 ) + ( VAR__19328[VAR__53647] - '0' );
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__8444594 + 1 ); VAR__21230++ )
+      {
+         if (( atime[VAR__21230] <= VAR__53647 ) && ( btime[VAR__21230] > VAR__53647 ))
+         {
+            time[VAR__53647] = time[VAR__53647] + 1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < ( 999 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( time[VAR__21230] > time[VAR__21230 + 1] )
+         {
+            VAR__temp            = time[VAR__21230];
+            time[VAR__21230]     = time[VAR__21230 + 1];
+            time[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+
+   printf("%d %d", VAR_1238123, time[999]);
+}

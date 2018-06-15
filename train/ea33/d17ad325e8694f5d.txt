@@ -1,0 +1,49 @@
+int locate(char VAR_9494[])
+{
+   int VAR__53647;
+   int max_loc = 0;
+   int LEN_OF_STH;
+
+   LEN_OF_STH = strlen(VAR_9494);
+   for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] > VAR_9494[max_loc] )
+      {
+         max_loc = VAR__53647;
+      }
+   }
+
+   return max_loc;
+}
+
+
+void main()
+{
+   char VAR__819283[100][21];
+   char VAR__19328[100][30];
+   char VAR__MAX[100];
+   char LEN_OF_STH[100];
+   int  VAR__53647 = -1;
+   int  VAR__21230;
+   int  VAR__1238129;
+
+   do
+   {
+      VAR__53647++;
+   } while ( scanf("%s%s", VAR__819283[VAR__53647], VAR__19328[VAR__53647]) != EOF );
+   for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      VAR__MAX[VAR__21230]   = locate(VAR__819283[VAR__21230]);
+      LEN_OF_STH[VAR__21230] = strlen(VAR__19328[VAR__21230]);
+      VAR__1238129           = VAR__MAX[VAR__21230] + 1;
+
+      while ( VAR__819283[VAR__21230][VAR__1238129] != '\0' )
+      {
+         VAR__19328[VAR__21230][LEN_OF_STH[VAR__21230]++] = VAR__819283[VAR__21230][VAR__1238129++];
+      }
+
+      VAR__19328[VAR__21230][LEN_OF_STH[VAR__21230]]    = '\0';
+      VAR__819283[VAR__21230][VAR__MAX[VAR__21230] + 1] = '\0';
+      printf("%s\n", strcat(VAR__819283[VAR__21230], VAR__19328[VAR__21230]));
+   }
+}

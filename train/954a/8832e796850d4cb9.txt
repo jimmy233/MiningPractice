@@ -1,0 +1,117 @@
+int sch(int, int, char [], char [], int);
+
+void main()
+{
+   struct student
+   {
+      char           name[20];
+      int            ave;
+      int            jud;
+      char           gan[2];
+      char           xib[2];
+      int            pap;
+      struct student *VAR__NEXT;
+   }
+   *ANOTHER_POINTER;
+   struct student
+   {
+      char           name[20];
+      int            ave;
+      int            jud;
+      char           gan[2];
+      char           xib[2];
+      int            pap;
+      struct student *VAR__NEXT;
+   }
+   *YET_ANOTHER_POINTER;
+   struct student
+   {
+      char           name[20];
+      int            ave;
+      int            jud;
+      char           gan[2];
+      char           xib[2];
+      int            pap;
+      struct student *VAR__NEXT;
+   }
+   *VAR__HEAD;
+   struct student
+   {
+      char           name[20];
+      int            ave;
+      int            jud;
+      char           gan[2];
+      char           xib[2];
+      int            pap;
+      struct student *VAR__NEXT;
+   }
+       *VAR_233;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__MAX;
+   int VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = ( VAR__HEAD = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )))));
+   scanf("%s", ANOTHER_POINTER->name);
+   scanf("%d%d", &ANOTHER_POINTER->ave, &ANOTHER_POINTER->jud);
+   scanf("%s", ANOTHER_POINTER->gan);
+   scanf("%s", ANOTHER_POINTER->xib);
+   scanf("%d", &ANOTHER_POINTER->pap);
+   VAR__MAX = ( VAR__temp = sch(ANOTHER_POINTER->ave, ANOTHER_POINTER->jud, ANOTHER_POINTER->gan, ANOTHER_POINTER->xib, ANOTHER_POINTER->pap));
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s", ANOTHER_POINTER->name);
+      scanf("%d%d", &ANOTHER_POINTER->ave, &ANOTHER_POINTER->jud);
+      scanf("%s", ANOTHER_POINTER->gan);
+      scanf("%s", ANOTHER_POINTER->xib);
+      scanf("%d", &ANOTHER_POINTER->pap);
+      VAR__temp = VAR__temp + sch(ANOTHER_POINTER->ave, ANOTHER_POINTER->jud, ANOTHER_POINTER->gan, ANOTHER_POINTER->xib, ANOTHER_POINTER->pap);
+
+      if ( sch(ANOTHER_POINTER->ave, ANOTHER_POINTER->jud, ANOTHER_POINTER->gan, ANOTHER_POINTER->xib, ANOTHER_POINTER->pap) > VAR__MAX )
+      {
+         VAR__MAX = sch(ANOTHER_POINTER->ave, ANOTHER_POINTER->jud, ANOTHER_POINTER->gan, ANOTHER_POINTER->xib, ANOTHER_POINTER->pap);
+         VAR_233  = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   printf("%s\n%d\n%d\n", VAR_233->name, VAR__MAX, VAR__temp);
+}
+
+
+int sch(int ave, int jud, char gan[], char xib[], int pap)
+{
+   int VAR__temp = 0;
+
+   if (( ave > 80 ) && ( pap >= 1 ))
+   {
+      VAR__temp = VAR__temp + 8000;
+   }
+
+   if (( ave > 85 ) && ( jud > 80 ))
+   {
+      VAR__temp = VAR__temp + 4000;
+   }
+
+   if ( ave > 90 )
+   {
+      VAR__temp = VAR__temp + 2000;
+   }
+
+   if (( ave > 85 ) && ( strcmp(xib, "Y") == 0 ))
+   {
+      VAR__temp = VAR__temp + 1000;
+   }
+
+   if (( jud > 80 ) && ( strcmp(gan, "Y") == 0 ))
+   {
+      VAR__temp = VAR__temp + 850;
+   }
+
+   return VAR__temp;
+}

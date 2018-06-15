@@ -1,0 +1,91 @@
+int main(int argc, char *argv[])
+{
+   int year;
+   int month;
+   int day;
+   int VAR__53647;
+   int total = 0;
+   int week;
+
+   scanf("%d%d%d", &year, &month, &day);
+   year = ( year % 400 ) + 400;
+   for ( VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         total = total + 366;
+         total = total % 7;
+      }
+      else
+      {
+         total = total + 365;
+         total = total % 7;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         total = total + 31;
+      }
+
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         total = total + 30;
+      }
+
+      if ( VAR__53647 == 2 )
+      {
+         if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+         {
+            total = total + 29;
+         }
+         else
+         {
+            total = total + 28;
+         }
+      }
+
+      total = total % 7;
+   }
+
+   total = total + day;
+   week  = total % 7;
+   switch ( week )
+   {
+   case 0:
+      printf("Sun.");
+      break;
+
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+
+   default:
+      printf("def.");
+      break;
+   }
+
+   return 0;
+}

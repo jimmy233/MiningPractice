@@ -1,0 +1,77 @@
+void Find(int matrix[][9], int VAR_1238123);
+
+int main()
+{
+   int matrix[9][9];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR_1238123;
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         matrix[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   matrix[4][4] = VAR__1238129;
+   Find(matrix, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      cout << matrix[VAR__53647][0];
+      for ( VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+      {
+         ( cout << " " ) << matrix[VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+}
+
+
+void Find(int matrix[][9], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP[9][9];
+
+   memset(VAR__TEMP, 0, sizeof( VAR__TEMP ));
+
+   if ( VAR_1238123 == 0 )
+   {
+      return;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 8; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < 8; VAR__21230++ )
+      {
+         if ( matrix[VAR__53647][VAR__21230] != 0 )
+         {
+            VAR__TEMP[VAR__53647][VAR__21230]         = ( 2 * matrix[VAR__53647][VAR__21230] ) + VAR__TEMP[VAR__53647][VAR__21230];
+            VAR__TEMP[VAR__53647 + 1][VAR__21230]     = matrix[VAR__53647][VAR__21230] + VAR__TEMP[VAR__53647 + 1][VAR__21230];
+            VAR__TEMP[VAR__53647 - 1][VAR__21230]     = matrix[VAR__53647][VAR__21230] + VAR__TEMP[VAR__53647 - 1][VAR__21230];
+            VAR__TEMP[VAR__53647][VAR__21230 + 1]     = matrix[VAR__53647][VAR__21230] + VAR__TEMP[VAR__53647][VAR__21230 + 1];
+            VAR__TEMP[VAR__53647][VAR__21230 - 1]     = matrix[VAR__53647][VAR__21230] + VAR__TEMP[VAR__53647][VAR__21230 - 1];
+            VAR__TEMP[VAR__53647 + 1][VAR__21230 - 1] = matrix[VAR__53647][VAR__21230] + VAR__TEMP[VAR__53647 + 1][VAR__21230 - 1];
+            VAR__TEMP[VAR__53647 + 1][VAR__21230 + 1] = matrix[VAR__53647][VAR__21230] + VAR__TEMP[VAR__53647 + 1][VAR__21230 + 1];
+            VAR__TEMP[VAR__53647 - 1][VAR__21230 - 1] = matrix[VAR__53647][VAR__21230] + VAR__TEMP[VAR__53647 - 1][VAR__21230 - 1];
+            VAR__TEMP[VAR__53647 - 1][VAR__21230 + 1] = matrix[VAR__53647][VAR__21230] + VAR__TEMP[VAR__53647 - 1][VAR__21230 + 1];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         matrix[VAR__53647][VAR__21230] = VAR__TEMP[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   Find(matrix, VAR_1238123 - 1);
+}

@@ -1,0 +1,101 @@
+void exchange(int *VAR__819283, int *VAR__19328)
+{
+   if (( *VAR__819283 ) > ( *VAR__19328 ))
+   {
+      *VAR__819283 = ( *VAR__819283 ) + ( *VAR__19328 );
+      *VAR__19328  = ( *VAR__819283 ) - ( *VAR__19328 );
+      *VAR__819283 = ( *VAR__819283 ) - ( *VAR__19328 );
+   }
+}
+
+
+void sort(int *VAR_233, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         exchange(VAR_233 + VAR__21230, ( VAR_233 + VAR__21230 ) + 1);
+      }
+   }
+}
+
+
+int race(int *VAR__temp, int *VAR_666, int VAR_1238123)
+{
+   int tj         = 0;
+   int qw         = 0;
+   int VAR__COUNT = 0;
+
+   for ( ; ; )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      if (( *( VAR__temp + tj )) > ( *( VAR_666 + qw )))
+      {
+         tj++;
+         qw++;
+         VAR__COUNT++;
+         VAR_1238123--;
+      }
+      else
+      if (( *((( VAR__temp + tj ) + VAR_1238123 ) - 1 )) > ( *((( VAR_666 + qw ) + VAR_1238123 ) - 1 )))
+      {
+         VAR__COUNT++;
+         VAR_1238123--;
+      }
+      else
+      {
+         if (( *( VAR__temp + tj )) < ( *((( VAR_666 + qw ) + VAR_1238123 ) - 1 )))
+         {
+            VAR__COUNT--;
+         }
+
+         tj++;
+         VAR_1238123--;
+      }
+   }
+
+   return VAR__COUNT;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__temp[1000];
+   int VAR_666[1000];
+   int VAR__53647;
+
+   for ( ; ; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_666[VAR__53647]);
+      }
+
+      sort(VAR__temp, VAR_1238123);
+      sort(VAR_666, VAR_1238123);
+      printf("%d\n", 200 * race(VAR__temp, VAR_666, VAR_1238123));
+   }
+
+   return 0;
+}

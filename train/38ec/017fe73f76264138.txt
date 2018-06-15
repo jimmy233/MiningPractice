@@ -1,0 +1,134 @@
+int main()
+{
+   signed int VAR__53647;
+   signed int VAR__19328[2]      = { 365, 366 };
+   signed int VAR__819283[2][13] = { { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+   signed int sy;
+   signed int sm;
+   signed int sd;
+   signed int ey;
+   signed int em;
+   signed int ed;
+   signed int dc;
+   signed int VAR__21230;
+   signed int VAR__8444594;
+
+   ((((( cin >> sy ) >> sm ) >> sd ) >> ey ) >> em ) >> ed;
+   dc = 0;
+
+   if ( ey == sy )
+   {
+      if (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 ))
+      {
+         if ( sm == em )
+         {
+            dc = ed - sd;
+         }
+         else
+         {
+            for ( VAR__53647 = sm; VAR__53647 <= ( em - 1 ); VAR__53647++ )
+            {
+               dc = dc + VAR__819283[1][VAR__53647];
+            }
+
+            dc = ( dc + ed ) - sd;
+         }
+      }
+      else
+      {
+         if ( sm == em )
+         {
+            dc = ed - sd;
+         }
+         else
+         {
+            for ( VAR__53647 = sm; VAR__53647 <= ( em - 1 ); VAR__53647++ )
+            {
+               dc = dc + VAR__819283[0][VAR__53647];
+            }
+
+            dc = ( dc + ed ) - sd;
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = sy; VAR__53647 <= ( ey - 1 ); VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            dc = dc + VAR__19328[1];
+         }
+         else
+         {
+            dc = dc + VAR__19328[0];
+         }
+      }
+
+      if (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 ))
+      {
+         if ( sm == em )
+         {
+            dc = ( dc + ed ) - sd;
+         }
+         else
+         if ( sm > em )
+         {
+            VAR__8444594 = 0;
+            for ( VAR__53647 = em; VAR__53647 <= ( sm - 1 ); VAR__53647++ )
+            {
+               VAR__8444594 = VAR__8444594 + VAR__819283[1][VAR__53647];
+            }
+
+            dc = (( dc - VAR__8444594 ) + ed ) - sd;
+         }
+         else
+         {
+            for ( VAR__53647 = sm; VAR__53647 <= ( em - 1 ); VAR__53647++ )
+            {
+               dc = dc + VAR__819283[1][VAR__53647];
+            }
+
+            dc = ( dc + ed ) - sd;
+         }
+      }
+      else
+      {
+         if ( sm == em )
+         {
+            dc = ( dc + ed ) - sd;
+         }
+         else
+         if ( sm > em )
+         {
+            VAR__8444594 = 0;
+            for ( VAR__53647 = em; VAR__53647 <= ( sm - 1 ); VAR__53647++ )
+            {
+               VAR__8444594 = VAR__8444594 + VAR__819283[0][VAR__53647];
+            }
+
+            dc = (( dc - VAR__8444594 ) + ed ) - sd;
+         }
+         else
+         {
+            for ( VAR__53647 = sm; VAR__53647 <= ( em - 1 ); VAR__53647++ )
+            {
+               dc = dc + VAR__819283[0][VAR__53647];
+            }
+
+            dc = ( dc + ed ) - sd;
+         }
+      }
+
+      if ( em > 2 )
+      {
+         if (((( ey % 4 ) == 0 ) && (( ey % 100 ) != 0 )) || (( ey % 400 ) == 0 ))
+         {
+            dc = dc + 1;
+         }
+      }
+   }
+
+   ( cout << dc ) << endl;
+   return 0;
+}

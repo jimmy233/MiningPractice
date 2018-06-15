@@ -1,0 +1,102 @@
+int N;
+struct student
+{
+   char           name[20];
+   int            score1;
+   int            score2;
+   char           c1;
+   char           c2;
+   int            paper;
+   int            money;
+   struct student *VAR__NEXT;
+};
+void mon(struct student *VAR_233)
+{
+   VAR_233->money = 0;
+
+   if (( VAR_233->score1 > 80 ) && ( VAR_233->paper >= 1 ))
+   {
+      VAR_233->money = VAR_233->money + 8000;
+   }
+
+   if (( VAR_233->score1 > 85 ) && ( VAR_233->score2 > 80 ))
+   {
+      VAR_233->money += 4000;
+   }
+
+   if ( VAR_233->score1 > 90 )
+   {
+      VAR_233->money += 2000;
+   }
+
+   if (( VAR_233->score1 > 85 ) && ( VAR_233->c2 == 'Y' ))
+   {
+      VAR_233->money += 1000;
+   }
+
+   if (( VAR_233->score2 > 80 ) && ( VAR_233->c1 == 'Y' ))
+   {
+      VAR_233->money += 850;
+   }
+}
+
+
+struct student *creat()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN);
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2, &ANOTHER_POINTER->c1, &ANOTHER_POINTER->c2, &ANOTHER_POINTER->paper);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   mon(ANOTHER_POINTER);
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < N; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2, &ANOTHER_POINTER->c1, &ANOTHER_POINTER->c2, &ANOTHER_POINTER->paper);
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+      mon(ANOTHER_POINTER);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void VAR__127322(struct student *VAR__HEAD)
+{
+   int            VAR__MAX;
+   int            VAR__SUM = 0;
+   char           name[20];
+   struct student *VAR_233;
+
+   VAR__MAX = VAR__HEAD->money;
+   strcpy(name, VAR__HEAD->name);
+   for ( VAR_233 = VAR__HEAD; VAR_233; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      VAR__SUM += VAR_233->money;
+
+      if ( VAR_233->money > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->money;
+         strcpy(name, VAR_233->name);
+      }
+   }
+
+   printf("%s\n%d\n%d\n", name, VAR__MAX, VAR__SUM);
+}
+
+
+int main()
+{
+   struct student *VAR__HEAD;
+
+   scanf("%d", &N);
+   VAR__HEAD = creat();
+   VAR__127322(VAR__HEAD);
+}

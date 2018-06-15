@@ -1,0 +1,80 @@
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int VAR__53647;
+   int sum1            = 0;
+   int sum2            = 0;
+   int Sum             = 0;
+   int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__19328[13]  = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> sy ) >> sm ) >> sd;
+   (( cin >> ey ) >> em ) >> ed;
+
+   if (((( sy % 100 ) != 0 ) && (( sy % 4 ) == 0 )) || (( sy % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = sm; VAR__53647 <= 12; VAR__53647++ )
+      {
+         sum1 = sum1 + VAR__19328[VAR__53647];
+      }
+
+      sum1 = sum1 - sd;
+   }
+   else
+   {
+      for ( VAR__53647 = sm; VAR__53647 <= 12; VAR__53647++ )
+      {
+         sum1 = sum1 + VAR__819283[VAR__53647];
+      }
+
+      sum1 = sum1 - sd;
+   }
+
+   if (((( ey % 100 ) != 0 ) && (( ey % 4 ) == 0 )) || (( ey % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = em; VAR__53647 <= 12; VAR__53647++ )
+      {
+         sum2 = sum2 + VAR__19328[VAR__53647];
+      }
+
+      sum2 = sum2 - ed;
+   }
+   else
+   {
+      for ( VAR__53647 = em; VAR__53647 <= 12; VAR__53647++ )
+      {
+         sum2 = sum2 + VAR__819283[VAR__53647];
+      }
+
+      sum2 = sum2 - ed;
+   }
+
+   if ( sy == ey )
+   {
+      Sum = sum1 - sum2;
+   }
+   else
+   {
+      for ( VAR__53647 = sy + 1; VAR__53647 <= ey; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 100 ) != 0 ) && (( VAR__53647 % 4 ) == 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            Sum = Sum + 366;
+         }
+         else
+         {
+            Sum = Sum + 365;
+         }
+      }
+
+      Sum = ( Sum + sum1 ) - sum2;
+   }
+
+   cout << Sum;
+   return 0;
+}

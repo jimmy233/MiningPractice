@@ -1,0 +1,63 @@
+int sa[2000];
+int sb[2000];
+int main()
+{
+   int VAR_1238123;
+
+   while ( scanf("%d", &VAR_1238123) && VAR_1238123 )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &sa[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &sb[VAR__53647]);
+      }
+
+      sort(&sa[1], &sa[VAR_1238123 + 1]);
+      sort(&sb[1], &sb[VAR_1238123 + 1]);
+      int stpA   = 1;
+      int edpA   = VAR_1238123;
+      int stpB   = 1;
+      int edPB   = VAR_1238123;
+      int result = 0;
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( sa[stpA] > sb[stpB] )
+         {
+            result += 200;
+            stpA++;
+            stpB++;
+         }
+         else
+         if ( sa[edpA] > sb[edPB] )
+         {
+            result += 200;
+            edpA--;
+            edPB--;
+         }
+         else
+         {
+            if ( sa[stpA] > sb[edPB] )
+            {
+               result += 200;
+            }
+            else
+            if ( sa[stpA] < sb[edPB] )
+            {
+               result -= 200;
+            }
+
+
+            stpA++;
+            edPB--;
+         }
+      }
+
+      ( cout << result ) << endl;
+   }
+
+   return 0;
+}

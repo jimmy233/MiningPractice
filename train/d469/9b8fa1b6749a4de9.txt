@@ -1,0 +1,61 @@
+int Huiwen(char part[])
+{
+   char check[501];
+
+   memset(check, 0, sizeof( check ));
+   int VAR__53647;
+   int VAR__21230;
+   int LEN_OF_STH;
+   LEN_OF_STH = strlen(part);
+   VAR__21230 = LEN_OF_STH - 1;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      check[VAR__21230--] = part[VAR__53647];
+   }
+
+   check[LEN_OF_STH] = '\0';
+   return !strcmp(part, check);
+}
+
+
+int main()
+{
+   char input[501];
+   char part[501];
+
+   cin.getline(input, 500);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+   int LEN_OF_STH;
+   int VAR_1238123;
+   LEN_OF_STH = strlen(input);
+   for ( VAR_1238123 = 2; VAR_1238123 <= LEN_OF_STH; VAR_1238123++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+      {
+         memset(part, 0, 501);
+         part[0]      = input[VAR__53647];
+         VAR__8444594 = 1;
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < ( VAR__53647 + VAR_1238123 ); VAR__21230++ )
+         {
+            part[VAR__8444594++] = input[VAR__21230];
+         }
+
+         part[VAR__8444594] = '\0';
+
+         if ( Huiwen(part))
+         {
+            for ( VAR__temp = 0; VAR__temp < VAR__8444594; VAR__temp++ )
+            {
+               cout << part[VAR__temp];
+            }
+
+            cout << endl;
+         }
+      }
+   }
+
+   return 0;
+}

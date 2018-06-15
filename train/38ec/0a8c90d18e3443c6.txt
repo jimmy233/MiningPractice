@@ -1,0 +1,113 @@
+unsigned findday(unsigned VAR__3918907, unsigned VAR__1238129, unsigned VAR__12302)
+{
+   int leap;
+   int day;
+
+   if (((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 ))
+   {
+      leap = 1;
+   }
+   else
+   {
+      leap = 0;
+   }
+
+   day = VAR__12302;
+   switch ( VAR__1238129 - 1 )
+   {
+   case 11:
+      day += 30;
+
+   case 10:
+      day += 31;
+
+   case 9:
+      day += 30;
+
+   case 8:
+      day += 31;
+
+   case 7:
+      day += 31;
+
+   case 6:
+      day += 30;
+
+   case 5:
+      day += 31;
+
+   case 4:
+      day += 30;
+
+   case 3:
+      day += 31;
+
+   case 2:
+
+      if ( leap == 1 )
+      {
+         day += 29;
+      }
+      else
+      {
+         day += 28;
+      }
+
+
+   case 1:
+      day += 31;
+   }
+
+   return day;
+}
+
+
+int main()
+{
+   unsigned y1;
+   unsigned m1;
+   unsigned d1;
+   unsigned y2;
+   unsigned m2;
+   unsigned d2;
+   unsigned VAR__53647;
+   unsigned p0;
+   unsigned ANOTHER_POINTER;
+   unsigned VAR__4857423 = 0;
+   unsigned YET_ANOTHER_POINTER;
+   unsigned VAR_9494;
+
+   scanf("%u %u %u", &y1, &m1, &d1);
+   scanf("%u %u %u", &y2, &m2, &d2);
+
+   if ( y1 == y2 )
+   {
+      VAR_9494 = findday(y2, m2, d2) - findday(y1, m1, d1);
+   }
+   else
+   {
+      if (( y1 % 4 ) == 0 )
+      {
+         p0 = 366 - findday(y1, m1, d1);
+      }
+      else
+      {
+         p0 = 365 - findday(y1, m1, d1);
+      }
+
+      for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            VAR__4857423 += 1;
+         }
+      }
+
+
+      ANOTHER_POINTER     = ((( y2 - y1 ) - 1 ) * 365 ) + VAR__4857423;
+      YET_ANOTHER_POINTER = findday(y2, m2, d2);
+      VAR_9494            = ( p0 + ANOTHER_POINTER ) + YET_ANOTHER_POINTER;
+   }
+
+   printf("%u", VAR_9494);
+}

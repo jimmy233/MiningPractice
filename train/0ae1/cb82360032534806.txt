@@ -1,0 +1,56 @@
+int main()
+{
+   int  year;
+   int  month;
+   int  day;
+   int  VAR__53647;
+   int  VAR__21230;
+   char week[7][7] = { "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun." };
+   int  mon[13]    = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   long sum1       = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 < 401; VAR__53647++ )
+   {
+      sum1 = sum1 + 365;
+
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         sum1++;
+      }
+
+      sum1 %= 7;
+   }
+
+   (( cin >> year ) >> month ) >> day;
+   int  VAR__NUM = ( year - 1 ) / 400;
+   long VAR__SUM = VAR__NUM * sum1;
+   VAR__SUM %= 7;
+   year      = year - ( VAR__NUM * 400 );
+   for ( VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+   {
+      VAR__SUM += 365;
+
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__SUM++;
+      }
+
+      VAR__SUM %= 7;
+   }
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      mon[2]++;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      VAR__SUM += mon[VAR__53647];
+   }
+
+   VAR__SUM += day;
+   VAR__SUM--;
+   VAR__SUM = VAR__SUM % 7;
+   ( cout << week[VAR__SUM] ) << endl;
+   return 0;
+}

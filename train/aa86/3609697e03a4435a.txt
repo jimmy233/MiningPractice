@@ -1,0 +1,55 @@
+struct jisuan
+{
+   char zimu;
+   int  VAR__COUNT;
+}
+ji[1000];
+int zhuanhua(char VAR__819283)
+{
+   if (( VAR__819283 >= 'a' ) && ( VAR__819283 <= 'z' ))
+   {
+      return VAR__819283 - 32;
+   }
+   else
+   {
+      return VAR__819283;
+   }
+}
+
+
+int main()
+{
+   char A_STRING[1001];
+
+   cin >> A_STRING;
+   int VAR__53647;
+   int VAR__1111;
+   int VAR_FLAG;
+   VAR__1111        = strlen(A_STRING);
+   A_STRING[0]      = zhuanhua(A_STRING[0]);
+   ji[0].zimu       = A_STRING[0];
+   ji[0].VAR__COUNT = 1;
+   VAR_FLAG         = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      A_STRING[VAR__53647] = zhuanhua(A_STRING[VAR__53647]);
+
+      if ( A_STRING[VAR__53647] == A_STRING[VAR__53647 - 1] )
+      {
+         ji[VAR_FLAG].VAR__COUNT++;
+      }
+      else
+      {
+         VAR_FLAG++;
+         ji[VAR_FLAG].zimu       = A_STRING[VAR__53647];
+         ji[VAR_FLAG].VAR__COUNT = 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_FLAG; VAR__53647++ )
+   {
+      (((( cout << "(" ) << ji[VAR__53647].zimu ) << "," ) << ji[VAR__53647].VAR__COUNT ) << ")";
+   }
+
+   return 0;
+}

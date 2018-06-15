@@ -1,0 +1,80 @@
+struct su
+{
+   int       VAR__819283;
+   char      VAR__19328[26];
+   struct su *VAR__NEXT;
+};
+int main()
+{
+   int       VAR_1238123;
+   int       VAR__4857423[26] = { 0 };
+   int       VAR__53647;
+   int       VAR__8444594;
+   int       VAR__21230;
+   int       VAR__1111;
+   int       VAR__MAX;
+   int       VAR__1238129;
+   struct su *VAR_233;
+   struct su *VAR__HEAD;
+   struct su *VAR_666;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct su *)malloc(sizeof( struct su ));
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = VAR_233;
+         VAR_666   = VAR_233;
+         scanf("%d %s", &VAR_233->VAR__819283, VAR_233->VAR__19328);
+         VAR__8444594 = strlen(VAR_233->VAR__19328);
+         for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+         {
+            VAR__1111 = VAR_233->VAR__19328[VAR__21230] - 'A';
+            VAR__4857423[VAR__1111] = VAR__4857423[VAR__1111] + 1;
+         }
+      }
+      else
+      {
+         VAR_666->VAR__NEXT = VAR_233;
+         VAR_666            = VAR_233;
+         scanf("%d %s", &VAR_233->VAR__819283, VAR_233->VAR__19328);
+         VAR__8444594 = strlen(VAR_233->VAR__19328);
+         for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+         {
+            VAR__1111 = VAR_233->VAR__19328[VAR__21230] - 'A';
+            VAR__4857423[VAR__1111] = VAR__4857423[VAR__1111] + 1;
+         }
+      }
+   }
+
+   VAR_666->VAR__NEXT = NULL;
+   VAR__MAX           = VAR__4857423[0];
+   VAR__1238129       = 0;
+   for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+   {
+      if ( VAR__MAX < VAR__4857423[VAR__21230] )
+      {
+         VAR__MAX     = VAR__4857423[VAR__21230];
+         VAR__1238129 = VAR__21230;
+      }
+   }
+
+   printf("%c\n%d\n", VAR__1238129 + 'A', VAR__MAX);
+   VAR_233 = VAR__HEAD;
+   do
+   {
+      VAR__8444594 = strlen(VAR_233->VAR__19328);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if (( 'A' + VAR__1238129 ) == VAR_233->VAR__19328[VAR__21230] )
+         {
+            printf("%d\n", VAR_233->VAR__819283);
+         }
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != NULL );
+   return 0;
+}

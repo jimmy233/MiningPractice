@@ -1,0 +1,48 @@
+struct stu
+{
+   char       id[500];
+   struct stu *VAR__NEXT;
+   struct stu *pre;
+};
+void main()
+{
+   int        VAR_1238123;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR__HEAD;
+   struct stu *tail;
+   struct stu *VAR_233;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   gets(ANOTHER_POINTER->id);
+
+   while ( strcmp(ANOTHER_POINTER->id, "end") != 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD            = ANOTHER_POINTER;
+         ANOTHER_POINTER->pre = NULL;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         ANOTHER_POINTER->pre           = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(sizeof( struct stu ));
+      gets(ANOTHER_POINTER->id);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   tail    = YET_ANOTHER_POINTER;
+   VAR_233 = tail;
+   do
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->pre;
+   } while ( VAR_233 != NULL );
+}

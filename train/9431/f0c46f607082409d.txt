@@ -1,0 +1,96 @@
+struct student
+{
+   char           id[100];
+   char           name[100];
+   char           sex;
+   int            age;
+   char           score[100000];
+   char           address[100];
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *VAR_666;
+
+   VAR_666   = NULL;
+   VAR__HEAD = (struct student *)malloc(LEN_OF_STH);
+   VAR_233   = VAR__HEAD;
+
+   while ( 1 )
+   {
+      VAR_666 = VAR_233;
+      scanf("%s", &VAR_233->id);
+
+      if ( strcmp(VAR_233->id, "end") == 0 )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %s %s", &VAR_233->name, &VAR_233->sex, &VAR_233->age, &VAR_233->score, &VAR_233->address);
+      VAR_233            = (struct student *)malloc(LEN_OF_STH);
+      VAR_666->VAR__NEXT = VAR_233;
+   }
+
+   VAR_666->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct student *turn(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *VAR__temp;
+   struct student *newhead = NULL;
+
+   while ( VAR__HEAD->VAR__NEXT != NULL )
+   {
+      VAR_666 = NULL;
+      VAR_233 = VAR__HEAD;
+
+      while ( VAR_233->VAR__NEXT != NULL )
+      {
+         VAR_666 = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      if ( newhead == NULL )
+      {
+         newhead   = VAR_233;
+         VAR__temp = ( newhead->VAR__NEXT = VAR_666 );
+      }
+
+      VAR__temp          = ( VAR__temp->VAR__NEXT = VAR_666 );
+      VAR_666->VAR__NEXT = NULL;
+   }
+
+   return newhead;
+}
+
+
+void put(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( strcmp(VAR_233->id, "end") == 0 )
+      {
+         continue;
+      }
+
+      printf("%s %s %c %d %s %s\n", VAR_233->id, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->address);
+   }
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   VAR__HEAD = turn(VAR__HEAD);
+   put(VAR__HEAD);
+}

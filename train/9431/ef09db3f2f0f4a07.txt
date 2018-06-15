@@ -1,0 +1,76 @@
+struct student
+{
+   struct student *formal;
+   char           xuehao[20];
+   char           xingming[20];
+   char           xingbie;
+   int            nianling;
+   char           defen[20];
+   char           dizhi[30];
+   struct student *VAR__NEXT;
+};
+int            VAR_1238123 = 0;
+struct student *creat(void);
+void print(struct student *end);
+
+void main()
+{
+   struct student *enda;
+
+   enda = creat();
+   print(enda);
+   return 0;
+}
+
+
+struct student *creat(void)
+{
+   struct student *end;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s", ANOTHER_POINTER->xuehao);
+
+   while ( ANOTHER_POINTER->xuehao[0] != 'e' )
+   {
+      scanf("%s %c %d%s%s", ANOTHER_POINTER->xingming, &ANOTHER_POINTER->xingbie, &ANOTHER_POINTER->nianling, ANOTHER_POINTER->defen, ANOTHER_POINTER->dizhi);
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         ANOTHER_POINTER->formal = NULL;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         ANOTHER_POINTER->formal        = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s", ANOTHER_POINTER->xuehao);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   end = YET_ANOTHER_POINTER;
+   return end;
+}
+
+
+void print(struct student *end)
+{
+   struct student *VAR_233;
+
+   VAR_233 = end;
+
+   if ( end != NULL )
+   {
+      do
+      {
+         printf("%s %s %c %d %s %s\n", VAR_233->xuehao, VAR_233->xingming, VAR_233->xingbie, VAR_233->nianling, VAR_233->defen, VAR_233->dizhi);
+         VAR_233 = VAR_233->formal;
+      } while ( VAR_233 != NULL );
+   }
+}

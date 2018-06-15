@@ -1,0 +1,69 @@
+struct stu
+{
+   char       nam[21];
+   int        sch;
+   struct stu *VAR__NEXT;
+};
+void main()
+{
+   int  LEN_OF_STH;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  sc1;
+   int  sc2;
+   int  pap;
+   int  VAR__SUM = 0;
+   char mon;
+   char wes;
+
+   LEN_OF_STH = sizeof( struct stu );
+   scanf("%d", &VAR_1238123);
+   struct stu *VAR__HEAD;
+   struct stu *p0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      p0 = (struct stu *)malloc(LEN_OF_STH);
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = p0;
+      }
+
+      scanf("%s %d %d %c %c %d", &p0->nam, &sc1, &sc2, &mon, &wes, &pap);
+      p0->sch = 0;
+
+      if (( sc1 > 80 ) && ( pap > 0 ))
+      {
+         p0->sch = p0->sch + 8000;
+      }
+
+      if (( sc1 > 85 ) && ( sc2 > 80 ))
+      {
+         p0->sch = p0->sch + 4000;
+      }
+
+      if ( sc1 > 90 )
+      {
+         p0->sch = p0->sch + 2000;
+      }
+
+      if (( sc1 > 85 ) && ( wes == 'Y' ))
+      {
+         p0->sch = p0->sch + 1000;
+      }
+
+      if (( sc2 > 80 ) && ( mon == 'Y' ))
+      {
+         p0->sch = p0->sch + 850;
+      }
+
+      VAR__SUM = VAR__SUM + p0->sch;
+
+      if ( p0->sch > VAR__HEAD->sch )
+      {
+         VAR__HEAD = p0;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", VAR__HEAD->nam, VAR__HEAD->sch, VAR__SUM);
+}

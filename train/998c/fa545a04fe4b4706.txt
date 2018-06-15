@@ -1,0 +1,117 @@
+int main()
+{
+   char VAR__819283[NUM] = "";
+   char VAR__19328[NUM]  = "";
+
+   fgets(VAR__819283, 205, stdin);
+   fgets(VAR__19328, 205, stdin);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < NUM; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '\n' )
+      {
+         VAR__819283[VAR__53647] = '\0';
+      }
+
+      if ( VAR__19328[VAR__53647] == '\n' )
+      {
+         VAR__19328[VAR__53647] = '\0';
+      }
+   }
+
+   int na;
+   int nb;
+   int nresult = 0;
+   int VAR__temp;
+   for ( VAR__53647 = NUM - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__53647] != '\0' )
+      {
+         na = VAR__53647;
+         break;
+      }
+   }
+
+
+   for ( VAR__53647 = NUM - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__19328[VAR__53647] != '\0' )
+      {
+         nb = VAR__53647;
+         break;
+      }
+   }
+
+
+   int a1[NUM] = { 0 };
+   int b1[NUM] = { 0 };
+
+   if ( na >= nb )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= na; VAR__53647++ )
+      {
+         a1[VAR__53647] = VAR__819283[VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= nb; VAR__53647++ )
+      {
+         b1[VAR__53647] = VAR__19328[VAR__53647] - '0';
+      }
+   }
+   else
+   {
+      VAR__temp = nb;
+      nb        = na;
+      na        = VAR__temp;
+      for ( VAR__53647 = 0; VAR__53647 <= na; VAR__53647++ )
+      {
+         a1[VAR__53647] = VAR__19328[VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= nb; VAR__53647++ )
+      {
+         b1[VAR__53647] = VAR__819283[VAR__53647] - '0';
+      }
+   }
+
+   if ( nb != na )
+   {
+      for ( VAR__53647 = na; VAR__53647 >= ( na - nb ); VAR__53647-- )
+      {
+         b1[VAR__53647] = b1[( VAR__53647 - na ) + nb];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( na - nb ); VAR__53647++ )
+      {
+         b1[VAR__53647] = 0;
+      }
+   }
+
+   int result[NUM + 1] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 <= na; VAR__53647++ )
+   {
+      result[NUM - VAR__53647] += a1[na - VAR__53647] + b1[na - VAR__53647];
+      VAR__temp = result[NUM - VAR__53647] % 10;
+      result[( NUM - 1 ) - VAR__53647] += ( result[NUM - VAR__53647] - VAR__temp ) / 10;
+      result[NUM - VAR__53647]          = VAR__temp;
+   }
+
+   while (( result[nresult] == 0 ) && ( nresult <= NUM ))
+   {
+      nresult++;
+   }
+
+   if ( nresult == ( NUM + 1 ))
+   {
+      printf("0");
+   }
+   else
+   {
+      for ( VAR__53647 = nresult; VAR__53647 < ( NUM + 1 ); VAR__53647++ )
+      {
+         printf("%d", result[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

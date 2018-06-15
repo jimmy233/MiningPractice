@@ -1,0 +1,77 @@
+int main(int argc, char *argv[])
+{
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__8444594;
+   int  VAR__53647;
+   int  turn;
+   int  baoshu;
+   int  ing;
+   int  VAR_233;
+   long begin;
+   long end;
+   int  monkey[300];
+   int  king[2];
+
+   while ( 1 )
+   {
+      scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+      if ( VAR_1238123 != 0 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            monkey[VAR__53647] = VAR__53647 + 1;
+         }
+
+         if ( VAR__1238129 == 1 )
+         {
+            printf("%d\n", VAR_1238123);
+         }
+         else
+         {
+            for ( VAR__53647 = 0, VAR__8444594 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+            {
+               if ((( VAR__53647 + 1 ) % VAR__1238129 ) != 0 )
+               {
+                  monkey[VAR__8444594] = VAR__53647 + 1;
+                  VAR__8444594++;
+               }
+            }
+
+            king[0] = 0;
+            king[1] = VAR__8444594;
+            for ( turn = 2, begin = VAR_1238123 + 1, ing = 0; ing != 1; turn++ )
+            {
+               if ( turn == 2 )
+               {
+                  end = begin + king[1];
+               }
+               else
+               {
+                  begin = end;
+                  end   = begin + ing;
+               }
+
+               for ( baoshu = begin, ing = 0; baoshu < end; baoshu++ )
+               {
+                  if (( baoshu % VAR__1238129 ) != 0 )
+                  {
+                     VAR_233     = baoshu - begin;
+                     monkey[ing] = monkey[VAR_233];
+                     ing++;
+                  }
+               }
+            }
+
+            printf("%d\n", monkey[0]);
+         }
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

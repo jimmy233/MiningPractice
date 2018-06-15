@@ -1,0 +1,71 @@
+struct stu
+{
+   int id;
+   int Chinese;
+   int math;
+}
+VAR__819283[100000];
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int first;
+   int second;
+   int third;
+   int h1 = 0;
+   int h2 = 0;
+   int h3 = 0;
+   int VAR__112390;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__819283[VAR__53647].id, &VAR__819283[VAR__53647].Chinese, &VAR__819283[VAR__53647].math);
+   }
+
+   first  = 0;
+   second = 0;
+   third  = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( first < ( VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math ))
+      {
+         third  = second;
+         h3     = h2;
+         second = first;
+         h2     = h1;
+         first  = VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math;
+         h1     = VAR__819283[VAR__53647].id;
+      }
+      else
+      if (( first == ( VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math )) && ( first > second ))
+      {
+         third  = second;
+         h3     = h2;
+         h2     = VAR__819283[VAR__53647].id;
+         second = VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math;
+      }
+      else
+      if ((( first == ( VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math )) && ( first == second )) && ( second > third ))
+      {
+         third = VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math;
+         h3    = VAR__819283[VAR__53647].id;
+      }
+      else
+      if (( first > ( VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math )) && ( second < ( VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math )))
+      {
+         third  = second;
+         h3     = h2;
+         second = VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math;
+         h2     = VAR__819283[VAR__53647].id;
+      }
+      else
+      if (( second > ( VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math )) && ( third < ( VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math )))
+      {
+         third = VAR__819283[VAR__53647].Chinese + VAR__819283[VAR__53647].math;
+         h3    = VAR__819283[VAR__53647].id;
+      }
+   }
+
+   printf("%d %d\n%d %d\n%d %d", h1, first, h2, second, h3, third);
+}

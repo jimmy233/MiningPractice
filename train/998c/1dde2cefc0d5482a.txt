@@ -1,0 +1,63 @@
+char input1[260];
+char input2[260];
+int  int1[260];
+int  int2[260];
+int  len1;
+int  len2;
+void VAR__SUM(int index, int carry)
+{
+   if ((( carry == 0 ) && ( index >= len1 )) && ( index >= len2 ))
+   {
+      return;
+   }
+
+   int1[index] += int2[index] + carry;
+   carry        = int1[index] / 10;
+   int1[index] %= 10;
+   VAR__SUM(index + 1, carry);
+}
+
+
+int main()
+{
+   ( cin >> input1 ) >> input2;
+   memset(int1, 0, sizeof( int1 ));
+   memset(int2, 0, sizeof( int2 ));
+   int VAR__53647;
+   int VAR__21230;
+   len1 = strlen(input1);
+   for ( VAR__53647 = len1 - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      int1[VAR__21230] = input1[VAR__53647] - '0';
+   }
+
+   len2 = strlen(input2);
+   for ( VAR__53647 = len2 - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      int2[VAR__21230] = input2[VAR__53647] - '0';
+   }
+
+   VAR__SUM(0, 0);
+   for ( VAR__53647 = ( len1 > len2 ) ? ( len1 ) : ( len2 ); VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( int1[VAR__53647] != 0 )
+      {
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 < 0 )
+   {
+      cout << 0;
+   }
+   else
+   {
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << int1[VAR__53647];
+      }
+   }
+
+   return 0;
+}

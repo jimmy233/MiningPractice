@@ -1,0 +1,70 @@
+int main(int argc, char *argv[])
+{
+   int VAR__53647;
+   int VAR__819283;
+   int year;
+   int month;
+   int day;
+
+   scanf("%d %d %d", &year, &month, &day);
+   VAR__819283 = ( year - 1 ) % 400;
+   int total1 = 0;
+   int total2 = 0;
+   int total3 = 0;
+   int total  = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__819283; VAR__53647++ )
+   {
+      total1 = ( total1 + 1 ) % 7;
+
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         total1 = total1 + 1;
+      }
+   }
+
+   int mth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      total2 = total2 + mth[VAR__53647 - 1];
+   }
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || ((( year % 400 ) == 0 ) && ( month > 2 )))
+   {
+      total2 = total2 + 1;
+   }
+
+   total3 = day;
+   total  = ( total1 + total2 ) + total3;
+   switch ( total % 7 )
+   {
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+
+   case 0:
+      printf("Sun.\n");
+      break;
+   }
+
+   return 0;
+}

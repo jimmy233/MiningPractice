@@ -1,0 +1,67 @@
+void preProcess(char *VAR_233)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR_233); VAR__53647++ )
+   {
+      if (((( *( VAR_233 + VAR__53647 )) - 'a' ) >= 0 ) && ((( *( VAR_233 + VAR__53647 )) - 'z' ) <= 0 ))
+      {
+         *( VAR_233 + VAR__53647 ) = '0' + ((( *( VAR_233 + VAR__53647 )) - 'a' ) + 10 );
+         continue;
+      }
+
+      if (((( *( VAR_233 + VAR__53647 )) - 'A' ) >= 0 ) && ((( *( VAR_233 + VAR__53647 )) - 'Z' ) <= 0 ))
+      {
+         *( VAR_233 + VAR__53647 ) = '0' + ((( *( VAR_233 + VAR__53647 )) - 'A' ) + 10 );
+         continue;
+      }
+   }
+}
+
+
+int main()
+{
+   int  VAR__1238129;
+   int  VAR_1238123;
+   char sOrig[200];
+   char sRes[200];
+
+   (( cin >> VAR__1238129 ) >> sOrig ) >> VAR_1238123;
+   preProcess(sOrig);
+   int  nValue   = 0;
+   char *VAR_233 = sOrig;
+
+   while (( *VAR_233 ) != '\0' )
+   {
+      nValue = (( nValue * VAR__1238129 ) + ( *( VAR_233++ ))) - '0';
+   }
+
+   char *VAR_9494 = sRes;
+
+   if ( nValue == 0 )
+   {
+      *( VAR_9494++ ) = '0';
+   }
+
+   while ( nValue )
+   {
+      if (( nValue % VAR_1238123 ) < 10 )
+      {
+         *( VAR_9494++ ) = ( nValue % VAR_1238123 ) + '0';
+      }
+      else
+      {
+         *( VAR_9494++ ) = (( nValue % VAR_1238123 ) - 10 ) + 'A';
+      }
+
+      nValue /= VAR_1238123;
+   }
+
+   *( VAR_9494-- ) = '\0';
+
+   while ( VAR_9494 >= sRes )
+   {
+      cout << ( *( VAR_9494-- ));
+   }
+
+   cout << endl;
+   return 0;
+}

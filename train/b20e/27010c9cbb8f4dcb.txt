@@ -1,0 +1,94 @@
+void paixu(int *VAR__819283, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int maxj;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      maxj = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         maxj = ( VAR__819283[VAR__21230] > VAR__819283[maxj] ) ? ( VAR__21230 ) : ( maxj );
+      }
+
+      VAR__TEMP = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647] = VAR__819283[maxj];
+      VAR__819283[maxj]       = VAR__TEMP;
+   }
+}
+
+
+int VAR__MAX(int VAR__7685, int VAR__3918907)
+{
+   return ( VAR__7685 > VAR__3918907 ) ? ( VAR__7685 ) : ( VAR__3918907 );
+}
+
+
+int main()
+{
+   int VAR__8444594;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp[1000];
+   int VAR_666[1000];
+   int VAR__127322[1005][1005];
+
+   for ( ; ; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_666[VAR__53647]);
+      }
+
+      paixu(VAR__temp, VAR_1238123);
+      paixu(VAR_666, VAR_1238123);
+      memset(VAR__127322, -5, sizeof( VAR__127322 ));
+      VAR__127322[0][0] = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+         {
+            if ( VAR__temp[VAR__21230] > VAR_666[VAR__53647] )
+            {
+               VAR__127322[VAR__53647 + 1][VAR__21230 + 1] = VAR__MAX(VAR__127322[VAR__53647 + 1][VAR__21230 + 1], VAR__127322[VAR__53647][VAR__21230] + 200);
+            }
+            else
+            if ( VAR__temp[VAR__21230] == VAR_666[VAR__53647] )
+            {
+               VAR__127322[VAR__53647 + 1][VAR__21230 + 1] = VAR__MAX(VAR__127322[VAR__53647 + 1][VAR__21230 + 1], VAR__127322[VAR__53647][VAR__21230]);
+               VAR__127322[VAR__53647 + 1][VAR__21230]     = VAR__MAX(VAR__127322[VAR__53647 + 1][VAR__21230], VAR__127322[VAR__53647][VAR__21230] - 200);
+            }
+            else
+            {
+               VAR__127322[VAR__53647 + 1][VAR__21230] = VAR__MAX(VAR__127322[VAR__53647 + 1][VAR__21230], VAR__127322[VAR__53647][VAR__21230] - 200);
+            }
+         }
+      }
+
+
+      VAR__8444594 = VAR__127322[VAR_1238123][0];
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         VAR__8444594 = ( VAR__127322[VAR_1238123][VAR__21230] > VAR__8444594 ) ? ( VAR__127322[VAR_1238123][VAR__21230] ) : ( VAR__8444594 );
+      }
+
+      printf("%d\n", VAR__8444594);
+   }
+
+   return 0;
+}

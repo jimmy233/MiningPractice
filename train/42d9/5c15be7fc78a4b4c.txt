@@ -1,0 +1,56 @@
+void main()
+{
+   int    VAR__NUM;
+   int    VAR_129012;
+   int    VAR_9494;
+   int    VAR__temp;
+   int    q2;
+   int    VAR__819283[200];
+   int    VAR__19328[200];
+   double VAR__7685[20];
+   double VAR__3918907[20];
+   double VAR__9290[20];
+   double result[200];
+   double q1;
+
+   scanf("%d", &VAR__NUM);
+   for ( VAR_129012 = 0; VAR_129012 < VAR__NUM; VAR_129012++ )
+   {
+      scanf("%lf%lf%lf", &VAR__7685[VAR_129012], &VAR__3918907[VAR_129012], &VAR__9290[VAR_129012]);
+   }
+
+   for ( VAR_129012 = 0, VAR__temp = 0; VAR_129012 < ( VAR__NUM - 1 ); VAR_129012++ )
+   {
+      for ( VAR_9494 = VAR_129012 + 1; VAR_9494 < VAR__NUM; VAR_9494++ )
+      {
+         result[VAR__temp]      = sqrt(((( VAR__7685[VAR_129012] - VAR__7685[VAR_9494] ) * ( VAR__7685[VAR_129012] - VAR__7685[VAR_9494] )) + (( VAR__3918907[VAR_129012] - VAR__3918907[VAR_9494] ) * ( VAR__3918907[VAR_129012] - VAR__3918907[VAR_9494] ))) + (( VAR__9290[VAR_129012] - VAR__9290[VAR_9494] ) * ( VAR__9290[VAR_129012] - VAR__9290[VAR_9494] )));
+         VAR__819283[VAR__temp] = VAR_129012;
+         VAR__19328[VAR__temp]  = VAR_9494;
+         VAR__temp++;
+      }
+   }
+
+   for ( VAR_129012 = 0; VAR_129012 < ((( VAR__NUM * ( VAR__NUM - 1 )) / 2 ) - 1 ); VAR_129012++ )
+   {
+      for ( VAR_9494 = (( VAR__NUM * ( VAR__NUM - 1 )) / 2 ) - 1; VAR_9494 > VAR_129012; VAR_9494-- )
+      {
+         if ( result[VAR_9494 - 1] < result[VAR_9494] )
+         {
+            q1 = result[VAR_9494 - 1];
+            result[VAR_9494 - 1] = result[VAR_9494];
+            result[VAR_9494]     = q1;
+            q2 = VAR__819283[VAR_9494 - 1];
+            VAR__819283[VAR_9494 - 1] = VAR__819283[VAR_9494];
+            VAR__819283[VAR_9494]     = q2;
+            q2 = VAR__19328[VAR_9494 - 1];
+            VAR__19328[VAR_9494 - 1] = VAR__19328[VAR_9494];
+            VAR__19328[VAR_9494]     = q2;
+         }
+      }
+   }
+
+   for ( VAR_129012 = 0; VAR_129012 < (( VAR__NUM * ( VAR__NUM - 1 )) / 2 ); VAR_129012++ )
+   {
+      printf("(%.0f,%.0f,%.0f)-(%.0f,%.0f,%.0f)=%.2f\n", VAR__7685[VAR__819283[VAR_129012]], VAR__3918907[VAR__819283[VAR_129012]], VAR__9290[VAR__819283[VAR_129012]], VAR__7685[VAR__19328[VAR_129012]], VAR__3918907[VAR__19328[VAR_129012]], VAR__9290[VAR__19328[VAR_129012]], result[VAR_129012]);
+   }
+}

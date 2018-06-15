@@ -1,0 +1,71 @@
+struct bin
+{
+   char       ID[10];
+   int        age;
+   struct bin *VAR__NEXT;
+};
+void main()
+{
+   struct bin *VAR__HEAD;
+   struct bin *VAR_233;
+   struct bin *ANOTHER_POINTER;
+   struct bin *YET_ANOTHER_POINTER;
+   struct bin *p3;
+   int        VAR__1238129;
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = (struct bin *)malloc(sizeof( struct bin ));
+   scanf("%s%d", &VAR_233->ID, &VAR_233->age);
+   VAR__HEAD          = ( p3 = VAR_233 );
+   VAR_233->VAR__NEXT = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct bin *)malloc(sizeof( struct bin ));
+      scanf("%s%d", &VAR_233->ID, &VAR_233->age);
+
+      if ( VAR_233->age < 60 )
+      {
+         p3->VAR__NEXT      = VAR_233;
+         VAR_233->VAR__NEXT = 0;
+         p3 = VAR_233;
+      }
+      else
+      {
+         if ( VAR_233->age > VAR__HEAD->age )
+         {
+            VAR_233->VAR__NEXT = VAR__HEAD;
+            VAR__HEAD          = VAR_233;
+         }
+         else
+         if ( VAR_233->age <= p3->age )
+         {
+            p3->VAR__NEXT      = VAR_233;
+            VAR_233->VAR__NEXT = 0;
+            p3 = VAR_233;
+         }
+         else
+         {
+            ANOTHER_POINTER     = VAR__HEAD;
+            YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+
+            while ( YET_ANOTHER_POINTER->age >= VAR_233->age )
+            {
+               ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+               YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+            }
+
+            ANOTHER_POINTER->VAR__NEXT = VAR_233;
+            VAR_233->VAR__NEXT         = YET_ANOTHER_POINTER;
+         }
+      }
+   }
+
+   for ( ; VAR__HEAD != 0; VAR__HEAD = VAR__HEAD->VAR__NEXT )
+   {
+      printf("%s\n", VAR__HEAD->ID);
+   }
+}

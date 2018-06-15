@@ -1,0 +1,68 @@
+int main()
+{
+   struct scholar
+   {
+      char VAR__9290[21];
+      int  qm;
+      int  bj;
+      char gb;
+      char xb;
+      int  paper;
+      int  total;
+   };
+   struct scholar VAR__819283[1000];
+   int            VAR_1238123;
+   int            VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR__819283[VAR__53647].VAR__9290, &VAR__819283[VAR__53647].qm, &VAR__819283[VAR__53647].bj, &VAR__819283[VAR__53647].gb, &VAR__819283[VAR__53647].xb, &VAR__819283[VAR__53647].paper);
+      VAR__819283[VAR__53647].total = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647].qm > 80 ) && ( VAR__819283[VAR__53647].paper > 0 ))
+      {
+         VAR__819283[VAR__53647].total += 8000;
+      }
+
+      if (( VAR__819283[VAR__53647].qm > 85 ) && ( VAR__819283[VAR__53647].bj > 80 ))
+      {
+         VAR__819283[VAR__53647].total += 4000;
+      }
+
+      if ( VAR__819283[VAR__53647].qm > 90 )
+      {
+         VAR__819283[VAR__53647].total += 2000;
+      }
+
+      if (( VAR__819283[VAR__53647].qm > 85 ) && ( VAR__819283[VAR__53647].xb == 'Y' ))
+      {
+         VAR__819283[VAR__53647].total += 1000;
+      }
+
+      if (( VAR__819283[VAR__53647].bj > 80 ) && ( VAR__819283[VAR__53647].gb == 'Y' ))
+      {
+         VAR__819283[VAR__53647].total += 850;
+      }
+   }
+
+   int  VAR__MAX = 0;
+   char name[22];
+   int  total = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647].total > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647].total;
+         strcpy(name, VAR__819283[VAR__53647].VAR__9290);
+      }
+
+      total += VAR__819283[VAR__53647].total;
+   }
+
+   printf("%s\n%d\n%d\n", name, VAR__MAX, total);
+   return 0;
+}

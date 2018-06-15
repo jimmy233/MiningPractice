@@ -1,0 +1,100 @@
+int main()
+{
+   char VAR__819283[9000];
+   char VAR__19328[9000];
+   int  VAR__7685[1000]    = { 0 };
+   int  VAR__3918907[1000] = { 0 };
+   int  VAR__53647;
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   int  sum1         = 0;
+   int  sum2         = 0;
+   int  minx         = 0;
+   int  maxx         = 0;
+   int  temp1        = 0;
+   int  temp2        = 0;
+   int  temp3        = 0;
+   int  first        = 0;
+
+   cin.getline(VAR__819283, 9000, '\n');
+   cin.getline(VAR__19328, 9000, '\n');
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR__819283); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == ',' )
+      {
+         sum1++;
+      }
+   }
+
+   sum1       = sum1 + 1;
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR__819283); VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647] >= '0' ) && ( VAR__819283[VAR__53647] <= '9' ))
+      {
+         VAR__7685[VAR__21230] = ( VAR__819283[VAR__53647] - '0' ) + ( VAR__7685[VAR__21230] * 10 );
+      }
+      else
+      if ( VAR__819283[VAR__53647] == ',' )
+      {
+         VAR__21230++;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR__19328); VAR__53647++ )
+   {
+      if (( VAR__19328[VAR__53647] >= '0' ) && ( VAR__19328[VAR__53647] <= '9' ))
+      {
+         VAR__3918907[VAR__8444594] = ( VAR__19328[VAR__53647] - '0' ) + ( VAR__3918907[VAR__8444594] * 10 );
+      }
+      else
+      if ( VAR__19328[VAR__53647] == ',' )
+      {
+         VAR__8444594++;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   minx = VAR__7685[0];
+   maxx = VAR__3918907[0];
+   for ( VAR__53647 = 0; VAR__53647 < sum1; VAR__53647++ )
+   {
+      if ( VAR__7685[VAR__53647] < minx )
+      {
+         minx = VAR__7685[VAR__53647];
+      }
+
+      if ( VAR__3918907[VAR__53647] > maxx )
+      {
+         maxx = VAR__3918907[VAR__53647];
+      }
+   }
+
+   for ( VAR__21230 = minx; VAR__21230 < maxx; VAR__21230++ )
+   {
+      temp3 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < sum1; VAR__53647++ )
+      {
+         if (( VAR__21230 >= VAR__7685[VAR__53647] ) && ( VAR__21230 < VAR__3918907[VAR__53647] ))
+         {
+            temp3++;
+         }
+      }
+
+      if ( temp3 > sum2 )
+      {
+         sum2 = temp3;
+      }
+   }
+
+   ((( cout << sum1 ) << " " ) << sum2 ) << endl;
+   return 0;
+}

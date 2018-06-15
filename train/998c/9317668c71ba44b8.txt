@@ -1,0 +1,83 @@
+const int MAX = 260;
+int main()
+{
+   int  VAR__53647   = 0;
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   int  VAR__1111    = 0;
+   int  carry        = 0;
+   int  VAR__TEMP    = 0;
+   int  len1         = 0;
+   int  len2         = 0;
+   int  bigger       = 0;
+   char ch1[MAX];
+   char ch2[MAX];
+   int  num1[MAX];
+   int  num2[MAX];
+   int  result[MAX];
+
+   ( cin >> ch1 ) >> ch2;
+   len1 = strlen(ch1);
+   len2 = strlen(ch2);
+
+   if ( len1 > len2 )
+   {
+      bigger = len1;
+   }
+   else
+   {
+      bigger = len2;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < MAX; VAR__21230++ )
+   {
+      num1[VAR__21230] = ( num2[VAR__21230] = ( result[VAR__21230] = 0 ));
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( len1 - 1 ); VAR__53647++ )
+   {
+      num1[( MAX - len1 ) + VAR__53647] = ch1[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( len2 - 1 ); VAR__53647++ )
+   {
+      num2[( MAX - len2 ) + VAR__53647] = ch2[VAR__53647] - '0';
+   }
+
+   for ( VAR__8444594 = MAX - 1; VAR__8444594 >= ( MAX - bigger ); VAR__8444594-- )
+   {
+      carry     = 0;
+      VAR__TEMP = ( num1[VAR__8444594] + num2[VAR__8444594] ) + result[VAR__8444594];
+
+      if ( VAR__TEMP < 10 )
+      {
+         result[VAR__8444594] = VAR__TEMP;
+         carry = 0;
+      }
+      else
+      {
+         result[VAR__8444594] = VAR__TEMP % 10;
+         carry = 1;
+      }
+
+      result[VAR__8444594 - 1] = result[VAR__8444594 - 1] + carry;
+   }
+
+   for ( VAR__1111 = 0; ( VAR__1111 <= ( MAX - 1 )) && ( result[VAR__1111] == 0 ); VAR__1111++ )
+   {
+   }
+
+   if ( VAR__1111 == MAX )
+   {
+      cout << '0';
+   }
+   else
+   {
+      for ( VAR__53647 = VAR__1111; VAR__53647 <= ( MAX - 1 ); VAR__53647++ )
+      {
+         cout << result[VAR__53647];
+      }
+   }
+
+   return 0;
+}

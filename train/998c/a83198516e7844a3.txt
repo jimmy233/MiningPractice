@@ -1,0 +1,60 @@
+int main()
+{
+   const int maxlen = 250;
+   unsigned  an1[maxlen];
+   unsigned  an2[maxlen];
+   char      seline1[maxlen + 1];
+   char      seline2[maxlen + 1];
+
+   cin.getline(seline1, maxlen + 1);
+   cin.getline(seline2, maxlen + 1);
+   int nlen1 = strlen(seline1);
+   int nlen2 = strlen(seline2);
+   memset(an1, 0, sizeof( an1 ));
+   memset(an2, 0, sizeof( an2 ));
+   int VAR__53647;
+   int VAR__21230 = 0;
+   for ( VAR__53647 = nlen1 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an1[VAR__21230++] = seline1[VAR__53647] - '0';
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = nlen2 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      an2[VAR__21230++] = seline2[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < maxlen; VAR__53647++ )
+   {
+      an1[VAR__53647] += an2[VAR__53647];
+
+      if ( an1[VAR__53647] >= 10 )
+      {
+         an1[VAR__53647] -= 10;
+         an1[VAR__53647 + 1]++;
+      }
+   }
+
+   VAR__53647 = maxlen - 1;
+
+   if (((( strlen(seline1) == 1 ) && ( seline1[0] == '0' )) && ( strlen(seline2) == 1 )) && ( seline2[0] == '0' ))
+   {
+      cout << 0;
+   }
+   else
+   {
+      while ( an1[VAR__53647] == 0 )
+      {
+         VAR__53647--;
+      }
+
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << an1[VAR__53647];
+      }
+   }
+
+   cout << endl;
+   return 0;
+}

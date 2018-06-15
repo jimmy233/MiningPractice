@@ -1,0 +1,99 @@
+int prime(int VAR__7685)
+{
+   int    VAR__53647;
+   int    VAR__1238129;
+   double VAR__8444594;
+
+   VAR__8444594 = sqrt(VAR__7685);
+   for ( VAR__53647 = 2; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      if (( VAR__7685 % VAR__53647 ) == 0 )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__53647 > VAR__8444594 )
+   {
+      VAR__1238129 = 1;
+   }
+   else
+   {
+      VAR__1238129 = 0;
+   }
+
+   return VAR__1238129;
+}
+
+
+int round(int VAR__3918907)
+{
+   int VAR__819283[10000];
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__1111;
+   int VAR__SUM = 0;
+   int VAR__4857423;
+
+   for ( VAR__21230 = 0; VAR__3918907 != 0; VAR__21230++ )
+   {
+      VAR__819283[VAR__21230] = VAR__3918907 % 10;
+      VAR__3918907            = VAR__3918907 / 10;
+   }
+
+   for ( VAR__1111 = 0; VAR__1111 < VAR__21230; VAR__1111++ )
+   {
+      if ( VAR__819283[VAR__1111] != VAR__819283[( VAR__21230 - 1 ) - VAR__1111] )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__1111 == VAR__21230 )
+   {
+      VAR_1238123 = 1;
+   }
+   else
+   {
+      VAR_1238123 = 0;
+   }
+
+   return VAR_1238123;
+}
+
+
+int main()
+{
+   int VAR_233;
+   int VAR_666;
+   int VAR_9494;
+   int VAR__COUNT = 0;
+
+   scanf("%d %d", &VAR_233, &VAR_666);
+   for ( VAR_9494 = VAR_233; VAR_9494 <= VAR_666; VAR_9494++ )
+   {
+      if (( prime(VAR_9494) == 1 ) && ( round(VAR_9494) == 1 ))
+      {
+         VAR__COUNT++;
+
+         if ( VAR__COUNT == 1 )
+         {
+            printf("%d", VAR_9494);
+         }
+         else
+         if ( VAR__COUNT != 1 )
+         {
+            printf(",%d", VAR_9494);
+         }
+      }
+   }
+
+   if ( VAR__COUNT == 0 )
+   {
+      printf("no\n");
+   }
+
+   getchar();
+   getchar();
+   getchar();
+}

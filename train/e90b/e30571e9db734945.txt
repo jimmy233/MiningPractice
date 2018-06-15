@@ -1,0 +1,52 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_9494;
+   int VAR_233;
+   struct student
+   {
+      int id;
+      int yuwen;
+      int shuxue;
+      int zongfen;
+   };
+   struct student stu[100000];
+   struct student VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR_233 = 0; VAR_233 < VAR_1238123; VAR_233++ )
+   {
+      scanf("%d %d %d", &stu[VAR_233].id, &stu[VAR_233].yuwen, &stu[VAR_233].shuxue);
+      stu[VAR_233].zongfen = stu[VAR_233].yuwen + stu[VAR_233].shuxue;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( stu[VAR__53647].zongfen >= stu[VAR__53647 + 1].zongfen )
+         {
+            VAR__TEMP.id                = stu[VAR__53647].id;
+            VAR__TEMP.yuwen             = stu[VAR__53647].yuwen;
+            VAR__TEMP.shuxue            = stu[VAR__53647].shuxue;
+            VAR__TEMP.zongfen           = stu[VAR__53647].zongfen;
+            stu[VAR__53647].id          = stu[VAR__53647 + 1].id;
+            stu[VAR__53647].yuwen       = stu[VAR__53647 + 1].yuwen;
+            stu[VAR__53647].shuxue      = stu[VAR__53647 + 1].shuxue;
+            stu[VAR__53647].zongfen     = stu[VAR__53647 + 1].zongfen;
+            stu[VAR__53647 + 1].id      = VAR__TEMP.id;
+            stu[VAR__53647 + 1].yuwen   = VAR__TEMP.yuwen;
+            stu[VAR__53647 + 1].shuxue  = VAR__TEMP.shuxue;
+            stu[VAR__53647 + 1].zongfen = VAR__TEMP.zongfen;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = VAR_1238123 - 1; VAR__8444594 > ( VAR_1238123 - 4 ); VAR__8444594-- )
+   {
+      printf("%d %d\n", stu[VAR__8444594].id, stu[VAR__8444594].zongfen);
+   }
+}

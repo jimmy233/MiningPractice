@@ -1,0 +1,47 @@
+int cal(int *VAR_233, int N, int M)
+{
+   int VAR__53647;
+   int VAR__MAX;
+   int sub;
+
+   VAR__MAX = 0;
+
+   if ( M == 0 )
+   {
+      return 1;
+   }
+
+   for ( VAR__53647 = N + 1; VAR__53647 <= ( N + M ); VAR__53647++ )
+   {
+      if (( *( VAR_233 + N )) >= ( *( VAR_233 + VAR__53647 )))
+      {
+         sub = cal(VAR_233, VAR__53647, ( N + M ) - VAR__53647);
+
+         if ( sub >= VAR__MAX )
+         {
+            VAR__MAX = sub;
+         }
+      }
+   }
+
+   return VAR__MAX + 1;
+}
+
+
+int main()
+{
+   int VAR__8444594;
+   int VAR__53647;
+
+   scanf("%d\n", &VAR__8444594);
+   int height[26];
+   height[0] = 10000000;
+   scanf("%d", &height[1]);
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      scanf(" %d", &height[VAR__53647 + 1]);
+   }
+
+   printf("%d", cal(height, 0, VAR__8444594 + 1) - 2);
+   return 0;
+}

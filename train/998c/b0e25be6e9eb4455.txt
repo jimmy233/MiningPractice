@@ -1,0 +1,110 @@
+void VAR_233(char VAR__819283[], int VAR__1111)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( ; VAR__819283[0] == '0'; )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR__1111 - 1 ); VAR__21230++ )
+      {
+         VAR__819283[VAR__21230] = VAR__819283[VAR__21230 + 1];
+      }
+   }
+}
+
+
+void VAR_2890(char VAR__819283[], int VAR__1111)
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR__4857423[260];
+
+   strcpy(VAR__4857423, VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1111 - 1 ); VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR__4857423[( VAR__1111 - 1 ) - VAR__53647];
+   }
+}
+
+
+int VAR__MAX(int VAR__7685, int VAR__3918907)
+{
+   if ( VAR__7685 >= VAR__3918907 )
+   {
+      return VAR__7685;
+   }
+   else
+   {
+      return VAR__3918907;
+   }
+}
+
+
+int VAR__8444594(int VAR__7685)
+{
+   if ( VAR__7685 == '\0' )
+   {
+      return 0;
+   }
+   else
+   {
+      return VAR__7685 - '0';
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[260];
+   char VAR__19328[260];
+   char VAR__4857423[260];
+   int  l1;
+   int  l2;
+   int  l3;
+   int  VAR__1111;
+   int  VAR__temp;
+   int  VAR__1238129;
+   int  VAR__53647;
+
+   scanf("%s %s", VAR__819283, VAR__19328);
+   l1 = strlen(VAR__819283);
+   l2 = strlen(VAR__19328);
+   VAR_233(VAR__819283, l1);
+   VAR_233(VAR__19328, l2);
+   l1 = strlen(VAR__819283);
+   l2 = strlen(VAR__19328);
+   VAR_2890(VAR__819283, l1);
+   VAR_2890(VAR__19328, l2);
+   VAR__1111 = VAR__MAX(l1, l2);
+   for ( VAR__53647 = l1; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = '\0';
+   }
+
+   for ( VAR__53647 = l2; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = '\0';
+   }
+
+   for ( VAR__temp = 0, VAR__53647 = 0; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      VAR__1238129             = ( VAR__8444594(VAR__819283[VAR__53647]) + VAR__8444594(VAR__19328[VAR__53647])) % 10;
+      VAR__4857423[VAR__53647] = (( VAR__1238129 + VAR__temp ) % 10 ) + '0';
+      VAR__temp = (( VAR__8444594(VAR__819283[VAR__53647]) + VAR__8444594(VAR__19328[VAR__53647])) + (( VAR__1238129 + VAR__temp ) / 10 )) / 10;
+   }
+
+   if (( VAR__4857423[VAR__1111] == '0' ) && ( VAR__1111 != 0 ))
+   {
+      VAR__4857423[VAR__1111] = '\0';
+   }
+   else
+   {
+      VAR__4857423[VAR__1111 + 1] = '\0';
+   }
+
+   l3 = strlen(VAR__4857423);
+   VAR_2890(VAR__4857423, l3);
+   printf("%s", VAR__4857423);
+   getchar();
+   getchar();
+}

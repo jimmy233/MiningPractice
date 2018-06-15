@@ -1,0 +1,115 @@
+struct patient
+{
+   char           id[10];
+   int            age;
+   struct patient *VAR__NEXT;
+   struct patient *pre;
+};
+void main()
+{
+   void VAR__127322(struct patient **VAR__HEAD);
+
+   struct patient *VAR__HEAD;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+   int            VAR_1238123;
+   int            VAR__53647;
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER      = (struct patient *)malloc(sizeof( struct patient ));
+   YET_ANOTHER_POINTER  = ANOTHER_POINTER;
+   VAR__HEAD            = ANOTHER_POINTER;
+   ANOTHER_POINTER->pre = NULL;
+   scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct patient *)malloc(sizeof( struct patient ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER->pre           = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__127322(&VAR__HEAD);
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      printf("%s\n", ANOTHER_POINTER->id);
+   }
+}
+
+
+void VAR__127322(struct patient **VAR__HEAD)
+{
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+   struct patient *VAR_233;
+
+   for ( ANOTHER_POINTER = ( *VAR__HEAD )->VAR__NEXT; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if ( ANOTHER_POINTER->age >= 60 )
+      {
+         VAR_233 = ANOTHER_POINTER->VAR__NEXT;
+         ANOTHER_POINTER->pre->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+
+         if ( ANOTHER_POINTER->VAR__NEXT != NULL )
+         {
+            ANOTHER_POINTER->VAR__NEXT->pre = ANOTHER_POINTER->pre;
+         }
+
+         for ( YET_ANOTHER_POINTER = *VAR__HEAD; YET_ANOTHER_POINTER->VAR__NEXT != NULL; YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT )
+         {
+            if ( ANOTHER_POINTER->age > YET_ANOTHER_POINTER->age )
+            {
+               if ( YET_ANOTHER_POINTER->pre != NULL )
+               {
+                  YET_ANOTHER_POINTER->pre->VAR__NEXT = ANOTHER_POINTER;
+               }
+               else
+               {
+                  *VAR__HEAD = ANOTHER_POINTER;
+               }
+
+               ANOTHER_POINTER->pre       = YET_ANOTHER_POINTER->pre;
+               YET_ANOTHER_POINTER->pre   = ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+               break;
+            }
+         }
+
+
+         if ( YET_ANOTHER_POINTER->VAR__NEXT == NULL )
+         {
+            if ( ANOTHER_POINTER->age > YET_ANOTHER_POINTER->age )
+            {
+               if ( YET_ANOTHER_POINTER->pre != NULL )
+               {
+                  YET_ANOTHER_POINTER->pre->VAR__NEXT = ANOTHER_POINTER;
+               }
+               else
+               {
+                  *VAR__HEAD = ANOTHER_POINTER;
+               }
+
+               ANOTHER_POINTER->pre       = YET_ANOTHER_POINTER->pre;
+               YET_ANOTHER_POINTER->pre   = ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+            }
+            else
+            {
+               YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+               ANOTHER_POINTER->pre           = YET_ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT     = NULL;
+            }
+         }
+
+         if ( VAR_233 != NULL )
+         {
+            ANOTHER_POINTER = VAR_233->pre;
+         }
+         else
+         {
+            break;
+         }
+      }
+   }
+}

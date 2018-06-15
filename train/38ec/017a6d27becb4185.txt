@@ -1,0 +1,68 @@
+void main()
+{
+   int year(int VAR__7685);
+   int diy(int VAR__7685, int VAR__3918907, int VAR__9290);
+
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+   int VAR__12302;
+   int VAR__112390;
+   int VAR__127322;
+   int y1;
+   int y2;
+   int an;
+   scanf("%d %d %d", &VAR__819283, &VAR__19328, &VAR__4857423);
+   scanf("%d %d %d", &VAR__12302, &VAR__112390, &VAR__127322);
+   y1 = year(VAR__819283) + diy(VAR__819283, VAR__19328, VAR__4857423);
+   y2 = year(VAR__12302) + diy(VAR__12302, VAR__112390, VAR__127322);
+   an = y2 - y1;
+   printf("%d\n", an);
+}
+
+
+int year(int VAR__7685)
+{
+   int ay;
+   int by;
+
+   ay = ((( VAR__7685 - 1 ) / 4 ) - (( VAR__7685 - 1 ) / 100 )) + (( VAR__7685 - 1 ) / 400 );
+   by = ( 365 * ( VAR__7685 - 1 )) + ay;
+   return by;
+}
+
+
+int diy(int VAR__7685, int VAR__3918907, int VAR__9290)
+{
+   int day = 0;
+   int VAR__4857423;
+   int VAR__53647;
+   int VAR__819283[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if (((( VAR__7685 % 4 ) == 0 ) && (( VAR__7685 % 100 ) != 0 )) || (( VAR__7685 % 400 ) == 0 ))
+   {
+      VAR__4857423 = 1;
+   }
+   else
+   {
+      VAR__4857423 = 0;
+   }
+
+   VAR__819283[1] = VAR__819283[1] + VAR__4857423;
+
+   if ( VAR__3918907 == 1 )
+   {
+      day = VAR__9290;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__3918907 - 1 ); VAR__53647++ )
+      {
+         day = day + VAR__819283[VAR__53647];
+      }
+
+      day = day + VAR__9290;
+   }
+
+   return day;
+}

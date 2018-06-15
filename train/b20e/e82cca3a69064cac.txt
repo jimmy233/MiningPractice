@@ -1,0 +1,92 @@
+int VAR_1238123;
+int self[1000];
+int enemy[1000];
+int result;
+int compare(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+void play(int VAR_9494, int VAR__112390)
+{
+   if ( VAR_9494 > VAR__112390 )
+   {
+      result += 200;
+   }
+   else
+   if ( VAR_9494 < VAR__112390 )
+   {
+      result -= 200;
+   }
+}
+
+
+int calcMax(void)
+{
+   int VAR__53647;
+   int smax;
+   int smin;
+   int emax;
+   int emin;
+
+   result = 0;
+   smax   = ( emax = 0 );
+   smin   = ( emin = VAR_1238123 - 1 );
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( self[smin] > enemy[emin] )
+      {
+         play(self[smin], enemy[emin]);
+         smin--;
+         emin--;
+      }
+      else
+      if ( self[smin] < enemy[emin] )
+      {
+         play(self[smin], enemy[emax]);
+         smin--;
+         emax++;
+      }
+      else
+      if ( self[smax] > enemy[emax] )
+      {
+         play(self[smax], enemy[emax]);
+         smax++;
+         emax++;
+      }
+      else
+      {
+         play(self[smin], enemy[emax]);
+         smin--;
+         emax++;
+      }
+   }
+
+   return result;
+}
+
+
+int main(void)
+{
+   int VAR__53647;
+
+   while (( scanf("%d", &VAR_1238123) != ( -1 )) && ( VAR_1238123 != 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &self[VAR__53647]);
+      }
+
+      qsort(self, VAR_1238123, sizeof( int ), compare);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &enemy[VAR__53647]);
+      }
+
+      qsort(enemy, VAR_1238123, sizeof( int ), compare);
+      printf("%d\n", calcMax());
+   }
+
+   return 0;
+}

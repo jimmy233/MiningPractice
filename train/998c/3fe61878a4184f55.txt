@@ -1,0 +1,59 @@
+int larger(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return VAR__819283;
+   }
+
+   return VAR__19328;
+}
+
+
+int main()
+{
+   char IN_1[MAX] = { 0 };
+   char IN_2[MAX] = { 0 };
+
+   cin.getline(IN_1, MAX);
+   cin.getline(IN_2, MAX);
+   int input_1[MAX] = { 0 };
+   int input_2[MAX] = { 0 };
+   int length_1     = strlen(IN_1);
+   int length_2     = strlen(IN_2);
+   for ( int VAR__53647 = 0; VAR__53647 < length_1; VAR__53647++ )
+   {
+      input_1[( length_1 - VAR__53647 ) - 1] = (int)( IN_1[VAR__53647] - '0' );
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < length_2; VAR__53647++ )
+   {
+      input_2[( length_2 - VAR__53647 ) - 1] = (int)( IN_2[VAR__53647] - '0' );
+   }
+
+   int output[MAX] = { 0 };
+   int VAR__53647  = 0;
+   for ( ; VAR__53647 < larger(length_1, length_2); VAR__53647++ )
+   {
+      int VAR__TEMP = ( input_1[VAR__53647] + input_2[VAR__53647] ) + output[VAR__53647];
+      output[VAR__53647 + 1] += VAR__TEMP / 10;
+      output[VAR__53647]      = VAR__TEMP % 10;
+   }
+
+   while ( output[VAR__53647] == 0 )
+   {
+      VAR__53647--;
+   }
+
+   if ( VAR__53647 < 0 )
+   {
+      cout << 0;
+   }
+
+   for ( ; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << output[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

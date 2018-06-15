@@ -1,0 +1,62 @@
+int main()
+{
+   int row;
+   int col;
+   int sub_rowS;
+   int sub_rowE;
+   int sub_colS;
+   int sub_colE;
+   int times = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int matrix[100][100];
+
+   ( cin >> row ) >> col;
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         cin >> matrix[VAR__53647][VAR__21230];
+      }
+   }
+
+   for ( sub_rowS = 0, sub_rowE = row - 1, sub_colS = 0, sub_colE = col - 1; ; sub_rowS++, sub_rowE--, sub_colS++, sub_colE-- )
+   {
+      for ( VAR__53647 = sub_colS; VAR__53647 <= sub_colE; VAR__53647++ )
+      {
+         ( cout << matrix[sub_rowS][VAR__53647] ) << endl;
+         times++;
+      }
+
+      for ( VAR__53647 = sub_rowS + 1; VAR__53647 <= sub_rowE; VAR__53647++ )
+      {
+         ( cout << matrix[VAR__53647][sub_colE] ) << endl;
+         times++;
+      }
+
+      if ( times == ( row * col ))
+      {
+         break;
+      }
+
+      for ( VAR__53647 = sub_colE - 1; VAR__53647 >= sub_colS; VAR__53647-- )
+      {
+         ( cout << matrix[sub_rowE][VAR__53647] ) << endl;
+         times++;
+      }
+
+      for ( VAR__53647 = sub_rowE - 1; VAR__53647 > sub_rowS; VAR__53647-- )
+      {
+         ( cout << matrix[VAR__53647][sub_colS] ) << endl;
+         times++;
+      }
+
+      if ( times == ( row * col ))
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

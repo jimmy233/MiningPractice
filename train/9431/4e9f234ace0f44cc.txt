@@ -1,0 +1,60 @@
+void main()
+{
+   struct st
+   {
+      char      VAR__NUM[500];
+      char      name[500];
+      char      sex;
+      int       age;
+      double    mark;
+      char      adress[500];
+      struct st *VAR__NEXT;
+   }
+   *VAR_233;
+   struct st
+   {
+      char      VAR__NUM[500];
+      char      name[500];
+      char      sex;
+      int       age;
+      double    mark;
+      char      adress[500];
+      struct st *VAR__NEXT;
+   }
+   *ANOTHER_POINTER;
+   struct st
+   {
+      char      VAR__NUM[500];
+      char      name[500];
+      char      sex;
+      int       age;
+      double    mark;
+      char      adress[500];
+      struct st *VAR__NEXT;
+   }
+   *YET_ANOTHER_POINTER;
+
+   YET_ANOTHER_POINTER = NULL;
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER            = (struct st *)malloc(sizeof( struct st ));
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp("end", ANOTHER_POINTER->VAR__NUM) == 0 )
+      {
+         VAR_233 = ANOTHER_POINTER->VAR__NEXT;
+         break;
+      }
+
+      scanf("%s %c %d %lf %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->mark, ANOTHER_POINTER->adress);
+   }
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->mark, VAR_233->adress);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

@@ -1,0 +1,107 @@
+int dec(char nf[100], int ii, int sysf)
+{
+   int VAR__SUM = 0;
+   int exp      = 1;
+   int VAR__8444594;
+   int VAR__21230;
+
+   for ( VAR__8444594 = ii; VAR__8444594 >= 0; VAR__8444594-- )
+   {
+      if ( ii != VAR__8444594 )
+      {
+         exp = exp * sysf;
+      }
+
+      VAR__SUM += ((int)nf[VAR__8444594] ) * exp;
+   }
+
+   return VAR__SUM;
+}
+
+
+void trans(char outf[100], int pos, int decf, int sysf)
+{
+   int rem;
+   int VAR__temp;
+
+   while (( decf != 0 ) && ( pos >= 0 ))
+   {
+      rem  = decf % sysf;
+      decf = (int)( decf / sysf );
+
+      if (( rem >= 0 ) && ( rem <= 9 ))
+      {
+         outf[pos] = rem + 48;
+      }
+      else
+      if (( rem >= 10 ) && ( rem <= 35 ))
+      {
+         outf[pos] = rem + 55;
+      }
+
+
+      pos--;
+   }
+
+   for ( VAR__temp = pos + 1; VAR__temp <= 99; VAR__temp++ )
+   {
+      cout << outf[VAR__temp];
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647 = 0;
+   int  VAR__8444594;
+   int  VAR__TEMP;
+   char VAR_1238123[100];
+   char VAR__4857423;
+   char output[100];
+
+   cin >> VAR__819283;
+   getchar();
+
+   while ( VAR__4857423 = getchar(), VAR__4857423 != ' ' )
+   {
+      VAR_1238123[VAR__53647] = VAR__4857423;
+      VAR__53647++;
+   }
+
+   VAR__53647--;
+   cin >> VAR__19328;
+   for ( VAR__8444594 = 0; VAR__8444594 <= VAR__53647; VAR__8444594++ )
+   {
+      if (( VAR_1238123[VAR__8444594] >= 'a' ) && ( VAR_1238123[VAR__8444594] <= 'z' ))
+      {
+         VAR_1238123[VAR__8444594] -= 87;
+      }
+      else
+      if (( VAR_1238123[VAR__8444594] >= 'A' ) && ( VAR_1238123[VAR__8444594] <= 'Z' ))
+      {
+         VAR_1238123[VAR__8444594] -= 55;
+      }
+      else
+      if (( VAR_1238123[VAR__8444594] >= '0' ) && ( VAR_1238123[VAR__8444594] <= '9' ))
+      {
+         VAR_1238123[VAR__8444594] -= 48;
+      }
+   }
+
+   VAR__TEMP = dec(VAR_1238123, VAR__53647, VAR__819283);
+
+   if ( VAR__TEMP == 0 )
+   {
+      ( cout << "0" ) << endl;
+   }
+   else
+   {
+      trans(output, 99, VAR__TEMP, VAR__19328);
+   }
+
+   return 0;
+}

@@ -1,0 +1,121 @@
+void main()
+{
+   char sour[100];
+   char result[100];
+   char VAR__819283[20];
+   char VAR__19328[20];
+   char VAR__4857423[20];
+   char *VAR_233 = NULL;
+   char *VAR_666 = NULL;
+   int  VAR__53647;
+   int  VAR__8444594 = 0;
+   int  l_1;
+   int  l_2;
+   int  l_3;
+   int  l_4;
+   int  l_5;
+   int  VAR__7685 = 0;
+   int  VAR_FLAG;
+   int  VAR__21230;
+   int  word_length = 0;
+   int  flag_2      = 0;
+
+   gets(sour);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   l_1     = strlen(sour);
+   l_2     = strlen(VAR__819283);
+   l_3     = strlen(VAR__19328);
+   VAR_233 = sour;
+   VAR_666 = sour;
+   for ( VAR__21230 = 0; VAR__21230 < (( l_1 - l_2 ) + 1 ); )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < l_2; VAR__53647++, VAR__21230++ )
+      {
+         VAR__4857423[VAR__53647] = sour[VAR__21230];
+      }
+
+      VAR__21230 = VAR__7685;
+      VAR__7685++;
+
+      if ( strcmp(VAR__4857423, VAR__819283) == 0 )
+      {
+         flag_2++;
+      }
+   }
+
+   while (( *VAR_233 ) != '\0' )
+   {
+      if ((( *VAR_233 ) == ' ' ) || (( *( VAR_233 + 1 )) == '\0' ))
+      {
+         VAR_FLAG = 1;
+
+         if (( *VAR_233 ) == ' ' )
+         {
+            word_length = VAR_233 - VAR_666;
+         }
+         else
+         {
+            word_length = ( VAR_233 - VAR_666 ) + 1;
+         }
+
+         if ( word_length == strlen(VAR__819283))
+         {
+            for ( VAR__53647 = 0; VAR__53647 < strlen(VAR__819283); VAR__53647++ )
+            {
+               if ( VAR_666[VAR__53647] != VAR__819283[VAR__53647] )
+               {
+                  VAR_FLAG = 0;
+                  break;
+               }
+            }
+         }
+         else
+         {
+            VAR_FLAG = 0;
+         }
+
+         if ( VAR_FLAG == 1 )
+         {
+            for ( VAR__53647 = 0; VAR__53647 < strlen(VAR__19328); VAR__53647++ )
+            {
+               result[VAR__8444594++] = VAR__19328[VAR__53647];
+            }
+         }
+         else
+         {
+            while ( VAR_666 != VAR_233 )
+            {
+               result[VAR__8444594++] = *( VAR_666++ );
+            }
+         }
+
+         if (( *VAR_233 ) == ' ' )
+         {
+            result[VAR__8444594++] = ' ';
+         }
+         else
+         {
+            result[VAR__8444594++] = *VAR_233;
+         }
+
+         VAR_666 = VAR_233 + 1;
+      }
+
+      VAR_233++;
+   }
+
+   result[VAR__8444594] = '\0';
+   l_4 = strlen(result);
+   l_5 = ( l_1 - l_2 ) + l_3;
+
+   if ( l_4 != l_5 )
+   {
+      if ( flag_2 == 1 )
+      {
+         result[VAR__8444594 - 1] = '\0';
+      }
+   }
+
+   puts(result);
+}

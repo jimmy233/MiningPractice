@@ -1,0 +1,72 @@
+int days[13]  = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int rdays[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int ryear(int year)
+{
+   return ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 );
+}
+
+
+int sum1(int year, int month, int day)
+{
+   int VAR__53647;
+   int restday = day;
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ( ryear(year))
+      {
+         restday = restday + rdays[VAR__53647];
+      }
+      else
+      {
+         restday = restday + days[VAR__53647];
+      }
+   }
+
+   return restday;
+}
+
+
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+
+   scanf("%d%d%d %d%d%d", &sy, &sm, &sd, &ey, &em, &ed);
+   int VAR__53647;
+   int VAR__SUM = 0;
+   for ( VAR__53647 = sy + 1; VAR__53647 < ey; VAR__53647++ )
+   {
+      if ( ryear(VAR__53647) == 1 )
+      {
+         VAR__SUM += 366;
+      }
+      else
+      {
+         VAR__SUM += 365;
+      }
+   }
+
+   int start = sum1(sy, sm, sd);
+   int end   = sum1(ey, em, ed);
+
+   if ( sy == ey )
+   {
+      VAR__SUM = ( VAR__SUM + end ) - start;
+   }
+   else
+   {
+      VAR__SUM = (( VAR__SUM + end ) + 365 ) - start;
+
+      if ( ryear(sy))
+      {
+         VAR__SUM++;
+      }
+   }
+
+   printf("%d", VAR__SUM);
+}

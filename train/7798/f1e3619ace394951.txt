@@ -1,0 +1,58 @@
+int main(int argc, char *argv[])
+{
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  LEN_OF_STH;
+   int  VAR__MAX;
+   int  id[1000];
+   int  VAR__19328[26] = { 0 };
+   char VAR__819283[100][27];
+   char name;
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &id[VAR__53647], VAR__819283[VAR__53647]);
+      LEN_OF_STH = strlen(VAR__819283[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         VAR__19328[VAR__819283[VAR__53647][VAR__21230] - 'A']++;
+      }
+   }
+
+   VAR__MAX = VAR__19328[0];
+   name     = 'A';
+   for ( VAR__21230 = 1; VAR__21230 < 26; VAR__21230++ )
+   {
+      if ( VAR__19328[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = VAR__19328[VAR__21230];
+         name     = VAR__21230 + 'A';
+      }
+   }
+
+   printf("%c\n%d\n", name, VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      LEN_OF_STH = strlen(VAR__819283[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] == name )
+         {
+            strcpy(VAR__819283[VAR__53647], "shuchu");
+            break;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( strcmp(VAR__819283[VAR__53647], "shuchu") == 0 )
+      {
+         printf("%d\n", id[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,93 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+   int cnt = 0;
+
+   struct
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   zuobiao[10];
+   struct
+   {
+      int    x1;
+      int    y1;
+      int    z1;
+      int    x2;
+      int    y2;
+      int    z2;
+      int    num1;
+      int    num2;
+      double LEN_OF_STH;
+   }
+   LEN_OF_STH[50];
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> VAR__7685 ) >> VAR__3918907 ) >> VAR__9290;
+      zuobiao[VAR__53647].VAR__7685    = VAR__7685;
+      zuobiao[VAR__53647].VAR__3918907 = VAR__3918907;
+      zuobiao[VAR__53647].VAR__9290    = VAR__9290;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         LEN_OF_STH[cnt].x1         = zuobiao[VAR__53647].VAR__7685;
+         LEN_OF_STH[cnt].y1         = zuobiao[VAR__53647].VAR__3918907;
+         LEN_OF_STH[cnt].z1         = zuobiao[VAR__53647].VAR__9290;
+         LEN_OF_STH[cnt].x2         = zuobiao[VAR__21230].VAR__7685;
+         LEN_OF_STH[cnt].y2         = zuobiao[VAR__21230].VAR__3918907;
+         LEN_OF_STH[cnt].z2         = zuobiao[VAR__21230].VAR__9290;
+         LEN_OF_STH[cnt].num1       = VAR__53647;
+         LEN_OF_STH[cnt].num2       = VAR__21230;
+         LEN_OF_STH[cnt].LEN_OF_STH = sqrt(((( zuobiao[VAR__53647].VAR__7685 - zuobiao[VAR__21230].VAR__7685 ) * ( zuobiao[VAR__53647].VAR__7685 - zuobiao[VAR__21230].VAR__7685 )) + (( zuobiao[VAR__53647].VAR__3918907 - zuobiao[VAR__21230].VAR__3918907 ) * ( zuobiao[VAR__53647].VAR__3918907 - zuobiao[VAR__21230].VAR__3918907 ))) + (( zuobiao[VAR__53647].VAR__9290 - zuobiao[VAR__21230].VAR__9290 ) * ( zuobiao[VAR__53647].VAR__9290 - zuobiao[VAR__21230].VAR__9290 )));
+         cnt++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < (((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ) - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < ((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ); VAR__21230++ )
+      {
+         if ( LEN_OF_STH[VAR__53647].LEN_OF_STH < LEN_OF_STH[VAR__21230].LEN_OF_STH )
+         {
+            LEN_OF_STH[50]         = LEN_OF_STH[VAR__53647];
+            LEN_OF_STH[VAR__53647] = LEN_OF_STH[VAR__21230];
+            LEN_OF_STH[VAR__21230] = LEN_OF_STH[50];
+         }
+
+         if (( LEN_OF_STH[VAR__53647].LEN_OF_STH == LEN_OF_STH[VAR__21230].LEN_OF_STH ) && ( LEN_OF_STH[VAR__53647].num1 > LEN_OF_STH[VAR__21230].num1 ))
+         {
+            LEN_OF_STH[50]         = LEN_OF_STH[VAR__53647];
+            LEN_OF_STH[VAR__53647] = LEN_OF_STH[VAR__21230];
+            LEN_OF_STH[VAR__21230] = LEN_OF_STH[50];
+         }
+
+         if ((( LEN_OF_STH[VAR__53647].LEN_OF_STH == LEN_OF_STH[VAR__21230].LEN_OF_STH ) && ( LEN_OF_STH[VAR__53647].num1 == LEN_OF_STH[VAR__21230].num1 )) && ( LEN_OF_STH[VAR__53647].num2 > LEN_OF_STH[VAR__21230].num2 ))
+         {
+            LEN_OF_STH[50]         = LEN_OF_STH[VAR__53647];
+            LEN_OF_STH[VAR__53647] = LEN_OF_STH[VAR__21230];
+            LEN_OF_STH[VAR__21230] = LEN_OF_STH[50];
+         }
+      }
+   }
+
+
+   cout << fixed;
+   for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__21230++ )
+   {
+      ((((((((((((((( cout << "(" ) << LEN_OF_STH[VAR__21230].x1 ) << "," ) << LEN_OF_STH[VAR__21230].y1 ) << "," ) << LEN_OF_STH[VAR__21230].z1 ) << ")-(" ) << LEN_OF_STH[VAR__21230].x2 ) << "," ) << LEN_OF_STH[VAR__21230].y2 ) << "," ) << LEN_OF_STH[VAR__21230].z2 ) << ")=" ) << setprecision(2)) << LEN_OF_STH[VAR__21230].LEN_OF_STH ) << endl;
+   }
+
+   return 0;
+}

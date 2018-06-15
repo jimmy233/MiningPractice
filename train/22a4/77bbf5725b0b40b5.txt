@@ -1,0 +1,101 @@
+int main()
+{
+   void ff(char A_STRING[], int VAR__7685);
+
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  fff;
+   char A_STRING[1000];
+   for ( fff = 1; fff <= 6; fff++ )
+   {
+      cin.getline(A_STRING, 100, '\n');
+      VAR__8444594 = strlen(A_STRING);
+      int v = 0;
+      for ( VAR__53647 = VAR__8444594 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( A_STRING[VAR__53647] == '0' )
+         {
+            v++;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+
+      if ( v == VAR__8444594 )
+      {
+         cout << 0;
+      }
+      else
+      if (( v == ( VAR__8444594 - 1 )) && ( A_STRING[0] == '-' ))
+      {
+         ( cout << 0 ) << endl;
+      }
+      else
+      {
+         for ( VAR__53647 = VAR__8444594 - 1; VAR__53647 >= 1; VAR__53647-- )
+         {
+            if (( A_STRING[VAR__53647] == '0' ) && ( A_STRING[VAR__53647 - 1] == '0' ))
+            {
+               A_STRING[VAR__53647] = 0, A_STRING[VAR__53647 - 1] = 0;
+               VAR__53647--;
+            }
+            else
+            if (( A_STRING[VAR__53647] == '0' ) && ( A_STRING[VAR__53647 - 1] != '0' ))
+            {
+               A_STRING[VAR__53647] = 0;
+               break;
+            }
+            else
+            {
+               break;
+            }
+         }
+
+
+
+         VAR__8444594               = strlen(A_STRING);
+         A_STRING[VAR__8444594]     = 'a';
+         A_STRING[VAR__8444594 + 1] = 0;
+
+         if ( A_STRING[0] != '-' )
+         {
+            ff(A_STRING, 0);
+         }
+         else
+         {
+            cout << "-";
+            for ( VAR__53647 = 0; VAR__53647 <= ( VAR__8444594 - 2 ); VAR__53647++ )
+            {
+               A_STRING[VAR__53647] = A_STRING[VAR__53647 + 1];
+            }
+
+            A_STRING[VAR__8444594 - 1] = 'a';
+            A_STRING[VAR__8444594 + 1] = 0;
+            ff(A_STRING, 0);
+         }
+
+         cout << endl;
+      }
+   }
+
+   return 0;
+}
+
+
+void ff(char A_STRING[], int VAR__7685)
+{
+   if ( A_STRING[VAR__7685] != 'a' )
+   {
+      VAR__7685++;
+      ff(A_STRING, VAR__7685);
+      VAR__7685--;
+   }
+
+   if ( A_STRING[VAR__7685] != 'a' )
+   {
+      cout << A_STRING[VAR__7685];
+   }
+}

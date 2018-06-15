@@ -1,0 +1,76 @@
+struct book
+{
+   int         VAR__NUM;
+   char        edit[26];
+   struct book *VAR__NEXT;
+};
+int         VAR__1238129;
+struct book *VAR__HEAD;
+struct book *ANOTHER_POINTER;
+struct book *YET_ANOTHER_POINTER;
+struct book *creat(void)
+{
+   ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH);
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->edit);
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   VAR__1238129        = VAR__1238129 - 1;
+   do
+   {
+      ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH);
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->edit);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      VAR__1238129 = VAR__1238129 - 1;
+   } while ( VAR__1238129 );
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int         VAR__MAX   = 0;
+   int         VAR__53647 = 0;
+   int         VAR__21230;
+   int         VAR__8444594[26] = { 0 };
+   struct book *VAR__HEAD;
+   struct book *VAR_233;
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = creat();
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; )
+   {
+      for ( VAR__53647 = 0; VAR_233->edit[VAR__53647] != 0; VAR__53647++ )
+      {
+         VAR__8444594[VAR_233->edit[VAR__53647] - 65] += 1;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__8444594[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX   = VAR__8444594[VAR__53647];
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+
+   printf("%c\n%d\n", VAR__21230 + 65, VAR__MAX);
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; )
+   {
+      for ( VAR__53647 = 0; VAR_233->edit[VAR__53647] != 0; VAR__53647++ )
+      {
+         if ( VAR_233->edit[VAR__53647] == ( VAR__21230 + 65 ))
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+         }
+      }
+
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

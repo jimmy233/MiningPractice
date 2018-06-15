@@ -1,0 +1,99 @@
+int panduan(char VAR__819283[], char VAR__19328, char VAR_9Q8Q90)
+{
+   int VAR__1111;
+   int bj;
+   int gj;
+   int bs;
+   int gs;
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__temp;
+
+   VAR__1111    = strlen(VAR__819283);
+   bj           = 0;
+   gj           = 0;
+   bs           = 0;
+   gs           = 0;
+   VAR__8444594 = VAR__1111 - 1;
+
+   while (( VAR__819283[VAR__8444594] != VAR__19328 ) && ( VAR__819283[VAR__8444594] != VAR_9Q8Q90 ))
+   {
+      VAR__8444594--;
+   }
+
+   for ( VAR__53647 = VAR__8444594; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__19328 )
+      {
+         bj++;
+      }
+      else
+      if ( VAR__819283[VAR__53647] == VAR_9Q8Q90 )
+      {
+         gj++;
+      }
+
+
+      if ( bj == gj )
+      {
+         bs = VAR__53647;
+         gs = VAR__8444594;
+         break;
+      }
+   }
+
+   VAR__temp = ( 100 * bs ) + gs;
+   return VAR__temp;
+}
+
+
+int main()
+{
+   char VAR__12302[100];
+   int  VAR_1238123;
+   int  length;
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  VAR__8444594;
+   char boy;
+   char girl;
+   int  weishu[100][2];
+
+   cin >> VAR__12302;
+   length = strlen(VAR__12302);
+   boy    = VAR__12302[0];
+   girl   = VAR__12302[length - 1];
+   for ( VAR_1238123 = 0; VAR_1238123 < ( length / 2 ); VAR_1238123++ )
+   {
+      VAR__1238129                   = panduan(VAR__12302, boy, girl);
+      weishu[VAR_1238123][0]         = VAR__1238129 / 100;
+      weishu[VAR_1238123][1]         = VAR__1238129 % 100;
+      VAR__12302[VAR__1238129 / 100] = '0';
+      VAR__12302[VAR__1238129 % 100] = '0';
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( weishu[VAR__53647][1] > weishu[VAR__53647 + 1][1] )
+         {
+            VAR__temp                 = weishu[VAR__53647][1];
+            weishu[VAR__53647][1]     = weishu[VAR__53647 + 1][1];
+            weishu[VAR__53647 + 1][1] = VAR__temp;
+            VAR__1238129              = weishu[VAR__53647][0];
+            weishu[VAR__53647][0]     = weishu[VAR__53647 + 1][0];
+            weishu[VAR__53647 + 1][0] = VAR__1238129;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( length / 2 ); VAR__53647++ )
+   {
+      ((( cout << weishu[VAR__53647][0] ) << " " ) << weishu[VAR__53647][1] ) << endl;
+   }
+
+   return 0;
+}

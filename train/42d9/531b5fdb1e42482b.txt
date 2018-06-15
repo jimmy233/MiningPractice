@@ -1,0 +1,62 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   struct zb
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   dian[VAR_1238123];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> dian[VAR__53647].VAR__7685 ) >> dian[VAR__53647].VAR__3918907 ) >> dian[VAR__53647].VAR__9290;
+   }
+
+   double distance[VAR_1238123][VAR_1238123];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         distance[VAR__53647][VAR__21230] = 0.0;
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         distance[VAR__53647][VAR__21230] = sqrt(((( dian[VAR__53647].VAR__7685 - dian[VAR__21230].VAR__7685 ) * ( dian[VAR__53647].VAR__7685 - dian[VAR__21230].VAR__7685 )) + (( dian[VAR__53647].VAR__3918907 - dian[VAR__21230].VAR__3918907 ) * ( dian[VAR__53647].VAR__3918907 - dian[VAR__21230].VAR__3918907 ))) + (( dian[VAR__53647].VAR__9290 - dian[VAR__21230].VAR__9290 ) * ( dian[VAR__53647].VAR__9290 - dian[VAR__21230].VAR__9290 )));
+      }
+   }
+
+
+   int amount = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   for ( int VAR__53647 = 0; VAR__53647 < amount; VAR__53647++ )
+   {
+      double maxdis = 0;
+      int    maxX   = 0;
+      int    maxY   = 0;
+      for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         for ( int VAR__8444594 = VAR__21230 + 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            if ( maxdis < distance[VAR__21230][VAR__8444594] )
+            {
+               maxdis = distance[VAR__21230][VAR__8444594];
+               maxX   = VAR__21230;
+               maxY   = VAR__8444594;
+            }
+         }
+      }
+
+      ((((((((((((((( cout << "(" ) << dian[maxX].VAR__7685 ) << "," ) << dian[maxX].VAR__3918907 ) << "," ) << dian[maxX].VAR__9290 ) << ")" ) << "-" ) << "(" ) << dian[maxY].VAR__7685 ) << "," ) << dian[maxY].VAR__3918907 ) << "," ) << dian[maxY].VAR__9290 ) << ")" ) << "=";
+      ((( cout << fixed ) << setprecision(2)) << maxdis ) << endl;
+      distance[maxX][maxY] = 0.0;
+   }
+
+   return 0;
+}

@@ -1,0 +1,59 @@
+int pfCompare(const void *elem1, const void *elem2)
+{
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (int *)elem1;
+   YET_ANOTHER_POINTER = (int *)elem2;
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int mi = 0;
+   int fi = 0;
+
+   scanf("%d", &VAR_1238123);
+   char  VAR_9494[7];
+   float VAR__4857423;
+   float VAR__1238129[40] = { 0 };
+   float VAR__127322[40]  = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", VAR_9494, &VAR__4857423);
+
+      if ( VAR_9494[0] == 'm' )
+      {
+         VAR__1238129[mi] = VAR__4857423;
+         mi++;
+      }
+      else
+      {
+         VAR__127322[fi] = VAR__4857423;
+         fi++;
+      }
+   }
+
+   qsort(VAR__1238129, mi, sizeof( int ), pfCompare);
+   qsort(VAR__127322, fi, sizeof( int ), pfCompare);
+   for ( VAR__53647 = mi; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf("%.2f ", VAR__1238129[VAR__53647 - 1]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < fi; VAR__53647++ )
+   {
+      if ( VAR__53647 == ( fi - 1 ))
+      {
+         printf("%.2f", VAR__127322[VAR__53647]);
+      }
+      else
+      {
+         printf("%.2f ", VAR__127322[VAR__53647]);
+      }
+   }
+}

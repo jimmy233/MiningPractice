@@ -1,0 +1,61 @@
+struct stu
+{
+   int        xuehao;
+   int        yuwen;
+   int        shuxue;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+};
+void VAR__MAX(struct stu *VAR_2890)
+{
+   struct stu *VAR__819283;
+   struct stu *VAR__19328;
+   struct stu *VAR__4857423;
+   struct stu *VAR__12302;
+   int        VAR__1238129 = 0;
+
+   VAR__819283 = VAR_2890;
+   do
+   {
+      VAR__4857423 = VAR__819283;
+      VAR__819283  = VAR__819283->VAR__NEXT;
+
+      if ( VAR__1238129 < VAR__819283->VAR__SUM )
+      {
+         VAR__1238129 = VAR__819283->VAR__SUM;
+         VAR__12302   = VAR__4857423;
+         VAR__19328   = VAR__819283;
+      }
+   } while ( VAR__819283->VAR__NEXT );
+   printf("%d %d\n", VAR__19328->xuehao, VAR__19328->VAR__SUM);
+   VAR__12302->VAR__NEXT = VAR__19328->VAR__NEXT;
+   free(VAR__19328);
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+   struct stu *VAR_666;
+   int        VAR_1238123;
+   int        VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD            = M;
+   VAR_233              = M;
+   VAR__HEAD->VAR__NEXT = VAR_233;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR_233->xuehao, &VAR_233->yuwen, &VAR_233->shuxue);
+      VAR_233->VAR__SUM  = VAR_233->yuwen + VAR_233->shuxue;
+      VAR_666            = M;
+      VAR_233->VAR__NEXT = VAR_666;
+      VAR_233            = VAR_666;
+   }
+
+   VAR_233->VAR__NEXT = NULL;
+   VAR__MAX(VAR__HEAD);
+   VAR__MAX(VAR__HEAD);
+   VAR__MAX(VAR__HEAD);
+}

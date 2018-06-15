@@ -1,0 +1,99 @@
+const int size = 10000;
+char      inda[size];
+char      outda[size];
+int       indata[size];
+int       VAR__temp;
+int       ans[2 * size];
+int       lans;
+int       ddd[size];
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  inbase;
+   int  outbase;
+   int  la;
+   int  ld;
+   int  map[300];
+   char rmap[65];
+
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'Z'; VAR__53647++ )
+   {
+      map[VAR__53647] = ( VAR__53647 - 'A' ) + 10;
+      rmap[( VAR__53647 - 'A' ) + 10] = VAR__53647;
+   }
+
+   for ( VAR__53647 = 'a'; VAR__53647 <= 'z'; VAR__53647++ )
+   {
+      map[VAR__53647] = ( VAR__53647 - 'a' ) + 10;
+      rmap[( VAR__53647 - 'a' ) + 37] = VAR__53647;
+   }
+
+   for ( VAR__53647 = '0'; VAR__53647 <= '9'; VAR__53647++ )
+   {
+      map[VAR__53647]        = VAR__53647 - '0';
+      rmap[VAR__53647 - '0'] = VAR__53647;
+   }
+
+   (( cin >> inbase ) >> inda ) >> outbase;
+   la   = strlen(inda);
+   lans = 0;
+   ld   = 0;
+   for ( VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+   {
+      indata[VAR__53647] = map[inda[VAR__53647]];
+   }
+
+   while ( true )
+   {
+      if (( la == 1 ) && ( indata[0] < outbase ))
+      {
+         ans[lans++] = indata[0];
+         break;
+      }
+
+      if ( inda[0] == '0' )
+      {
+         cout << "0";
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( la - 1 ); VAR__53647++ )
+      {
+         ddd[ld++] = indata[VAR__53647] / outbase;
+         VAR__temp = indata[VAR__53647] % outbase;
+         indata[VAR__53647 + 1] += VAR__temp * inbase;
+      }
+
+      ddd[ld++]   = indata[VAR__53647] / outbase;
+      ans[lans++] = indata[VAR__53647] % outbase;
+      for ( VAR__53647 = 0; VAR__53647 < ld; VAR__53647++ )
+      {
+         if ( ddd[VAR__53647] )
+         {
+            break;
+         }
+      }
+
+
+      for ( VAR__21230 = 0; VAR__53647 < ld; VAR__53647++, VAR__21230++ )
+      {
+         indata[VAR__21230] = ddd[VAR__53647];
+      }
+
+      la = VAR__21230;
+      ld = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < lans; VAR__53647++ )
+   {
+      outda[VAR__53647] = rmap[ans[VAR__53647]];
+   }
+
+   for ( VAR__53647 = lans - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << outda[VAR__53647];
+   }
+
+   return 0;
+}

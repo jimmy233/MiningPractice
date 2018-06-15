@@ -1,0 +1,71 @@
+void main()
+{
+   struct stu
+   {
+      char       VAR__NUM[100];
+      char       nam[100];
+      char       sex;
+      int        age;
+      float      sco;
+      char       add[100];
+      struct stu *VAR__NEXT;
+   };
+   int        LEN_OF_STH = 1;
+   int        VAR__53647;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR__HEAD;
+   struct stu *new;
+   struct stu *newhead;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = ( VAR__HEAD = (struct stu *)malloc(sizeof( struct stu ))));
+   scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+   while ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0 )
+   {
+      scanf("%s %c%d%f%s", ANOTHER_POINTER->nam, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->sco, ANOTHER_POINTER->add);
+      ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") == 0 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         LEN_OF_STH++;
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ( ANOTHER_POINTER = VAR__HEAD );
+
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( VAR__53647 == 0 )
+      {
+         newhead = ( new = ANOTHER_POINTER );
+      }
+      else
+      {
+         new = ( new->VAR__NEXT = ANOTHER_POINTER );
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   }
+
+   ANOTHER_POINTER = newhead;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      printf("%s %s %c %d %g %s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->nam, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->sco, ANOTHER_POINTER->add);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

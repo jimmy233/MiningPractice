@@ -1,0 +1,82 @@
+struct stru
+{
+   char        id[20];
+   int         age;
+   struct stru *VAR__NEXT;
+}
+*VAR__HEAD;
+struct stru
+{
+   char        id[20];
+   int         age;
+   struct stru *VAR__NEXT;
+}
+*VAR_233;
+struct stru
+{
+   char        id[20];
+   int         age;
+   struct stru *VAR__NEXT;
+}
+*VAR_666;
+void creat(int N)
+{
+   int VAR__53647;
+
+   VAR_233   = ( VAR_666 = (struct stru *)malloc(LEN));
+   VAR__HEAD = VAR_233;
+   scanf("%s %d", VAR_233->id, &VAR_233->age);
+   for ( VAR__53647 = 1; VAR__53647 < N; VAR__53647++ )
+   {
+      VAR_233 = (struct stru *)malloc(LEN);
+      scanf("%s %d", VAR_233->id, &VAR_233->age);
+      VAR_666->VAR__NEXT = VAR_233;
+      VAR_666            = VAR_233;
+   }
+
+   VAR_666->VAR__NEXT = NULL;
+}
+
+
+void arrange(struct stru *VAR__HEAD, int N)
+{
+   int  VAR__53647;
+   int  VAR__TEMP;
+   char media[20];
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      for ( VAR_233 = VAR__HEAD, VAR_666 = VAR__HEAD->VAR__NEXT; VAR_666 != NULL; VAR_233 = VAR_233->VAR__NEXT, VAR_666 = VAR_666->VAR__NEXT )
+      {
+         if (( VAR_666->age >= 60 ) && ( VAR_666->age > VAR_233->age ))
+         {
+            strcpy(media, VAR_233->id);
+            strcpy(VAR_233->id, VAR_666->id);
+            strcpy(VAR_666->id, media);
+            VAR__TEMP    = VAR_233->age;
+            VAR_233->age = VAR_666->age;
+            VAR_666->age = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void print(struct stru *VAR__HEAD)
+{
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s\n", VAR_233->id);
+   }
+}
+
+
+void main()
+{
+   int N;
+
+   scanf("%d", &N);
+   creat(N);
+   arrange(VAR__HEAD, N);
+   print(VAR__HEAD);
+}

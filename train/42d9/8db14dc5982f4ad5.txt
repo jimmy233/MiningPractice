@@ -1,0 +1,64 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__temp;
+   int    t2;
+   int    t3;
+   double t1;
+   int    zb[10][3];
+   double VAR__12302[60];
+   int    VAR_FLAG[60][2];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         scanf("%d", &zb[VAR__53647][VAR__21230]);
+      }
+   }
+
+   VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__12302[VAR__temp]  = sqrt(1.0 * (((( zb[VAR__53647][0] - zb[VAR__21230][0] ) * ( zb[VAR__53647][0] - zb[VAR__21230][0] )) + (( zb[VAR__53647][1] - zb[VAR__21230][1] ) * ( zb[VAR__53647][1] - zb[VAR__21230][1] ))) + (( zb[VAR__53647][2] - zb[VAR__21230][2] ) * ( zb[VAR__53647][2] - zb[VAR__21230][2] ))));
+         VAR_FLAG[VAR__temp][0] = VAR__53647;
+         VAR_FLAG[VAR__temp][1] = VAR__21230;
+         VAR__temp++;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR__temp - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR__temp - VAR__21230 ) - 1 ); VAR__53647++ )
+      {
+         if ( VAR__12302[VAR__53647] < VAR__12302[VAR__53647 + 1] )
+         {
+            t1 = VAR__12302[VAR__53647];
+            VAR__12302[VAR__53647]     = VAR__12302[VAR__53647 + 1];
+            VAR__12302[VAR__53647 + 1] = t1;
+            t2 = VAR_FLAG[VAR__53647][0];
+            VAR_FLAG[VAR__53647][0]     = VAR_FLAG[VAR__53647 + 1][0];
+            VAR_FLAG[VAR__53647 + 1][0] = t2;
+            t3 = VAR_FLAG[VAR__53647][1];
+            VAR_FLAG[VAR__53647][1]     = VAR_FLAG[VAR__53647 + 1][1];
+            VAR_FLAG[VAR__53647 + 1][1] = t3;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)", zb[VAR_FLAG[VAR__53647][0]][0], zb[VAR_FLAG[VAR__53647][0]][1], zb[VAR_FLAG[VAR__53647][0]][2]);
+      printf("-");
+      printf("(%d,%d,%d)", zb[VAR_FLAG[VAR__53647][1]][0], zb[VAR_FLAG[VAR__53647][1]][1], zb[VAR_FLAG[VAR__53647][1]][2]);
+      printf("=%.2f", VAR__12302[VAR__53647]);
+      printf("\n");
+   }
+
+   return 0;
+}

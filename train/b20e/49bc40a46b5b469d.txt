@@ -1,0 +1,117 @@
+int swap(int VAR_1238123, int *VAR__819283, int *VAR__19328)
+{
+   int win;
+   int lost;
+   int money;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+   int *VAR__4857423 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      win  = 0;
+      lost = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] > VAR__19328[VAR__53647] )
+         {
+            win++;
+         }
+         else
+         if ( VAR__819283[VAR__53647] < VAR__19328[VAR__53647] )
+         {
+            lost++;
+         }
+      }
+
+      VAR__4857423[VAR__21230] = ( win * 200 ) - ( lost * 200 );
+      VAR__8444594             = VAR__819283[0];
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647 + 1];
+      }
+
+      VAR__819283[VAR_1238123 - 1] = VAR__8444594;
+   }
+
+   money = VAR__4857423[0];
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( money < VAR__4857423[VAR__21230] )
+      {
+         money = VAR__4857423[VAR__21230];
+      }
+   }
+
+   return money;
+}
+
+
+int main()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; ; VAR__53647++ )
+   {
+      int VAR_1238123;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         int *VAR__819283 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         int VAR__1111;
+         int VAR__8444594;
+         for ( VAR__1111 = 0; VAR__1111 < VAR_1238123; VAR__1111++ )
+         {
+            scanf("%d", &VAR__819283[VAR__1111]);
+         }
+
+         scanf("\n");
+         for ( VAR__1111 = 0; VAR__1111 < ( VAR_1238123 - 1 ); VAR__1111++ )
+         {
+            for ( VAR__8444594 = 0; VAR__8444594 < (( VAR_1238123 - 1 ) - VAR__1111 ); VAR__8444594++ )
+            {
+               if ( VAR__819283[VAR__8444594] < VAR__819283[VAR__8444594 + 1] )
+               {
+                  int VAR__TEMP;
+                  VAR__TEMP = VAR__819283[VAR__8444594];
+                  VAR__819283[VAR__8444594]     = VAR__819283[VAR__8444594 + 1];
+                  VAR__819283[VAR__8444594 + 1] = VAR__TEMP;
+               }
+            }
+         }
+
+         int *VAR__19328 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         for ( VAR__1111 = 0; VAR__1111 < VAR_1238123; VAR__1111++ )
+         {
+            scanf("%d", &VAR__19328[VAR__1111]);
+         }
+
+         for ( VAR__1111 = 0; VAR__1111 < ( VAR_1238123 - 1 ); VAR__1111++ )
+         {
+            for ( VAR__8444594 = 0; VAR__8444594 < (( VAR_1238123 - 1 ) - VAR__1111 ); VAR__8444594++ )
+            {
+               if ( VAR__19328[VAR__8444594] < VAR__19328[VAR__8444594 + 1] )
+               {
+                  int VAR__TEMP;
+                  VAR__TEMP = VAR__19328[VAR__8444594];
+                  VAR__19328[VAR__8444594]     = VAR__19328[VAR__8444594 + 1];
+                  VAR__19328[VAR__8444594 + 1] = VAR__TEMP;
+               }
+            }
+         }
+
+         printf("%d\n", swap(VAR_1238123, VAR__819283, VAR__19328));
+      }
+   }
+
+   getchar;
+   getchar;
+}

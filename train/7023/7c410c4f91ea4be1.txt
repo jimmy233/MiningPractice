@@ -1,0 +1,79 @@
+int maxlen(int VAR__7685, int VAR__3918907);
+
+int main()
+{
+   int  N;
+   char s1[201];
+   char s2[201];
+   int  VAR__819283[201];
+   int  VAR__19328[201];
+   int  maxx;
+   int  l1;
+   int  l2;
+   int  VAR__53647;
+   int  VAR__21230;
+
+   N = ( maxx = ( l1 = ( l2 = 0 )));
+   scanf("%d", &N);
+   for ( int VAR_1238123 = 0; VAR_1238123 < N; VAR_1238123++ )
+   {
+      memset(s1, 0, sizeof( s1 ));
+      memset(s2, 0, sizeof( s2 ));
+      memset(VAR__819283, 0, sizeof( VAR__819283 ));
+      memset(VAR__19328, 0, sizeof( VAR__19328 ));
+      scanf("%s", s1);
+      scanf("%s", s2);
+      l1   = strlen(s1);
+      l2   = strlen(s2);
+      maxx = maxlen(l1, l2);
+      for ( VAR__53647 = maxx, VAR__21230 = l1 - 1; VAR__21230 >= 0; VAR__53647--, VAR__21230-- )
+      {
+         VAR__819283[VAR__53647] = s1[VAR__21230] - '0';
+      }
+
+      for ( VAR__53647 = maxx, VAR__21230 = l2 - 1; VAR__21230 >= 0; VAR__53647--, VAR__21230-- )
+      {
+         VAR__19328[VAR__53647] = s2[VAR__21230] - '0';
+      }
+
+      for ( VAR__53647 = maxx; VAR__53647 > 0; VAR__53647-- )
+      {
+         if ( VAR__819283[VAR__53647] < VAR__19328[VAR__53647] )
+         {
+            VAR__819283[VAR__53647] = ( VAR__819283[VAR__53647] + 10 ) - VAR__19328[VAR__53647];
+            VAR__819283[VAR__53647 - 1]--;
+         }
+         else
+         {
+            VAR__819283[VAR__53647] -= VAR__19328[VAR__53647];
+         }
+      }
+
+      VAR__53647 = 0;
+
+      while ( VAR__819283[VAR__53647] == 0 )
+      {
+         VAR__53647++;
+      }
+
+      for ( ; VAR__53647 < ( maxx + 1 ); VAR__53647++ )
+      {
+         printf("%d", VAR__819283[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}
+
+
+int maxlen(int VAR__7685, int VAR__3918907)
+{
+   if ( VAR__7685 > VAR__3918907 )
+   {
+      return VAR__7685;
+   }
+
+   return VAR__3918907;
+}

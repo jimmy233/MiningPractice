@@ -1,0 +1,64 @@
+int rr(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int y1;
+   int m1;
+   int d1;
+   int y2;
+   int m2;
+   int d2;
+   int VAR_233      = 0;
+   int VAR__7685    = 0;
+   int VAR__3918907 = 0;
+   int VAR__819283  = 0;
+   int VAR__19328   = 0;
+   int VAR__53647;
+   int aa[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   ((((( cin >> y1 ) >> m1 ) >> d1 ) >> y2 ) >> m2 ) >> d2;
+   for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+   {
+      VAR_233 = ( VAR_233 + 365 ) + rr(VAR__53647);
+   }
+
+   for ( VAR__7685 = 1; VAR__7685 < m1; VAR__7685++ )
+   {
+      if ( VAR__7685 == 2 )
+      {
+         VAR__819283 = ( VAR__819283 + aa[VAR__7685] ) + rr(y1);
+      }
+      else
+      {
+         VAR__819283 = VAR__819283 + aa[VAR__7685];
+      }
+   }
+
+   VAR__819283 = VAR__819283 + d1;
+   for ( VAR__7685 = 1; VAR__7685 < m2; VAR__7685++ )
+   {
+      if ( VAR__7685 == 2 )
+      {
+         VAR__19328 = ( VAR__19328 + aa[VAR__7685] ) + rr(y2);
+      }
+      else
+      {
+         VAR__19328 = VAR__19328 + aa[VAR__7685];
+      }
+   }
+
+   VAR__19328 = VAR__19328 + d2;
+   cout << ((((( 365 + rr(y1)) * ( y1 != y2 )) + VAR_233 ) + VAR__19328 ) - VAR__819283 );
+   return 0;
+}

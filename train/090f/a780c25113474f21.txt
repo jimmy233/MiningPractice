@@ -1,0 +1,82 @@
+int main()
+{
+   char A_STRING[350];
+   char VAR__7685[400][20];
+   char VAR__TEMP[350];
+   int  VAR_1238123;
+   int  VAR__53647 = 0;
+   int  VAR__21230 = 0;
+   int  VAR__8444594;
+   int  VAR__1111;
+   int  VAR_2890 = 0;
+
+   gets(A_STRING);
+   VAR_1238123 = strlen(A_STRING);
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      if (( A_STRING[VAR__53647] > '0' ) && ( A_STRING[VAR__53647] <= '9' ))
+      {
+         VAR__8444594 = 0;
+
+         while (( A_STRING[VAR__53647] >= '0' ) && ( A_STRING[VAR__53647] <= '9' ))
+         {
+            VAR__7685[VAR__21230][VAR__8444594] = A_STRING[VAR__53647];
+            VAR__53647++;
+            VAR__8444594++;
+         }
+
+         VAR__7685[VAR__21230][VAR__8444594] = '\0';
+         VAR__21230++;
+      }
+      else
+      {
+         VAR__53647++;
+      }
+   }
+
+   if ( VAR__21230 > 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+      {
+         for ( VAR__1111 = 0; VAR__1111 < (( VAR__21230 - VAR__53647 ) - 1 ); VAR__1111++ )
+         {
+            if (( strlen(VAR__7685[VAR__1111]) == strlen(VAR__7685[VAR__1111 + 1])) && ( strcmp(VAR__7685[VAR__1111], VAR__7685[VAR__1111 + 1]) > 0 ))
+            {
+               strcpy(VAR__TEMP, VAR__7685[VAR__1111]);
+               strcpy(VAR__7685[VAR__1111], VAR__7685[VAR__1111 + 1]);
+               strcpy(VAR__7685[VAR__1111 + 1], VAR__TEMP);
+            }
+            else
+            if ( strlen(VAR__7685[VAR__1111]) > strlen(VAR__7685[VAR__1111 + 1]))
+            {
+               strcpy(VAR__TEMP, VAR__7685[VAR__1111]);
+               strcpy(VAR__7685[VAR__1111], VAR__7685[VAR__1111 + 1]);
+               strcpy(VAR__7685[VAR__1111 + 1], VAR__TEMP);
+            }
+         }
+      }
+
+
+
+      for ( VAR__53647 = VAR__21230 - 1; VAR__53647 > 0; VAR__53647-- )
+      {
+         if ( strcmp(VAR__7685[VAR__53647], VAR__7685[VAR__53647 - 1]))
+         {
+            printf("%s\n", VAR__7685[VAR__53647 - 1]);
+            VAR_2890 += 1;
+            break;
+         }
+      }
+
+
+      if ( VAR__53647 = 1 && ( VAR_2890 == 0 ))
+      {
+         printf("No\n");
+      }
+   }
+   else
+   {
+      printf("No\n");
+   }
+}

@@ -1,0 +1,94 @@
+struct student
+{
+   char           VAR__NUM[200];
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   struct student *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = YET_ANOTHER_POINTER;
+         p3        = VAR__HEAD;
+      }
+
+      scanf("%s %d", YET_ANOTHER_POINTER->VAR__NUM, &YET_ANOTHER_POINTER->VAR__SUM);
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+
+      if ( YET_ANOTHER_POINTER->VAR__SUM >= 60 )
+      {
+         if ( VAR__53647 == 1 )
+         {
+            if ( VAR__HEAD->VAR__SUM >= YET_ANOTHER_POINTER->VAR__SUM )
+            {
+               VAR__HEAD->VAR__NEXT           = YET_ANOTHER_POINTER;
+               YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+               p3 = YET_ANOTHER_POINTER;
+            }
+            else
+            {
+               ANOTHER_POINTER = VAR__HEAD;
+               YET_ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+               VAR__HEAD = YET_ANOTHER_POINTER;
+            }
+         }
+
+         if ( VAR__53647 > 1 )
+         {
+            for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER->VAR__NEXT != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+            {
+               if (( ANOTHER_POINTER->VAR__SUM >= YET_ANOTHER_POINTER->VAR__SUM ) && ( ANOTHER_POINTER->VAR__NEXT->VAR__SUM < YET_ANOTHER_POINTER->VAR__SUM ))
+               {
+                  YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+                  ANOTHER_POINTER->VAR__NEXT     = YET_ANOTHER_POINTER;
+                  break;
+               }
+            }
+
+            if ( YET_ANOTHER_POINTER->VAR__NEXT == NULL )
+            {
+               if ( YET_ANOTHER_POINTER->VAR__SUM > VAR__HEAD->VAR__SUM )
+               {
+                  YET_ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+                  VAR__HEAD = YET_ANOTHER_POINTER;
+               }
+
+               if ( YET_ANOTHER_POINTER->VAR__SUM < ANOTHER_POINTER->VAR__SUM )
+               {
+                  YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+                  p3 = YET_ANOTHER_POINTER;
+                  ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+               }
+            }
+         }
+      }
+      else
+      {
+         if ( VAR__53647 != 0 )
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+            p3->VAR__NEXT = YET_ANOTHER_POINTER;
+            p3            = YET_ANOTHER_POINTER;
+         }
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; ( VAR__53647 < VAR_1238123 ) && ( ANOTHER_POINTER != NULL ); VAR__53647++ )
+   {
+      printf("%s\n", ANOTHER_POINTER->VAR__NUM);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

@@ -1,0 +1,56 @@
+int main()
+{
+   struct stu
+   {
+      char       id[9];
+      int        chn;
+      int        math;
+      int        both;
+      struct stu *VAR__NEXT;
+   };
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD       = (struct stu *)malloc(sizeof( struct stu ));
+         ANOTHER_POINTER = VAR__HEAD;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = (struct stu *)malloc(sizeof( struct stu ));
+         ANOTHER_POINTER            = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      scanf("%s%d%d", ANOTHER_POINTER->id, &ANOTHER_POINTER->chn, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->both = ANOTHER_POINTER->chn + ANOTHER_POINTER->math;
+   }
+
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   int VAR__MAX;
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      VAR__MAX        = VAR__HEAD->both;
+      ANOTHER_POINTER = VAR__HEAD;
+      do
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+
+         if ( VAR__MAX < ANOTHER_POINTER->both )
+         {
+            VAR__MAX            = ANOTHER_POINTER->both;
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         }
+      } while ( ANOTHER_POINTER->VAR__NEXT != NULL );
+      printf("%s %d\n", YET_ANOTHER_POINTER->id, YET_ANOTHER_POINTER->both);
+      YET_ANOTHER_POINTER->both = 0;
+   }
+
+   return 0;
+}

@@ -1,0 +1,106 @@
+int main()
+{
+   void saima(int *tian, int *qi, int VAR_1238123);
+
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__8444594;
+   int tianji[1000];
+   int qiwang[1000];
+   int *tian;
+   int *qi;
+   tian = tianji;
+   qi   = qiwang;
+   for ( VAR__8444594 = 0; ; VAR__8444594++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", tian + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", qi + VAR__53647);
+      }
+
+      saima(tian, qi, VAR_1238123);
+   }
+
+   return 0;
+}
+
+
+void saima(int *tian, int *qi, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__112390;
+   int sheng = 0;
+   int ping  = 0;
+   int shu   = 0;
+   int money;
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR__53647; VAR__8444594++ )
+      {
+         if (( *( tian + VAR__8444594 )) > ( *(( tian + VAR__8444594 ) + 1 )))
+         {
+            VAR__112390 = *( tian + VAR__8444594 );
+            *( tian + VAR__8444594 )        = *(( tian + VAR__8444594 ) + 1 );
+            *(( tian + VAR__8444594 ) + 1 ) = VAR__112390;
+         }
+
+         if (( *( qi + VAR__8444594 )) > ( *(( qi + VAR__8444594 ) + 1 )))
+         {
+            VAR__112390                   = *( qi + VAR__8444594 );
+            *( qi + VAR__8444594 )        = *(( qi + VAR__8444594 ) + 1 );
+            *(( qi + VAR__8444594 ) + 1 ) = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *( tian + VAR__53647 )) != ( -1 ))
+      {
+         for ( VAR__8444594 = VAR_1238123 - 1; VAR__8444594 >= 0; VAR__8444594-- )
+         {
+            if ((( *( tian + VAR__53647 )) > ( *( qi + VAR__8444594 ))) && (( *( qi + VAR__8444594 )) != ( -1 )))
+            {
+               sheng = sheng + 1;
+               *( tian + VAR__53647 ) = -1;
+               *( qi + VAR__8444594 ) = -1;
+               VAR__8444594           = -1;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *( tian + VAR__53647 )) != ( -1 ))
+      {
+         for ( VAR__8444594 = VAR_1238123 - 1; VAR__8444594 >= 0; VAR__8444594-- )
+         {
+            if ((( *( tian + VAR__53647 )) == ( *( qi + VAR__8444594 ))) && (( *( qi + VAR__8444594 )) != ( -1 )))
+            {
+               ping = ping + 1;
+               *( tian + VAR__53647 ) = -1;
+               *( qi + VAR__8444594 ) = -1;
+               VAR__8444594           = -1;
+            }
+         }
+      }
+   }
+
+   money = 200 * ( sheng - (( VAR_1238123 - sheng ) - ping ));
+   printf("%d\n", money);
+}

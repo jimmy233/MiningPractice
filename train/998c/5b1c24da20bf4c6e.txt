@@ -1,0 +1,84 @@
+int main(void)
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  lena;
+   int  lenb;
+   int  carry;
+   int  VAR__TEMP;
+   char VAR__819283[MAX_DIGITS + 1];
+   char VAR__19328[MAX_DIGITS + 1];
+   char VAR__4857423[MAX_DIGITS + 2];
+
+   scanf("%s", VAR__819283);
+   scanf("%s", VAR__19328);
+   lena         = strlen(VAR__819283);
+   lenb         = strlen(VAR__19328);
+   carry        = 0;
+   VAR__8444594 = 0;
+   VAR__53647   = lena - 1;
+   VAR__21230   = lenb - 1;
+
+   while (( VAR__53647 >= 0 ) && ( VAR__21230 >= 0 ))
+   {
+      VAR__TEMP = ((( VAR__819283[VAR__53647] - '0' ) + VAR__19328[VAR__21230] ) - '0' ) + carry;
+      VAR__4857423[VAR__8444594] = ( VAR__TEMP % 10 ) + '0';
+      carry = VAR__TEMP / 10;
+      VAR__53647--, VAR__21230--, VAR__8444594++;
+   }
+
+   if ( VAR__53647 >= 0 )
+   {
+      while ( VAR__53647 >= 0 )
+      {
+         VAR__TEMP = ( VAR__819283[VAR__53647] - '0' ) + carry;
+         VAR__4857423[VAR__8444594] = ( VAR__TEMP % 10 ) + '0';
+         carry = VAR__TEMP / 10;
+         VAR__53647--, VAR__8444594++;
+      }
+   }
+
+   else
+   if ( VAR__21230 >= 0 )
+   {
+      while ( VAR__21230 >= 0 )
+      {
+         VAR__TEMP = ( VAR__19328[VAR__21230] - '0' ) + carry;
+         VAR__4857423[VAR__8444594] = ( VAR__TEMP % 10 ) + '0';
+         carry = VAR__TEMP / 10;
+         VAR__21230--, VAR__8444594++;
+      }
+   }
+
+
+
+   if ( carry )
+   {
+      VAR__4857423[VAR__8444594] = '1';
+   }
+   else
+   {
+      VAR__8444594--;
+   }
+
+   while ( VAR__4857423[VAR__8444594] == '0' )
+   {
+      VAR__8444594--;
+   }
+
+   if ( VAR__8444594 < 0 )
+   {
+      printf("0");
+   }
+   else
+   {
+      while ( VAR__8444594 >= 0 )
+      {
+         printf("%c", VAR__4857423[VAR__8444594]);
+         VAR__8444594--;
+      }
+   }
+
+   return 0;
+}

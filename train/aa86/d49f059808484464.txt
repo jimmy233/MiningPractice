@@ -1,0 +1,76 @@
+int main()
+{
+   char VAR__NUM[100];
+
+   for ( int VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = '0';
+   }
+
+   scanf("%s", VAR__NUM);
+   for ( int VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] == '0' )
+      {
+         VAR__NUM[VAR__53647 - 1] = '0';
+         break;
+      }
+   }
+
+   char currChar = VAR__NUM[0];
+
+   if ( currChar >= 'a' )
+   {
+      currChar -= 'a';
+   }
+   else
+   {
+      currChar -= 'A';
+   }
+
+   int  VAR__COUNT = 1;
+   int  step       = 0;
+   char outChar[100];
+   int  outNum[100];
+   int  VAR__53647 = 1;
+
+   while ( VAR__NUM[VAR__53647] != '0' )
+   {
+      char nowChar = VAR__NUM[VAR__53647];
+
+      if ( nowChar >= 'a' )
+      {
+         nowChar -= 'a';
+      }
+      else
+      {
+         nowChar -= 'A';
+      }
+
+      if ( currChar == nowChar )
+      {
+         VAR__COUNT++;
+      }
+      else
+      {
+         outChar[step] = currChar;
+         outNum[step]  = VAR__COUNT;
+         VAR__COUNT    = 1;
+         step++;
+         currChar = nowChar;
+      }
+
+      VAR__53647++;
+   }
+
+   outChar[step] = currChar;
+   outNum[step]  = VAR__COUNT;
+   VAR__COUNT    = 0;
+   step++;
+   for ( int VAR__21230 = 0; VAR__21230 < step; VAR__21230++ )
+   {
+      printf("(%c,%d)", outChar[VAR__21230] + 'A', outNum[VAR__21230]);
+   }
+
+   return 0;
+}

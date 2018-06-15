@@ -1,0 +1,75 @@
+int main()
+{
+   long VAR__819283;
+   long VAR__19328;
+   long VAR__53647;
+   long VAR__21230;
+   long length;
+   long result = 0;
+   char VAR__4857423[100];
+   long final[100];
+   long VAR__TEMP;
+
+   scanf("%d %s %d", &VAR__819283, VAR__4857423, &VAR__19328);
+   int decimal[100];
+   length = strlen(VAR__4857423);
+   char finalString[1000];
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if (( VAR__4857423[VAR__53647] >= 'A' ) && ( VAR__4857423[VAR__53647] <= 'Z' ))
+      {
+         decimal[VAR__53647] = ( VAR__4857423[VAR__53647] - 'A' ) + 10;
+      }
+      else
+      if (( VAR__4857423[VAR__53647] >= 'a' ) && ( VAR__4857423[VAR__53647] <= 'z' ))
+      {
+         decimal[VAR__53647] = ( VAR__4857423[VAR__53647] - 'a' ) + 10;
+      }
+      else
+      if (( VAR__4857423[VAR__53647] >= '0' ) && ( VAR__4857423[VAR__53647] <= '9' ))
+      {
+         decimal[VAR__53647] = VAR__4857423[VAR__53647] - '0';
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      result = result + ( decimal[( length - VAR__53647 ) - 1] * ((int)pow((double)VAR__819283, VAR__53647)));
+   }
+
+   if ( result == 0 )
+   {
+      printf("0");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; result != 0; VAR__53647++ )
+      {
+         final[VAR__53647] = result % VAR__19328;
+         result            = result / VAR__19328;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__53647 / 2 ); VAR__21230++ )
+      {
+         VAR__TEMP         = final[VAR__21230];
+         final[VAR__21230] = final[( VAR__53647 - VAR__21230 ) - 1];
+         final[( VAR__53647 - VAR__21230 ) - 1] = VAR__TEMP;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( final[VAR__21230] < 10 )
+         {
+            finalString[VAR__21230] = final[VAR__21230] + '0';
+         }
+         else
+         {
+            finalString[VAR__21230] = ( final[VAR__21230] + 'A' ) - 10;
+         }
+      }
+
+      finalString[VAR__53647] = '\0';
+      puts(finalString);
+      printf("\n");
+   }
+}

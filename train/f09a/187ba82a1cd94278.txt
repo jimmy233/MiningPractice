@@ -1,0 +1,76 @@
+void paixu(int *VAR__819283, int VAR__7685)
+{
+   int VAR__53647 = VAR__7685 - 1;
+   int VAR__temp;
+   int VAR__21230;
+
+   while ( VAR__53647 >= 1 )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__temp = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+
+      VAR__53647--;
+   }
+}
+
+
+void lianjie(int *VAR__819283, int VAR__7685, int *VAR__19328, int VAR__3918907, int *VAR__4857423)
+{
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   int VAR__temp  = 1;
+
+   while ( VAR__53647 < VAR__7685 )
+   {
+      VAR__4857423[VAR__53647] = VAR__819283[VAR__53647];
+      VAR__53647++;
+   }
+
+   while ( VAR__21230 < VAR__3918907 )
+   {
+      VAR__4857423[VAR__53647] = VAR__19328[VAR__21230];
+      VAR__53647++;
+      VAR__21230++;
+   }
+
+   printf("%d", VAR__4857423[0]);
+
+   while ( VAR__temp < ( VAR__7685 + VAR__3918907 ))
+   {
+      printf(" %d", VAR__4857423[VAR__temp]);
+      VAR__temp++;
+   }
+}
+
+
+int main()
+{
+   int VAR_9494;
+   int VAR__temp;
+   int VAR__53647;
+
+   scanf("%d %d", &VAR_9494, &VAR__temp);
+   int *VAR__819283  = (int *)malloc(VAR_9494 * ( sizeof( int )));
+   int *VAR__19328   = (int *)malloc(VAR__temp * ( sizeof( int )));
+   int *VAR__4857423 = (int *)malloc(( VAR_9494 + VAR__temp ) * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      scanf("%d", &VAR__19328[VAR__53647]);
+   }
+
+   paixu(VAR__819283, VAR_9494);
+   paixu(VAR__19328, VAR__temp);
+   lianjie(VAR__819283, VAR_9494, VAR__19328, VAR__temp, VAR__4857423);
+}

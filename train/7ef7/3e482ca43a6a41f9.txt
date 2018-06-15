@@ -1,0 +1,107 @@
+void matrix_down(int VAR__819283[150][150], int large)
+{
+   int v;
+   int VAR_129012;
+
+   for ( v = 0; v <= ( large - 1 ); v++ )
+   {
+      int minl;
+      minl = VAR__819283[v][0];
+      for ( VAR_129012 = 1; VAR_129012 <= ( large - 1 ); VAR_129012++ )
+      {
+         if ( VAR__819283[v][VAR_129012] <= minl )
+         {
+            minl = VAR__819283[v][VAR_129012];
+         }
+
+         if ( VAR__819283[v][VAR_129012] == 0 )
+         {
+            minl = 0;
+            break;
+         }
+      }
+
+      for ( VAR_129012 = 0; VAR_129012 <= ( large - 1 ); VAR_129012++ )
+      {
+         VAR__819283[v][VAR_129012] = VAR__819283[v][VAR_129012] - minl;
+      }
+   }
+
+   for ( v = 0; v <= ( large - 1 ); v++ )
+   {
+      int minr;
+      minr = VAR__819283[0][v];
+      for ( VAR_129012 = 1; VAR_129012 <= ( large - 1 ); VAR_129012++ )
+      {
+         if ( VAR__819283[VAR_129012][v] <= minr )
+         {
+            minr = VAR__819283[VAR_129012][v];
+         }
+
+         if ( VAR__819283[VAR_129012][v] == 0 )
+         {
+            minr = 0;
+            break;
+         }
+      }
+
+      for ( VAR_129012 = 0; VAR_129012 <= ( large - 1 ); VAR_129012++ )
+      {
+         VAR__819283[VAR_129012][v] = VAR__819283[VAR_129012][v] - minr;
+      }
+   }
+}
+
+
+void matrix_short(int VAR__819283[150][150], int large)
+{
+   int VAR__53647;
+   int VAR_129012;
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( large - 2 ); VAR__53647++ )
+   {
+      for ( VAR_129012 = 1; VAR_129012 <= ( large - 2 ); VAR_129012++ )
+      {
+         VAR__819283[VAR__53647][VAR_129012] = VAR__819283[VAR__53647 + 1][VAR_129012 + 1];
+      }
+
+      VAR__819283[0][VAR__53647] = VAR__819283[0][VAR__53647 + 1];
+      VAR__819283[VAR__53647][0] = VAR__819283[VAR__53647 + 1][0];
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int u;
+   int v;
+   int VAR_129012;
+   int VAR_9494;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      int VAR__819283[150][150] = { 0 };
+      int VAR__SUM = 0;
+      for ( u = 0; u <= ( VAR_1238123 - 1 ); u++ )
+      {
+         for ( v = 0; v <= ( VAR_1238123 - 1 ); v++ )
+         {
+            cin >> VAR__819283[u][v];
+         }
+      }
+
+      for ( u = VAR_1238123; u >= 2; u-- )
+      {
+         matrix_down(VAR__819283, u);
+         VAR__SUM = VAR__819283[1][1] + VAR__SUM;
+         matrix_short(VAR__819283, u);
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

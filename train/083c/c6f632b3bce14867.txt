@@ -1,0 +1,96 @@
+int mpow(int VAR__819283, int VAR__19328)
+{
+   int VAR__53647;
+   int VAR__4857423 = 1;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__19328; VAR__53647++ )
+   {
+      VAR__4857423 *= VAR__819283;
+   }
+
+   return VAR__4857423;
+}
+
+
+int main()
+{
+   char VAR__819283[10];
+   char VAR__12302[10];
+   char VAR__4857423;
+   int  aa[10];
+   int  VAR__19328[10];
+   int  VAR__1238129 = 0;
+   int  VAR_1238123  = 0;
+   int  VAR__53647   = 0;
+   int  VAR__temp    = 0;
+   int  VAR__1111    = 0;
+   int  VAR__21230   = 0;
+   int  VAR_2890     = 0;
+   int  VAR_9494     = 0;
+
+   scanf("%d%s%d", &VAR__1238129, VAR__819283, &VAR_1238123);
+   VAR__53647 = strlen(VAR__819283);
+   for ( VAR__temp = 0; VAR__temp < VAR__53647; VAR__temp++ )
+   {
+      if (( VAR__819283[VAR__temp] >= 65 ) && ( VAR__819283[VAR__temp] <= 90 ))
+      {
+         aa[VAR__temp] = VAR__819283[VAR__temp] - 55;
+      }
+   }
+
+   for ( VAR__temp = 0; VAR__temp < VAR__53647; VAR__temp++ )
+   {
+      if (( VAR__819283[VAR__temp] >= 97 ) && ( VAR__819283[VAR__temp] <= 122 ))
+      {
+         aa[VAR__temp] = VAR__819283[VAR__temp] - 87;
+      }
+   }
+
+   for ( VAR__temp = 0; VAR__temp < VAR__53647; VAR__temp++ )
+   {
+      if (( VAR__819283[VAR__temp] >= 48 ) && ( VAR__819283[VAR__temp] <= 57 ))
+      {
+         aa[VAR__temp] = VAR__819283[VAR__temp] - 48;
+      }
+   }
+
+   for ( VAR_2890 = 0; VAR_2890 < VAR__53647; VAR_2890++ )
+   {
+      VAR__temp = aa[VAR_2890] * mpow(VAR__1238129, ( VAR__53647 - VAR_2890 ) - 1);
+      VAR_9494  = VAR_9494 + VAR__temp;
+   }
+
+   VAR__21230 = 0;
+
+   if ( VAR_9494 == 0 )
+   {
+      printf("0");
+   }
+
+   while ( VAR_9494 >= 1 )
+   {
+      VAR__19328[VAR__21230] = VAR_9494 % VAR_1238123;
+      VAR__21230++;
+      VAR_9494 = VAR_9494 / VAR_1238123;
+   }
+
+   VAR__21230--;
+   for ( VAR__1111 = VAR__21230; VAR__1111 >= 0; VAR__1111-- )
+   {
+      if ( VAR__19328[VAR__1111] > 9 )
+      {
+         VAR__12302[VAR__1111] = ( VAR__19328[VAR__1111] + 'A' ) - 10;
+      }
+      else
+      {
+         VAR__12302[VAR__1111] = VAR__19328[VAR__1111] + '0';
+      }
+   }
+
+   for ( VAR__1111 = VAR__21230; VAR__1111 >= 0; VAR__1111-- )
+   {
+      printf("%c", VAR__12302[VAR__1111]);
+   }
+
+   printf("\n");
+}

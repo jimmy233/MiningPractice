@@ -1,0 +1,99 @@
+int times2(int VAR__53647)
+{
+   int VAR__21230;
+   int VAR_9494 = 1;
+
+   if ( VAR__53647 == 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR__53647; VAR__21230++ )
+      {
+         VAR_9494 *= 2;
+      }
+
+      return VAR_9494;
+   }
+}
+
+
+int level(int VAR__8444594)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; ; VAR__53647++ )
+   {
+      if (( times2(VAR__53647 - 1) <= VAR__8444594 ) && ( times2(VAR__53647) > VAR__8444594 ))
+      {
+         return VAR__53647;
+      }
+   }
+}
+
+
+int up(int VAR__7685)
+{
+   int VAR__3918907;
+
+   if (( VAR__7685 % 2 ) == 0 )
+   {
+      VAR__3918907 = VAR__7685 / 2;
+   }
+   else
+   {
+      VAR__3918907 = ( VAR__7685 - 1 ) / 2;
+   }
+
+   return VAR__3918907;
+}
+
+
+int main()
+{
+   int VAR__7685;
+   int VAR__3918907;
+
+   scanf("%d %d", &VAR__7685, &VAR__3918907);
+
+   if ( level(VAR__7685) == level(VAR__3918907))
+   {
+      while ( VAR__7685 != VAR__3918907 )
+      {
+         VAR__7685    = up(VAR__7685);
+         VAR__3918907 = up(VAR__3918907);
+      }
+   }
+   else
+   if ( level(VAR__7685) < level(VAR__3918907))
+   {
+      while ( level(VAR__7685) < level(VAR__3918907))
+      {
+         VAR__3918907 = up(VAR__3918907);
+      }
+
+      while ( VAR__7685 != VAR__3918907 )
+      {
+         VAR__7685    = up(VAR__7685);
+         VAR__3918907 = up(VAR__3918907);
+      }
+   }
+   else
+   {
+      while ( level(VAR__3918907) < level(VAR__7685))
+      {
+         VAR__7685 = up(VAR__7685);
+      }
+
+      while ( VAR__7685 != VAR__3918907 )
+      {
+         VAR__7685    = up(VAR__7685);
+         VAR__3918907 = up(VAR__3918907);
+      }
+   }
+
+
+   printf("%d", VAR__7685);
+   return 0;
+}

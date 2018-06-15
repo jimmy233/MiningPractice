@@ -1,0 +1,117 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int tianji[1000];
+   int qiwang[1000];
+   int temptianji;
+   int tempqiwang;
+   int money;
+   int win;
+   int tie;
+   int lose;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      win = 0, tie = 0, lose = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tianji[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qiwang[VAR__53647]);
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < (( VAR_1238123 - VAR__21230 ) - 1 ); VAR__8444594++ )
+         {
+            if ( tianji[VAR__8444594] < tianji[VAR__8444594 + 1] )
+            {
+               temptianji               = tianji[VAR__8444594];
+               tianji[VAR__8444594]     = tianji[VAR__8444594 + 1];
+               tianji[VAR__8444594 + 1] = temptianji;
+            }
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < (( VAR_1238123 - VAR__21230 ) - 1 ); VAR__8444594++ )
+         {
+            if ( qiwang[VAR__8444594] < qiwang[VAR__8444594 + 1] )
+            {
+               tempqiwang               = qiwang[VAR__8444594];
+               qiwang[VAR__8444594]     = qiwang[VAR__8444594 + 1];
+               qiwang[VAR__8444594 + 1] = tempqiwang;
+            }
+         }
+      }
+
+      int tstart = 0;
+      int tlast  = VAR_1238123 - 1;
+      int kstart = 0;
+      int klast  = VAR_1238123 - 1;
+      int cnt    = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( tianji[tstart] > qiwang[kstart] )
+         {
+            cnt++;
+            tstart++;
+            kstart++;
+            continue;
+         }
+
+         if ( tianji[tstart] < qiwang[kstart] )
+         {
+            cnt--;
+            kstart++;
+            tlast--;
+            continue;
+         }
+
+         if ( tianji[tstart] == qiwang[kstart] )
+         {
+            if ( tianji[tlast] < qiwang[klast] )
+            {
+               tlast--;
+               kstart++;
+               cnt--;
+               continue;
+            }
+
+            if ( tianji[tlast] > qiwang[klast] )
+            {
+               tlast--;
+               klast--;
+               cnt++;
+               continue;
+            }
+
+            if ( tianji[tlast] == qiwang[klast] )
+            {
+               if ( tianji[tlast] < qiwang[kstart] )
+               {
+                  cnt--;
+               }
+
+               kstart++;
+               tlast--;
+            }
+         }
+      }
+
+      money = 200 * cnt;
+      printf("%d\n", money);
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 0;
+}

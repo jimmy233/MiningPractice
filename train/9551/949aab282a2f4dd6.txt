@@ -1,0 +1,57 @@
+struct patient
+{
+   char VAR__NUM[11];
+   int  age;
+};
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct patient pat1[100];
+   struct patient pat2[100];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", pat1[VAR__53647].VAR__NUM, &pat1[VAR__53647].age);
+      strcpy(pat2[VAR__53647].VAR__NUM, pat1[VAR__53647].VAR__NUM);
+      pat2[VAR__53647].age = pat1[VAR__53647].age;
+   }
+
+   int  VAR__21230;
+   int  VAR__112390;
+   char e_num[11];
+   for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( pat1[VAR__53647].age < pat1[VAR__53647 + 1].age )
+         {
+            VAR__112390 = pat1[VAR__53647 + 1].age;
+            strcpy(e_num, pat1[VAR__53647 + 1].VAR__NUM);
+            pat1[VAR__53647 + 1].age = pat1[VAR__53647].age;
+            strcpy(pat1[VAR__53647 + 1].VAR__NUM, pat1[VAR__53647].VAR__NUM);
+            pat1[VAR__53647].age = VAR__112390;
+            strcpy(pat1[VAR__53647].VAR__NUM, e_num);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pat1[VAR__53647].age >= 60 )
+      {
+         printf("%s\n", pat1[VAR__53647].VAR__NUM);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pat2[VAR__53647].age < 60 )
+      {
+         printf("%s\n", pat2[VAR__53647].VAR__NUM);
+      }
+   }
+
+   return 0;
+}

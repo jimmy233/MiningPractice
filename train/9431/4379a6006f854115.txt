@@ -1,0 +1,60 @@
+int VAR__1111;
+struct students
+{
+   char            VAR__NUM[10];
+   char            name[20];
+   char            sex;
+   int             age;
+   float           score;
+   char            addr[100];
+   struct students *VAR__NEXT;
+};
+struct students *ann()
+{
+   struct students *VAR__HEAD = NULL;
+   struct students *newnode;
+   struct students *VAR_233;
+   int             VAR__53647;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      newnode = (struct students *)malloc(sizeof( struct students ));
+      scanf("%s", newnode->VAR__NUM);
+
+      if ( newnode->VAR__NUM[0] == 'e' )
+      {
+         VAR__1111 = VAR__53647;
+         VAR__HEAD = VAR_233;
+         break;
+      }
+
+      scanf("%s %c %d %f %s", newnode->name, &newnode->sex, &newnode->age, &newnode->score, newnode->addr);
+
+      if ( VAR__53647 == 0 )
+      {
+         newnode->VAR__NEXT = NULL;
+         VAR_233            = newnode;
+      }
+      else
+      {
+         newnode->VAR__NEXT = VAR_233;
+         VAR_233            = newnode;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int             VAR__53647;
+   struct students *VAR_233;
+
+   VAR_233 = ann();
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->addr);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

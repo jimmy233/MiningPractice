@@ -1,0 +1,65 @@
+int main()
+{
+   struct dian
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   dians[45];
+   struct suoyou
+   {
+      struct dian qian;
+      struct dian hou;
+      double      ji;
+   }
+   suoyous[45];
+   struct suoyou
+   {
+      struct dian qian;
+      struct dian hou;
+      double      ji;
+   }
+       VAR__112390;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &dians[VAR__53647].VAR__7685, &dians[VAR__53647].VAR__3918907, &dians[VAR__53647].VAR__9290);
+   }
+
+   int VAR__8444594;
+   int VAR__1111 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__8444594 = VAR__53647 + 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         suoyous[VAR__1111].qian = dians[VAR__53647];
+         suoyous[VAR__1111].hou  = dians[VAR__8444594];
+         suoyous[VAR__1111].ji   = sqrt(((( dians[VAR__53647].VAR__7685 - dians[VAR__8444594].VAR__7685 ) * ( dians[VAR__53647].VAR__7685 - dians[VAR__8444594].VAR__7685 )) + (( dians[VAR__53647].VAR__3918907 - dians[VAR__8444594].VAR__3918907 ) * ( dians[VAR__53647].VAR__3918907 - dians[VAR__8444594].VAR__3918907 ))) + (( dians[VAR__53647].VAR__9290 - dians[VAR__8444594].VAR__9290 ) * ( dians[VAR__53647].VAR__9290 - dians[VAR__8444594].VAR__9290 )));
+         VAR__1111++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR__53647 ); VAR__8444594++ )
+      {
+         if ( suoyous[VAR__8444594].ji < suoyous[VAR__8444594 + 1].ji )
+         {
+            VAR__112390               = suoyous[VAR__8444594];
+            suoyous[VAR__8444594]     = suoyous[VAR__8444594 + 1];
+            suoyous[VAR__8444594 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", suoyous[VAR__53647].qian.VAR__7685, suoyous[VAR__53647].qian.VAR__3918907, suoyous[VAR__53647].qian.VAR__9290, suoyous[VAR__53647].hou.VAR__7685, suoyous[VAR__53647].hou.VAR__3918907, suoyous[VAR__53647].hou.VAR__9290, suoyous[VAR__53647].ji);
+   }
+
+   return 0;
+}

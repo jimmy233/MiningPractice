@@ -1,0 +1,124 @@
+int zh(char VAR__819283)
+{
+   int VAR__19328;
+
+   if (( VAR__819283 >= 'A' ) && ( VAR__819283 <= 'Z' ))
+   {
+      VAR__19328 = ((int)VAR__819283 ) - 55;
+      return VAR__19328;
+   }
+   else
+   {
+      VAR__19328 = ((int)VAR__819283 ) - 48;
+      return VAR__19328;
+   }
+}
+
+
+char fzh(int VAR__819283)
+{
+   char VAR__19328;
+
+   if ( VAR__819283 > 9 )
+   {
+      VAR__19328 = (char)(( VAR__819283 - 10 ) + 48 );
+      return VAR__19328;
+   }
+   else
+   {
+      VAR__19328 = (char)( VAR__819283 + 48 );
+      return VAR__19328;
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[10000];
+   char VAR__19328[10000];
+   char a1[10000];
+   char b1[10000];
+   char VAR__4857423[10000];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__SUM = 0;
+   int  l1;
+   int  l2;
+   int  jinwei;
+
+   for ( VAR__53647 = 0; VAR__53647 < 9999; VAR__53647++ )
+   {
+      a1[VAR__53647] = '0';
+      b1[VAR__53647] = '0';
+   }
+
+   a1[9999] = '\0';
+   b1[9999] = '\0';
+   scanf("%s%s", VAR__819283, VAR__19328);
+   l1 = strlen(VAR__819283);
+   l2 = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < l1; VAR__53647++ )
+   {
+      a1[( l1 - 1 ) - VAR__53647] = VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < l2; VAR__53647++ )
+   {
+      b1[( l2 - 1 ) - VAR__53647] = VAR__19328[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9999; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__4857423[VAR__53647] = fzh(zh(a1[VAR__53647]) + zh(b1[VAR__53647]));
+
+         if (( zh(a1[VAR__53647]) + zh(b1[VAR__53647])) > 9 )
+         {
+            jinwei = 1;
+         }
+         else
+         {
+            jinwei = 0;
+         }
+      }
+      else
+      {
+         VAR__4857423[VAR__53647] = fzh(( zh(a1[VAR__53647]) + zh(b1[VAR__53647])) + jinwei);
+
+         if ((( zh(a1[VAR__53647]) + zh(b1[VAR__53647])) + jinwei ) > 9 )
+         {
+            jinwei = 1;
+         }
+         else
+         {
+            jinwei = 0;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 9998; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__SUM == 0 )
+      {
+         if ( VAR__4857423[VAR__53647] != '0' )
+         {
+            printf("%c", VAR__4857423[VAR__53647]);
+            VAR__SUM++;
+         }
+      }
+      else
+      {
+         printf("%c", VAR__4857423[VAR__53647]);
+      }
+   }
+
+   if ( VAR__SUM == 0 )
+   {
+      printf("0");
+   }
+
+   return 0;
+}

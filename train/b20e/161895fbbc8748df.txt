@@ -1,0 +1,93 @@
+int dp[1010][1010];
+int VAR__819283[1010] = { 0 };
+int VAR__19328[1010] = { 0 };
+int cmp1(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int cmp2(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   return ( VAR__819283 > VAR__19328 ) ? ( VAR__819283 ) : ( VAR__19328 );
+}
+
+
+int mon(int VAR__53647, int VAR__21230)
+{
+   if ( VAR__819283[VAR__53647] > VAR__19328[VAR__21230] )
+   {
+      return 200;
+   }
+
+   if ( VAR__819283[VAR__53647] == VAR__19328[VAR__21230] )
+   {
+      return 0;
+   }
+
+   if ( VAR__819283[VAR__53647] < VAR__19328[VAR__21230] )
+   {
+      return -200;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   while ( VAR_1238123 )
+   {
+      memset(VAR__819283, 0, sizeof( int ));
+      memset(VAR__19328, 0, sizeof( int ));
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), cmp1);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), cmp2);
+      memset(dp, 0, sizeof( int ));
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         dp[VAR__53647][0] = dp[VAR__53647 - 1][0] + mon(VAR_1238123 - VAR__53647, VAR__53647 - 1);
+         for ( VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+         {
+            dp[VAR__53647][VAR__21230] = VAR__MAX(dp[VAR__53647 - 1][VAR__21230 - 1] + mon(VAR__21230 - 1, VAR__53647 - 1), dp[VAR__53647 - 1][VAR__21230] + mon(VAR_1238123 - ( VAR__53647 - VAR__21230 ), VAR__53647 - 1));
+         }
+
+         dp[VAR__53647][VAR__53647] = dp[VAR__53647 - 1][VAR__53647 - 1] + mon(VAR__53647 - 1, VAR__53647 - 1);
+      }
+
+      int Max = -99999999;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( dp[VAR_1238123][VAR__53647] > Max )
+         {
+            Max = dp[VAR_1238123][VAR__53647];
+         }
+      }
+
+      ( cout << Max ) << endl;
+      cin >> VAR_1238123;
+   }
+
+   return 0;
+}

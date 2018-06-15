@@ -1,0 +1,69 @@
+int is_Runnian(int year)
+{
+   if (( year % 4 ) != 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      if ((( year % 100 ) == 0 ) && (( year % 400 ) != 0 ))
+      {
+         return 0;
+      }
+   }
+
+   return 1;
+}
+
+
+int main()
+{
+   int monthday[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   int VAR__53647 = 0;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      int year;
+      int month1;
+      int month2;
+      int month1day = 0;
+      int month2day = 0;
+      (( cin >> year ) >> month1 ) >> month2;
+
+      if ( is_Runnian(year))
+      {
+         monthday[1] = 29;
+      }
+
+      for ( int VAR__21230 = 0; VAR__21230 < ( month1 - 1 ); VAR__21230++ )
+      {
+         month1day += monthday[VAR__21230];
+      }
+
+      for ( int VAR__21230 = 0; VAR__21230 < ( month2 - 1 ); VAR__21230++ )
+      {
+         month2day += monthday[VAR__21230];
+      }
+
+      int VAR_233 = (( month2day - month1day ) > 0 ) ? ( month2day - month1day ) : ( month1day - month2day );
+
+      if (( VAR_233 % 7 ) == 0 )
+      {
+         ( cout << "YES" ) << endl;
+      }
+      else
+      {
+         ( cout << "NO" ) << endl;
+      }
+
+      if ( monthday[1] == 29 )
+      {
+         monthday[1] = 28;
+      }
+
+      VAR__53647++;
+   }
+}

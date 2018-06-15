@@ -1,0 +1,61 @@
+int leap(int VAR__819283)
+{
+   if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int bigger(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 >= VAR__19328 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return VAR__19328;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int year;
+   int month1;
+   int month2;
+   int big;
+   int small;
+   int countdays;
+   int days[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> year ) >> month1 ) >> month2;
+      big       = bigger(month1, month2);
+      small     = ( month1 + month2 ) - big;
+      countdays = 0;
+      for ( int VAR__21230 = small - 1; VAR__21230 < ( big - 1 ); VAR__21230++ )
+      {
+         countdays += days[leap(year)][VAR__21230];
+      }
+
+      if (( countdays % 7 ) == 0 )
+      {
+         ( cout << "YES" ) << endl;
+      }
+      else
+      {
+         ( cout << "NO" ) << endl;
+      }
+   }
+
+   return 0;
+}

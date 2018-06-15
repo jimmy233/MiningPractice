@@ -1,0 +1,78 @@
+int VAR_1238123;
+int VAR__1238129;
+int mymin;
+int VAR__819283[110][110];
+void delmin(int VAR__7685, int VAR__3918907, int dx, int dy)
+{
+   if (( VAR__7685 == VAR__1238129 ) || ( VAR__3918907 == VAR__1238129 ))
+   {
+      return;
+   }
+
+   if ( VAR__819283[VAR__7685][VAR__3918907] < mymin )
+   {
+      mymin = VAR__819283[VAR__7685][VAR__3918907];
+   }
+
+   delmin(VAR__7685 + dx, VAR__3918907 + dy, dx, dy);
+   VAR__819283[VAR__7685][VAR__3918907] -= mymin;
+}
+
+
+void del()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647][VAR__21230 + 1];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         VAR__819283[VAR__21230][VAR__53647] = VAR__819283[VAR__21230 + 1][VAR__53647];
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM;
+   int VAR__temp;
+
+   for ( cin >> VAR_1238123, VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__SUM = 0, VAR__1238129 = VAR_1238123; VAR__1238129 >= 1; VAR__1238129-- )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( 2 * VAR__1238129 ); VAR__53647++ )
+         {
+            mymin = 10000;
+            delmin(( VAR__53647 % VAR__1238129 ) * ( 1 - ( VAR__53647 / VAR__1238129 )), ( VAR__53647 % VAR__1238129 ) * ( VAR__53647 / VAR__1238129 ), VAR__53647 / VAR__1238129, 1 - ( VAR__53647 / VAR__1238129 ));
+         }
+
+         VAR__SUM += VAR__819283[1][1];
+         del();
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+}

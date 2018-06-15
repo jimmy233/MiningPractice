@@ -1,0 +1,55 @@
+int mon[2][13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int VAR__127322(int VAR__3918907, int VAR__1238129, int VAR__12302)
+{
+   int VAR__53647;
+   int day = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      if ((( VAR__53647 % 400 ) == 0 ) || ((( VAR__53647 % 100 ) != 0 ) && (( VAR__53647 % 4 ) == 0 )))
+      {
+         day = day + 366;
+      }
+      else
+      {
+         day = day + 365;
+      }
+   }
+
+   int VAR__TEMP = (( VAR__3918907 % 400 ) == 0 ) || ((( VAR__3918907 % 100 ) != 0 ) && (( VAR__3918907 % 4 ) == 0 ));
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      day = day + mon[VAR__TEMP][VAR__53647];
+   }
+
+   day = day + VAR__12302;
+   return day;
+}
+
+
+int main()
+{
+   int y1;
+   int m1;
+   int d1;
+   int y2;
+   int m2;
+   int d2;
+   int day1;
+   int day2;
+
+   ((((( cin >> y1 ) >> m1 ) >> d1 ) >> y2 ) >> m2 ) >> d2;
+   day1 = VAR__127322(y1, m1, d1);
+   day2 = VAR__127322(y2, m2, d2);
+
+   if ( day1 >= day2 )
+   {
+      ( cout << ( day1 - day2 )) << endl;
+   }
+   else
+   {
+      ( cout << ( day2 - day1 )) << endl;
+   }
+
+   return 0;
+}

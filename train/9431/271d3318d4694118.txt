@@ -1,0 +1,42 @@
+int main()
+{
+   struct student
+   {
+      char           imfor[100];
+      struct student *early;
+   };
+   int            VAR__1238129;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *last;
+   struct student *VAR_233;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+   gets(ANOTHER_POINTER->imfor);
+   ANOTHER_POINTER->early = 0;
+   for ( VAR__1238129 = 1; VAR__1238129 < 1000; VAR__1238129++ )
+   {
+      ANOTHER_POINTER        = (struct student *)malloc(sizeof( struct student ));
+      ANOTHER_POINTER->early = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER    = ANOTHER_POINTER;
+      gets(ANOTHER_POINTER->imfor);
+
+      if ( ANOTHER_POINTER->imfor[0] == 'e' )
+      {
+         last = ANOTHER_POINTER->early;
+         break;
+      }
+   }
+
+   VAR_233 = last;
+   for ( VAR__1238129 = 1; VAR__1238129 < 1000; VAR__1238129++ )
+   {
+      printf("%s\n", VAR_233->imfor);
+      VAR_233 = VAR_233->early;
+
+      if ( VAR_233 == 0 )
+      {
+         break;
+      }
+   }
+}

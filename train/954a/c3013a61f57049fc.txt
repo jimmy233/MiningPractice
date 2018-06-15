@@ -1,0 +1,67 @@
+struct stu
+{
+   char name[21];
+   int  avs;
+   int  pys;
+   char gb;
+   char xb;
+   int  lw;
+}
+stu[100];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__MAX;
+   int maxstu;
+   int VAR__SUM;
+   int jj[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].avs, &stu[VAR__53647].pys, &stu[VAR__53647].gb, &stu[VAR__53647].xb, &stu[VAR__53647].lw);
+      jj[VAR__53647] = 0;
+
+      if (( stu[VAR__53647].avs > 80 ) && ( stu[VAR__53647].lw > 0 ))
+      {
+         jj[VAR__53647] += 8000;
+      }
+
+      if (( stu[VAR__53647].avs > 85 ) && ( stu[VAR__53647].pys > 80 ))
+      {
+         jj[VAR__53647] += 4000;
+      }
+
+      if ( stu[VAR__53647].avs > 90 )
+      {
+         jj[VAR__53647] += 2000;
+      }
+
+      if (( stu[VAR__53647].avs > 85 ) && ( stu[VAR__53647].xb == 'Y' ))
+      {
+         jj[VAR__53647] += 1000;
+      }
+
+      if (( stu[VAR__53647].pys > 80 ) && ( stu[VAR__53647].gb == 'Y' ))
+      {
+         jj[VAR__53647] += 850;
+      }
+   }
+
+   VAR__MAX = jj[0];
+   maxstu   = 0;
+   VAR__SUM = jj[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( jj[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = jj[VAR__53647];
+         maxstu   = VAR__53647;
+      }
+
+      VAR__SUM += jj[VAR__53647];
+   }
+
+   printf("%s\n%d\n%d\n", stu[maxstu].name, VAR__MAX, VAR__SUM);
+}

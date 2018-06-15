@@ -1,0 +1,93 @@
+int comp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int th[1000];
+   int wh[1000];
+   int tfast;
+   int tslow;
+   int wfast;
+   int wslow;
+   int VAR__SUM;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      memset(th, 0, sizeof( int ));
+      memset(wh, 0, sizeof( int ));
+      VAR__SUM = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &th[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &wh[VAR__53647]);
+      }
+
+      qsort(th, VAR_1238123, sizeof( th[0] ), comp);
+      qsort(wh, VAR_1238123, sizeof( wh[0] ), comp);
+      tfast = VAR_1238123 - 1;
+      wfast = VAR_1238123 - 1;
+      tslow = 0;
+      wslow = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( wh[wfast] < th[tfast] )
+         {
+            wfast--;
+            tfast--;
+            VAR__SUM++;
+         }
+         else
+         if ( wh[wfast] > th[tfast] )
+         {
+            wfast--;
+            tslow++;
+            VAR__SUM--;
+         }
+         else
+         if ( wh[wfast] == th[tfast] )
+         {
+            if ( th[tslow] > wh[wslow] )
+            {
+               VAR__SUM++;
+               tslow++;
+               wslow++;
+            }
+            else
+            if ( th[tslow] < wh[wslow] )
+            {
+               VAR__SUM--;
+               tslow++;
+               wfast--;
+            }
+            else
+            if ( th[tslow] == wh[wslow] )
+            {
+               if ( th[tslow] < wh[wfast] )
+               {
+                  VAR__SUM--;
+                  tslow++;
+                  wfast--;
+               }
+               else
+               if ( th[tslow] == wh[wfast] )
+               {
+                  break;
+               }
+            }
+         }
+      }
+
+      printf("%d\n", 200 * VAR__SUM);
+      scanf("%d", &VAR_1238123);
+   }
+}

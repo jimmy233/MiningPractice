@@ -1,0 +1,62 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct book
+   {
+      int  booknumber;
+      char writer[27];
+   }
+       book[999];
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %s", &book[VAR__53647].booknumber, book[VAR__53647].writer);
+   }
+
+   int writerbookquantity[26];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      writerbookquantity[VAR__53647] = 0;
+   }
+
+   int VAR__21230;
+   int LEN_OF_STH;
+   int VAR__7685;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      LEN_OF_STH = strlen(book[VAR__53647].writer);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         VAR__7685 = book[VAR__53647].writer[VAR__21230] - 'A';
+         writerbookquantity[VAR__7685]++;
+      }
+   }
+
+   int maxwriter   = 0;
+   int maxquantity = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( writerbookquantity[VAR__53647] > maxquantity )
+      {
+         maxquantity = writerbookquantity[VAR__53647];
+         maxwriter   = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", (char)( maxwriter + 'A' ), writerbookquantity[maxwriter]);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      LEN_OF_STH = strlen(book[VAR__53647].writer);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if (((int)book[VAR__53647].writer[VAR__21230] ) == ( maxwriter + 'A' ))
+         {
+            printf("%d\n", book[VAR__53647].booknumber);
+         }
+      }
+   }
+
+   return 0;
+}

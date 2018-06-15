@@ -1,0 +1,83 @@
+struct student
+{
+   char name[20];
+   int  grade1;
+   int  grade2;
+   char gb;
+   char xb;
+   int  lunwen;
+};
+struct student stu[100];
+struct student VAR__temp;
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  jj[100] = { 0 };
+   int  maxjj;
+   int  VAR__SUM = 0;
+   int  VAR__21230;
+   int  VAR__8444594;
+   char maxname[20];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].grade1, &stu[VAR__53647].grade2, &stu[VAR__53647].gb, &stu[VAR__53647].xb, &stu[VAR__53647].lunwen);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].grade1 > 80 ) && ( stu[VAR__53647].lunwen >= 1 ))
+      {
+         jj[VAR__53647] = jj[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].grade1 > 85 ) && ( stu[VAR__53647].grade2 > 80 ))
+      {
+         jj[VAR__53647] = jj[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].grade1 > 90 )
+      {
+         jj[VAR__53647] = jj[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].grade1 > 85 ) && ( stu[VAR__53647].xb == 'Y' ))
+      {
+         jj[VAR__53647] = jj[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].grade2 > 80 ) && ( stu[VAR__53647].gb == 'Y' ))
+      {
+         jj[VAR__53647] = jj[VAR__53647] + 850;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( jj[VAR__53647] < jj[VAR__53647 + 1] )
+         {
+            VAR__temp           = stu[VAR__53647];
+            stu[VAR__53647]     = stu[VAR__53647 + 1];
+            stu[VAR__53647 + 1] = VAR__temp;
+            VAR__8444594        = jj[VAR__53647];
+            jj[VAR__53647]      = jj[VAR__53647 + 1];
+            jj[VAR__53647 + 1]  = VAR__8444594;
+         }
+      }
+   }
+
+   maxjj = jj[0];
+   strcpy(maxname, stu[0].name);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + jj[VAR__53647];
+   }
+
+   printf("%s\n", maxname);
+   printf("%d\n", maxjj);
+   printf("%d\n", VAR__SUM);
+}

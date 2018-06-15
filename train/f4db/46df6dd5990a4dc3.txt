@@ -1,0 +1,54 @@
+int main()
+{
+   int VAR__1238129;
+   int M;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM[1000];
+   int row[1000];
+   int col[1000];
+   int VAR_SIZE[1000][1000];
+
+   scanf("%d", &M);
+   for ( VAR__1238129 = 0; VAR__1238129 < M; VAR__1238129++ )
+   {
+      VAR__SUM[VAR__1238129] = 0;
+      for ( VAR__53647 = 0; VAR__53647 < row[VAR__1238129]; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < col[VAR__1238129]; VAR__21230++ )
+         {
+            VAR_SIZE[VAR__53647][VAR__21230] = 0;
+         }
+      }
+
+      scanf("%d%d", &row[VAR__1238129], &col[VAR__1238129]);
+      for ( VAR__53647 = 0; VAR__53647 < row[VAR__1238129]; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < col[VAR__1238129]; VAR__21230++ )
+         {
+            scanf("%d", &VAR_SIZE[VAR__53647][VAR__21230]);
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < col[VAR__1238129]; VAR__21230++ )
+      {
+         VAR__SUM[VAR__1238129] += VAR_SIZE[0][VAR__21230];
+         VAR__SUM[VAR__1238129] += VAR_SIZE[row[VAR__1238129] - 1][VAR__21230];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < row[VAR__1238129]; VAR__53647++ )
+      {
+         VAR__SUM[VAR__1238129] += VAR_SIZE[VAR__53647][0];
+         VAR__SUM[VAR__1238129] += VAR_SIZE[VAR__53647][col[VAR__1238129] - 1];
+      }
+
+      VAR__SUM[VAR__1238129] = ((( VAR__SUM[VAR__1238129] - VAR_SIZE[0][0] ) - VAR_SIZE[row[VAR__1238129] - 1][col[VAR__1238129] - 1] ) - VAR_SIZE[0][col[VAR__1238129] - 1] ) - VAR_SIZE[row[VAR__1238129] - 1][0];
+   }
+
+   for ( VAR__1238129 = 0; VAR__1238129 < M; VAR__1238129++ )
+   {
+      printf("%d\n", VAR__SUM[VAR__1238129]);
+   }
+
+   return 0;
+}

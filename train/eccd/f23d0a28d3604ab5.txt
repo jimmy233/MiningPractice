@@ -1,0 +1,69 @@
+void main()
+{
+   int VAR__819283;
+   int VAR__19328;
+
+   scanf("%d,%d", &VAR__819283, &VAR__19328);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__7685[5][5];
+   int maxi;
+   int locali;
+   int minj;
+   int localj;
+   int VAR__MAX[5];
+   int VAR__MIN[5];
+   int col[5];
+   int row[5];
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__819283 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR__19328 - 1 ); VAR__21230++ )
+      {
+         scanf("%d", &VAR__7685[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__819283 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0, maxi = VAR__7685[VAR__53647][VAR__21230], locali = VAR__21230; VAR__21230 <= ( VAR__19328 - 2 ); VAR__21230++ )
+      {
+         if ( maxi <= VAR__7685[VAR__53647][VAR__21230 + 1] )
+         {
+            maxi   = VAR__7685[VAR__53647][VAR__21230 + 1];
+            locali = VAR__21230 + 1;
+         }
+      }
+
+      VAR__MAX[VAR__53647] = maxi;
+      col[VAR__53647]      = locali;
+   }
+
+   for ( VAR__21230 = 0, VAR__53647 = 0; VAR__21230 <= ( VAR__19328 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0, minj = VAR__7685[VAR__53647][VAR__21230], localj = VAR__53647; VAR__53647 <= ( VAR__819283 - 2 ); VAR__53647++ )
+      {
+         if ( minj >= VAR__7685[VAR__53647 + 1][VAR__21230] )
+         {
+            minj   = VAR__7685[VAR__53647 + 1][VAR__21230];
+            localj = VAR__53647 + 1;
+         }
+      }
+
+      VAR__MIN[VAR__21230] = minj;
+      row[VAR__21230]      = localj;
+   }
+
+   for ( VAR__53647 = 0, VAR__21230 = 0; VAR__53647 <= ( VAR__819283 - 1 ); VAR__53647++ )
+   {
+      if ( row[col[VAR__53647]] == VAR__53647 )
+      {
+         printf("%d+%d", VAR__53647, col[VAR__53647]);
+         VAR__21230++;
+      }
+   }
+
+   if ( VAR__21230 == 0 )
+   {
+      printf("No\n");
+   }
+}

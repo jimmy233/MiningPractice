@@ -1,0 +1,76 @@
+int main()
+{
+   char line[110];
+   char boy;
+   char girl;
+   int  VAR__19328[110];
+   int  VAR_9Q8Q90[110];
+   int  VAR_233  = 1;
+   int  VAR_9494 = 0;
+   int  lin[110];
+   int  mark[110];
+   int  LEN_OF_STH;
+
+   for ( int VAR__53647 = 0; VAR__53647 <= 109; VAR__53647++ )
+   {
+      lin[VAR__53647] = VAR__53647;
+   }
+
+   cin.getline(line, 120, '\n');
+   LEN_OF_STH = strlen(line) - 1;
+   boy        = line[0];
+   for ( int VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+   {
+      if ( line[VAR__53647] != boy )
+      {
+         girl = line[VAR__53647];
+         break;
+      }
+   }
+
+
+   while ( VAR_9494 < ( LEN_OF_STH + 1 ))
+   {
+      for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         if (( line[VAR__53647] == boy ) && ( line[VAR__53647 + 1] == girl ))
+         {
+            VAR__19328[VAR_233] = lin[VAR__53647];
+            VAR_9Q8Q90[VAR_233] = lin[VAR__53647 + 1];
+            VAR_233++;
+            for ( int VAR__21230 = VAR__53647 + 2; VAR__21230 <= LEN_OF_STH; VAR__21230++ )
+            {
+               line[VAR__21230 - 2] = line[VAR__21230];
+               lin[VAR__21230 - 2]  = lin[VAR__21230];
+            }
+
+            VAR_9494 = VAR_9494 + 2;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= ( VAR_233 - 2 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= (( VAR_233 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR_9Q8Q90[VAR__21230] > VAR_9Q8Q90[VAR__21230 + 1] )
+         {
+            int VAR__TEMP = VAR_9Q8Q90[VAR__21230];
+            VAR_9Q8Q90[VAR__21230]     = VAR_9Q8Q90[VAR__21230 + 1];
+            VAR_9Q8Q90[VAR__21230 + 1] = VAR__TEMP;
+            VAR__TEMP = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__19328[VAR__21230 + 1];
+            VAR__19328[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( int VAR__53647 = 1; VAR__53647 <= ( VAR_233 - 1 ); VAR__53647++ )
+   {
+      ((( cout << VAR__19328[VAR__53647] ) << " " ) << VAR_9Q8Q90[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

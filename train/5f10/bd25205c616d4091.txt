@@ -1,0 +1,92 @@
+int main()
+{
+   char VAR__7685[501];
+   char ch[500][5];
+   char VAR__3918907[5] = "";
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1238129 = -1;
+   int  VAR_FLAG;
+   int  VAR__8444594;
+   int  VAR_1238123;
+   int  VAR__1111;
+   int  VAR_233;
+   int  VAR_666;
+   int  VAR__temp;
+   int  VAR_129012;
+   int  VAR__MAX;
+   int  VAR__COUNT[500] = { 0 };
+
+   scanf("%d ", &VAR_1238123);
+   gets(VAR__7685);
+   VAR__1111 = strlen(VAR__7685);
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR__1111 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      VAR_FLAG = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__3918907[VAR__21230] = VAR__7685[VAR__53647 + VAR__21230];
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 <= VAR__1238129; VAR__8444594++ )
+      {
+         if ( strcmp(VAR__3918907, ch[VAR__8444594]) == 0 )
+         {
+            VAR__COUNT[VAR__8444594]++;
+            VAR_FLAG++;
+            break;
+         }
+      }
+
+      if ( VAR_FLAG == 0 )
+      {
+         VAR__1238129++;
+         strcpy(ch[VAR__1238129], VAR__3918907);
+         VAR__COUNT[VAR__1238129]++;
+      }
+   }
+
+   for ( VAR_666 = 0; VAR_666 < VAR__1238129; VAR_666++ )
+   {
+      for ( VAR_233 = 0; VAR_233 < ( VAR__1238129 - VAR_666 ); VAR_233++ )
+      {
+         if ( VAR__COUNT[VAR_233] > VAR__COUNT[VAR_233 + 1] )
+         {
+            strcpy(VAR__3918907, ch[VAR_233]);
+            strcpy(ch[VAR_233], ch[VAR_233 + 1]);
+            strcpy(ch[VAR_233 + 1], VAR__3918907);
+            VAR__temp               = VAR__COUNT[VAR_233];
+            VAR__COUNT[VAR_233]     = VAR__COUNT[VAR_233 + 1];
+            VAR__COUNT[VAR_233 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   VAR__MAX = VAR__COUNT[VAR__1238129];
+
+   if ( VAR__MAX > 1 )
+   {
+      for ( VAR__53647 = VAR__1238129; ; VAR__53647-- )
+      {
+         if ( VAR__COUNT[VAR__53647] < VAR__MAX )
+         {
+            break;
+         }
+      }
+
+      printf("%d\n", VAR__MAX);
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR__1238129; VAR__21230++ )
+      {
+         for ( VAR_129012 = 0; VAR_129012 < VAR_1238123; VAR_129012++ )
+         {
+            printf("%c", ch[VAR__21230][VAR_129012]);
+         }
+
+         printf("\n");
+      }
+   }
+   else
+   {
+      printf("NO\n");
+   }
+}

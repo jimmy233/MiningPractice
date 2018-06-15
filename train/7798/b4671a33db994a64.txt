@@ -1,0 +1,53 @@
+struct book
+{
+   int  name;
+   char writer[26];
+};
+void main()
+{
+   struct book data[999];
+   int         VAR__1238129;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR__MAX        = 0;
+   int         VAR__19328      = 0;
+   int         VAR__819283[26] = { 0 };
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &data[VAR__53647].name, data[VAR__53647].writer);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(data[VAR__53647].writer); VAR__21230++ )
+      {
+         VAR__819283[data[VAR__53647].writer[VAR__21230] - 'A']++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX   = VAR__819283[VAR__53647];
+         VAR__19328 = VAR__53647;
+      }
+   }
+
+
+   printf("%c\n%d\n", 'A' + VAR__19328, VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(data[VAR__53647].writer); VAR__21230++ )
+      {
+         if ( data[VAR__53647].writer[VAR__21230] == ( 'A' + VAR__19328 ))
+         {
+            printf("%d\n", data[VAR__53647].name);
+            break;
+         }
+      }
+   }
+}

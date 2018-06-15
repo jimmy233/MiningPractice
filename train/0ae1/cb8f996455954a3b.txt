@@ -1,0 +1,98 @@
+int isRunNian(int year);
+
+int isRunNian(int year)
+{
+   int result;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      result = 1;
+   }
+   else
+   {
+      result = 0;
+   }
+
+   return result;
+}
+
+
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int total;
+   int VAR__21230;
+   int xqj;
+
+   scanf("%d %d %d", &year, &month, &day);
+   total = 0;
+   for ( int VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         total += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         total += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ( isRunNian(year))
+         {
+            total += 29;
+         }
+         else
+         {
+            total += 28;
+         }
+      }
+   }
+
+   total += day;
+   year   = year - 1;
+   xqj    = total % 7;
+   xqj    = (( xqj + (((( year / 4 ) - ( year / 100 )) + ( year / 400 )) * 2 )) + year ) - ((( year / 4 ) - ( year / 100 )) + ( year / 400 ));
+   xqj    = xqj % 7;
+
+   if ( xqj == 0 )
+   {
+      printf("Sun.");
+   }
+
+   if ( xqj == 1 )
+   {
+      printf("Mon.");
+   }
+
+   if ( xqj == 2 )
+   {
+      printf("Tue.");
+   }
+
+   if ( xqj == 3 )
+   {
+      printf("Wed.");
+   }
+
+   if ( xqj == 4 )
+   {
+      printf("Thu.");
+   }
+
+   if ( xqj == 5 )
+   {
+      printf("Fri.");
+   }
+
+   if ( xqj == 6 )
+   {
+      printf("Sat.");
+   }
+
+   return 0;
+}

@@ -1,0 +1,73 @@
+struct LinkNode
+{
+   int             data;
+   struct LinkNode *VAR__NEXT;
+};
+int VAR__8444594;
+struct LinkNode *createList()
+{
+   int             VAR_1238123;
+   int             VAR__1238129;
+   struct LinkNode *VAR__HEAD;
+   struct LinkNode *ANOTHER_POINTER;
+   struct LinkNode *YET_ANOTHER_POINTER;
+
+   VAR__HEAD            = (struct LinkNode *)malloc(N);
+   VAR__HEAD->VAR__NEXT = NULL;
+   YET_ANOTHER_POINTER  = VAR__HEAD;
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123-- )
+   {
+      scanf("%d", &VAR__1238129);
+      ANOTHER_POINTER                = (struct LinkNode *)malloc(N);
+      ANOTHER_POINTER->data          = VAR__1238129;
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   scanf("%d", &VAR__8444594);
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   struct LinkNode *VAR__HEAD;
+   struct LinkNode *VAR_233;
+   struct LinkNode *VAR_666;
+   struct LinkNode *pre;
+
+   VAR__HEAD = createList();
+   VAR_233   = VAR__HEAD->VAR__NEXT;
+   pre       = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      if ( VAR_233->data == VAR__8444594 )
+      {
+         pre->VAR__NEXT = VAR_233->VAR__NEXT;
+         VAR_666        = VAR_233;
+         VAR_233        = VAR_233->VAR__NEXT;
+         free(VAR_666);
+      }
+      else
+      {
+         pre     = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 != NULL )
+   {
+      VAR_666 = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+      printf("%d%s", VAR_666->data, ( VAR_233 ) ? ( " " ) : ( "" ));
+      free(VAR_666);
+   }
+
+   return 0;
+}

@@ -1,0 +1,92 @@
+int  VAR_FLAG[100][100] = { 0 };
+int  VAR_1238123;
+char VAR__819283[100][100];
+int chuan(int VAR__53647, int VAR__21230, int VAR__COUNT)
+{
+   if (( VAR_FLAG[VAR__53647][VAR__21230 + 1] == 0 ) && ( VAR__21230 < ( VAR_1238123 - 1 )))
+   {
+      VAR__COUNT++;
+      VAR_FLAG[VAR__53647][VAR__21230 + 1] = 3;
+   }
+
+   if (( VAR_FLAG[VAR__53647][VAR__21230 - 1] == 0 ) && ( VAR__21230 > 0 ))
+   {
+      VAR__COUNT++;
+      VAR_FLAG[VAR__53647][VAR__21230 - 1] = 1;
+   }
+
+   if (( VAR_FLAG[VAR__53647 - 1][VAR__21230] == 0 ) && ( VAR__53647 > 0 ))
+   {
+      VAR__COUNT++;
+      VAR_FLAG[VAR__53647 - 1][VAR__21230] = 1;
+   }
+
+   if (( VAR_FLAG[VAR__53647 + 1][VAR__21230] == 0 ) && ( VAR__53647 < ( VAR_1238123 - 1 )))
+   {
+      VAR__COUNT++;
+      VAR_FLAG[VAR__53647 + 1][VAR__21230] = 3;
+   }
+
+   return VAR__COUNT;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1238129;
+   int VAR__COUNT = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> VAR__819283[VAR__53647][VAR__21230];
+
+         if ( VAR__819283[VAR__53647][VAR__21230] == '#' )
+         {
+            VAR_FLAG[VAR__53647][VAR__21230] = 2;
+         }
+
+         if ( VAR__819283[VAR__53647][VAR__21230] == '@' )
+         {
+            VAR_FLAG[VAR__53647][VAR__21230] = 1;
+            VAR__COUNT++;
+         }
+      }
+   }
+
+
+   cin >> VAR__1238129;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            if ( VAR_FLAG[VAR__21230][VAR__8444594] == 1 )
+            {
+               VAR__COUNT = chuan(VAR__21230, VAR__8444594, VAR__COUNT);
+            }
+         }
+      }
+
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            if ( VAR_FLAG[VAR__21230][VAR__8444594] == 3 )
+            {
+               VAR_FLAG[VAR__21230][VAR__8444594] = 1;
+            }
+         }
+      }
+   }
+
+   ( cout << VAR__COUNT ) << endl;
+   return 0;
+}

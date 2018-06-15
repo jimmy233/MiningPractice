@@ -1,0 +1,121 @@
+struct student
+{
+   int            VAR__NUM;
+   char           zz[20];
+   struct student *VAR__NEXT;
+};
+struct student *New(int VAR_1238123)
+{
+   struct student *VAR__HEAD = NULL;
+   struct student *newp;
+   struct student *thisp;
+   int            VAR__53647 = 0;
+
+   do
+   {
+      newp = (struct student *)malloc(sizeof( struct student ));
+
+      if ( newp == NULL )
+      {
+         printf("request failed\n");
+         exit(-1);
+      }
+
+      scanf("%d %s", &newp->VAR__NUM, newp->zz);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = newp;
+         thisp     = VAR__HEAD;
+      }
+      else
+      {
+         thisp->VAR__NEXT = newp;
+      }
+
+      if ( VAR__53647 < VAR_1238123 )
+      {
+         thisp      = newp;
+         VAR__53647 = VAR__53647 + 1;
+      }
+   } while ( VAR__53647 < VAR_1238123 );
+   thisp->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR_1238123;
+   int            t1 = 0;
+   int            t2;
+   int            length;
+   char           target[1000] = { ' ' };
+   char           mz           = ' ';
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD  = New(VAR_1238123);
+   VAR_233    = VAR__HEAD;
+   VAR__53647 = 0;
+   do
+   {
+      if ( VAR__53647 == 0 )
+      {
+         strcpy(target, VAR_233->zz);
+      }
+      else
+      {
+         VAR_233 = VAR_233->VAR__NEXT;
+         strcat(target, VAR_233->zz);
+      }
+
+      VAR__53647 += 1;
+   } while ( VAR_233->VAR__NEXT != NULL );
+   length = strlen(target);
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      t2 = 0;
+
+      if ( target[VAR__53647] == '0' )
+      {
+         continue;
+      }
+      else
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < length; VAR__21230++ )
+         {
+            if ( target[VAR__21230] == target[VAR__53647] )
+            {
+               target[VAR__21230] = '0';
+               t2 += 1;
+            }
+         }
+
+         if ( t2 > t1 )
+         {
+            t1 = t2;
+            mz = target[VAR__53647];
+         }
+      }
+   }
+
+   printf("%c\n%d", mz, t1 + 1);
+   VAR_233 = VAR__HEAD;
+   do
+   {
+      length = strlen(VAR_233->zz);
+      for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+      {
+         if ( VAR_233->zz[VAR__53647] == mz )
+         {
+            printf("\n%d", VAR_233->VAR__NUM);
+         }
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != NULL );
+}

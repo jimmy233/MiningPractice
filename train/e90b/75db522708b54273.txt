@@ -1,0 +1,57 @@
+struct score
+{
+   long VAR__NUM;
+   int  yu;
+   int  shu;
+   int  VAR__SUM;
+}
+stu[100000];
+void main()
+{
+   long VAR__53647;
+   long VAR_1238123;
+   long VAR__21230;
+   long VAR__8444594;
+   int  VAR__temp;
+
+   scanf("%ld", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%ld%d%d", &stu[VAR__53647].VAR__NUM, &stu[VAR__53647].yu, &stu[VAR__53647].shu);
+      stu[VAR__53647].VAR__SUM = stu[VAR__53647].yu + stu[VAR__53647].shu;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( stu[VAR__21230].VAR__SUM > stu[VAR__21230 + 1].VAR__SUM )
+         {
+            VAR__temp = stu[VAR__21230].VAR__SUM;
+            stu[VAR__21230].VAR__SUM     = stu[VAR__21230 + 1].VAR__SUM;
+            stu[VAR__21230 + 1].VAR__SUM = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = VAR_1238123 - 1; VAR__8444594 > ( VAR_1238123 - 4 ); VAR__8444594-- )
+   {
+      if (( VAR__8444594 != ( VAR_1238123 - 1 )) && ( stu[VAR__8444594].VAR__SUM == stu[VAR__8444594 + 1].VAR__SUM ))
+      {
+         continue;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( stu[VAR__8444594].VAR__SUM == ( stu[VAR__53647].yu + stu[VAR__53647].shu ))
+         {
+            printf("%ld %ld\n", stu[VAR__53647].VAR__NUM, stu[VAR__8444594].VAR__SUM);
+
+            if ( VAR__8444594 == ( VAR_1238123 - 3 ))
+            {
+               break;
+            }
+         }
+      }
+   }
+}

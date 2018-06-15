@@ -1,0 +1,81 @@
+int main()
+{
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283[100][100];
+   int xxrow;
+   int sxrow;
+   int xxcol;
+   int sxcol;
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+   xxrow = 0;
+   sxrow = row - 1;
+   xxcol = 0;
+   sxcol = col - 1;
+   for ( ; 1; )
+   {
+      if (( xxrow == sxrow ) && ( xxcol <= sxcol ))
+      {
+         for ( VAR__53647 = xxcol; VAR__53647 <= sxcol; VAR__53647++ )
+         {
+            printf("%d\n", VAR__819283[xxrow][VAR__53647]);
+         }
+
+         break;
+      }
+      else
+      if (( xxcol == sxcol ) && ( xxrow < sxrow ))
+      {
+         for ( VAR__53647 = xxrow; VAR__53647 <= sxrow; VAR__53647++ )
+         {
+            printf("%d\n", VAR__819283[VAR__53647][xxcol]);
+         }
+
+         break;
+      }
+
+
+      if (( xxcol > sxcol ) || ( xxrow > sxrow ))
+      {
+         break;
+      }
+
+      for ( VAR__53647 = xxcol; VAR__53647 <= ( sxcol - 1 ); VAR__53647++ )
+      {
+         printf("%d\n", VAR__819283[xxrow][VAR__53647]);
+      }
+
+      for ( VAR__53647 = xxrow; VAR__53647 <= ( sxrow - 1 ); VAR__53647++ )
+      {
+         printf("%d\n", VAR__819283[VAR__53647][sxcol]);
+      }
+
+      for ( VAR__53647 = sxcol; VAR__53647 >= ( xxcol + 1 ); VAR__53647-- )
+      {
+         printf("%d\n", VAR__819283[sxrow][VAR__53647]);
+      }
+
+      for ( VAR__53647 = sxrow; VAR__53647 >= ( xxrow + 1 ); VAR__53647-- )
+      {
+         printf("%d\n", VAR__819283[VAR__53647][xxcol]);
+      }
+
+      xxrow++;
+      xxcol++;
+      sxrow--;
+      sxcol--;
+   }
+
+   return 0;
+}

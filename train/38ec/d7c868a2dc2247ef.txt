@@ -1,0 +1,84 @@
+void main()
+{
+   int yone;
+   int monone;
+   int dayone;
+   int ytwo;
+   int montwo;
+   int daytwo;
+
+   scanf("%d%d%d", &yone, &monone, &dayone);
+   scanf("%d%d%d", &ytwo, &montwo, &daytwo);
+   int mon[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__53647;
+   int VAR__21230;
+   int day = 0;
+
+   if ( yone == ytwo )
+   {
+      if ( monone == montwo )
+      {
+         day = daytwo - dayone;
+      }
+      else
+      {
+         if (((( yone % 4 ) == 0 ) && (( yone % 100 ) != 0 )) || (( yone % 400 ) == 0 ))
+         {
+            mon[1] = 29;
+         }
+
+         for ( VAR__53647 = monone; VAR__53647 < montwo; VAR__53647++ )
+         {
+            day = day + mon[VAR__53647 - 1];
+         }
+
+         day = day + daytwo;
+         day = day - dayone;
+      }
+
+      mon[1] = 28;
+   }
+   else
+   {
+      if (((( yone % 4 ) == 0 ) && (( yone % 100 ) != 0 )) || (( yone % 400 ) == 0 ))
+      {
+         mon[1] = 29;
+      }
+
+      for ( VAR__53647 = monone; VAR__53647 <= 12; VAR__53647++ )
+      {
+         day = day + mon[VAR__53647 - 1];
+      }
+
+      day    = day - dayone;
+      mon[1] = 28;
+
+      if (((( ytwo % 4 ) == 0 ) && (( ytwo % 100 ) != 0 )) || (( ytwo % 400 ) == 0 ))
+      {
+         mon[1] = 29;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < montwo; VAR__53647++ )
+      {
+         day = day + mon[VAR__53647 - 1];
+      }
+
+      day    = day + daytwo;
+      mon[1] = 28;
+
+      if (( yone + 1 ) < ytwo )
+      {
+         for ( VAR__21230 = yone + 1; VAR__21230 < ytwo; VAR__21230++ )
+         {
+            day = day + 365;
+
+            if (((( VAR__21230 % 4 ) == 0 ) && (( VAR__21230 % 100 ) != 0 )) || (( VAR__21230 % 400 ) == 0 ))
+            {
+               day = day + 1;
+            }
+         }
+      }
+   }
+
+   printf("%d", day);
+}

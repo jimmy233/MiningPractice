@@ -1,0 +1,98 @@
+int VAR_1238123;
+int matrixx[110][110];
+void Del()
+{
+   for ( int VAR__53647 = 2; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         matrixx[VAR__53647][VAR__21230] = matrixx[VAR__53647 + 1][VAR__21230];
+      }
+   }
+
+   for ( int VAR__53647 = 2; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         matrixx[VAR__21230][VAR__53647] = matrixx[VAR__21230][VAR__53647 + 1];
+      }
+   }
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   int minnum;
+   int VAR__SUM;
+   for ( int VAR_9494 = 1; VAR_9494 <= VAR_1238123; VAR_9494++ )
+   {
+      VAR__SUM = 0;
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+         {
+            cin >> matrixx[VAR__21230][VAR__8444594];
+         }
+      }
+
+      for ( int VAR__7685; VAR__7685 < 3000; VAR__7685++ )
+      {
+         if ( VAR__7685 == 5 )
+         {
+            int VAR__3918907 = 0;
+            VAR__3918907++;
+         }
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+            {
+               if ( VAR__8444594 == 1 )
+               {
+                  minnum = matrixx[VAR__21230][VAR__8444594];
+               }
+               else
+               {
+                  minnum = VAR__MIN(minnum, matrixx[VAR__21230][VAR__8444594]);
+               }
+            }
+
+            for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+            {
+               matrixx[VAR__21230][VAR__8444594] -= minnum;
+            }
+         }
+
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+            {
+               if ( VAR__8444594 == 1 )
+               {
+                  minnum = matrixx[VAR__8444594][VAR__21230];
+               }
+               else
+               {
+                  minnum = VAR__MIN(minnum, matrixx[VAR__8444594][VAR__21230]);
+               }
+            }
+
+            for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+            {
+               matrixx[VAR__8444594][VAR__21230] -= minnum;
+            }
+         }
+
+         VAR__SUM += matrixx[2][2];
+         Del();
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

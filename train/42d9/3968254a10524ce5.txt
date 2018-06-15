@@ -1,0 +1,68 @@
+int main()
+{
+   struct position
+   {
+      int x1;
+      int x2;
+      int x3;
+   }
+   pos[10];
+   struct distance
+   {
+      int   VAR__7685;
+      int   VAR__3918907;
+      float distan;
+   }
+   dis[60];
+   struct distance
+   {
+      int   VAR__7685;
+      int   VAR__3918907;
+      float distan;
+   }
+       VAR__TEMP;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> pos[VAR__53647].x1;
+      cin >> pos[VAR__53647].x2;
+      cin >> pos[VAR__53647].x3;
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__8444594].VAR__7685    = VAR__53647;
+         dis[VAR__8444594].VAR__3918907 = VAR__21230;
+         dis[VAR__8444594].distan       = sqrt(((( pos[VAR__53647].x1 - pos[VAR__21230].x1 ) * ( pos[VAR__53647].x1 - pos[VAR__21230].x1 )) + (( pos[VAR__53647].x2 - pos[VAR__21230].x2 ) * ( pos[VAR__53647].x2 - pos[VAR__21230].x2 ))) + (( pos[VAR__53647].x3 - pos[VAR__21230].x3 ) * ( pos[VAR__53647].x3 - pos[VAR__21230].x3 )));
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__8444594 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230].distan < dis[VAR__21230 + 1].distan )
+         {
+            VAR__TEMP           = dis[VAR__21230];
+            dis[VAR__21230]     = dis[VAR__21230 + 1];
+            dis[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      (((((((((((((((( cout << "(" ) << pos[dis[VAR__53647].VAR__7685].x1 ) << "," ) << pos[dis[VAR__53647].VAR__7685].x2 ) << "," ) << pos[dis[VAR__53647].VAR__7685].x3 ) << ")-(" ) << pos[dis[VAR__53647].VAR__3918907].x1 ) << "," ) << pos[dis[VAR__53647].VAR__3918907].x2 ) << "," ) << pos[dis[VAR__53647].VAR__3918907].x3 ) << ")=" ) << fixed ) << setprecision(2)) << dis[VAR__53647].distan ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,53 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct score
+   {
+      int id;
+      int yw;
+      int sx;
+   }
+       stu[100000];
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &stu[VAR__53647].id, &stu[VAR__53647].yw, &stu[VAR__53647].sx);
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= 3; VAR__21230++ )
+   {
+      int VAR__112390;
+      int VAR__MAX = 0;
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if (( stu[VAR__53647].yw + stu[VAR__53647].sx ) > ( stu[VAR__MAX].yw + stu[VAR__MAX].sx ))
+         {
+            VAR__MAX = VAR__53647;
+         }
+      }
+
+      if ( VAR__MAX != ( VAR_1238123 - VAR__21230 ))
+      {
+         VAR__112390      = stu[VAR__MAX].yw;
+         stu[VAR__MAX].yw = stu[VAR_1238123 - VAR__21230].yw;
+         stu[VAR_1238123 - VAR__21230].yw = VAR__112390;
+         VAR__112390      = stu[VAR__MAX].sx;
+         stu[VAR__MAX].sx = stu[VAR_1238123 - VAR__21230].sx;
+         stu[VAR_1238123 - VAR__21230].sx = VAR__112390;
+         VAR__112390      = stu[VAR__MAX].id;
+         stu[VAR__MAX].id = stu[VAR_1238123 - VAR__21230].id;
+         stu[VAR_1238123 - VAR__21230].id = VAR__112390;
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= ( VAR_1238123 - 2 ); VAR__53647-- )
+   {
+      printf("%d %d\n", stu[VAR__53647].id, stu[VAR__53647].yw + stu[VAR__53647].sx);
+   }
+
+   printf("%d %d", stu[VAR_1238123 - 3].id, stu[VAR_1238123 - 3].yw + stu[VAR_1238123 - 3].sx);
+   return 0;
+}

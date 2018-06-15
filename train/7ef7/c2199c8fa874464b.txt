@@ -1,0 +1,114 @@
+int VAR__MIN(int VAR__819283[], int VAR_1238123);
+int VAR__127322(int VAR__19328[][100], int VAR_1238123);
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   cin >> VAR_1238123;
+   VAR__1238129 = VAR_1238123;
+
+   while ( VAR__1238129-- )
+   {
+      int VAR__819283[100][100] = { 0 };
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      ( cout << VAR__127322(VAR__819283, VAR_1238123)) << endl;
+   }
+
+   return 0;
+}
+
+
+int VAR__MIN(int VAR__819283[], int VAR_1238123)
+{
+   int mini = VAR__819283[0];
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] < mini )
+      {
+         mini = VAR__819283[VAR__53647];
+      }
+   }
+
+   return mini;
+}
+
+
+int VAR__127322(int VAR__19328[][100], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR__temp;
+   int lmin;
+
+   if ( VAR_1238123 == 1 )
+   {
+      return 0;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__1238129 = VAR__MIN(VAR__19328[VAR__53647], VAR_1238123);
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__19328[VAR__53647][VAR__21230] = VAR__19328[VAR__53647][VAR__21230] - VAR__1238129;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         lmin = VAR__19328[0][VAR__53647];
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__19328[VAR__21230][VAR__53647] < lmin )
+            {
+               lmin = VAR__19328[VAR__21230][VAR__53647];
+            }
+         }
+
+         if ( lmin > 0 )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               VAR__19328[VAR__21230][VAR__53647] = VAR__19328[VAR__21230][VAR__53647] - lmin;
+            }
+         }
+      }
+
+      VAR__temp = VAR__19328[1][1];
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            VAR__19328[VAR__53647][VAR__21230] = VAR__19328[VAR__53647][VAR__21230 + 1];
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            VAR__19328[VAR__21230][VAR__53647] = VAR__19328[VAR__21230 + 1][VAR__53647];
+         }
+      }
+
+
+      return VAR__127322(VAR__19328, --VAR_1238123) + VAR__temp;
+   }
+}

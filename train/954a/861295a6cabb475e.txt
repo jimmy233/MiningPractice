@@ -1,0 +1,76 @@
+struct student
+{
+   char name[20];
+   int  test;
+   int  term;
+   char key;
+   char west;
+   int  art;
+   int  money;
+}
+person[100];
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR_666 = 0;
+   int            VAR__8444594;
+   struct student VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", person[VAR__53647].name, &person[VAR__53647].test, &person[VAR__53647].term, &person[VAR__53647].key, &person[VAR__53647].west, &person[VAR__53647].art);
+      person[VAR__53647].money = 0;
+
+      if (( person[VAR__53647].art > 0 ) && ( person[VAR__53647].test > 80 ))
+      {
+         person[VAR__53647].money = person[VAR__53647].money + 8000;
+      }
+
+      if (( person[VAR__53647].test > 85 ) && ( person[VAR__53647].term > 80 ))
+      {
+         person[VAR__53647].money = person[VAR__53647].money + 4000;
+      }
+
+      if ( person[VAR__53647].test > 90 )
+      {
+         person[VAR__53647].money = person[VAR__53647].money + 2000;
+      }
+
+      if (( person[VAR__53647].test > 85 ) && ( person[VAR__53647].west == 'Y' ))
+      {
+         person[VAR__53647].money = person[VAR__53647].money + 1000;
+      }
+
+      if (( person[VAR__53647].term > 80 ) && ( person[VAR__53647].key == 'Y' ))
+      {
+         person[VAR__53647].money = person[VAR__53647].money + 850;
+      }
+
+      VAR_666 = VAR_666 + person[VAR__53647].money;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( person[VAR__21230].money > person[VAR__8444594].money )
+         {
+            VAR__8444594 = VAR__21230;
+         }
+      }
+
+
+      VAR__TEMP            = person[VAR__8444594];
+      person[VAR__8444594] = person[VAR__53647];
+      person[VAR__53647]   = VAR__TEMP;
+   }
+
+   printf("%s\n", person[0].name);
+   printf("%d\n", person[0].money);
+   printf("%d", VAR_666);
+   return 0;
+}

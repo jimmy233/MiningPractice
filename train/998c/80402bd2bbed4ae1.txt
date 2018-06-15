@@ -1,0 +1,70 @@
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return VAR__19328;
+   }
+}
+
+
+int main()
+{
+   char x1[260];
+   char x2[260];
+
+   cin.getline(x1, 260);
+   cin.getline(x2, 260);
+   int len1;
+   int len2;
+
+   if ( strlen(x1) < strlen(x2))
+   {
+      char VAR__4857423[260];
+      strcpy(VAR__4857423, x1);
+      strcpy(x1, x2);
+      strcpy(x2, VAR__4857423);
+   }
+
+   len1 = strlen(x1);
+   len2 = strlen(x2);
+   int VAR__53647;
+   int a1[260] = { 0 };
+   int a2[260] = { 0 };
+   for ( VAR__53647 = len1; VAR__53647 > 0; VAR__53647-- )
+   {
+      a1[VAR__53647] = x1[VAR__53647 - 1] - '0';
+      a2[VAR__53647] = ((( VAR__53647 - len1 ) + len2 ) >= 1 ) ? ( x2[(( VAR__53647 - len1 ) + len2 ) - 1] - '0' ) : ( 0 );
+   }
+
+   for ( VAR__53647 = len1; VAR__53647 > 0; VAR__53647-- )
+   {
+      a1[VAR__53647] += a2[VAR__53647];
+      int VAR__21230 = VAR__53647;
+
+      while (( a1[VAR__21230] >= 10 ) && ( VAR__21230 >= 0 ))
+      {
+         a1[VAR__21230 - 1] += a1[VAR__21230] / 10;
+         a1[VAR__21230]     %= 10;
+         VAR__21230--;
+      }
+   }
+
+   VAR__53647 = 0;
+
+   while (( a1[VAR__53647] == 0 ) && ( VAR__53647 < len1 ))
+   {
+      VAR__53647++;
+   }
+
+   for ( ; VAR__53647 <= len1; VAR__53647++ )
+   {
+      cout << a1[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

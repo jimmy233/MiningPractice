@@ -1,0 +1,91 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__819283[100]  = { 0 };
+   int  VAR__19328[100]   = { 0 };
+   int  VAR__4857423[100] = { 0 };
+   int  l1;
+   int  l2;
+   int  VAR__53647;
+   int  VAR__21230;
+   char begin1[101] = { 0 };
+   char begin2[101] = { 0 };
+
+   int compare(int VAR__819283, int VAR__19328);
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", begin1);
+      scanf("%s", begin2);
+
+      if ( VAR__53647 != ( VAR_1238123 - 1 ))
+      {
+         scanf("\n");
+      }
+
+      l1 = strlen(begin1);
+      l2 = strlen(begin2);
+      for ( VAR__21230 = 0; VAR__21230 < compare(l1, l2); VAR__21230++ )
+      {
+         if ( l1 >= l2 )
+         {
+            VAR__819283[VAR__21230] = ((int)begin1[VAR__21230] ) - 48;
+
+            if ( VAR__21230 < l2 )
+            {
+               VAR__19328[( VAR__21230 + l1 ) - l2] = ((int)begin2[VAR__21230] ) - 48;
+            }
+         }
+         else
+         {
+            if ( VAR__21230 < l1 )
+            {
+               VAR__819283[( VAR__21230 + l2 ) - l1] = ((int)begin1[VAR__21230] ) - 48;
+            }
+
+            VAR__19328[VAR__21230] = ((int)begin2[VAR__21230] ) - 48;
+         }
+      }
+
+      for ( VAR__21230 = compare(l1, l2) - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if (( VAR__819283[VAR__21230] - VAR__19328[VAR__21230] ) >= 0 )
+         {
+            VAR__4857423[VAR__21230] = VAR__819283[VAR__21230] - VAR__19328[VAR__21230];
+         }
+         else
+         {
+            VAR__4857423[VAR__21230]    = ( 10 + VAR__819283[VAR__21230] ) - VAR__19328[VAR__21230];
+            VAR__819283[VAR__21230 - 1] = VAR__819283[VAR__21230 - 1] - 1;
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < compare(l1, l2); VAR__21230++ )
+      {
+         printf("%d", VAR__4857423[VAR__21230]);
+         VAR__4857423[VAR__21230] = 0;
+         begin1[VAR__21230]       = '\0';
+         begin2[VAR__21230]       = '\0';
+         VAR__819283[VAR__21230]  = 0;
+         VAR__19328[VAR__21230]   = 0;
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}
+
+
+int compare(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 >= VAR__19328 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return VAR__19328;
+   }
+}

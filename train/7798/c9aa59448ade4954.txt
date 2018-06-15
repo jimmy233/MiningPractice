@@ -1,0 +1,90 @@
+struct book
+{
+   int         VAR__NUM;
+   char        name[27];
+   struct book *VAR__NEXT;
+};
+struct book *creat(int VAR_1238123)
+{
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   int         VAR__1238129 = 0;
+
+   VAR__HEAD       = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = NULL ));
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct book *)malloc(sizeof( struct book )));
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+
+   while ( 1 )
+   {
+      VAR__1238129 += 1;
+
+      if ( VAR__1238129 >= VAR_1238123 )
+      {
+         break;
+      }
+
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct book *)malloc(sizeof( struct book ));
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct book *VAR__HEAD;
+   struct book *VAR_233;
+   char        maxchar;
+   int         VAR__1238129;
+   int         VAR__53647      = 0;
+   int         VAR__MAX        = 0;
+   int         VAR__819283[26] = { 0 };
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = creat(VAR__1238129);
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__53647 = 0; VAR_233->name[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         int VAR__4857423 = VAR_233->name[VAR__53647] - 'A';
+         VAR__819283[VAR__4857423]++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+         maxchar  = 'A' + VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", maxchar, VAR__MAX);
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__53647 = 0; VAR_233->name[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( VAR_233->name[VAR__53647] == maxchar )
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+            break;
+         }
+      }
+   }
+}

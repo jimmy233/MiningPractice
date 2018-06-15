@@ -1,0 +1,41 @@
+const long maxn = 25;
+long       VAR_1238123;
+long       VAR__819283[maxn + 10];
+long       ans;
+void dfs(long VAR_2890, long maxH, long now)
+{
+   long VAR__53647;
+
+   if ( VAR_2890 == ( VAR_1238123 + 1 ))
+   {
+      if ( now > ans )
+      {
+         ans = now;
+      }
+
+      return;
+   }
+
+   dfs(VAR_2890 + 1, maxH, now);
+
+   if ( VAR__819283[VAR_2890] <= maxH )
+   {
+      dfs(VAR_2890 + 1, VAR__819283[VAR_2890], now + 1);
+   }
+}
+
+
+int main()
+{
+   long VAR__53647;
+
+   scanf("%ld", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%ld", VAR__819283 + VAR__53647);
+   }
+
+   dfs(1, 1 << 30, 0);
+   printf("%ld\n", ans);
+   return 0;
+}

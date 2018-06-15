@@ -1,0 +1,104 @@
+struct student
+{
+   char           name[1000];
+   int            final;
+   int            aver;
+   char           xshe;
+   char           xb;
+   int            paper;
+   int            score;
+   struct student *VAR__NEXT;
+};
+int VAR__NUM;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+   int            VAR_1238123;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->final, &ANOTHER_POINTER->aver, &ANOTHER_POINTER->xshe, &ANOTHER_POINTER->xb, &ANOTHER_POINTER->paper);
+   ANOTHER_POINTER->score = 0;
+   VAR__HEAD = NULL;
+
+   while ( VAR_1238123 < ( VAR__NUM - 1 ))
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->final, &ANOTHER_POINTER->aver, &ANOTHER_POINTER->xshe, &ANOTHER_POINTER->xb, &ANOTHER_POINTER->paper);
+      ANOTHER_POINTER->score = 0;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR_233;
+   struct student *VAR__MAX;
+   int            VAR__SUM = 0;
+
+   scanf("%d", &VAR__NUM);
+   VAR__HEAD = creat();
+   VAR_233   = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD ));
+   for ( ; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if (( VAR_233->aver > 80 ) && ( VAR_233->xshe == 'Y' ))
+      {
+         VAR_233->score = VAR_233->score + 850;
+      }
+
+      if (( VAR_233->final > 80 ) && ( VAR_233->paper >= 1 ))
+      {
+         VAR_233->score = VAR_233->score + 8000;
+      }
+
+      if (( VAR_233->final > 85 ) && ( VAR_233->aver > 80 ))
+      {
+         VAR_233->score = VAR_233->score + 4000;
+      }
+
+      if ( VAR_233->final > 90 )
+      {
+         VAR_233->score = VAR_233->score + 2000;
+      }
+
+      if (( VAR_233->final > 85 ) && ( VAR_233->xb == 'Y' ))
+      {
+         VAR_233->score = VAR_233->score + 1000;
+      }
+   }
+
+   VAR__MAX = ( VAR_233 = VAR__HEAD );
+   for ( ; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->score > VAR__MAX->score )
+      {
+         VAR__MAX = VAR_233;
+      }
+
+      VAR__SUM = VAR__SUM + VAR_233->score;
+   }
+
+   printf("%s\n%d\n%d\n", VAR__MAX->name, VAR__MAX->score, VAR__SUM);
+}

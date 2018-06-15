@@ -1,0 +1,63 @@
+int main()
+{
+   char VAR__4857423;
+   char boy = 0;
+   int  n_person;
+   int  n_pair;
+   int  sym[100]    = { 0 };
+   int  pair[50][2] = { 0 };
+
+   for ( int VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR__4857423 = cin.get();
+
+      if ( VAR__53647 == 1 )
+      {
+         boy = VAR__4857423;
+      }
+
+      if ( VAR__4857423 == '\n' )
+      {
+         n_person = VAR__53647;
+         n_pair   = n_person / 2;
+         break;
+      }
+
+      if ( VAR__4857423 == boy )
+      {
+         sym[VAR__53647] = 1;
+      }
+      else
+      {
+         sym[VAR__53647] = -1;
+      }
+   }
+
+   for ( int i0 = n_person - 1, VAR_233 = n_pair - 1; i0 >= 0; i0-- )
+   {
+      if ( sym[i0] == ( -1 ))
+      {
+         pair[VAR_233][1] = i0;
+         for ( int i1 = i0, VAR__SUM = 0; i1 >= 0; i1-- )
+         {
+            VAR__SUM = VAR__SUM + sym[i1];
+
+            if ( VAR__SUM == 0 )
+            {
+               pair[VAR_233][0] = i1;
+               break;
+            }
+         }
+
+         VAR_233--;
+      }
+   }
+
+
+   for ( int VAR_233 = 0; VAR_233 < n_pair; VAR_233++ )
+   {
+      ((( cout << pair[VAR_233][0] ) << ' ' ) << pair[VAR_233][1] ) << endl;
+   }
+
+   return 0;
+}

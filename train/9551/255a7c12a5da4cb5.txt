@@ -1,0 +1,57 @@
+struct bingren
+{
+   char           id[20];
+   int            nian;
+   struct bingren *VAR__NEXT;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct bingren *ANOTHER_POINTER;
+   struct bingren *VAR__HEAD;
+   struct bingren VAR__TEMP;
+   char           VAR__819283[20] = { '\0' };
+   int            VAR__19328      = 0;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD            = (struct bingren *)malloc(sizeof( struct bingren ));
+   VAR__HEAD->VAR__NEXT = NULL;
+   scanf("%s%d", VAR__HEAD->id, &VAR__HEAD->nian);
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER->VAR__NEXT = (struct bingren *)malloc(sizeof( struct bingren ));
+      scanf("%s%d", ANOTHER_POINTER->VAR__NEXT->id, &ANOTHER_POINTER->VAR__NEXT->nian);
+      ANOTHER_POINTER->VAR__NEXT->VAR__NEXT = NULL;
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( ; ANOTHER_POINTER->VAR__NEXT != NULL; )
+      {
+         if (( ANOTHER_POINTER->VAR__NEXT->nian >= 60 ) && ( ANOTHER_POINTER->VAR__NEXT->nian > ANOTHER_POINTER->nian ))
+         {
+            VAR__19328                       = ANOTHER_POINTER->nian;
+            ANOTHER_POINTER->nian            = ANOTHER_POINTER->VAR__NEXT->nian;
+            ANOTHER_POINTER->VAR__NEXT->nian = VAR__19328;
+            strcpy(VAR__819283, ANOTHER_POINTER->id);
+            strcpy(ANOTHER_POINTER->id, ANOTHER_POINTER->VAR__NEXT->id);
+            strcpy(ANOTHER_POINTER->VAR__NEXT->id, VAR__819283);
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER = VAR__HEAD;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( ; ANOTHER_POINTER != NULL; )
+   {
+      printf("%s\n", ANOTHER_POINTER->id);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

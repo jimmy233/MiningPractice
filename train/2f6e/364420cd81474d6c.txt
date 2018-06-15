@@ -1,0 +1,110 @@
+struct student
+{
+   int boy;
+   int girl;
+};
+struct student out[PI];
+struct student tmp;
+int            LEN_OF_STH;
+int            VAR__8444594 = 0;
+char           VAR_9494[PI];
+char           VAR__19328;
+char           VAR_9Q8Q90;
+void output()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( out[VAR__53647].girl > out[VAR__21230].girl )
+         {
+            tmp.boy              = out[VAR__53647].boy;
+            tmp.girl             = out[VAR__53647].girl;
+            out[VAR__53647].boy  = out[VAR__21230].boy;
+            out[VAR__53647].girl = out[VAR__21230].girl;
+            out[VAR__21230].boy  = tmp.boy;
+            out[VAR__21230].girl = tmp.girl;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%d %d\n", out[VAR__53647].boy, out[VAR__53647].girl);
+   }
+}
+
+
+void outing(int VAR__7685)
+{
+   int VAR__1111;
+   int VAR_129012;
+
+   VAR__1111  = 1;
+   VAR_129012 = 0;
+   int VAR__53647;
+   int VAR__21230;
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] != '0' )
+      {
+         VAR__21230++;
+      }
+   }
+
+   if ( VAR__21230 == 0 )
+   {
+      output();
+   }
+   else
+   {
+      for ( VAR__53647 = VAR__7685 + 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647] == VAR__19328 )
+         {
+            VAR__1111++;
+         }
+
+         if ( VAR_9494[VAR__53647] == VAR_9Q8Q90 )
+         {
+            VAR_129012++;
+
+            if ( VAR_129012 == VAR__1111 )
+            {
+               VAR_9494[VAR__7685]    = '0';
+               VAR_9494[VAR__53647]   = '0';
+               out[VAR__8444594].boy  = VAR__7685;
+               out[VAR__8444594].girl = VAR__53647;
+               VAR__8444594++;
+               break;
+            }
+         }
+      }
+
+      outing(VAR__7685 + 1);
+   }
+}
+
+
+int main()
+{
+   scanf("%s", VAR_9494);
+   int VAR__53647;
+   LEN_OF_STH = strlen(VAR_9494);
+   VAR__19328 = VAR_9494[0];
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] != VAR__19328 )
+      {
+         VAR_9Q8Q90 = VAR_9494[VAR__53647];
+         break;
+      }
+   }
+
+   outing(0);
+   return 0;
+}

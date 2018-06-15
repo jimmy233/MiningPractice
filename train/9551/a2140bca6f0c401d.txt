@@ -1,0 +1,114 @@
+struct a
+{
+   char     id[20];
+   int      age;
+   struct a *VAR__NEXT;
+};
+struct a *insert(struct a *VAR__HEAD, struct a *VAR_9494)
+{
+   struct a *p0;
+   struct a *ANOTHER_POINTER;
+   struct a *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = VAR_9494;
+
+   if ( VAR__HEAD == NULL )
+   {
+      VAR__HEAD     = p0;
+      p0->VAR__NEXT = NULL;
+   }
+   else
+   {
+      while (( p0->age <= ANOTHER_POINTER->age ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( p0->age > ANOTHER_POINTER->age )
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            VAR__HEAD = p0;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         }
+
+         p0->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = NULL;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct a *creat(struct a *VAR__HEAD, struct a *VAR_9494)
+{
+   struct a *VAR__temp;
+
+   if ( VAR__HEAD == NULL )
+   {
+      VAR__HEAD           = VAR_9494;
+      VAR_9494->VAR__NEXT = NULL;
+   }
+   else
+   {
+      for ( VAR__temp = VAR__HEAD; VAR__temp->VAR__NEXT != NULL; VAR__temp = VAR__temp->VAR__NEXT )
+      {
+      }
+
+      VAR__temp->VAR__NEXT = VAR_9494;
+      VAR_9494->VAR__NEXT  = NULL;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct a *head1;
+   struct a *head2;
+   struct a *VAR_9494;
+   struct a *VAR_233;
+   int      VAR__53647;
+   int      VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   head1 = NULL;
+   head2 = NULL;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR_9494 = LEN;
+      scanf("%s %d", VAR_9494->id, &VAR_9494->age);
+      VAR_9494->VAR__NEXT = NULL;
+
+      if ( VAR_9494->age >= 60 )
+      {
+         head1 = insert(head1, VAR_9494);
+      }
+
+      if ( VAR_9494->age < 60 )
+      {
+         head2 = creat(head2, VAR_9494);
+      }
+   }
+
+   for ( VAR_233 = head1; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s\n", VAR_233->id);
+   }
+
+   for ( VAR_233 = head2; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s\n", VAR_233->id);
+   }
+}

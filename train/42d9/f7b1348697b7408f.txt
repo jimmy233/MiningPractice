@@ -1,0 +1,68 @@
+struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+po[10];
+struct distance
+{
+   double dist;
+   int    x1;
+   int    y1;
+   int    z1;
+   int    x2;
+   int    y2;
+   int    z2;
+};
+int main()
+{
+   int             VAR_1238123;
+   int             VAR__53647;
+   int             VAR__21230;
+   int             VAR__8444594 = 0;
+   struct distance dis[50];
+   struct distance VAR__TEMP;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> po[VAR__53647].VAR__7685 ) >> po[VAR__53647].VAR__3918907 ) >> po[VAR__53647].VAR__9290;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__8444594].dist = sqrt(((( po[VAR__53647].VAR__7685 - po[VAR__21230].VAR__7685 ) * ( po[VAR__53647].VAR__7685 - po[VAR__21230].VAR__7685 )) + (( po[VAR__53647].VAR__3918907 - po[VAR__21230].VAR__3918907 ) * ( po[VAR__53647].VAR__3918907 - po[VAR__21230].VAR__3918907 ))) + (( po[VAR__53647].VAR__9290 - po[VAR__21230].VAR__9290 ) * ( po[VAR__53647].VAR__9290 - po[VAR__21230].VAR__9290 )));
+         dis[VAR__8444594].x1   = po[VAR__53647].VAR__7685;
+         dis[VAR__8444594].y1   = po[VAR__53647].VAR__3918907;
+         dis[VAR__8444594].z1   = po[VAR__53647].VAR__9290;
+         dis[VAR__8444594].x2   = po[VAR__21230].VAR__7685;
+         dis[VAR__8444594].y2   = po[VAR__21230].VAR__3918907;
+         dis[VAR__8444594].z2   = po[VAR__21230].VAR__9290;
+         VAR__8444594++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230].dist < dis[VAR__21230 + 1].dist )
+         {
+            VAR__TEMP           = dis[VAR__21230 + 1];
+            dis[VAR__21230 + 1] = dis[VAR__21230];
+            dis[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      ((((((((((((((((((( cout << "(" ) << dis[VAR__53647].x1 ) << "," ) << dis[VAR__53647].y1 ) << "," ) << dis[VAR__53647].z1 ) << ")" ) << "-" ) << "(" ) << dis[VAR__53647].x2 ) << "," ) << dis[VAR__53647].y2 ) << "," ) << dis[VAR__53647].z2 ) << ")" ) << "=" ) << fixed ) << setprecision(2)) << dis[VAR__53647].dist ) << endl;
+   }
+
+   return 0;
+}

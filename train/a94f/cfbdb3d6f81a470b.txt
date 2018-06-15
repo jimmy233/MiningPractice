@@ -1,0 +1,89 @@
+int main()
+{
+   int array[100][100];
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1111;
+   int VAR__8444594;
+   int VAR__1238129;
+   int VAR__temp;
+   int VAR__127322[100][100] = { 0 };
+
+   ( cin >> row ) >> col;
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         cin >> array[VAR__53647][VAR__21230];
+      }
+   }
+
+   VAR__53647   = 0;
+   VAR__1238129 = -1;
+   VAR__8444594 = row * col;
+
+   while ( VAR__8444594 > 0 )
+   {
+      for ( VAR__21230 = VAR__1238129 + 1; VAR__21230 < col; VAR__21230++ )
+      {
+         if ( VAR__127322[VAR__53647][VAR__21230] == 0 )
+         {
+            ( cout << array[VAR__53647][VAR__21230] ) << '\n';
+            VAR__8444594--;
+            VAR__127322[VAR__53647][VAR__21230] = 1;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      for ( VAR__temp = VAR__53647 + 1; VAR__temp < row; VAR__temp++ )
+      {
+         if ( VAR__127322[VAR__temp][VAR__21230 - 1] == 0 )
+         {
+            ( cout << array[VAR__temp][VAR__21230 - 1] ) << '\n';
+            VAR__8444594--;
+            VAR__127322[VAR__temp][VAR__21230 - 1] = 1;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      for ( VAR__1111 = VAR__21230 - 2; VAR__1111 >= 0; VAR__1111-- )
+      {
+         if ( VAR__127322[VAR__temp - 1][VAR__1111] == 0 )
+         {
+            ( cout << array[VAR__temp - 1][VAR__1111] ) << '\n';
+            VAR__8444594--;
+            VAR__127322[VAR__temp - 1][VAR__1111] = 1;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      for ( VAR__1238129 = VAR__temp - 2; VAR__1238129 >= 0; VAR__1238129-- )
+      {
+         if ( VAR__127322[VAR__1238129][VAR__1111 + 1] == 0 )
+         {
+            ( cout << array[VAR__1238129][VAR__1111 + 1] ) << '\n';
+            VAR__8444594--;
+            VAR__127322[VAR__1238129][VAR__1111 + 1] = 1;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      VAR__53647++;
+   }
+
+   return 0;
+}

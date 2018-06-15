@@ -1,0 +1,114 @@
+int fun2(int VAR__819283)
+{
+   if ((( VAR__819283 % 400 ) == 0 ) || ((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int fun3(int VAR__819283, int VAR__19328)
+{
+   switch ( VAR__819283 )
+   {
+   case 1:
+
+   case 3:
+
+   case 5:
+
+   case 7:
+
+   case 8:
+
+   case 10:
+
+   case 12:
+      return 3;
+
+   case 2:
+
+      if ((( VAR__19328 % 400 ) == 0 ) || ((( VAR__19328 % 4 ) == 0 ) && (( VAR__19328 % 100 ) != 0 )))
+      {
+         return 1;
+      }
+      else
+      {
+         return 0;
+      }
+
+
+   default:
+      return 2;
+   }
+}
+
+
+void print(int VAR__819283)
+{
+   switch ( VAR__819283 )
+   {
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+
+   case 0:
+      printf("Sun.\n");
+      break;
+   }
+}
+
+
+void main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__53647;
+   int VAR__12302 = 0;
+
+   scanf("%d%d%d", &year, &month, &day);
+   for ( VAR__53647 = year - (( year - 1 ) % 400 ); VAR__53647 < year; VAR__53647++ )
+   {
+      if ( fun2(VAR__53647))
+      {
+         VAR__12302 += 2;
+      }
+      else
+      {
+         VAR__12302 += 1;
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      VAR__12302 += fun3(VAR__53647, year);
+   }
+
+   VAR__12302 += day;
+   VAR__12302 %= 7;
+   print(VAR__12302);
+}

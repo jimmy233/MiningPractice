@@ -1,0 +1,108 @@
+int VAR__819283[103][103];
+int FindMin(int VAR__7685, int VAR__3918907)
+{
+   int ret = 100000;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__7685][VAR__53647] < ret )
+      {
+         ret = VAR__819283[VAR__7685][VAR__53647];
+      }
+   }
+
+
+   return ret;
+}
+
+
+int FindMin1(int VAR__7685, int VAR__3918907)
+{
+   int ret = 100000;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647][VAR__7685] < ret )
+      {
+         ret = VAR__819283[VAR__53647][VAR__7685];
+      }
+   }
+
+
+   return ret;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR_666;
+
+   cin >> VAR_1238123;
+   int VAR__SUM = 0;
+   VAR_666 = VAR_1238123;
+   for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      VAR__SUM = 0;
+      VAR_666  = VAR_1238123;
+      for ( int VAR_2890 = 0; VAR_2890 < VAR_1238123; VAR_2890++ )
+      {
+         for ( int VAR__1111 = 0; VAR__1111 < VAR_1238123; VAR__1111++ )
+         {
+            cin >> VAR__819283[VAR_2890][VAR__1111];
+         }
+      }
+
+
+      while ( 1 )
+      {
+         if ( VAR_666 == 1 )
+         {
+            ( cout << VAR__SUM ) << endl;
+            break;
+         }
+
+         int VAR__temp;
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+         {
+            VAR__temp = FindMin(VAR__53647, VAR_666);
+            for ( int VAR__21230 = 0; VAR__21230 < VAR_666; VAR__21230++ )
+            {
+               VAR__819283[VAR__53647][VAR__21230] -= VAR__temp;
+            }
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_666; VAR__21230++ )
+         {
+            VAR__temp = FindMin1(VAR__21230, VAR_666);
+            for ( int VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+            {
+               VAR__819283[VAR__53647][VAR__21230] -= VAR__temp;
+            }
+         }
+
+         VAR__SUM += VAR__819283[1][1];
+         for ( int VAR__53647 = 1; VAR__53647 < ( VAR_666 - 1 ); VAR__53647++ )
+         {
+            for ( int VAR__21230 = 0; VAR__21230 < VAR_666; VAR__21230++ )
+            {
+               VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647 + 1][VAR__21230];
+            }
+         }
+
+
+         for ( int VAR__21230 = 1; VAR__21230 < ( VAR_666 - 1 ); VAR__21230++ )
+         {
+            for ( int VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+            {
+               VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647][VAR__21230 + 1];
+            }
+         }
+
+
+         VAR_666--;
+      }
+   }
+
+   return 0;
+}

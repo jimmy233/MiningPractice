@@ -1,0 +1,73 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int tian[1010];
+   int qi[1010];
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tian[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qi[VAR__53647];
+      }
+
+      qsort(tian, VAR_1238123, sizeof( int ), cmp);
+      qsort(qi, VAR_1238123, sizeof( int ), cmp);
+      int tmax       = VAR_1238123 - 1;
+      int tmin       = 0;
+      int qmax       = VAR_1238123 - 1;
+      int qmin       = 0;
+      int VAR__COUNT = 0;
+      int money      = 0;
+
+      while ( VAR__COUNT != VAR_1238123 )
+      {
+         if ( tian[tmax] > qi[qmax] )
+         {
+            tmax--;
+            qmax--;
+            VAR__COUNT++;
+            money += 200;
+         }
+         else
+         if ( tian[tmin] > qi[qmin] )
+         {
+            tmin++;
+            qmin++;
+            VAR__COUNT++;
+            money += 200;
+         }
+         else
+         {
+            if ( tian[tmin] < qi[qmax] )
+            {
+               money -= 200;
+            }
+
+            tmin++;
+            qmax--;
+            VAR__COUNT++;
+         }
+      }
+
+      ( cout << money ) << endl;
+   }
+}

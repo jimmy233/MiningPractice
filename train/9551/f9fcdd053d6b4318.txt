@@ -1,0 +1,93 @@
+struct
+{
+   char ID[10];
+   int  nian;
+}
+patient[100];
+struct
+{
+   char ID[10];
+   int  nian;
+}
+old[100];
+struct
+{
+   char ID[10];
+   int  nian;
+}
+qita[100];
+struct
+{
+   char ID[10];
+   int  nian;
+}
+VAR__TEMP;
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__112390;
+   int VAR__NUM;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", patient[VAR__53647].ID, &patient[VAR__53647].nian);
+   }
+
+   VAR__NUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( patient[VAR__53647].nian >= 60 )
+      {
+         VAR__NUM = VAR__NUM + 1;
+      }
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( patient[VAR__53647].nian >= 60 )
+      {
+         old[VAR__8444594] = patient[VAR__53647];
+         VAR__8444594      = VAR__8444594 + 1;
+      }
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( patient[VAR__53647].nian < 60 )
+      {
+         qita[VAR__8444594] = patient[VAR__53647];
+         VAR__8444594       = VAR__8444594 + 1;
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < VAR__NUM; VAR__21230++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__NUM - VAR__21230 ); VAR__8444594++ )
+      {
+         if ( old[VAR__8444594 + 1].nian > old[VAR__8444594].nian )
+         {
+            VAR__TEMP             = old[VAR__8444594 + 1];
+            old[VAR__8444594 + 1] = old[VAR__8444594];
+            old[VAR__8444594]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__NUM; VAR__8444594++ )
+   {
+      printf("%s\n", old[VAR__8444594].ID);
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < ( VAR_1238123 - VAR__NUM ); VAR__8444594++ )
+   {
+      printf("%s\n", qita[VAR__8444594].ID);
+   }
+
+   return 0;
+}

@@ -1,0 +1,63 @@
+int leap(int VAR_1238123)
+{
+   if (((( VAR_1238123 % 4 ) == 0 ) && (( VAR_1238123 % 100 ) != 0 )) || (( VAR_1238123 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int year;
+   int mon1;
+   int mon2;
+   int mon[] = { 0, 3, 0, 3, 2, 3, 2, 3, 3, 2, 3, 2, 3 };
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__TEMP;
+   int day;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &year, &mon1, &mon2);
+
+      if ( mon1 > mon2 )
+      {
+         VAR__TEMP = mon1;
+         mon1      = mon2;
+         mon2      = VAR__TEMP;
+      }
+
+      if ( leap(year))
+      {
+         mon[2]++;
+      }
+
+      day = 0;
+      for ( VAR__21230 = mon1; VAR__21230 < mon2; VAR__21230++ )
+      {
+         day += mon[VAR__21230];
+      }
+
+      if (( day % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+
+      if ( leap(year))
+      {
+         mon[2]--;
+      }
+   }
+}

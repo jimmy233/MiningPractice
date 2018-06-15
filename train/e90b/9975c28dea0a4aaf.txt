@@ -1,0 +1,66 @@
+struct stu
+{
+   int        VAR__819283;
+   int        VAR__19328;
+   int        VAR__4857423;
+   struct stu *VAR__NEXT;
+};
+void main()
+{
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR_1238123;
+   int        VAR__temp;
+   int        VAR__SUM[100000];
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+   scanf("%d%d%d", &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->VAR__4857423);
+   VAR__SUM[0]         = ANOTHER_POINTER->VAR__19328 + ANOTHER_POINTER->VAR__4857423;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      scanf("%d%d%d", &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->VAR__4857423);
+      VAR__SUM[VAR__53647] = ANOTHER_POINTER->VAR__19328 + ANOTHER_POINTER->VAR__4857423;
+      YET_ANOTHER_POINTER  = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__SUM[VAR__53647] < VAR__SUM[VAR__21230] )
+         {
+            VAR__temp            = VAR__SUM[VAR__53647];
+            VAR__SUM[VAR__53647] = VAR__SUM[VAR__21230];
+            VAR__SUM[VAR__21230] = VAR__temp;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+
+      while ((( ANOTHER_POINTER->VAR__19328 + ANOTHER_POINTER->VAR__4857423 ) != VAR__SUM[VAR__53647] ) && ANOTHER_POINTER )
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( ANOTHER_POINTER )
+      {
+         printf("%d %d\n", ANOTHER_POINTER->VAR__819283, VAR__SUM[VAR__53647]);
+         ANOTHER_POINTER->VAR__19328   = 0;
+         ANOTHER_POINTER->VAR__4857423 = 0;
+      }
+   }
+}

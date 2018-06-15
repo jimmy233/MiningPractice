@@ -1,0 +1,72 @@
+int main()
+{
+   int array[110][110];
+   int row;
+   int col;
+   int rowup    = 0;
+   int rowdown  = 0;
+   int colleft  = 0;
+   int colright = 0;
+
+   ( cin >> row ) >> col;
+   for ( int VAR__53647 = 1; VAR__53647 <= row; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= col; VAR__21230++ )
+      {
+         cin >> array[VAR__53647][VAR__21230];
+      }
+   }
+
+   while ( 1 )
+   {
+      for ( int VAR__8444594 = colleft + 1; VAR__8444594 <= ( col - colright ); VAR__8444594++ )
+      {
+         ( cout << array[rowup + 1][VAR__8444594] ) << endl;
+      }
+
+      rowup++;
+
+      if (( rowup + rowdown ) >= row )
+      {
+         break;
+      }
+
+      for ( int VAR__8444594 = rowup + 1; VAR__8444594 <= ( row - rowdown ); VAR__8444594++ )
+      {
+         ( cout << array[VAR__8444594][col - colright] ) << endl;
+      }
+
+      colright++;
+
+      if (( colright + colleft ) >= col )
+      {
+         break;
+      }
+
+      for ( int VAR__8444594 = col - colright; VAR__8444594 >= ( colleft + 1 ); VAR__8444594-- )
+      {
+         ( cout << array[row - rowdown][VAR__8444594] ) << endl;
+      }
+
+      rowdown++;
+
+      if (( rowup + rowdown ) >= row )
+      {
+         break;
+      }
+
+      for ( int VAR__8444594 = row - rowdown; VAR__8444594 >= ( rowup + 1 ); VAR__8444594-- )
+      {
+         ( cout << array[VAR__8444594][colleft + 1] ) << endl;
+      }
+
+      colleft++;
+
+      if (( colright + colleft ) >= col )
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

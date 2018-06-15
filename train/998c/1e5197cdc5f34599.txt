@@ -1,0 +1,77 @@
+char VAR__819283[250];
+char VAR__19328[250];
+int  A[250];
+int  B[250];
+int  C[251]       = { 0 };
+int  carrybit     = 0;
+int  VAR__1238129 = -1;
+void add(int VAR_1238123)
+{
+   if ( VAR_1238123 < 0 )
+   {
+      C[VAR_1238123 + 1] = carrybit;
+      return;
+   }
+
+   C[VAR_1238123 + 1] = (( A[VAR_1238123] + B[VAR_1238123] ) + carrybit ) % 10;
+   carrybit           = (( A[VAR_1238123] + B[VAR_1238123] ) + carrybit ) / 10;
+   add(VAR_1238123 - 1);
+}
+
+
+int main()
+{
+   int VAR__53647 = 0;
+
+   cin.getline(VAR__819283, 250);
+   cin.getline(VAR__19328, 250);
+   int al = strlen(VAR__819283);
+   int bl = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < al; VAR__53647++ )
+   {
+      A[( 250 - al ) + VAR__53647] = ((int)VAR__819283[VAR__53647] ) - 48;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( 250 - al ); VAR__53647++ )
+   {
+      A[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < bl; VAR__53647++ )
+   {
+      B[( 250 - bl ) + VAR__53647] = ((int)VAR__19328[VAR__53647] ) - 48;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( 250 - bl ); VAR__53647++ )
+   {
+      B[VAR__53647] = 0;
+   }
+
+   add(249);
+   for ( VAR__53647 = 0; VAR__53647 < 251; VAR__53647++ )
+   {
+      if ( C[VAR__53647] != 0 )
+      {
+         VAR__1238129 = VAR__53647;
+         break;
+      }
+   }
+
+
+   if ( VAR__1238129 == ( -1 ))
+   {
+      ( cout << "0" ) << endl;
+   }
+
+   if ( VAR__1238129 >= 0 )
+   {
+      for ( VAR__53647 = VAR__1238129; VAR__53647 < 251; VAR__53647++ )
+      {
+         cout << C[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

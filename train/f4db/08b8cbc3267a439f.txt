@@ -1,0 +1,68 @@
+int VAR__SUM = 0;
+int VAR__1238129;
+int VAR_1238123;
+void Input(int (*VAR__819283)[102])
+{
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         cin >> ( *(( *( VAR__819283 + VAR__53647 )) + VAR__21230 ));
+      }
+   }
+}
+
+
+void Sum(int VAR__7685, int VAR__3918907, int (*VAR__819283)[102])
+{
+   VAR__SUM += *(( *( VAR__819283 + VAR__7685 )) + VAR__3918907 );
+
+   if (( VAR__7685 == 0 ) && ( VAR__3918907 < ( VAR_1238123 - 1 )))
+   {
+      Sum(VAR__7685, VAR__3918907 + 1, VAR__819283);
+   }
+   else
+   if (( VAR__7685 < ( VAR__1238129 - 1 )) && ( VAR__3918907 == ( VAR_1238123 - 1 )))
+   {
+      Sum(VAR__7685 + 1, VAR__3918907, VAR__819283);
+   }
+   else
+   if (( VAR__7685 == ( VAR__1238129 - 1 )) && ( VAR__3918907 > 0 ))
+   {
+      Sum(VAR__7685, VAR__3918907 - 1, VAR__819283);
+   }
+   else
+   if (( VAR__3918907 == 0 ) && ( VAR__7685 > 1 ))
+   {
+      Sum(VAR__7685 - 1, VAR__3918907, VAR__819283);
+   }
+   else
+   {
+      return;
+   }
+}
+
+
+int main()
+{
+   int VAR__819283[102][102];
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      Input(VAR__819283);
+      Sum(0, 0, VAR__819283);
+
+      if ( VAR__53647 != 1 )
+      {
+         cout << endl;
+      }
+
+      cout << VAR__SUM;
+   }
+
+   return 0;
+}

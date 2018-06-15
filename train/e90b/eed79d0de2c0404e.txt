@@ -1,0 +1,67 @@
+struct info
+{
+   char        id[10];
+   float       ch;
+   float       ma;
+   float       tot;
+   struct info *VAR__NEXT;
+};
+void main()
+{
+   struct info *VAR__HEAD;
+   struct info *pre;
+   struct info *VAR_233;
+   struct info *VAR__temp;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = ( pre = ( VAR_233 = LEN ));
+   for ( VAR__53647 = 0; VAR__53647 < 2; VAR__53647++ )
+   {
+      VAR_233->tot   = 0;
+      VAR_233        = LEN;
+      pre->VAR__NEXT = VAR_233;
+      pre            = VAR_233;
+   }
+
+   VAR_233->tot       = 0;
+   VAR_233->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = LEN;
+      scanf("%s %f %f", VAR_233->id, &VAR_233->ch, &VAR_233->ma);
+      VAR_233->tot = VAR_233->ch + VAR_233->ma;
+
+      if ( VAR_233->tot > VAR__HEAD->tot )
+      {
+         VAR_233->VAR__NEXT = VAR__HEAD;
+         VAR__HEAD          = VAR_233;
+      }
+      else
+      {
+         pre       = VAR__HEAD;
+         VAR__temp = VAR__HEAD->VAR__NEXT;
+         for ( VAR__21230 = 1; VAR__21230 <= 2; VAR__21230++ )
+         {
+            if ( VAR_233->tot > VAR__temp->tot )
+            {
+               pre->VAR__NEXT     = VAR_233;
+               VAR_233->VAR__NEXT = VAR__temp;
+               break;
+            }
+
+            pre       = VAR__temp;
+            VAR__temp = VAR__temp->VAR__NEXT;
+         }
+      }
+   }
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%s %g\n", VAR_233->id, VAR_233->tot);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

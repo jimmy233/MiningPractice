@@ -1,0 +1,109 @@
+int main(void)
+{
+   char numA[MAXN];
+   char numB[MAXN];
+   char ans[MAXN];
+   char VAR__4857423;
+   int  maxLen;
+   int  VAR__53647;
+   int  aLen;
+   int  bLen;
+   int  cx;
+   int  ax;
+   int  VAR__21230;
+   int  VAR_FLAG;
+
+   scanf("%s", numA);
+   scanf("%s", numB);
+   aLen = strlen(numA);
+   bLen = strlen(numB);
+   for ( VAR__53647 = 0; VAR__53647 != ( aLen / 2 ); VAR__53647++ )
+   {
+      VAR__4857423     = numA[VAR__53647];
+      numA[VAR__53647] = numA[( aLen - 1 ) - VAR__53647];
+      numA[( aLen - 1 ) - VAR__53647] = VAR__4857423;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 != ( bLen / 2 ); VAR__53647++ )
+   {
+      VAR__4857423     = numB[VAR__53647];
+      numB[VAR__53647] = numB[( bLen - 1 ) - VAR__53647];
+      numB[( bLen - 1 ) - VAR__53647] = VAR__4857423;
+   }
+
+   cx     = 0;
+   maxLen = ( aLen > bLen ) ? ( aLen ) : ( bLen );
+   for ( VAR__53647 = 0; VAR__53647 != maxLen; VAR__53647++ )
+   {
+      if (( VAR__53647 < aLen ) && ( VAR__53647 < bLen ))
+      {
+         ax = (( numA[VAR__53647] - '0' ) + ( numB[VAR__53647] - '0' )) + cx;
+         ans[VAR__53647] = ( ax % 10 ) + '0';
+
+         if ( ax >= 10 )
+         {
+            cx = 1;
+         }
+         else
+         {
+            cx = 0;
+         }
+      }
+      else
+      if ( VAR__53647 >= bLen )
+      {
+         ax = ( numA[VAR__53647] - '0' ) + cx;
+         ans[VAR__53647] = ( ax % 10 ) + '0';
+
+         if ( ax >= 10 )
+         {
+            cx = 1;
+         }
+         else
+         {
+            cx = 0;
+         }
+      }
+      else
+      if ( VAR__53647 >= aLen )
+      {
+         ax = ( numB[VAR__53647] - '0' ) + cx;
+         ans[VAR__53647] = ( ax % 10 ) + '0';
+
+         if ( ax >= 10 )
+         {
+            cx = 1;
+         }
+         else
+         {
+            cx = 0;
+         }
+      }
+   }
+
+   if ( cx != 0 )
+   {
+      ans[VAR__53647++] = cx + '0';
+   }
+
+   VAR_FLAG = 0;
+   for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      if ( ans[VAR__21230] != '0' )
+      {
+         VAR_FLAG = 1;
+      }
+
+      if ( VAR_FLAG == 1 )
+      {
+         printf("%c", ans[VAR__21230]);
+      }
+
+      if (( VAR_FLAG == 0 ) && ( VAR__21230 == 0 ))
+      {
+         printf("0");
+      }
+   }
+
+   return 0;
+}

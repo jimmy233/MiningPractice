@@ -1,0 +1,100 @@
+int VAR__temp[1000];
+int VAR_666[1000];
+int MyCompare(const void *e1, const void *e2)
+{
+   return ( *((int *)e2 )) - ( *((int *)e1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int tFirst;
+   int tLast;
+   int qFirst;
+   int qLast;
+   int ans;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_666[VAR__53647];
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), MyCompare);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), MyCompare);
+      tFirst = ( qFirst = 0 );
+      tLast  = ( qLast = VAR_1238123 - 1 );
+      ans    = 0;
+
+      while ( tFirst <= tLast )
+      {
+         if ( VAR__temp[tLast] > VAR_666[qLast] )
+         {
+            tLast--;
+            qLast--;
+            ans += 200;
+         }
+         else
+         if ( VAR__temp[tLast] < VAR_666[qLast] )
+         {
+            tLast--;
+            qFirst++;
+            ans -= 200;
+         }
+         else
+         {
+            if ( VAR__temp[tFirst] > VAR_666[qFirst] )
+            {
+               tFirst++;
+               qFirst++;
+               ans += 200;
+            }
+            else
+            if ( VAR__temp[tFirst] < VAR_666[qFirst] )
+            {
+               tLast--;
+               qFirst++;
+               ans -= 200;
+            }
+            else
+            {
+               if ( VAR__temp[tLast] > VAR_666[qFirst] )
+               {
+                  tLast--;
+                  qFirst++;
+                  ans += 200;
+               }
+               else
+               if ( VAR__temp[tLast] < VAR_666[qFirst] )
+               {
+                  tLast--;
+                  qFirst++;
+                  ans -= 200;
+               }
+               else
+               {
+                  tLast--;
+                  qFirst++;
+               }
+            }
+         }
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

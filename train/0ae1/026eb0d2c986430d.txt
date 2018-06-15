@@ -1,0 +1,67 @@
+int main()
+{
+   int  month;
+   int  date;
+   int  all = 0;
+   int  VAR__53647;
+   int  VAR__8444594 = 0;
+   int  VAR__temp;
+   long year;
+   int  VAR_233[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%ld%d%d", &year, &month, &date);
+   all = ((((( year % 7 ) - 1 ) * ( 365 % 7 )) + date ) - 1 ) % 7;
+
+   if ( month == 1 )
+   {
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+      {
+         all = all + ( VAR_233[VAR__53647] % 7 );
+      }
+   }
+
+   VAR__8444594 = ((( year - 1 ) / 4 ) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 );
+   all          = all + VAR__8444594;
+
+   if ((((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 )) && ( month > 2 ))
+   {
+      all = all + 1;
+   }
+
+   VAR__temp = all % 7;
+   switch ( VAR__temp )
+   {
+   case 0:
+      printf("Mon.\n");
+      break;
+
+   case 1:
+      printf("Tue.\n");
+      break;
+
+   case 2:
+      printf("Wed.\n");
+      break;
+
+   case 3:
+      printf("Thu.\n");
+      break;
+
+   case 4:
+      printf("Fri.\n");
+      break;
+
+   case 5:
+      printf("Sat.\n");
+      break;
+
+   case 6:
+      printf("Sun.\n");
+      break;
+   }
+
+   return 0;
+}

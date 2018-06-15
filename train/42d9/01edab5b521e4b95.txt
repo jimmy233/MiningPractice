@@ -1,0 +1,65 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int *VAR__7685    = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   int *VAR__3918907 = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   int *VAR__9290    = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   double *VAR__12302 = (double *)malloc(( sizeof( double )) * ((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ));
+   int    *number1    = (int *)malloc(( sizeof( int )) * ((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ));
+   int    *number2    = (int *)malloc(( sizeof( int )) * ((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ));
+   int    pos         = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__12302[pos] = sqrt(( pow(VAR__7685[VAR__53647] - VAR__7685[VAR__21230], 2) + pow(VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230], 2)) + pow(VAR__9290[VAR__53647] - VAR__9290[VAR__21230], 2));
+         number1[pos]    = VAR__53647;
+         number2[pos]    = VAR__21230;
+         pos++;
+      }
+   }
+
+   int    VAR__8444594;
+   int    VAR__127322;
+   int    VAR_9Q8Q90;
+   double VAR__112390;
+   for ( VAR__8444594 = 1; VAR__8444594 <= ((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ); VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ) - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( VAR__12302[VAR__53647] < VAR__12302[VAR__53647 + 1] )
+         {
+            VAR__112390                = VAR__12302[VAR__53647];
+            VAR__12302[VAR__53647]     = VAR__12302[VAR__53647 + 1];
+            VAR__12302[VAR__53647 + 1] = VAR__112390;
+            VAR__127322                = number1[VAR__53647];
+            number1[VAR__53647]        = number1[VAR__53647 + 1];
+            number1[VAR__53647 + 1]    = VAR__127322;
+            VAR_9Q8Q90              = number2[VAR__53647];
+            number2[VAR__53647]     = number2[VAR__53647 + 1];
+            number2[VAR__53647 + 1] = VAR_9Q8Q90;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < ((( VAR_1238123 - 1 ) * VAR_1238123 ) / 2 ); VAR__8444594++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR__7685[number1[VAR__8444594]], VAR__3918907[number1[VAR__8444594]], VAR__9290[number1[VAR__8444594]], VAR__7685[number2[VAR__8444594]], VAR__3918907[number2[VAR__8444594]], VAR__9290[number2[VAR__8444594]], VAR__12302[VAR__8444594]);
+   }
+
+   free(VAR__7685);
+   free(VAR__3918907);
+   free(VAR__9290);
+   free(number1);
+   free(number2);
+   return 0;
+}

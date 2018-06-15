@@ -1,0 +1,80 @@
+void main()
+{
+   char beijian[200];
+   char jian[200];
+   char jian2[200];
+   char result[200];
+   int  VAR__53647 = 0;
+   int  VAR__21230 = 0;
+   int  l1;
+   int  l2;
+   int  VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         jian2[VAR__53647]  = 48;
+         result[VAR__53647] = 48;
+      }
+
+      jian2[99]  = 0;
+      result[99] = 0;
+      scanf("%s", beijian);
+      scanf("%s", jian);
+      l1 = strlen(beijian);
+      l2 = strlen(jian);
+
+      if ( l1 == l2 )
+      {
+         for ( VAR__53647 = l1 - 1; VAR__53647 >= 0; VAR__53647-- )
+         {
+            if ( beijian[VAR__53647] < jian[VAR__53647] )
+            {
+               beijian[VAR__53647]     = beijian[VAR__53647] + 10;
+               beijian[VAR__53647 - 1] = beijian[VAR__53647 - 1] - 1;
+            }
+
+            result[VAR__53647] = ( beijian[VAR__53647] - jian[VAR__53647] ) + 48;
+         }
+
+         result[l1] = '\0';
+      }
+      else
+      {
+         for ( VAR__53647 = l1 - 1; VAR__53647 >= ( l1 - l2 ); VAR__53647-- )
+         {
+            jian2[VAR__53647] = jian[( VAR__53647 - l1 ) + l2];
+         }
+
+         for ( VAR__53647 = l1 - 1; VAR__53647 >= 0; VAR__53647-- )
+         {
+            if ( beijian[VAR__53647] < jian2[VAR__53647] )
+            {
+               beijian[VAR__53647]     = beijian[VAR__53647] + 10;
+               beijian[VAR__53647 - 1] = beijian[VAR__53647 - 1] - 1;
+            }
+
+            result[VAR__53647] = ( beijian[VAR__53647] - jian2[VAR__53647] ) + 48;
+         }
+
+         result[l1] = '\0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < l1; VAR__53647++ )
+      {
+         if (( result[VAR__53647] != 0 ) && ( result[VAR__53647] != 48 ))
+         {
+            break;
+         }
+      }
+
+      while ( result[VAR__53647] != '\0' )
+      {
+         printf("%c", result[VAR__53647++]);
+      }
+
+      printf("\n");
+   }
+}

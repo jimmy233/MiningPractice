@@ -1,0 +1,77 @@
+int Q_hs[MAX];
+int T_hs[MAX];
+int hs_cmp(const void *VAR_233, const void *VAR_666)
+{
+   return ( *((int *)VAR_233 )) - ( *((int *)VAR_666 ));
+}
+
+
+int main(int ac, char **av)
+{
+   int VAR_1238123;
+
+   while ( scanf("%d", &VAR_1238123), VAR_1238123 )
+   {
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &T_hs[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &Q_hs[VAR__53647]);
+      }
+
+      qsort(Q_hs, VAR_1238123, sizeof( int ), hs_cmp);
+      qsort(T_hs, VAR_1238123, sizeof( int ), hs_cmp);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         printf("(%d %d) ", Q_hs[VAR__53647], T_hs[VAR__53647]);
+      }
+
+      printf("\n");
+      int Ql;
+      int Qr;
+      int Tl;
+      int Tr;
+      int cost = 0;
+      Ql = ( Tl = 0 );
+      Qr = ( Tr = VAR_1238123 - 1 );
+
+      while ( Tl <= Tr )
+      {
+         if ( T_hs[Tl] > Q_hs[Ql] )
+         {
+            cost += 200;
+            Tl++;
+            Ql++;
+         }
+         else
+         if ( T_hs[Tr] > Q_hs[Qr] )
+         {
+            cost += 200;
+            Tr--;
+            Qr--;
+         }
+         else
+         {
+            if ( T_hs[Tl] < Q_hs[Qr] )
+            {
+               cost -= 200;
+               Tl++;
+               Qr--;
+            }
+            else
+            {
+               Tl++;
+               Qr--;
+            }
+         }
+      }
+
+      printf("%d\n", cost);
+   }
+
+   return 0;
+}

@@ -1,0 +1,55 @@
+void main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__SUM = 0;
+   int  ANOTHER_POINTER[100];
+   int  YET_ANOTHER_POINTER[100];
+   char *A_STRING = (char *)malloc(101 * ( sizeof( char )));
+
+   gets(A_STRING);
+   char *VAR_233[100];
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = (char *)malloc(( sizeof( char )) * 100);
+   }
+
+   ANOTHER_POINTER[0] = 0;
+   for ( VAR__53647 = 0; ( *( A_STRING + VAR__53647 )) != '\0'; VAR__53647++ )
+   {
+      if (( *( A_STRING + VAR__53647 )) == ' ' )
+      {
+         YET_ANOTHER_POINTER[VAR__SUM] = VAR__53647 - 1;
+         VAR__SUM++;
+      }
+      else
+      if (((( *(( A_STRING + VAR__53647 ) - 1 )) == ' ' ) && (( *( A_STRING + VAR__53647 )) != ' ' )) && (( *( A_STRING + VAR__53647 )) != '\0' ))
+      {
+         ANOTHER_POINTER[VAR__SUM] = VAR__53647;
+      }
+   }
+
+   YET_ANOTHER_POINTER[VAR__SUM] = VAR__53647 - 1;
+   VAR__SUM++;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__SUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = ANOTHER_POINTER[VAR__53647]; VAR__21230 <= YET_ANOTHER_POINTER[VAR__53647]; VAR__21230++ )
+      {
+         VAR_233[VAR__53647][VAR__21230 - ANOTHER_POINTER[VAR__53647]] = *( A_STRING + VAR__21230 );
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__SUM; VAR__53647++ )
+   {
+      VAR_233[VAR__53647][( YET_ANOTHER_POINTER[VAR__53647] - ANOTHER_POINTER[VAR__53647] ) + 1] = '\0';
+   }
+
+   for ( VAR__53647 = VAR__SUM - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf("%s", VAR_233[VAR__53647]);
+      printf(" ");
+   }
+
+   puts(VAR_233[0]);
+}

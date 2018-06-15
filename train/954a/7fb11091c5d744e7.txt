@@ -1,0 +1,95 @@
+struct student
+{
+   char           name[20];
+   int            ss;
+   int            cs;
+   char           VAR_9Q8Q90[2];
+   char           VAR_21983012[2];
+   int            pa;
+   int            VAR__1238129;
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   int VAR__53647;
+   int VAR_1238123;
+   int mm  = 0;
+   int all = 0;
+
+   scanf("%d", &VAR_1238123);
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR_233;
+   struct student *VAR_666;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d %d %s %s %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->ss, &ANOTHER_POINTER->cs, ANOTHER_POINTER->VAR_9Q8Q90, ANOTHER_POINTER->VAR_21983012, &ANOTHER_POINTER->pa);
+   VAR__HEAD = NULL;
+
+   while ( mm < ( VAR_1238123 - 1 ))
+   {
+      mm = mm + 1;
+
+      if ( mm == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d %d %s %s %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->ss, &ANOTHER_POINTER->cs, ANOTHER_POINTER->VAR_9Q8Q90, ANOTHER_POINTER->VAR_21983012, &ANOTHER_POINTER->pa);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR_233 = VAR__HEAD;
+   do
+   {
+      VAR_233->VAR__1238129 = 0;
+
+      if (( VAR_233->ss > 80 ) && ( VAR_233->pa >= 1 ))
+      {
+         VAR_233->VAR__1238129 = VAR_233->VAR__1238129 + 8000;
+      }
+
+      if (( VAR_233->ss > 85 ) && ( VAR_233->cs > 80 ))
+      {
+         VAR_233->VAR__1238129 = VAR_233->VAR__1238129 + 4000;
+      }
+
+      if ( VAR_233->ss > 90 )
+      {
+         VAR_233->VAR__1238129 = VAR_233->VAR__1238129 + 2000;
+      }
+
+      if (( VAR_233->ss > 85 ) && ( strcmp(VAR_233->VAR_21983012, "Y") == 0 ))
+      {
+         VAR_233->VAR__1238129 = VAR_233->VAR__1238129 + 1000;
+      }
+
+      if (( VAR_233->cs > 80 ) && ( strcmp(VAR_233->VAR_9Q8Q90, "Y") == 0 ))
+      {
+         VAR_233->VAR__1238129 = VAR_233->VAR__1238129 + 850;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != NULL );
+   VAR_233 = ( VAR_666 = VAR__HEAD );
+   do
+   {
+      all = all + VAR_666->VAR__1238129;
+
+      if ( VAR_233->VAR__1238129 < VAR_666->VAR__1238129 )
+      {
+         VAR_233 = VAR_666;
+      }
+
+      VAR_666 = VAR_666->VAR__NEXT;
+   } while ( VAR_666 != NULL );
+   printf("%s\n%d\n%d\n", VAR_233->name, VAR_233->VAR__1238129, all);
+}

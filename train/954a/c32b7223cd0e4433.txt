@@ -1,0 +1,79 @@
+int main()
+{
+   struct student
+   {
+      char name[20];
+      int  final;
+      int  com;
+      char offi;
+      char west;
+      int  arc;
+   };
+   struct student stu[200];
+   struct student chan;
+   int            VAR__53647;
+   int            VAR_1238123;
+   int            total[200] = { 0 };
+   int            all        = 0;
+   int            VAR__819283;
+   int            VAR__19328;
+   int            VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].final, &stu[VAR__53647].com, &stu[VAR__53647].offi, &stu[VAR__53647].west, &stu[VAR__53647].arc);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].final > 80 ) && ( stu[VAR__53647].arc > 0 ))
+      {
+         total[VAR__53647] = total[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].final > 85 ) && ( stu[VAR__53647].com > 80 ))
+      {
+         total[VAR__53647] = total[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].final > 90 )
+      {
+         total[VAR__53647] = total[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].final > 85 ) && ( stu[VAR__53647].west == 89 ))
+      {
+         total[VAR__53647] = total[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].com > 80 ) && ( stu[VAR__53647].offi == 89 ))
+      {
+         total[VAR__53647] = total[VAR__53647] + 850;
+      }
+   }
+
+   for ( VAR__819283 = 0; VAR__819283 < ( VAR_1238123 - 1 ); VAR__819283++ )
+   {
+      for ( VAR__19328 = 0; VAR__19328 < (( VAR_1238123 - 1 ) - VAR__819283 ); VAR__19328++ )
+      {
+         if ( total[VAR__19328] < total[VAR__19328 + 1] )
+         {
+            VAR__TEMP             = total[VAR__19328];
+            total[VAR__19328]     = total[VAR__19328 + 1];
+            total[VAR__19328 + 1] = VAR__TEMP;
+            chan                = stu[VAR__19328];
+            stu[VAR__19328]     = stu[VAR__19328 + 1];
+            stu[VAR__19328 + 1] = chan;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      all = all + total[VAR__53647];
+   }
+
+   printf("%s\n%d\n%d\n", stu[0].name, total[0], all);
+   return 0;
+}

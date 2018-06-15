@@ -1,0 +1,66 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   while ( cin >> VAR_1238123, VAR_1238123 > 0 )
+   {
+      int VAR__temp[1000];
+      int VAR_666[1000];
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_666[VAR__53647];
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), cmp);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), cmp);
+      int t1  = 0;
+      int t2  = VAR_1238123 - 1;
+      int q1  = 0;
+      int q2  = VAR_1238123 - 1;
+      int cnt = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__temp[t1] > VAR_666[q1] )
+         {
+            t1++;
+            q1++;
+            cnt += 200;
+         }
+         else
+         {
+            if ( VAR__temp[t2] > VAR_666[q2] )
+            {
+               t2--;
+               q2--;
+               cnt += 200;
+            }
+            else
+            {
+               if ( VAR__temp[t2] < VAR_666[q1] )
+               {
+                  cnt -= 200;
+               }
+
+               t2--;
+               q1++;
+            }
+         }
+      }
+
+      ( cout << cnt ) << endl;
+   }
+
+   return 0;
+}

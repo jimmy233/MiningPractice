@@ -1,0 +1,94 @@
+int change(char VAR__819283, char VAR__19328)
+{
+   return ( 10 * ( VAR__819283 - '0' )) + ( VAR__19328 - '0' );
+}
+
+
+int shang(int VAR__7685)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < 10; VAR__53647++ )
+   {
+      if ((( VAR__53647 * 13 ) <= VAR__7685 ) && ( VAR__7685 < (( VAR__53647 + 1 ) * 13 )))
+      {
+         return VAR__53647;
+      }
+   }
+}
+
+
+void coutt(int VAR__19328[], int VAR__NUM)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      cout << VAR__19328[VAR__53647];
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   char VAR__819283[102]  = { '\0' };
+   int  VAR__4857423[102] = { 0 };
+
+   cin >> VAR__819283;
+
+   if ( strlen(VAR__819283) == 1 )
+   {
+      (( cout << 0 ) << endl ) << ( VAR__819283[0] - '0' );
+   }
+   else
+   if (( strlen(VAR__819283) == 2 ) && ( change(VAR__819283[0], VAR__819283[1]) < 13 ))
+   {
+      (( cout << 0 ) << endl ) << change(VAR__819283[0], VAR__819283[1]);
+   }
+   else
+   {
+      int VAR__7685 = change(VAR__819283[0], VAR__819283[1]);
+      int yushu     = 0;
+
+      if ( VAR__7685 < 13 )
+      {
+         VAR__7685 = (( VAR__7685 * 10 ) + VAR__819283[2] ) - '0';
+         for ( int VAR__53647 = 0; VAR__53647 < ( strlen(VAR__819283) - 2 ); VAR__53647++ )
+         {
+            VAR__4857423[VAR__53647] = shang(VAR__7685);
+
+            if ( VAR__53647 != ( strlen(VAR__819283) - 3 ))
+            {
+               VAR__7685 = (( VAR__7685 - ( VAR__4857423[VAR__53647] * 13 )) * 10 ) + ( VAR__819283[VAR__53647 + 3] - '0' );
+            }
+            else
+            {
+               yushu = VAR__7685 - ( VAR__4857423[VAR__53647] * 13 );
+            }
+         }
+
+         coutt(VAR__4857423, strlen(VAR__819283) - 2);
+      }
+      else
+      {
+         for ( int VAR__53647 = 0; VAR__53647 < ( strlen(VAR__819283) - 1 ); VAR__53647++ )
+         {
+            VAR__4857423[VAR__53647] = shang(VAR__7685);
+
+            if ( VAR__53647 != ( strlen(VAR__819283) - 2 ))
+            {
+               VAR__7685 = (( VAR__7685 - ( VAR__4857423[VAR__53647] * 13 )) * 10 ) + ( VAR__819283[VAR__53647 + 2] - '0' );
+            }
+            else
+            {
+               yushu = VAR__7685 - ( VAR__4857423[VAR__53647] * 13 );
+            }
+         }
+
+         coutt(VAR__4857423, strlen(VAR__819283) - 1);
+      }
+
+      ( cout << yushu ) << endl;
+   }
+
+
+   return 0;
+}

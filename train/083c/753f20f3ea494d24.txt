@@ -1,0 +1,88 @@
+long ab(char VAR_9494)
+{
+   long VAR_129012 = 100;
+
+   if (( VAR_9494 >= '0' ) && ( VAR_9494 <= '9' ))
+   {
+      VAR_129012 = VAR_9494 - 48;
+   }
+   else
+   if (( VAR_9494 >= 'a' ) && ( VAR_9494 <= 'z' ))
+   {
+      VAR_129012 = VAR_9494 - 87;
+   }
+   else
+   if (( VAR_9494 >= 'A' ) && ( VAR_9494 <= 'Z' ))
+   {
+      VAR_129012 = VAR_9494 - 55;
+   }
+
+
+
+   return VAR_129012;
+}
+
+
+char ba(long VAR__8444594)
+{
+   char VAR_129012 = '!';
+
+   if (( VAR__8444594 >= 0 ) && ( VAR__8444594 <= 9 ))
+   {
+      VAR_129012 = VAR__8444594 + 48;
+   }
+   else
+   if (( VAR__8444594 >= 10 ) && ( VAR__8444594 <= 35 ))
+   {
+      VAR_129012 = VAR__8444594 + 55;
+   }
+
+
+   return VAR_129012;
+}
+
+
+int main()
+{
+   long VAR__819283 = 0;
+   long VAR__19328  = 0;
+   char A_STRING[3000];
+   char out[3000];
+
+   (( cin >> VAR__819283 ) >> A_STRING ) >> VAR__19328;
+   long VAR_1238123  = 0;
+   long VAR__NUM     = 0;
+   long VAR__8444594 = 1;
+
+   while ( ab(A_STRING[VAR_1238123]) != 100 )
+   {
+      VAR_1238123++;
+   }
+
+   for ( int VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__NUM     += ab(A_STRING[VAR__53647]) * VAR__8444594;
+      VAR__8444594 *= VAR__819283;
+   }
+
+   int VAR__53647 = 0;
+
+   while ( VAR__NUM != 0 )
+   {
+      out[VAR__53647] = ba(VAR__NUM % VAR__19328);
+      VAR__NUM       /= VAR__19328;
+      VAR__53647++;
+   }
+
+   if ( VAR__53647 == 0 )
+   {
+      cout << 0;
+   }
+
+   for ( int VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      cout << out[VAR__21230];
+   }
+
+   return 0;
+}

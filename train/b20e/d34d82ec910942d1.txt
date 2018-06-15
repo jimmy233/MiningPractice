@@ -1,0 +1,106 @@
+int main()
+{
+   int N;
+
+   scanf("%d", &N);
+
+   while ( N != 0 )
+   {
+      int win        = 0;
+      int lose       = 0;
+      int count1     = 1;
+      int count2     = 1;
+      int VAR__21230 = 0;
+      int T[1000]    = { 0 };
+      int Q[1000]    = { 0 };
+      int VAR__TEMP;
+      for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         scanf("%d", &T[VAR__53647]);
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < N; VAR__21230++ )
+      {
+         scanf("%d", &Q[VAR__21230]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < N; VAR__21230++ )
+         {
+            if ( T[VAR__53647] < T[VAR__21230] )
+            {
+               VAR__TEMP     = T[VAR__53647];
+               T[VAR__53647] = T[VAR__21230];
+               T[VAR__21230] = VAR__TEMP;
+            }
+
+            if ( Q[VAR__53647] < Q[VAR__21230] )
+            {
+               VAR__TEMP     = Q[VAR__53647];
+               Q[VAR__53647] = Q[VAR__21230];
+               Q[VAR__21230] = VAR__TEMP;
+            }
+         }
+      }
+
+      VAR__21230 = 0;
+      for ( int VAR__53647 = 0; VAR__53647 <= ( N - count1 ); VAR__53647++ )
+      {
+         if ( T[VAR__53647] > Q[VAR__21230] )
+         {
+            win++;
+            VAR__21230++;
+         }
+         else
+         {
+            if ( T[VAR__53647] < Q[VAR__21230] )
+            {
+               VAR__53647--;
+               lose++;
+               count1++;
+               VAR__21230++;
+            }
+            else
+            {
+               if ( T[N - count1] > Q[N - count2] )
+               {
+                  win++;
+                  count1++;
+                  count2++;
+                  VAR__53647--;
+               }
+               else
+               {
+                  if ( T[N - count1] < Q[N - count2] )
+                  {
+                     lose++;
+                     count1++;
+                     VAR__53647--;
+                     VAR__21230++;
+                  }
+                  else
+                  {
+                     if ( T[N - count1] == Q[VAR__21230] )
+                     {
+                        count1++;
+                        VAR__21230++;
+                        VAR__53647--;
+                     }
+                     else
+                     {
+                        lose++;
+                        count1++;
+                        VAR__21230++;
+                        VAR__53647--;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      printf("%d\n", 200 * ( win - lose ));
+      scanf("%d", &N);
+   }
+}

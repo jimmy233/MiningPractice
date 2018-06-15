@@ -1,0 +1,78 @@
+struct student
+{
+   char           VAR__NUM[10];
+   char           name[20];
+   char           sex;
+   int            age;
+   char           score[10];
+   char           add[20];
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %s %c %d %s %s", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+   VAR__HEAD = ANOTHER_POINTER;
+loop:
+   ANOTHER_POINTER = (struct student *)malloc(LEN);
+
+   scanf("%s %s %c %d %s %s", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+
+   if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0 )
+   {
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      goto loop;
+   }
+   else
+   {
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct student *reverse(struct student *VAR__HEAD)
+{
+   struct student *nowp;
+   struct student *prep;
+   struct student *nextp;
+
+   prep = NULL;
+   nowp = VAR__HEAD;
+
+   while ( nowp != NULL )
+   {
+      nextp           = nowp->VAR__NEXT;
+      nowp->VAR__NEXT = prep;
+      prep            = nowp;
+      nowp            = nextp;
+   }
+
+   return prep;
+}
+
+
+int main()
+{
+   struct student *VAR__HEAD;
+   struct student *head1;
+
+   VAR__HEAD = creat();
+   head1     = reverse(VAR__HEAD);
+   struct student *pt1;
+   pt1 = head1;
+
+   while ( pt1 != NULL )
+   {
+      printf("%s %s %c %d %s %s\n", pt1->VAR__NUM, pt1->name, pt1->sex, pt1->age, pt1->score, pt1->add);
+      pt1 = pt1->VAR__NEXT;
+   }
+
+   return 0;
+}

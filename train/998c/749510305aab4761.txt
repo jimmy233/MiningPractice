@@ -1,0 +1,85 @@
+char VAR__819283[250];
+char VAR__19328[250];
+char VAR__SUM[251];
+int main()
+{
+   int lena;
+   int lenb;
+   int VAR__53647;
+   int VAR__1111;
+   int VAR__127322;
+
+   scanf("%s %s", VAR__819283, VAR__19328);
+   lena = strlen(VAR__819283);
+   lenb = strlen(VAR__19328);
+
+   if ( lena > lenb )
+   {
+      VAR__1111 = lena;
+   }
+   else
+   {
+      VAR__1111 = lenb;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] -= '0', VAR__19328[VAR__53647] -= '0';
+   }
+
+   if ( lena > lenb )
+   {
+      for ( VAR__53647 = lena - 1; VAR__53647 >= ( lena - lenb ); VAR__53647-- )
+      {
+         VAR__19328[VAR__53647] = VAR__19328[( VAR__53647 - lena ) + lenb];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( lena - lenb ); VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = 0;
+      }
+   }
+   else
+   if ( lena < lenb )
+   {
+      for ( VAR__53647 = lenb - 1; VAR__53647 >= ( lenb - lena ); VAR__53647-- )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[( VAR__53647 - lenb ) + lena];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( lenb - lena ); VAR__53647++ )
+      {
+         VAR__819283[VAR__53647] = 0;
+      }
+   }
+
+
+   VAR__127322 = VAR__1111;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647 + 1] = VAR__819283[VAR__53647] + VAR__19328[VAR__53647];
+   }
+
+   for ( VAR__53647 = VAR__1111; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__SUM[VAR__53647] > 9 )
+      {
+         VAR__SUM[VAR__53647] -= 10, VAR__SUM[VAR__53647 - 1]++;
+      }
+   }
+
+
+   for ( VAR__53647 = VAR__1111; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__SUM[VAR__53647] != 0 )
+      {
+         VAR__127322 = VAR__53647;
+      }
+   }
+
+
+   for ( VAR__53647 = VAR__127322; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      printf("%d", VAR__SUM[VAR__53647]);
+   }
+}

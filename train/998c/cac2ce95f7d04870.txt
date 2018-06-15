@@ -1,0 +1,53 @@
+int main()
+{
+   char num1[252];
+   char num2[252];
+   int  temp1[252]  = { 0 };
+   int  temp2[252]  = { 0 };
+   int  answer[255] = { 0 };
+   int  len1;
+   int  len2;
+   int  VAR__53647;
+   int  VAR__21230;
+
+   ( cin >> num1 ) >> num2;
+   len1 = strlen(num1);
+   len2 = strlen(num2);
+   for ( VAR__53647 = len1 - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647-- )
+   {
+      temp1[VAR__21230++] = num1[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = len2 - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647-- )
+   {
+      temp2[VAR__21230++] = num2[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; ( VAR__53647 < len1 ) || ( VAR__53647 < len2 ); VAR__53647++ )
+   {
+      answer[VAR__53647] += temp1[VAR__53647] + temp2[VAR__53647];
+
+      if ( answer[VAR__53647] >= 10 )
+      {
+         answer[VAR__53647 + 1] += answer[VAR__53647] / 10;
+         answer[VAR__53647]      = answer[VAR__53647] % 10;
+      }
+   }
+
+   while ( answer[VAR__53647] == 0 )
+   {
+      VAR__53647--;
+   }
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+   {
+      cout << answer[VAR__21230];
+   }
+
+   if ( VAR__53647 < 0 )
+   {
+      cout << '0';
+   }
+
+   return 0;
+}

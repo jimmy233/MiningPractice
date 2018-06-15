@@ -1,0 +1,84 @@
+int main()
+{
+   struct scholarship
+   {
+      char name[200];
+      int  gpa;
+      int  mate;
+      int  paper;
+      char official;
+      char west;
+   }
+        stu[100];
+   int  VAR_1238123;
+   int  sch[100];
+   int  VAR__53647;
+   int  VAR__MAX;
+   long VAR__SUM = 0;
+   char VAR__NUM[4];
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      sch[VAR__53647] = 0;
+   }
+
+   gets(VAR__NUM);
+   VAR_1238123 = atoi(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].gpa, &stu[VAR__53647].mate, &stu[VAR__53647].official, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].gpa > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         sch[VAR__53647] += 8000;
+      }
+
+      if (( stu[VAR__53647].gpa > 85 ) && ( stu[VAR__53647].mate > 80 ))
+      {
+         sch[VAR__53647] += 4000;
+      }
+
+      if ( stu[VAR__53647].gpa > 90 )
+      {
+         sch[VAR__53647] += 2000;
+      }
+
+      if (( stu[VAR__53647].gpa > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         sch[VAR__53647] += 1000;
+      }
+
+      if (( stu[VAR__53647].mate > 80 ) && ( stu[VAR__53647].official == 'Y' ))
+      {
+         sch[VAR__53647] += 850;
+      }
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( sch[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = sch[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += sch[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( sch[VAR__53647] == VAR__MAX )
+      {
+         break;
+      }
+   }
+
+   printf("%s\n%d\n%ld\n", stu[VAR__53647].name, sch[VAR__53647], VAR__SUM);
+   return 0;
+}

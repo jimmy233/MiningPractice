@@ -1,0 +1,62 @@
+int VAR__53647;
+int Husband[50] = { 0 };
+int marry(char engage[]);
+
+int main()
+{
+   int  VAR__temp;
+   char engage[100];
+   char couple[100];
+
+   cin >> engage;
+   VAR__53647 = strlen(engage);
+   for ( VAR__temp = 0; VAR__temp < VAR__53647; VAR__temp++ )
+   {
+      couple[VAR__temp] = engage[VAR__temp];
+   }
+
+   marry(engage);
+   for ( VAR__temp = 1; VAR__temp < VAR__53647; VAR__temp++ )
+   {
+      if ( couple[VAR__temp] != couple[0] )
+      {
+         ((( cout << Husband[VAR__temp] ) << " " ) << VAR__temp ) << endl;
+      }
+   }
+
+   return 0;
+}
+
+
+int marry(char engage[])
+{
+   int VAR__21230;
+   int VAR__8444594;
+
+   for ( VAR__21230 = 1; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      if (( engage[VAR__21230] != engage[0] ) && ( engage[VAR__21230] != 'X' ))
+      {
+         VAR__8444594 = VAR__21230 - 1;
+
+         while ( engage[VAR__8444594] == 'X' )
+         {
+            VAR__8444594--;
+         }
+
+         if ( engage[VAR__8444594] == engage[0] )
+         {
+            Husband[VAR__21230]  = VAR__8444594;
+            engage[VAR__21230]   = 'X';
+            engage[VAR__8444594] = 'X';
+
+            if ( VAR__8444594 == 0 )
+            {
+               return 0;
+            }
+         }
+      }
+   }
+
+   marry(engage);
+}

@@ -1,0 +1,75 @@
+typedef struct ABC
+{
+   int  amount;
+   int  statements;
+   char name;
+} ABC;
+int main()
+{
+   ABC ANOTHER_POINTER;
+   ABC YET_ANOTHER_POINTER;
+   ABC p3;
+
+   ANOTHER_POINTER.name     = 'A';
+   YET_ANOTHER_POINTER.name = 'B';
+   p3.name = 'C';
+   for ( ANOTHER_POINTER.amount = 0; ANOTHER_POINTER.amount < 3; ANOTHER_POINTER.amount++ )
+   {
+      for ( YET_ANOTHER_POINTER.amount = 0; YET_ANOTHER_POINTER.amount < 3; YET_ANOTHER_POINTER.amount++ )
+      {
+         for ( p3.amount = 0; p3.amount < 3; p3.amount++ )
+         {
+            ANOTHER_POINTER.statements     = ( YET_ANOTHER_POINTER.amount > ANOTHER_POINTER.amount ) + ( p3.amount == ANOTHER_POINTER.amount );
+            YET_ANOTHER_POINTER.statements = ( ANOTHER_POINTER.amount > YET_ANOTHER_POINTER.amount ) + ( ANOTHER_POINTER.amount > p3.amount );
+            p3.statements = ( p3.amount > YET_ANOTHER_POINTER.amount ) + ( YET_ANOTHER_POINTER.amount > ANOTHER_POINTER.amount );
+            int VAR__819283;
+            int VAR__19328;
+            int VAR__4857423;
+            VAR__819283  = (( ANOTHER_POINTER.amount > YET_ANOTHER_POINTER.amount ) && ( ANOTHER_POINTER.statements < YET_ANOTHER_POINTER.statements )) || (( ANOTHER_POINTER.amount < YET_ANOTHER_POINTER.amount ) && ( ANOTHER_POINTER.statements > YET_ANOTHER_POINTER.statements ));
+            VAR__19328   = (( ANOTHER_POINTER.amount > p3.amount ) && ( ANOTHER_POINTER.statements < p3.statements )) || (( ANOTHER_POINTER.amount < p3.amount ) && ( ANOTHER_POINTER.statements > p3.statements ));
+            VAR__4857423 = (( p3.amount > YET_ANOTHER_POINTER.amount ) && ( p3.statements < YET_ANOTHER_POINTER.statements )) || (( p3.amount < YET_ANOTHER_POINTER.amount ) && ( p3.statements > YET_ANOTHER_POINTER.statements ));
+
+            if ((( VAR__819283 + VAR__19328 ) + VAR__4857423 ) == 3 )
+            {
+               int  temp1;
+               char temp2;
+
+               if ( ANOTHER_POINTER.amount > YET_ANOTHER_POINTER.amount )
+               {
+                  temp1 = ANOTHER_POINTER.amount;
+                  ANOTHER_POINTER.amount     = YET_ANOTHER_POINTER.amount;
+                  YET_ANOTHER_POINTER.amount = temp1;
+                  temp2 = ANOTHER_POINTER.name;
+                  ANOTHER_POINTER.name     = YET_ANOTHER_POINTER.name;
+                  YET_ANOTHER_POINTER.name = temp2;
+               }
+
+               if ( ANOTHER_POINTER.amount > p3.amount )
+               {
+                  temp1 = ANOTHER_POINTER.amount;
+                  ANOTHER_POINTER.amount = p3.amount;
+                  p3.amount            = temp1;
+                  temp2                = ANOTHER_POINTER.name;
+                  ANOTHER_POINTER.name = p3.name;
+                  p3.name              = temp2;
+               }
+
+               if ( YET_ANOTHER_POINTER.amount > p3.amount )
+               {
+                  temp1     = p3.amount;
+                  p3.amount = YET_ANOTHER_POINTER.amount;
+                  YET_ANOTHER_POINTER.amount = temp1;
+                  temp2   = p3.name;
+                  p3.name = YET_ANOTHER_POINTER.name;
+                  YET_ANOTHER_POINTER.name = temp2;
+               }
+
+               ((( cout << ANOTHER_POINTER.name ) << YET_ANOTHER_POINTER.name ) << p3.name ) << endl;
+               return 0;
+            }
+         }
+      }
+   }
+
+   return 0;
+}

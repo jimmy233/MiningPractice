@@ -1,0 +1,37 @@
+struct st
+{
+   char      id[200];
+   struct st *pre;
+   struct st *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct st
+{
+   char      id[200];
+   struct st *pre;
+   struct st *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+int main(void)
+{
+   ANOTHER_POINTER      = ( YET_ANOTHER_POINTER = (struct st *)malloc(LEN));
+   ANOTHER_POINTER->pre = NULL;
+   gets(ANOTHER_POINTER->id);
+
+   while ( strcmp(ANOTHER_POINTER->id, "end"))
+   {
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER = (struct st *)malloc(LEN);
+      gets(ANOTHER_POINTER->id);
+      ANOTHER_POINTER->pre = YET_ANOTHER_POINTER;
+   }
+
+   while ( YET_ANOTHER_POINTER != NULL )
+   {
+      printf("%s\n", YET_ANOTHER_POINTER->id);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->pre;
+   }
+
+   return 0;
+}

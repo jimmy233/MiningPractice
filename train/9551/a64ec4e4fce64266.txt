@@ -1,0 +1,87 @@
+struct mouse
+{
+   char         id[10];
+   int          age;
+   struct mouse *VAR__NEXT;
+};
+struct mouse *creat(int VAR_1238123)
+{
+   struct mouse *VAR__HEAD;
+   struct mouse *ANOTHER_POINTER;
+   struct mouse *YET_ANOTHER_POINTER;
+   int          VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      if ( VAR__53647 > 1 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct mouse *)malloc(sizeof( struct mouse ));
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+struct mouse *order(struct mouse *VAR__HEAD, int VAR_1238123)
+{
+   struct mouse *ANOTHER_POINTER;
+   struct mouse *YET_ANOTHER_POINTER;
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__7685;
+   char         VAR__819283[10];
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = VAR__HEAD;
+      ANOTHER_POINTER     = YET_ANOTHER_POINTER->VAR__NEXT;
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if (( YET_ANOTHER_POINTER->age < ANOTHER_POINTER->age ) && ( ANOTHER_POINTER->age >= 60 ))
+         {
+            VAR__7685 = YET_ANOTHER_POINTER->age;
+            YET_ANOTHER_POINTER->age = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age     = VAR__7685;
+            strcpy(VAR__819283, YET_ANOTHER_POINTER->id);
+            strcpy(YET_ANOTHER_POINTER->id, ANOTHER_POINTER->id);
+            strcpy(ANOTHER_POINTER->id, VAR__819283);
+         }
+
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   struct mouse *VAR__HEAD;
+   struct mouse *VAR_233;
+   int          VAR__53647;
+   int          VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR__HEAD = order(VAR__HEAD, VAR_1238123);
+   VAR_233   = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

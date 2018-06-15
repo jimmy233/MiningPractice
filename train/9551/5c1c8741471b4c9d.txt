@@ -1,0 +1,97 @@
+int main()
+{
+   struct pa
+   {
+      char      ID[11];
+      int       age;
+      struct pa *VAR__NEXT;
+   }
+   *VAR__HEAD;
+   struct pa
+   {
+      char      ID[11];
+      int       age;
+      struct pa *VAR__NEXT;
+   }
+   *ANOTHER_POINTER;
+   struct pa
+   {
+      char      ID[11];
+      int       age;
+      struct pa *VAR__NEXT;
+   }
+   *YET_ANOTHER_POINTER;
+   struct pa
+   {
+      char      ID[11];
+      int       age;
+      struct pa *VAR__NEXT;
+   }
+   *p3;
+   struct pa
+   {
+      char      ID[11];
+      int       age;
+      struct pa *VAR__NEXT;
+   }
+        *p4;
+   int  tage;
+   char tID[11];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct pa *)malloc(sizeof( struct pa ));
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      scanf("%s %d", ANOTHER_POINTER->ID, &ANOTHER_POINTER->age);
+
+      if ( VAR__53647 != 0 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   ANOTHER_POINTER            = VAR__HEAD;
+   YET_ANOTHER_POINTER        = ANOTHER_POINTER->VAR__NEXT;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      p3 = ANOTHER_POINTER;
+      p4 = YET_ANOTHER_POINTER;
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if (( p3->age < p4->age ) && ( p4->age >= 60 ))
+         {
+            strcpy(tID, p3->ID);
+            tage = p3->age;
+            strcpy(p3->ID, p4->ID);
+            p3->age = p4->age;
+            strcpy(p4->ID, tID);
+            p4->age = tage;
+         }
+
+         p3 = p3->VAR__NEXT;
+         p4 = p4->VAR__NEXT;
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      printf("%s\n", ANOTHER_POINTER->ID);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return 0;
+}

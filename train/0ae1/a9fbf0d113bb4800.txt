@@ -1,0 +1,88 @@
+char week[7][5] = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+int y1(int);
+int d2(int, int, int);
+int check(int);
+
+int main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__SUM = 0;
+
+   (( cin >> year ) >> month ) >> day;
+   VAR__SUM = VAR__SUM + y1(year - 1);
+   VAR__SUM = VAR__SUM + d2(year, month, day);
+   ( cout << week[VAR__SUM % 7] ) << endl;
+   return 0;
+}
+
+
+int y1(int year)
+{
+   int VAR__819283 = 0;
+
+   while ( year >= 400 )
+   {
+      VAR__819283 = ((( VAR__819283 + ( 97 * 2 )) + 400 ) - 97 ) % 7;
+      year        = year - 400;
+   }
+
+   while ( year >= 100 )
+   {
+      VAR__819283 = ((( VAR__819283 + ( 24 * 2 )) + 100 ) - 24 ) % 7;
+      year        = year - 100;
+   }
+
+   while ( year >= 1 )
+   {
+      if (( year % 4 ) == 0 )
+      {
+         VAR__819283 = VAR__819283 + 2;
+      }
+      else
+      {
+         VAR__819283++;
+      }
+
+      year--;
+   }
+
+   return VAR__819283 % 7;
+}
+
+
+int check(int VAR__819283)
+{
+   if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int d2(int year, int VAR__1238129, int VAR__12302)
+{
+   int VAR__819283[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+   int VAR__COUNT         = 0;
+
+   if ( VAR__1238129 == 1 )
+   {
+      return VAR__12302 % 7;
+   }
+   else
+   {
+      while ( VAR__1238129 > 1 )
+      {
+         VAR__COUNT = ( VAR__COUNT + VAR__819283[check(year)][VAR__1238129 - 2] ) % 7;
+         VAR__1238129--;
+      }
+
+      VAR__COUNT = VAR__COUNT + VAR__12302;
+      return VAR__COUNT;
+   }
+}

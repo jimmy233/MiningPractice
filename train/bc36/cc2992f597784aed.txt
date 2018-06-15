@@ -1,0 +1,84 @@
+int main()
+{
+   int    VAR__53647;
+   int    VAR_1238123;
+   int    VAR__19328;
+   int    VAR__819283;
+   int    VAR__21230 = 0;
+   double VAR__4857423;
+   struct point
+   {
+      char   sx[10];
+      double VAR_9494;
+   }
+   pl[40];
+   struct point
+   {
+      char   sx[10];
+      double VAR_9494;
+   }
+   pa[40];
+
+   scanf("%d", &VAR_1238123);
+   VAR__19328 = VAR_1238123 - 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", &pl[VAR__53647].sx);
+      scanf("%lf", &pl[VAR__53647].VAR_9494);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(pl[VAR__53647].sx, "male") == 0 )
+      {
+         pa[VAR__21230] = pl[VAR__53647];
+         VAR__21230++;
+      }
+
+      if ( strcmp(pl[VAR__53647].sx, "female") == 0 )
+      {
+         pa[VAR__19328] = pl[VAR__53647];
+         VAR__19328--;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__21230; VAR__53647++ )
+   {
+      for ( VAR__819283 = 0; VAR__819283 < ( VAR__21230 - VAR__53647 ); VAR__819283++ )
+      {
+         if ( pa[VAR__819283].VAR_9494 > pa[VAR__819283 + 1].VAR_9494 )
+         {
+            VAR__4857423                 = pa[VAR__819283].VAR_9494;
+            pa[VAR__819283].VAR_9494     = pa[VAR__819283 + 1].VAR_9494;
+            pa[VAR__819283 + 1].VAR_9494 = VAR__4857423;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+   {
+      for ( VAR__819283 = 0; VAR__819283 < (( VAR_1238123 - VAR__53647 ) - VAR__21230 ); VAR__819283++ )
+      {
+         if ( pa[VAR__819283 + VAR__21230].VAR_9494 < pa[( VAR__819283 + VAR__21230 ) + 1].VAR_9494 )
+         {
+            VAR__4857423 = pa[VAR__819283 + VAR__21230].VAR_9494;
+            pa[VAR__819283 + VAR__21230].VAR_9494         = pa[( VAR__819283 + VAR__21230 ) + 1].VAR_9494;
+            pa[( VAR__819283 + VAR__21230 ) + 1].VAR_9494 = VAR__4857423;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 != ( VAR_1238123 - 1 ))
+      {
+         printf("%.2lf ", pa[VAR__53647].VAR_9494);
+      }
+      else
+      {
+         printf("%.2lf", pa[VAR__53647].VAR_9494);
+      }
+   }
+
+   return 0;
+}

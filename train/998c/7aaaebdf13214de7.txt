@@ -1,0 +1,58 @@
+int main()
+{
+   char A[200];
+   char B[200];
+
+   ( cin >> A ) >> B;
+   int  iA[200] = { 0 };
+   int  iB[200] = { 0 };
+   int  iC[200] = { 0 };
+   char C[200]  = { 0 };
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(A); VAR__53647++ )
+   {
+      iA[VAR__53647] = ((int)A[( strlen(A) - 1 ) - VAR__53647] ) - '0';
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(B); VAR__53647++ )
+   {
+      iB[VAR__53647] = ((int)B[( strlen(B) - 1 ) - VAR__53647] ) - '0';
+   }
+
+   int Lc = VAR__MAX(strlen(A), strlen(B));
+   for ( int VAR__53647 = 0; VAR__53647 < Lc; VAR__53647++ )
+   {
+      iC[VAR__53647]    += iA[VAR__53647] + iB[VAR__53647];
+      iC[VAR__53647 + 1] = iC[VAR__53647] / 10;
+      iC[VAR__53647]     = iC[VAR__53647] % 10;
+   }
+
+   if ( iC[Lc] != 0 )
+   {
+      Lc++;
+   }
+
+   for ( ; Lc >= 0; Lc-- )
+   {
+      if ( iC[Lc - 1] != 0 )
+      {
+         break;
+      }
+   }
+
+   if ( Lc == ( -1 ))
+   {
+      cout << '0';
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < Lc; VAR__53647++ )
+      {
+         C[VAR__53647] = iC[( Lc - 1 ) - VAR__53647] + '0';
+      }
+
+      C[Lc] = '\0';
+      ( cout << C ) << endl;
+   }
+
+   return 0;
+}

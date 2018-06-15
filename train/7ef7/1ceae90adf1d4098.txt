@@ -1,0 +1,118 @@
+int minih(int numh, int *VAR_233)
+{
+   int VAR__MIN;
+
+   VAR__MIN = *VAR_233;
+   int VAR__53647;
+   for ( VAR__53647 = 1; VAR__53647 <= numh; VAR__53647++ )
+   {
+      if ( VAR__MIN > ( *(( VAR_233 + VAR__53647 ) - 1 )))
+      {
+         VAR__MIN = *(( VAR_233 + VAR__53647 ) - 1 );
+      }
+      else
+      {
+      }
+   }
+
+   return VAR__MIN;
+}
+
+
+int minil(int numl, int *VAR_233)
+{
+   int VAR__MIN;
+
+   VAR__MIN = *VAR_233;
+   int VAR__53647;
+   for ( VAR__53647 = 1; VAR__53647 <= numl; VAR__53647++ )
+   {
+      if ( VAR__MIN > ( *( VAR_233 + ( 101 * ( VAR__53647 - 1 )))))
+      {
+         VAR__MIN = *( VAR_233 + ( 101 * ( VAR__53647 - 1 )));
+      }
+      else
+      {
+      }
+   }
+
+   return VAR__MIN;
+}
+
+
+int main()
+{
+   int VAR__819283[101][101];
+   int *VAR_233;
+
+   VAR_233 = &VAR__819283[0][0];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_1238123;
+   int minor;
+   int VAR__SUM;
+   scanf("%d", &VAR_1238123);
+   int hang;
+   int lie;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      hang     = VAR_1238123;
+      lie      = VAR_1238123;
+      VAR__SUM = 0;
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+         {
+            scanf("%d", (( VAR_233 + ( 101 * ( VAR__21230 - 1 ))) + VAR__8444594 ) - 1);
+         }
+      }
+
+      for ( minor = 1; lie > 1; minor++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= hang; VAR__21230++ )
+         {
+            int minihang;
+            minihang = minih(lie, VAR_233 + ( 101 * ( VAR__21230 - 1 )));
+            for ( VAR__8444594 = 1; VAR__8444594 <= lie; VAR__8444594++ )
+            {
+               *((( VAR_233 + ( 101 * ( VAR__21230 - 1 ))) + VAR__8444594 ) - 1 ) -= minihang;
+            }
+         }
+
+         for ( VAR__21230 = 1; VAR__21230 <= lie; VAR__21230++ )
+         {
+            int minilie;
+            minilie = minil(hang, VAR_233 + ( VAR__21230 - 1 ));
+            for ( VAR__8444594 = 1; VAR__8444594 <= hang; VAR__8444594++ )
+            {
+               *(( VAR_233 + ( VAR__21230 - 1 )) + ( 101 * ( VAR__8444594 - 1 ))) -= minilie;
+            }
+         }
+
+         VAR__SUM += *( VAR_233 + 102 );
+         for ( VAR__21230 = 2; VAR__21230 <= hang; VAR__21230++ )
+         {
+            for ( VAR__8444594 = 1; VAR__8444594 <= lie; VAR__8444594++ )
+            {
+               *((( VAR_233 + ( 101 * ( VAR__21230 - 1 ))) + VAR__8444594 ) - 1 ) = *((( VAR_233 + ( 101 * VAR__21230 )) + VAR__8444594 ) - 1 );
+            }
+         }
+
+         hang--;
+         for ( VAR__21230 = 2; VAR__21230 <= lie; VAR__21230++ )
+         {
+            for ( VAR__8444594 = 1; VAR__8444594 <= hang; VAR__8444594++ )
+            {
+               *((( VAR_233 + ( 101 * ( VAR__8444594 - 1 ))) + VAR__21230 ) - 1 ) = *(( VAR_233 + ( 101 * ( VAR__8444594 - 1 ))) + VAR__21230 );
+            }
+         }
+
+         lie--;
+      }
+
+      printf("%d\n", VAR__SUM);
+   }
+
+   return 0;
+}

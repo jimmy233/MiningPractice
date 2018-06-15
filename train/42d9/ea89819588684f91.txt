@@ -1,0 +1,83 @@
+int main()
+{
+   struct sanwei
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+          room[10];
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   double dis[100];
+   int    x1[100];
+   int    x2[100];
+   int    y1[100];
+   int    y2[100];
+   int    z1[100];
+   int    z2[100];
+   int    VAR__8444594 = 1;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> room[VAR__53647].VAR__7685 ) >> room[VAR__53647].VAR__3918907 ) >> room[VAR__53647].VAR__9290;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         x1[VAR__8444594]  = room[VAR__53647].VAR__7685;
+         y1[VAR__8444594]  = room[VAR__53647].VAR__3918907;
+         z1[VAR__8444594]  = room[VAR__53647].VAR__9290;
+         x2[VAR__8444594]  = room[VAR__21230].VAR__7685;
+         y2[VAR__8444594]  = room[VAR__21230].VAR__3918907;
+         z2[VAR__8444594]  = room[VAR__21230].VAR__9290;
+         dis[VAR__8444594] = ((( x1[VAR__8444594] - x2[VAR__8444594] ) * ( x1[VAR__8444594] - x2[VAR__8444594] )) + (( y1[VAR__8444594] - y2[VAR__8444594] ) * ( y1[VAR__8444594] - y2[VAR__8444594] ))) + (( z1[VAR__8444594] - z2[VAR__8444594] ) * ( z1[VAR__8444594] - z2[VAR__8444594] ));
+         dis[VAR__8444594] = sqrt(dis[VAR__8444594]);
+         VAR__8444594++;
+      }
+   }
+
+
+   double VAR__TEMP;
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2; VAR__21230 >= ( 1 + VAR__53647 ); VAR__21230-- )
+      {
+         if ( dis[VAR__21230] > dis[VAR__21230 - 1] )
+         {
+            VAR__TEMP           = dis[VAR__21230 - 1];
+            dis[VAR__21230 - 1] = dis[VAR__21230];
+            dis[VAR__21230]     = VAR__TEMP;
+            VAR__TEMP           = x1[VAR__21230 - 1];
+            x1[VAR__21230 - 1]  = x1[VAR__21230];
+            x1[VAR__21230]      = VAR__TEMP;
+            VAR__TEMP           = x2[VAR__21230 - 1];
+            x2[VAR__21230 - 1]  = x2[VAR__21230];
+            x2[VAR__21230]      = VAR__TEMP;
+            VAR__TEMP           = y1[VAR__21230 - 1];
+            y1[VAR__21230 - 1]  = y1[VAR__21230];
+            y1[VAR__21230]      = VAR__TEMP;
+            VAR__TEMP           = y2[VAR__21230 - 1];
+            y2[VAR__21230 - 1]  = y2[VAR__21230];
+            y2[VAR__21230]      = VAR__TEMP;
+            VAR__TEMP           = z1[VAR__21230 - 1];
+            z1[VAR__21230 - 1]  = z1[VAR__21230];
+            z1[VAR__21230]      = VAR__TEMP;
+            VAR__TEMP           = z2[VAR__21230 - 1];
+            z2[VAR__21230 - 1]  = z2[VAR__21230];
+            z2[VAR__21230]      = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      (((((((((((((((( cout << "(" ) << x1[VAR__53647] ) << "," ) << y1[VAR__53647] ) << "," ) << z1[VAR__53647] ) << ")-(" ) << x2[VAR__53647] ) << "," ) << y2[VAR__53647] ) << "," ) << z2[VAR__53647] ) << ")=" ) << fixed ) << setprecision(2)) << dis[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

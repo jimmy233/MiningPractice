@@ -1,0 +1,74 @@
+int VAR__1238129;
+int day;
+int spread[9][9] = { 0 };
+void bac(int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int produce[9][9] = { 0 };
+
+   for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         if ( spread[VAR__53647][VAR__21230] != 0 )
+         {
+            produce[VAR__53647][VAR__21230]         += 2 * spread[VAR__53647][VAR__21230];
+            produce[VAR__53647 - 1][VAR__21230 - 1] += spread[VAR__53647][VAR__21230];
+            produce[VAR__53647 - 1][VAR__21230]     += spread[VAR__53647][VAR__21230];
+            produce[VAR__53647 - 1][VAR__21230 + 1] += spread[VAR__53647][VAR__21230];
+            produce[VAR__53647][VAR__21230 + 1]     += spread[VAR__53647][VAR__21230];
+            produce[VAR__53647][VAR__21230 - 1]     += spread[VAR__53647][VAR__21230];
+            produce[VAR__53647 + 1][VAR__21230 - 1] += spread[VAR__53647][VAR__21230];
+            produce[VAR__53647 + 1][VAR__21230]     += spread[VAR__53647][VAR__21230];
+            produce[VAR__53647 + 1][VAR__21230 + 1] += spread[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         spread[VAR__53647][VAR__21230] = produce[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   if ( VAR_1238123 == day )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+         {
+            if ( VAR__21230 != 8 )
+            {
+               ( cout << spread[VAR__53647][VAR__21230] ) << " ";
+            }
+            else
+            {
+               cout << spread[VAR__53647][VAR__21230];
+            }
+         }
+
+         if ( VAR__53647 != 8 )
+         {
+            cout << endl;
+         }
+      }
+
+      return;
+   }
+
+   bac(VAR_1238123 + 1);
+}
+
+
+int main()
+{
+   ( cin >> VAR__1238129 ) >> day;
+   spread[4][4] = VAR__1238129;
+   bac(1);
+   return 0;
+}

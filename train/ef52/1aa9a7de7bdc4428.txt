@@ -1,0 +1,53 @@
+int N;
+int input[26];
+int VAR__53647;
+int VAR__21230;
+int VAR__8444594;
+int ans[26];
+int Max;
+int cons(int VAR__53647)
+{
+   int VAR__819283 = 0;
+
+   if ( ans[VAR__53647] != 0 )
+   {
+      return ans[VAR__53647];
+   }
+
+   for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < N; VAR__21230++ )
+   {
+      if ( input[VAR__21230] <= input[VAR__53647] )
+      {
+         if ( VAR__819283 < cons(VAR__21230))
+         {
+            VAR__819283 = ans[VAR__21230];
+         }
+      }
+   }
+
+   ans[VAR__53647] = VAR__819283 + 1;
+   return ans[VAR__53647];
+}
+
+
+int main()
+{
+   Max = 0;
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%d", &input[VAR__53647]);
+      ans[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = N - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( Max < cons(VAR__53647))
+      {
+         Max = ans[VAR__53647];
+      }
+   }
+
+   printf("%d\n", Max);
+   return 0;
+}

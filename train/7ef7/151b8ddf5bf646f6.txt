@@ -1,0 +1,113 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR_1238123;
+   int arr[101][101];
+   int VAR__TEMP[101][101];
+   int cnt_a;
+   int cnt_b;
+
+   int (*A_POINTER)[101];
+   int ans;
+   int VAR__1238129;
+   int (*ptr_t)[101];
+   int mini;
+   A_POINTER = arr;
+   ptr_t     = VAR__TEMP;
+   cin >> VAR_1238123;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; ++VAR__8444594 )
+   {
+      memset(arr, 0, sizeof( arr ));
+      ans = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; ++VAR__21230 )
+         {
+            cin >> ( *(( *( A_POINTER + VAR__53647 )) + VAR__21230 ));
+         }
+      }
+
+
+      VAR__1238129 = VAR_1238123;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); ++VAR__53647 )
+      {
+         mini = 2147483647;
+         for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; ++VAR__21230 )
+         {
+            mini = 2147483647;
+            for ( VAR__1111 = 0; VAR__1111 < VAR__1238129; ++VAR__1111 )
+            {
+               if (( *(( *( A_POINTER + VAR__21230 )) + VAR__1111 )) < mini )
+               {
+                  mini = *(( *( A_POINTER + VAR__21230 )) + VAR__1111 );
+               }
+            }
+
+            for ( VAR__1111 = 0; VAR__1111 < VAR__1238129; ++VAR__1111 )
+            {
+               *(( *( A_POINTER + VAR__21230 )) + VAR__1111 ) -= mini;
+            }
+         }
+
+         mini = 2147483647;
+         for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; ++VAR__21230 )
+         {
+            mini = 2147483647;
+            for ( VAR__1111 = 0; VAR__1111 < VAR__1238129; ++VAR__1111 )
+            {
+               if (( *(( *( A_POINTER + VAR__1111 )) + VAR__21230 )) < mini )
+               {
+                  mini = *(( *( A_POINTER + VAR__1111 )) + VAR__21230 );
+               }
+            }
+
+            for ( VAR__1111 = 0; VAR__1111 < VAR__1238129; ++VAR__1111 )
+            {
+               *(( *( A_POINTER + VAR__1111 )) + VAR__21230 ) -= mini;
+            }
+         }
+
+         ans  += *(( *( A_POINTER + 1 )) + 1 );
+         cnt_a = 0;
+         cnt_b = 0;
+         for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; ++VAR__21230 )
+         {
+            cnt_b = 0;
+            for ( VAR__1111 = 0; VAR__1111 < VAR__1238129; ++VAR__1111 )
+            {
+               if (( VAR__21230 == 1 ) || ( VAR__1111 == 1 ))
+               {
+                  continue;
+               }
+
+               *(( *( ptr_t + cnt_a )) + cnt_b ) = *(( *( A_POINTER + VAR__21230 )) + VAR__1111 );
+               cnt_b++;
+            }
+
+            if ( VAR__21230 != 1 )
+            {
+               cnt_a++;
+            }
+         }
+
+         memset(arr, 0, sizeof( arr ));
+         for ( VAR__21230 = 0; VAR__21230 < cnt_a; ++VAR__21230 )
+         {
+            for ( VAR__1111 = 0; VAR__1111 < cnt_b; ++VAR__1111 )
+            {
+               *(( *( A_POINTER + VAR__21230 )) + VAR__1111 ) = *(( *( ptr_t + VAR__21230 )) + VAR__1111 );
+            }
+         }
+
+
+         VAR__1238129--;
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

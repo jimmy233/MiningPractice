@@ -1,0 +1,99 @@
+void add(char ANOTHER_STRING[], char YET_ANOTHER_STRING[])
+{
+   int a1[260];
+   int a2[260];
+   int VAR__SUM[260] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   int la;
+   int lb;
+
+   la = strlen(ANOTHER_STRING);
+   lb = strlen(YET_ANOTHER_STRING);
+   memset(a1, 0, sizeof( a1 ));
+   memset(a2, 0, sizeof( a2 ));
+   VAR__53647 = la - 1;
+   VAR__21230 = 0;
+
+   while ( VAR__53647 >= 0 )
+   {
+      a1[VAR__21230++] = ANOTHER_STRING[VAR__53647--] - '0';
+   }
+
+   VAR__53647 = lb - 1;
+   VAR__21230 = 0;
+
+   while ( VAR__53647 >= 0 )
+   {
+      a2[VAR__21230++] = YET_ANOTHER_STRING[VAR__53647--] - '0';
+   }
+
+   for ( VAR__53647 = 0; ( VAR__53647 < la ) && ( VAR__53647 < lb ); VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647] += a1[VAR__53647] + a2[VAR__53647];
+
+      if ( VAR__SUM[VAR__53647] >= 10 )
+      {
+         VAR__SUM[VAR__53647]      = VAR__SUM[VAR__53647] - 10;
+         VAR__SUM[VAR__53647 + 1] += 1;
+      }
+   }
+
+   if ( VAR__53647 == la )
+   {
+      for ( VAR__53647 = la; VAR__53647 < lb; VAR__53647++ )
+      {
+         VAR__SUM[VAR__53647] += a2[VAR__53647];
+
+         if ( VAR__SUM[VAR__53647] >= 10 )
+         {
+            VAR__SUM[VAR__53647]     -= 10;
+            VAR__SUM[VAR__53647 + 1] += 1;
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = lb; VAR__53647 < la; VAR__53647++ )
+      {
+         VAR__SUM[VAR__53647] += a1[VAR__53647];
+
+         if ( VAR__SUM[VAR__53647] >= 10 )
+         {
+            VAR__SUM[VAR__53647]     -= 10;
+            VAR__SUM[VAR__53647 + 1] += 1;
+         }
+      }
+   }
+
+   VAR__53647 = 259;
+
+   while ( VAR__SUM[VAR__53647] == 0 )
+   {
+      VAR__53647--;
+   }
+
+   if ( VAR__53647 == ( -1 ))
+   {
+      ( cout << 0 ) << endl;
+   }
+   else
+   {
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << VAR__SUM[VAR__53647];
+      }
+   }
+}
+
+
+int main()
+{
+   char ANOTHER_STRING[260];
+   char YET_ANOTHER_STRING[260];
+
+   cin.getline(ANOTHER_STRING, 260);
+   cin.getline(YET_ANOTHER_STRING, 260);
+   add(ANOTHER_STRING, YET_ANOTHER_STRING);
+   return 0;
+}

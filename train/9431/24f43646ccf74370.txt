@@ -1,0 +1,56 @@
+struct xinxi
+{
+   char         stu[1000];
+   struct xinxi *VAR__NEXT;
+};
+void main()
+{
+   struct xinxi *VAR__HEAD;
+   struct xinxi *VAR_233;
+   struct xinxi *pt;
+   int          VAR__53647;
+   int          VAR_1238123;
+
+   VAR_233 = (struct xinxi *)malloc(sizeof( struct xinxi ));
+   gets(VAR_233->stu);
+   pt          = VAR_233;
+   VAR__HEAD   = (struct xinxi *)malloc(sizeof( struct xinxi ));
+   VAR_1238123 = 0;
+
+   while ( strcmp(VAR_233->stu, "end") != 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD->VAR__NEXT = VAR_233;
+      }
+
+      if ( VAR_1238123 > 1 )
+      {
+         pt->VAR__NEXT = VAR_233;
+      }
+
+      pt          = VAR_233;
+      VAR_233     = (struct xinxi *)malloc(sizeof( struct xinxi ));
+      VAR_1238123 = VAR_1238123 + 1;
+      gets(VAR_233->stu);
+   }
+
+   pt->VAR__NEXT = NULL;
+
+   while ( VAR__HEAD->VAR__NEXT != NULL )
+   {
+      pt      = VAR__HEAD;
+      VAR_233 = VAR__HEAD->VAR__NEXT;
+
+      while ( VAR_233->VAR__NEXT != NULL )
+      {
+         VAR_233 = VAR_233->VAR__NEXT;
+         pt      = pt->VAR__NEXT;
+      }
+
+      puts(VAR_233->stu);
+      pt->VAR__NEXT = NULL;
+   }
+}

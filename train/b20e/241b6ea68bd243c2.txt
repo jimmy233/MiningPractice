@@ -1,0 +1,78 @@
+int tt[2000];
+int qq[2000];
+int VAR_1238123;
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 0;
+   int headt;
+   int tailt;
+   int headq;
+   int tailq;
+   int ans;
+
+   while ( scanf("%d", &VAR_1238123) && VAR_1238123 )
+   {
+      ans   = 0;
+      headt = ( headq = 0 );
+      tailt = ( tailq = VAR_1238123 );
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tt[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qq[VAR__53647]);
+      }
+
+      sort(tt, tt + VAR_1238123);
+      sort(qq, qq + VAR_1238123);
+
+      while ( headt != tailt )
+      {
+         if ( tt[headt] < qq[headq] )
+         {
+            ans--;
+            headt++;
+            tailq--;
+            continue;
+         }
+
+         if ( tt[headt] > qq[headq] )
+         {
+            ans++;
+            headt++;
+            headq++;
+            continue;
+         }
+
+         if ( tt[tailt - 1] > qq[tailq - 1] )
+         {
+            ans++;
+            tailt--;
+            tailq--;
+            continue;
+         }
+
+         if ( tt[tailt - 1] < qq[tailq - 1] )
+         {
+            ans--;
+            headt++;
+            tailq--;
+            continue;
+         }
+
+         if ( tt[headt] < qq[tailq - 1] )
+         {
+            ans--;
+         }
+
+         headt++;
+         tailq--;
+      }
+
+      printf("%d\n", ans * 200);
+   }
+}

@@ -1,0 +1,86 @@
+static int days[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+static int isleapyear(int year)
+{
+   return ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 );
+}
+
+
+int main()
+{
+   unsigned long int year;
+   unsigned long int month;
+   unsigned long int day;
+   unsigned long int VAR__19328;
+   unsigned long int VAR__4857423;
+   unsigned long int VAR__12302;
+   unsigned long int VAR__112390;
+   unsigned long int VAR__127322;
+
+   scanf("%d %d %d", &year, &month, &day);
+   int VAR_1238123 = 0;
+   int VAR__53647;
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      VAR_1238123 = VAR_1238123 + days[VAR__53647];
+   }
+
+   VAR_1238123  = VAR_1238123 + day;
+   VAR__19328   = (int)( year / 4 );
+   VAR__4857423 = (int)( year / 100 );
+   VAR__12302   = (int)( year / 400 );
+
+   if ( !isleapyear(year))
+   {
+      VAR__112390 = ( VAR__19328 + VAR__12302 ) - VAR__4857423;
+      VAR__127322 = (( VAR__112390 * 2 ) + ((( year - VAR__112390 ) - 1 ) * 1 )) + VAR_1238123;
+   }
+
+   if ( isleapyear(year))
+   {
+      VAR__112390 = ( VAR__19328 + VAR__12302 ) - VAR__4857423;
+
+      if (( month == 1 ) || ( month == 2 ))
+      {
+         VAR__127322 = ((( VAR__112390 - 1 ) * 2 ) + (( year - VAR__112390 ) * 1 )) + VAR_1238123;
+      }
+      else
+      {
+         VAR__127322 = (((( VAR__112390 - 1 ) * 2 ) + (( year - VAR__112390 ) * 1 )) + VAR_1238123 ) + 1;
+      }
+   }
+
+   if (( VAR__127322 % 7 ) == 1 )
+   {
+      printf("Mon.\n");
+   }
+
+   if (( VAR__127322 % 7 ) == 2 )
+   {
+      printf("Tue.\n");
+   }
+
+   if (( VAR__127322 % 7 ) == 3 )
+   {
+      printf("Wed.\n");
+   }
+
+   if (( VAR__127322 % 7 ) == 4 )
+   {
+      printf("Thu.\n");
+   }
+
+   if (( VAR__127322 % 7 ) == 5 )
+   {
+      printf("Fri.\n");
+   }
+
+   if (( VAR__127322 % 7 ) == 6 )
+   {
+      printf("Sat.\n");
+   }
+
+   if (( VAR__127322 % 7 ) == 0 )
+   {
+      printf("Sun.\n");
+   }
+}

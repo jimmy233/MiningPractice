@@ -1,0 +1,98 @@
+int main()
+{
+   int zhi(long int VAR_129012);
+   int hui(long int VAR_129012);
+
+   long int VAR__1238129;
+   long int VAR_1238123;
+   long int VAR__temp = 0;
+   long int n1;
+   long int n2;
+   long int u = 0;
+   long int VAR__53647;
+   int      VAR__819283[1000];
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      n1 = zhi(VAR__53647);
+      n2 = hui(VAR__53647);
+
+      if (( n1 == 0 ) && ( n2 == 0 ))
+      {
+         VAR__819283[VAR__temp] = VAR__53647;
+         VAR__temp++;
+         u = VAR__temp;
+      }
+   }
+
+   if ( u == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      for ( VAR__temp = 0; VAR__temp < ( u - 1 ); VAR__temp++ )
+      {
+         printf("%d,", VAR__819283[VAR__temp]);
+      }
+
+      printf("%d", VAR__819283[u - 1]);
+   }
+}
+
+
+int zhi(long int VAR__1238129)
+{
+   long int VAR__53647;
+   long int VAR__8444594;
+   long int VAR__9290 = 1;
+
+   VAR__8444594 = sqrt(VAR__1238129);
+   for ( VAR__53647 = 2; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      if (( VAR__1238129 % VAR__53647 ) == 0 )
+      {
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 > VAR__8444594 )
+   {
+      VAR__9290 = 0;
+   }
+
+   return VAR__9290;
+}
+
+
+int hui(long int VAR__1238129)
+{
+   long int VAR__819283[200];
+   long int VAR_1238123;
+   long int VAR__NUM;
+   long int VAR__temp = 0;
+   long int VAR__8444594;
+   long int VAR_129012;
+
+   VAR__NUM = log10(VAR__1238129);
+   for ( VAR_1238123 = 0, VAR__8444594 = VAR__NUM; VAR_1238123 <= VAR__NUM; VAR_1238123++ )
+   {
+      VAR_129012 = pow(10, VAR__8444594);
+      VAR__819283[VAR_1238123] = VAR__1238129 / VAR_129012;
+      VAR__1238129             = VAR__1238129 - ( VAR__819283[VAR_1238123] * VAR_129012 );
+      VAR__8444594--;
+   }
+
+   for ( VAR_1238123 = 0; VAR_1238123 <= ( VAR__NUM / 2 ); VAR_1238123++ )
+   {
+      if ( VAR__819283[VAR_1238123] != VAR__819283[VAR__NUM - VAR_1238123] )
+      {
+         VAR__temp = 1;
+         break;
+      }
+   }
+
+
+   return VAR__temp;
+}

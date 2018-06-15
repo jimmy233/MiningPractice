@@ -1,0 +1,87 @@
+struct student
+{
+   char           name[20];
+   int            end;
+   int            clas;
+   char           leader;
+   char           west;
+   int            paper;
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *VAR__HEAD;
+   char           *VAR__819283;
+   int            *VAR__19328;
+   int            *VAR__4857423;
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__MAX = 0;
+   long int       VAR__SUM = 0;
+
+   scanf("%d\n", &VAR_1238123);
+   VAR__HEAD   = ( VAR_233 = ( VAR_666 = (struct student *)malloc(LEN)));
+   VAR__819283 = (char *)malloc(20 * ( sizeof( char )));
+   VAR__19328  = ( VAR__4857423 = (int *)malloc(VAR_1238123 * ( sizeof( int ))));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d\n", VAR_233->name, &VAR_233->end, &VAR_233->clas, &VAR_233->leader, &VAR_233->west, &VAR_233->paper);
+      VAR_233            = (struct student *)malloc(LEN);
+      VAR_666->VAR__NEXT = VAR_233;
+      VAR_666            = VAR_233;
+   }
+
+   VAR_666->VAR__NEXT = NULL;
+   VAR_666            = ( VAR_233 = VAR__HEAD );
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR_233->end > 80 ) && ( VAR_233->paper > 0 ))
+      {
+         *VAR__19328 += 8000;
+      }
+
+      if (( VAR_233->end > 85 ) && ( VAR_233->clas > 80 ))
+      {
+         *VAR__19328 += 4000;
+      }
+
+      if ( VAR_233->end > 90 )
+      {
+         *VAR__19328 += 2000;
+      }
+
+      if (( VAR_233->end > 85 ) && ( VAR_233->west == 'Y' ))
+      {
+         *VAR__19328 += 1000;
+      }
+
+      if (( VAR_233->clas > 80 ) && ( VAR_233->leader == 'Y' ))
+      {
+         *VAR__19328 += 850;
+      }
+
+      VAR__19328++;
+      VAR_233 = VAR_666->VAR__NEXT;
+      VAR_666 = VAR_233;
+   }
+
+   VAR_666    = ( VAR_233 = VAR__HEAD );
+   VAR__19328 = VAR__4857423;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *VAR__19328 ) > VAR__MAX )
+      {
+         VAR__MAX = *VAR__19328;
+         strcpy(VAR__819283, VAR_233->name);
+      }
+
+      VAR__SUM += *VAR__19328;
+      VAR__19328++;
+      VAR_233 = VAR_666->VAR__NEXT;
+      VAR_666 = VAR_233;
+   }
+
+   printf("%s\n%d\n%ld\n", VAR__819283, VAR__MAX, VAR__SUM);
+}

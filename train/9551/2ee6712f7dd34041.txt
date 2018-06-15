@@ -1,0 +1,86 @@
+struct stu
+{
+   int        VAR_21983012;
+   char       VAR__4857423[10];
+   struct stu *VAR__NEXT;
+};
+int VAR_1238123;
+struct stu *creat(int VAR__1238129)
+{
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *p3;
+   int        VAR__53647;
+
+   VAR_1238123                = 0;
+   ANOTHER_POINTER            = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   VAR__HEAD                  = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR_1238123                = 0;
+   scanf("%s %d", ANOTHER_POINTER->VAR__4857423, &ANOTHER_POINTER->VAR_21983012);
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+      scanf("%s %d", ANOTHER_POINTER->VAR__4857423, &ANOTHER_POINTER->VAR_21983012);
+
+      if ( ANOTHER_POINTER->VAR_21983012 < 60 )
+      {
+         for ( YET_ANOTHER_POINTER = VAR__HEAD; YET_ANOTHER_POINTER->VAR__NEXT != NULL; YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT )
+         {
+         }
+
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR__NEXT     = NULL;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER = VAR__HEAD;
+
+         while (( ANOTHER_POINTER->VAR_21983012 <= YET_ANOTHER_POINTER->VAR_21983012 ) && ( YET_ANOTHER_POINTER->VAR__NEXT != NULL ))
+         {
+            p3 = YET_ANOTHER_POINTER;
+            YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+         }
+
+         if ( ANOTHER_POINTER->VAR_21983012 > YET_ANOTHER_POINTER->VAR_21983012 )
+         {
+            if ( VAR__HEAD == YET_ANOTHER_POINTER )
+            {
+               VAR__HEAD = ANOTHER_POINTER;
+            }
+            else
+            {
+               p3->VAR__NEXT = ANOTHER_POINTER;
+            }
+
+            ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            ANOTHER_POINTER->VAR__NEXT     = NULL;
+         }
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int        VAR__1238129;
+   int        VAR__53647;
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = creat(VAR__1238129);
+   VAR_233   = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233->VAR__4857423);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

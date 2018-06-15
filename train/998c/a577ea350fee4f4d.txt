@@ -1,0 +1,93 @@
+int main()
+{
+   char VAR__819283[250];
+   char VAR__19328[250];
+   char VAR__4857423[250];
+   char VAR__12302[250];
+   char VAR__MAX[250];
+   char VAR__7685[250];
+   char VAR__3918907[250];
+   int  VAR__53647;
+   int  VAR__MIN;
+   int  up;
+   int  max1;
+
+   for ( VAR__53647 = 0; VAR__53647 <= 249; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647]  = '\0';
+      VAR__19328[VAR__53647]   = '\0';
+      VAR__4857423[VAR__53647] = '\0';
+      VAR__12302[VAR__53647]   = '\0';
+      VAR__MAX[VAR__53647]     = '\0';
+   }
+
+   scanf("%s%s", VAR__819283, VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(VAR__819283) - 1 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == '0' )
+      {
+         VAR__819283[VAR__53647] = '\0';
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(VAR__19328) - 1 ); VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] == '0' )
+      {
+         VAR__19328[VAR__53647] = '\0';
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   VAR__MIN = ( strlen(VAR__819283) > strlen(VAR__19328)) ? ( strlen(VAR__19328)) : ( strlen(VAR__819283));
+   max1     = ( strlen(VAR__819283) > strlen(VAR__19328)) ? ( strlen(VAR__819283)) : ( strlen(VAR__19328));
+
+   if ( strlen(VAR__19328) == strlen(VAR__819283))
+   {
+      strcpy(VAR__4857423, VAR__819283);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= (( max1 - VAR__MIN ) - 1 ); VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647] = 48;
+      }
+
+      strcat(VAR__4857423, ( strlen(VAR__819283) > strlen(VAR__19328)) ? ( VAR__19328 ) : ( VAR__819283 ));
+   }
+
+   strcpy(VAR__MAX, ( strlen(VAR__819283) <= strlen(VAR__19328)) ? ( VAR__19328 ) : ( VAR__819283 ));
+   up = 0;
+   for ( VAR__53647 = strlen(VAR__4857423) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ((( VAR__MAX[VAR__53647] + VAR__4857423[VAR__53647] ) + up ) < 106 )
+      {
+         VAR__12302[VAR__53647] = (( VAR__4857423[VAR__53647] + VAR__MAX[VAR__53647] ) - 48 ) + up;
+         up = 0;
+      }
+      else
+      {
+         VAR__12302[VAR__53647] = ((( VAR__4857423[VAR__53647] + VAR__MAX[VAR__53647] ) - 48 ) - 10 ) + up;
+         up = 0;
+         up++;
+      }
+   }
+
+   if ( up != 0 )
+   {
+      printf("1%s\n", VAR__12302);
+   }
+   else
+   {
+      printf("%s\n", VAR__12302);
+   }
+
+   return 0;
+}

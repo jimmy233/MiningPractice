@@ -1,0 +1,113 @@
+int main()
+{
+   char VAR__7685[5000];
+   char VAR__3918907[5000];
+   int  xx[5000]        = { 0 };
+   int  yy[5000]        = { 0 };
+   int  VAR__temp[5000] = { 0 };
+   int  VAR_666[5000]   = { 0 };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  ii;
+   int  VAR__NUM;
+   int  VAR_9494;
+   int  VAR__8444594;
+   int  VAR__MAX = 0;
+   int  VAR__MIN = 1200;
+   int  most     = 0;
+   int  least    = 1200;
+   int  n1;
+   int  kk;
+   int  jj;
+   int  n2;
+
+   cin >> VAR__7685;
+   cin >> VAR__3918907;
+   VAR__53647 = 0;
+   VAR__NUM   = 0;
+   n1         = strlen(VAR__7685);
+   n2         = strlen(VAR__3918907);
+
+   while ( VAR__53647 < n1 )
+   {
+      VAR_9494 = 1;
+      VAR__NUM++;
+      ii = VAR__53647;
+      jj = 1;
+
+      while (( VAR__7685[ii] != ',' ) && ( ii < n1 ))
+      {
+         VAR_666[jj] = VAR__7685[ii] - '0';
+         jj++;
+         ii++;
+      }
+
+      for ( kk = jj - 1; kk >= 1; kk-- )
+      {
+         xx[VAR__NUM] += VAR_9494 * VAR_666[kk];
+         VAR_9494     *= 10;
+      }
+
+      if ( xx[VAR__NUM] < VAR__MIN )
+      {
+         VAR__MIN = xx[VAR__NUM];
+      }
+
+      VAR__53647 = ii + 1;
+   }
+
+   VAR__53647 = 0;
+   VAR__NUM   = 0;
+
+   while ( VAR__53647 < n2 )
+   {
+      VAR_9494 = 1;
+      ii       = VAR__53647;
+      VAR__NUM++;
+      jj = 1;
+
+      while (( VAR__3918907[ii] != ',' ) && ( ii < n2 ))
+      {
+         VAR_666[jj] = VAR__3918907[ii] - '0';
+         jj++;
+         ii++;
+      }
+
+      for ( kk = jj - 1; kk >= 1; kk-- )
+      {
+         yy[VAR__NUM] += VAR_9494 * VAR_666[kk];
+         VAR_9494     *= 10;
+      }
+
+      if ( yy[VAR__NUM] > VAR__MAX )
+      {
+         VAR__MAX = yy[VAR__NUM];
+      }
+
+      VAR__53647 = ii + 1;
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= VAR__NUM; VAR__21230++ )
+   {
+      for ( VAR__8444594 = xx[VAR__21230]; VAR__8444594 < yy[VAR__21230]; VAR__8444594++ )
+      {
+         VAR__temp[VAR__8444594]++;
+      }
+   }
+
+   for ( VAR__8444594 = VAR__MIN; VAR__8444594 <= VAR__MAX; VAR__8444594++ )
+   {
+      if ( VAR__temp[VAR__8444594] > most )
+      {
+         most = VAR__temp[VAR__8444594];
+      }
+
+      if ( VAR__temp[VAR__8444594] < least )
+      {
+         least = VAR__temp[VAR__8444594];
+      }
+   }
+
+   ((( cout << VAR__NUM ) << " " ) << most ) << endl;
+   return 0;
+}

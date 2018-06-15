@@ -1,0 +1,91 @@
+struct info
+{
+   char        VAR__NUM[10];
+   int         chn;
+   int         math;
+   struct info *VAR__NEXT;
+};
+int VAR_1238123;
+int all;
+struct info *setup(void)
+{
+   struct info *VAR__HEAD;
+   struct info *ANOTHER_POINTER;
+   struct info *YET_ANOTHER_POINTER;
+
+   VAR_1238123 = 0;
+
+   while ( VAR_1238123 < all )
+   {
+      ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+      scanf("%s %d %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chn, &ANOTHER_POINTER->math);
+      VAR_1238123 += 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct info *VAR_233;
+   int         VAR__53647;
+   int         first  = 0;
+   int         second = 0;
+   int         third  = 0;
+   char        fnum[10];
+   char        snum[10];
+   char        tnum[10];
+
+   scanf("%d", &all);
+   VAR_233 = setup();
+   do
+   {
+      if ( TOTAL > first )
+      {
+         third  = second;
+         second = first;
+         first  = TOTAL;
+         strcpy(tnum, "");
+         strcat(tnum, snum);
+         strcpy(snum, "");
+         strcat(snum, fnum);
+         strcpy(fnum, "");
+         strcat(fnum, VAR_233->VAR__NUM);
+      }
+      else
+      if ( TOTAL > second )
+      {
+         third  = second;
+         second = TOTAL;
+         strcpy(tnum, "");
+         strcat(tnum, snum);
+         strcpy(snum, "");
+         strcat(snum, VAR_233->VAR__NUM);
+      }
+      else
+      if ( TOTAL > third )
+      {
+         third = TOTAL;
+         strcpy(tnum, "");
+         strcat(tnum, VAR_233->VAR__NUM);
+      }
+
+
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != NULL );
+   printf("%s %d\n%s %d\n%s %d\n", fnum, first, snum, second, tnum, third);
+}

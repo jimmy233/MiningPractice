@@ -1,0 +1,94 @@
+struct stu
+{
+   char       VAR__NUM[200];
+   int        qimo;
+   int        banji;
+   char       gan;
+   char       sheng;
+   int        lun;
+   int        qian;
+   struct stu *VAR__NEXT;
+};
+void sort(struct stu *VAR__HEAD, struct stu *VAR_666)
+{
+   struct stu *pre     = VAR__HEAD;
+   struct stu *VAR_233 = pre->VAR__NEXT;
+   struct stu *VAR_9494;
+
+   VAR_9494        = (struct stu *)malloc(sizeof( struct stu ));
+   VAR_9494->banji = VAR_666->banji;
+   strcpy(VAR_9494->VAR__NUM, VAR_666->VAR__NUM);
+   VAR_9494->qimo      = VAR_666->qimo;
+   VAR_9494->qian      = VAR_666->qian;
+   VAR_9494->sheng     = VAR_666->sheng;
+   VAR_9494->gan       = VAR_666->gan;
+   VAR_9494->VAR__NEXT = NULL;
+
+   while (( VAR_233 != NULL ) && ( VAR_9494->qian <= VAR_233->qian ))
+   {
+      pre     = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   pre->VAR__NEXT      = VAR_9494;
+   VAR_9494->VAR__NEXT = VAR_233;
+}
+
+
+void main()
+{
+   int        VAR_1238123;
+   int        VAR__8444594;
+   int        VAR__53647;
+   int        all;
+   int        tol = 0;
+   float      VAR__1238129;
+   char       VAR__NUM[20];
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+   struct stu *VAR_666;
+
+   VAR__HEAD            = (struct stu *)malloc(sizeof( struct stu ));
+   VAR__HEAD->VAR__NEXT = NULL;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      all     = 0;
+      VAR_233 = (struct stu *)malloc(sizeof( struct stu ));
+      scanf("%s %d %d %c %c %d", VAR_233->VAR__NUM, &VAR_233->qimo, &VAR_233->banji, &VAR_233->gan, &VAR_233->sheng, &VAR_233->lun);
+
+      if (( VAR_233->qimo > 80 ) && ( VAR_233->lun > 0 ))
+      {
+         all = all + 8000;
+      }
+
+      if (( VAR_233->qimo > 85 ) && ( VAR_233->banji > 80 ))
+      {
+         all = all + 4000;
+      }
+
+      if ( VAR_233->qimo > 90 )
+      {
+         all = all + 2000;
+      }
+
+      if (( VAR_233->qimo > 85 ) && ( VAR_233->sheng == 'Y' ))
+      {
+         all = all + 1000;
+      }
+
+      if (( VAR_233->banji > 80 ) && ( VAR_233->gan == 'Y' ))
+      {
+         all = all + 850;
+      }
+
+      VAR_233->qian = all;
+      tol           = tol + all;
+      sort(VAR__HEAD, VAR_233);
+   }
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+   printf("%s\n", VAR_233->VAR__NUM);
+   printf("%d\n", VAR_233->qian);
+   printf("%d\n", tol);
+}

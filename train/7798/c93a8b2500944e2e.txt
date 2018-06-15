@@ -1,0 +1,91 @@
+int Book_num(char VAR__819283[])
+{
+   int VAR__21230;
+   int VAR__NUM;
+
+   VAR__21230 = 1;
+
+   if (( VAR__21230 = 1 ) && ( VAR__819283[VAR__21230] == ' ' ))
+   {
+      VAR__NUM = VAR__819283[0] - 48;
+   }
+   else
+   {
+      VAR__21230++;
+   }
+
+   if (( VAR__21230 = 2 ) && ( VAR__819283[VAR__21230] == ' ' ))
+   {
+      VAR__NUM = ( VAR__819283[1] - 48 ) + (( VAR__819283[0] - 48 ) * 10 );
+   }
+   else
+   {
+      VAR__21230++;
+   }
+
+   if (( VAR__21230 = 3 ) && ( VAR__819283[VAR__21230] == ' ' ))
+   {
+      VAR__NUM = (( VAR__819283[2] - 48 ) + (( VAR__819283[1] - 48 ) * 10 )) + (( VAR__819283[0] - 48 ) * 100 );
+   }
+
+   return VAR__NUM;
+}
+
+
+int main()
+{
+   int  VAR__1238129;
+   int  bk1;
+   int  VAR__53647;
+   int  VAR__MAX;
+   int  VAR__21230;
+   int  wrt;
+   int  author[26][999] = { 0 };
+   char data[999][30];
+
+   scanf("%d\n", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      gets(data[VAR__53647]);
+      data[VAR__53647][strlen(data[VAR__53647])] = '\0';
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; data[VAR__53647][VAR__21230] != '\0'; VAR__21230++ )
+      {
+         if ( data[VAR__53647][VAR__21230] > 64 )
+         {
+            wrt = data[VAR__53647][VAR__21230] - 65;
+            for ( bk1 = 0; author[wrt][bk1] != 0; bk1++ )
+            {
+            }
+
+            author[wrt][bk1] = Book_num(data[VAR__53647]);
+
+            if ( bk1 > VAR__MAX )
+            {
+               VAR__MAX = bk1;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( author[VAR__53647][VAR__MAX] != 0 )
+      {
+         printf("%c\n", VAR__53647 + 65);
+         printf("%d\n", VAR__MAX + 1);
+         for ( VAR__21230 = 0; VAR__21230 <= VAR__MAX; VAR__21230++ )
+         {
+            printf("%d\n", author[VAR__53647][VAR__21230]);
+         }
+
+         break;
+      }
+   }
+
+   return 0;
+}

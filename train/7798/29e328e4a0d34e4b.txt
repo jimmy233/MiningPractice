@@ -1,0 +1,98 @@
+struct book
+{
+   int         name;
+   char        writer[100];
+   struct book *VAR__NEXT;
+};
+int VAR__819283[26];
+struct book *creat(int VAR_1238123)
+{
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   struct book *xhead;
+
+   ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH);
+   scanf("%d %s", &ANOTHER_POINTER->name, ANOTHER_POINTER->writer);
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   xhead = ANOTHER_POINTER;
+
+   while ( VAR_1238123 - 1 )
+   {
+      VAR_1238123--;
+      ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH);
+      scanf("%d %s", &ANOTHER_POINTER->name, ANOTHER_POINTER->writer);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return xhead;
+}
+
+
+void find(struct book *VAR__HEAD)
+{
+   struct book *VAR_233;
+   int         VAR__53647;
+   char        VAR_9494[100];
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      VAR__53647 = 0;
+      strcpy(VAR_9494, VAR_233->writer);
+
+      while ( VAR_9494[VAR__53647] != '\0' )
+      {
+         VAR__819283[VAR_9494[VAR__53647] - 'A']++;
+         VAR__53647++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void print(struct book *VAR__HEAD, int VAR__MAX)
+{
+   struct book *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if ( strchr(VAR_233->writer, VAR__MAX + 'A'))
+      {
+         printf("%d\n", VAR_233->name);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   int         VAR__53647;
+   int         VAR__MAX = 0;
+   int         VAR_1238123;
+   struct book *VAR__HEAD;
+
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   find(VAR__HEAD);
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__819283[VAR__MAX] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+
+   printf("%c\n", VAR__MAX + 'A');
+   printf("%d\n", VAR__819283[VAR__MAX]);
+   print(VAR__HEAD, VAR__MAX);
+}

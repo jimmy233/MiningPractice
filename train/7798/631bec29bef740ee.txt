@@ -1,0 +1,115 @@
+struct book
+{
+   int         VAR__NUM;
+   char        writer[27];
+   struct book *VAR__NEXT;
+};
+int VAR_1238123;
+int time[26] = { 0 };
+int VAR__MAX;
+int VAR__8444594;
+struct book *create(int VAR__1238129)
+{
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct book *)malloc(LEN));
+   VAR__HEAD       = NULL;
+
+   while ( VAR_1238123 < VAR__1238129 )
+   {
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->writer);
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct book *)malloc(LEN);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void search(struct book *VAR__HEAD)
+{
+   int         VAR__53647;
+   struct book *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         for ( VAR__53647 = 0; VAR_233->writer[VAR__53647] != '\0'; VAR__53647++ )
+         {
+            time[VAR_233->writer[VAR__53647] - 'A']++;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+   }
+}
+
+
+void pr(struct book *VAR__HEAD)
+{
+   int         VAR__53647;
+   struct book *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         for ( VAR__53647 = 0; VAR_233->writer[VAR__53647] != '\0'; VAR__53647++ )
+         {
+            if ( VAR_233->writer[VAR__53647] == ( 'A' + VAR__8444594 ))
+            {
+               printf("%d\n", VAR_233->VAR__NUM);
+            }
+         }
+
+         VAR__HEAD = VAR_233;
+         VAR_233   = VAR_233->VAR__NEXT;
+         free(VAR__HEAD);
+      } while ( VAR_233 != NULL );
+   }
+}
+
+
+void main()
+{
+   int VAR__1238129;
+   int VAR__53647;
+
+   scanf("%d", &VAR__1238129);
+   struct book *VAR__HEAD;
+   VAR__HEAD = create(VAR__1238129);
+   search(VAR__HEAD);
+   VAR__MAX     = time[0];
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 1; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( time[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX     = time[VAR__53647];
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", 'A' + VAR__8444594, VAR__MAX);
+   pr(VAR__HEAD);
+}

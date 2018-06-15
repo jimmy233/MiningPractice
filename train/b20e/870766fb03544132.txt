@@ -1,0 +1,64 @@
+int data[2][1000];
+int cmp(const void *e1, const void *e2)
+{
+   int *ANOTHER_POINTER     = (int *)e1;
+   int *YET_ANOTHER_POINTER = (int *)e2;
+
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int ans;
+
+   while (( cin >> VAR_1238123 ) && ( VAR_1238123 != 0 ))
+   {
+      ans = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> data[0][VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> data[1][VAR__53647];
+      }
+
+      qsort(data[0], VAR_1238123, sizeof( int ), cmp);
+      qsort(data[1], VAR_1238123, sizeof( int ), cmp);
+      int VAR__19328[2];
+      int VAR__112390[2];
+      VAR__19328[0]  = ( VAR__19328[1] = 0 );
+      VAR__112390[0] = ( VAR__112390[1] = VAR_1238123 - 1 );
+
+      while ( VAR__19328[0] <= VAR__112390[0] )
+      {
+         if ( data[0][VAR__19328[0]] > data[1][VAR__19328[1]] )
+         {
+            VAR__19328[0]++;
+            VAR__19328[1]++;
+            ans += 200;
+         }
+         else
+         {
+            for ( ; data[0][VAR__112390[0]] > data[1][VAR__112390[1]]; VAR__112390[0]--, VAR__112390[1]--, ans += 200 )
+            {
+            }
+
+            if ( data[0][VAR__112390[0]] < data[1][VAR__19328[1]] )
+            {
+               ans -= 200;
+            }
+
+            VAR__19328[1]++;
+            VAR__112390[0]--;
+         }
+      }
+
+      ( cout << ans ) << endl;
+   }
+
+   return 0;
+}

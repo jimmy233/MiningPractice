@@ -1,0 +1,38 @@
+struct student
+{
+   struct student *pre;
+   char           mess[500];
+};
+void main()
+{
+   int            VAR_1238123 = 0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR_233;
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN);
+
+   while ( strcmp(gets(ANOTHER_POINTER->mess), "end") != 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         ANOTHER_POINTER->pre = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->pre = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+   }
+
+   VAR_233 = YET_ANOTHER_POINTER;
+   do
+   {
+      printf("%s\n", VAR_233->mess);
+      VAR_233 = VAR_233->pre;
+   } while ( VAR_233 != NULL );
+}

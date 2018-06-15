@@ -1,0 +1,62 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  shuzu[101];
+   int  shang[101] = { 0 };
+   int  fenjie;
+   char chuan[101];
+
+   cin >> chuan;
+   int length = strlen(chuan);
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      shuzu[VAR__53647] = chuan[VAR__53647] - '0';
+   }
+
+   if ( length == 1 )
+   {
+      ((( cout << "0" ) << endl ) << shuzu[0] ) << endl;
+   }
+   else
+   {
+      fenjie   = ( shuzu[0] * 10 ) + shuzu[1];
+      shuzu[1] = fenjie % 13;
+
+      if (( length == 2 ) && ( fenjie < 13 ))
+      {
+         ( cout << "0" ) << endl;
+         cout << fenjie;
+      }
+      else
+      {
+         if ( fenjie >= 13 )
+         {
+            shang[0] = fenjie / 13;
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 < ( length - 1 ); VAR__53647++ )
+         {
+            fenjie = ( shuzu[VAR__53647] * 10 ) + shuzu[VAR__53647 + 1];
+            shuzu[VAR__53647 + 1] = fenjie % 13;
+            shang[VAR__53647]     = fenjie / 13;
+         }
+
+         if ( shang[0] != 0 )
+         {
+            cout << shang[0];
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 < ( length - 1 ); VAR__53647++ )
+         {
+            cout << shang[VAR__53647];
+         }
+
+         cout << endl;
+         cout << shuzu[VAR__53647];
+      }
+   }
+
+   return 0;
+}

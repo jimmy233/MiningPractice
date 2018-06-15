@@ -1,0 +1,83 @@
+void turn(char A_STRING[100])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__temp;
+
+   VAR_1238123 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 <= (( VAR_1238123 - 1 ) / 2 ); VAR__53647++ )
+   {
+      VAR__temp            = A_STRING[VAR__53647];
+      A_STRING[VAR__53647] = A_STRING[( VAR_1238123 - VAR__53647 ) - 1];
+      A_STRING[( VAR_1238123 - VAR__53647 ) - 1] = VAR__temp;
+   }
+}
+
+
+int VAR__MIN(int VAR__7685, int VAR__3918907)
+{
+   int VAR__9290;
+
+   if ( VAR__7685 >= VAR__3918907 )
+   {
+      VAR__9290 = VAR__3918907;
+   }
+   else
+   {
+      VAR__9290 = VAR__7685;
+   }
+
+   return VAR__9290;
+}
+
+
+void miner(char ANOTHER_STRING[100], char YET_ANOTHER_STRING[100], char str3[100])
+{
+   int VAR__temp;
+   int VAR__53647;
+   int VAR__1238129;
+   int VAR_1238123;
+
+   VAR__1238129 = strlen(ANOTHER_STRING);
+   VAR_1238123  = strlen(YET_ANOTHER_STRING);
+   VAR__temp    = VAR__MIN(VAR__1238129, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      if ( ANOTHER_STRING[VAR__53647] >= YET_ANOTHER_STRING[VAR__53647] )
+      {
+         str3[VAR__53647] = ( ANOTHER_STRING[VAR__53647] - YET_ANOTHER_STRING[VAR__53647] ) + 48;
+      }
+      else
+      {
+         str3[VAR__53647] = (( ANOTHER_STRING[VAR__53647] + 10 ) - YET_ANOTHER_STRING[VAR__53647] ) + 48;
+         ANOTHER_STRING[VAR__53647 + 1]--;
+         str3[VAR__53647 + 1]--;
+      }
+   }
+}
+
+
+void main()
+{
+   char VAR__819283[100];
+   char VAR__19328[100];
+   char VAR__temp[2];
+   char VAR__4857423[100];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      gets(VAR__temp);
+      gets(VAR__819283);
+      gets(VAR__19328);
+      turn(VAR__819283);
+      turn(VAR__19328);
+      strcpy(VAR__4857423, VAR__819283);
+      miner(VAR__819283, VAR__19328, VAR__4857423);
+      turn(VAR__4857423);
+      puts(VAR__4857423);
+   }
+}

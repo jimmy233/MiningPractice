@@ -1,0 +1,93 @@
+char name[200][21];
+int  qmg[200];
+int  cg[200];
+char gb[200];
+char xb[200];
+int  lw[200];
+int  schsum[200];
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__NUM;
+   int  whole;
+   char ANOTHER_STRING[21];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int  VAR__21230;
+      char YET_ANOTHER_STRING[21];
+      char x4;
+      char x5;
+      int  x2;
+      int  x3;
+      int  x6;
+      scanf("%s %d %d %c %c %d", YET_ANOTHER_STRING, &x2, &x3, &x4, &x5, &x6);
+      for ( VAR__21230 = 0; VAR__21230 < 21; VAR__21230++ )
+      {
+         name[VAR__53647][VAR__21230] = YET_ANOTHER_STRING[VAR__21230];
+      }
+
+      qmg[VAR__53647] = x2;
+      cg[VAR__53647]  = x3;
+      gb[VAR__53647]  = x4;
+      xb[VAR__53647]  = x5;
+      lw[VAR__53647]  = x6;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      schsum[VAR__53647] = 0;
+
+      if (( qmg[VAR__53647] > 80 ) && ( lw[VAR__53647] >= 1 ))
+      {
+         schsum[VAR__53647] += 8000;
+      }
+
+      if (( qmg[VAR__53647] > 85 ) && ( cg[VAR__53647] > 80 ))
+      {
+         schsum[VAR__53647] += 4000;
+      }
+
+      if ( qmg[VAR__53647] > 90 )
+      {
+         schsum[VAR__53647] += 2000;
+      }
+
+      if (( xb[VAR__53647] == 'Y' ) && ( qmg[VAR__53647] > 85 ))
+      {
+         schsum[VAR__53647] += 1000;
+      }
+
+      if (( gb[VAR__53647] == 'Y' ) && ( cg[VAR__53647] > 80 ))
+      {
+         schsum[VAR__53647] += 850;
+      }
+   }
+
+   VAR__NUM = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( schsum[VAR__NUM] < schsum[VAR__53647] )
+      {
+         VAR__NUM = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 21; VAR__53647++ )
+   {
+      ANOTHER_STRING[VAR__53647] = name[VAR__NUM][VAR__53647];
+   }
+
+   puts(ANOTHER_STRING);
+   printf("%d\n", schsum[VAR__NUM]);
+   whole = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      whole += schsum[VAR__53647];
+   }
+
+   printf("%d", whole);
+   return 0;
+}

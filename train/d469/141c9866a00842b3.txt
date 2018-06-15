@@ -1,0 +1,49 @@
+int main()
+{
+   char VAR_9494[550] = { 0 };
+   int  VAR__53647;
+   int  VAR__NUM;
+   int  VAR__21230;
+   int  VAR__8444594;
+
+   for ( VAR__53647 = 0; VAR__53647 < 550; VAR__53647++ )
+   {
+      scanf("%c", &VAR_9494[VAR__53647]);
+
+      if ( VAR_9494[VAR__53647] == '\n' )
+      {
+         VAR_9494[VAR__53647] = 0;
+         VAR__NUM             = VAR__53647 - 1;
+         break;
+      }
+   }
+
+   char *ANOTHER_POINTER;
+   char *YET_ANOTHER_POINTER;
+   for ( VAR__53647 = 2; VAR__53647 <= ( VAR__NUM + 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER     = (char *)malloc(( sizeof( char )) * ( VAR__53647 + 1 ));
+      YET_ANOTHER_POINTER = (char *)malloc(( sizeof( char )) * ( VAR__53647 + 1 ));
+      for ( VAR__21230 = 0; VAR__21230 <= (( VAR__NUM + 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         for ( VAR__8444594 = VAR__21230; VAR__8444594 <= (( VAR__21230 + VAR__53647 ) - 1 ); VAR__8444594++ )
+         {
+            *(( ANOTHER_POINTER + VAR__8444594 ) - VAR__21230 )     = VAR_9494[VAR__8444594];
+            *(( YET_ANOTHER_POINTER + VAR__8444594 ) - VAR__21230 ) = VAR_9494[((( VAR__21230 + VAR__21230 ) + VAR__53647 ) - 1 ) - VAR__8444594];
+         }
+
+         *( ANOTHER_POINTER + VAR__53647 )     = '\0';
+         *( YET_ANOTHER_POINTER + VAR__53647 ) = '\0';
+
+         if ( strcmp(ANOTHER_POINTER, YET_ANOTHER_POINTER) == 0 )
+         {
+            printf("%s\n", ANOTHER_POINTER);
+         }
+      }
+
+      free(ANOTHER_POINTER);
+      free(YET_ANOTHER_POINTER);
+   }
+
+   return 0;
+}

@@ -1,0 +1,66 @@
+int main(int argc, char *argv[])
+{
+   int VAR__127322(int VAR__3918907);
+   int VAR_9Q8Q90(int VAR__3918907, int VAR__1238129, int VAR__12302);
+
+   int y1;
+   int y2;
+   int m1;
+   int m2;
+   int d1;
+   int d2;
+   int VAR__7685 = 0;
+   int VAR__53647;
+   scanf("%d%d%d", &y1, &m1, &d1);
+   scanf("%d%d%d", &y2, &m2, &d2);
+   VAR__7685 = VAR_9Q8Q90(y2, m2, d2) - VAR_9Q8Q90(y1, m1, d1);
+
+   if ( y1 != y2 )
+   {
+      for ( VAR__53647 = y1; VAR__53647 <= ( y2 - 1 ); VAR__53647++ )
+      {
+         VAR__7685 += 365 + VAR__127322(VAR__53647);
+      }
+   }
+
+   printf("%d", VAR__7685);
+   return 0;
+}
+
+
+int VAR__127322(int VAR__3918907)
+{
+   int VAR__7685;
+
+   VAR__7685 = (((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || ((( VAR__3918907 % 400 ) == 0 ) == 1 )) ? ( 1 ) : ( 0 );
+
+   if ( VAR__7685 == 1 )
+   {
+      return 1;
+   }
+
+   if ( VAR__7685 == 0 )
+   {
+      return 0;
+   }
+}
+
+
+int VAR_9Q8Q90(int VAR__3918907, int VAR__1238129, int VAR__12302)
+{
+   int VAR__temp = 0;
+   int VAR__21230;
+   int mon[13];
+
+   mon[0] = 0;
+   mon[1] = ( mon[3] = ( mon[5] = ( mon[7] = ( mon[8] = ( mon[10] = ( mon[12] = 31 ))))));
+   mon[4] = ( mon[6] = ( mon[9] = ( mon[11] = 30 )));
+   mon[2] = 28 + VAR__127322(VAR__3918907);
+   for ( VAR__21230 = 1; VAR__21230 <= VAR__1238129; VAR__21230++ )
+   {
+      VAR__temp += mon[VAR__21230 - 1];
+   }
+
+   VAR__temp += VAR__12302;
+   return VAR__temp;
+}

@@ -1,0 +1,50 @@
+int main()
+{
+   char VAR__NUM[101];
+   int  VAR__53647;
+   int  first;
+   int  lenth;
+   int  mod;
+   int  cache;
+
+   gets(VAR__NUM);
+   lenth = strlen(VAR__NUM);
+   int bit[lenth];
+   for ( VAR__53647 = 0; VAR__53647 < lenth; VAR__53647++ )
+   {
+      bit[VAR__53647] = VAR__NUM[VAR__53647] - '0';
+   }
+
+   if ( lenth == 1 )
+   {
+      printf("0\n%d", bit[0]);
+   }
+   else
+   if (( lenth == 2 ) && ((( bit[0] * 10 ) + bit[1] ) < 13 ))
+   {
+      printf("0\n%d", ( bit[0] * 10 ) + bit[1]);
+   }
+   else
+   {
+      first = ( bit[0] * 10 ) + bit[1];
+
+      if (( first / 13 ) != 0 )
+      {
+         printf("%d", first / 13);
+      }
+
+      mod = first % 13;
+      for ( VAR__53647 = 2; VAR__53647 < lenth; VAR__53647++ )
+      {
+         cache = ( mod * 10 ) + bit[VAR__53647];
+         printf("%d", cache / 13);
+         mod = cache % 13;
+      }
+
+      printf("\n%d", mod);
+   }
+
+
+   getchar();
+   getchar();
+}

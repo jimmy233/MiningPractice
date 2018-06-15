@@ -1,0 +1,53 @@
+int VAR_233(int VAR_1238123, int heightLimit, int *missileHeight, int missileNum)
+{
+   int VAR__819283;
+   int VAR__19328;
+
+   if ( VAR_1238123 == ( missileNum - 1 ))
+   {
+      if ( missileHeight[VAR_1238123] <= heightLimit )
+      {
+         return 1;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+
+   else
+   if ( missileHeight[VAR_1238123] <= heightLimit )
+   {
+      VAR__819283 = 1 + VAR_233(VAR_1238123 + 1, missileHeight[VAR_1238123], missileHeight, missileNum);
+      VAR__19328  = VAR_233(VAR_1238123 + 1, heightLimit, missileHeight, missileNum);
+      return ( VAR__819283 > VAR__19328 ) ? ( VAR__819283 ) : ( VAR__19328 );
+   }
+   else
+   {
+      return VAR_233(VAR_1238123 + 1, heightLimit, missileHeight, missileNum);
+   }
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int *missileHeight;
+   int highest = -1;
+
+   scanf("%d", &VAR_1238123);
+   missileHeight = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &missileHeight[VAR__53647]);
+
+      if ( missileHeight[VAR__53647] > highest )
+      {
+         highest = missileHeight[VAR__53647];
+      }
+   }
+
+   printf("%d", VAR_233(0, highest, missileHeight, VAR_1238123));
+}

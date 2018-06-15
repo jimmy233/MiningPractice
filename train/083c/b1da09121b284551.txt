@@ -1,0 +1,63 @@
+int convert_1(char VAR__819283)
+{
+   if (( VAR__819283 >= '0' ) && ( VAR__819283 <= '9' ))
+   {
+      return VAR__819283 - '0';
+   }
+
+   if (( VAR__819283 >= 'a' ) && ( VAR__819283 <= 'z' ))
+   {
+      return ( VAR__819283 - 'a' ) + 10;
+   }
+
+   if (( VAR__819283 >= 'A' ) && ( VAR__819283 <= 'Z' ))
+   {
+      return ( VAR__819283 - 'A' ) + 10;
+   }
+}
+
+
+char convert_2(int VAR__819283)
+{
+   if ( VAR__819283 < 10 )
+   {
+      return VAR__819283 + '0';
+   }
+   else
+   {
+      return ( VAR__819283 - 10 ) + 'A';
+   }
+}
+
+
+void convert(int VAR__819283, int VAR_1238123)
+{
+   if ( VAR__819283 >= VAR_1238123 )
+   {
+      convert(VAR__819283 / VAR_1238123, VAR_1238123);
+   }
+
+   printf("%c", convert_2(VAR__819283 % VAR_1238123));
+}
+
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR_1238123 = 0;
+   int  VAR__19328;
+   int  VAR__8444594 = 1;
+   int  VAR__53647;
+   char A_STRING[500];
+
+   scanf("%d %s %d", &VAR__819283, A_STRING, &VAR__19328);
+   for ( VAR__53647 = strlen(A_STRING) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR_1238123  += convert_1(A_STRING[VAR__53647]) * VAR__8444594;
+      VAR__8444594 *= VAR__819283;
+   }
+
+   convert(VAR_1238123, VAR__19328);
+   printf("\n");
+   return 0;
+}

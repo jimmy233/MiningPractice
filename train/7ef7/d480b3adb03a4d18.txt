@@ -1,0 +1,91 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   int VAR__53647            = 0;
+   int VAR__21230            = 0;
+   int VAR__819283[105][105] = { 0 };
+
+   while ( cin >> VAR__819283[0][0] )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; ++VAR__21230 )
+         {
+            if (( VAR__53647 == 0 ) && ( VAR__21230 == 0 ))
+            {
+               continue;
+            }
+
+            cin >> VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+      int tmp      = VAR_1238123;
+      int VAR__SUM = 0;
+
+      while ( --tmp )
+      {
+         int tmp_min;
+         for ( VAR__53647 = 0; VAR__53647 < ( tmp + 1 ); ++VAR__53647 )
+         {
+            tmp_min = 600000;
+            for ( VAR__21230 = 0; VAR__21230 < ( tmp + 1 ); ++VAR__21230 )
+            {
+               if ( tmp_min > VAR__819283[VAR__53647][VAR__21230] )
+               {
+                  tmp_min = VAR__819283[VAR__53647][VAR__21230];
+               }
+            }
+
+            if ( tmp_min )
+            {
+               for ( VAR__21230 = 0; VAR__21230 < ( tmp + 1 ); ++VAR__21230 )
+               {
+                  VAR__819283[VAR__53647][VAR__21230] -= tmp_min;
+               }
+            }
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < ( tmp + 1 ); ++VAR__21230 )
+         {
+            tmp_min = 600000;
+            for ( VAR__53647 = 0; VAR__53647 < ( tmp + 1 ); ++VAR__53647 )
+            {
+               if ( tmp_min > VAR__819283[VAR__53647][VAR__21230] )
+               {
+                  tmp_min = VAR__819283[VAR__53647][VAR__21230];
+               }
+            }
+
+            if ( tmp_min )
+            {
+               for ( VAR__53647 = 0; VAR__53647 < ( tmp + 1 ); ++VAR__53647 )
+               {
+                  VAR__819283[VAR__53647][VAR__21230] -= tmp_min;
+               }
+            }
+         }
+
+         VAR__SUM += VAR__819283[1][1];
+         for ( VAR__53647 = 2; VAR__53647 < ( tmp + 1 ); ++VAR__53647 )
+         {
+            VAR__819283[0][VAR__53647 - 1] = VAR__819283[0][VAR__53647];
+            VAR__819283[VAR__53647 - 1][0] = VAR__819283[VAR__53647][0];
+         }
+
+         for ( VAR__53647 = 2; VAR__53647 < ( tmp + 1 ); ++VAR__53647 )
+         {
+            for ( VAR__21230 = 2; VAR__21230 < ( tmp + 1 ); ++VAR__21230 )
+            {
+               VAR__819283[VAR__53647 - 1][VAR__21230 - 1] = VAR__819283[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

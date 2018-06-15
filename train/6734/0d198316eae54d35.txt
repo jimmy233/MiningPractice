@@ -1,0 +1,107 @@
+struct monkey
+{
+   int           VAR__NUM;
+   struct monkey *VAR__NEXT;
+};
+struct monkey *del(struct monkey *VAR__HEAD, int VAR__7685)
+{
+   struct monkey *ANOTHER_POINTER;
+   struct monkey *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while (( VAR__7685 != ANOTHER_POINTER->VAR__NUM ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   if ( VAR__7685 == ANOTHER_POINTER->VAR__NUM )
+   {
+      if ( ANOTHER_POINTER == VAR__HEAD )
+      {
+         VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct monkey *del(struct monkey *VAR__HEAD, int VAR__7685);
+
+   struct monkey *VAR__HEAD;
+   struct monkey *ANOTHER_POINTER;
+   struct monkey *YET_ANOTHER_POINTER;
+   int           VAR__53647;
+   int           VAR__21230;
+   int           VAR__8444594 = 1;
+   int           VAR__temp;
+   int           VAR_1238123[100];
+   int           VAR__1238129[100];
+   int           VAR__COUNT = 0;
+   int           VAR_233;
+
+   for ( VAR__temp = 0; ; VAR__temp++ )
+   {
+      scanf("%d %d", &VAR_1238123[VAR__temp], &VAR__1238129[VAR__temp]);
+
+      if ( VAR_1238123[VAR__temp] == 0 )
+      {
+         break;
+      }
+   }
+
+   VAR_233 = VAR__temp - 1;
+   for ( VAR__temp = 0; VAR__temp <= VAR_233; VAR__temp++ )
+   {
+      VAR__COUNT                = 0;
+      VAR__8444594              = 1;
+      ANOTHER_POINTER           = ( YET_ANOTHER_POINTER = ( VAR__HEAD = (struct monkey *)malloc(LEN)));
+      ANOTHER_POINTER->VAR__NUM = 1;
+      for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123[VAR__temp]; VAR__53647++ )
+      {
+         ANOTHER_POINTER                = (struct monkey *)malloc(LEN);
+         ANOTHER_POINTER->VAR__NUM      = VAR__53647;
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__53647 = 1; ; VAR__53647++ )
+      {
+         if ( VAR__8444594 == VAR__1238129[VAR__temp] )
+         {
+            del(VAR__HEAD, ANOTHER_POINTER->VAR__NUM);
+            VAR__COUNT++;
+            VAR__HEAD    = del(VAR__HEAD, ANOTHER_POINTER->VAR__NUM);
+            VAR__8444594 = 0;
+         }
+
+         if ( ANOTHER_POINTER->VAR__NEXT != NULL )
+         {
+            ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+         }
+         else
+         {
+            ANOTHER_POINTER = VAR__HEAD;
+         }
+
+         VAR__8444594++;
+
+         if ( VAR__COUNT == ( VAR_1238123[VAR__temp] - 1 ))
+         {
+            break;
+         }
+      }
+
+      printf("%d\n", VAR__HEAD->VAR__NUM);
+   }
+}

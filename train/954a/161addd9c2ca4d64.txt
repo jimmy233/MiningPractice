@@ -1,0 +1,64 @@
+int main()
+{
+   int  N;
+   int  VAR__53647;
+   int  Endmark[100];
+   int  Classmark[100];
+   int  Essay[100];
+   int  award[100] = { 0 };
+   int  VAR__SUM   = 0;
+   int  BP;
+   int  X;
+   char Name[100][21];
+   char Zone[100];
+   char Leader[100];
+
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", Name[VAR__53647], &Endmark[VAR__53647], &Classmark[VAR__53647], &Leader[VAR__53647], &Zone[VAR__53647], &Essay[VAR__53647]);
+
+      if (( Endmark[VAR__53647] > 80 ) && ( Essay[VAR__53647] > 0 ))
+      {
+         award[VAR__53647] += 8000;
+      }
+
+      if (( Endmark[VAR__53647] > 85 ) && ( Classmark[VAR__53647] > 80 ))
+      {
+         award[VAR__53647] += 4000;
+      }
+
+      if ( Endmark[VAR__53647] > 90 )
+      {
+         award[VAR__53647] += 2000;
+      }
+
+      if (( Endmark[VAR__53647] > 85 ) && ( Zone[VAR__53647] == 'Y' ))
+      {
+         award[VAR__53647] += 1000;
+      }
+
+      if (( Classmark[VAR__53647] > 80 ) && ( Leader[VAR__53647] == 'Y' ))
+      {
+         award[VAR__53647] += 850;
+      }
+
+      VAR__SUM += award[VAR__53647];
+   }
+
+   BP = award[0];
+   X  = 0;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( award[VAR__53647] > BP )
+      {
+         BP = award[VAR__53647];
+         X  = VAR__53647;
+      }
+   }
+
+   printf("%s\n", Name[X]);
+   printf("%d\n", award[X]);
+   printf("%d\n", VAR__SUM);
+   return 0;
+}

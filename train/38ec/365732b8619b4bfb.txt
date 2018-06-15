@@ -1,0 +1,71 @@
+int main()
+{
+   int year1;
+   int year2;
+   int month1;
+   int month2;
+   int date1;
+   int date2;
+   int Day  = 0;
+   int Day1 = 0;
+   int Day2 = 0;
+   int VAR__53647;
+   int numr = 0;
+   int nump;
+   int Monthr[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int Monthp[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> year1 ) >> month1 ) >> date1;
+   (( cin >> year2 ) >> month2 ) >> date2;
+
+   if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= month1; VAR__53647++ )
+      {
+         Day1 = Monthr[VAR__53647] + Day1;
+      }
+
+      Day1 = ( Day1 - ( Monthr[month1] - date1 )) - 1;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= month1; VAR__53647++ )
+      {
+         Day1 = Monthp[VAR__53647] + Day1;
+      }
+
+      Day1 = ( Day1 - ( Monthp[month1] - date1 )) - 1;
+   }
+
+   if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 12; VAR__53647 >= month2; VAR__53647-- )
+      {
+         Day2 = Monthr[VAR__53647] + Day2;
+      }
+
+      Day2 = Day2 - date2;
+   }
+   else
+   {
+      for ( VAR__53647 = 12; VAR__53647 >= month2; VAR__53647-- )
+      {
+         Day2 = Monthp[VAR__53647] + Day2;
+      }
+
+      Day2 = Day2 - date2;
+   }
+
+   for ( VAR__53647 = year1; VAR__53647 <= year2; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         numr++;
+      }
+   }
+
+   nump = (( year2 - year1 ) + 1 ) - numr;
+   Day  = (((( 365 * nump ) + ( 366 * numr )) - Day1 ) - Day2 ) - 1;
+   ( cout << Day ) << endl;
+   return 0;
+}

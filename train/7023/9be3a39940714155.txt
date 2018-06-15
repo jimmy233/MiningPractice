@@ -1,0 +1,119 @@
+void jf(char *VAR__819283, int VAR_1238123, char *VAR__19328, int VAR__1238129)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   for ( VAR__53647 = VAR__1238129 - 1, VAR__21230 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647--, VAR__21230-- )
+   {
+      if ( VAR__819283[VAR__21230] >= VAR__19328[VAR__53647] )
+      {
+         VAR__819283[VAR__21230] = ( VAR__819283[VAR__21230] - VAR__19328[VAR__53647] ) + '0';
+      }
+      else
+      {
+         VAR__819283[VAR__21230] = (( VAR__819283[VAR__21230] - VAR__19328[VAR__53647] ) + 10 ) + '0';
+         VAR__819283[VAR__21230 - 1]--;
+      }
+   }
+
+   if ( VAR_1238123 == VAR__1238129 )
+   {
+      VAR__819283[0] = ( VAR__819283[0] - VAR__19328[0] ) + '0';
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         printf("%c", VAR__819283[VAR__53647]);
+      }
+   }
+   else
+   {
+      if ( VAR__819283[VAR_1238123 - VAR__1238129] >= VAR__19328[0] )
+      {
+         VAR__819283[VAR_1238123 - VAR__1238129] = ( VAR__819283[VAR_1238123 - VAR__1238129] - VAR__19328[0] ) + '0';
+      }
+      else
+      {
+         VAR__819283[VAR_1238123 - VAR__1238129] = (( VAR__819283[VAR_1238123 - VAR__1238129] - VAR__19328[0] ) + 10 ) + '0';
+         VAR__819283[( VAR_1238123 - VAR__1238129 ) - 1]--;
+         for ( VAR__8444594 = ( VAR_1238123 - VAR__1238129 ) - 1; VAR__8444594 >= 0; VAR__8444594-- )
+         {
+            if ( VAR__819283[VAR__8444594] >= '0' )
+            {
+               break;
+            }
+            else
+            {
+               VAR__819283[VAR__8444594] = 9 + '0';
+               VAR__819283[VAR__8444594 - 1]--;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         printf("%c", VAR__819283[VAR__53647]);
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   char **pp;
+   pp = (char **)malloc(VAR_1238123 * ( sizeof( char * )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      pp[VAR__53647] = (char *)malloc(101 * ( sizeof( char )));
+   }
+
+   char **qq;
+   qq = (char **)malloc(VAR_1238123 * ( sizeof( char * )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      qq[VAR__53647] = (char *)malloc(101 * ( sizeof( char )));
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s", pp[VAR__53647]);
+      scanf("%s", qq[VAR__53647]);
+      printf("\n");
+   }
+
+   scanf("%s", pp[VAR_1238123 - 1]);
+   scanf("%s", qq[VAR_1238123 - 1]);
+   int *VAR_233;
+   int *VAR_666;
+   VAR_233 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   VAR_666 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = strlen(pp[VAR__53647]);
+      VAR_666[VAR__53647] = strlen(qq[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      jf(pp[VAR__53647], VAR_233[VAR__53647], qq[VAR__53647], VAR_666[VAR__53647]);
+      printf("\n");
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      free(pp[VAR__53647]);
+   }
+
+   free(pp);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      free(qq[VAR__53647]);
+   }
+
+   free(qq);
+   free(VAR_233);
+   free(VAR_666);
+}

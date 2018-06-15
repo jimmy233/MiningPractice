@@ -1,0 +1,61 @@
+struct people
+{
+   char  VAR__819283[10];
+   float VAR_2890;
+};
+int com1(const void *VAR__7685, const void *VAR__3918907)
+{
+   return ( *((int *)VAR__7685 )) - ( *((int *)VAR__3918907 ));
+}
+
+
+int com2(const void *VAR__7685, const void *VAR__3918907)
+{
+   return ( *((int *)VAR__3918907 )) - ( *((int *)VAR__7685 ));
+}
+
+
+int main()
+{
+   struct people VAR_233[40];
+   int           VAR_1238123;
+   int           VAR__53647;
+   int           VAR__21230;
+   int           VAR__8444594;
+   float         VAR__1238129[40];
+   float         VAR__127322[40];
+
+   scanf("%d", &VAR_1238123);
+   VAR__21230   = 0;
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", &VAR_233[VAR__53647].VAR__819283, &VAR_233[VAR__53647].VAR_2890);
+
+      if ( VAR_233[VAR__53647].VAR__819283[0] == 'm' )
+      {
+         VAR__1238129[VAR__21230] = VAR_233[VAR__53647].VAR_2890;
+         VAR__21230 = VAR__21230 + 1;
+      }
+      else
+      {
+         VAR__127322[VAR__8444594] = VAR_233[VAR__53647].VAR_2890;
+         VAR__8444594 = VAR__8444594 + 1;
+      }
+   }
+
+   qsort(VAR__1238129, VAR__21230, sizeof( VAR__1238129[0] ), com1);
+   qsort(VAR__127322, VAR__8444594, sizeof( VAR__127322[0] ), com2);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%.2f ", VAR__1238129[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", VAR__127322[VAR__53647]);
+   }
+
+   printf("%.2f", VAR__127322[VAR__8444594 - 1]);
+   return 0;
+}

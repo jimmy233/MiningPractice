@@ -1,0 +1,90 @@
+void sub(int VAR__819283[M], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__MIN = VAR__819283[0];
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MIN > VAR__819283[VAR__53647] )
+      {
+         VAR__MIN = VAR__819283[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] -= VAR__MIN;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__8444594;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__COUNT;
+   int VAR__SUM;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      int VAR__819283[M][M];
+      int VAR__TEMP[M];
+      VAR__SUM = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+         }
+      }
+
+      for ( VAR__COUNT = 0; VAR__COUNT < ( VAR_1238123 - 1 ); VAR__COUNT++ )
+      {
+         for ( VAR__53647 = VAR__COUNT; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            for ( VAR__21230 = VAR__COUNT; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               VAR__TEMP[VAR__21230 - VAR__COUNT] = VAR__819283[VAR__53647][VAR__21230];
+            }
+
+            sub(VAR__TEMP, VAR_1238123 - VAR__COUNT);
+            for ( VAR__21230 = VAR__COUNT; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               VAR__819283[VAR__53647][VAR__21230] = VAR__TEMP[VAR__21230 - VAR__COUNT];
+            }
+         }
+
+         for ( VAR__21230 = VAR__COUNT; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            for ( VAR__53647 = VAR__COUNT; VAR__53647 < VAR_1238123; VAR__53647++ )
+            {
+               VAR__TEMP[VAR__53647 - VAR__COUNT] = VAR__819283[VAR__53647][VAR__21230];
+            }
+
+            sub(VAR__TEMP, VAR_1238123 - VAR__COUNT);
+            for ( VAR__53647 = VAR__COUNT; VAR__53647 < VAR_1238123; VAR__53647++ )
+            {
+               VAR__819283[VAR__53647][VAR__21230] = VAR__TEMP[VAR__53647 - VAR__COUNT];
+            }
+         }
+
+         VAR__SUM += VAR__819283[VAR__COUNT + 1][VAR__COUNT + 1];
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            VAR__819283[VAR__53647][VAR__COUNT + 1] = VAR__819283[VAR__53647][VAR__COUNT];
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__819283[VAR__COUNT + 1][VAR__21230] = VAR__819283[VAR__COUNT][VAR__21230];
+         }
+      }
+
+      printf("%d\n", VAR__SUM);
+   }
+
+   return 0;
+}

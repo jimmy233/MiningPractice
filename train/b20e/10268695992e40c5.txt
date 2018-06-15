@@ -1,0 +1,91 @@
+int compare(const void *VAR_233, const void *VAR_666)
+{
+   int *t1 = (int *)VAR_233;
+   int *t2 = (int *)VAR_666;
+
+   return ( *t2 ) - ( *t1 );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int t_max;
+   int t_min;
+   int VAR_666[1000];
+   int VAR__temp[1000];
+   int win;
+   int loss;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         return 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_666[VAR__53647]);
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), compare);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), compare);
+      t_max = 0;
+      t_min = VAR_1238123 - 1;
+      win   = ( loss = 0 );
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__temp[t_max] > VAR_666[VAR__53647] )
+         {
+            win++;
+            t_max++;
+         }
+         else
+         if ( VAR__temp[t_max] < VAR_666[VAR__53647] )
+         {
+            loss++;
+            t_min--;
+         }
+         else
+         if ( VAR__temp[t_max] == VAR_666[VAR__53647] )
+         {
+            for ( VAR__21230 = VAR__53647 + 1, VAR__8444594 = t_max + 1; VAR__21230 < VAR_1238123; VAR__21230++, VAR__8444594++ )
+            {
+               if (( VAR__temp[VAR__8444594] <= VAR_666[VAR__21230] ) && ( VAR__temp[t_max] > VAR_666[VAR__21230] ))
+               {
+                  break;
+               }
+            }
+
+            if ( VAR__21230 < VAR_1238123 )
+            {
+               if ( VAR__temp[t_min] < VAR_666[VAR__53647] )
+               {
+                  loss++;
+               }
+
+               t_min--;
+            }
+            else
+            {
+               t_max++;
+            }
+         }
+      }
+
+      printf("%d\n", 200 * ( win - loss ));
+   }
+
+   return 0;
+}

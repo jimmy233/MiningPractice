@@ -1,0 +1,54 @@
+int main()
+{
+   int  VAR_1238123;
+   char A_STRING[510] = { '\0' };
+
+   cin >> VAR_1238123;
+   cin >> A_STRING;
+   int  LEN_OF_STH = strlen(A_STRING);
+   char *VAR_233   = A_STRING;
+   char substr[6]  = { '\0' };
+   substr[VAR_1238123] = '\0';
+   int fre[510] = { 0 };
+   int maxfre   = 0;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      strncpy(substr, VAR_233 + VAR__53647, VAR_1238123);
+      for ( int VAR__21230 = VAR__53647; VAR__21230 <= ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+      {
+         if ( !strncmp(substr, VAR_233 + VAR__21230, VAR_1238123))
+         {
+            fre[VAR__53647]++;
+         }
+      }
+
+
+      if ( fre[VAR__53647] > maxfre )
+      {
+         maxfre = fre[VAR__53647];
+      }
+   }
+
+   if ( maxfre == 1 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   {
+      ( cout << maxfre ) << endl;
+      for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+      {
+         if ( fre[VAR__53647] == maxfre )
+         {
+            for ( int VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + VAR_1238123 ); VAR__21230++ )
+            {
+               cout << A_STRING[VAR__21230];
+            }
+
+            cout << endl;
+         }
+      }
+   }
+
+   return 0;
+}

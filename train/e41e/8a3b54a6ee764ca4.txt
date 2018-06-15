@@ -1,0 +1,56 @@
+int main()
+{
+   char VAR_SIZE[300] = { '\0' };
+   char result[300]   = { '\0' };
+   int  VAR__8444594;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1238129;
+
+   scanf("%s", VAR_SIZE);
+
+   if ( strlen(VAR_SIZE) == 1 )
+   {
+      VAR__21230 = VAR_SIZE[0] - 48;
+      printf("0\n%d", VAR__21230);
+   }
+   else
+   if ( strlen(VAR_SIZE) == 2 )
+   {
+      VAR__21230 = (( VAR_SIZE[0] - 48 ) * 10 ) + ( VAR_SIZE[1] - 48 );
+      printf("%d\n%d", VAR__21230 / 13, VAR__21230 % 13);
+   }
+   else
+   {
+      VAR__8444594 = VAR_SIZE[0] - 48;
+      for ( VAR__21230 = VAR__8444594, VAR__53647 = 1; VAR__53647 < strlen(VAR_SIZE); VAR__53647++ )
+      {
+         VAR__8444594 = ( VAR__21230 * 10 ) + ( VAR_SIZE[VAR__53647] - 48 );
+         for ( VAR__1238129 = 0; VAR__1238129 <= 9; VAR__1238129++ )
+         {
+            if ((( 13 * VAR__1238129 ) <= VAR__8444594 ) && (( 13 * ( VAR__1238129 + 1 )) > VAR__8444594 ))
+            {
+               result[VAR__53647 - 1] = VAR__1238129 + 48;
+               VAR__21230             = VAR__8444594 - ( 13 * VAR__1238129 );
+               break;
+            }
+         }
+      }
+
+      if ( result[0] != '0' )
+      {
+         printf("%c", result[0]);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < ( strlen(result) - 1 ); VAR__53647++ )
+      {
+         printf("%c", result[VAR__53647]);
+      }
+
+      printf("%c\n", result[strlen(result) - 1]);
+      printf("%d", VAR__21230);
+   }
+
+
+   return 0;
+}

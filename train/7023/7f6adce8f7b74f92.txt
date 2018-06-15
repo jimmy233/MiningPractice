@@ -1,0 +1,74 @@
+int main()
+{
+   char num1[200];
+   char num2[200];
+   int  result[200];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_FLAG = 0;
+   int  len1;
+   int  len2;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin.get();
+      cin.getline(num1, 200);
+      cin.getline(num2, 200);
+      len1 = strlen(num1);
+      len2 = strlen(num2);
+      for ( VAR__21230 = len1 - 1, VAR__8444594 = len2 - 1; VAR__21230 >= 0; VAR__21230--, VAR__8444594-- )
+      {
+         if ( VAR__8444594 >= 0 )
+         {
+            if ( VAR_FLAG == 1 )
+            {
+               num1[VAR__21230] -= 1;
+               VAR_FLAG          = 0;
+            }
+
+            if ( num1[VAR__21230] < num2[VAR__8444594] )
+            {
+               num1[VAR__21230] += 10;
+               VAR_FLAG          = 1;
+            }
+
+            result[VAR__21230] = num1[VAR__21230] - num2[VAR__8444594];
+         }
+         else
+         {
+            if ( VAR_FLAG == 1 )
+            {
+               num1[VAR__21230] -= 1;
+               VAR_FLAG          = 0;
+            }
+
+            result[VAR__21230] = num1[VAR__21230] - '0';
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < len1; VAR__21230++ )
+      {
+         if ( result[VAR__21230] != 0 )
+         {
+            VAR_FLAG = 1;
+         }
+
+         if (( result[VAR__21230] == 0 ) && ( VAR_FLAG == 0 ))
+         {
+            continue;
+         }
+         else
+         {
+            cout << result[VAR__21230];
+         }
+      }
+
+      cout << endl;
+      VAR_FLAG = 0;
+   }
+
+   return 0;
+}

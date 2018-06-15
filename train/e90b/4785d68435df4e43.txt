@@ -1,0 +1,52 @@
+struct student
+{
+   int id;
+   int chinese;
+   int math;
+   int total;
+};
+int main()
+{
+   struct student stu[100000];
+   struct student VAR__MAX[3] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+   int            VAR_1238123;
+   int            VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d\n", &stu[VAR__53647].id, &stu[VAR__53647].chinese, &stu[VAR__53647].math);
+      stu[VAR__53647].total = stu[VAR__53647].chinese + stu[VAR__53647].math;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].total > VAR__MAX[1].total )
+      {
+         VAR__MAX[1] = stu[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((( stu[VAR__53647].total > VAR__MAX[2].total ) && ( stu[VAR__53647].total <= VAR__MAX[1].total )) && ( stu[VAR__53647].id != VAR__MAX[1].id ))
+      {
+         VAR__MAX[2] = stu[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (((( stu[VAR__53647].total > VAR__MAX[3].total ) && ( stu[VAR__53647].total <= VAR__MAX[2].total )) && ( stu[VAR__53647].id != VAR__MAX[2].id )) && ( stu[VAR__53647].id != VAR__MAX[1].id ))
+      {
+         VAR__MAX[3] = stu[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 4; VAR__53647++ )
+   {
+      printf("%d %d\n", VAR__MAX[VAR__53647].id, VAR__MAX[VAR__53647].total);
+   }
+
+   return 0;
+}

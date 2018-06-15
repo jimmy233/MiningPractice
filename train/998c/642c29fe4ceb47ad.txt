@@ -1,0 +1,57 @@
+char c1[210];
+char c2[210];
+int  num1[210];
+int  num2[210];
+int main()
+{
+   ( cin >> c1 ) >> c2;
+   memset(num1, 0, sizeof( num1 ));
+   memset(num2, 0, sizeof( num2 ));
+
+   if (( strcmp(c1, "0") == 0 ) && ( strcmp(c2, "0") == 0 ))
+   {
+      ( cout << 0 ) << endl;
+   }
+
+   for ( int VAR__53647 = strlen(c1) - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647-- )
+   {
+      num1[VAR__21230++] = c1[VAR__53647] - '0';
+   }
+
+   for ( int VAR__53647 = strlen(c2) - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647-- )
+   {
+      num2[VAR__21230++] = c2[VAR__53647] - '0';
+   }
+
+   int LEN_OF_STH = ( strlen(c1) > strlen(c2)) ? ( strlen(c1)) : ( strlen(c2));
+   for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      num1[VAR__53647] += num2[VAR__53647];
+
+      if ( num1[VAR__53647] >= 10 )
+      {
+         num1[VAR__53647 + 1]++;
+         num1[VAR__53647] -= 10;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+   {
+      c1[VAR__53647] = num1[VAR__53647] + '0';
+   }
+
+   int pos = 209;
+
+   while ( num1[pos] == 0 )
+   {
+      pos--;
+   }
+
+   for ( int VAR__53647 = pos; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << c1[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

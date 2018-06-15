@@ -1,0 +1,66 @@
+const int MAXN  = 1000;
+const int PRICE = 200;
+int       VAR_2890[2][MAXN];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int ans;
+   int s0;
+   int t0;
+   int s1;
+   int t1;
+
+   while ( scanf("%d", &VAR_1238123), VAR_1238123 > 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 2; ++VAR__53647 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; ++VAR__21230 )
+         {
+            scanf("%d", &VAR_2890[VAR__53647][VAR__21230]);
+         }
+
+         sort(VAR_2890[VAR__53647], VAR_2890[VAR__53647] + VAR_1238123);
+      }
+
+      ans = 0;
+      s0  = 0;
+      s1  = 0;
+      t0  = VAR_1238123 - 1;
+      t1  = VAR_1238123 - 1;
+
+      while ( s0 <= t0 )
+      {
+         while (( s0 <= t0 ) && ( VAR_2890[0][s0] > VAR_2890[1][s1] ))
+         {
+            ans += PRICE;
+            ++s0;
+            ++s1;
+         }
+
+         while (( s0 <= t0 ) && ( VAR_2890[0][t0] > VAR_2890[1][t1] ))
+         {
+            ans += PRICE;
+            --t0;
+            --t1;
+         }
+
+         if ( s0 <= t0 )
+         {
+            if ( VAR_2890[0][s0] == VAR_2890[1][t1] )
+            {
+               break;
+            }
+
+            ans -= PRICE;
+            ++s0;
+            --t1;
+         }
+      }
+
+      printf("%d\n", ans);
+   }
+
+   return 0;
+}

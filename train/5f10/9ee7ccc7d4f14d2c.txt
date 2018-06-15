@@ -1,0 +1,93 @@
+void com(char VAR__819283[][5], int VAR_1238123, int VAR__8444594);
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   scanf("\n");
+   char VAR__4857423[500];
+   gets(VAR__4857423);
+   char VAR__819283[500][5];
+   int  VAR__53647;
+   int  VAR__21230;
+   for ( VAR__53647 = 0; VAR__4857423[( VAR__53647 + VAR_1238123 ) - 1] != '\0'; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__4857423[VAR__53647 + VAR__21230];
+      }
+
+      VAR__819283[VAR__53647][VAR_1238123] = '\0';
+   }
+
+   int VAR__8444594;
+   VAR__8444594 = strlen(VAR__4857423);
+   com(VAR__819283, VAR_1238123, VAR__8444594);
+   return 0;
+}
+
+
+void com(char VAR__819283[][5], int VAR_1238123, int VAR__8444594)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1111 = 0;
+   int VAR_233;
+   int fre[500] = { 1 };
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR__8444594 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      fre[VAR__53647] = 1;
+
+      if ( VAR__819283[VAR__53647][0] != '\0' )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR__8444594 - VAR_1238123 ) + 1 ); VAR__21230++ )
+         {
+            if (( VAR__21230 != VAR__53647 ) && ( VAR__819283[VAR__21230][0] != '\0' ))
+            {
+               VAR__1111 = 0;
+               for ( VAR_233 = 0; VAR_233 < VAR_1238123; VAR_233++ )
+               {
+                  if ( VAR__819283[VAR__21230][VAR_233] != VAR__819283[VAR__53647][VAR_233] )
+                  {
+                     VAR__1111 = VAR__1111 + 1;
+                  }
+               }
+
+               if ( VAR__1111 == 0 )
+               {
+                  fre[VAR__53647]            = fre[VAR__53647] + 1;
+                  VAR__819283[VAR__21230][0] = '\0';
+               }
+            }
+         }
+      }
+   }
+
+   int VAR__MAX = fre[0];
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR__8444594 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( fre[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = fre[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX > 1 )
+   {
+      printf("%d", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < (( VAR__8444594 - VAR_1238123 ) + 1 ); VAR__53647++ )
+      {
+         if ( fre[VAR__53647] == VAR__MAX )
+         {
+            putchar('\n');
+            printf("%s", VAR__819283[VAR__53647]);
+         }
+      }
+   }
+   else
+   {
+      printf("NO");
+   }
+}

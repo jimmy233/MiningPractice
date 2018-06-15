@@ -1,0 +1,65 @@
+int main()
+{
+   char A_STRING[201];
+   char ch[201];
+   char ch1[201];
+   char ANOTHER_STRING[201];
+   int  VAR_9494;
+   int  s1;
+   int  s2;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_9Q8Q90 = 0;
+   int  VAR__8444594;
+
+   cin.getline(A_STRING, 201);
+   cin.getline(ch, 201);
+   cin.getline(ch1, 201);
+   VAR_9494 = strlen(A_STRING);
+   s1       = strlen(ch);
+   s2       = strlen(ch1);
+   strcpy(ANOTHER_STRING, A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      VAR_9Q8Q90 = 0;
+
+      if (( A_STRING[VAR__53647] == ch[0] ) && (( VAR__53647 == 0 ) || ( A_STRING[VAR__53647 - 1] == ' ' )))
+      {
+         for ( VAR__21230 = VAR__53647; VAR__21230 < ( s1 + VAR__53647 ); VAR__21230++ )
+         {
+            if ( A_STRING[VAR__21230] == ch[VAR__21230 - VAR__53647] )
+            {
+               VAR_9Q8Q90++;
+            }
+         }
+
+         if (( VAR_9Q8Q90 == s1 ) && (( A_STRING[s1 + VAR__53647] == ' ' ) || ( A_STRING[s1 + VAR__53647] == '\0' )))
+         {
+            for ( VAR__8444594 = 0; VAR__8444594 < VAR__53647; VAR__8444594++ )
+            {
+               ANOTHER_STRING[VAR__8444594] = A_STRING[VAR__8444594];
+            }
+
+            for ( VAR__8444594 = VAR__53647; VAR__8444594 < ( VAR__53647 + s2 ); VAR__8444594++ )
+            {
+               ANOTHER_STRING[VAR__8444594] = ch1[VAR__8444594 - VAR__53647];
+            }
+
+            for ( VAR__8444594 = VAR__53647 + s2; VAR__8444594 <= (( VAR_9494 + s2 ) - s1 ); VAR__8444594++ )
+            {
+               ANOTHER_STRING[VAR__8444594] = A_STRING[( VAR__8444594 + s1 ) - s2];
+            }
+
+            for ( VAR__8444594 = 0; VAR__8444594 <= (( VAR_9494 + s2 ) - s1 ); VAR__8444594++ )
+            {
+               A_STRING[VAR__8444594] = ANOTHER_STRING[VAR__8444594];
+            }
+
+            VAR_9494 = ( VAR_9494 + s2 ) - s1;
+         }
+      }
+   }
+
+   ( cout << ANOTHER_STRING ) << endl;
+   return 0;
+}

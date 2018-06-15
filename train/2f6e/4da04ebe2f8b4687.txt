@@ -1,0 +1,66 @@
+int  VAR__53647;
+int  VAR__1111;
+int  VAR__COUNT;
+char VAR_9494[101];
+int  VAR__819283[101];
+int  VAR__3918907[101];
+void ry(int VAR__3918907[])
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR__COUNT == VAR__1111 )
+   {
+      return;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( VAR__3918907[VAR__53647] == 1 )
+      {
+         VAR__21230 = VAR__53647 + 1;
+
+         while ( VAR__3918907[VAR__21230] == 0 )
+         {
+            VAR__21230++;
+         }
+
+         if ( VAR__21230 >= VAR__1111 )
+         {
+            continue;
+         }
+
+         if (( VAR__819283[VAR__53647] == 0 ) && ( VAR__819283[VAR__21230] == 1 ))
+         {
+            VAR__3918907[VAR__53647] = 0;
+            VAR__3918907[VAR__21230] = 0;
+            VAR__COUNT += 2;
+            printf("%d %d\n", VAR__53647, VAR__21230);
+            ry(VAR__3918907);
+            return;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   gets(VAR_9494);
+   VAR__1111 = strlen(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = !( VAR_9494[VAR__53647] == VAR_9494[0] );
+   }
+
+   VAR__819283[VAR__1111] = -1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      VAR__3918907[VAR__53647] = 1;
+   }
+
+   VAR__3918907[VAR__1111] = 1;
+   VAR__COUNT = 0;
+   ry(VAR__3918907);
+   return 0;
+}

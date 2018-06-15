@@ -1,0 +1,83 @@
+struct index
+{
+   int  VAR__NUM;
+   char wr[26];
+};
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__819283[26];
+   int  *pr;
+   int  VAR__MAX;
+   char VAR_9494[26];
+   char *sp;
+   char *pt;
+   char VAR__TEMP;
+
+   for ( pr = VAR__819283; pr < ( VAR__819283 + 26 ); pr++ )
+   {
+      *pr = 0;
+   }
+
+   sp  = VAR_9494;
+   *sp = 65;
+   for ( sp = VAR_9494 + 1; sp < ( VAR_9494 + 26 ); sp++ )
+   {
+      *sp = ( *( sp - 1 )) + 1;
+   }
+
+   struct index *VAR_233;
+   scanf("%d", &VAR_1238123);
+   struct index *ind = (struct index *)malloc(( sizeof( struct index )) * VAR_1238123);
+   for ( VAR_233 = ind; VAR_233 < ( ind + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%d %s", &VAR_233->VAR__NUM, VAR_233->wr);
+   }
+
+   for ( VAR_233 = ind; VAR_233 < ( ind + VAR_1238123 ); VAR_233++ )
+   {
+      for ( pt = ( *VAR_233 ).wr; pt < (( *VAR_233 ).wr + 26 ); pt++ )
+      {
+         for ( pr = VAR__819283, sp = VAR_9494; sp < ( VAR_9494 + 26 ); sp++, pr++ )
+         {
+            if (( *pt ) == ( *sp ))
+            {
+               ( *pr )++;
+            }
+         }
+      }
+   }
+
+   VAR__MAX  = *VAR__819283;
+   VAR__TEMP = 65;
+   for ( pr = VAR__819283, sp = VAR_9494; pr < ( VAR__819283 + 26 ); pr++, sp++ )
+   {
+      if (( *pr ) > VAR__MAX )
+      {
+         VAR__MAX  = *pr;
+         VAR__TEMP = *sp;
+      }
+   }
+
+   for ( pr = VAR__819283, sp = VAR_9494; sp < ( VAR_9494 + 26 ); sp++, pr++ )
+   {
+      if (( *pr ) == VAR__MAX )
+      {
+         printf("%c\n%d\n", *sp, *pr);
+      }
+   }
+
+   for ( VAR_233 = ind; VAR_233 < ( ind + VAR_1238123 ); VAR_233++ )
+   {
+      for ( pt = ( *VAR_233 ).wr; pt < (( *VAR_233 ).wr + 26 ); pt++ )
+      {
+         if (( *pt ) == VAR__TEMP )
+         {
+            printf("%d\n", ( *VAR_233 ).VAR__NUM);
+         }
+      }
+   }
+
+   free(ind);
+   return 0;
+}

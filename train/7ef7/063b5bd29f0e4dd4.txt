@@ -1,0 +1,84 @@
+int main()
+{
+   int VAR_1238123;
+   int number[100][100];
+   int VAR__53647;
+   int VAR_233;
+   int o;
+   int u;
+   int VAR__COUNT;
+   int VAR__MIN;
+
+   scanf("%d", &VAR_1238123);
+   for ( o = 0; o < VAR_1238123; o++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR_233 = 0; VAR_233 < VAR_1238123; VAR_233++ )
+         {
+            scanf("%d", &number[VAR__53647][VAR_233]);
+         }
+      }
+
+      VAR__COUNT = 0;
+      for ( u = 0; u < ( VAR_1238123 - 1 ); u++ )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - u ); VAR__53647++ )
+         {
+            VAR__MIN = 999999;
+            for ( VAR_233 = 0; VAR_233 < ( VAR_1238123 - u ); VAR_233++ )
+            {
+               if ( VAR__MIN > number[VAR__53647][VAR_233] )
+               {
+                  VAR__MIN = number[VAR__53647][VAR_233];
+               }
+            }
+
+            for ( VAR_233 = 0; VAR_233 < ( VAR_1238123 - u ); VAR_233++ )
+            {
+               number[VAR__53647][VAR_233] -= VAR__MIN;
+            }
+         }
+
+         for ( VAR_233 = 0; VAR_233 < ( VAR_1238123 - u ); VAR_233++ )
+         {
+            VAR__MIN = 999999;
+            for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - u ); VAR__53647++ )
+            {
+               if ( VAR__MIN > number[VAR__53647][VAR_233] )
+               {
+                  VAR__MIN = number[VAR__53647][VAR_233];
+               }
+            }
+
+            for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - u ); VAR__53647++ )
+            {
+               number[VAR__53647][VAR_233] -= VAR__MIN;
+            }
+         }
+
+         VAR__COUNT += number[1][1];
+         for ( VAR__53647 = 1; VAR__53647 < (( VAR_1238123 - u ) - 1 ); VAR__53647++ )
+         {
+            number[VAR__53647][0] = number[VAR__53647 + 1][0];
+         }
+
+         for ( VAR_233 = 1; VAR_233 < (( VAR_1238123 - u ) - 1 ); VAR_233++ )
+         {
+            number[0][VAR_233] = number[0][VAR_233 + 1];
+         }
+
+         for ( VAR_233 = 1; VAR_233 < (( VAR_1238123 - u ) - 1 ); VAR_233++ )
+         {
+            for ( VAR__53647 = 1; VAR__53647 < (( VAR_1238123 - u ) - 1 ); VAR__53647++ )
+            {
+               number[VAR__53647][VAR_233] = number[VAR__53647 + 1][VAR_233 + 1];
+            }
+         }
+      }
+
+      printf("%d\n", VAR__COUNT);
+   }
+
+   return 0;
+}

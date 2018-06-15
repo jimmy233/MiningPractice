@@ -1,0 +1,83 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   double VAR_21983012;
+
+   scanf("%d", &VAR_1238123);
+   char   sex[100][100];
+   double height1[100];
+   double height3[100];
+   double height2[100];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      char VAR__19328[100];
+      scanf("%s", sex[VAR__53647]);
+      scanf("%lf", &height1[VAR__53647]);
+   }
+
+   char *VAR_233 = { "female" };
+   int  count1   = 0;
+   int  count2   = 0;
+   VAR__21230   = 0;
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(sex[VAR__53647], VAR_233) == 0 )
+      {
+         count1++;
+         VAR_21983012        = height1[VAR__53647];
+         height2[VAR__21230] = VAR_21983012;
+         VAR__21230++;
+      }
+      else
+      {
+         count2++;
+         VAR_21983012          = height1[VAR__53647];
+         height3[VAR__8444594] = VAR_21983012;
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count1; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < count1; VAR__21230++ )
+      {
+         if ( height2[VAR__53647] < height2[VAR__21230] )
+         {
+            double VAR__1238129;
+            VAR__1238129        = height2[VAR__21230];
+            height2[VAR__21230] = height2[VAR__53647];
+            height2[VAR__53647] = VAR__1238129;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count2; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < count2; VAR__21230++ )
+      {
+         if ( height3[VAR__53647] > height3[VAR__21230] )
+         {
+            double VAR__1238129;
+            VAR__1238129        = height3[VAR__21230];
+            height3[VAR__21230] = height3[VAR__53647];
+            height3[VAR__53647] = VAR__1238129;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count2; VAR__53647++ )
+   {
+      printf("%.2lf ", height3[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( count1 - 1 ); VAR__53647++ )
+   {
+      printf("%.2lf ", height2[VAR__53647]);
+   }
+
+   printf("%.2lf", height2[count1 - 1]);
+}

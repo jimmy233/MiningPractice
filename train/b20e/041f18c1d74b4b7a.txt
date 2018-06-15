@@ -1,0 +1,100 @@
+int tianji[1010];
+int qiwang[1010];
+void Input(int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &tianji[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &qiwang[VAR__53647]);
+   }
+}
+
+
+int comp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int calc(int VAR_1238123)
+{
+   int t1;
+   int t2;
+   int q1;
+   int q2;
+
+   t1 = 0;
+   t2 = VAR_1238123 - 1;
+   q1 = 0;
+   q2 = VAR_1238123 - 1;
+   int win;
+   int lose;
+   win  = 0;
+   lose = 0;
+
+   while ( t1 <= t2 )
+   {
+      if ( tianji[t2] > qiwang[q2] )
+      {
+         win++;
+         t2--;
+         q2--;
+      }
+      else
+      {
+         if ( tianji[t2] < qiwang[q2] )
+         {
+            lose++;
+            t1++;
+            q2--;
+         }
+         else
+         {
+            if ( tianji[t1] > qiwang[q1] )
+            {
+               win++;
+               t1++;
+               q1++;
+            }
+            else
+            {
+               if ( tianji[t1] < qiwang[q2] )
+               {
+                  lose++;
+                  t1++;
+                  q2--;
+               }
+               else
+               {
+                  t1++;
+                  q2--;
+               }
+            }
+         }
+      }
+   }
+
+   return ( win - lose ) * 200;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( scanf("%d", &VAR_1238123) && VAR_1238123 )
+   {
+      Input(VAR_1238123);
+      qsort(tianji, VAR_1238123, sizeof( tianji[0] ), comp);
+      qsort(qiwang, VAR_1238123, sizeof( qiwang[0] ), comp);
+      printf("%d\n", calc(VAR_1238123));
+   }
+
+   return 0;
+}

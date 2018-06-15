@@ -1,0 +1,37 @@
+void main()
+{
+   char A_STRING[16];
+   char substr[4];
+   int  VAR__53647;
+   int  lenth;
+   int  maxAsc  = 0;
+   char maxChar = 0;
+
+   while ( scanf("%s%s", A_STRING, substr) == 2 )
+   {
+      maxAsc  = 0;
+      maxChar = 0;
+      lenth   = strlen(A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 < lenth; VAR__53647++ )
+      {
+         if ( maxChar < ( *( A_STRING + VAR__53647 )))
+         {
+            maxChar = *( A_STRING + VAR__53647 );
+            maxAsc  = VAR__53647;
+         }
+      }
+
+      A_STRING[lenth + 3] = 0;
+      for ( VAR__53647 = lenth - 1; VAR__53647 > maxAsc; VAR__53647-- )
+      {
+         *(( A_STRING + VAR__53647 ) + 3 ) = *( A_STRING + VAR__53647 );
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+      {
+         *((( A_STRING + maxAsc ) + VAR__53647 ) + 1 ) = *( substr + VAR__53647 );
+      }
+
+      printf("%s\n", A_STRING);
+   }
+}

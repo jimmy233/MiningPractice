@@ -1,0 +1,84 @@
+int main()
+{
+   char VAR__819283[1000];
+   char VAR__19328[1000][1000];
+   char VAR__4857423[1000][1000];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__NUM = 0;
+   int  clen[1000];
+   int  clen0[1000];
+   int  VAR_233 = 0;
+   int  shorter;
+
+   cin >> VAR__819283;
+   int LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         VAR_233 = 0;
+         for ( VAR__8444594 = VAR__53647; VAR__8444594 <= VAR__21230; VAR__8444594++ )
+         {
+            VAR__19328[VAR__NUM][VAR_233] = VAR__819283[VAR__8444594];
+            VAR_233++;
+         }
+
+         VAR__NUM++;
+      }
+   }
+
+   int judge = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      clen[VAR__53647] = strlen(VAR__19328[VAR__53647]);
+      VAR__21230       = 0;
+      judge            = 0;
+
+      while ( 1 )
+      {
+         if ( VAR__19328[VAR__53647][VAR__21230] == VAR__19328[VAR__53647][( clen[VAR__53647] - VAR__21230 ) - 1] )
+         {
+            judge = 1;
+            VAR__21230++;
+
+            if ( VAR__21230 == clen[VAR__53647] )
+            {
+               break;
+            }
+
+            continue;
+         }
+         else
+         {
+            judge = 0;
+            break;
+         }
+      }
+
+      if (( judge == 1 ) && ( clen[VAR__53647] > 1 ))
+      {
+         strcpy(VAR__4857423[VAR_233], VAR__19328[VAR__53647]);
+         clen0[VAR_233] = clen[VAR__53647];
+         VAR_233++;
+      }
+   }
+
+   shorter = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_233; VAR__21230++ )
+      {
+         if ( clen0[VAR__21230] < clen0[shorter] )
+         {
+            shorter = VAR__21230;
+         }
+      }
+
+      ( cout << VAR__4857423[shorter] ) << endl;
+      clen0[shorter] = 1000;
+   }
+
+   return 0;
+}

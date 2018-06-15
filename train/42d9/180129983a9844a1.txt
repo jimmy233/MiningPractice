@@ -1,0 +1,76 @@
+void main()
+{
+   struct point
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   P[10];
+   struct triple
+   {
+      struct point A;
+      struct point B;
+      double       VAR__12302;
+   }
+   pair[50];
+   struct triple
+   {
+      struct point A;
+      struct point B;
+      double       VAR__12302;
+   }
+       tmp;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__4857423[31];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= ( 3 * VAR_1238123 ); VAR__53647++ )
+   {
+      scanf("%d", &VAR__4857423[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      P[VAR__53647].VAR__7685    = VAR__4857423[( 3 * VAR__53647 ) + 1];
+      P[VAR__53647].VAR__3918907 = VAR__4857423[( 3 * VAR__53647 ) + 2];
+      P[VAR__53647].VAR__9290    = VAR__4857423[( 3 * VAR__53647 ) + 3];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__8444594         = (( VAR__53647 * VAR_1238123 ) + VAR__21230 ) - (( VAR__53647 * ( VAR__53647 + 3 )) / 2 );
+         pair[VAR__8444594].A = P[VAR__53647];
+         pair[VAR__8444594].B = P[VAR__21230];
+         int X = P[VAR__53647].VAR__7685 - P[VAR__21230].VAR__7685;
+         int Y = P[VAR__53647].VAR__3918907 - P[VAR__21230].VAR__3918907;
+         int Z = P[VAR__53647].VAR__9290 - P[VAR__21230].VAR__9290;
+         pair[VAR__8444594].VAR__12302 = sqrt((( X * X ) + ( Y * Y )) + ( Z * Z ));
+      }
+   }
+
+
+   for ( VAR__53647 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2; VAR__53647 > 1; VAR__53647-- )
+   {
+      for ( VAR__8444594 = 1; VAR__8444594 < VAR__53647; VAR__8444594++ )
+      {
+         if ( pair[VAR__8444594].VAR__12302 < pair[VAR__8444594 + 1].VAR__12302 )
+         {
+            tmp = pair[VAR__8444594 + 1];
+            pair[VAR__8444594 + 1] = pair[VAR__8444594];
+            pair[VAR__8444594]     = tmp;
+         }
+      }
+   }
+
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__8444594++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", pair[VAR__8444594].A.VAR__7685, pair[VAR__8444594].A.VAR__3918907, pair[VAR__8444594].A.VAR__9290, pair[VAR__8444594].B.VAR__7685, pair[VAR__8444594].B.VAR__3918907, pair[VAR__8444594].B.VAR__9290, pair[VAR__8444594].VAR__12302);
+   }
+}

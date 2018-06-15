@@ -1,0 +1,164 @@
+int shift(char VAR_1238123)
+{
+   int shift;
+
+   switch ( VAR_1238123 )
+   {
+   case '1':
+      shift = 1;
+      break;
+
+   case '2':
+      shift = 2;
+      break;
+
+   case '3':
+      shift = 3;
+      break;
+
+   case '4':
+      shift = 4;
+      break;
+
+   case '5':
+      shift = 5;
+      break;
+
+   case '6':
+      shift = 6;
+      break;
+
+   case '7':
+      shift = 7;
+      break;
+
+   case '8':
+      shift = 8;
+      break;
+
+   case '9':
+      shift = 9;
+      break;
+
+   case '0':
+      shift = 0;
+      break;
+   }
+
+   return shift;
+}
+
+
+int main()
+{
+   char VAR__819283[252];
+   char VAR__19328[252];
+   char VAR__4857423[252];
+   char VAR__12302[252];
+   int  lengtha;
+   int  lengthb;
+   int  VAR__SUM[252];
+   int  lon;
+   int  VAR__53647;
+   int  lina;
+   int  linb;
+   int  cha;
+   int  sh;
+
+   VAR__12302[0] = '0';
+   VAR__12302[1] = '\0';
+   scanf("%s%s", VAR__819283, VAR__19328);
+   lengtha = strlen(VAR__819283);
+   lengthb = strlen(VAR__19328);
+   for ( lina = 0; lina < lengtha; lina++ )
+   {
+      if ( VAR__819283[lina] != '0' )
+      {
+         break;
+      }
+   }
+
+   lina;
+   for ( linb = 0; linb < lengthb; linb++ )
+   {
+      if ( VAR__19328[linb] != '0' )
+      {
+         break;
+      }
+   }
+
+   linb;
+
+   if (( lengtha - lina ) >= ( lengthb - linb ))
+   {
+      cha = ( lengtha - lina ) - ( lengthb - linb );
+      for ( VAR__53647 = 0; VAR__53647 <= cha; VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647] = '0';
+      }
+
+      VAR__4857423[cha + 1] = '\0';
+      strcat(VAR__4857423, VAR__19328);
+      strcat(VAR__12302, VAR__819283);
+      lon = lengtha;
+      sh  = lina;
+   }
+   else
+   {
+      cha = ( lengthb - linb ) - ( lengtha - lina );
+      for ( VAR__53647 = 0; VAR__53647 <= cha; VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647] = '0';
+      }
+
+      VAR__4857423[cha + 1] = '\0';
+      strcat(VAR__4857423, VAR__819283);
+      strcat(VAR__12302, VAR__19328);
+      lon = lengthb;
+      sh  = linb;
+   }
+
+   VAR__SUM[lon] = 0;
+   for ( VAR__53647 = lon; VAR__53647 > sh; VAR__53647-- )
+   {
+      VAR__SUM[VAR__53647 - 1] = 0;
+      VAR__SUM[VAR__53647]     = ( shift(VAR__12302[VAR__53647]) + shift(VAR__4857423[VAR__53647])) + VAR__SUM[VAR__53647];
+
+      if ( VAR__SUM[VAR__53647] >= 10 )
+      {
+         VAR__SUM[VAR__53647] -= 10;
+         VAR__SUM[VAR__53647 - 1]++;
+      }
+   }
+
+   if ( sh == 0 )
+   {
+      if ( VAR__SUM[0] == 1 )
+      {
+         printf("1");
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= lon; VAR__53647++ )
+      {
+         printf("%d", VAR__SUM[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+   else
+   {
+      if ( VAR__SUM[sh - 1] == 1 )
+      {
+         printf("1");
+      }
+
+      for ( VAR__53647 = sh; VAR__53647 <= lon; VAR__53647++ )
+      {
+         printf("%d", VAR__SUM[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

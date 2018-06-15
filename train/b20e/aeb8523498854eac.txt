@@ -1,0 +1,131 @@
+int main()
+{
+   int VAR_1238123[10000];
+   int sudu[10000][2];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1111;
+   int VAR__7685;
+
+   VAR__53647 = 0;
+   int VAR__1238129;
+   int VAR__9290;
+   int zhongjian[2];
+   int yinzi[1000];
+   int wei;
+   int weik;
+   int tou;
+   int touk;
+   do
+   {
+      scanf("%d", &VAR_1238123[VAR__53647]);
+
+      if ( VAR_1238123[VAR__53647] == 0 )
+      {
+         break;
+      }
+      else
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123[VAR__53647]; VAR__21230++ )
+         {
+            scanf("%d", &sudu[VAR__21230][0]);
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123[VAR__53647]; VAR__21230++ )
+         {
+            scanf("%d", &sudu[VAR__21230][1]);
+         }
+      }
+
+      for ( VAR__1111 = 0; VAR__1111 < VAR_1238123[VAR__53647]; VAR__1111++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123[VAR__53647] - 1 ); VAR__21230++ )
+         {
+            if ( sudu[VAR__21230][0] > sudu[VAR__21230 + 1][0] )
+            {
+               zhongjian[0]            = sudu[VAR__21230 + 1][0];
+               sudu[VAR__21230 + 1][0] = sudu[VAR__21230][0];
+               sudu[VAR__21230][0]     = zhongjian[0];
+            }
+            else
+            {
+            }
+         }
+      }
+
+      for ( VAR__1111 = 0; VAR__1111 < VAR_1238123[VAR__53647]; VAR__1111++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123[VAR__53647] - 1 ); VAR__21230++ )
+         {
+            if ( sudu[VAR__21230][1] > sudu[VAR__21230 + 1][1] )
+            {
+               zhongjian[0]            = sudu[VAR__21230 + 1][1];
+               sudu[VAR__21230 + 1][1] = sudu[VAR__21230][1];
+               sudu[VAR__21230][1]     = zhongjian[0];
+            }
+            else
+            {
+            }
+         }
+      }
+
+      yinzi[VAR__53647] = 0;
+      VAR__1238129      = VAR_1238123[VAR__53647] - 1;
+      wei       = 0;
+      weik      = 0;
+      tou       = VAR__1238129;
+      touk      = VAR__1238129;
+      VAR__7685 = 0;
+      do
+      {
+         if ( sudu[tou][0] > sudu[touk][1] )
+         {
+            yinzi[VAR__53647] = yinzi[VAR__53647] + 200;
+            VAR__7685++;
+            tou--;
+            touk--;
+         }
+         else
+         if ( sudu[tou][0] < sudu[touk][1] )
+         {
+            yinzi[VAR__53647] = yinzi[VAR__53647] - 200;
+            VAR__7685++;
+            wei++;
+            touk--;
+         }
+         else
+         {
+            while ( sudu[wei][0] > sudu[weik][1] )
+            {
+               wei++;
+               weik++;
+               yinzi[VAR__53647] = yinzi[VAR__53647] + 200;
+               VAR__7685++;
+            }
+
+            if ( sudu[wei][0] == sudu[touk][1] )
+            {
+               wei++;
+               touk--;
+               VAR__7685++;
+            }
+            else
+            {
+               wei++;
+               touk--;
+               yinzi[VAR__53647] = yinzi[VAR__53647] - 200;
+               VAR__7685++;
+            }
+         }
+      } while ( VAR__7685 < VAR_1238123[VAR__53647] );
+      VAR__53647++;
+   } while ( VAR_1238123[VAR__53647 - 1] != 0 );
+   VAR__9290 = VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__9290; VAR__53647++ )
+   {
+      printf("%d\n", yinzi[VAR__53647]);
+   }
+
+   getchar();
+   getchar();
+}

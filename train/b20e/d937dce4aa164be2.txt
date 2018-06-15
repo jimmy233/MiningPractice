@@ -1,0 +1,111 @@
+int main()
+{
+   int VAR__temp[1010];
+   int VAR_21983012[1010];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1238129;
+   int ans;
+   int w1;
+   int w2;
+   int VAR__HEAD;
+   int tailt;
+   int tailw;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+      ans = 0;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__temp[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_21983012[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__temp[VAR__53647] < VAR__temp[VAR__21230] )
+            {
+               VAR__8444594          = VAR__temp[VAR__53647];
+               VAR__temp[VAR__53647] = VAR__temp[VAR__21230];
+               VAR__temp[VAR__21230] = VAR__8444594;
+            }
+
+            if ( VAR_21983012[VAR__53647] < VAR_21983012[VAR__21230] )
+            {
+               VAR__8444594             = VAR_21983012[VAR__53647];
+               VAR_21983012[VAR__53647] = VAR_21983012[VAR__21230];
+               VAR_21983012[VAR__21230] = VAR__8444594;
+            }
+         }
+      }
+
+
+      VAR__HEAD = 1;
+      tailt     = VAR_1238123;
+      tailw     = VAR_1238123;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__temp[VAR__HEAD] > VAR_21983012[VAR__53647] )
+         {
+            VAR__HEAD++;
+            ans += 200;
+         }
+         else
+         if ( VAR__temp[VAR__HEAD] < VAR_21983012[VAR__53647] )
+         {
+            tailt--;
+            ans -= 200;
+         }
+         else
+         if ( VAR__temp[VAR__HEAD] == VAR_21983012[VAR__53647] )
+         {
+            for ( VAR__21230 = tailt, VAR__1238129 = tailw; VAR__21230 >= VAR__HEAD; )
+            {
+               if ( VAR__temp[VAR__21230] > VAR_21983012[VAR__1238129] )
+               {
+                  ans += 200;
+                  tailt--;
+                  tailw--;
+                  VAR__21230--;
+                  VAR__1238129--;
+               }
+               else
+               {
+                  if ( VAR__temp[VAR__21230] < VAR_21983012[VAR__53647] )
+                  {
+                     ans -= 200;
+                  }
+
+                  tailt--;
+                  VAR__21230--;
+                  break;
+               }
+            }
+         }
+
+
+
+         if ( VAR__HEAD > tailt )
+         {
+            break;
+         }
+      }
+
+      printf("%d\n", ans);
+   }
+}

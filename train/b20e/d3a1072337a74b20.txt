@@ -1,0 +1,77 @@
+void myrank(int *, int);
+
+int kh[1000];
+int th[1000];
+int main()
+{
+   int N;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int mxt;
+   int mxk;
+   int VAR_21983012;
+
+   while ( scanf("%d", &N), N )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         scanf("%d", &th[VAR__53647]);
+      }
+
+      myrank(th, N);
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         scanf("%d", &kh[VAR__53647]);
+      }
+
+      myrank(kh, N);
+      VAR_21983012 = ( VAR__8444594 = ( VAR__21230 = 0 ));
+      mxk          = ( mxt = N - 1 );
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         if ( th[VAR__21230] > kh[VAR__8444594] )
+         {
+            VAR_21983012++, VAR__21230++, VAR__8444594++;
+         }
+         else
+         if ( th[mxt] > kh[mxk] )
+         {
+            VAR_21983012++, mxt--, mxk--;
+         }
+         else
+         if ( th[mxt] < kh[VAR__8444594] )
+         {
+            VAR_21983012--, mxt--, VAR__8444594++;
+         }
+         else
+         {
+         }
+      }
+
+      printf("%d\n", 200 * VAR_21983012);
+   }
+
+   return 0;
+}
+
+
+void myrank(int *VAR_SIZE, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int tem;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if (( *( VAR_SIZE + VAR__53647 )) < ( *( VAR_SIZE + VAR__21230 )))
+         {
+            tem = *( VAR_SIZE + VAR__53647 );
+            *( VAR_SIZE + VAR__53647 ) = *( VAR_SIZE + VAR__21230 );
+            *( VAR_SIZE + VAR__21230 ) = tem;
+         }
+      }
+   }
+}

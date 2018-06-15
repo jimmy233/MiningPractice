@@ -1,0 +1,120 @@
+struct book
+{
+   int         VAR__NUM;
+   char        VAR_21983012[26];
+   struct book *VAR__NEXT;
+};
+int VAR__4857423[26];
+int VAR__1238129;
+int VAR__53647;
+int VAR__21230 = 0;
+int VAR__MAX;
+struct book *creat(int VAR__1238129)
+{
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH);
+   scanf("%d%s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR_21983012);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+   VAR__HEAD = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH);
+      scanf("%d%s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR_21983012);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void VAR__819283(struct book *VAR__HEAD)
+{
+   struct book *VAR_233;
+   char        *VAR__7685;
+   int         VAR__1111;
+   int         ch;
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__7685 = VAR_233->VAR_21983012; VAR__7685 < ( VAR_233->VAR_21983012 + 26 ); VAR__7685++ )
+      {
+         VAR__1111 = (int)( *VAR__7685 );
+         ch        = VAR__1111 - 65;
+
+         if ( ch >= 0 )
+         {
+            VAR__4857423[ch] = VAR__4857423[ch] + 1;
+         }
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct book *VAR__HEAD;
+   struct book *VAR_233;
+   struct book *creat(int VAR__1238129);
+
+   void VAR__819283(struct book *VAR__HEAD);
+
+   char writer;
+   char *VAR__7685;
+   int  wri;
+   int  VAR__19328[200];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 200; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = 0;
+   }
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = creat(VAR__1238129);
+   VAR__819283(VAR__HEAD);
+   VAR__MAX   = 0;
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] > VAR__MAX )
+      {
+         wri      = VAR__53647 + 65;
+         VAR__MAX = VAR__4857423[VAR__53647];
+      }
+   }
+
+   printf("%c\n", wri);
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__7685 = VAR_233->VAR_21983012; VAR__7685 < ( VAR_233->VAR_21983012 + 26 ); VAR__7685++ )
+      {
+         if (( *VAR__7685 ) == ((char)wri ))
+         {
+            VAR__19328[VAR__21230] = VAR_233->VAR__NUM;
+            VAR__21230             = VAR__21230 + 1;
+            break;
+         }
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d\n", VAR__21230);
+   for ( VAR__21230 = 0; VAR__19328[VAR__21230] > 0; VAR__21230++ )
+   {
+      printf("%d\n", VAR__19328[VAR__21230]);
+   }
+}

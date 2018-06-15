@@ -1,0 +1,97 @@
+int main()
+{
+   int VAR__127322(char VAR__7685);
+
+   char VAR__7685[100];
+   char VAR__9290[100];
+   char VAR_21983012;
+   int  VAR__3918907[100];
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__4857423;
+   int  VAR__12302;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__SUM = 0;
+   int  VAR__53647;
+   int  VAR__temp = 0;
+   scanf("%d", &VAR__819283);
+   scanf("%s", VAR__7685);
+   scanf("%d", &VAR__19328);
+   VAR__4857423 = strlen(VAR__7685);
+   for ( VAR__53647 = VAR__4857423 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__3918907[VAR__53647] = VAR__127322(VAR__7685[VAR__53647]);
+      VAR__SUM += (int)( VAR__3918907[VAR__53647] * pow(VAR__819283, ( VAR__4857423 - VAR__53647 ) - 1));
+   }
+
+   if ( VAR__SUM == 0 )
+   {
+      printf("0");
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= 1000; VAR__53647++ )
+      {
+         if ( VAR__SUM < pow(VAR__19328, VAR__53647))
+         {
+            VAR__12302 = VAR__53647 - 1;
+            break;
+         }
+      }
+
+      for ( VAR__21230 = VAR__12302; VAR__21230 >= 0; VAR__21230-- )
+      {
+         for ( VAR__8444594 = 1; VAR__8444594 <= VAR__19328; VAR__8444594++ )
+         {
+            if ( VAR__SUM >= ( VAR__8444594 * pow(VAR__19328, VAR__21230)))
+            {
+               continue;
+            }
+            else
+            {
+               if ( VAR__8444594 < 11 )
+               {
+                  VAR_21983012 = VAR__8444594 + 47;
+               }
+               else
+               {
+                  VAR_21983012 = VAR__8444594 + 54;
+               }
+
+               VAR__9290[VAR__temp] = VAR_21983012;
+               VAR__SUM            -= (int)(( VAR__8444594 - 1 ) * pow(VAR__19328, VAR__21230));
+               VAR__temp            = VAR__temp + 1;
+               break;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+      {
+         printf("%c", VAR__9290[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}
+
+
+int VAR__127322(char VAR__7685)
+{
+   if ( islower(VAR__7685))
+   {
+      return VAR__7685 - 87;
+   }
+   else
+   if ( isupper(VAR__7685))
+   {
+      return VAR__7685 - 55;
+   }
+   else
+   {
+      return VAR__7685 - 48;
+   }
+}

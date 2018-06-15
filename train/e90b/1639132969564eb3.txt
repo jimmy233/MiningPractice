@@ -1,0 +1,55 @@
+struct student
+{
+   int VAR__NUM;
+   int scorec;
+   int scorem;
+   int score;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct student stu[100001];
+   int            best[2][3] = { { 0, 0, 0 }, { 0, 0, 0 } };
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> stu[VAR__53647].VAR__NUM ) >> stu[VAR__53647].scorec ) >> stu[VAR__53647].scorem;
+      stu[VAR__53647].score = stu[VAR__53647].scorec + stu[VAR__53647].scorem;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].score > best[1][0] )
+      {
+         best[0][2] = best[0][1];
+         best[0][1] = best[0][0];
+         best[0][0] = stu[VAR__53647].VAR__NUM;
+         best[1][2] = best[1][1];
+         best[1][1] = best[1][0];
+         best[1][0] = stu[VAR__53647].score;
+      }
+      else
+      if (( stu[VAR__53647].score <= best[1][0] ) && ( stu[VAR__53647].score > best[1][1] ))
+      {
+         best[0][2] = best[0][1];
+         best[0][1] = stu[VAR__53647].VAR__NUM;
+         best[1][2] = best[1][1];
+         best[1][1] = stu[VAR__53647].score;
+      }
+      else
+      if (( stu[VAR__53647].score <= best[1][1] ) && ( stu[VAR__53647].score > best[1][2] ))
+      {
+         best[0][2] = stu[VAR__53647].VAR__NUM;
+         best[1][2] = stu[VAR__53647].score;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      ((( cout << best[0][VAR__53647] ) << ' ' ) << best[1][VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,188 @@
+typedef struct inputandoutput
+{
+   int                   VAR_1238123;
+   int                   VAR__1238129;
+   int                   king;
+   struct inputandoutput *VAR__NEXT;
+} LinkIO;
+typedef struct
+{
+   LinkIO *VAR__HEAD;
+   LinkIO *tail;
+   int    total;
+} LinkIOHead;
+int VAR_1238123;
+int VAR__1238129;
+int CheckInput(int VAR__NUM, int total)
+{
+   if ( VAR__NUM < 0 )
+   {
+      return ISNOT_POSITIVEINT;
+   }
+   else
+   if ( VAR__NUM > total )
+   {
+      return ISMORETHAN_THREEHUNDRED;
+   }
+   else
+   {
+      return ISCORRECT;
+   }
+}
+
+
+int GetUserInput(int *VAR_1238123, int *VAR__1238129)
+{
+   int checkresult = 0;
+
+   scanf("%d %d", VAR_1238123, VAR__1238129);
+   checkresult = CheckInput(*VAR_1238123, 300);
+
+   if ( checkresult == ISNOT_POSITIVEINT )
+   {
+      printf("error!\n");
+   }
+   else
+   if ( checkresult == ISMORETHAN_THREEHUNDRED )
+   {
+      printf("error!\n");
+   }
+   else
+   {
+      checkresult = CheckInput(*VAR__1238129, 300);
+
+      if ( checkresult == ISNOT_POSITIVEINT )
+      {
+         printf("error!\n");
+      }
+      else
+      if ( checkresult == ISMORETHAN_THREEHUNDRED )
+      {
+         printf("error!\n");
+      }
+      else
+      {
+         if ((( *VAR_1238123 ) == 0 ) && (( *VAR__1238129 ) == 0 ))
+         {
+         }
+         else
+         if ((( *VAR_1238123 ) == 0 ) || (( *VAR__1238129 ) == 0 ))
+         {
+            printf("error!\n");
+         }
+         else
+         {
+            return 1;
+         }
+      }
+   }
+
+
+   return 0;
+}
+
+
+void InsertIntoLinkIO(LinkIOHead *iohead, int VAR_1238123, int VAR__1238129)
+{
+   LinkIO *VAR_233;
+
+   VAR_233 = (LinkIO *)malloc(sizeof( LinkIO ));
+
+   if ( VAR_233 == NULL )
+   {
+      printf("error!");
+      printf("error,n=%d,m=%d!\n", VAR_1238123, VAR__1238129);
+      return;
+   }
+
+   VAR_233->VAR_1238123  = VAR_1238123;
+   VAR_233->VAR__1238129 = VAR__1238129;
+   VAR_233->king         = 0;
+   VAR_233->VAR__NEXT    = NULL;
+
+   if (( iohead->VAR__HEAD == NULL ) && ( iohead->tail == NULL ))
+   {
+      iohead->VAR__HEAD = VAR_233;
+      iohead->tail      = VAR_233;
+      iohead->total     = 1;
+   }
+   else
+   {
+      iohead->tail->VAR__NEXT = VAR_233;
+      iohead->tail            = VAR_233;
+      iohead->total           = iohead->total + 1;
+   }
+}
+
+
+int GetKing(int kn, int km)
+{
+   int king       = 0;
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   int kresult    = 0;
+
+   for ( VAR__53647 = 2; VAR__53647 <= kn; VAR__53647++ )
+   {
+      kresult = ( kresult + km ) % VAR__53647;
+   }
+
+   return kresult + 1;
+}
+
+
+int main()
+{
+   int        inputresult = 0;
+   int        king        = 0;
+   LinkIOHead *iohead;
+   LinkIO     *VAR_233;
+
+   iohead = (LinkIOHead *)malloc(sizeof( LinkIOHead ));
+
+   if ( iohead == NULL )
+   {
+      printf("error!");
+      return 0;
+   }
+
+   iohead->VAR__HEAD = NULL;
+   iohead->tail      = NULL;
+   iohead->total     = 0;
+   inputresult       = GetUserInput(&VAR_1238123, &VAR__1238129);
+
+   while ( inputresult == 1 )
+   {
+      InsertIntoLinkIO(iohead, VAR_1238123, VAR__1238129);
+      inputresult = GetUserInput(&VAR_1238123, &VAR__1238129);
+   }
+
+   VAR_233 = iohead->VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      king          = GetKing(VAR_233->VAR_1238123, VAR_233->VAR__1238129);
+      VAR_233->king = king;
+      VAR_233       = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = iohead->VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%d\n", VAR_233->king);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   if ( iohead != NULL )
+   {
+      free(iohead);
+   }
+
+   if ( VAR_233 != NULL )
+   {
+      free(VAR_233);
+   }
+
+   return 0;
+}

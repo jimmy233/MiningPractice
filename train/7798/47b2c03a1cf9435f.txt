@@ -1,0 +1,100 @@
+struct shu
+{
+   char       xh[100];
+   char       zz[100];
+   struct shu *VAR__NEXT;
+};
+int VAR__NUM[26] = { 0 };
+int VAR__1238129;
+struct shu *creat(int VAR_1238123)
+{
+   int        VAR__53647 = 0;
+   struct shu *ANOTHER_POINTER;
+   struct shu *YET_ANOTHER_POINTER;
+   struct shu *VAR__HEAD;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct shu *)malloc(sizeof( struct shu )));
+   VAR__HEAD       = 0;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      VAR__53647++;
+
+      if ( VAR__53647 == 1 )
+      {
+         ANOTHER_POINTER->VAR__NEXT = 0;
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         ANOTHER_POINTER                = (struct shu *)malloc(sizeof( struct shu ));
+         ANOTHER_POINTER->VAR__NEXT     = YET_ANOTHER_POINTER->VAR__NEXT;
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      scanf("%s %s", ANOTHER_POINTER->xh, ANOTHER_POINTER->zz);
+   }
+
+   return VAR__HEAD;
+}
+
+
+void VAR__MAX(struct shu *VAR__HEAD)
+{
+   struct shu *VAR_233;
+   char       *VAR__127322;
+   int        VAR__53647;
+   int        zd = 0;
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != 0; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__127322 = VAR_233->zz; ( *VAR__127322 ) != '\0'; VAR__127322++ )
+      {
+         VAR__NUM[( *VAR__127322 ) - 65]++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > zd )
+      {
+         zd           = VAR__NUM[VAR__53647];
+         VAR__1238129 = VAR__53647;
+      }
+   }
+
+   printf("%c\n", 65 + VAR__1238129);
+   printf("%d\n", zd);
+}
+
+
+void print(VAR__HEAD)
+{
+   struct shu *VAR_233;
+   char       *VAR__127322;
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != 0; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__127322 = VAR_233->zz; ( *VAR__127322 ) != '\0'; VAR__127322++ )
+      {
+         if (( *VAR__127322 ) == ( 65 + VAR__1238129 ))
+         {
+            printf("%s\n", VAR_233->xh);
+            break;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int        VAR_1238123;
+   struct shu *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR__MAX(VAR__HEAD);
+   print(VAR__HEAD);
+}

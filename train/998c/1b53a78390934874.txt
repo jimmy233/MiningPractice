@@ -1,0 +1,78 @@
+int main()
+{
+   char ANOTHER_STRING[1000];
+   char YET_ANOTHER_STRING[1000];
+
+   ( cin >> ANOTHER_STRING ) >> YET_ANOTHER_STRING;
+
+   if (( atoi(ANOTHER_STRING) == 0 ) && ( atoi(YET_ANOTHER_STRING) == 0 ))
+   {
+      cout << 0;
+      return 0;
+   }
+
+   int l1;
+   int l2;
+   l1 = strlen(ANOTHER_STRING);
+   l2 = strlen(YET_ANOTHER_STRING);
+   int num1[1000];
+   memset(num1, 0, sizeof( num1 ));
+   int num2[1000];
+   memset(num2, 0, sizeof( num2 ));
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < l1; VAR__53647++ )
+   {
+      num1[VAR__53647] = ANOTHER_STRING[( l1 - 1 ) - VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < l2; VAR__53647++ )
+   {
+      num2[VAR__53647] = YET_ANOTHER_STRING[( l2 - 1 ) - VAR__53647] - '0';
+   }
+
+   int VAR__NUM[1000];
+   memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+   int VAR__1111;
+
+   if ( l1 >= l2 )
+   {
+      VAR__1111 = l1;
+      for ( VAR__53647 = 0; VAR__53647 < l1; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647] = num1[VAR__53647] + num2[VAR__53647];
+      }
+   }
+   else
+   {
+      VAR__1111 = l2;
+      for ( VAR__53647 = 0; VAR__53647 < l2; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647] = num1[VAR__53647] + num2[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] >= 10 )
+      {
+         VAR__NUM[VAR__53647 + 1] = VAR__NUM[VAR__53647 + 1] + ( VAR__NUM[VAR__53647] / 10 );
+         VAR__NUM[VAR__53647]     = VAR__NUM[VAR__53647] % 10;
+      }
+   }
+
+   int VAR_233 = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__1111; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__1111 - VAR__53647] > 0 )
+      {
+         VAR_233 = 1;
+      }
+
+      if ( VAR_233 > 0 )
+      {
+         cout << VAR__NUM[VAR__1111 - VAR__53647];
+      }
+   }
+
+   return 0;
+}

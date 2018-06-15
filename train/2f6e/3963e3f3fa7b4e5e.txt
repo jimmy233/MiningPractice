@@ -1,0 +1,46 @@
+char dui_lie[100];
+char zuo;
+char you;
+int  zuobian;
+int  youbian;
+int  changdu;
+void qian_shou(int zuobian)
+{
+   for ( youbian = zuobian + 1; youbian < changdu; youbian++ )
+   {
+      if (( dui_lie[youbian] == zuo ) || ( dui_lie[youbian] == you ))
+      {
+         break;
+      }
+   }
+
+   if ( dui_lie[youbian] == you )
+   {
+      dui_lie[zuobian] = '*';
+      dui_lie[youbian] = '*';
+      ((( cout << zuobian ) << " " ) << youbian ) << endl;
+   }
+   else
+   {
+      zuobian = youbian;
+      qian_shou(zuobian);
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+
+   cin >> dui_lie;
+   changdu = strlen(dui_lie);
+   zuo     = dui_lie[0];
+   you     = dui_lie[changdu - 1];
+   for ( VAR__53647 = 1; VAR__53647 <= ( changdu / 2 ); VAR__53647++ )
+   {
+      zuobian = 0;
+      qian_shou(zuobian);
+   }
+
+   return 0;
+}

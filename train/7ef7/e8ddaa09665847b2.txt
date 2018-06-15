@@ -1,0 +1,100 @@
+int changeSum(int, int, int [][100]);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      int VAR__21230;
+      int VAR__8444594;
+      int VAR__819283[100][100];
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            cin >> VAR__819283[VAR__21230][VAR__8444594];
+         }
+      }
+
+
+      ( cout << changeSum(VAR_1238123, 0, VAR__819283)) << endl;
+   }
+
+   return 0;
+}
+
+
+int changeSum(int VAR_1238123, int VAR__SUM, int VAR__819283[][100])
+{
+   if ( VAR_1238123 == 1 )
+   {
+      return VAR__SUM;
+   }
+   else
+   {
+      int VAR__21230;
+      int VAR__8444594;
+      int minrow;
+      int mincol;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         minrow = VAR__819283[VAR__21230][0];
+         for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            if ( VAR__819283[VAR__21230][VAR__8444594] < minrow )
+            {
+               minrow = VAR__819283[VAR__21230][VAR__8444594];
+            }
+         }
+
+
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            VAR__819283[VAR__21230][VAR__8444594] -= minrow;
+         }
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         mincol = VAR__819283[0][VAR__8444594];
+         for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230][VAR__8444594] < mincol )
+            {
+               mincol = VAR__819283[VAR__21230][VAR__8444594];
+            }
+         }
+
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__819283[VAR__21230][VAR__8444594] -= mincol;
+         }
+      }
+
+      VAR__SUM += VAR__819283[1][1];
+      for ( VAR__21230 = 2; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            VAR__819283[VAR__21230 - 1][VAR__8444594] = VAR__819283[VAR__21230][VAR__8444594];
+         }
+      }
+
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 2; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            VAR__819283[VAR__21230][VAR__8444594 - 1] = VAR__819283[VAR__21230][VAR__8444594];
+         }
+      }
+
+
+      VAR_1238123--;
+      changeSum(VAR_1238123, VAR__SUM, VAR__819283);
+   }
+}

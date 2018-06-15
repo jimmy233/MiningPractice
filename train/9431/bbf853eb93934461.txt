@@ -1,0 +1,42 @@
+struct student
+{
+   char           NO[20];
+   char           name[20];
+   char           sex;
+   int            age;
+   char           score[20];
+   char           add[20];
+   struct student *prev;
+};
+void main()
+{
+   struct student *END;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %s %c %d %s %s", &ANOTHER_POINTER->NO, &ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, &ANOTHER_POINTER->add);
+   ANOTHER_POINTER->prev = 0;
+   ANOTHER_POINTER       = (struct student *)malloc(LEN);
+   for ( ; ; )
+   {
+      scanf("%s", &ANOTHER_POINTER->NO);
+
+      if ( strcmp(ANOTHER_POINTER->NO, "end") == 0 )
+      {
+         END = YET_ANOTHER_POINTER;
+         break;
+      }
+
+      scanf(" %s %c %d %s %s", &ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, &ANOTHER_POINTER->add);
+      ANOTHER_POINTER->prev = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER   = ANOTHER_POINTER;
+      ANOTHER_POINTER       = (struct student *)malloc(LEN);
+   }
+
+   for ( ANOTHER_POINTER = END; ANOTHER_POINTER != 0; )
+   {
+      printf("%s %s %c %d %s %s\n", ANOTHER_POINTER->NO, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+      ANOTHER_POINTER = ANOTHER_POINTER->prev;
+   }
+}

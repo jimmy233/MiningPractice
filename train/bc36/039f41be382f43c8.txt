@@ -1,0 +1,84 @@
+int main()
+{
+   char   A_STRING[100][7];
+   char   sts[100][7];
+   double u[100];
+   double fe[100];
+   double ma[100];
+   double VAR_1238123;
+   double VAR__8444594;
+   int    VAR__127322  = 0;
+   int    VAR__1238129 = 0;
+   int    VAR__53647;
+   int    VAR__21230;
+
+   scanf("%lf", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      fe[VAR__53647] = 0;
+      ma[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", sts[VAR__53647], &u[VAR__53647]);
+
+      if ( sts[VAR__53647][0] == 'f' )
+      {
+         fe[VAR__53647] = u[VAR__53647];
+         VAR__127322++;
+      }
+      else
+      if ( sts[VAR__53647][0] == 'm' )
+      {
+         ma[VAR__53647] = u[VAR__53647];
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( ma[VAR__21230 + 1] > ma[VAR__21230] )
+         {
+            VAR__8444594       = ma[VAR__21230 + 1];
+            ma[VAR__21230 + 1] = ma[VAR__21230];
+            ma[VAR__21230]     = VAR__8444594;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( fe[VAR__21230 + 1] > fe[VAR__21230] )
+         {
+            VAR__8444594       = fe[VAR__21230 + 1];
+            fe[VAR__21230 + 1] = fe[VAR__21230];
+            fe[VAR__21230]     = VAR__8444594;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR__1238129 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__53647 == ( VAR__1238129 - 1 ))
+      {
+         printf("%.2lf", ma[VAR__53647]);
+      }
+      else
+      if ( VAR__53647 < ( VAR__1238129 - 1 ))
+      {
+         printf(" %.2lf", ma[VAR__53647]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__127322; VAR__53647++ )
+   {
+      printf(" %.2lf", fe[VAR__53647]);
+   }
+
+   return 0;
+}

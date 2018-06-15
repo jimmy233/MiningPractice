@@ -1,0 +1,72 @@
+struct student
+{
+   char name[20];
+   int  t1;
+   int  t2;
+   char gan;
+   char west;
+   int  wen;
+   int  VAR__SUM;
+};
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            whole = 0;
+   struct student stu[100];
+   struct student VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].t1, &stu[VAR__53647].t2, &stu[VAR__53647].gan, &stu[VAR__53647].west, &stu[VAR__53647].wen);
+      stu[VAR__53647].VAR__SUM = 0;
+
+      if (( stu[VAR__53647].t1 > 80 ) && ( stu[VAR__53647].wen >= 1 ))
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 8000;
+      }
+
+      if (( stu[VAR__53647].t1 > 85 ) && ( stu[VAR__53647].t2 > 80 ))
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 4000;
+      }
+
+      if ( stu[VAR__53647].t1 > 90 )
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 2000;
+      }
+
+      if (( stu[VAR__53647].t1 > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 1000;
+      }
+
+      if (( stu[VAR__53647].t2 > 80 ) && ( stu[VAR__53647].gan == 'Y' ))
+      {
+         stu[VAR__53647].VAR__SUM = stu[VAR__53647].VAR__SUM + 850;
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( stu[VAR__53647].VAR__SUM < stu[VAR__53647 + 1].VAR__SUM )
+         {
+            VAR__TEMP           = stu[VAR__53647];
+            stu[VAR__53647]     = stu[VAR__53647 + 1];
+            stu[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      whole = whole + stu[VAR__53647].VAR__SUM;
+   }
+
+   printf("%s\n%d\n%d", stu[0].name, stu[0].VAR__SUM, whole);
+}

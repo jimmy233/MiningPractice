@@ -1,0 +1,62 @@
+void main()
+{
+   int  VAR__9290;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__TEMP;
+   int  VAR__819283[300] = { 0 };
+   char A_STRING[1500]   = { '\0' };
+
+   gets(A_STRING);
+   VAR__9290  = strlen(A_STRING);
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__9290; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] != ',' )
+      {
+         VAR__819283[VAR__21230] = (( VAR__819283[VAR__21230] * 10 ) + A_STRING[VAR__53647] ) - '0';
+      }
+      else
+      {
+         VAR__21230++;
+      }
+   }
+
+   if ( VAR__21230 == 1 )
+   {
+      printf("No");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= VAR__21230; VAR__53647++ )
+      {
+         for ( VAR__8444594 = VAR__53647 + 1; VAR__8444594 <= VAR__21230; VAR__8444594++ )
+         {
+            if ( VAR__819283[VAR__53647] < VAR__819283[VAR__8444594] )
+            {
+               VAR__TEMP = VAR__819283[VAR__53647];
+               VAR__819283[VAR__53647]   = VAR__819283[VAR__8444594];
+               VAR__819283[VAR__8444594] = VAR__TEMP;
+            }
+         }
+      }
+
+
+
+      if ( VAR__819283[0] == VAR__819283[VAR__21230] )
+      {
+         printf("No");
+      }
+      else
+      {
+         VAR__9290  = VAR__819283[0];
+         VAR__53647 = 0;
+         do
+         {
+            VAR__53647++;
+         } while ( VAR__819283[VAR__53647] == VAR__9290 );
+         printf("%d", VAR__819283[VAR__53647]);
+      }
+   }
+}

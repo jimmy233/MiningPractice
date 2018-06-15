@@ -1,0 +1,92 @@
+struct info
+{
+   int         VAR__NUM;
+   char        data[10];
+   struct info *VAR__NEXT;
+   int         tip;
+};
+struct info *create(int VAR_1238123)
+{
+   struct info *ANOTHER_POINTER;
+   struct info *pre;
+   struct info *YET_ANOTHER_POINTER;
+   struct info *VAR__HEAD;
+   struct info *tail;
+   int         VAR__53647;
+   int         VAR__temp;
+
+   VAR__HEAD       = (struct info *)malloc(sizeof( struct info ));
+   ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+   scanf("%s %d", ANOTHER_POINTER->data, &ANOTHER_POINTER->VAR__NUM);
+   VAR__HEAD->VAR__NEXT       = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   tail       = ANOTHER_POINTER;
+   VAR__53647 = 0;
+
+   while ( VAR__53647 < ( VAR_1238123 - 1 ))
+   {
+      VAR__temp       = 0;
+      ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+      scanf("%s %d", ANOTHER_POINTER->data, &ANOTHER_POINTER->VAR__NUM);
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+
+      if ( ANOTHER_POINTER->VAR__NUM >= 60 )
+      {
+         for ( pre = VAR__HEAD, YET_ANOTHER_POINTER = VAR__HEAD->VAR__NEXT; ( YET_ANOTHER_POINTER != NULL ) && ( YET_ANOTHER_POINTER->VAR__NUM >= 60 ); pre = pre->VAR__NEXT, YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT )
+         {
+            if ( YET_ANOTHER_POINTER->VAR__NUM < ANOTHER_POINTER->VAR__NUM )
+            {
+               pre->VAR__NEXT             = ANOTHER_POINTER;
+               ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+               VAR__temp = 1;
+               break;
+            }
+         }
+
+         if ( VAR__temp == 0 )
+         {
+            pre->VAR__NEXT             = ANOTHER_POINTER;
+            ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+
+            if ( YET_ANOTHER_POINTER == NULL )
+            {
+               tail = ANOTHER_POINTER;
+            }
+         }
+      }
+      else
+      {
+         tail->VAR__NEXT = ANOTHER_POINTER;
+         tail            = ANOTHER_POINTER;
+      }
+
+      VAR__53647++;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct info *VAR__HEAD)
+{
+   struct info *VAR_233;
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->data);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   int         VAR_1238123;
+   struct info *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create(VAR_1238123);
+   print(VAR__HEAD);
+}

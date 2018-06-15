@@ -1,0 +1,60 @@
+void main()
+{
+   struct student
+   {
+      char           info[1000];
+      struct student *pre;
+      struct student *VAR__NEXT;
+   }
+   *VAR__HEAD;
+   struct student
+   {
+      char           info[1000];
+      struct student *pre;
+      struct student *VAR__NEXT;
+   }
+   *tail;
+   struct student
+   {
+      char           info[1000];
+      struct student *pre;
+      struct student *VAR__NEXT;
+   }
+       *VAR_233;
+   int VAR__1111;
+
+   VAR__1111          = sizeof( struct student );
+   VAR__HEAD          = (struct student *)malloc(VAR__1111);
+   VAR_233            = VAR__HEAD;
+   VAR_233->pre       = NULL;
+   VAR_233->VAR__NEXT = NULL;
+   for ( ; ; )
+   {
+      gets(VAR_233->info);
+
+      if ( strcmp(VAR_233->info, "end") == 0 )
+      {
+         tail = VAR_233;
+         break;
+      }
+
+      VAR_233->VAR__NEXT            = (struct student *)malloc(VAR__1111);
+      VAR_233->VAR__NEXT->pre       = VAR_233;
+      VAR_233->VAR__NEXT->VAR__NEXT = NULL;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = tail;
+   for ( ; ; )
+   {
+      if ( !VAR_233->pre )
+      {
+         free(VAR_233);
+         break;
+      }
+
+      puts(VAR_233->pre->info);
+      VAR_233 = VAR_233->pre;
+      free(VAR_233->VAR__NEXT);
+   }
+}

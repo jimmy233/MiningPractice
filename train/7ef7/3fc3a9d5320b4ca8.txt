@@ -1,0 +1,96 @@
+int VAR__127322(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 >= VAR__19328 )
+   {
+      return VAR__19328;
+   }
+   else
+   {
+      return VAR__819283;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR__SUM;
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR_129012;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int VAR__819283[100][100] = { 0 };
+      int VAR__19328[100][100]  = { 0 };
+      VAR__SUM = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+         {
+            scanf("%d", &VAR__819283[VAR__21230][VAR__temp]);
+            VAR__19328[VAR__21230][VAR__temp] = VAR__819283[VAR__21230][VAR__temp];
+         }
+      }
+
+      for ( VAR_129012 = 0; VAR_129012 < ( VAR_1238123 - 1 ); VAR_129012++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__7685 = 0;
+            for ( VAR__temp = 0; VAR__temp < ( VAR_1238123 - 1 ); VAR__temp++ )
+            {
+               VAR__819283[VAR__21230][VAR__temp + 1] = VAR__127322(VAR__819283[VAR__21230][VAR__temp], VAR__819283[VAR__21230][VAR__temp + 1]);
+            }
+
+            VAR__7685 = VAR__819283[VAR__21230][VAR__temp];
+            for ( VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+            {
+               VAR__19328[VAR__21230][VAR__temp]  = VAR__19328[VAR__21230][VAR__temp] - VAR__7685;
+               VAR__819283[VAR__21230][VAR__temp] = VAR__19328[VAR__21230][VAR__temp];
+            }
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__3918907 = 0;
+            for ( VAR__temp = 0; VAR__temp < ( VAR_1238123 - 1 ); VAR__temp++ )
+            {
+               VAR__819283[VAR__temp + 1][VAR__21230] = VAR__127322(VAR__819283[VAR__temp][VAR__21230], VAR__819283[VAR__temp + 1][VAR__21230]);
+            }
+
+            VAR__3918907 = VAR__819283[VAR__temp][VAR__21230];
+            for ( VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+            {
+               VAR__19328[VAR__temp][VAR__21230]  = VAR__19328[VAR__temp][VAR__21230] - VAR__3918907;
+               VAR__819283[VAR__temp][VAR__21230] = VAR__19328[VAR__temp][VAR__21230];
+            }
+         }
+
+         VAR__SUM = VAR__SUM + VAR__819283[1][1];
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            for ( VAR__temp = 1; VAR__temp < ( VAR_1238123 - 1 ); VAR__temp++ )
+            {
+               VAR__819283[VAR__temp][VAR__21230] = VAR__819283[VAR__temp + 1][VAR__21230];
+               VAR__19328[VAR__temp][VAR__21230]  = VAR__819283[VAR__temp][VAR__21230];
+            }
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            for ( VAR__temp = 1; VAR__temp < ( VAR_1238123 - 1 ); VAR__temp++ )
+            {
+               VAR__819283[VAR__21230][VAR__temp] = VAR__819283[VAR__21230][VAR__temp + 1];
+               VAR__19328[VAR__21230][VAR__temp]  = VAR__819283[VAR__21230][VAR__temp];
+            }
+         }
+      }
+
+      printf("%d\n", VAR__SUM);
+   }
+}

@@ -1,0 +1,91 @@
+struct a
+{
+   char VAR_9494[10];
+   int  VAR__NUM;
+   int  del;
+}
+     list[500];
+int  VAR_1238123;
+int  LEN_OF_STH;
+char VAR_9494[1000];
+int  tot;
+int  VAR__MAX = -1;
+void init()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   scanf("%d\n", &VAR_1238123);
+   LEN_OF_STH = strlen(gets(VAR_9494));
+   tot        = ( LEN_OF_STH - VAR_1238123 ) + 1;
+   for ( VAR__53647 = 0; VAR__53647 < tot; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         list[VAR__53647].VAR_9494[VAR__21230] = VAR_9494[VAR__53647 + VAR__21230];
+      }
+
+      list[VAR__53647].VAR__NUM = ( list[VAR__53647].del = 0 );
+      list[VAR__53647].VAR_9494[VAR_1238123] = '\0';
+   }
+}
+
+
+void solve()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < tot; VAR__53647++ )
+   {
+      if ( !list[VAR__53647].del )
+      {
+         list[VAR__53647].VAR__NUM = 1;
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < tot; VAR__21230++ )
+         {
+            if ( !strcmp(list[VAR__53647].VAR_9494, list[VAR__21230].VAR_9494))
+            {
+               list[VAR__53647].VAR__NUM++;
+               list[VAR__21230].del = 1;
+            }
+         }
+
+         if ( list[VAR__53647].VAR__NUM > VAR__MAX )
+         {
+            VAR__MAX = list[VAR__53647].VAR__NUM;
+         }
+      }
+   }
+}
+
+
+void print()
+{
+   int VAR__53647;
+
+   if ( VAR__MAX - 1 )
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < tot; VAR__53647++ )
+      {
+         if (( !list[VAR__53647].del ) && ( list[VAR__53647].VAR__NUM == VAR__MAX ))
+         {
+            puts(list[VAR__53647].VAR_9494);
+         }
+      }
+   }
+   else
+   {
+      puts("NO");
+   }
+}
+
+
+int main()
+{
+   init();
+   solve();
+   print();
+   return 0;
+}

@@ -1,0 +1,136 @@
+void sort(int VAR__819283[], int VAR__1111, int VAR_129012)
+{
+   int VAR__temp;
+   int VAR__53647;
+   int VAR__21230;
+
+   VAR__temp  = VAR__819283[VAR__1111];
+   VAR__53647 = VAR__1111;
+   VAR__21230 = VAR_129012;
+   do
+   {
+      while (( VAR__53647 < VAR__21230 ) && ( VAR__temp >= VAR__819283[VAR__21230] ))
+      {
+         VAR__21230--;
+      }
+
+      if ( VAR__53647 < VAR__21230 )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__21230];
+         VAR__53647++;
+
+         while (( VAR__21230 > VAR__53647 ) && ( VAR__temp <= VAR__819283[VAR__53647] ))
+         {
+            VAR__53647++;
+         }
+
+         if ( VAR__53647 < VAR__21230 )
+         {
+            VAR__819283[VAR__21230] = VAR__819283[VAR__53647];
+            VAR__21230--;
+         }
+      }
+   } while ( VAR__53647 < VAR__21230 );
+   VAR__819283[VAR__53647] = VAR__temp;
+   VAR__53647++;
+   VAR__21230--;
+
+   if ( VAR__53647 < VAR_129012 )
+   {
+      sort(VAR__819283, VAR__53647, VAR_129012);
+   }
+
+   if ( VAR__1111 < VAR__21230 )
+   {
+      sort(VAR__819283, VAR__1111, VAR__21230);
+   }
+}
+
+
+int VAR_129012(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return -200;
+   }
+   else
+   if ( VAR__819283 == VAR__19328 )
+   {
+      return 0;
+   }
+   else
+   {
+      return 200;
+   }
+}
+
+
+void main()
+{
+   int VAR__819283[1000];
+   int VAR__19328[1000];
+   int VAR__127322[2][1001];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MAX;
+   int VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      sort(VAR__819283, 0, VAR_1238123 - 1);
+      sort(VAR__19328, 0, VAR_1238123 - 1);
+      VAR__temp = 0;
+      for ( VAR__21230 = 0; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         VAR__127322[0][VAR__21230] = 0;
+         VAR__127322[1][VAR__21230] = 0;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         VAR__temp = 1 - VAR__temp;
+         for ( VAR__21230 = 0; VAR__21230 <= VAR__53647; VAR__21230++ )
+         {
+            if ( VAR__21230 == 0 )
+            {
+               VAR__127322[VAR__temp][VAR__21230] = VAR__127322[1 - VAR__temp][VAR__21230] + VAR_129012(VAR__819283[VAR__53647 - 1], VAR__19328[( VAR_1238123 - VAR__53647 ) + VAR__21230]);
+            }
+            else
+            if ( VAR__53647 == VAR__21230 )
+            {
+               VAR__127322[VAR__temp][VAR__21230] = VAR__127322[1 - VAR__temp][VAR__21230 - 1] + VAR_129012(VAR__819283[VAR__53647 - 1], VAR__19328[VAR__21230 - 1]);
+            }
+            else
+            {
+               VAR__127322[VAR__temp][VAR__21230] = MAX(VAR__127322[1 - VAR__temp][VAR__21230] + VAR_129012(VAR__819283[VAR__53647 - 1], VAR__19328[( VAR_1238123 - VAR__53647 ) + VAR__21230]), VAR__127322[1 - VAR__temp][VAR__21230 - 1] + VAR_129012(VAR__819283[VAR__53647 - 1], VAR__19328[VAR__21230 - 1]));
+            }
+         }
+      }
+
+      VAR__MAX = (( ~0u ) >> 1 ) ^ ( ~0u );
+      for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__127322[VAR__temp][VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX = VAR__127322[VAR__temp][VAR__53647];
+         }
+      }
+
+
+      printf("%d\n", VAR__MAX);
+      scanf("%d", &VAR_1238123);
+   }
+}

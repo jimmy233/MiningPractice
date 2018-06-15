@@ -1,0 +1,64 @@
+struct Top
+{
+   int   VAR__NUM;
+   float score;
+}
+           Top[4] = { { 0, 0 } };
+struct Top *VAR_233;
+void maopao(int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR_233 = Top; VAR_233 < (( Top + VAR_1238123 ) - VAR__53647 ); VAR_233++ )
+      {
+         if ( VAR_233->score < ( VAR_233 + 1 )->score )
+         {
+            Top[3]           = *VAR_233;
+            *VAR_233         = *( VAR_233 + 1 );
+            *( VAR_233 + 1 ) = Top[3];
+         }
+      }
+   }
+}
+
+
+void sort(float VAR__819283, int VAR_1238123)
+{
+   VAR_233 = Top + 2;
+
+   if ( VAR__819283 > VAR_233->score )
+   {
+      VAR_233->score    = VAR__819283;
+      VAR_233->VAR__NUM = VAR_1238123;
+   }
+
+   maopao(3);
+}
+
+
+int main()
+{
+   int   VAR__53647;
+   int   VAR_1238123;
+   int   VAR__NUM;
+   float yw;
+   float sx;
+   float score;
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %f %f", &VAR__NUM, &yw, &sx);
+      float score = yw + sx;
+      sort(score, VAR__NUM);
+   }
+
+   for ( VAR_233 = Top; VAR_233 < ( Top + 3 ); VAR_233++ )
+   {
+      printf("%d %g\n", VAR_233->VAR__NUM, VAR_233->score);
+   }
+
+   return 0;
+}

@@ -1,0 +1,92 @@
+struct student
+{
+   char Name[20];
+   int  agrades;
+   int  bgrades;
+   char VAR__819283;
+   char VAR__19328;
+   int  VAR_1238123;
+};
+int main(int argc, char *argv[])
+{
+   struct student *VAR_233;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__NUM;
+
+   scanf("%d", &VAR__NUM);
+   VAR_233 = (struct student *)malloc(VAR__NUM * ( sizeof( struct student )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c%d", VAR_233[VAR__53647].Name, &VAR_233[VAR__53647].agrades, &VAR_233[VAR__53647].bgrades, &VAR_233[VAR__53647].VAR__819283, &VAR_233[VAR__53647].VAR__19328, &VAR_233[VAR__53647].VAR_1238123);
+   }
+
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+   ANOTHER_POINTER     = (int *)malloc(VAR__NUM * ( sizeof( int )));
+   YET_ANOTHER_POINTER = (int *)malloc(VAR__NUM * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      ANOTHER_POINTER[VAR__53647]     = 0;
+      YET_ANOTHER_POINTER[VAR__53647] = 0;
+
+      if (( VAR_233[VAR__53647].agrades > 80 ) && ( VAR_233[VAR__53647].VAR_1238123 >= 1 ))
+      {
+         ANOTHER_POINTER[VAR__53647]++;
+         YET_ANOTHER_POINTER[VAR__53647] += 8000;
+      }
+
+      if (( VAR_233[VAR__53647].agrades > 85 ) && ( VAR_233[VAR__53647].bgrades > 80 ))
+      {
+         ANOTHER_POINTER[VAR__53647]++;
+         YET_ANOTHER_POINTER[VAR__53647] += 4000;
+      }
+
+      if ( VAR_233[VAR__53647].agrades > 90 )
+      {
+         ANOTHER_POINTER[VAR__53647]++;
+         YET_ANOTHER_POINTER[VAR__53647] += 2000;
+      }
+
+      if (( VAR_233[VAR__53647].agrades > 85 ) && ( VAR_233[VAR__53647].VAR__19328 == 'Y' ))
+      {
+         ANOTHER_POINTER[VAR__53647]++;
+         YET_ANOTHER_POINTER[VAR__53647] += 1000;
+      }
+
+      if (( VAR_233[VAR__53647].bgrades > 80 ) && ( VAR_233[VAR__53647].VAR__819283 == 'Y' ))
+      {
+         ANOTHER_POINTER[VAR__53647]++;
+         YET_ANOTHER_POINTER[VAR__53647] += 850;
+      }
+   }
+
+   int VAR__SUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      VAR__SUM += YET_ANOTHER_POINTER[VAR__53647];
+   }
+
+   int VAR__MAX;
+   VAR__MAX = YET_ANOTHER_POINTER[0];
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( VAR__MAX < YET_ANOTHER_POINTER[VAR__53647] )
+      {
+         VAR__MAX = YET_ANOTHER_POINTER[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( VAR__MAX == YET_ANOTHER_POINTER[VAR__53647] )
+      {
+         break;
+      }
+   }
+
+   printf("%s\n", VAR_233[VAR__53647].Name);
+   printf("%d\n", YET_ANOTHER_POINTER[VAR__53647]);
+   printf("%d", VAR__SUM);
+   return 0;
+}

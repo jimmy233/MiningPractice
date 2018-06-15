@@ -1,0 +1,80 @@
+int main(int argc, char *argv[])
+{
+   char        ary[500];
+   static char separy[500][5];
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR__8444594;
+   char        *A_POINTER;
+   int         LEN_OF_STH;
+
+   A_POINTER = ary;
+   scanf("%d\n", &VAR_1238123);
+   gets(ary);
+   LEN_OF_STH = strlen(ary);
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH + 1 ) - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         separy[VAR__53647][VAR__21230] = ary[VAR__53647 + VAR__21230];
+      }
+   }
+
+   static int tong[500];
+   int        VAR__7685;
+   int        VAR__3918907;
+   for ( VAR__8444594 = LEN_OF_STH - VAR_1238123; VAR__8444594 >= 0; VAR__8444594-- )
+   {
+      for ( VAR__7685 = VAR__8444594 + 1; VAR__7685 < (( LEN_OF_STH + 1 ) - VAR_1238123 ); VAR__7685++ )
+      {
+         if ( strcmp(separy[VAR__7685], separy[VAR__8444594]) == 0 )
+         {
+            tong[VAR__8444594]++;
+         }
+      }
+   }
+
+   int VAR__MAX = 0;
+   int fitgru[10];
+   int fitcount = 0;
+   for ( VAR__3918907 = 0; VAR__3918907 < 10; VAR__3918907++ )
+   {
+      fitgru[VAR__3918907] = -1;
+   }
+
+   int al;
+   int be;
+   for ( al = 0; al < (( LEN_OF_STH + 1 ) - VAR_1238123 ); al++ )
+   {
+      if ( tong[al] != 0 )
+      {
+         if ( tong[al] > VAR__MAX )
+         {
+            VAR__MAX  = tong[al];
+            fitgru[0] = al;
+            fitcount  = 1;
+         }
+         else
+         if ( tong[al] == VAR__MAX )
+         {
+            fitgru[fitcount++] = al;
+         }
+      }
+   }
+
+   if ( VAR__MAX )
+   {
+      ( cout << ( VAR__MAX + 1 )) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < fitcount; VAR__53647++ )
+      {
+         ( cout << separy[fitgru[VAR__53647]] ) << endl;
+      }
+   }
+   else
+   {
+      cout << "NO";
+   }
+
+   return EXIT_SUCCESS;
+}

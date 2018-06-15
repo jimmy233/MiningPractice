@@ -1,0 +1,97 @@
+int turn(int VAR__1238129)
+{
+   int VAR_1238123;
+   int VAR__8444594;
+
+   VAR_1238123 = VAR__1238129;
+   int VAR__53647 = 0;
+   int VAR__819283[100];
+
+   while ( VAR_1238123 != 0 )
+   {
+      VAR__819283[VAR__53647] = VAR_1238123 % 10;
+      VAR__53647++;
+      VAR_1238123 /= 10;
+   }
+
+   VAR__8444594 = VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      VAR_1238123 *= 10;
+      VAR_1238123 += VAR__819283[VAR__53647];
+   }
+
+   if ( VAR_1238123 == VAR__1238129 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int check(int VAR__1238129)
+{
+   int VAR__53647;
+   int test1 = 1;
+   int test  = 0;
+
+   for ( VAR__53647 = 2; VAR__53647 <= sqrt(VAR__1238129); VAR__53647++ )
+   {
+      if (( VAR__1238129 % VAR__53647 ) == 0 )
+      {
+         test1 = 0;
+      }
+   }
+
+
+   if ( test1 != 0 )
+   {
+      test += 1;
+   }
+
+   if ( turn(VAR__1238129))
+   {
+      test += 1;
+   }
+
+   if ( test == 2 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__temp = 0;
+   int VAR__53647;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( check(VAR__53647) && ( VAR__temp == 0 ))
+      {
+         printf("%d", VAR__53647);
+         VAR__temp = 1;
+      }
+      else
+      if ( check(VAR__53647))
+      {
+         printf(",%d", VAR__53647);
+      }
+   }
+
+   if ( VAR__temp == 0 )
+   {
+      printf("no");
+   }
+}

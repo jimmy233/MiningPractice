@@ -1,0 +1,43 @@
+struct xue
+{
+   int ID;
+   int sx;
+   int yw;
+   int VAR__SUM;
+}
+xueshen;
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   struct xue *xuesheng;
+   xuesheng = (struct xue *)malloc(( 4 * ( sizeof( int ))) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &xuesheng[VAR__53647].ID, &xuesheng[VAR__53647].sx, &xuesheng[VAR__53647].yw);
+      xuesheng[VAR__53647].VAR__SUM = xuesheng[VAR__53647].sx + xuesheng[VAR__53647].yw;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 4; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR_1238123 - VAR__53647 ); VAR__8444594++ )
+      {
+         if ( xuesheng[VAR__8444594].VAR__SUM >= xuesheng[VAR__8444594 + 1].VAR__SUM )
+         {
+            xueshen = xuesheng[VAR__8444594 + 1];
+            xuesheng[VAR__8444594 + 1] = xuesheng[VAR__8444594];
+            xuesheng[VAR__8444594]     = xueshen;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 4; VAR__53647++ )
+   {
+      printf("%d %d\n", xuesheng[VAR_1238123 - VAR__53647].ID, xuesheng[VAR_1238123 - VAR__53647].VAR__SUM);
+   }
+
+   return 0;
+}

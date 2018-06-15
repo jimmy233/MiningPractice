@@ -1,0 +1,83 @@
+int main()
+{
+   char   VAR__8444594[7];
+   int    VAR_1238123;
+   int    VAR__53647;
+   double height;
+   int    VAR_2890[40];
+   int    VAR__1111[40];
+
+   scanf("%d", &VAR_1238123);
+   int VAR__819283 = 0;
+   int VAR__19328  = 0;
+   int VAR__112390;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", VAR__8444594);
+      scanf("%lf", &height);
+
+      if ( VAR__8444594[0] == 'm' )
+      {
+         height = 1000 * height;
+         VAR_2890[VAR__819283] = (int)height;
+         VAR__819283++;
+      }
+      else
+      {
+         height = 1000 * height;
+         VAR__1111[VAR__19328] = (int)height;
+         VAR__19328++;
+      }
+   }
+
+   int VAR__21230;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__819283; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__819283 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR_2890[VAR__21230] > VAR_2890[VAR__21230 + 1] )
+         {
+            VAR__112390              = VAR_2890[VAR__21230];
+            VAR_2890[VAR__21230]     = VAR_2890[VAR__21230 + 1];
+            VAR_2890[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__19328; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__19328 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__1111[VAR__21230] > VAR__1111[VAR__21230 + 1] )
+         {
+            VAR__112390               = VAR__1111[VAR__21230];
+            VAR__1111[VAR__21230]     = VAR__1111[VAR__21230 + 1];
+            VAR__1111[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__819283 - 1 ); VAR__53647++ )
+   {
+      VAR__112390 = VAR_2890[VAR__53647];
+      height      = ( 1.0 * VAR__112390 ) * 0.001;
+
+      if ( VAR__53647 == 0 )
+      {
+         printf("%.2lf", height);
+      }
+      else
+      {
+         printf(" %.2lf", height);
+      }
+   }
+
+   for ( VAR__53647 = VAR__19328 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__112390 = VAR__1111[VAR__53647];
+      height      = ( 1.0 * VAR__112390 ) * 0.001;
+      printf(" %.2lf", height);
+   }
+
+   return 0;
+}

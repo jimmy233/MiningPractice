@@ -1,0 +1,69 @@
+int yz[100];
+int all = 0;
+int yinzi(int VAR__NUM, int amax)
+{
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int geshu      = 0;
+   int key        = VAR__NUM;
+
+   if ( VAR__NUM == 1 )
+   {
+      return 1;
+   }
+   else
+   {
+      for ( VAR__53647 = amax; VAR__53647 < all; VAR__53647++ )
+      {
+         if (( VAR__NUM % yz[VAR__53647] ) == 0 )
+         {
+            VAR__NUM = VAR__NUM / yz[VAR__53647];
+            geshu    = geshu + yinzi(VAR__NUM, VAR__53647);
+            VAR__NUM = key;
+         }
+      }
+
+      return geshu;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR__NUM;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__4857423;
+   int VAR__21230 = 0;
+   int VAR__8444594;
+
+   cin >> VAR_1238123;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      cin >> VAR__NUM;
+
+      if ( VAR__NUM == 1 )
+      {
+         ( cout << 1 ) << endl;
+      }
+      else
+      {
+         VAR__21230 = 0;
+         for ( VAR__53647 = 2; VAR__53647 <= VAR__NUM; VAR__53647++ )
+         {
+            if (( VAR__NUM % VAR__53647 ) == 0 )
+            {
+               yz[VAR__21230] = VAR__53647;
+               VAR__21230++;
+            }
+         }
+
+         all = VAR__21230;
+         ( cout << yinzi(VAR__NUM, 0)) << endl;
+      }
+   }
+
+   return 0;
+}

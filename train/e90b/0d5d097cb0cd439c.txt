@@ -1,0 +1,88 @@
+struct student
+{
+   int            id;
+   int            score1;
+   int            score2;
+   struct student *VAR__NEXT;
+};
+struct student *VAR__HEAD;
+struct student *creat(int VAR__7685)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%d %d %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2);
+   VAR__HEAD = 0;
+
+   while ( ANOTHER_POINTER->id < VAR__7685 )
+   {
+      if ( ANOTHER_POINTER->id == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%d %d %d", &ANOTHER_POINTER->id, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2);
+
+      if ( ANOTHER_POINTER->id == VAR__7685 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      }
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *VAR__21230;
+   struct student *VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   creat(VAR_1238123);
+   VAR_233 = ( VAR_666 = VAR__HEAD );
+   do
+   {
+      if (( VAR_233->score1 + VAR_233->score2 ) > ( VAR_666->score1 + VAR_666->score2 ))
+      {
+         VAR_666 = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != 0 );
+   VAR_233 = ( VAR__21230 = VAR__HEAD );
+   do
+   {
+      if ((( VAR_233->score1 + VAR_233->score2 ) > ( VAR__21230->score1 + VAR__21230->score2 )) && ( VAR_233 != VAR_666 ))
+      {
+         VAR__21230 = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != 0 );
+   VAR_233 = ( VAR__8444594 = VAR__HEAD );
+   do
+   {
+      if (((( VAR_233->score1 + VAR_233->score2 ) > ( VAR__8444594->score1 + VAR__8444594->score2 )) && ( VAR_233 != VAR_666 )) && ( VAR_233 != VAR__21230 ))
+      {
+         VAR__8444594 = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != 0 );
+   printf("%d %d\n", VAR_666->id, VAR_666->score1 + VAR_666->score2);
+   printf("%d %d\n", VAR__21230->id, VAR__21230->score1 + VAR__21230->score2);
+   printf("%d %d", VAR__8444594->id, VAR__8444594->score1 + VAR__8444594->score2);
+}

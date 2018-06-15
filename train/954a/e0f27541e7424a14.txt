@@ -1,0 +1,93 @@
+struct student
+{
+   char name[20];
+   int  score;
+   int  judge;
+   char c1;
+   char c2;
+   char VAR__NUM;
+   int  money;
+};
+int main()
+{
+   struct student VAR__819283[501];
+   char           s1[20];
+   int            VAR__53647;
+   int            VAR_1238123;
+   int            VAR__MAX = 0;
+   int            VAR__SUM = 0;
+   int            score1;
+   int            num1;
+   int            judge1;
+   char           c11;
+   char           c12;
+   struct student *VAR_233;
+
+   VAR_233 = VAR__819283;
+   scanf("%d", &VAR_1238123);
+   for ( ; VAR_233 < ( VAR__819283 + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%s", s1);
+      strcpy(VAR_233->name, s1);
+      scanf("%d %d %c %c %d", &score1, &judge1, &c11, &c12, &num1);
+      VAR_233->c1       = c11;
+      VAR_233->c2       = c12;
+      VAR_233->judge    = judge1;
+      VAR_233->VAR__NUM = num1;
+      VAR_233->score    = score1;
+      VAR_233->money    = 0;
+   }
+
+   VAR_233 = VAR__819283;
+   for ( ; VAR_233 < ( VAR__819283 + VAR_1238123 ); VAR_233++ )
+   {
+      if (( VAR_233->score > 80 ) && ( VAR_233->VAR__NUM > 0 ))
+      {
+         VAR_233->money += 8000;
+      }
+
+      if (( VAR_233->judge > 80 ) && ( VAR_233->score > 85 ))
+      {
+         VAR_233->money += 4000;
+      }
+
+      if ( VAR_233->score > 90 )
+      {
+         VAR_233->money += 2000;
+      }
+
+      if (( VAR_233->c1 == 'Y' ) && ( VAR_233->judge > 80 ))
+      {
+         VAR_233->money += 850;
+      }
+
+      if (( VAR_233->c2 == 'Y' ) && ( VAR_233->score > 85 ))
+      {
+         VAR_233->money += 1000;
+      }
+   }
+
+   VAR_233 = VAR__819283;
+   for ( ; VAR_233 < ( VAR__819283 + VAR_1238123 ); VAR_233++ )
+   {
+      if ( VAR_233->money > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->money;
+      }
+
+      VAR__SUM += VAR_233->money;
+   }
+
+   VAR_233 = VAR__819283;
+   for ( ; VAR_233 < ( VAR__819283 + VAR_1238123 ); VAR_233++ )
+   {
+      if ( VAR_233->money == VAR__MAX )
+      {
+         printf("%s\n%d\n", VAR_233->name, VAR_233->money);
+         break;
+      }
+   }
+
+   printf("%d\n", VAR__SUM);
+   return 0;
+}

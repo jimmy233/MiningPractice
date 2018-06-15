@@ -1,0 +1,49 @@
+int main()
+{
+   char bei[100]   = { '\0' };
+   char shang[100] = { '\0' };
+   int  VAR__53647;
+   int  wei;
+   int  VAR__819283;
+
+   scanf("%s", bei);
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if ( bei[VAR__53647 + 1] == '\0' )
+      {
+         wei = VAR__53647;
+         break;
+      }
+   }
+
+   if ( wei < 1 )
+   {
+      printf("0\n%c\n", bei[0]);
+   }
+
+   if ( wei >= 1 )
+   {
+      VAR__819283 = (( 10 * ( bei[0] - '0' )) + bei[1] ) - '0';
+      shang[0]    = ( VAR__819283 / 13 ) + '0';
+      for ( VAR__53647 = 1; VAR__53647 < wei; VAR__53647++ )
+      {
+         VAR__819283       = ((( VAR__819283 % 13 ) * 10 ) + bei[VAR__53647 + 1] ) - '0';
+         shang[VAR__53647] = ( VAR__819283 / 13 ) + '0';
+      }
+
+      VAR__819283 = VAR__819283 % 13;
+
+      if (( shang[0] == '0' ) && ( wei > 1 ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= ( wei - 2 ); VAR__53647++ )
+         {
+            shang[VAR__53647] = shang[VAR__53647 + 1];
+         }
+
+         shang[wei - 1] = '\0';
+      }
+
+      printf("%s\n", shang);
+      printf("%d\n", VAR__819283);
+   }
+}

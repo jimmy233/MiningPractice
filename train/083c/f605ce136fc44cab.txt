@@ -1,0 +1,72 @@
+char *atob(int VAR__819283, int VAR__19328, char *ANOTHER_STRING)
+{
+   int         len1 = strlen(ANOTHER_STRING);
+   int         Sum  = 0;
+   static char YET_ANOTHER_STRING[100] = { 0 };
+
+   for ( int VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      int VAR_9494;
+
+      if ( ANOTHER_STRING[VAR__53647] <= 57 )
+      {
+         VAR_9494 = ANOTHER_STRING[VAR__53647] - '0';
+      }
+
+      if (( ANOTHER_STRING[VAR__53647] >= 65 ) && ( ANOTHER_STRING[VAR__53647] <= 90 ))
+      {
+         VAR_9494 = ( ANOTHER_STRING[VAR__53647] - 'A' ) + 10;
+      }
+
+      if ( ANOTHER_STRING[VAR__53647] > 90 )
+      {
+         VAR_9494 = ( ANOTHER_STRING[VAR__53647] - 'a' ) + 10;
+      }
+
+      Sum += VAR_9494 * pow(VAR__819283, ( len1 - VAR__53647 ) - 1);
+   }
+
+   for ( int VAR__53647 = 0; Sum > 0; VAR__53647++ )
+   {
+      if (( Sum % VAR__19328 ) < 10 )
+      {
+         YET_ANOTHER_STRING[VAR__53647] = ( Sum % VAR__19328 ) + '0';
+      }
+      else
+      {
+         YET_ANOTHER_STRING[VAR__53647] = (( Sum % VAR__19328 ) - 10 ) + 'A';
+      }
+
+      Sum -= Sum % VAR__19328;
+      Sum /= VAR__19328;
+   }
+
+   int LEN_OF_STH = strlen(YET_ANOTHER_STRING);
+   YET_ANOTHER_STRING[LEN_OF_STH] = 0;
+   return YET_ANOTHER_STRING;
+}
+
+
+int main(int argc, const char *argv[])
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   char ANOTHER_STRING[100] = { 0 };
+
+   (( cin >> VAR__819283 ) >> ANOTHER_STRING ) >> VAR__19328;
+
+   if ( ANOTHER_STRING[0] == '0' )
+   {
+      cout << "0";
+      return 0;
+   }
+
+   char *YET_ANOTHER_STRING = atob(VAR__819283, VAR__19328, ANOTHER_STRING);
+   int  LEN_OF_STH          = strlen(YET_ANOTHER_STRING);
+   for ( int VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << ( *( YET_ANOTHER_STRING + VAR__53647 ));
+   }
+
+   return 0;
+}

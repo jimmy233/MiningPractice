@@ -1,0 +1,101 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__8444594;
+   int          VAR_9494;
+   int          VAR__3918907;
+   int          VAR__7685;
+   int          VAR__9290;
+   int          VAR_21983012;
+   unsigned int *VAR_233 = 0;
+   VAR_233 = (unsigned int *)malloc(( sizeof( unsigned int )) * VAR_1238123);
+   double total = 0;
+   double *deviation;
+   deviation = (double *)malloc(( sizeof( double )) * VAR_1238123);
+   double mean;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR_233[VAR__53647]);
+      total = total + VAR_233[VAR__53647];
+   }
+
+   mean = total / VAR_1238123;
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      deviation[VAR__21230] = fabs(VAR_233[VAR__21230] - mean);
+   }
+
+   double VAR__19328 = deviation[0];
+   int    VAR__NUM   = 0;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( VAR__19328 < deviation[VAR__8444594 + 1] )
+      {
+         VAR__19328 = deviation[VAR__8444594 + 1];
+      }
+   }
+
+   unsigned int *fit;
+   fit  = (unsigned int *)malloc(( sizeof( unsigned int )) * VAR_1238123);
+   *fit = 0;
+   for ( VAR_9494 = 0; VAR_9494 < VAR_1238123; VAR_9494++ )
+   {
+      if ( deviation[VAR_9494] == VAR__19328 )
+      {
+         fit[VAR_9494] = VAR_233[VAR_9494];
+         VAR__NUM      = VAR__NUM + 1;
+      }
+      else
+      {
+         fit[VAR_9494] = 0;
+      }
+   }
+
+   if ( VAR__NUM == 1 )
+   {
+      for ( VAR__7685 = 0; VAR__7685 < VAR_1238123; VAR__7685++ )
+      {
+         if ( deviation[VAR__7685] == VAR__19328 )
+         {
+            fit[VAR__7685] = VAR_233[VAR__7685];
+            printf("%u", fit[VAR__7685]);
+         }
+      }
+   }
+   else
+   {
+      unsigned int tmp;
+      for ( VAR__3918907 = 0; VAR__3918907 < VAR_1238123; VAR__3918907++ )
+      {
+         for ( VAR__9290 = 0; VAR__9290 < ( VAR_1238123 - VAR__3918907 ); VAR__9290++ )
+         {
+            if ( fit[VAR__9290] > fit[VAR__9290 + 1] )
+            {
+               tmp                = fit[VAR__9290];
+               fit[VAR__9290]     = fit[VAR__9290 + 1];
+               fit[VAR__9290 + 1] = tmp;
+            }
+         }
+      }
+
+      if ( VAR__NUM == 2 )
+      {
+         printf("%u,%u", fit[VAR_1238123 - 2], fit[VAR_1238123 - 1]);
+      }
+      else
+      {
+         printf("%u", fit[VAR_1238123 - VAR__NUM]);
+         for ( VAR_21983012 = ( VAR_1238123 - VAR__NUM ) + 1; VAR_21983012 < VAR_1238123, fit[VAR_21983012] != 0; VAR_21983012++ )
+         {
+            printf(",%u", fit[VAR_21983012]);
+         }
+      }
+   }
+
+   printf("\n");
+   return 0;
+}

@@ -1,0 +1,47 @@
+int main()
+{
+   char zfc[6000];
+
+   gets(zfc);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594 = 1;
+   int LEN_OF_STH;
+   int VAR__NUM[305];
+   int time     = 0;
+   int VAR__SUM = 0;
+   int sum2     = 0;
+   LEN_OF_STH  = strlen(zfc);
+   VAR__NUM[0] = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( zfc[VAR__53647] == ' ' )
+      {
+         VAR__SUM = VAR__SUM + VAR__NUM[VAR__8444594 - 1];
+         time++;
+
+         while ( zfc[VAR__53647 + 1] == ' ' )
+         {
+            time++;
+            VAR__53647++;
+         }
+
+         VAR__NUM[VAR__8444594] = (( VAR__53647 - time ) - VAR__SUM ) + 1;
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      sum2 += VAR__NUM[VAR__53647];
+   }
+
+   VAR__NUM[VAR__8444594] = ( LEN_OF_STH - time ) - sum2;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%d,", VAR__NUM[VAR__53647]);
+   }
+
+   printf("%d", VAR__NUM[VAR__8444594]);
+   return 0;
+}

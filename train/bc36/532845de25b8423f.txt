@@ -1,0 +1,74 @@
+int nan[50];
+int nv[50];
+void paixu(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int tmp;
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            tmp = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = tmp;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int    nannum = 0;
+   int    nvnum  = 0;
+   int    VAR_1238123;
+   int    VAR__53647;
+   double tmp;
+   int    VAR_FLAG = 0;
+   char   A_STRING[100];
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123-- )
+   {
+      scanf("%s %lf", A_STRING, &tmp);
+
+      if ( A_STRING[0] == 'm' )
+      {
+         nan[nannum++] = tmp * 1000;
+      }
+      else
+      {
+         nv[nvnum++] = tmp * 1000;
+      }
+   }
+
+   paixu(nan, nannum);
+   paixu(nv, nvnum);
+   for ( VAR__53647 = 0; VAR__53647 < nannum; VAR__53647++ )
+   {
+      tmp = ((double)nan[VAR__53647] ) / 1000;
+      printf("%.2lf ", tmp);
+   }
+
+   for ( VAR__53647 = nvnum - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      tmp = ((double)nv[VAR__53647] ) / 1000;
+
+      if ( VAR__53647 != 0 )
+      {
+         printf("%.2lf ", tmp);
+      }
+      else
+      {
+         printf("%.2lf", tmp);
+      }
+   }
+
+   printf("\n");
+   return 0;
+}

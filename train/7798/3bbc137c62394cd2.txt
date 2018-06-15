@@ -1,0 +1,62 @@
+struct inf
+{
+   int  VAR__SUM;
+   char write[1000][4];
+};
+int main()
+{
+   int        VAR__1238129;
+   int        VAR__53647;
+   int        VAR__21230;
+   char       name[5];
+   char       author[27];
+   struct inf book[26];
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      book[VAR__53647].VAR__SUM = 0;
+   }
+
+   cin >> VAR__1238129;
+   cin.get();
+
+   while (( VAR__1238129-- ) > 0 )
+   {
+      cin.get(name, 5);
+      cin.getline(author, 27);
+      for ( VAR__53647 = 0; VAR__53647 < strlen(author); VAR__53647++ )
+      {
+         book[author[VAR__53647] - 'A'].VAR__SUM++;
+         for ( VAR__21230 = 0; VAR__21230 <= 3; VAR__21230++ )
+         {
+            if ( VAR__21230 < 3 )
+            {
+               book[author[VAR__53647] - 'A'].write[book[author[VAR__53647] - 'A'].VAR__SUM][VAR__21230] = name[VAR__21230];
+            }
+            else
+            {
+               book[author[VAR__53647] - 'A'].write[book[author[VAR__53647] - 'A'].VAR__SUM][VAR__21230] = '\0';
+            }
+         }
+      }
+   }
+
+   int VAR__MAX = 0;
+   int VAR__temp;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( book[VAR__53647].VAR__SUM > VAR__MAX )
+      {
+         VAR__temp = VAR__53647;
+         VAR__MAX  = book[VAR__53647].VAR__SUM;
+      }
+   }
+
+   ((( cout << ((char)( VAR__temp + 'A' ))) << endl ) << book[VAR__temp].VAR__SUM ) << endl;
+   for ( VAR__53647 = 1; VAR__53647 <= book[VAR__temp].VAR__SUM; VAR__53647++ )
+   {
+      ( cout << book[VAR__temp].write[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

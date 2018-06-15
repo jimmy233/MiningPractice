@@ -1,0 +1,75 @@
+int main()
+{
+   struct date
+   {
+      char        VAR__819283[10];
+      int         VAR__NUM;
+      struct date *VAR__NEXT;
+   };
+   struct date *ANOTHER_POINTER;
+   struct date *YET_ANOTHER_POINTER;
+   struct date *VAR__HEAD;
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__TEMP;
+   int         VAR__21230;
+   int         compare;
+   char        tem[10];
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct date *)malloc(LEN_OF_STH)));
+   scanf("%s %d", VAR__HEAD->VAR__819283, &VAR__HEAD->VAR__NUM);
+   VAR__HEAD->VAR__NEXT = NULL;
+   VAR__HEAD            = ANOTHER_POINTER;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = (struct date *)malloc(LEN_OF_STH);
+      scanf("%s %d", YET_ANOTHER_POINTER->VAR__819283, &YET_ANOTHER_POINTER->VAR__NUM);
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+      ANOTHER_POINTER->VAR__NEXT     = YET_ANOTHER_POINTER;
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+   {
+      ANOTHER_POINTER     = VAR__HEAD;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      for ( VAR__21230 = 1; VAR__21230 <= VAR__53647; VAR__21230++ )
+      {
+         compare = strcmp(ANOTHER_POINTER->VAR__819283, YET_ANOTHER_POINTER->VAR__819283);
+
+         if (( ANOTHER_POINTER->VAR__NUM < 60 ) && ( YET_ANOTHER_POINTER->VAR__NUM >= 60 ))
+         {
+            strcpy(tem, ANOTHER_POINTER->VAR__819283);
+            strcpy(ANOTHER_POINTER->VAR__819283, YET_ANOTHER_POINTER->VAR__819283);
+            strcpy(YET_ANOTHER_POINTER->VAR__819283, tem);
+            VAR__TEMP = YET_ANOTHER_POINTER->VAR__NUM;
+            YET_ANOTHER_POINTER->VAR__NUM = ANOTHER_POINTER->VAR__NUM;
+            ANOTHER_POINTER->VAR__NUM     = VAR__TEMP;
+         }
+
+         if ((( ANOTHER_POINTER->VAR__NUM >= 60 ) && ( YET_ANOTHER_POINTER->VAR__NUM >= 60 )) && ( ANOTHER_POINTER->VAR__NUM < YET_ANOTHER_POINTER->VAR__NUM ))
+         {
+            strcpy(tem, ANOTHER_POINTER->VAR__819283);
+            strcpy(ANOTHER_POINTER->VAR__819283, YET_ANOTHER_POINTER->VAR__819283);
+            strcpy(YET_ANOTHER_POINTER->VAR__819283, tem);
+            VAR__TEMP = YET_ANOTHER_POINTER->VAR__NUM;
+            YET_ANOTHER_POINTER->VAR__NUM = ANOTHER_POINTER->VAR__NUM;
+            ANOTHER_POINTER->VAR__NUM     = VAR__TEMP;
+         }
+
+         ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", YET_ANOTHER_POINTER->VAR__819283);
+      ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return 0;
+}

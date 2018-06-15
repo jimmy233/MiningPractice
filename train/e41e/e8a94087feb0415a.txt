@@ -1,0 +1,53 @@
+int main()
+{
+   int  VAR_9494[101] = { 0 };
+   int  N[101]        = { 0 };
+   int  VAR__3918907;
+   int  VAR__53647;
+   int  VAR__21230;
+   char A_STRING[101];
+
+   cin >> A_STRING;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      N[VAR__53647] = A_STRING[VAR__53647] - '0';
+   }
+
+   if ( strlen(A_STRING) != 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( strlen(A_STRING) - 1 ); VAR__53647++ )
+      {
+         VAR_9494[VAR__53647] = (( N[VAR__53647] * 10 ) + N[VAR__53647 + 1] ) / 13;
+         VAR__3918907         = (( N[VAR__53647] * 10 ) + N[VAR__53647 + 1] ) % 13;
+         N[VAR__53647 + 1]    = VAR__3918907;
+      }
+
+      if ( strlen(A_STRING) >= 3 )
+      {
+         if ( VAR_9494[0] != 0 )
+         {
+            cout << VAR_9494[0];
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 < ( strlen(A_STRING) - 2 ); VAR__53647++ )
+         {
+            cout << VAR_9494[VAR__53647];
+         }
+
+         ( cout << VAR_9494[strlen(A_STRING) - 2] ) << endl;
+      }
+      else
+      {
+         ( cout << VAR_9494[0] ) << endl;
+      }
+
+      ( cout << VAR__3918907 ) << endl;
+   }
+   else
+   {
+      ( cout << "0" ) << endl;
+      ( cout << N[0] ) << endl;
+   }
+
+   return 0;
+}

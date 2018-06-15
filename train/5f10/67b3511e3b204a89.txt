@@ -1,0 +1,93 @@
+struct word
+{
+   char VAR__19328[6];
+   int  VAR__COUNT;
+}
+VAR_233[600];
+struct word
+{
+   char VAR__19328[6];
+   int  VAR__COUNT;
+}
+tmp;
+int main()
+{
+   char VAR__819283[600] = { 0 };
+   char VAR__7685[6];
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  sign         = 0;
+   int  VAR__1238129 = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", VAR__819283);
+   LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 6; VAR__21230++ )
+      {
+         VAR__7685[VAR__21230] = '\0';
+      }
+
+      sign = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__7685[VAR__21230] = VAR__819283[VAR__53647 + VAR__21230];
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 <= VAR__1238129; VAR__8444594++ )
+      {
+         if ( strcmp(VAR__7685, VAR_233[VAR__8444594].VAR__19328) == 0 )
+         {
+            VAR_233[VAR__8444594].VAR__COUNT++;
+            sign = 1;
+            break;
+         }
+      }
+
+      if ( sign == 0 )
+      {
+         strcpy(VAR_233[VAR__1238129].VAR__19328, VAR__7685);
+         VAR_233[VAR__1238129].VAR__COUNT = 1;
+         VAR__1238129++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__1238129 - 1; VAR__21230 > 0; VAR__21230-- )
+      {
+         if ( VAR_233[VAR__21230].VAR__COUNT > VAR_233[VAR__21230 - 1].VAR__COUNT )
+         {
+            tmp = VAR_233[VAR__21230];
+            VAR_233[VAR__21230]     = VAR_233[VAR__21230 - 1];
+            VAR_233[VAR__21230 - 1] = tmp;
+         }
+      }
+   }
+
+   if ( VAR_233[0].VAR__COUNT <= 1 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("%d\n%s\n", VAR_233[0].VAR__COUNT, VAR_233[0].VAR__19328);
+      for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         if ( VAR_233[VAR__53647].VAR__COUNT == VAR_233[VAR__53647 - 1].VAR__COUNT )
+         {
+            printf("%s\n", VAR_233[VAR__53647].VAR__19328);
+         }
+         else
+         {
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

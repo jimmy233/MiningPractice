@@ -1,0 +1,67 @@
+int leapYear(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int month[2][13] = { { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+   int VAR__53647;
+   int startYear;
+   int endYear;
+   int startMonth;
+   int endMonth;
+   int startDay;
+   int endDay;
+   int VAR__COUNT = 0;
+
+   scanf("%d%d%d", &startYear, &startMonth, &startDay);
+   scanf("%d%d%d", &endYear, &endMonth, &endDay);
+
+   if ( startYear < endYear )
+   {
+      for ( VAR__53647 = startMonth + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         VAR__COUNT += month[leapYear(startYear)][VAR__53647];
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < endMonth; VAR__53647++ )
+      {
+         VAR__COUNT += month[leapYear(endYear)][VAR__53647];
+      }
+
+      VAR__COUNT += month[leapYear(startYear)][startMonth] - startDay;
+      VAR__COUNT += endDay;
+   }
+   else
+   {
+      for ( VAR__53647 = startMonth + 1; VAR__53647 < endMonth; VAR__53647++ )
+      {
+         VAR__COUNT += month[leapYear(startYear)][VAR__53647];
+      }
+
+      if ( startMonth < endMonth )
+      {
+         VAR__COUNT += month[leapYear(startYear)][startMonth] - startDay;
+         VAR__COUNT += endDay;
+      }
+      else
+      {
+         VAR__COUNT += endDay - startDay;
+      }
+   }
+
+   for ( VAR__53647 = startYear + 1; VAR__53647 < endYear; VAR__53647++ )
+   {
+      VAR__COUNT += 365 + leapYear(VAR__53647);
+   }
+
+   printf("%d", VAR__COUNT);
+   return 0;
+}

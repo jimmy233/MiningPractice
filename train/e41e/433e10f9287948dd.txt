@@ -1,0 +1,43 @@
+int main()
+{
+   char istr[101];
+   char istr1[101];
+   int  LEN_OF_STH  = 0;
+   int  left        = 0;
+   int  VAR__819283 = 0;
+   int  VAR__53647  = 0;
+   int  VAR__COUNT  = 0;
+
+   while ( cin.getline(istr, 101))
+   {
+      VAR__COUNT = 0;
+      LEN_OF_STH = strlen(istr);
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR__819283       = (( left * 10 ) + istr[VAR__53647] ) - '0';
+         left              = VAR__819283 % 13;
+         istr1[VAR__53647] = ( VAR__819283 / 13 ) + '0';
+      }
+
+      istr1[VAR__53647] = '\0';
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if (( istr1[VAR__53647] != '0' ) || ( VAR__COUNT != 0 ))
+         {
+            cout << istr1[VAR__53647];
+            VAR__COUNT = 1;
+         }
+      }
+
+      if ( VAR__COUNT == 0 )
+      {
+         cout << "0";
+      }
+
+      cout << endl;
+      ( cout << left ) << endl;
+      cin.get();
+   }
+
+   return 0;
+}

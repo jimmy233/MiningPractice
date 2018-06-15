@@ -1,0 +1,54 @@
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  mid;
+   char M[11];
+
+   scanf("%d", &VAR_1238123);
+   struct patient
+   {
+      char ID[11];
+      int  age;
+   };
+   struct patient *per = (struct patient *)malloc(( sizeof( struct patient )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", per[VAR__53647].ID, &per[VAR__53647].age);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         if (( per[VAR__53647].age < 60 ) && ( per[VAR__53647 + 1].age >= 60 ))
+         {
+            mid = per[VAR__53647].age;
+            strcpy(M, per[VAR__53647].ID);
+            per[VAR__53647].age = per[VAR__53647 + 1].age;
+            strcpy(per[VAR__53647].ID, per[VAR__53647 + 1].ID);
+            per[VAR__53647 + 1].age = mid;
+            strcpy(per[VAR__53647 + 1].ID, M);
+         }
+
+         if ((( per[VAR__53647].age >= 60 ) && ( per[VAR__53647 + 1].age >= 60 )) && ( per[VAR__53647].age < per[VAR__53647 + 1].age ))
+         {
+            mid = per[VAR__53647].age;
+            strcpy(M, per[VAR__53647].ID);
+            per[VAR__53647].age = per[VAR__53647 + 1].age;
+            strcpy(per[VAR__53647].ID, per[VAR__53647 + 1].ID);
+            per[VAR__53647 + 1].age = mid;
+            strcpy(per[VAR__53647 + 1].ID, M);
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", per[VAR__53647].ID);
+   }
+
+   free(per);
+}

@@ -1,0 +1,49 @@
+struct bo
+{
+   char id[10];
+   char au[100];
+};
+int main()
+{
+   int       VAR_1238123;
+   int       VAR__53647;
+   int       VAR__21230;
+   int       VAR__MAX;
+   char      maxa;
+   struct bo *book;
+   int       auth[26];
+
+   memset(auth, 0, ( sizeof( int )) * 26);
+   scanf("%d", &VAR_1238123);
+   book = (struct bo *)malloc(( sizeof( struct bo )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%s", book[VAR__53647].id, book[VAR__53647].au);
+      for ( VAR__21230 = 0; book[VAR__53647].au[VAR__21230]; VAR__21230++ )
+      {
+         auth[book[VAR__53647].au[VAR__21230] - 'A']++;
+      }
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__MAX < auth[VAR__53647] )
+      {
+         VAR__MAX = auth[VAR__53647];
+         maxa     = VAR__53647 + 'A';
+      }
+   }
+
+   printf("%c\n", maxa);
+   printf("%d\n", VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strchr(book[VAR__53647].au, maxa))
+      {
+         printf("%s\n", book[VAR__53647].id);
+      }
+   }
+
+   return 0;
+}

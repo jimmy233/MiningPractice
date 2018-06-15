@@ -1,0 +1,84 @@
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283[100][100];
+   int VAR__MIN;
+   int VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   int tn;
+   int VAR__SUM;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+         }
+      }
+
+      VAR__SUM = 0;
+      tn       = VAR_1238123;
+
+      while ( tn > 1 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < tn; VAR__53647++ )
+         {
+            VAR__MIN = VAR__819283[VAR__53647][0];
+            for ( VAR__21230 = 0; VAR__21230 < tn; VAR__21230++ )
+            {
+               if ( VAR__MIN > VAR__819283[VAR__53647][VAR__21230] )
+               {
+                  VAR__MIN = VAR__819283[VAR__53647][VAR__21230];
+               }
+            }
+
+            for ( VAR__21230 = 0; VAR__21230 < tn; VAR__21230++ )
+            {
+               VAR__819283[VAR__53647][VAR__21230] -= VAR__MIN;
+            }
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < tn; VAR__53647++ )
+         {
+            VAR__MIN = VAR__819283[0][VAR__53647];
+            for ( VAR__21230 = 0; VAR__21230 < tn; VAR__21230++ )
+            {
+               if ( VAR__MIN > VAR__819283[VAR__21230][VAR__53647] )
+               {
+                  VAR__MIN = VAR__819283[VAR__21230][VAR__53647];
+               }
+            }
+
+            for ( VAR__21230 = 0; VAR__21230 < tn; VAR__21230++ )
+            {
+               VAR__819283[VAR__21230][VAR__53647] -= VAR__MIN;
+            }
+         }
+
+         VAR__SUM += VAR__819283[1][1];
+         for ( VAR__53647 = 1; VAR__53647 < ( tn - 1 ); VAR__53647++ )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < tn; VAR__21230++ )
+            {
+               VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647 + 1][VAR__21230];
+            }
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 < ( tn - 1 ); VAR__53647++ )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < tn; VAR__21230++ )
+            {
+               VAR__819283[VAR__21230][VAR__53647] = VAR__819283[VAR__21230][VAR__53647 + 1];
+            }
+         }
+
+         tn--;
+      }
+
+      printf("%d\n", VAR__SUM);
+   }
+}

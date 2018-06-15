@@ -1,0 +1,24 @@
+int main()
+{
+   int VAR__SUM = 0;
+   int year;
+   int month;
+   int day;
+   int leap1;
+   int step = 0;
+
+   (( cin >> year ) >> month ) >> day;
+   leap1 = (( year % 400 ) == 0 ) || ((( year % 100 ) != 0 ) && (( year % 4 ) == 0 ));
+   char VAR__19328[7][5]   = { "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun." };
+   int  VAR__819283[2][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+   step      = ((( year - 1 ) / 4 ) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 );
+   VAR__SUM += ((( step * 2 ) + year ) - step ) - 1;
+   for ( int VAR__21230 = 0; VAR__21230 < ( month - 1 ); VAR__21230++ )
+   {
+      VAR__SUM += VAR__819283[leap1][VAR__21230];
+   }
+
+   VAR__SUM += day - 1;
+   ( cout << VAR__19328[VAR__SUM % 7] ) << endl;
+   return 0;
+}

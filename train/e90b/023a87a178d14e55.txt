@@ -1,0 +1,132 @@
+struct student
+{
+   long           VAR__NUM;
+   int            scorec;
+   int            scorem;
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *p0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647 = 0;
+
+   VAR__HEAD            = (struct student *)malloc(LEN_OF_STH);
+   VAR__HEAD->VAR__NEXT = NULL;
+   scanf("%ld %d %d", &VAR__HEAD->VAR__NUM, &VAR__HEAD->scorec, &VAR__HEAD->scorem);
+
+   while ( VAR__53647 < 2 )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+      p0 = (struct student *)malloc(LEN_OF_STH);
+      scanf("%ld %d %d", &p0->VAR__NUM, &p0->scorec, &p0->scorem);
+
+      while ((( p0->scorec + p0->scorem ) <= ( ANOTHER_POINTER->scorec + ANOTHER_POINTER->scorem )) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if (( p0->scorec + p0->scorem ) > ( ANOTHER_POINTER->scorec + ANOTHER_POINTER->scorem ))
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            VAR__HEAD = p0;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         }
+
+         p0->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = NULL;
+      }
+
+      VAR__53647++;
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct student *sort(struct student *VAR__HEAD, int VAR_1238123)
+{
+   struct student *p0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647 = 3;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+      p0 = (struct student *)malloc(LEN_OF_STH);
+      scanf("%ld %d %d", &p0->VAR__NUM, &p0->scorec, &p0->scorem);
+
+      while ((( p0->scorec + p0->scorem ) <= ( ANOTHER_POINTER->scorec + ANOTHER_POINTER->scorem )) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if (( p0->scorec + p0->scorem ) > ( ANOTHER_POINTER->scorec + ANOTHER_POINTER->scorem ))
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+            ( *YET_ANOTHER_POINTER->VAR__NEXT ).VAR__NUM = YET_ANOTHER_POINTER->VAR__NUM;
+            ( *YET_ANOTHER_POINTER->VAR__NEXT ).scorec   = YET_ANOTHER_POINTER->scorec;
+            ( *YET_ANOTHER_POINTER->VAR__NEXT ).scorem   = YET_ANOTHER_POINTER->scorem;
+            YET_ANOTHER_POINTER->VAR__NUM = ANOTHER_POINTER->VAR__NUM;
+            YET_ANOTHER_POINTER->scorec   = ANOTHER_POINTER->scorec;
+            YET_ANOTHER_POINTER->scorem   = ANOTHER_POINTER->scorem;
+            ANOTHER_POINTER->VAR__NUM     = p0->VAR__NUM;
+            ANOTHER_POINTER->scorec       = p0->scorec;
+            ANOTHER_POINTER->scorem       = p0->scorem;
+         }
+         else
+         if ( ANOTHER_POINTER == VAR__HEAD->VAR__NEXT )
+         {
+            ( *ANOTHER_POINTER->VAR__NEXT ).VAR__NUM = ANOTHER_POINTER->VAR__NUM;
+            ( *ANOTHER_POINTER->VAR__NEXT ).scorec   = ANOTHER_POINTER->scorec;
+            ( *ANOTHER_POINTER->VAR__NEXT ).scorem   = ANOTHER_POINTER->scorem;
+            ANOTHER_POINTER->VAR__NUM = p0->VAR__NUM;
+            ANOTHER_POINTER->scorec   = p0->scorec;
+            ANOTHER_POINTER->scorem   = p0->scorem;
+         }
+         else
+         {
+            ANOTHER_POINTER->VAR__NUM = p0->VAR__NUM;
+            ANOTHER_POINTER->scorec   = p0->scorec;
+            ANOTHER_POINTER->scorem   = p0->scorem;
+         }
+      }
+
+      free(p0);
+      VAR__53647++;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD           = creat();
+   VAR__HEAD           = sort(VAR__HEAD, VAR_1238123);
+   ANOTHER_POINTER     = VAR__HEAD->VAR__NEXT;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   printf("%ld %d\n", VAR__HEAD->VAR__NUM, VAR__HEAD->scorec + VAR__HEAD->scorem);
+   printf("%ld %d\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->scorec + ANOTHER_POINTER->scorem);
+   printf("%ld %d", YET_ANOTHER_POINTER->VAR__NUM, YET_ANOTHER_POINTER->scorec + YET_ANOTHER_POINTER->scorem);
+}

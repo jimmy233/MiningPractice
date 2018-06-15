@@ -1,0 +1,103 @@
+struct student
+{
+   char           infor[100];
+   struct student *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct student
+{
+   char           infor[100];
+   struct student *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD           = 0;
+   ANOTHER_POINTER     = 0;
+   YET_ANOTHER_POINTER = 0;
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      gets(ANOTHER_POINTER->infor);
+
+      if ( strcmp(ANOTHER_POINTER->infor, "end") == 0 )
+      {
+         break;
+      }
+
+      if ( VAR__HEAD == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+struct student *turnback(struct student *VAR__HEAD)
+{
+   struct student *newhead = 0;
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *VAR_129012;
+
+   do
+   {
+      VAR_233 = VAR__HEAD;
+      VAR_666 = 0;
+
+      while ( VAR_233->VAR__NEXT != 0 )
+      {
+         VAR_666 = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      if ( newhead == 0 )
+      {
+         newhead            = VAR_233;
+         newhead->VAR__NEXT = VAR_666;
+      }
+      else
+      {
+         VAR_129012            = VAR_233;
+         VAR_129012->VAR__NEXT = VAR_666;
+      }
+
+      VAR_666->VAR__NEXT = 0;
+   } while ( VAR__HEAD->VAR__NEXT != 0 );
+   return newhead;
+}
+
+
+void output(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   for ( VAR_233 = VAR__HEAD; VAR_233->VAR__NEXT != 0; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s\n", VAR_233->infor);
+   }
+
+   printf("%s\n", VAR_233->infor);
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   VAR__HEAD = turnback(VAR__HEAD);
+   output(VAR__HEAD);
+}

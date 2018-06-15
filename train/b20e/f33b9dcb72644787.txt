@@ -1,0 +1,114 @@
+int divide(int VAR__819283[], int low, int high)
+{
+   int tmp = VAR__819283[low];
+
+   do
+   {
+      while (( low != high ) && ( VAR__819283[high] >= tmp ))
+      {
+         --high;
+      }
+
+      if (( low != high ) && ( VAR__819283[high] < tmp ))
+      {
+         VAR__819283[low] = VAR__819283[high];
+         ++low;
+      }
+
+      while (( low != high ) && ( VAR__819283[low] <= tmp ))
+      {
+         ++low;
+      }
+
+      if (( low != high ) && ( VAR__819283[low] > tmp ))
+      {
+         VAR__819283[high] = VAR__819283[low];
+         --high;
+      }
+   } while ( low != high );
+   VAR__819283[low] = tmp;
+   return low;
+}
+
+
+void quickSort(int VAR__819283[], int low, int high)
+{
+   if ( low >= high )
+   {
+      return;
+   }
+
+   int mid = divide(VAR__819283, low, high);
+   quickSort(VAR__819283, low, mid - 1);
+   quickSort(VAR__819283, mid + 1, high);
+}
+
+
+void QuickSort(int VAR__819283[], int size)
+{
+   quickSort(VAR__819283, 0, size - 1);
+}
+
+
+int main()
+{
+   while ( 1 )
+   {
+      int VAR__NUM;
+      int money = 0;
+      cin >> VAR__NUM;
+
+      if ( 0 == VAR__NUM )
+      {
+         break;
+      }
+
+      int tian[VAR__NUM];
+      int qi[VAR__NUM];
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; ++VAR__53647 )
+      {
+         cin >> tian[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; ++VAR__53647 )
+      {
+         cin >> qi[VAR__53647];
+      }
+
+      QuickSort(tian, VAR__NUM);
+      QuickSort(qi, VAR__NUM);
+      int t_slow = 0;
+      int t_fast = VAR__NUM - 1;
+      int q_slow = 0;
+      int q_fast = VAR__NUM - 1;
+
+      while ( t_slow <= t_fast )
+      {
+         if ( tian[t_fast] > qi[q_fast] )
+         {
+            ++money;
+            --t_fast;
+            --q_fast;
+         }
+         else
+         if ( tian[t_slow] > qi[q_slow] )
+         {
+            ++money;
+            ++t_slow;
+            ++q_slow;
+         }
+         else
+         {
+            if ( tian[t_slow] < qi[q_fast] )
+            {
+               --money;
+            }
+
+            --q_fast;
+            ++t_slow;
+         }
+      }
+
+      ( cout << ( money * 200 )) << endl;
+   }
+}

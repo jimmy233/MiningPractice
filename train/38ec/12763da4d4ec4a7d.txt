@@ -1,0 +1,114 @@
+int djt(int year, int month, int day);
+
+int main()
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+   int VAR__12302;
+   int VAR__112390;
+   int VAR__127322;
+   int VAR_9Q8Q90;
+   int VAR_2890;
+   int VAR_9494;
+   int VAR__53647;
+
+   scanf("%d%d%d%d%d%d", &VAR__819283, &VAR__19328, &VAR__4857423, &VAR__12302, &VAR__112390, &VAR__127322);
+   VAR_9Q8Q90 = djt(VAR__819283, VAR__19328, VAR__4857423);
+   VAR_2890   = djt(VAR__12302, VAR__112390, VAR__127322);
+   VAR_9494   = VAR_2890 - VAR_9Q8Q90;
+   for ( VAR__53647 = VAR__819283; VAR__53647 < VAR__12302; VAR__53647++ )
+   {
+      if ((( VAR__53647 % 400 ) == 0 ) || ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )))
+      {
+         VAR_9494 += 366;
+      }
+      else
+      {
+         VAR_9494 += 365;
+      }
+   }
+
+   printf("%d\n", VAR_9494);
+   return 0;
+}
+
+
+int djt(int year, int month, int day)
+{
+   int VAR__SUM;
+   int leap;
+
+   switch ( month )
+   {
+   case 1:
+      VAR__SUM = 0;
+      break;
+
+   case 2:
+      VAR__SUM = 31;
+      break;
+
+   case 3:
+      VAR__SUM = 59;
+      break;
+
+   case 4:
+      VAR__SUM = 90;
+      break;
+
+   case 5:
+      VAR__SUM = 120;
+      break;
+
+   case 6:
+      VAR__SUM = 151;
+      break;
+
+   case 7:
+      VAR__SUM = 181;
+      break;
+
+   case 8:
+      VAR__SUM = 212;
+      break;
+
+   case 9:
+      VAR__SUM = 243;
+      break;
+
+   case 10:
+      VAR__SUM = 273;
+      break;
+
+   case 11:
+      VAR__SUM = 304;
+      break;
+
+   case 12:
+      VAR__SUM = 334;
+      break;
+
+   default:
+      printf("data error");
+      break;
+   }
+
+   VAR__SUM = VAR__SUM + day;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      leap = 1;
+   }
+   else
+   {
+      leap = 0;
+   }
+
+   if (( leap == 1 ) && ( month > 2 ))
+   {
+      VAR__SUM++;
+   }
+
+   return VAR__SUM;
+}

@@ -1,0 +1,88 @@
+void main()
+{
+   void VAR_FLAG(int VAR__19328[][8], int row, int col);
+
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283[8][8];
+   scanf("%d,%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+   VAR_FLAG(VAR__819283, row, col);
+}
+
+
+void VAR_FLAG(int VAR__19328[][8], int row, int col)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__COUNT = 0;
+   int VAR__MAX[8];
+   int rmax[8];
+   int cmax[8];
+   int VAR__MIN[8];
+   int rmin[8];
+   int cmin[8];
+
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      VAR__MAX[VAR__53647] = VAR__19328[VAR__53647][0];
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__53647][VAR__21230] >= VAR__MAX[VAR__53647] )
+         {
+            VAR__MAX[VAR__53647] = VAR__19328[VAR__53647][VAR__21230];
+            cmax[VAR__53647]     = VAR__21230;
+         }
+      }
+
+
+      rmax[VAR__53647] = VAR__53647;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+   {
+      VAR__MIN[VAR__21230] = VAR__19328[0][VAR__21230];
+      for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647][VAR__21230] <= VAR__MIN[VAR__21230] )
+         {
+            VAR__MIN[VAR__21230] = VAR__19328[VAR__53647][VAR__21230];
+            rmin[VAR__21230]     = VAR__53647;
+         }
+      }
+
+
+      cmin[VAR__21230] = VAR__21230;
+   }
+
+   if ( row <= col )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+         {
+            if (( rmax[VAR__53647] == rmin[VAR__21230] ) && ( cmax[VAR__53647] == cmin[VAR__21230] ))
+            {
+               printf("%d+%d", rmax[VAR__53647], cmax[VAR__53647]);
+               VAR__COUNT = VAR__COUNT + 1;
+            }
+         }
+      }
+   }
+
+
+
+   if ( VAR__COUNT == 0 )
+   {
+      printf("No");
+   }
+}

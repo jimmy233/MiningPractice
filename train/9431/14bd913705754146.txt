@@ -1,0 +1,54 @@
+struct seqs
+{
+   char        VAR__NUM[10];
+   char        name[20];
+   char        sex;
+   int         age;
+   float       score;
+   char        addr[100];
+   struct seqs *VAR__NEXT;
+};
+struct seqs *build()
+{
+   struct seqs *VAR__HEAD;
+   struct seqs *newnode;
+   struct seqs *VAR_233;
+
+   newnode            = (struct seqs *)malloc(LEN_OF_STH);
+   newnode->VAR__NEXT = NULL;
+   scanf("%s %s %c %d %f %s", newnode->VAR__NUM, newnode->name, &newnode->sex, &newnode->age, &newnode->score, newnode->addr);
+   VAR_233 = newnode;
+
+   while ( 1 )
+   {
+      newnode = (struct seqs *)malloc(LEN_OF_STH);
+      scanf("%s", newnode->VAR__NUM);
+
+      if ( newnode->VAR__NUM[0] == 'e' )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %f %s", newnode->name, &newnode->sex, &newnode->age, &newnode->score, newnode->addr);
+      newnode->VAR__NEXT = VAR_233;
+      VAR_233            = newnode;
+   }
+
+   VAR__HEAD = VAR_233;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int         VAR__53647;
+   struct seqs *VAR_233;
+
+   VAR_233 = build();
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->addr);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

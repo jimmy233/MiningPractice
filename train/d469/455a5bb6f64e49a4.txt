@@ -1,0 +1,56 @@
+int check(char VAR__819283[], int point, int lenth)
+{
+   if (( point > 0 ) && ( VAR__819283[point - 1] == VAR__819283[point + lenth] ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   char code[500];
+   int  VAR_FLAG[500];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  lenth;
+   int  outlet;
+
+   for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+   {
+      VAR_FLAG[VAR__53647] = 1;
+   }
+
+   cin >> code;
+   for ( outlet = 0, lenth = 0; outlet < strlen(code); lenth += 2 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < strlen(code); VAR__53647++ )
+      {
+         if ( VAR_FLAG[VAR__53647] )
+         {
+            if ( check(code, VAR__53647, lenth))
+            {
+               for ( VAR__21230 = VAR__53647 - 1; VAR__21230 <= ( VAR__53647 + lenth ); VAR__21230++ )
+               {
+                  cout << code[VAR__21230];
+                  VAR_FLAG[VAR__53647 - 1] = 1;
+               }
+
+               cout << endl;
+            }
+            else
+            {
+               outlet++;
+            }
+
+            VAR_FLAG[VAR__53647] = 0;
+         }
+      }
+   }
+
+   return 0;
+}

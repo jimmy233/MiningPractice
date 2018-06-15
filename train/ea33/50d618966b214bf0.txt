@@ -1,0 +1,55 @@
+int locate(char A_STRING[], int LEN_OF_STH)
+{
+   int VAR__53647;
+   int VAR__819283;
+   int VAR__19328;
+
+   VAR__819283 = A_STRING[0];
+   VAR__19328  = 0;
+   for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__819283 < A_STRING[VAR__53647] )
+      {
+         VAR__19328  = VAR__53647;
+         VAR__819283 = A_STRING[VAR__53647];
+      }
+   }
+
+   return VAR__19328 + 1;
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR__819283;
+   int  LEN_OF_STH;
+   int  lena;
+   char A_STRING[11];
+   char substr[4];
+   char result[14];
+
+   while ( scanf("%s%s", A_STRING, substr) != EOF )
+   {
+      LEN_OF_STH  = strlen(substr);
+      lena        = strlen(A_STRING);
+      VAR__819283 = locate(A_STRING, lena);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+      {
+         result[VAR__53647] = A_STRING[VAR__53647];
+      }
+
+      for ( VAR__53647 = VAR__819283; VAR__53647 < ( LEN_OF_STH + VAR__819283 ); VAR__53647++ )
+      {
+         result[VAR__53647] = substr[VAR__53647 - VAR__819283];
+      }
+
+      for ( VAR__53647 = LEN_OF_STH + VAR__819283; VAR__53647 < ( LEN_OF_STH + lena ); VAR__53647++ )
+      {
+         result[VAR__53647] = A_STRING[VAR__53647 - LEN_OF_STH];
+      }
+
+      result[LEN_OF_STH + lena] = '\0';
+      puts(result);
+   }
+}

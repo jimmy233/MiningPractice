@@ -1,0 +1,99 @@
+struct example
+{
+   char           id[10];
+   int            age;
+   struct example *VAR__NEXT;
+};
+int VAR__53647 = 1;
+int VAR__12302;
+int VAR_1238123;
+struct example *creat(int VAR_1238123)
+{
+   struct example *VAR__HEAD = NULL;
+   struct example *ANOTHER_POINTER;
+   struct example *YET_ANOTHER_POINTER;
+
+   while ( VAR__53647 <= VAR_1238123 )
+   {
+      ANOTHER_POINTER = (struct example *)malloc(sizeof( struct example ));
+      scanf("%s%d", &( *ANOTHER_POINTER ).id, &( *ANOTHER_POINTER ).age);
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD           = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = VAR__HEAD;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      VAR__53647          = VAR__53647 + 1;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct example *paixu(struct example *VAR__HEAD)
+{
+   char           temp1[10] = { '\0' };
+   int            temp2;
+   struct example *ANOTHER_POINTER;
+   struct example *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+
+         if (( ANOTHER_POINTER->age < YET_ANOTHER_POINTER->age ) && ( YET_ANOTHER_POINTER->age >= 60 ))
+         {
+            strcpy(temp1, ANOTHER_POINTER->id);
+            strcpy(ANOTHER_POINTER->id, YET_ANOTHER_POINTER->id);
+            strcpy(YET_ANOTHER_POINTER->id, temp1);
+            temp2 = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age     = YET_ANOTHER_POINTER->age;
+            YET_ANOTHER_POINTER->age = temp2;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct example *VAR__HEAD)
+{
+   struct example *VAR_9494;
+
+   VAR_9494 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         printf("%s\n", VAR_9494->id);
+         VAR_9494 = VAR_9494->VAR__NEXT;
+      } while ( VAR_9494 != NULL );
+   }
+}
+
+
+void main()
+{
+   struct example *VAR__HEAD = NULL;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR__HEAD = paixu(VAR__HEAD);
+   print(VAR__HEAD);
+}

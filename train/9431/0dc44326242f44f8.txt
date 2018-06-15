@@ -1,0 +1,39 @@
+struct Stu
+{
+   char       stu[100];
+   struct Stu *link;
+};
+int main()
+{
+   struct Stu *ANOTHER_POINTER;
+   struct Stu *YET_ANOTHER_POINTER;
+
+   YET_ANOTHER_POINTER = ( ANOTHER_POINTER = (struct Stu *)malloc(LEN));
+   gets(ANOTHER_POINTER->stu);
+   ANOTHER_POINTER->link = NULL;
+   for ( ; ; )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct Stu *)malloc(LEN);
+      gets(ANOTHER_POINTER->stu);
+      ANOTHER_POINTER->link = YET_ANOTHER_POINTER;
+
+      if ( strcmp(ANOTHER_POINTER->stu, "end") == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( ; ; )
+   {
+      puts(YET_ANOTHER_POINTER->stu);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->link;
+
+      if ( YET_ANOTHER_POINTER == NULL )
+      {
+         break;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,75 @@
+int main()
+{
+   char   sex[45][9];
+   double VAR__1111[45];
+   double l1[45] = { 0 };
+   double l2[45] = { 0 };
+   double VAR__112390;
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230   = 0;
+   int    VAR__8444594 = 0;
+   int    VAR_9494;
+   int    sum1 = 0;
+   int    sum2 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", sex[VAR__53647], &VAR__1111[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( sex[VAR__53647][0] == 'm' )
+      {
+         l1[VAR__21230++] = VAR__1111[VAR__53647];
+         sum1++;
+      }
+
+      if ( sex[VAR__53647][0] == 'f' )
+      {
+         l2[VAR__8444594++] = VAR__1111[VAR__53647];
+         sum2++;
+      }
+   }
+
+   for ( VAR_9494 = 1; VAR_9494 <= sum1; VAR_9494++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( sum1 - VAR_9494 ); VAR__21230++ )
+      {
+         if ( l1[VAR__21230] > l1[VAR__21230 + 1] )
+         {
+            VAR__112390        = l1[VAR__21230];
+            l1[VAR__21230]     = l1[VAR__21230 + 1];
+            l1[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR_9494 = 1; VAR_9494 <= sum2; VAR_9494++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( sum2 - VAR_9494 ); VAR__8444594++ )
+      {
+         if ( l2[VAR__8444594] > l2[VAR__8444594 + 1] )
+         {
+            VAR__112390          = l2[VAR__8444594];
+            l2[VAR__8444594]     = l2[VAR__8444594 + 1];
+            l2[VAR__8444594 + 1] = VAR__112390;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < sum1; VAR__21230++ )
+   {
+      printf("%.2lf ", l1[VAR__21230]);
+   }
+
+   for ( VAR__8444594 = sum2 - 1; VAR__8444594 > 0; VAR__8444594-- )
+   {
+      printf("%.2lf ", l2[VAR__8444594]);
+   }
+
+   printf("%.2lf", l2[0]);
+   return 0;
+}

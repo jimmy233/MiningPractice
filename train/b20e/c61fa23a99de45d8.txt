@@ -1,0 +1,85 @@
+int getcmp(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return 1;
+   }
+   else
+   if ( VAR__819283 < VAR__19328 )
+   {
+      return -1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__TEMP;
+   int khorse[1000];
+   int thorse[1000];
+   int profit;
+   int profitold;
+   int VAR__8444594;
+
+   for ( ; ; )
+   {
+      profitold    = -1000000;
+      VAR__8444594 = 0;
+      memset(khorse, 0, sizeof( khorse ));
+      memset(thorse, 0, sizeof( thorse ));
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         scanf("%d", &thorse[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         scanf("%d", &khorse[VAR__53647]);
+      }
+
+      qsort(thorse, VAR_1238123, sizeof( thorse[0] ), cmp);
+      qsort(khorse, VAR_1238123, sizeof( khorse[0] ), cmp);
+      for ( ; VAR__8444594 <= VAR_1238123; )
+      {
+         profit = 0;
+         for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; ++VAR__53647 )
+         {
+            profit += getcmp(thorse[( VAR_1238123 - 1 ) - VAR__53647], khorse[VAR__53647]) * 200;
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); ++VAR__53647 )
+         {
+            profit += getcmp(thorse[VAR__53647], khorse[VAR__53647 + VAR__8444594]) * 200;
+         }
+
+         if ( profit < profitold )
+         {
+            break;
+         }
+
+         profitold = profit;
+         VAR__8444594++;
+      }
+
+      printf("%d\n", profitold);
+   }
+}

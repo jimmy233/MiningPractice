@@ -1,0 +1,78 @@
+int mycompare(const void *e1, const void *e2)
+{
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (int *)e1;
+   YET_ANOTHER_POINTER = (int *)e2;
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR_233;
+   int VAR__COUNT;
+   int VAR_1238123;
+   int VAR__819283[1001];
+   int VAR__19328[1001];
+   int s1;
+   int s2;
+   int e1;
+   int e2;
+   int VAR__53647;
+
+   cin >> VAR_1238123;
+
+   while ( VAR_1238123 != 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      VAR__COUNT = 0;
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), mycompare);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), mycompare);
+      s1 = ( s2 = 0 );
+      e1 = ( e2 = VAR_1238123 - 1 );
+      for ( VAR_233 = 0; VAR_233 < VAR_1238123; VAR_233++ )
+      {
+         if ( VAR__819283[s1] > VAR__19328[s2] )
+         {
+            VAR__COUNT++;
+            s1++;
+            s2++;
+         }
+         else
+         {
+            if ( VAR__819283[e1] > VAR__19328[e2] )
+            {
+               e1--;
+               e2--;
+               VAR__COUNT++;
+            }
+            else
+            {
+               if ( VAR__819283[e1] < VAR__19328[s2] )
+               {
+                  VAR__COUNT--;
+               }
+
+               e1--;
+               s2++;
+            }
+         }
+      }
+
+      ( cout << ( VAR__COUNT * 200 )) << endl;
+      cin >> VAR_1238123;
+   }
+
+   return 0;
+}

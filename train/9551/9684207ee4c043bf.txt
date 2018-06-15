@@ -1,0 +1,76 @@
+struct person
+{
+   char          id[10];
+   int           age;
+   struct person *VAR__NEXT;
+};
+void main()
+{
+   int           VAR_1238123;
+   int           VAR__53647;
+   int           VAR__21230;
+   struct person *VAR__HEAD;
+   struct person *ppre;
+   struct person *pnew;
+   struct person *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   pnew = (struct person *)malloc(LEN_OF_STH);
+   scanf("%s %d\n", pnew->id, &pnew->age);
+   pnew->VAR__NEXT = NULL;
+   VAR__HEAD       = pnew;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = VAR__HEAD;
+      ppre    = VAR__HEAD;
+      pnew    = (struct person *)malloc(LEN_OF_STH);
+      scanf("%s %d", pnew->id, &pnew->age);
+      pnew->VAR__NEXT = NULL;
+
+      if (( pnew->age >= 60 ) && ( pnew->age > VAR__HEAD->age ))
+      {
+         pnew->VAR__NEXT = VAR__HEAD;
+         VAR__HEAD       = pnew;
+      }
+      else
+      {
+         if ( pnew->age >= 60 )
+         {
+            VAR_233 = VAR_233->VAR__NEXT;
+            for ( VAR__21230 = 2; VAR__21230 < VAR__53647; VAR__21230++ )
+            {
+               if ( pnew->age > VAR_233->age )
+               {
+                  pnew->VAR__NEXT = VAR_233;
+                  ppre->VAR__NEXT = pnew;
+                  break;
+               }
+
+               VAR_233 = VAR_233->VAR__NEXT;
+               ppre    = ppre->VAR__NEXT;
+            }
+
+            if ( pnew->VAR__NEXT == NULL )
+            {
+               ppre->VAR__NEXT = pnew;
+            }
+         }
+         else
+         {
+            while ( VAR_233->VAR__NEXT != NULL )
+            {
+               VAR_233 = VAR_233->VAR__NEXT;
+            }
+
+            VAR_233->VAR__NEXT = pnew;
+         }
+      }
+   }
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

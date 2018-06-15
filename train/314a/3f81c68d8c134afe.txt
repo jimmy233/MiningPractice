@@ -1,0 +1,68 @@
+int main()
+{
+   int  times[1000] = { 0 };
+   int  start[1000];
+   int  end[1000];
+   int  nPeople = 0;
+   int  mostPeople;
+   char A_STRING[10000];
+
+   cin.getline(A_STRING, sizeof( A_STRING ));
+   int readnum = 0;
+   for ( int VAR__53647 = 0; ; VAR__53647++ )
+   {
+      switch ( A_STRING[VAR__53647] )
+      {
+      case ',':
+
+      case '\0':
+         start[nPeople++] = readnum;
+         readnum          = 0;
+         break;
+
+      default:
+         readnum = (( readnum * 10 ) + A_STRING[VAR__53647] ) - '0';
+      }
+
+      if ( !A_STRING[VAR__53647] )
+      {
+         break;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < nPeople; VAR__53647++ )
+   {
+      char endchr;
+
+      if ( VAR__53647 < ( nPeople - 1 ))
+      {
+         endchr = ',';
+      }
+      else
+      {
+         endchr = '\n';
+      }
+
+      cin.getline(A_STRING, sizeof( A_STRING ), endchr);
+      end[VAR__53647] = atoi(A_STRING);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < nPeople; VAR__53647++ )
+   {
+      for ( int VAR__21230 = start[VAR__53647]; VAR__21230 < end[VAR__53647]; VAR__21230++ )
+      {
+         times[VAR__21230]++;
+      }
+   }
+
+   mostPeople = times[0];
+   for ( int VAR__53647 = 1; VAR__53647 < 1000; VAR__53647++ )
+   {
+      if ( times[VAR__53647] > mostPeople )
+      {
+         mostPeople = times[VAR__53647];
+      }
+   }
+
+   ((( cout << nPeople ) << ' ' ) << mostPeople ) << endl;
+}

@@ -1,0 +1,66 @@
+void main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   char miner[20][101];
+   char minee[20][101];
+   int  VAR__53647;
+   int  sp;
+   int  VAR__8444594;
+   int  pr;
+   int  lr;
+   int  le;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%s", &miner[VAR__53647], &minee[VAR__53647]);
+      lr = strlen(miner[VAR__53647]);
+      le = strlen(minee[VAR__53647]);
+
+      while ( le >= 1 )
+      {
+         if ( miner[VAR__53647][lr - 1] >= minee[VAR__53647][le - 1] )
+         {
+            miner[VAR__53647][lr - 1] = ( miner[VAR__53647][lr - 1] - minee[VAR__53647][le - 1] ) + '0';
+         }
+         else
+         {
+            sp = lr - 2;
+
+            while ( miner[VAR__53647][sp] == '0' )
+            {
+               miner[VAR__53647][sp] = '9';
+               sp--;
+            }
+
+            miner[VAR__53647][sp]     = miner[VAR__53647][sp] - 1;
+            miner[VAR__53647][lr - 1] = (( miner[VAR__53647][lr - 1] - minee[VAR__53647][le - 1] ) + '0' ) + 10;
+         }
+
+         le--;
+         lr--;
+      }
+
+      VAR__8444594 = 0;
+      lr           = strlen(miner[VAR__53647]);
+
+      while ( 1 )
+      {
+         if ( miner[VAR__53647][VAR__8444594] == '0' )
+         {
+            VAR__8444594++;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      for ( pr = VAR__8444594; pr <= ( lr - 1 ); pr++ )
+      {
+         printf("%c", miner[VAR__53647][pr]);
+      }
+
+      printf("\n");
+   }
+}

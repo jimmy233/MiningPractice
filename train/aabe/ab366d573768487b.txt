@@ -1,0 +1,92 @@
+struct ming
+{
+   int         VAR_1238123;
+   int         VAR__1238129;
+   struct ming *VAR__NEXT;
+};
+struct ming *creat()
+{
+   struct ming *VAR__HEAD;
+   struct ming *ANOTHER_POINTER;
+   struct ming *YET_ANOTHER_POINTER;
+   int         VAR__53647 = 0;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct ming *)malloc(LEN));
+   scanf("%d%d", &ANOTHER_POINTER->VAR_1238123, &ANOTHER_POINTER->VAR__1238129);
+   VAR__HEAD = NULL;
+
+   while (( ANOTHER_POINTER->VAR_1238123 != 0 ) || ( ANOTHER_POINTER->VAR__1238129 != 0 ))
+   {
+      VAR__53647++;
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct ming *)malloc(LEN);
+      scanf("%d%d", &ANOTHER_POINTER->VAR_1238123, &ANOTHER_POINTER->VAR__1238129);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+int found(int VAR__1111, struct ming *VAR__HEAD)
+{
+   int         VAR__53647 = 0;
+   struct ming *ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      if ( ANOTHER_POINTER->VAR__1238129 == VAR__1111 )
+      {
+         VAR__53647++;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return VAR__53647;
+}
+
+
+int main()
+{
+   int VAR__819283[100][100];
+   int VAR_1238123;
+   int o;
+   int VAR__8444594;
+   int VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   struct ming *VAR__HEAD;
+   VAR__HEAD = creat();
+   for ( o = 0, VAR__8444594 = 0; o < VAR_1238123; o++ )
+   {
+      VAR_233 = found(o, VAR__HEAD);
+
+      if ( VAR_233 == ( VAR_1238123 - 1 ))
+      {
+         printf("%d\n", o);
+         VAR__8444594++;
+      }
+   }
+
+   if ( VAR__8444594 == 0 )
+   {
+      printf("NOT FOUND");
+   }
+
+   getchar();
+   getchar();
+   getchar();
+}

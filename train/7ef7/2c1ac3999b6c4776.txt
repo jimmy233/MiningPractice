@@ -1,0 +1,82 @@
+int matrixHor[103][103];
+int matrixVer[103][103];
+int VAR__MIN(int line[], int VAR_1238123)
+{
+   int mini = 100000;
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( line[VAR__53647] < mini )
+      {
+         mini = line[VAR__53647];
+      }
+   }
+
+   return mini;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int N;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      int VAR__SUM = 0;
+      N = VAR_1238123;
+      for ( int VAR__21230 = 1; VAR__21230 <= N; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 1; VAR__8444594 <= N; VAR__8444594++ )
+         {
+            cin >> matrixVer[VAR__21230][VAR__8444594];
+            matrixHor[VAR__8444594][VAR__21230] = matrixVer[VAR__21230][VAR__8444594];
+         }
+      }
+
+      for ( int VAR_2890 = 1; VAR_2890 < VAR_1238123; VAR_2890++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= N; VAR__21230++ )
+         {
+            int minim = VAR__MIN(matrixVer[VAR__21230], N);
+            for ( int VAR__8444594 = 1; VAR__8444594 <= N; VAR__8444594++ )
+            {
+               matrixVer[VAR__21230][VAR__8444594] = matrixVer[VAR__21230][VAR__8444594] - minim;
+               matrixHor[VAR__8444594][VAR__21230] = matrixVer[VAR__21230][VAR__8444594];
+            }
+         }
+
+         for ( int VAR__21230 = 1; VAR__21230 <= N; VAR__21230++ )
+         {
+            int minim = VAR__MIN(matrixHor[VAR__21230], N);
+            for ( int VAR__8444594 = 1; VAR__8444594 <= N; VAR__8444594++ )
+            {
+               matrixHor[VAR__21230][VAR__8444594] = matrixHor[VAR__21230][VAR__8444594] - minim;
+               matrixVer[VAR__8444594][VAR__21230] = matrixHor[VAR__21230][VAR__8444594];
+            }
+         }
+
+         VAR__SUM = VAR__SUM + matrixVer[2][2];
+         N        = N - 1;
+         for ( int VAR__21230 = 2; VAR__21230 <= N; VAR__21230++ )
+         {
+            for ( int VAR__8444594 = 2; VAR__8444594 <= N; VAR__8444594++ )
+            {
+               matrixVer[VAR__21230][VAR__8444594] = matrixVer[VAR__21230 + 1][VAR__8444594 + 1];
+               matrixHor[VAR__21230][VAR__8444594] = matrixHor[VAR__21230 + 1][VAR__8444594 + 1];
+            }
+         }
+
+         for ( int VAR__21230 = 2; VAR__21230 <= N; VAR__21230++ )
+         {
+            matrixHor[1][VAR__21230] = matrixHor[1][VAR__21230 + 1];
+            matrixVer[VAR__21230][1] = matrixHor[1][VAR__21230];
+            matrixVer[1][VAR__21230] = matrixVer[1][VAR__21230 + 1];
+            matrixHor[VAR__21230][1] = matrixVer[1][VAR__21230];
+         }
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+}

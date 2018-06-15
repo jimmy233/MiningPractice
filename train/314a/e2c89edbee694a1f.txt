@@ -1,0 +1,86 @@
+int main()
+{
+   char in[5010];
+   char out[5010];
+   int  VAR__NUM = 0;
+   int  VAR__7685[1500];
+   int  VAR__3918907[1500];
+   int  time[1000];
+
+   for ( int VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      VAR__7685[VAR__53647]    = 0;
+      VAR__3918907[VAR__53647] = 0;
+      time[VAR__53647]         = 0;
+   }
+
+   ( cin >> in ) >> out;
+   int lenin  = strlen(in);
+   int lenout = strlen(out);
+   in[lenin]   = ',';
+   out[lenout] = ',';
+   int VAR_233      = lenin;
+   int VAR_666      = lenout;
+   int VAR__53647   = 0;
+   int VAR__8444594 = 0;
+
+   while ( VAR_233 >= 0 )
+   {
+      if ( in[VAR_233] == ',' )
+      {
+         VAR__53647 = VAR_233 - 1;
+         {
+            while (( in[VAR__53647] != ',' ) && ( VAR__53647 != ( -1 )))
+            {
+               VAR__7685[VAR__8444594] = VAR__7685[VAR__8444594] + (((int)( in[VAR__53647] - '0' )) * ((int)pow(10.0, (double)(( VAR_233 - 1 ) - VAR__53647 ))));
+               VAR__53647--;
+            }
+
+            VAR_233 = VAR__53647;
+            VAR__8444594++;
+         }
+      }
+   }
+
+   VAR__8444594 = 0;
+
+   while ( VAR_666 >= 0 )
+   {
+      if ( out[VAR_666] == ',' )
+      {
+         VAR__53647 = VAR_666 - 1;
+         {
+            while (( out[VAR__53647] != ',' ) && ( VAR__53647 != ( -1 )))
+            {
+               VAR__3918907[VAR__8444594] = VAR__3918907[VAR__8444594] + (((int)( out[VAR__53647] - '0' )) * ((int)pow(10.0, (double)(( VAR_666 - 1 ) - VAR__53647 ))));
+               VAR__53647--;
+            }
+
+            VAR_666 = VAR__53647;
+            VAR__8444594++;
+         }
+      }
+   }
+
+   VAR__NUM = VAR__8444594;
+   ( cout << VAR__NUM ) << " ";
+   int maxe = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if (( VAR__53647 >= VAR__7685[VAR__21230] ) && ( VAR__53647 < VAR__3918907[VAR__21230] ))
+         {
+            time[VAR__53647]++;
+         }
+      }
+
+      if ( maxe < time[VAR__53647] )
+      {
+         maxe = time[VAR__53647];
+      }
+   }
+
+   ( cout << maxe ) << endl;
+   return 0;
+}

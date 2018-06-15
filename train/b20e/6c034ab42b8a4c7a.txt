@@ -1,0 +1,68 @@
+int VAR_1238123;
+int th[1010];
+int qh[1010];
+int comp(const void *lhs, const void *rhs)
+{
+   return ( *((int *)rhs )) - ( *((int *)lhs ));
+}
+
+
+int main()
+{
+   while ( 1 )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      memset(th, 0, sizeof( th ));
+      memset(qh, 0, sizeof( qh ));
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         cin >> th[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         cin >> qh[VAR__53647];
+      }
+
+      qsort(qh, VAR_1238123, sizeof( int ), comp);
+      qsort(th, VAR_1238123, sizeof( int ), comp);
+      int VAR__SUM = 0;
+      int VAR__MAX = ( -1000 ) * 200;
+      for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; ++VAR__8444594 )
+      {
+         VAR__SUM = 0;
+         int VAR__COUNT = 0;
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+         {
+            if ( th[(( VAR__53647 - VAR__8444594 ) + VAR_1238123 ) % VAR_1238123] > qh[VAR__53647] )
+            {
+               VAR__SUM += 200;
+               ++VAR__COUNT;
+            }
+            else
+            if ( th[(( VAR__53647 - VAR__8444594 ) + VAR_1238123 ) % VAR_1238123] < qh[VAR__53647] )
+            {
+               VAR__SUM -= 200;
+            }
+         }
+
+         if ( VAR__SUM > VAR__MAX )
+         {
+            VAR__MAX = VAR__SUM;
+         }
+
+         if ( VAR__COUNT == ( VAR_1238123 - VAR__8444594 ))
+         {
+            break;
+         }
+      }
+
+      ( cout << VAR__MAX ) << endl;
+   }
+}

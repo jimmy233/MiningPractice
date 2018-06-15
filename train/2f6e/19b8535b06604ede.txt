@@ -1,0 +1,59 @@
+char queue[1000] = { "" };
+char boy;
+char girl;
+int  number;
+int  pairs = 0;
+void findpair(int girlid)
+{
+   int VAR__53647;
+
+   if ((( number / 2 ) - pairs ) != 1 )
+   {
+      pairs++;
+      VAR__53647 = girlid - 1;
+
+      while ( VAR__53647 > 0 )
+      {
+         if ( queue[VAR__53647] == girl )
+         {
+            break;
+         }
+
+         VAR__53647--;
+      }
+
+      findpair(VAR__53647);
+   }
+
+   for ( VAR__53647 = girlid - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( queue[VAR__53647] == boy )
+      {
+         printf("%d %d\n", VAR__53647, girlid);
+         queue[VAR__53647] = 0;
+         break;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+
+   gets(queue);
+   number = strlen(queue);
+   boy    = queue[0];
+   for ( VAR__53647 = 0; VAR__53647 < number; VAR__53647++ )
+   {
+      if ( queue[VAR__53647] != boy )
+      {
+         girl = queue[VAR__53647];
+         break;
+      }
+   }
+
+
+   findpair(number - 1);
+   return 0;
+}

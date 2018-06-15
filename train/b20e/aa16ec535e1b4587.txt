@@ -1,0 +1,101 @@
+int num1[1001];
+int num2[1001];
+int VAR__NUM;
+int compare(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   int *q1;
+   int *q2;
+
+   q1 = (int *)ANOTHER_POINTER;
+   q2 = (int *)YET_ANOTHER_POINTER;
+   return ( *q1 ) - ( *q2 );
+}
+
+
+int main()
+{
+   while ( true )
+   {
+      cin >> VAR__NUM;
+
+      if ( VAR__NUM == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+      {
+         cin >> num1[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+      {
+         cin >> num2[VAR__53647];
+      }
+
+      qsort(&num1[1], VAR__NUM, sizeof( int ), compare);
+      qsort(&num2[1], VAR__NUM, sizeof( int ), compare);
+      int ANOTHER_POINTER;
+      int YET_ANOTHER_POINTER;
+      int p3;
+      int p4;
+      ANOTHER_POINTER     = 1;
+      YET_ANOTHER_POINTER = VAR__NUM;
+      p3 = 1;
+      p4 = VAR__NUM;
+      int money = 0;
+
+      while ( true )
+      {
+         if ( ANOTHER_POINTER == YET_ANOTHER_POINTER )
+         {
+            if ( num1[ANOTHER_POINTER] > num2[p3] )
+            {
+               money++;
+            }
+
+            if ( num1[ANOTHER_POINTER] < num2[p3] )
+            {
+               money--;
+            }
+
+            break;
+         }
+         else
+         {
+            if ( num1[ANOTHER_POINTER] > num2[p3] )
+            {
+               money++;
+               ANOTHER_POINTER++;
+               p3++;
+               continue;
+            }
+
+            if ( num1[YET_ANOTHER_POINTER] > num2[p4] )
+            {
+               money++;
+               YET_ANOTHER_POINTER--;
+               p4--;
+               continue;
+            }
+
+            if ( num1[ANOTHER_POINTER] < num2[p4] )
+            {
+               money--;
+            }
+
+            if ( num1[ANOTHER_POINTER] > num2[p4] )
+            {
+               money++;
+            }
+
+            ANOTHER_POINTER++;
+            p4--;
+         }
+      }
+
+      ( cout << ( money * 200 )) << endl;
+   }
+
+   return 0;
+}

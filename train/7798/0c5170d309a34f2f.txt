@@ -1,0 +1,118 @@
+struct worker
+{
+   int           name;
+   char          au[20];
+   struct worker *VAR__NEXT;
+};
+struct help
+{
+   char author;
+   int  VAR__MAX;
+};
+struct worker *creat(int VAR__1238129)
+{
+   struct worker *ANOTHER_POINTER;
+   struct worker *YET_ANOTHER_POINTER;
+   struct worker *VAR_233;
+   int           VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct worker *)malloc(sizeof( struct worker )));
+   scanf("%d %s", &ANOTHER_POINTER->name, ANOTHER_POINTER->au);
+   VAR_233 = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct worker *)malloc(sizeof( struct worker ));
+      scanf("%d %s", &ANOTHER_POINTER->name, ANOTHER_POINTER->au);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR_233;
+}
+
+
+void print(struct worker *VAR_233)
+{
+   struct worker *ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR_233;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      printf("%d %s\n", ANOTHER_POINTER->name, ANOTHER_POINTER->au);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}
+
+
+void most(struct worker *VAR_233)
+{
+   struct worker *ANOTHER_POINTER;
+   struct worker *YET_ANOTHER_POINTER;
+   int           VAR__819283[30] = { 0 };
+   int           VAR__53647;
+   int           VAR__MAX;
+   char          author;
+   struct help   VAR__temp;
+
+   ANOTHER_POINTER     = VAR_233;
+   YET_ANOTHER_POINTER = VAR_233;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      for ( VAR__53647 = 0; ( *( ANOTHER_POINTER->au + VAR__53647 )) != '\0'; VAR__53647++ )
+      {
+         VAR__819283[( *( ANOTHER_POINTER->au + VAR__53647 )) - 65] = VAR__819283[( *( ANOTHER_POINTER->au + VAR__53647 )) - 65] + 1;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0, VAR__MAX = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__MAX )
+      {
+         author = VAR__53647 + 65;
+      }
+   }
+
+   printf("%c\n%d\n", author, VAR__MAX);
+   ANOTHER_POINTER = VAR_233;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      for ( VAR__53647 = 0; ( *( ANOTHER_POINTER->au + VAR__53647 )) != '\0'; VAR__53647++ )
+      {
+         if (( *( ANOTHER_POINTER->au + VAR__53647 )) == author )
+         {
+            printf("%d\n", ANOTHER_POINTER->name);
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   struct worker *ANOTHER_POINTER;
+   struct worker *VAR_233;
+   struct help   VAR__temp;
+   int           VAR__1238129;
+   char          VAR__4857423;
+
+   scanf("%d", &VAR__1238129);
+   VAR_233         = creat(VAR__1238129);
+   ANOTHER_POINTER = VAR_233;
+   most(ANOTHER_POINTER);
+}

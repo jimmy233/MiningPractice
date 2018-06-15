@@ -1,0 +1,72 @@
+struct jisuan
+{
+   int  VAR__NUM;
+   char name[26];
+}
+book[1000];
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__8444594;
+   int VAR__112390;
+   int VAR__COUNT[26] = { 0 };
+   int author[26];
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      author[VAR__53647] = 65 + VAR__53647;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d", &book[VAR__53647].VAR__NUM);
+      gets(book[VAR__53647].name);
+   }
+
+   for ( VAR__53647 = 'A'; VAR__53647 <= 'Z'; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         VAR_1238123 = strlen(book[VAR__21230].name);
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            if ( VAR__53647 == book[VAR__21230].name[VAR__8444594] )
+            {
+               VAR__COUNT[VAR__53647 - 65]++;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 25; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] > VAR__COUNT[VAR__53647 + 1] )
+      {
+         VAR__112390                = VAR__COUNT[VAR__53647];
+         VAR__COUNT[VAR__53647]     = VAR__COUNT[VAR__53647 + 1];
+         VAR__COUNT[VAR__53647 + 1] = VAR__112390;
+         VAR__112390                = author[VAR__53647];
+         author[VAR__53647]         = author[VAR__53647 + 1];
+         author[VAR__53647 + 1]     = VAR__112390;
+      }
+   }
+
+   printf("%c\n%d\n", author[25], VAR__COUNT[25]);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR_1238123 = strlen(book[VAR__53647].name);
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         if ( book[VAR__53647].name[VAR__8444594] == author[25] )
+         {
+            printf("%d\n", book[VAR__53647].VAR__NUM);
+         }
+      }
+   }
+
+   return 0;
+}

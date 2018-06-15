@@ -1,0 +1,100 @@
+struct info
+{
+   int         VAR__NUM;
+   int         chin;
+   int         math;
+   struct info *VAR__NEXT;
+};
+struct info *create(int VAR_1238123)
+{
+   int         VAR__53647;
+   struct info *VAR__HEAD;
+   struct info *ANOTHER_POINTER;
+   struct info *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+   scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chin, &ANOTHER_POINTER->math);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   VAR__53647          = 1;
+   do
+   {
+      ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chin, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      VAR__53647++;
+   } while ( VAR__53647 < VAR_1238123 );
+   return VAR__HEAD;
+}
+
+
+void arrange(struct info *VAR__HEAD)
+{
+   int         VAR__1238129;
+   int         no1;
+   int         no2;
+   int         no3;
+   struct info *VAR_233;
+
+   VAR_233      = VAR__HEAD;
+   VAR__1238129 = 0;
+
+   while ( VAR_233 )
+   {
+      if (( VAR_233->chin + VAR_233->math ) > VAR__1238129 )
+      {
+         VAR__1238129 = VAR_233->chin + VAR_233->math;
+         no1          = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", no1, VAR__1238129);
+   VAR__1238129 = 0;
+   VAR_233      = VAR__HEAD;
+   no2          = VAR_233->VAR__NUM;
+
+   while ( VAR_233 )
+   {
+      if ((( VAR_233->chin + VAR_233->math ) > VAR__1238129 ) && ( VAR_233->VAR__NUM != no1 ))
+      {
+         VAR__1238129 = VAR_233->chin + VAR_233->math;
+         no2          = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", no2, VAR__1238129);
+   VAR__1238129 = 0;
+   VAR_233      = VAR__HEAD;
+   no3          = VAR_233->VAR__NUM;
+
+   while ( VAR_233 )
+   {
+      if (((( VAR_233->chin + VAR_233->math ) > VAR__1238129 ) && ( VAR_233->VAR__NUM != no1 )) && ( VAR_233->VAR__NUM != no2 ))
+      {
+         VAR__1238129 = VAR_233->chin + VAR_233->math;
+         no3          = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", no3, VAR__1238129);
+}
+
+
+int main()
+{
+   int         VAR_1238123;
+   struct info *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create(VAR_1238123);
+   arrange(VAR__HEAD);
+}

@@ -1,0 +1,65 @@
+struct Article
+{
+   int  number;
+   char author[26];
+};
+int main()
+{
+   struct Article book[1000];
+   int            VAR__1238129;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__8444594;
+   int            VAR__4857423;
+   int            VAR__MAX   = 0;
+   int            writer[26] = { 0 };
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &book[VAR__53647].number, book[VAR__53647].author);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         if (( book[VAR__53647].author[VAR__21230] >= 'A' ) && ( book[VAR__53647].author[VAR__21230] <= 'Z' ))
+         {
+            VAR__4857423 = book[VAR__53647].author[VAR__21230] - 'A';
+            writer[VAR__4857423]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__MAX < writer[VAR__53647] )
+      {
+         VAR__MAX = writer[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__MAX == writer[VAR__53647] )
+      {
+         printf("%c\n", VAR__53647 + 'A');
+         printf("%d\n", VAR__MAX);
+         for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+         {
+            for ( VAR__8444594 = 0; VAR__8444594 < 26; VAR__8444594++ )
+            {
+               if ( book[VAR__21230].author[VAR__8444594] == ( VAR__53647 + 'A' ))
+               {
+                  printf("%d\n", book[VAR__21230].number);
+               }
+            }
+         }
+
+         break;
+      }
+   }
+
+   return 0;
+}

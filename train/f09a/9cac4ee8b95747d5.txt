@@ -1,0 +1,87 @@
+int num1[1000]     = { 0 };
+int num2[1000]     = { 0 };
+int VAR__NUM[2000] = { 0 };
+int n1;
+int n2;
+void read()
+{
+   ( cin >> n1 ) >> n2;
+   for ( int VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      cin >> num1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      cin >> num2[VAR__53647];
+   }
+}
+
+
+void range()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < ( n1 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < (( n1 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( num1[VAR__21230] > num1[VAR__21230 + 1] )
+         {
+            int VAR__TEMP = 0;
+            VAR__TEMP            = num1[VAR__21230];
+            num1[VAR__21230]     = num1[VAR__21230 + 1];
+            num1[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( n2 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < (( n2 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( num2[VAR__21230] > num2[VAR__21230 + 1] )
+         {
+            int VAR__TEMP = 0;
+            VAR__TEMP            = num2[VAR__21230];
+            num2[VAR__21230]     = num2[VAR__21230 + 1];
+            num2[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void combine()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = num1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      VAR__NUM[n1 + VAR__53647] = num2[VAR__53647];
+   }
+}
+
+
+void print()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < (( n1 + n2 ) - 1 ); VAR__53647++ )
+   {
+      ( cout << VAR__NUM[VAR__53647] ) << " ";
+   }
+
+   ( cout << VAR__NUM[( n1 + n2 ) - 1] ) << endl;
+}
+
+
+int main()
+{
+   read();
+   range();
+   combine();
+   print();
+   return 0;
+}

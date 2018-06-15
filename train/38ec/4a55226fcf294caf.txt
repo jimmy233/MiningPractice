@@ -1,0 +1,254 @@
+int leapYear(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int startYear;
+   int endYear;
+   int startMonth;
+   int endMonth;
+   int startDay;
+   int endDay;
+   int VAR__COUNT = 0;
+
+   scanf("%d%d%d", &startYear, &startMonth, &startDay);
+   scanf("%d%d%d", &endYear, &endMonth, &endDay);
+
+   if ( startYear < endYear )
+   {
+      for ( VAR__53647 = startMonth + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         switch ( VAR__53647 )
+         {
+         case 1:
+
+         case 3:
+
+         case 5:
+
+         case 7:
+
+         case 8:
+
+         case 10:
+
+         case 12:
+            VAR__COUNT += 31;
+            break;
+
+         case 4:
+
+         case 6:
+
+         case 9:
+
+         case 11:
+            VAR__COUNT += 30;
+            break;
+
+         case 2:
+
+            if ( leapYear(startYear))
+            {
+               VAR__COUNT += 29;
+            }
+            else
+            {
+               VAR__COUNT += 28;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < endMonth; VAR__53647++ )
+      {
+         switch ( VAR__53647 )
+         {
+         case 1:
+
+         case 3:
+
+         case 5:
+
+         case 7:
+
+         case 8:
+
+         case 10:
+
+         case 12:
+            VAR__COUNT += 31;
+            break;
+
+         case 4:
+
+         case 6:
+
+         case 9:
+
+         case 11:
+            VAR__COUNT += 30;
+            break;
+
+         case 2:
+
+            if ( leapYear(endYear))
+            {
+               VAR__COUNT += 29;
+            }
+            else
+            {
+               VAR__COUNT += 28;
+            }
+         }
+      }
+
+      switch ( startMonth )
+      {
+      case 1:
+
+      case 3:
+
+      case 5:
+
+      case 7:
+
+      case 8:
+
+      case 10:
+
+      case 12:
+         VAR__COUNT += 31;
+         break;
+
+      case 4:
+
+      case 6:
+
+      case 9:
+
+      case 11:
+         VAR__COUNT += 30;
+         break;
+
+      case 2:
+
+         if ( leapYear(endYear))
+         {
+            VAR__COUNT += 29;
+         }
+         else
+         {
+            VAR__COUNT += 28;
+         }
+      }
+
+      VAR__COUNT += endDay - startDay;
+   }
+   else
+   {
+      for ( VAR__53647 = startMonth + 1; VAR__53647 < endMonth; VAR__53647++ )
+      {
+         switch ( VAR__53647 )
+         {
+         case 1:
+
+         case 3:
+
+         case 5:
+
+         case 7:
+
+         case 8:
+
+         case 10:
+
+         case 12:
+            VAR__COUNT += 31;
+            break;
+
+         case 4:
+
+         case 6:
+
+         case 9:
+
+         case 11:
+            VAR__COUNT += 30;
+            break;
+
+         case 2:
+
+            if ( leapYear(startYear))
+            {
+               VAR__COUNT += 29;
+            }
+            else
+            {
+               VAR__COUNT += 28;
+            }
+         }
+      }
+
+      if ( startMonth < endMonth )
+      {
+         switch ( startMonth )
+         {
+         case 1:
+
+         case 3:
+
+         case 5:
+
+         case 7:
+
+         case 8:
+
+         case 10:
+
+         case 12:
+            VAR__COUNT += 31;
+            break;
+
+         case 4:
+
+         case 6:
+
+         case 9:
+
+         case 11:
+            VAR__COUNT += 30;
+            break;
+
+         case 2:
+
+            if ( leapYear(endYear))
+            {
+               VAR__COUNT += 29;
+            }
+            else
+            {
+               VAR__COUNT += 28;
+            }
+         }
+      }
+
+      VAR__COUNT += endDay - startDay;
+   }
+
+   for ( VAR__53647 = startYear + 1; VAR__53647 < endYear; VAR__53647++ )
+   {
+      VAR__COUNT += 365 + leapYear(VAR__53647);
+   }
+
+   printf("%d", VAR__COUNT);
+   return 0;
+}

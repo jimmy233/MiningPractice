@@ -1,0 +1,128 @@
+int map[110][110];
+int VAR_1238123;
+int VAR__SUM;
+void getmap()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &map[VAR__53647][VAR__21230]);
+      }
+   }
+}
+
+
+int minh(int VAR__7685)
+{
+   int VAR__53647;
+   int VAR__MIN = 100000000;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MIN > map[VAR__7685][VAR__53647] )
+      {
+         VAR__MIN = map[VAR__7685][VAR__53647];
+      }
+   }
+
+   return VAR__MIN;
+}
+
+
+int minl(int VAR__7685)
+{
+   int VAR__53647;
+   int VAR__MIN = 100000000;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MIN > map[VAR__53647][VAR__7685] )
+      {
+         VAR__MIN = map[VAR__53647][VAR__7685];
+      }
+   }
+
+   return VAR__MIN;
+}
+
+
+void once(int VAR__819283)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MIN;
+
+   VAR__MIN = minh(1);
+   for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+   {
+      map[1][VAR__21230] -= VAR__MIN;
+   }
+
+   for ( VAR__53647 = VAR__819283 + 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN = minh(VAR__53647);
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         map[VAR__53647][VAR__21230] -= VAR__MIN;
+      }
+   }
+
+   VAR__MIN = minl(1);
+   for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+   {
+      map[VAR__21230][1] -= VAR__MIN;
+   }
+
+   for ( VAR__53647 = VAR__819283 + 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN = minl(VAR__53647);
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         map[VAR__21230][VAR__53647] -= VAR__MIN;
+      }
+   }
+
+   VAR__SUM += map[VAR__819283 + 1][VAR__819283 + 1];
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      map[VAR__819283 + 1][VAR__53647] = ( map[VAR__53647][VAR__819283 + 1] = 100000 );
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__3918907 = 1;
+   int v;
+   int u;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      getmap();
+      for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         once(VAR__21230);
+      }
+
+      if ( VAR__3918907 == 0 )
+      {
+         printf("\n%d", VAR__SUM);
+      }
+      else
+      {
+         printf("%d", VAR__SUM);
+      }
+
+      VAR__3918907 = 0;
+   }
+
+   return 0;
+}

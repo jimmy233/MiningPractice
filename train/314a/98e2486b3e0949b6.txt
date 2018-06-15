@@ -1,0 +1,90 @@
+void main()
+{
+   char ANOTHER_STRING[5000];
+   char YET_ANOTHER_STRING[5000];
+   int  VAR__7685[1001];
+   int  VAR__3918907[1001];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594 = 0;
+   int  VAR__MIN     = 1000;
+   int  VAR__MAX     = 0;
+   int  high         = 0;
+   int  VAR__COUNT   = 0;
+   int  VAR__NUM;
+
+   for ( VAR__53647 = 0; VAR__53647 <= 1000; VAR__53647++ )
+   {
+      VAR__7685[VAR__53647]    = 0;
+      VAR__3918907[VAR__53647] = 0;
+   }
+
+   gets(ANOTHER_STRING);
+   gets(YET_ANOTHER_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(ANOTHER_STRING); )
+   {
+      if (( ANOTHER_STRING[VAR__53647] >= '0' ) && ( ANOTHER_STRING[VAR__53647] <= '9' ))
+      {
+         for ( VAR__21230 = VAR__53647; ( ANOTHER_STRING[VAR__21230] >= '0' ) && ( ANOTHER_STRING[VAR__21230] <= '9' ); VAR__21230++ )
+         {
+            VAR__7685[VAR__8444594] = (( VAR__7685[VAR__8444594] * 10 ) + ANOTHER_STRING[VAR__21230] ) - '0';
+         }
+
+         if ( VAR__7685[VAR__8444594] < VAR__MIN )
+         {
+            VAR__MIN = VAR__7685[VAR__8444594];
+         }
+
+         VAR__8444594++;
+         VAR__COUNT++;
+         VAR__53647 = VAR__21230;
+      }
+      else
+      {
+         VAR__53647++;
+      }
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(YET_ANOTHER_STRING); VAR__53647++ )
+   {
+      if (( YET_ANOTHER_STRING[VAR__53647] >= '0' ) && ( YET_ANOTHER_STRING[VAR__53647] <= '9' ))
+      {
+         for ( VAR__21230 = VAR__53647; ( YET_ANOTHER_STRING[VAR__21230] >= '0' ) && ( YET_ANOTHER_STRING[VAR__21230] <= '9' ); VAR__21230++ )
+         {
+            VAR__3918907[VAR__8444594] = (( VAR__3918907[VAR__8444594] * 10 ) + YET_ANOTHER_STRING[VAR__21230] ) - '0';
+         }
+
+         if ( VAR__3918907[VAR__8444594] > VAR__MAX )
+         {
+            VAR__MAX = VAR__3918907[VAR__8444594];
+         }
+
+         VAR__8444594++;
+         VAR__53647 = VAR__21230;
+      }
+      else
+      {
+         VAR__53647++;
+      }
+   }
+
+   for ( VAR__53647 = VAR__MIN; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      VAR__NUM = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR__COUNT; VAR__21230++ )
+      {
+         if (( VAR__7685[VAR__21230] <= VAR__53647 ) && ( VAR__3918907[VAR__21230] > VAR__53647 ))
+         {
+            VAR__NUM++;
+         }
+      }
+
+      if ( VAR__NUM > high )
+      {
+         high = VAR__NUM;
+      }
+   }
+
+   printf("%d %d\n", VAR__COUNT, high);
+}

@@ -1,0 +1,68 @@
+int main()
+{
+   double Numbers[500] = { 0 };
+   double Temp[100]    = { -1 };
+   double Ave          = 0;
+   double Sum          = 0;
+   double Max          = 0;
+   double Exchange     = 0;
+   int    VAR__8444594 = 0;
+   int    VAR_1238123  = 0;
+   int    VAR__53647   = 0;
+   int    VAR__21230   = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> Numbers[VAR__53647];
+      Sum += Numbers[VAR__53647];
+   }
+
+   Ave = Sum / VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( fabs(Numbers[VAR__53647] - Ave) > Max )
+      {
+         Max = fabs(Numbers[VAR__53647] - Ave);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( fabs(fabs(Numbers[VAR__53647] - Ave) - Max) < 1e-5 )
+      {
+         Temp[VAR__8444594] = Numbers[VAR__53647];
+         VAR__8444594++;
+      }
+   }
+
+   if ( VAR__8444594 == 1 )
+   {
+      ( cout << Temp[0] ) << endl;
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( VAR__8444594 - 1 ); VAR__21230++ )
+         {
+            if ( Temp[VAR__21230] > Temp[VAR__21230 + 1] )
+            {
+               Exchange             = Temp[VAR__21230];
+               Temp[VAR__21230]     = Temp[VAR__21230 + 1];
+               Temp[VAR__21230 + 1] = Exchange;
+            }
+         }
+      }
+
+      cout << Temp[0];
+      for ( VAR__53647 = 1; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         ( cout << "," ) << Temp[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

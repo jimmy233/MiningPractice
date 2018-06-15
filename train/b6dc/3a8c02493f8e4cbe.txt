@@ -1,0 +1,61 @@
+int  VAR__819283[30];
+char A_STRING[31];
+char *pt = A_STRING;
+int getint()
+{
+   if (( *pt ) == '\0' )
+   {
+      return -1;
+   }
+
+   int VAR__SUM = 0;
+
+   while (( '0' <= ( *pt )) && ( '9' >= ( *pt )))
+   {
+      VAR__SUM *= 10;
+      VAR__SUM  = ( VAR__SUM + ( *pt )) - '0';
+      pt++;
+   }
+
+   return VAR__SUM;
+}
+
+
+void skipstring()
+{
+   while (( *pt ) && ((( *pt ) < '0' ) || (( *pt ) > '9' )))
+   {
+      pt++;
+   }
+}
+
+
+int main()
+{
+   gets(A_STRING);
+   int VAR__53647 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 30; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = -1;
+   }
+
+   VAR__53647 = 0;
+
+   while (( *pt ) != '\0' )
+   {
+      skipstring();
+      VAR__819283[VAR__53647] = getint();
+      VAR__53647++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 30; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] != ( -1 ))
+      {
+         printf("%d\n", VAR__819283[VAR__53647]);
+      }
+   }
+
+
+   return 0;
+}

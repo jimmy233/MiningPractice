@@ -1,0 +1,52 @@
+int  days[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int  leap[] = { 4, 100, 400 };
+char *name[] = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+int leapYearBetween(int VAR__819283, int VAR__19328)
+{
+   int LEN_OF_STH = ( VAR__19328 - VAR__819283 ) + 1;
+   int sign       = 1;
+   int years      = 0;
+   int VAR__TEMP  = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 < (( sizeof( leap )) / ( sizeof( int ))); VAR__53647++ )
+   {
+      VAR__TEMP = LEN_OF_STH / leap[VAR__53647];
+
+      if ((( leap[VAR__53647] - (( leap[VAR__53647] - ( VAR__819283 % leap[VAR__53647] )) % leap[VAR__53647] )) + ( LEN_OF_STH % leap[VAR__53647] )) > leap[VAR__53647] )
+      {
+         VAR__TEMP++;
+      }
+
+      years += VAR__TEMP * sign;
+      sign  *= -1;
+   }
+
+   return years;
+}
+
+
+int main()
+{
+   int VAR__3918907;
+   int VAR__1238129;
+   int VAR__12302;
+
+   scanf("%d%d%d", &VAR__3918907, &VAR__1238129, &VAR__12302);
+   int leftDay = leapYearBetween(1, (( VAR__3918907 - 1 ) / 7 ) * 7);
+   leftDay += (( VAR__3918907 - 1 ) % 7 ) * 365;
+   leftDay += leapYearBetween(((( VAR__3918907 - 1 ) / 7 ) * 7 ) + 1, VAR__3918907 - 1);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      leftDay += days[VAR__53647];
+   }
+
+   if ( VAR__1238129 > 2 )
+   {
+      leftDay += leapYearBetween(VAR__3918907, VAR__3918907);
+   }
+
+   leftDay += VAR__12302;
+   leftDay %= 7;
+   printf("%s\n", name[leftDay]);
+   return 0;
+}

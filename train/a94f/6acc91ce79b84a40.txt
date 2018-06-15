@@ -1,0 +1,83 @@
+int main()
+{
+   int row;
+   int col;
+
+   scanf("%d %d", &row, &col);
+   int array[100][100];
+   for ( int rr = 0; rr < row; rr++ )
+   {
+      for ( int cc = 0; cc < col; cc++ )
+      {
+         scanf("%d", &array[rr][cc]);
+      }
+   }
+
+   for ( int VAR__temp = 1; VAR__temp < 100; VAR__temp++ )
+   {
+      int leftc  = VAR__temp - 1;
+      int rightc = col - VAR__temp;
+
+      if ( leftc <= rightc )
+      {
+         if ( leftc == rightc )
+         {
+         }
+
+         for ( int VAR__4857423 = leftc; VAR__4857423 <= rightc; VAR__4857423++ )
+         {
+            if ( VAR__4857423 == 0 )
+            {
+               printf("%d", array[0][0]);
+            }
+            else
+            {
+               printf("\n%d", array[VAR__temp - 1][VAR__4857423]);
+            }
+         }
+      }
+      else
+      {
+         break;
+      }
+
+      int upr   = VAR__temp;
+      int downr = ( row - 1 ) - VAR__temp;
+
+      if ( upr <= downr )
+      {
+         for ( int VAR_129012 = upr; VAR_129012 <= downr; VAR_129012++ )
+         {
+            printf("\n%d", array[VAR_129012][col - VAR__temp]);
+         }
+      }
+
+      if (( upr - downr ) >= 2 )
+      {
+         break;
+      }
+
+      if ( leftc <= rightc )
+      {
+         for ( int VAR__4857423 = rightc; VAR__4857423 >= leftc; VAR__4857423-- )
+         {
+            printf("\n%d", array[row - VAR__temp][VAR__4857423]);
+         }
+      }
+
+      if ( leftc == rightc )
+      {
+         break;
+      }
+
+      if ( upr <= downr )
+      {
+         for ( int VAR_129012 = downr; VAR_129012 >= upr; VAR_129012-- )
+         {
+            printf("\n%d", array[VAR_129012][VAR__temp - 1]);
+         }
+      }
+   }
+
+   return 0;
+}

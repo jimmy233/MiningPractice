@@ -1,0 +1,55 @@
+struct photo
+{
+   char   gen[10];
+   double height;
+};
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct photo VAR__819283[50];
+   struct photo VAR__19328;
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", VAR__819283[VAR__53647].gen, &VAR__819283[VAR__53647].height);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230].height < VAR__819283[VAR__21230 + 1].height )
+         {
+            VAR__19328 = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__19328;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( strcmp(VAR__819283[VAR__53647].gen, "male") == 0 ) && ( VAR__8444594 != 0 ))
+      {
+         printf(" %.2f", VAR__819283[VAR__53647].height);
+      }
+
+      if (( strcmp(VAR__819283[VAR__53647].gen, "male") == 0 ) && ( VAR__8444594 == 0 ))
+      {
+         printf("%.2f", VAR__819283[VAR__53647].height);
+         VAR__8444594 = VAR__8444594 + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(VAR__819283[VAR__53647].gen, "female") == 0 )
+      {
+         printf(" %.2f", VAR__819283[VAR__53647].height);
+      }
+   }
+}

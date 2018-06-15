@@ -1,0 +1,59 @@
+int main()
+{
+   int VAR__819283[6][6];
+
+   for ( int VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= 5; VAR__21230++ )
+      {
+         cin >> VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   int max_row[6]     = { 0 };
+   int min_column[6]  = { 0 };
+   int line_row[6]    = { 0 };
+   int line_column[6] = { 0, 1, 1, 1, 1, 1 };
+   for ( int VAR__21230 = 1; VAR__21230 <= 5; VAR__21230++ )
+   {
+      min_column[VAR__21230] = VAR__819283[1][VAR__21230];
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= 5; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] > max_row[VAR__53647] )
+         {
+            max_row[VAR__53647]  = VAR__819283[VAR__53647][VAR__21230];
+            line_row[VAR__53647] = VAR__21230;
+         }
+
+         if ( VAR__819283[VAR__53647][VAR__21230] < min_column[VAR__21230] )
+         {
+            min_column[VAR__21230]  = VAR__819283[VAR__53647][VAR__21230];
+            line_column[VAR__21230] = VAR__53647;
+         }
+      }
+   }
+
+
+   int success = 0;
+   for ( int VAR__53647 = 1; VAR__53647 <= 5; VAR__53647++ )
+   {
+      if ( line_row[line_column[VAR__53647]] == VAR__53647 )
+      {
+         (((( cout << line_column[VAR__53647] ) << " " ) << VAR__53647 ) << " " ) << VAR__819283[line_column[VAR__53647]][VAR__53647];
+         success = 1;
+      }
+   }
+
+
+   if ( success == 0 )
+   {
+      ( cout << "not found" ) << endl;
+   }
+
+   return 0;
+}

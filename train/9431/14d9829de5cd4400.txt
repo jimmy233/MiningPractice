@@ -1,0 +1,58 @@
+struct shuju
+{
+   char         A_STRING[100];
+   struct shuju *VAR__NEXT;
+};
+struct shuju *create()
+{
+   struct shuju *VAR__HEAD;
+   struct shuju *ANOTHER_POINTER;
+   struct shuju *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct shuju *)malloc(LEN_OF_STH);
+   gets(ANOTHER_POINTER->A_STRING);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+
+   while ( 1 )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct shuju *)malloc(LEN_OF_STH);
+      gets(ANOTHER_POINTER->A_STRING);
+
+      if ( strcmp(ANOTHER_POINTER->A_STRING, "end") == 0 )
+      {
+         free(ANOTHER_POINTER);
+         break;
+      }
+
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+   }
+
+   VAR__HEAD = YET_ANOTHER_POINTER;
+   return VAR__HEAD;
+}
+
+
+void print(struct shuju *VAR__HEAD)
+{
+   struct shuju *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233->VAR__NEXT != NULL )
+   {
+      puts(VAR_233->A_STRING);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   puts(VAR_233->A_STRING);
+}
+
+
+void main()
+{
+   struct shuju *VAR_233;
+
+   VAR_233 = create();
+   print(VAR_233);
+}

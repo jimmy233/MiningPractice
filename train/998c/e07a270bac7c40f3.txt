@@ -1,0 +1,70 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR__7685[1000];
+   char VAR__3918907[1000];
+
+   ( cin >> VAR__7685 ) >> VAR__3918907;
+   int len1 = strlen(VAR__7685);
+   int len2 = strlen(VAR__3918907);
+
+   if (( len1 == 1 ) && ( len2 == 1 ))
+   {
+      cout << 0;
+   }
+
+   int VAR__SUM[1000];
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = len1 - 1, VAR__21230 = len2 - 1; ( VAR__53647 >= 0 ) && ( VAR__21230 >= 0 ); VAR__53647--, VAR__21230-- )
+   {
+      int VAR__8444594 = ( VAR__7685[VAR__53647] + VAR__3918907[VAR__21230] ) - ( 2 * '0' );
+      VAR__SUM[( len1 - VAR__53647 ) - 1] += VAR__8444594;
+   }
+
+   if ( len1 > len2 )
+   {
+      for ( VAR__53647 = ( len1 - len2 ) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         VAR__SUM[( len1 - VAR__53647 ) - 1] += VAR__7685[VAR__53647] - '0';
+      }
+   }
+   else
+   if ( len1 < len2 )
+   {
+      for ( VAR__53647 = ( len2 - len1 ) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         VAR__SUM[( len2 - VAR__53647 ) - 1] += VAR__3918907[VAR__53647] - '0';
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 999; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] > 9 )
+      {
+         VAR__SUM[VAR__53647 + 1] += VAR__SUM[VAR__53647] / 10;
+         VAR__SUM[VAR__53647]      = VAR__SUM[VAR__53647] % 10;
+      }
+   }
+
+
+   VAR__53647 = 999;
+
+   while ( VAR__SUM[VAR__53647] == 0 )
+   {
+      VAR__53647--;
+   }
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+   {
+      cout << VAR__SUM[VAR__21230];
+   }
+
+   cout << endl;
+   return 0;
+}

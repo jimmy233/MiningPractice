@@ -1,0 +1,89 @@
+struct moncky
+{
+   int           seq;
+   struct moncky *VAR__NEXT;
+};
+struct monckycircle
+{
+   int           allnumber;
+   struct moncky *curp;
+};
+struct monckycircle *creat(int);
+void cry_123(struct monckycircle *, int);
+
+int main()
+{
+   int n_all;
+   int n_unlucky;
+   struct monckycircle *circlename;
+
+   scanf("%d%d", &n_all, &n_unlucky);
+
+   while ( n_all )
+   {
+      if ( n_unlucky == 1 )
+      {
+         printf("%d\n", n_all);
+      }
+      else
+      {
+         circlename = creat(n_all);
+
+         while ( circlename->allnumber != 0 )
+         {
+            cry_123(circlename, n_unlucky);
+         }
+
+         printf("%d\n", circlename->curp->seq);
+      }
+
+      scanf("%d%d", &n_all, &n_unlucky);
+   }
+
+   return 0;
+}
+
+
+struct monckycircle *creat(int allnum)
+{
+   int VAR__53647 = 1;
+   struct monckycircle *VAR_233;
+   struct moncky       *VAR__HEAD;
+   struct moncky       *now;
+
+   VAR_233            = (struct monckycircle *)malloc(sizeof( struct monckycircle ));
+   now                = ( VAR__HEAD = (struct moncky *)malloc(sizeof( struct moncky )));
+   VAR_233->allnumber = allnum;
+   VAR_233->curp      = VAR__HEAD;
+
+   while ( VAR__53647 < allnum )
+   {
+      now->seq       = VAR__53647;
+      now->VAR__NEXT = (struct moncky *)malloc(sizeof( struct moncky ));
+      now            = now->VAR__NEXT;
+      VAR__53647++;
+   }
+
+   now->seq       = VAR__53647;
+   now->VAR__NEXT = VAR__HEAD;
+   return VAR_233;
+}
+
+
+void cry_123(struct monckycircle *circlename, int unlucky)
+{
+   int           VAR__53647 = 1;
+   struct moncky *VAR_233;
+   struct moncky *aux;
+
+   VAR_233 = circlename->curp;
+   for ( VAR__53647 = 1; VAR__53647 != unlucky; VAR__53647++ )
+   {
+      VAR_233 = ( VAR__53647 == 1 ) ? ( VAR_233 ) : ( VAR_233->VAR__NEXT );
+   }
+
+   aux = VAR_233->VAR__NEXT->VAR__NEXT;
+   VAR_233->VAR__NEXT = aux;
+   circlename->allnumber--;
+   circlename->curp = VAR_233->VAR__NEXT;
+}

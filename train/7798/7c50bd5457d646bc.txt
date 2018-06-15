@@ -1,0 +1,59 @@
+struct book
+{
+   int  co;
+   char A[26];
+};
+int main()
+{
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__MAX;
+   int VAR__COUNT[26];
+   int *cc;
+
+   scanf("%d", &VAR__1238129);
+   struct book *bk = (struct book *)malloc(( sizeof( struct book )) * VAR__1238129);
+   struct book *VAR_233;
+   VAR_233 = bk;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++, VAR_233++ )
+   {
+      scanf("%d %s", &VAR_233->co, VAR_233->A);
+   }
+
+   cc = VAR__COUNT;
+   memset(VAR__COUNT, 0, sizeof( VAR__COUNT ));
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++, cc++ )
+   {
+      VAR_233 = bk;
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR__1238129; VAR__8444594++, VAR_233++ )
+      {
+         if ( strchr(VAR_233->A, 'A' + VAR__53647))
+         {
+            ( *cc )++;
+         }
+      }
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] > VAR__COUNT[VAR__MAX] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", 'A' + VAR__MAX, VAR__COUNT[VAR__MAX]);
+   VAR_233 = bk;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++, VAR_233++ )
+   {
+      if ( strchr(VAR_233->A, 'A' + VAR__MAX))
+      {
+         printf("%d\n", VAR_233->co);
+      }
+   }
+
+   free(bk);
+   return 0;
+}

@@ -1,0 +1,63 @@
+void hand();
+
+char sex[2];
+char team[100];
+int main()
+{
+   int VAR__53647;
+
+   cin >> team;
+   sex[0] = team[0];
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      if (( team[VAR__53647] != team[0] ) && ( team[VAR__53647] != '\0' ))
+      {
+         sex[1] = team[VAR__53647];
+      }
+      else
+      if ( team[VAR__53647] == '\0' )
+      {
+         break;
+      }
+   }
+
+   hand();
+   return 0;
+}
+
+
+void hand()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int judge;
+
+   if ( team[0] == sex[0] )
+   {
+      judge = 0;
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         if ( team[VAR__53647] == sex[1] )
+         {
+            for ( VAR__21230 = 1; VAR__21230 < 100; VAR__21230++ )
+            {
+               if ( team[VAR__53647 - VAR__21230] == sex[0] )
+               {
+                  judge = 1;
+                  break;
+               }
+            }
+
+            if ( judge == 1 )
+            {
+               break;
+            }
+         }
+      }
+
+      ((( cout << ( VAR__53647 - VAR__21230 )) << " " ) << VAR__53647 ) << endl;
+      team[VAR__53647] = '\0';
+      team[VAR__53647 - VAR__21230] = '\0';
+      hand();
+   }
+}

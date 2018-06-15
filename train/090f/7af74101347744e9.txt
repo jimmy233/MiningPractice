@@ -1,0 +1,84 @@
+int str2int(char A_STRING[], int result[])
+{
+   int value;
+   int LEN_OF_STH;
+   int VAR__NUM     = 0;
+   int VAR__8444594 = 0;
+
+   LEN_OF_STH = strlen(A_STRING);
+
+   while ( VAR__8444594 < LEN_OF_STH )
+   {
+      value = 0;
+
+      while (( A_STRING[VAR__8444594] != ',' ) && ( A_STRING[VAR__8444594] != '\0' ))
+      {
+         value = (( value * 10 ) + A_STRING[VAR__8444594++] ) - '0';
+      }
+
+      result[VAR__NUM++] = value;
+      VAR__8444594++;
+   }
+
+   return VAR__NUM;
+}
+
+
+int find2nd(int VAR__NUM, int result[])
+{
+   int VAR__8444594;
+   int second   = -1;
+   int VAR__MAX = result[0];
+
+   if ( VAR__NUM == 1 )
+   {
+      return -1;
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR__NUM; VAR__8444594++ )
+   {
+      if ( result[VAR__8444594] > VAR__MAX )
+      {
+         second   = VAR__MAX;
+         VAR__MAX = result[VAR__8444594];
+      }
+      else
+      {
+         if (( result[VAR__8444594] > second ) && ( result[VAR__8444594] < VAR__MAX ))
+         {
+            second = result[VAR__8444594];
+         }
+      }
+   }
+
+   if ( second == VAR__MAX )
+   {
+      return -1;
+   }
+   else
+   {
+      return second;
+   }
+}
+
+
+void main()
+{
+   char VAR_9494[1000];
+   int  result[1000];
+   int  VAR__NUM;
+   int  second;
+
+   gets(VAR_9494);
+   VAR__NUM = str2int(VAR_9494, result);
+   second   = find2nd(VAR__NUM, result);
+
+   if ( second == ( -1 ))
+   {
+      printf("No");
+   }
+   else
+   {
+      printf("%d", second);
+   }
+}

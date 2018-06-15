@@ -1,0 +1,87 @@
+void bubble_sort(int VAR__819283[100], char VAR__19328[100][10], int VAR_1238123)
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__TEMP;
+   char temp_[10] = { 0 };
+   char empty[10] = { 0 };
+
+   for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] < VAR__819283[VAR__53647 + 1] )
+         {
+            VAR__TEMP = VAR__819283[VAR__53647];
+            strcpy(temp_, VAR__19328[VAR__53647]);
+            VAR__819283[VAR__53647] = VAR__819283[VAR__53647 + 1];
+            strcpy(VAR__19328[VAR__53647], empty);
+            strcpy(VAR__19328[VAR__53647], VAR__19328[VAR__53647 + 1]);
+            VAR__819283[VAR__53647 + 1] = VAR__TEMP;
+            strcpy(VAR__19328[VAR__53647 + 1], empty);
+            strcpy(VAR__19328[VAR__53647 + 1], temp_);
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int  age[100];
+   int  Age_[100] = { 0 };
+   int  age_[100];
+   int  VAR_1238123;
+   int  VAR__53647;
+   char id[100][10];
+   char Id_[100][10] = { 0 };
+   char id_[100][10] = { 0 };
+   char empty[10]    = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", id[VAR__53647], &age[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( age[VAR__53647] >= 60 )
+      {
+         Age_[VAR__53647] = age[VAR__53647];
+         strcpy(Id_[VAR__53647], id[VAR__53647]);
+      }
+      else
+      {
+         age_[VAR__53647] = age[VAR__53647];
+         strcpy(id_[VAR__53647], id[VAR__53647]);
+      }
+   }
+
+   bubble_sort(Age_, Id_, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(Id_[VAR__53647], empty) == 0 )
+      {
+         continue;
+      }
+      else
+      {
+         printf("%s\n", Id_[VAR__53647]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(id_[VAR__53647], empty) == 0 )
+      {
+         continue;
+      }
+      else
+      {
+         printf("%s\n", id_[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,113 @@
+int VAR_1238123;
+int mat[101][101];
+int tp[101][101];
+int VAR__SUM = 0;
+void cut(int VAR__7685)
+{
+   int VAR__MIN;
+
+   if ( VAR__7685 == ( VAR_1238123 - 1 ))
+   {
+      return;
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__7685 ); VAR__53647++ )
+      {
+         VAR__MIN = mat[VAR__53647][0];
+         for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__7685 ); VAR__21230++ )
+         {
+            if ( mat[VAR__53647][VAR__21230] <= VAR__MIN )
+            {
+               VAR__MIN = mat[VAR__53647][VAR__21230];
+            }
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__7685 ); VAR__21230++ )
+         {
+            mat[VAR__53647][VAR__21230] -= VAR__MIN;
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__7685 ); VAR__53647++ )
+      {
+         VAR__MIN = mat[0][VAR__53647];
+         for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__7685 ); VAR__21230++ )
+         {
+            if ( mat[VAR__21230][VAR__53647] <= VAR__MIN )
+            {
+               VAR__MIN = mat[VAR__21230][VAR__53647];
+            }
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__7685 ); VAR__21230++ )
+         {
+            mat[VAR__21230][VAR__53647] -= VAR__MIN;
+         }
+      }
+
+      VAR__SUM += mat[1][1];
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__7685 ); VAR__53647++ )
+      {
+         mat[1][VAR__53647] = -1;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__7685 ); VAR__53647++ )
+      {
+         mat[VAR__53647][1] = -1;
+      }
+
+      tp[0][0] = mat[0][0];
+      for ( int VAR__53647 = 2; VAR__53647 < ( VAR_1238123 - VAR__7685 ); VAR__53647++ )
+      {
+         tp[0][VAR__53647 - 1] = mat[0][VAR__53647];
+      }
+
+      for ( int VAR__53647 = 2; VAR__53647 < ( VAR_1238123 - VAR__7685 ); VAR__53647++ )
+      {
+         tp[VAR__53647 - 1][0] = mat[VAR__53647][0];
+         for ( int VAR__21230 = 2; VAR__21230 < ( VAR_1238123 - VAR__7685 ); VAR__21230++ )
+         {
+            tp[VAR__53647 - 1][VAR__21230 - 1] = mat[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < (( VAR_1238123 - VAR__7685 ) - 1 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__7685 ) - 1 ); VAR__21230++ )
+         {
+            mat[VAR__53647][VAR__21230] = tp[VAR__53647][VAR__21230];
+         }
+      }
+
+      cut(VAR__7685 + 1);
+   }
+}
+
+
+void ope()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> mat[VAR__53647][VAR__21230];
+      }
+   }
+
+   VAR__SUM = 0;
+   cut(0);
+   ( cout << VAR__SUM ) << endl;
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ope();
+   }
+
+   return 0;
+}

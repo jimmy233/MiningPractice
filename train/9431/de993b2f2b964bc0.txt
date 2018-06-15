@@ -1,0 +1,69 @@
+struct student
+{
+   char           information[50];
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   struct student *create_and_reverse();
+
+   void print(struct student *VAR__HEAD);
+
+   struct student *VAR__HEAD;
+   VAR__HEAD = create_and_reverse();
+   print(VAR__HEAD);
+   return 0;
+}
+
+
+struct student *create_and_reverse()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   char           end[50] = { 'e', 'n', 'd' };
+
+   ANOTHER_POINTER     = (struct student *)malloc(LEN_OF_STH);
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   gets(ANOTHER_POINTER->information);
+   for ( ; ; )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+      gets(ANOTHER_POINTER->information);
+
+      if ( strcmp(ANOTHER_POINTER->information, end))
+      {
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+      else
+      {
+         VAR__HEAD = YET_ANOTHER_POINTER;
+         break;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   for ( ; ; )
+   {
+      printf("%s\n", VAR_233->information);
+
+      if ( VAR_233->VAR__NEXT == NULL )
+      {
+         break;
+      }
+      else
+      {
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+}

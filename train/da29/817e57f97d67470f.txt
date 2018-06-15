@@ -1,0 +1,86 @@
+char maze[100][100];
+int  VAR_1238123;
+int  VAR__1238129;
+int  VAR__SUM;
+void test()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( maze[VAR__53647][VAR__21230] == '@' )
+         {
+            if ((( VAR__53647 - 1 ) >= 0 ) && ( maze[VAR__53647 - 1][VAR__21230] == '.' ))
+            {
+               maze[VAR__53647 - 1][VAR__21230] = '!';
+            }
+
+            if ((( VAR__53647 + 1 ) < VAR_1238123 ) && ( maze[VAR__53647 + 1][VAR__21230] == '.' ))
+            {
+               maze[VAR__53647 + 1][VAR__21230] = '!';
+            }
+
+            if ((( VAR__21230 - 1 ) >= 0 ) && ( maze[VAR__53647][VAR__21230 - 1] == '.' ))
+            {
+               maze[VAR__53647][VAR__21230 - 1] = '!';
+            }
+
+            if ((( VAR__21230 + 1 ) < VAR_1238123 ) && ( maze[VAR__53647][VAR__21230 + 1] == '.' ))
+            {
+               maze[VAR__53647][VAR__21230 + 1] = '!';
+            }
+         }
+      }
+   }
+}
+
+
+void trans()
+{
+   int cnt = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if (( maze[VAR__53647][VAR__21230] == '!' ) || ( maze[VAR__53647][VAR__21230] == '@' ))
+         {
+            cnt++;
+
+            if ( maze[VAR__53647][VAR__21230] == '!' )
+            {
+               maze[VAR__53647][VAR__21230] = '@';
+            }
+         }
+      }
+   }
+
+   VAR__SUM = cnt;
+}
+
+
+int main()
+{
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> maze[VAR__53647][VAR__21230];
+      }
+   }
+
+   cin >> VAR__1238129;
+   int round = 1;
+   trans();
+
+   while ( round < VAR__1238129 )
+   {
+      test();
+      trans();
+      round++;
+   }
+
+   ( cout << VAR__SUM ) << endl;
+   return 0;
+}

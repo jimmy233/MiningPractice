@@ -1,0 +1,117 @@
+int main()
+{
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+   int month1[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int month2[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__COUNT = 0;
+   int VAR__53647;
+   int VAR__21230;
+
+   ((((( cin >> startYear ) >> startMonth ) >> startDay ) >> endYear ) >> endMonth ) >> endDay;
+
+   if ( startYear == endYear )
+   {
+      if (((( startYear % 4 ) == 0 ) && (( startYear % 100 ) != 0 )) || (( startYear % 400 ) == 0 ))
+      {
+         if ( startMonth == endMonth )
+         {
+            VAR__COUNT = endDay - startDay;
+         }
+         else
+         {
+            for ( VAR__53647 = startMonth + 1; VAR__53647 <= endMonth; VAR__53647++ )
+            {
+               VAR__COUNT += month2[VAR__53647];
+            }
+
+            VAR__COUNT += month2[startMonth] - startDay;
+            VAR__COUNT += endDay;
+         }
+      }
+      else
+      {
+         if ( startMonth == endMonth )
+         {
+            VAR__COUNT = endDay - startDay;
+         }
+         else
+         {
+            for ( VAR__53647 = startMonth + 1; VAR__53647 <= endMonth; VAR__53647++ )
+            {
+               VAR__COUNT += month1[VAR__53647];
+            }
+
+            VAR__COUNT += month1[startMonth] - startDay;
+            VAR__COUNT += endDay;
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__21230 = startYear; VAR__21230 <= endYear; VAR__21230++ )
+      {
+         if ( VAR__21230 == startYear )
+         {
+            if (((( VAR__21230 % 4 ) == 0 ) && (( VAR__21230 % 100 ) != 0 )) || (( VAR__21230 % 400 ) == 0 ))
+            {
+               for ( VAR__53647 = startMonth + 1; VAR__53647 <= 12; VAR__53647++ )
+               {
+                  VAR__COUNT += month2[VAR__53647];
+               }
+
+               VAR__COUNT += month2[startMonth] - startDay;
+            }
+            else
+            {
+               for ( VAR__53647 = startMonth + 1; VAR__53647 <= 12; VAR__53647++ )
+               {
+                  VAR__COUNT += month1[VAR__53647];
+               }
+
+               VAR__COUNT += month1[startMonth] - startDay;
+            }
+         }
+         else
+         if ( VAR__21230 == endYear )
+         {
+            if (((( VAR__21230 % 4 ) == 0 ) && (( VAR__21230 % 100 ) != 0 )) || (( VAR__21230 % 400 ) == 0 ))
+            {
+               for ( VAR__53647 = 1; VAR__53647 <= ( endMonth - 1 ); VAR__53647++ )
+               {
+                  VAR__COUNT += month2[VAR__53647];
+               }
+
+               VAR__COUNT += endDay;
+            }
+            else
+            {
+               for ( VAR__53647 = 1; VAR__53647 <= ( endMonth - 1 ); VAR__53647++ )
+               {
+                  VAR__COUNT += month1[VAR__53647];
+               }
+
+               VAR__COUNT += endDay;
+            }
+         }
+         else
+         {
+            if (((( VAR__21230 % 4 ) == 0 ) && (( VAR__21230 % 100 ) != 0 )) || (( VAR__21230 % 400 ) == 0 ))
+            {
+               VAR__COUNT += 366;
+            }
+            else
+            {
+               VAR__COUNT += 365;
+            }
+         }
+      }
+   }
+
+   cout << VAR__COUNT;
+   return 0;
+}

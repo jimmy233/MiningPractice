@@ -1,0 +1,75 @@
+int main()
+{
+   int VAR__819283[100][100];
+   int VAR_FLAG[100][100] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   int row;
+   int col;
+   int VAR__COUNT = 0;
+
+   ( cin >> row ) >> col;
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         cin >> VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   int hang1 = 0;
+   int hang2 = row - 1;
+   int lie1  = col - 1;
+   int lie2  = 0;
+
+   while ( VAR__COUNT < ( row * col ))
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         if ( VAR_FLAG[hang1][VAR__21230] == 0 )
+         {
+            ( cout << VAR__819283[hang1][VAR__21230] ) << endl;
+            VAR__COUNT++;
+            VAR_FLAG[hang1][VAR__21230] = 1;
+         }
+      }
+
+      hang1++;
+      for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+      {
+         if ( VAR_FLAG[VAR__53647][lie1] == 0 )
+         {
+            ( cout << VAR__819283[VAR__53647][lie1] ) << endl;
+            VAR__COUNT++;
+            VAR_FLAG[VAR__53647][lie1] = 1;
+         }
+      }
+
+      lie1--;
+      for ( VAR__21230 = col - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ( VAR_FLAG[hang2][VAR__21230] == 0 )
+         {
+            ( cout << VAR__819283[hang2][VAR__21230] ) << endl;
+            VAR__COUNT++;
+            VAR_FLAG[hang2][VAR__21230] = 1;
+         }
+      }
+
+      hang2--;
+      for ( VAR__53647 = row - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( VAR_FLAG[VAR__53647][lie2] == 0 )
+         {
+            ( cout << VAR__819283[VAR__53647][lie2] ) << endl;
+            VAR__COUNT++;
+            VAR_FLAG[VAR__53647][lie2] = 1;
+         }
+      }
+
+      lie2++;
+   }
+
+   return 0;
+}

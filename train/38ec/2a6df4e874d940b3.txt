@@ -1,0 +1,79 @@
+void main()
+{
+   int VAR_9494 = 0;
+   int VAR__53647;
+   struct Date
+   {
+      int year;
+      int month;
+      int day;
+   }
+   date1;
+   struct Date
+   {
+      int year;
+      int month;
+      int day;
+   }
+   date2;
+
+   scanf("%d%d%d", &date1.year, &date1.month, &date1.day);
+   scanf("%d%d%d", &date2.year, &date2.month, &date2.day);
+   VAR_9494 += ( date2.year - date1.year ) * 365;
+   VAR_9494 += ( date2.month - date1.month ) * 30;
+   VAR_9494 += date2.day - date1.day;
+   for ( VAR__53647 = date1.year; VAR__53647 < date2.year; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR_9494++;
+      }
+   }
+
+   if ( date2.month >= date1.month )
+   {
+      for ( VAR__53647 = date1.month; VAR__53647 < date2.month; VAR__53647++ )
+      {
+         if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+         {
+            VAR_9494++;
+         }
+
+         if ( VAR__53647 == 2 )
+         {
+            if (((( date2.year % 4 ) == 0 ) && (( date2.year % 100 ) != 0 )) || (( date2.year % 400 ) == 0 ))
+            {
+               VAR_9494--;
+            }
+            else
+            {
+               VAR_9494 = VAR_9494 - 2;
+            }
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = date2.month; VAR__53647 < date1.month; VAR__53647++ )
+      {
+         if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+         {
+            VAR_9494--;
+         }
+
+         if ( VAR__53647 == 2 )
+         {
+            if (((( date2.year % 4 ) == 0 ) && (( date2.year % 100 ) != 0 )) || (( date2.year % 400 ) == 0 ))
+            {
+               VAR_9494++;
+            }
+            else
+            {
+               VAR_9494 = VAR_9494 + 2;
+            }
+         }
+      }
+   }
+
+   printf("%d", VAR_9494);
+}

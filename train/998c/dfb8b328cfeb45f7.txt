@@ -1,0 +1,42 @@
+int main()
+{
+   char input_string1[251];
+   char input_string2[251];
+   char num1[252];
+   char num2[252];
+   char result[252];
+
+   result[251] = '\0';
+   scanf("%s", &input_string1);
+   scanf("%s", &input_string2);
+   memset(num1, '0', 252);
+   memset(num2, '0', 252);
+   strcpy(num1 + ( 251 - strlen(input_string1)), input_string1);
+   strcpy(num2 + ( 251 - strlen(input_string2)), input_string2);
+   int VAR__53647;
+   int carry = 0;
+   for ( VAR__53647 = 250; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (((( num1[VAR__53647] - '0' ) + ( num2[VAR__53647] - '0' )) + carry ) >= 10 )
+      {
+         result[VAR__53647] = (((( num1[VAR__53647] - '0' ) + ( num2[VAR__53647] - '0' )) + carry ) - 10 ) + '0';
+         carry = 1;
+      }
+      else
+      {
+         result[VAR__53647] = ((( num1[VAR__53647] - '0' ) + ( num2[VAR__53647] - '0' )) + carry ) + '0';
+         carry = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 249; VAR__53647++ )
+   {
+      if ( result[VAR__53647] != '0' )
+      {
+         break;
+      }
+   }
+
+   printf("%s", result + VAR__53647);
+   return 0;
+}

@@ -1,0 +1,74 @@
+int mycmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int match(int *tianji, int *king, int VAR_1238123)
+{
+   if ( VAR_1238123 == 0 )
+   {
+      return 0;
+   }
+
+   if ( tianji[VAR_1238123 - 1] > king[VAR_1238123 - 1] )
+   {
+      return match(tianji, king, VAR_1238123 - 1) + 200;
+   }
+   else
+   if ( tianji[VAR_1238123 - 1] < king[VAR_1238123 - 1] )
+   {
+      return match(tianji, king + 1, VAR_1238123 - 1) - 200;
+   }
+   else
+   {
+      if ( tianji[0] > king[0] )
+      {
+         return match(tianji + 1, king + 1, VAR_1238123 - 1) + 200;
+      }
+      else
+      {
+         if ( tianji[VAR_1238123 - 1] == king[0] )
+         {
+            return 0;
+         }
+         else
+         {
+            return match(tianji, king + 1, VAR_1238123 - 1) - 200;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int tianji[MAX];
+   int king[MAX];
+   int VAR_1238123;
+   int VAR__53647;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tianji[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> king[VAR__53647];
+      }
+
+      qsort(tianji, VAR_1238123, sizeof( int ), mycmp);
+      qsort(king, VAR_1238123, sizeof( int ), mycmp);
+      ( cout << match(tianji, king, VAR_1238123)) << endl;
+   }
+
+   return 0;
+}

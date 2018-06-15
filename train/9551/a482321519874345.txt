@@ -1,0 +1,142 @@
+struct pat
+{
+   char       id[10];
+   int        age;
+   struct pat *VAR__NEXT;
+};
+void main()
+{
+   struct pat *VAR__HEAD;
+   struct pat *VAR_233;
+   int        VAR__53647;
+   int        VAR_1238123;
+
+   void search(struct pat *VAR__HEAD, int VAR_1238123);
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD          = (struct pat *)malloc(sizeof( struct pat ));
+   VAR_233            = VAR__HEAD;
+   VAR_233->VAR__NEXT = NULL;
+   scanf("%s %d", VAR_233->id, &VAR_233->age);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233->VAR__NEXT = (struct pat *)malloc(sizeof( struct pat ));
+      VAR_233            = VAR_233->VAR__NEXT;
+      scanf("%s %d", VAR_233->id, &VAR_233->age);
+      VAR_233->VAR__NEXT = NULL;
+   }
+
+   search(VAR__HEAD, VAR_1238123);
+}
+
+
+void search(struct pat *VAR__HEAD, int VAR_1238123)
+{
+   int        VAR__53647;
+   int        VAR__21230   = 0;
+   int        VAR__8444594 = 0;
+   struct pat *VAR__temp;
+   struct pat *VAR__1238129;
+   struct pat *VAR_233;
+   struct pat *head1;
+   struct pat *head2;
+   struct pat *sort(struct pat *head1, int VAR__21230);
+
+   void print(struct pat *head1, struct pat *head2, int VAR__21230, int VAR__8444594);
+
+   VAR_233      = VAR__HEAD;
+   VAR__temp    = (struct pat *)malloc(sizeof( struct pat ));
+   VAR__1238129 = (struct pat *)malloc(sizeof( struct pat ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_233->age >= 60 )
+      {
+         VAR__21230++;
+
+         if ( VAR__21230 == 1 )
+         {
+            head1 = VAR__temp;
+         }
+
+         strcpy(VAR__temp->id, VAR_233->id);
+         VAR__temp->age       = VAR_233->age;
+         VAR__temp->VAR__NEXT = (struct pat *)malloc(sizeof( struct pat ));
+         VAR__temp            = VAR__temp->VAR__NEXT;
+         VAR__temp->VAR__NEXT = NULL;
+      }
+      else
+      {
+         VAR__8444594++;
+
+         if ( VAR__8444594 == 1 )
+         {
+            head2 = VAR__1238129;
+         }
+
+         strcpy(VAR__1238129->id, VAR_233->id);
+         VAR__1238129->age       = VAR_233->age;
+         VAR__1238129->VAR__NEXT = (struct pat *)malloc(sizeof( struct pat ));
+         VAR__1238129            = VAR__1238129->VAR__NEXT;
+         VAR__1238129->VAR__NEXT = NULL;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   sort(head1, VAR__21230);
+   print(head1, head2, VAR__21230, VAR__8444594);
+}
+
+
+struct pat *sort(struct pat *head1, int VAR__21230)
+{
+   int        VAR__53647;
+   int        VAR__1111;
+   int        VAR__temp;
+   char       VAR__819283[10];
+   struct pat *ANOTHER_POINTER;
+   struct pat *YET_ANOTHER_POINTER;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = head1;
+      for ( VAR__1111 = 0; VAR__1111 < (( VAR__21230 - VAR__53647 ) - 1 ); VAR__1111++ )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+
+         if ( ANOTHER_POINTER->age > YET_ANOTHER_POINTER->age )
+         {
+            VAR__temp                = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age     = YET_ANOTHER_POINTER->age;
+            YET_ANOTHER_POINTER->age = VAR__temp;
+            strcpy(VAR__819283, ANOTHER_POINTER->id);
+            strcpy(ANOTHER_POINTER->id, YET_ANOTHER_POINTER->id);
+            strcpy(YET_ANOTHER_POINTER->id, VAR__819283);
+         }
+      }
+   }
+
+   return head1;
+}
+
+
+void print(struct pat *head1, struct pat *head2, int VAR__21230, int VAR__8444594)
+{
+   int        VAR__53647;
+   struct pat *VAR_233;
+
+   VAR_233 = head1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = head2;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

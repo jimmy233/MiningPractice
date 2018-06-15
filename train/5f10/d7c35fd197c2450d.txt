@@ -1,0 +1,119 @@
+int Compare(char string1[], char string2[], int N)
+{
+   int VAR_FLAG   = 0;
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( string1[VAR__53647] == string2[VAR__53647] )
+      {
+         VAR_FLAG = 0;
+      }
+      else
+      if ( string1[VAR__53647] != string2[VAR__53647] )
+      {
+         VAR_FLAG = 1;
+         break;
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      return 0;
+   }
+   else
+   if ( VAR_FLAG == 1 )
+   {
+      return 1;
+   }
+}
+
+
+int main()
+{
+   char string[600];
+   char List[600][600];
+   int  Frequency[600];
+   int  VAR__53647   = 0;
+   int  VAR__21230   = 0;
+   int  VAR__1238129 = 0;
+   int  VAR__8444594 = 0;
+   int  N            = 0;
+   int  VAR__temp    = 0;
+   int  length       = 0;
+   int  Max          = 0;
+
+   cin >> N;
+   gets(string);
+   gets(string);
+   length     = strlen(string);
+   VAR__53647 = 0, VAR__21230 = 0, VAR__8444594 = 0;
+
+   while ( length >= N )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+      {
+         List[VAR__8444594][VAR__53647] = string[VAR__8444594 + VAR__53647];
+      }
+
+      VAR__8444594++;
+      VAR__53647 = 0;
+      length     = length - 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      Frequency[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( Frequency[VAR__53647] == 0 )
+      {
+         continue;
+      }
+
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( Compare(List[VAR__53647], List[VAR__21230], N) == 0 )
+         {
+            Frequency[VAR__21230] = 0;
+            Frequency[VAR__53647]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( Frequency[VAR__53647] >= Max )
+      {
+         Max = Frequency[VAR__53647];
+      }
+   }
+
+   if ( Max == 1 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   if ( Max > 1 )
+   {
+      ( cout << Max ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if ( Frequency[VAR__53647] == Max )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < N; VAR__21230++ )
+            {
+               cout << List[VAR__53647][VAR__21230];
+            }
+
+            cout << endl;
+         }
+      }
+   }
+
+
+   return 0;
+}

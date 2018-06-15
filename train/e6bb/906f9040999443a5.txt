@@ -1,0 +1,81 @@
+int test[9][9];
+int follow[9][9];
+void change()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         test[VAR__53647][VAR__21230]         += follow[VAR__53647][VAR__21230] * 2;
+         test[VAR__53647 - 1][VAR__21230]     += follow[VAR__53647][VAR__21230];
+         test[VAR__53647 + 1][VAR__21230]     += follow[VAR__53647][VAR__21230];
+         test[VAR__53647][VAR__21230 - 1]     += follow[VAR__53647][VAR__21230];
+         test[VAR__53647][VAR__21230 + 1]     += follow[VAR__53647][VAR__21230];
+         test[VAR__53647 - 1][VAR__21230 - 1] += follow[VAR__53647][VAR__21230];
+         test[VAR__53647 - 1][VAR__21230 + 1] += follow[VAR__53647][VAR__21230];
+         test[VAR__53647 + 1][VAR__21230 - 1] += follow[VAR__53647][VAR__21230];
+         test[VAR__53647 + 1][VAR__21230 + 1] += follow[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         test[VAR__53647][VAR__21230] = test[VAR__53647][VAR__21230] - follow[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         follow[VAR__53647][VAR__21230] = test[VAR__53647][VAR__21230];
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         test[VAR__53647][VAR__21230]   = 0;
+         follow[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+
+   test[4][4] = ( follow[4][4] = VAR__1238129 );
+
+   while ( VAR_1238123-- )
+   {
+      change();
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 8; VAR__21230++ )
+      {
+         ( cout << test[VAR__53647][VAR__21230] ) << " ";
+      }
+
+      cout << test[VAR__53647][8];
+      cout << endl;
+   }
+
+   return 0;
+}

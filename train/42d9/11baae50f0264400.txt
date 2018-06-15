@@ -1,0 +1,74 @@
+struct zuobiao
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+zuo[10];
+struct dis
+{
+   int   left[3];
+   int   right[3];
+   float VAR__12302;
+}
+di[100];
+struct dis
+{
+   int   left[3];
+   int   right[3];
+   float VAR__12302;
+}
+VAR__112390;
+int main()
+{
+   int VAR__1111;
+   int VAR_1238123;
+   int ld;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   VAR__1111 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   ld        = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &zuo[VAR__53647].VAR__7685, &zuo[VAR__53647].VAR__3918907, &zuo[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         di[ld++].VAR__12302 = sqrt(( pow(zuo[VAR__53647].VAR__7685 - zuo[VAR__21230].VAR__7685, 2) + pow(zuo[VAR__53647].VAR__3918907 - zuo[VAR__21230].VAR__3918907, 2)) + pow(zuo[VAR__53647].VAR__9290 - zuo[VAR__21230].VAR__9290, 2));
+         di[ld - 1].left[0]  = zuo[VAR__53647].VAR__7685;
+         di[ld - 1].left[1]  = zuo[VAR__53647].VAR__3918907;
+         di[ld - 1].left[2]  = zuo[VAR__53647].VAR__9290;
+         di[ld - 1].right[0] = zuo[VAR__21230].VAR__7685;
+         di[ld - 1].right[1] = zuo[VAR__21230].VAR__3918907;
+         di[ld - 1].right[2] = zuo[VAR__21230].VAR__9290;
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__1111 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( di[VAR__21230].VAR__12302 < di[VAR__21230 + 1].VAR__12302 )
+         {
+            VAR__112390        = di[VAR__21230];
+            di[VAR__21230]     = di[VAR__21230 + 1];
+            di[VAR__21230 + 1] = VAR__112390;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", di[VAR__53647].left[0], di[VAR__53647].left[1], di[VAR__53647].left[2], di[VAR__53647].right[0], di[VAR__53647].right[1], di[VAR__53647].right[2], di[VAR__53647].VAR__12302);
+   }
+
+   return 0;
+}

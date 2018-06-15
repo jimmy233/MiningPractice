@@ -1,0 +1,73 @@
+char yuan[100000];
+char yao[110];
+char wei[110];
+int  yuanlen;
+int  yaolen;
+int  weilen;
+int main()
+{
+   char *VAR_9494;
+   int  VAR__53647;
+   int  VAR__21230;
+
+   gets(yuan);
+   gets(yao);
+   gets(wei);
+   VAR_9494 = strstr(yuan, yao);
+
+   if (( VAR_9494 == NULL ) || (( VAR_9494[-1] != ' ' ) && ( VAR_9494 != yuan )))
+   {
+      puts(yuan);
+      return 0;
+   }
+
+   yuanlen = strlen(yuan);
+   yaolen  = strlen(yao);
+   weilen  = strlen(wei);
+
+   while ( VAR_9494 != NULL )
+   {
+      if ( yaolen == weilen )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < yaolen; VAR__53647++ )
+         {
+            VAR_9494[VAR__53647] = wei[VAR__53647];
+         }
+      }
+
+      if ( yaolen > weilen )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < weilen; VAR__53647++ )
+         {
+            VAR_9494[VAR__53647] = wei[VAR__53647];
+         }
+
+         while ( VAR_9494[( VAR__53647 + yaolen ) - weilen] != 0 )
+         {
+            VAR_9494[VAR__53647] = VAR_9494[( VAR__53647 + yaolen ) - weilen];
+            VAR__53647++;
+         }
+
+         VAR_9494[VAR__53647] = 0;
+      }
+
+      if ( yaolen < weilen )
+      {
+         for ( VAR__53647 = yuanlen - 1; VAR__53647 > ( yaolen - 1 ); VAR__53647-- )
+         {
+            VAR_9494[( VAR__53647 + weilen ) - yaolen] = VAR_9494[VAR__53647];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < weilen; VAR__53647++ )
+         {
+            VAR_9494[VAR__53647] = wei[VAR__53647];
+         }
+      }
+
+      VAR_9494 += weilen;
+      VAR_9494  = strstr(VAR_9494, yao);
+   }
+
+   puts(yuan);
+   return 0;
+}

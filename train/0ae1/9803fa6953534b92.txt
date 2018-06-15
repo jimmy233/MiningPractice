@@ -1,0 +1,85 @@
+int main()
+{
+   int  days1[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int  days2[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   long total     = 0;
+   int  VAR__3918907;
+   int  VAR__1238129;
+   int  VAR__12302;
+   int  VAR_1238123;
+   int  VAR__53647;
+
+   scanf("%d %d %d", &VAR__3918907, &VAR__1238129, &VAR__12302);
+   VAR__3918907 = (int)( VAR__3918907 % 2000 );
+
+   if ( VAR__3918907 == 0 )
+   {
+      VAR__3918907 = 2000;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      if ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 ))
+      {
+         total = total + 366;
+      }
+      else
+      {
+         if (( VAR__53647 % 400 ) == 0 )
+         {
+            total = total + 366;
+         }
+         else
+         {
+            total = total + 365;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      if ((( VAR__3918907 % 400 ) == 0 ) || ((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )))
+      {
+         total = total + days2[VAR__53647];
+      }
+      else
+      {
+         total = total + days1[VAR__53647];
+      }
+   }
+
+   total       = total + VAR__12302;
+   VAR_1238123 = (int)( total % 7 );
+   switch ( VAR_1238123 )
+   {
+   case 0:
+      printf("Sun.\n");
+      break;
+
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+   }
+
+   return 0;
+}

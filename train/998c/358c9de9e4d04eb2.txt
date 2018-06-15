@@ -1,0 +1,87 @@
+int main()
+{
+   int  VAR_21983012;
+   int  VAR_233;
+   int  carry = 0;
+   int  VAR__7685;
+   int  VAR__3918907;
+   int  n0 = 0;
+   int  result[260];
+   char VAR__819283[260];
+   char VAR__19328[260];
+
+   gets(VAR__819283);
+   gets(VAR__19328);
+   memset(result, 0, sizeof( result ));
+   VAR_21983012 = ( strlen(VAR__819283) <= strlen(VAR__19328)) ? ( strlen(VAR__819283)) : ( strlen(VAR__19328));
+   VAR_233      = ( strlen(VAR__819283) >= strlen(VAR__19328)) ? ( strlen(VAR__819283)) : ( strlen(VAR__19328));
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      if ( VAR__53647 <= ( VAR_21983012 - 1 ))
+      {
+         VAR__7685    = VAR__819283[( strlen(VAR__819283) - 1 ) - VAR__53647] - '0';
+         VAR__3918907 = VAR__19328[( strlen(VAR__19328) - 1 ) - VAR__53647] - '0';
+      }
+      else
+      {
+         if ( strlen(VAR__819283) <= strlen(VAR__19328))
+         {
+            VAR__7685    = 0;
+            VAR__3918907 = VAR__19328[( strlen(VAR__19328) - 1 ) - VAR__53647] - '0';
+         }
+         else
+         {
+            VAR__7685    = ( VAR__7685 = VAR__819283[( strlen(VAR__819283) - 1 ) - VAR__53647] - '0' );
+            VAR__3918907 = 0;
+         }
+      }
+
+      if ((( VAR__7685 + VAR__3918907 ) + carry ) >= 10 )
+      {
+         result[VAR__53647] = (( VAR__7685 + VAR__3918907 ) + carry ) - 10;
+         carry = 1;
+      }
+      else
+      {
+         result[VAR__53647] = ( VAR__7685 + VAR__3918907 ) + carry;
+         carry = 0;
+      }
+
+      if (( VAR__53647 == ( VAR_233 - 1 )) && ( carry == 1 ))
+      {
+         result[VAR__53647 + 1] = carry;
+      }
+   }
+
+   if ( carry == 1 )
+   {
+      VAR_233++;
+   }
+
+   for ( int VAR__21230 = VAR_233 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      if ( result[VAR__21230] == 0 )
+      {
+         n0++;
+         for ( int VAR_666 = VAR_233 - 1; VAR_666 >= VAR__21230; VAR_666-- )
+         {
+            if ( result[VAR_666] != 0 )
+            {
+               printf("%d", result[VAR__21230]);
+               break;
+            }
+         }
+      }
+      else
+      {
+         printf("%d", result[VAR__21230]);
+      }
+
+      if ( n0 == VAR_233 )
+      {
+         printf("%d", result[VAR__21230]);
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,78 @@
+struct results
+{
+   int            VAR__NUM;
+   struct results *VAR__NEXT;
+};
+void print0(struct results *VAR__HEAD)
+{
+   struct results *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%d", VAR_233->VAR__NUM);
+      cout << endl;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__1238129;
+   int            VAR__53647;
+   int            VAR_9Q8Q90;
+   int            VAR_9494 = 0;
+   struct results *VAR__HEAD;
+   struct results *ANOTHER_POINTER;
+   struct results *YET_ANOTHER_POINTER;
+
+   VAR__HEAD           = NULL;
+   ANOTHER_POINTER     = (struct results *)malloc(LEN);
+   YET_ANOTHER_POINTER = (struct results *)malloc(LEN);
+   VAR_9Q8Q90          = 0;
+
+   while (( scanf("%d%d", &VAR_1238123, &VAR__1238129) != EOF ) && ( VAR__1238129 && VAR_1238123 ))
+   {
+      if (( VAR__1238129 <= 0 ) || ( VAR_1238123 > 300 ))
+      {
+         printf("?????0<m,n<=300:");
+         continue;
+      }
+
+      VAR_9494 = 0;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR_9494 = 0;
+      }
+      else
+      {
+         for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+         {
+            VAR_9494 = ( VAR_9494 + VAR__1238129 ) % VAR__53647;
+         }
+      }
+
+      ANOTHER_POINTER->VAR__NUM = VAR_9494 + 1;
+      VAR_9Q8Q90 = VAR_9Q8Q90 + 1;
+
+      if ( VAR_9Q8Q90 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct results *)malloc(LEN);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   print0(VAR__HEAD);
+   return 0;
+}

@@ -1,0 +1,68 @@
+int turntonum(char VAR__4857423)
+{
+   if (( VAR__4857423 >= '0' ) && ( VAR__4857423 <= '9' ))
+   {
+      return VAR__4857423 - '0';
+   }
+
+   if (( VAR__4857423 >= 'a' ) && ( VAR__4857423 <= 'z' ))
+   {
+      return ( VAR__4857423 - 'a' ) + 10;
+   }
+
+   if (( VAR__4857423 >= 'A' ) && ( VAR__4857423 <= 'Z' ))
+   {
+      return ( VAR__4857423 - 'A' ) + 10;
+   }
+}
+
+
+int main()
+{
+   int       VAR__819283;
+   int       VAR__19328;
+   int       VAR__1111;
+   char      VAR__4857423[100];
+   long long VAR__NUM;
+
+   cin >> VAR__819283;
+   getchar();
+   cin.getline(VAR__4857423, 80, ' ');
+   cin >> VAR__19328;
+   VAR__1111 = strlen(VAR__4857423);
+   VAR__NUM  = turntonum(VAR__4857423[0]);
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      int VAR__127322;
+      VAR__NUM = ( VAR__NUM * VAR__819283 ) + turntonum(VAR__4857423[VAR__53647]);
+   }
+
+   if ( VAR__NUM == 0 )
+   {
+      cout << "0";
+      return 0;
+   }
+
+   int VAR__12302[100];
+   int l_;
+   l_ = ( log(VAR__NUM) / log(VAR__19328)) + 1;
+   for ( int VAR__53647 = l_ - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__12302[VAR__53647] = VAR__NUM % VAR__19328;
+      VAR__NUM = VAR__NUM / VAR__19328;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < l_; VAR__53647++ )
+   {
+      if ( VAR__12302[VAR__53647] < 10 )
+      {
+         cout << VAR__12302[VAR__53647];
+      }
+      else
+      {
+         putchar(( 'A' + VAR__12302[VAR__53647] ) - 10);
+      }
+   }
+
+   return 0;
+}

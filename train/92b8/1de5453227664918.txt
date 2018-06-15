@@ -1,0 +1,72 @@
+int main()
+{
+   int VAR_1238123;
+   int start[10000];
+   int end[10000];
+   int VAR__112390;
+   int VAR__127322;
+   int VAR_9494;
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d", &start[VAR__53647], &end[VAR__53647]);
+   }
+
+   int VAR__MAX = end[0];
+   for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( end[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = end[VAR__53647];
+      }
+   }
+
+   for ( int VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( start[VAR__53647] > start[VAR__53647 + 1] )
+         {
+            VAR__112390           = start[VAR__53647 + 1];
+            VAR__127322           = end[VAR__53647 + 1];
+            start[VAR__53647 + 1] = start[VAR__53647];
+            end[VAR__53647 + 1]   = end[VAR__53647];
+            start[VAR__53647]     = VAR__112390;
+            end[VAR__53647]       = VAR__127322;
+         }
+      }
+   }
+
+   int VAR__MIN = start[0];
+   for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( start[VAR__53647] <= end[VAR__53647 - 1] )
+      {
+         if ( end[VAR__53647] < end[VAR__53647 - 1] )
+         {
+            end[VAR__53647] = end[VAR__53647 - 1];
+         }
+      }
+      else
+      {
+         VAR_9494 = 0;
+         break;
+      }
+
+      if ( VAR__53647 == ( VAR_1238123 - 1 ))
+      {
+         VAR_9494 = 1;
+      }
+   }
+
+   if ( VAR_9494 == 0 )
+   {
+      printf("no");
+   }
+
+   if ( VAR_9494 == 1 )
+   {
+      printf("%d %d", VAR__MIN, VAR__MAX);
+   }
+}

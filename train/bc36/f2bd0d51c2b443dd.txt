@@ -1,0 +1,61 @@
+int cmpdouble(const void *VAR__7685, const void *VAR__3918907)
+{
+   return (( *((double *)VAR__7685 )) > ( *((double *)VAR__3918907 ))) ? ( 1 ) : ( -1 );
+}
+
+
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   double boy[41];
+   double girl[41];
+
+   scanf("%d", &VAR_1238123);
+   struct student
+   {
+      char   gender[10];
+      double height;
+   }
+   student[41];
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s %lf", &student[VAR__53647].gender, &student[VAR__53647].height);
+   }
+
+   VAR__53647   = 0;
+   VAR__21230   = 0;
+   VAR__8444594 = 0;
+
+   while ( VAR__53647 <= ( VAR_1238123 - 1 ))
+   {
+      if ( student[VAR__53647].gender[0] == 'm' )
+      {
+         boy[VAR__21230] = student[VAR__53647].height;
+         VAR__21230++;
+      }
+      else
+      {
+         girl[VAR__8444594] = student[VAR__53647].height;
+         VAR__8444594++;
+      }
+
+      VAR__53647++;
+   }
+
+   qsort(boy, VAR__21230, sizeof( boy[0] ), cmpdouble);
+   qsort(girl, VAR__8444594, sizeof( girl[0] ), cmpdouble);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__21230 - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", boy[VAR__53647]);
+   }
+
+   for ( VAR__53647 = VAR__8444594 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf("%.2f ", girl[VAR__53647]);
+   }
+
+   printf("%.2f", girl[0]);
+}

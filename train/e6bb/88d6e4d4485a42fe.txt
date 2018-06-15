@@ -1,0 +1,97 @@
+int zou[2][8] = { { -1, -1, -1, 0, 1, 1, 1, 0 }, { -1, 0, 1, 1, 1, 0, -1, -1 } };
+int day;
+int VAR_FLAG[9][9];
+int map[9][9];
+int stack[9][9];
+void flood(int VAR__COUNT)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__7685;
+   int VAR__3918907;
+
+   if ( VAR__COUNT <= day )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+         {
+            if ( map[VAR__53647][VAR__21230] > 0 )
+            {
+               VAR_FLAG[VAR__53647][VAR__21230] = 1;
+               stack[VAR__53647][VAR__21230]    = map[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+         {
+            if ( VAR_FLAG[VAR__53647][VAR__21230] > 0 )
+            {
+               for ( VAR__8444594 = 0; VAR__8444594 <= 7; VAR__8444594++ )
+               {
+                  VAR__7685    = VAR__53647 + zou[0][VAR__8444594];
+                  VAR__3918907 = VAR__21230 + zou[1][VAR__8444594];
+
+                  if (((( VAR__7685 < 0 ) || ( VAR__3918907 < 0 )) || ( VAR__7685 > 8 )) || ( VAR__3918907 > 8 ))
+                  {
+                     continue;
+                  }
+
+                  map[VAR__7685][VAR__3918907] = map[VAR__7685][VAR__3918907] + stack[VAR__53647][VAR__21230];
+               }
+
+               map[VAR__53647][VAR__21230] = map[VAR__53647][VAR__21230] + ( 2 * stack[VAR__53647][VAR__21230] );
+               map[VAR__53647][VAR__21230] = map[VAR__53647][VAR__21230] - stack[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+      flood(VAR__COUNT + 1);
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__NUM;
+
+   ( cin >> VAR__NUM ) >> day;
+   for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         map[VAR__53647][VAR__21230]      = 0;
+         VAR_FLAG[VAR__53647][VAR__21230] = 0;
+         stack[VAR__53647][VAR__21230]    = 0;
+      }
+   }
+
+
+   map[4][4] = VAR__NUM;
+   flood(1);
+   for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      if ( VAR__53647 > 0 )
+      {
+         cout << endl;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         if ( VAR__21230 > 0 )
+         {
+            cout << ' ';
+         }
+
+         cout << map[VAR__53647][VAR__21230];
+      }
+   }
+
+   return 0;
+}

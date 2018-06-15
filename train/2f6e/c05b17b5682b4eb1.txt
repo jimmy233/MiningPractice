@@ -1,0 +1,57 @@
+int boy = 0;
+int children[100][2];
+int childnum = 0;
+int theboy;
+void findpair(char boysign)
+{
+   if ( boy == ( -1 ))
+   {
+      return;
+   }
+
+   char sign;
+   cin >> sign;
+
+   if ( sign == boysign )
+   {
+      boy++;
+      childnum++;
+      children[childnum][0] = 0;
+      findpair(boysign);
+      return;
+   }
+   else
+   {
+      childnum++;
+      children[childnum][0] = 1;
+      for ( int VAR__53647 = childnum; ; VAR__53647-- )
+      {
+         if (( children[VAR__53647][0] == 0 ) && children[VAR__53647][1] )
+         {
+            theboy = VAR__53647;
+            children[VAR__53647][1] = 0;
+            break;
+         }
+      }
+
+
+      ((( cout << theboy ) << ' ' ) << childnum ) << endl;
+      boy--;
+      findpair(boysign);
+      return;
+   }
+}
+
+
+int main()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      children[VAR__53647][1] = 1;
+   }
+
+   char boysign;
+   cin >> boysign;
+   findpair(boysign);
+   return 0;
+}

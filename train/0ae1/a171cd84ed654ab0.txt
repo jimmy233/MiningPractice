@@ -1,0 +1,92 @@
+int main()
+{
+   int  year;
+   int  syear;
+   int  month;
+   int  date;
+   int  last;
+   int  mon1[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int  mon2[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   long days;
+   long VAR__819283 = 0;
+   long VAR__19328  = 0;
+
+   scanf("%d %d %d", &year, &month, &date);
+   int VAR__53647   = 1;
+   int VAR__21230   = 0;
+   int VAR__8444594 = 0;
+   int VAR_21983012 = 1;
+   for ( VAR_21983012 = 1; ; VAR_21983012++ )
+   {
+      year = year - 400;
+
+      if ( year <= 0 )
+      {
+         syear = year + 400;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < syear; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__819283 += 366;
+      }
+      else
+      {
+         VAR__819283 += 365;
+      }
+   }
+
+   if (((( syear % 4 ) == 0 ) && (( syear % 100 ) != 0 )) || (( syear % 400 ) == 0 ))
+   {
+      for ( VAR__21230 = 0; VAR__21230 < month; VAR__21230++ )
+      {
+         VAR__19328 += mon2[VAR__21230];
+      }
+   }
+
+   if ((( syear % 400 ) != 0 ) && ((( syear % 4 ) != 0 ) || (( syear % 100 ) == 0 )))
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < month; VAR__8444594++ )
+      {
+         VAR__19328 += mon1[VAR__8444594];
+      }
+   }
+
+   days = ( VAR__819283 + VAR__19328 ) + date;
+   last = days % 7;
+   switch ( last )
+   {
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+
+   case 0:
+      printf("Sun.");
+      break;
+   }
+
+   return 0;
+}

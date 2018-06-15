@@ -1,0 +1,29 @@
+struct stu
+{
+   char       data[100];
+   struct stu *VAR__NEXT;
+};
+void main()
+{
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER            = (struct stu *)malloc(LEN);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   gets(ANOTHER_POINTER->data);
+
+   while ( strcmp(ANOTHER_POINTER->data, "end"))
+   {
+      YET_ANOTHER_POINTER            = (struct stu *)malloc(LEN);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER = YET_ANOTHER_POINTER;
+      gets(ANOTHER_POINTER->data);
+   }
+
+   VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+   for ( YET_ANOTHER_POINTER = VAR__HEAD; YET_ANOTHER_POINTER; YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT )
+   {
+      puts(YET_ANOTHER_POINTER->data);
+   }
+}

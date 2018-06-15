@@ -1,0 +1,58 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   struct student
+   {
+      int VAR__NUM;
+      int chinese;
+      int maths;
+      int amount;
+   };
+   struct student stu[100000];
+   int            VAR__819283[100000];
+   int            VAR_1238123;
+   int            VAR__1111;
+   int            VAR__21230;
+   int            VAR__8444594;
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &stu[VAR__53647].VAR__NUM, &stu[VAR__53647].chinese, &stu[VAR__53647].maths);
+      VAR__819283[VAR__53647] = stu[VAR__53647].chinese + stu[VAR__53647].maths;
+   }
+
+   qsort(VAR__819283, VAR_1238123, sizeof( VAR__819283[0] ), cmp);
+   for ( int VAR_2890 = VAR_1238123 - 1; VAR_2890 >= 0; VAR_2890-- )
+   {
+      if ( VAR__819283[VAR_1238123 - 1] == ( stu[VAR_2890].chinese + stu[VAR_2890].maths ))
+      {
+         VAR__1111 = stu[VAR_2890].VAR__NUM;
+      }
+   }
+
+   for ( int VAR_9Q8Q90 = VAR_1238123 - 1; VAR_9Q8Q90 >= 0; VAR_9Q8Q90-- )
+   {
+      if (( VAR__819283[VAR_1238123 - 2] == ( stu[VAR_9Q8Q90].chinese + stu[VAR_9Q8Q90].maths )) && (( VAR_9Q8Q90 + 1 ) != VAR__1111 ))
+      {
+         VAR__21230 = stu[VAR_9Q8Q90].VAR__NUM;
+      }
+   }
+
+   for ( int VAR__127322 = VAR_1238123 - 1; VAR__127322 >= 0; VAR__127322-- )
+   {
+      if ((( VAR__819283[VAR_1238123 - 3] == ( stu[VAR__127322].chinese + stu[VAR__127322].maths )) && (( VAR__127322 + 1 ) != VAR__21230 )) && (( VAR__127322 + 1 ) != VAR__1111 ))
+      {
+         VAR__8444594 = stu[VAR__127322].VAR__NUM;
+      }
+   }
+
+   printf("%d %d\n", VAR__1111, VAR__819283[VAR_1238123 - 1]);
+   printf("%d %d\n", VAR__21230, VAR__819283[VAR_1238123 - 2]);
+   printf("%d %d\n", VAR__8444594, VAR__819283[VAR_1238123 - 3]);
+}

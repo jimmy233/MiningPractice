@@ -1,0 +1,38 @@
+int main()
+{
+   int          months[2][12]      = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+   char         VAR__1238129[7][5] = { "Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat." };
+   unsigned int year;
+   unsigned int month;
+   unsigned int day;
+   unsigned int VAR__53647;
+   unsigned int VAR__1111;
+   unsigned int VAR__SUM = 0;
+
+   scanf("%d%d%d", &year, &month, &day);
+   VAR__SUM = (((( VAR__SUM + year ) - 1 ) + (( year - 1 ) / 4 )) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 );
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + months[1][VAR__53647];
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+      {
+         VAR__SUM = VAR__SUM + months[0][VAR__53647];
+      }
+   }
+
+   VAR__SUM  = VAR__SUM + day;
+   VAR__1111 = VAR__SUM % 7;
+   for ( VAR__53647 = 0; VAR__53647 < 4; VAR__53647++ )
+   {
+      printf("%c", VAR__1238129[VAR__1111][VAR__53647]);
+   }
+
+   return 0;
+}

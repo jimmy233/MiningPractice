@@ -1,0 +1,67 @@
+void main()
+{
+   char A_STRING[100] = { "" };
+   char sr[100]       = { "" };
+   char wrd[100]      = { "" };
+   char wod[100]      = { "" };
+   char wd[100]       = { "" };
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__8444594;
+   int  VAR_1238123;
+   int  VAR__1238129;
+
+   gets(A_STRING);
+   gets(wrd);
+   gets(wod);
+   VAR_1238123 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ((( *( A_STRING + VAR__53647 )) != ' ' ) && (( *( A_STRING + VAR__53647 )) != '\0' ))
+      {
+         *( wd + VAR__21230 ) = *( A_STRING + VAR__53647 );
+         VAR__21230           = VAR__21230 + 1;
+      }
+      else
+      {
+         VAR__21230   = 0;
+         VAR__1238129 = strlen(wd);
+
+         if ( strcmp(wd, wrd) == 0 )
+         {
+            for ( VAR__8444594 = VAR__53647 - VAR__1238129; VAR__8444594 < VAR__53647; VAR__8444594++ )
+            {
+               *( A_STRING + VAR__8444594 ) = '\0';
+            }
+
+            for ( VAR__8444594 = VAR__53647; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+            {
+               *(( sr + VAR__8444594 ) - VAR__53647 ) = *( A_STRING + VAR__8444594 );
+               *( A_STRING + VAR__8444594 )           = '\0';
+            }
+
+            strcat(A_STRING, wod);
+            strcat(A_STRING, sr);
+            VAR_1238123 = strlen(A_STRING);
+            for ( VAR__8444594 = 0; VAR__8444594 < ( VAR_1238123 - VAR__53647 ); VAR__8444594++ )
+            {
+               *( sr + VAR__8444594 ) = '\0';
+            }
+
+            for ( VAR__8444594 = 0; VAR__8444594 < VAR__1238129; VAR__8444594++ )
+            {
+               *( wd + VAR__8444594 ) = '\0';
+            }
+         }
+         else
+         {
+            for ( VAR__8444594 = 0; VAR__8444594 < VAR__1238129; VAR__8444594++ )
+            {
+               *( wd + VAR__8444594 ) = '\0';
+            }
+         }
+      }
+   }
+
+   puts(A_STRING);
+}

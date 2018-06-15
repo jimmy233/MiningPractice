@@ -1,0 +1,51 @@
+int compInc(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+struct student
+{
+   float height;
+   char  sex[7];
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR_666    = 0;
+   int            VAR__21230 = 0;
+   struct student stu[40];
+   float          girl[40];
+   float          boy[40];
+
+   scanf("%d", &VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%f", stu[VAR__53647].sex, &stu[VAR__53647].height);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].sex[0] == 'f' )
+      {
+         girl[VAR_666++] = stu[VAR__53647].height;
+      }
+      else
+      {
+         boy[VAR__21230++] = stu[VAR__53647].height;
+      }
+   }
+
+   qsort(boy, VAR__21230, sizeof( boy[0] ), compInc);
+   qsort(girl, VAR_666, sizeof( girl[0] ), compInc);
+   printf("%.2f", boy[0]);
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf(" %.2f", boy[VAR__53647]);
+   }
+
+   for ( int VAR__53647 = VAR_666 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf(" %.2f", girl[VAR__53647]);
+   }
+}

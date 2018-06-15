@@ -1,0 +1,81 @@
+int power(long int VAR__819283, long int VAR__53647)
+{
+   unsigned long VAR__21230;
+   unsigned long VAR__8444594 = 1;
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      VAR__8444594 = VAR__8444594 * VAR__819283;
+   }
+
+   return VAR__8444594;
+}
+
+
+int main()
+{
+   long int      VAR__819283;
+   long int      VAR__19328;
+   long int      VAR__53647;
+   long int      VAR__21230;
+   long int      VAR__1111;
+   long int      VAR__temp;
+   long int      VAR__3918907;
+   long int      VAR__8444594;
+   unsigned long VAR__TEMP = 0;
+   unsigned long VAR__7685;
+   char          VAR_233[100] = { 0 };
+   char          re[100]      = { 0 };
+
+   scanf("%d %s %d", &VAR__819283, VAR_233, &VAR__19328);
+   VAR__1111 = strlen(VAR_233);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if (( VAR_233[( VAR__1111 - 1 ) - VAR__53647] >= 'a' ) && ( VAR_233[( VAR__1111 - 1 ) - VAR__53647] <= 'z' ))
+      {
+         VAR__TEMP += (( VAR_233[( VAR__1111 - 1 ) - VAR__53647] - 'a' ) + 10 ) * power(VAR__819283, VAR__53647);
+      }
+
+      if (( VAR_233[( VAR__1111 - 1 ) - VAR__53647] >= 'A' ) && ( VAR_233[( VAR__1111 - 1 ) - VAR__53647] <= 'Z' ))
+      {
+         VAR__TEMP += (( VAR_233[( VAR__1111 - 1 ) - VAR__53647] - 'A' ) + 10 ) * power(VAR__819283, VAR__53647);
+      }
+
+      if (( VAR_233[( VAR__1111 - 1 ) - VAR__53647] >= '0' ) && ( VAR_233[( VAR__1111 - 1 ) - VAR__53647] <= '9' ))
+      {
+         VAR__TEMP += ( VAR_233[( VAR__1111 - 1 ) - VAR__53647] - '0' ) * power(VAR__819283, VAR__53647);
+      }
+   }
+
+   for ( VAR__21230 = 0; ; VAR__21230++ )
+   {
+      VAR__7685    = power(VAR__19328, VAR__21230);
+      VAR__3918907 = VAR__TEMP / VAR__7685;
+
+      if ( VAR__3918907 < VAR__19328 )
+      {
+         break;
+      }
+   }
+
+   VAR__21230++;
+   for ( VAR__8444594 = VAR__21230 - 1; VAR__8444594 >= 0; VAR__8444594-- )
+   {
+      VAR__7685 = power(VAR__19328, VAR__8444594);
+      VAR__temp = VAR__TEMP / VAR__7685;
+
+      if ( VAR__temp >= 10 )
+      {
+         re[( VAR__21230 - 1 ) - VAR__8444594] = ( 'A' + VAR__temp ) - 10;
+      }
+      else
+      {
+         re[( VAR__21230 - 1 ) - VAR__8444594] = '0' + VAR__temp;
+      }
+
+      VAR__TEMP -= VAR__7685 * VAR__temp;
+   }
+
+   printf("%s", re);
+   return 0;
+}

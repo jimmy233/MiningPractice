@@ -1,0 +1,141 @@
+struct stu
+{
+   char str0[20];
+   int  gr1;
+   int  gr2;
+   char is1;
+   char is2;
+   int  lun;
+   int  total;
+};
+int VAR__NUM(struct stu VAR_9494);
+int num2(struct stu VAR_9494);
+int num3(struct stu VAR_9494);
+int num4(struct stu VAR_9494);
+int num5(struct stu VAR_9494);
+
+void main()
+{
+   struct stu st[100];
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__MAX = 0;
+   int        tot      = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", st[VAR__53647].str0);
+      scanf("%d%d %c %c%d", &st[VAR__53647].gr1, &st[VAR__53647].gr2, &st[VAR__53647].is1, &st[VAR__53647].is2, &st[VAR__53647].lun);
+      st[VAR__53647].total = 0;
+
+      if ( VAR__NUM(st[VAR__53647]) == 1 )
+      {
+         st[VAR__53647].total += 8000;
+      }
+
+      if ( num2(st[VAR__53647]) == 1 )
+      {
+         st[VAR__53647].total += 4000;
+      }
+
+      if ( num3(st[VAR__53647]) == 1 )
+      {
+         st[VAR__53647].total += 2000;
+      }
+
+      if ( num4(st[VAR__53647]) == 1 )
+      {
+         st[VAR__53647].total += 1000;
+      }
+
+      if ( num5(st[VAR__53647]) == 1 )
+      {
+         st[VAR__53647].total += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      tot += st[VAR__53647].total;
+
+      if ( VAR__MAX < st[VAR__53647].total )
+      {
+         VAR__MAX = st[VAR__53647].total;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( st[VAR__53647].total == VAR__MAX )
+      {
+         printf("%s\n%d\n%d", st[VAR__53647].str0, VAR__MAX, tot);
+         break;
+      }
+   }
+}
+
+
+int VAR__NUM(struct stu VAR_9494)
+{
+   if (( VAR_9494.gr1 > 80 ) && ( VAR_9494.lun >= 1 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int num2(struct stu VAR_9494)
+{
+   if (( VAR_9494.gr1 > 85 ) && ( VAR_9494.gr2 > 80 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int num3(struct stu VAR_9494)
+{
+   if ( VAR_9494.gr1 > 90 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int num4(struct stu VAR_9494)
+{
+   if (( VAR_9494.gr1 > 85 ) && ( VAR_9494.is2 == 'Y' ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int num5(struct stu VAR_9494)
+{
+   if (( VAR_9494.gr2 > 80 ) && ( VAR_9494.is1 == 'Y' ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

@@ -1,0 +1,105 @@
+int VAR__SUM;
+void guiling(int VAR__819283[100][100], int VAR_233)
+{
+   int VAR__temp;
+   int VAR_9494;
+   int min1;
+   int min2;
+
+   for ( VAR_9494 = 0; VAR_9494 < VAR_233; VAR_9494++ )
+   {
+      min1 = VAR__819283[VAR_9494][0];
+      for ( VAR__temp = 1; VAR__temp < VAR_233; VAR__temp++ )
+      {
+         if ( VAR__819283[VAR_9494][VAR__temp] < min1 )
+         {
+            min1 = VAR__819283[VAR_9494][VAR__temp];
+         }
+      }
+
+
+      for ( VAR__temp = 0; VAR__temp < VAR_233; VAR__temp++ )
+      {
+         VAR__819283[VAR_9494][VAR__temp] = VAR__819283[VAR_9494][VAR__temp] - min1;
+      }
+   }
+
+   for ( VAR__temp = 0; VAR__temp < VAR_233; VAR__temp++ )
+   {
+      min2 = VAR__819283[0][VAR__temp];
+      for ( VAR_9494 = 1; VAR_9494 < VAR_233; VAR_9494++ )
+      {
+         if ( VAR__819283[VAR_9494][VAR__temp] < min2 )
+         {
+            min2 = VAR__819283[VAR_9494][VAR__temp];
+         }
+      }
+
+
+      for ( VAR_9494 = 0; VAR_9494 < VAR_233; VAR_9494++ )
+      {
+         VAR__819283[VAR_9494][VAR__temp] = VAR__819283[VAR_9494][VAR__temp] - min2;
+      }
+   }
+
+   VAR__SUM = VAR__SUM + VAR__819283[1][1];
+}
+
+
+void xiaojian(int VAR__819283[100][100], int VAR_233)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR_233 - 1 ); VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647][VAR__21230 + 1];
+      }
+   }
+
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_233 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < ( VAR_233 - 1 ); VAR__53647++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647 + 1][VAR__21230];
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__819283[100][100];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            scanf("%d", &VAR__819283[VAR__21230][VAR__8444594]);
+         }
+      }
+
+
+      for ( VAR__temp = VAR_1238123; VAR__temp >= 2; VAR__temp-- )
+      {
+         guiling(VAR__819283, VAR__temp);
+         xiaojian(VAR__819283, VAR__temp);
+      }
+
+      printf("%d\n", VAR__SUM);
+   }
+
+   return 0;
+}

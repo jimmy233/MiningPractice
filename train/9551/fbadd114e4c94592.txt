@@ -1,0 +1,106 @@
+struct patient
+{
+   char           id[11];
+   int            age;
+   int            seq;
+   struct patient *VAR__NEXT;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            n1 = 0;
+   int            n2 = 0;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__1238129;
+   int            at;
+   char           id[10];
+   struct patient *head1;
+   struct patient *head2;
+   struct patient *p11;
+   struct patient *p12;
+   struct patient *p21;
+   struct patient *p22;
+   struct patient *VAR__temp;
+   struct patient *VAR_666;
+
+   scanf("%d", &VAR_1238123);
+   head1 = NULL;
+   head2 = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", id, &at);
+
+      if ( at >= 60 )
+      {
+         if ( head1 == NULL )
+         {
+            head1 = (struct patient *)malloc(sizeof( struct patient ));
+            strcpy(head1->id, id);
+            head1->age       = at;
+            head1->VAR__NEXT = NULL;
+         }
+         else
+         {
+            p11      = (struct patient *)malloc(sizeof( struct patient ));
+            p11->age = at;
+            strcpy(p11->id, id);
+            for ( VAR__temp = head1, VAR_666 = VAR__temp; VAR__temp != NULL; VAR_666 = VAR__temp, VAR__temp = VAR__temp->VAR__NEXT )
+            {
+               if (( VAR__temp->age < at ) && ( VAR__temp != head1 ))
+               {
+                  VAR_666->VAR__NEXT = p11;
+                  p11->VAR__NEXT     = VAR__temp;
+                  break;
+               }
+
+               if (( VAR__temp->age < at ) && ( VAR__temp == head1 ))
+               {
+                  p11->VAR__NEXT = head1;
+                  head1          = p11;
+                  break;
+               }
+            }
+
+            if ( VAR__temp == NULL )
+            {
+               VAR_666->VAR__NEXT = p11;
+               p11->VAR__NEXT     = NULL;
+            }
+         }
+      }
+
+      if ( at < 60 )
+      {
+         if ( head2 == NULL )
+         {
+            head2 = (struct patient *)malloc(sizeof( struct patient ));
+            strcpy(head2->id, id);
+            head2->age       = at;
+            head2->VAR__NEXT = NULL;
+            p22 = head2;
+         }
+         else
+         {
+            p21      = (struct patient *)malloc(sizeof( struct patient ));
+            p21->age = at;
+            strcpy(p21->id, id);
+            p22->VAR__NEXT = p21;
+            p21->VAR__NEXT = NULL;
+            p22            = p21;
+         }
+      }
+   }
+
+   for ( VAR__temp = head1, VAR_666 = VAR__temp; VAR__temp != NULL; VAR_666 = VAR__temp, VAR__temp = VAR__temp->VAR__NEXT )
+   {
+   }
+
+   VAR_666->VAR__NEXT = head2;
+   for ( VAR__temp = head1; VAR__temp->VAR__NEXT != NULL; VAR__temp = VAR__temp->VAR__NEXT )
+   {
+      printf("%s\n", VAR__temp->id);
+   }
+
+   printf("%s", VAR__temp->id);
+}

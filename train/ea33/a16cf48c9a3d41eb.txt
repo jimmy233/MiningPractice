@@ -1,0 +1,69 @@
+char maxASCII(char *A_STRING)
+{
+   int LEN_OF_STH = strlen(A_STRING);
+   int VAR__53647;
+   int VAR__21230 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] > VAR__21230 )
+      {
+         VAR__21230 = A_STRING[VAR__53647];
+      }
+   }
+
+   return VAR__21230;
+}
+
+
+int maxlocate(char string[], char maxx)
+{
+   int VAR__7685;
+
+   for ( VAR__7685 = 0; VAR__7685 < strlen(string); VAR__7685++ )
+   {
+      if ( string[VAR__7685] == maxx )
+      {
+         return VAR__7685;
+      }
+   }
+}
+
+
+int main(int argc, char *argv[])
+{
+   char A_STRING[100][10];
+   char substr[100][4];
+   int  VAR__MAX;
+   int  rank;
+   int  VAR__53647;
+   int  VAR__21230;
+
+   VAR__21230 = 0;
+
+   while ( scanf("%s%s", A_STRING[VAR__21230], substr[VAR__21230]) != EOF )
+   {
+      VAR__21230++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      VAR__MAX = maxASCII(A_STRING[VAR__53647]);
+      rank     = maxlocate(A_STRING[VAR__53647], VAR__MAX);
+      int VAR__819283;
+      for ( VAR__819283 = 0; VAR__819283 <= rank; VAR__819283++ )
+      {
+         cout << A_STRING[VAR__53647][VAR__819283];
+      }
+
+      cout << substr[VAR__53647];
+      for ( VAR__819283 = rank + 1; VAR__819283 < strlen(A_STRING[VAR__53647]); VAR__819283++ )
+      {
+         cout << A_STRING[VAR__53647][VAR__819283];
+      }
+
+      cout << endl;
+   }
+
+   return EXIT_SUCCESS;
+}

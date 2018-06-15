@@ -1,0 +1,182 @@
+struct rat
+{
+   char       VAR__NUM[11];
+   int        age;
+   struct rat *VAR__NEXT;
+};
+int VAR_1238123;
+struct rat *creat(void)
+{
+   struct rat *VAR__HEAD;
+   struct rat *ANOTHER_POINTER;
+   struct rat *YET_ANOTHER_POINTER;
+   int        VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct rat *)malloc(LEN));
+   VAR__HEAD       = ANOTHER_POINTER;
+   scanf("%s%d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER = (struct rat *)malloc(LEN);
+      scanf("%s%d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+struct rat *sort(struct rat *VAR__HEAD, int VAR__COUNT)
+{
+   struct rat *ANOTHER_POINTER;
+   struct rat *YET_ANOTHER_POINTER;
+   struct rat *p3;
+   struct rat *VAR__TEMP;
+   int        VAR__53647;
+   int        VAR__21230;
+
+   for ( VAR__21230 = 1; VAR__21230 <= ( VAR__COUNT - 1 ); VAR__21230++ )
+   {
+      ANOTHER_POINTER     = VAR__HEAD;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      p3 = YET_ANOTHER_POINTER;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - VAR__21230 ); VAR__53647++ )
+      {
+         if ( ANOTHER_POINTER->age < YET_ANOTHER_POINTER->age )
+         {
+            VAR__TEMP = YET_ANOTHER_POINTER->VAR__NEXT;
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            ANOTHER_POINTER->VAR__NEXT     = VAR__TEMP;
+
+            if ( VAR__53647 == 0 )
+            {
+               VAR__HEAD           = YET_ANOTHER_POINTER;
+               YET_ANOTHER_POINTER = VAR__TEMP;
+            }
+            else
+            {
+               p3->VAR__NEXT       = YET_ANOTHER_POINTER;
+               p3                  = YET_ANOTHER_POINTER;
+               YET_ANOTHER_POINTER = VAR__TEMP;
+            }
+         }
+         else
+         {
+            if ( VAR__53647 == 0 )
+            {
+               p3 = ( VAR__HEAD = ANOTHER_POINTER );
+               ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+               YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+            }
+            else
+            {
+               ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+               YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+               p3 = p3->VAR__NEXT;
+            }
+         }
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct rat *del(struct rat *VAR__HEAD, int VAR__temp)
+{
+   struct rat *ANOTHER_POINTER;
+   struct rat *YET_ANOTHER_POINTER;
+   int        VAR__53647;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__temp; VAR__53647++ )
+   {
+      if ( ANOTHER_POINTER->age < 60 )
+      {
+         if ( VAR__53647 == 1 )
+         {
+            VAR__HEAD = ANOTHER_POINTER;
+         }
+
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         continue;
+      }
+
+      if ( ANOTHER_POINTER->age >= 60 )
+      {
+         if ( VAR__53647 == 1 )
+         {
+            VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+            break;
+         }
+
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+         break;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct rat *VAR__HEAD;
+   struct rat *ANOTHER_POINTER;
+   struct rat *VAR_9494;
+   struct rat *YET_ANOTHER_POINTER;
+   struct rat *p3;
+   int        VAR__53647;
+   int        VAR__COUNT = 0;
+   int        VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   VAR__temp       = VAR_1238123;
+   VAR__HEAD       = creat();
+   ANOTHER_POINTER = VAR__HEAD;
+   p3 = ( YET_ANOTHER_POINTER = (struct rat *)malloc(LEN));
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( ANOTHER_POINTER->age >= 60 )
+      {
+         if ( VAR__COUNT == 0 )
+         {
+            VAR_9494 = YET_ANOTHER_POINTER;
+         }
+
+         YET_ANOTHER_POINTER->age = ANOTHER_POINTER->age;
+         strcpy(YET_ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR__NUM);
+         p3->VAR__NEXT       = YET_ANOTHER_POINTER;
+         p3                  = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = (struct rat *)malloc(LEN);
+         VAR__COUNT++;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   VAR_9494 = sort(VAR_9494, VAR__COUNT);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      VAR__HEAD = del(VAR__HEAD, VAR__temp);
+      VAR__temp = VAR__temp - 1;
+   }
+
+   ANOTHER_POINTER = VAR_9494;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      printf("%s\n", ANOTHER_POINTER->VAR__NUM);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - VAR__COUNT ); VAR__53647++ )
+   {
+      printf("%s\n", ANOTHER_POINTER->VAR__NUM);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

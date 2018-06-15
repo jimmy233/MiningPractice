@@ -1,0 +1,84 @@
+struct Student
+{
+   long           id;
+   int            chn;
+   int            mth;
+   int            total;
+   struct Student *VAR__NEXT;
+};
+struct Student *insert(struct Student *VAR__HEAD, struct Student *stu)
+{
+   int            VAR__21230 = 0;
+   struct Student *p0;
+   struct Student *ANOTHER_POINTER;
+   struct Student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = stu;
+
+   if ( VAR__HEAD == NULL )
+   {
+      VAR__HEAD     = p0;
+      p0->VAR__NEXT = NULL;
+   }
+   else
+   {
+      while ((( p0->total <= ANOTHER_POINTER->total ) && ( ANOTHER_POINTER->VAR__NEXT != NULL )) && ( VAR__21230 < 4 ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         VAR__21230++;
+      }
+
+      if ( p0->total > ANOTHER_POINTER->total )
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            VAR__HEAD = p0;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         }
+
+         p0->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = NULL;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct Student *ANOTHER_POINTER;
+   struct Student *VAR__HEAD;
+   struct Student *stu;
+   long int       VAR__53647;
+   long int       VAR_1238123;
+
+   scanf("%ld", &VAR_1238123);
+   ANOTHER_POINTER = ( VAR__HEAD = (struct Student *)malloc(sizeof( struct Student )));
+   scanf("%d %d %d", &VAR__HEAD->id, &VAR__HEAD->chn, &VAR__HEAD->mth);
+   VAR__HEAD->total     = VAR__HEAD->chn + VAR__HEAD->mth;
+   VAR__HEAD->VAR__NEXT = NULL;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu = (struct Student *)malloc(sizeof( struct Student ));
+      scanf("%d %d %d", &stu->id, &stu->chn, &stu->mth);
+      stu->total = stu->chn + stu->mth;
+      VAR__HEAD  = insert(VAR__HEAD, stu);
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%d %d\n", ANOTHER_POINTER->id, ANOTHER_POINTER->total);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

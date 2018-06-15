@@ -1,0 +1,66 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MIN;
+   int VAR__MAX;
+   int have_a_gap = 0;
+
+   scanf("%d", &VAR_1238123);
+   struct Space
+   {
+      int left;
+      int right;
+   }
+   spaces[VAR_1238123];
+   struct Space
+   {
+      int left;
+      int right;
+   }
+   VAR__TEMP;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d", &spaces[VAR__53647].left, &spaces[VAR__53647].right);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( spaces[VAR__21230].left > spaces[VAR__21230 + 1].left )
+         {
+            VAR__TEMP              = spaces[VAR__21230];
+            spaces[VAR__21230]     = spaces[VAR__21230 + 1];
+            spaces[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR__MIN = spaces[0].left;
+   VAR__MAX = spaces[0].right;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__MAX < spaces[VAR__53647 + 1].left )
+      {
+         have_a_gap = 1;
+         printf("no");
+         break;
+      }
+      else
+      {
+         if ( spaces[VAR__53647 + 1].right > VAR__MAX )
+         {
+            VAR__MAX = spaces[VAR__53647 + 1].right;
+         }
+      }
+   }
+
+   if ( have_a_gap == 0 )
+   {
+      printf("%d %d", VAR__MIN, VAR__MAX);
+   }
+
+   return 0;
+}

@@ -1,0 +1,59 @@
+int bottle[9][9] = { 0 };
+int totalday     = 0;
+void mutiply(int day);
+
+int main()
+{
+   cin >> bottle[4][4];
+   int day;
+   cin >> totalday;
+   mutiply(1);
+   for ( int VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      cout << bottle[VAR__53647][0];
+      for ( int VAR__21230 = 1; VAR__21230 <= 8; VAR__21230++ )
+      {
+         ( cout << ' ' ) << bottle[VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+}
+
+
+void mutiply(int day)
+{
+   if ( day == ( totalday + 1 ))
+   {
+      return;
+   }
+
+   int board[9][9] = { 0 };
+   for ( int VAR__53647 = 1; VAR__53647 <= 7; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= 7; VAR__21230++ )
+      {
+         board[VAR__53647][VAR__21230]         = board[VAR__53647][VAR__21230] + ( bottle[VAR__53647][VAR__21230] * 2 );
+         board[VAR__53647 - 1][VAR__21230]     = board[VAR__53647 - 1][VAR__21230] + bottle[VAR__53647][VAR__21230];
+         board[VAR__53647 + 1][VAR__21230]     = board[VAR__53647 + 1][VAR__21230] + bottle[VAR__53647][VAR__21230];
+         board[VAR__53647][VAR__21230 - 1]     = board[VAR__53647][VAR__21230 - 1] + bottle[VAR__53647][VAR__21230];
+         board[VAR__53647][VAR__21230 + 1]     = board[VAR__53647][VAR__21230 + 1] + bottle[VAR__53647][VAR__21230];
+         board[VAR__53647 - 1][VAR__21230 - 1] = board[VAR__53647 - 1][VAR__21230 - 1] + bottle[VAR__53647][VAR__21230];
+         board[VAR__53647 - 1][VAR__21230 + 1] = board[VAR__53647 - 1][VAR__21230 + 1] + bottle[VAR__53647][VAR__21230];
+         board[VAR__53647 + 1][VAR__21230 - 1] = board[VAR__53647 + 1][VAR__21230 - 1] + bottle[VAR__53647][VAR__21230];
+         board[VAR__53647 + 1][VAR__21230 + 1] = board[VAR__53647 + 1][VAR__21230 + 1] + bottle[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         bottle[VAR__53647][VAR__21230] = board[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   mutiply(day + 1);
+}

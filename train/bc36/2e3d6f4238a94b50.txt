@@ -1,0 +1,48 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return (( *((float *)VAR__819283 )) > ( *((float *)VAR__19328 ))) ? ( 1 ) : ( -1 );
+}
+
+
+int main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__127322;
+   int   VAR__1238129;
+   char  sex[10];
+   float male[40]   = { 0 };
+   float female[40] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0, VAR__127322 = 0, VAR__1238129 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", sex);
+
+      if ( sex[0] == 'm' )
+      {
+         scanf("%f", &male[VAR__1238129]);
+         VAR__1238129++;
+      }
+      else
+      {
+         scanf("%f", &female[VAR__127322]);
+         VAR__127322++;
+      }
+   }
+
+   qsort(male, VAR__1238129, sizeof( float ), cmp);
+   qsort(female, VAR__127322, sizeof( float ), cmp);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("%.2f ", male[VAR__53647]);
+   }
+
+   for ( VAR__53647 = VAR__127322 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      printf("%.2f ", female[VAR__53647]);
+   }
+
+   printf("%.2f\n", female[VAR__53647]);
+   return 0;
+}

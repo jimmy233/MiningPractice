@@ -1,0 +1,117 @@
+void paixu(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__112390;
+   int VAR__8444594;
+   int VAR__53647;
+
+   if ( VAR_1238123 > 1 )
+   {
+      for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+         {
+            if ( VAR__819283[VAR__53647] < VAR__819283[VAR__53647 + 1] )
+            {
+               VAR__112390 = VAR__819283[VAR__53647 + 1];
+               VAR__819283[VAR__53647 + 1] = VAR__819283[VAR__53647];
+               VAR__819283[VAR__53647]     = VAR__112390;
+            }
+         }
+      }
+   }
+}
+
+
+void match(int VAR__819283[], int VAR__19328[], int VAR_1238123)
+{
+   int VAR__NUM     = 0;
+   int money        = 0;
+   int afr          = 0;
+   int bfr          = 0;
+   int ata          = VAR_1238123 - 1;
+   int bta          = VAR_1238123 - 1;
+   int VAR__4857423 = 1;
+
+   for ( ; afr <= ata; )
+   {
+      if ( VAR__819283[afr] > VAR__19328[bfr] )
+      {
+         money += 200;
+         bfr++;
+         afr++;
+      }
+      else
+      if ( VAR__819283[afr] < VAR__19328[bfr] )
+      {
+         money -= 200;
+         bfr++;
+         ata--;
+      }
+      else
+      if ( VAR__819283[afr] == VAR__19328[bfr] )
+      {
+         for ( ; VAR__4857423 == 1; )
+         {
+            if ( VAR__819283[ata] > VAR__19328[bta] )
+            {
+               money += 200;
+               ata--;
+               bta--;
+            }
+            else
+            if ( VAR__819283[ata] <= VAR__19328[bta] )
+            {
+               if ( VAR__819283[ata] < VAR__19328[bfr] )
+               {
+                  money -= 200;
+               }
+
+               ata--;
+               bfr++;
+               VAR__4857423 = 0;
+            }
+         }
+
+         VAR__4857423 = 1;
+      }
+   }
+
+   printf("%d\n", money);
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int qi[1000];
+   int tian[1000];
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &tian[VAR__53647]);
+         }
+
+         paixu(tian, VAR_1238123);
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", &qi[VAR__53647]);
+         }
+
+         paixu(qi, VAR_1238123);
+         match(tian, qi, VAR_1238123);
+      }
+   }
+
+   return 0;
+}

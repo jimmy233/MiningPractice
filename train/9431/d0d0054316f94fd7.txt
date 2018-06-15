@@ -1,0 +1,61 @@
+struct stu
+{
+   char       VAR__NUM[15];
+   char       name[20];
+   char       gender;
+   int        age;
+   char       score[10];
+   char       add[20];
+   struct stu *VAR__NEXT;
+};
+int VAR_1238123;
+struct stu *creat(void)
+{
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+   struct stu *VAR_666;
+
+   VAR_233 = ( VAR_666 = (struct stu *)malloc(LEN));
+   scanf("%s%s %c %d %s%s", ( *VAR_233 ).VAR__NUM, ( *VAR_233 ).name, &( *VAR_233 ).gender, &( *VAR_233 ).age, ( *VAR_233 ).score, ( *VAR_233 ).add);
+   for ( VAR_1238123 = 0; (( *VAR_233 ).gender == 'f' ) || (( *VAR_233 ).gender == 'm' ); VAR_1238123++ )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         ( *VAR_233 ).VAR__NEXT = NULL;
+      }
+      else
+      {
+         ( *VAR_233 ).VAR__NEXT = VAR_666;
+      }
+
+      VAR_666 = VAR_233;
+      VAR_233 = (struct stu *)malloc(LEN);
+      scanf("%s%s %c %d %s%s", ( *VAR_233 ).VAR__NUM, ( *VAR_233 ).name, &( *VAR_233 ).gender, &( *VAR_233 ).age, ( *VAR_233 ).score, ( *VAR_233 ).add);
+   }
+
+   VAR__HEAD = VAR_666;
+   return VAR__HEAD;
+}
+
+
+void print(struct stu *VAR__HEAD)
+{
+   struct stu *VAR_233;
+
+   if ( VAR__HEAD != NULL )
+   {
+      for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = ( *VAR_233 ).VAR__NEXT )
+      {
+         printf("%s %s %c %d %s %s\n", ( *VAR_233 ).VAR__NUM, ( *VAR_233 ).name, ( *VAR_233 ).gender, ( *VAR_233 ).age, ( *VAR_233 ).score, ( *VAR_233 ).add);
+      }
+   }
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+}

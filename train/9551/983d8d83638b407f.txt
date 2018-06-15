@@ -1,0 +1,129 @@
+struct pat
+{
+   char       *id;
+   int        VAR__819283;
+   int        o;
+   struct pat *VAR__NEXT;
+};
+int VAR_1238123;
+int main()
+{
+   struct pat *create(int VAR_1238123);
+   struct pat *arrange(struct pat *VAR__HEAD);
+
+   struct pat *VAR__HEAD;
+   struct pat *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create(VAR_1238123);
+   VAR__HEAD = arrange(VAR__HEAD);
+   VAR_233   = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s", VAR_233->id);
+
+      if ( VAR_233->VAR__NEXT != NULL )
+      {
+         printf("\n");
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+struct pat *create(int VAR_1238123)
+{
+   struct pat *VAR__HEAD;
+   struct pat *ANOTHER_POINTER;
+   struct pat *YET_ANOTHER_POINTER;
+   int        VAR__53647;
+
+   YET_ANOTHER_POINTER = ( VAR__HEAD = MLCP );
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER     = MLCP;
+      ANOTHER_POINTER->id = MLCI;
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->VAR__819283);
+      ANOTHER_POINTER->o             = VAR__53647;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct pat *arrange(struct pat *VAR__HEAD)
+{
+   void sort(struct pat *hn);
+
+   struct pat *ANOTHER_POINTER;
+   struct pat *YET_ANOTHER_POINTER;
+   struct pat *hn;
+   struct pat *n1;
+   n1 = ( hn = MLCP );
+   YET_ANOTHER_POINTER = VAR__HEAD;
+   ANOTHER_POINTER     = VAR__HEAD->VAR__NEXT;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      if ( ANOTHER_POINTER->VAR__819283 >= 60 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+         n1->VAR__NEXT   = ANOTHER_POINTER;
+         n1              = ANOTHER_POINTER;
+         ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+      else
+      {
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   n1->VAR__NEXT = NULL;
+   sort(hn);
+   n1->VAR__NEXT = VAR__HEAD->VAR__NEXT;
+   VAR__HEAD     = hn->VAR__NEXT;
+   return VAR__HEAD;
+}
+
+
+void sort(struct pat *hn)
+{
+   struct pat *ANOTHER_POINTER;
+   struct pat *YET_ANOTHER_POINTER;
+   char       *tid;
+   int        ta;
+   int        to;
+
+   ANOTHER_POINTER = hn->VAR__NEXT;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+
+      while ( YET_ANOTHER_POINTER != NULL )
+      {
+         if (( YET_ANOTHER_POINTER->VAR__819283 > ANOTHER_POINTER->VAR__819283 ) || (( YET_ANOTHER_POINTER->VAR__819283 == ANOTHER_POINTER->VAR__819283 ) && ( YET_ANOTHER_POINTER->o < ANOTHER_POINTER->o )))
+         {
+            tid = YET_ANOTHER_POINTER->id;
+            YET_ANOTHER_POINTER->id = ANOTHER_POINTER->id;
+            ANOTHER_POINTER->id     = tid;
+            ta = YET_ANOTHER_POINTER->VAR__819283;
+            YET_ANOTHER_POINTER->VAR__819283 = ANOTHER_POINTER->VAR__819283;
+            ANOTHER_POINTER->VAR__819283     = ta;
+            to = YET_ANOTHER_POINTER->o;
+            YET_ANOTHER_POINTER->o = ANOTHER_POINTER->o;
+            ANOTHER_POINTER->o     = to;
+         }
+
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

@@ -1,0 +1,200 @@
+struct integer
+{
+   int            VAR_1238123;
+   struct integer *pup;
+   struct integer *pdown;
+};
+struct integer *creat(struct integer *VAR__HEAD)
+{
+   VAR__HEAD        = (struct integer *)malloc(sizeof( struct integer ));
+   VAR__HEAD->pup   = NULL;
+   VAR__HEAD->pdown = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   char           VAR__819283;
+   int            VAR__7685    = 1;
+   int            VAR__3918907 = 1;
+   int            VAR__9290    = 1;
+   struct integer *ANOTHER_POINTER;
+   struct integer *YET_ANOTHER_POINTER;
+   struct integer *p3;
+   struct integer *VAR__HEAD;
+
+   VAR__HEAD       = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct integer *)malloc(sizeof( struct integer ))));
+   ANOTHER_POINTER = NULL;
+   creat(VAR__HEAD);
+   scanf("%c", &VAR__819283);
+
+   while ((( 0 <= ( VAR__819283 - '0' )) && (( VAR__819283 - '0' ) <= 9 )) || ( VAR__819283 == '-' ))
+   {
+      p3 = (struct integer *)malloc(sizeof( struct integer ));
+
+      if ( VAR__819283 == '-' )
+      {
+         VAR__7685 = -1;
+         scanf("%c", &VAR__819283);
+         continue;
+      }
+      else
+      {
+         p3->VAR_1238123 = VAR__7685 * ( VAR__819283 - '0' );
+         p3->pdown       = ANOTHER_POINTER;
+         p3->pup         = VAR__HEAD;
+
+         if ( ANOTHER_POINTER != NULL )
+         {
+            ANOTHER_POINTER->pup = p3;
+         }
+
+         VAR__HEAD->pdown = p3;
+         ANOTHER_POINTER  = p3;
+         scanf("%c", &VAR__819283);
+      }
+   }
+
+   ANOTHER_POINTER = NULL;
+   scanf("%c", &VAR__819283);
+
+   while ((( 0 <= ( VAR__819283 - '0' )) && (( VAR__819283 - '0' ) <= 9 )) || ( VAR__819283 == '-' ))
+   {
+      p3 = (struct integer *)malloc(sizeof( struct integer ));
+
+      if ( VAR__819283 == '-' )
+      {
+         VAR__3918907 = -1;
+         scanf("%c", &VAR__819283);
+         continue;
+      }
+      else
+      {
+         p3->VAR_1238123 = VAR__3918907 * ( VAR__819283 - '0' );
+         p3->pup         = ANOTHER_POINTER;
+         p3->pdown       = VAR__HEAD;
+         VAR__HEAD->pup  = p3;
+
+         if ( ANOTHER_POINTER != NULL )
+         {
+            ANOTHER_POINTER->pdown = p3;
+         }
+
+         ANOTHER_POINTER = p3;
+         scanf("%c", &VAR__819283);
+      }
+   }
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+
+   while (( ANOTHER_POINTER->pdown != NULL ) && ( YET_ANOTHER_POINTER->pup != NULL ))
+   {
+      ANOTHER_POINTER                  = ANOTHER_POINTER->pdown;
+      YET_ANOTHER_POINTER              = YET_ANOTHER_POINTER->pup;
+      ANOTHER_POINTER->VAR_1238123     = ANOTHER_POINTER->VAR_1238123 + YET_ANOTHER_POINTER->VAR_1238123;
+      YET_ANOTHER_POINTER->VAR_1238123 = ANOTHER_POINTER->VAR_1238123;
+   }
+
+   if (( ANOTHER_POINTER->pdown == NULL ) && ( YET_ANOTHER_POINTER->pup != NULL ))
+   {
+      YET_ANOTHER_POINTER = VAR__HEAD->pup;
+
+      while ( YET_ANOTHER_POINTER->pup != NULL )
+      {
+         if ( YET_ANOTHER_POINTER->VAR_1238123 > 9 )
+         {
+            YET_ANOTHER_POINTER->pup->VAR_1238123++;
+            YET_ANOTHER_POINTER->VAR_1238123 = YET_ANOTHER_POINTER->VAR_1238123 % 10;
+         }
+
+         if ( YET_ANOTHER_POINTER->VAR_1238123 < 0 )
+         {
+            YET_ANOTHER_POINTER->pup->VAR_1238123--;
+            YET_ANOTHER_POINTER->VAR_1238123 = YET_ANOTHER_POINTER->VAR_1238123 + 10;
+         }
+
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->pup;
+      }
+
+      if ( VAR__3918907 < 0 )
+      {
+         printf("-");
+      }
+
+      while (( YET_ANOTHER_POINTER->VAR_1238123 == 0 ) && ( YET_ANOTHER_POINTER != VAR__HEAD->pup ))
+      {
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->pdown;
+      }
+
+      while ( YET_ANOTHER_POINTER != VAR__HEAD )
+      {
+         printf("%d", VAR__3918907 * YET_ANOTHER_POINTER->VAR_1238123);
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->pdown;
+      }
+
+      while ( ANOTHER_POINTER != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->pup;
+         free(YET_ANOTHER_POINTER);
+      }
+   }
+   else
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+
+      while ( ANOTHER_POINTER->pdown != NULL )
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->pdown;
+
+         if (( ANOTHER_POINTER->VAR_1238123 >= 10 ) && ( ANOTHER_POINTER->pdown != NULL ))
+         {
+            ANOTHER_POINTER->pdown->VAR_1238123++;
+            ANOTHER_POINTER->VAR_1238123 = ANOTHER_POINTER->VAR_1238123 - 10;
+         }
+
+         if (( ANOTHER_POINTER->VAR_1238123 < 0 ) && ( ANOTHER_POINTER->pdown != NULL ))
+         {
+            ANOTHER_POINTER->pdown->VAR_1238123--;
+            ANOTHER_POINTER->VAR_1238123 = ANOTHER_POINTER->VAR_1238123 + 10;
+         }
+      }
+
+      if ( ANOTHER_POINTER->VAR_1238123 < 0 )
+      {
+         printf("-");
+         VAR__9290 = -1;
+      }
+
+      while (( ANOTHER_POINTER->VAR_1238123 == 0 ) && ( ANOTHER_POINTER != VAR__HEAD->pdown ))
+      {
+         ANOTHER_POINTER = ANOTHER_POINTER->pup;
+      }
+
+      while ( ANOTHER_POINTER != VAR__HEAD )
+      {
+         printf("%d", VAR__9290 * ANOTHER_POINTER->VAR_1238123);
+         ANOTHER_POINTER = ANOTHER_POINTER->pup;
+      }
+
+      while ( YET_ANOTHER_POINTER != NULL )
+      {
+         ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->pdown;
+         free(ANOTHER_POINTER);
+      }
+   }
+
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+   getchar();
+}

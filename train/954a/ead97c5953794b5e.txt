@@ -1,0 +1,112 @@
+struct stu
+{
+   char       name[20];
+   int        final;
+   int        rate;
+   char       leader;
+   char       west;
+   int        paper;
+   int        money;
+   struct stu *VAR__NEXT;
+};
+struct stu *VAR__MAX;
+struct stu *ANOTHER_POINTER;
+struct stu *YET_ANOTHER_POINTER;
+struct stu *VAR__HEAD;
+int prize(struct stu *VAR_233)
+{
+   VAR_233->money = 0;
+
+   if (( VAR_233->final > 80 ) && ( VAR_233->paper > 0 ))
+   {
+      VAR_233->money += 8000;
+   }
+
+   if (( VAR_233->final > 85 ) && ( VAR_233->rate > 80 ))
+   {
+      VAR_233->money += 4000;
+   }
+
+   if ( VAR_233->final > 90 )
+   {
+      VAR_233->money += 2000;
+   }
+
+   if (( VAR_233->final > 85 ) && ( VAR_233->west == 'Y' ))
+   {
+      VAR_233->money += 1000;
+   }
+
+   if (( VAR_233->rate > 80 ) && ( VAR_233->leader == 'Y' ))
+   {
+      VAR_233->money += 850;
+   }
+
+   return VAR_233->money;
+}
+
+
+struct stu *create(int VAR_1238123)
+{
+   int VAR__53647 = 0;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   VAR__HEAD       = 0;
+   VAR__MAX        = YET_ANOTHER_POINTER;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      scanf("%s %d %d %c %c %d", YET_ANOTHER_POINTER->name, &YET_ANOTHER_POINTER->final, &YET_ANOTHER_POINTER->rate, &YET_ANOTHER_POINTER->leader, &YET_ANOTHER_POINTER->west, &YET_ANOTHER_POINTER->paper);
+      YET_ANOTHER_POINTER->money = prize(YET_ANOTHER_POINTER);
+
+      if ( YET_ANOTHER_POINTER->money > VAR__MAX->money )
+      {
+         VAR__MAX = YET_ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+      VAR__53647++;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+int VAR__SUM(struct stu *VAR__HEAD)
+{
+   struct stu *VAR_233;
+   int        VAR__SUM;
+
+   VAR_233  = VAR__HEAD;
+   VAR__SUM = VAR_233->money;
+
+   while ( VAR_233->VAR__NEXT != 0 )
+   {
+      VAR_233   = VAR_233->VAR__NEXT;
+      VAR__SUM += VAR_233->money;
+   }
+
+   return VAR__SUM;
+}
+
+
+void main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = create(VAR_1238123);
+   printf("%s\n%d\n", VAR__MAX->name, VAR__MAX->money);
+   printf("%d", VAR__SUM(ANOTHER_POINTER));
+}

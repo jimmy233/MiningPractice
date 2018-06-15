@@ -1,0 +1,78 @@
+int series(int VAR__819283[])
+{
+   char VAR_9494[1000];
+
+   gets(VAR_9494);
+   int LEN_OF_STH = strlen(VAR_9494);
+   int VAR__TEMP  = 0;
+   int VAR__NUM   = 0;
+   int VAR__53647;
+   int VAR_233 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] == ',' )
+      {
+         VAR__819283[VAR__NUM++] = VAR__TEMP;
+         VAR__TEMP = 0;
+      }
+      else
+      {
+         VAR__TEMP = (( VAR__TEMP * 10 ) + VAR_9494[VAR__53647] ) - '0';
+      }
+   }
+
+   VAR__819283[VAR__NUM++] = VAR__TEMP;
+   return VAR__NUM;
+}
+
+
+int find_second(int VAR__819283[], int VAR__NUM)
+{
+   int VAR__MAX;
+   int sec;
+   int VAR__53647;
+
+   VAR__MAX = 0, sec = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         sec      = VAR__MAX;
+         VAR__MAX = VAR__819283[VAR__53647];
+      }
+      else
+      if (( VAR__819283[VAR__53647] > sec ) && ( VAR__819283[VAR__53647] < VAR__MAX ))
+      {
+         sec = VAR__819283[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX == sec )
+   {
+      return 0;
+   }
+   else
+   {
+      return sec;
+   }
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__819283[100];
+   int sec;
+
+   VAR_1238123 = series(VAR__819283);
+   sec         = find_second(VAR__819283, VAR_1238123);
+
+   if ( sec )
+   {
+      printf("%d\n", sec);
+   }
+   else
+   {
+      printf("No\n");
+   }
+}

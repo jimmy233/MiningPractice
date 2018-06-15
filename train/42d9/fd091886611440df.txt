@@ -1,0 +1,86 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR_9494;
+   int VAR__21230;
+   struct point
+   {
+      int VAR__819283;
+      int VAR__19328;
+      int VAR__4857423;
+   }
+   VAR_233[10];
+   struct distance
+   {
+      double VAR__12302;
+      int    x1;
+      int    x2;
+      int    y1;
+      int    y2;
+      int    z1;
+      int    z2;
+   }
+   dis[45];
+   struct distance
+   {
+      double VAR__12302;
+      int    x1;
+      int    x2;
+      int    y1;
+      int    y2;
+      int    z1;
+      int    z2;
+   }
+   VAR__TEMP;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR_233[VAR__53647].VAR__819283, &VAR_233[VAR__53647].VAR__19328, &VAR_233[VAR__53647].VAR__4857423);
+   }
+
+   VAR__53647 = 0;
+   VAR__21230 = 1;
+   for ( VAR_9494 = 0; VAR_9494 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR_9494++ )
+   {
+      dis[VAR_9494].x1 = VAR_233[VAR__53647].VAR__819283;
+      dis[VAR_9494].x2 = VAR_233[VAR__21230].VAR__819283;
+      dis[VAR_9494].y1 = VAR_233[VAR__53647].VAR__19328;
+      dis[VAR_9494].y2 = VAR_233[VAR__21230].VAR__19328;
+      dis[VAR_9494].z1 = VAR_233[VAR__53647].VAR__4857423;
+      dis[VAR_9494].z2 = VAR_233[VAR__21230].VAR__4857423;
+      VAR__21230++;
+
+      if ( VAR__21230 == VAR_1238123 )
+      {
+         VAR__53647++;
+         VAR__21230 = VAR__53647 + 1;
+      }
+   }
+
+   for ( VAR_9494 = 0; VAR_9494 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR_9494++ )
+   {
+      dis[VAR_9494].VAR__12302 = sqrt(((( dis[VAR_9494].x1 - dis[VAR_9494].x2 ) * ( dis[VAR_9494].x1 - dis[VAR_9494].x2 )) + (( dis[VAR_9494].y1 - dis[VAR_9494].y2 ) * ( dis[VAR_9494].y1 - dis[VAR_9494].y2 ))) + (( dis[VAR_9494].z1 - dis[VAR_9494].z2 ) * ( dis[VAR_9494].z1 - dis[VAR_9494].z2 )));
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( dis[VAR__53647].VAR__12302 < dis[VAR__53647 + 1].VAR__12302 )
+         {
+            VAR__TEMP           = dis[VAR__53647];
+            dis[VAR__53647]     = dis[VAR__53647 + 1];
+            dis[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR_9494 = 0; VAR_9494 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR_9494++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", dis[VAR_9494].x1, dis[VAR_9494].y1, dis[VAR_9494].z1, dis[VAR_9494].x2, dis[VAR_9494].y2, dis[VAR_9494].z2, dis[VAR_9494].VAR__12302);
+   }
+
+   return 0;
+}

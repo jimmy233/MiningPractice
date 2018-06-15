@@ -1,0 +1,152 @@
+int rt1(int VAR__7685, int VAR__3918907);
+int rt2(int VAR__7685, int VAR__3918907);
+int rt3(int VAR__7685, int VAR__3918907);
+int rt4(int VAR__7685, int VAR__3918907);
+
+int VAR_SIZE[100][100];
+int sr[100][100];
+int sc[10000];
+int VAR_233    = 0;
+int VAR_666    = 0;
+int VAR__COUNT = 0;
+int VAR_FLAG   = 1;
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 100; VAR__21230++ )
+      {
+         VAR_SIZE[VAR__53647][VAR__21230] = 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR_SIZE[VAR__53647][VAR__21230] = -2;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &sr[VAR__53647][VAR__21230]);
+      }
+   }
+
+   VAR_SIZE[0][0] = 1;
+   int limit = VAR__1238129 * VAR_1238123;
+
+   while ( VAR__COUNT <= ( limit - 1 ))
+   {
+      switch ( VAR_FLAG % 4 )
+      {
+      case 1:
+         VAR_233, VAR_666 = rt1(VAR_233, VAR_666);
+         VAR__COUNT       = VAR__COUNT + 1;
+         break;
+
+      case 2:
+         VAR_233, VAR_666 = rt2(VAR_233, VAR_666);
+         VAR__COUNT       = VAR__COUNT + 1;
+         break;
+
+      case 3:
+         VAR_233, VAR_666 = rt3(VAR_233, VAR_666);
+         VAR__COUNT       = VAR__COUNT + 1;
+         break;
+
+      case 0:
+         VAR_233, VAR_666 = rt4(VAR_233, VAR_666);
+         VAR__COUNT       = VAR__COUNT + 1;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 * VAR_1238123 ); VAR__53647++ )
+   {
+      printf("%d\n", sc[VAR__53647]);
+   }
+
+   return 0;
+}
+
+
+int rt1(int VAR__7685, int VAR__3918907)
+{
+   VAR_SIZE[VAR_666][VAR_233] = sr[VAR_666][VAR_233];
+   sc[VAR__COUNT]             = VAR_SIZE[VAR_666][VAR_233];
+   VAR_233 = VAR__7685 + 1;
+   VAR_666 = VAR__3918907;
+
+   if ( VAR_SIZE[VAR_666][VAR_233] > 0 )
+   {
+      VAR_FLAG = VAR_FLAG + 1;
+      VAR_233  = VAR_233 - 1;
+      VAR_666  = VAR_666 + 1;
+   }
+
+   return VAR_233, VAR_666;
+}
+
+
+int rt2(int VAR__7685, int VAR__3918907)
+{
+   VAR_SIZE[VAR_666][VAR_233] = sr[VAR_666][VAR_233];
+   sc[VAR__COUNT]             = VAR_SIZE[VAR_666][VAR_233];
+   VAR_233 = VAR__7685;
+   VAR_666 = VAR__3918907 + 1;
+
+   if ( VAR_SIZE[VAR_666][VAR_233] > 0 )
+   {
+      VAR_FLAG = VAR_FLAG + 1;
+      VAR_666  = VAR_666 - 1;
+      VAR_233  = VAR_233 - 1;
+   }
+
+   return VAR_233, VAR_666;
+}
+
+
+int rt3(int VAR__7685, int VAR__3918907)
+{
+   VAR_SIZE[VAR_666][VAR_233] = sr[VAR_666][VAR_233];
+   sc[VAR__COUNT]             = VAR_SIZE[VAR_666][VAR_233];
+   VAR_233 = VAR__7685 - 1;
+   VAR_666 = VAR__3918907;
+
+   if ( VAR_SIZE[VAR_666][VAR_233] > 0 )
+   {
+      VAR_FLAG = VAR_FLAG + 1;
+      VAR_233  = VAR_233 + 1;
+      VAR_666  = VAR_666 - 1;
+   }
+
+   return VAR_233, VAR_666;
+}
+
+
+int rt4(int VAR__7685, int VAR__3918907)
+{
+   VAR_SIZE[VAR_666][VAR_233] = sr[VAR_666][VAR_233];
+   sc[VAR__COUNT]             = VAR_SIZE[VAR_666][VAR_233];
+   VAR_233 = VAR__7685;
+   VAR_666 = VAR__3918907 - 1;
+
+   if ( VAR_SIZE[VAR_666][VAR_233] > 0 )
+   {
+      VAR_FLAG = VAR_FLAG + 1;
+      VAR_666  = VAR_666 + 1;
+      VAR_233  = VAR_233 + 1;
+   }
+
+   return VAR_233, VAR_666;
+}

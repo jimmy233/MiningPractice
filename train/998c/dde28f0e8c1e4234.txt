@@ -1,0 +1,80 @@
+void plus(char *VAR__819283, char *VAR__19328, char *VAR__4857423)
+{
+   char VAR__TEMP;
+   int  lena;
+   int  lenb;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+
+   lena = strlen(VAR__819283);
+   lenb = strlen(VAR__19328);
+   for ( VAR__53647 = 0; ( VAR__53647 < lena ) && ( VAR__53647 < lenb ); VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] += ( VAR__819283[( lena - 1 ) - VAR__53647] + VAR__19328[( lenb - 1 ) - VAR__53647] ) - '0';
+
+      if ( VAR__4857423[VAR__53647] > '9' )
+      {
+         VAR__4857423[VAR__53647 + 1]++;
+         VAR__4857423[VAR__53647] -= 10;
+      }
+   }
+
+   if ( lena > lenb )
+   {
+      for ( VAR__53647 = lenb; VAR__53647 < lena; VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647] += VAR__819283[( lena - 1 ) - VAR__53647];
+
+         if ( VAR__4857423[VAR__53647] > '9' )
+         {
+            VAR__4857423[VAR__53647 + 1]++;
+            VAR__4857423[VAR__53647] -= 10;
+         }
+      }
+   }
+   else
+   if ( lena < lenb )
+   {
+      for ( VAR__53647 = lena; VAR__53647 < lenb; VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647] += VAR__19328[( lenb - 1 ) - VAR__53647];
+
+         if ( VAR__4857423[VAR__53647] > '9' )
+         {
+            VAR__4857423[VAR__53647 + 1]++;
+            VAR__4857423[VAR__53647] -= 10;
+         }
+      }
+   }
+
+
+   VAR__4857423[VAR__53647] += '0';
+
+   while (( VAR__4857423[VAR__53647] == '0' ) && ( VAR__53647 > 0 ))
+   {
+      VAR__53647--;
+   }
+
+   VAR__4857423[VAR__53647 + 1] = '\0';
+   for ( VAR__21230 = 0, VAR__8444594 = VAR__53647; VAR__21230 < VAR__8444594; VAR__21230++, VAR__8444594-- )
+   {
+      VAR__TEMP = VAR__4857423[VAR__8444594];
+      VAR__4857423[VAR__8444594] = VAR__4857423[VAR__21230];
+      VAR__4857423[VAR__21230]   = VAR__TEMP;
+   }
+}
+
+
+int main()
+{
+   char VAR__819283[N];
+   char VAR__19328[N];
+   char VAR__4857423[N];
+
+   scanf("%s", VAR__819283);
+   scanf("%s", VAR__19328);
+   memset(VAR__4857423, 0, sizeof( VAR__4857423 ));
+   plus(VAR__819283, VAR__19328, VAR__4857423);
+   printf("%s", VAR__4857423);
+}

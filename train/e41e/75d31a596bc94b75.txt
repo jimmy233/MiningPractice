@@ -1,0 +1,51 @@
+int main()
+{
+   char VAR__TEMP[101];
+
+   cin.getline(VAR__TEMP, 101);
+
+   if ( strlen(VAR__TEMP) == 1 )
+   {
+      (( cout << 0 ) << endl ) << VAR__TEMP[0];
+   }
+   else
+   {
+      int number[100];
+      int remainder;
+      for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__TEMP); VAR__53647++ )
+      {
+         number[VAR__53647] = VAR__TEMP[VAR__53647] - 48;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < ( strlen(VAR__TEMP) - 1 ); VAR__53647++ )
+      {
+         number[VAR__53647 + 1] += ( number[VAR__53647] % 13 ) * 10;
+         number[VAR__53647]     /= 13;
+      }
+
+      remainder = number[strlen(VAR__TEMP) - 1] % 13;
+      number[strlen(VAR__TEMP) - 1] /= 13;
+      for ( int VAR__53647 = 0; VAR__53647 < ( strlen(VAR__TEMP) - 1 ); VAR__53647++ )
+      {
+         if (( number[VAR__53647] == 0 ) && ( number[VAR__53647 + 1] != 0 ))
+         {
+            for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < strlen(VAR__TEMP); VAR__21230++ )
+            {
+               cout << number[VAR__21230];
+            }
+
+            cout << endl;
+            break;
+         }
+         else
+         if ( VAR__53647 == ( strlen(VAR__TEMP) - 2 ))
+         {
+            ( cout << 0 ) << endl;
+         }
+      }
+
+      cout << remainder;
+   }
+
+   return 0;
+}

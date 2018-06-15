@@ -1,0 +1,48 @@
+int main()
+{
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__7685;
+   int maxnumber;
+
+   scanf("%d", &VAR__1238129);
+   int  booknum[1000];
+   char VAR__8444594[1000][30];
+   int  author[27] = { 0 };
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d %s", &booknum[VAR__53647], VAR__8444594[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__8444594[VAR__53647][VAR__21230] != '\0'; VAR__21230++ )
+      {
+         author[( VAR__8444594[VAR__53647][VAR__21230] - 'A' ) + 1]++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= 26; VAR__53647++ )
+   {
+      if ( author[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX  = author[VAR__53647];
+         maxnumber = VAR__53647;
+      }
+   }
+
+   char who;
+   who = ( 'A' + maxnumber ) - 1;
+   printf("%c\n", who);
+   printf("%d\n", VAR__MAX);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(VAR__8444594[VAR__53647]); VAR__21230++ )
+      {
+         if ( VAR__8444594[VAR__53647][VAR__21230] == who )
+         {
+            printf("%d\n", booknum[VAR__53647]);
+         }
+      }
+   }
+
+   return 0;
+}

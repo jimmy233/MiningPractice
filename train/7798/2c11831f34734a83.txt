@@ -1,0 +1,54 @@
+int main()
+{
+   struct bookst
+   {
+      int  Num;
+      char name[26];
+   };
+   struct bookst *book;
+   int           cnt[26];
+   int           VAR__NUM;
+   int           VAR__53647;
+   int           VAR__21230;
+   int           VAR__MAX = 0;
+   int           max_idx  = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      cnt[VAR__53647] = 0;
+   }
+
+   scanf("%d", &VAR__NUM);
+   book = (struct bookst *)malloc(VAR__NUM * ( sizeof( struct bookst )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      scanf("%d%s", &book[VAR__53647].Num, book[VAR__53647].name);
+      for ( VAR__21230 = 0; book[VAR__53647].name[VAR__21230] != 0; VAR__21230++ )
+      {
+         cnt[book[VAR__53647].name[VAR__21230] - 'A']++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( cnt[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = cnt[VAR__53647];
+         max_idx  = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", 'A' + max_idx, VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; book[VAR__53647].name[VAR__21230] != 0; VAR__21230++ )
+      {
+         if ( book[VAR__53647].name[VAR__21230] == ( 'A' + max_idx ))
+         {
+            printf("%d\n", book[VAR__53647].Num);
+         }
+      }
+   }
+
+   return 0;
+}

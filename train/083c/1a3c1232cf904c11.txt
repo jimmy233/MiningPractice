@@ -1,0 +1,74 @@
+char ch(char VAR__819283)
+{
+   char VAR__4857423;
+
+   if (( VAR__819283 >= 'A' ) && ( VAR__819283 <= 'Z' ))
+   {
+      VAR__4857423 = 'A' - 10;
+   }
+   else
+   if (( VAR__819283 >= 'a' ) && ( VAR__819283 <= 'z' ))
+   {
+      VAR__4857423 = 'a' - 10;
+   }
+   else
+   {
+      VAR__4857423 = '0';
+   }
+
+
+   return VAR__4857423;
+}
+
+
+void main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  VAR__21230;
+   long VAR__SUM         = 0;
+   char VAR_1238123[32]  = "\0";
+   char VAR__1238129[32] = "\0";
+   char VAR__4857423;
+
+   scanf("%d ", &VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < 32; VAR__53647++ )
+   {
+      scanf("%c", &VAR_1238123[VAR__53647]);
+
+      if ( VAR_1238123[VAR__53647] == ' ' )
+      {
+         break;
+      }
+   }
+
+   scanf("%d", &VAR__19328);
+   for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+   {
+      VAR__SUM = (( VAR__SUM * VAR__819283 ) + VAR_1238123[VAR__21230] ) - ch(VAR_1238123[VAR__21230]);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < 32; VAR__21230++ )
+   {
+      VAR__4857423 = '0';
+
+      if (( VAR__SUM % VAR__19328 ) > 9 )
+      {
+         VAR__4857423 = 'A' - 10;
+      }
+
+      VAR__1238129[VAR__21230] = ( VAR__SUM % VAR__19328 ) + VAR__4857423;
+      VAR__SUM = VAR__SUM / VAR__19328;
+
+      if ( VAR__SUM == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__21230; VAR__53647++ )
+   {
+      printf("%c", VAR__1238129[VAR__21230 - VAR__53647]);
+   }
+}

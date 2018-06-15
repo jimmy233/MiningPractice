@@ -1,0 +1,80 @@
+int strpos(char *VAR_9494, char *VAR__temp);
+
+int main()
+{
+   char VAR_9494[50];
+   char VAR_21983012[50];
+
+   scanf("%s%s", VAR_9494, VAR_21983012);
+   printf("%d\n", strpos(VAR_21983012, VAR_9494));
+   return 0;
+}
+
+
+int strpos(char *VAR_9494, char *VAR__temp)
+{
+   int len_s = strlen(VAR_9494);
+   int len_t = strlen(VAR__temp);
+   int VAR__NEXT[50];
+
+   VAR__NEXT[1] = 0;
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 2; VAR__53647 < len_t; VAR__53647++ )
+   {
+      VAR__21230 = VAR__NEXT[VAR__53647 - 1];
+
+      while (( VAR__temp[VAR__21230] != VAR__temp[VAR__53647 - 1] ) && ( VAR__21230 > 0 ))
+      {
+         VAR__21230 = VAR__NEXT[VAR__21230];
+      }
+
+      if ( VAR__21230 == 0 )
+      {
+         if ( VAR__temp[VAR__21230] == VAR__temp[VAR__53647 - 1] )
+         {
+            VAR__NEXT[VAR__53647] = VAR__21230 + 1;
+         }
+         else
+         {
+            VAR__NEXT[VAR__53647] = VAR__21230;
+         }
+      }
+
+      else
+      {
+         VAR__NEXT[VAR__53647] = VAR__21230 + 1;
+      }
+   }
+
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+   int pos = 0;
+
+   while ( pos <= ( len_s - len_t ))
+   {
+      while ((( VAR__53647 < len_s ) && ( VAR__21230 < len_t )) && ( VAR_9494[VAR__53647] == VAR__temp[VAR__21230] ))
+      {
+         VAR__53647++;
+         VAR__21230++;
+      }
+
+      if ( VAR__21230 == len_t )
+      {
+         return pos;
+      }
+      else
+      if ( VAR__21230 == 0 )
+      {
+         VAR__53647++;
+         pos = VAR__53647;
+      }
+      else
+      {
+         VAR__21230 = VAR__NEXT[VAR__21230];
+         pos        = VAR__53647 - VAR__21230;
+      }
+   }
+
+   return -1;
+}

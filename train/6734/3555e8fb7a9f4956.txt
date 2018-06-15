@@ -1,0 +1,69 @@
+struct monkey
+{
+   int           VAR__NUM;
+   struct monkey *VAR__NEXT;
+};
+int monkeyking(int VAR_1238123, int VAR__1238129, struct monkey *VAR__TEMP)
+{
+   int VAR__53647;
+
+   while ( VAR__TEMP->VAR__NEXT != VAR__TEMP )
+   {
+      if ( VAR__1238129 == 1 )
+      {
+         return VAR_1238123;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 2 ); VAR__53647++ )
+      {
+         VAR__TEMP = VAR__TEMP->VAR__NEXT;
+      }
+
+      VAR__TEMP->VAR__NEXT = VAR__TEMP->VAR__NEXT->VAR__NEXT;
+      VAR__TEMP            = VAR__TEMP->VAR__NEXT;
+   }
+
+   return VAR__TEMP->VAR__NUM;
+}
+
+
+void main()
+{
+   struct monkey *VAR__TEMP = NULL;
+   struct monkey *pt        = NULL;
+   struct monkey *VAR__HEAD = NULL;
+   int           VAR__53647;
+   int           VAR__1238129 = 1;
+   int           VAR_1238123  = 1;
+
+   while (( VAR__1238129 != 0 ) && ( VAR_1238123 != 0 ))
+   {
+      scanf("%d %d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR_1238123 == 0 ) && ( VAR__1238129 == 0 ))
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         pt = (struct monkey *)malloc(sizeof( struct monkey ));
+
+         if ( VAR__53647 == 0 )
+         {
+            VAR__HEAD = pt;
+            VAR__TEMP = pt;
+         }
+         else
+         {
+            VAR__TEMP->VAR__NEXT = pt;
+            VAR__TEMP            = pt;
+         }
+
+         pt->VAR__NUM = VAR__53647 + 1;
+      }
+
+      pt->VAR__NEXT = VAR__HEAD;
+      printf("%d\n", monkeyking(VAR_1238123, VAR__1238129, VAR__HEAD));
+   }
+}

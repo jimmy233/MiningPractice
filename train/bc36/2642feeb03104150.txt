@@ -1,0 +1,72 @@
+int main()
+{
+   int    all;
+   int    count1;
+   int    count2;
+   int    VAR__53647;
+   int    VAR_233;
+   double h1[40];
+   double h2[40];
+   double VAR_2890;
+   double ex;
+   char   input[6];
+
+   scanf("%d", &all);
+   count1 = 0;
+   count2 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < all; VAR__53647++ )
+   {
+      scanf("\n%s %lf", input, &VAR_2890);
+
+      if ( input[0] == 'm' )
+      {
+         h1[count1] = VAR_2890;
+         count1++;
+      }
+
+      if ( input[0] == 'f' )
+      {
+         h2[count2] = VAR_2890;
+         count2++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count1; VAR__53647++ )
+   {
+      for ( VAR_233 = 0; VAR_233 < ( count1 - 1 ); VAR_233++ )
+      {
+         if ( h1[VAR_233] > h1[VAR_233 + 1] )
+         {
+            ex = h1[VAR_233 + 1];
+            h1[VAR_233 + 1] = h1[VAR_233];
+            h1[VAR_233]     = ex;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count2; VAR__53647++ )
+   {
+      for ( VAR_233 = 0; VAR_233 < ( count2 - 1 ); VAR_233++ )
+      {
+         if ( h2[VAR_233] < h2[VAR_233 + 1] )
+         {
+            ex = h2[VAR_233 + 1];
+            h2[VAR_233 + 1] = h2[VAR_233];
+            h2[VAR_233]     = ex;
+         }
+      }
+   }
+
+   printf("%.2lf", h1[0]);
+   for ( VAR__53647 = 1; VAR__53647 < count1; VAR__53647++ )
+   {
+      printf(" %.2lf", h1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < count2; VAR__53647++ )
+   {
+      printf(" %.2lf", h2[VAR__53647]);
+   }
+
+   return 0;
+}

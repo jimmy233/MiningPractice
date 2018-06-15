@@ -1,0 +1,79 @@
+int change(char VAR__1238129);
+char trans(int VAR_1238123);
+
+int main()
+{
+   char VAR__127322[10000];
+   int  VAR_9Q8Q90[10000];
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  LEN_OF_STH;
+   int  VAR_9494  = 0;
+   int  VAR__temp = 0;
+
+   scanf("%d %s %d", &VAR__819283, VAR__127322, &VAR__19328);
+   LEN_OF_STH = strlen(VAR__127322);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR_9494 = change(VAR__127322[VAR__53647]) + ( VAR_9494 * VAR__819283 );
+   }
+
+   while ( VAR_9494 / VAR__19328 )
+   {
+      VAR_9Q8Q90[VAR__temp] = VAR_9494 % VAR__19328;
+      VAR_9494 /= VAR__19328;
+      VAR__temp++;
+   }
+
+   VAR_9Q8Q90[VAR__temp] = VAR_9494 % VAR__19328;
+   for ( VAR__53647 = VAR__temp; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", trans(VAR_9Q8Q90[VAR__53647]));
+   }
+
+   return 0;
+}
+
+
+int change(char VAR__1238129)
+{
+   int result;
+
+   if ((( VAR__1238129 - '0' ) >= 0 ) && (( VAR__1238129 - '0' ) < 10 ))
+   {
+      result = VAR__1238129 - '0';
+   }
+   else
+   if ((( VAR__1238129 - 'a' ) >= 0 ) && (( VAR__1238129 - 'a' ) < 26 ))
+   {
+      result = ( VAR__1238129 - 'a' ) + 10;
+   }
+   else
+   if ((( VAR__1238129 - 'A' ) >= 0 ) && (( VAR__1238129 - 'A' ) < 26 ))
+   {
+      result = ( VAR__1238129 - 'A' ) + 10;
+   }
+
+
+
+   return result;
+}
+
+
+char trans(int VAR_1238123)
+{
+   char last;
+
+   if (( VAR_1238123 >= 0 ) || ( VAR_1238123 < 10 ))
+   {
+      last = '0' + VAR_1238123;
+   }
+
+   if ( VAR_1238123 > 9 )
+   {
+      last = ( 'A' + VAR_1238123 ) - 10;
+   }
+
+   return last;
+}

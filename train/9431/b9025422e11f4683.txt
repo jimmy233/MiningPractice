@@ -1,0 +1,51 @@
+struct node;
+struct node
+{
+   char        id[LEN_OF_STH];
+   char        name[LEN_OF_STH];
+   char        sexual[LEN_OF_STH];
+   char        age[LEN_OF_STH];
+   char        score[LEN_OF_STH];
+   char        addr[LEN_OF_STH];
+   struct node *VAR__NEXT;
+   struct node *pre;
+};
+char end[LEN_OF_STH] = "end";
+int main()
+{
+   struct node *VAR_233;
+
+   VAR_233      = (struct node *)malloc(sizeof( struct node ));
+   VAR_233->pre = NULL;
+
+   while ( 1 )
+   {
+      scanf("%s", VAR_233->id);
+
+      if ( strcmp(VAR_233->id, end) == 0 )
+      {
+         break;
+      }
+
+      scanf("%s%s%s%s%s", VAR_233->name, VAR_233->sexual, VAR_233->age, VAR_233->score, VAR_233->addr);
+      VAR_233->VAR__NEXT      = (struct node *)malloc(sizeof( struct node ));
+      VAR_233->VAR__NEXT->pre = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = VAR_233->pre;
+   free(VAR_233->VAR__NEXT);
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s %s %s %s %s %s\n", VAR_233->id, VAR_233->name, VAR_233->sexual, VAR_233->age, VAR_233->score, VAR_233->addr);
+      VAR_233 = VAR_233->pre;
+
+      if ( VAR_233 != NULL )
+      {
+         free(VAR_233->VAR__NEXT);
+      }
+   }
+
+   return 0;
+}

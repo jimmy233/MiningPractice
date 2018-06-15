@@ -1,0 +1,99 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  cnt  = 1;
+   int  maxx = 0;
+   char VAR__819283[501];
+   char VAR__19328[501][5] = { '\0' };
+   char VAR__12302[501][5] = { '\0' };
+   char VAR__4857423[1][5];
+   char VAR__MAX[501][5] = { '\0' };
+
+   ( cin >> VAR_1238123 ) >> VAR__819283;
+   int LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= (( VAR_1238123 + VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         *((( *( VAR__12302 + VAR__53647 )) + VAR__21230 ) - VAR__53647 ) = *( VAR__819283 + VAR__21230 );
+         *((( *( VAR__19328 + VAR__53647 )) + VAR__21230 ) - VAR__53647 ) = *( VAR__819283 + VAR__21230 );
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+      {
+         if ( strcmp(VAR__19328[VAR__21230], VAR__19328[VAR__21230 + 1]) > 0 )
+         {
+            strcpy(VAR__4857423[0], VAR__19328[VAR__21230]);
+            strcpy(VAR__19328[VAR__21230], VAR__19328[VAR__21230 + 1]);
+            strcpy(VAR__19328[VAR__21230 + 1], VAR__4857423[0]);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( strcmp(VAR__19328[VAR__53647], VAR__19328[VAR__53647 + 1]) == 0 )
+      {
+         cnt++;
+      }
+      else
+      if ( cnt >= maxx )
+      {
+         maxx = cnt;
+         cnt  = 1;
+      }
+      else
+      {
+         cnt = 1;
+      }
+   }
+
+   if ( maxx != 1 )
+   {
+      ( cout << maxx ) << endl;
+   }
+   else
+   {
+      ( cout << "NO" ) << endl;
+      return 0;
+   }
+
+   cnt = 1;
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( strcmp(VAR__19328[VAR__53647], VAR__19328[VAR__53647 + 1]) == 0 )
+      {
+         cnt++;
+      }
+      else
+      if ( cnt == maxx )
+      {
+         cnt = 1;
+         strcpy(VAR__MAX[VAR__53647], VAR__19328[VAR__53647]);
+      }
+      else
+      {
+         cnt = 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+      {
+         if ( strcmp(VAR__12302[VAR__53647], VAR__MAX[VAR__21230]) == 0 )
+         {
+            VAR__MAX[VAR__21230][0] = '\0';
+            ( cout << ( *( VAR__12302 + VAR__53647 ))) << endl;
+            continue;
+         }
+      }
+   }
+
+   return 0;
+}

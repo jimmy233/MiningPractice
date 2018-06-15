@@ -1,0 +1,68 @@
+struct couple
+{
+   int VAR__7685;
+   int VAR__3918907;
+};
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   struct couple line[VAR_1238123];
+   struct couple VAR__TEMP;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d%d", &line[VAR__53647].VAR__7685, &line[VAR__53647].VAR__3918907);
+   }
+
+   int VAR__MIN = line[0].VAR__7685;
+   int VAR__MAX = line[0].VAR__3918907;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( line[VAR__53647].VAR__7685 < VAR__MIN )
+      {
+         VAR__MIN = line[VAR__53647].VAR__7685;
+      }
+
+      if ( line[VAR__53647].VAR__3918907 > VAR__MAX )
+      {
+         VAR__MAX = line[VAR__53647].VAR__3918907;
+      }
+   }
+
+   int VAR__819283[( VAR__MAX - VAR__MIN ) + 1];
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__MAX - VAR__MIN ); VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = line[VAR__53647].VAR__7685 - VAR__MIN; VAR__21230 <= (( line[VAR__53647].VAR__3918907 - VAR__MIN ) - 1 ); VAR__21230++ )
+      {
+         VAR__819283[VAR__21230] = 0;
+      }
+   }
+
+   int VAR_FLAG = 1;
+   for ( VAR__53647 = 0; VAR__53647 <= (( VAR__MAX - VAR__MIN ) - 1 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] != 0 )
+      {
+         VAR_FLAG = 0;
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      printf("%d %d", VAR__MIN, VAR__MAX);
+   }
+
+   return 0;
+}

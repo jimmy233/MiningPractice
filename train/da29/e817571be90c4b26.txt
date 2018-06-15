@@ -1,0 +1,96 @@
+char flu[100][100] = { '\0' };
+int  VAR_1238123;
+int main()
+{
+   int flu_infection(void);
+
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int ill = 0;
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         cin >> flu[VAR__53647][VAR__21230];
+
+         if ( flu[VAR__53647][VAR__21230] == '@' )
+         {
+            ill++;
+         }
+      }
+   }
+
+   cin >> VAR__1238129;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      ill = flu_infection();
+   }
+
+   ( cout << ill ) << endl;
+   return 0;
+}
+
+
+int flu_infection(void)
+{
+   int VAR__COUNT = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__NUM = 0;
+   int people[10000][2];
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( flu[VAR__53647][VAR__21230] == '@' )
+         {
+            people[VAR__NUM][0] = VAR__53647;
+            people[VAR__NUM][1] = VAR__21230;
+            VAR__NUM++;
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR__NUM; VAR__8444594++ )
+   {
+      VAR__53647 = people[VAR__8444594][0];
+      VAR__21230 = people[VAR__8444594][1];
+
+      if (( VAR__53647 > 0 ) && ( flu[VAR__53647 - 1][VAR__21230] == '.' ))
+      {
+         flu[VAR__53647 - 1][VAR__21230] = '@';
+      }
+
+      if (( VAR__53647 < ( VAR_1238123 - 1 )) && ( flu[VAR__53647 + 1][VAR__21230] == '.' ))
+      {
+         flu[VAR__53647 + 1][VAR__21230] = '@';
+      }
+
+      if (( VAR__21230 > 0 ) && ( flu[VAR__53647][VAR__21230 - 1] == '.' ))
+      {
+         flu[VAR__53647][VAR__21230 - 1] = '@';
+      }
+
+      if (( VAR__21230 < ( VAR_1238123 - 1 )) && ( flu[VAR__53647][VAR__21230 + 1] == '.' ))
+      {
+         flu[VAR__53647][VAR__21230 + 1] = '@';
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( flu[VAR__53647][VAR__21230] == '@' )
+         {
+            VAR__COUNT++;
+         }
+      }
+   }
+
+   return VAR__COUNT;
+}

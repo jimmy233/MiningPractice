@@ -1,0 +1,61 @@
+int daytable[][12] = { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }, { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } };
+int daynum(int year, int month, int day)
+{
+   int leap;
+   int VAR__53647;
+   int day1;
+
+   day1 = day;
+
+   if (( year % 4 ) != 0 )
+   {
+      leap = 0;
+   }
+   else
+   if (((( year % 100 ) == 0 ) && (( year % 400 ) != 0 )) || (( year % 3200 ) == 0 ))
+   {
+      leap = 0;
+   }
+   else
+   {
+      leap = 1;
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      day1 += daytable[leap][VAR__53647];
+   }
+
+   return day1;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR_1238123;
+   int VAR__3918907;
+   int m1;
+   int m2;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> VAR__3918907 ) >> m1 ) >> m2;
+      VAR__8444594 = daynum(VAR__3918907, m1, 1) - daynum(VAR__3918907, m2, 1);
+      VAR__8444594 = abs(VAR__8444594);
+
+      if (( VAR__8444594 % 7 ) == 0 )
+      {
+         ( cout << "YES" ) << endl;
+      }
+      else
+      {
+         ( cout << "NO" ) << endl;
+      }
+   }
+
+   return 0;
+}

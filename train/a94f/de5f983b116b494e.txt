@@ -1,0 +1,76 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int det[100][100];
+   int ROW;
+   int COL;
+   int row1;
+   int row2;
+   int col1;
+   int col2;
+   int VAR__COUNT = 0;
+
+   scanf("%d%d", &ROW, &COL);
+   for ( VAR__21230 = 0; VAR__21230 < ROW; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < COL; VAR__53647++ )
+      {
+         scanf("%d", &det[VAR__21230][VAR__53647]);
+      }
+   }
+
+   row1 = 0;
+   row2 = ROW - 1;
+   col1 = 0;
+   col2 = COL - 1;
+
+   while (( row2 >= row1 ) && ( col2 >= col1 ))
+   {
+      for ( VAR__53647 = col1; VAR__53647 <= col2; VAR__53647++ )
+      {
+         printf("%d\n", det[row1][VAR__53647]);
+         VAR__COUNT++;
+      }
+
+      if ( VAR__COUNT == ( ROW * COL ))
+      {
+         break;
+      }
+
+      for ( VAR__21230 = row1 + 1; VAR__21230 <= row2; VAR__21230++ )
+      {
+         printf("%d\n", det[VAR__21230][col2]);
+         VAR__COUNT++;
+      }
+
+      if ( VAR__COUNT == ( ROW * COL ))
+      {
+         break;
+      }
+
+      for ( VAR__53647 = col2 - 1; VAR__53647 >= col1; VAR__53647-- )
+      {
+         printf("%d\n", det[row2][VAR__53647]);
+         VAR__COUNT++;
+      }
+
+      if ( VAR__COUNT == ( ROW * COL ))
+      {
+         break;
+      }
+
+      for ( VAR__21230 = row2 - 1; VAR__21230 >= ( row1 + 1 ); VAR__21230-- )
+      {
+         printf("%d\n", det[VAR__21230][col1]);
+         VAR__COUNT++;
+      }
+
+      col1++;
+      col2--;
+      row1++;
+      row2--;
+   }
+
+   return 0;
+}

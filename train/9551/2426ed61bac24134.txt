@@ -1,0 +1,82 @@
+int main()
+{
+   char tmp[100];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  o          = 0;
+   int  tmpn;
+
+   struct
+   {
+      char VAR__NUM[100];
+      int  VAR__819283;
+      int  VAR__8444594;
+   }
+   VAR_9494[1000];
+   struct
+   {
+      char VAR__NUM[100];
+      int  VAR__819283;
+      int  VAR__8444594;
+   }
+   VAR__temp[1000];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", VAR_9494[VAR__53647].VAR__NUM, &VAR_9494[VAR__53647].VAR__819283);
+
+      if ( VAR_9494[VAR__53647].VAR__819283 >= 60 )
+      {
+         VAR_9494[VAR__53647].VAR__8444594 = 1;
+      }
+      else
+      {
+         VAR_9494[VAR__53647].VAR__8444594 = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647].VAR__8444594 == 1 )
+      {
+         strcpy(VAR__temp[VAR__21230].VAR__NUM, VAR_9494[VAR__53647].VAR__NUM);
+         VAR__temp[VAR__21230].VAR__819283 = VAR_9494[VAR__53647].VAR__819283;
+         VAR__21230++;
+         o++;
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( VAR__temp[VAR__21230].VAR__819283 < VAR__temp[VAR__21230 + 1].VAR__819283 )
+         {
+            tmpn = VAR__temp[VAR__21230].VAR__819283;
+            VAR__temp[VAR__21230].VAR__819283     = VAR__temp[VAR__21230 + 1].VAR__819283;
+            VAR__temp[VAR__21230 + 1].VAR__819283 = tmpn;
+            strcpy(tmp, VAR__temp[VAR__21230].VAR__NUM);
+            strcpy(VAR__temp[VAR__21230].VAR__NUM, VAR__temp[VAR__21230 + 1].VAR__NUM);
+            strcpy(VAR__temp[VAR__21230 + 1].VAR__NUM, tmp);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < o; VAR__53647++ )
+   {
+      printf("%s\n", VAR__temp[VAR__53647].VAR__NUM);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647].VAR__8444594 == 1 )
+      {
+         continue;
+      }
+
+      printf("%s\n", VAR_9494[VAR__53647].VAR__NUM);
+   }
+
+   return 0;
+}

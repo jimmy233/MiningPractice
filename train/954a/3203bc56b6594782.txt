@@ -1,0 +1,74 @@
+struct Student
+{
+   char           name[20];
+   int            final;
+   int            evaluate;
+   char           office;
+   char           west;
+   int            paper;
+   int            money;
+   struct Student *VAR__NEXT;
+};
+int main()
+{
+   struct Student *VAR__HEAD;
+   struct Student *VAR_233;
+   struct Student *best;
+
+   VAR__HEAD = (struct Student *)malloc(sizeof( struct Student ));
+   VAR_233   = VAR__HEAD;
+   int N;
+   int VAR__53647;
+   scanf("%d", &N);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR_233->name, &VAR_233->final, &VAR_233->evaluate, &VAR_233->office, &VAR_233->west, &VAR_233->paper);
+      VAR_233->money = 0;
+
+      if (( VAR_233->final > 80 ) && ( VAR_233->paper > 0 ))
+      {
+         VAR_233->money += 8000;
+      }
+
+      if (( VAR_233->final > 85 ) && ( VAR_233->evaluate > 80 ))
+      {
+         VAR_233->money += 4000;
+      }
+
+      if ( VAR_233->final > 90 )
+      {
+         VAR_233->money += 2000;
+      }
+
+      if (( VAR_233->final > 85 ) && ( VAR_233->west == 'Y' ))
+      {
+         VAR_233->money += 1000;
+      }
+
+      if (( VAR_233->evaluate > 80 ) && ( VAR_233->office == 'Y' ))
+      {
+         VAR_233->money += 850;
+      }
+
+      VAR_233->VAR__NEXT = (struct Student *)malloc(sizeof( struct Student ));
+      VAR_233            = VAR_233->VAR__NEXT;
+   }
+
+   int all = 0;
+   VAR_233 = VAR__HEAD;
+   best    = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      all += VAR_233->money;
+
+      if ( VAR_233->money > best->money )
+      {
+         best = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%s\n%d\n%d", best->name, best->money, all);
+   return 0;
+}

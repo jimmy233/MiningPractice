@@ -1,0 +1,93 @@
+int main()
+{
+   int VAR_1238123;
+   int tian[1050];
+   int qi[1050];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR_2890;
+   int vic = 0;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      int head1 = 0;
+      int head2 = 0;
+      int end1  = VAR_1238123 - 1;
+      int end2  = VAR_1238123 - 1;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qi[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( tian[VAR__21230] < tian[VAR__21230 + 1] )
+            {
+               VAR__temp            = tian[VAR__21230];
+               tian[VAR__21230]     = tian[VAR__21230 + 1];
+               tian[VAR__21230 + 1] = VAR__temp;
+            }
+
+            if ( qi[VAR__21230] < qi[VAR__21230 + 1] )
+            {
+               VAR_2890           = qi[VAR__21230];
+               qi[VAR__21230]     = qi[VAR__21230 + 1];
+               qi[VAR__21230 + 1] = VAR_2890;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( tian[head1] > qi[head2] )
+         {
+            vic++;
+            head1++;
+            head2++;
+         }
+         else
+         if ( tian[end1] > qi[end2] )
+         {
+            vic++;
+            end1--;
+            end2--;
+         }
+         else
+         if ( tian[head1] <= qi[head2] )
+         {
+            if ( tian[end1] < qi[head2] )
+            {
+               vic--;
+               end1--;
+               head2++;
+            }
+            else
+            {
+               end1--;
+               head2++;
+            }
+         }
+         else
+         if ( tian[end1] <= qi[end2] )
+         {
+            vic--;
+            end1--;
+            head2++;
+         }
+      }
+
+      printf("%d\n", 200 * vic);
+      vic = 0;
+      scanf("%d", &VAR_1238123);
+   }
+}

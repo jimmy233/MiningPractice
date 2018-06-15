@@ -1,0 +1,75 @@
+int bac[11][11];
+int tp[11][11];
+int VAR_1238123;
+int VAR__1238129;
+void mul(int VAR__7685)
+{
+   if ( VAR__7685 == VAR_1238123 )
+   {
+      return;
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < 11; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < 11; VAR__21230++ )
+         {
+            tp[VAR__53647][VAR__21230] = 0;
+         }
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+         {
+            tp[VAR__53647 - 1][VAR__21230]     += bac[VAR__53647][VAR__21230];
+            tp[VAR__53647 + 1][VAR__21230]     += bac[VAR__53647][VAR__21230];
+            tp[VAR__53647 - 1][VAR__21230 - 1] += bac[VAR__53647][VAR__21230];
+            tp[VAR__53647 + 1][VAR__21230 - 1] += bac[VAR__53647][VAR__21230];
+            tp[VAR__53647 - 1][VAR__21230 + 1] += bac[VAR__53647][VAR__21230];
+            tp[VAR__53647 + 1][VAR__21230 + 1] += bac[VAR__53647][VAR__21230];
+            tp[VAR__53647][VAR__21230 - 1]     += bac[VAR__53647][VAR__21230];
+            tp[VAR__53647][VAR__21230 + 1]     += bac[VAR__53647][VAR__21230];
+            tp[VAR__53647][VAR__21230]         += 2 * bac[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+         {
+            bac[VAR__53647][VAR__21230] = tp[VAR__53647][VAR__21230];
+         }
+      }
+
+      mul(VAR__7685 + 1);
+   }
+}
+
+
+int main()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < 11; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 11; VAR__21230++ )
+      {
+         bac[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   bac[5][5] = VAR__1238129;
+   mul(0);
+   for ( int VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      cout << bac[VAR__53647][1];
+      for ( int VAR__21230 = 2; VAR__21230 <= 9; VAR__21230++ )
+      {
+         ( cout << " " ) << bac[VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

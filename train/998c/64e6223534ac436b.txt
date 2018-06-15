@@ -1,0 +1,119 @@
+int main()
+{
+   char VAR__819283[251] = { '\0' };
+   char VAR__19328[251]  = { '\0' };
+   char VAR__4857423;
+   char VAR__TEMP[251];
+   char add[252] = { '\0' };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  la;
+   int  lb;
+
+   scanf("%s", VAR__819283);
+   scanf("%s", VAR__19328);
+   la     = strlen(VAR__819283);
+   lb     = strlen(VAR__19328);
+   add[0] = '0';
+
+   if ( la > lb )
+   {
+      VAR__8444594 = la;
+      la           = lb;
+      lb           = VAR__8444594;
+      strcpy(VAR__TEMP, VAR__819283);
+      strcpy(VAR__819283, VAR__19328);
+      strcpy(VAR__19328, VAR__TEMP);
+   }
+
+   VAR__21230 = lb - 1;
+   VAR__53647 = la - 1;
+   for ( VAR__53647 = la - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__4857423 = ( VAR__819283[VAR__53647] + VAR__19328[VAR__21230] ) - 48;
+
+      if ( VAR__4857423 <= '9' )
+      {
+         add[VAR__21230 + 1] = add[VAR__21230 + 1] + VAR__4857423;
+
+         if ( add[VAR__21230 + 1] > '9' )
+         {
+            add[VAR__21230 + 1] = add[VAR__21230 + 1] - 10;
+
+            if ( VAR__21230 == 0 )
+            {
+               add[VAR__21230] = '1';
+            }
+            else
+            {
+               add[VAR__21230] = '1' - 48;
+            }
+         }
+      }
+      else
+      {
+         add[VAR__21230 + 1] = ( add[VAR__21230 + 1] + VAR__4857423 ) - 10;
+
+         if ( VAR__21230 == 0 )
+         {
+            add[VAR__21230] = '1';
+         }
+         else
+         {
+            add[VAR__21230] = '1' - 48;
+         }
+      }
+
+      VAR__21230--;
+   }
+
+   VAR__8444594 = VAR__21230;
+
+   if ( lb > la )
+   {
+      for ( VAR__21230 = VAR__8444594; VAR__21230 >= 0; VAR__21230-- )
+      {
+         add[VAR__21230 + 1] = add[VAR__21230 + 1] + VAR__19328[VAR__21230];
+
+         if ( add[VAR__21230 + 1] > '9' )
+         {
+            add[VAR__21230 + 1] = add[VAR__21230 + 1] - 10;
+
+            if ( VAR__21230 == 0 )
+            {
+               add[VAR__21230] = '1';
+            }
+            else
+            {
+               add[VAR__21230] = '1' - 48;
+            }
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( lb + 1 ); VAR__53647++ )
+   {
+      if ( add[VAR__53647] != '0' )
+      {
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 != ( lb + 1 ))
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__53647 = VAR__8444594; VAR__53647 < ( lb + 1 ); VAR__53647++ )
+      {
+         printf("%c", add[VAR__53647]);
+      }
+   }
+   else
+   {
+      printf("0");
+   }
+
+   return 0;
+}

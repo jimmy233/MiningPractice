@@ -1,0 +1,53 @@
+void search(char A_STRING[502], int LEN_OF_STH, int VAR__temp, char VAR_233, char VAR_666)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129 = 0;
+
+   if ( A_STRING[LEN_OF_STH - 1] == '0' )
+   {
+      return;
+   }
+
+   for ( VAR__21230 = VAR__temp; ( VAR__21230 < LEN_OF_STH ) && ( VAR__1238129 == 0 ); VAR__21230++ )
+   {
+      if ( A_STRING[VAR__21230] == VAR_666 )
+      {
+         for ( VAR__53647 = VAR__21230 - 1; ( VAR__53647 >= 0 ) && ( VAR__1238129 == 0 ); VAR__53647-- )
+         {
+            if ( A_STRING[VAR__53647] == VAR_233 )
+            {
+               A_STRING[VAR__53647] = '0';
+               A_STRING[VAR__21230] = '0';
+               ((( cout << VAR__53647 ) << " " ) << VAR__21230 ) << endl;
+               VAR__1238129 = 1;
+            }
+         }
+      }
+   }
+
+   search(A_STRING, LEN_OF_STH, VAR__21230, VAR_233, VAR_666);
+}
+
+
+int main()
+{
+   char A_STRING[502];
+   char VAR_233;
+   char VAR_666;
+
+   cin >> A_STRING;
+   int LEN_OF_STH = strlen(A_STRING);
+   VAR_233 = A_STRING[0];
+   for ( int VAR__53647 = 1; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] != VAR_233 )
+      {
+         VAR_666 = A_STRING[VAR__53647];
+         break;
+      }
+   }
+
+   search(A_STRING, LEN_OF_STH, 1, VAR_233, VAR_666);
+   return 0;
+}

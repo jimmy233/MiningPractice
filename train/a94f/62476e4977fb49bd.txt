@@ -1,0 +1,155 @@
+int VAR__819283[MAX][MAX];
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647][VAR__21230]);
+      }
+   }
+
+   int rs = 0;
+   int re = VAR__1238129 - 1;
+   int cs = 0;
+   int ce = VAR_1238123 - 1;
+
+   while (( re >= rs ) && ( ce >= cs ))
+   {
+      if ( re > rs )
+      {
+         if ( ce > cs )
+         {
+            for ( VAR__21230 = cs; VAR__21230 <= ce; VAR__21230++ )
+            {
+               printf("%d\n", VAR__819283[rs][VAR__21230]);
+            }
+
+            for ( VAR__53647 = rs + 1; VAR__53647 <= re; VAR__53647++ )
+            {
+               printf("%d\n", VAR__819283[VAR__53647][ce]);
+            }
+
+            for ( VAR__21230 = ce - 1; VAR__21230 >= cs; VAR__21230-- )
+            {
+               printf("%d\n", VAR__819283[re][VAR__21230]);
+            }
+
+            for ( VAR__53647 = re - 1; VAR__53647 > rs; VAR__53647-- )
+            {
+               printf("%d\n", VAR__819283[VAR__53647][cs]);
+            }
+         }
+         else
+         if ( ce == cs )
+         {
+            for ( VAR__53647 = rs; VAR__53647 <= re; VAR__53647++ )
+            {
+               printf("%d\n", VAR__819283[VAR__53647][cs]);
+            }
+         }
+      }
+      else
+      if ( re == rs )
+      {
+         for ( VAR__21230 = cs; VAR__21230 <= ce; VAR__21230++ )
+         {
+            printf("%d\n", VAR__819283[rs][VAR__21230]);
+         }
+      }
+
+
+      re--;
+      rs++;
+      ce--;
+      cs++;
+   }
+
+   return 0;
+}
+
+
+int  mn[][2] = { { 23, 23 }, { 44, 44 }, { 23, 44 }, { 44, 23 }, { 3, 4 }, { 4, 3 }, { 1, 1 }, { 1, 99 }, { 99, 1 }, { 99, 99 } };
+int  xn = 0;
+int  max_files = ( sizeof( mn )) / ( sizeof( mn[0] ));
+char *output_dir = "data";
+int rnd(int VAR__MIN, int VAR__MAX)
+{
+   return VAR__MIN + ((( rand() << 15 ) | rand()) % (( VAR__MAX - VAR__MIN ) + 1 ));
+}
+
+
+void swap(int *VAR__819283, int *VAR__19328)
+{
+   int VAR__temp;
+
+   VAR__temp    = *VAR__819283;
+   *VAR__819283 = *VAR__19328;
+   *VAR__19328  = VAR__temp;
+}
+
+
+void fill(int VAR__819283[][MAX], int VAR__1238129, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__COUNT = rnd(1, 10);
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__COUNT++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         int i1 = rnd(0, VAR__1238129 - 1);
+         int j1 = rnd(0, VAR_1238123 - 1);
+         int i2 = rnd(0, VAR__1238129 - 1);
+         int j2 = rnd(0, VAR_1238123 - 1);
+         swap(&VAR__819283[i1][j1], &VAR__819283[i2][j2]);
+      }
+   }
+}
+
+
+void print(int VAR__819283[][MAX], int VAR__1238129, int VAR_1238123)
+{
+   int VAR__COUNT = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         printf("%d", VAR__819283[VAR__53647][VAR__21230]);
+
+         if ( VAR__21230 == ( VAR_1238123 - 1 ))
+         {
+            printf("\n");
+         }
+         else
+         {
+            printf(" ");
+         }
+      }
+   }
+}
+
+
+void xbuild()
+{
+   printf("%d %d\n", mn[xn][0], mn[xn][1]);
+   fill(VAR__819283, mn[xn][0], mn[xn][1]);
+   print(VAR__819283, mn[xn][0], mn[xn][1]);
+   xn++;
+}

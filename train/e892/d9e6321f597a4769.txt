@@ -1,0 +1,52 @@
+int main()
+{
+   int    VAR__53647;
+   int    VAR_1238123;
+   double *VAR_233;
+   double VAR__819283;
+   double VAR__19328;
+   double VAR__4857423;
+   double dt;
+   double x1;
+   double x2;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = malloc((( sizeof( double )) * 3 ) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%lf %lf %lf", VAR_233 + ( VAR__53647 * 3 ), ( VAR_233 + ( VAR__53647 * 3 )) + 1, ( VAR_233 + ( VAR__53647 * 3 )) + 2);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283  = *( VAR_233 + ( VAR__53647 * 3 ));
+      VAR__19328   = *(( VAR_233 + ( VAR__53647 * 3 )) + 1 );
+      VAR__4857423 = *(( VAR_233 + ( VAR__53647 * 3 )) + 2 );
+      dt           = ( VAR__19328 * VAR__19328 ) - (( 4 * VAR__819283 ) * VAR__4857423 );
+
+      if ( dt > 0 )
+      {
+         x1 = (( -VAR__19328 ) + sqrt(dt)) / ( 2 * VAR__819283 );
+         x2 = (( -VAR__19328 ) - sqrt(dt)) / ( 2 * VAR__819283 );
+         printf("x1=%.5f;x2=%.5f\n", x1, x2);
+      }
+      else
+      if ( fabs(dt) < 0.00001 )
+      {
+         x1 = ( -VAR__19328 ) / ( 2 * VAR__819283 );
+         printf("x1=x2=%.5f\n", x1);
+      }
+      else
+      {
+         x1 = ( -VAR__19328 ) / ( 2 * VAR__819283 );
+
+         if ( fabs(x1) < 0.00001 )
+         {
+            x1 = 0;
+         }
+
+         x2 = sqrt(-dt) / ( 2 * VAR__819283 );
+         printf("x1=%.5f+%.5fi;x2=%.5f-%.5fi\n", x1, x2, x1, x2);
+      }
+   }
+}

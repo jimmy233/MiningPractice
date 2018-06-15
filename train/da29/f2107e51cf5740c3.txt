@@ -1,0 +1,127 @@
+int  VAR_1238123;
+int  VAR__1238129;
+char board[105][105];
+int  mark[105][105];
+void VAR__127322(int VAR__7685)
+{
+   if ( VAR__7685 == VAR__1238129 )
+   {
+      return;
+   }
+   else
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if (( board[VAR__53647][VAR__21230] == '@' ) && ( mark[VAR__53647][VAR__21230] != VAR__7685 ))
+            {
+               if ( board[VAR__53647][VAR__21230 - 1] == '.' )
+               {
+                  board[VAR__53647][VAR__21230 - 1] = '@';
+                  mark[VAR__53647][VAR__21230 - 1]  = VAR__7685;
+               }
+
+               if ( board[VAR__53647][VAR__21230 + 1] == '.' )
+               {
+                  board[VAR__53647][VAR__21230 + 1] = '@';
+                  mark[VAR__53647][VAR__21230 + 1]  = VAR__7685;
+               }
+
+               if ( board[VAR__53647 + 1][VAR__21230] == '.' )
+               {
+                  board[VAR__53647 + 1][VAR__21230] = '@';
+                  mark[VAR__53647 + 1][VAR__21230]  = VAR__7685;
+               }
+
+               if ( board[VAR__53647 - 1][VAR__21230] == '.' )
+               {
+                  board[VAR__53647 - 1][VAR__21230] = '@';
+                  mark[VAR__53647 - 1][VAR__21230]  = VAR__7685;
+               }
+            }
+         }
+      }
+
+
+      VAR__127322(VAR__7685 + 1);
+   }
+}
+
+
+int main()
+{
+   int VAR__SUM = 0;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= 104; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= 104; VAR__21230++ )
+      {
+         board[VAR__53647][VAR__21230] == '#';
+      }
+   }
+
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         cin >> board[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   cin >> VAR__1238129;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( board[VAR__53647][VAR__21230] == '@' )
+         {
+            mark[VAR__53647][VAR__21230] = 0;
+         }
+         else
+         {
+            mark[VAR__53647][VAR__21230] = -1;
+         }
+      }
+   }
+
+
+   if ( VAR__1238129 == 1 )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( board[VAR__53647][VAR__21230] == '@' )
+            {
+               VAR__SUM++;
+            }
+         }
+      }
+
+
+      cout << VAR__SUM;
+   }
+   else
+   {
+      VAR__127322(1);
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( board[VAR__53647][VAR__21230] == '@' )
+            {
+               VAR__SUM++;
+            }
+         }
+      }
+
+
+      cout << VAR__SUM;
+   }
+
+   return 0;
+}

@@ -1,0 +1,138 @@
+void main()
+{
+   int leap_or_not(int year);
+   int daysnotleap(int month);
+   int daysleap(int month);
+
+   int data[201][3];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM[201] = { 0 };
+   int VAR__NUM;
+   int VAR__TEMP;
+   scanf("%d", &VAR__NUM);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         scanf("%d", &data[VAR__53647][VAR__21230]);
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      if ( data[VAR__53647][1] > data[VAR__53647][2] )
+      {
+         VAR__TEMP           = data[VAR__53647][1];
+         data[VAR__53647][1] = data[VAR__53647][2];
+         data[VAR__53647][2] = VAR__TEMP;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      if ( leap_or_not(data[VAR__53647][0]) == 0 )
+      {
+         for ( VAR__21230 = data[VAR__53647][1]; VAR__21230 < data[VAR__53647][2]; VAR__21230++ )
+         {
+            VAR__SUM[VAR__53647] += daysnotleap(VAR__21230);
+         }
+      }
+      else
+      {
+         for ( VAR__21230 = data[VAR__53647][1]; VAR__21230 < data[VAR__53647][2]; VAR__21230++ )
+         {
+            VAR__SUM[VAR__53647] += daysleap(VAR__21230);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      if (( VAR__SUM[VAR__53647] % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+}
+
+
+int leap_or_not(int year)
+{
+   int leap;
+
+   if (( year % 4 ) == 0 )
+   {
+      if (( year % 100 ) == 0 )
+      {
+         if (( year % 400 ) == 0 )
+         {
+            leap = 1;
+         }
+         else
+         {
+            leap = 0;
+         }
+      }
+      else
+      {
+         leap = 1;
+      }
+   }
+   else
+   {
+      leap = 0;
+   }
+
+   return leap;
+}
+
+
+int daysnotleap(int month)
+{
+   int day;
+
+   if ((((((( month == 1 ) || ( month == 3 )) || ( month == 5 )) || ( month == 7 )) || ( month == 8 )) || ( month == 10 )) || ( month == 12 ))
+   {
+      day = 31;
+   }
+   else
+   if (((( month == 4 ) || ( month == 6 )) || ( month == 9 )) || ( month == 11 ))
+   {
+      day = 30;
+   }
+   else
+   {
+      day = 28;
+   }
+
+
+   return day;
+}
+
+
+int daysleap(int month)
+{
+   int day;
+
+   if ((((((( month == 1 ) || ( month == 3 )) || ( month == 5 )) || ( month == 7 )) || ( month == 8 )) || ( month == 10 )) || ( month == 12 ))
+   {
+      day = 31;
+   }
+   else
+   if (((( month == 4 ) || ( month == 6 )) || ( month == 9 )) || ( month == 11 ))
+   {
+      day = 30;
+   }
+   else
+   {
+      day = 29;
+   }
+
+
+   return day;
+}

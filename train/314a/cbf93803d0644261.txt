@@ -1,0 +1,85 @@
+int main()
+{
+   int  VAR__819283[1002][3];
+   int  VAR__12302[2010][3];
+   int  VAR__53647 = 1;
+   int  VAR__21230 = 1;
+   int  VAR__COUNT = 0;
+   int  tem        = 0;
+   int  VAR__MAX   = 0;
+   char VAR__19328;
+
+   for ( VAR__53647 = 1; ; VAR__53647++ )
+   {
+      cin >> VAR__819283[VAR__53647][1];
+      cin.get(VAR__19328);
+      VAR__COUNT++;
+
+      if ( VAR__19328 == '\n' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__21230 = 1; ; VAR__21230++ )
+   {
+      cin >> VAR__819283[VAR__21230][2];
+      cin.get(VAR__19328);
+
+      if ( VAR__19328 == '\n' )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 2; VAR__21230++ )
+      {
+         VAR__12302[VAR__53647][VAR__21230] = VAR__819283[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__COUNT - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR__COUNT - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__12302[VAR__21230][1] > VAR__12302[VAR__21230 + 1][1] )
+         {
+            tem = VAR__12302[VAR__21230][1];
+            VAR__12302[VAR__21230][1]     = VAR__12302[VAR__21230 + 1][1];
+            VAR__12302[VAR__21230 + 1][1] = tem;
+         }
+
+         if ( VAR__12302[VAR__21230][2] > VAR__12302[VAR__21230 + 1][2] )
+         {
+            tem = VAR__12302[VAR__21230][2];
+            VAR__12302[VAR__21230][2]     = VAR__12302[VAR__21230 + 1][2];
+            VAR__12302[VAR__21230 + 1][2] = tem;
+         }
+      }
+   }
+
+
+   double VAR__8444594 = 0.0;
+   for ( VAR__8444594 = VAR__12302[1][1]; VAR__8444594 <= VAR__12302[VAR__COUNT][2]; VAR__8444594 += 0.5 )
+   {
+      int VAR__NUM = 0;
+      for ( VAR__21230 = 1; VAR__21230 <= VAR__COUNT; VAR__21230++ )
+      {
+         if (( VAR__819283[VAR__21230][1] <= VAR__8444594 ) && ( VAR__8444594 < VAR__819283[VAR__21230][2] ))
+         {
+            VAR__NUM++;
+         }
+      }
+
+      if ( VAR__NUM > VAR__MAX )
+      {
+         VAR__MAX = VAR__NUM;
+      }
+   }
+
+   (( cout << VAR__COUNT ) << " " ) << VAR__MAX;
+   return 0;
+}

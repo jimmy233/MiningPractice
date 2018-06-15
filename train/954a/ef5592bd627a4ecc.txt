@@ -1,0 +1,99 @@
+struct Student
+{
+   char name[20];
+   int  sco;
+   int  com;
+   char cad;
+   char prov;
+   int  VAR__NUM;
+};
+void count_date(struct Student *VAR_233, int *VAR__819283, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__SUM;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = 0;
+
+      if (((( VAR_233 + VAR__53647 ) - 1 )->sco > 80 ) && ((( VAR_233 + VAR__53647 ) - 1 )->VAR__NUM >= 1 ))
+      {
+         VAR__SUM = VAR__SUM + 8000;
+      }
+
+      if (((( VAR_233 + VAR__53647 ) - 1 )->sco > 85 ) && ((( VAR_233 + VAR__53647 ) - 1 )->com > 80 ))
+      {
+         VAR__SUM = VAR__SUM + 4000;
+      }
+
+      if ((( VAR_233 + VAR__53647 ) - 1 )->sco > 90 )
+      {
+         VAR__SUM = VAR__SUM + 2000;
+      }
+
+      if (((( VAR_233 + VAR__53647 ) - 1 )->sco > 85 ) && ((( VAR_233 + VAR__53647 ) - 1 )->prov == 'Y' ))
+      {
+         VAR__SUM = VAR__SUM + 1000;
+      }
+
+      if (((( VAR_233 + VAR__53647 ) - 1 )->com > 80 ) && ((( VAR_233 + VAR__53647 ) - 1 )->cad == 'Y' ))
+      {
+         VAR__SUM = VAR__SUM + 850;
+      }
+
+      VAR__819283[VAR__53647 - 1] = VAR__SUM;
+   }
+}
+
+
+int compare_date(int *VAR__819283, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR__MAX;
+
+   VAR__MAX     = VAR__819283[0];
+   VAR__8444594 = 1;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__819283[VAR__53647 - 1] )
+      {
+         VAR__MAX     = VAR__819283[VAR__53647 - 1];
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+
+   return VAR__8444594;
+}
+
+
+int main()
+{
+   int            VAR_1238123;
+   int            LEN_OF_STH;
+   int            VAR__53647;
+   int            *VAR__819283;
+   int            top;
+   int            VAR__SUM = 0;
+   struct Student *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   LEN_OF_STH  = sizeof( struct Student );
+   VAR_233     = (struct Student *)calloc(LEN_OF_STH, VAR_1238123);
+   VAR__819283 = (int *)calloc(4, VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", (( VAR_233 + VAR__53647 ) - 1 )->name, &(( VAR_233 + VAR__53647 ) - 1 )->sco, &(( VAR_233 + VAR__53647 ) - 1 )->com, &(( VAR_233 + VAR__53647 ) - 1 )->cad, &(( VAR_233 + VAR__53647 ) - 1 )->prov, &(( VAR_233 + VAR__53647 ) - 1 )->VAR__NUM);
+   }
+
+   count_date(VAR_233, VAR__819283, VAR_1238123);
+   top = compare_date(VAR__819283, VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647 - 1];
+   }
+
+   printf("%s\n%d\n%d", (( VAR_233 + top ) - 1 )->name, VAR__819283[top - 1], VAR__SUM);
+   return 0;
+}

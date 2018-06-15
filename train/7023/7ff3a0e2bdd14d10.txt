@@ -1,0 +1,77 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  LEN_OF_STH[100];
+   char number[100][101];
+   char exp;
+
+   cin >> VAR_1238123;
+   cin.get();
+   for ( VAR__53647 = 0; VAR__53647 < ( 2 * VAR_1238123 ); VAR__53647++ )
+   {
+      if (( VAR__53647 == (( 2 * VAR_1238123 ) - 1 )) || (( VAR__53647 % 2 ) == 0 ))
+      {
+         cin.getline(number[VAR__53647], 101);
+      }
+      else
+      {
+         cin.getline(number[VAR__53647], 101);
+         cin.get();
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( 2 * VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0, VAR__8444594 = strlen(number[VAR__53647]) - 1; VAR__21230 < VAR__8444594; VAR__21230++, VAR__8444594-- )
+      {
+         exp = number[VAR__53647][VAR__21230];
+         number[VAR__53647][VAR__21230]   = number[VAR__53647][VAR__8444594];
+         number[VAR__53647][VAR__8444594] = exp;
+      }
+
+      LEN_OF_STH[VAR__53647] = strlen(number[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( 2 * VAR_1238123 ); VAR__53647 = VAR__53647 + 2 )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH[VAR__53647 + 1]; VAR__21230++ )
+      {
+         if ( number[VAR__53647][VAR__21230] < number[VAR__53647 + 1][VAR__21230] )
+         {
+            number[VAR__53647][VAR__21230] = ( number[VAR__53647][VAR__21230] + ':' ) - number[VAR__53647 + 1][VAR__21230];
+            number[VAR__53647][VAR__21230 + 1]--;
+         }
+         else
+         {
+            number[VAR__53647][VAR__21230] = ( number[VAR__53647][VAR__21230] - number[VAR__53647 + 1][VAR__21230] ) + '0';
+         }
+      }
+
+      if ( number[VAR__53647][LEN_OF_STH[VAR__53647] - 1] == 0 )
+      {
+         number[VAR__53647][LEN_OF_STH[VAR__53647] - 1] = '\0';
+      }
+
+      LEN_OF_STH[VAR__53647] = strlen(number[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( 2 * VAR_1238123 ); VAR__53647 = VAR__53647 + 2 )
+   {
+      for ( VAR__21230 = LEN_OF_STH[VAR__53647] - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ( VAR__21230 == 0 )
+         {
+            ( cout << number[VAR__53647][VAR__21230] ) << endl;
+         }
+         else
+         {
+            cout << number[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   return 0;
+}

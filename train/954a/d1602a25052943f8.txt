@@ -1,0 +1,116 @@
+char name[101][22];
+char yn[101][3];
+int  VAR_9494[101][4];
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int reward[101];
+   int sumreward = 0;
+
+   int f1(int, int);
+   int f2(int, int);
+   int f3(int);
+   int f4(int, char);
+   int f5(int, char);
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &name[VAR__53647], &VAR_9494[VAR__53647][1], &VAR_9494[VAR__53647][2], &yn[VAR__53647][1], &yn[VAR__53647][2], &VAR_9494[VAR__53647][3]);
+      reward[VAR__53647] = ((( f1(VAR_9494[VAR__53647][1], VAR_9494[VAR__53647][3]) + f2(VAR_9494[VAR__53647][1], VAR_9494[VAR__53647][2])) + f3(VAR_9494[VAR__53647][1])) + f4(VAR_9494[VAR__53647][1], yn[VAR__53647][2])) + f5(VAR_9494[VAR__53647][2], yn[VAR__53647][1]);
+      sumreward          = sumreward + reward[VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      int VAR__819283 = 0;
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         if ( reward[VAR__53647] < reward[VAR__21230] )
+         {
+            VAR__819283 = VAR__819283 + 1;
+         }
+      }
+
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( reward[VAR__53647] < reward[VAR__21230] )
+         {
+            VAR__819283 = VAR__819283 + 1;
+         }
+      }
+
+      if ( VAR__819283 == 0 )
+      {
+         printf("%s\n%d\n%d", name[VAR__53647], reward[VAR__53647], sumreward);
+         break;
+      }
+   }
+}
+
+
+int f1(int VAR__7685, int VAR__3918907)
+{
+   if (( VAR__7685 > 80 ) && ( VAR__3918907 >= 1 ))
+   {
+      return 8000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int f2(int VAR__7685, int VAR__3918907)
+{
+   if (( VAR__7685 > 85 ) && ( VAR__3918907 > 80 ))
+   {
+      return 4000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int f3(int VAR__7685)
+{
+   if ( VAR__7685 > 90 )
+   {
+      return 2000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int f4(int VAR__7685, char VAR__3918907)
+{
+   if (( VAR__7685 > 85 ) && ( VAR__3918907 == 'Y' ))
+   {
+      return 1000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int f5(int VAR__7685, char VAR__3918907)
+{
+   if (( VAR__7685 > 80 ) && ( VAR__3918907 == 'Y' ))
+   {
+      return 850;
+   }
+   else
+   {
+      return 0;
+   }
+}

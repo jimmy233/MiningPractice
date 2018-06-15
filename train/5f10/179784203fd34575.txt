@@ -1,0 +1,76 @@
+int maximum(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return VAR__19328;
+   }
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  VAR__8444594;
+   int  LEN_OF_STH;
+   int  sta[500]  = { 0 };
+   int  VAR__7685 = 0;
+   int  VAR__MAX  = 0;
+   int  VAR__NUM;
+   char input[500];
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", input);
+   LEN_OF_STH = strlen(input);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR__53647; VAR__8444594++ )
+      {
+         VAR__7685 = 0;
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( input[VAR__53647 + VAR__21230] == input[VAR__8444594 + VAR__21230] )
+            {
+               VAR__7685++;
+            }
+            else
+            {
+               break;
+            }
+         }
+
+         if ( VAR__7685 == VAR_1238123 )
+         {
+            sta[VAR__8444594]++;
+            VAR__MAX = maximum(VAR__MAX, sta[VAR__8444594]);
+            break;
+         }
+      }
+   }
+
+   if ( VAR__MAX == 0 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX + 1);
+      for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+      {
+         if ( sta[VAR__53647] == VAR__MAX )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               printf("%c", input[VAR__53647 + VAR__21230]);
+            }
+
+            printf("\n");
+         }
+      }
+   }
+}

@@ -1,0 +1,99 @@
+struct student
+{
+   char name[25];
+   int  score;
+   int  cla;
+   char leader;
+   char west;
+   int  paper;
+};
+struct scholar
+{
+   char name[25];
+   int  money;
+};
+struct scholar *scholar(struct student VAR__819283[], int VAR_1238123)
+{
+   struct scholar VAR__NUM[100];
+   struct scholar *VAR_233;
+   int            VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647].money = 0;
+      strcpy(VAR__NUM[VAR__53647].name, VAR__819283[VAR__53647].name);
+   }
+
+   VAR_233 = VAR__NUM;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647].score > 80 ) && ( VAR__819283[VAR__53647].paper >= 1 ))
+      {
+         VAR__NUM[VAR__53647].money += 8000;
+      }
+
+      if (( VAR__819283[VAR__53647].score > 85 ) && ( VAR__819283[VAR__53647].cla > 80 ))
+      {
+         VAR__NUM[VAR__53647].money += 4000;
+      }
+
+      if ( VAR__819283[VAR__53647].score > 90 )
+      {
+         VAR__NUM[VAR__53647].money += 2000;
+      }
+
+      if (( VAR__819283[VAR__53647].score > 85 ) && ( VAR__819283[VAR__53647].west == 'Y' ))
+      {
+         VAR__NUM[VAR__53647].money += 1000;
+      }
+
+      if (( VAR__819283[VAR__53647].cla > 80 ) && ( VAR__819283[VAR__53647].leader == 'Y' ))
+      {
+         VAR__NUM[VAR__53647].money += 850;
+      }
+   }
+
+   return VAR_233;
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__SUM;
+   int            VAR__53647;
+   int            VAR__1238129;
+   int            VAR_129012;
+   struct student VAR__819283[100];
+   struct scholar *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         scanf("%s %d %d %c %c %d", VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].score, &VAR__819283[VAR__53647].cla, &VAR__819283[VAR__53647].leader, &VAR__819283[VAR__53647].west, &VAR__819283[VAR__53647].paper);
+      }
+      else
+      {
+         scanf("\n%s %d %d %c %c %d", VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].score, &VAR__819283[VAR__53647].cla, &VAR__819283[VAR__53647].leader, &VAR__819283[VAR__53647].west, &VAR__819283[VAR__53647].paper);
+      }
+   }
+
+   VAR_233      = scholar(VAR__819283, VAR_1238123);
+   VAR__1238129 = VAR_233->money;
+   VAR_129012   = 0;
+   VAR__SUM     = VAR_233->money;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += ( VAR_233 + VAR__53647 )->money;
+
+      if (( VAR_233 + VAR__53647 )->money > VAR__1238129 )
+      {
+         VAR_129012   = VAR__53647;
+         VAR__1238129 = ( VAR_233 + VAR__53647 )->money;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", VAR__819283[VAR_129012].name, VAR__1238129, VAR__SUM);
+}

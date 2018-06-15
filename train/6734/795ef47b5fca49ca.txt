@@ -1,0 +1,60 @@
+struct king
+{
+   int         VAR__NUM;
+   struct king *VAR__NEXT;
+};
+void p_king(int VAR_1238123, int VAR__1238129)
+{
+   int         VAR__53647;
+   struct king *ANOTHER_POINTER;
+   struct king *YET_ANOTHER_POINTER;
+   struct king *VAR_233;
+
+   ANOTHER_POINTER = ( VAR_233 = (struct king *)malloc(LEN));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER->VAR__NUM = VAR__53647 + 1;
+
+      if ( VAR__53647 == ( VAR_1238123 - 1 ))
+      {
+         ANOTHER_POINTER->VAR__NEXT = VAR_233;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = (struct king *)malloc(LEN);
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER, ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   for ( ANOTHER_POINTER = VAR_233; VAR_1238123 != 1; VAR_1238123-- )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < ((( VAR__1238129 - 1 ) % VAR_1238123 ) + 1 ); VAR__53647++ )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER, ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ( ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT );
+   }
+
+   printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int VAR_1238123[300];
+   int VAR__1238129[300];
+
+   scanf("%d%d", &VAR_1238123[0], &VAR__1238129[0]);
+   for ( VAR__53647 = 1; VAR__1238129[VAR__53647 - 1] && VAR_1238123[VAR__53647 - 1]; VAR__53647++ )
+   {
+      scanf("%d%d", &VAR_1238123[VAR__53647], &VAR__1238129[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__1238129[VAR__53647] && VAR_1238123[VAR__53647]; VAR__53647++ )
+   {
+      p_king(VAR_1238123[VAR__53647], VAR__1238129[VAR__53647]);
+   }
+}

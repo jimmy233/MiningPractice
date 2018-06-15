@@ -1,0 +1,89 @@
+struct missle
+{
+   int id;
+   int VAR_2890;
+}
+*VAR_233;
+struct missle
+{
+   int id;
+   int VAR_2890;
+}
+    tmp;
+int VAR__MAX = 0;
+int maxn(int VAR__53647, int VAR_1238123);
+int pass(int pre, int aft);
+
+int main()
+{
+   int VAR__8444594;
+
+   scanf("%d", &VAR__8444594);
+   VAR_233 = (struct missle *)malloc(( sizeof( struct missle )) * VAR__8444594);
+   int VAR__53647 = 0;
+   do
+   {
+      scanf("%d", &VAR_233[VAR__53647].VAR_2890);
+      VAR_233[VAR__53647].id = VAR__53647;
+      VAR__53647++;
+   } while ( VAR__53647 < VAR__8444594 );
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      VAR__21230 = maxn(VAR__53647, VAR__8444594);
+   }
+
+   printf("%d\n", VAR__MAX);
+   free(VAR_233);
+   return 0;
+}
+
+
+int maxn(int VAR__53647, int VAR_1238123)
+{
+   int max2 = 1;
+   int re   = 1;
+   int VAR__21230;
+
+   if ( VAR__53647 == ( VAR_1238123 - 1 ))
+   {
+      max2 = 1;
+   }
+   else
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         re = 1;
+
+         if ( pass(VAR__53647, VAR__21230) == 1 )
+         {
+            re += maxn(VAR__21230, VAR_1238123);
+
+            if ( re > max2 )
+            {
+               max2 = re;
+            }
+         }
+      }
+   }
+
+   if ( max2 > VAR__MAX )
+   {
+      VAR__MAX = max2;
+   }
+
+   return max2;
+}
+
+
+int pass(int pre, int aft)
+{
+   if ( VAR_233[pre].VAR_2890 >= VAR_233[aft].VAR_2890 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

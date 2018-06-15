@@ -1,0 +1,86 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  VAR__NUM;
+   int  VAR__SUM = 0;
+   int  VAR__7685;
+   int  VAR__8444594;
+   int  o;
+   int  VAR__temp;
+   int  VAR__819283;
+   int  VAR__19328;
+   char *VAR_233;
+
+   VAR__SUM = 0;
+   VAR_233  = (char *)malloc(( sizeof( char )) * 20);
+   scanf("%d %s %d", &VAR__819283, VAR_233, &VAR__19328);
+   for ( VAR__21230 = 0; VAR__21230 < strlen(VAR_233); VAR__21230++ )
+   {
+      if ((( *( VAR_233 + VAR__21230 )) <= 'z' ) && (( *( VAR_233 + VAR__21230 )) >= 'a' ))
+      {
+         *( VAR_233 + VAR__21230 ) -= 32;
+      }
+   }
+
+
+   for ( VAR__21230 = 0; VAR__21230 < strlen(VAR_233); VAR__21230++ )
+   {
+      if ((( *( VAR_233 + VAR__21230 )) <= '9' ) && (( *( VAR_233 + VAR__21230 )) >= '0' ))
+      {
+         VAR__NUM  = ((int)( *( VAR_233 + VAR__21230 ))) - 48;
+         VAR__temp = strlen(VAR_233) - VAR__21230;
+
+         while ( VAR__temp > 1 )
+         {
+            VAR__NUM *= VAR__819283, VAR__temp--;
+         }
+      }
+      else
+      {
+         VAR__NUM  = (((int)( *( VAR_233 + VAR__21230 ))) - 65 ) + 10;
+         VAR__temp = strlen(VAR_233) - VAR__21230;
+
+         while ( VAR__temp > 1 )
+         {
+            VAR__NUM *= VAR__819283, VAR__temp--;
+         }
+      }
+
+      VAR__SUM += VAR__NUM;
+   }
+
+   VAR__7685    = VAR__SUM;
+   VAR__8444594 = 0;
+
+   while (( VAR__7685 / VAR__19328 ) != 0 )
+   {
+      VAR__8444594++, VAR__7685 = VAR__7685 / VAR__19328;
+   }
+
+   char *VAR_666;
+   VAR_666   = (char *)malloc(( sizeof( char )) * VAR__8444594);
+   VAR__7685 = VAR__SUM;
+   *(( VAR_666 + VAR__8444594 ) + 1 ) = '\0';
+
+   while ( VAR__8444594 >= 0 )
+   {
+      o = VAR__7685 % VAR__19328;
+
+      if (( o <= 9 ) && ( o >= 0 ))
+      {
+         *( VAR_666 + VAR__8444594 ) = (char)( o + 48 );
+         VAR__7685 = VAR__7685 / VAR__19328;
+         VAR__8444594--;
+      }
+      else
+      {
+         *( VAR_666 + VAR__8444594 ) = (char)( o + 55 );
+         VAR__7685 = VAR__7685 / VAR__19328;
+         VAR__8444594--;
+      }
+   }
+
+   printf("%s\n", VAR_666);
+}

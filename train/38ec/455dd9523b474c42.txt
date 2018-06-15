@@ -1,0 +1,74 @@
+int main()
+{
+   int STARTyear;
+   int STARTmonth;
+   int STARTday;
+   int ENDyear;
+   int ENDmonth;
+   int ENDday;
+   int VAR__53647;
+   int Pyear[12];
+   int Ryear[12];
+   int STARTdate;
+   int ENDdate;
+   int date;
+   int VAR__819283[12] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 };
+   int VAR__19328[12]  = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30 };
+   int disyear[402]    = { 0, 0 };
+
+   Pyear[0] = VAR__819283[0];
+   Ryear[0] = VAR__19328[0];
+   for ( VAR__53647 = 1; VAR__53647 < 12; VAR__53647++ )
+   {
+      Pyear[VAR__53647] = Pyear[VAR__53647 - 1] + VAR__819283[VAR__53647];
+      Ryear[VAR__53647] = Ryear[VAR__53647 - 1] + VAR__19328[VAR__53647];
+   }
+
+   ((((( cin >> STARTyear ) >> STARTmonth ) >> STARTday ) >> ENDyear ) >> ENDmonth ) >> ENDday;
+
+   if (((( STARTyear % 4 ) == 0 ) && (( STARTyear % 100 ) != 0 )) || (( STARTyear % 400 ) == 0 ))
+   {
+      STARTdate = ( Ryear[STARTmonth - 1] + STARTday ) - 1;
+   }
+   else
+   {
+      STARTdate = ( Pyear[STARTmonth - 1] + STARTday ) - 1;
+   }
+
+   if (((( ENDyear % 4 ) == 0 ) && (( ENDyear % 100 ) != 0 )) || (( ENDyear % 400 ) == 0 ))
+   {
+      ENDdate = ( Ryear[ENDmonth - 1] + ENDday ) - 1;
+   }
+   else
+   {
+      ENDdate = ( Pyear[ENDmonth - 1] + ENDday ) - 1;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 401; VAR__53647++ )
+   {
+      if ((( VAR__53647 % 4 ) != 0 ) || ((( VAR__53647 % 100 ) == 0 ) && (( VAR__53647 % 400 ) != 0 )))
+      {
+         disyear[VAR__53647 + 1] = disyear[VAR__53647] + 365;
+      }
+      else
+      {
+         disyear[VAR__53647 + 1] = disyear[VAR__53647] + 366;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 401; VAR__53647++ )
+   {
+      if (( STARTyear % 400 ) == ( VAR__53647 % 400 ))
+      {
+         STARTdate += ( disyear[401] * (( STARTyear - VAR__53647 ) / 400 )) + disyear[VAR__53647];
+      }
+
+      if (( ENDyear % 400 ) == ( VAR__53647 % 400 ))
+      {
+         ENDdate += ( disyear[401] * (( ENDyear - VAR__53647 ) / 400 )) + disyear[VAR__53647];
+      }
+   }
+
+   date = ENDdate - STARTdate;
+   ( cout << date ) << endl;
+}

@@ -1,0 +1,87 @@
+void main()
+{
+   char in[500];
+   char gram[500][6];
+   int  cr[500];
+   int  VAR__53647;
+   int  VAR_1238123;
+   int  VAR__temp;
+   int  LEN_OF_STH;
+   int  VAR_666;
+   int  VAR__MAX = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+   {
+      in[VAR__53647] = 0;
+      cr[VAR__53647] = 0;
+   }
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", in);
+   LEN_OF_STH = strlen(in);
+   VAR_666    = ( LEN_OF_STH + 1 ) - VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+   {
+      for ( VAR__temp = 0; VAR__temp < 6; VAR__temp++ )
+      {
+         gram[VAR__53647][VAR__temp] = 0;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+   {
+      for ( VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+      {
+         gram[VAR__53647][VAR__temp] = in[VAR__53647 + VAR__temp];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+   {
+      for ( VAR__temp = 0; VAR__temp < VAR_666; VAR__temp++ )
+      {
+         if ( strcmp(gram[VAR__53647], gram[VAR__temp]) == 0 )
+         {
+            cr[VAR__53647]++;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+   {
+      VAR__MAX = M(VAR__MAX, cr[VAR__53647]);
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = VAR_666 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         for ( VAR__temp = VAR__53647 - 1; VAR__temp >= 0; VAR__temp-- )
+         {
+            if ( strcmp(gram[VAR__53647], gram[VAR__temp]) == 0 )
+            {
+               cr[VAR__53647] = 0;
+            }
+         }
+      }
+
+
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_666; VAR__53647++ )
+      {
+         if ( cr[VAR__53647] == VAR__MAX )
+         {
+            printf("%s\n", gram[VAR__53647]);
+         }
+      }
+   }
+}

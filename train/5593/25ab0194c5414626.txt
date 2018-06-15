@@ -1,0 +1,90 @@
+int revchk(int);
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_FLAG;
+   int tag = 1;
+   int *VAR__temp;
+   int *VAR_233;
+   int VAR__COUNT = 0;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   VAR__temp = (int *)calloc(( VAR_1238123 - VAR__1238129 ) + 1, sizeof( int ));
+   VAR_233   = VAR__temp;
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_FLAG = 1;
+      for ( VAR__21230 = 2; VAR__21230 < (((int)sqrt(VAR__53647)) + 1 ); VAR__21230++ )
+      {
+         if (( VAR__53647 % VAR__21230 ) == 0 )
+         {
+            VAR_FLAG = 0;
+            break;
+         }
+      }
+
+      if ( VAR_FLAG )
+      {
+         if ( revchk(VAR__53647))
+         {
+            *( VAR__temp++ ) = VAR__53647;
+            VAR__COUNT++;
+         }
+      }
+   }
+
+   VAR__temp = VAR_233;
+
+   if ( !( *VAR__temp ))
+   {
+      printf("no");
+   }
+
+   VAR__53647 = 0;
+
+   while ( *VAR__temp )
+   {
+      printf("%d", *( VAR__temp++ ));
+
+      if (( VAR__53647++ ) < ( VAR__COUNT - 1 ))
+      {
+         printf(",");
+      }
+   }
+
+   free(VAR_233);
+   return 0;
+}
+
+
+int revchk(int test)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int *VAR_1238123;
+   int digit = ((int)( log(test) / log(10))) + 1;
+
+   VAR_1238123 = (int *)calloc(digit, sizeof( int ));
+   *(( VAR_1238123 + digit ) - 1 ) = (int)( test / pow(10, digit - 1));
+   for ( VAR__53647 = digit - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      test = test - ( pow(10, VAR__53647 + 1) * ( *(( VAR_1238123 + VAR__53647 ) + 1 )));
+      *( VAR_1238123 + VAR__53647 ) = (int)( test / pow(10, VAR__53647));
+   }
+
+   for ( VAR__53647 = 0, VAR__21230 = digit; VAR__53647 < VAR__21230; VAR__53647++, VAR__21230-- )
+   {
+      if (( *( VAR_1238123 + VAR__53647 )) == ( *(( VAR_1238123 + VAR__21230 ) - 1 )))
+      {
+         continue;
+      }
+
+      return 0;
+   }
+
+   return 1;
+}

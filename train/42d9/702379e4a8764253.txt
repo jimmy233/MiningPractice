@@ -1,0 +1,66 @@
+unsigned int com[45][2];
+float        dis[45];
+void swap(int VAR__53647, int VAR__21230)
+{
+   unsigned int t_1[2];
+   float        t_2;
+
+   t_2                = dis[VAR__53647];
+   dis[VAR__53647]    = dis[VAR__21230];
+   dis[VAR__21230]    = t_2;
+   t_1[0]             = com[VAR__53647][0];
+   com[VAR__53647][0] = com[VAR__21230][0];
+   com[VAR__21230][0] = t_1[0];
+   t_1[1]             = com[VAR__53647][1];
+   com[VAR__53647][1] = com[VAR__21230][1];
+   com[VAR__21230][1] = t_1[1];
+}
+
+
+int main(void)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR_9494 = 0;
+   int coord[10][3];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d ", &coord[VAR__53647][0], &coord[VAR__53647][1], &coord[VAR__53647][2]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         com[VAR_9494][0] = VAR__53647;
+         com[VAR_9494][1] = VAR__21230;
+         dis[VAR_9494]    = sqrt(( pow(coord[VAR__53647][0] - coord[VAR__21230][0], 2) + pow(coord[VAR__53647][1] - coord[VAR__21230][1], 2)) + pow(coord[VAR__53647][2] - coord[VAR__21230][2], 2));
+         VAR_9494++;
+      }
+   }
+
+
+   for ( VAR__53647 = VAR_9494; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         if ( dis[VAR__21230] < dis[VAR__21230 + 1] )
+         {
+            swap(VAR__21230, VAR__21230 + 1);
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", coord[com[VAR__53647][0]][0], coord[com[VAR__53647][0]][1], coord[com[VAR__53647][0]][2], coord[com[VAR__53647][1]][0], coord[com[VAR__53647][1]][1], coord[com[VAR__53647][1]][2], dis[VAR__53647]);
+   }
+
+   fclose(stdin);
+   return 0;
+}

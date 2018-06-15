@@ -1,0 +1,96 @@
+int thorse[1002];
+int qhorse[1002];
+int match[1002];
+int compare(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   int *VAR_233 = (int *)ANOTHER_POINTER;
+   int *VAR_666 = (int *)YET_ANOTHER_POINTER;
+
+   return ( *VAR_666 ) - ( *VAR_233 );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      memset(thorse, 0, sizeof( thorse ));
+      memset(qhorse, 0, sizeof( qhorse ));
+      memset(match, 0, sizeof( match ));
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> thorse[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qhorse[VAR__53647];
+      }
+
+      qsort(thorse, VAR_1238123, sizeof( int ), compare);
+      qsort(qhorse, VAR_1238123, sizeof( int ), compare);
+      int fast      = 0;
+      int slow      = VAR_1238123 - 1;
+      int VAR__HEAD = 0;
+      int tail      = VAR_1238123 - 1;
+      int win       = 0;
+      int lose      = 0;
+
+      while ( fast <= slow )
+      {
+         if ( thorse[tail] > qhorse[slow] )
+         {
+            match[slow] = tail;
+            slow--;
+            tail--;
+         }
+         else
+         if ( thorse[tail] < qhorse[slow] )
+         {
+            match[fast] = tail;
+            fast++;
+            tail--;
+         }
+         else
+         {
+            if ( thorse[VAR__HEAD] > qhorse[fast] )
+            {
+               match[fast] = VAR__HEAD;
+               fast++;
+               VAR__HEAD++;
+            }
+            else
+            {
+               match[fast] = tail;
+               tail--;
+               fast++;
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( qhorse[VAR__53647] > thorse[match[VAR__53647]] )
+         {
+            lose++;
+         }
+         else
+         if ( qhorse[VAR__53647] < thorse[match[VAR__53647]] )
+         {
+            win++;
+         }
+      }
+
+      int money = ( win * 200 ) - ( 200 * lose );
+      ( cout << money ) << endl;
+   }
+
+   return 0;
+}

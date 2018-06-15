@@ -1,0 +1,75 @@
+void circle(int list[][100], int row_min, int row_max, int col_min, int col_max)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if (( row_min == row_max ) || ( col_min == col_max ))
+   {
+      for ( VAR__53647 = col_min; VAR__53647 < col_max; VAR__53647++ )
+      {
+         printf("%d\n", list[row_min][VAR__53647]);
+      }
+
+      for ( VAR__53647 = row_min; VAR__53647 <= row_max; VAR__53647++ )
+      {
+         printf("%d\n", list[VAR__53647][col_max]);
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = col_min; VAR__53647 < col_max; VAR__53647++ )
+      {
+         printf("%d\n", list[row_min][VAR__53647]);
+      }
+
+      for ( VAR__53647 = row_min; VAR__53647 < row_max; VAR__53647++ )
+      {
+         printf("%d\n", list[VAR__53647][col_max]);
+      }
+
+      for ( VAR__53647 = col_max; VAR__53647 > col_min; VAR__53647-- )
+      {
+         printf("%d\n", list[row_max][VAR__53647]);
+      }
+
+      for ( VAR__53647 = row_max; VAR__53647 > row_min; VAR__53647-- )
+      {
+         printf("%d\n", list[VAR__53647][col_min]);
+      }
+   }
+}
+
+
+int main()
+{
+   int array[100][100];
+   int VAR__53647;
+   int VAR__21230;
+   int sumrow;
+   int sumcol;
+
+   scanf("%d %d", &sumrow, &sumcol);
+   for ( VAR__53647 = 0; VAR__53647 < sumrow; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < sumcol; VAR__21230++ )
+      {
+         scanf("%d", &array[VAR__53647][VAR__21230]);
+      }
+   }
+
+   int row_min = 0;
+   int row_max = sumrow - 1;
+   int col_min = 0;
+   int col_max = sumcol - 1;
+
+   while (( row_min <= row_max ) && ( col_min <= col_max ))
+   {
+      circle(array, row_min, row_max, col_min, col_max);
+      row_min++;
+      row_max--;
+      col_min++;
+      col_max--;
+   }
+
+   return 0;
+}

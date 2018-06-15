@@ -1,0 +1,116 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+   int VAR_129012 = 0;
+   int thead;
+   int ttail;
+   int khead;
+   int ktail;
+   int vtj[1100];
+   int vqw[1100];
+
+   while ( 1 )
+   {
+      VAR_129012 = 0;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &vtj[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &vqw[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( vqw[VAR__21230] > vqw[VAR__53647] )
+            {
+               VAR__TEMP       = vqw[VAR__53647];
+               vqw[VAR__53647] = vqw[VAR__21230];
+               vqw[VAR__21230] = VAR__TEMP;
+            }
+
+            if ( vtj[VAR__21230] > vtj[VAR__53647] )
+            {
+               VAR__TEMP       = vtj[VAR__53647];
+               vtj[VAR__53647] = vtj[VAR__21230];
+               vtj[VAR__21230] = VAR__TEMP;
+            }
+         }
+      }
+
+
+      ttail = ( ktail = VAR_1238123 - 1 );
+      thead = ( khead = 0 );
+
+      while ( ttail >= thead )
+      {
+         if ( vtj[ttail] > vqw[ktail] )
+         {
+            ttail--;
+            ktail--;
+            VAR_129012 += 200;
+            continue;
+         }
+         else
+         if ( vtj[ttail] < vqw[ktail] )
+         {
+            VAR_129012 -= 200;
+            ttail--;
+            khead++;
+            continue;
+         }
+         else
+         {
+            if ( vtj[thead] > vqw[khead] )
+            {
+               VAR_129012 += 200;
+               thead++;
+               khead++;
+            }
+            else
+            if ( vtj[thead] < vqw[khead] )
+            {
+               VAR_129012 -= 200;
+               ttail--;
+               khead++;
+            }
+            else
+            {
+               if ( vtj[ttail] < vqw[khead] )
+               {
+                  VAR_129012 -= 200;
+                  ttail--;
+                  khead++;
+               }
+               else
+               {
+                  ttail--;
+                  khead++;
+               }
+            }
+
+
+            continue;
+         }
+      }
+
+      printf("%d\n", VAR_129012);
+   }
+
+   getchar();
+   getchar();
+}

@@ -1,0 +1,73 @@
+int main()
+{
+   char ch1[252];
+   char ch2[252];
+   char cha1[253];
+   char cha2[253];
+   char cha3[253];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  len1;
+   int  len2;
+   int  jin;
+
+   cin >> ch1;
+   cin >> ch2;
+   len1 = strlen(ch1);
+   len2 = strlen(ch2);
+   for ( VAR__53647 = 0; VAR__53647 < 253; VAR__53647++ )
+   {
+      cha1[VAR__53647] = '0';
+      cha2[VAR__53647] = '0';
+      cha3[VAR__53647] = '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      cha1[VAR__53647] = ch1[( len1 - 1 ) - VAR__53647];
+   }
+
+   cout << endl;
+   for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      cha2[VAR__53647] = ch2[( len2 - 1 ) - VAR__53647];
+   }
+
+   cout << endl;
+   jin = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 253; VAR__53647++ )
+   {
+      if (((( cha1[VAR__53647] - '0' ) + ( cha2[VAR__53647] - '0' )) + jin ) >= 10 )
+      {
+         cha3[VAR__53647] = ((( '0' + ( cha1[VAR__53647] - '0' )) + ( cha2[VAR__53647] - '0' )) + jin ) - 10;
+         jin = 1;
+      }
+      else
+      {
+         cha3[VAR__53647] = (( '0' + ( cha1[VAR__53647] - '0' )) + ( cha2[VAR__53647] - '0' )) + jin;
+         jin = 0;
+      }
+   }
+
+   for ( VAR__53647 = 252; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( cha3[VAR__53647] != '0' )
+      {
+         break;
+      }
+   }
+
+   if ( VAR__53647 == ( -1 ))
+   {
+      cout << '0';
+   }
+   else
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+      {
+         cout << cha3[VAR__21230];
+      }
+   }
+
+   return 0;
+}

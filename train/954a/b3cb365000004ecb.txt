@@ -1,0 +1,83 @@
+struct student
+{
+   char  name[21];
+   short finalscore;
+   short clascore;
+   char  position;
+   char  westen;
+   short essaynum;
+   int   reward;
+};
+int main()
+{
+   int nstu  = 4;
+   int total = 0;
+
+   scanf("%d", &nstu);
+   struct student *VAR_233 = (struct student *)malloc(nstu * ( sizeof( struct student )));
+   int            VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < nstu; VAR__53647++ )
+   {
+      scanf("%s", VAR_233[VAR__53647].name);
+      scanf("%d", &VAR_233[VAR__53647].finalscore);
+      scanf("%d ", &VAR_233[VAR__53647].clascore);
+      scanf("%c ", &VAR_233[VAR__53647].position);
+      scanf("%c", &VAR_233[VAR__53647].westen);
+      scanf("%d", &VAR_233[VAR__53647].essaynum);
+      VAR_233[VAR__53647].reward = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nstu; VAR__53647++ )
+   {
+      if (( VAR_233[VAR__53647].finalscore > 80 ) && ( VAR_233[VAR__53647].essaynum > 0 ))
+      {
+         VAR_233[VAR__53647].reward += 8000;
+      }
+
+      if (( VAR_233[VAR__53647].finalscore > 85 ) && ( VAR_233[VAR__53647].clascore > 80 ))
+      {
+         VAR_233[VAR__53647].reward += 4000;
+      }
+
+      if ( VAR_233[VAR__53647].finalscore > 90 )
+      {
+         VAR_233[VAR__53647].reward += 2000;
+      }
+
+      if (( VAR_233[VAR__53647].westen == 'Y' ) && ( VAR_233[VAR__53647].finalscore > 85 ))
+      {
+         VAR_233[VAR__53647].reward += 1000;
+      }
+
+      if (( VAR_233[VAR__53647].position == 'Y' ) && ( VAR_233[VAR__53647].clascore > 80 ))
+      {
+         VAR_233[VAR__53647].reward += 850;
+      }
+   }
+
+   int money = VAR_233[0].reward;
+   for ( VAR__53647 = 0; VAR__53647 < ( nstu - 1 ); VAR__53647++ )
+   {
+      if ( money < VAR_233[VAR__53647 + 1].reward )
+      {
+         money = VAR_233[VAR__53647 + 1].reward;
+      }
+
+      total += VAR_233[VAR__53647].reward;
+   }
+
+   total += VAR_233[nstu - 1].reward;
+   int VAR__21230;
+   for ( VAR__21230 = 0; VAR__21230 < nstu; VAR__21230++ )
+   {
+      if ( VAR_233[VAR__21230].reward == money )
+      {
+         break;
+      }
+   }
+
+   printf("%s\n", VAR_233[VAR__21230].name);
+   printf("%d\n", VAR_233[VAR__21230].reward);
+   printf("%d\n", total);
+   return 0;
+}

@@ -1,0 +1,78 @@
+struct data
+{
+   int         VAR_21983012;
+   char        VAR__4857423[20];
+   int         old;
+   struct data *VAR__NEXT;
+   struct data *onext;
+};
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__MAX;
+   int VAR__7685;
+
+   scanf("%d", &VAR_1238123);
+   struct data *VAR__HEAD = (struct data *)malloc(sizeof( struct data ));
+   struct data *VAR_233;
+   struct data *pp;
+   struct data *de;
+   pp = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct data *)malloc(sizeof( struct data ));
+      scanf("%s %d", VAR_233->VAR__4857423, &VAR_233->VAR_21983012);
+      VAR_233->old  = 0;
+      pp->VAR__NEXT = VAR_233;
+      pp            = VAR_233;
+   }
+
+   struct data *old = (struct data *)malloc(sizeof( struct data ));
+   pp        = VAR__HEAD->VAR__NEXT;
+   de        = old;
+   VAR__7685 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pp->VAR_21983012 > 59 )
+      {
+         pp->old   = 1;
+         de->onext = pp;
+         de        = pp;
+         VAR__7685++;
+      }
+
+      pp = pp->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      pp       = old->onext;
+      VAR__MAX = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR__7685; VAR__21230++ )
+      {
+         if ( pp->VAR_21983012 > VAR__MAX )
+         {
+            VAR__MAX = pp->VAR_21983012;
+            de       = pp;
+         }
+
+         pp = pp->onext;
+      }
+
+      printf("%s\n", de->VAR__4857423);
+      de->VAR_21983012 = -1;
+   }
+
+   pp = VAR__HEAD->VAR__NEXT;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pp->old == 0 )
+      {
+         printf("%s\n", pp->VAR__4857423);
+      }
+
+      pp = pp->VAR__NEXT;
+   }
+}

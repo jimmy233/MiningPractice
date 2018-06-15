@@ -1,0 +1,122 @@
+struct student
+{
+   char           name[20];
+   int            score1;
+   int            score2;
+   char           lead;
+   char           west;
+   int            paper;
+   int            sch;
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   struct student *p0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   int            VAR_1238123;
+   int            VAR__8444594;
+   int            VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER      = (struct student *)malloc(sizeof( struct student ));
+   ANOTHER_POINTER->sch = 0;
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2, &ANOTHER_POINTER->lead, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+
+   if (( ANOTHER_POINTER->score1 > 80 ) && ( ANOTHER_POINTER->paper > 0 ))
+   {
+      ANOTHER_POINTER->sch = ANOTHER_POINTER->sch + 8000;
+   }
+
+   if (( ANOTHER_POINTER->score1 > 85 ) && ( ANOTHER_POINTER->score2 > 80 ))
+   {
+      ANOTHER_POINTER->sch = ANOTHER_POINTER->sch + 4000;
+   }
+
+   if ( ANOTHER_POINTER->score1 > 90 )
+   {
+      ANOTHER_POINTER->sch = ANOTHER_POINTER->sch + 2000;
+   }
+
+   if (( ANOTHER_POINTER->score1 > 85 ) && ( ANOTHER_POINTER->west == 'Y' ))
+   {
+      ANOTHER_POINTER->sch = ANOTHER_POINTER->sch + 1000;
+   }
+
+   if (( ANOTHER_POINTER->score2 > 80 ) && ( ANOTHER_POINTER->lead == 'Y' ))
+   {
+      ANOTHER_POINTER->sch = ANOTHER_POINTER->sch + 850;
+   }
+
+   VAR__HEAD = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = VAR__HEAD;
+      p0 = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s %d %d %c %c %d", p0->name, &p0->score1, &p0->score2, &p0->lead, &p0->west, &p0->paper);
+      p0->sch = 0;
+
+      if (( p0->score1 > 80 ) && ( p0->paper > 0 ))
+      {
+         p0->sch = p0->sch + 8000;
+      }
+
+      if (( p0->score1 > 85 ) && ( p0->score2 > 80 ))
+      {
+         p0->sch = p0->sch + 4000;
+      }
+
+      if ( p0->score1 > 90 )
+      {
+         p0->sch = p0->sch + 2000;
+      }
+
+      if (( p0->score1 > 85 ) && ( p0->west == 'Y' ))
+      {
+         p0->sch = p0->sch + 1000;
+      }
+
+      if (( p0->score2 > 80 ) && ( p0->lead == 'Y' ))
+      {
+         p0->sch = p0->sch + 850;
+      }
+
+      while (( p0->sch <= ANOTHER_POINTER->sch ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( p0->sch > ANOTHER_POINTER->sch )
+      {
+         if ( VAR__HEAD == ANOTHER_POINTER )
+         {
+            VAR__HEAD = p0;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+         }
+
+         p0->VAR__NEXT = ANOTHER_POINTER;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = NULL;
+      }
+   }
+
+   VAR__8444594    = 0;
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      VAR__8444594    = VAR__8444594 + ANOTHER_POINTER->sch;
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   printf("%s\n%d\n%d", VAR__HEAD->name, VAR__HEAD->sch, VAR__8444594);
+}

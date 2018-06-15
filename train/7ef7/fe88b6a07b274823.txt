@@ -1,0 +1,94 @@
+int main()
+{
+   int ma[120][120];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM[120];
+   int time;
+   int VAR__temp;
+   int VAR_1238123;
+   int VAR__MIN[120];
+
+   cin >> VAR_1238123;
+   for ( VAR__temp = 0; VAR__temp <= ( VAR_1238123 - 1 ); VAR__temp++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            cin >> ma[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      VAR__SUM[VAR__temp] = 0;
+      for ( time = VAR_1238123 - 1; time >= 1; time-- )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= time; VAR__53647++ )
+         {
+            VAR__MIN[VAR__53647] = ma[VAR__53647][0];
+            for ( VAR__21230 = 0; VAR__21230 <= time; VAR__21230++ )
+            {
+               if ( VAR__MIN[VAR__53647] > ma[VAR__53647][VAR__21230] )
+               {
+                  VAR__MIN[VAR__53647] = ma[VAR__53647][VAR__21230];
+               }
+            }
+
+
+            for ( VAR__21230 = 0; VAR__21230 <= time; VAR__21230++ )
+            {
+               ma[VAR__53647][VAR__21230] = ma[VAR__53647][VAR__21230] - VAR__MIN[VAR__53647];
+            }
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 <= time; VAR__21230++ )
+         {
+            VAR__MIN[VAR__21230] = ma[0][VAR__21230];
+            for ( VAR__53647 = 0; VAR__53647 <= time; VAR__53647++ )
+            {
+               if ( VAR__MIN[VAR__21230] > ma[VAR__53647][VAR__21230] )
+               {
+                  VAR__MIN[VAR__21230] = ma[VAR__53647][VAR__21230];
+               }
+            }
+
+
+            for ( VAR__53647 = 0; VAR__53647 <= time; VAR__53647++ )
+            {
+               ma[VAR__53647][VAR__21230] = ma[VAR__53647][VAR__21230] - VAR__MIN[VAR__21230];
+            }
+         }
+
+         VAR__SUM[VAR__temp] = VAR__SUM[VAR__temp] + ma[1][1];
+
+         if ( time >= 2 )
+         {
+            for ( VAR__53647 = 1; VAR__53647 <= ( time - 1 ); VAR__53647++ )
+            {
+               for ( VAR__21230 = 0; VAR__21230 <= time; VAR__21230++ )
+               {
+                  ma[VAR__53647][VAR__21230] = ma[VAR__53647 + 1][VAR__21230];
+               }
+            }
+
+
+            for ( VAR__21230 = 1; VAR__21230 <= ( time - 1 ); VAR__21230++ )
+            {
+               for ( VAR__53647 = 0; VAR__53647 <= time; VAR__53647++ )
+               {
+                  ma[VAR__53647][VAR__21230] = ma[VAR__53647][VAR__21230 + 1];
+               }
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+   {
+      ( cout << VAR__SUM[VAR__53647] ) << endl;
+   }
+
+   cout << VAR__SUM[VAR_1238123 - 1];
+   return 0;
+}

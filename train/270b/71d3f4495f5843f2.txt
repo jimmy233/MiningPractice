@@ -1,0 +1,47 @@
+int main()
+{
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__21230;
+   int fenzi[1000];
+   int fenmu[1000];
+
+   scanf("%d", &VAR__1238129);
+   int    *xiangshu = (int *)malloc(( sizeof( int )) * VAR__1238129);
+   double *VAR__SUM = (double *)malloc(( sizeof( double )) * VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d", &xiangshu[VAR__53647]);
+   }
+
+   fenzi[0] = 2;
+   fenzi[1] = 3;
+   fenmu[0] = 1;
+   fenmu[1] = 2;
+   for ( VAR__53647 = 2; VAR__53647 < 1000; VAR__53647++ )
+   {
+      fenzi[VAR__53647] = fenzi[VAR__53647 - 1] + fenzi[VAR__53647 - 2];
+   }
+
+   for ( VAR__53647 = 2; VAR__53647 < 1000; VAR__53647++ )
+   {
+      fenmu[VAR__53647] = fenmu[VAR__53647 - 1] + fenmu[VAR__53647 - 2];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647] = 0;
+      for ( VAR__21230 = 0; VAR__21230 < xiangshu[VAR__53647]; VAR__21230++ )
+      {
+         VAR__SUM[VAR__53647] += ( fenzi[VAR__21230] * 1.0 ) / fenmu[VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("%.3lf\n", VAR__SUM[VAR__53647]);
+   }
+
+   free(xiangshu);
+   return 0;
+}

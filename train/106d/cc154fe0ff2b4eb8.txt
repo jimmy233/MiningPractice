@@ -1,0 +1,75 @@
+int xgy(int year, int month1, int month2)
+{
+   int VAR__53647;
+   int VAR__1238129;
+   int days = 0;
+
+   if ( month1 > month2 )
+   {
+      VAR__1238129 = month1;
+      month1       = month2;
+      month2       = VAR__1238129;
+   }
+
+   for ( VAR__53647 = month1; VAR__53647 < month2; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         days += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         days += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+         {
+            days += 29;
+         }
+         else
+         {
+            days += 28;
+         }
+      }
+   }
+
+   if (( days % 7 ) == 0 )
+   {
+      return 1;
+   }
+
+   if (( days % 7 ) != 0 )
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR_1238123;
+   int year;
+   int month1;
+   int month2;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &year, &month1, &month2);
+
+      if ( xgy(year, month1, month2))
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,51 @@
+char inputA[260];
+char inputB[260];
+int  VAR__819283[260] = { 0 };
+int  VAR__19328[260]  = { 0 };
+int main()
+{
+   cin.getline(inputA, 260);
+   cin.getline(inputB, 260);
+   int alen = strlen(inputA);
+   int blen = strlen(inputB);
+   for ( int VAR__53647 = alen - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      VAR__819283[VAR__21230] = inputA[VAR__53647] - '0';
+   }
+
+   for ( int VAR__53647 = blen - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      VAR__19328[VAR__21230] = inputB[VAR__53647] - '0';
+   }
+
+   int LEN_OF_STH = VAR__MAX(alen, blen);
+   for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] += VAR__819283[VAR__53647];
+
+      if ( VAR__19328[VAR__53647] >= 10 )
+      {
+         VAR__19328[VAR__53647]     -= 10;
+         VAR__19328[VAR__53647 + 1] += 1;
+      }
+   }
+
+   int index = 0;
+   for ( int VAR__53647 = 259; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__19328[VAR__53647] > 0 )
+      {
+         index = VAR__53647;
+         break;
+      }
+   }
+
+
+   for ( int VAR__53647 = index; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << VAR__19328[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

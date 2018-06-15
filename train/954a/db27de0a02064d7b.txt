@@ -1,0 +1,133 @@
+struct file
+{
+   char name[50];
+   int  exam;
+   int  judge;
+   char worker;
+   char west;
+   int  paper;
+   int  scholarship;
+};
+int yuanshi(int exam, int paper)
+{
+   if (( exam > 80 ) && ( paper >= 1 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int wusi(int exam, int judge)
+{
+   if (( exam > 85 ) && ( judge > 80 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int chengji(int exam)
+{
+   if ( exam > 90 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int xibu(int exam, char west)
+{
+   if (( exam > 85 ) && ( west == 'Y' ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int banji(int judge, char worker)
+{
+   if (( judge > 80 ) && ( worker == 'Y' ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   struct file VAR__819283[110];
+   int         VAR__53647;
+   int         VAR_1238123;
+   int         VAR__SUM = 0;
+   int         VAR__MAX = 0;
+   int         orient;
+
+   for ( VAR__53647 = 1; VAR__53647 <= 110; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647 - 1].scholarship = 0;
+   }
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].exam, &VAR__819283[VAR__53647].judge, &VAR__819283[VAR__53647].worker, &VAR__819283[VAR__53647].west, &VAR__819283[VAR__53647].paper);
+
+      if ( yuanshi(VAR__819283[VAR__53647].exam, VAR__819283[VAR__53647].paper))
+      {
+         VAR__819283[VAR__53647].scholarship += 8000;
+      }
+
+      if ( wusi(VAR__819283[VAR__53647].exam, VAR__819283[VAR__53647].judge))
+      {
+         VAR__819283[VAR__53647].scholarship += 4000;
+      }
+
+      if ( chengji(VAR__819283[VAR__53647].exam))
+      {
+         VAR__819283[VAR__53647].scholarship += 2000;
+      }
+
+      if ( xibu(VAR__819283[VAR__53647].exam, VAR__819283[VAR__53647].west))
+      {
+         VAR__819283[VAR__53647].scholarship += 1000;
+      }
+
+      if ( banji(VAR__819283[VAR__53647].judge, VAR__819283[VAR__53647].worker))
+      {
+         VAR__819283[VAR__53647].scholarship += 850;
+      }
+
+      VAR__SUM += VAR__819283[VAR__53647].scholarship;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647].scholarship > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647].scholarship;
+         orient   = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d", VAR__819283[orient].name, VAR__MAX, VAR__SUM);
+}

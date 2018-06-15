@@ -1,0 +1,131 @@
+void main()
+{
+   int year;
+   int month;
+   int day;
+   int VAR__8444594 = 0;
+   int days         = 0;
+   int VAR__53647;
+   int VAR__1238129;
+
+   scanf("%d%d%d", &year, &month, &day);
+
+   if (( year % 4 ) == 0 )
+   {
+      VAR__8444594 = 1;
+
+      if ((( year % 100 ) == 0 ) && (( year % 400 ) != 0 ))
+      {
+         VAR__8444594 = 0;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= month; VAR__53647++ )
+   {
+      switch ( VAR__53647 - 1 )
+      {
+      case 1:
+         days = days + 31;
+         break;
+
+      case 2:
+         days = ( days + 28 ) + VAR__8444594;
+         break;
+
+      case 3:
+         days = days + 31;
+         break;
+
+      case 4:
+         days = days + 30;
+         break;
+
+      case 5:
+         days = days + 31;
+         break;
+
+      case 6:
+         days = days + 30;
+         break;
+
+      case 7:
+         days = days + 31;
+         break;
+
+      case 8:
+         days = days + 31;
+         break;
+
+      case 9:
+         days = days + 30;
+         break;
+
+      case 10:
+         days = days + 31;
+         break;
+
+      case 11:
+         days = days + 30;
+         break;
+
+      case 0:
+         days = days;
+         break;
+      }
+   }
+
+   year = year % 400;
+
+   if ( year == 0 )
+   {
+      year = 400;
+   }
+
+   days         = days + day;
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 1; VAR__53647 < year; VAR__53647++ )
+   {
+      if (( VAR__53647 % 4 ) == 0 )
+      {
+         VAR__8444594++;
+
+         if ((( VAR__53647 % 100 ) == 0 ) && (( VAR__53647 % 400 ) != 0 ))
+         {
+            VAR__8444594--;
+         }
+      }
+   }
+
+   days         = (( 365 * ( year - 1 )) + VAR__8444594 ) + days;
+   VAR__1238129 = days % 7;
+   switch ( VAR__1238129 )
+   {
+   case 0:
+      printf("Sun.");
+      break;
+
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wes.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+   }
+}

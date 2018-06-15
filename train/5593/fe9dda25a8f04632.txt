@@ -1,0 +1,91 @@
+int checkp(int VAR_1238123)
+{
+   int VAR__53647;
+
+   if (( VAR_1238123 % 2 ) == 0 )
+   {
+      if ( VAR_1238123 == 2 )
+      {
+         return 1;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+
+
+   for ( VAR__53647 = 3; ( VAR__53647 * VAR__53647 ) <= VAR_1238123; VAR__53647 = VAR__53647 + 2 )
+   {
+      if (( VAR_1238123 % VAR__53647 ) == 0 )
+      {
+         return 0;
+      }
+   }
+
+
+   return 1;
+}
+
+
+int checkr(int VAR_1238123)
+{
+   int VAR__819283 = 0;
+   int VAR__19328;
+
+   VAR__19328 = VAR_1238123;
+
+   while (( VAR_1238123 / 10 ) != 0 )
+   {
+      VAR__819283 = ( VAR__819283 * 10 ) + ( VAR_1238123 % 10 );
+      VAR_1238123 = VAR_1238123 / 10;
+   }
+
+   VAR__819283 = ( VAR__819283 * 10 ) + VAR_1238123;
+
+   if ( VAR__819283 == VAR__19328 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp = 0;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+   {
+      if ( checkp(VAR__53647) && checkr(VAR__53647))
+      {
+         printf("%d", VAR__53647);
+         VAR__temp = 1;
+         break;
+      }
+   }
+
+
+   if ( VAR__temp == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; ++VAR__21230 )
+      {
+         if ( checkp(VAR__21230) && checkr(VAR__21230))
+         {
+            printf(",%d", VAR__21230);
+         }
+      }
+   }
+}

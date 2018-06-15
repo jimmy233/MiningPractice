@@ -1,0 +1,53 @@
+int main()
+{
+   int VAR__3918907[2][12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+   int year[200];
+   int mon1[200];
+   int mon2[200];
+   int total;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &year[VAR__53647], &mon1[VAR__53647], &mon2[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (((( year[VAR__53647] % 4 ) == 0 ) && (( year[VAR__53647] % 100 ) != 0 )) || ((( year[VAR__53647] % 4 ) == 0 ) && (( year[VAR__53647] % 400 ) == 0 )))
+      {
+         VAR__21230 = 1;
+      }
+      else
+      {
+         VAR__21230 = 0;
+      }
+
+      if ( mon1[VAR__53647] > mon2[VAR__53647] )
+      {
+         VAR__TEMP        = mon1[VAR__53647];
+         mon1[VAR__53647] = mon2[VAR__53647];
+         mon2[VAR__53647] = VAR__TEMP;
+      }
+
+      for ( total = 0; mon1[VAR__53647] < mon2[VAR__53647]; mon1[VAR__53647]++ )
+      {
+         total += VAR__3918907[VAR__21230][mon1[VAR__53647] - 1];
+      }
+
+      if (( total % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}

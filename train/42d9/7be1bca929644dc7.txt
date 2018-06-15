@@ -1,0 +1,99 @@
+struct equal
+{
+   int    i1;
+   int    j1;
+   int    k1;
+   int    i2;
+   int    j2;
+   int    k2;
+   double distance;
+};
+void bubblesort(struct equal VAR__12302[], int VAR_1238123);
+
+struct node
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+};
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct node aa[VAR_1238123];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &aa[VAR__53647].VAR__53647, &aa[VAR__53647].VAR__21230, &aa[VAR__53647].VAR__8444594);
+   }
+
+   struct equal equal1[1000];
+   int          VAR__819283;
+   int          VAR__19328;
+   int          VAR__4857423;
+   int          VAR_9Q8Q90;
+   int          VAR_233 = 0;
+   for ( VAR__819283 = 0; VAR__819283 < VAR_1238123; VAR__819283++ )
+   {
+      for ( VAR__19328 = VAR__819283 + 1; VAR__19328 < VAR_1238123; VAR__19328++ )
+      {
+         equal1[VAR_233].i1       = aa[VAR__819283].VAR__53647;
+         equal1[VAR_233].j1       = aa[VAR__819283].VAR__21230;
+         equal1[VAR_233].k1       = aa[VAR__819283].VAR__8444594;
+         equal1[VAR_233].i2       = aa[VAR__19328].VAR__53647;
+         equal1[VAR_233].j2       = aa[VAR__19328].VAR__21230;
+         equal1[VAR_233].k2       = aa[VAR__19328].VAR__8444594;
+         equal1[VAR_233].distance = sqrt(( pow((double)( equal1[VAR_233].i1 - equal1[VAR_233].i2 ), 2) + pow((double)( equal1[VAR_233].j1 - equal1[VAR_233].j2 ), 2)) + pow((double)( equal1[VAR_233].k1 - equal1[VAR_233].k2 ), 2));
+         VAR_233++;
+      }
+   }
+
+   bubblesort(equal1, VAR_233);
+   for ( VAR_9Q8Q90 = 0; VAR_9Q8Q90 < VAR_233; VAR_9Q8Q90++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", equal1[VAR_9Q8Q90].i1, equal1[VAR_9Q8Q90].j1, equal1[VAR_9Q8Q90].k1, equal1[VAR_9Q8Q90].i2, equal1[VAR_9Q8Q90].j2, equal1[VAR_9Q8Q90].k2, equal1[VAR_9Q8Q90].distance);
+   }
+
+   return 0;
+}
+
+
+void bubblesort(struct equal VAR__12302[], int VAR_1238123)
+{
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__1238129;
+   double VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( VAR__12302[VAR__21230].distance > VAR__12302[VAR__21230 - 1].distance )
+         {
+            VAR__temp = VAR__12302[VAR__21230].distance;
+            VAR__12302[VAR__21230].distance     = VAR__12302[VAR__21230 - 1].distance;
+            VAR__12302[VAR__21230 - 1].distance = VAR__temp;
+            VAR__1238129 = VAR__12302[VAR__21230].i1;
+            VAR__12302[VAR__21230].i1     = VAR__12302[VAR__21230 - 1].i1;
+            VAR__12302[VAR__21230 - 1].i1 = VAR__1238129;
+            VAR__1238129 = VAR__12302[VAR__21230].i2;
+            VAR__12302[VAR__21230].i2     = VAR__12302[VAR__21230 - 1].i2;
+            VAR__12302[VAR__21230 - 1].i2 = VAR__1238129;
+            VAR__1238129 = VAR__12302[VAR__21230].j1;
+            VAR__12302[VAR__21230].j1     = VAR__12302[VAR__21230 - 1].j1;
+            VAR__12302[VAR__21230 - 1].j1 = VAR__1238129;
+            VAR__1238129 = VAR__12302[VAR__21230].k1;
+            VAR__12302[VAR__21230].k1     = VAR__12302[VAR__21230 - 1].k1;
+            VAR__12302[VAR__21230 - 1].k1 = VAR__1238129;
+            VAR__1238129 = VAR__12302[VAR__21230].j2;
+            VAR__12302[VAR__21230].j2     = VAR__12302[VAR__21230 - 1].j2;
+            VAR__12302[VAR__21230 - 1].j2 = VAR__1238129;
+            VAR__1238129 = VAR__12302[VAR__21230].k2;
+            VAR__12302[VAR__21230].k2     = VAR__12302[VAR__21230 - 1].k2;
+            VAR__12302[VAR__21230 - 1].k2 = VAR__1238129;
+         }
+      }
+   }
+}

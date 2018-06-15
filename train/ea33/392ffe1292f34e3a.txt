@@ -1,0 +1,65 @@
+int main()
+{
+   int  VAR_233;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   char A_STRING[100][10] = { '\0' };
+   char ch[100][3];
+   char sub[100][20];
+   char tol[100][30];
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      gets(tol[VAR__53647]);
+      LEN_OF_STH = strlen(tol[VAR__53647]);
+
+      if ( LEN_OF_STH == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__21230 = 0; ; VAR__21230++ )
+      {
+         A_STRING[VAR__53647][VAR__21230] = tol[VAR__53647][VAR__21230];
+
+         if ( A_STRING[VAR__53647][VAR__21230] == ' ' )
+         {
+            A_STRING[VAR__53647][VAR__21230] = '\0';
+            break;
+         }
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 < 3; VAR__8444594++ )
+      {
+         ch[VAR__53647][VAR__8444594] = tol[VAR__53647][VAR__21230 + 1];
+         VAR__21230++;
+      }
+
+      for ( VAR__21230 = 1, VAR_233 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( A_STRING[VAR__53647][VAR_233] < A_STRING[VAR__53647][VAR__21230] )
+         {
+            VAR_233 = VAR__21230;
+         }
+      }
+
+      strncpy(sub[VAR__53647], A_STRING[VAR__53647], VAR_233 + 1);
+      sub[VAR__53647][VAR_233 + 1] = ch[VAR__53647][0];
+      sub[VAR__53647][VAR_233 + 2] = ch[VAR__53647][1];
+      sub[VAR__53647][VAR_233 + 3] = ch[VAR__53647][2];
+      for ( VAR__21230 = 0; VAR__21230 <= (( LEN_OF_STH - 1 ) - VAR_233 ); VAR__21230++ )
+      {
+         sub[VAR__53647][( VAR_233 + 4 ) + VAR__21230] = A_STRING[VAR__53647][( VAR_233 + VAR__21230 ) + 1];
+      }
+   }
+
+   printf("%s", sub[0]);
+   for ( VAR__53647 = 1; strlen(tol[VAR__53647]) != 0; VAR__53647++ )
+   {
+      printf("\n%s", sub[VAR__53647]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,86 @@
+struct student
+{
+   char name[20];
+   int  qipin;
+   int  banpin;
+   char ganbu;
+   char xixue;
+   int  lunwen;
+   int  jj;
+};
+void main()
+{
+   int VAR__MAX(struct student VAR_9494[100], int VAR_1238123);
+
+   struct student stu[100];
+   int            VAR__53647;
+   int            VAR__1238129 = 0;
+   int            VAR__SUM     = 0;
+   int            VAR_1238123;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", stu[VAR__53647].name);
+      scanf("%d %d %c %c %d", &stu[VAR__53647].qipin, &stu[VAR__53647].banpin, &stu[VAR__53647].ganbu, &stu[VAR__53647].xixue, &stu[VAR__53647].lunwen);
+      stu[VAR__53647].jj = 0;
+
+      if (( stu[VAR__53647].qipin > 80 ) && ( stu[VAR__53647].lunwen > 0 ))
+      {
+         stu[VAR__53647].jj = stu[VAR__53647].jj + 8000;
+      }
+
+      if (( stu[VAR__53647].qipin > 85 ) && ( stu[VAR__53647].banpin > 80 ))
+      {
+         stu[VAR__53647].jj = stu[VAR__53647].jj + 4000;
+      }
+
+      if ( stu[VAR__53647].qipin > 90 )
+      {
+         stu[VAR__53647].jj = stu[VAR__53647].jj + 2000;
+      }
+
+      if (( stu[VAR__53647].qipin > 85 ) && ( stu[VAR__53647].xixue == 'Y' ))
+      {
+         stu[VAR__53647].jj = stu[VAR__53647].jj + 1000;
+      }
+
+      if (( stu[VAR__53647].banpin > 80 ) && ( stu[VAR__53647].ganbu == 'Y' ))
+      {
+         stu[VAR__53647].jj = stu[VAR__53647].jj + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + stu[VAR__53647].jj;
+   }
+
+   VAR__1238129 = VAR__MAX(stu, VAR_1238123);
+   puts(stu[0].name);
+   printf("%d\n%d\n", VAR__1238129, VAR__SUM);
+}
+
+
+int VAR__MAX(struct student VAR_9494[100], int VAR_1238123)
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   struct student VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR_9494[VAR__53647].jj < VAR_9494[VAR__21230].jj )
+         {
+            VAR__temp            = VAR_9494[VAR__21230];
+            VAR_9494[VAR__21230] = VAR_9494[VAR__53647];
+            VAR_9494[VAR__53647] = VAR__temp;
+         }
+      }
+   }
+
+
+
+   return VAR_9494[0].jj;
+}

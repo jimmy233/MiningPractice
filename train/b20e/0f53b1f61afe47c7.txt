@@ -1,0 +1,73 @@
+const int MAXN = 1005;
+int main()
+{
+   int VAR_1238123;
+   int VAR__temp[MAXN];
+   int VAR__8444594[MAXN];
+
+   while ( cin >> VAR_1238123, VAR_1238123 )
+   {
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__8444594[VAR__53647];
+      }
+
+      sort(VAR__temp, VAR__temp + VAR_1238123);
+      sort(VAR__8444594, VAR__8444594 + VAR_1238123);
+      int fastT = VAR_1238123 - 1;
+      int slowT = 0;
+      int fastK = VAR_1238123 - 1;
+      int slowK = 0;
+      int total = 0;
+
+      while ( slowK <= fastK )
+      {
+         if ( VAR__temp[fastT] > VAR__8444594[fastK] )
+         {
+            total += 200;
+            fastT--;
+            fastK--;
+         }
+         else
+         if ( VAR__temp[fastT] < VAR__8444594[fastK] )
+         {
+            total -= 200;
+            slowT++;
+            fastK--;
+         }
+         else
+         {
+            while ( slowK <= fastK )
+            {
+               if ( VAR__temp[slowT] > VAR__8444594[slowK] )
+               {
+                  total += 200;
+                  slowT++;
+                  slowK++;
+               }
+               else
+               {
+                  if ( VAR__temp[slowT] < VAR__8444594[fastK] )
+                  {
+                     total -= 200;
+                  }
+
+                  slowT++;
+                  fastK--;
+                  break;
+               }
+            }
+         }
+      }
+
+      ( cout << total ) << endl;
+   }
+
+   return 0;
+}

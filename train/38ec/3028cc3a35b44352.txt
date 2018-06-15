@@ -1,0 +1,62 @@
+int leapYear(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 366;
+   }
+   else
+   {
+      return 365;
+   }
+}
+
+
+int main()
+{
+   int startYear  = 0;
+   int startMonth = 0;
+   int startDay   = 0;
+   int endYear    = 0;
+   int endMonth   = 0;
+   int endDay     = 0;
+
+   ((((( cin >> startYear ) >> startMonth ) >> startDay ) >> endYear ) >> endMonth ) >> endDay;
+   int VAR__SUM   = 0;
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   int leap[13]   = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int ping[13]   = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   for ( VAR__53647 = startYear; VAR__53647 < endYear; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + leapYear(VAR__53647);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < startMonth; VAR__53647++ )
+   {
+      if ( leapYear(startYear == 366))
+      {
+         VAR__SUM = VAR__SUM - leap[VAR__53647];
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM - ping[VAR__53647];
+      }
+   }
+
+   VAR__SUM = VAR__SUM - startDay;
+   for ( VAR__53647 = 1; VAR__53647 < endMonth; VAR__53647++ )
+   {
+      if ( leapYear(endYear == 366))
+      {
+         VAR__SUM = VAR__SUM + leap[VAR__53647];
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + ping[VAR__53647];
+      }
+   }
+
+   VAR__SUM = VAR__SUM + endDay;
+   cout << VAR__SUM;
+   return 0;
+}

@@ -1,0 +1,80 @@
+struct Student
+{
+   int            number;
+   int            math;
+   int            chinese;
+   int            total;
+   struct Student *VAR__NEXT;
+};
+void main()
+{
+   int            VAR__53647 = 0;
+   int            VAR_1238123;
+   int            VAR__MAX;
+   struct Student *linkHead;
+   struct Student *linkTail;
+   struct Student *student;
+   struct Student *ppre;
+   struct Student *pmax;
+   struct Student *premax;
+
+   scanf("%d", &VAR_1238123);
+   linkHead = ( linkTail = NULL );
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      student = (struct Student *)malloc(Len);
+      scanf("%d %d %d", &student->number, &student->math, &student->chinese);
+      student->total     = student->math + student->chinese;
+      student->VAR__NEXT = NULL;
+
+      if ( linkTail == NULL )
+      {
+         linkHead = ( linkTail = student );
+      }
+      else
+      {
+         linkTail->VAR__NEXT = student;
+         linkTail            = student;
+      }
+
+      VAR__53647++;
+   }
+
+   VAR__53647 = 0;
+
+   while ( VAR__53647 < 3 )
+   {
+      student  = linkHead;
+      ppre     = student;
+      VAR__MAX = 0;
+      pmax     = linkHead;
+      premax   = linkHead;
+
+      while ( student != NULL )
+      {
+         if ( student->total > VAR__MAX )
+         {
+            VAR__MAX = student->total;
+            pmax     = student;
+            premax   = ppre;
+         }
+
+         ppre    = student;
+         student = student->VAR__NEXT;
+      }
+
+      printf("%d %d\n", pmax->number, pmax->total);
+
+      if ( pmax == linkHead )
+      {
+         linkHead = student->VAR__NEXT;
+      }
+      else
+      {
+         premax->VAR__NEXT = pmax->VAR__NEXT;
+      }
+
+      VAR__53647++;
+   }
+}

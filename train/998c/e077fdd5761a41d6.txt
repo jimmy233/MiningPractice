@@ -1,0 +1,67 @@
+const int maxn = 250 + 10;
+int       VAR__819283[maxn];
+int       VAR__19328[maxn];
+int       VAR__4857423[maxn];
+int       la;
+int       lb;
+int       lc;
+char      VAR_9494[maxn];
+char      VAR__temp[maxn];
+int main()
+{
+   while ( scanf("%s%s", VAR_9494, VAR__temp) != EOF )
+   {
+      int la = strlen(VAR_9494);
+      int lb = strlen(VAR__temp);
+      memset(VAR__819283, 0, sizeof( VAR__819283 ));
+      memset(VAR__19328, 0, sizeof( VAR__19328 ));
+      memset(VAR__4857423, 0, sizeof( VAR__4857423 ));
+      for ( int VAR__53647 = 0; VAR__53647 < la; VAR__53647++ )
+      {
+         VAR__819283[( la - VAR__53647 ) - 1] = VAR_9494[VAR__53647] - '0';
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < lb; VAR__53647++ )
+      {
+         VAR__19328[( lb - VAR__53647 ) - 1] = VAR__temp[VAR__53647] - '0';
+      }
+
+      while (( VAR__819283[la - 1] == 0 ) && ( la > 1 ))
+      {
+         la--;
+      }
+
+      while (( VAR__19328[lb - 1] == 0 ) && ( lb > 1 ))
+      {
+         lb--;
+      }
+
+      if ( la > lb )
+      {
+         lc = la;
+      }
+      else
+      {
+         lc = lb;
+      }
+
+      int add = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < lc; VAR__53647++ )
+      {
+         VAR__4857423[VAR__53647] = (( add + VAR__819283[VAR__53647] ) + VAR__19328[VAR__53647] ) % 10;
+         add = (( add + VAR__819283[VAR__53647] ) + VAR__19328[VAR__53647] ) / 10;
+      }
+
+      if ( add != 0 )
+      {
+         VAR__4857423[lc++] = add;
+      }
+
+      for ( int VAR__53647 = lc - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         printf("%d", VAR__4857423[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+}

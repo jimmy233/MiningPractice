@@ -1,0 +1,70 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__TEMP;
+   int  VAR_9494;
+   int  VAR__MAX;
+   int  is_over_sixty_exist = 1;
+   int  age[100]            = { 0 };
+   int  queue[100]          = { 0 };
+   char id[100][10]         = { '0' };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      queue[VAR__53647] = VAR__53647;
+      scanf("%s%d", id[VAR__53647], &age[VAR__53647]);
+   }
+
+   VAR__53647 = 0;
+
+   while ( is_over_sixty_exist )
+   {
+      VAR__MAX            = 0;
+      is_over_sixty_exist = 0;
+      VAR__TEMP           = queue[VAR__53647];
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if (( age[VAR__21230] >= 60 ) && ( age[VAR__21230] > VAR__MAX ))
+         {
+            is_over_sixty_exist = 1;
+            VAR__MAX            = age[VAR__21230];
+            queue[VAR__53647]   = VAR__21230;
+         }
+      }
+
+      for ( VAR_9494 = VAR__53647 + 1; VAR_9494 < VAR_1238123; VAR_9494++ )
+      {
+         if ( queue[VAR_9494] == queue[VAR__53647] )
+         {
+            break;
+         }
+      }
+
+
+      age[queue[VAR__53647]] = 0;
+
+      if ( is_over_sixty_exist )
+      {
+         if ( VAR_9494 != VAR_1238123 )
+         {
+            for ( VAR__8444594 = VAR_9494; VAR__8444594 >= ( VAR__53647 + 1 ); VAR__8444594-- )
+            {
+               queue[VAR__8444594] = queue[VAR__8444594 - 1];
+            }
+
+            queue[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+
+      VAR__53647++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", id[queue[VAR__53647]]);
+   }
+}

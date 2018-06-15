@@ -1,0 +1,71 @@
+void main()
+{
+   float VAR__819283[300];
+   float VAR__4857423[300];
+   float pingjun;
+   float VAR_9494 = 0;
+   float VAR__temp;
+   float VAR__MAX = 0;
+   float VAR__1238129;
+   float VAR__7685;
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   jishuqi      = 0;
+   int   VAR__8444594 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%f", &VAR__819283[VAR__53647]);
+      VAR_9494 = VAR_9494 + VAR__819283[VAR__53647];
+   }
+
+   pingjun = VAR_9494 / VAR_1238123;
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      if ( fabs(VAR__819283[VAR__21230] - pingjun) > VAR__MAX )
+      {
+         VAR__MAX = fabs(VAR__819283[VAR__21230] - pingjun);
+      }
+   }
+
+   VAR__1238129 = pingjun - VAR__MAX;
+   VAR__7685    = pingjun + VAR__MAX;
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      if (( VAR__819283[VAR__21230] <= VAR__1238129 ) || ( VAR__819283[VAR__21230] >= VAR__7685 ))
+      {
+         VAR__4857423[jishuqi] = VAR__819283[VAR__21230];
+         jishuqi = jishuqi + 1;
+      }
+   }
+
+   if ( jishuqi == 1 )
+   {
+      printf("%d", (int)VAR__4857423[jishuqi - 1]);
+   }
+
+   if ( jishuqi >= 2 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( jishuqi - 2 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= (( jishuqi - 2 ) - VAR__53647 ); VAR__21230++ )
+         {
+            if ( VAR__4857423[VAR__21230] > VAR__4857423[VAR__21230 + 1] )
+            {
+               VAR__temp = VAR__4857423[VAR__21230];
+               VAR__4857423[VAR__21230]     = VAR__4857423[VAR__21230 + 1];
+               VAR__4857423[VAR__21230 + 1] = VAR__temp;
+            }
+         }
+      }
+
+
+      printf("%d", (int)VAR__4857423[0]);
+      for ( VAR__53647 = 1; VAR__53647 <= ( jishuqi - 1 ); VAR__53647++ )
+      {
+         printf(",%d", (int)VAR__4857423[VAR__53647]);
+      }
+   }
+}

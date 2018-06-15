@@ -1,0 +1,70 @@
+struct dir
+{
+   int   dot1[3];
+   int   dot2[3];
+   float dis;
+}
+           dir[50];
+struct dir VAR__TEMP;
+int        VAR__NUM[30];
+int        dot[50][3];
+int        VAR_1238123;
+int        VAR__53647;
+int        VAR__21230;
+int        VAR_233 = 0;
+int        VAR__819283;
+int        VAR__19328;
+int main()
+{
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= ( 3 * VAR_1238123 ); VAR__53647++ )
+   {
+      scanf("%d", &VAR__NUM[VAR__53647]);
+
+      if (( VAR__53647 % 3 ) != 0 )
+      {
+         VAR__819283 = VAR__53647 / 3;
+         VAR__19328  = ( VAR__53647 % 3 ) - 1;
+         dot[VAR__819283][VAR__19328] = VAR__NUM[VAR__53647];
+      }
+      else
+      {
+         dot[( VAR__53647 / 3 ) - 1][2] = VAR__NUM[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dir[VAR_233].dot1[0] = dot[VAR__53647][0];
+         dir[VAR_233].dot1[1] = dot[VAR__53647][1];
+         dir[VAR_233].dot1[2] = dot[VAR__53647][2];
+         dir[VAR_233].dot2[0] = dot[VAR__21230][0];
+         dir[VAR_233].dot2[1] = dot[VAR__21230][1];
+         dir[VAR_233].dot2[2] = dot[VAR__21230][2];
+         dir[VAR_233].dis     = sqrt(((( dot[VAR__53647][0] - dot[VAR__21230][0] ) * ( dot[VAR__53647][0] - dot[VAR__21230][0] )) + (( dot[VAR__53647][1] - dot[VAR__21230][1] ) * ( dot[VAR__53647][1] - dot[VAR__21230][1] ))) + (( dot[VAR__53647][2] - dot[VAR__21230][2] ) * ( dot[VAR__53647][2] - dot[VAR__21230][2] )));
+         VAR_233++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_233 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( dir[VAR__21230].dis < dir[VAR__21230 + 1].dis )
+         {
+            VAR__TEMP           = dir[VAR__21230];
+            dir[VAR__21230]     = dir[VAR__21230 + 1];
+            dir[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", dir[VAR__53647].dot1[0], dir[VAR__53647].dot1[1], dir[VAR__53647].dot1[2], dir[VAR__53647].dot2[0], dir[VAR__53647].dot2[1], dir[VAR__53647].dot2[2], dir[VAR__53647].dis);
+   }
+
+   return 0;
+}

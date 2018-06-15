@@ -1,0 +1,89 @@
+struct stu
+{
+   char       info[50];
+   struct stu *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct stu
+{
+   char       info[50];
+   struct stu *VAR__NEXT;
+}
+    *YET_ANOTHER_POINTER;
+int VAR_1238123;
+struct stu *creat(void)
+{
+   struct stu *VAR__HEAD = NULL;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+   gets(ANOTHER_POINTER->info);
+
+   while ( strcmp(ANOTHER_POINTER->info, "end") != 0 )
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(sizeof( struct stu ));
+      gets(ANOTHER_POINTER->info);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct stu *turnback(struct stu *VAR__HEAD)
+{
+   struct stu *New;
+   struct stu *Newhead = NULL;
+
+   do
+   {
+      YET_ANOTHER_POINTER = NULL;
+      ANOTHER_POINTER     = VAR__HEAD;
+
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( Newhead == NULL )
+      {
+         Newhead = ANOTHER_POINTER;
+         New     = ( Newhead->VAR__NEXT = YET_ANOTHER_POINTER );
+      }
+
+      New = ( New->VAR__NEXT = YET_ANOTHER_POINTER );
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   } while ( VAR__HEAD->VAR__NEXT != NULL );
+   return Newhead;
+}
+
+
+void output(struct stu *VAR__HEAD)
+{
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; puts(ANOTHER_POINTER->info), ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+   }
+}
+
+
+void main()
+{
+   struct stu *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   VAR__HEAD = turnback(VAR__HEAD);
+   output(VAR__HEAD);
+}

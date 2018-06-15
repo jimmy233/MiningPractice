@@ -1,0 +1,61 @@
+int main()
+{
+   int Nchildren;
+   int Mstop;
+   int *Total;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__7685;
+   int time;
+
+   scanf("%d", &Nchildren);
+   for ( VAR__53647 = 0; VAR__53647 < Nchildren; VAR__53647++ )
+   {
+      scanf("%d", &Mstop);
+
+      if ( Mstop == 0 )
+      {
+         VAR__7685 = 60;
+      }
+      else
+      {
+         Total = (int *)malloc(Mstop);
+         for ( VAR__21230 = 0; VAR__21230 < Mstop; VAR__21230++ )
+         {
+            scanf("%d", &Total[VAR__21230]);
+         }
+
+         time      = 60;
+         VAR__7685 = 60;
+         for ( VAR__21230 = 0; VAR__21230 < Mstop; VAR__21230++ )
+         {
+            time = ( time - Total[VAR__21230] ) - 3;
+
+            if ( VAR__21230 > 0 )
+            {
+               time = time + Total[VAR__21230 - 1];
+            }
+
+            if ( time > 0 )
+            {
+               VAR__7685 = VAR__7685 - 3;
+            }
+            else
+            {
+               if ( Total[VAR__21230] < VAR__7685 )
+               {
+                  VAR__7685 = Total[VAR__21230];
+               }
+
+               break;
+            }
+         }
+
+         free(Total);
+      }
+
+      printf("%d\n", VAR__7685);
+   }
+
+   return 0;
+}

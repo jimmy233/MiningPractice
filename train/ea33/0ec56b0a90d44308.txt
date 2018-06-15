@@ -1,0 +1,46 @@
+int fmax(char A_STRING[]);
+
+int main()
+{
+   char A_STRING[11];
+   char substr[4];
+   char rstr[14];
+   int  VAR__53647;
+
+   while ( cin.getline(A_STRING, 12, ' ') && cin.getline(substr, 4))
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= fmax(A_STRING); VAR__53647++ )
+      {
+         rstr[VAR__53647] = A_STRING[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+      {
+         rstr[( fmax(A_STRING) + 1 ) + VAR__53647] = substr[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < (( strlen(A_STRING) - fmax(A_STRING)) - 1 ); VAR__53647++ )
+      {
+         rstr[( fmax(A_STRING) + 4 ) + VAR__53647] = A_STRING[( fmax(A_STRING) + VAR__53647 ) + 1];
+      }
+
+      rstr[( fmax(A_STRING) + 4 ) + VAR__53647] = '\0';
+      ( cout << rstr ) << endl;
+   }
+
+   return 0;
+}
+
+
+int fmax(char A_STRING[])
+{
+   int VAR__MAX = 0;
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      VAR__MAX = ( A_STRING[VAR__53647] > A_STRING[VAR__MAX] ) ? ( VAR__53647 ) : ( VAR__MAX );
+   }
+
+   return VAR__MAX;
+}

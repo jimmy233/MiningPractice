@@ -1,0 +1,58 @@
+int main()
+{
+   char ANOTHER_STRING[405];
+   char YET_ANOTHER_STRING[405];
+
+   ( cin >> ANOTHER_STRING ) >> YET_ANOTHER_STRING;
+   int VAR__7685    = strlen(ANOTHER_STRING);
+   int VAR__3918907 = strlen(YET_ANOTHER_STRING);
+   int maxlen       = ( VAR__7685 > VAR__3918907 ) ? ( VAR__7685 ) : ( VAR__3918907 );
+   int ans1[405];
+   int ans2[405];
+   int VAR__53647;
+   int VAR__21230 = 0;
+   memset(ans1, 0, sizeof( ans1 ));
+   memset(ans2, 0, sizeof( ans2 ));
+   for ( VAR__53647 = VAR__7685 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      ans1[VAR__21230++] = ANOTHER_STRING[VAR__53647] - '0';
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = VAR__3918907 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      ans2[VAR__21230++] = YET_ANOTHER_STRING[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < maxlen; VAR__53647++ )
+   {
+      ans1[VAR__53647] += ans2[VAR__53647];
+
+      if ( ans1[VAR__53647] >= 10 )
+      {
+         ans1[VAR__53647] -= 10;
+         ans1[VAR__53647 + 1]++;
+      }
+   }
+
+   VAR__53647 = maxlen;
+
+   while ( ans1[VAR__53647] == 0 )
+   {
+      VAR__53647--;
+   }
+
+   if ( VAR__53647 < 0 )
+   {
+      cout << 0;
+   }
+   else
+   {
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << ans1[VAR__53647];
+      }
+   }
+
+   return 0;
+}

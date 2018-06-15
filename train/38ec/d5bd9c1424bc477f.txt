@@ -1,0 +1,96 @@
+int RY(int year)
+{
+   int VAR__8444594;
+
+   if (( year % 4 ) == 0 )
+   {
+      if (( year % 100 ) == 0 )
+      {
+         if (( year % 400 ) == 0 )
+         {
+            VAR__8444594 = 1;
+         }
+         else
+         {
+            VAR__8444594 = 0;
+         }
+      }
+      else
+      {
+         VAR__8444594 = 1;
+      }
+   }
+   else
+   {
+      VAR__8444594 = 0;
+   }
+
+   return VAR__8444594;
+}
+
+
+int NO(int VAR__819283, int VAR__19328, int VAR__4857423)
+{
+   int NO;
+   int VAR__53647;
+   int VAR__21230;
+
+   NO = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      if ( RY(VAR__53647) == 1 )
+      {
+         NO = NO + 366;
+      }
+      else
+      {
+         NO = NO + 365;
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < VAR__19328; VAR__21230++ )
+   {
+      if ((((((( VAR__21230 == 1 ) || ( VAR__21230 == 3 )) || ( VAR__21230 == 5 )) || ( VAR__21230 == 7 )) || ( VAR__21230 == 8 )) || ( VAR__21230 == 10 )) || ( VAR__21230 == 12 ))
+      {
+         NO = NO + 31;
+      }
+      else
+      if (((( VAR__21230 == 4 ) || ( VAR__21230 == 6 )) || ( VAR__21230 == 9 )) || ( VAR__21230 == 11 ))
+      {
+         NO = NO + 30;
+      }
+      else
+      if ( RY(VAR__819283) == 1 )
+      {
+         NO = NO + 29;
+      }
+      else
+      {
+         NO = NO + 28;
+      }
+   }
+
+   NO = NO + VAR__4857423;
+   return NO;
+}
+
+
+void main()
+{
+   int a1;
+   int b1;
+   int c1;
+   int a2;
+   int b2;
+   int c2;
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+
+   scanf("%d%d%d", &a1, &b1, &c1);
+   scanf("%d%d%d", &a2, &b2, &c2);
+   VAR__7685    = NO(a1, b1, c1);
+   VAR__3918907 = NO(a2, b2, c2);
+   VAR__9290    = VAR__3918907 - VAR__7685;
+   printf("%d", VAR__9290);
+}

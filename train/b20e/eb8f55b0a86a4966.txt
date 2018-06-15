@@ -1,0 +1,107 @@
+int VAR_1238123;
+int VAR_666[M];
+int VAR_233[M];
+int map[M][M];
+int vis[M][M];
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+void Initial()
+{
+   memset(map, -1, sizeof( map ));
+   memset(vis, 0, sizeof( vis ));
+}
+
+
+int Branch(int cur, int VAR_9494, int VAR__112390)
+{
+   int Cnt = 0;
+
+   if ( cur > VAR_1238123 )
+   {
+      return 0;
+   }
+
+   if ( VAR_233[cur] > VAR_666[VAR_9494] )
+   {
+      Cnt++;
+      VAR_9494++;
+
+      if ( !vis[VAR_9494][VAR__112390] )
+      {
+         map[VAR_9494][VAR__112390] = Branch(cur + 1, VAR_9494, VAR__112390);
+         vis[VAR_9494][VAR__112390] = 1;
+      }
+
+      Cnt += map[VAR_9494][VAR__112390];
+   }
+   else
+   if ( VAR_233[cur] < VAR_666[VAR_9494] )
+   {
+      Cnt--;
+      VAR__112390--;
+
+      if ( !vis[VAR_9494][VAR__112390] )
+      {
+         map[VAR_9494][VAR__112390] = Branch(cur + 1, VAR_9494, VAR__112390);
+         vis[VAR_9494][VAR__112390] = 1;
+      }
+
+      Cnt += map[VAR_9494][VAR__112390];
+   }
+   else
+   if ( VAR_233[cur] == VAR_666[VAR_9494] )
+   {
+      if ( !vis[VAR_9494 + 1][VAR__112390] )
+      {
+         map[VAR_9494 + 1][VAR__112390] = Branch(cur + 1, VAR_9494 + 1, VAR__112390);
+         vis[VAR_9494 + 1][VAR__112390] = 1;
+      }
+
+      if ( !vis[VAR_9494][VAR__112390 - 1] )
+      {
+         map[VAR_9494][VAR__112390 - 1] = Branch(cur + 1, VAR_9494, VAR__112390 - 1);
+         vis[VAR_9494][VAR__112390 - 1] = 1;
+      }
+
+      Cnt += VAR__MAX(map[VAR_9494 + 1][VAR__112390], map[VAR_9494][VAR__112390 - 1] - 1);
+   }
+
+
+
+   return Cnt;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_9494;
+   int VAR__112390;
+
+   while ( scanf("%d", &VAR_1238123) && VAR_1238123 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_233[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR_666[VAR__53647]);
+      }
+
+      qsort(&VAR_233[1], VAR_1238123, sizeof( int ), cmp);
+      qsort(&VAR_666[1], VAR_1238123, sizeof( int ), cmp);
+      Initial();
+      VAR_9494    = 1;
+      VAR__112390 = VAR_1238123;
+      printf("%d\n", Branch(1, VAR_9494, VAR__112390) * 200);
+   }
+
+   return 0;
+}

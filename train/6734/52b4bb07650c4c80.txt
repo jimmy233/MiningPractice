@@ -1,0 +1,56 @@
+struct mon
+{
+   int        VAR__NUM;
+   struct mon *VAR__NEXT;
+};
+void monkey(int VAR__1238129, int VAR_1238123)
+{
+   struct mon VAR__819283[300];
+   struct mon *ANOTHER_POINTER;
+   struct mon *YET_ANOTHER_POINTER;
+   int        VAR__53647;
+   int        VAR__21230;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647].VAR__NUM  = VAR__53647;
+      VAR__819283[VAR__53647].VAR__NEXT = ( VAR__819283 + VAR__53647 ) + 1;
+   }
+
+   VAR__819283[VAR_1238123].VAR__NEXT = VAR__819283 + 1;
+   ANOTHER_POINTER = VAR__819283 + 1;
+   for ( ; VAR_1238123 > 1; VAR_1238123-- )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ( *YET_ANOTHER_POINTER ).VAR__NEXT;
+      }
+
+      ( *YET_ANOTHER_POINTER ).VAR__NEXT = ( *ANOTHER_POINTER ).VAR__NEXT;
+      ANOTHER_POINTER = ( *ANOTHER_POINTER ).VAR__NEXT;
+   }
+
+   printf("%d\n", ( *ANOTHER_POINTER ).VAR__NUM);
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+
+   while ( 1 )
+   {
+      scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR__1238129 == 0 ) && ( VAR_1238123 == 0 ))
+      {
+         break;
+      }
+
+      monkey(VAR__1238129, VAR_1238123);
+   }
+
+   return 0;
+}

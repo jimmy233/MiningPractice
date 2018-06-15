@@ -1,0 +1,111 @@
+void matrix(int **VAR__19328, int **VAR__4857423, int **VAR__819283, int nx, int ny, int nk)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   for ( VAR__21230 = 0; VAR__21230 < ny; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < nx; VAR__53647++ )
+      {
+         VAR__819283[VAR__21230][VAR__53647] = 0;
+      }
+   }
+
+
+   for ( VAR__21230 = 0; VAR__21230 < ny; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < nx; VAR__53647++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < nk; VAR__8444594++ )
+         {
+            VAR__819283[VAR__21230][VAR__53647] += VAR__19328[VAR__21230][VAR__8444594] * VAR__4857423[VAR__8444594][VAR__53647];
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int tmp;
+   int b_row;
+   int b_col;
+   int c_row;
+   int c_col;
+   int a_row;
+   int a_col;
+   int **VAR__19328;
+   int **VAR__4857423;
+   int **VAR__819283;
+
+   scanf("%d %d", &b_row, &b_col);
+   c_row      = b_col;
+   VAR__19328 = (int **)malloc(( sizeof( int * )) * b_row);
+   for ( VAR__21230 = 0; VAR__21230 < b_row; VAR__21230++ )
+   {
+      VAR__19328[VAR__21230] = (int *)malloc(( sizeof( int )) * b_col);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < b_row; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < b_col; VAR__53647++ )
+      {
+         scanf("%d", &tmp);
+         VAR__19328[VAR__21230][VAR__53647] = tmp;
+      }
+   }
+
+
+   scanf("%d %d", &c_row, &c_col);
+   a_row        = b_row;
+   a_col        = c_col;
+   VAR__4857423 = (int **)malloc(( sizeof( int * )) * c_row);
+   for ( VAR__21230 = 0; VAR__21230 < c_row; VAR__21230++ )
+   {
+      VAR__4857423[VAR__21230] = (int *)malloc(( sizeof( int )) * c_col);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < c_row; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < c_col; VAR__53647++ )
+      {
+         scanf("%d", &tmp);
+         VAR__4857423[VAR__21230][VAR__53647] = tmp;
+      }
+   }
+
+
+   VAR__819283 = (int **)malloc(( sizeof( int * )) * a_row);
+   for ( VAR__21230 = 0; VAR__21230 < a_row; VAR__21230++ )
+   {
+      VAR__819283[VAR__21230] = (int *)malloc(( sizeof( int )) * a_col);
+   }
+
+   if ( !VAR__4857423[c_row - 1] )
+   {
+      printf("no enought memory\n");
+      exit(0);
+   }
+
+   matrix(VAR__19328, VAR__4857423, VAR__819283, a_col, a_row, b_col);
+   for ( VAR__21230 = 0; VAR__21230 < a_row; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < a_col; VAR__53647++ )
+      {
+         if ( VAR__53647 != ( a_col - 1 ))
+         {
+            printf("%d ", VAR__819283[VAR__21230][VAR__53647]);
+         }
+         else
+         {
+            printf("%d", VAR__819283[VAR__21230][VAR__53647]);
+         }
+      }
+
+      printf("\n");
+   }
+}

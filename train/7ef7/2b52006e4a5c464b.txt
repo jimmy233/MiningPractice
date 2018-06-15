@@ -1,0 +1,116 @@
+void putout(int VAR__819283[N][N], int VAR__NUM)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__NUM; VAR__21230++ )
+      {
+         ( cout << setw(3)) << VAR__819283[VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+}
+
+
+void cut1(int VAR__819283[N][N], int VAR__19328, int VAR__NUM)
+{
+   int a1[N][N];
+
+   memcpy(a1, VAR__819283, N * N);
+   for ( int VAR__53647 = VAR__NUM - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      a1[VAR__19328][VAR__53647] = VAR__MIN(a1[VAR__19328][VAR__53647], a1[VAR__19328][VAR__53647 + 1]);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      VAR__819283[VAR__19328][VAR__53647] -= a1[VAR__19328][0];
+   }
+}
+
+
+void cut2(int VAR__819283[N][N], int VAR__19328, int VAR__NUM)
+{
+   int a1[N][N];
+
+   memcpy(a1, VAR__819283, N * N);
+   for ( int VAR__53647 = VAR__NUM - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      a1[VAR__53647][VAR__19328] = VAR__MIN(a1[VAR__53647][VAR__19328], a1[VAR__53647 + 1][VAR__19328]);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647][VAR__19328] -= a1[0][VAR__19328];
+   }
+}
+
+
+int remain(int VAR__819283[N][N], int VAR__NUM, int out)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      cut1(VAR__819283, VAR__53647, VAR__NUM);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      cut2(VAR__819283, VAR__53647, VAR__NUM);
+   }
+
+   out = out + VAR__819283[1][1];
+   for ( int VAR__53647 = 1; VAR__53647 < ( VAR__NUM - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__NUM; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647 + 1][VAR__21230];
+      }
+   }
+
+
+   for ( int VAR__53647 = 1; VAR__53647 < ( VAR__NUM - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < ( VAR__NUM - 1 ); VAR__21230++ )
+      {
+         VAR__819283[VAR__21230][VAR__53647] = VAR__819283[VAR__21230][VAR__53647 + 1];
+      }
+   }
+
+
+   VAR__NUM--;
+
+   if ( VAR__NUM == 1 )
+   {
+      return out;
+   }
+   else
+   {
+      return remain(VAR__819283, VAR__NUM, out);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int VAR__819283[N][N];
+      memset(VAR__819283, 0, N * N);
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      int VAR_233 = remain(VAR__819283, VAR_1238123, 0);
+      ( cout << VAR_233 ) << endl;
+   }
+
+   return 0;
+}

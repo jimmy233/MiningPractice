@@ -1,0 +1,61 @@
+int dert(int, int);
+
+void main()
+{
+   int VAR__8444594;
+   int missile[25];
+   int VAR__53647;
+   int result;
+   int donemax[25];
+
+   scanf("%d", &VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      scanf("%d", &missile[VAR__53647]);
+   }
+
+   donemax[VAR__8444594 - 1] = 1;
+   for ( VAR__53647 = VAR__8444594 - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      int VAR__MAX = dert(missile[VAR__53647], missile[VAR__53647 + 1]) * donemax[VAR__53647 + 1];
+      int VAR__21230;
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR__8444594 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__MAX < ( dert(missile[VAR__53647], missile[VAR__53647 + VAR__21230]) * donemax[VAR__53647 + VAR__21230] ))
+         {
+            VAR__MAX = dert(missile[VAR__53647], missile[VAR__53647 + VAR__21230]) * donemax[VAR__53647 + VAR__21230];
+         }
+      }
+
+
+      donemax[VAR__53647] = VAR__MAX + 1;
+   }
+
+   result = donemax[VAR__8444594 - 1];
+   for ( VAR__53647 = VAR__8444594 - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( donemax[VAR__53647] > result )
+      {
+         result = donemax[VAR__53647];
+      }
+   }
+
+   printf("%d\n", result);
+}
+
+
+int dert(int VAR__7685, int VAR__3918907)
+{
+   int VAR__9290;
+
+   if ( VAR__7685 >= VAR__3918907 )
+   {
+      VAR__9290 = 1;
+   }
+   else
+   {
+      VAR__9290 = 0;
+   }
+
+   return VAR__9290;
+}

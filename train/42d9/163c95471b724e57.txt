@@ -1,0 +1,59 @@
+struct locations
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+locations[100];
+struct distances
+{
+   int    VAR__53647;
+   int    VAR__21230;
+   double distance;
+}
+distances[100];
+struct distances VAR__1238129;
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp = 0;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> locations[VAR__53647].VAR__7685 ) >> locations[VAR__53647].VAR__3918907 ) >> locations[VAR__53647].VAR__9290;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         distances[VAR__temp].VAR__53647 = VAR__53647;
+         distances[VAR__temp].VAR__21230 = VAR__21230;
+         distances[VAR__temp].distance   = sqrt((double)(( pow(locations[VAR__53647].VAR__7685 - locations[VAR__21230].VAR__7685, 2.0) + pow(locations[VAR__53647].VAR__3918907 - locations[VAR__21230].VAR__3918907, 2.0)) + pow(locations[VAR__53647].VAR__9290 - locations[VAR__21230].VAR__9290, 2.0)));
+         VAR__temp++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__temp - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( distances[VAR__21230].distance > distances[VAR__21230 - 1].distance )
+         {
+            VAR__1238129              = distances[VAR__21230];
+            distances[VAR__21230]     = distances[VAR__21230 - 1];
+            distances[VAR__21230 - 1] = VAR__1238129;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      (((((((((((((((((( cout << '(' ) << locations[distances[VAR__53647].VAR__53647].VAR__7685 ) << ',' ) << locations[distances[VAR__53647].VAR__53647].VAR__3918907 ) << ',' ) << locations[distances[VAR__53647].VAR__53647].VAR__9290 ) << ')' ) << '-' ) << '(' ) << locations[distances[VAR__53647].VAR__21230].VAR__7685 ) << ',' ) << locations[distances[VAR__53647].VAR__21230].VAR__3918907 ) << ',' ) << locations[distances[VAR__53647].VAR__21230].VAR__9290 ) << ")=" ) << fixed ) << setprecision(2)) << distances[VAR__53647].distance ) << endl;
+   }
+
+   return 0;
+}

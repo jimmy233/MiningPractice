@@ -1,0 +1,188 @@
+struct integer
+{
+   int            VAR_1238123;
+   struct integer *pup;
+   struct integer *pdown;
+};
+struct integer *creat(struct integer *VAR__HEAD)
+{
+   VAR__HEAD        = (struct integer *)malloc(sizeof( struct integer ));
+   VAR__HEAD->pup   = NULL;
+   VAR__HEAD->pdown = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   char           VAR__819283;
+   int            VAR__7685    = 1;
+   int            VAR__3918907 = 1;
+   int            VAR__1111    = 1;
+   struct integer *VAR_233;
+   struct integer *VAR_666;
+   struct integer *ANOTHER_POINTER;
+   struct integer *VAR__HEAD;
+
+   VAR__HEAD = ( VAR_233 = ( VAR_666 = (struct integer *)malloc(sizeof( struct integer ))));
+   VAR_233   = NULL;
+   creat(VAR__HEAD);
+   scanf("%c", &VAR__819283);
+
+   while ((( 0 <= ( VAR__819283 - '0' )) && (( VAR__819283 - '0' ) <= 9 )) || ( VAR__819283 == '-' ))
+   {
+      ANOTHER_POINTER = (struct integer *)malloc(sizeof( struct integer ));
+
+      if ( VAR__819283 == '-' )
+      {
+         VAR__7685 = -1;
+         scanf("%c", &VAR__819283);
+         continue;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR_1238123 = VAR__7685 * ( VAR__819283 - '0' );
+         ANOTHER_POINTER->pdown       = VAR_233;
+         ANOTHER_POINTER->pup         = VAR__HEAD;
+
+         if ( VAR_233 != NULL )
+         {
+            VAR_233->pup = ANOTHER_POINTER;
+         }
+
+         VAR__HEAD->pdown = ANOTHER_POINTER;
+         VAR_233          = ANOTHER_POINTER;
+         scanf("%c", &VAR__819283);
+      }
+   }
+
+   VAR_233 = NULL;
+   scanf("%c", &VAR__819283);
+
+   while ((( 0 <= ( VAR__819283 - '0' )) && (( VAR__819283 - '0' ) <= 9 )) || ( VAR__819283 == '-' ))
+   {
+      ANOTHER_POINTER = (struct integer *)malloc(sizeof( struct integer ));
+
+      if ( VAR__819283 == '-' )
+      {
+         VAR__3918907 = -1;
+         scanf("%c", &VAR__819283);
+         continue;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR_1238123 = VAR__3918907 * ( VAR__819283 - '0' );
+         ANOTHER_POINTER->pup         = VAR_233;
+         ANOTHER_POINTER->pdown       = VAR__HEAD;
+         VAR__HEAD->pup = ANOTHER_POINTER;
+
+         if ( VAR_233 != NULL )
+         {
+            VAR_233->pdown = ANOTHER_POINTER;
+         }
+
+         VAR_233 = ANOTHER_POINTER;
+         scanf("%c", &VAR__819283);
+      }
+   }
+
+   VAR_233 = ( VAR_666 = VAR__HEAD );
+
+   while (( VAR_233->pdown != NULL ) && ( VAR_666->pup != NULL ))
+   {
+      VAR_233 = VAR_233->pdown;
+      VAR_666 = VAR_666->pup;
+      VAR_233->VAR_1238123 = VAR_233->VAR_1238123 + VAR_666->VAR_1238123;
+      VAR_666->VAR_1238123 = VAR_233->VAR_1238123;
+   }
+
+   if (( VAR_233->pdown == NULL ) && ( VAR_666->pup != NULL ))
+   {
+      VAR_666 = VAR__HEAD->pup;
+
+      while ( VAR_666->pup != NULL )
+      {
+         if ( VAR_666->VAR_1238123 > 9 )
+         {
+            VAR_666->pup->VAR_1238123++;
+            VAR_666->VAR_1238123 = VAR_666->VAR_1238123 % 10;
+         }
+
+         if ( VAR_666->VAR_1238123 < 0 )
+         {
+            VAR_666->pup->VAR_1238123--;
+            VAR_666->VAR_1238123 = VAR_666->VAR_1238123 + 10;
+         }
+
+         VAR_666 = VAR_666->pup;
+      }
+
+      if ( VAR__3918907 < 0 )
+      {
+         printf("-");
+      }
+
+      while (( VAR_666->VAR_1238123 == 0 ) && ( VAR_666 != VAR__HEAD->pup ))
+      {
+         VAR_666 = VAR_666->pdown;
+      }
+
+      while ( VAR_666 != VAR__HEAD )
+      {
+         printf("%d", VAR__3918907 * VAR_666->VAR_1238123);
+         VAR_666 = VAR_666->pdown;
+      }
+
+      while ( VAR_233 != NULL )
+      {
+         VAR_666 = VAR_233;
+         VAR_233 = VAR_233->pup;
+         free(VAR_666);
+      }
+   }
+   else
+   {
+      VAR_233 = VAR__HEAD;
+
+      while ( VAR_233->pdown != NULL )
+      {
+         VAR_233 = VAR_233->pdown;
+
+         if (( VAR_233->VAR_1238123 >= 10 ) && ( VAR_233->pdown != NULL ))
+         {
+            VAR_233->pdown->VAR_1238123++;
+            VAR_233->VAR_1238123 = VAR_233->VAR_1238123 - 10;
+         }
+
+         if (( VAR_233->VAR_1238123 < 0 ) && ( VAR_233->pdown != NULL ))
+         {
+            VAR_233->pdown->VAR_1238123--;
+            VAR_233->VAR_1238123 = VAR_233->VAR_1238123 + 10;
+         }
+      }
+
+      if ( VAR_233->VAR_1238123 < 0 )
+      {
+         printf("-");
+         VAR__1111 = -1;
+      }
+
+      while (( VAR_233->VAR_1238123 == 0 ) && ( VAR_233 != VAR__HEAD->pdown ))
+      {
+         VAR_233 = VAR_233->pup;
+      }
+
+      while ( VAR_233 != VAR__HEAD )
+      {
+         printf("%d", VAR__1111 * VAR_233->VAR_1238123);
+         VAR_233 = VAR_233->pup;
+      }
+
+      while ( VAR_666 != NULL )
+      {
+         VAR_233 = VAR_666;
+         VAR_666 = VAR_666->pdown;
+         free(VAR_233);
+      }
+   }
+}

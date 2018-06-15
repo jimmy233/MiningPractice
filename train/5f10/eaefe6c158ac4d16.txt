@@ -1,0 +1,63 @@
+int  VAR__53647;
+int  VAR__21230;
+int  VAR_1238123;
+int  LEN_OF_STH;
+int  VAR__SUM[600];
+int  big;
+char VAR_9494[600];
+char ts[7];
+char *ANOTHER_POINTER;
+char *YET_ANOTHER_POINTER;
+int main()
+{
+   scanf("%d\n", &VAR_1238123);
+   scanf("%s", VAR_9494);
+   LEN_OF_STH = strlen(VAR_9494);
+   memset(VAR__SUM, 0, sizeof( VAR__SUM ));
+   big = -1;
+   for ( VAR__53647 = 0; (( VAR__53647 + VAR_1238123 ) - 1 ) < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] < 0 )
+      {
+         continue;
+      }
+
+      VAR__SUM[VAR__53647] = 0;
+      ANOTHER_POINTER      = &VAR_9494[VAR__53647];
+      for ( VAR__21230 = VAR__53647 + 1; (( VAR__21230 + VAR_1238123 ) - 1 ) < LEN_OF_STH; VAR__21230++ )
+      {
+         YET_ANOTHER_POINTER = &VAR_9494[VAR__21230];
+
+         if ( strncmp(ANOTHER_POINTER, YET_ANOTHER_POINTER, VAR_1238123) == 0 )
+         {
+            VAR__SUM[VAR__53647]++;
+            VAR__SUM[VAR__21230] = -1;
+         }
+      }
+
+      if ( VAR__SUM[VAR__53647] > big )
+      {
+         big = VAR__SUM[VAR__53647];
+      }
+   }
+
+   if ( big == 0 )
+   {
+      printf("NO");
+      return 0;
+   }
+
+   printf("%d\n", big + 1);
+   for ( VAR__53647 = 0; (( VAR__53647 + VAR_1238123 ) - 1 ) < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] == big )
+      {
+         ANOTHER_POINTER = &VAR_9494[VAR__53647];
+         strncpy(ts, ANOTHER_POINTER, VAR_1238123);
+         printf("%s\n", ts);
+      }
+   }
+
+
+   return 0;
+}

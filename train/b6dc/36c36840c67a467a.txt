@@ -1,0 +1,60 @@
+int main()
+{
+   char string[30];
+
+   gets(string);
+   char *VAR_233 = string;
+   int  clen;
+   int  nolen = 0;
+   clen = strlen(string);
+   for ( int VAR__53647 = 0; VAR__53647 < clen; VAR__53647++ )
+   {
+      if ((( *( VAR_233 + VAR__53647 )) < '0' ) || (( *( VAR_233 + VAR__53647 )) > '9' ))
+      {
+         int ilen = 0;
+
+         if ((( *(( VAR_233 + VAR__53647 ) - 1 )) < '0' ) || (( *(( VAR_233 + VAR__53647 ) - 1 )) > '9' ))
+         {
+            nolen++;
+            ilen++;
+            int jj = 1;
+
+            while ( 1 )
+            {
+               if ((( *(( VAR_233 + jj ) + VAR__53647 )) < '0' ) || (( *(( VAR_233 + jj ) + VAR__53647 )) > '9' ))
+               {
+                  nolen++;
+                  ilen++;
+                  jj++;
+               }
+               else
+               {
+                  break;
+               }
+            }
+
+            for ( int VAR__21230 = VAR__53647; VAR__21230 < ( clen - nolen ); VAR__21230++ )
+            {
+               *( VAR_233 + VAR__21230 ) = *(( VAR_233 + VAR__21230 ) + ilen );
+            }
+         }
+         else
+         {
+            *( VAR_233 + VAR__53647 ) = '\n';
+         }
+      }
+   }
+
+   string[clen - nolen] = '\0';
+   for ( int VAR__21230 = 0; VAR__21230 < clen; VAR__21230++ )
+   {
+      if ((( string[VAR__21230] < '0' ) || ( string[VAR__21230] > '9' )) && ( string[VAR__21230] != '\n' ))
+      {
+         string[VAR__21230] = '\0';
+         break;
+      }
+   }
+
+   ( cout << string ) << endl;
+   return 0;
+}

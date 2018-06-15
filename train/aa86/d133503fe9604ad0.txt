@@ -1,0 +1,60 @@
+typedef struct
+{
+   char VAR__4857423;
+   int  VAR__COUNT;
+} letterCount;
+int main()
+{
+   int         VAR__53647;
+   int         VAR__21230;
+   char        A_STRING[MAXLENGTH];
+   letterCount lc[MAXLENGTH];
+
+   fgets(A_STRING, MAXLENGTH, stdin);
+   for ( VAR__53647 = 0; VAR__53647 < MAXLENGTH; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == '\n' )
+      {
+         break;
+      }
+
+      if (( A_STRING[VAR__53647] >= 97 ) && ( A_STRING[VAR__53647] <= 122 ))
+      {
+         A_STRING[VAR__53647] = A_STRING[VAR__53647] - 32;
+      }
+   }
+
+   VAR__21230 = 0;
+   VAR__53647 = 0;
+   lc[VAR__21230].VAR__4857423 = A_STRING[0];
+   lc[VAR__21230].VAR__COUNT   = 1;
+
+   while ( true )
+   {
+      if ( A_STRING[VAR__53647] == A_STRING[VAR__53647 + 1] )
+      {
+         lc[VAR__21230].VAR__COUNT++;
+         VAR__53647++;
+      }
+      else
+      {
+         if ( A_STRING[VAR__53647 + 1] == '\n' )
+         {
+            break;
+         }
+
+         VAR__21230++;
+         lc[VAR__21230].VAR__4857423 = A_STRING[VAR__53647 + 1];
+         lc[VAR__21230].VAR__COUNT   = 1;
+         VAR__53647++;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= VAR__21230; VAR__53647++ )
+   {
+      printf("(%c,%d)", lc[VAR__53647].VAR__4857423, lc[VAR__53647].VAR__COUNT);
+   }
+
+   printf("\n");
+   return 0;
+}

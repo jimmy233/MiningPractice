@@ -1,0 +1,189 @@
+struct num
+{
+   int        VAR_1238123;
+   struct num *VAR__NEXT;
+   struct num *ahead;
+};
+struct num *phead1;
+struct num *phead2;
+struct num *phead3;
+struct num *ANOTHER_POINTER;
+struct num *YET_ANOTHER_POINTER;
+void create(struct num **phead, int VAR_1238123)
+{
+   int VAR__53647 = 0;
+
+   ANOTHER_POINTER = (struct num *)malloc(sizeof( struct num ));
+   ANOTHER_POINTER->VAR_1238123 = 0;
+   *phead            = ( YET_ANOTHER_POINTER = ANOTHER_POINTER );
+   ( *phead )->ahead = NULL;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct num *)malloc(sizeof( struct num ));
+      ANOTHER_POINTER->VAR_1238123 = 0;
+
+      if ( VAR__53647 == 0 )
+      {
+         ( *phead )->VAR__NEXT  = ANOTHER_POINTER;
+         ANOTHER_POINTER->ahead = *phead;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         ANOTHER_POINTER->ahead         = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+}
+
+
+int main()
+{
+   char num1[10000];
+   char num2[10000];
+
+   scanf("%s", num1);
+   scanf("%s", num2);
+
+   if (( num1[0] != '-' ) && ( num2[0] != '-' ))
+   {
+      int i1 = 0;
+      int i2 = 0;
+      int VAR__MAX;
+
+      while ( num1[i1] != '\0' )
+      {
+         i1++;
+      }
+
+      while ( num2[i2] != '\0' )
+      {
+         i2++;
+      }
+
+      if ( i1 >= i2 )
+      {
+         VAR__MAX = i1;
+      }
+      else
+      {
+         VAR__MAX = i2;
+      }
+
+      create(&phead1, VAR__MAX);
+      create(&phead2, VAR__MAX);
+      create(&phead3, VAR__MAX + 1);
+      struct num *ptemp1 = phead1;
+      struct num *ptemp2 = phead2;
+      int        i3;
+      for ( i3 = i1 - 1; i3 >= 0; i3-- )
+      {
+         ptemp1->VAR_1238123 = num1[i3] - '0';
+         ptemp1 = ptemp1->VAR__NEXT;
+      }
+
+      int i4;
+      for ( i4 = i2 - 1; i4 >= 0; i4-- )
+      {
+         ptemp2->VAR_1238123 = num2[i4] - '0';
+         ptemp2 = ptemp2->VAR__NEXT;
+      }
+
+      struct num *ptemp3 = phead1;
+      struct num *ptemp4 = phead2;
+      struct num *ptemp5 = phead3;
+
+      while ( ptemp3 != NULL )
+      {
+         if ((( ptemp3->VAR_1238123 + ptemp4->VAR_1238123 ) + ptemp5->VAR_1238123 ) >= 10 )
+         {
+            ptemp5->VAR_1238123 = ( ptemp5->VAR_1238123 + ( ptemp3->VAR_1238123 + ptemp4->VAR_1238123 )) - 10;
+            ptemp3 = ptemp3->VAR__NEXT;
+            ptemp4 = ptemp4->VAR__NEXT;
+            ptemp5 = ptemp5->VAR__NEXT;
+            ptemp5->VAR_1238123 = ptemp5->VAR_1238123 + 1;
+         }
+         else
+         {
+            ptemp5->VAR_1238123 = ( ptemp5->VAR_1238123 + ptemp3->VAR_1238123 ) + ptemp4->VAR_1238123;
+            ptemp3 = ptemp3->VAR__NEXT;
+            ptemp4 = ptemp4->VAR__NEXT;
+            ptemp5 = ptemp5->VAR__NEXT;
+         }
+      }
+
+      struct num *ptemp7 = phead3;
+
+      while ( ptemp7->VAR__NEXT != NULL )
+      {
+         ptemp7 = ptemp7->VAR__NEXT;
+      }
+
+      if ( ptemp7->VAR_1238123 == 0 )
+      {
+         ptemp7 = ptemp7->ahead;
+
+         if ( ptemp7->ahead == NULL )
+         {
+            printf("0");
+            return 0;
+         }
+         else
+         {
+            while ( ptemp7->VAR_1238123 == 0 )
+            {
+               ptemp7 = ptemp7->ahead;
+            }
+
+            while ( ptemp7 != NULL )
+            {
+               printf("%d", ptemp7->VAR_1238123);
+               ptemp7 = ptemp7->ahead;
+            }
+         }
+      }
+      else
+      {
+         while ( ptemp7 != NULL )
+         {
+            printf("%d", ptemp7->VAR_1238123);
+            ptemp7 = ptemp7->ahead;
+         }
+      }
+   }
+
+   struct num *release1 = phead1;
+   struct num *release2 = phead2;
+   struct num *release3 = phead3;
+
+   while ( phead1->VAR__NEXT != NULL )
+   {
+      release1          = phead1;
+      phead1->VAR__NEXT = phead1->VAR__NEXT->VAR__NEXT;
+      free(release1->VAR__NEXT);
+   }
+
+   free(phead1);
+
+   while ( phead2->VAR__NEXT != NULL )
+   {
+      release2          = phead2;
+      phead2->VAR__NEXT = phead2->VAR__NEXT->VAR__NEXT;
+      free(release2->VAR__NEXT);
+   }
+
+   free(phead2);
+
+   while ( phead3->VAR__NEXT != NULL )
+   {
+      release3          = phead3;
+      phead3->VAR__NEXT = phead3->VAR__NEXT->VAR__NEXT;
+      free(release3->VAR__NEXT);
+   }
+
+   free(phead3);
+   return 0;
+}

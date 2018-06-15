@@ -1,0 +1,58 @@
+struct Stu
+{
+   int stuID;
+   int mark;
+}
+stu[3] = { 0 };
+int compare(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   struct Stu *VAR__819283;
+   struct Stu *VAR__19328;
+
+   VAR__819283 = (struct Stu *)ANOTHER_POINTER;
+   VAR__19328  = (struct Stu *)YET_ANOTHER_POINTER;
+
+   if ( VAR__819283->mark > VAR__19328->mark )
+   {
+      return -1;
+   }
+
+   if ( VAR__819283->mark < VAR__19328->mark )
+   {
+      return 1;
+   }
+
+   if ( VAR__819283->mark == VAR__19328->mark )
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int ID;
+   int chi;
+   int math;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &ID, &chi, &math);
+
+      if (( chi + math ) > stu[2].mark )
+      {
+         stu[2].mark  = chi + math;
+         stu[2].stuID = ID;
+      }
+
+      qsort(stu, 3, sizeof( struct Stu ), compare);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%d %d\n", stu[VAR__53647].stuID, stu[VAR__53647].mark);
+   }
+}

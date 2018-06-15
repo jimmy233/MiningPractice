@@ -1,0 +1,93 @@
+struct stu1
+{
+   long        VAR__NUM;
+   int         score1;
+   int         score2;
+   struct stu1 *VAR__NEXT;
+};
+struct stu1 *creat(void)
+{
+   int         VAR_1238123;
+   int         VAR__53647 = 1;
+   struct stu1 *VAR_2890;
+   struct stu1 *q1;
+   struct stu1 *q2;
+
+   scanf("%d", &VAR_1238123);
+   q2       = ( q1 = (struct stu1 *)malloc(LEN1));
+   VAR_2890 = NULL;
+
+   while ( VAR__53647 <= VAR_1238123 )
+   {
+      scanf("%ld %d %d", &q1->VAR__NUM, &q1->score1, &q1->score2);
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR_2890 = q1;
+      }
+      else
+      {
+         q2 = q1;
+      }
+
+      if ( VAR__53647 != VAR_1238123 )
+      {
+         q1 = ( q2->VAR__NEXT = (struct stu1 *)malloc(LEN1));
+      }
+      else
+      {
+         q1->VAR__NEXT = NULL;
+      }
+
+      VAR__53647++;
+   }
+
+   return VAR_2890;
+}
+
+
+struct stu1 *turn(struct stu1 *VAR_2890)
+{
+   int         VAR__temp = 1;
+   struct stu1 *ANOTHER_POINTER;
+   struct stu1 *YET_ANOTHER_POINTER;
+   int         VAR__1238129;
+   int         VAR_1238123;
+   int         VAR_21983012;
+
+   for ( ANOTHER_POINTER = VAR_2890, VAR__temp = 1; ANOTHER_POINTER->VAR__NEXT != NULL, VAR__temp <= 3; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT, VAR__temp++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+
+      while ( YET_ANOTHER_POINTER != NULL )
+      {
+         if (( ANOTHER_POINTER->score1 + ANOTHER_POINTER->score2 ) < ( YET_ANOTHER_POINTER->score1 + YET_ANOTHER_POINTER->score2 ))
+         {
+            VAR__1238129 = ANOTHER_POINTER->VAR__NUM;
+            VAR_1238123  = ANOTHER_POINTER->score1;
+            VAR_21983012 = ANOTHER_POINTER->score2;
+            ANOTHER_POINTER->VAR__NUM     = YET_ANOTHER_POINTER->VAR__NUM;
+            ANOTHER_POINTER->score1       = YET_ANOTHER_POINTER->score1;
+            ANOTHER_POINTER->score2       = YET_ANOTHER_POINTER->score2;
+            YET_ANOTHER_POINTER->VAR__NUM = VAR__1238129;
+            YET_ANOTHER_POINTER->score1   = VAR_1238123;
+            YET_ANOTHER_POINTER->score2   = VAR_21983012;
+         }
+
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      printf("%ld %d\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->score1 + ANOTHER_POINTER->score2);
+   }
+
+   return VAR_2890;
+}
+
+
+void main()
+{
+   struct stu1 *ip;
+
+   ip = creat();
+   turn(ip);
+}

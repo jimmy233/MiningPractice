@@ -1,0 +1,85 @@
+int VAR__819283[100];
+int VAR_1238123;
+int n1;
+int main()
+{
+   void digui(int);
+
+   char A_STRING[100];
+   cin >> A_STRING;
+   VAR_1238123 = strlen(A_STRING);
+   n1          = VAR_1238123;
+   for ( int i1 = 0; A_STRING[i1] != '\0'; i1++ )
+   {
+      if ( A_STRING[i1] == A_STRING[0] )
+      {
+         VAR__819283[i1] = 1;
+      }
+      else
+      {
+         VAR__819283[i1] = 0;
+      }
+   }
+
+   digui(VAR_1238123);
+   return 0;
+}
+
+
+void digui(int VAR_1238123)
+{
+   int VAR__COUNT = 0;
+   int VAR__temp  = 0;
+
+   if ( VAR_1238123 == 2 )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+      {
+         if (( VAR__819283[VAR__53647] != ( -1 )) && ( VAR__COUNT == 0 ))
+         {
+            ( cout << VAR__53647 ) << " ";
+            VAR__COUNT++;
+            VAR__819283[VAR__53647] = -1;
+         }
+         else
+         if (( VAR__819283[VAR__53647] != ( -1 )) && ( VAR__COUNT > 0 ))
+         {
+            cout << VAR__53647;
+            VAR__COUNT++;
+            VAR__819283[VAR__53647] = -1;
+         }
+      }
+
+      cout << endl;
+   }
+   else
+   if ( VAR_1238123 > 2 )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < ( n1 - 1 ); VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == 1 )
+         {
+            for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < n1; VAR__21230++ )
+            {
+               if ( VAR__819283[VAR__21230] == ( -1 ))
+               {
+                  continue;
+               }
+               else
+               if ( VAR__819283[VAR__21230] == 1 )
+               {
+                  break;
+               }
+               else
+               if ( VAR__819283[VAR__21230] == 0 )
+               {
+                  ((( cout << VAR__53647 ) << " " ) << VAR__21230 ) << endl;
+                  VAR__819283[VAR__53647] = -1;
+                  VAR__819283[VAR__21230] = -1;
+                  digui(VAR_1238123 - 2);
+               }
+            }
+         }
+      }
+   }
+}

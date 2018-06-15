@@ -1,0 +1,69 @@
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__19328 = 0;
+   int VAR__SUM   = 0;
+   int VAR__MAX;
+   struct student
+   {
+      char name[21];
+      int  mc;
+      int  bc;
+      char bg;
+      char xb;
+      int  lw;
+      int  sch;
+   }
+   stu[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].sch = 0;
+      scanf("%s%d%d %c %c%d", &stu[VAR__53647].name, &stu[VAR__53647].mc, &stu[VAR__53647].bc, &stu[VAR__53647].bg, &stu[VAR__53647].xb, &stu[VAR__53647].lw);
+
+      if (( stu[VAR__53647].mc > 80 ) && ( stu[VAR__53647].lw > 0 ))
+      {
+         stu[VAR__53647].sch = 8000;
+         VAR__SUM           += 8000;
+      }
+
+      if (( stu[VAR__53647].mc > 85 ) && ( stu[VAR__53647].bc > 80 ))
+      {
+         stu[VAR__53647].sch += 4000;
+         VAR__SUM            += 4000;
+      }
+
+      if ( stu[VAR__53647].mc > 90 )
+      {
+         stu[VAR__53647].sch += 2000;
+         VAR__SUM            += 2000;
+      }
+
+      if (( stu[VAR__53647].mc > 85 ) && ( stu[VAR__53647].xb == 'Y' ))
+      {
+         stu[VAR__53647].sch += 1000;
+         VAR__SUM            += 1000;
+      }
+
+      if (( stu[VAR__53647].bc > 80 ) && ( stu[VAR__53647].bg == 'Y' ))
+      {
+         stu[VAR__53647].sch += 850;
+         VAR__SUM            += 850;
+      }
+   }
+
+   VAR__MAX = stu[0].sch;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < stu[VAR__53647].sch )
+      {
+         VAR__MAX   = stu[VAR__53647].sch;
+         VAR__19328 = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", stu[VAR__19328].name, stu[VAR__19328].sch, VAR__SUM);
+   return 0;
+}

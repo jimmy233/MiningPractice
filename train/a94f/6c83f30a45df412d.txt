@@ -1,0 +1,80 @@
+int main(int argc, char *argv[])
+{
+   int array[100][100];
+   int row;
+   int col;
+   int VAR__53647;
+   int VAR__21230;
+   int rowmin;
+   int rowmax;
+   int colmin;
+   int colmax;
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &array[VAR__53647][VAR__21230]);
+      }
+   }
+
+
+   rowmin = 0;
+   rowmax = row - 1;
+   colmin = 0;
+   colmax = col - 1;
+
+   while (( colmin < colmax ) && ( rowmin < rowmax ))
+   {
+      for ( VAR__53647 = colmin; VAR__53647 < colmax; VAR__53647++ )
+      {
+         printf("%d\n", array[rowmin][VAR__53647]);
+      }
+
+      for ( VAR__53647 = rowmin; VAR__53647 < rowmax; VAR__53647++ )
+      {
+         printf("%d\n", array[VAR__53647][colmax]);
+      }
+
+      for ( VAR__53647 = colmax; VAR__53647 > colmin; VAR__53647-- )
+      {
+         printf("%d\n", array[rowmax][VAR__53647]);
+      }
+
+      for ( VAR__53647 = rowmax; VAR__53647 > rowmin; VAR__53647-- )
+      {
+         printf("%d\n", array[VAR__53647][colmin]);
+      }
+
+      rowmin++;
+      rowmax--;
+      colmin++;
+      colmax--;
+   }
+
+   if (( rowmin == rowmax ) && ( colmin < colmax ))
+   {
+      for ( VAR__53647 = colmin; VAR__53647 <= colmax; VAR__53647++ )
+      {
+         printf("%d\n", array[rowmin][VAR__53647]);
+      }
+   }
+   else
+   if (( rowmin < rowmax ) && ( colmin == colmax ))
+   {
+      for ( VAR__53647 = rowmin; VAR__53647 <= rowmax; VAR__53647++ )
+      {
+         printf("%d\n", array[VAR__53647][colmin]);
+      }
+   }
+   else
+   if (( rowmin == rowmax ) && ( colmin == colmax ))
+   {
+      printf("%d\n", array[rowmin][colmax]);
+   }
+
+
+
+   return 0;
+}

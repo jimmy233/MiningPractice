@@ -1,0 +1,104 @@
+int power(int VAR_1238123, int VAR__8444594)
+{
+   int VAR__53647;
+   int answer = 1;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__8444594; VAR__53647++ )
+   {
+      answer = answer * VAR_1238123;
+   }
+
+   return answer;
+}
+
+
+char A_STRING[100];
+int checkhui(int number)
+{
+   int VAR_9494 = log10(number);
+   int VAR__53647;
+   int VAR__819283[1000];
+   int check = 1;
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_9494; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = number / power(10, VAR_9494 - VAR__53647);
+      number = number - ( VAR__819283[VAR__53647] * power(10, VAR_9494 - VAR__53647));
+   }
+
+   int VAR__21230;
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR_9494 / 2 ); VAR__21230++ )
+   {
+      if ( VAR__819283[VAR__21230] == VAR__819283[VAR_9494 - VAR__21230] )
+      {
+         continue;
+      }
+      else
+      {
+         check = 0;
+         break;
+      }
+   }
+
+   return check;
+}
+
+
+int checksu(int number)
+{
+   int VAR__21230;
+   int check = 1;
+
+   if ( number == 2 )
+   {
+      return check;
+   }
+
+   for ( VAR__21230 = 2; VAR__21230 <= ( number - 1 ); VAR__21230++ )
+   {
+      if (( number % VAR__21230 ) == 0 )
+      {
+         return 0;
+
+         break;
+      }
+   }
+
+   return check;
+}
+
+
+int main()
+{
+   int small;
+   int big;
+
+   scanf("%d", &small);
+   scanf("%d", &big);
+   int VAR__53647;
+   int status = 0;
+   for ( VAR__53647 = small; VAR__53647 <= big; VAR__53647++ )
+   {
+      if (( checkhui(VAR__53647) == 1 ) && ( checksu(VAR__53647) == 1 ))
+      {
+         printf("%d", VAR__53647);
+         status = 1;
+         break;
+      }
+   }
+
+   for ( ++VAR__53647; VAR__53647 <= big; VAR__53647++ )
+   {
+      if (( checkhui(VAR__53647) == 1 ) && ( checksu(VAR__53647) == 1 ))
+      {
+         printf(",%d", VAR__53647);
+      }
+   }
+
+   if ( status == 0 )
+   {
+      printf("no");
+   }
+
+   return 0;
+}

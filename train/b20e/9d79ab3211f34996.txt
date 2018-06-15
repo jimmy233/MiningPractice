@@ -1,0 +1,88 @@
+int VAR_1238123;
+int cmp(const void *VAR__7685, const void *VAR__3918907)
+{
+   return ( *((int *)VAR__3918907 )) - ( *((int *)VAR__7685 ));
+}
+
+
+int pk(int VAR__819283[], int VAR__19328[])
+{
+   int VAR__53647   = 0;
+   int VAR__21230   = 0;
+   int VAR__8444594 = VAR_1238123 - 1;
+   int VAR__1111    = VAR_1238123 - 1;
+   int VAR__SUM     = 0;
+   int VAR_21983012 = 0;
+   int lose         = 0;
+
+   while ( VAR__53647 <= VAR__8444594 )
+   {
+      if ( VAR__819283[VAR__8444594] > VAR__19328[VAR__1111] )
+      {
+         VAR__SUM += 200;
+         VAR_21983012++;
+         VAR__8444594--;
+         VAR__1111--;
+      }
+      else
+      if ( VAR__819283[VAR__8444594] < VAR__19328[VAR__1111] )
+      {
+         VAR__SUM -= 200;
+         lose++;
+         VAR__8444594--;
+         VAR__21230++;
+      }
+      else
+      {
+         if ( VAR__819283[VAR__53647] > VAR__19328[VAR__21230] )
+         {
+            VAR__SUM += 200;
+            VAR_21983012++;
+            VAR__53647++;
+            VAR__21230++;
+         }
+         else
+         {
+            if ( VAR__819283[VAR__8444594] < VAR__19328[VAR__21230] )
+            {
+               VAR__SUM -= 200;
+               lose++;
+            }
+
+            VAR__8444594--;
+            VAR__21230++;
+         }
+      }
+   }
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   int VAR__819283[1001];
+   int VAR__19328[1001];
+
+   while (( cin >> VAR_1238123 ) && ( VAR_1238123 != 0 ))
+   {
+      memset(VAR__819283, 0, sizeof( VAR__819283 ));
+      memset(VAR__19328, 0, sizeof( VAR__19328 ));
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( VAR__819283[0] ), cmp);
+      qsort(VAR__19328, VAR_1238123, sizeof( VAR__19328[0] ), cmp);
+      ( cout << pk(VAR__819283, VAR__19328)) << endl;
+   }
+
+   return 0;
+}

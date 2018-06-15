@@ -1,0 +1,73 @@
+void main()
+{
+   struct stu
+   {
+      char VAR__819283[20];
+      int  chj;
+      int  pin;
+      char gb;
+      char xb;
+      int  lunwen;
+      int  reward;
+   };
+   struct stu student[100];
+   int        VAR__53647;
+   int        VAR_1238123;
+   int        jishu;
+   int        VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", student[VAR__53647].VAR__819283, &student[VAR__53647].chj, &student[VAR__53647].pin, &student[VAR__53647].gb, &student[VAR__53647].xb, &student[VAR__53647].lunwen);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      student[VAR__53647].reward = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( student[VAR__53647].chj > 80 ) && ( student[VAR__53647].lunwen > 0 ))
+      {
+         student[VAR__53647].reward = student[VAR__53647].reward + 8000;
+      }
+
+      if (( student[VAR__53647].chj > 85 ) && ( student[VAR__53647].pin > 80 ))
+      {
+         student[VAR__53647].reward = student[VAR__53647].reward + 4000;
+      }
+
+      if ( student[VAR__53647].chj > 90 )
+      {
+         student[VAR__53647].reward = student[VAR__53647].reward + 2000;
+      }
+
+      if (( student[VAR__53647].chj > 85 ) && ( student[VAR__53647].xb == 'Y' ))
+      {
+         student[VAR__53647].reward = student[VAR__53647].reward + 1000;
+      }
+
+      if (( student[VAR__53647].pin > 80 ) && ( student[VAR__53647].gb == 'Y' ))
+      {
+         student[VAR__53647].reward = student[VAR__53647].reward + 850;
+      }
+   }
+
+   jishu = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( student[VAR__53647].reward > student[jishu].reward )
+      {
+         jishu = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + student[VAR__53647].reward;
+   }
+
+   printf("%s\n%d\n%d\n", student[jishu].VAR__819283, student[jishu].reward, VAR__SUM);
+}

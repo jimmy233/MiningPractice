@@ -1,0 +1,91 @@
+int ten(int VAR__1238129)
+{
+   int VAR__9290;
+
+   if (( 48 <= VAR__1238129 ) && ( VAR__1238129 <= 57 ))
+   {
+      VAR__9290 = VAR__1238129 - 48;
+   }
+   else
+   if (( 65 <= VAR__1238129 ) && ( VAR__1238129 <= 90 ))
+   {
+      VAR__9290 = VAR__1238129 - 55;
+   }
+   else
+   if (( 97 <= VAR__1238129 ) && ( VAR__1238129 <= 122 ))
+   {
+      VAR__9290 = VAR__1238129 - 87;
+   }
+
+
+
+   return VAR__9290;
+}
+
+
+char letter(int VAR_233)
+{
+   int VAR__8444594;
+
+   if (( 0 <= VAR_233 ) && ( VAR_233 <= 9 ))
+   {
+      VAR__8444594 = VAR_233 + 48;
+   }
+   else
+   if (( 10 <= VAR_233 ) && ( VAR_233 <= 26 ))
+   {
+      VAR__8444594 = VAR_233 + 55;
+   }
+
+
+   return VAR__8444594;
+}
+
+
+int main()
+{
+   long int a1;
+   long int b1;
+   long int VAR__819283[1001];
+   long int VAR__19328[1001];
+   long int tensum = 0;
+   long int VAR_1238123;
+   long int VAR__53647;
+   long     a1_;
+
+   cin >> a1;
+   a1_ = a1;
+   getchar();
+   for ( VAR__53647 = 1; VAR__53647 <= 1000; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = getchar();
+
+      if ( VAR__819283[VAR__53647] == 32 )
+      {
+         break;
+      }
+   }
+
+   VAR_1238123 = VAR__53647 - 1;
+   cin >> b1;
+   tensum = ten(VAR__819283[VAR_1238123]);
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      tensum = ( a1_ * ten(VAR__819283[VAR__53647])) + tensum;
+      a1_    = a1_ * a1;
+   }
+
+   VAR__53647 = 1;
+   do
+   {
+      VAR__19328[VAR__53647] = tensum % b1;
+      tensum = tensum / b1;
+      VAR__53647++;
+   } while ( tensum > 0 );
+   for ( VAR__53647 = VAR__53647 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      putchar(letter(VAR__19328[VAR__53647]));
+   }
+
+   return 0;
+}

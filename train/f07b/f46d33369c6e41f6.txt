@@ -1,0 +1,100 @@
+struct sz
+{
+   int       VAR__NUM;
+   struct sz *VAR__NEXT;
+};
+struct sz *creat(int VAR_1238123)
+{
+   struct sz *VAR__HEAD;
+   struct sz *ANOTHER_POINTER;
+   struct sz *YET_ANOTHER_POINTER;
+   int       VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct sz *)malloc(LEN));
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( 1 == VAR__53647 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      scanf("%d", &ANOTHER_POINTER->VAR__NUM);
+      ANOTHER_POINTER = (struct sz *)malloc(LEN);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct sz *VAR__HEAD)
+{
+   struct sz *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   do
+   {
+      printf("%d", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+
+      if ( VAR_233 != NULL )
+      {
+         putchar(' ');
+      }
+      else
+      {
+         putchar('\n');
+      }
+   } while ( VAR_233 != NULL );
+}
+
+
+struct sz *move(struct sz *VAR__HEAD, int VAR__8444594)
+{
+   int       first = 1;
+   struct sz *ANOTHER_POINTER;
+   struct sz *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   do
+   {
+      if ( ANOTHER_POINTER->VAR__NUM == VAR__8444594 )
+      {
+         if ( first )
+         {
+            VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+         }
+      }
+      else
+      {
+         first = 0;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER != NULL );
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int       VAR_1238123;
+   int       VAR__8444594;
+   struct sz *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   scanf("%d", &VAR__8444594);
+   VAR__HEAD = move(VAR__HEAD, VAR__8444594);
+   print(VAR__HEAD);
+}

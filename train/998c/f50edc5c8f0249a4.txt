@@ -1,0 +1,77 @@
+int main()
+{
+   char store[300];
+   char add1[300]     = { '\0' };
+   char add2[300]     = { '\0' };
+   char VAR__SUM[300] = { '\0' };
+   int  VAR__53647;
+   int  VAR__1111;
+   int  VAR__21230;
+   int  l1;
+   int  l2;
+
+   scanf("%s", store);
+   VAR__1111 = strlen(store) - 1;
+   for ( VAR__53647 = VAR__1111; VAR__53647 >= 0; VAR__53647-- )
+   {
+      add1[VAR__1111 - VAR__53647] = store[VAR__53647];
+   }
+
+   scanf("%s", store);
+   VAR__1111 = strlen(store) - 1;
+   for ( VAR__53647 = VAR__1111; VAR__53647 >= 0; VAR__53647-- )
+   {
+      add2[VAR__1111 - VAR__53647] = store[VAR__53647];
+   }
+
+   l1 = strlen(add1);
+   l2 = strlen(add2);
+
+   if ( l1 > l2 )
+   {
+      for ( VAR__53647 = l2; VAR__53647 <= l1; VAR__53647++ )
+      {
+         add2[VAR__53647] = '0';
+      }
+
+      add1[l1] = '0';
+   }
+   else
+   {
+      for ( VAR__53647 = l1; VAR__53647 <= l2; VAR__53647++ )
+      {
+         add1[VAR__53647] = '0';
+      }
+
+      add2[l2] = '0';
+   }
+
+   for ( VAR__53647 = 0; ( add1[VAR__53647] != '\0' ) || ( add2[VAR__53647] != '\0' ); VAR__53647++ )
+   {
+      VAR__21230 = ( add1[VAR__53647] - '0' ) + ( add2[VAR__53647] - '0' );
+
+      if ( VAR__21230 >= 10 )
+      {
+         add1[VAR__53647 + 1] = add1[VAR__53647 + 1] + 1;
+      }
+
+      VAR__SUM[VAR__53647] = ( VAR__21230 % 10 ) + '0';
+   }
+
+   VAR__1111 = strlen(VAR__SUM);
+   for ( VAR__53647 = VAR__1111 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( VAR__SUM[VAR__53647] != '0' ) || ( VAR__53647 == 0 ))
+      {
+         break;
+      }
+   }
+
+
+   for ( ; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", VAR__SUM[VAR__53647]);
+   }
+
+   return 0;
+}

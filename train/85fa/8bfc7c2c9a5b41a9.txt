@@ -1,0 +1,65 @@
+int RunNian(int VAR__3918907)
+{
+   int result;
+
+   if (((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 ))
+   {
+      result = 1;
+   }
+   else
+   {
+      result = 0;
+   }
+
+   return result;
+}
+
+
+int DiJiTian(int VAR__3918907, int VAR__1238129, int VAR__12302)
+{
+   int result = 0;
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         result += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         result += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ( RunNian(VAR__3918907))
+         {
+            result += 29;
+         }
+         else
+         {
+            result += 28;
+         }
+      }
+   }
+
+   result += VAR__12302;
+   return result;
+}
+
+
+int main()
+{
+   int y2;
+   int m2;
+   int d2;
+   int VAR__819283;
+   int VAR__112390;
+   int T = 0;
+
+   scanf("%d%d%d", &y2, &m2, &d2);
+   T += DiJiTian(y2, m2, d2);
+   printf("%d\n", T);
+   return 0;
+}

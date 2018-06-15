@@ -1,0 +1,66 @@
+void main()
+{
+   int VAR_1238123;
+   int high[30];
+   int point;
+   int VAR__1238129;
+   int sum1;
+   int sum2;
+   int check;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+   {
+      scanf("%d", &high[VAR__1238129]);
+   }
+
+   for ( check = 1; check == 1; )
+   {
+      check = 0;
+      for ( point = 0; point < ( VAR_1238123 - 1 ); point++ )
+      {
+         if ( high[point] < high[point + 1] )
+         {
+            check = 1;
+            for ( VAR__1238129 = 0, sum1 = 0; VAR__1238129 < point; VAR__1238129++ )
+            {
+               if ( high[VAR__1238129] < high[point + 1] )
+               {
+                  sum1++;
+               }
+            }
+
+
+            for ( VAR__1238129 = point + 2, sum2 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+            {
+               if ( high[VAR__1238129] > high[point] )
+               {
+                  sum2++;
+               }
+            }
+
+
+            if ( sum1 > sum2 )
+            {
+               for ( VAR__1238129 = point + 1; VAR__1238129 < ( VAR_1238123 - 1 ); VAR__1238129++ )
+               {
+                  high[VAR__1238129] = high[VAR__1238129 + 1];
+               }
+            }
+            else
+            {
+               for ( VAR__1238129 = point; VAR__1238129 < ( VAR_1238123 - 1 ); VAR__1238129++ )
+               {
+                  high[VAR__1238129] = high[VAR__1238129 + 1];
+               }
+
+               point--;
+            }
+
+            VAR_1238123--;
+         }
+      }
+   }
+
+   printf("%d\n", VAR_1238123);
+}

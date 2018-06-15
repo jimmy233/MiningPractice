@@ -1,0 +1,52 @@
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   *VAR__NUM;
+   int   tem;
+   float mean;
+   float VAR__SUM;
+
+   scanf("%d", &VAR_1238123);
+   VAR__NUM = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__NUM[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230] > VAR__NUM[VAR__21230 + 1] )
+         {
+            tem = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__NUM[VAR__21230 + 1];
+            VAR__NUM[VAR__21230 + 1] = tem;
+         }
+      }
+   }
+
+   VAR__SUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += VAR__NUM[VAR__53647];
+   }
+
+   mean = VAR__SUM / VAR_1238123;
+
+   if (( fabs(mean - VAR__NUM[0]) - fabs(mean - VAR__NUM[VAR_1238123 - 1])) > 0 )
+   {
+      printf("%d", VAR__NUM[0]);
+   }
+   else
+   if (( fabs(mean - VAR__NUM[0]) - fabs(mean - VAR__NUM[VAR_1238123 - 1])) < 0 )
+   {
+      printf("%d", VAR__NUM[VAR_1238123 - 1]);
+   }
+   else
+   {
+      printf("%d,%d", VAR__NUM[0], VAR__NUM[VAR_1238123 - 1]);
+   }
+}

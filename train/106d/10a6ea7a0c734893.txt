@@ -1,0 +1,77 @@
+int main()
+{
+   int rnfeb(int year);
+
+   int VAR_1238123;
+   int year;
+   int month1;
+   int month2;
+   int VAR__112390;
+   int VAR__53647;
+   int VAR__21230;
+   int day;
+   int VAR__NUM = 0;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &year, &month1, &month2);
+
+      if ( month1 < month2 )
+      {
+         VAR__112390 = month1;
+         month1      = month2;
+         month2      = VAR__112390;
+      }
+
+      VAR__NUM = 0;
+      for ( VAR__21230 = month2; VAR__21230 < month1; VAR__21230++ )
+      {
+         if ((((((( VAR__21230 == 1 ) || ( VAR__21230 == 3 )) || ( VAR__21230 == 5 )) || ( VAR__21230 == 7 )) || ( VAR__21230 == 8 )) || ( VAR__21230 == 10 )) || ( VAR__21230 == 12 ))
+         {
+            day = 31;
+         }
+         else
+         if (((( VAR__21230 == 4 ) || ( VAR__21230 == 6 )) || ( VAR__21230 == 9 )) || ( VAR__21230 == 11 ))
+         {
+            day = 30;
+         }
+         else
+         if ( VAR__21230 == 2 )
+         {
+            day = rnfeb(year);
+         }
+
+
+
+         VAR__NUM += day;
+      }
+
+      if (( VAR__NUM % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+
+   return 0;
+}
+
+
+int rnfeb(int year)
+{
+   int VAR__9290;
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      VAR__9290 = 29;
+   }
+   else
+   {
+      VAR__9290 = 28;
+   }
+
+   return VAR__9290;
+}

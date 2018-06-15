@@ -1,0 +1,80 @@
+int main()
+{
+   int VAR_1238123;
+   int rem;
+   int mon1;
+   int mon2;
+   int VAR__53647;
+   int VAR__8444594;
+   int year;
+   int mon;
+   int VAR__SUM;
+   int VAR__21230;
+   int VAR__819283[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__19328[200];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = 0;
+      (( cin >> year ) >> mon1 ) >> mon2;
+
+      if ( mon2 < mon1 )
+      {
+         mon  = mon2;
+         mon2 = mon1;
+         mon1 = mon;
+      }
+
+      if (( year % 400 ) == 0 )
+      {
+         VAR__819283[1] = 29;
+      }
+      else
+      if ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 ))
+      {
+         VAR__819283[1] = 29;
+      }
+      else
+      {
+         VAR__819283[1] = 28;
+      }
+
+
+      if ( mon1 == mon2 )
+      {
+         VAR__19328[VAR__53647] = 1;
+      }
+
+      for ( VAR__21230 = mon1; VAR__21230 < mon2; VAR__21230++ )
+      {
+         VAR__SUM = VAR__SUM + VAR__819283[VAR__21230 - 1];
+      }
+
+      rem = VAR__SUM % 7;
+
+      if ( rem == 0 )
+      {
+         VAR__19328[VAR__53647] = 1;
+      }
+      else
+      {
+         VAR__19328[VAR__53647] = 0;
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( VAR__19328[VAR__8444594] == 1 )
+      {
+         ( cout << "YES" ) << endl;
+      }
+      else
+      if ( VAR__19328[VAR__8444594] == 0 )
+      {
+         ( cout << "NO" ) << endl;
+      }
+   }
+
+   return 0;
+}

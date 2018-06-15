@@ -1,0 +1,74 @@
+struct student
+{
+   char           id[10];
+   char           name[20];
+   char           sex[2];
+   int            age;
+   char           VAR_9494[10];
+   char           add[20];
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647 = 0;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   VAR__HEAD       = NULL;
+
+   while (( scanf("%s", ANOTHER_POINTER->id) && (( *ANOTHER_POINTER->id ) >= 48 )) && (( *ANOTHER_POINTER->id ) <= 57 ))
+   {
+      scanf("%s%s%d%s%s", ANOTHER_POINTER->name, ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->VAR_9494, ANOTHER_POINTER->add);
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      VAR__53647++;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void turn(struct student *VAR__HEAD)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   YET_ANOTHER_POINTER = ( ANOTHER_POINTER = VAR__HEAD );
+
+   while ( VAR__HEAD->VAR__NEXT != NULL )
+   {
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      printf("%s %s %s %d %s %s\n", ANOTHER_POINTER->id, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->VAR_9494, ANOTHER_POINTER->add);
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+      ANOTHER_POINTER = VAR__HEAD;
+   }
+
+   printf("%s %s %s %d %s %s\n", ANOTHER_POINTER->id, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->VAR_9494, ANOTHER_POINTER->add);
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   turn(VAR__HEAD);
+}

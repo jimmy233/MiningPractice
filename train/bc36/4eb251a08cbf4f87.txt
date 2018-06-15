@@ -1,0 +1,87 @@
+int main()
+{
+   struct person
+   {
+      char   sex[6];
+      double height;
+   }
+       person[40];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int mk = 0;
+   int fk = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%lf", person[VAR__53647].sex, &person[VAR__53647].height);
+   }
+
+   double male[40];
+   double female[40];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(person[VAR__53647].sex, "male") == 0 )
+      {
+         male[mk] = person[VAR__53647].height;
+         mk++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(person[VAR__53647].sex, "female") == 0 )
+      {
+         female[fk] = person[VAR__53647].height;
+         fk++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < mk; VAR__53647++ )
+   {
+      for ( VAR__21230 = mk - 1; VAR__21230 > 0; VAR__21230-- )
+      {
+         if ( male[VAR__21230 - 1] > male[VAR__21230] )
+         {
+            double VAR_233;
+            VAR_233              = male[VAR__21230];
+            male[VAR__21230]     = male[VAR__21230 - 1];
+            male[VAR__21230 - 1] = VAR_233;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < fk; VAR__53647++ )
+   {
+      for ( VAR__21230 = fk - 1; VAR__21230 > 0; VAR__21230-- )
+      {
+         if ( female[VAR__21230 - 1] < female[VAR__21230] )
+         {
+            double VAR_233;
+            VAR_233                = female[VAR__21230];
+            female[VAR__21230]     = female[VAR__21230 - 1];
+            female[VAR__21230 - 1] = VAR_233;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < mk; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         printf("%.2lf", male[VAR__53647]);
+      }
+      else
+      {
+         printf(" %.2lf", male[VAR__53647]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < fk; VAR__53647++ )
+   {
+      printf(" %.2lf", female[VAR__53647]);
+   }
+
+   return 0;
+}

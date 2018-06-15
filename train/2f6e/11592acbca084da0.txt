@@ -1,0 +1,78 @@
+char input[100];
+int  lidui[100];
+int  boynum[100];
+void boysAndGirls(char boy, int pos, int dis, int charlong)
+{
+   if ( dis == charlong )
+   {
+      boynum[charlong - 1] = 0;
+   }
+   else
+   {
+      if (((( lidui[pos] == 1 ) || ( input[pos] == boy )) || ( pos < dis )) || ( lidui[pos - dis] == 1 ))
+      {
+         boysAndGirls(boy, pos + 1, dis, charlong);
+      }
+      else
+      {
+         if ( pos >= ( charlong - 1 ))
+         {
+            boysAndGirls(boy, 0, dis + 1, charlong);
+         }
+         else
+         {
+            if ( input[pos - dis] != boy )
+            {
+               boysAndGirls(boy, pos + 1, dis, charlong);
+            }
+            else
+            {
+               boynum[pos]      = pos - dis;
+               lidui[pos]       = 1;
+               lidui[pos - dis] = 1;
+               boysAndGirls(boy, pos + 1, dis, charlong);
+            }
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  charlong;
+   char boy;
+
+   cin >> input;
+   boy      = input[0];
+   charlong = strlen(input);
+   boysAndGirls(boy, 0, 1, charlong);
+   for ( VAR__53647 = 0; VAR__53647 < charlong; VAR__53647++ )
+   {
+      if ( VAR__53647 == ( charlong - 1 ))
+      {
+         ( cout << "0 " ) << ( charlong - 1 );
+      }
+      else
+      {
+         if ( boynum[VAR__53647] == 0 )
+         {
+            continue;
+         }
+         else
+         {
+            ((( cout << boynum[VAR__53647] ) << " " ) << VAR__53647 ) << endl;
+         }
+      }
+   }
+
+   cin.get();
+   cin.get();
+   cin.get();
+   cin.get();
+   cin.get();
+   cin.get();
+   cin.get();
+   return 0;
+}

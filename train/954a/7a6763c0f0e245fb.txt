@@ -1,0 +1,98 @@
+typedef struct
+{
+   char name[100];
+   int  qm;
+   int  py;
+   char gb;
+   char xb;
+   int  lw;
+   int  jxj;
+} student;
+student cl[200];
+int     VAR__SUM;
+int     VAR_1238123;
+void wsj(int VAR__8444594);
+void yxj(int VAR__8444594);
+void xbj(int VAR__8444594);
+void gxj(int VAR__8444594);
+
+void ysj(int VAR__8444594)
+{
+   if (( cl[VAR__8444594].qm > 80 ) && ( cl[VAR__8444594].lw > 0 ))
+   {
+      cl[VAR__8444594].jxj += 8000;
+      VAR__SUM             += 8000;
+   }
+
+   wsj(VAR__8444594);
+}
+
+
+void wsj(int VAR__8444594)
+{
+   if (( cl[VAR__8444594].qm > 85 ) && ( cl[VAR__8444594].py > 80 ))
+   {
+      cl[VAR__8444594].jxj += 4000;
+      VAR__SUM             += 4000;
+   }
+
+   yxj(VAR__8444594);
+}
+
+
+void yxj(int VAR__8444594)
+{
+   if ( cl[VAR__8444594].qm > 90 )
+   {
+      cl[VAR__8444594].jxj += 2000;
+      VAR__SUM             += 2000;
+   }
+
+   xbj(VAR__8444594);
+}
+
+
+void xbj(int VAR__8444594)
+{
+   if (( cl[VAR__8444594].qm > 85 ) && ( cl[VAR__8444594].xb == 'Y' ))
+   {
+      cl[VAR__8444594].jxj += 1000;
+      VAR__SUM             += 1000;
+   }
+
+   gxj(VAR__8444594);
+}
+
+
+void gxj(int VAR__8444594)
+{
+   if (( cl[VAR__8444594].py > 80 ) && ( cl[VAR__8444594].gb == 'Y' ))
+   {
+      cl[VAR__8444594].jxj += 850;
+      VAR__SUM             += 850;
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__MAX = 0;
+   int maxn;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", cl[VAR__53647].name, &cl[VAR__53647].qm, &cl[VAR__53647].py, &cl[VAR__53647].gb, &cl[VAR__53647].xb, &cl[VAR__53647].lw);
+      ysj(VAR__53647);
+
+      if ( cl[VAR__53647].jxj > VAR__MAX )
+      {
+         VAR__MAX = cl[VAR__53647].jxj;
+         maxn     = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d", cl[maxn].name, cl[maxn].jxj, VAR__SUM);
+   return 0;
+}

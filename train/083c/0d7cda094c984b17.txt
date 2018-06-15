@@ -1,0 +1,65 @@
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  ten = 0;
+   char VAR__NUM[1000];
+   char num1[1000];
+
+   (( cin >> VAR__819283 ) >> VAR__NUM ) >> VAR__19328;
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__NUM); VAR__53647++ )
+   {
+      if (( VAR__NUM[VAR__53647] >= ((int)'A' )) && ( VAR__NUM[VAR__53647] <= ((int)'Z' )))
+      {
+         VAR__NUM[VAR__53647] += 32;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(VAR__NUM); VAR__53647++ )
+   {
+      if (( VAR__NUM[VAR__53647] >= ((int)'a' )) && ( VAR__NUM[VAR__53647] <= ((int)'z' )))
+      {
+         ten += (((int)VAR__NUM[VAR__53647] ) - 87 ) * pow((double)VAR__819283, (((double)strlen(VAR__NUM)) - 1 ) - VAR__53647);
+      }
+      else
+      if (( VAR__NUM[VAR__53647] >= ((int)'1' )) && ( VAR__NUM[VAR__53647] <= ((int)'9' )))
+      {
+         ten += (((int)VAR__NUM[VAR__53647] ) - 48 ) * pow((double)VAR__819283, (((double)strlen(VAR__NUM)) - 1 ) - VAR__53647);
+      }
+   }
+
+   if ( ten == 0 )
+   {
+      cout << 0;
+   }
+   else
+   {
+      int VAR__21230 = 0;
+      for ( ; ; )
+      {
+         if ( ten == 0 )
+         {
+            break;
+         }
+
+         if (( ten % VAR__19328 ) < 10 )
+         {
+            num1[VAR__21230] = (char)(( ten % VAR__19328 ) + 48 );
+         }
+         else
+         {
+            num1[VAR__21230] = (char)(( ten % VAR__19328 ) + 55 );
+         }
+
+         ten = ten / VAR__19328;
+         VAR__21230++;
+      }
+
+      for ( int VAR__53647 = VAR__21230 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << num1[VAR__53647];
+      }
+   }
+
+   return 0;
+}

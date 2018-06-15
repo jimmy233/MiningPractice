@@ -1,0 +1,99 @@
+struct student
+{
+   int            VAR__NUM;
+   char           name[20];
+   struct student *VAR__NEXT;
+};
+struct student *creat(int VAR_1238123)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH));
+   VAR__HEAD       = NULL;
+   VAR__53647      = 0;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+      VAR__53647 = VAR__53647 + 1;
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN_OF_STH);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int            VAR__53647;
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   int            VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   VAR_233   = VAR__HEAD;
+   int VAR__819283[26];
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = 0;
+   }
+
+   while ( VAR_233 != NULL )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 20; VAR__53647++ )
+      {
+         VAR__819283[((int)VAR_233->name[VAR__53647] ) - 'A']++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   int number;
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+         number   = VAR__53647;
+      }
+   }
+
+   printf("%c\n", 'A' + number);
+   printf("%d\n", VAR__MAX);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 20; VAR__53647++ )
+      {
+         if ( VAR_233->name[VAR__53647] == ( 'A' + number ))
+         {
+            break;
+         }
+      }
+
+      if ( VAR_233->name[VAR__53647] == ( 'A' + number ))
+      {
+         printf("%d\n", VAR_233->VAR__NUM);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

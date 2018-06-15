@@ -1,0 +1,64 @@
+int map[2][12][12];
+void Make(int, int, int);
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR_1238123;
+   int turn = 0;
+
+   memset(map, 0, sizeof( map ));
+   map[0][5][5] = 1;
+   map[1][5][5] = 1;
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   for ( ; VAR_1238123 > 0; --VAR_1238123 )
+   {
+      turn = 1 - turn;
+      for ( VAR__53647 = 0; VAR__53647 < 12; ++VAR__53647 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 12; ++VAR__21230 )
+         {
+            map[1 - turn][VAR__53647][VAR__21230] = 0;
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= 9; ++VAR__53647 )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= 9; ++VAR__21230 )
+         {
+            Make(VAR__53647, VAR__21230, turn);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 9; ++VAR__53647 )
+   {
+      cout << ( map[1 - turn][VAR__53647][1] * VAR__1238129 );
+      for ( VAR__21230 = 2; VAR__21230 <= 9; ++VAR__21230 )
+      {
+         ( cout << " " ) << ( map[1 - turn][VAR__53647][VAR__21230] * VAR__1238129 );
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}
+
+
+void Make(int VAR__7685, int VAR__3918907, int VAR__temp)
+{
+   int VAR_1238123 = map[VAR__temp][VAR__7685][VAR__3918907];
+
+   map[1 - VAR__temp][VAR__7685][VAR__3918907]         += VAR_1238123 * 2;
+   map[1 - VAR__temp][VAR__7685 - 1][VAR__3918907]     += VAR_1238123;
+   map[1 - VAR__temp][VAR__7685 + 1][VAR__3918907]     += VAR_1238123;
+   map[1 - VAR__temp][VAR__7685][VAR__3918907 - 1]     += VAR_1238123;
+   map[1 - VAR__temp][VAR__7685][VAR__3918907 + 1]     += VAR_1238123;
+   map[1 - VAR__temp][VAR__7685 - 1][VAR__3918907 - 1] += VAR_1238123;
+   map[1 - VAR__temp][VAR__7685 - 1][VAR__3918907 + 1] += VAR_1238123;
+   map[1 - VAR__temp][VAR__7685 + 1][VAR__3918907 - 1] += VAR_1238123;
+   map[1 - VAR__temp][VAR__7685 + 1][VAR__3918907 + 1] += VAR_1238123;
+}

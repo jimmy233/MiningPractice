@@ -1,0 +1,71 @@
+struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+};
+struct distanceBetweenPoints
+{
+   int    pointIndex1;
+   int    pointIndex2;
+   double distace;
+};
+double distance(struct point ANOTHER_POINTER, struct point YET_ANOTHER_POINTER)
+{
+   double VAR__12302 = 0.0;
+
+   VAR__12302 = sqrt(((( ANOTHER_POINTER.VAR__7685 - YET_ANOTHER_POINTER.VAR__7685 ) * ( ANOTHER_POINTER.VAR__7685 - YET_ANOTHER_POINTER.VAR__7685 )) + (( ANOTHER_POINTER.VAR__3918907 - YET_ANOTHER_POINTER.VAR__3918907 ) * ( ANOTHER_POINTER.VAR__3918907 - YET_ANOTHER_POINTER.VAR__3918907 ))) + (( ANOTHER_POINTER.VAR__9290 - YET_ANOTHER_POINTER.VAR__9290 ) * ( ANOTHER_POINTER.VAR__9290 - YET_ANOTHER_POINTER.VAR__9290 )));
+   return VAR__12302;
+}
+
+
+int main(int argc, const char *argv[])
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct point points[VAR_1238123];
+   for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      scanf("%d %d %d", &points[VAR__21230].VAR__7685, &points[VAR__21230].VAR__3918907, &points[VAR__21230].VAR__9290);
+   }
+
+   struct distanceBetweenPoints distances[( VAR_1238123 * ( VAR_1238123 - 1 )) / 2];
+   int index = 0;
+   for ( int index1 = 0; index1 < VAR_1238123; index1++ )
+   {
+      for ( int index2 = index1 + 1; index2 < VAR_1238123; index2++ )
+      {
+         double VAR__12302 = distance(points[index1], points[index2]);
+         distances[index].distace     = VAR__12302;
+         distances[index].pointIndex1 = index1;
+         distances[index].pointIndex2 = index2;
+         index++;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < index; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < ( index - VAR__53647 ); VAR__21230++ )
+      {
+         if ( distances[VAR__21230 - 1].distace < distances[VAR__21230].distace )
+         {
+            struct distanceBetweenPoints VAR__TEMP;
+            VAR__TEMP = distances[VAR__21230 - 1];
+            distances[VAR__21230 - 1] = distances[VAR__21230];
+            distances[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < index; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)", points[distances[VAR__53647].pointIndex1].VAR__7685, points[distances[VAR__53647].pointIndex1].VAR__3918907, points[distances[VAR__53647].pointIndex1].VAR__9290);
+      printf("-");
+      printf("(%d,%d,%d)", points[distances[VAR__53647].pointIndex2].VAR__7685, points[distances[VAR__53647].pointIndex2].VAR__3918907, points[distances[VAR__53647].pointIndex2].VAR__9290);
+      printf("=");
+      printf("%.2lf\n", distances[VAR__53647].distace);
+   }
+
+   return 0;
+}

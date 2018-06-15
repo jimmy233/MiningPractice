@@ -1,0 +1,72 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__COUNT[250] = { 0 };
+   int  VAR__NUM        = 0;
+   char line[501];
+   char n_gram[250][5];
+   char VAR__TEMP[5];
+
+   cin >> VAR_1238123;
+   cin >> line;
+   VAR__COUNT[0] = 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      n_gram[0][VAR__53647] = line[VAR__53647];
+   }
+
+   n_gram[0][VAR_1238123] = '\0';
+   for ( VAR__53647 = 1; VAR__53647 < (( strlen(line) - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + VAR_1238123 ); VAR__21230++ )
+      {
+         VAR__TEMP[VAR__21230 - VAR__53647] = line[VAR__21230];
+      }
+
+      VAR__TEMP[VAR_1238123] = '\0';
+      for ( VAR__21230 = 0; VAR__21230 <= VAR__NUM; VAR__21230++ )
+      {
+         if ( strcmp(VAR__TEMP, n_gram[VAR__21230]) == 0 )
+         {
+            VAR__COUNT[VAR__21230]++;
+            break;
+         }
+      }
+
+      if ( VAR__21230 == ( VAR__NUM + 1 ))
+      {
+         strcpy(n_gram[VAR__NUM + 1], VAR__TEMP);
+         VAR__COUNT[VAR__NUM + 1] = 1;
+         VAR__NUM++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__NUM; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__COUNT[VAR__53647] )
+      {
+         VAR__MAX = VAR__COUNT[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   {
+      ( cout << VAR__MAX ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 <= VAR__NUM; VAR__53647++ )
+      {
+         if ( VAR__COUNT[VAR__53647] == VAR__MAX )
+         {
+            ( cout << n_gram[VAR__53647] ) << endl;
+         }
+      }
+   }
+
+   return 0;
+}

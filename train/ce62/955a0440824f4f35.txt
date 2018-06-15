@@ -1,0 +1,50 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   char **string;
+
+   scanf("%d", &VAR_1238123);
+   string = (char **)malloc(( sizeof( char * )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      string[VAR__53647] = (char *)malloc(( sizeof( char )) * 20);
+      scanf("%s", string[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( !(((( string[VAR__53647][0] >= 'A' ) && ( string[VAR__53647][0] <= 'Z' )) || (( string[VAR__53647][0] >= 'a' ) && ( string[VAR__53647][0] <= 'z' ))) || ( string[VAR__53647][0] == '_' )))
+      {
+         printf("no\n");
+         continue;
+      }
+
+      for ( VAR__21230 = 1; string[VAR__53647][VAR__21230]; VAR__21230++ )
+      {
+         if ( !((((( string[VAR__53647][VAR__21230] >= '0' ) && ( string[VAR__53647][VAR__21230] <= '9' )) || (( string[VAR__53647][VAR__21230] >= 'A' ) && ( string[VAR__53647][VAR__21230] <= 'Z' ))) || (( string[VAR__53647][VAR__21230] >= 'a' ) && ( string[VAR__53647][VAR__21230] <= 'z' ))) || ( string[VAR__53647][VAR__21230] == '_' )))
+         {
+            VAR__21230 = 0;
+            break;
+         }
+      }
+
+      if ( VAR__21230 )
+      {
+         printf("yes\n");
+      }
+      else
+      {
+         printf("no\n");
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      free(string[VAR__53647]);
+   }
+
+   free(string);
+   return 0;
+}

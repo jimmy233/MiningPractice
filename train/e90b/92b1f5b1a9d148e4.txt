@@ -1,0 +1,63 @@
+struct student
+{
+   int   VAR__NUM;
+   float yuwen;
+   float shuxue;
+   float zongfen;
+}
+stu[student_num];
+struct student
+{
+   int   VAR__NUM;
+   float yuwen;
+   float shuxue;
+   float zongfen;
+}
+*VAR_233[3];
+void main()
+{
+   void paixu(struct student *VAR__819283, int VAR_1238123);
+
+   int VAR__53647;
+   int VAR_1238123;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%f%f", &stu[VAR__53647].VAR__NUM, &stu[VAR__53647].yuwen, &stu[VAR__53647].shuxue);
+      stu[VAR__53647].zongfen = stu[VAR__53647].yuwen + stu[VAR__53647].shuxue;
+   }
+
+   paixu(stu, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%d %.0f\n", VAR_233[VAR__53647]->VAR__NUM, VAR_233[VAR__53647]->zongfen);
+   }
+}
+
+
+void paixu(struct student *VAR__819283, int VAR_1238123)
+{
+   int   VAR__53647;
+   int   VAR__21230;
+   float VAR__7685[3];
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1, VAR_233[VAR__53647] = VAR__819283; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR_233[VAR__53647]->zongfen < ( VAR__819283 + VAR__21230 )->zongfen )
+         {
+            VAR_233[VAR__53647] = VAR__819283 + VAR__21230;
+         }
+      }
+
+
+      VAR__7685[VAR__53647]        = VAR_233[VAR__53647]->zongfen;
+      VAR_233[VAR__53647]->zongfen = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      VAR_233[VAR__53647]->zongfen = VAR__7685[VAR__53647];
+   }
+}

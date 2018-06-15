@@ -1,0 +1,89 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR_FLAG;
+   int aright;
+
+   struct
+   {
+      int VAR__1111;
+      int VAR_129012;
+   }
+   qj[50001];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d", &qj[VAR__53647].VAR__1111, &qj[VAR__53647].VAR_129012);
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( qj[VAR__21230].VAR__1111 > qj[VAR__21230 + 1].VAR__1111 )
+         {
+            VAR__temp = qj[VAR__21230].VAR__1111;
+            qj[VAR__21230].VAR__1111     = qj[VAR__21230 + 1].VAR__1111;
+            qj[VAR__21230 + 1].VAR__1111 = VAR__temp;
+            VAR__temp = qj[VAR__21230].VAR_129012;
+            qj[VAR__21230].VAR_129012     = qj[VAR__21230 + 1].VAR_129012;
+            qj[VAR__21230 + 1].VAR_129012 = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if (( qj[VAR__21230].VAR__1111 == qj[VAR__21230 + 1].VAR__1111 ) && ( qj[VAR__21230].VAR_129012 > qj[VAR__21230 + 1].VAR_129012 ))
+         {
+            VAR__temp = qj[VAR__21230].VAR_129012;
+            qj[VAR__21230].VAR_129012     = qj[VAR__21230 + 1].VAR_129012;
+            qj[VAR__21230 + 1].VAR_129012 = VAR__temp;
+         }
+      }
+   }
+
+   VAR_FLAG   = 1;
+   aright     = qj[0].VAR_129012;
+   VAR__21230 = 1;
+   do
+   {
+      if ( VAR__21230 == VAR_1238123 )
+      {
+         VAR_FLAG == 1;
+         break;
+      }
+
+      if ( aright < qj[VAR__21230].VAR__1111 )
+      {
+         VAR_FLAG = 0;
+         break;
+      }
+      else
+      if (( aright >= qj[VAR__21230].VAR__1111 ) && ( aright < qj[VAR__21230].VAR_129012 ))
+      {
+         aright = qj[VAR__21230].VAR_129012;
+         VAR__21230++;
+      }
+      else
+      {
+         VAR__21230++;
+      }
+   } while ( 1 );
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("no\n");
+   }
+   else
+   {
+      printf("%d %d\n", qj[0].VAR__1111, aright);
+   }
+
+   return 0;
+}

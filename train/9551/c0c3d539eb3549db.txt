@@ -1,0 +1,108 @@
+struct patient
+{
+   char           id[10];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct patient *VAR_233;
+   struct patient *pre;
+   struct patient *pnew;
+   struct patient *head1;
+   struct patient *head2;
+
+   head1 = NULL;
+   head2 = NULL;
+   scanf("%d\n", &VAR_1238123);
+   VAR_233 = (struct patient *)malloc(sizeof( struct patient ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      pnew = (struct patient *)malloc(sizeof( struct patient ));
+      scanf("%s %d\n", pnew->id, &pnew->age);
+      pnew->VAR__NEXT = NULL;
+
+      if ( pnew->age >= 60 )
+      {
+         if ( head1 == NULL )
+         {
+            head1 = pnew;
+         }
+         else
+         {
+            VAR_233 = head1;
+
+            while ( VAR_233 && ( VAR_233->age >= pnew->age ))
+            {
+               pre     = VAR_233;
+               VAR_233 = VAR_233->VAR__NEXT;
+            }
+
+            if ( VAR_233 == head1 )
+            {
+               pnew->VAR__NEXT = head1;
+               head1           = pnew;
+            }
+            else
+            {
+               pre->VAR__NEXT  = pnew;
+               pnew->VAR__NEXT = VAR_233;
+            }
+         }
+      }
+      else
+      {
+         if ( head2 == NULL )
+         {
+            head2 = pnew;
+         }
+         else
+         {
+            VAR_233 = head2;
+
+            while ( VAR_233 )
+            {
+               pre     = VAR_233;
+               VAR_233 = VAR_233->VAR__NEXT;
+            }
+
+            if ( VAR_233 == head2 )
+            {
+               pnew->VAR__NEXT = head2;
+               head2           = pnew;
+            }
+            else
+            {
+               pre->VAR__NEXT  = pnew;
+               pnew->VAR__NEXT = VAR_233;
+            }
+         }
+      }
+   }
+
+   VAR_233 = head1;
+
+   if ( head1 != NULL )
+   {
+      while ( VAR_233 )
+      {
+         printf("%s\n", VAR_233->id);
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+
+   VAR_233 = head2;
+
+   if ( head2 != NULL )
+   {
+      while ( VAR_233 )
+      {
+         printf("%s\n", VAR_233->id);
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,91 @@
+struct student
+{
+   char           name[20];
+   int            score;
+   int            banji;
+   char           ganbu;
+   char           xibu;
+   int            lunwen;
+   struct student *VAR__NEXT;
+};
+struct student *create(void)
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->score, &ANOTHER_POINTER->banji, &ANOTHER_POINTER->ganbu, &ANOTHER_POINTER->xibu, &ANOTHER_POINTER->lunwen);
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->score, &ANOTHER_POINTER->banji, &ANOTHER_POINTER->ganbu, &ANOTHER_POINTER->xibu, &ANOTHER_POINTER->lunwen);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__MAX = 0;
+   int            VAR__SUM = 0;
+
+   for ( ANOTHER_POINTER = create(); ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      int total = 0;
+
+      if (( ANOTHER_POINTER->score > 80 ) && ( ANOTHER_POINTER->lunwen >= 1 ))
+      {
+         total = total + 8000;
+      }
+
+      if (( ANOTHER_POINTER->score > 85 ) && ( ANOTHER_POINTER->banji > 80 ))
+      {
+         total = total + 4000;
+      }
+
+      if ( ANOTHER_POINTER->score > 90 )
+      {
+         total = total + 2000;
+      }
+
+      if (( ANOTHER_POINTER->score > 85 ) && ( ANOTHER_POINTER->xibu == 'Y' ))
+      {
+         total = total + 1000;
+      }
+
+      if (( ANOTHER_POINTER->banji > 80 ) && ( ANOTHER_POINTER->ganbu == 'Y' ))
+      {
+         total = total + 850;
+      }
+
+      if ( total > VAR__MAX )
+      {
+         VAR__MAX            = total;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+
+      VAR__SUM = VAR__SUM + total;
+   }
+
+   printf("%s\n%d\n%d", YET_ANOTHER_POINTER->name, VAR__MAX, VAR__SUM);
+}

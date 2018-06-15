@@ -1,0 +1,64 @@
+struct link
+{
+   char        VAR_9494[100];
+   struct link *VAR__NEXT;
+   struct link *last;
+};
+struct link *create()
+{
+   struct link *last;
+   struct link *VAR__HEAD;
+   struct link *VAR_233;
+   char        VAR_9494[100];
+
+   VAR__HEAD = (struct link *)malloc(LEN);
+   last      = VAR__HEAD;
+   do
+   {
+      gets(VAR_9494);
+
+      if ( strlen(VAR_9494) == 3 )
+      {
+         break;
+      }
+
+      VAR_233 = (struct link *)malloc(LEN);
+      strcpy(VAR_233->VAR_9494, VAR_9494);
+      last->VAR__NEXT = VAR_233;
+      VAR_233->last   = last;
+      last            = VAR_233;
+   } while ( 0 == 0 );
+   last->VAR__NEXT = NULL;
+   VAR__HEAD       = VAR__HEAD->VAR__NEXT;
+   VAR__HEAD->last = NULL;
+   return VAR__HEAD;
+}
+
+
+void nprint(struct link *VAR_233)
+{
+   struct link *last;
+
+   while ( VAR_233 != NULL )
+   {
+      last    = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   VAR_233 = last;
+
+   while ( VAR_233 != NULL )
+   {
+      puts(VAR_233->VAR_9494);
+      VAR_233 = VAR_233->last;
+   }
+}
+
+
+int main()
+{
+   struct link *VAR_233;
+
+   VAR_233 = create();
+   nprint(VAR_233);
+}

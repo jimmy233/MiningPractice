@@ -1,0 +1,67 @@
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__819283[400];
+   int   small  = 0;
+   int   smalln = 0;
+   int   big    = 0;
+   int   bign   = 0;
+   int   VAR__53647;
+   float VAR__SUM = 0;
+   float average;
+   float VAR_FLAG = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+   }
+
+   average = VAR__SUM / VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ((( VAR__819283[VAR__53647] - average ) >= VAR_FLAG ) || (( VAR__819283[VAR__53647] - average ) <= ( -VAR_FLAG )))
+      {
+         if (( VAR__819283[VAR__53647] - average ) > 0 )
+         {
+            big      = VAR__819283[VAR__53647];
+            bign     = 1;
+            VAR_FLAG = VAR__819283[VAR__53647] - average;
+         }
+         else
+         {
+            small    = VAR__819283[VAR__53647];
+            smalln   = 1;
+            VAR_FLAG = average - VAR__819283[VAR__53647];
+         }
+      }
+   }
+
+   if (( smalln == 1 ) && ( bign == 0 ))
+   {
+      printf("%d", small);
+   }
+
+   if (( smalln == 0 ) && ( bign == 1 ))
+   {
+      printf("%d", big);
+   }
+
+   if (( smalln == 1 ) && ( bign == 1 ))
+   {
+      if (( big - average ) > ( average - small ))
+      {
+         printf("%d", big);
+      }
+      else
+      if (( big - average ) < ( average - small ))
+      {
+         printf("%d", small);
+      }
+      else
+      {
+         printf("%d,%d", small, big);
+      }
+   }
+}

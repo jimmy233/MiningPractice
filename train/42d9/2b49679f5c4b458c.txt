@@ -1,0 +1,67 @@
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct coordinate
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+      int io;
+   }
+       pt[VAR_1238123];
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647 = VAR__53647 + 1 )
+   {
+      scanf("%d %d %d", &pt[VAR__53647].VAR__7685, &pt[VAR__53647].VAR__3918907, &pt[VAR__53647].VAR__9290);
+      pt[VAR__53647].io = VAR__53647;
+   }
+
+   int VAR__21230;
+   int VAR__1238129;
+   VAR__1238129 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2;
+   struct distance
+   {
+      struct coordinate pt1;
+      struct coordinate pt2;
+      double            VAR__1111;
+   }
+       dist[VAR__1238129];
+   int VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647 = VAR__53647 + 1 )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230 = VAR__21230 + 1 )
+      {
+         dist[VAR__temp].pt1       = pt[VAR__53647];
+         dist[VAR__temp].pt2       = pt[VAR__21230];
+         dist[VAR__temp].VAR__1111 = sqrt(( pow(1.0 * ( dist[VAR__temp].pt1.VAR__7685 - dist[VAR__temp].pt2.VAR__7685 ), 2.0) + pow(1.0 * ( dist[VAR__temp].pt1.VAR__3918907 - dist[VAR__temp].pt2.VAR__3918907 ), 2.0)) + pow(1.0 * ( dist[VAR__temp].pt1.VAR__9290 - dist[VAR__temp].pt2.VAR__9290 ), 2.0));
+         VAR__temp = VAR__temp + 1;
+      }
+   }
+
+   struct distance VAR__TEMP;
+   int             VAR_9494 = 0;
+
+   while ( VAR_9494 == 0 )
+   {
+      VAR_9494 = 1;
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+      {
+         if ( dist[VAR__53647].VAR__1111 < dist[VAR__53647 + 1].VAR__1111 )
+         {
+            VAR__TEMP            = dist[VAR__53647];
+            dist[VAR__53647]     = dist[VAR__53647 + 1];
+            dist[VAR__53647 + 1] = VAR__TEMP;
+            VAR_9494             = 0;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", dist[VAR__53647].pt1.VAR__7685, dist[VAR__53647].pt1.VAR__3918907, dist[VAR__53647].pt1.VAR__9290, dist[VAR__53647].pt2.VAR__7685, dist[VAR__53647].pt2.VAR__3918907, dist[VAR__53647].pt2.VAR__9290, dist[VAR__53647].VAR__1111);
+   }
+
+   return 0;
+}

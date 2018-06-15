@@ -1,0 +1,77 @@
+struct stu
+{
+   char       VAR__NUM[20];
+   int        score;
+   struct stu *VAR__NEXT;
+};
+void sort(struct stu *VAR__HEAD, struct stu *VAR_666)
+{
+   struct stu *pre     = VAR__HEAD;
+   struct stu *VAR_233 = pre->VAR__NEXT;
+   struct stu *VAR_9494;
+
+   VAR_9494        = (struct stu *)malloc(sizeof( struct stu ));
+   VAR_9494->score = VAR_666->score;
+   strcpy(VAR_9494->VAR__NUM, VAR_666->VAR__NUM);
+   VAR_9494->VAR__NEXT = NULL;
+
+   if ( VAR_9494->score >= 60 )
+   {
+      while (( VAR_233 != NULL ) && ( VAR_666->score <= VAR_233->score ))
+      {
+         pre     = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      pre->VAR__NEXT      = VAR_9494;
+      VAR_9494->VAR__NEXT = VAR_233;
+   }
+   else
+   {
+      while ( VAR_233 != NULL )
+      {
+         pre     = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      pre->VAR__NEXT      = VAR_9494;
+      VAR_9494->VAR__NEXT = VAR_233;
+   }
+}
+
+
+void print(struct stu *VAR__HEAD)
+{
+   struct stu *VAR_233;
+   int        VAR__53647 = 0;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   int        VAR_1238123;
+   int        VAR__8444594;
+   int        VAR__53647;
+   struct stu *VAR__HEAD;
+   struct stu *VAR_233;
+
+   VAR__HEAD            = (struct stu *)malloc(sizeof( struct stu ));
+   VAR__HEAD->VAR__NEXT = NULL;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct stu *)malloc(sizeof( struct stu ));
+      scanf("%s %d", VAR_233->VAR__NUM, &VAR_233->score);
+      sort(VAR__HEAD, VAR_233);
+   }
+
+   print(VAR__HEAD->VAR__NEXT);
+}

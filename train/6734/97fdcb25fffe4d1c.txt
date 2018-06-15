@@ -1,0 +1,68 @@
+int VAR__127322(int VAR__819283, int VAR_1238123);
+
+void main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int cut;
+   int VAR__COUNT;
+   int VAR__819283[400] = { 0 };
+
+   for ( VAR__53647 = 0; VAR__53647 < 100000; VAR__53647++ )
+   {
+      scanf("%d%d", &VAR_1238123, &VAR__1238129);
+
+      if (( VAR__1238129 == 0 ) && ( VAR_1238123 == 0 ))
+      {
+         break;
+      }
+      else
+      if ( VAR__1238129 == 1 )
+      {
+         printf("%d\n", VAR_1238123);
+      }
+      else
+      {
+         for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+         {
+            VAR__819283[VAR__53647] = 1;
+         }
+
+         for ( cut = 1, VAR__COUNT = VAR_1238123; VAR__COUNT > 1; VAR__COUNT-- )
+         {
+            for ( VAR__53647 = 1; VAR__53647 <= ( VAR__1238129 - 1 ); VAR__53647++ )
+            {
+               cut = VAR__127322(cut + 1, VAR_1238123);
+
+               while ( VAR__819283[cut] == 0 )
+               {
+                  cut = VAR__127322(cut + 1, VAR_1238123);
+               }
+            }
+
+            VAR__819283[cut] = 0;
+
+            while ( VAR__819283[cut] == 0 )
+            {
+               cut = VAR__127322(cut + 1, VAR_1238123);
+            }
+         }
+
+         printf("%d\n", cut);
+      }
+   }
+}
+
+
+int VAR__127322(int VAR__819283, int VAR_1238123)
+{
+   if (( VAR__819283 % VAR_1238123 ) == 0 )
+   {
+      return VAR_1238123;
+   }
+   else
+   {
+      return VAR__819283 % VAR_1238123;
+   }
+}

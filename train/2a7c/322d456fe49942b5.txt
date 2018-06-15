@@ -1,0 +1,76 @@
+int primes[20000];
+int isPrimeNumber(int VAR_233)
+{
+   int VAR__21230;
+
+   for ( VAR__21230 = 0; ( primes[VAR__21230] * primes[VAR__21230] ) < VAR_233; VAR__21230++ )
+   {
+      if (( VAR_233 % primes[VAR__21230] ) == 0 )
+      {
+         return 0;
+      }
+   }
+
+   if (( primes[VAR__21230] * primes[VAR__21230] ) > VAR_233 )
+   {
+      return 1;
+   }
+
+   return 0;
+}
+
+
+void AllPrimes(int VAR_1238123)
+{
+   int number = 1;
+   int VAR__53647;
+   int VAR__21230;
+
+   primes[0] = 2;
+   for ( VAR__53647 = 3; VAR__53647 <= VAR_1238123; VAR__53647 = VAR__53647 + 2 )
+   {
+      for ( VAR__21230 = 0; ( primes[VAR__21230] * primes[VAR__21230] ) < VAR__53647; VAR__21230++ )
+      {
+         if (( VAR__53647 % primes[VAR__21230] ) == 0 )
+         {
+            break;
+         }
+      }
+
+      if (( primes[VAR__21230] * primes[VAR__21230] ) > VAR__53647 )
+      {
+         primes[number] = VAR__53647;
+         number++;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__21230;
+   AllPrimes(VAR_1238123);
+   for ( VAR__21230 = 6; VAR__21230 <= VAR_1238123; VAR__21230 += 2 )
+   {
+      int half = VAR__21230 / 2;
+      int VAR__53647;
+      int isPrime1;
+      int isPrime2;
+      for ( VAR__53647 = 3; VAR__53647 <= half; VAR__53647 = VAR__53647 + 2 )
+      {
+         isPrime1 = isPrimeNumber(VAR__53647);
+         isPrime2 = isPrimeNumber(VAR__21230 - VAR__53647);
+
+         if ( isPrime1 && isPrime2 )
+         {
+            printf("%d=%d+%d\n", VAR__21230, VAR__53647, VAR__21230 - VAR__53647);
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

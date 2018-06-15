@@ -1,0 +1,82 @@
+int main()
+{
+   const int dirx[4] = { 0, 0, 1, -1 };
+   const int diry[4] = { 1, -1, 0, 0 };
+   int       VAR_1238123;
+   int       VAR__1238129;
+   int       VAR__53647;
+   int       VAR__21230;
+   int       VAR__8444594;
+   int       VAR__7685;
+   int       VAR__3918907;
+   int       mtime;
+   int       ans = 0;
+   char      room[200][200];
+   char      newroom[200][200];
+
+   cin >> VAR_1238123;
+   cin.getline(room[0], sizeof( room[0] ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin.getline(room[VAR__53647], sizeof( room[VAR__53647] ));
+   }
+
+   cin >> VAR__1238129;
+   for ( mtime = 1; mtime < VAR__1238129; mtime++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            newroom[VAR__53647][VAR__21230] = room[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( room[VAR__53647][VAR__21230] == '@' )
+            {
+               for ( VAR__8444594 = 0; VAR__8444594 < 4; VAR__8444594++ )
+               {
+                  VAR__7685    = VAR__53647 + dirx[VAR__8444594];
+                  VAR__3918907 = VAR__21230 + diry[VAR__8444594];
+
+                  if ((((( 0 <= VAR__7685 ) && ( VAR__7685 < VAR_1238123 )) && ( 0 <= VAR__3918907 )) && ( VAR__3918907 < VAR_1238123 )) && ( room[VAR__7685][VAR__3918907] == '.' ))
+                  {
+                     newroom[VAR__7685][VAR__3918907] = '@';
+                  }
+               }
+            }
+         }
+      }
+
+
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            room[VAR__53647][VAR__21230] = newroom[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( room[VAR__53647][VAR__21230] == '@' )
+         {
+            ans++;
+         }
+      }
+   }
+
+
+
+   ( cout << ans ) << endl;
+   return 0;
+}

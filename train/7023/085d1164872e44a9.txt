@@ -1,0 +1,88 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__8444594;
+   int  VAR__temp;
+   int  VAR__9290;
+   int  VAR__19328;
+   int  VAR__819283;
+   int  len1;
+   int  len2;
+   char num1[1000][100];
+   char num2[1000][100];
+
+   cin >> VAR_1238123;
+   cin.get();
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> num1[VAR__53647] ) >> num2[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      len1 = strlen(num1[VAR__53647]);
+      len2 = strlen(num2[VAR__53647]);
+      for ( VAR__8444594 = 0; VAR__8444594 < len2; VAR__8444594++ )
+      {
+         VAR__819283 = ( len1 - VAR__8444594 ) - 1;
+         VAR__19328  = ( len2 - VAR__8444594 ) - 1;
+
+         if ( num1[VAR__53647][VAR__819283] >= num2[VAR__53647][VAR__19328] )
+         {
+            num1[VAR__53647][VAR__819283] = ( num1[VAR__53647][VAR__819283] - num2[VAR__53647][VAR__19328] ) + '0';
+         }
+         else
+         {
+            for ( VAR__temp = VAR__819283 - 1; VAR__temp >= 0; VAR__temp-- )
+            {
+               if ( num1[VAR__53647][VAR__temp] > '0' )
+               {
+                  break;
+               }
+            }
+
+
+            for ( VAR__9290 = VAR__temp + 1; VAR__9290 <= ( VAR__819283 - 1 ); VAR__9290++ )
+            {
+               if ( num1[VAR__53647][VAR__9290] == '0' )
+               {
+                  num1[VAR__53647][VAR__9290] = '9';
+               }
+            }
+
+
+            num1[VAR__53647][VAR__temp]   = ( num1[VAR__53647][VAR__temp] - '1' ) + '0';
+            num1[VAR__53647][VAR__819283] = ((((( num1[VAR__53647][VAR__819283] + '1' ) - '0' ) + '9' ) - '0' ) - num2[VAR__53647][VAR__19328] ) + '0';
+         }
+      }
+
+      while ( 1 )
+      {
+         if ( num1[VAR__53647][0] != '0' )
+         {
+            break;
+         }
+         else
+         {
+            for ( VAR__9290 = 0; VAR__9290 < len1; VAR__9290++ )
+            {
+               num1[VAR__53647][VAR__9290] = num1[VAR__53647][VAR__9290 + 1];
+            }
+
+            len1--;
+         }
+      }
+
+      for ( VAR__8444594 = 0; VAR__8444594 < len1; VAR__8444594++ )
+      {
+         cout << num1[VAR__53647][VAR__8444594];
+      }
+
+      cout << endl;
+   }
+
+   cin.get();
+   cin.get();
+   return 0;
+}

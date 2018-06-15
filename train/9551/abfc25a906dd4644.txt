@@ -1,0 +1,92 @@
+struct patient
+{
+   char           ID[10];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+struct patient *insert(struct patient *VAR__HEAD, struct patient *another)
+{
+   struct patient *p0;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   p0 = another;
+
+   if ( p0->age < 60 )
+   {
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER->VAR__NEXT = p0;
+      p0->VAR__NEXT = NULL;
+   }
+   else
+   {
+      while (( ANOTHER_POINTER->age >= p0->age ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( ANOTHER_POINTER->age >= p0->age )
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT = NULL;
+      }
+      else
+      {
+         if ( ANOTHER_POINTER == VAR__HEAD )
+         {
+            VAR__HEAD     = p0;
+            p0->VAR__NEXT = ANOTHER_POINTER;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = p0;
+            p0->VAR__NEXT = ANOTHER_POINTER;
+         }
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct patient *VAR__HEAD)
+{
+   struct patient *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->ID);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct patient *VAR__HEAD;
+   struct patient *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = ( VAR_233 = (struct patient *)malloc(LEN_OF_STH));
+   scanf("%s %d", VAR_233->ID, &VAR_233->age);
+   VAR__HEAD->VAR__NEXT = NULL;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct patient *)malloc(LEN_OF_STH);
+      scanf("%s %d", VAR_233->ID, &VAR_233->age);
+      VAR__HEAD = insert(VAR__HEAD, VAR_233);
+   }
+
+   print(VAR__HEAD);
+}

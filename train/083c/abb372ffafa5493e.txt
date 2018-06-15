@@ -1,0 +1,76 @@
+int atoDec(int VAR__53647, char VAR__819283[])
+{
+   int Dec = 0;
+   int VAR__8444594;
+
+   for ( VAR__8444594 = 0; VAR__819283[VAR__8444594] != '\0'; VAR__8444594++ )
+   {
+      if (( VAR__819283[VAR__8444594] >= '0' ) && ( VAR__819283[VAR__8444594] <= '9' ))
+      {
+         Dec = (( Dec * VAR__53647 ) + VAR__819283[VAR__8444594] ) - '0';
+      }
+
+      if (( VAR__819283[VAR__8444594] >= 'A' ) && ( VAR__819283[VAR__8444594] <= 'Z' ))
+      {
+         Dec = ((( Dec * VAR__53647 ) + VAR__819283[VAR__8444594] ) - 'A' ) + 10;
+      }
+
+      if (( VAR__819283[VAR__8444594] >= 'a' ) && ( VAR__819283[VAR__8444594] <= 'z' ))
+      {
+         Dec = ((( Dec * VAR__53647 ) + VAR__819283[VAR__8444594] ) - 'a' ) + 10;
+      }
+   }
+
+   return Dec;
+}
+
+
+int main()
+{
+   char o[100];
+   char VAR__127322[100];
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__TEMP;
+   int  VAR_129012;
+   int  VAR__21230 = 99;
+   int  VAR__1238129;
+
+   cin >> VAR__819283;
+   cin.get();
+   cin >> o;
+   cin >> VAR__19328;
+   VAR__TEMP = atoDec(VAR__819283, o);
+
+   if ( VAR__TEMP != 0 )
+   {
+      while ( VAR__TEMP != 0 )
+      {
+         VAR_129012 = VAR__TEMP % VAR__19328;
+
+         if ( VAR_129012 < 10 )
+         {
+            VAR__127322[VAR__21230] = VAR_129012 + '0';
+            VAR__21230--;
+         }
+         else
+         {
+            VAR__127322[VAR__21230] = ( VAR_129012 - 10 ) + 'A';
+            VAR__21230--;
+         }
+
+         VAR__TEMP = VAR__TEMP / VAR__19328;
+      }
+
+      for ( VAR__1238129 = VAR__21230 + 1; VAR__1238129 <= 99; VAR__1238129++ )
+      {
+         cout << VAR__127322[VAR__1238129];
+      }
+   }
+   else
+   {
+      cout << "0";
+   }
+
+   return 0;
+}

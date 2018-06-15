@@ -1,0 +1,88 @@
+int king;
+int monkeynum(int [], int);
+
+void main()
+{
+   int VAR__1238129[20];
+   int VAR_1238123[20];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int start;
+   int casenum;
+   int monkey[300];
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      scanf("%d %d", &VAR_1238123[VAR__53647], &VAR__1238129[VAR__53647]);
+
+      if ( !VAR__1238129[VAR__53647] )
+      {
+         break;
+      }
+   }
+
+   casenum = VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < casenum; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 300; VAR__21230++ )
+      {
+         monkey[VAR__21230] = 0;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123[VAR__53647]; VAR__21230++ )
+      {
+         monkey[VAR__21230] = 1;
+      }
+
+      start = 0;
+
+      while ( monkeynum(monkey, VAR_1238123[VAR__53647]) != 1 )
+      {
+         VAR__8444594 = VAR__1238129[VAR__53647];
+
+         while ( VAR__8444594 > 0 )
+         {
+            if ( start == VAR_1238123[VAR__53647] )
+            {
+               start = 0;
+            }
+
+            if ( monkey[start] )
+            {
+               --VAR__8444594;
+            }
+
+            ++start;
+         }
+
+         monkey[start - 1] = 0;
+      }
+
+      printf("%d", king);
+
+      if ( VAR__53647 < ( casenum - 1 ))
+      {
+         printf("\n");
+      }
+   }
+}
+
+
+int monkeynum(int monkey[], int VAR__819283)
+{
+   int VAR__53647;
+   int VAR__NUM = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      if ( monkey[VAR__53647] )
+      {
+         VAR__NUM++;
+         king = VAR__53647 + 1;
+      }
+   }
+
+
+   return VAR__NUM;
+}

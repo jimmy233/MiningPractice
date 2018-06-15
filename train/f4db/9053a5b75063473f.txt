@@ -1,0 +1,51 @@
+int main()
+{
+   int *VAR_233;
+   int VAR__53647;
+   int all;
+   int VAR__1238129;
+   int VAR_1238123;
+   int cycle;
+   int ii;
+
+   scanf("%d", &cycle);
+   for ( ii = 0; ii < cycle; ii++ )
+   {
+      scanf("%d %d", &VAR__1238129, &VAR_1238123);
+      VAR_233 = (int *)calloc(VAR__1238129 * VAR_1238123, sizeof( int ));
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 * VAR_1238123 ); VAR__53647++ )
+      {
+         scanf("%d", VAR_233 + VAR__53647);
+      }
+
+      all = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         all += *( VAR_233 + VAR__53647 );
+      }
+
+      if ( VAR__1238129 > 1 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            all += *(( VAR_233 + VAR__53647 ) + (( VAR__1238129 - 1 ) * VAR_1238123 ));
+         }
+      }
+
+      for ( VAR__53647 = 2; VAR__53647 < VAR__1238129; VAR__53647++ )
+      {
+         all += *( VAR_233 + (( VAR__53647 - 1 ) * VAR_1238123 ));
+      }
+
+      if ( VAR_1238123 > 1 )
+      {
+         for ( VAR__53647 = 2; VAR__53647 < VAR__1238129; VAR__53647++ )
+         {
+            all += *((( VAR_233 + VAR_1238123 ) - 1 ) + (( VAR__53647 - 1 ) * VAR_1238123 ));
+         }
+      }
+
+      printf("%d\n", all);
+      free(VAR_233);
+   }
+}

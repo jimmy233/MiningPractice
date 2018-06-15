@@ -1,0 +1,87 @@
+int main()
+{
+   char in[501];
+   char zi[501][5];
+   int  point[501];
+
+   for ( int VAR__53647 = 0; VAR__53647 < 501; VAR__53647++ )
+   {
+      point[VAR__53647] = -1;
+   }
+
+   int VAR_1238123;
+   int LEN_OF_STH;
+   scanf("%d%s", &VAR_1238123, in);
+   LEN_OF_STH = strlen(in);
+   for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         zi[VAR__53647][VAR__21230] = in[VAR__53647 + VAR__21230];
+      }
+
+      zi[VAR__53647][VAR_1238123] = '\0';
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         if (( strcmp(zi[VAR__53647], zi[VAR__21230]) == 0 ) && ( point[VAR__53647] == ( -1 )))
+         {
+            point[VAR__21230] = VAR__53647;
+         }
+
+         if (( strcmp(zi[VAR__53647], zi[VAR__21230]) == 0 ) && ( point[VAR__53647] != ( -1 )))
+         {
+            point[VAR__21230] = point[VAR__53647];
+         }
+      }
+   }
+
+
+   int VAR__NUM[501];
+   for ( int VAR__53647 = 0; VAR__53647 < 501; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = 0;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( point[VAR__53647] == ( -1 ))
+      {
+         VAR__NUM[VAR__53647]++;
+      }
+
+      if ( point[VAR__53647] != ( -1 ))
+      {
+         VAR__NUM[point[VAR__53647]]++;
+      }
+   }
+
+   int VAR__MAX = 1;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if (( point[VAR__53647] == ( -1 )) && ( VAR__NUM[VAR__53647] > VAR__MAX ))
+      {
+         VAR__MAX = VAR__NUM[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO");
+   }
+
+   if ( VAR__MAX > 1 )
+   {
+      printf("%d\n", VAR__MAX);
+      for ( int VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647] == VAR__MAX )
+         {
+            printf("%s\n", zi[VAR__53647]);
+         }
+      }
+   }
+}

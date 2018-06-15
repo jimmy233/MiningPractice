@@ -1,0 +1,153 @@
+struct stu
+{
+   int        VAR__NUM;
+   char       VAR__4857423[26];
+   struct stu *VAR__NEXT;
+};
+struct stu *create(int VAR__1238129)
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *xhead;
+
+   ANOTHER_POINTER = (struct stu *)malloc(LEN);
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR__4857423);
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   xhead = ANOTHER_POINTER;
+
+   while ( VAR__1238129 - 1 )
+   {
+      VAR__1238129--;
+      ANOTHER_POINTER = (struct stu *)malloc(LEN);
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR__4857423);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return xhead;
+}
+
+
+int stas(int VAR__19328[])
+{
+   int VAR__21230;
+   int VAR__MAX = 0;
+   int indexx   = 0;
+
+   for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+   {
+      if ( VAR__19328[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = VAR__19328[VAR__21230];
+         indexx   = VAR__21230;
+      }
+   }
+
+
+   printf("%c\n%d\n", indexx + 65, VAR__MAX);
+   return indexx;
+}
+
+
+struct stu *search(struct stu *yhead, int VAR__3918907)
+{
+   struct stu *VAR_666;
+   int        VAR__SUM = 0;
+   int        VAR__8444594;
+   char       *VAR__53647;
+   char       VAR_9494[20];
+   char       s0[20] = { '\0' };
+
+   VAR_666 = yhead;
+
+   while ( VAR_666 )
+   {
+      strcpy(VAR_9494, VAR_666->VAR__4857423);
+      VAR__8444594 = strlen(VAR_9494);
+      for ( VAR__53647 = VAR_9494; VAR__53647 < ( VAR__53647 + VAR__8444594 ); VAR__53647++ )
+      {
+         if (( *VAR__53647 ) == ( VAR__3918907 + 65 ))
+         {
+            VAR__SUM++;
+         }
+      }
+
+
+      strcpy(VAR_9494, s0);
+      VAR_666 = VAR_666->VAR__NEXT;
+   }
+
+   printf("%d\n", VAR__SUM);
+   return 0;
+}
+
+
+struct stu *print(struct stu *zhead, int VAR__9290)
+{
+   struct stu *VAR_666;
+   int        VAR__8444594;
+   char       *VAR__53647;
+   char       VAR_9494[20];
+   char       s0[20] = { '\0' };
+
+   VAR_666 = zhead;
+
+   while ( VAR_666 )
+   {
+      strcpy(VAR_9494, VAR_666->VAR__4857423);
+      VAR__8444594 = strlen(VAR_9494);
+      for ( VAR__53647 = VAR_9494; VAR__53647 < ( VAR_9494 + VAR__8444594 ); VAR__53647++ )
+      {
+         if (( *VAR__53647 ) == ( VAR__9290 + 65 ))
+         {
+            printf("%d\n", VAR_666->VAR__NUM);
+            break;
+         }
+      }
+
+
+      strcpy(VAR_9494, s0);
+      VAR_666 = VAR_666->VAR__NEXT;
+   }
+
+   return 0;
+}
+
+
+int main()
+{
+   int        VAR_1238123;
+   int        index;
+   int        VAR__819283[26];
+   int        VAR__8444594;
+   int        VAR__temp;
+   int        VAR__53647;
+   char       VAR_9494[20];
+   char       s0[20] = { '\0' };
+   struct stu *VAR_233;
+   struct stu *VAR__HEAD;
+
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create(VAR_1238123);
+   VAR_233   = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      strcpy(VAR_9494, VAR_233->VAR__4857423);
+      VAR__8444594 = strlen(VAR_9494);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         VAR__temp = VAR_9494[VAR__53647] - 65;
+         VAR__819283[VAR__temp]++;
+      }
+
+      strcpy(VAR_9494, s0);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   index = stas(VAR__819283);
+   print(VAR__HEAD, index);
+   return 0;
+}

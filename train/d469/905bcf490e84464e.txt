@@ -1,0 +1,76 @@
+char VAR_9494[1000];
+char s1[100][100];
+int  VAR_FLAG = 0;
+void VAR__127322(char VAR__7685, char VAR__3918907);
+
+int main()
+{
+   int  VAR__53647;
+   int  LEN_OF_STH[100];
+   int  VAR__8444594;
+   int  VAR__21230;
+   int  VAR__TEMP;
+   char s2[100];
+
+   gets(VAR_9494);
+   for ( VAR__53647 = 1; VAR_9494[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647 - 1] == VAR_9494[VAR__53647] )
+      {
+         s1[VAR_FLAG][0] = VAR_9494[VAR__53647 - 1];
+         s1[VAR_FLAG][1] = VAR_9494[VAR__53647];
+         VAR_FLAG++;
+         VAR__127322(VAR__53647 - 1, VAR__53647);
+      }
+   }
+
+   VAR__8444594 = VAR_FLAG;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      LEN_OF_STH[VAR__53647] = strlen(s1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR__8444594 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( LEN_OF_STH[VAR__21230 - 1] > LEN_OF_STH[VAR__21230] )
+         {
+            VAR__TEMP = LEN_OF_STH[VAR__21230 - 1];
+            LEN_OF_STH[VAR__21230 - 1] = LEN_OF_STH[VAR__21230];
+            LEN_OF_STH[VAR__21230]     = VAR__TEMP;
+            strcpy(s2, s1[VAR__21230 - 1]);
+            strcpy(s1[VAR__21230 - 1], s1[VAR__21230]);
+            strcpy(s1[VAR__21230], s2);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", s1[VAR__53647]);
+   }
+}
+
+
+void VAR__127322(char VAR__7685, char VAR__3918907)
+{
+   char *YET_ANOTHER_POINTER;
+   char *VAR_233;
+   int  VAR__53647;
+
+   if (( VAR__7685 >= 1 ) && ( VAR_9494[VAR__3918907 + 1] != '\0' ))
+   {
+      if ( VAR_9494[VAR__7685 - 1] == VAR_9494[VAR__3918907 + 1] )
+      {
+         YET_ANOTHER_POINTER = &VAR_9494[VAR__3918907 + 1];
+         for ( VAR_233 = &VAR_9494[VAR__7685 - 1], VAR__53647 = 0; VAR_233 <= YET_ANOTHER_POINTER; VAR_233++, VAR__53647++ )
+         {
+            s1[VAR_FLAG][VAR__53647] = *VAR_233;
+         }
+
+         VAR_FLAG++;
+         VAR__127322(VAR__7685 - 1, VAR__3918907 + 1);
+      }
+   }
+}

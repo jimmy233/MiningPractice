@@ -1,0 +1,114 @@
+struct list
+{
+   char        name[30];
+   int         final;
+   int         ave;
+   int         article;
+   char        member;
+   char        west;
+   long        VAR__SUM;
+   struct list *VAR__NEXT;
+};
+int  VAR_1238123 = 0;
+int  VAR__NUM;
+long total = 0;
+char namemax[30];
+long VAR__MAX = 0;
+struct list *creat(int VAR_1238123)
+{
+   struct list *ANOTHER_POINTER;
+   struct list *YET_ANOTHER_POINTER;
+   struct list *VAR__HEAD;
+   int         VAR__53647;
+
+   VAR__HEAD                  = (struct list *)malloc(sizeof( struct list ));
+   ANOTHER_POINTER            = (struct list *)malloc(sizeof( struct list ));
+   VAR__HEAD->VAR__NEXT       = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   ANOTHER_POINTER->VAR__SUM  = 0;
+   scanf("%s %d %d %c %c %d\n", ANOTHER_POINTER->name, &ANOTHER_POINTER->final, &ANOTHER_POINTER->ave, &ANOTHER_POINTER->member, &ANOTHER_POINTER->west, &ANOTHER_POINTER->article);
+
+   if (( ANOTHER_POINTER->final > 80 ) && ( ANOTHER_POINTER->article >= 1 ))
+   {
+      ANOTHER_POINTER->VAR__SUM += 8000;
+   }
+
+   if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->ave > 80 ))
+   {
+      ANOTHER_POINTER->VAR__SUM += 4000;
+   }
+
+   if ( ANOTHER_POINTER->final > 90 )
+   {
+      ANOTHER_POINTER->VAR__SUM += 2000;
+   }
+
+   if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->west == 'Y' ))
+   {
+      ANOTHER_POINTER->VAR__SUM += 1000;
+   }
+
+   if (( ANOTHER_POINTER->ave > 80 ) && ( ANOTHER_POINTER->member == 'Y' ))
+   {
+      ANOTHER_POINTER->VAR__SUM += 850;
+   }
+
+   total    = total + ANOTHER_POINTER->VAR__SUM;
+   VAR__MAX = ANOTHER_POINTER->VAR__SUM;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct list *)malloc(sizeof( struct list ));
+      scanf("%s %d %d %c %c %d\n", ANOTHER_POINTER->name, &ANOTHER_POINTER->final, &ANOTHER_POINTER->ave, &ANOTHER_POINTER->member, &ANOTHER_POINTER->west, &ANOTHER_POINTER->article);
+
+      if (( ANOTHER_POINTER->final > 80 ) && ( ANOTHER_POINTER->article >= 1 ))
+      {
+         ANOTHER_POINTER->VAR__SUM += 8000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->ave > 80 ))
+      {
+         ANOTHER_POINTER->VAR__SUM += 4000;
+      }
+
+      if ( ANOTHER_POINTER->final > 90 )
+      {
+         ANOTHER_POINTER->VAR__SUM += 2000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->west == 'Y' ))
+      {
+         ANOTHER_POINTER->VAR__SUM += 1000;
+      }
+
+      if (( ANOTHER_POINTER->ave > 80 ) && ( ANOTHER_POINTER->member == 'Y' ))
+      {
+         ANOTHER_POINTER->VAR__SUM += 850;
+      }
+
+      total = total + ANOTHER_POINTER->VAR__SUM;
+
+      if ( ANOTHER_POINTER->VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX = ANOTHER_POINTER->VAR__SUM;
+         strcpy(namemax, ANOTHER_POINTER->name);
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   struct list *VAR__HEAD;
+   struct list *VAR_233;
+
+   scanf("%d\n", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   printf("%s\n%d\n%d\n", namemax, VAR__MAX, total);
+   return 0;
+}

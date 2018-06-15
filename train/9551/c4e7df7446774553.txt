@@ -1,0 +1,91 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230   = 0;
+   int VAR__1238129 = 0;
+
+   scanf("%d", &VAR_1238123);
+   char s1[100][10];
+   char s2[100][10];
+   char ANOTHER_POINTER[100][10];
+   char YET_ANOTHER_POINTER[100][10];
+   char z1[100][10];
+   char z2[100][10];
+   char VAR__temp[10];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", s1[VAR__53647]);
+      scanf("%s", s2[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( s2[VAR__53647][1] != '\0' ) && ( strcmp(s2[VAR__53647], "60") >= 0 ))
+      {
+         strcpy(ANOTHER_POINTER[VAR__21230], s1[VAR__53647]);
+         strcpy(YET_ANOTHER_POINTER[VAR__21230], s2[VAR__53647]);
+         VAR__21230++;
+      }
+
+      if ((( s2[VAR__53647][2] >= '0' ) && ( s2[VAR__53647][2] <= '9' )) && ( s2[VAR__53647][3] == '\0' ))
+      {
+         strcpy(z1[VAR__1238129], s1[VAR__53647]);
+         strcpy(z2[VAR__1238129], s2[VAR__53647]);
+         VAR__1238129++;
+      }
+   }
+
+   int VAR__8444594 = VAR__21230;
+   for ( VAR__53647 = VAR__8444594 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( strcmp(YET_ANOTHER_POINTER[VAR__21230], YET_ANOTHER_POINTER[VAR__21230 + 1]) < 0 )
+         {
+            strcpy(VAR__temp, YET_ANOTHER_POINTER[VAR__21230]);
+            strcpy(YET_ANOTHER_POINTER[VAR__21230], YET_ANOTHER_POINTER[VAR__21230 + 1]);
+            strcpy(YET_ANOTHER_POINTER[VAR__21230 + 1], VAR__temp);
+            strcpy(VAR__temp, ANOTHER_POINTER[VAR__21230]);
+            strcpy(ANOTHER_POINTER[VAR__21230], ANOTHER_POINTER[VAR__21230 + 1]);
+            strcpy(ANOTHER_POINTER[VAR__21230 + 1], VAR__temp);
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR__1238129 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( strcmp(z2[VAR__21230], z2[VAR__21230 + 1]) < 0 )
+         {
+            strcpy(VAR__temp, z2[VAR__21230]);
+            strcpy(z2[VAR__21230], z2[VAR__21230 + 1]);
+            strcpy(z2[VAR__21230 + 1], VAR__temp);
+            strcpy(VAR__temp, z1[VAR__21230]);
+            strcpy(z1[VAR__21230], z1[VAR__21230 + 1]);
+            strcpy(z1[VAR__21230 + 1], VAR__temp);
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+   {
+      printf("%s\n", z1[VAR__21230]);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+   {
+      printf("%s\n", ANOTHER_POINTER[VAR__21230]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( !((( s2[VAR__53647][1] != '\0' ) && ( strcmp(s2[VAR__53647], "60") >= 0 )) || ((( s2[VAR__53647][2] >= '0' ) && ( s2[VAR__53647][2] <= '9' )) && ( s2[VAR__53647][3] == '\0' ))))
+      {
+         printf("%s\n", s1[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

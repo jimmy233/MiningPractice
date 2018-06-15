@@ -1,0 +1,132 @@
+struct student
+{
+   char           VAR__NUM[1000];
+   int            age;
+   struct student *VAR__NEXT;
+};
+struct student *creat(int VAR_1238123)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   int            VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+      scanf("%s%d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->age);
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+
+      if ( VAR__53647 == 0 )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         VAR__HEAD           = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct student *trans(struct student *VAR__HEAD, int VAR_1238123)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   struct student *p4;
+   struct student *VAR_666;
+   int            VAR__53647;
+   int            VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER     = VAR__HEAD;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      p3 = YET_ANOTHER_POINTER->VAR__NEXT;
+      p4 = VAR__HEAD;
+      for ( VAR__21230 = 0; ANOTHER_POINTER->VAR__NEXT != NULL; VAR__21230++ )
+      {
+         if ( YET_ANOTHER_POINTER->age >= 60 )
+         {
+            if ( ANOTHER_POINTER->age < YET_ANOTHER_POINTER->age )
+            {
+               if ( ANOTHER_POINTER == VAR__HEAD )
+               {
+                  YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+                  ANOTHER_POINTER->VAR__NEXT     = p3;
+                  VAR__HEAD           = YET_ANOTHER_POINTER;
+                  VAR_666             = ANOTHER_POINTER;
+                  ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+                  YET_ANOTHER_POINTER = VAR_666;
+                  p4 = VAR__HEAD;
+               }
+               else
+               if ( YET_ANOTHER_POINTER->VAR__NEXT != NULL )
+               {
+                  ANOTHER_POINTER->VAR__NEXT     = p3;
+                  YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+                  p4->VAR__NEXT       = YET_ANOTHER_POINTER;
+                  VAR_666             = ANOTHER_POINTER;
+                  ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+                  YET_ANOTHER_POINTER = VAR_666;
+               }
+               else
+               {
+                  YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+                  p4->VAR__NEXT = YET_ANOTHER_POINTER;
+                  ANOTHER_POINTER->VAR__NEXT = 0;
+                  VAR_666             = ANOTHER_POINTER;
+                  ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+                  YET_ANOTHER_POINTER = VAR_666;
+               }
+            }
+         }
+
+         if ( ANOTHER_POINTER != VAR__HEAD )
+         {
+            p4 = p4->VAR__NEXT;
+         }
+
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+
+         if ( p3 != NULL )
+         {
+            p3 = p3->VAR__NEXT;
+         }
+      }
+
+      VAR_666 = VAR__HEAD;
+   }
+
+   return VAR_666;
+}
+
+
+int print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   for ( ; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s\n", VAR_233->VAR__NUM);
+   }
+}
+
+
+int main()
+{
+   struct student *VAR_233;
+   int            VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = creat(VAR_1238123);
+   VAR_233 = trans(VAR_233, VAR_1238123);
+   print(VAR_233);
+}

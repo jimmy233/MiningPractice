@@ -1,0 +1,46 @@
+int main(int argc, char *argv[])
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int VAR__8444594;
+   int *piInput;
+   int *piOdd;
+
+   scanf("%d", &VAR_1238123);
+   piInput = (int *)calloc(VAR_1238123, sizeof( int ));
+   piOdd   = (int *)calloc(VAR_1238123, sizeof( int ));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &piInput[VAR__53647]);
+
+      if (( piInput[VAR__53647] % 2 ) == 1 )
+      {
+         piOdd[VAR__21230++] = piInput[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      for ( VAR__8444594 = VAR__53647 + 1; VAR__8444594 < VAR__21230; VAR__8444594++ )
+      {
+         if ( piOdd[VAR__53647] > piOdd[VAR__8444594] )
+         {
+            VAR_1238123         = piOdd[VAR__53647];
+            piOdd[VAR__53647]   = piOdd[VAR__8444594];
+            piOdd[VAR__8444594] = VAR_1238123;
+         }
+      }
+   }
+
+   VAR__53647 = 0;
+   printf("%d", piOdd[VAR__53647]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf(",%d", piOdd[VAR__53647]);
+   }
+
+   free(piInput);
+   free(piOdd);
+   return 0;
+}

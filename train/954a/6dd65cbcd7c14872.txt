@@ -1,0 +1,66 @@
+void main()
+{
+   struct student
+   {
+      char name[20];
+      int  score;
+      int  fame;
+      char leader;
+      char west;
+      int  paper;
+   }
+            stu[100];
+   int      VAR__53647;
+   int      VAR_1238123;
+   int      VAR__MAX = 0;
+   int      VAR__8444594;
+   int      VAR__temp;
+   int      Price[5] = { 8000, 4000, 2000, 1000, 850 };
+   long int VAR__SUM = 0;
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].score, &stu[VAR__53647].fame, &stu[VAR__53647].leader, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__temp = 0;
+
+      if (( stu[VAR__53647].score > 80 ) && ( stu[VAR__53647].paper > 0 ))
+      {
+         VAR__temp += Price[0];
+      }
+
+      if (( stu[VAR__53647].score > 85 ) && ( stu[VAR__53647].fame > 80 ))
+      {
+         VAR__temp += Price[1];
+      }
+
+      if ( stu[VAR__53647].score > 90 )
+      {
+         VAR__temp += Price[2];
+      }
+
+      if (( stu[VAR__53647].score > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         VAR__temp += Price[3];
+      }
+
+      if (( stu[VAR__53647].fame > 80 ) && ( stu[VAR__53647].leader == 'Y' ))
+      {
+         VAR__temp += Price[4];
+      }
+
+      VAR__SUM += VAR__temp;
+
+      if ( VAR__temp > VAR__MAX )
+      {
+         VAR__MAX     = VAR__temp;
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%ld", stu[VAR__8444594].name, VAR__MAX, VAR__SUM);
+}

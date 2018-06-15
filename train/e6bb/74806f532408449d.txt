@@ -1,0 +1,91 @@
+void reproduce(int VAR_1238123, int (*VAR__819283)[9])
+{
+   if ( VAR_1238123 == 0 )
+   {
+      return;
+   }
+
+   int VAR__TEMP[9][9] = { 0 };
+   for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] )
+         {
+            VAR__TEMP[VAR__53647][VAR__21230] += 2 * VAR__819283[VAR__53647][VAR__21230];
+
+            if ( VAR__53647 > 0 )
+            {
+               VAR__TEMP[VAR__53647 - 1][VAR__21230] += VAR__819283[VAR__53647][VAR__21230];
+
+               if ( VAR__21230 > 0 )
+               {
+                  VAR__TEMP[VAR__53647 - 1][VAR__21230 - 1] += VAR__819283[VAR__53647][VAR__21230];
+                  VAR__TEMP[VAR__53647][VAR__21230 - 1]     += VAR__819283[VAR__53647][VAR__21230];
+
+                  if ( VAR__53647 < 8 )
+                  {
+                     VAR__TEMP[VAR__53647 + 1][VAR__21230 - 1] += VAR__819283[VAR__53647][VAR__21230];
+                     VAR__TEMP[VAR__53647 + 1][VAR__21230]     += VAR__819283[VAR__53647][VAR__21230];
+                  }
+               }
+
+               if ( VAR__21230 < 8 )
+               {
+                  VAR__TEMP[VAR__53647 - 1][VAR__21230 + 1] += VAR__819283[VAR__53647][VAR__21230];
+                  VAR__TEMP[VAR__53647][VAR__21230 + 1]     += VAR__819283[VAR__53647][VAR__21230];
+
+                  if ( VAR__53647 < 8 )
+                  {
+                     VAR__TEMP[VAR__53647 + 1][VAR__21230 + 1] += VAR__819283[VAR__53647][VAR__21230];
+                  }
+               }
+            }
+         }
+      }
+   }
+
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__TEMP[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   return reproduce(VAR_1238123 - 1, VAR__819283);
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__819283[9][9] = { 0 };
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   VAR__819283[4][4] = VAR__1238129;
+   reproduce(VAR_1238123, VAR__819283);
+   for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         cout << VAR__819283[VAR__53647][VAR__21230];
+
+         if ( VAR__21230 == 8 )
+         {
+            cout << endl;
+         }
+         else
+         {
+            cout << " ";
+         }
+      }
+   }
+
+
+   return 0;
+}

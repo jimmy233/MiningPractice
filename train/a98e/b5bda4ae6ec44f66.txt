@@ -1,0 +1,64 @@
+int VAR__127322[50];
+void func(char *pat)
+{
+   int LEN_OF_STH = strlen(pat);
+
+   VAR__127322[0] = -1;
+   for ( int VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      int VAR__21230 = VAR__127322[VAR__53647 - 1];
+
+      while (( VAR__21230 >= 0 ) && ( pat[VAR__53647] != pat[VAR__21230 + 1] ))
+      {
+         VAR__21230 = VAR__127322[VAR__21230];
+      }
+
+      if ( VAR__21230 == ( -1 ))
+      {
+         VAR__127322[VAR__53647] = -1;
+      }
+      else
+      {
+         VAR__127322[VAR__53647] = VAR__21230 + 1;
+      }
+   }
+}
+
+
+int main()
+{
+   char A_STRING[51];
+   char pat[51];
+
+   scanf("%s%s", pat, A_STRING);
+   func(pat);
+   int str_len    = strlen(A_STRING);
+   int pat_len    = strlen(pat);
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   while (( VAR__53647 < str_len ) && ( VAR__21230 < pat_len ))
+   {
+      if ( A_STRING[VAR__53647] == pat[VAR__21230] )
+      {
+         VAR__53647++;
+         VAR__21230++;
+      }
+      else
+      {
+         if ( VAR__21230 == 0 )
+         {
+            VAR__53647++;
+         }
+         else
+         {
+            VAR__21230 = VAR__127322[VAR__21230 - 1] + 1;
+         }
+      }
+   }
+
+   if ( VAR__21230 == pat_len )
+   {
+      printf("%d", VAR__53647 - pat_len);
+   }
+}

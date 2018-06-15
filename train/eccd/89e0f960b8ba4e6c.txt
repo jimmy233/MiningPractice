@@ -1,0 +1,86 @@
+int main()
+{
+   int VAR_FLAG;
+
+   VAR_FLAG = 0;
+   int hang;
+   int lie;
+   scanf("%d,%d", &hang, &lie);
+   int VAR__53647;
+   int VAR__21230;
+   int shuzu[100][100] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < hang; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < lie; VAR__21230++ )
+      {
+         scanf("%d", &shuzu[VAR__53647][VAR__21230]);
+      }
+   }
+
+   int tiaoxini[100][2] = { 0 };
+   int const1;
+   int const2;
+   int VAR__MAX;
+   int VAR__MIN;
+   const1 = 0;
+   const2 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < hang; VAR__53647++ )
+   {
+      VAR__MAX = 0;
+      for ( VAR__21230 = 0; VAR__21230 < lie; VAR__21230++ )
+      {
+         if ( shuzu[VAR__53647][VAR__21230] > VAR__MAX )
+         {
+            VAR__MAX = shuzu[VAR__53647][VAR__21230];
+            tiaoxini[const1][const2] = VAR__53647;
+            const2++;
+            tiaoxini[const1][const2] = VAR__21230;
+            const2--;
+         }
+      }
+
+      const1++;
+   }
+
+   const2 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < lie; VAR__53647++ )
+   {
+      VAR__MIN = 10000;
+      for ( VAR__21230 = 0; VAR__21230 < hang; VAR__21230++ )
+      {
+         if ( shuzu[VAR__21230][VAR__53647] < VAR__MIN )
+         {
+            VAR__MIN = shuzu[VAR__53647][VAR__21230];
+            tiaoxini[const1][const2] = VAR__21230;
+            const2++;
+            tiaoxini[const1][const2] = VAR__53647;
+            const2--;
+         }
+      }
+
+      const1++;
+   }
+
+   const2 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < const1; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= const1; VAR__21230++ )
+      {
+         if (( tiaoxini[VAR__53647][0] == tiaoxini[VAR__21230][0] ) && ( tiaoxini[VAR__53647][1] == tiaoxini[VAR__21230][1] ))
+         {
+            printf("%d+%d", tiaoxini[VAR__53647][0], tiaoxini[VAR__53647][1]);
+            VAR_FLAG++;
+            break;
+         }
+      }
+
+      break;
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      printf("No");
+   }
+
+   return 0;
+}

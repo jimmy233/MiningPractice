@@ -1,0 +1,53 @@
+struct student
+{
+   long int id;
+   int      chinese;
+   int      math;
+};
+int main()
+{
+   long int VAR__53647;
+   long int maxi1;
+   long int maxi2;
+   long int maxi3;
+   long int VAR__NUM;
+
+   scanf("%d", &VAR__NUM);
+   struct student VAR__819283[VAR__NUM];
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR__819283[VAR__53647].id, &VAR__819283[VAR__53647].chinese, &VAR__819283[VAR__53647].math);
+   }
+
+   int maxpt1 = 0;
+   int maxpt2 = 0;
+   int maxpt3 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( maxpt1 < ( VAR__819283[VAR__53647].chinese + VAR__819283[VAR__53647].math ))
+      {
+         maxpt3 = maxpt2;
+         maxpt2 = maxpt1;
+         maxpt1 = VAR__819283[VAR__53647].chinese + VAR__819283[VAR__53647].math;
+         maxi3  = maxi2;
+         maxi2  = maxi1;
+         maxi1  = VAR__819283[VAR__53647].id;
+      }
+      else
+      if ( maxpt2 < ( VAR__819283[VAR__53647].chinese + VAR__819283[VAR__53647].math ))
+      {
+         maxpt3 = maxpt2;
+         maxpt2 = VAR__819283[VAR__53647].chinese + VAR__819283[VAR__53647].math;
+         maxi3  = maxi2;
+         maxi2  = VAR__819283[VAR__53647].id;
+      }
+      else
+      if ( maxpt3 < ( VAR__819283[VAR__53647].chinese + VAR__819283[VAR__53647].math ))
+      {
+         maxpt3 = VAR__819283[VAR__53647].chinese + VAR__819283[VAR__53647].math;
+         maxi3  = VAR__819283[VAR__53647].id;
+      }
+   }
+
+   printf("%d %d\n%d %d\n%d %d", maxi1, maxpt1, maxi2, maxpt2, maxi3, maxpt3);
+}

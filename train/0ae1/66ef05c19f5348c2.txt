@@ -1,0 +1,71 @@
+int main(int argc, char *argv[])
+{
+   int year;
+   int month;
+   int day;
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int first;
+
+   scanf("%d%d%d", &year, &month, &day);
+   VAR__21230 = (((( year - 1 ) / 400 ) * 97 ) + (((( year - 1 ) % 400 ) / 100 ) * 24 )) + ((( year - 1 ) % 100 ) / 4 );
+   first      = ( year + VAR__21230 ) % 7;
+   int monthday[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      day = day + monthday[VAR__53647];
+   }
+
+   if (( year % 4 ) == 0 )
+   {
+      if (( year % 100 ) == 0 )
+      {
+         if (( year % 400 ) == 0 )
+         {
+            if ( month > 2 )
+            {
+               day++;
+            }
+         }
+      }
+      else
+      if ( month > 2 )
+      {
+         day++;
+      }
+   }
+
+   int weekday = (( day - 1 ) + first ) % 7;
+   switch ( weekday )
+   {
+   case 0:
+      printf("Sun.\n");
+      break;
+
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+   }
+
+   return 0;
+}

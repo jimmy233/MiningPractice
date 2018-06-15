@@ -1,0 +1,69 @@
+char *findmax(char *VAR_233)
+{
+   char *VAR__MAX;
+
+   for ( VAR__MAX = VAR_233; ( *VAR_233 ) != '\0'; VAR_233++ )
+   {
+      if (( *VAR_233 ) > ( *VAR__MAX ))
+      {
+         VAR__MAX = VAR_233;
+      }
+   }
+
+
+   return VAR__MAX;
+}
+
+
+void insert(char *op, char *sp)
+{
+   char *np;
+
+   np = (char *)malloc(1000);
+   char *VAR__temp = np;
+   char *VAR__TEMP;
+   char *temp2;
+   for ( VAR__TEMP = op; ( *VAR__TEMP ) != ( *findmax(op)); VAR__TEMP++, np++ )
+   {
+      *np = *VAR__TEMP;
+   }
+
+   temp2 = VAR__TEMP;
+   *np   = *VAR__TEMP;
+   np++;
+   for ( VAR__TEMP = sp; ( *sp ) != '\0'; np++, sp++ )
+   {
+      *np = *sp;
+   }
+
+   for ( VAR__TEMP = temp2 + 1; ( *VAR__TEMP ) != '\0'; np++, VAR__TEMP++ )
+   {
+      *np = *VAR__TEMP;
+   }
+
+   *np = '\0';
+
+   while (( *VAR__temp ) != '\0' )
+   {
+      printf("%c", *VAR__temp);
+      VAR__temp++;
+   }
+
+   printf("\n");
+}
+
+
+void main()
+{
+   char ori[10];
+   char sub[3];
+   char newstr[13];
+   char *orip    = ori;
+   char *subp    = sub;
+   char *newstrp = newstr;
+
+   while ( scanf("%s %s", ori, sub) != EOF )
+   {
+      insert(orip, subp);
+   }
+}

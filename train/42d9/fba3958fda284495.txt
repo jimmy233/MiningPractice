@@ -1,0 +1,76 @@
+struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+};
+double dis(struct point VAR__19328, struct point VAR__4857423);
+
+int main()
+{
+   int          VAR_1238123;
+   int          VAR__819283;
+   int          VAR__53647 = 0;
+   int          VAR__21230 = 0;
+   int          VAR__8444594;
+   struct point A_STRING[10];
+   struct thr
+   {
+      float VAR__12302;
+      int   VAR__112390;
+      int   VAR__127322;
+   };
+   struct thr VAR__TEMP             = { 0 };
+   struct thr ANOTHER_STRING[10000] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &A_STRING[VAR__53647].VAR__7685, &A_STRING[VAR__53647].VAR__3918907, &A_STRING[VAR__53647].VAR__9290);
+   }
+
+   VAR__53647 = 0;
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      VAR__8444594 = VAR__21230 + 1;
+      for ( VAR__8444594 = VAR__21230 + 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         ANOTHER_STRING[VAR__53647].VAR__12302  = dis(A_STRING[VAR__21230], A_STRING[VAR__8444594]);
+         ANOTHER_STRING[VAR__53647].VAR__112390 = VAR__21230;
+         ANOTHER_STRING[VAR__53647].VAR__127322 = VAR__8444594;
+         VAR__53647++;
+      }
+   }
+
+   VAR__819283  = VAR__53647;
+   VAR__21230   = 0;
+   VAR__8444594 = 0;
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR__819283 - 1 ); VAR__21230++ )
+   {
+      VAR__8444594 = 0;
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__819283 - VAR__21230 ); VAR__8444594++ )
+      {
+         if ( ANOTHER_STRING[VAR__8444594].VAR__12302 < ANOTHER_STRING[VAR__8444594 + 1].VAR__12302 )
+         {
+            VAR__TEMP = ANOTHER_STRING[VAR__8444594];
+            ANOTHER_STRING[VAR__8444594]     = ANOTHER_STRING[VAR__8444594 + 1];
+            ANOTHER_STRING[VAR__8444594 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR__53647 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f", A_STRING[ANOTHER_STRING[VAR__53647].VAR__112390].VAR__7685, A_STRING[ANOTHER_STRING[VAR__53647].VAR__112390].VAR__3918907, A_STRING[ANOTHER_STRING[VAR__53647].VAR__112390].VAR__9290, A_STRING[ANOTHER_STRING[VAR__53647].VAR__127322].VAR__7685, A_STRING[ANOTHER_STRING[VAR__53647].VAR__127322].VAR__3918907, A_STRING[ANOTHER_STRING[VAR__53647].VAR__127322].VAR__9290, ANOTHER_STRING[VAR__53647].VAR__12302);
+      printf("\n");
+   }
+
+   return 0;
+}
+
+
+double dis(struct point VAR__19328, struct point VAR__4857423)
+{
+   return sqrt(( pow(VAR__19328.VAR__7685 - VAR__4857423.VAR__7685, 2) + pow(VAR__19328.VAR__3918907 - VAR__4857423.VAR__3918907, 2)) + pow(VAR__19328.VAR__9290 - VAR__4857423.VAR__9290, 2));
+}

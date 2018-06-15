@@ -1,0 +1,115 @@
+int cmp(const void *elem1, const void *elem2)
+{
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (int *)elem1;
+   YET_ANOTHER_POINTER = (int *)elem2;
+
+   if (( *ANOTHER_POINTER ) < ( *YET_ANOTHER_POINTER ))
+   {
+      return 1;
+   }
+
+   if (( *ANOTHER_POINTER ) == ( *YET_ANOTHER_POINTER ))
+   {
+      return 0;
+   }
+
+   if (( *ANOTHER_POINTER ) > ( *YET_ANOTHER_POINTER ))
+   {
+      return -1;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283[1005];
+   int VAR__19328[1005];
+   int ANOTHER_POINTER;
+   int YET_ANOTHER_POINTER;
+   int end1;
+   int end2;
+   int win;
+
+   while ( 1 )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      memset(VAR__819283, 0, sizeof( VAR__819283 ));
+      memset(VAR__19328, 0, sizeof( VAR__19328 ));
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), cmp);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), cmp);
+      win = 0;
+      for ( ANOTHER_POINTER = 0, YET_ANOTHER_POINTER = 0, end1 = VAR_1238123 - 1, end2 = VAR_1238123 - 1; ( ANOTHER_POINTER <= end1 ) && ( YET_ANOTHER_POINTER <= end2 ); )
+      {
+         if ( VAR__819283[ANOTHER_POINTER] > VAR__19328[YET_ANOTHER_POINTER] )
+         {
+            win++;
+            ANOTHER_POINTER++;
+            YET_ANOTHER_POINTER++;
+         }
+
+         if ( VAR__819283[ANOTHER_POINTER] < VAR__19328[YET_ANOTHER_POINTER] )
+         {
+            win--;
+            end1--;
+            YET_ANOTHER_POINTER++;
+         }
+
+         if ( VAR__819283[ANOTHER_POINTER] == VAR__19328[YET_ANOTHER_POINTER] )
+         {
+            if ( VAR__819283[end1] > VAR__19328[end2] )
+            {
+               win++;
+               end1--;
+               end2--;
+            }
+            else
+            if ( VAR__819283[end1] == VAR__19328[end2] )
+            {
+               if ( VAR__819283[end1] == VAR__19328[YET_ANOTHER_POINTER] )
+               {
+                  end1--;
+                  YET_ANOTHER_POINTER++;
+               }
+               else
+               {
+                  win--;
+                  end1--;
+                  YET_ANOTHER_POINTER++;
+               }
+            }
+            else
+            {
+               win--;
+               end1--;
+               YET_ANOTHER_POINTER++;
+            }
+         }
+      }
+
+      ( cout << ( win * 200 )) << endl;
+   }
+
+   return 0;
+}

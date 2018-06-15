@@ -1,0 +1,64 @@
+int mycompare(const void *elem1, const void *elem2)
+{
+   return ( *((int *)elem2 )) - ( *((int *)elem1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( cin >> VAR_1238123, VAR_1238123 != 0 )
+   {
+      int VAR__819283[1000] = { 0 };
+      int VAR__19328[1000]  = { 0 };
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), mycompare);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), mycompare);
+      int index1_head = 0;
+      int index1_tail = VAR_1238123 - 1;
+      int index2_head = 0;
+      int index2_tail = VAR_1238123 - 1;
+      int money       = 0;
+
+      while ( index1_head <= index1_tail )
+      {
+         if ( VAR__819283[index1_head] > VAR__19328[index2_head] )
+         {
+            index1_head++;
+            index2_head++;
+            money += 200;
+         }
+         else
+         if ( VAR__819283[index1_tail] > VAR__19328[index2_tail] )
+         {
+            index1_tail--;
+            index2_tail--;
+            money += 200;
+         }
+         else
+         {
+            if ( VAR__19328[index2_head] > VAR__819283[index1_tail] )
+            {
+               money -= 200;
+            }
+
+            index1_tail--;
+            index2_head++;
+         }
+      }
+
+      ( cout << money ) << endl;
+   }
+
+   return 0;
+}

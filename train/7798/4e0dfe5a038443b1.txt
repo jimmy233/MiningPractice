@@ -1,0 +1,54 @@
+struct author
+{
+   char id;
+   int  VAR__COUNT;
+   int  books[1000];
+};
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   const struct author *pa = (const struct author *)VAR__819283;
+   const struct author *pb = (const struct author *)VAR__19328;
+
+   return pb->VAR__COUNT - pa->VAR__COUNT;
+}
+
+
+int main()
+{
+   int           VAR__53647;
+   int           VAR__21230;
+   int           VAR__NUM;
+   int           id;
+   int           LEN_OF_STH;
+   int           idx;
+   struct author authors[26];
+   char          VAR__4857423;
+   char          buffer[26];
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; ++VAR__53647 )
+   {
+      authors[VAR__53647].id         = 'A' + VAR__53647;
+      authors[VAR__53647].VAR__COUNT = 0;
+   }
+
+   scanf("%d", &VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; ++VAR__53647 )
+   {
+      scanf("%d %s", &id, buffer);
+      LEN_OF_STH = strlen(buffer);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; ++VAR__21230 )
+      {
+         idx = buffer[VAR__21230] - 'A';
+         authors[idx].books[authors[idx].VAR__COUNT] = id;
+         authors[idx].VAR__COUNT++;
+      }
+   }
+
+   qsort(authors, 26, sizeof( struct author ), cmp);
+   printf("%c\n", authors[0].id);
+   printf("%d\n", authors[0].VAR__COUNT);
+   for ( VAR__53647 = 0; VAR__53647 < authors[0].VAR__COUNT; ++VAR__53647 )
+   {
+      printf("%d\n", authors[0].books[VAR__53647]);
+   }
+}

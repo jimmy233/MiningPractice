@@ -1,0 +1,79 @@
+struct patient
+{
+   char           id[15];
+   int            age;
+   struct patient *ne;
+};
+struct patient *lian(int VAR_1238123)
+{
+   int            VAR__53647;
+   struct patient *VAR__HEAD;
+   struct patient *VAR_233;
+   struct patient *VAR_666;
+
+   VAR__HEAD = (struct patient *)malloc(sizeof( struct patient ));
+   scanf("%s%d", VAR__HEAD->id, &VAR__HEAD->age);
+   VAR__HEAD->ne = 0;
+   VAR_666       = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct patient *)malloc(sizeof( struct patient ));
+      scanf("%s%d", VAR_233->id, &VAR_233->age);
+      VAR_233->ne = 0;
+      VAR_666->ne = VAR_233;
+      VAR_666     = VAR_233;
+   }
+
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__MAX;
+   int            VAR__53647;
+   int            sign;
+   int            VAR__19328 = 5000;
+   struct patient *VAR__HEAD;
+   struct patient *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = lian(VAR_1238123);
+   for ( ; ; )
+   {
+      for ( VAR_233 = VAR__HEAD, VAR__MAX = -1, sign = 0; VAR_233 != NULL; VAR_233 = VAR_233->ne )
+      {
+         if ((( VAR_233->age >= 60 ) && ( VAR__MAX < VAR_233->age )) && ( VAR_233->age < VAR__19328 ))
+         {
+            VAR__MAX = VAR_233->age;
+            sign     = 1;
+         }
+      }
+
+      VAR__19328 = VAR__MAX;
+
+      if ( sign == 0 )
+      {
+         break;
+      }
+
+      for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->ne )
+      {
+         if ( VAR_233->age == VAR__MAX )
+         {
+            printf("%s\n", VAR_233->id);
+         }
+      }
+   }
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->ne )
+   {
+      if ( VAR_233->age < 60 )
+      {
+         printf("%s\n", VAR_233->id);
+      }
+   }
+
+   return 0;
+}

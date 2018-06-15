@@ -1,0 +1,75 @@
+int main()
+{
+   char VAR_9494[300];
+   char VAR__819283[100];
+   char VAR__19328[100];
+   int  t1;
+   int  t2;
+   int  t3;
+   int  VAR__1238129;
+   int  VAR__53647;
+
+   gets(VAR_9494);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   t1 = strlen(VAR_9494);
+   t2 = strlen(VAR__819283);
+   t3 = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR_9494[VAR__53647]; VAR__53647++ )
+   {
+      VAR__1238129 = -1;
+
+      if ((( VAR_9494[VAR__53647] == VAR__819283[0] ) && ( VAR_9494[VAR__53647 - 1] == ' ' )) || ( VAR__53647 == 0 ))
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < t2; VAR__21230++ )
+         {
+            if (( VAR_9494[VAR__53647 + VAR__21230] == VAR__819283[VAR__21230] ) && ((( VAR_9494[VAR__53647 + t2] == ' ' ) || ( VAR_9494[VAR__53647 + t2] == '\0' )) || ( VAR__819283[t2] == '\0' )))
+            {
+               VAR__1238129 = VAR__53647;
+            }
+            else
+            {
+               VAR__1238129 = -1;
+               break;
+            }
+         }
+      }
+
+      if ( VAR__1238129 == VAR__53647 )
+      {
+         if ( t3 > t2 )
+         {
+            for ( int u = strlen(VAR_9494); u >= ( t2 + VAR__1238129 ); u-- )
+            {
+               VAR_9494[( u + t3 ) - t2] = VAR_9494[u];
+            }
+
+            for ( int VAR_233 = VAR__1238129; VAR_233 < ( t3 + VAR__1238129 ); VAR_233++ )
+            {
+               VAR_9494[VAR_233] = VAR__19328[VAR_233 - VAR__1238129];
+            }
+         }
+         else
+         if ( t3 <= t2 )
+         {
+            for ( int VAR__8444594 = VAR__1238129; VAR__8444594 < ( t3 + VAR__1238129 ); VAR__8444594++ )
+            {
+               VAR_9494[VAR__8444594] = VAR__19328[VAR__8444594 - VAR__1238129];
+            }
+
+            for ( int VAR__1111 = t3 + VAR__1238129; VAR__1111 < ( t2 + VAR__1238129 ); VAR__1111++ )
+            {
+               VAR_9494[VAR__1111] = ' ';
+            }
+
+            for ( int u = t2 + VAR__1238129; u < (( strlen(VAR_9494) - t3 ) + t2 ); u++ )
+            {
+               VAR_9494[( u - t2 ) + t3] = VAR_9494[u];
+            }
+         }
+      }
+   }
+
+   puts(VAR_9494);
+   return 0;
+}

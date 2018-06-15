@@ -1,0 +1,111 @@
+void sort(int VAR__819283[], int VAR_1238123);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+   int money;
+   int VAR_129012;
+   int qwf;
+   int qws;
+   int tjf;
+   int tjs;
+   int win  = 0;
+   int lose = 0;
+   int tj[1001];
+   int qw[1001];
+
+   for ( VAR_129012 = 0; ; VAR_129012++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         goto label;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tj[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qw[VAR__53647]);
+      }
+
+      sort(tj, VAR_1238123);
+      sort(qw, VAR_1238123);
+      qwf = 0;
+      qws = VAR_1238123 - 1;
+      tjf = 0;
+      tjs = VAR_1238123 - 1;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( tj[tjf] > qw[qwf] )
+         {
+            win++;
+            tjf++;
+            qwf++;
+         }
+         else
+         if ( tj[tjs] > qw[qws] )
+         {
+            win++;
+            tjs--;
+            qws--;
+         }
+         else
+         {
+            if ( tj[tjs] != qw[qwf] )
+            {
+               lose++;
+            }
+
+            qwf++;
+            tjs--;
+         }
+      }
+
+      money = ( win - lose ) * 200;
+      printf("%d\n", money);
+      win  = 0;
+      lose = 0;
+   }
+
+label:
+   ;
+}
+
+
+void sort(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__8444594] )
+         {
+            VAR__8444594 = VAR__21230;
+         }
+         else
+         if ( VAR__819283[VAR__21230] == VAR__819283[VAR__8444594] )
+         {
+            continue;
+         }
+      }
+
+      VAR__temp = VAR__819283[VAR__8444594];
+      VAR__819283[VAR__8444594] = VAR__819283[VAR__53647];
+      VAR__819283[VAR__53647]   = VAR__temp;
+   }
+}

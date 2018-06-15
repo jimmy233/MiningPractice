@@ -1,0 +1,80 @@
+int first(char VAR_233)
+{
+   int VAR__9290 = 0;
+
+   if ((( VAR_233 == '_' ) || (( VAR_233 >= 'a' ) && ( VAR_233 <= 'z' ))) || (( VAR_233 >= 'A' ) && ( VAR_233 <= 'Z' )))
+   {
+      VAR__9290 = 1;
+   }
+
+   return VAR__9290;
+}
+
+
+int behind(char VAR_233)
+{
+   int VAR__9290 = 0;
+
+   if ((((( VAR_233 == '_' ) || (( VAR_233 >= 'a' ) && ( VAR_233 <= 'z' ))) || (( VAR_233 >= 'A' ) && ( VAR_233 <= 'Z' ))) || ( VAR_233 == '0' )) || (( VAR_233 >= '1' ) && ( VAR_233 <= '9' )))
+   {
+      VAR__9290 = 1;
+   }
+   else
+   {
+      VAR__9290 = 0;
+   }
+
+   return VAR__9290;
+}
+
+
+int main()
+{
+   char *VAR_233;
+   int  *tf;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  LEN_OF_STH;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = (char *)malloc(( sizeof( int )) * 25);
+   tf      = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", VAR_233);
+      LEN_OF_STH     = strlen(VAR_233);
+      tf[VAR__53647] = 1;
+
+      if ( first(VAR_233[0]) == 0 )
+      {
+         tf[VAR__53647] = 0;
+         continue;
+      }
+
+      for ( VAR__21230 = 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( behind(VAR_233[VAR__21230]) == 0 )
+         {
+            tf[VAR__53647] = 0;
+            break;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( tf[VAR__53647] == 0 )
+      {
+         printf("no\n");
+      }
+
+      if ( tf[VAR__53647] == 1 )
+      {
+         printf("yes\n");
+      }
+   }
+
+   free(VAR_233);
+   return 0;
+}

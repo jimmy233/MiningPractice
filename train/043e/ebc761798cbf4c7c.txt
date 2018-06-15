@@ -1,0 +1,145 @@
+int main()
+{
+   int  Judge = 0;
+   int  W     = 0;
+   int  Temp  = 0;
+   int  M     = 0;
+   int  Num_of_Origin;
+   int  Start          = 101;
+   int  VAR__8444594   = 0;
+   int  Num_of_Change  = 0;
+   int  Num_of_Changed = 0;
+   int  VAR__53647     = 0;
+   char Change[100]    = { 0 };
+   char Changed[100]   = { 0 };
+   char Origin[100]    = { 0 };
+
+   gets(Origin);
+   gets(Changed);
+   gets(Change);
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      if ( Changed[VAR__53647] == 0 )
+      {
+         Num_of_Changed = VAR__53647;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      if ( Change[VAR__53647] == 0 )
+      {
+         Num_of_Change = VAR__53647;
+         break;
+      }
+   }
+
+   for ( W = 0; W < 100; W++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         if ( Origin[VAR__53647] == 0 )
+         {
+            Num_of_Origin = VAR__53647;
+            break;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+      {
+         if ( Origin[VAR__53647] == Changed[0] )
+         {
+            for ( VAR__8444594 = 0; VAR__8444594 < Num_of_Changed; VAR__8444594++ )
+            {
+               if ( Origin[VAR__53647 + VAR__8444594] != Changed[VAR__8444594] )
+               {
+                  Judge = 1;
+                  break;
+               }
+            }
+
+            if (( Judge == 0 ) && ( VAR__53647 != 0 ))
+            {
+               if (( Origin[VAR__53647 - 1] != ' ' ) && ( Origin[VAR__53647 - 1] != ',' ))
+               {
+                  Judge = 1;
+               }
+            }
+
+            if (( Judge == 0 ) && ( VAR__53647 == 0 ))
+            {
+               if ( Origin[Num_of_Changed] != ' ' )
+               {
+                  Judge = 1;
+               }
+            }
+
+            if ( Judge == 0 )
+            {
+               Start = VAR__53647;
+            }
+
+            Judge = 0;
+         }
+      }
+
+      Temp = Num_of_Origin - Start;
+
+      if ( Num_of_Change >= Num_of_Changed )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < Num_of_Change; VAR__53647++ )
+         {
+            if ( VAR__53647 < Num_of_Changed )
+            {
+               Origin[Start + VAR__53647] = Change[VAR__53647];
+               Temp -= 1;
+            }
+            else
+            {
+               Num_of_Origin++;
+               for ( M = 0; M < Temp; M++ )
+               {
+                  Origin[( Num_of_Origin - 1 ) - M] = Origin[( Num_of_Origin - 2 ) - M];
+               }
+
+               Origin[Start + VAR__53647] = Change[VAR__53647];
+            }
+         }
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < Num_of_Changed; VAR__53647++ )
+         {
+            if ( VAR__53647 < Num_of_Change )
+            {
+               Origin[Start + VAR__53647] = Change[VAR__53647];
+               Temp -= 1;
+               M     = VAR__53647 + 1;
+            }
+            else
+            {
+               Num_of_Origin--;
+               for ( VAR__8444594 = 0; VAR__8444594 < Temp; VAR__8444594++ )
+               {
+                  Origin[( Start + M ) + VAR__8444594] = Origin[(( Start + M ) + VAR__8444594 ) + 1];
+                  Origin[Num_of_Origin + 1]            = 0;
+               }
+            }
+         }
+      }
+
+      Start = 101;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      if ( Origin[VAR__53647] != 0 )
+      {
+         cout << Origin[VAR__53647];
+      }
+   }
+
+   cout << endl;
+   return 0;
+}

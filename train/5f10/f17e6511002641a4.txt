@@ -1,0 +1,71 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__NUM = 1;
+   int  VAR__MAX = 1;
+   int  ge       = 1;
+   int  VAR_FLAG = 1;
+   char A_STRING[505];
+   char VAR__819283[500][5];
+   char VAR__12302[500][5];
+
+   ( cin >> VAR_1238123 ) >> A_STRING;
+   int VAR__4857423 = strlen(A_STRING);
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR__4857423 - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = *(( A_STRING + VAR__53647 ) + VAR__21230 );
+      }
+
+      VAR__819283[VAR__53647][VAR_1238123] = '\0';
+   }
+
+   for ( int VAR__8444594 = 0; VAR__8444594 <= ( VAR__4857423 - VAR_1238123 ); VAR__8444594++ )
+   {
+      if ( strcmp(VAR__819283[VAR__8444594], "0000") == 0 )
+      {
+         continue;
+      }
+
+      for ( int VAR__1111 = 1; VAR__1111 < ((( VAR__4857423 - VAR_1238123 ) - VAR__8444594 ) + 1 ); VAR__1111++ )
+      {
+         if ( strcmp(VAR__819283[VAR__8444594], VAR__819283[VAR__8444594 + VAR__1111]) == 0 )
+         {
+            VAR__NUM++;
+            strcpy(VAR__819283[VAR__8444594 + VAR__1111], "0000");
+         }
+      }
+
+      if ( VAR__NUM > VAR__MAX )
+      {
+         ge       = 1;
+         VAR__MAX = VAR__NUM;
+         strcpy(VAR__12302[ge], VAR__819283[VAR__8444594]);
+         VAR_FLAG = 0;
+      }
+
+      if (( VAR__NUM == VAR__MAX ) && ( VAR_FLAG == 1 ))
+      {
+         ge++;
+         strcpy(VAR__12302[ge], VAR__819283[VAR__8444594]);
+      }
+
+      VAR_FLAG = 1;
+      VAR__NUM = 1;
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      ( cout << "NO" ) << endl;
+      return 0;
+   }
+
+   ( cout << VAR__MAX ) << endl;
+   for ( int VAR_233 = 1; VAR_233 <= ge; VAR_233++ )
+   {
+      ( cout << ( *( VAR__12302 + VAR_233 ))) << endl;
+   }
+
+   return 0;
+}

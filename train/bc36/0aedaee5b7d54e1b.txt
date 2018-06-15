@@ -1,0 +1,72 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__8444594;
+   int  a1;
+   int  b1;
+   char an[40][7];
+   char VAR__7685;
+
+   VAR__7685 = ' ';
+   float bn[40];
+   float dn[40];
+   float max1 = 0;
+   float max2 = 0;
+   scanf("%d", &VAR_1238123);
+   VAR__8444594 = VAR_1238123 - 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%f", an[VAR__53647], &bn[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(an[VAR__53647], "male\0") == 0 )
+      {
+         dn[VAR__21230] = bn[VAR__53647];
+         VAR__21230    += 1;
+      }
+
+      if ( strcmp(an[VAR__53647], "female\0") == 0 )
+      {
+         dn[VAR__8444594] = bn[VAR__53647];
+         VAR__8444594    -= 1;
+      }
+   }
+
+   for ( VAR__53647 = VAR__21230 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      for ( a1 = 0; a1 < VAR__53647; a1++ )
+      {
+         if ( dn[a1] > dn[a1 + 1] )
+         {
+            max1       = dn[a1];
+            dn[a1]     = dn[a1 + 1];
+            dn[a1 + 1] = max1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR__8444594 + 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( b1 = VAR_1238123 - 1; b1 > VAR__53647; b1-- )
+      {
+         if ( dn[b1] > dn[b1 - 1] )
+         {
+            max2       = dn[b1];
+            dn[b1]     = dn[b1 - 1];
+            dn[b1 - 1] = max2;
+         }
+      }
+   }
+
+   printf("%.2f", dn[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%c%.2f", VAR__7685, dn[VAR__53647]);
+   }
+
+   return 0;
+}

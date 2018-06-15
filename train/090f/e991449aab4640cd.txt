@@ -1,0 +1,87 @@
+long pow10[5];
+inline int str2int(char *VAR_9494, int lens)
+{
+   int VAR__53647;
+   int VAR_129012 = 0;
+
+   for ( VAR__53647 = lens - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR_129012 += ( VAR_9494[VAR__53647] - '0' ) * pow10[( lens - 1 ) - VAR__53647];
+   }
+
+   return VAR_129012;
+}
+
+
+int main()
+{
+   int  data[1000];
+   int  VAR_1238123 = 0;
+   char VAR_9494[1000];
+
+   gets(VAR_9494);
+   int  VAR__HEAD = 0;
+   int  VAR__1111 = 0;
+   int  index     = 0;
+   int  VAR__53647;
+   int  VAR__19328 = 1;
+   long VAR_129012 = 1;
+   for ( VAR__53647 = 0; VAR__53647 < 5; VAR__53647++ )
+   {
+      pow10[VAR__53647] = VAR_129012;
+      VAR_129012       *= 10;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_9494); VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] == ',' )
+      {
+         data[index] = str2int(VAR_9494 + VAR__HEAD, VAR__53647 - VAR__HEAD);
+         index++;
+         VAR__HEAD = VAR__53647 + 1;
+      }
+   }
+
+   data[index] = str2int(VAR_9494 + VAR__HEAD, VAR__53647 - VAR__HEAD);
+   VAR_1238123 = index + 1;
+
+   if ( VAR_1238123 == 1 )
+   {
+      ( cout << "No" ) << endl;
+      return 0;
+   }
+
+   int m1 = data[0];
+   int m2;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( m1 < data[VAR__53647] )
+      {
+         m1 = data[VAR__53647];
+      }
+   }
+
+
+   m2 = 0;
+   int VAR__TEMP = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( m2 < data[VAR__53647] ) && ( m1 > data[VAR__53647] ))
+      {
+         m2        = data[VAR__53647];
+         VAR__TEMP = 1;
+      }
+   }
+
+
+   if ( VAR__TEMP )
+   {
+      ( cout << m2 ) << endl;
+   }
+   else
+   {
+      ( cout << "No" ) << endl;
+   }
+
+   return 0;
+}

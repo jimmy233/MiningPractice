@@ -1,0 +1,65 @@
+int main()
+{
+   char A_STRING[105];
+
+   cin >> A_STRING;
+   int LEN_OF_STH = strlen(A_STRING);
+   int VAR__NUM   = 0;
+   int shang[105];
+   int VAR__21230 = 0;
+   int sign       = 0;
+   int VAR_FLAG   = 0;
+   for ( int VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      VAR__NUM += A_STRING[VAR__53647] - '0';
+
+      if ( VAR__NUM >= 13 )
+      {
+         VAR_FLAG            = 1;
+         shang[VAR__21230++] = VAR__NUM / 13;
+
+         if ( A_STRING[VAR__53647 + 1] != '\0' )
+         {
+            VAR__NUM = ( VAR__NUM % 13 ) * 10;
+         }
+         else
+         {
+            VAR__NUM = VAR__NUM % 13;
+         }
+      }
+      else
+      if ( A_STRING[VAR__53647 + 1] != '\0' )
+      {
+         VAR__NUM           *= 10;
+         shang[VAR__21230++] = 0;
+      }
+      else
+      {
+         shang[VAR__21230++] = 0;
+      }
+   }
+
+   if ( VAR_FLAG == 0 )
+   {
+      ((( cout << 0 ) << endl ) << VAR__NUM ) << endl;
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+      {
+         if (( sign == 0 ) && ( shang[VAR__53647] == 0 ))
+         {
+         }
+         else
+         {
+            cout << shang[VAR__53647];
+            sign = 1;
+         }
+      }
+
+      cout << endl;
+      cout << VAR__NUM;
+   }
+
+   return 0;
+}

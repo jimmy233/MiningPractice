@@ -1,0 +1,80 @@
+int check(char *VAR_233)
+{
+   int VAR__53647 = 0;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < 81; VAR__53647++ )
+   {
+      if (( *( VAR_233 + VAR__53647 )) == '\0' )
+      {
+         VAR__TEMP = 0;
+         break;
+      }
+      else
+      {
+         VAR__TEMP = 1;
+      }
+   }
+
+   return VAR__TEMP;
+}
+
+
+void out(char *VAR_233)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( check(VAR_233) == 1 )
+   {
+      if (( *( VAR_233 + 80 )) == ' ' )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < 80; VAR__53647++ )
+         {
+            cout << ( *( VAR_233 + VAR__53647 ));
+         }
+
+         cout << endl;
+         out(VAR_233 + 81);
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < 80; VAR__53647++ )
+         {
+            if (( *(( VAR_233 + 80 ) - VAR__53647 )) == ' ' )
+            {
+               break;
+            }
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < ( 80 - VAR__53647 ); VAR__21230++ )
+         {
+            cout << ( *( VAR_233 + VAR__21230 ));
+         }
+
+         cout << endl;
+         out(( VAR_233 + 81 ) - VAR__53647);
+      }
+   }
+   else
+   if ( check(VAR_233) == 0 )
+   {
+      cout << VAR_233;
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   cin.get();
+   int  VAR__53647   = 0;
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   char words[30000] = { 0 };
+   cin.get(words, 30000, '\n');
+   char *VAR_233 = &words[0];
+   out(VAR_233);
+}

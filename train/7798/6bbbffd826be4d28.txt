@@ -1,0 +1,95 @@
+struct book
+{
+   int         VAR__NUM;
+   char        writer[30];
+   struct book *VAR__NEXT;
+};
+int VAR_1238123;
+struct book *creat(void)
+{
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   int         VAR__1238129 = 0;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct book *)malloc(LEN_OF_STH));
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->writer);
+   VAR__HEAD = NULL;
+
+   while ( VAR__1238129 < ( VAR_1238123 - 1 ))
+   {
+      VAR__1238129++;
+
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct book *)malloc(LEN_OF_STH);
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->writer);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   scanf("%d", &VAR_1238123);
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   VAR__HEAD = creat();
+   struct book *VAR_233;
+   VAR_233 = VAR__HEAD;
+   int VAR__53647;
+   int VAR__SUM[27];
+   memset(VAR__SUM, 0, sizeof( VAR__SUM ));
+   char VAR__1238129;
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      int VAR__7685;
+      for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_233->writer); VAR__53647++ )
+      {
+         VAR__7685 = VAR_233->writer[VAR__53647] - 'A';
+         VAR__SUM[VAR__7685]++;
+      }
+   }
+
+   int VAR__MAX = VAR__SUM[0];
+   for ( VAR__53647 = 0; VAR__53647 < 27; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__SUM[VAR__53647] )
+      {
+         VAR__MAX = VAR__SUM[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 27; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] == VAR__MAX )
+      {
+         printf("%c\n%d\n", 'A' + VAR__53647, VAR__SUM[VAR__53647]);
+         VAR__1238129 = 'A' + VAR__53647;
+      }
+   }
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_233->writer); VAR__53647++ )
+      {
+         if ( VAR_233->writer[VAR__53647] == VAR__1238129 )
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+            break;
+         }
+      }
+   }
+}

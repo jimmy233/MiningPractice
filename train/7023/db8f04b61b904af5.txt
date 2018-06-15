@@ -1,0 +1,86 @@
+int main()
+{
+   char sn[10];
+   int  VAR_1238123;
+
+   gets(sn);
+   VAR_1238123 = atoi(sn);
+   int  VAR__8444594;
+   char VAR__819283[250][250];
+   char VAR__19328[250][250];
+   char cc[10];
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if ( VAR__8444594 == 0 )
+      {
+         gets(VAR__819283[VAR__8444594]);
+         gets(VAR__19328[VAR__8444594]);
+      }
+      else
+      {
+         gets(cc);
+         gets(VAR__819283[VAR__8444594]);
+         gets(VAR__19328[VAR__8444594]);
+      }
+   }
+
+   int lena[250];
+   int lenb[250];
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      lena[VAR__8444594] = strlen(VAR__819283[VAR__8444594]);
+      lenb[VAR__8444594] = strlen(VAR__19328[VAR__8444594]);
+      int shua[251][250];
+      int shub[251][250];
+      memset(shua[VAR__8444594], 0, sizeof( shua[VAR__8444594] ));
+      memset(shub[VAR__8444594], 0, sizeof( shub[VAR__8444594] ));
+      VAR__21230 = 0;
+      for ( VAR__53647 = lena[VAR__8444594] - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         shua[VAR__8444594][VAR__21230++] = VAR__819283[VAR__8444594][VAR__53647] - '0';
+      }
+
+      VAR__21230 = 0;
+      for ( VAR__53647 = lenb[VAR__8444594] - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         shub[VAR__8444594][VAR__21230++] = VAR__19328[VAR__8444594][VAR__53647] - '0';
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < 250; VAR__53647++ )
+      {
+         shua[VAR__8444594][VAR__53647] -= shub[VAR__8444594][VAR__53647];
+
+         if ( shua[VAR__8444594][VAR__53647] < 0 )
+         {
+            shua[VAR__8444594][VAR__53647] += 10;
+            shua[VAR__8444594][VAR__53647 + 1]--;
+         }
+      }
+
+      int bStartOutput = 0;
+      for ( VAR__53647 = 249; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( bStartOutput )
+         {
+            printf("%d", shua[VAR__8444594][VAR__53647]);
+         }
+         else
+         if ( shua[VAR__8444594][VAR__53647] > 0 )
+         {
+            printf("%d", shua[VAR__8444594][VAR__53647]);
+            bStartOutput = 1;
+         }
+      }
+
+      printf("\n");
+
+      if ( !bStartOutput )
+      {
+         printf("0\n");
+      }
+   }
+
+   return 0;
+}

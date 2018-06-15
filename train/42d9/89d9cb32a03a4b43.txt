@@ -1,0 +1,79 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR__7685[20];
+   int VAR__3918907[20];
+   int VAR__9290[20];
+
+   struct
+   {
+      int    x1;
+      int    y1;
+      int    z1;
+      int    x2;
+      int    y2;
+      int    z2;
+      double dis;
+   }
+   out[50];
+   struct
+   {
+      int    x1;
+      int    y1;
+      int    z1;
+      int    x2;
+      int    y2;
+      int    z2;
+      double dis;
+   }
+   VAR_2890;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         out[VAR__8444594].x1 = VAR__7685[VAR__53647];
+         out[VAR__8444594].y1 = VAR__3918907[VAR__53647];
+         out[VAR__8444594].z1 = VAR__9290[VAR__53647];
+         out[VAR__8444594].x2 = VAR__7685[VAR__21230];
+         out[VAR__8444594].y2 = VAR__3918907[VAR__21230];
+         out[VAR__8444594].z2 = VAR__9290[VAR__21230];
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      out[VAR__53647].dis = sqrt(((( out[VAR__53647].x1 - out[VAR__53647].x2 ) * ( out[VAR__53647].x1 - out[VAR__53647].x2 )) + (( out[VAR__53647].y1 - out[VAR__53647].y2 ) * ( out[VAR__53647].y1 - out[VAR__53647].y2 ))) + (( out[VAR__53647].z1 - out[VAR__53647].z2 ) * ( out[VAR__53647].z1 - out[VAR__53647].z2 )));
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( out[VAR__21230].dis > out[VAR__21230 - 1].dis )
+         {
+            VAR_2890            = out[VAR__21230];
+            out[VAR__21230]     = out[VAR__21230 - 1];
+            out[VAR__21230 - 1] = VAR_2890;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", out[VAR__53647].x1, out[VAR__53647].y1, out[VAR__53647].z1, out[VAR__53647].x2, out[VAR__53647].y2, out[VAR__53647].z2, out[VAR__53647].dis);
+   }
+
+   return 0;
+}

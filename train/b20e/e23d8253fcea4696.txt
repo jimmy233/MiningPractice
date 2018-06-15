@@ -1,0 +1,74 @@
+int MyCompare(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_233;
+   int VAR_666;
+   int VAR_1238123;
+   int result;
+   int speed1[1000];
+   int speed2[1000];
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      result = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> speed1[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> speed2[VAR__53647];
+      }
+
+      qsort(speed1, VAR_1238123, sizeof( int ), MyCompare);
+      qsort(speed2, VAR_1238123, sizeof( int ), MyCompare);
+      VAR__53647 = ( VAR_233 = 0 );
+      VAR__21230 = ( VAR_666 = VAR_1238123 - 1 );
+
+      while ( VAR__53647 <= VAR__21230 )
+      {
+         if ( speed1[VAR__53647] > speed2[VAR_233] )
+         {
+            result += 200;
+            VAR__53647++;
+            VAR_233++;
+         }
+         else
+         if ( speed1[VAR__21230] > speed2[VAR_666] )
+         {
+            result += 200;
+            VAR__21230--;
+            VAR_666--;
+         }
+         else
+         if ( speed1[VAR__21230] == speed2[VAR_233] )
+         {
+            VAR__21230--;
+            VAR_233++;
+         }
+         else
+         {
+            result -= 200;
+            VAR__21230--;
+            VAR_233++;
+         }
+      }
+
+      ( cout << result ) << endl;
+   }
+
+   return 0;
+}

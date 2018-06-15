@@ -1,0 +1,62 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int leftJi;
+   int leftQi;
+   int rightJi;
+   int rightQi;
+   int tianJi[1000];
+   int kingQi[1000];
+   int result;
+
+   for ( cin >> VAR_1238123; VAR_1238123 > 0; cin >> VAR_1238123 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         cin >> tianJi[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; ++VAR__53647 )
+      {
+         cin >> kingQi[VAR__53647];
+      }
+
+      sort(tianJi, tianJi + VAR_1238123);
+      sort(kingQi, kingQi + VAR_1238123);
+      result  = 0;
+      leftJi  = ( leftQi = 0 );
+      rightJi = ( rightQi = VAR_1238123 - 1 );
+
+      while ( leftJi <= rightJi )
+      {
+         if ( tianJi[leftJi] > kingQi[leftQi] )
+         {
+            ++leftJi;
+            ++leftQi;
+            result += 200;
+            continue;
+         }
+
+         if ( tianJi[rightJi] > kingQi[rightQi] )
+         {
+            --rightJi;
+            --rightQi;
+            result += 200;
+            continue;
+         }
+
+         if ( tianJi[leftJi] < kingQi[rightQi] )
+         {
+            result -= 200;
+         }
+
+         ++leftJi;
+         --rightQi;
+      }
+
+      ( cout << result ) << endl;
+   }
+
+   return 0;
+}

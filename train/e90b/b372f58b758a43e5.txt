@@ -1,0 +1,88 @@
+struct student
+{
+   char           VAR__NUM[10];
+   int            chinese;
+   int            math;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *creat(int VAR_1238123)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+   ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->chinese + ANOTHER_POINTER->math;
+   VAR__HEAD = NULL;
+   int VAR__temp = VAR_1238123;
+
+   while ( VAR_1238123 > 1 )
+   {
+      if ( VAR_1238123 == VAR__temp )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->chinese + ANOTHER_POINTER->math;
+      VAR_1238123--;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct student *first;
+   struct student *second;
+   struct student *third;
+   int            fir_index;
+   int            sec_index;
+   int            thr_index;
+
+   scanf("%d", &VAR_1238123);
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student stu;
+   VAR__HEAD = creat(VAR_1238123);
+   first     = VAR__HEAD;
+   second    = VAR__HEAD;
+   third     = VAR__HEAD;
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER->VAR__NEXT != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if ( ANOTHER_POINTER->VAR__SUM > first->VAR__SUM )
+      {
+         third  = second;
+         second = first;
+         first  = ANOTHER_POINTER;
+      }
+      else
+      if ( ANOTHER_POINTER->VAR__SUM > second->VAR__SUM )
+      {
+         third  = second;
+         second = ANOTHER_POINTER;
+      }
+      else
+      if ( ANOTHER_POINTER->VAR__SUM > third->VAR__SUM )
+      {
+         third = ANOTHER_POINTER;
+      }
+   }
+
+   printf("%s %d\n", first->VAR__NUM, first->VAR__SUM);
+   printf("%s %d\n", second->VAR__NUM, second->VAR__SUM);
+   printf("%s %d\n", third->VAR__NUM, third->VAR__SUM);
+}

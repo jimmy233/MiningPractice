@@ -1,0 +1,85 @@
+void arrange(float *arrangearry, int nt, int kd_order)
+{
+   int   flagi;
+   int   flagj;
+   float temporary;
+
+   if ( kd_order == 1 )
+   {
+      for ( flagi = nt - 1; flagi > 0; flagi-- )
+      {
+         for ( flagj = 0; flagj < flagi; flagj++ )
+         {
+            if ( arrangearry[flagj] < arrangearry[flagj + 1] )
+            {
+               temporary              = arrangearry[flagj];
+               arrangearry[flagj]     = arrangearry[flagj + 1];
+               arrangearry[flagj + 1] = temporary;
+            }
+         }
+      }
+   }
+   else
+   {
+      for ( flagi = nt - 1; flagi > 0; flagi-- )
+      {
+         for ( flagj = 0; flagj < flagi; flagj++ )
+         {
+            if ( arrangearry[flagj] > arrangearry[flagj + 1] )
+            {
+               temporary              = arrangearry[flagj];
+               arrangearry[flagj]     = arrangearry[flagj + 1];
+               arrangearry[flagj + 1] = temporary;
+            }
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int   VAR__53647;
+   int   VAR_1238123;
+   int   LEN_OF_STH;
+   int   male   = 0;
+   int   female = 0;
+   float VAR__819283[40];
+   float VAR__19328[40];
+   float height;
+   char  sex[10];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%f", sex, &height);
+      LEN_OF_STH = strlen(sex);
+
+      if ( LEN_OF_STH == 4 )
+      {
+         VAR__819283[male] = height;
+         male++;
+      }
+
+      if ( LEN_OF_STH == 6 )
+      {
+         VAR__19328[female] = height;
+         female++;
+      }
+   }
+
+   arrange(VAR__819283, male, 0);
+   arrange(VAR__19328, female, 1);
+   printf("%.2f", VAR__819283[0]);
+   for ( VAR__53647 = 1; VAR__53647 < male; VAR__53647++ )
+   {
+      printf(" %.2f", VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < female; VAR__53647++ )
+   {
+      printf(" %.2f", VAR__19328[VAR__53647]);
+   }
+
+   return 0;
+}

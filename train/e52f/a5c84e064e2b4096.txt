@@ -1,0 +1,57 @@
+int MyInverseitoa(int iNum, char *ch, int radix)
+{
+   int iBits = 0;
+
+   do
+   {
+      ch[iBits++] = iNum % radix;
+      iNum       /= radix;
+   } while ( iNum );
+   ch[iBits] = '\0';
+   return iBits - 1;
+}
+
+
+int Myatoi(char *ch, int iBits)
+{
+   int iNumInverse = 0;
+   int VAR__53647  = 0;
+
+   while ( ch[VAR__53647] == '\0' )
+   {
+      VAR__53647++;
+      printf("0");
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= iBits; VAR__53647++ )
+   {
+      iNumInverse = ( 10 * iNumInverse ) + ch[VAR__53647];
+   }
+
+   return iNumInverse;
+}
+
+
+int main()
+{
+   int  iNum;
+   int  iNumInverse;
+   int  iBits = 0;
+   char ch[12];
+
+   scanf("%d", &iNum);
+
+   if ( iNum == 0 )
+   {
+      iNumInverse = iNum;
+      printf("%d", iNumInverse);
+   }
+   else
+   {
+      iBits       = MyInverseitoa(iNum, ch, 10);
+      iNumInverse = Myatoi(ch, iBits);
+      printf("%d", iNumInverse);
+   }
+
+   return 0;
+}

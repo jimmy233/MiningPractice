@@ -1,0 +1,56 @@
+struct book
+{
+   char id[11];
+   char name[30];
+};
+struct au
+{
+   int  VAR__NUM;
+   char id[1000][11];
+};
+void main()
+{
+   struct book VAR__19328;
+   struct au   VAR__819283[26];
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__21230 = 0;
+   int         VAR__8444594;
+   char        VAR__4857423;
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647].VAR__NUM = 0;
+   }
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%s", VAR__19328.id, VAR__19328.name);
+
+      while ( VAR__19328.name[VAR__21230] != '\0' )
+      {
+         VAR__8444594 = VAR__19328.name[VAR__21230] - 'A';
+         strcpy(VAR__819283[VAR__8444594].id[VAR__819283[VAR__8444594].VAR__NUM], VAR__19328.id);
+         VAR__819283[VAR__8444594].VAR__NUM++;
+         VAR__21230++;
+      }
+
+      VAR__21230 = 0;
+   }
+
+   VAR__8444594 = 0;
+   VAR__21230   = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR__21230   = ( VAR__819283[VAR__53647].VAR__NUM > VAR__8444594 ) ? ( VAR__53647 ) : ( VAR__21230 );
+      VAR__8444594 = ( VAR__819283[VAR__53647].VAR__NUM > VAR__8444594 ) ? ( VAR__819283[VAR__53647].VAR__NUM ) : ( VAR__8444594 );
+   }
+
+   printf("%c\n", 'A' + VAR__21230);
+   printf("%d\n", VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      printf("%s\n", VAR__819283[VAR__21230].id[VAR__53647]);
+   }
+}

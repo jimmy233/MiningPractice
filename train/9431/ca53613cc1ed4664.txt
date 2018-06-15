@@ -1,0 +1,39 @@
+struct stu
+{
+   char       name[20];
+   char       VAR__NUM[10];
+   char       VAR__7685[5];
+   int        VAR__3918907;
+   float      VAR__127322;
+   char       add[100];
+   struct stu *VAR__NEXT;
+};
+int main()
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER            = (struct stu *)malloc(sizeof( struct stu ));
+   ANOTHER_POINTER->VAR__NEXT = 0;
+   scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+   while ( ANOTHER_POINTER->VAR__NUM[0] != 'e' )
+   {
+      scanf("%s%s%d%f%s", ANOTHER_POINTER->name, ANOTHER_POINTER->VAR__7685, &ANOTHER_POINTER->VAR__3918907, &ANOTHER_POINTER->VAR__127322, ANOTHER_POINTER->add);
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+      ANOTHER_POINTER            = (struct stu *)malloc(sizeof( struct stu ));
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+   }
+
+   ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   printf("%s %s %s %d %g %s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->VAR__7685, ANOTHER_POINTER->VAR__3918907, ANOTHER_POINTER->VAR__127322, ANOTHER_POINTER->add);
+
+   while ( ANOTHER_POINTER->VAR__NEXT != 0 )
+   {
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      printf("%s %s %s %d %g %s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->VAR__7685, ANOTHER_POINTER->VAR__3918907, ANOTHER_POINTER->VAR__127322, ANOTHER_POINTER->add);
+   }
+
+   return 0;
+}

@@ -1,0 +1,64 @@
+struct patient
+{
+   char A[10];
+   int  age;
+};
+int main()
+{
+   int            VAR__53647;
+   int            VAR_1238123;
+   int            VAR__8444594;
+   int            VAR__MAX;
+   int            VAR__COUNT;
+   struct patient inter;
+   struct patient *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   struct patient *sick     = (struct patient *)malloc(( sizeof( struct patient )) * VAR_1238123);
+   struct patient *waitlist = (struct patient *)malloc(( sizeof( struct patient )) * VAR_1238123);
+   VAR__COUNT = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", sick[VAR__53647].A, &sick[VAR__53647].age);
+   }
+
+   VAR_233 = waitlist;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( sick[VAR__53647].age >= 60 )
+      {
+         *VAR_233 = sick[VAR__53647];
+         VAR_233++;
+         VAR__COUNT++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( sick[VAR__53647].age < 60 )
+      {
+         *VAR_233 = sick[VAR__53647];
+         VAR_233++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__COUNT - VAR__53647 ); VAR__8444594++ )
+      {
+         if ( waitlist[VAR__8444594].age < waitlist[VAR__8444594 + 1].age )
+         {
+            inter = waitlist[VAR__8444594 + 1];
+            waitlist[VAR__8444594 + 1] = waitlist[VAR__8444594];
+            waitlist[VAR__8444594]     = inter;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", waitlist[VAR__53647].A);
+   }
+
+   return 0;
+}

@@ -1,0 +1,85 @@
+struct student
+{
+   char name[30];
+   int  mark1;
+   int  mark2;
+   char worker;
+   char west;
+   int  paper;
+   int  RMB;
+}
+stu[Max];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647 = 0;
+   int VAR__21230;
+   int S = 0;
+   int VAR__19328[Max];
+   int VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].RMB = 0;
+      scanf("%s%d%d %c %c%d", stu[VAR__53647].name, &stu[VAR__53647].mark1, &stu[VAR__53647].mark2, &stu[VAR__53647].worker, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+
+      if (( stu[VAR__53647].mark1 > 80 ) && ( stu[VAR__53647].paper != 0 ))
+      {
+         stu[VAR__53647].RMB = stu[VAR__53647].RMB + 8000;
+      }
+
+      if (( stu[VAR__53647].mark1 > 85 ) && ( stu[VAR__53647].mark2 > 80 ))
+      {
+         stu[VAR__53647].RMB = stu[VAR__53647].RMB + 4000;
+      }
+
+      if ( stu[VAR__53647].mark1 > 90 )
+      {
+         stu[VAR__53647].RMB = stu[VAR__53647].RMB + 2000;
+      }
+
+      if (( stu[VAR__53647].mark2 > 80 ) && ( stu[VAR__53647].worker == 'Y' ))
+      {
+         stu[VAR__53647].RMB = stu[VAR__53647].RMB + 850;
+      }
+
+      if (( stu[VAR__53647].mark1 > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].RMB = stu[VAR__53647].RMB + 1000;
+      }
+
+      VAR__19328[VAR__53647] = stu[VAR__53647].RMB;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      S = S + stu[VAR__53647].RMB;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__21230 + 1] < VAR__19328[VAR__21230] )
+         {
+            VAR__temp = VAR__19328[VAR__21230 + 1];
+            VAR__19328[VAR__21230 + 1] = VAR__19328[VAR__21230];
+            VAR__19328[VAR__21230]     = VAR__temp;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].RMB == VAR__19328[VAR_1238123 - 1] )
+      {
+         printf("%s\n%d\n%d\n", stu[VAR__53647].name, stu[VAR__53647].RMB, S);
+         break;
+      }
+   }
+
+
+   return 0;
+}

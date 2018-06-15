@@ -1,0 +1,74 @@
+int main()
+{
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int VAR_1238123 = 0;
+   int year;
+   int VAR__21230;
+   int VAR__temp = 0;
+   int VAR__12302;
+   int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   scanf("%d%d%d%d%d%d", &startyear, &startmonth, &startday, &endyear, &endmonth, &endday);
+   for ( year = startyear; year <= endyear; year++ )
+   {
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         VAR_1238123++;
+      }
+   }
+
+
+   year = startyear;
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      if ( startmonth > 2 )
+      {
+         VAR_1238123--;
+      }
+   }
+
+
+   year = endyear;
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      if (( endmonth < 2 ) || (( endmonth == 2 ) && ( endday < 29 )))
+      {
+         VAR_1238123--;
+      }
+   }
+
+
+   if ( VAR_1238123 < 0 )
+   {
+      VAR_1238123 = 0;
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= 12; VAR__21230++ )
+   {
+      if ( VAR__21230 > startmonth )
+      {
+         VAR__temp = VAR__temp + VAR__819283[VAR__21230];
+      }
+   }
+
+   VAR__temp = ( VAR__temp + VAR__819283[startmonth] ) - startday;
+   VAR__temp = ( VAR__temp + ( 365 * (( endyear - startyear ) - 1 ))) + VAR_1238123;
+   for ( VAR__21230 = 1; VAR__21230 <= 12; VAR__21230++ )
+   {
+      if ( VAR__21230 < endmonth )
+      {
+         VAR__temp = VAR__temp + VAR__819283[VAR__21230];
+      }
+   }
+
+   VAR__temp = VAR__temp + endday;
+   printf("%d", VAR__temp);
+   return 0;
+}

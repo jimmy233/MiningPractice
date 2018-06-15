@@ -1,0 +1,69 @@
+struct a
+{
+   char     VAR__NUM[10];
+   char     name[21];
+   char     sex;
+   int      age;
+   float    score;
+   char     address[12];
+   struct a *VAR__NEXT;
+};
+struct a *create()
+{
+   struct a *VAR__HEAD;
+   struct a *ANOTHER_POINTER;
+
+   ANOTHER_POINTER            = LEN_OF_STH;
+   ANOTHER_POINTER->VAR__NEXT = null;
+   VAR__HEAD = ANOTHER_POINTER;
+   strcpy(ANOTHER_POINTER->VAR__NUM, "pp");
+
+   while ( strcmp(ANOTHER_POINTER->VAR__NUM, "end"))
+   {
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0 )
+      {
+         scanf("%s %c %d %f %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+         ANOTHER_POINTER            = LEN_OF_STH;
+         ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+         VAR__HEAD = ANOTHER_POINTER;
+         strcpy(ANOTHER_POINTER->VAR__NUM, "pp");
+      }
+   }
+
+   VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+   return VAR__HEAD;
+}
+
+
+void print(struct a *VAR__HEAD)
+{
+   struct a *ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   do
+   {
+      printf("%s %s %c %d %g %s", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+
+      if ( ANOTHER_POINTER->VAR__NEXT != null )
+      {
+         printf("\n");
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   struct a *create();
+
+   struct a *VAR__HEAD;
+
+   void print(struct a *VAR__HEAD);
+
+   VAR__HEAD = create();
+   print(VAR__HEAD);
+}

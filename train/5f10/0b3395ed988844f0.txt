@@ -1,0 +1,75 @@
+int main()
+{
+   char BeatFCbarcelona[500] = { '\0' };
+   char substr[500][500]     = { '\0' };
+   int  halamadrid[500]      = { 0 };
+   int  VAR__8444594         = 0;
+   int  store[500][3]        = { '\0' };
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  VAR__MAX = 0;
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", BeatFCbarcelona);
+   LEN_OF_STH = strlen(BeatFCbarcelona);
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         substr[VAR__53647][VAR__21230] = BeatFCbarcelona[VAR__53647 + VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         if ( strcmp(substr[VAR__53647], substr[VAR__21230]) == 0 )
+         {
+            halamadrid[VAR__53647]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( halamadrid[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = halamadrid[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX > 1 )
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+      {
+         if ( halamadrid[VAR__53647] == VAR__MAX )
+         {
+            strcpy(store[VAR__53647], substr[VAR__53647]);
+            for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+            {
+               if ( strcmp(store[VAR__21230], substr[VAR__53647]) == 0 )
+               {
+                  VAR__8444594++;
+               }
+            }
+
+            if ( VAR__8444594 == 0 )
+            {
+               printf("%s\n", substr[VAR__53647]);
+            }
+         }
+
+         VAR__8444594 = 0;
+      }
+   }
+   else
+   {
+      printf("NO\n");
+   }
+
+   return 0;
+}

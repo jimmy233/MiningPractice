@@ -1,0 +1,81 @@
+int main()
+{
+   char input[4000];
+   char comma;
+   int  enter[1000];
+   int  leave[1000];
+
+   cin >> input;
+   int LEN_OF_STH = strlen(input);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int u        = 0;
+   int VAR__MIN = 1000;
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( input[VAR__53647] != ',' )
+      {
+         char VAR__TEMP[2000];
+         VAR__8444594 = 0;
+         for ( VAR__21230 = VAR__53647; ( input[VAR__21230] >= '0' ) && ( input[VAR__21230] <= '9' ); VAR__21230++, VAR__8444594++ )
+         {
+            VAR__TEMP[VAR__8444594] = input[VAR__21230];
+         }
+
+         VAR__TEMP[VAR__8444594] = '\0';
+         enter[u] = atoi(VAR__TEMP);
+
+         if ( enter[u] < VAR__MIN )
+         {
+            VAR__MIN = enter[u];
+         }
+
+         VAR__53647 = VAR__21230;
+         u++;
+      }
+   }
+
+   LEN_OF_STH = u;
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      ( cin >> leave[VAR__53647] ) >> comma;
+
+      if ( leave[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = leave[VAR__53647];
+      }
+   }
+
+   cin >> leave[LEN_OF_STH - 1];
+
+   if ( leave[LEN_OF_STH - 1] > VAR__MAX )
+   {
+      VAR__MAX = leave[LEN_OF_STH - 1];
+   }
+
+   int VAR__NUM[1000];
+   for ( VAR__53647 = VAR__MIN; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if (( VAR__53647 >= enter[VAR__21230] ) && ( VAR__53647 < leave[VAR__21230] ))
+         {
+            VAR__NUM[VAR__53647]++;
+         }
+      }
+   }
+
+   int maxans = VAR__NUM[VAR__MIN];
+   for ( VAR__53647 = VAR__MIN; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > maxans )
+      {
+         maxans = VAR__NUM[VAR__53647];
+      }
+   }
+
+   ((( cout << LEN_OF_STH ) << " " ) << maxans ) << endl;
+   return 0;
+}

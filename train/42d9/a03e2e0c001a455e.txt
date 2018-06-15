@@ -1,0 +1,72 @@
+struct
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+dot[10];
+struct
+{
+   int    f1;
+   int    f2;
+   double dis;
+}
+VAR__12302[55];
+struct
+{
+   int    f1;
+   int    f2;
+   double dis;
+}
+VAR__temp;
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__4857423 = 0;
+   int x1;
+   int y1;
+   int z1;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> dot[VAR__53647].VAR__7685 ) >> dot[VAR__53647].VAR__3918907 ) >> dot[VAR__53647].VAR__9290;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         x1 = ( dot[VAR__53647].VAR__7685 - dot[VAR__21230].VAR__7685 ) * ( dot[VAR__53647].VAR__7685 - dot[VAR__21230].VAR__7685 );
+         y1 = ( dot[VAR__53647].VAR__3918907 - dot[VAR__21230].VAR__3918907 ) * ( dot[VAR__53647].VAR__3918907 - dot[VAR__21230].VAR__3918907 );
+         z1 = ( dot[VAR__53647].VAR__9290 - dot[VAR__21230].VAR__9290 ) * ( dot[VAR__53647].VAR__9290 - dot[VAR__21230].VAR__9290 );
+         VAR__12302[VAR__4857423].f1    = VAR__53647;
+         VAR__12302[VAR__4857423].f2    = VAR__21230;
+         VAR__12302[VAR__4857423++].dis = sqrt(( x1 + y1 ) + z1);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__4857423; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__4857423 - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if ( VAR__12302[VAR__21230].dis > VAR__12302[VAR__21230 - 1].dis )
+         {
+            VAR__temp = VAR__12302[VAR__21230 - 1];
+            VAR__12302[VAR__21230 - 1] = VAR__12302[VAR__21230];
+            VAR__12302[VAR__21230]     = VAR__temp;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__4857423; VAR__53647++ )
+   {
+      (((((((((((( cout << '(' ) << dot[VAR__12302[VAR__53647].f1].VAR__7685 ) << ',' ) << dot[VAR__12302[VAR__53647].f1].VAR__3918907 ) << ',' ) << dot[VAR__12302[VAR__53647].f1].VAR__9290 ) << ")-(" ) << dot[VAR__12302[VAR__53647].f2].VAR__7685 ) << ',' ) << dot[VAR__12302[VAR__53647].f2].VAR__3918907 ) << ',' ) << dot[VAR__12302[VAR__53647].f2].VAR__9290 ) << ")=";
+      ((( cout << fixed ) << setprecision(2)) << VAR__12302[VAR__53647].dis ) << endl;
+   }
+
+   return 0;
+}

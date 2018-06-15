@@ -1,0 +1,58 @@
+int main()
+{
+   struct student
+   {
+      int VAR__NUM;
+      int chs;
+      int math;
+   };
+   struct student VAR_9494[100000];
+   struct student s1[2] = { { 0, 0, 0 }, { 0, 0, 0 } };
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__temp;
+   int            VAR__21230;
+   int            VAR__819283[100000];
+   int            VAR__8444594 = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR_9494[VAR__53647].VAR__NUM, &VAR_9494[VAR__53647].chs, &VAR_9494[VAR__53647].math);
+      VAR__819283[VAR__53647] = VAR_9494[VAR__53647].chs + VAR_9494[VAR__53647].math;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__temp = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > ( VAR_1238123 - 4 ); VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ((( VAR__819283[VAR__53647] == ( VAR_9494[VAR__21230].chs + VAR_9494[VAR__21230].math )) && ( VAR_9494[VAR__21230].VAR__NUM != s1[0].VAR__NUM )) && ( VAR_9494[VAR__21230].VAR__NUM != s1[1].VAR__NUM ))
+         {
+            printf("%d %d\n", VAR_9494[VAR__21230].VAR__NUM, VAR_9494[VAR__21230].chs + VAR_9494[VAR__21230].math);
+            s1[VAR__8444594] = VAR_9494[VAR__21230];
+            VAR__8444594++;
+
+            if ( VAR__8444594 == 3 )
+            {
+               goto end;
+            }
+         }
+      }
+   }
+
+end:
+   return 0;
+}

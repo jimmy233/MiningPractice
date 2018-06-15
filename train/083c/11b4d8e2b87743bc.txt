@@ -1,0 +1,101 @@
+int cifang(int u, int VAR_9Q8Q90)
+{
+   long int VAR__1111 = 1;
+
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_9Q8Q90; VAR__53647++ )
+   {
+      VAR__1111 = VAR__1111 * u;
+   }
+
+   return VAR__1111;
+}
+
+
+int main()
+{
+   int      VAR_1238123;
+   int      VAR__1238129;
+   long int VAR__SUM = 0;
+   char     VAR__819283[1000];
+
+   cin >> VAR_1238123;
+   cin >> VAR__819283;
+   cin >> VAR__1238129;
+   char VAR__4857423[26] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+   int  VAR_9494         = strlen(VAR__819283);
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_9494 - 1 ); VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647] >= '0' ) && ( VAR__819283[VAR__53647] <= '9' ))
+      {
+         int VAR__temp = VAR__819283[VAR__53647] - '0';
+         VAR__SUM = VAR__SUM + ( VAR__temp * cifang(VAR_1238123, ( VAR_9494 - 1 ) - VAR__53647));
+      }
+      else
+      if (( VAR__819283[VAR__53647] >= 'A' ) && ( VAR__819283[VAR__53647] <= 'Z' ))
+      {
+         int VAR__temp = ( VAR__819283[VAR__53647] - 'A' ) + 10;
+         VAR__SUM = VAR__SUM + ( VAR__temp * cifang(VAR_1238123, ( VAR_9494 - 1 ) - VAR__53647));
+      }
+      else
+      if (( VAR__819283[VAR__53647] >= 'a' ) && ( VAR__819283[VAR__53647] <= 'z' ))
+      {
+         int VAR__temp = ( VAR__819283[VAR__53647] - 'a' ) + 10;
+         VAR__SUM = VAR__SUM + ( VAR__temp * cifang(VAR_1238123, ( VAR_9494 - 1 ) - VAR__53647));
+      }
+   }
+
+   int VAR__19328[1000];
+   int VAR__21230;
+   for ( int VAR__12302 = 0; VAR__12302 <= 999; VAR__12302++ )
+   {
+      VAR__19328[VAR__12302] = VAR__SUM % VAR__1238129;
+      VAR__SUM = ( VAR__SUM - VAR__19328[VAR__12302] ) / VAR__1238129;
+
+      if ( VAR__SUM < VAR__1238129 )
+      {
+         if ( VAR__SUM > 0 )
+         {
+            if ( VAR__SUM > 10 )
+            {
+               cout << VAR__4857423[VAR__SUM - 10];
+            }
+            else
+            {
+               cout << VAR__SUM;
+            }
+
+            for ( int VAR__127322 = VAR__12302; VAR__127322 >= 0; VAR__127322-- )
+            {
+               if ( VAR__19328[VAR__127322] >= 10 )
+               {
+                  cout << VAR__4857423[VAR__19328[VAR__127322] - 10];
+               }
+               else
+               {
+                  cout << VAR__19328[VAR__127322];
+               }
+            }
+
+            break;
+         }
+         else
+         {
+            for ( int VAR__127322 = VAR__12302; VAR__127322 >= 0; VAR__127322-- )
+            {
+               if ( VAR__19328[VAR__127322] >= 10 )
+               {
+                  cout << VAR__4857423[VAR__19328[VAR__127322] - 10];
+               }
+               else
+               {
+                  cout << VAR__19328[VAR__127322];
+               }
+            }
+
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

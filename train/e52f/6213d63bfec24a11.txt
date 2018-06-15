@@ -1,0 +1,66 @@
+void main()
+{
+   int VAR_1238123;
+   int indiv;
+   int ten;
+   int hundred;
+   int thousand;
+   int ten_thousand;
+   int place;
+
+   scanf("%d", &VAR_1238123);
+
+   if ( VAR_1238123 > 9999 )
+   {
+      place = 5;
+   }
+   else
+   if ( VAR_1238123 > 999 )
+   {
+      place = 4;
+   }
+   else
+   if ( VAR_1238123 > 99 )
+   {
+      place = 3;
+   }
+   else
+   if ( VAR_1238123 > 9 )
+   {
+      place = 2;
+   }
+   else
+   {
+      place = 1;
+   }
+
+
+
+   ten_thousand = (int)( VAR_1238123 / 10000 );
+   thousand     = (int)(( VAR_1238123 - ( ten_thousand * 10000 )) / 1000 );
+   hundred      = (int)((( VAR_1238123 - ( 10000 * ten_thousand )) - ( 1000 * thousand )) / 100 );
+   ten          = (int)(((( VAR_1238123 - ( 10000 * ten_thousand )) - ( 1000 * thousand )) - ( 100 * hundred )) / 10 );
+   indiv        = (int)(((( VAR_1238123 - ( 10000 * ten_thousand )) - ( 1000 * thousand )) - ( 100 * hundred )) - ( 10 * ten ));
+   switch ( place )
+   {
+   case 5:
+      printf("%d%d%d%d%d\n", indiv, ten, hundred, thousand, ten_thousand);
+      break;
+
+   case 4:
+      printf("%d%d%d%d\n", indiv, ten, hundred, thousand);
+      break;
+
+   case 3:
+      printf("%d%d%d\n", indiv, ten, hundred);
+      break;
+
+   case 2:
+      printf("%d%d\n", indiv, ten);
+      break;
+
+   case 1:
+      printf("%d\n", indiv);
+      break;
+   }
+}

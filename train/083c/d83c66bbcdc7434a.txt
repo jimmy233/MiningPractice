@@ -1,0 +1,62 @@
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  VAR__112390 = 0;
+   int  VAR__NUM[100];
+   long VAR_1238123 = 0;
+   char VAR_SIZE[100];
+
+   scanf("%d%s%d", &VAR__819283, VAR_SIZE, &VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_SIZE); VAR__53647++ )
+   {
+      if (( VAR_SIZE[VAR__53647] >= '0' ) && ( VAR_SIZE[VAR__53647] <= '9' ))
+      {
+         VAR__NUM[VAR__53647] = VAR_SIZE[VAR__53647] - '0';
+      }
+
+      if (( VAR_SIZE[VAR__53647] >= 'a' ) && ( VAR_SIZE[VAR__53647] <= 'z' ))
+      {
+         VAR__NUM[VAR__53647] = ( VAR_SIZE[VAR__53647] - 'a' ) + 10;
+      }
+
+      if (( VAR_SIZE[VAR__53647] >= 'A' ) && ( VAR_SIZE[VAR__53647] <= 'Z' ))
+      {
+         VAR__NUM[VAR__53647] = ( VAR_SIZE[VAR__53647] - 'A' ) + 10;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_SIZE); VAR__53647++ )
+   {
+      VAR_1238123 += VAR__NUM[VAR__53647] * pow(VAR__819283, ( strlen(VAR_SIZE) - 1 ) - VAR__53647);
+   }
+
+   while ( VAR_1238123 >= VAR__19328 )
+   {
+      VAR__NUM[VAR__112390] = VAR_1238123 % VAR__19328;
+      VAR_1238123           = VAR_1238123 / VAR__19328;
+      VAR__112390++;
+   }
+
+   VAR__NUM[VAR__112390] = VAR_1238123 % VAR__19328;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__112390 + 1 ); VAR__53647++ )
+   {
+      if (( VAR__NUM[VAR__53647] >= 0 ) && ( VAR__NUM[VAR__53647] <= 9 ))
+      {
+         VAR_SIZE[VAR__53647] = VAR__NUM[VAR__53647] + '0';
+      }
+
+      if ( VAR__NUM[VAR__53647] > 9 )
+      {
+         VAR_SIZE[VAR__53647] = ( VAR__NUM[VAR__53647] + 'A' ) - 10;
+      }
+   }
+
+   for ( VAR__53647 = VAR__112390; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", VAR_SIZE[VAR__53647]);
+   }
+
+   return 0;
+}

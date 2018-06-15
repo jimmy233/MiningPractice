@@ -1,0 +1,84 @@
+int n1;
+int n2;
+int a1[10000];
+int a2[10000];
+int a3[20000];
+void input(void)
+{
+   ( cin >> n1 ) >> n2;
+   for ( int VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      cin >> a1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      cin >> a2[VAR__53647];
+   }
+}
+
+
+void sort(void)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < ( n1 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < (( n1 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( a1[VAR__21230] > a1[VAR__21230 + 1] )
+         {
+            int VAR__TEMP = a1[VAR__21230 + 1];
+            a1[VAR__21230 + 1] = a1[VAR__21230];
+            a1[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( n2 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < (( n2 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( a2[VAR__21230] > a2[VAR__21230 + 1] )
+         {
+            int VAR__TEMP = a2[VAR__21230 + 1];
+            a2[VAR__21230 + 1] = a2[VAR__21230];
+            a2[VAR__21230]     = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void joint(void)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      a3[VAR__53647] = a1[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      a3[n1 + VAR__53647] = a2[VAR__53647];
+   }
+}
+
+
+void display(void)
+{
+   cout << a3[0];
+   for ( int VAR__53647 = 1; VAR__53647 < ( n1 + n2 ); VAR__53647++ )
+   {
+      ( cout << ' ' ) << a3[VAR__53647];
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   input();
+   sort();
+   joint();
+   display();
+   return 0;
+}

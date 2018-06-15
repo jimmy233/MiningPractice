@@ -1,0 +1,119 @@
+int quicksort(int *VAR__819283, int initial, int end)
+{
+   int VAR__1238129;
+   int VAR__53647;
+   int tmp;
+
+   if ( initial >= end )
+   {
+      return;
+   }
+
+   VAR__1238129 = initial;
+   for ( VAR__53647 = initial + 1; VAR__53647 <= end; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] < VAR__819283[initial] )
+      {
+         tmp = VAR__819283[VAR__53647];
+         VAR__819283[VAR__53647]   = VAR__819283[++VAR__1238129];
+         VAR__819283[VAR__1238129] = tmp;
+      }
+   }
+
+
+   tmp = VAR__819283[VAR__1238129];
+   VAR__819283[VAR__1238129] = VAR__819283[initial];
+   VAR__819283[initial]      = tmp;
+
+   if ( initial < ( VAR__1238129 - 1 ))
+   {
+      quicksort(VAR__819283, initial, VAR__1238129 - 1);
+   }
+
+   if (( VAR__1238129 + 1 ) < end )
+   {
+      quicksort(VAR__819283, VAR__1238129 + 1, end);
+   }
+}
+
+
+int run(int VAR__819283[], int VAR__19328[], int VAR_1238123)
+{
+   int *tag1;
+   int *tag2;
+   int VAR__53647;
+   int time  = 0;
+   int posa1 = 0;
+   int posb1 = 0;
+   int posa2 = VAR_1238123 - 1;
+   int posb2 = VAR_1238123 - 1;
+   int nul   = 0;
+
+   tag1 = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   tag2 = (int *)malloc(( sizeof( int )) * VAR_1238123);
+   quicksort(VAR__819283, 0, VAR_1238123 - 1);
+   quicksort(VAR__19328, 0, VAR_1238123 - 1);
+
+   while ( posa1 <= posa2 )
+   {
+      if ( VAR__819283[posa1] > VAR__19328[posb1] )
+      {
+         time++;
+         posa1++;
+         posb1++;
+      }
+      else
+      if ( VAR__819283[posa2] > VAR__19328[posb2] )
+      {
+         time++;
+         posa2--;
+         posb2--;
+      }
+      else
+      if ( VAR__819283[posa1] < VAR__19328[posb2] )
+      {
+         time--;
+         posa1++;
+         posb2--;
+      }
+      else
+      if ( VAR__819283[posa1] == VAR__19328[posb2] )
+      {
+         nul++;
+         posa1++;
+         posb2--;
+      }
+   }
+
+   return time * 200;
+}
+
+
+int main()
+{
+   int VAR_1238123 = 1;
+   int VAR__53647;
+   int *VAR__temp;
+   int *VAR_666;
+
+   while ( VAR_1238123 != 0 )
+   {
+      scanf("%d", &VAR_1238123);
+      VAR__temp = (int *)malloc(( sizeof( int )) * VAR_1238123);
+      VAR_666   = (int *)malloc(( sizeof( int )) * VAR_1238123);
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", VAR__temp + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", VAR_666 + VAR__53647);
+      }
+
+      if ( VAR_1238123 != 0 )
+      {
+         printf("%d\n", run(VAR__temp, VAR_666, VAR_1238123));
+      }
+   }
+}

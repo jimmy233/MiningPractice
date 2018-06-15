@@ -1,0 +1,87 @@
+char *VAR_233 = NULL;
+int  VAR__temp = 0;
+int  LEN_OF_STH = 0;
+void paiban(char *VAR_666, int VAR__53647)
+{
+   if ( VAR_666[VAR__53647] == ' ' )
+   {
+      VAR_666[VAR__53647] = '\n';
+      VAR__temp          += 80;
+
+      if (( LEN_OF_STH - VAR__temp ) <= 80 )
+      {
+         cout << VAR_233;
+         return;
+      }
+      else
+      {
+         paiban(( VAR_666 + VAR__53647 ) + 1, 79);
+      }
+   }
+   else
+   {
+      if ( VAR_666[VAR__53647 + 1] == ' ' )
+      {
+         VAR_666[VAR__53647 + 1] = '\n';
+         VAR__temp += 81;
+
+         if (( LEN_OF_STH - VAR__temp ) <= 80 )
+         {
+            cout << VAR_233;
+            return;
+         }
+         else
+         {
+            paiban(( VAR_666 + VAR__53647 ) + 2, 79);
+         }
+      }
+      else
+      {
+         VAR__53647--;
+
+         while ( VAR_666[VAR__53647] != ' ' )
+         {
+            VAR__53647--;
+         }
+
+         VAR_666[VAR__53647] = '\n';
+         VAR__53647++;
+         VAR__temp += VAR__53647;
+
+         if (( LEN_OF_STH - VAR__temp ) <= 80 )
+         {
+            cout << VAR_233;
+            return;
+         }
+         else
+         {
+            paiban(VAR_666 + VAR__53647, 79);
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   char text[42 * VAR_1238123];
+   VAR_233 = text;
+   char VAR__4857423[1];
+   cin.getline(VAR__4857423, 1);
+   cin.getline(text, 42 * VAR_1238123);
+   LEN_OF_STH = strlen(text);
+
+   if ( LEN_OF_STH > 80 )
+   {
+      paiban(text, 79);
+   }
+   else
+   {
+      ( cout << text ) << endl;
+   }
+
+   return 0;
+}

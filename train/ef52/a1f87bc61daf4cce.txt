@@ -1,0 +1,44 @@
+int VAR__8444594;
+int high[30];
+int ff(int pos, int highflag, int VAR__COUNT)
+{
+   if ( pos == VAR__8444594 )
+   {
+      return VAR__COUNT;
+   }
+
+   if ( high[pos] <= highflag )
+   {
+      int tmp1 = ff(pos + 1, high[pos], VAR__COUNT + 1);
+      int tmp2 = ff(pos + 1, highflag, VAR__COUNT);
+
+      if ( tmp1 > tmp2 )
+      {
+         return tmp1;
+      }
+      else
+      {
+         return tmp2;
+      }
+   }
+   else
+   {
+      return ff(pos + 1, highflag, VAR__COUNT);
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+
+   cin >> VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      cin >> high[VAR__53647];
+   }
+
+   int result = ff(0, 99999, 0);
+   ( cout << result ) << endl;
+   return 0;
+}

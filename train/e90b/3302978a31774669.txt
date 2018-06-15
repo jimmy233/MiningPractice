@@ -1,0 +1,100 @@
+struct score
+{
+   int VAR__NUM;
+   int yuwen;
+   int shuxue;
+}
+student[100000];
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   return ( VAR__819283 > VAR__19328 ) ? ( VAR__819283 ) : ( VAR__19328 );
+}
+
+
+int VAR__MIN(int VAR__819283, int VAR__19328)
+{
+   return ( VAR__819283 < VAR__19328 ) ? ( VAR__819283 ) : ( VAR__19328 );
+}
+
+
+int main()
+{
+   int VAR__MAX(int VAR__819283, int VAR__19328);
+
+   int total[100000];
+   int VAR_1238123;
+   int VAR__53647;
+   int max1    = 0;
+   int max2    = 0;
+   int max3    = 0;
+   int maxnum1 = 0;
+   int maxnum2 = 0;
+   int maxnum3 = 0;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &student[VAR__53647].VAR__NUM);
+      scanf("%d", &student[VAR__53647].yuwen);
+      scanf("%d", &student[VAR__53647].shuxue);
+      total[VAR__53647] = student[VAR__53647].yuwen + student[VAR__53647].shuxue;
+
+      if ( total[VAR__53647] >= max1 )
+      {
+         if ( total[VAR__53647] == max1 )
+         {
+            max3    = max2;
+            max2    = max1;
+            max1    = total[VAR__53647];
+            maxnum3 = maxnum2;
+            maxnum2 = VAR__MAX(maxnum1, VAR__53647 + 1);
+            maxnum1 = VAR__MIN(maxnum1, VAR__53647 + 1);
+         }
+         else
+         {
+            max3    = max2;
+            max2    = max1;
+            max1    = total[VAR__53647];
+            maxnum3 = maxnum2;
+            maxnum2 = maxnum1;
+            maxnum1 = VAR__53647 + 1;
+         }
+      }
+      else
+      if (( total[VAR__53647] < max1 ) && ( total[VAR__53647] >= max2 ))
+      {
+         if ( total[VAR__53647] == max2 )
+         {
+            max3    = max2;
+            max2    = total[VAR__53647];
+            maxnum3 = VAR__MAX(maxnum2, VAR__53647 + 1);
+            maxnum2 = VAR__MIN(maxnum2, VAR__53647 + 1);
+         }
+         else
+         {
+            max3    = max2;
+            max2    = total[VAR__53647];
+            maxnum3 = maxnum2;
+            maxnum2 = VAR__53647 + 1;
+         }
+      }
+      else
+      if (( total[VAR__53647] < max2 ) && ( total[VAR__53647] >= max3 ))
+      {
+         if ( total[VAR__53647] == max3 )
+         {
+            max3    = total[VAR__53647];
+            maxnum3 = VAR__MIN(VAR__53647 + 1, maxnum3);
+         }
+         else
+         {
+            max3    = total[VAR__53647];
+            maxnum3 = VAR__53647 + 1;
+         }
+      }
+   }
+
+   printf("%d %d\n", maxnum1, max1);
+   printf("%d %d\n", maxnum2, max2);
+   printf("%d %d", maxnum3, max3);
+   return 0;
+}

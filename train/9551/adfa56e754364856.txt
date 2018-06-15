@@ -1,0 +1,100 @@
+struct mice
+{
+   int         wei;
+   char        color[100];
+   struct mice *VAR__NEXT;
+};
+struct mice *creat(int VAR__4857423)
+{
+   struct mice *VAR__HEAD;
+   struct mice *ANOTHER_POINTER;
+   struct mice *YET_ANOTHER_POINTER;
+   struct mice *kok;
+
+   kok      = (struct mice *)malloc(LEN);
+   kok->wei = 0;
+   strcpy(kok->color, "\0");
+   int VAR__temp;
+   VAR__temp       = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct mice *)malloc(LEN));
+   scanf("%s %d", ANOTHER_POINTER->color, &ANOTHER_POINTER->wei);
+   VAR__HEAD = NULL;
+
+   while ( VAR__temp < VAR__4857423 )
+   {
+      VAR__temp = VAR__temp + 1;
+
+      if ( VAR__temp == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         ANOTHER_POINTER = (struct mice *)malloc(LEN);
+         scanf("%s %d", ANOTHER_POINTER->color, &ANOTHER_POINTER->wei);
+      }
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = kok;
+   return VAR__HEAD;
+}
+
+
+void mun(struct mice *hoih, int io)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   VAR__8444594 = 0;
+   struct mice *bt;
+   bt = hoih;
+   char A_STRING[100];
+   for ( VAR__53647 = 0; VAR__53647 < io; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( io - VAR__53647 ); VAR__21230++ )
+      {
+         if (( hoih->wei < hoih->VAR__NEXT->wei ) && ( hoih->VAR__NEXT->wei >= 60 ))
+         {
+            VAR__8444594         = hoih->wei;
+            hoih->wei            = hoih->VAR__NEXT->wei;
+            hoih->VAR__NEXT->wei = VAR__8444594;
+            strcpy(A_STRING, hoih->color);
+            strcpy(hoih->color, hoih->VAR__NEXT->color);
+            strcpy(hoih->VAR__NEXT->color, A_STRING);
+         }
+
+         hoih = hoih->VAR__NEXT;
+      }
+
+      hoih = bt;
+   }
+}
+
+
+void main()
+{
+   int         VAR_1238123;
+   int         VAR_2890;
+   struct mice *creat(int VAR__4857423);
+
+   struct mice *VAR_233;
+   struct mice *he;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = creat(VAR_1238123);
+   he      = VAR_233;
+   void mun(struct mice *hoih, int io);
+
+   mun(VAR_233, VAR_1238123);
+   VAR_233 = he;
+   for ( VAR_2890 = 0; VAR_2890 < VAR_1238123; VAR_2890++ )
+   {
+      printf("%s\n", VAR_233->color);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

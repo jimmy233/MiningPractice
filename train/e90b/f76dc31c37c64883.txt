@@ -1,0 +1,97 @@
+struct student
+{
+   int            VAR__NUM;
+   int            yuwen;
+   int            math;
+   int            total;
+   struct student *VAR__NEXT;
+};
+long VAR__1238129;
+long VAR_1238123;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__1238129 = 0;
+   VAR__HEAD    = 0;
+
+   while ( VAR__1238129 < VAR_1238123 )
+   {
+      VAR__1238129    = VAR__1238129 + 1;
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yuwen, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->total = ANOTHER_POINTER->yuwen + ANOTHER_POINTER->math;
+
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__HEAD           = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *px;
+   int            VAR__819283[3][2];
+   int            t1;
+   int            t2;
+
+   scanf("%ld", &VAR_1238123);
+   VAR__HEAD         = creat();
+   VAR_233           = VAR__HEAD;
+   VAR__819283[0][1] = ( VAR__819283[1][1] = ( VAR__819283[2][1] = 0 ));
+
+   if ( VAR__HEAD != 0 )
+   {
+      do
+      {
+         if ( VAR_233->total > VAR__819283[2][1] )
+         {
+            VAR__819283[2][1] = VAR_233->total;
+            VAR__819283[2][0] = VAR_233->VAR__NUM;
+         }
+
+         if ( VAR__819283[2][1] > VAR__819283[1][1] )
+         {
+            t1 = VAR__819283[1][1];
+            VAR__819283[1][1] = VAR__819283[2][1];
+            VAR__819283[2][1] = t1;
+            t2 = VAR__819283[1][0];
+            VAR__819283[1][0] = VAR__819283[2][0];
+            VAR__819283[2][0] = t2;
+         }
+
+         if ( VAR__819283[1][1] > VAR__819283[0][1] )
+         {
+            t1 = VAR__819283[0][1];
+            VAR__819283[0][1] = VAR__819283[1][1];
+            VAR__819283[1][1] = t1;
+            t2 = VAR__819283[0][0];
+            VAR__819283[0][0] = VAR__819283[1][0];
+            VAR__819283[1][0] = t2;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != 0 );
+   }
+
+   for ( t1 = 0; t1 <= 2; t1++ )
+   {
+      printf("%d %d\n", VAR__819283[t1][0], VAR__819283[t1][1]);
+   }
+}

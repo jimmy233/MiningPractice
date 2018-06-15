@@ -1,0 +1,136 @@
+struct stu
+{
+   char name[21];
+   int  final;
+   int  pingyi;
+   char leader;
+   char west;
+   int  essay;
+   int  total;
+};
+int main()
+{
+   int yuanshi(struct stu VAR_9494);
+   int wusi(struct stu VAR_9494);
+   int score(struct stu VAR_9494);
+   int western(struct stu VAR_9494);
+   int contribution(struct stu VAR_9494);
+
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__SUM = 0;
+   int        VAR__MAX;
+   struct stu VAR_9494[101];
+   struct stu boss;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c%d", VAR_9494[VAR__53647].name, &VAR_9494[VAR__53647].final, &VAR_9494[VAR__53647].pingyi, &VAR_9494[VAR__53647].leader, &VAR_9494[VAR__53647].west, &VAR_9494[VAR__53647].essay);
+      VAR_9494[VAR__53647].total = 0;
+
+      if ( yuanshi(VAR_9494[VAR__53647]))
+      {
+         VAR_9494[VAR__53647].total += 8000;
+      }
+
+      if ( wusi(VAR_9494[VAR__53647]))
+      {
+         VAR_9494[VAR__53647].total += 4000;
+      }
+
+      if ( score(VAR_9494[VAR__53647]))
+      {
+         VAR_9494[VAR__53647].total += 2000;
+      }
+
+      if ( western(VAR_9494[VAR__53647]))
+      {
+         VAR_9494[VAR__53647].total += 1000;
+      }
+
+      if ( contribution(VAR_9494[VAR__53647]))
+      {
+         VAR_9494[VAR__53647].total += 850;
+      }
+   }
+
+   VAR__MAX = VAR_9494[0].total;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR_9494[VAR__53647].total )
+      {
+         VAR__MAX = VAR_9494[VAR__53647].total;
+         boss     = VAR_9494[VAR__53647];
+      }
+
+      VAR__SUM += VAR_9494[VAR__53647].total;
+   }
+
+   printf("%s\n%d\n%d\n", boss.name, boss.total, VAR__SUM);
+   return 0;
+}
+
+
+int yuanshi(struct stu VAR_9494)
+{
+   if (( VAR_9494.final > 80 ) && ( VAR_9494.essay >= 1 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int wusi(struct stu VAR_9494)
+{
+   if (( VAR_9494.final > 85 ) && ( VAR_9494.pingyi > 80 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int score(struct stu VAR_9494)
+{
+   if ( VAR_9494.final > 90 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int western(struct stu VAR_9494)
+{
+   if (( VAR_9494.final > 85 ) && ( VAR_9494.west == 'Y' ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int contribution(struct stu VAR_9494)
+{
+   if (( VAR_9494.pingyi > 80 ) && ( VAR_9494.leader == 'Y' ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}

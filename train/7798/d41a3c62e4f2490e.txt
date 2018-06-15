@@ -1,0 +1,65 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__MAX;
+   int max2;
+   int VAR__819283[26];
+   struct book
+   {
+      int  number;
+      char author[26];
+   }
+   stu1[1000];
+   struct author
+   {
+      int number[1000];
+      int ben;
+   }
+   stu2[26];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d %s", &stu1[VAR__53647].number, stu1[VAR__53647].author);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 25; VAR__53647++ )
+   {
+      stu2[VAR__53647].ben    = 0;
+      VAR__819283[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( strlen(stu1[VAR__53647].author) - 1 ); VAR__21230++ )
+      {
+         VAR__8444594 = stu1[VAR__53647].author[VAR__21230];
+         stu2[VAR__8444594 - 65].ben++;
+         stu2[VAR__8444594 - 65].number[VAR__819283[VAR__8444594 - 65]] = stu1[VAR__53647].number;
+         VAR__819283[VAR__8444594 - 65]++;
+      }
+   }
+
+   VAR__MAX = stu2[0].ben;
+   max2     = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= 25; VAR__53647++ )
+   {
+      if ( stu2[VAR__53647].ben > VAR__MAX )
+      {
+         VAR__MAX = stu2[VAR__53647].ben;
+         max2     = VAR__53647;
+      }
+   }
+
+   printf("%c\n", max2 + 65);
+   printf("%d\n", VAR__MAX);
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__819283[max2] - 1 ); VAR__21230++ )
+   {
+      printf("%d\n", stu2[max2].number[VAR__21230]);
+   }
+
+   return 0;
+}

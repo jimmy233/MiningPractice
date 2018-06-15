@@ -1,0 +1,79 @@
+struct in
+{
+   float VAR_2890;
+}
+nan[41];
+struct in
+{
+   float VAR_2890;
+}
+nv[41];
+int cmp1(const void *VAR__819283, const void *VAR__19328)
+{
+   struct in *VAR__4857423 = (struct in *)VAR__819283;
+   struct in *VAR__12302   = (struct in *)VAR__19328;
+
+   return (( VAR__4857423->VAR_2890 - VAR__12302->VAR_2890 ) > 0 ) ? ( 1 ) : ( -1 );
+}
+
+
+int cmp2(const void *VAR__819283, const void *VAR__19328)
+{
+   struct in *VAR__4857423 = (struct in *)VAR__819283;
+   struct in *VAR__12302   = (struct in *)VAR__19328;
+
+   return ((( -VAR__4857423->VAR_2890 ) + VAR__12302->VAR_2890 ) > 0 ) ? ( 1 ) : ( -1 );
+}
+
+
+int main()
+{
+   int   VAR__NUM;
+   int   VAR__53647;
+   char  ssex[10] = { '\0' };
+   float hh;
+   int   numnan = 0;
+   int   numnv  = 0;
+
+   memset(nan, 0, 41);
+   memset(nv, 0, 41);
+   scanf("%d", &VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      scanf("%s %f", ssex, &hh);
+
+      if ( strcmp(ssex, "male") == 0 )
+      {
+         nan[numnan].VAR_2890 = hh;
+         numnan++;
+      }
+      else
+      {
+         nv[numnv].VAR_2890 = hh;
+         numnv++;
+      }
+
+      memset(ssex, '\0', 10);
+   }
+
+   qsort(nan, numnan, sizeof( nan[0] ), cmp1);
+   qsort(nv, numnv, sizeof( nv[0] ), cmp2);
+   for ( VAR__53647 = 0; VAR__53647 < numnan; VAR__53647++ )
+   {
+      printf("%.2f ", nan[VAR__53647].VAR_2890);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < numnv; VAR__53647++ )
+   {
+      if ( VAR__53647 != ( numnv - 1 ))
+      {
+         printf("%.2f ", nv[VAR__53647].VAR_2890);
+      }
+      else
+      {
+         printf("%.2f\n", nv[VAR__53647].VAR_2890);
+      }
+   }
+
+   return 0;
+}

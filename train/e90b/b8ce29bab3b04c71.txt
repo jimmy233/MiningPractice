@@ -1,0 +1,54 @@
+struct
+{
+   int xuehao;
+   int yuwen;
+   int shuxue;
+}
+student[1000000];
+void swap(int *VAR__819283, int *VAR__19328);
+
+int main(int argc, char *argv[])
+{
+   int VAR_1238123 = 0;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   int total[1000000];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &student[VAR__53647].xuehao, &student[VAR__53647].yuwen, &student[VAR__53647].shuxue);
+      total[VAR__53647] = student[VAR__53647].yuwen + student[VAR__53647].shuxue;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR_1238123 - 1; VAR__21230 > ( 0 + VAR__53647 ); VAR__21230-- )
+      {
+         if ( total[VAR__21230] > total[VAR__21230 - 1] )
+         {
+            swap(&total[VAR__21230], &total[VAR__21230 - 1]);
+            swap(&student[VAR__21230 - 1].xuehao, &student[VAR__21230].xuehao);
+            swap(&student[VAR__21230 - 1].yuwen, &student[VAR__21230].yuwen);
+            swap(&student[VAR__21230 - 1].shuxue, &student[VAR__21230].shuxue);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%d %d\n", student[VAR__53647].xuehao, total[VAR__53647]);
+   }
+
+   return 0;
+}
+
+
+void swap(int *VAR__819283, int *VAR__19328)
+{
+   int VAR__112390;
+
+   VAR__112390  = *VAR__819283;
+   *VAR__819283 = *VAR__19328;
+   *VAR__19328  = VAR__112390;
+}

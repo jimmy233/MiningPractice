@@ -1,0 +1,82 @@
+int pro(char pr)
+{
+   return toupper(pr) - 'A';
+}
+
+
+void put_names(int name[26][100], int books[26], int booknum);
+int VAR__MAX(int books[26]);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int name[26][100];
+   int books[26] = { 0 };
+   int max_ptr;
+   int booknum;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &booknum);
+      put_names(name, books, booknum);
+   }
+
+   max_ptr = VAR__MAX(books);
+   printf("%c\n", max_ptr + 'A');
+   printf("%d\n", books[max_ptr]);
+   for ( VAR__53647 = 1; VAR__53647 <= books[max_ptr]; VAR__53647++ )
+   {
+      printf("%d\n", name[max_ptr][VAR__53647]);
+   }
+}
+
+
+void put_names(int name[26][100], int books[26], int booknum)
+{
+   char ch;
+   int  A_POINTER;
+   int  counter = 0;
+
+   while ( 1 )
+   {
+      ch = getchar();
+
+      if ( ch != ' ' )
+      {
+         break;
+      }
+   }
+
+   while ( 1 )
+   {
+      A_POINTER = pro(ch);
+      books[A_POINTER]++;
+      name[A_POINTER][books[A_POINTER]] = booknum;
+      ch = getchar();
+
+      if ( ch == '\n' )
+      {
+         break;
+      }
+   }
+}
+
+
+int VAR__MAX(int books[26])
+{
+   int VAR__53647;
+   int A_POINTER;
+
+   A_POINTER = books[0];
+   for ( VAR__53647 = 0; VAR__53647 <= 25; VAR__53647++ )
+   {
+      if ( books[VAR__53647] > books[A_POINTER] )
+      {
+         A_POINTER = VAR__53647;
+      }
+   }
+
+   return A_POINTER;
+}

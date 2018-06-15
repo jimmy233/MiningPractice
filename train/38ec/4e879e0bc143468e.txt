@@ -1,0 +1,65 @@
+int days(int VAR__3918907, int VAR__1238129, int VAR__12302)
+{
+   int year[3001];
+
+   for ( int VAR__53647 = 1; VAR__53647 <= 3000; VAR__53647++ )
+   {
+      if ((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 ))
+      {
+         year[VAR__53647] = 366;
+      }
+      else
+      if (( VAR__53647 % 400 ) == 0 )
+      {
+         year[VAR__53647] = 366;
+      }
+      else
+      {
+         year[VAR__53647] = 365;
+      }
+   }
+
+   int month[13]   = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int loopmon[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int days        = 0;
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      days += year[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 ))
+      {
+         days += loopmon[VAR__53647];
+      }
+      else
+      if (( VAR__3918907 % 400 ) == 0 )
+      {
+         days += loopmon[VAR__53647];
+      }
+      else
+      {
+         days += month[VAR__53647];
+      }
+   }
+
+   days += VAR__12302;
+   return days;
+}
+
+
+int main()
+{
+   int y1 = 0;
+   int m1 = 0;
+   int d1 = 0;
+   int y2 = 0;
+   int m2 = 0;
+   int d2 = 0;
+
+   (( cin >> y1 ) >> m1 ) >> d1;
+   (( cin >> y2 ) >> m2 ) >> d2;
+   cout << ( days(y2, m2, d2) - days(y1, m1, d1));
+   return 0;
+}

@@ -1,0 +1,67 @@
+int  VAR_1238123;
+int  VAR__7685[10010];
+int  VAR__3918907[10010];
+char VAR__819283[100010];
+char VAR__19328[100010];
+int tonum(char *VAR_9494, int VAR__819283, int VAR__19328)
+{
+   int ans = 0;
+
+   for ( int VAR__53647 = VAR__819283; VAR__53647 <= VAR__19328; VAR__53647++ )
+   {
+      ans = ( ans * 10 ) + ( VAR_9494[VAR__53647] - '0' );
+   }
+
+   return ans;
+}
+
+
+int main()
+{
+   while ( scanf("%s %s", VAR__819283, VAR__19328) != EOF )
+   {
+      VAR_1238123 = 0;
+      int LEN_OF_STH = strlen(VAR__819283);
+      int pre        = 0;
+      for ( int VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+      {
+         if (( VAR__53647 == LEN_OF_STH ) || ( VAR__819283[VAR__53647] == ',' ))
+         {
+            VAR__7685[++VAR_1238123] = tonum(VAR__819283, pre, VAR__53647 - 1), pre = VAR__53647 + 1;
+         }
+      }
+
+
+      LEN_OF_STH  = strlen(VAR__19328);
+      pre         = 0;
+      VAR_1238123 = 0;
+      for ( int VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+      {
+         if (( VAR__53647 == LEN_OF_STH ) || ( VAR__19328[VAR__53647] == ',' ))
+         {
+            VAR__3918907[++VAR_1238123] = tonum(VAR__19328, pre, VAR__53647 - 1), pre = VAR__53647 + 1;
+         }
+      }
+
+
+      int ans = 0;
+      for ( int VAR__53647 = 0; VAR__53647 <= 1000; VAR__53647++ )
+      {
+         int ccount = 0;
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if (( VAR__7685[VAR__21230] <= VAR__53647 ) && ( VAR__3918907[VAR__21230] > VAR__53647 ))
+            {
+               ccount++;
+            }
+         }
+
+
+         ans = VAR__MAX(ans, ccount);
+      }
+
+      printf("%d %d\n", VAR_1238123, ans);
+   }
+
+   return 0;
+}

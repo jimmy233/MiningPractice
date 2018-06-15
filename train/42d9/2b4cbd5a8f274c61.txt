@@ -1,0 +1,65 @@
+int main()
+{
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    VAR__1111 = 0;
+   int    VAR__NUM;
+   double VAR__TEMP = 0;
+   int    pos[100][3];
+   double distance[9900] = { 0 };
+   int    latter[9900];
+   int    former[9900];
+
+   cin >> VAR__NUM;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         cin >> pos[VAR__53647][VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__NUM; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < 3; VAR__8444594++ )
+         {
+            former[VAR__1111]    = VAR__53647;
+            latter[VAR__1111]    = VAR__21230;
+            distance[VAR__1111] += ( pos[VAR__53647][VAR__8444594] - pos[VAR__21230][VAR__8444594] ) * ( pos[VAR__53647][VAR__8444594] - pos[VAR__21230][VAR__8444594] );
+         }
+
+         distance[VAR__1111] = sqrt(distance[VAR__1111]);
+         VAR__1111++;
+      }
+   }
+
+   VAR__1111 = (( VAR__NUM - 1 ) * VAR__NUM ) / 2;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1111 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__1111 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( distance[VAR__21230] < distance[VAR__21230 + 1] )
+         {
+            VAR__TEMP                = distance[VAR__21230];
+            distance[VAR__21230]     = distance[VAR__21230 + 1];
+            distance[VAR__21230 + 1] = VAR__TEMP;
+            VAR__TEMP                = latter[VAR__21230];
+            latter[VAR__21230]       = latter[VAR__21230 + 1];
+            latter[VAR__21230 + 1]   = VAR__TEMP;
+            VAR__TEMP                = former[VAR__21230];
+            former[VAR__21230]       = former[VAR__21230 + 1];
+            former[VAR__21230 + 1]   = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      (((((((((((((((( cout << "(" ) << pos[former[VAR__53647]][0] ) << "," ) << pos[former[VAR__53647]][1] ) << "," ) << pos[former[VAR__53647]][2] ) << ")-(" ) << pos[latter[VAR__53647]][0] ) << "," ) << pos[latter[VAR__53647]][1] ) << "," ) << pos[latter[VAR__53647]][2] ) << ")=" ) << fixed ) << setprecision(2)) << distance[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

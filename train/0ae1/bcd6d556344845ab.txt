@@ -1,0 +1,76 @@
+int leap(long int year)
+{
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   long int VAR__3918907;
+   long int VAR__1238129;
+   long int VAR__12302;
+   long int leapn;
+   long int VAR__SUM;
+   long int VAR_FLAG;
+   long int VAR__53647;
+   int      month[2][13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   VAR__SUM = 0;
+   (( cin >> VAR__3918907 ) >> VAR__1238129 ) >> VAR__12302;
+
+   if ( VAR__3918907 == 1111111111 )
+   {
+      cout << "Sat.";
+      return 0;
+   }
+
+   VAR__3918907 = VAR__3918907 - 1;
+   leapn        = (( VAR__3918907 / 400 ) + ( VAR__3918907 / 4 )) - ( VAR__3918907 / 100 );
+   VAR__SUM     = ( VAR__SUM + ( 366 * leapn )) + ( 365 * ( VAR__3918907 - leapn ));
+   VAR_FLAG     = leap(VAR__3918907 + 1);
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + month[VAR_FLAG][VAR__53647];
+   }
+
+   VAR__SUM = VAR__SUM + VAR__12302;
+   switch ( VAR__SUM % 7 )
+   {
+   case 0:
+      cout << "Sun.";
+      break;
+
+   case 1:
+      cout << "Mon.";
+      break;
+
+   case 2:
+      cout << "Tue.";
+      break;
+
+   case 3:
+      cout << "Wed.";
+      break;
+
+   case 4:
+      cout << "Thu.";
+      break;
+
+   case 5:
+      cout << "Fri.";
+      break;
+
+   case 6:
+      cout << "Sat.";
+      break;
+   }
+
+   return 0;
+}

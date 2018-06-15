@@ -1,0 +1,114 @@
+int main()
+{
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int VAR__1238129[13];
+   int VAR__3918907[3001];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR_233;
+
+   scanf("%d%d%d", &startyear, &startmonth, &startday);
+   scanf("%d%d%d", &endyear, &endmonth, &endday);
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( 1 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         VAR__1238129[VAR__53647] = 31;
+      }
+      else
+      if ( VAR__53647 != 2 )
+      {
+         VAR__1238129[VAR__53647] = 30;
+      }
+      else
+      if (( VAR__53647 == 2 ) && ((((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 )) || (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))))
+      {
+         VAR__1238129[VAR__53647] = 29;
+      }
+      else
+      {
+         VAR__1238129[VAR__53647] = 28;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 3000; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__3918907[VAR__53647] = 366;
+      }
+      else
+      {
+         VAR__3918907[VAR__53647] = 365;
+      }
+   }
+
+   if ( endyear == startyear )
+   {
+      if ( endmonth != startmonth )
+      {
+         for ( VAR__53647 = startmonth + 1, VAR__8444594 = (( VAR__1238129[startmonth] - startday ) + endday ) + 1; VAR__53647 <= ( endmonth - 1 ); VAR__53647++ )
+         {
+            VAR__8444594 = VAR__8444594 + VAR__1238129[VAR__53647];
+         }
+      }
+      else
+      {
+         VAR__8444594 = endday - startday;
+      }
+   }
+   else
+   if (( startmonth <= 2 ) && (( endmonth > 2 ) || (( endmonth == 2 ) && ( endday == 29 ))))
+   {
+      for ( VAR__53647 = startmonth + 1, VAR__8444594 = (( VAR__1238129[startmonth] - startday ) + endday ) + 1; VAR__53647 <= 12; VAR__53647++ )
+      {
+         VAR__8444594 = VAR__8444594 + VAR__1238129[VAR__53647];
+      }
+
+      for ( VAR__21230 = endmonth - 1; VAR__21230 >= 1; VAR__21230-- )
+      {
+         VAR__8444594 = VAR__8444594 + VAR__1238129[VAR__21230];
+      }
+
+      for ( VAR__53647 = startyear + 1; VAR__53647 <= ( endyear - 1 ); VAR__53647++ )
+      {
+         VAR__8444594 = VAR__8444594 + VAR__3918907[VAR__53647];
+      }
+   }
+   else
+   if ((( startyear != endyear ) && ( startmonth == endmonth )) && ( startday == endday ))
+   {
+      for ( VAR__53647 = startyear, VAR__8444594 = 0; VAR__53647 < endyear; VAR__53647++ )
+      {
+         VAR__8444594 = VAR__8444594 + VAR__3918907[VAR__53647];
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = startmonth + 1, VAR__8444594 = ( VAR__1238129[startmonth] - startday ) + endday; VAR__53647 <= 12; VAR__53647++ )
+      {
+         VAR__8444594 = VAR__8444594 + VAR__1238129[VAR__53647];
+      }
+
+      for ( VAR__21230 = endmonth - 1; VAR__21230 >= 1; VAR__21230-- )
+      {
+         VAR__8444594 = VAR__8444594 + VAR__1238129[VAR__21230];
+      }
+
+      for ( VAR__53647 = startyear + 1; VAR__53647 <= ( endyear - 1 ); VAR__53647++ )
+      {
+         VAR__8444594 = VAR__8444594 + VAR__3918907[VAR__53647];
+      }
+   }
+
+
+
+   printf("%d", VAR__8444594);
+   return 0;
+}

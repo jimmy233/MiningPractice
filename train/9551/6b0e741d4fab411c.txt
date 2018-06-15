@@ -1,0 +1,73 @@
+struct
+{
+   int  age[100];
+   char ID[100][11];
+}
+patient;
+struct
+{
+   int  age[100];
+   char ID[100][11];
+}
+*ppatient;
+int main()
+{
+   ppatient = &patient;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__NUM;
+   int  VAR__1238129 = 0;
+   char id[11];
+   char ID_1[100][11];
+   char age_1[100];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", patient.ID[VAR__53647], &patient.age[VAR__53647]);
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *ppatient ).age[VAR__53647] >= 60 )
+      {
+         strcpy(ID_1[VAR__21230], ( *ppatient ).ID[VAR__53647]);
+         age_1[VAR__21230] = ( *ppatient ).age[VAR__53647];
+         VAR__1238129     += 1;
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__21230 = VAR__1238129 - 1; VAR__21230 > 0; VAR__21230-- )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR__21230; VAR__8444594++ )
+      {
+         if ( age_1[VAR__8444594] < age_1[VAR__8444594 + 1] )
+         {
+            strcpy(id, ID_1[VAR__8444594 + 1]);
+            strcpy(ID_1[VAR__8444594 + 1], ID_1[VAR__8444594]);
+            strcpy(ID_1[VAR__8444594], id);
+            VAR__NUM = age_1[VAR__8444594 + 1];
+            age_1[VAR__8444594 + 1] = age_1[VAR__8444594];
+            age_1[VAR__8444594]     = VAR__NUM;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("%s\n", ID_1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *ppatient ).age[VAR__53647] < 60 )
+      {
+         printf("%s\n", ( *ppatient ).ID[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

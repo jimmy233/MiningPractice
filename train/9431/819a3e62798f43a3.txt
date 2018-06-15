@@ -1,0 +1,70 @@
+int VAR_1238123 = 0;
+struct student
+{
+   char           id[20];
+   char           name[20];
+   char           sex;
+   int            age;
+   char           score[20];
+   char           address[20];
+   struct student *VAR__NEXT;
+};
+struct student *creat()
+{
+   struct student *VAR__HEAD;
+   struct student *pf;
+   struct student *ps;
+
+   pf = (struct student *)malloc(sizeof( struct student ));
+   ps = pf;
+   scanf("%s", &pf->id);
+
+   while ( pf->id[0] != 'e' )
+   {
+      VAR_1238123++;
+      scanf("%s %c %d %s %s", &pf->name, &pf->sex, &pf->age, &pf->score, &pf->address);
+
+      if ( VAR_1238123 != 1 )
+      {
+         pf->VAR__NEXT = ps;
+         ps            = pf;
+      }
+      else
+      {
+         pf->VAR__NEXT = NULL;
+      }
+
+      pf = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s", &pf->id);
+   }
+
+   VAR__HEAD = ps;
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   int            VAR__53647;
+   struct student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         printf("%s %s %c %d %s %s\n", VAR_233->id, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->address);
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+}

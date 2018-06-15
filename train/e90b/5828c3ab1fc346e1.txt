@@ -1,0 +1,83 @@
+struct stu
+{
+   int        VAR__NUM;
+   int        ch;
+   int        mt;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+};
+void main()
+{
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   struct stu *VAR_233;
+   struct stu *VAR__HEAD;
+   int        VAR_1238123;
+   int        VAR__MAX = 0;
+   int        max2     = 0;
+   int        max3     = 0;
+   int        no       = 0;
+   int        no2      = 0;
+   int        no3      = 0;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = (struct stu *)malloc(LEN);
+   scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->mt);
+   ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->ch + ANOTHER_POINTER->mt;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+
+   while ( VAR_1238123 - 1 )
+   {
+      ANOTHER_POINTER = (struct stu *)malloc(LEN);
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->mt);
+      ANOTHER_POINTER->VAR__SUM      = ANOTHER_POINTER->ch + ANOTHER_POINTER->mt;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      VAR_1238123--;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->VAR__SUM;
+         no       = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", no, VAR__MAX);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if ((( VAR_233->VAR__SUM > max2 ) && ( VAR_233->VAR__SUM <= VAR__MAX )) && ( VAR_233->VAR__NUM != no ))
+      {
+         max2 = VAR_233->VAR__SUM;
+         no2  = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", no2, max2);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if (((( VAR_233->VAR__SUM > max3 ) && ( VAR_233->VAR__SUM <= max2 )) && ( VAR_233->VAR__NUM != no2 )) && ( VAR_233->VAR__NUM != no ))
+      {
+         max3 = VAR_233->VAR__SUM;
+         no3  = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", no3, max3);
+}

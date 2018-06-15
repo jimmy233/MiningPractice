@@ -1,0 +1,55 @@
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int days;
+   int left[9][9];
+   int seperate[9][9];
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   int VAR__819283[9][9] = { 0 };
+   VAR__819283[4][4] = VAR__1238129;
+   for ( days = 0; days < VAR_1238123; days++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            left[VAR__53647][VAR__21230]         = VAR__819283[VAR__53647][VAR__21230] * 2;
+            VAR__819283[VAR__53647][VAR__21230] *= 10;
+            seperate[VAR__53647][VAR__21230]     = ( VAR__819283[VAR__53647][VAR__21230] - left[VAR__53647][VAR__21230] ) / 8;
+            VAR__819283[VAR__53647][VAR__21230]  = left[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            VAR__819283[VAR__53647 + 1][VAR__21230]     += seperate[VAR__53647][VAR__21230];
+            VAR__819283[VAR__53647 - 1][VAR__21230]     += seperate[VAR__53647][VAR__21230];
+            VAR__819283[VAR__53647 + 1][VAR__21230 + 1] += seperate[VAR__53647][VAR__21230];
+            VAR__819283[VAR__53647 - 1][VAR__21230 - 1] += seperate[VAR__53647][VAR__21230];
+            VAR__819283[VAR__53647 + 1][VAR__21230 - 1] += seperate[VAR__53647][VAR__21230];
+            VAR__819283[VAR__53647 - 1][VAR__21230 + 1] += seperate[VAR__53647][VAR__21230];
+            VAR__819283[VAR__53647][VAR__21230 + 1]     += seperate[VAR__53647][VAR__21230];
+            VAR__819283[VAR__53647][VAR__21230 - 1]     += seperate[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 8; VAR__21230++ )
+      {
+         ( cout << VAR__819283[VAR__53647][VAR__21230] ) << " ";
+      }
+
+      ( cout << VAR__819283[VAR__53647][8] ) << endl;
+   }
+
+   return 0;
+}

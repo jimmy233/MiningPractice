@@ -1,0 +1,74 @@
+int main(int argc, char *argv[])
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_233;
+   int  VAR__1111;
+   int  VAR__COUNT = 0;
+   char record[500][6];
+   char VAR__819283[500];
+   char VAR__TEMP[6];
+   int  VAR__NUM[500] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", VAR__819283);
+   VAR__1111 = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1111 - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         VAR__TEMP[VAR__21230] = VAR__819283[VAR__53647 + VAR__21230];
+      }
+
+      VAR__TEMP[VAR__21230] = '\0';
+      int found = 0;
+      for ( VAR_233 = 0; VAR_233 < VAR__COUNT; VAR_233++ )
+      {
+         if ( strcmp(record[VAR_233], VAR__TEMP) == 0 )
+         {
+            found = 1;
+            VAR__NUM[VAR_233]++;
+            break;
+         }
+      }
+
+      if ( found == 0 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            record[VAR__COUNT][VAR__21230] = VAR__TEMP[VAR__21230];
+            VAR__NUM[VAR__COUNT]           = 1;
+         }
+
+         VAR__COUNT++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__NUM[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO");
+      return 0;
+   }
+
+   printf("%d\n", VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] == VAR__MAX )
+      {
+         printf("%s\n", record[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

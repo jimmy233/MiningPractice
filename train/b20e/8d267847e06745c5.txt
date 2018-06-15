@@ -1,0 +1,108 @@
+int compare(const void *elem1, const void *elem2)
+{
+   return ( *((int *)elem2 )) - ( *((int *)elem1 ));
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__819283[100000];
+   int VAR__19328[100000];
+   int ab;
+   int bb;
+   int ae;
+   int be;
+   int VAR_21983012;
+   int VAR__127322;
+
+   VAR_1238123 = 1;
+
+   while ( VAR_1238123 != 0 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__819283[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &VAR__19328[VAR__53647]);
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( VAR__819283[0] ), compare);
+      qsort(VAR__19328, VAR_1238123, sizeof( VAR__19328[0] ), compare);
+      ab           = 0;
+      bb           = 0;
+      ae           = VAR_1238123 - 1;
+      be           = VAR_1238123 - 1;
+      VAR_21983012 = 0;
+      VAR__127322  = 0;
+
+      while ( ab <= ae )
+      {
+         if ( VAR__819283[ae] < VAR__19328[be] )
+         {
+            VAR__127322++;
+            ae--;
+            bb++;
+         }
+         else
+         {
+            if ( VAR__819283[ae] > VAR__19328[be] )
+            {
+               VAR_21983012++;
+               ae--;
+               be--;
+            }
+            else
+            {
+               if ( VAR__819283[ab] > VAR__19328[bb] )
+               {
+                  VAR_21983012++;
+                  ab++;
+                  bb++;
+               }
+               else
+               {
+                  if ( VAR__819283[ab] < VAR__19328[bb] )
+                  {
+                     VAR__127322++;
+                     ae--;
+                     bb++;
+                  }
+                  else
+                  {
+                     if ( VAR__819283[ae] < VAR__19328[bb] )
+                     {
+                        VAR__127322++;
+                        ae--;
+                        bb++;
+                     }
+                     else
+                     {
+                        ae--;
+                        bb++;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      printf("%d\n", 200 * ( VAR_21983012 - VAR__127322 ));
+   }
+
+   return 0;
+}

@@ -1,0 +1,212 @@
+struct ill
+{
+   char       VAR__NUM[20];
+   int        age;
+   int        turn;
+   struct ill *VAR__NEXT;
+};
+void run(struct ill *VAR__HEAD, int age, int turn, char *VAR__NUM)
+{
+   struct ill *pre;
+   struct ill *VAR_233;
+   struct ill *VAR_9494;
+
+   VAR_9494 = (struct ill *)malloc(sizeof( struct ill ));
+   pre      = VAR__HEAD;
+   VAR_233  = pre->VAR__NEXT;
+   strcpy(VAR_9494->VAR__NUM, VAR__NUM);
+   VAR_9494->turn = turn;
+   VAR_9494->age  = age;
+   for ( ; VAR_233 != NULL; )
+   {
+      pre     = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   pre->VAR__NEXT      = VAR_9494;
+   VAR_9494->VAR__NEXT = VAR_233;
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  age;
+   int  turn;
+   int  VAR__1238129;
+   int  VAR_1238123;
+   char *VAR__NUM;
+
+   void run(struct ill *VAR__HEAD, int age, int turn, char *VAR__NUM);
+
+   VAR__NUM = (char *)malloc(20 * ( sizeof( char )));
+   struct ill *VAR__HEAD;
+   struct ill *VAR_233;
+   struct ill *VAR_9494;
+   struct ill *pre;
+   VAR__HEAD            = (struct ill *)malloc(sizeof( struct ill ));
+   VAR__HEAD->VAR__NEXT = NULL;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", VAR__NUM, &age);
+      turn = VAR__53647;
+      run(VAR__HEAD, age, turn, VAR__NUM);
+   }
+
+   VAR__8444594 = 0;
+   for ( VAR_233 = VAR__HEAD->VAR__NEXT; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->age >= 60 )
+      {
+         VAR__8444594++;
+      }
+   }
+
+   VAR_233      = VAR__HEAD->VAR__NEXT;
+   VAR__1238129 = 100;
+
+   if ( VAR__8444594 == 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR_233 = VAR__HEAD->VAR__NEXT;
+         for ( ; VAR_233 != NULL; )
+         {
+            if ( VAR_233->turn == VAR__53647 )
+            {
+               puts(VAR_233->VAR__NUM);
+               break;
+            }
+         }
+      }
+   }
+   else
+   if ( VAR__8444594 == VAR_1238123 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR_233      = VAR__HEAD->VAR__NEXT;
+         VAR__1238129 = 0;
+         VAR__21230   = 100;
+         for ( ; VAR_233 != NULL; )
+         {
+            if ( VAR_233->age > VAR__1238129 )
+            {
+               VAR__1238129 = VAR_233->age;
+               VAR__21230   = VAR_233->turn;
+            }
+            else
+            if ( VAR_233->age == VAR__1238129 )
+            {
+               if ( VAR_233->turn < VAR__21230 )
+               {
+                  VAR__1238129 = VAR_233->age;
+                  VAR__21230   = VAR_233->turn;
+               }
+            }
+
+
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         pre     = VAR__HEAD;
+         VAR_233 = VAR__HEAD->VAR__NEXT;
+         for ( ; VAR_233 != NULL; )
+         {
+            if (( VAR_233->age == VAR__1238129 ) && ( VAR_233->turn == VAR__21230 ))
+            {
+               puts(VAR_233->VAR__NUM);
+               pre->VAR__NEXT = VAR_233->VAR__NEXT;
+               break;
+            }
+            else
+            {
+               pre     = VAR_233;
+               VAR_233 = VAR_233->VAR__NEXT;
+            }
+         }
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         VAR_233      = VAR__HEAD->VAR__NEXT;
+         VAR__1238129 = 0;
+         VAR__21230   = 100;
+         for ( ; VAR_233 != NULL; )
+         {
+            if ( VAR_233->age > VAR__1238129 )
+            {
+               VAR__1238129 = VAR_233->age;
+               VAR__21230   = VAR_233->turn;
+            }
+            else
+            if ( VAR_233->age == VAR__1238129 )
+            {
+               if ( VAR_233->turn < VAR__21230 )
+               {
+                  VAR__1238129 = VAR_233->age;
+                  VAR__21230   = VAR_233->turn;
+               }
+            }
+
+
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         pre     = VAR__HEAD;
+         VAR_233 = VAR__HEAD->VAR__NEXT;
+         for ( ; VAR_233 != NULL; )
+         {
+            if (( VAR_233->age == VAR__1238129 ) && ( VAR_233->turn == VAR__21230 ))
+            {
+               puts(VAR_233->VAR__NUM);
+               pre->VAR__NEXT = VAR_233->VAR__NEXT;
+               break;
+            }
+            else
+            {
+               pre     = VAR_233;
+               VAR_233 = VAR_233->VAR__NEXT;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         VAR__1238129 = 100;
+         VAR_233      = VAR__HEAD->VAR__NEXT;
+         for ( ; VAR_233 != NULL; )
+         {
+            if ( VAR_233->turn < VAR__1238129 )
+            {
+               VAR__1238129 = VAR_233->turn;
+            }
+
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         VAR_233 = VAR__HEAD->VAR__NEXT;
+         for ( ; VAR_233 != NULL; )
+         {
+            if ( VAR_233->turn == VAR__1238129 )
+            {
+               puts(VAR_233->VAR__NUM);
+               VAR_233->turn = 100;
+               break;
+            }
+            else
+            {
+               VAR_233 = VAR_233->VAR__NEXT;
+            }
+         }
+      }
+   }
+
+
+   return 0;
+}

@@ -1,0 +1,55 @@
+struct stu
+{
+   int      VAR__NUM;
+   int      mark1;
+   int      mark2;
+   long int total_mark;
+};
+int main(void)
+{
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR__8444594;
+   int        VAR__temp = 0;
+   int        VAR__MAX;
+   struct stu *VAR_233;
+   struct stu *VAR_666;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = (struct stu *)malloc(1000000 * ( sizeof( struct stu )));
+   VAR_666 = VAR_233;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &( VAR_233 + VAR__53647 )->VAR__NUM, &( VAR_233 + VAR__53647 )->mark1, &( VAR_233 + VAR__53647 )->mark2);
+      ( VAR_233 + VAR__53647 )->total_mark = ( VAR_233 + VAR__53647 )->mark1 + ( VAR_233 + VAR__53647 )->mark2;
+   }
+
+loop:
+   VAR__MAX = 0;
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if (( VAR_233 + VAR__21230 )->total_mark > VAR__MAX )
+      {
+         VAR__MAX = ( VAR_233 + VAR__21230 )->total_mark;
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      if (( VAR__MAX == ( VAR_233 + VAR__8444594 )->total_mark ) && ( VAR__8444594 < VAR_1238123 ))
+      {
+         printf("%d %ld\n", ( VAR_233 + VAR__8444594 )->VAR__NUM, ( VAR_233 + VAR__8444594 )->total_mark);
+         VAR__temp++;
+         ( VAR_233 + VAR__8444594 )->total_mark = 0;
+         break;
+      }
+   }
+
+
+   if ( VAR__temp < 3 )
+   {
+      goto loop;
+   }
+}

@@ -1,0 +1,100 @@
+int sushu(int VAR__8444594)
+{
+   int VAR__53647;
+   int VAR__temp;
+
+   VAR__temp = 1;
+   for ( VAR__53647 = 2; VAR__53647 <= ( VAR__8444594 / 2 ); VAR__53647++ )
+   {
+      if ( VAR__temp == 1 )
+      {
+         if (( VAR__8444594 % VAR__53647 ) == 0 )
+         {
+            VAR__temp = 0;
+         }
+      }
+   }
+
+
+
+   return VAR__temp;
+}
+
+
+int hw(int VAR__8444594)
+{
+   int VAR__819283[10];
+   int VAR__53647;
+   int LEN_OF_STH = 1;
+   int ws;
+   int VAR__temp = 1;
+   int VAR_1238123;
+
+   for ( VAR__53647 = 1; !((( VAR__8444594 / LEN_OF_STH ) > 0 ) && (( VAR__8444594 / ( LEN_OF_STH * 10 )) == 0 )); VAR__53647++ )
+   {
+      LEN_OF_STH *= 10;
+   }
+
+   ws = VAR__53647;
+   for ( VAR__53647 = 1; ( VAR__53647 <= ( ws / 2 )) && ( VAR__temp == 1 ); VAR__53647++ )
+   {
+      VAR_1238123 = VAR__8444594 / LEN_OF_STH;
+
+      if (( VAR__8444594 % 10 ) != VAR_1238123 )
+      {
+         VAR__temp = 0;
+      }
+
+      VAR__8444594 = VAR__8444594 - ( VAR_1238123 * LEN_OF_STH );
+      VAR__8444594 = VAR__8444594 / 10;
+      LEN_OF_STH  /= 100;
+   }
+
+   return VAR__temp;
+}
+
+
+void main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__8444594;
+   int bg;
+   int ans[1000];
+   int VAR__21230 = 0;
+   int VAR__53647;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+
+   if ( VAR__1238129 >= 2 )
+   {
+      bg = VAR__1238129;
+   }
+   else
+   {
+      bg = 2;
+   }
+
+   for ( VAR__8444594 = bg; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+   {
+      if ( sushu(VAR__8444594) && hw(VAR__8444594))
+      {
+         ans[VAR__21230++] = VAR__8444594;
+      }
+   }
+
+
+   if ( VAR__21230 == 0 )
+   {
+      printf("no\n");
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__21230 - 1 ); VAR__53647++ )
+      {
+         printf("%d,", ans[VAR__53647]);
+      }
+
+      printf("%d\n", ans[VAR__21230 - 1]);
+   }
+}

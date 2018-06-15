@@ -1,0 +1,82 @@
+double VAR__127322(int VAR__819283[3], int VAR__19328[3]);
+
+int main()
+{
+   int    VAR_1238123;
+   int    zb[M][3];
+   int    dw[N][2];
+   int    VAR__53647;
+   int    VAR__8444594;
+   double jl[N];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < 3; VAR__8444594++ )
+      {
+         scanf("%d", &zb[VAR__53647][VAR__8444594]);
+      }
+   }
+
+   int VAR__COUNT = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__8444594 = VAR__53647 + 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         jl[VAR__COUNT]    = VAR__127322(zb[VAR__53647], zb[VAR__8444594]);
+         dw[VAR__COUNT][0] = VAR__53647;
+         dw[VAR__COUNT][1] = VAR__8444594;
+         VAR__COUNT++;
+      }
+   }
+
+   double e0;
+   int    VAR__112390;
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR__COUNT; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( jl[VAR__53647] < jl[VAR__53647 + 1] )
+         {
+            e0                    = jl[VAR__53647];
+            jl[VAR__53647]        = jl[VAR__53647 + 1];
+            jl[VAR__53647 + 1]    = e0;
+            VAR__112390           = dw[VAR__53647][0];
+            dw[VAR__53647][0]     = dw[VAR__53647 + 1][0];
+            dw[VAR__53647 + 1][0] = VAR__112390;
+            VAR__112390           = dw[VAR__53647][1];
+            dw[VAR__53647][1]     = dw[VAR__53647 + 1][1];
+            dw[VAR__53647 + 1][1] = VAR__112390;
+         }
+      }
+   }
+
+   int VAR__7685;
+   int VAR__3918907;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      VAR__7685    = dw[VAR__53647][0];
+      VAR__3918907 = dw[VAR__53647][1];
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", zb[VAR__7685][0], zb[VAR__7685][1], zb[VAR__7685][2], zb[VAR__3918907][0], zb[VAR__3918907][1], zb[VAR__3918907][2], jl[VAR__53647]);
+   }
+
+   return 0;
+}
+
+
+double VAR__127322(int VAR__819283[3], int VAR__19328[3])
+{
+   int    VAR__SUM;
+   int    VAR__4857423;
+   double result;
+
+   VAR__SUM     = 0;
+   VAR__4857423 = VAR__819283[0] - VAR__19328[0];
+   VAR__SUM    += VAR__4857423 * VAR__4857423;
+   VAR__4857423 = VAR__819283[1] - VAR__19328[1];
+   VAR__SUM    += VAR__4857423 * VAR__4857423;
+   VAR__4857423 = VAR__819283[2] - VAR__19328[2];
+   VAR__SUM    += VAR__4857423 * VAR__4857423;
+   result       = sqrt(VAR__SUM);
+   return result;
+}

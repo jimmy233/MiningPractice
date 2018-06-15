@@ -1,0 +1,78 @@
+char A_STRING[510];
+char gram[1000][6];
+int  VAR__SUM[1000];
+int main()
+{
+   int VAR_1238123;
+   int length;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MAX;
+   int VAR_FLAG = -1;
+   int pos;
+
+   cin >> VAR_1238123;
+   cin.ignore();
+   cin.getline(A_STRING, 500);
+   length = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < (( length - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         gram[VAR__53647][VAR__21230] = A_STRING[VAR__53647 + VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR__SUM[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( length - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( gram[VAR__53647][0] == '0' )
+      {
+         continue;
+      }
+
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < (( length - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         if ( strcmp(gram[VAR__21230], gram[VAR__53647]) == 0 )
+         {
+            VAR__SUM[VAR__53647]++;
+            gram[VAR__21230][0]  = '0';
+            VAR__SUM[VAR__21230] = 0;
+         }
+      }
+   }
+
+   VAR__MAX = 1;
+   for ( VAR__53647 = 0; VAR__53647 < (( length - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__SUM[VAR__53647];
+         VAR_FLAG++;
+         pos = VAR__53647;
+      }
+   }
+
+   if ( VAR_FLAG == ( -1 ))
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   {
+      ( cout << VAR__MAX ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < (( length - VAR_1238123 ) + 1 ); VAR__53647++ )
+      {
+         if ( VAR__SUM[VAR__53647] == VAR__SUM[pos] )
+         {
+            ( cout << gram[VAR__53647] ) << endl;
+         }
+      }
+   }
+
+   return 0;
+}

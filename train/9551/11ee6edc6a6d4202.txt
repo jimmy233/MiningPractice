@@ -1,0 +1,49 @@
+typedef struct
+{
+   char id[11];
+   int  age;
+} MAN;
+void sort(MAN *array, int nSize)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < nSize; VAR__53647++ )
+   {
+      for ( VAR__21230 = nSize - 1; VAR__21230 > VAR__53647; VAR__21230-- )
+      {
+         if (( array[VAR__21230].age >= 60 ) && ( array[VAR__21230].age > array[VAR__21230 - 1].age ))
+         {
+            MAN VAR__TEMP = array[VAR__21230];
+            array[VAR__21230]     = array[VAR__21230 - 1];
+            array[VAR__21230 - 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int    VAR__53647;
+   int    VAR_1238123;
+   MAN    *array = 0;
+   double ava;
+   double maxgap = 0;
+
+   scanf("%d", &VAR_1238123);
+   array = (MAN *)malloc(VAR_1238123 * ( sizeof( MAN )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", array[VAR__53647].id, &array[VAR__53647].age);
+   }
+
+   sort(array, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", array[VAR__53647].id);
+   }
+
+   free(array);
+   return 0;
+}

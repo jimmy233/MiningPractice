@@ -1,0 +1,157 @@
+typedef int           data;
+struct node;
+typedef struct node * pnode;
+struct node
+{
+   data  value;
+   pnode pnext;
+};
+void node_create(pnode *pheader, int VAR__1111, char VAR__819283[length], int VAR__MAX)
+{
+   pnode VAR_233 = *pheader;
+
+   VAR_233->pnext = NULL;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      pnode pnew = (pnode)malloc(sizeof( struct node ));
+      pnew->value    = VAR__819283[VAR__53647] - '0';
+      pnew->pnext    = VAR_233->pnext;
+      VAR_233->pnext = pnew;
+      VAR_233        = *pheader;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      VAR_233 = VAR_233->pnext;
+   }
+
+   for ( int VAR__53647 = VAR__1111 - 1; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      pnode pnew = (pnode)malloc(sizeof( struct node ));
+      pnew->value    = 0;
+      pnew->pnext    = VAR_233->pnext;
+      VAR_233->pnext = pnew;
+      VAR_233        = VAR_233->pnext;
+   }
+}
+
+
+void node_plus(pnode pheader1, pnode pheader2, pnode *pheader3, int VAR__MAX)
+{
+   int   VAR__SUM;
+   int   VAR__NUM            = 0;
+   pnode ANOTHER_POINTER     = pheader1->pnext;
+   pnode YET_ANOTHER_POINTER = pheader2->pnext;
+   pnode p3 = ( *pheader3 )->pnext;
+
+   for ( int VAR__53647 = 0; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      VAR__SUM = ( ANOTHER_POINTER->value + YET_ANOTHER_POINTER->value ) + VAR__NUM;
+
+      if ( VAR__SUM < 10 )
+      {
+         p3->value = VAR__SUM;
+         VAR__NUM  = 0;
+      }
+      else
+      {
+         p3->value = VAR__SUM - 10;
+         VAR__NUM  = 1;
+      }
+
+      ANOTHER_POINTER     = ANOTHER_POINTER->pnext;
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->pnext;
+      p3 = p3->pnext;
+   }
+}
+
+
+void node_delete(pnode pheader)
+{
+   pnode VAR_233 = pheader->pnext;
+   pnode ptemp;
+
+   while ( VAR_233 != NULL )
+   {
+      ptemp   = VAR_233;
+      VAR_233 = VAR_233->pnext;
+      free(ptemp);
+   }
+
+   pheader->pnext = NULL;
+}
+
+
+void output(pnode pheader3, int VAR__1111)
+{
+   int   VAR__temp;
+   pnode VAR_233             = pheader3;
+   int   VAR__819283[length] = { 0 };
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      VAR_233 = VAR_233->pnext;
+      VAR__819283[VAR__53647] = VAR_233->value;
+   }
+
+   for ( int VAR__53647 = VAR__1111 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__819283[VAR__53647] != 0 )
+      {
+         VAR__temp = VAR__53647;
+         break;
+      }
+   }
+
+   for ( int VAR__53647 = VAR__temp; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+}
+
+
+int main()
+{
+   struct node header1;
+   struct node header2;
+   struct node header3;
+   pnode       pheader1 = &header1;
+   pnode       pheader2 = &header2;
+   pnode       pheader3 = &header3;
+   int         l1;
+   int         l2;
+   int         VAR__MAX;
+   char        a1[length]     = { '\0' };
+   char        a2[length]     = { '\0' };
+   char        a3[length + 1] = { '\0' };
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( length + 1 ); VAR__53647++ )
+   {
+      a3[VAR__53647] = '0';
+   }
+
+   gets(a1);
+   l1 = strlen(a1);
+   gets(a2);
+   l2 = strlen(a2);
+
+   if ( l1 >= l2 )
+   {
+      VAR__MAX = l1 + 1;
+   }
+   else
+   {
+      VAR__MAX = l2 + 1;
+   }
+
+   node_create(&pheader1, l1, a1, VAR__MAX);
+   node_create(&pheader2, l2, a2, VAR__MAX);
+   node_create(&pheader3, VAR__MAX, a3, VAR__MAX);
+   node_plus(pheader1, pheader2, &pheader3, VAR__MAX);
+   output(pheader3, VAR__MAX);
+   node_delete(pheader1);
+   node_delete(pheader2);
+   node_delete(pheader3);
+   getchar();
+   getchar();
+}

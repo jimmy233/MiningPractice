@@ -1,0 +1,143 @@
+struct student
+{
+   char           name[20];
+   int            num1;
+   int            num2;
+   char           VAR__819283;
+   char           VAR__19328;
+   int            VAR__4857423;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   int VAR__53647 = 0;
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->num1, &ANOTHER_POINTER->num2, &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->VAR__4857423);
+   VAR__53647 = VAR__53647 + 1;
+   VAR__HEAD  = NULL;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->num1, &ANOTHER_POINTER->num2, &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->VAR__4857423);
+      VAR__53647 = VAR__53647 + 1;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *VAR__MAX;
+   int            VAR__12302 = 0;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      while ( VAR_233 != NULL )
+      {
+         ( *VAR_233 ).VAR__SUM = 0;
+
+         if ((( *VAR_233 ).num1 > 80 ) && (( *VAR_233 ).VAR__4857423 != 0 ))
+         {
+            ( *VAR_233 ).VAR__SUM += 8000;
+         }
+         else
+         {
+            ( *VAR_233 ).VAR__SUM += 0;
+         }
+
+         if ((( *VAR_233 ).num1 > 85 ) && (( *VAR_233 ).num2 > 80 ))
+         {
+            ( *VAR_233 ).VAR__SUM += 4000;
+         }
+         else
+         {
+            ( *VAR_233 ).VAR__SUM += 0;
+         }
+
+         if (( *VAR_233 ).num1 > 90 )
+         {
+            ( *VAR_233 ).VAR__SUM += 2000;
+         }
+         else
+         {
+            ( *VAR_233 ).VAR__SUM += 0;
+         }
+
+         if ((( *VAR_233 ).num1 > 85 ) && (( *VAR_233 ).VAR__19328 == 'Y' ))
+         {
+            ( *VAR_233 ).VAR__SUM += 1000;
+         }
+         else
+         {
+            ( *VAR_233 ).VAR__SUM += 0;
+         }
+
+         if ((( *VAR_233 ).num2 > 80 ) && (( *VAR_233 ).VAR__819283 == 'Y' ))
+         {
+            ( *VAR_233 ).VAR__SUM += 850;
+         }
+         else
+         {
+            ( *VAR_233 ).VAR__SUM += 0;
+         }
+
+         VAR__12302 += ( *VAR_233 ).VAR__SUM;
+         VAR_233     = VAR_233->VAR__NEXT;
+      }
+   }
+
+
+   VAR_233            = VAR__HEAD;
+   VAR__MAX           = VAR__HEAD;
+   VAR__MAX->VAR__SUM = 0;
+
+   if ( VAR__HEAD != NULL )
+   {
+      while ( VAR_233 != NULL )
+      {
+         if ( VAR_233->VAR__SUM > VAR__MAX->VAR__SUM )
+         {
+            VAR__MAX = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+   }
+
+
+   printf("%s\n%d\n", VAR__MAX->name, VAR__MAX->VAR__SUM);
+   printf("%d", VAR__12302);
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+}

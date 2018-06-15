@@ -1,0 +1,74 @@
+struct student
+{
+   char name[20];
+   int  score1;
+   int  score2;
+   char moni;
+   char west;
+   int  comp;
+}
+stu[100];
+void main()
+{
+   struct student *VAR_233;
+   int            VAR_1238123;
+   int            VAR__SUM = 0;
+   int            VAR__temp;
+   int            VAR_9494 = 0;
+   int            VAR__12302;
+   int            VAR__53647;
+   char           nam[20];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR_233 = stu; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      scanf("%s %d %d %c %c %d", &VAR_233->name, &VAR_233->score1, &VAR_233->score2, &VAR_233->moni, &VAR_233->west, &VAR_233->comp);
+   }
+
+   VAR_233 = stu;
+   for ( VAR_233 = stu; VAR_233 < ( stu + VAR_1238123 ); VAR_233++ )
+   {
+      VAR__temp = 0;
+
+      if (( VAR_233->score1 > 80 ) && ( VAR_233->comp >= 1 ))
+      {
+         VAR__temp = VAR__temp + 8000;
+      }
+
+      if (( VAR_233->score1 > 85 ) && ( VAR_233->score2 > 80 ))
+      {
+         VAR__temp = VAR__temp + 4000;
+      }
+
+      if ( VAR_233->score1 > 90 )
+      {
+         VAR__temp = VAR__temp + 2000;
+      }
+
+      if (( VAR_233->score1 > 85 ) && ( VAR_233->west == 'Y' ))
+      {
+         VAR__temp = VAR__temp + 1000;
+      }
+
+      if (( VAR_233->score2 > 80 ) && ( VAR_233->moni == 'Y' ))
+      {
+         VAR__temp = VAR__temp + 850;
+      }
+
+      if ( VAR__temp > VAR_9494 )
+      {
+         VAR_9494   = VAR__temp;
+         VAR__12302 = strlen(VAR_233->name);
+         strcpy(nam, VAR_233->name);
+         for ( VAR__53647 = VAR__12302; VAR__53647 < 20; VAR__53647++ )
+         {
+            nam[VAR__53647] = 0;
+         }
+      }
+
+      VAR__SUM = VAR__SUM + VAR__temp;
+   }
+
+   puts(nam);
+   printf("%d\n%d", VAR_9494, VAR__SUM);
+}

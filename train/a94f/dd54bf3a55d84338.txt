@@ -1,0 +1,111 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int row;
+   int col;
+   int state;
+   int VAR_SIZE[100][100];
+   int zt[100][100] = { 0 };
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &VAR_SIZE[VAR__53647][VAR__21230]);
+      }
+   }
+
+   state      = 0;
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+
+   while ( 1 )
+   {
+      if ( zt[VAR__53647][VAR__21230] == 1 )
+      {
+         break;
+      }
+      else
+      {
+         if ((( state == 0 ) && (( VAR__21230 + 1 ) < col )) && ( zt[VAR__53647][VAR__21230 + 1] == 0 ))
+         {
+            printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+            zt[VAR__53647][VAR__21230] = 1;
+            VAR__21230++;
+         }
+         else
+         if ( state == 0 )
+         {
+            if ( row > 1 )
+            {
+               printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+               zt[VAR__53647][VAR__21230] = 1;
+               VAR__53647++;
+               state = 1;
+            }
+            else
+            {
+               printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+               break;
+            }
+         }
+         else
+         if ((( state == 1 ) && (( VAR__53647 + 1 ) < row )) && ( zt[VAR__53647 + 1][VAR__21230] == 0 ))
+         {
+            printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+            zt[VAR__53647][VAR__21230] = 1;
+            VAR__53647++;
+         }
+         else
+         if ( state == 1 )
+         {
+            if ( col > 1 )
+            {
+               printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+               zt[VAR__53647][VAR__21230] = 1;
+               VAR__21230--;
+               state = 2;
+            }
+            else
+            {
+               printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+               break;
+            }
+         }
+         else
+         if ((( state == 2 ) && (( VAR__21230 - 1 ) >= 0 )) && ( zt[VAR__53647][VAR__21230 - 1] == 0 ))
+         {
+            printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+            zt[VAR__53647][VAR__21230] = 1;
+            VAR__21230--;
+         }
+         else
+         if ( state == 2 )
+         {
+            printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+            zt[VAR__53647][VAR__21230] = 1;
+            VAR__53647--;
+            state = 3;
+         }
+         else
+         if ((( state == 3 ) && (( VAR__53647 - 1 ) >= 0 )) && ( zt[VAR__53647 - 1][VAR__21230] == 0 ))
+         {
+            printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+            zt[VAR__53647][VAR__21230] = 1;
+            VAR__53647--;
+         }
+         else
+         if ( state == 3 )
+         {
+            printf("%d\n", VAR_SIZE[VAR__53647][VAR__21230]);
+            zt[VAR__53647][VAR__21230] = 1;
+            VAR__21230++;
+            state = 0;
+         }
+      }
+   }
+
+   return 0;
+}

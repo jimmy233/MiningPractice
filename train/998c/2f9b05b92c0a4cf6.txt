@@ -1,0 +1,70 @@
+int main()
+{
+   char s1[251];
+   char s2[251];
+   int  a1[251] = { 0 };
+   int  a2[251] = { 0 };
+   int  len1;
+   int  len2;
+   int  LEN_OF_STH;
+   int  VAR__temp[251] = { 0 };
+   int  VAR__53647;
+
+   scanf("%s%s", s1, s2);
+   len1 = strlen(s1);
+   len2 = strlen(s2);
+
+   if ( len1 > len2 )
+   {
+      LEN_OF_STH = len1;
+   }
+   else
+   {
+      LEN_OF_STH = len2;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      a1[VAR__53647] = s1[( len1 - 1 ) - VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < len2; VAR__53647++ )
+   {
+      a2[VAR__53647] = s2[( len2 - 1 ) - VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__temp[VAR__53647] += a1[VAR__53647] + a2[VAR__53647];
+
+      if ( VAR__temp[VAR__53647] >= 10 )
+      {
+         VAR__temp[VAR__53647] -= 10;
+         VAR__temp[VAR__53647 + 1]++;
+      }
+   }
+
+   if ( VAR__temp[LEN_OF_STH] != 0 )
+   {
+      LEN_OF_STH++;
+   }
+
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      if ( VAR__temp[VAR__53647] == 0 )
+      {
+         LEN_OF_STH--;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", VAR__temp[VAR__53647]);
+   }
+
+   return 0;
+}

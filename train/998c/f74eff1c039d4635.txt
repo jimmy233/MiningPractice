@@ -1,0 +1,120 @@
+int main()
+{
+   char ANOTHER_STRING[250];
+   char YET_ANOTHER_STRING[250];
+   char str3[251];
+   int  X;
+   int  VAR__53647;
+   int  X1;
+   int  X2;
+   int  VAR__819283[250]  = { 0 };
+   int  VAR__19328[250]   = { 0 };
+   int  VAR__4857423[250] = { 0 };
+
+   scanf("%s\n%s", ANOTHER_STRING, YET_ANOTHER_STRING);
+   X1 = strlen(ANOTHER_STRING);
+   X2 = strlen(YET_ANOTHER_STRING);
+   X  = X1;
+
+   if ( X2 > X )
+   {
+      X = X2;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < X1; VAR__53647++ )
+   {
+      VAR__819283[( X1 - 1 ) - VAR__53647] = ANOTHER_STRING[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < X2; VAR__53647++ )
+   {
+      VAR__19328[( X2 - 1 ) - VAR__53647] = YET_ANOTHER_STRING[VAR__53647] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= X; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = VAR__819283[VAR__53647] + VAR__19328[VAR__53647];
+      VAR__4857423[VAR__53647] = VAR__4857423[VAR__53647] % 10;
+
+      if ( VAR__53647 != 0 )
+      {
+         if ((( VAR__819283[VAR__53647 - 1] + VAR__19328[VAR__53647 - 1] ) == 9 ) && ( VAR__4857423[VAR__53647 - 1] == 0 ))
+         {
+            VAR__4857423[VAR__53647] = VAR__4857423[VAR__53647] + 1;
+         }
+
+         VAR__4857423[VAR__53647] = VAR__4857423[VAR__53647] % 10;
+
+         if (( VAR__819283[VAR__53647 - 1] + VAR__19328[VAR__53647 - 1] ) >= 10 )
+         {
+            VAR__4857423[VAR__53647] = VAR__4857423[VAR__53647] + 1;
+         }
+
+         VAR__4857423[VAR__53647] = VAR__4857423[VAR__53647] % 10;
+      }
+   }
+
+   if ( VAR__4857423[X] == 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < X; VAR__53647++ )
+      {
+         str3[( X - 1 ) - VAR__53647] = VAR__4857423[VAR__53647] + '0';
+      }
+
+      str3[X] = '\0';
+      for ( ; ; )
+      {
+         if ( str3[1] == '\0' )
+         {
+            break;
+         }
+
+         if ( str3[0] != '0' )
+         {
+            break;
+         }
+
+         if ( str3[0] == '0' )
+         {
+            for ( VAR__53647 = 0; VAR__53647 < X; VAR__53647++ )
+            {
+               str3[VAR__53647] = str3[VAR__53647 + 1];
+            }
+         }
+      }
+
+      printf("%s", str3);
+   }
+
+   if ( VAR__4857423[X] == 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= X; VAR__53647++ )
+      {
+         str3[X - VAR__53647] = VAR__4857423[VAR__53647] + '0';
+      }
+
+      str3[X + 1] = '\0';
+      for ( ; ; )
+      {
+         if ( str3[1] == '\0' )
+         {
+            break;
+         }
+
+         if ( str3[0] != '0' )
+         {
+            break;
+         }
+
+         if ( str3[0] == '0' )
+         {
+            for ( VAR__53647 = 0; VAR__53647 < X; VAR__53647++ )
+            {
+               str3[VAR__53647] = str3[VAR__53647 + 1];
+            }
+         }
+      }
+
+      printf("%s", str3);
+   }
+}

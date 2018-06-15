@@ -1,0 +1,102 @@
+struct student
+{
+   long           VAR__NUM;
+   char           A_STRING[27];
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *creat(int VAR__1238129)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%ld %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->A_STRING);
+   VAR__HEAD = 0;
+
+   while ( ANOTHER_POINTER->VAR__NUM != 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->A_STRING);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = 0;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student stu;
+   int            VAR__1238129;
+   int            VAR__53647;
+   int            VAR__temp;
+   int            VAR__MAX;
+   int            VAR__3918907     = 1;
+   int            VAR__819283[100] = { 0 };
+   int            VAR__SUM[27]     = { 0 };
+   char           VAR__7685        = 1;
+   char           VAR__4857423;
+
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = creat(VAR__1238129);
+   VAR_233   = VAR__HEAD;
+   for ( ; VAR_233 != 0; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__temp = 0; VAR__temp < strlen(VAR_233->A_STRING); VAR__temp++ )
+      {
+         VAR__4857423 = VAR_233->A_STRING[VAR__temp];
+         VAR__SUM[VAR__4857423 - 64]++;
+      }
+   }
+
+   VAR__MAX = VAR__SUM[1];
+   for ( VAR__53647 = 1; VAR__53647 <= 26; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX  = VAR__SUM[VAR__53647];
+         VAR__7685 = VAR__53647;
+      }
+   }
+
+
+   for ( VAR_233 = VAR__HEAD; VAR_233 != 0; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__temp = 0; VAR__temp <= strlen(VAR_233->A_STRING); VAR__temp++ )
+      {
+         if ( VAR_233->A_STRING[VAR__temp] == ( VAR__7685 + 64 ))
+         {
+            VAR__819283[VAR__3918907] = VAR_233->VAR__NUM;
+         }
+      }
+
+
+      VAR__3918907++;
+   }
+
+   printf("%c\n%d\n", VAR__7685 + 64, VAR__MAX);
+   for ( VAR__3918907 = 1; VAR__3918907 <= 99; VAR__3918907++ )
+   {
+      if ( VAR__819283[VAR__3918907] != 0 )
+      {
+         printf("%d\n", VAR__819283[VAR__3918907]);
+      }
+   }
+}

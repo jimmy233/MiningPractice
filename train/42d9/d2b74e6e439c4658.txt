@@ -1,0 +1,58 @@
+struct
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+}
+Point[10];
+struct dis
+{
+   int    pos_1;
+   int    pos_2;
+   double VAR__12302;
+}
+Dis[45];
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> Point[VAR__53647].VAR__7685 ) >> Point[VAR__53647].VAR__3918907 ) >> Point[VAR__53647].VAR__9290;
+   }
+
+   int VAR__COUNT = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         Dis[VAR__COUNT].VAR__12302 = sqrt(((( 1.0 * ( Point[VAR__53647].VAR__7685 - Point[VAR__21230].VAR__7685 )) * ( Point[VAR__53647].VAR__7685 - Point[VAR__21230].VAR__7685 )) + (( Point[VAR__53647].VAR__3918907 - Point[VAR__21230].VAR__3918907 ) * ( Point[VAR__53647].VAR__3918907 - Point[VAR__21230].VAR__3918907 ))) + (( Point[VAR__53647].VAR__9290 - Point[VAR__21230].VAR__9290 ) * ( Point[VAR__53647].VAR__9290 - Point[VAR__21230].VAR__9290 )));
+         Dis[VAR__COUNT].pos_1      = VAR__53647;
+         Dis[VAR__COUNT].pos_2      = VAR__21230;
+         VAR__COUNT++;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < (( VAR__COUNT - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( Dis[VAR__21230].VAR__12302 < Dis[VAR__21230 + 1].VAR__12302 )
+         {
+            struct dis VAR__TEMP;
+            VAR__TEMP           = Dis[VAR__21230];
+            Dis[VAR__21230]     = Dis[VAR__21230 + 1];
+            Dis[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      ((((((((((((((( cout << '(' ) << Point[Dis[VAR__53647].pos_1].VAR__7685 ) << ',' ) << Point[Dis[VAR__53647].pos_1].VAR__3918907 ) << ',' ) << Point[Dis[VAR__53647].pos_1].VAR__9290 ) << ')' ) << '-' ) << '(' ) << Point[Dis[VAR__53647].pos_2].VAR__7685 ) << ',' ) << Point[Dis[VAR__53647].pos_2].VAR__3918907 ) << ',' ) << Point[Dis[VAR__53647].pos_2].VAR__9290 ) << ')' ) << '=';
+      ((( cout << fixed ) << setprecision(2)) << Dis[VAR__53647].VAR__12302 ) << endl;
+   }
+
+   return 0;
+}

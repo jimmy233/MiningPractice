@@ -1,0 +1,81 @@
+void subtract(char VAR__819283[], char VAR__19328[], char VAR__4857423[])
+{
+   int VAR__53647;
+   int carry = 0;
+
+   for ( VAR__53647 = 100; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( VAR__19328[VAR__53647] + carry ) > VAR__819283[VAR__53647] )
+      {
+         VAR__4857423[VAR__53647] = ((( 10 + VAR__819283[VAR__53647] ) - VAR__19328[VAR__53647] ) - carry ) + '0';
+         carry = 1;
+      }
+      else
+      {
+         VAR__4857423[VAR__53647] = (( VAR__819283[VAR__53647] - VAR__19328[VAR__53647] ) - carry ) + '0';
+         carry = 0;
+      }
+   }
+}
+
+
+void align(char VAR__819283[])
+{
+   int LEN_OF_STH;
+   int jump;
+   int VAR__1238129;
+
+   LEN_OF_STH = strlen(VAR__819283);
+   jump       = 101 - LEN_OF_STH;
+   for ( VAR__1238129 = LEN_OF_STH; VAR__1238129 >= 0; VAR__1238129-- )
+   {
+      VAR__819283[VAR__1238129 + jump] = VAR__819283[VAR__1238129];
+      VAR__819283[VAR__1238129]        = '0';
+   }
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+   int VAR__1238129;
+
+   scanf("%d", &VAR__1238129);
+
+   while ( VAR__1238129 > 0 )
+   {
+      char VAR__112390[101];
+      char VAR__127322[101];
+      char VAR_9Q8Q90[101];
+      for ( VAR__53647 = 0; VAR__53647 < 101; VAR__53647++ )
+      {
+         VAR__112390[VAR__53647] = ( VAR__127322[VAR__53647] = ( VAR_9Q8Q90[VAR__53647] = '0' ));
+      }
+
+      scanf("%s", VAR__112390);
+      scanf("%s", VAR__127322);
+      VAR__7685    = strlen(VAR__112390);
+      VAR__3918907 = strlen(VAR__127322);
+      align(VAR__112390);
+      align(VAR__127322);
+      subtract(VAR__112390, VAR__127322, VAR_9Q8Q90);
+      VAR__9290 = 100 - VAR__7685;
+
+      while (( VAR__9290 <= 99 ) && ( VAR_9Q8Q90[VAR__9290] == '0' ))
+      {
+         VAR__9290++;
+      }
+
+      for ( VAR__53647 = VAR__9290; VAR__53647 <= 100; VAR__53647++ )
+      {
+         printf("%c", VAR_9Q8Q90[VAR__53647]);
+      }
+
+      printf("\n");
+      VAR__1238129 = VAR__1238129 - 1;
+      getchar();
+   }
+}

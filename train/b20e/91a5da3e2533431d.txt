@@ -1,0 +1,121 @@
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return VAR__19328;
+   }
+}
+
+
+int tianji(int *ANOTHER_POINTER, int *YET_ANOTHER_POINTER, int VAR_1238123)
+{
+   if ( VAR_1238123 == 0 )
+   {
+      return 0;
+   }
+
+   if (( *(( ANOTHER_POINTER + VAR_1238123 ) - 1 )) > ( *(( YET_ANOTHER_POINTER + VAR_1238123 ) - 1 )))
+   {
+      return tianji(ANOTHER_POINTER, YET_ANOTHER_POINTER, VAR_1238123 - 1) + 200;
+   }
+
+   if (( *(( ANOTHER_POINTER + VAR_1238123 ) - 1 )) < ( *(( YET_ANOTHER_POINTER + VAR_1238123 ) - 1 )))
+   {
+      return tianji(ANOTHER_POINTER, YET_ANOTHER_POINTER + 1, VAR_1238123 - 1) - 200;
+   }
+
+   if (( *ANOTHER_POINTER ) > ( *YET_ANOTHER_POINTER ))
+   {
+      return tianji(ANOTHER_POINTER + 1, YET_ANOTHER_POINTER + 1, VAR_1238123 - 1) + 200;
+   }
+
+   if (( *ANOTHER_POINTER ) < ( *YET_ANOTHER_POINTER ))
+   {
+      return tianji(ANOTHER_POINTER, YET_ANOTHER_POINTER + 1, VAR_1238123 - 1) - 200;
+   }
+
+   if (( *ANOTHER_POINTER ) == ( *YET_ANOTHER_POINTER ))
+   {
+      if (( *(( ANOTHER_POINTER + VAR_1238123 ) - 1 )) == ( *YET_ANOTHER_POINTER ))
+      {
+         return tianji(ANOTHER_POINTER, YET_ANOTHER_POINTER + 1, VAR_1238123 - 1);
+      }
+      else
+      {
+         return tianji(ANOTHER_POINTER, YET_ANOTHER_POINTER + 1, VAR_1238123 - 1) - 200;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_9494;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__819283[2000];
+   int VAR__19328[2000];
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+   int VAR_1238123;
+   int VAR__temp;
+
+   for ( VAR_9494 = 0; VAR_9494 < 99; VAR_9494++ )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+         {
+            if ( VAR__819283[VAR__21230 + 1] > VAR__819283[VAR__21230] )
+            {
+               VAR__temp = VAR__819283[VAR__21230];
+               VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+               VAR__819283[VAR__21230 + 1] = VAR__temp;
+            }
+
+            if ( VAR__19328[VAR__21230 + 1] > VAR__19328[VAR__21230] )
+            {
+               VAR__temp = VAR__19328[VAR__21230];
+               VAR__19328[VAR__21230]     = VAR__19328[VAR__21230 + 1];
+               VAR__19328[VAR__21230 + 1] = VAR__temp;
+            }
+         }
+      }
+
+      ANOTHER_POINTER     = VAR__819283;
+      YET_ANOTHER_POINTER = VAR__19328;
+
+      if (( VAR__819283[0] > VAR__819283[VAR_1238123 - 1] ) && ( VAR__19328[0] > VAR__19328[VAR_1238123 - 1] ))
+      {
+         ( cout << tianji(ANOTHER_POINTER, YET_ANOTHER_POINTER, VAR_1238123)) << endl;
+      }
+      else
+      {
+         ( cout << 0 ) << endl;
+      }
+   }
+
+   return 0;
+}

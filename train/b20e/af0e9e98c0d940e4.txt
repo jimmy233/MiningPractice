@@ -1,0 +1,79 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   int *aa = (int *)VAR__819283;
+   int *bb = (int *)VAR__19328;
+
+   return ( *bb ) - ( *aa );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int yourspeed[1000];
+   int myspeed[1000];
+   int match[1000];
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &myspeed[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &yourspeed[VAR__53647]);
+      }
+
+      qsort(myspeed, VAR_1238123, sizeof( int ), cmp);
+      qsort(yourspeed, VAR_1238123, sizeof( int ), cmp);
+      int cnt       = 0;
+      int myfirst   = 0;
+      int mylast    = VAR_1238123 - 1;
+      int yourfirst = 0;
+      int yourlast  = VAR_1238123 - 1;
+
+      while ( myfirst <= mylast )
+      {
+         if (( myspeed[myfirst] <= yourspeed[yourfirst] ) && ( myspeed[mylast] <= yourspeed[yourlast] ))
+         {
+            match[mylast--] = yourfirst++;
+         }
+         else
+         if ( myspeed[myfirst] > yourspeed[yourfirst] )
+         {
+            match[myfirst++] = yourfirst++;
+         }
+         else
+         {
+            match[mylast--] = yourlast--;
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( myspeed[VAR__53647] > yourspeed[match[VAR__53647]] )
+         {
+            cnt++;
+         }
+         else
+         if ( myspeed[VAR__53647] < yourspeed[match[VAR__53647]] )
+         {
+            cnt--;
+         }
+      }
+
+      int gain = 200 * cnt;
+      printf("%d\n", gain);
+   }
+
+   return 0;
+}

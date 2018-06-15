@@ -1,0 +1,82 @@
+int main()
+{
+   char string1[100000];
+   char string2[100000];
+   int  VAR__7685[1001];
+   int  VAR__3918907[1001];
+
+   memset(VAR__7685, 0, sizeof( VAR__7685 ));
+   memset(VAR__3918907, 0, sizeof( VAR__3918907 ));
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__8444594 = 0;
+   int VAR_666;
+   int VAR_233  = 0;
+   int power[3] = { 1, 10, 100 };
+   int VAR__NUM[1001];
+   int maxpeople = 0;
+   int time;
+   memset(VAR__NUM, 0, sizeof( VAR__NUM ));
+   cin >> string1;
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(string1) - 1 ); VAR__53647++ )
+   {
+      if ( string1[VAR__53647] == ',' )
+      {
+         VAR__8444594 = VAR__8444594 + 1;
+      }
+   }
+
+   VAR_1238123 = VAR__8444594 + 1;
+   VAR_666     = VAR_1238123;
+   for ( VAR__53647 = strlen(string1) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( string1[VAR__53647] != ',' )
+      {
+         VAR__7685[VAR_666] = VAR__7685[VAR_666] + (((int)( string1[VAR__53647] - 48 )) * power[VAR_233] );
+         VAR_233            = VAR_233 + 1;
+      }
+      else
+      {
+         VAR_666 = VAR_666 - 1;
+         VAR_233 = 0;
+      }
+   }
+
+   cin >> string2;
+   VAR_666 = VAR_1238123;
+   VAR_233 = 0;
+   for ( VAR__53647 = strlen(string2) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( string2[VAR__53647] != ',' )
+      {
+         VAR__3918907[VAR_666] = VAR__3918907[VAR_666] + (((int)( string2[VAR__53647] - 48 )) * power[VAR_233] );
+         VAR_233 = VAR_233 + 1;
+      }
+      else
+      {
+         VAR_666 = VAR_666 - 1;
+         VAR_233 = 0;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 1000; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if (( VAR__7685[VAR__21230] <= VAR__53647 ) && ( VAR__3918907[VAR__21230] >= ( VAR__53647 + 1 )))
+         {
+            VAR__NUM[VAR__53647]++;
+         }
+      }
+
+      if ( VAR__NUM[VAR__53647] > maxpeople )
+      {
+         maxpeople = VAR__NUM[VAR__53647];
+         time      = VAR__53647;
+      }
+   }
+
+   ((( cout << VAR_1238123 ) << " " ) << maxpeople ) << endl;
+   return 0;
+}

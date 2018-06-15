@@ -1,0 +1,72 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__112390;
+   int VAR__1238129;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__19328;
+   int VAR__4857423;
+   struct a
+   {
+      int VAR__7685;
+      int VAR__3918907;
+   }
+   VAR_SIZE[50000];
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d\n", &VAR_SIZE[VAR__53647].VAR__7685, &VAR_SIZE[VAR__53647].VAR__3918907);
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( VAR_SIZE[VAR__53647].VAR__7685 > VAR_SIZE[VAR__53647 + 1].VAR__7685 )
+         {
+            VAR__112390  = VAR_SIZE[VAR__53647 + 1].VAR__7685;
+            VAR__1238129 = VAR_SIZE[VAR__53647 + 1].VAR__3918907;
+            VAR_SIZE[VAR__53647 + 1].VAR__7685    = VAR_SIZE[VAR__53647].VAR__7685;
+            VAR_SIZE[VAR__53647 + 1].VAR__3918907 = VAR_SIZE[VAR__53647].VAR__3918907;
+            VAR_SIZE[VAR__53647].VAR__7685        = VAR__112390;
+            VAR_SIZE[VAR__53647].VAR__3918907     = VAR__1238129;
+         }
+      }
+   }
+
+   VAR__19328   = VAR_SIZE[0].VAR__3918907;
+   VAR__4857423 = VAR_SIZE[0].VAR__3918907;
+   VAR__21230   = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__19328 < VAR_SIZE[VAR__53647].VAR__3918907 )
+      {
+         VAR__19328 = VAR_SIZE[VAR__53647].VAR__3918907;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__4857423 < VAR_SIZE[VAR__53647].VAR__3918907 )
+      {
+         VAR__4857423 = VAR_SIZE[VAR__53647].VAR__3918907;
+      }
+
+      if (( VAR_SIZE[VAR__53647].VAR__3918907 < VAR_SIZE[VAR__53647 + 1].VAR__7685 ) && ( VAR_SIZE[VAR__53647 + 1].VAR__7685 > VAR__4857423 ))
+      {
+         printf("no");
+         VAR__21230 = 1;
+         break;
+      }
+   }
+
+   if ( VAR__21230 == 0 )
+   {
+      printf("%d %d", VAR_SIZE[0].VAR__7685, VAR__19328);
+   }
+
+   return 0;
+}

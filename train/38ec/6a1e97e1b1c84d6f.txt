@@ -1,0 +1,55 @@
+int Inyear(int month, int day, int year, int VAR__53647, int output)
+{
+   for ( VAR__53647 = 1; VAR__53647 < month; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         output += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         output += 30;
+      }
+      else
+      if (( VAR__53647 == 2 ) && (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 )))
+      {
+         output += 29;
+      }
+      else
+      {
+         output += 28;
+      }
+   }
+
+   output += day;
+   return output;
+}
+
+
+int main()
+{
+   int year[2];
+   int month[2];
+   int day[2];
+   int output = 0;
+   int inyear;
+   int VAR__53647;
+
+   scanf("%d%d%d%d%d%d", &year[0], &month[0], &day[0], &year[1], &month[1], &day[1]);
+   output = Inyear(month[1], day[1], year[1], VAR__53647, inyear) - Inyear(month[0], day[0], year[0], VAR__53647, inyear);
+   for ( VAR__53647 = year[0]; VAR__53647 < year[1]; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         output += 366;
+      }
+      else
+      {
+         output += 365;
+      }
+   }
+
+   printf("%d", output);
+   return 0;
+}

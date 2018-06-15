@@ -1,0 +1,69 @@
+int main()
+{
+   int VAR__NUM;
+
+   scanf("%d", &VAR__NUM);
+   int    VAR__53647;
+   int    VAR__127322  = 0;
+   int    VAR__1238129 = 0;
+   char   VAR__4857423[7];
+   double high;
+   double mh[40];
+   double nh[40];
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      scanf("%s %lf", VAR__4857423, &high);
+
+      if ( strcmp(VAR__4857423, "male") == 0 )
+      {
+         VAR__1238129         = VAR__1238129 + 1;
+         mh[VAR__1238129 - 1] = high;
+      }
+      else
+      {
+         VAR__127322         = VAR__127322 + 1;
+         nh[VAR__127322 - 1] = high;
+      }
+   }
+
+   int    VAR__21230;
+   double VAR__MAX;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__1238129 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( mh[VAR__21230] > mh[VAR__21230 + 1] )
+         {
+            VAR__MAX           = mh[VAR__21230];
+            mh[VAR__21230]     = mh[VAR__21230 + 1];
+            mh[VAR__21230 + 1] = VAR__MAX;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__127322; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__127322 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( nh[VAR__21230] < nh[VAR__21230 + 1] )
+         {
+            VAR__MAX           = nh[VAR__21230];
+            nh[VAR__21230]     = nh[VAR__21230 + 1];
+            nh[VAR__21230 + 1] = VAR__MAX;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      printf("%.2lf ", mh[VAR__53647]);
+   }
+
+   printf("%.2lf", nh[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR__127322; VAR__53647++ )
+   {
+      printf(" %.2lf", nh[VAR__53647]);
+   }
+
+   return 0;
+}

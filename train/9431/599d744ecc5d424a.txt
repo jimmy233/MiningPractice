@@ -1,0 +1,65 @@
+struct stu
+{
+   char       information[100];
+   struct stu *VAR__NEXT;
+   struct stu *last;
+};
+struct stu *creat(void)
+{
+   struct stu *end;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+   int        VAR_FLAG = 1;
+
+   ANOTHER_POINTER = (struct stu *)malloc(Len);
+   gets(ANOTHER_POINTER->information);
+
+   if ( strcmp(ANOTHER_POINTER->information, "end") == 0 )
+   {
+      YET_ANOTHER_POINTER = null;
+      VAR_FLAG            = 0;
+   }
+   else
+   {
+      ANOTHER_POINTER->last = null;
+      do
+      {
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         ANOTHER_POINTER                = (struct stu *)malloc(Len);
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         ANOTHER_POINTER->last          = YET_ANOTHER_POINTER;
+         gets(ANOTHER_POINTER->information);
+
+         if ( strcmp(ANOTHER_POINTER->information, "end") == 0 )
+         {
+            VAR_FLAG = 0;
+         }
+      } while ( VAR_FLAG == 1 );
+   }
+
+   end = YET_ANOTHER_POINTER;
+   return end;
+}
+
+
+void printf(struct stu *end)
+{
+   struct stu *VAR_233;
+
+   VAR_233 = end;
+
+   while ( VAR_233 != null )
+   {
+      printf("%s\n", VAR_233->information);
+      VAR_233 = VAR_233->last;
+   }
+}
+
+
+int main()
+{
+   struct stu *move;
+
+   move = creat();
+   printf(move);
+}

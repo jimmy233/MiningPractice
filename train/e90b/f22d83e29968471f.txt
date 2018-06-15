@@ -1,0 +1,84 @@
+struct student
+{
+   long           number;
+   int            chinese;
+   int            math;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+   struct student *last;
+};
+struct student *creat(int VAR_1238123)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+   scanf("%d %d %d", &ANOTHER_POINTER->number, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+   ANOTHER_POINTER->VAR__SUM  = ANOTHER_POINTER->chinese + ANOTHER_POINTER->math;
+   ANOTHER_POINTER->last      = null;
+   ANOTHER_POINTER->VAR__NEXT = null;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+      scanf("%d %d %d", &ANOTHER_POINTER->number, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->VAR__SUM      = ANOTHER_POINTER->chinese + ANOTHER_POINTER->math;
+      ANOTHER_POINTER->last          = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NEXT     = null;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct student *print(struct student *VAR__HEAD)
+{
+   struct student *VAR__MAX;
+   struct student *VAR_233;
+
+   VAR_233  = VAR__HEAD;
+   VAR__MAX = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->VAR__SUM > VAR__MAX->VAR__SUM )
+      {
+         VAR__MAX = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", VAR__MAX->number, VAR__MAX->VAR__SUM);
+
+   if ( VAR__MAX == VAR__HEAD )
+   {
+      VAR__MAX->VAR__NEXT->last = null;
+      VAR__HEAD = VAR__MAX->VAR__NEXT;
+   }
+   else
+   {
+      VAR__MAX->VAR__NEXT->last = VAR__MAX->last;
+      VAR__MAX->last->VAR__NEXT = VAR__MAX->VAR__NEXT;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   struct student *VAR__HEAD;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   print(VAR__HEAD);
+   print(VAR__HEAD);
+   print(VAR__HEAD);
+}

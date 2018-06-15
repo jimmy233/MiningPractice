@@ -1,0 +1,83 @@
+int record(char A_STRING[][6], char curstr[], int VAR__COUNT[], int VAR__NUM)
+{
+   int VAR__8444594 = 0;
+
+   while (( VAR__8444594 < VAR__NUM ) && ( strcmp(A_STRING[VAR__8444594], curstr) != 0 ))
+   {
+      ++VAR__8444594;
+   }
+
+   if ( VAR__8444594 < VAR__NUM )
+   {
+      VAR__COUNT[VAR__8444594]++;
+      return VAR__NUM;
+   }
+   else
+   {
+      strcpy(A_STRING[VAR__NUM], curstr);
+      VAR__COUNT[VAR__NUM] = 1;
+      return VAR__NUM + 1;
+   }
+}
+
+
+int sub_count(char VAR_9494[], char A_STRING[][6], int VAR__COUNT[], int VAR_1238123)
+{
+   int  VAR__1238129;
+   int  VAR__8444594;
+   int  LEN_OF_STH = strlen(VAR_9494);
+   int  VAR__NUM   = 0;
+   char curstr[6];
+
+   for ( VAR__1238129 = 0; VAR__1238129 <= ( LEN_OF_STH - VAR_1238123 ); VAR__1238129++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         curstr[VAR__8444594] = VAR_9494[VAR__1238129 + VAR__8444594];
+      }
+
+      curstr[VAR__8444594] = '\0';
+      VAR__NUM             = record(A_STRING, curstr, VAR__COUNT, VAR__NUM);
+   }
+
+   return VAR__NUM;
+}
+
+
+void main()
+{
+   char VAR_9494[1000];
+   char A_STRING[1000][6];
+   int  VAR__COUNT[1000];
+   int  VAR__NUM;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__MAX;
+
+   scanf("%d%s", &VAR_1238123, VAR_9494);
+   VAR__NUM = sub_count(VAR_9494, A_STRING, VAR__COUNT, VAR_1238123);
+   VAR__MAX = VAR__COUNT[0];
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__NUM - 1 ); VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__COUNT[VAR__53647 + 1] )
+      {
+         VAR__MAX = VAR__COUNT[VAR__53647 + 1];
+      }
+   }
+
+   if ( VAR__MAX <= 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+      {
+         if ( VAR__COUNT[VAR__53647] == VAR__MAX )
+         {
+            printf("%s\n", A_STRING[VAR__53647]);
+         }
+      }
+   }
+}

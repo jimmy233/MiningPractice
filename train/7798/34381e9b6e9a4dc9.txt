@@ -1,0 +1,57 @@
+struct b
+{
+   int  na;
+   char au[20];
+}
+book[1000];
+int main()
+{
+   int  VAR__1238129;
+   int  VAR__53647;
+   int  LEN_OF_STH[1000];
+   int  VAR__NUM[128] = { 0 };
+   int  VAR__21230;
+   int  VAR__MAX;
+   int  VAR_233 = 0;
+   char maxi;
+   int  boo[1000];
+
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d%s", &book[VAR__53647].na, book[VAR__53647].au);
+      LEN_OF_STH[VAR__53647] = strlen(book[VAR__53647].au);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH[VAR__53647]; VAR__21230++ )
+      {
+         VAR__NUM[book[VAR__53647].au[VAR__21230]]++;
+      }
+   }
+
+   maxi     = 'A';
+   VAR__MAX = -1;
+   for ( VAR__21230 = 'A'; VAR__21230 <= 'Z'; VAR__21230++ )
+   {
+      if ( VAR__NUM[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = VAR__NUM[VAR__21230];
+         maxi     = VAR__21230;
+      }
+   }
+
+   printf("%c\n", maxi);
+   printf("%d\n", VAR__MAX);
+   for ( VAR__53647 = 0; ( VAR__53647 < VAR__1238129 ) && ( VAR_233 < VAR__MAX ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH[VAR__53647]; VAR__21230++ )
+      {
+         if ( book[VAR__53647].au[VAR__21230] == maxi )
+         {
+            printf("%d\n", book[VAR__53647].na);
+            VAR_233++;
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

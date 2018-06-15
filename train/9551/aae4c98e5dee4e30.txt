@@ -1,0 +1,82 @@
+void main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MAX;
+   int VAR__1111;
+   int sign = 0;
+
+   scanf("%d", &VAR_1238123);
+   struct tt
+   {
+      char      pp[10];
+      int       age;
+      struct tt *VAR__NEXT;
+   };
+   struct tt *VAR__HEAD;
+   struct tt *ANOTHER_POINTER;
+   struct tt *YET_ANOTHER_POINTER;
+   struct tt *p3;
+   VAR__HEAD           = (struct tt *)malloc(LEN);
+   ANOTHER_POINTER     = VAR__HEAD;
+   YET_ANOTHER_POINTER = VAR__HEAD;
+   scanf("%s", VAR__HEAD->pp);
+   scanf("%d", &VAR__HEAD->age);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct tt *)malloc(LEN);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      scanf("%s", ANOTHER_POINTER->pp);
+      scanf("%d", &ANOTHER_POINTER->age);
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( sign == 1 )
+      {
+         printf("%s\n", VAR__HEAD->pp);
+         VAR__HEAD = VAR__HEAD->VAR__NEXT;
+      }
+      else
+      if ( sign == 0 )
+      {
+         VAR__MAX = -1;
+         for ( YET_ANOTHER_POINTER = NULL, ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+         {
+            if ( ANOTHER_POINTER->age > VAR__MAX )
+            {
+               VAR__MAX = ANOTHER_POINTER->age;
+               p3       = YET_ANOTHER_POINTER;
+            }
+
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         }
+
+         if ( VAR__MAX < 60 )
+         {
+            sign = 1;
+            VAR__53647--;
+            continue;
+         }
+         else
+         if ( VAR__MAX >= 60 )
+         {
+            if ( p3 == NULL )
+            {
+               printf("%s\n", VAR__HEAD->pp);
+               VAR__HEAD = VAR__HEAD->VAR__NEXT;
+            }
+            else
+            {
+               ANOTHER_POINTER = p3->VAR__NEXT;
+               printf("%s\n", ANOTHER_POINTER->pp);
+               p3->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+            }
+         }
+      }
+   }
+}

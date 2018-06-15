@@ -1,0 +1,67 @@
+void main()
+{
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  VAR__819283[501];
+   int  sign;
+   int  VAR__MAX;
+   int  *pa;
+   char A_STRING[501] = { '\0' };
+   char *ps;
+   char *pj;
+   char *pk;
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", A_STRING);
+   LEN_OF_STH = strlen(A_STRING);
+   for ( ps = A_STRING, pa = VAR__819283; ps < ( A_STRING + LEN_OF_STH ); ps++, pa++ )
+   {
+      *pa = 1;
+      for ( pj = ps + 1; pj < (( ps + 1 ) + LEN_OF_STH ); pj++ )
+      {
+         sign = 0;
+         for ( pk = pj; pk < ( pj + VAR_1238123 ); pk++ )
+         {
+            if (( *pk ) != ( *( ps + ( pk - pj ))))
+            {
+               sign = 1;
+               break;
+            }
+         }
+
+         if ( sign == 0 )
+         {
+            ( *pa )++;
+         }
+      }
+   }
+
+   for ( VAR__MAX = 0, pa = VAR__819283; pa < ( VAR__819283 + LEN_OF_STH ); pa++ )
+   {
+      if (( *pa ) > VAR__MAX )
+      {
+         VAR__MAX = *pa;
+      }
+   }
+
+   if ( VAR__MAX <= 1 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( ps = A_STRING, pa = VAR__819283; ps < ( A_STRING + LEN_OF_STH ); ps++, pa++ )
+      {
+         if (( *pa ) == VAR__MAX )
+         {
+            for ( pk = ps; pk < ( ps + VAR_1238123 ); pk++ )
+            {
+               printf("%c", *pk);
+            }
+
+            printf("\n");
+         }
+      }
+   }
+}

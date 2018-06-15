@@ -1,0 +1,61 @@
+int powe(int VAR__53647)
+{
+   int VAR__21230 = 0;
+   int VAR__SUM   = 1;
+
+   if ( VAR__53647 > 0 )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         VAR__SUM = VAR__SUM * 10;
+      }
+   }
+
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   char ch[50];
+
+   cin.get(ch, 50, '\n');
+   int  VAR__NUM[50] = { 0 };
+   char *VAR_233;
+   int  VAR__53647 = 0;
+   int  counter    = 0;
+   for ( VAR_233 = ch; ( *VAR_233 ) != '\0'; VAR_233 )
+   {
+      if ((( *VAR_233 ) < '0' ) || (( *VAR_233 ) > '9' ))
+      {
+         VAR_233++;
+      }
+      else
+      if ((( *VAR_233 ) >= '0' ) && (( *VAR_233 ) <= '9' ))
+      {
+         int weishu = 0;
+
+         while (((( *VAR_233 ) >= '0' ) && (( *VAR_233 ) <= '9' )) && (( *VAR_233 ) != '\0' ))
+         {
+            VAR_233++;
+            weishu++;
+         }
+
+         for ( VAR__53647 = 1; VAR__53647 <= weishu; VAR__53647++ )
+         {
+            VAR__NUM[counter] = VAR__NUM[counter] + ((( *( VAR_233 - VAR__53647 )) - '0' ) * powe(VAR__53647 - 1));
+         }
+
+         counter++;
+         continue;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( counter - 1 ); VAR__53647++ )
+   {
+      ( cout << VAR__NUM[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

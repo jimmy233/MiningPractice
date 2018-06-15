@@ -1,0 +1,102 @@
+int main()
+{
+   char VAR_9494[100];
+   int  VAR__819283;
+   int  VAR__19328;
+
+   scanf("%d %s %d", &VAR__819283, VAR_9494, &VAR__19328);
+   int VAR__1111;
+   int VAR__8444594;
+   int VAR__53647;
+   VAR__1111 = strlen(VAR_9494);
+   int VAR_SIZE[100];
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647] >= 'a' ) && ( VAR_9494[VAR__53647] <= 'z' ))
+      {
+         VAR_SIZE[VAR__53647] = ( 10 + VAR_9494[VAR__53647] ) - 'a';
+      }
+
+      if (( VAR_9494[VAR__53647] >= 'A' ) && ( VAR_9494[VAR__53647] <= 'Z' ))
+      {
+         VAR_SIZE[VAR__53647] = ( 10 + VAR_9494[VAR__53647] ) - 'A';
+      }
+
+      if (( VAR_9494[VAR__53647] >= '0' ) && ( VAR_9494[VAR__53647] <= '9' ))
+      {
+         VAR_SIZE[VAR__53647] = ( 0 + VAR_9494[VAR__53647] ) - '0';
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      VAR__8444594 = ( VAR__1111 - VAR__53647 ) - 1;
+
+      while ( VAR__8444594-- )
+      {
+         VAR_SIZE[VAR__53647] = VAR_SIZE[VAR__53647] * VAR__819283;
+      }
+   }
+
+   int num10 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      num10 += VAR_SIZE[VAR__53647];
+   }
+
+   int shang;
+   int yushu;
+   shang = num10 / VAR__19328;
+   yushu = num10 % VAR__19328;
+   int geweiyushu[100];
+
+   if ( shang == 0 )
+   {
+      printf("%d", yushu);
+   }
+   else
+   {
+      for ( VAR__53647 = 0; shang != 0; VAR__53647++ )
+      {
+         geweiyushu[VAR__53647] = yushu;
+         yushu = shang % VAR__19328;
+         shang = shang / VAR__19328;
+      }
+
+      geweiyushu[VAR__53647] = yushu;
+   }
+
+   int weishu;
+   weishu = VAR__53647 + 1;
+   char s2[100];
+   for ( VAR__53647 = 0; VAR__53647 < weishu; VAR__53647++ )
+   {
+      if ( geweiyushu[VAR__53647] >= 10 )
+      {
+         s2[VAR__53647] = ( geweiyushu[VAR__53647] - 10 ) + 'A';
+      }
+      else
+      {
+         s2[VAR__53647] = ( geweiyushu[VAR__53647] - 0 ) + '0';
+      }
+   }
+
+   int VAR__3918907 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] != '0' )
+      {
+         VAR__3918907++;
+      }
+   }
+
+   if ( VAR__3918907 != 0 )
+   {
+      for ( VAR__53647 = weishu - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         printf("%c", s2[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,97 @@
+int main()
+{
+   int VAR__53647;
+   int year;
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int VAR__SUM        = 0;
+   int VAR__819283[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   ((((( cin >> startyear ) >> startmonth ) >> startday ) >> endyear ) >> endmonth ) >> endday;
+
+   if (( endyear - startyear ) > 1 )
+   {
+      for ( year = startyear + 1; year < endyear; year++ )
+      {
+         if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+         {
+            VAR__SUM += 366;
+         }
+         else
+         {
+            VAR__SUM += 365;
+         }
+      }
+
+      for ( VAR__53647 = startmonth - 1; VAR__53647 < 12; VAR__53647++ )
+      {
+         VAR__SUM += VAR__819283[VAR__53647];
+      }
+
+      VAR__SUM -= startday;
+      for ( VAR__53647 = 0; VAR__53647 < ( endmonth - 1 ); VAR__53647++ )
+      {
+         VAR__SUM += VAR__819283[VAR__53647];
+      }
+
+      VAR__SUM += endday;
+   }
+   else
+   if (( endyear - startyear ) == 1 )
+   {
+      for ( VAR__53647 = startmonth; VAR__53647 < 12; VAR__53647++ )
+      {
+         VAR__SUM += VAR__819283[VAR__53647];
+      }
+
+      VAR__SUM -= startday;
+      for ( VAR__53647 = 0; VAR__53647 < endmonth; VAR__53647++ )
+      {
+         VAR__SUM += VAR__819283[VAR__53647];
+      }
+
+      VAR__SUM += endday;
+   }
+   else
+   {
+      for ( VAR__53647 = startmonth; VAR__53647 < ( endmonth - 1 ); VAR__53647++ )
+      {
+         VAR__SUM += VAR__819283[VAR__53647];
+      }
+
+      if ( startmonth != endmonth )
+      {
+         VAR__SUM = (( VAR__SUM + VAR__819283[startmonth - 1] ) - startday ) + endday;
+      }
+      else
+      {
+         VAR__SUM = ( VAR__SUM + endday ) - startday;
+      }
+   }
+
+
+   if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+   {
+      if (( startmonth == 1 ) || (( startmonth == 2 ) && ( startday != 29 )))
+      {
+         VAR__SUM++;
+      }
+   }
+
+
+   if (((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 ))
+   {
+      if ( endmonth > 2 )
+      {
+         VAR__SUM++;
+      }
+   }
+
+
+   cout << VAR__SUM;
+   return 0;
+}

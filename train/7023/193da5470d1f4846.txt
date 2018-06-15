@@ -1,0 +1,54 @@
+int main()
+{
+   char c1[MAX];
+   char c2[MAX];
+   int  VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin.get();
+      cin.getline(c1, MAX - 1);
+      cin.getline(c2, MAX - 1);
+      int len1;
+      int len2;
+      len1 = strlen(c1);
+      len2 = strlen(c2);
+      int ANOTHER_POINTER;
+      int YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = len2 - 1;
+      ANOTHER_POINTER     = len1 - 1;
+
+      while ( YET_ANOTHER_POINTER >= 0 )
+      {
+         c1[ANOTHER_POINTER] -= c2[YET_ANOTHER_POINTER] - '0';
+
+         if ( c1[ANOTHER_POINTER] < '0' )
+         {
+            for ( int VAR__53647 = ANOTHER_POINTER - 1; VAR__53647 >= 0; VAR__53647-- )
+            {
+               c1[VAR__53647 + 1] += 10;
+               c1[VAR__53647]     -= 1;
+
+               if ( c1[VAR__53647] >= '0' )
+               {
+                  break;
+               }
+            }
+         }
+
+         YET_ANOTHER_POINTER--;
+         ANOTHER_POINTER--;
+      }
+
+      for ( ANOTHER_POINTER = 0; ANOTHER_POINTER < len1; ANOTHER_POINTER++ )
+      {
+         if ( c1[ANOTHER_POINTER] != '0' )
+         {
+            break;
+         }
+      }
+
+      ( cout << ( c1 + ANOTHER_POINTER )) << endl;
+   }
+}

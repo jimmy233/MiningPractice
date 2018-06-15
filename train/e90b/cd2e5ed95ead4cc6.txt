@@ -1,0 +1,90 @@
+struct student
+{
+   int            VAR__NUM;
+   int            ch;
+   int            ma;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+int N;
+int VAR_1238123;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->ma);
+   ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->ch + ANOTHER_POINTER->ma;
+   VAR__HEAD = null;
+
+   while ( VAR_1238123 < ( N - 1 ))
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->ma);
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->ch + ANOTHER_POINTER->ma;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = null;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   scanf("%d", &N);
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   VAR__HEAD           = creat();
+   ANOTHER_POINTER     = VAR__HEAD->VAR__NEXT;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   void sort(struct student *p3, struct student *p4);
+
+   sort(VAR__HEAD, ANOTHER_POINTER);
+   sort(ANOTHER_POINTER, YET_ANOTHER_POINTER);
+   sort(YET_ANOTHER_POINTER, YET_ANOTHER_POINTER->VAR__NEXT);
+   YET_ANOTHER_POINTER->VAR__NEXT = null;
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != null )
+   {
+      printf("%d %d\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR__SUM);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}
+
+
+void sort(struct student *p3, struct student *p4)
+{
+   int VAR__8444594;
+
+   while ( p4 != null )
+   {
+      if ( p3->VAR__SUM < p4->VAR__SUM )
+      {
+         VAR__8444594 = p3->VAR__NUM;
+         p3->VAR__NUM = p4->VAR__NUM;
+         p4->VAR__NUM = VAR__8444594;
+         VAR__8444594 = p3->VAR__SUM;
+         p3->VAR__SUM = p4->VAR__SUM;
+         p4->VAR__SUM = VAR__8444594;
+      }
+
+      p4 = p4->VAR__NEXT;
+   }
+}

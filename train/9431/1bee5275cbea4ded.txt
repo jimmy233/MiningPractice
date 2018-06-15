@@ -1,0 +1,52 @@
+struct student
+{
+   char           VAR__NUM[20];
+   char           name[20];
+   char           sex;
+   int            age;
+   char           score[50];
+   char           add[20];
+   struct student *before;
+};
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER         = (struct student *)malloc(LEN_OF_STH);
+   ANOTHER_POINTER->before = NULL;
+   YET_ANOTHER_POINTER     = ANOTHER_POINTER;
+   do
+   {
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( ANOTHER_POINTER->VAR__NUM[0] == 'e' )
+      {
+         VAR__HEAD = YET_ANOTHER_POINTER;
+         free(ANOTHER_POINTER);
+         return VAR__HEAD;
+      }
+      else
+      {
+         scanf("%s %c %d %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->score);
+         scanf("%s", ANOTHER_POINTER->add);
+         YET_ANOTHER_POINTER     = ANOTHER_POINTER;
+         ANOTHER_POINTER         = (struct student *)malloc(LEN_OF_STH);
+         ANOTHER_POINTER->before = YET_ANOTHER_POINTER;
+      }
+   } while ( 1 );
+}
+
+
+void main()
+{
+   struct student *head1   = creat();
+   struct student *VAR_666 = head1;
+
+   while ( VAR_666 != NULL )
+   {
+      printf("%s %s %c %d %s %s\n", VAR_666->VAR__NUM, VAR_666->name, VAR_666->sex, VAR_666->age, VAR_666->score, VAR_666->add);
+      VAR_666 = VAR_666->before;
+   }
+}

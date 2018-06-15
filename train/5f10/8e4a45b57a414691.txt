@@ -1,0 +1,76 @@
+void main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int  length;
+   char A_STRING[500];
+   scanf("%s", A_STRING);
+   char son[500][5];
+   length = strlen(A_STRING);
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < (( length - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         son[VAR__53647][VAR__21230] = A_STRING[VAR__53647 + VAR__21230];
+      }
+
+      son[VAR__53647][VAR_1238123] = '\0';
+   }
+
+   int numson      = ( length - VAR_1238123 ) + 1;
+   int number[500] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < numson; VAR__53647++ )
+   {
+      if ( !strcmp(son[0], son[VAR__53647]))
+      {
+         number[0]++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < numson; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( !strcmp(son[VAR__53647], son[VAR__21230]))
+         {
+            continue;
+         }
+      }
+
+      for ( VAR__21230 = VAR__53647; VAR__21230 < numson; VAR__21230++ )
+      {
+         if ( !strcmp(son[VAR__53647], son[VAR__21230]))
+         {
+            number[VAR__53647]++;
+         }
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < numson; VAR__53647++ )
+   {
+      if ( number[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = number[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < numson; VAR__53647++ )
+      {
+         if ( number[VAR__53647] == VAR__MAX )
+         {
+            printf("%s\n", son[VAR__53647]);
+         }
+      }
+   }
+}

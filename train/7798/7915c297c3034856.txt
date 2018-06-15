@@ -1,0 +1,141 @@
+struct book
+{
+   int         id;
+   char        author[27];
+   struct book *VAR__NEXT;
+};
+struct book *creat()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct book *ANOTHER_POINTER;
+   struct book *VAR__HEAD;
+   struct book *p0;
+   VAR__HEAD       = NULL;
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      p0 = (struct book *)malloc(sizeof( struct book ));
+      scanf("%d %s", &p0->id, p0->author);
+
+      if ( VAR__HEAD == NULL )
+      {
+         ANOTHER_POINTER = p0;
+         VAR__HEAD       = ANOTHER_POINTER;
+         p0->VAR__NEXT   = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = p0;
+         p0->VAR__NEXT   = NULL;
+         ANOTHER_POINTER = p0;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+char best(struct book *VAR__HEAD)
+{
+   int         VAR__53647;
+   int         VAR__MAX;
+   int         VAR__819283[26];
+   struct book *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < 26; ++VAR__53647 )
+   {
+      VAR__819283[VAR__53647] = 0;
+   }
+
+   while ( VAR_233 != NULL )
+   {
+      VAR__53647 = 0;
+
+      while ( VAR_233->author[VAR__53647] != '\0' )
+      {
+         VAR__819283[VAR_233->author[VAR__53647] - 'A']++;
+         VAR__53647++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__MAX = VAR__53647;
+      }
+      else
+      if ( VAR__819283[VAR__53647] > VAR__819283[VAR__MAX] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+   return 'A' + VAR__MAX;
+}
+
+
+void print(char VAR__7685, struct book *VAR__HEAD)
+{
+   int         VAR__53647;
+   int         VAR__8444594 = 0;
+   char        VAR__819283  = VAR__7685;
+   struct book *VAR_233     = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      VAR__53647 = 0;
+
+      while ( VAR_233->author[VAR__53647] != '\0' )
+      {
+         if ( VAR_233->author[VAR__53647] == VAR__819283 )
+         {
+            VAR__8444594++;
+            break;
+         }
+
+         VAR__53647++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%c\n%d\n", VAR__819283, VAR__8444594);
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      VAR__53647 = 0;
+
+      while ( VAR_233->author[VAR__53647] != '\0' )
+      {
+         if ( VAR_233->author[VAR__53647] == VAR__819283 )
+         {
+            printf("%d\n", VAR_233->id);
+            break;
+         }
+
+         VAR__53647++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+int main(int argc, char *argv[])
+{
+   char        writer;
+   struct book *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   writer    = best(VAR__HEAD);
+   print(writer, VAR__HEAD);
+   return 0;
+}

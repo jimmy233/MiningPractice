@@ -1,0 +1,60 @@
+void lashou(char [], int, int);
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR__SUM;
+   char nn[101];
+
+   cin.getline(nn, 101);
+   for ( VAR__53647 = 1; nn[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if ( nn[VAR__53647] == nn[0] )
+      {
+         continue;
+      }
+      else
+      {
+         VAR__SUM = nn[0] + nn[VAR__53647];
+      }
+   }
+
+   VAR__53647--;
+   lashou(nn, VAR__53647, VAR__SUM);
+   return 0;
+}
+
+
+void lashou(char shou[], int VAR_1238123, int VAR__SUM)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int zhi;
+
+   for ( VAR__53647 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if (( shou[VAR__53647] + shou[VAR__21230] ) == VAR__SUM )
+         {
+            zhi = 0;
+            for ( VAR__8444594 = VAR__53647 + 1; VAR__8444594 <= ( VAR__21230 - 1 ); VAR__8444594++ )
+            {
+               if ( shou[VAR__8444594] != 0 )
+               {
+                  zhi = 1;
+               }
+            }
+
+            if ( zhi == 0 )
+            {
+               ((( cout << VAR__53647 ) << " " ) << VAR__21230 ) << endl;
+               shou[VAR__53647] = ( shou[VAR__21230] = 0 );
+               lashou(shou, VAR_1238123, VAR__SUM);
+               break;
+            }
+         }
+      }
+   }
+}

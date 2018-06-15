@@ -1,0 +1,205 @@
+int DATE0(int M0)
+{
+   int DATE0;
+
+   switch ( M0 )
+   {
+   case 1:
+      DATE0 = 1;
+      break;
+
+   case 2:
+      DATE0 = 32;
+      break;
+
+   case 3:
+      DATE0 = 61;
+      break;
+
+   case 4:
+      DATE0 = 92;
+      break;
+
+   case 5:
+      DATE0 = 122;
+      break;
+
+   case 6:
+      DATE0 = 153;
+      break;
+
+   case 7:
+      DATE0 = 183;
+      break;
+
+   case 8:
+      DATE0 = 214;
+      break;
+
+   case 9:
+      DATE0 = 245;
+      break;
+
+   case 10:
+      DATE0 = 275;
+      break;
+
+   case 11:
+      DATE0 = 306;
+      break;
+
+   case 12:
+      DATE0 = 336;
+      break;
+   }
+
+   return DATE0;
+}
+
+
+int DATE1(int M1)
+{
+   int DATE1;
+
+   switch ( M1 )
+   {
+   case 1:
+      DATE1 = 1;
+      break;
+
+   case 2:
+      DATE1 = 32;
+      break;
+
+   case 3:
+      DATE1 = 60;
+      break;
+
+   case 4:
+      DATE1 = 91;
+      break;
+
+   case 5:
+      DATE1 = 121;
+      break;
+
+   case 6:
+      DATE1 = 152;
+      break;
+
+   case 7:
+      DATE1 = 182;
+      break;
+
+   case 8:
+      DATE1 = 213;
+      break;
+
+   case 9:
+      DATE1 = 244;
+      break;
+
+   case 10:
+      DATE1 = 274;
+      break;
+
+   case 11:
+      DATE1 = 305;
+      break;
+
+   case 12:
+      DATE1 = 335;
+      break;
+   }
+
+   return DATE1;
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR_1238123;
+   int YEAR[210];
+   int MONTH1[210];
+   int MONTH2[210];
+   int P[210];
+   int Q[210];
+   int A[210];
+   int B[210];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &YEAR[VAR__53647], &MONTH1[VAR__53647], &MONTH2[VAR__53647]);
+
+      if (( YEAR[VAR__53647] % 4 ) != 0 )
+      {
+         P[VAR__53647] = 1;
+      }
+      else
+      if ((( YEAR[VAR__53647] % 4 ) == 0 ) && (( YEAR[VAR__53647] % 100 ) != 0 ))
+      {
+         P[VAR__53647] = 0;
+      }
+      else
+      if ((( YEAR[VAR__53647] % 100 ) == 0 ) && (( YEAR[VAR__53647] % 400 ) != 0 ))
+      {
+         P[VAR__53647] = 1;
+      }
+      else
+      {
+         P[VAR__53647] = 0;
+      }
+
+
+
+      if ( P[VAR__53647] == 0 )
+      {
+         A[VAR__53647] = DATE0(MONTH1[VAR__53647]);
+         B[VAR__53647] = DATE0(MONTH2[VAR__53647]);
+
+         if ((( A[VAR__53647] - B[VAR__53647] ) % 7 ) == 0 )
+         {
+            Q[VAR__53647] = 1;
+         }
+         else
+         {
+            Q[VAR__53647] = 0;
+         }
+      }
+      else
+      {
+         A[VAR__53647] = DATE1(MONTH1[VAR__53647]);
+         B[VAR__53647] = DATE1(MONTH2[VAR__53647]);
+
+         if ((( A[VAR__53647] - B[VAR__53647] ) % 7 ) == 0 )
+         {
+            Q[VAR__53647] = 1;
+         }
+         else
+         {
+            Q[VAR__53647] = 0;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 != 0 )
+      {
+         printf("\n");
+      }
+
+      if ( Q[VAR__53647] == 1 )
+      {
+         printf("YES");
+      }
+      else
+      {
+         printf("NO");
+      }
+   }
+
+   return 0;
+}

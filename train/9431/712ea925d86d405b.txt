@@ -1,0 +1,51 @@
+struct node
+{
+   char        VAR__NUM[20];
+   char        name[20];
+   char        gender;
+   int         age;
+   char        score[10];
+   char        addr[20];
+   struct node *VAR__NEXT;
+   struct node *back;
+};
+void main()
+{
+   char        scan[100];
+   char        constant[] = "end";
+   struct node beginning;
+   struct node *VAR__HEAD;
+   struct node *VAR_233;
+   struct node *ending;
+   struct node *VAR__temp;
+   int         VAR__COUNT = 1;
+   int         VAR__53647;
+
+   VAR__HEAD           = &beginning;
+   beginning.VAR__NEXT = NULL;
+   beginning.back      = NULL;
+   VAR_233             = VAR__HEAD;
+   ending = VAR_233;
+   scanf("%s %s %c %d %s %s", beginning.VAR__NUM, beginning.name, &beginning.gender, &beginning.age, beginning.score, beginning.addr);
+   scanf("%s", scan);
+
+   while ( strcmp(scan, constant) != 0 )
+   {
+      VAR_233->VAR__NEXT = (struct node *)malloc(sizeof( struct node ));
+      VAR__temp          = VAR_233;
+      VAR_233            = VAR_233->VAR__NEXT;
+      strcpy(VAR_233->VAR__NUM, scan);
+      scanf("%s %c %d %s %s", VAR_233->name, &VAR_233->gender, &VAR_233->age, VAR_233->score, VAR_233->addr);
+      VAR_233->back = VAR__temp;
+      ending        = VAR_233;
+      scanf("%s", scan);
+      VAR__COUNT++;
+   }
+
+   VAR_233 = ending;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->gender, VAR_233->age, VAR_233->score, VAR_233->addr);
+      VAR_233 = VAR_233->back;
+   }
+}

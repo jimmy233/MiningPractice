@@ -1,0 +1,71 @@
+struct stu
+{
+   char name[24];
+   int  score;
+   int  ass;
+   char pos;
+   char west;
+   int  paper;
+   int  fel;
+};
+int VAR__127322(struct stu *VAR_666)
+{
+   int VAR__9290 = 0;
+
+   if (( VAR_666->score > 80 ) && ( VAR_666->paper > 0 ))
+   {
+      VAR__9290 = VAR__9290 + 8000;
+   }
+
+   if (( VAR_666->score > 85 ) && ( VAR_666->ass > 80 ))
+   {
+      VAR__9290 = VAR__9290 + 4000;
+   }
+
+   if ( VAR_666->score > 90 )
+   {
+      VAR__9290 = VAR__9290 + 2000;
+   }
+
+   if (( VAR_666->score > 85 ) && ( VAR_666->west == 'Y' ))
+   {
+      VAR__9290 = VAR__9290 + 1000;
+   }
+
+   if (( VAR_666->ass > 80 ) && ( VAR_666->pos == 'Y' ))
+   {
+      VAR__9290 = VAR__9290 + 850;
+   }
+
+   return VAR__9290;
+}
+
+
+void main()
+{
+   struct stu *VAR_233;
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        VAR__1238129 = 0;
+   int        VAR__temp    = 0;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = (struct stu *)malloc(VAR_1238123 * ( sizeof( struct stu )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", ( VAR_233 + VAR__53647 )->name, &( VAR_233 + VAR__53647 )->score, &( VAR_233 + VAR__53647 )->ass, &( VAR_233 + VAR__53647 )->pos, &( VAR_233 + VAR__53647 )->west, &( VAR_233 + VAR__53647 )->paper);
+      ( VAR_233 + VAR__53647 )->fel = VAR__127322(VAR_233 + VAR__53647);
+      VAR__temp = VAR__temp + ( VAR_233 + VAR__53647 )->fel;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR_233 + VAR__53647 )->fel > ( VAR_233 + VAR__1238129 )->fel )
+      {
+         VAR__1238129 = VAR__53647;
+      }
+   }
+
+
+   printf("%s\n%d\n%d", ( VAR_233 + VAR__1238129 )->name, ( VAR_233 + VAR__1238129 )->fel, VAR__temp);
+}

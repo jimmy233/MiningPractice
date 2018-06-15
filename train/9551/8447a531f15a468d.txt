@@ -1,0 +1,64 @@
+struct patient
+{
+   char id[11];
+   int  age;
+};
+void main()
+{
+   int VAR_1238123;
+
+   scanf("%d\n", &VAR_1238123);
+   struct patient *VAR_233;
+   VAR_233 = (struct patient *)malloc(LEN_OF_STH);
+   struct patient *VAR__819283[VAR_1238123];
+   struct patient *VAR__19328[VAR_1238123];
+   int            anum = 0;
+   int            bnum = 0;
+   int            VAR__53647;
+   int            VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", VAR_233->id, &VAR_233->age);
+
+      if ( VAR_233->age >= 60 )
+      {
+         VAR__819283[anum] = (struct patient *)malloc(LEN_OF_STH);
+         strcpy(VAR__819283[anum]->id, VAR_233->id);
+         VAR__819283[anum]->age = VAR_233->age;
+         anum++;
+      }
+      else
+      {
+         VAR__19328[bnum] = (struct patient *)malloc(LEN_OF_STH);
+         strcpy(VAR__19328[bnum]->id, VAR_233->id);
+         VAR__19328[bnum]->age = VAR_233->age;
+         bnum++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( anum - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( anum - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230]->age < VAR__819283[VAR__21230 + 1]->age )
+         {
+            VAR_233->age = VAR__819283[VAR__21230]->age;
+            VAR__819283[VAR__21230]->age     = VAR__819283[VAR__21230 + 1]->age;
+            VAR__819283[VAR__21230 + 1]->age = VAR_233->age;
+            strcpy(VAR_233->id, VAR__819283[VAR__21230]->id);
+            strcpy(VAR__819283[VAR__21230]->id, VAR__819283[VAR__21230 + 1]->id);
+            strcpy(VAR__819283[VAR__21230 + 1]->id, VAR_233->id);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < anum; VAR__53647++ )
+   {
+      printf("%s\n", VAR__819283[VAR__53647]->id);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < bnum; VAR__53647++ )
+   {
+      printf("%s\n", VAR__19328[VAR__53647]->id);
+   }
+}

@@ -1,0 +1,87 @@
+int GuiLing(int VAR__819283[][101], int VAR_1238123, int VAR__SUM)
+{
+   int VAR__MIN;
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN = VAR__819283[VAR__53647][0];
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__MIN = ( VAR__MIN < VAR__819283[VAR__53647][VAR__21230] ) ? ( VAR__MIN ) : ( VAR__819283[VAR__53647][VAR__21230] );
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] -= VAR__MIN;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      VAR__MIN = VAR__819283[0][VAR__21230];
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__MIN = ( VAR__MIN < VAR__819283[VAR__53647][VAR__21230] ) ? ( VAR__MIN ) : ( VAR__819283[VAR__53647][VAR__21230] );
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] -= VAR__MIN;
+      }
+   }
+
+   if ( VAR_1238123 > 2 )
+   {
+      VAR__SUM = VAR__SUM + VAR__819283[1][1];
+      for ( VAR__53647 = 2; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__819283[VAR__53647 - 1][VAR__21230] = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      for ( VAR__21230 = 2; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            VAR__819283[VAR__53647][VAR__21230 - 1] = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      return GuiLing(VAR__819283, VAR_1238123 - 1, VAR__SUM);
+   }
+   else
+   {
+      return VAR__SUM + VAR__819283[1][1];
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__819283[101][101];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            cin >> VAR__819283[VAR__21230][VAR__8444594];
+         }
+      }
+
+
+      ( cout << GuiLing(VAR__819283, VAR_1238123, 0)) << endl;
+   }
+
+   return 0;
+}

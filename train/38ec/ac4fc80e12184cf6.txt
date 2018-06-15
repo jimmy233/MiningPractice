@@ -1,0 +1,64 @@
+int main()
+{
+   int year[3001] = { 0 };
+   int deta       = 0;
+   int year1;
+   int year2;
+   int mon1;
+   int mon2;
+   int day1;
+   int day2;
+   int VAR__53647;
+   int mon[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   for ( VAR__53647 = 1; VAR__53647 <= 3001; VAR__53647++ )
+   {
+      year[VAR__53647] = 365;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 3001; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         year[VAR__53647] = 366;
+      }
+   }
+
+   (( cin >> year1 ) >> mon1 ) >> day1;
+   (( cin >> year2 ) >> mon2 ) >> day2;
+
+   if (( year2 % 4 ) == 0 )
+   {
+      deta = 1;
+   }
+
+   if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+   {
+      mon[2] = 28;
+   }
+
+   for ( VAR__53647 = year1; VAR__53647 < year2; VAR__53647++ )
+   {
+      deta += year[VAR__53647];
+   }
+
+   if ( mon1 > mon2 )
+   {
+      for ( VAR__53647 = mon2; VAR__53647 < mon1; VAR__53647++ )
+      {
+         deta -= mon[VAR__53647];
+      }
+   }
+
+   if ( mon2 > mon1 )
+   {
+      for ( VAR__53647 = mon1; VAR__53647 < mon2; VAR__53647++ )
+      {
+         deta += mon[VAR__53647];
+      }
+   }
+
+   deta = ( deta + day2 ) - day1;
+   ( cout << deta ) << endl;
+   return 0;
+}

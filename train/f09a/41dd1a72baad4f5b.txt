@@ -1,0 +1,126 @@
+void read(int *pm, int *pn, int *ANOTHER_POINTER, int *YET_ANOTHER_POINTER)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d %d", pm, pn);
+   for ( VAR__53647 = 0; VAR__53647 < ( *pm ); VAR__53647++ )
+   {
+      scanf("%d", ANOTHER_POINTER + VAR__53647);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( *pn ); VAR__21230++ )
+   {
+      scanf("%d", YET_ANOTHER_POINTER + VAR__21230);
+   }
+}
+
+
+void sort(int *pm, int *pn, int *ANOTHER_POINTER, int *YET_ANOTHER_POINTER)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int tmp;
+
+   for ( VAR__53647 = 0; VAR__53647 < (( *pm ) - 1 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < ( *pm ); VAR__21230++ )
+      {
+         if (( *( ANOTHER_POINTER + VAR__21230 )) < ( *( ANOTHER_POINTER + VAR__8444594 )))
+         {
+            VAR__8444594 = VAR__21230;
+         }
+      }
+
+
+      if ( VAR__8444594 != VAR__53647 )
+      {
+         tmp = *( ANOTHER_POINTER + VAR__8444594 );
+         *( ANOTHER_POINTER + VAR__8444594 ) = *( ANOTHER_POINTER + VAR__53647 );
+         *( ANOTHER_POINTER + VAR__53647 )   = tmp;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( *pn ) - 1 ); VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < ( *pn ); VAR__21230++ )
+      {
+         if (( *( YET_ANOTHER_POINTER + VAR__21230 )) < ( *( YET_ANOTHER_POINTER + VAR__8444594 )))
+         {
+            VAR__8444594 = VAR__21230;
+         }
+      }
+
+
+      if ( VAR__8444594 != VAR__53647 )
+      {
+         tmp = *( YET_ANOTHER_POINTER + VAR__8444594 );
+         *( YET_ANOTHER_POINTER + VAR__8444594 ) = *( YET_ANOTHER_POINTER + VAR__53647 );
+         *( YET_ANOTHER_POINTER + VAR__53647 )   = tmp;
+      }
+   }
+}
+
+
+int combine(int *pm, int *pn, int *ANOTHER_POINTER, int *YET_ANOTHER_POINTER, int *pnew)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( *pm ); VAR__53647++ )
+   {
+      *( pnew + VAR__53647 ) = *( ANOTHER_POINTER + VAR__53647 );
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( *pn ); VAR__21230++ )
+   {
+      *(( pnew + VAR__53647 ) + VAR__21230 ) = *( YET_ANOTHER_POINTER + VAR__21230 );
+   }
+
+   return VAR__53647 + VAR__21230;
+}
+
+
+void print(int *pk, int *pnew)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( *pk ); VAR__53647++ )
+   {
+      printf("%d", *( pnew + VAR__53647 ));
+
+      if ( VAR__53647 == (( *pk ) - 1 ))
+      {
+         printf("\n");
+      }
+      else
+      {
+         printf(" ");
+      }
+   }
+}
+
+
+void main()
+{
+   int VAR__1238129    = 0;
+   int VAR_1238123     = 0;
+   int VAR__8444594    = 0;
+   int VAR__819283[10] = { 0 };
+   int VAR__19328[10]  = { 0 };
+   int *pm             = &VAR__1238129;
+   int *pn             = &VAR_1238123;
+   int *pa             = VAR__819283;
+   int *pb             = VAR__19328;
+   int New[20]         = { 0 };
+   int *pk             = &VAR__8444594;
+   int *pnew           = New;
+
+   read(pm, pn, pa, pb);
+   sort(pm, pn, pa, pb);
+   *pk = combine(pm, pn, pa, pb, pnew);
+   print(pk, pnew);
+}

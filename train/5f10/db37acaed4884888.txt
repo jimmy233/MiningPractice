@@ -1,0 +1,80 @@
+struct T
+{
+   char VAR_9494[10];
+   char VAR_1238123;
+}
+    VAR_9494[300] = { 0 };
+int VAR__1238129  = 0;
+int VAR__MAX      = 1;
+void search(char VAR__temp[])
+{
+   int VAR__53647;
+   int VAR__19328;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR__19328 = strcmp(VAR__temp, VAR_9494[VAR__53647].VAR_9494);
+
+      if ( VAR__19328 == 0 )
+      {
+         VAR_9494[VAR__53647].VAR_1238123++;
+
+         if ( VAR_9494[VAR__53647].VAR_1238123 > VAR__MAX )
+         {
+            VAR__MAX = VAR_9494[VAR__53647].VAR_1238123;
+         }
+
+         return;
+      }
+   }
+
+   VAR__1238129++;
+   strcpy(VAR_9494[VAR__53647].VAR_9494, VAR__temp);
+   VAR_9494[VAR__53647].VAR_1238123 = 1;
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  VAR__1111;
+   char S[600];
+   char VAR__temp[10];
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", S);
+   VAR__1111 = strlen(S);
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR__1111 - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__temp[VAR__21230] = S[VAR__53647 + VAR__21230];
+      }
+
+      VAR__temp[VAR_1238123] = '\0';
+      search(VAR__temp);
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO\n");
+      return 0;
+   }
+
+   printf("%d\n", VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647].VAR_1238123 == VAR__MAX )
+      {
+         printf("%s\n", VAR_9494[VAR__53647].VAR_9494);
+      }
+   }
+
+
+   getchar();
+   getchar();
+   return 0;
+}

@@ -1,0 +1,100 @@
+struct d
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+};
+struct p
+{
+   struct d s1;
+   struct d s2;
+   float    res;
+};
+float VAR__127322(struct d s1, struct d s2)
+{
+   double VAR__SUM = 0;
+
+   VAR__SUM = ((( s1.VAR__7685 - s2.VAR__7685 ) * ( s1.VAR__7685 - s2.VAR__7685 )) + (( s1.VAR__3918907 - s2.VAR__3918907 ) * ( s1.VAR__3918907 - s2.VAR__3918907 ))) + (( s1.VAR__9290 - s2.VAR__9290 ) * ( s1.VAR__9290 - s2.VAR__9290 ));
+   return sqrt(VAR__SUM);
+}
+
+
+void change(struct p pri[300], int VAR_1238123)
+{
+   int      VAR__53647;
+   int      VAR__21230;
+   struct p VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( pri[VAR__21230].res < pri[VAR__21230 + 1].res )
+         {
+            VAR__TEMP.s1.VAR__7685              = pri[VAR__21230].s1.VAR__7685;
+            VAR__TEMP.s1.VAR__3918907           = pri[VAR__21230].s1.VAR__3918907;
+            VAR__TEMP.s1.VAR__9290              = pri[VAR__21230].s1.VAR__9290;
+            VAR__TEMP.s2.VAR__7685              = pri[VAR__21230].s2.VAR__7685;
+            VAR__TEMP.s2.VAR__3918907           = pri[VAR__21230].s2.VAR__3918907;
+            VAR__TEMP.s2.VAR__9290              = pri[VAR__21230].s2.VAR__9290;
+            VAR__TEMP.res                       = pri[VAR__21230].res;
+            pri[VAR__21230].s1.VAR__7685        = pri[VAR__21230 + 1].s1.VAR__7685;
+            pri[VAR__21230].s1.VAR__3918907     = pri[VAR__21230 + 1].s1.VAR__3918907;
+            pri[VAR__21230].s1.VAR__9290        = pri[VAR__21230 + 1].s1.VAR__9290;
+            pri[VAR__21230].s2.VAR__7685        = pri[VAR__21230 + 1].s2.VAR__7685;
+            pri[VAR__21230].s2.VAR__3918907     = pri[VAR__21230 + 1].s2.VAR__3918907;
+            pri[VAR__21230].s2.VAR__9290        = pri[VAR__21230 + 1].s2.VAR__9290;
+            pri[VAR__21230].res                 = pri[VAR__21230 + 1].res;
+            pri[VAR__21230 + 1].s1.VAR__7685    = VAR__TEMP.s1.VAR__7685;
+            pri[VAR__21230 + 1].s1.VAR__3918907 = VAR__TEMP.s1.VAR__3918907;
+            pri[VAR__21230 + 1].s1.VAR__9290    = VAR__TEMP.s1.VAR__9290;
+            pri[VAR__21230 + 1].s2.VAR__7685    = VAR__TEMP.s2.VAR__7685;
+            pri[VAR__21230 + 1].s2.VAR__3918907 = VAR__TEMP.s2.VAR__3918907;
+            pri[VAR__21230 + 1].s2.VAR__9290    = VAR__TEMP.s2.VAR__9290;
+            pri[VAR__21230 + 1].res             = VAR__TEMP.res;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int      VAR_1238123;
+   int      VAR__53647;
+   int      VAR__21230;
+   int      VAR__8444594 = 0;
+   int      VAR_2890     = 0;
+   float    res[100];
+   struct d VAR_9494[100];
+   struct p pri[300];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR_9494[VAR__53647].VAR__7685, &VAR_9494[VAR__53647].VAR__3918907, &VAR_9494[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         res[VAR__8444594]             = VAR__127322(VAR_9494[VAR__53647], VAR_9494[VAR__21230]);
+         pri[VAR_2890].s1.VAR__7685    = VAR_9494[VAR__53647].VAR__7685;
+         pri[VAR_2890].s1.VAR__3918907 = VAR_9494[VAR__53647].VAR__3918907;
+         pri[VAR_2890].s1.VAR__9290    = VAR_9494[VAR__53647].VAR__9290;
+         pri[VAR_2890].s2.VAR__7685    = VAR_9494[VAR__21230].VAR__7685;
+         pri[VAR_2890].s2.VAR__3918907 = VAR_9494[VAR__21230].VAR__3918907;
+         pri[VAR_2890].s2.VAR__9290    = VAR_9494[VAR__21230].VAR__9290;
+         pri[VAR_2890].res             = res[VAR__8444594];
+         VAR_2890++;
+         VAR__8444594++;
+      }
+   }
+
+   change(pri, VAR_2890);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_2890; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", pri[VAR__53647].s1.VAR__7685, pri[VAR__53647].s1.VAR__3918907, pri[VAR__53647].s1.VAR__9290, pri[VAR__53647].s2.VAR__7685, pri[VAR__53647].s2.VAR__3918907, pri[VAR__53647].s2.VAR__9290, pri[VAR__53647].res);
+   }
+}

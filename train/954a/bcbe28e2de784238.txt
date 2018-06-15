@@ -1,0 +1,75 @@
+struct list
+{
+   char name[20];
+   int  g1;
+   int  g2;
+   char gb;
+   char xb;
+   int  lw;
+   int  total;
+};
+void main()
+{
+   struct list stu[100];
+
+   int all(struct list stu);
+
+   int VAR__53647;
+   int VAR__8444594;
+   int VAR_1238123;
+   int VAR__SUM = 0;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].g1, &stu[VAR__53647].g2, &stu[VAR__53647].gb, &stu[VAR__53647].xb, &stu[VAR__53647].lw);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].total = all(stu[VAR__53647]);
+      VAR__SUM = VAR__SUM + stu[VAR__53647].total;
+   }
+
+   for ( VAR__8444594 = VAR_1238123 - 1, VAR__53647 = VAR_1238123 - 2; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( stu[VAR__8444594].total <= stu[VAR__53647].total )
+      {
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", stu[VAR__8444594].name, stu[VAR__8444594].total, VAR__SUM);
+}
+
+
+int all(struct list stu)
+{
+   stu.total = 0;
+
+   if (( stu.g1 > 80 ) && ( stu.lw >= 1 ))
+   {
+      stu.total += 8000;
+   }
+
+   if (( stu.g1 > 85 ) && ( stu.g2 > 80 ))
+   {
+      stu.total += 4000;
+   }
+
+   if ( stu.g1 > 90 )
+   {
+      stu.total += 2000;
+   }
+
+   if (( stu.g1 > 85 ) && ( stu.xb == 'Y' ))
+   {
+      stu.total += 1000;
+   }
+
+   if (( stu.g2 > 80 ) && ( stu.gb == 'Y' ))
+   {
+      stu.total += 850;
+   }
+
+   return stu.total;
+}

@@ -1,0 +1,97 @@
+void sort(int *VAR__819283, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__21230 = 1; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if (( *( VAR__819283 + VAR__53647 )) < ( *(( VAR__819283 + VAR__53647 ) + 1 )))
+         {
+            VAR__TEMP = *(( VAR__819283 + VAR__53647 ) + 1 );
+            *(( VAR__819283 + VAR__53647 ) + 1 ) = *( VAR__819283 + VAR__53647 );
+            *( VAR__819283 + VAR__53647 )        = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int win  = 0;
+   int lose = 0;
+   int btj;
+   int bqw;
+   int etj;
+   int eqw;
+   int *tj;
+   int *qw;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         tj = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         qw = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", tj + VAR__53647);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            scanf("%d", qw + VAR__53647);
+         }
+
+         sort(tj, VAR_1238123);
+         sort(qw, VAR_1238123);
+         btj = ( bqw = 0 );
+         etj = ( eqw = VAR_1238123 - 1 );
+
+         while ( btj <= etj )
+         {
+            if (( *( tj + btj )) > ( *( qw + bqw )))
+            {
+               win = win + 1;
+               btj++;
+               bqw++;
+               continue;
+            }
+
+            if (( *( tj + etj )) > ( *( qw + eqw )))
+            {
+               win = win + 1;
+               etj--;
+               eqw--;
+               continue;
+            }
+
+            if (( *( tj + btj )) <= ( *( qw + bqw )))
+            {
+               if (( *( tj + etj )) < ( *( qw + bqw )))
+               {
+                  lose = lose + 1;
+               }
+
+               bqw++;
+               etj--;
+               continue;
+            }
+         }
+
+         printf("%d\n", ( win * 200 ) - ( lose * 200 ));
+         win = ( lose = 0 );
+      }
+   }
+}

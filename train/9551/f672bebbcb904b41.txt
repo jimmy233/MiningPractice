@@ -1,0 +1,90 @@
+struct Node;
+typedef struct Node *pNode;
+struct Node
+{
+   int   VAR__7685;
+   char  id[20];
+   pNode VAR__NEXT;
+};
+pNode create()
+{
+   pNode VAR_233;
+
+   VAR_233            = (pNode)malloc(sizeof( struct Node ));
+   VAR_233->VAR__NEXT = NULL;
+   return VAR_233;
+}
+
+
+void sort(pNode VAR__HEAD, int VAR_1238123)
+{
+   pNode VAR_233  = NULL;
+   pNode VAR_666  = NULL;
+   pNode VAR_9494 = NULL;
+   int   VAR__53647;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      VAR_9494            = (pNode)malloc(sizeof( struct Node ));
+      VAR_9494->VAR__NEXT = NULL;
+      scanf("%s %d", &VAR_9494->id, &VAR_9494->VAR__7685);
+
+      if ( VAR_9494->VAR__7685 < 60 )
+      {
+         VAR_233 = VAR__HEAD;
+
+         while ( VAR_233->VAR__NEXT )
+         {
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         VAR_233->VAR__NEXT = VAR_9494;
+      }
+      else
+      {
+         VAR_666 = VAR__HEAD;
+         VAR_233 = VAR__HEAD->VAR__NEXT;
+
+         while ( VAR_233 )
+         {
+            if ( VAR_233->VAR__7685 < VAR_9494->VAR__7685 )
+            {
+               break;
+            }
+
+            VAR_666 = VAR_233;
+            VAR_233 = VAR_233->VAR__NEXT;
+         }
+
+         VAR_666->VAR__NEXT  = VAR_9494;
+         VAR_9494->VAR__NEXT = VAR_233;
+      }
+   }
+}
+
+
+void outputdata(pNode VAR_233)
+{
+   VAR_233 = VAR_233->VAR__NEXT;
+
+   while ( VAR_233->VAR__NEXT )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%s\n", VAR_233->id);
+}
+
+
+int main()
+{
+   pNode VAR__HEAD;
+   int   VAR_1238123;
+
+   VAR__HEAD = create();
+   scanf("%d", &VAR_1238123);
+   sort(VAR__HEAD, VAR_1238123);
+   outputdata(VAR__HEAD);
+   return 0;
+}

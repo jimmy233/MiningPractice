@@ -1,0 +1,99 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  num1 = 0;
+   int  num2 = 0;
+   int  k1;
+   int  k2;
+   int  VAR__819283;
+   int  VAR__19328;
+   int  tmp       = 0;
+   int  VAR__HEAD = 0;
+   char VAR__1238129[251];
+   char VAR_1238123[251];
+   char total[255];
+   char VAR__7685[251];
+   char VAR__3918907[251];
+
+   gets(VAR__1238129);
+   gets(VAR_1238123);
+   for ( VAR__53647 = 0; ( VAR__1238129[VAR__53647] != '\0' ) && (( VAR__1238129[VAR__53647] >= '0' ) && ( VAR__1238129[VAR__53647] <= '9' )); VAR__53647++ )
+   {
+      num1++;
+   }
+
+   VAR__1238129[VAR__53647] = '\0';
+   for ( VAR__21230 = 0; ( VAR_1238123[VAR__21230] != '\0' ) && (( VAR_1238123[VAR__21230] >= '0' ) && ( VAR_1238123[VAR__21230] <= '9' )); VAR__21230++ )
+   {
+      num2++;
+   }
+
+   VAR_1238123[VAR__21230] = '\0';
+
+   if ( num1 >= num2 )
+   {
+      strcpy(VAR__7685, VAR__1238129);
+      strcpy(VAR__3918907, VAR_1238123);
+      k1 = num1;
+      k2 = num2;
+   }
+   else
+   {
+      strcpy(VAR__7685, VAR_1238123);
+      strcpy(VAR_1238123, VAR__1238129);
+      num1 = strlen(VAR__7685);
+      num2 = strlen(VAR_1238123);
+      k1   = num1;
+      k2   = num2;
+   }
+
+   {
+      for ( VAR__21230 = num1; VAR__21230 > (( num1 - num2 ) - 1 ); VAR__21230-- )
+      {
+         VAR_1238123[VAR__21230] = VAR_1238123[k2];
+         k2--;
+      }
+
+      for ( VAR__21230 = ( num1 - num2 ) - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         VAR_1238123[VAR__21230] = '0';
+      }
+
+      for ( VAR__21230 = num1 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ((((( VAR__7685[VAR__21230] - '0' ) + VAR_1238123[VAR__21230] ) - '0' ) + tmp ) > 9 )
+         {
+            total[VAR__21230] = '0' + ((((( VAR__7685[VAR__21230] - '0' ) + VAR_1238123[VAR__21230] ) - '0' ) + tmp ) % 10 );
+            tmp = 1;
+         }
+         else
+         {
+            total[VAR__21230] = '0' + ((((( VAR__7685[VAR__21230] - '0' ) + VAR_1238123[VAR__21230] ) - '0' ) + tmp ) % 10 );
+            tmp = 0;
+         }
+      }
+
+      total[num1] = '\0';
+
+      if ( tmp == 1 )
+      {
+         printf("1");
+         VAR__HEAD = 1;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < num1; VAR__21230++ )
+      {
+         if (( total[VAR__21230] == '0' ) && ( VAR__HEAD == 0 ))
+         {
+            continue;
+         }
+
+         VAR__HEAD = 1;
+         printf("%c", total[VAR__21230]);
+      }
+
+      printf("\n");
+   }
+   return 0;
+}

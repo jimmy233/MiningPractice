@@ -1,0 +1,90 @@
+int main(int argc, char *argv[])
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int hws = 0;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   int VAR_9494 = ( VAR_1238123 - VAR__1238129 ) + 1;
+   int *VAR__819283;
+   VAR__819283 = (int *)malloc(( sizeof( int )) * VAR_9494);
+   int *reversed_number;
+   reversed_number = (int *)malloc(( sizeof( int )) * VAR_9494);
+   int *remainder;
+   remainder = (int *)malloc(( sizeof( int )) * VAR_9494);
+   int *VAR__19328;
+   VAR__19328 = (int *)malloc(( sizeof( int )) * VAR_9494);
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_9494; VAR__8444594++ )
+   {
+      VAR__819283[VAR__8444594]     = 0;
+      reversed_number[VAR__8444594] = 0;
+      remainder[VAR__8444594]       = 0;
+      VAR__19328[VAR__8444594]      = VAR__8444594 + VAR__1238129;
+   }
+
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 2; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if (( VAR__19328[VAR__53647 - VAR__1238129] % VAR__21230 ) == 0 )
+         {
+            VAR__819283[VAR__53647 - VAR__1238129]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647 - VAR__1238129] == 0 )
+      {
+         while ( VAR__19328[VAR__53647 - VAR__1238129] != 0 )
+         {
+            remainder[VAR__53647 - VAR__1238129]        = VAR__19328[VAR__53647 - VAR__1238129] % 10;
+            reversed_number[VAR__53647 - VAR__1238129] *= 10;
+            reversed_number[VAR__53647 - VAR__1238129] += remainder[VAR__53647 - VAR__1238129];
+            VAR__19328[VAR__53647 - VAR__1238129]       = VAR__19328[VAR__53647 - VAR__1238129] / 10;
+         }
+      }
+
+      if ( reversed_number[VAR__53647 - VAR__1238129] == VAR__53647 )
+      {
+         hws++;
+      }
+   }
+
+   if ( hws == 0 )
+   {
+      printf("no");
+   }
+
+   int VAR__4857423 = 0;
+
+   if ( hws != 0 )
+   {
+      for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ((( reversed_number[VAR__53647 - VAR__1238129] == VAR__53647 ) && ( VAR__53647 != 1 )) && ( VAR__53647 != 2 ))
+         {
+            VAR__4857423 = VAR__53647;
+            printf("%d", VAR__53647);
+            break;
+         }
+      }
+   }
+
+   if ( hws != 0 )
+   {
+      for ( VAR__21230 = VAR__4857423 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ((( reversed_number[VAR__21230 - VAR__1238129] == VAR__21230 ) && ( VAR__21230 != 1 )) && ( VAR__21230 != 2 ))
+         {
+            printf(",%d", VAR__21230);
+         }
+      }
+   }
+
+   return 0;
+}

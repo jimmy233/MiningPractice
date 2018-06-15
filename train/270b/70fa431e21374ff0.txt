@@ -1,0 +1,46 @@
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int VAR_SIZE[10000];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR_SIZE[VAR__53647]);
+   }
+
+   int zr[10000][2];
+   zr[0][0] = 2;
+   zr[0][1] = 1;
+   zr[1][0] = 3;
+   zr[1][1] = 2;
+   for ( VAR__53647 = 2; VAR__53647 < 10000; VAR__53647++ )
+   {
+      zr[VAR__53647][0] = zr[VAR__53647 - 1][0] + zr[VAR__53647 - 2][0];
+      zr[VAR__53647][1] = zr[VAR__53647 - 1][1] + zr[VAR__53647 - 2][1];
+   }
+
+   double fs[10000] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < 10000; VAR__53647++ )
+   {
+      fs[VAR__53647] = ((double)zr[VAR__53647][0] ) / zr[VAR__53647][1];
+   }
+
+   double jg[10000] = { 0 };
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_SIZE[VAR__53647]; VAR__21230++ )
+      {
+         jg[VAR__53647] += fs[VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%.3lf\n", jg[VAR__53647]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,80 @@
+int ANOTHER_STRING[50]     = { 1 };
+int YET_ANOTHER_STRING[50] = { 1 };
+int length1;
+int length2;
+void input_string(void)
+{
+   ( cin >> length1 ) >> length2;
+   for ( int VAR__53647 = 0; VAR__53647 < length1; VAR__53647++ )
+   {
+      cin >> ANOTHER_STRING[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < length2; VAR__53647++ )
+   {
+      cin >> YET_ANOTHER_STRING[VAR__53647];
+   }
+}
+
+
+void rank_string(void)
+{
+   int VAR__TEMP;
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( length1 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < length1; VAR__21230++ )
+      {
+         if ( ANOTHER_STRING[VAR__53647] > ANOTHER_STRING[VAR__21230] )
+         {
+            VAR__TEMP = ANOTHER_STRING[VAR__53647];
+            ANOTHER_STRING[VAR__53647] = ANOTHER_STRING[VAR__21230];
+            ANOTHER_STRING[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < ( length2 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < length2; VAR__21230++ )
+      {
+         if ( YET_ANOTHER_STRING[VAR__53647] > YET_ANOTHER_STRING[VAR__21230] )
+         {
+            VAR__TEMP = YET_ANOTHER_STRING[VAR__53647];
+            YET_ANOTHER_STRING[VAR__53647] = YET_ANOTHER_STRING[VAR__21230];
+            YET_ANOTHER_STRING[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void combine_string(void)
+{
+   for ( int VAR__53647 = length1; VAR__53647 < ( length1 + length2 ); VAR__53647++ )
+   {
+      ANOTHER_STRING[VAR__53647] = YET_ANOTHER_STRING[VAR__53647 - length1];
+   }
+}
+
+
+void output_string(void)
+{
+   cout << ANOTHER_STRING[0];
+   for ( int VAR__53647 = 1; VAR__53647 < ( length1 + length2 ); VAR__53647++ )
+   {
+      ( cout << ' ' ) << ANOTHER_STRING[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   input_string();
+   rank_string();
+   combine_string();
+   output_string();
+   return 0;
+}

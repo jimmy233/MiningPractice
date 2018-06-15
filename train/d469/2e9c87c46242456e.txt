@@ -1,0 +1,55 @@
+int VAR__127322(char word[500], int LEN_OF_STH)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH / 2 ); VAR__53647++ )
+   {
+      if ( word[VAR__53647] != word[( LEN_OF_STH - 1 ) - VAR__53647] )
+      {
+         return 0;
+      }
+   }
+
+   return 1;
+}
+
+
+int main()
+{
+   char A_STRING[500];
+   char word[1000][500];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  LEN_OF_STH[1000];
+   int  lenth;
+   int  VAR__1238129;
+   int  log;
+
+   gets(A_STRING);
+   log   = 0;
+   lenth = strlen(A_STRING);
+   for ( VAR__53647 = 2; VAR__53647 <= lenth; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( lenth - VAR__53647 ); VAR__21230++ )
+      {
+         for ( VAR__1238129 = 0; VAR__1238129 < VAR__53647; VAR__1238129++ )
+         {
+            word[log][VAR__1238129]     = A_STRING[VAR__1238129 + VAR__21230];
+            word[log][VAR__1238129 + 1] = '\0';
+         }
+
+         log++;
+         LEN_OF_STH[log - 1] = strlen(word[log - 1]);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < log; VAR__53647++ )
+   {
+      if ( VAR__127322(word[VAR__53647], LEN_OF_STH[VAR__53647]))
+      {
+         printf("%s\n", word[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

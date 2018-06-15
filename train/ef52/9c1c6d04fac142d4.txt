@@ -1,0 +1,62 @@
+int lanjie(int VAR__7685, int VAR_233);
+int VAR__MAX(int VAR__819283, int VAR__19328);
+
+int VAR_1238123;
+int VAR__temp = 0;
+int VAR_2890[25];
+int VAR_129012[25][10000];
+int main()
+{
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR_2890[VAR__53647]);
+   }
+
+   printf("%d", lanjie(0, 10000));
+   return 0;
+}
+
+
+int lanjie(int VAR__7685, int VAR_233)
+{
+   if ( VAR_129012[VAR__7685][VAR_233] )
+   {
+      return VAR_129012[VAR__7685][VAR_233];
+   }
+   else
+   if ( VAR__7685 == ( VAR_1238123 - 1 ))
+   {
+      if ( VAR_2890[VAR__7685] <= VAR_233 )
+      {
+         return VAR_129012[VAR__7685][VAR_233] = 1;
+      }
+      else
+      {
+         return VAR_129012[VAR__7685][VAR_233] = 0;
+      }
+   }
+   else
+   {
+      int VAR__127322;
+
+      if ( VAR_2890[VAR__7685] <= VAR_233 )
+      {
+         VAR__127322 = VAR__MAX(1 + lanjie(VAR__7685 + 1, VAR_2890[VAR__7685]), lanjie(VAR__7685 + 1, VAR_233));
+      }
+      else
+      {
+         VAR__127322 = lanjie(VAR__7685 + 1, VAR_233);
+      }
+
+      return VAR_129012[VAR__7685][VAR_233] = VAR__127322;
+   }
+}
+
+
+int VAR__MAX(int VAR__819283, int VAR__19328)
+{
+   return ( VAR__819283 > VAR__19328 ) ? ( VAR__819283 ) : ( VAR__19328 );
+}

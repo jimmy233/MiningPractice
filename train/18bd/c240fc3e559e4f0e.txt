@@ -1,0 +1,37 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__COUNT;
+   char *buf;
+   char **words;
+   int  line_word_count = 0;
+
+   scanf("%d", &VAR__COUNT);
+   words = (char **)malloc(VAR__COUNT * ( sizeof( char * )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      buf = (char *)malloc(41 * ( sizeof( char )));
+      scanf("%s", buf);
+      *( words + VAR__53647 ) = buf;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      if (( VAR__53647 != ( VAR__COUNT - 1 )) && ((( line_word_count + strlen(*( words + VAR__53647 ))) + 1 ) > 80 ))
+      {
+         printf("\n");
+         line_word_count = 0;
+      }
+
+      if ( line_word_count != 0 )
+      {
+         line_word_count += 1;
+         printf(" ");
+      }
+
+      line_word_count += strlen(*( words + VAR__53647 ));
+      printf("%s", *( words + VAR__53647 ));
+   }
+
+   return 0;
+}

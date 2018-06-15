@@ -1,0 +1,42 @@
+struct student
+{
+   int xuehao;
+   int shuxue;
+   int yuwen;
+   int zongfen;
+};
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__112390;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   struct student stu[100001];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &stu[VAR__53647].xuehao, &stu[VAR__53647].shuxue, &stu[VAR__53647].yuwen);
+      stu[VAR__53647].zongfen = stu[VAR__53647].shuxue + stu[VAR__53647].yuwen;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < 4; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( stu[VAR__21230].zongfen >= stu[VAR__21230 + 1].zongfen )
+         {
+            stu[100000]         = stu[VAR__21230 + 1];
+            stu[VAR__21230 + 1] = stu[VAR__21230];
+            stu[VAR__21230]     = stu[100000];
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > ( VAR_1238123 - 4 ); VAR__53647-- )
+   {
+      printf("%d %d\n", stu[VAR__53647].xuehao, stu[VAR__53647].zongfen);
+   }
+
+   return 0;
+}

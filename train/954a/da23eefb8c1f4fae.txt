@@ -1,0 +1,91 @@
+struct student
+{
+   char           name[35];
+   int            final;
+   int            score;
+   char           leader;
+   char           west;
+   int            paper;
+   int            money;
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *VAR__HEAD;
+   int            VAR_1238123;
+   int            VAR__53647 = 0;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = (struct student *)malloc(sizeof( struct student ));
+   scanf("%s %d %d %c %c %d", &VAR__HEAD->name, &VAR__HEAD->final, &VAR__HEAD->score, &VAR__HEAD->leader, &VAR__HEAD->west, &VAR__HEAD->paper);
+   VAR_666 = VAR__HEAD;
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_666        = VAR_233;
+      VAR_666->money = 0;
+
+      if (( VAR_666->final > 80 ) && ( VAR_666->paper > 0 ))
+      {
+         VAR_666->money = VAR_666->money + 8000;
+      }
+
+      if (( VAR_666->final > 85 ) && ( VAR_666->score > 80 ))
+      {
+         VAR_666->money = VAR_666->money + 4000;
+      }
+
+      if ( VAR_666->final > 90 )
+      {
+         VAR_666->money = VAR_666->money + 2000;
+      }
+
+      if (( VAR_666->final > 85 ) && ( VAR_666->west == 'Y' ))
+      {
+         VAR_666->money = VAR_666->money + 1000;
+      }
+
+      if (( VAR_666->score > 80 ) && ( VAR_666->leader == 'Y' ))
+      {
+         VAR_666->money = VAR_666->money + 850;
+      }
+
+      if ( VAR__53647 < ( VAR_1238123 - 1 ))
+      {
+         VAR_233 = (struct student *)malloc(sizeof( struct student ));
+         scanf("%s %d %d %c %c %d", &VAR_233->name, &VAR_233->final, &VAR_233->score, &VAR_233->leader, &VAR_233->west, &VAR_233->paper);
+         VAR_666->VAR__NEXT = VAR_233;
+      }
+   }
+
+   VAR_666->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+   struct student *VAR_129012;
+   int            VAR__SUM = 0;
+   int            VAR__MAX = 0;
+
+   VAR_233 = creat();
+   for ( VAR_666 = VAR_233; VAR_666 != NULL; )
+   {
+      if ( VAR_666->money > VAR__MAX )
+      {
+         VAR__MAX   = VAR_666->money;
+         VAR_129012 = VAR_666;
+      }
+
+      VAR__SUM = VAR__SUM + VAR_666->money;
+      VAR_666  = VAR_666->VAR__NEXT;
+   }
+
+   printf("%s\n%d\n", VAR_129012->name, VAR_129012->money);
+   printf("%d", VAR__SUM);
+}

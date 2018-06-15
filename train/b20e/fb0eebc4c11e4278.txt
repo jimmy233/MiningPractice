@@ -1,0 +1,122 @@
+void Order(int house[], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( house[VAR__21230] < house[VAR__21230 + 1] )
+         {
+            VAR__TEMP             = house[VAR__21230];
+            house[VAR__21230]     = house[VAR__21230 + 1];
+            house[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void Input(int house[], int VAR_1238123)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &house[VAR__53647]);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int tianji[1000];
+   int qiwang[1000];
+   int money = 0;
+   int fast  = 0;
+   int slowt;
+   int slowq;
+   int st;
+   int sq;
+
+   for ( VAR__53647 = 0; 1; VAR__53647++ )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         return 0;
+      }
+      else
+      {
+         Input(tianji, VAR_1238123);
+         Order(tianji, VAR_1238123);
+         Input(qiwang, VAR_1238123);
+         Order(qiwang, VAR_1238123);
+         money = 0;
+         fast  = 0;
+         slowt = VAR_1238123 - 1;
+         slowq = VAR_1238123 - 1;
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( tianji[fast] > qiwang[VAR__21230] )
+            {
+               money++;
+               fast++;
+            }
+            else
+            if ( tianji[fast] < qiwang[VAR__21230] )
+            {
+               money--;
+               slowt--;
+            }
+            else
+            if ( tianji[fast] == qiwang[VAR__21230] )
+            {
+               for ( st = slowt, sq = slowq; st > fast; st--, sq-- )
+               {
+                  if ( tianji[st] > qiwang[sq] )
+                  {
+                     money++;
+                     slowt--;
+                     slowq--;
+                     VAR_1238123--;
+                  }
+                  else
+                  if ( tianji[st] <= qiwang[sq] )
+                  {
+                     if ( tianji[st] < qiwang[VAR__21230] )
+                     {
+                        money--;
+                        slowt = st - 1;
+                        slowq = sq;
+                        break;
+                     }
+                     else
+                     {
+                        slowt = st - 1;
+                        slowq = sq;
+                     }
+                  }
+               }
+            }
+
+
+
+            if ( fast > slowt )
+            {
+               break;
+            }
+         }
+
+         printf("%d\n", money * 200);
+      }
+   }
+
+   return 0;
+}

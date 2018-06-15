@@ -1,0 +1,78 @@
+int reverse(int VAR__NUM)
+{
+   int ge   = 0;
+   int shi  = 0;
+   int bai  = 0;
+   int qian = 0;
+   int wan  = 0;
+   int out;
+   int sign = 1;
+
+   if ( VAR__NUM < 0 )
+   {
+      sign = -1;
+   }
+
+   if ( VAR__NUM == 0 )
+   {
+      out = 0;
+      goto end;
+   }
+
+   VAR__NUM = abs(VAR__NUM);
+   wan      = ((int)VAR__NUM ) / 10000;
+   qian     = ((int)( VAR__NUM - ( 10000 * wan ))) / 1000;
+   bai      = ((int)(( VAR__NUM - ( 1000 * qian )) - ( 10000 * wan ))) / 100;
+   shi      = ((int)((( VAR__NUM - ( 1000 * qian )) - ( 100 * bai )) - ( 10000 * wan ))) / 10;
+   ge       = ((( VAR__NUM - ( 10000 * wan )) - ( 1000 * qian )) - ( 100 * bai )) - ( 10 * shi );
+
+   if ( VAR__NUM <= 9 )
+   {
+      out = VAR__NUM * sign;
+   }
+
+   if (( VAR__NUM <= 99 ) && ( VAR__NUM >= 10 ))
+   {
+      out = (( 10 * ge ) + shi ) * sign;
+   }
+
+   if (( VAR__NUM > 99 ) && ( VAR__NUM <= 999 ))
+   {
+      out = ((( 100 * ge ) + ( 10 * shi )) + bai ) * sign;
+   }
+
+   if (( VAR__NUM > 999 ) && ( VAR__NUM <= 9999 ))
+   {
+      out = (((( 1000 * ge ) + ( 100 * shi )) + ( 10 * bai )) + qian ) * sign;
+   }
+
+   if ( VAR__NUM > 9999 )
+   {
+      out = ((((( ge * 10000 ) + ( shi * 1000 )) + ( bai * 100 )) + ( qian * 10 )) + wan ) * sign;
+   }
+
+end:
+   return out;
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int VAR__819283[6];
+
+   for ( VAR__53647 = 0; VAR__53647 <= 5; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 5; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = reverse(VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 5; VAR__53647++ )
+   {
+      printf("%d\n", VAR__819283[VAR__53647]);
+   }
+}

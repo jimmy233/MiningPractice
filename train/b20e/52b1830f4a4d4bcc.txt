@@ -1,0 +1,68 @@
+int VAR_666[1000];
+int VAR__temp[1000];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int qs;
+   int qe;
+   int ts;
+   int te;
+
+   while (( cin >> VAR_1238123 ) && ( VAR_1238123 != 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_666[VAR__53647];
+      }
+
+      qs = ( ts = 0 );
+      qe = ( te = VAR_1238123 - 1 );
+      sort(VAR_666, VAR_666 + VAR_1238123);
+      sort(VAR__temp, VAR__temp + VAR_1238123);
+      int price = 0;
+
+      while ( VAR_1238123-- )
+      {
+         if ( VAR__temp[te] > VAR_666[qe] )
+         {
+            price++;
+            te--;
+            qe--;
+         }
+         else
+         if ( VAR__temp[ts] > VAR_666[qs] )
+         {
+            price++;
+            qs++;
+            ts++;
+         }
+         else
+         {
+            if ( VAR__temp[ts] > VAR_666[qe] )
+            {
+               price += ( qe + 1 ) - qs;
+               break;
+            }
+            else
+            if ( VAR__temp[ts] < VAR_666[qe] )
+            {
+               price--;
+            }
+
+
+            ts++;
+            qe--;
+         }
+      }
+
+      ( cout << ( price * 200 )) << endl;
+   }
+
+   return 0;
+}

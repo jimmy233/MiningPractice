@@ -1,0 +1,90 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int location[11][3];
+
+   int (*VAR_233)[3];
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+      {
+         cin >> location[VAR__53647][VAR__21230];
+      }
+   }
+
+   struct team
+   {
+      int    a1;
+      int    a2;
+      double distance;
+   }
+   zu[45];
+   struct team
+   {
+      int    a1;
+      int    a2;
+      double distance;
+   }
+       VAR__temp;
+   int VAR__8444594 = 0;
+   VAR_233 = location;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         zu[VAR__8444594].a1 = VAR__53647;
+         zu[VAR__8444594].a2 = VAR__21230;
+         int VAR__7685;
+         int VAR__3918907;
+         int VAR__9290;
+         VAR__7685    = location[VAR__53647][0] - location[VAR__21230][0];
+         VAR__3918907 = location[VAR__53647][1] - location[VAR__21230][1];
+         VAR__9290    = location[VAR__53647][2] - location[VAR__21230][2];
+         zu[VAR__8444594].distance = sqrt((( VAR__7685 * VAR__7685 ) + ( VAR__3918907 * VAR__3918907 )) + ( VAR__9290 * VAR__9290 ));
+         VAR__8444594++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if (( zu[VAR__53647].distance - zu[VAR__21230].distance ) < ( -0.01 ))
+         {
+            VAR__temp      = zu[VAR__53647];
+            zu[VAR__53647] = zu[VAR__21230];
+            zu[VAR__21230] = VAR__temp;
+         }
+         else
+         if ( fabs(zu[VAR__53647].distance - zu[VAR__21230].distance) < 0.01 )
+         {
+            if ( zu[VAR__53647].a1 > zu[VAR__21230].a1 )
+            {
+               VAR__temp      = zu[VAR__53647];
+               zu[VAR__53647] = zu[VAR__21230];
+               zu[VAR__21230] = VAR__temp;
+            }
+            else
+            if ( zu[VAR__53647].a1 == zu[VAR__21230].a1 )
+            {
+               if ( zu[VAR__53647].a2 > zu[VAR__21230].a2 )
+               {
+                  VAR__temp      = zu[VAR__53647];
+                  zu[VAR__53647] = zu[VAR__21230];
+                  zu[VAR__21230] = VAR__temp;
+               }
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      (((((((((((((((( cout << "(" ) << location[zu[VAR__53647].a1][0] ) << "," ) << location[zu[VAR__53647].a1][1] ) << "," ) << location[zu[VAR__53647].a1][2] ) << ")-(" ) << location[zu[VAR__53647].a2][0] ) << "," ) << location[zu[VAR__53647].a2][1] ) << "," ) << location[zu[VAR__53647].a2][2] ) << ")=" ) << fixed ) << setprecision(2)) << zu[VAR__53647].distance ) << endl;
+   }
+
+   return 0;
+}

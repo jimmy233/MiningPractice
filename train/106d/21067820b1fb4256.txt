@@ -1,0 +1,51 @@
+int main()
+{
+   int year[200];
+   int month0[200];
+   int month1[200];
+   int day;
+   int month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__NUM;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+
+   cin >> VAR__NUM;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      day = 0;
+      (( cin >> year[VAR__53647] ) >> month0[VAR__53647] ) >> month1[VAR__53647];
+
+      if ( month0[VAR__53647] > month1[VAR__53647] )
+      {
+         VAR__temp          = month0[VAR__53647];
+         month0[VAR__53647] = month1[VAR__53647];
+         month1[VAR__53647] = VAR__temp;
+      }
+
+      if (((( year[VAR__53647] % 4 ) == 0 ) && (( year[VAR__53647] % 100 ) != 0 )) || (( year[VAR__53647] % 400 ) == 0 ))
+      {
+         month[1] = 29;
+      }
+      else
+      {
+         month[1] = 28;
+      }
+
+      for ( VAR__21230 = month0[VAR__53647]; VAR__21230 <= ( month1[VAR__53647] - 1 ); VAR__21230++ )
+      {
+         day += month[VAR__21230 - 1];
+      }
+
+      if (( day % 7 ) == 0 )
+      {
+         ( cout << "YES" ) << endl;
+      }
+      else
+      {
+         ( cout << "NO" ) << endl;
+      }
+   }
+
+   return 0;
+}

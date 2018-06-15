@@ -1,0 +1,54 @@
+int main()
+{
+   struct Book
+   {
+      int  id;
+      char zz[26];
+   }
+        book[1000];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__MAX = 0;
+   int  index;
+   int  VAR__SUM[26] = { 0 };
+   char author;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%s", &book[VAR__53647].id, &book[VAR__53647].zz);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; book[VAR__53647].zz[VAR__21230] != '\0'; VAR__21230++ )
+      {
+         VAR__SUM[book[VAR__53647].zz[VAR__21230] - 'A']++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__SUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__SUM[VAR__53647];
+         author   = 'A' + VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", author, VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; book[VAR__53647].zz[VAR__21230] != '\0'; VAR__21230++ )
+      {
+         if ( book[VAR__53647].zz[VAR__21230] == author )
+         {
+            printf("%d\n", book[VAR__53647].id);
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,81 @@
+struct BOOK
+{
+   int id;
+   int author[26];
+};
+int main()
+{
+   struct BOOK book[1000];
+   int         countauthor[26];
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         minusA;
+   int         no;
+   int         VAR__COUNT;
+   int         VAR__MAX = 0;
+   int         maxau;
+   char        input[30];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         book[VAR__53647].author[VAR__21230] = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &book[VAR__53647].id);
+      scanf("%s", &input);
+      no = strlen(input);
+      for ( VAR__21230 = 0; VAR__21230 < no; VAR__21230++ )
+      {
+         minusA = input[VAR__21230] - 'A';
+         book[VAR__53647].author[minusA]++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR__COUNT = 0;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( book[VAR__21230].author[VAR__53647] == 1 )
+         {
+            VAR__COUNT++;
+         }
+      }
+
+      countauthor[VAR__53647] = VAR__COUNT;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__MAX < countauthor[VAR__53647] )
+      {
+         VAR__MAX = countauthor[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( countauthor[VAR__53647] == VAR__MAX )
+      {
+         maxau = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", maxau + 'A', VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( book[VAR__53647].author[maxau] == 1 )
+      {
+         printf("%d\n", book[VAR__53647].id);
+      }
+   }
+
+   return 0;
+}

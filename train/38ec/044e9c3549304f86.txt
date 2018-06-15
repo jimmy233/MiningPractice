@@ -1,0 +1,77 @@
+int main()
+{
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int month[11];
+   int VAR__21230;
+   int sumday;
+   int VAR__SUM  = 0;
+   int startdays = 0;
+   int enddays   = 0;
+
+   month[0]  = 31;
+   month[1]  = 28;
+   month[2]  = 31;
+   month[3]  = 30;
+   month[4]  = 31;
+   month[5]  = 30;
+   month[6]  = 31;
+   month[7]  = 31;
+   month[8]  = 30;
+   month[9]  = 31;
+   month[10] = 30;
+   month[11] = 31;
+   scanf("%d%d%d%d%d%d", &startyear, &startmonth, &startday, &endyear, &endmonth, &endday);
+   for ( VAR__21230 = 1; VAR__21230 <= ( startmonth - 1 ); VAR__21230++ )
+   {
+      startdays = startdays + month[VAR__21230 - 1];
+   }
+
+   startdays = startdays + startday;
+
+   if ((((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 )) && ( startmonth > 2 ))
+   {
+      startdays = startdays + 1;
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= ( endmonth - 1 ); VAR__21230++ )
+   {
+      enddays = enddays + month[VAR__21230 - 1];
+   }
+
+   enddays = enddays + endday;
+
+   if ((((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 )) && ( endmonth > 2 ))
+   {
+      enddays = enddays + 1;
+   }
+
+   if ( startyear == endyear )
+   {
+      sumday = enddays - startdays;
+   }
+   else
+   {
+      for ( VAR__21230 = startyear; VAR__21230 <= ( endyear - 1 ); VAR__21230++ )
+      {
+         if (((( VAR__21230 % 400 ) != 0 ) && (( VAR__21230 % 100 ) == 0 )) || (( VAR__21230 % 4 ) != 0 ))
+         {
+            VAR__SUM = VAR__SUM + 365;
+         }
+         else
+         {
+            VAR__SUM = VAR__SUM + 366;
+         }
+      }
+
+
+      sumday = ( VAR__SUM + enddays ) - startdays;
+   }
+
+   printf("%d", sumday);
+   return 0;
+}

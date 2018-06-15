@@ -1,0 +1,81 @@
+struct stu
+{
+   char xingming[21];
+   int  qimchengji;
+   int  pingychengji;
+   char ganbu[2];
+   char xibu[2];
+   int  lunwenshu;
+   int  jiangxuejin;
+}
+stum[101];
+void main()
+{
+   char VAR_9494[2] = { "Y" };
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  jiangjinzongshu;
+
+   jiangjinzongshu = 0;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stum[VAR__53647].jiangxuejin = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d%s%s%d", stum[VAR__53647].xingming, &stum[VAR__53647].qimchengji, &stum[VAR__53647].pingychengji, stum[VAR__53647].ganbu, stum[VAR__53647].xibu, &stum[VAR__53647].lunwenshu);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stum[VAR__53647].qimchengji > 80 ) && ( stum[VAR__53647].lunwenshu >= 1 ))
+      {
+         stum[VAR__53647].jiangxuejin += 8000;
+      }
+
+      if (( stum[VAR__53647].qimchengji > 85 ) && ( stum[VAR__53647].pingychengji > 80 ))
+      {
+         stum[VAR__53647].jiangxuejin += 4000;
+      }
+
+      if ( stum[VAR__53647].qimchengji > 90 )
+      {
+         stum[VAR__53647].jiangxuejin += 2000;
+      }
+
+      if (( stum[VAR__53647].qimchengji > 85 ) && ( strcmp(stum[VAR__53647].xibu, VAR_9494) == 0 ))
+      {
+         stum[VAR__53647].jiangxuejin += 1000;
+      }
+
+      if (( stum[VAR__53647].pingychengji > 80 ) && ( strcmp(stum[VAR__53647].ganbu, VAR_9494) == 0 ))
+      {
+         stum[VAR__53647].jiangxuejin += 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= (( 100 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( stum[VAR__21230].jiangxuejin < stum[VAR__21230 + 1].jiangxuejin )
+         {
+            stum[100]            = stum[VAR__21230];
+            stum[VAR__21230]     = stum[VAR__21230 + 1];
+            stum[VAR__21230 + 1] = stum[100];
+         }
+      }
+   }
+
+   printf("%s\n", stum[0].xingming);
+   printf("%d\n", stum[0].jiangxuejin);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      jiangjinzongshu += stum[VAR__53647].jiangxuejin;
+   }
+
+   printf("%d\n", jiangjinzongshu);
+}

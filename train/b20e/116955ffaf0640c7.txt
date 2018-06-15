@@ -1,0 +1,58 @@
+int T[1010];
+int Q[1010];
+int main()
+{
+   int VAR_1238123;
+
+   while (( cin >> VAR_1238123 ) && VAR_1238123 )
+   {
+      int ret = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> T[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> Q[VAR__53647];
+      }
+
+      sort(T, T + VAR_1238123);
+      sort(Q, Q + VAR_1238123);
+      int T_begin = 0;
+      int Q_begin = 0;
+      int T_end   = VAR_1238123 - 1;
+      int Q_end   = VAR_1238123 - 1;
+
+      while (( T_begin <= T_end ) && ( Q_begin <= Q_end ))
+      {
+         if ( T[T_end] > Q[Q_end] )
+         {
+            T_end--;
+            Q_end--;
+            ret++;
+         }
+         else
+         if ( T[T_begin] > Q[Q_begin] )
+         {
+            T_begin++;
+            Q_begin++;
+            ret++;
+         }
+         else
+         {
+            if ( T[T_begin] < Q[Q_end] )
+            {
+               ret--;
+            }
+
+            T_begin++;
+            Q_end--;
+         }
+      }
+
+      ( cout << ( ret * 200 )) << endl;
+   }
+
+   return 0;
+}

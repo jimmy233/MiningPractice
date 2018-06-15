@@ -1,0 +1,40 @@
+struct stu
+{
+   char name[20];
+   int  final;
+   int  assess;
+   char leader;
+   char west;
+   int  paper;
+};
+int main(int argc, char *argv[])
+{
+   int        VAR__8444594;
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        total[100];
+   int        tota     = 0;
+   int        VAR__MAX = 0;
+   struct stu ppl[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", ppl[VAR__53647].name, &ppl[VAR__53647].final, &ppl[VAR__53647].assess, &ppl[VAR__53647].leader, &ppl[VAR__53647].west, &ppl[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      total[VAR__53647] = (((( 8000 * (( ppl[VAR__53647].final > 80 ) && ( ppl[VAR__53647].paper >= 1 ))) + ( 4000 * (( ppl[VAR__53647].final > 85 ) && ( ppl[VAR__53647].assess > 80 )))) + ( 2000 * ( ppl[VAR__53647].final > 90 ))) + ( 1000 * (( ppl[VAR__53647].final > 85 ) && ( ppl[VAR__53647].west == 'Y' )))) + ( 850 * (( ppl[VAR__53647].assess > 80 ) && ( ppl[VAR__53647].leader == 'Y' )));
+      tota = tota + total[VAR__53647];
+
+      if ( total[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX     = total[VAR__53647];
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", ppl[VAR__8444594].name, VAR__MAX, tota);
+   return 0;
+}

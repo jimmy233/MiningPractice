@@ -1,0 +1,82 @@
+struct student
+{
+   char           ID[20];
+   char           name[20];
+   char           sex;
+   int            age;
+   char           score[20];
+   char           address[20];
+   struct student *VAR__NEXT;
+};
+struct student *create()
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN);
+   scanf("%s", ANOTHER_POINTER->ID);
+
+   if ( strcmp(ANOTHER_POINTER->ID, "end") == 0 )
+   {
+      free(ANOTHER_POINTER);
+      VAR__HEAD = NULL;
+   }
+   else
+   {
+      VAR__HEAD = ANOTHER_POINTER;
+      scanf("%s %c %d %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+      ANOTHER_POINTER->VAR__NEXT = NULL;
+      YET_ANOTHER_POINTER        = ANOTHER_POINTER;
+      do
+      {
+         ANOTHER_POINTER            = (struct student *)malloc(LEN);
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+         scanf("%s", ANOTHER_POINTER->ID);
+
+         if ( strcmp(ANOTHER_POINTER->ID, "end") == 0 )
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+            free(ANOTHER_POINTER);
+            break;
+         }
+         else
+         {
+            scanf("%s %c %d %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+            ANOTHER_POINTER->VAR__NEXT     = NULL;
+            YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         }
+      } while ( 1 );
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct student *list)
+{
+   if ( list == NULL )
+   {
+      return;
+   }
+   else
+   if ( list->VAR__NEXT == NULL )
+   {
+      printf("%s %s %c %d %s %s\n", list->ID, list->name, list->sex, list->age, list->score, list->address);
+   }
+   else
+   {
+      print(list->VAR__NEXT);
+      printf("%s %s %c %d %s %s\n", list->ID, list->name, list->sex, list->age, list->score, list->address);
+   }
+}
+
+
+int main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = create();
+   print(VAR__HEAD);
+}

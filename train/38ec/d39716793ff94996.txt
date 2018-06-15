@@ -1,0 +1,82 @@
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+
+   ((((( cin >> sy ) >> sm ) >> sd ) >> ey ) >> em ) >> ed;
+   int py[13]     = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int ry[13]     = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__COUNT = 0;
+   int year       = sy;
+
+   if ( sy != ey )
+   {
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         for ( int VAR__1238129 = sm; VAR__1238129 < 12; VAR__1238129++ )
+         {
+            {
+               VAR__COUNT += ry[VAR__1238129];
+            }
+         }
+      }
+      else
+      {
+         for ( int VAR__1238129 = sm; VAR__1238129 < 12; VAR__1238129++ )
+         {
+            {
+               VAR__COUNT += py[VAR__1238129];
+            }
+         }
+      }
+
+      VAR__COUNT += 32 - sd;
+      sy         += 1;
+      sd          = 1;
+      sm          = 1;
+   }
+
+   for ( ; sy < ey; sy++ )
+   {
+      if (((( sy % 4 ) == 0 ) && (( sy % 100 ) != 0 )) || (( sy % 400 ) == 0 ))
+      {
+         VAR__COUNT += 366;
+      }
+      else
+      {
+         VAR__COUNT += 365;
+      }
+   }
+
+   year = ey;
+
+   if ( sm != em )
+   {
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         for ( int VAR__1238129 = sm; VAR__1238129 < em; VAR__1238129++ )
+         {
+            {
+               VAR__COUNT += ry[VAR__1238129];
+            }
+         }
+      }
+      else
+      {
+         for ( int VAR__1238129 = sm; VAR__1238129 < em; VAR__1238129++ )
+         {
+            {
+               VAR__COUNT += py[VAR__1238129];
+            }
+         }
+      }
+   }
+
+   VAR__COUNT += ed - sd;
+   ( cout << VAR__COUNT ) << endl;
+   return 0;
+}

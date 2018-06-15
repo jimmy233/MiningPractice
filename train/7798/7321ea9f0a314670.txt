@@ -1,0 +1,82 @@
+int trans(char VAR__8444594)
+{
+   char VAR__819283[26] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+   int  VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__8444594 == VAR__819283[VAR__53647] )
+      {
+         return VAR__53647;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__1238129;
+
+   scanf("%d", &VAR__1238129);
+   struct point
+   {
+      int  id;
+      char au[26];
+   }
+       books[1000];
+   int VAR__NUM[26];
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = 0;
+   }
+
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d%s", &books[VAR__53647].id, books[VAR__53647].au);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      int VAR__8444594;
+      VAR__8444594 = strlen(books[VAR__53647].au);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         int VAR__19328;
+         VAR__19328 = trans(books[VAR__53647].au[VAR__21230]);
+         VAR__NUM[VAR__19328]++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   int most;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__NUM[VAR__53647];
+         most     = VAR__53647;
+      }
+   }
+
+   char aumost;
+   aumost = 'A' + most;
+   printf("%c\n", aumost);
+   printf("%d\n", VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      int VAR__8444594;
+      VAR__8444594 = strlen(books[VAR__53647].au);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( books[VAR__53647].au[VAR__21230] == ( 'A' + most ))
+         {
+            printf("%d\n", books[VAR__53647].id);
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

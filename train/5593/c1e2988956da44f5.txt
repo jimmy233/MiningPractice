@@ -1,0 +1,87 @@
+int VAR__127322(int VAR__53647)
+{
+   int VAR__21230;
+   int VAR_21983012;
+
+   VAR_21983012 = 0;
+
+   if ( VAR__53647 <= 2 )
+   {
+      VAR_21983012 = 1;
+   }
+   else
+   {
+      for ( VAR__21230 = 2; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if (( VAR__53647 % VAR__21230 ) == 0 )
+         {
+            VAR_21983012 = 1;
+         }
+      }
+   }
+
+
+
+   return VAR_21983012;
+}
+
+
+void main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__NUM[100];
+   int VAR__21230;
+   int VAR__819283;
+   int VAR__SUM;
+   int I;
+   int VAR_21983012;
+   int ans[100];
+   int K;
+   int VAR__8444594;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129, VAR__8444594 = 0, VAR_21983012 = 0; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      I           = VAR__53647;
+      VAR__819283 = (int)log10(VAR__53647);
+      for ( VAR__21230 = 1; VAR__21230 <= ( VAR__819283 + 1 ); VAR__21230++ )
+      {
+         VAR__NUM[VAR__21230] = VAR__53647 / ((int)pow(10, ( VAR__819283 - VAR__21230 ) + 1));
+         VAR__53647           = VAR__53647 % ((int)pow(10, ( VAR__819283 - VAR__21230 ) + 1));
+      }
+
+      for ( VAR__21230 = VAR__819283 + 1, VAR__SUM = 0; VAR__21230 >= 1; VAR__21230-- )
+      {
+         VAR__SUM = VAR__SUM + ( VAR__NUM[VAR__21230] * ((int)pow(10, VAR__21230 - 1)));
+      }
+
+      if ( I == VAR__SUM )
+      {
+         if ( VAR__127322(I) == 0 )
+         {
+            ans[VAR__8444594] = I;
+            VAR__8444594++;
+         }
+      }
+
+
+      VAR__53647 = I;
+   }
+
+   if ( VAR__8444594 == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      K = VAR__8444594 - 1;
+      for ( VAR__8444594 = 0; VAR__8444594 < K; VAR__8444594++ )
+      {
+         printf("%d,", ans[VAR__8444594]);
+      }
+
+      printf("%d", ans[VAR__8444594]);
+   }
+}

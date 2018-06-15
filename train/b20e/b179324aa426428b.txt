@@ -1,0 +1,75 @@
+int tj[M];
+int qw[M];
+int VAR_1238123;
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__19328;
+   int VAR__112390;
+   int bb;
+   int ee;
+   int VAR__SUM;
+
+   while (( scanf("%d", &VAR_1238123) != EOF ) && ( VAR_1238123 != 0 ))
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tj[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qw[VAR__53647]);
+      }
+
+      qsort(tj, VAR_1238123, sizeof( int ), cmp);
+      qsort(qw, VAR_1238123, sizeof( int ), cmp);
+      VAR__19328  = ( bb = 0 );
+      VAR__112390 = ( ee = VAR_1238123 - 1 );
+      VAR__SUM    = 0;
+
+      while ( VAR__19328 <= VAR__112390 )
+      {
+         if ( tj[VAR__112390] > qw[ee] )
+         {
+            ++VAR__SUM, --VAR__112390, --ee;
+         }
+         else
+         if ( tj[VAR__112390] < qw[ee] )
+         {
+            --VAR__SUM, ++VAR__19328, --ee;
+         }
+         else
+         if ( tj[VAR__19328] > qw[bb] )
+         {
+            ++VAR__SUM, ++VAR__19328, ++bb;
+         }
+         else
+         if ( tj[VAR__19328] < qw[bb] )
+         {
+            --VAR__SUM, ++VAR__19328, --ee;
+         }
+         else
+         {
+            if ( tj[VAR__19328] < qw[ee] )
+            {
+               --VAR__SUM, ++VAR__19328, --ee;
+            }
+            else
+            {
+               ++VAR__19328, --ee;
+            }
+         }
+      }
+
+      printf("%d\n", VAR__SUM * 200);
+   }
+
+   return 0;
+}

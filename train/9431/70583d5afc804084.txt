@@ -1,0 +1,43 @@
+struct record
+{
+   char          stuinfo[50];
+   struct record *pnext;
+};
+int main()
+{
+   record *stu, *VAR__HEAD, *ptemp;
+
+   VAR__HEAD        = (struct record *)malloc(sizeof( struct record ));
+   VAR__HEAD->pnext = NULL;
+   ptemp            = (struct record *)malloc(sizeof( struct record ));
+   stu = (struct record *)malloc(sizeof( struct record ));
+   gets(stu->stuinfo);
+
+   while ( strcmp(stu->stuinfo, "end"))
+   {
+      if ( VAR__HEAD->pnext == NULL )
+      {
+         VAR__HEAD->pnext = stu;
+         stu->pnext       = NULL;
+      }
+      else
+      {
+         ptemp            = VAR__HEAD->pnext;
+         VAR__HEAD->pnext = stu;
+         stu->pnext       = ptemp;
+      }
+
+      stu = (struct record *)malloc(sizeof( struct record ));
+      gets(stu->stuinfo);
+   }
+
+   ptemp = VAR__HEAD;
+
+   while ( ptemp->pnext != NULL )
+   {
+      ptemp = ptemp->pnext;
+      printf("%s\n", ptemp->stuinfo);
+   }
+
+   return 0;
+}

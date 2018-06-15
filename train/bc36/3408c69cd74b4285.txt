@@ -1,0 +1,69 @@
+int main()
+{
+   char   sex[10];
+   int    VAR_1238123 = 0;
+   int    VAR__COUNT  = 0;
+   int    count1      = 0;
+   int    count2      = 0;
+   int    boy_num     = 0;
+   int    girl_num    = 0;
+   double VAR__TEMP;
+   double height;
+   double boy[40];
+   double girl[40];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__COUNT = 0; VAR__COUNT < VAR_1238123; ++VAR__COUNT )
+   {
+      scanf("%s%lf", sex, &height);
+
+      if ( !strcmp(sex, "male"))
+      {
+         boy[boy_num] = height;
+         boy_num++;
+      }
+      else
+      {
+         girl[girl_num] = height;
+         girl_num++;
+      }
+   }
+
+   for ( count1 = 0; count1 < boy_num; ++count1 )
+   {
+      for ( count2 = 0; count2 < (( boy_num - count1 ) - 1 ); ++count2 )
+      {
+         if ( boy[count2] > boy[count2 + 1] )
+         {
+            VAR__TEMP       = boy[count2];
+            boy[count2]     = boy[count2 + 1];
+            boy[count2 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( count1 = 0; count1 < girl_num; ++count1 )
+   {
+      for ( count2 = 0; count2 < (( girl_num - count1 ) - 1 ); ++count2 )
+      {
+         if ( girl[count2] < girl[count2 + 1] )
+         {
+            VAR__TEMP        = girl[count2];
+            girl[count2]     = girl[count2 + 1];
+            girl[count2 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__COUNT = 0; VAR__COUNT < boy_num; ++VAR__COUNT )
+   {
+      printf("%.2f ", boy[VAR__COUNT]);
+   }
+
+   for ( VAR__COUNT = 0; VAR__COUNT < ( girl_num - 1 ); ++VAR__COUNT )
+   {
+      printf("%.2f ", girl[VAR__COUNT]);
+   }
+
+   printf("%.2f", girl[VAR__COUNT]);
+}

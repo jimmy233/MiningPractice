@@ -1,0 +1,47 @@
+int main()
+{
+   char A_STRING[40];
+
+   cin.getline(A_STRING, 40);
+   int tens[9]      = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000 };
+   int VAR__NUM     = 0;
+   int VAR__8444594 = 0;
+   int LEN_OF_STH   = strlen(A_STRING);
+   for ( int VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= '0' ) && ( A_STRING[VAR__53647] <= '9' ))
+      {
+         VAR__8444594++;
+         continue;
+      }
+      else
+      if ( VAR__8444594 == 0 )
+      {
+         continue;
+      }
+      else
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+         {
+            VAR__NUM += ( A_STRING[( VAR__53647 - VAR__21230 ) - 1] - '0' ) * tens[VAR__21230];
+         }
+
+         VAR__8444594 = 0;
+         ( cout << VAR__NUM ) << endl;
+         VAR__NUM = 0;
+      }
+   }
+
+   if ( VAR__8444594 != 0 )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         VAR__NUM += ( A_STRING[( LEN_OF_STH - VAR__21230 ) - 1] - '0' ) * tens[VAR__21230];
+      }
+
+      VAR__8444594 = 0;
+      ( cout << VAR__NUM ) << endl;
+   }
+
+   return 0;
+}

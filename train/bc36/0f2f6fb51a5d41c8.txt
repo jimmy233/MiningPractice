@@ -1,0 +1,84 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   int VAR_2890   = 0;
+   int VAR_233;
+   int VAR_666;
+   int VAR__1238129;
+
+   scanf("%d", &VAR_1238123);
+   char  string[] = "male";
+   char  sex[VAR_1238123][6];
+   float height[VAR_1238123];
+   float male[VAR_1238123];
+   float female[VAR_1238123];
+   float change;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      scanf("%s %f", &sex[VAR__53647], &height[VAR__53647]);
+      VAR__53647++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( strcmp(sex[VAR__53647], string) == 0 )
+      {
+         male[VAR__21230] = height[VAR__53647];
+         VAR__21230++;
+      }
+      else
+      {
+         female[VAR_2890] = height[VAR__53647];
+         VAR_2890++;
+      }
+   }
+
+   for ( VAR_233 = 0; VAR_233 <= VAR__21230; VAR_233++ )
+   {
+      VAR__1238129 = VAR__21230 - 1;
+
+      while ( VAR__1238129 > 0 )
+      {
+         if ( male[VAR__1238129] <= male[VAR__1238129 - 1] )
+         {
+            change                 = male[VAR__1238129];
+            male[VAR__1238129]     = male[VAR__1238129 - 1];
+            male[VAR__1238129 - 1] = change;
+         }
+
+         VAR__1238129 = VAR__1238129 - 1;
+      }
+   }
+
+   for ( VAR_233 = 0; VAR_233 <= VAR_2890; VAR_233++ )
+   {
+      VAR__1238129 = VAR_2890 - 1;
+
+      while ( VAR__1238129 > 0 )
+      {
+         if ( female[VAR__1238129] <= female[VAR__1238129 - 1] )
+         {
+            change = female[VAR__1238129];
+            female[VAR__1238129]     = female[VAR__1238129 - 1];
+            female[VAR__1238129 - 1] = change;
+         }
+
+         VAR__1238129 = VAR__1238129 - 1;
+      }
+   }
+
+   for ( VAR_233 = 0; VAR_233 < VAR__21230; VAR_233++ )
+   {
+      printf("%.2f ", male[VAR_233]);
+   }
+
+   for ( VAR_233 = VAR_2890 - 1; VAR_233 > 0; VAR_233-- )
+   {
+      printf("%.2f ", female[VAR_233]);
+   }
+
+   printf("%.2f", female[0]);
+}

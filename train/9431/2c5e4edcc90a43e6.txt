@@ -1,0 +1,46 @@
+struct student
+{
+   char           VAR__NUM[30];
+   char           name[30];
+   char           VAR_9494;
+   float          grad1;
+   float          grad2;
+   char           add[30];
+   struct student *VAR__NEXT;
+   struct student *prev;
+};
+void main()
+{
+   struct student *VAR__HEAD;
+   struct student *VAR__TEMP;
+   struct student *end;
+
+   VAR__HEAD       = (struct student *)malloc(sizeof( struct student ));
+   VAR__TEMP       = VAR__HEAD;
+   VAR__HEAD->prev = 0;
+
+   while ( 1 )
+   {
+      scanf("%s", VAR__TEMP->VAR__NUM);
+
+      if ( strcmp(VAR__TEMP->VAR__NUM, "end") == 0 )
+      {
+         break;
+      }
+
+      scanf("%s %c %f %f %s", VAR__TEMP->name, &VAR__TEMP->VAR_9494, &VAR__TEMP->grad1, &VAR__TEMP->grad2, VAR__TEMP->add);
+      VAR__TEMP->VAR__NEXT       = (struct student *)malloc(sizeof( struct student ));
+      VAR__TEMP->VAR__NEXT->prev = VAR__TEMP;
+      VAR__TEMP = VAR__TEMP->VAR__NEXT;
+   }
+
+   end            = VAR__TEMP->prev;
+   end->VAR__NEXT = 0;
+   VAR__TEMP      = end;
+
+   while ( VAR__TEMP != 0 )
+   {
+      printf("%s %s %c %g %g %s\n", VAR__TEMP->VAR__NUM, VAR__TEMP->name, VAR__TEMP->VAR_9494, VAR__TEMP->grad1, VAR__TEMP->grad2, VAR__TEMP->add);
+      VAR__TEMP = VAR__TEMP->prev;
+   }
+}

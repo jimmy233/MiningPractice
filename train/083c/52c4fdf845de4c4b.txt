@@ -1,0 +1,62 @@
+void main()
+{
+   long VAR__819283;
+   long VAR__19328;
+   long VAR__53647;
+   long VAR__21230;
+   long length;
+   long result = 0;
+   char VAR__4857423[100];
+   long final[100] = { 0 };
+
+   scanf("%d %s %d", &VAR__819283, VAR__4857423, &VAR__19328);
+   int decimal[100] = { 0 };
+   length = strlen(VAR__4857423);
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if (( VAR__4857423[VAR__53647] >= 'A' ) && ( VAR__4857423[VAR__53647] <= 'Z' ))
+      {
+         decimal[VAR__53647] = ( VAR__4857423[VAR__53647] - 'A' ) + 10;
+      }
+      else
+      if (( VAR__4857423[VAR__53647] >= 'a' ) && ( VAR__4857423[VAR__53647] <= 'z' ))
+      {
+         decimal[VAR__53647] = ( VAR__4857423[VAR__53647] - 'a' ) + 10;
+      }
+      else
+      if (( VAR__4857423[VAR__53647] >= '0' ) && ( VAR__4857423[VAR__53647] <= '9' ))
+      {
+         decimal[VAR__53647] = VAR__4857423[VAR__53647] - '0';
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      result = result + ( decimal[( length - VAR__53647 ) - 1] * ((int)pow((double)VAR__819283, VAR__53647)));
+   }
+
+   if ( result == 0 )
+   {
+      printf("0");
+   }
+
+   for ( VAR__53647 = 0; result != 0; VAR__53647++ )
+   {
+      final[VAR__53647] = result % VAR__19328;
+      result            = result / VAR__19328;
+   }
+
+   for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      if ( final[VAR__21230] < 10 )
+      {
+         printf("%d", final[VAR__21230]);
+      }
+      else
+      {
+         printf("%c", (char)(( final[VAR__21230] + 'A' ) - 10 ));
+      }
+   }
+
+   printf("\n");
+}

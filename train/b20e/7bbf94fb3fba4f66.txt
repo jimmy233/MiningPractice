@@ -1,0 +1,104 @@
+int comp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int VAR__819283[VAR_1238123];
+      int VAR__19328[VAR_1238123];
+      int VAR__53647;
+      int VAR__21230;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), comp);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), comp);
+      int first1   = 0;
+      int first2   = 0;
+      int last1    = VAR_1238123 - 1;
+      int last2    = VAR_1238123 - 1;
+      int VAR__SUM = 0;
+
+      while ( first2 <= last2 )
+      {
+         if ( VAR__819283[last1] > VAR__19328[last2] )
+         {
+            VAR__SUM = VAR__SUM + 200;
+            last1--;
+            last2--;
+            continue;
+         }
+
+         if ( VAR__819283[last1] < VAR__19328[last2] )
+         {
+            VAR__SUM = VAR__SUM - 200;
+            first1++;
+            last2--;
+            continue;
+         }
+
+         if ( VAR__819283[last1] == VAR__19328[last2] )
+         {
+            if ( VAR__819283[first1] < VAR__19328[first2] )
+            {
+               VAR__SUM = VAR__SUM - 200;
+               last2--;
+               first1++;
+               continue;
+            }
+
+            if ( VAR__819283[first1] > VAR__19328[first2] )
+            {
+               VAR__SUM = VAR__SUM + 200;
+               first2++;
+               first1++;
+               continue;
+            }
+
+            if ( VAR__819283[first1] == VAR__19328[first2] )
+            {
+               if ( VAR__819283[first1] < VAR__19328[last2] )
+               {
+                  VAR__SUM = VAR__SUM - 200;
+               }
+
+               if ( VAR__819283[first1] == VAR__19328[last2] )
+               {
+                  VAR__SUM = VAR__SUM;
+               }
+
+               if ( VAR__819283[first1] > VAR__19328[last2] )
+               {
+                  VAR__SUM = VAR__SUM + 200;
+               }
+
+               first1++;
+               last2--;
+               continue;
+            }
+         }
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

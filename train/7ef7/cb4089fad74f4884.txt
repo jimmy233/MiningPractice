@@ -1,0 +1,94 @@
+int juzhen[101][101];
+int VAR__SUM;
+void xiaochu(int VAR_1238123)
+{
+   if ( VAR_1238123 == 1 )
+   {
+   }
+   else
+   {
+      int minj[101];
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         minj[VAR__53647] = 1000;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( juzhen[VAR__53647][VAR__21230] < minj[VAR__53647] )
+            {
+               minj[VAR__53647] = juzhen[VAR__53647][VAR__21230];
+            }
+         }
+
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            juzhen[VAR__53647][VAR__21230] = juzhen[VAR__53647][VAR__21230] - minj[VAR__53647];
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         minj[VAR__53647] = 1000;
+      }
+
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            if ( juzhen[VAR__53647][VAR__21230] < minj[VAR__21230] )
+            {
+               minj[VAR__21230] = juzhen[VAR__53647][VAR__21230];
+            }
+         }
+
+         for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            juzhen[VAR__53647][VAR__21230] = juzhen[VAR__53647][VAR__21230] - minj[VAR__21230];
+         }
+      }
+
+      VAR__SUM = VAR__SUM + juzhen[1][1];
+      for ( int VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         juzhen[0][VAR__21230] = juzhen[0][VAR__21230 + 1];
+         juzhen[VAR__21230][0] = juzhen[VAR__21230 + 1][0];
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+         {
+            juzhen[VAR__53647][VAR__21230] = juzhen[VAR__53647 + 1][VAR__21230 + 1];
+         }
+      }
+
+
+      xiaochu(VAR_1238123 - 1);
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__9290 = 0; VAR__9290 < VAR_1238123; VAR__9290++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> juzhen[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      VAR__SUM = 0;
+      xiaochu(VAR_1238123);
+      ( cout << VAR__SUM ) << endl;
+   }
+}

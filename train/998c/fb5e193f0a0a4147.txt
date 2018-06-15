@@ -1,0 +1,153 @@
+struct Addlist
+{
+   int VAR_1238123;
+   int *element;
+};
+typedef struct Addlist *ablist;
+ablist creatalist(void)
+{
+   ablist alist = (ablist)malloc(sizeof( struct Addlist ));
+
+   if ( alist != NULL )
+   {
+      alist->element = (int *)malloc(( sizeof( int )) * MAXNUM);
+
+      if ( alist->element )
+      {
+         alist->VAR_1238123 = 0;
+         return alist;
+      }
+      else
+      {
+         delete(alist);
+      }
+   }
+
+   return NULL;
+}
+
+
+ablist creatblist(void)
+{
+   ablist blist = (ablist)malloc(sizeof( struct Addlist ));
+
+   if ( blist != NULL )
+   {
+      blist->element = (int *)malloc(( sizeof( int )) * MAXNUM);
+
+      if ( blist->element )
+      {
+         blist->VAR_1238123 = 0;
+         return blist;
+      }
+      else
+      {
+         delete(blist);
+      }
+   }
+}
+
+
+int main()
+{
+   int    VAR__53647;
+   int    VAR__21230;
+   int    VAR__8444594;
+   int    lena;
+   int    lenb;
+   int    LEN_OF_STH;
+   int    carry = 0;
+   ablist alist = creatalist();
+   ablist blist = creatblist();
+   char   achar[MAXNUM];
+
+   cin >> achar;
+   lena = strlen(achar);
+   char bchar[MAXNUM];
+   cin >> bchar;
+   lenb = strlen(bchar);
+   for ( VAR__53647 = 0; VAR__53647 < lena; VAR__53647++ )
+   {
+      alist->element[VAR__53647] = achar[( lena - VAR__53647 ) - 1] - '0';
+   }
+
+   for ( VAR__53647 = lena; VAR__53647 < MAXNUM; VAR__53647++ )
+   {
+      alist->element[VAR__53647] = 0;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < lenb; VAR__21230++ )
+   {
+      blist->element[VAR__21230] = bchar[( lenb - VAR__21230 ) - 1] - '0';
+   }
+
+   for ( VAR__21230 = lenb; VAR__21230 < MAXNUM; VAR__21230++ )
+   {
+      blist->element[VAR__21230] = 0;
+   }
+
+   if ( lena <= lenb )
+   {
+      LEN_OF_STH = lenb;
+   }
+   else
+   {
+      LEN_OF_STH = lena;
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < LEN_OF_STH; VAR__8444594++ )
+   {
+      alist->element[VAR__8444594] = ( alist->element[VAR__8444594] + blist->element[VAR__8444594] ) + carry;
+
+      if ( alist->element[VAR__8444594] >= 10 )
+      {
+         alist->element[VAR__8444594] -= 10;
+         carry = 1;
+      }
+      else
+      {
+         carry = 0;
+      }
+   }
+
+   if ( carry == 1 )
+   {
+      alist->element[LEN_OF_STH] = 1;
+      for ( VAR__53647 = LEN_OF_STH; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << alist->element[VAR__53647];
+      }
+
+      return 0;
+   }
+   else
+   {
+      VAR__21230 = 0;
+      for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         if ( alist->element[VAR__53647] == 0 )
+         {
+            VAR__21230++;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      if ( VAR__21230 != LEN_OF_STH )
+      {
+         for ( VAR__8444594 = ( LEN_OF_STH - 1 ) - VAR__21230; VAR__8444594 >= 0; VAR__8444594-- )
+         {
+            cout << alist->element[VAR__8444594];
+         }
+      }
+
+      else
+      {
+         ( cout << "0" ) << endl;
+      }
+
+      return 0;
+   }
+}

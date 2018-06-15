@@ -1,0 +1,68 @@
+const int VAR__7685[5]    = { 0, 0, 1, 0, -1 };
+const int VAR__3918907[5] = { 0, 1, 0, -1, 0 };
+int       VAR__127322[1000][1000];
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__8444594 = 1;
+
+   scanf("%d %d", &VAR__1238129, &VAR_1238123);
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &VAR__127322[VAR__53647][VAR__21230]);
+      }
+   }
+
+   int dx         = 1;
+   int dy         = 1;
+   int dm         = VAR__1238129;
+   int dn         = VAR_1238123;
+   int cm         = 1;
+   int cn         = 1;
+   int VAR__COUNT = 0;
+
+   while ( VAR__COUNT < ( VAR__1238129 * VAR_1238123 ))
+   {
+      printf("%d\n", VAR__127322[dx][dy]);
+      VAR__COUNT++;
+      int tx = dx + VAR__7685[VAR__8444594];
+      int ty = dy + VAR__3918907[VAR__8444594];
+
+      if (((( tx > dm ) || ( tx < cm )) || ( ty > dn )) || ( ty < cn ))
+      {
+         if ( VAR__8444594 == 1 )
+         {
+            cm++;
+         }
+         else
+         if ( VAR__8444594 == 2 )
+         {
+            dn--;
+         }
+         else
+         if ( VAR__8444594 == 3 )
+         {
+            dm--;
+         }
+         else
+         if ( VAR__8444594 == 4 )
+         {
+            cn++;
+         }
+
+
+
+         VAR__8444594 = ( VAR__8444594 % 4 ) + 1;
+         tx           = dx + VAR__7685[VAR__8444594];
+         ty           = dy + VAR__3918907[VAR__8444594];
+      }
+
+      dx = tx;
+      dy = ty;
+   }
+
+   return 0;
+}

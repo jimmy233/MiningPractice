@@ -1,0 +1,72 @@
+int main()
+{
+   struct student
+   {
+      char name[100];
+      int  qimo;
+      int  banji;
+      char isGanbu[1];
+      char isWest[1];
+      int  paper;
+      int  money;
+   };
+   struct student VAR__819283[1000];
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__MAX;
+   int            maxnum;
+   int            VAR__SUM;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647].money = 0;
+      scanf("%s", VAR__819283[VAR__53647].name);
+      scanf("%d%d%s%s%d", &VAR__819283[VAR__53647].qimo, &VAR__819283[VAR__53647].banji, VAR__819283[VAR__53647].isGanbu, VAR__819283[VAR__53647].isWest, &VAR__819283[VAR__53647].paper);
+
+      if (( VAR__819283[VAR__53647].qimo > 80 ) && ( VAR__819283[VAR__53647].paper > 0 ))
+      {
+         VAR__819283[VAR__53647].money += 8000;
+      }
+
+      if (( VAR__819283[VAR__53647].qimo > 85 ) && ( VAR__819283[VAR__53647].banji > 80 ))
+      {
+         VAR__819283[VAR__53647].money += 4000;
+      }
+
+      if ( VAR__819283[VAR__53647].qimo > 90 )
+      {
+         VAR__819283[VAR__53647].money += 2000;
+      }
+
+      if (( VAR__819283[VAR__53647].qimo > 85 ) && ( VAR__819283[VAR__53647].isWest[0] == 'Y' ))
+      {
+         VAR__819283[VAR__53647].money += 1000;
+      }
+
+      if (( VAR__819283[VAR__53647].banji > 80 ) && ( VAR__819283[VAR__53647].isGanbu[0] == 'Y' ))
+      {
+         VAR__819283[VAR__53647].money += 850;
+      }
+   }
+
+   VAR__MAX = 0;
+   VAR__SUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647].money > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647].money;
+         maxnum   = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += VAR__819283[VAR__53647].money;
+   }
+
+   printf("%s\n", VAR__819283[maxnum].name);
+   printf("%d\n%d", VAR__MAX, VAR__SUM);
+   return 0;
+}

@@ -1,0 +1,128 @@
+int main()
+{
+   int  VAR__53647 = 0;
+   int  VAR__21230;
+   int  total_num = 0;
+   int  VAR__NUM  = 0;
+   int  minx;
+   int  maxy;
+   int  max_num = 0;
+   int  lenx;
+   int  leny;
+   int  mark = 0;
+   int  VAR__7685[10000];
+   int  VAR__3918907[10000];
+   char strx[10000];
+   char stry[10000];
+
+   cin.getline(strx, 10000);
+   cin.getline(stry, 10000);
+   lenx = strlen(strx);
+   leny = strlen(stry);
+
+   while ( VAR__53647 <= lenx )
+   {
+      if (( strx[VAR__53647] != ',' ) && ( strx[VAR__53647] != '\0' ))
+      {
+         mark++;
+      }
+      else
+      {
+         if ( mark == 1 )
+         {
+            VAR__7685[total_num] = strx[VAR__53647 - 1] - '0';
+         }
+
+         if ( mark == 2 )
+         {
+            VAR__7685[total_num] = ( strx[VAR__53647 - 1] - '0' ) + (( strx[VAR__53647 - 2] - '0' ) * 10 );
+         }
+
+         if ( mark == 3 )
+         {
+            VAR__7685[total_num] = (( strx[VAR__53647 - 1] - '0' ) + (( strx[VAR__53647 - 2] - '0' ) * 10 )) + (( strx[VAR__53647 - 3] - '0' ) * 100 );
+         }
+
+         mark = 0;
+         total_num++;
+      }
+
+      VAR__53647++;
+   }
+
+   total_num  = 0;
+   VAR__53647 = 0;
+
+   while ( VAR__53647 <= leny )
+   {
+      if (( stry[VAR__53647] != ',' ) && ( stry[VAR__53647] != '\0' ))
+      {
+         mark++;
+      }
+      else
+      {
+         if ( mark == 1 )
+         {
+            VAR__3918907[total_num] = stry[VAR__53647 - 1] - '0';
+         }
+
+         if ( mark == 2 )
+         {
+            VAR__3918907[total_num] = ( stry[VAR__53647 - 1] - '0' ) + (( stry[VAR__53647 - 2] - '0' ) * 10 );
+         }
+
+         if ( mark == 3 )
+         {
+            VAR__3918907[total_num] = (( stry[VAR__53647 - 1] - '0' ) + (( stry[VAR__53647 - 2] - '0' ) * 10 )) + (( stry[VAR__53647 - 3] - '0' ) * 100 );
+         }
+
+         mark = 0;
+         total_num++;
+      }
+
+      VAR__53647++;
+   }
+
+   ( cout << total_num ) << " ";
+   for ( VAR__53647 = 0; VAR__53647 < total_num; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         minx = VAR__7685[VAR__53647];
+         maxy = VAR__3918907[VAR__53647];
+      }
+      else
+      {
+         if ( VAR__7685[VAR__53647] < minx )
+         {
+            minx = VAR__7685[VAR__53647];
+         }
+
+         if ( VAR__3918907[VAR__53647] > maxy )
+         {
+            maxy = VAR__3918907[VAR__53647];
+         }
+      }
+   }
+
+   for ( VAR__53647 = minx; VAR__53647 <= maxy; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= total_num; VAR__21230++ )
+      {
+         if (( VAR__7685[VAR__21230] <= VAR__53647 ) && ( VAR__3918907[VAR__21230] > VAR__53647 ))
+         {
+            VAR__NUM++;
+         }
+      }
+
+      if ( VAR__NUM >= max_num )
+      {
+         max_num = VAR__NUM;
+      }
+
+      VAR__NUM = 0;
+   }
+
+   ( cout << max_num ) << endl;
+   return 0;
+}

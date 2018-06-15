@@ -1,0 +1,108 @@
+struct data
+{
+   long int    VAR__NUM;
+   int         point1;
+   int         point2;
+   int         VAR__SUM;
+   struct data *VAR__NEXT;
+};
+struct data *creat(long int VAR_1238123)
+{
+   long int    VAR__53647 = 0;
+   struct data *ANOTHER_POINTER;
+   struct data *YET_ANOTHER_POINTER;
+   struct data *VAR__HEAD;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct data *)malloc(sizeof( struct data )));
+   scanf("%ld %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->point1, &ANOTHER_POINTER->point2);
+   ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->point1 + ANOTHER_POINTER->point2;
+   VAR__HEAD = NULL;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      VAR__53647 = VAR__53647 + 1;
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct data *)malloc(sizeof( struct data ));
+      scanf("%ld %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->point1, &ANOTHER_POINTER->point2);
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->point1 + ANOTHER_POINTER->point2;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct data *VAR__MAX(struct data *VAR__HEAD)
+{
+   struct data *ANOTHER_POINTER;
+   struct data *VAR__MAX;
+
+   VAR__MAX        = VAR__HEAD;
+   ANOTHER_POINTER = VAR__HEAD;
+   do
+   {
+      if ( ANOTHER_POINTER->VAR__SUM > VAR__MAX->VAR__SUM )
+      {
+         VAR__MAX = ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER != NULL );
+   return VAR__MAX;
+}
+
+
+struct data *del(struct data *VAR__HEAD, struct data *VAR__MAX)
+{
+   struct data *ANOTHER_POINTER;
+   struct data *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( VAR__MAX != ANOTHER_POINTER )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   if ( ANOTHER_POINTER == VAR__HEAD )
+   {
+      VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+   }
+   else
+   {
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct data *VAR__819283;
+   struct data *VAR__19328;
+   struct data *VAR__4857423;
+   struct data *VAR__HEAD;
+   long int    VAR_1238123;
+
+   scanf("%ld", &VAR_1238123);
+   VAR__HEAD   = creat(VAR_1238123);
+   VAR__819283 = VAR__MAX(VAR__HEAD);
+   printf("%ld %d\n", VAR__819283->VAR__NUM, VAR__819283->VAR__SUM);
+   VAR__HEAD  = del(VAR__HEAD, VAR__819283);
+   VAR__19328 = VAR__MAX(VAR__HEAD);
+   printf("%ld %d\n", VAR__19328->VAR__NUM, VAR__19328->VAR__SUM);
+   VAR__4857423 = VAR__MAX(del(VAR__HEAD, VAR__19328));
+   printf("%ld %d\n", VAR__4857423->VAR__NUM, VAR__4857423->VAR__SUM);
+}

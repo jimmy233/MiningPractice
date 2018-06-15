@@ -1,0 +1,67 @@
+void fun(char VAR__819283[])
+{
+   char *VAR_233 = VAR__819283;
+   char VAR__temp[100];
+   char VAR_9494[100];
+   int  index;
+
+   memset(VAR_9494, 0, 100);
+
+   while ( *VAR_233 )
+   {
+      if ( !isalpha(*VAR_233))
+      {
+         *VAR_233 = ' ';
+      }
+
+      VAR_233++;
+   }
+
+   VAR_233 = VAR__819283;
+
+   while ( strstr(VAR_233, " ") != NULL )
+   {
+      memset(VAR__temp, 0, 100);
+      index = strstr(VAR_233, " ") - VAR_233;
+
+      if ( index > 0 )
+      {
+         strncpy(VAR__temp, VAR_233, index);
+         strcat(VAR__temp, " ");
+         strcat(VAR__temp, VAR_9494);
+         strcpy(VAR_9494, VAR__temp);
+      }
+      else
+      {
+         strcpy(VAR__temp, " ");
+         strcat(VAR__temp, VAR_9494);
+         strcpy(VAR_9494, VAR__temp);
+      }
+
+      VAR_233 += index + 1;
+   }
+
+   if ( *VAR_233 )
+   {
+      strcpy(VAR__temp, VAR_233);
+      strcat(VAR__temp, " ");
+      strcat(VAR__temp, VAR_9494);
+      strcpy(VAR_9494, VAR__temp);
+   }
+
+   strcpy(VAR__819283, VAR_9494);
+}
+
+
+void main()
+{
+   char VAR_9494[100];
+   int  VAR__53647;
+
+   gets(VAR_9494);
+   fun(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < ( strlen(VAR_9494) - 1 ); VAR__53647++ )
+   {
+      printf("%c", VAR_9494[VAR__53647]);
+   }
+}

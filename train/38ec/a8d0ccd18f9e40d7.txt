@@ -1,0 +1,72 @@
+int NO[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int SP[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int boolean(int year)
+{
+   if ((( year % 4 ) == 0 ) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   long VAR__53647;
+   long VAR__SUM;
+   long y1;
+   long m1;
+   long d1;
+   long y2;
+   long m2;
+   long d2;
+
+   scanf("%d%d%d", &y1, &m1, &d1);
+   scanf("%d%d%d", &y2, &m2, &d2);
+   VAR__SUM = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= ( m1 - 1 ); VAR__53647++ )
+   {
+      if ( boolean(y1) == 1 )
+      {
+         VAR__SUM = VAR__SUM - NO[VAR__53647];
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM - SP[VAR__53647];
+      }
+   }
+
+
+   VAR__SUM = VAR__SUM - d1;
+   for ( VAR__53647 = 1; VAR__53647 <= ( m2 - 1 ); VAR__53647++ )
+   {
+      if ( boolean(y1) == 1 )
+      {
+         VAR__SUM = VAR__SUM + NO[VAR__53647];
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + SP[VAR__53647];
+      }
+   }
+
+
+   VAR__SUM = VAR__SUM + d2;
+   for ( VAR__53647 = y1; VAR__53647 <= ( y2 - 1 ); VAR__53647++ )
+   {
+      if ( boolean(VAR__53647) == 1 )
+      {
+         VAR__SUM = VAR__SUM + 366;
+      }
+      else
+      {
+         VAR__SUM = VAR__SUM + 365;
+      }
+   }
+
+
+   printf("%ld\n", VAR__SUM);
+}

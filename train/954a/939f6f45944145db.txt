@@ -1,0 +1,71 @@
+int main()
+{
+   int  VAR_1238123;
+   int  maxmoney;
+   int  VAR__53647;
+   char maxname[20];
+
+   struct
+   {
+      char name[20];
+      int  qimo;
+      int  banji;
+      char ganbu;
+      char xibu;
+      int  paper;
+   }
+       student[101];
+   int money[101];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &student[VAR__53647].name, &student[VAR__53647].qimo, &student[VAR__53647].banji, &student[VAR__53647].ganbu, &student[VAR__53647].xibu, &student[VAR__53647].paper);
+   }
+
+   int total = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      money[VAR__53647] = 0;
+
+      if (( student[VAR__53647].qimo > 80 ) && ( student[VAR__53647].paper >= 1 ))
+      {
+         money[VAR__53647] += 8000;
+      }
+
+      if (( student[VAR__53647].qimo > 85 ) && ( student[VAR__53647].banji > 80 ))
+      {
+         money[VAR__53647] += 4000;
+      }
+
+      if ( student[VAR__53647].qimo > 90 )
+      {
+         money[VAR__53647] += 2000;
+      }
+
+      if (( student[VAR__53647].qimo > 85 ) && ( student[VAR__53647].xibu == 'Y' ))
+      {
+         money[VAR__53647] += 1000;
+      }
+
+      if (( student[VAR__53647].banji > 80 ) && ( student[VAR__53647].ganbu == 'Y' ))
+      {
+         money[VAR__53647] += 850;
+      }
+
+      total = total + money[VAR__53647];
+   }
+
+   maxmoney = money[1];
+   strcpy(maxname, student[1].name);
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( money[VAR__53647] > maxmoney )
+      {
+         maxmoney = money[VAR__53647];
+         strcpy(maxname, student[VAR__53647].name);
+      }
+   }
+
+   printf("%s\n%d\n%d\n", maxname, maxmoney, total);
+   return 0;
+}

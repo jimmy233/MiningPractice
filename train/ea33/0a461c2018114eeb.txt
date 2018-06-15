@@ -1,0 +1,45 @@
+int main()
+{
+   char A_STRING[11];
+   char substr[4];
+   char VAR__7685[15];
+   int  VAR__MAX;
+   int  VAR__NUM;
+   int  VAR__53647;
+   int  VAR__21230;
+
+   while ( 1 )
+   {
+      VAR__MAX = 0;
+
+      if ( scanf("%s%s", A_STRING, substr) == EOF )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+      {
+         if ( A_STRING[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX = A_STRING[VAR__53647];
+            VAR__NUM = VAR__53647;
+         }
+      }
+
+      strncpy(VAR__7685, A_STRING, VAR__NUM + 1);
+      for ( VAR__21230 = VAR__NUM + 1; VAR__21230 <= ( VAR__NUM + strlen(substr)); VAR__21230++ )
+      {
+         VAR__7685[VAR__21230] = substr[( VAR__21230 - VAR__NUM ) - 1];
+      }
+
+      for ( VAR__21230 = ( VAR__NUM + strlen(substr)) + 1; VAR__21230 < ( strlen(substr) + strlen(A_STRING)); VAR__21230++ )
+      {
+         VAR__7685[VAR__21230] = A_STRING[VAR__21230 - strlen(substr)];
+      }
+
+      VAR__7685[VAR__21230] = '\0';
+      printf("%s\n", VAR__7685);
+   }
+
+   return 0;
+}

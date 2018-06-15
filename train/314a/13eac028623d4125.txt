@@ -1,0 +1,88 @@
+int VAR_233(int VAR_1238123)
+{
+   int VAR__SUM = 1;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM * 10;
+   }
+
+   return VAR__SUM;
+}
+
+
+void change(int time[1001], char A_STRING[1001])
+{
+   int VAR__21230   = 0;
+   int VAR__8444594 = 0;
+
+   for ( int VAR__53647 = strlen(A_STRING) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( A_STRING[VAR__53647] != ',' )
+      {
+         time[VAR__8444594] = time[VAR__8444594] + (( A_STRING[VAR__53647] - '0' ) * VAR_233(VAR__21230));
+         VAR__21230++;
+      }
+      else
+      {
+         VAR__21230 = 0;
+         VAR__8444594++;
+      }
+   }
+}
+
+
+int length(char A_STRING[100000])
+{
+   int VAR__COUNT = 1;
+
+   for ( int VAR__53647 = 0; VAR__53647 < strlen(A_STRING); VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == ',' )
+      {
+         VAR__COUNT++;
+      }
+   }
+
+   return VAR__COUNT;
+}
+
+
+int main()
+{
+   char ANOTHER_STRING[100000];
+   char YET_ANOTHER_STRING[100000];
+
+   ( cin >> ANOTHER_STRING ) >> YET_ANOTHER_STRING;
+   int time1[1000];
+   int time2[1000];
+   memset(time1, 0, sizeof( time1 ));
+   memset(time2, 0, sizeof( time2 ));
+   change(time1, ANOTHER_STRING);
+   change(time2, YET_ANOTHER_STRING);
+   int len1;
+   int len2;
+   len2 = ( len1 = length(ANOTHER_STRING));
+   ( cout << len1 ) << ' ';
+   int time[1001];
+   memset(time, 0, sizeof( time ));
+   for ( int VAR__53647 = 0; VAR__53647 < len1; VAR__53647++ )
+   {
+      for ( int VAR__21230 = time1[VAR__53647]; VAR__21230 < time2[VAR__53647]; VAR__21230++ )
+      {
+         time[VAR__21230]++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < 1001; VAR__53647++ )
+   {
+      if ( VAR__MAX < time[VAR__53647] )
+      {
+         VAR__MAX = time[VAR__53647];
+      }
+   }
+
+   ( cout << VAR__MAX ) << endl;
+   return 0;
+}

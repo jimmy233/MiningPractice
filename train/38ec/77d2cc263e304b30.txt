@@ -1,0 +1,68 @@
+int Year(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 366;
+   }
+
+   return 365;
+}
+
+
+int main()
+{
+   int sy;
+   int sm;
+   int sd;
+   int ey;
+   int em;
+   int ed;
+   int VAR__SUM = 0;
+   int VAR__53647;
+   int VAR__1238129[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   ((((( cin >> sy ) >> sm ) >> sd ) >> ey ) >> em ) >> ed;
+   for ( VAR__53647 = sy; VAR__53647 <= ey; VAR__53647++ )
+   {
+      VAR__SUM += Year(VAR__53647);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < sm; VAR__53647++ )
+   {
+      if (( Year(sy) == 366 ) && ( VAR__53647 == 2 ))
+      {
+         VAR__SUM -= 29;
+      }
+      else
+      {
+         VAR__SUM -= VAR__1238129[VAR__53647];
+      }
+   }
+
+
+   VAR__SUM -= sd;
+   for ( VAR__53647 = 12; VAR__53647 > em; VAR__53647-- )
+   {
+      if (( Year(ey) == 366 ) && ( VAR__53647 == 2 ))
+      {
+         VAR__SUM -= 29;
+      }
+      else
+      {
+         VAR__SUM -= VAR__1238129[VAR__53647];
+      }
+   }
+
+
+   if (( Year(ey) == 366 ) && ( em == 2 ))
+   {
+      VAR__SUM -= 29 - ed;
+   }
+   else
+   {
+      VAR__SUM -= VAR__1238129[em] - ed;
+   }
+
+   cout << VAR__SUM;
+   return 0;
+}

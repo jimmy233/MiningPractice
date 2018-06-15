@@ -1,0 +1,79 @@
+void exchange(int VAR__NUM[], char A_STRING[]);
+void calculate(int num1[], int num2[]);
+
+void main()
+{
+   int  num1[100] = { 0 };
+   int  num2[100] = { 0 };
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   char ANOTHER_STRING[100]     = { "" };
+   char YET_ANOTHER_STRING[100] = { "" };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%s", ANOTHER_STRING, YET_ANOTHER_STRING);
+      exchange(num1, ANOTHER_STRING);
+      exchange(num2, YET_ANOTHER_STRING);
+      calculate(num1, num2);
+      for ( VAR__21230 = 0; VAR__21230 <= 99; VAR__21230++ )
+      {
+         num1[VAR__21230]               = 0;
+         num2[VAR__21230]               = 0;
+         ANOTHER_STRING[VAR__21230]     = ' ';
+         YET_ANOTHER_STRING[VAR__21230] = ' ';
+      }
+   }
+}
+
+
+void exchange(int VAR__NUM[], char A_STRING[])
+{
+   int VAR__53647;
+   int VAR__21230  = 99;
+   int VAR_1238123 = 0;
+
+   while (( A_STRING[VAR_1238123] >= 48 ) && ( A_STRING[VAR_1238123] <= 58 ))
+   {
+      VAR_1238123 += 1;
+   }
+
+   VAR_1238123 -= 1;
+   for ( VAR__53647 = VAR_1238123, VAR__21230 = 99; VAR__53647 >= 0; VAR__53647--, VAR__21230-- )
+   {
+      VAR__NUM[VAR__21230] = A_STRING[VAR__53647] - 48;
+   }
+}
+
+
+void calculate(int num1[], int num2[])
+{
+   int VAR__53647;
+   int VAR_1238123 = 0;
+   int num3[100]   = { 0 };
+
+   for ( VAR__53647 = 99; VAR__53647 >= 0; VAR__53647-- )
+   {
+      num3[VAR__53647] = num1[VAR__53647] - num2[VAR__53647];
+
+      if ( num3[VAR__53647] < 0 )
+      {
+         num3[VAR__53647]     += 10;
+         num1[VAR__53647 - 1] -= 1;
+      }
+   }
+
+   while ( num3[VAR_1238123] == 0 )
+   {
+      VAR_1238123 += 1;
+   }
+
+   for ( VAR__53647 = VAR_1238123; VAR__53647 <= 99; VAR__53647++ )
+   {
+      printf("%d", num3[VAR__53647]);
+   }
+
+   printf("\n");
+}

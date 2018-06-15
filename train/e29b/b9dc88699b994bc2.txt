@@ -1,0 +1,86 @@
+int main()
+{
+   double shu[300];
+   double ping;
+   int    VAR_1238123;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> shu[VAR__53647];
+   }
+
+   double VAR__SUM = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + shu[VAR__53647];
+   }
+
+   ping = VAR__SUM / VAR_1238123;
+   double VAR__TEMP;
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( shu[VAR__53647] > shu[VAR__21230] )
+         {
+            VAR__TEMP       = shu[VAR__53647];
+            shu[VAR__53647] = shu[VAR__21230];
+            shu[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+   double cha[300];
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cha[VAR__53647] = abs(ping - shu[VAR__53647]);
+   }
+
+   double VAR__MAX = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX <= cha[VAR__53647] )
+      {
+         VAR__MAX = cha[VAR__53647];
+      }
+   }
+
+   int VAR__COUNT = 0;
+   int VAR_FLAG;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX == cha[VAR__53647] )
+      {
+         VAR__COUNT++;
+         VAR_FLAG = VAR__53647;
+      }
+   }
+
+   if ( VAR__COUNT == 1 )
+   {
+      cout << shu[VAR_FLAG];
+   }
+   else
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__MAX == cha[VAR__53647] )
+         {
+            cout << shu[VAR__53647];
+            VAR_FLAG = VAR__53647;
+            break;
+         }
+      }
+
+      for ( int VAR__53647 = VAR_FLAG + 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__MAX == cha[VAR__53647] )
+         {
+            ( cout << ',' ) << shu[VAR__53647];
+         }
+      }
+   }
+
+   return 0;
+}

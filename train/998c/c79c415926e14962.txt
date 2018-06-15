@@ -1,0 +1,296 @@
+typedef struct num
+{
+   int        VAR__7685;
+   struct num *nxt;
+} VAR__NUM;
+num *pHeader;
+void Create()
+{
+   pHeader      = (num *)malloc(sizeof( num ));
+   pHeader->nxt = NULL;
+}
+
+
+void Store(num *VAR_233, int VAR__7685)
+{
+   num *ANOTHER_POINTER;
+
+   ANOTHER_POINTER            = (num *)malloc(sizeof( num ));
+   ANOTHER_POINTER->nxt       = VAR_233->nxt;
+   ANOTHER_POINTER->VAR__7685 = VAR__7685;
+   VAR_233->nxt = ANOTHER_POINTER;
+}
+
+
+int main()
+{
+   char c1[200];
+   char c2[200];
+   int  VAR__53647;
+   int  x1;
+   int  x2;
+   int  VAR_1238123;
+   int  VAR_9494 = 0;
+
+   Create();
+   scanf("%s", c1);
+   scanf("%s", c2);
+   for ( VAR__53647 = 0; c1[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      x1 = VAR__53647;
+   }
+
+   for ( VAR__53647 = 0; c2[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      x2 = VAR__53647;
+   }
+
+   if ((( c1[0] != '-' ) && ( c2[0] != '-' )) || (( c1[0] == '-' ) && ( c2[0] == '-' )))
+   {
+      if (( c1[0] == '-' ) && ( c2[0] == '-' ))
+      {
+         for ( VAR__53647 = 0; VAR__53647 < x1; VAR__53647++ )
+         {
+            c1[VAR__53647] = c1[VAR__53647 + 1];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < x2; VAR__53647++ )
+         {
+            c2[VAR__53647] = c2[VAR__53647 + 1];
+         }
+
+         x1--;
+         x2--;
+         printf("-");
+      }
+
+      VAR_1238123 = x1 > x2;
+
+      if ( VAR_1238123 == 0 )
+      {
+         if ( x1 == x2 )
+         {
+            for ( VAR__53647 = 0; VAR__53647 < x1; VAR__53647++ )
+            {
+               VAR_9494 += (( c1[x1 - VAR__53647] - '0' ) + c2[x2 - VAR__53647] ) - '0';
+               Store(pHeader, VAR_9494 % 10);
+               VAR_9494 = VAR_9494 / 10;
+            }
+
+            c2[0] = ( c2[0] + ( c1[0] - '0' )) + VAR_9494;
+            Store(pHeader, (int)( c2[0] - '0' ));
+         }
+         else
+         {
+            for ( VAR__53647 = 0; VAR__53647 <= x1; VAR__53647++ )
+            {
+               VAR_9494 += (( c1[x1 - VAR__53647] - '0' ) + c2[x2 - VAR__53647] ) - '0';
+               Store(pHeader, VAR_9494 % 10);
+               VAR_9494 = VAR_9494 / 10;
+            }
+
+            c2[( x2 - x1 ) - 1] = c2[( x2 - x1 ) - 1] + VAR_9494;
+            VAR_9494            = 0;
+            for ( VAR__53647 = ( x2 - x1 ) - 1; VAR__53647 > 0; VAR__53647-- )
+            {
+               VAR_9494 += c2[VAR__53647] - '0';
+               Store(pHeader, VAR_9494 % 10);
+               VAR_9494 = VAR_9494 / 10;
+            }
+
+            c2[0] += VAR_9494;
+            Store(pHeader, c2[0] - '0');
+         }
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= x2; VAR__53647++ )
+         {
+            VAR_9494 += (( c1[x1 - VAR__53647] - '0' ) + c2[x2 - VAR__53647] ) - '0';
+            Store(pHeader, VAR_9494 % 10);
+            VAR_9494 = VAR_9494 / 10;
+         }
+
+         c1[( x1 - x2 ) - 1] = c1[( x1 - x2 ) - 1] + VAR_9494;
+         VAR_9494            = 0;
+         for ( VAR__53647 = ( x1 - x2 ) - 1; VAR__53647 > 0; VAR__53647-- )
+         {
+            VAR_9494 += c1[VAR__53647] - '0';
+            Store(pHeader, VAR_9494 % 10);
+            VAR_9494 = VAR_9494 / 10;
+         }
+
+         c1[0] += VAR_9494;
+         Store(pHeader, c1[0] - '0');
+      }
+   }
+   else
+   if (( c1[0] == '-' ) || ( c2[0] == '-' ))
+   {
+      if ( c1[0] == '-' )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < x1; VAR__53647++ )
+         {
+            c1[VAR__53647] = c1[VAR__53647 + 1];
+         }
+
+         x1--;
+         VAR_1238123 = 1;
+      }
+
+      if ( c2[0] == '-' )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < x2; VAR__53647++ )
+         {
+            c2[VAR__53647] = c2[VAR__53647 + 1];
+         }
+
+         x2--;
+         VAR_1238123 = 2;
+      }
+
+      if ( x1 < x2 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= x1; VAR__53647++ )
+         {
+            VAR_9494 = ( c2[x2 - VAR__53647] - '0' ) - ( c1[x1 - VAR__53647] - '0' );
+
+            if ( VAR_9494 < 0 )
+            {
+               VAR_9494 += 10;
+               c2[( x2 - 1 ) - VAR__53647]--;
+            }
+
+            Store(pHeader, VAR_9494);
+         }
+
+         VAR_9494 = 0;
+         for ( VAR__53647 = ( x2 - x1 ) - 1; VAR__53647 > 0; VAR__53647-- )
+         {
+            VAR_9494 += c2[VAR__53647];
+
+            if ( VAR_9494 < 0 )
+            {
+               VAR_9494 += 10;
+               c2[VAR__53647 - 1]--;
+            }
+
+            Store(pHeader, VAR_9494);
+         }
+
+         Store(pHeader, c2[0] - '0');
+
+         if ( VAR_1238123 == 2 )
+         {
+            printf("-");
+         }
+      }
+
+      if ( x1 > x2 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= x2; VAR__53647++ )
+         {
+            VAR_9494 = ( c1[x1 - VAR__53647] - '0' ) - ( c2[x2 - VAR__53647] - '0' );
+
+            if ( VAR_9494 < 0 )
+            {
+               VAR_9494 += 10;
+               c1[( x1 - 1 ) - VAR__53647]--;
+            }
+
+            Store(pHeader, VAR_9494);
+         }
+
+         VAR_9494 = 0;
+         for ( VAR__53647 = ( x1 - x2 ) - 1; VAR__53647 > 0; VAR__53647-- )
+         {
+            VAR_9494 += c1[VAR__53647];
+
+            if ( VAR_9494 < 0 )
+            {
+               VAR_9494 += 10;
+               c1[VAR__53647 - 1]--;
+            }
+
+            Store(pHeader, VAR_9494);
+         }
+
+         Store(pHeader, c1[0] - '0');
+
+         if ( VAR_1238123 == 1 )
+         {
+            printf("-");
+         }
+      }
+
+      if ( x1 == x2 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < x2; VAR__53647++ )
+         {
+            VAR_9494 = ( c1[x1 - VAR__53647] - '0' ) - ( c2[x2 - VAR__53647] - '0' );
+
+            if ( VAR_9494 < 0 )
+            {
+               VAR_9494 += 10;
+               c1[( x1 - 1 ) - VAR__53647]--;
+            }
+
+            Store(pHeader, VAR_9494);
+         }
+
+         VAR_9494 = ( c1[0] - '0' ) - ( c2[0] - '0' );
+
+         if ( VAR_9494 < 0 )
+         {
+            VAR_9494 = -VAR_9494;
+            Store(pHeader, VAR_9494);
+
+            if ( VAR_1238123 == 2 )
+            {
+               printf("-");
+            }
+         }
+
+         if ( VAR_9494 > 0 )
+         {
+            Store(pHeader, VAR_9494);
+
+            if ( VAR_1238123 == 1 )
+            {
+               printf("-");
+            }
+         }
+      }
+   }
+
+
+   num *p0;
+   p0 = pHeader->nxt;
+
+   while (( p0->VAR__7685 == 0 ) && ( p0 != NULL ))
+   {
+      if ( p0->nxt == NULL )
+      {
+         printf("%d", p0->VAR__7685);
+         p0 = p0->nxt;
+         break;
+      }
+
+      p0 = p0->nxt;
+   }
+
+   while ( p0 != NULL )
+   {
+      printf("%d", p0->VAR__7685);
+      p0 = p0->nxt;
+   }
+
+   while ( pHeader != NULL )
+   {
+      p0      = pHeader;
+      pHeader = pHeader->nxt;
+      free(p0);
+   }
+
+   return 0;
+}

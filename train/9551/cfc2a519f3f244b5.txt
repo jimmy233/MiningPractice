@@ -1,0 +1,69 @@
+struct patient
+{
+   char id[11];
+   int  age;
+}
+pa[101];
+struct patient
+{
+   char id[11];
+   int  age;
+}
+que[101];
+struct patient
+{
+   char id[11];
+   int  age;
+}
+tran;
+int main(int argc, char *argv[])
+{
+   int VAR__53647;
+   int VAR_1238123;
+   int VAR__21230;
+   int old = 0;
+
+   scanf("%d", &VAR_1238123);
+   VAR__21230 = 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", &pa[VAR__53647].id, &pa[VAR__53647].age);
+
+      if ( pa[VAR__53647].age >= 60 )
+      {
+         que[VAR__21230] = pa[VAR__53647];
+         old            += 1;
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( old - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= ( old - VAR__53647 ); VAR__21230++ )
+      {
+         if ( que[VAR__21230].age < que[VAR__21230 + 1].age )
+         {
+            tran                = que[VAR__21230];
+            que[VAR__21230]     = que[VAR__21230 + 1];
+            que[VAR__21230 + 1] = tran;
+         }
+      }
+   }
+
+   VAR__21230 = old + 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( pa[VAR__53647].age < 60 )
+      {
+         que[VAR__21230] = pa[VAR__53647];
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", que[VAR__53647].id);
+   }
+
+   return 0;
+}

@@ -1,0 +1,51 @@
+int find(char *A_STRING, int VAR_1238123)
+{
+   int VAR__MAX = *A_STRING;
+   int VAR__53647;
+   int sign;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *( A_STRING + VAR__53647 )) > VAR__MAX )
+      {
+         VAR__MAX = *( A_STRING + VAR__53647 ), sign = VAR__53647;
+      }
+   }
+
+
+   return sign;
+}
+
+
+void insert(char *VAR__819283, char *VAR__19328, int VAR__8444594, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = VAR_1238123; VAR__53647 > VAR__8444594; VAR__53647-- )
+   {
+      *(( VAR__819283 + VAR__53647 ) + 3 ) = *( VAR__819283 + VAR__53647 );
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < 3; VAR__21230++ )
+   {
+      VAR__819283[++VAR__8444594] = VAR__19328[VAR__21230];
+   }
+}
+
+
+void main()
+{
+   char A_STRING[100];
+   char substr[10];
+   int  VAR_1238123;
+   int  sign;
+
+   while ( scanf("%s%s", A_STRING, substr) != EOF )
+   {
+      VAR_1238123 = strlen(A_STRING);
+      sign        = find(A_STRING, VAR_1238123);
+      insert(A_STRING, substr, sign, VAR_1238123);
+      printf("%s\n", A_STRING);
+   }
+}

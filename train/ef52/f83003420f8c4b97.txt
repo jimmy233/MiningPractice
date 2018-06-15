@@ -1,0 +1,47 @@
+int calc(int *, int, int);
+
+int main()
+{
+   int VAR__8444594;
+   int VAR_2890[25];
+   int VAR__53647 = 0;
+
+   cin >> VAR__8444594;
+
+   while ( cin >> VAR_2890[VAR__53647] )
+   {
+      VAR__53647++;
+
+      if ( VAR__53647 == VAR__8444594 )
+      {
+         break;
+      }
+   }
+
+   cout << calc(VAR_2890, VAR__8444594, 1 << ( 31 - 1 ));
+}
+
+
+int calc(int *VAR_2890, int VAR__8444594, int limit)
+{
+   int VAR__53647;
+   int ret       = 0;
+   int VAR__temp = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( VAR_2890[VAR__53647] > limit )
+      {
+         continue;
+      }
+
+      VAR__temp = 1 + calc(( VAR_2890 + VAR__53647 ) + 1, ( VAR__8444594 - VAR__53647 ) - 1, VAR_2890[VAR__53647]);
+
+      if ( VAR__temp > ret )
+      {
+         ret = VAR__temp;
+      }
+   }
+
+   return ret;
+}

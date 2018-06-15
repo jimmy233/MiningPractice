@@ -1,0 +1,76 @@
+void main()
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int n1;
+   int n2;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int number            = 0;
+   int VAR__819283[1000] = { 0 };
+   int VAR__19328[1000]  = { 0 };
+
+   scanf("%d%d", &VAR__7685, &VAR__3918907);
+   for ( VAR__53647 = 1; ; VAR__53647++ )
+   {
+      if (( VAR__7685 >= pow(2, VAR__53647 - 1)) && ( VAR__7685 < pow(2, VAR__53647)))
+      {
+         n1 = VAR__53647;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = 1; ; VAR__53647++ )
+   {
+      if (( VAR__3918907 >= pow(2, VAR__53647 - 1)) && ( VAR__3918907 < pow(2, VAR__53647)))
+      {
+         n2 = VAR__53647;
+         break;
+      }
+   }
+
+   VAR__819283[n1] = VAR__7685;
+   VAR__19328[n2]  = VAR__3918907;
+   for ( VAR__53647 = n1; VAR__53647 >= 2; VAR__53647-- )
+   {
+      if (( VAR__819283[VAR__53647] % 2 ) == 0 )
+      {
+         VAR__temp = ( VAR__819283[VAR__53647] - pow(2, VAR__53647 - 1)) / 2;
+         VAR__819283[VAR__53647 - 1] = pow(2, VAR__53647 - 2) + VAR__temp;
+      }
+      else
+      {
+         VAR__temp = (( VAR__819283[VAR__53647] - 1 ) - pow(2, VAR__53647 - 1)) / 2;
+         VAR__819283[VAR__53647 - 1] = pow(2, VAR__53647 - 2) + VAR__temp;
+      }
+   }
+
+   for ( VAR__21230 = n2; VAR__21230 >= 2; VAR__21230-- )
+   {
+      if (( VAR__19328[VAR__21230] % 2 ) == 0 )
+      {
+         VAR__temp = ( VAR__19328[VAR__21230] - pow(2, VAR__21230 - 1)) / 2;
+         VAR__19328[VAR__21230 - 1] = pow(2, VAR__21230 - 2) + VAR__temp;
+      }
+      else
+      {
+         VAR__temp = (( VAR__19328[VAR__21230] - 1 ) - pow(2, VAR__21230 - 1)) / 2;
+         VAR__19328[VAR__21230 - 1] = pow(2, VAR__21230 - 2) + VAR__temp;
+      }
+   }
+
+   for ( VAR__53647 = 1; ( VAR__53647 <= n1 ) || ( VAR__53647 <= n2 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__19328[VAR__53647] )
+      {
+         number = number + 1;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   printf("%d\n", VAR__819283[number]);
+}

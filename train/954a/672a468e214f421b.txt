@@ -1,0 +1,68 @@
+int main()
+{
+   struct student
+   {
+      char           name[21];
+      int            score1;
+      int            score2;
+      char           leader;
+      char           west;
+      int            essay;
+      struct student *VAR__NEXT;
+      struct student *last;
+   };
+   struct student *VAR_233;
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__SUM = 0;
+   int            scholar;
+   int            VAR__MAX = 0;
+   char           goodstudent[21];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s%d%d %c %c%d", VAR_233->name, &VAR_233->score1, &VAR_233->score2, &VAR_233->leader, &VAR_233->west, &VAR_233->essay);
+      scholar = 0;
+
+      if (( VAR_233->score1 > 80 ) && ( VAR_233->essay >= 1 ))
+      {
+         scholar += 8000;
+      }
+
+      if (( VAR_233->score1 > 85 ) && ( VAR_233->score2 > 80 ))
+      {
+         scholar += 4000;
+      }
+
+      if ( VAR_233->score1 > 90 )
+      {
+         scholar += 2000;
+      }
+
+      if (( VAR_233->score1 > 85 ) && ( VAR_233->west == 'Y' ))
+      {
+         scholar += 1000;
+      }
+
+      if (( VAR_233->score2 > 80 ) && ( VAR_233->leader == 'Y' ))
+      {
+         scholar += 850;
+      }
+
+      VAR__SUM += scholar;
+
+      if ( scholar > VAR__MAX )
+      {
+         VAR__MAX = scholar;
+         strcpy(goodstudent, "");
+         strcpy(goodstudent, VAR_233->name);
+      }
+
+      free(VAR_233);
+   }
+
+   printf("%s\n%d\n%d", goodstudent, VAR__MAX, VAR__SUM);
+   return 0;
+}

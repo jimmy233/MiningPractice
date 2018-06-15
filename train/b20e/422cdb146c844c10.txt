@@ -1,0 +1,126 @@
+void main()
+{
+   int  tianfast;
+   int  tianslow;
+   int  qifast;
+   int  qislow;
+   int  tianhorse[1000];
+   int  qihorse[1000];
+   int  button;
+   int  swap;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   long win;
+   long lost;
+   long money;
+
+   button = 0;
+
+   while ( 1 )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 > 0 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            scanf("%d", &tianhorse[VAR__53647]);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            scanf("%d", &qihorse[VAR__53647]);
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+            {
+               if ( tianhorse[VAR__21230] < tianhorse[VAR__21230 + 1] )
+               {
+                  swap = tianhorse[VAR__21230];
+                  tianhorse[VAR__21230]     = tianhorse[VAR__21230 + 1];
+                  tianhorse[VAR__21230 + 1] = swap;
+               }
+
+               if ( qihorse[VAR__21230] < qihorse[VAR__21230 + 1] )
+               {
+                  swap = qihorse[VAR__21230];
+                  qihorse[VAR__21230]     = qihorse[VAR__21230 + 1];
+                  qihorse[VAR__21230 + 1] = swap;
+               }
+            }
+         }
+
+
+         win      = ( lost = 0 );
+         tianfast = ( qifast = 0 );
+         tianslow = ( qislow = VAR_1238123 - 1 );
+
+         while ( tianfast <= tianslow )
+         {
+            if ( tianhorse[tianfast] > qihorse[qifast] )
+            {
+               tianfast++;
+               qifast++;
+               win++;
+            }
+            else
+            if ( tianhorse[tianfast] < qihorse[qifast] )
+            {
+               tianslow--;
+               qifast++;
+               lost++;
+            }
+            else
+            if ( tianhorse[tianslow] > qihorse[qislow] )
+            {
+               tianslow--;
+               qislow--;
+               win++;
+            }
+            else
+            if ( tianhorse[tianslow] < qihorse[qislow] )
+            {
+               tianslow--;
+               qifast++;
+               lost++;
+            }
+            else
+            {
+               if ( tianhorse[tianslow] < qihorse[qifast] )
+               {
+                  lost++;
+               }
+               else
+               if ( tianhorse[tianslow] > qihorse[qifast] )
+               {
+                  win++;
+               }
+
+
+               tianslow--;
+               qifast++;
+            }
+         }
+
+         money = ( win - lost ) * 200;
+
+         if ( button == 0 )
+         {
+            printf("%d", money);
+            button = 1;
+         }
+         else
+         {
+            printf("\n%d", money);
+         }
+      }
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+   }
+}

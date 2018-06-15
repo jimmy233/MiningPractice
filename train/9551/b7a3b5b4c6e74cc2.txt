@@ -1,0 +1,88 @@
+struct patient
+{
+   char No[10];
+   int  age;
+}
+grp1[100];
+struct patient
+{
+   char No[10];
+   int  age;
+}
+grp2[100];
+struct patient
+{
+   char No[10];
+   int  age;
+}
+grp3[100];
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", &grp1[VAR__53647].No, &grp1[VAR__53647].age);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      grp2[VAR__53647].age = -1;
+      grp3[VAR__53647].age = -1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( grp1[VAR__53647].age >= 60 )
+      {
+         strcpy(grp2[VAR__53647].No, grp1[VAR__53647].No);
+         grp2[VAR__53647].age = grp1[VAR__53647].age;
+      }
+
+      if ( grp1[VAR__53647].age < 60 )
+      {
+         strcpy(grp3[VAR__53647].No, grp1[VAR__53647].No);
+         grp3[VAR__53647].age = grp1[VAR__53647].age;
+      }
+   }
+
+   char VAR__3918907[10];
+   int  VAR__7685;
+   int  VAR__8444594;
+   int  VAR__1238129;
+   for ( VAR__8444594 = 1; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__1238129 = 0; VAR__1238129 < ( VAR_1238123 - VAR__8444594 ); VAR__1238129++ )
+      {
+         if ( grp2[VAR__1238129].age < grp2[VAR__1238129 + 1].age )
+         {
+            VAR__7685 = grp2[VAR__1238129 + 1].age;
+            grp2[VAR__1238129 + 1].age = grp2[VAR__1238129].age;
+            grp2[VAR__1238129].age     = VAR__7685;
+            strcpy(VAR__3918907, grp2[VAR__1238129 + 1].No);
+            strcpy(grp2[VAR__1238129 + 1].No, grp2[VAR__1238129].No);
+            strcpy(grp2[VAR__1238129].No, VAR__3918907);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( grp2[VAR__53647].age != ( -1 ))
+      {
+         printf("%s\n", grp2[VAR__53647].No);
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( grp3[VAR__53647].age != ( -1 ))
+      {
+         printf("%s\n", grp3[VAR__53647].No);
+      }
+   }
+
+   return 0;
+}

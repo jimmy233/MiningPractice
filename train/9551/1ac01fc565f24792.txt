@@ -1,0 +1,77 @@
+struct patient
+{
+   char           id[20];
+   int            age;
+   struct patient *VAR__NEXT;
+}
+*VAR__HEAD;
+struct patient
+{
+   char           id[20];
+   int            age;
+   struct patient *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct patient
+{
+   char           id[20];
+   int            age;
+   struct patient *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+struct patient *order(int VAR_1238123)
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   char VAR__819283[20];
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER     = VAR__HEAD;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if (( YET_ANOTHER_POINTER->age >= 60 ) && ( ANOTHER_POINTER->age < YET_ANOTHER_POINTER->age ))
+         {
+            VAR__temp                = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age     = YET_ANOTHER_POINTER->age;
+            YET_ANOTHER_POINTER->age = VAR__temp;
+            strcpy(VAR__819283, ANOTHER_POINTER->id);
+            strcpy(ANOTHER_POINTER->id, YET_ANOTHER_POINTER->id);
+            strcpy(YET_ANOTHER_POINTER->id, VAR__819283);
+         }
+
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( VAR__HEAD = (struct patient *)malloc(sizeof( struct patient )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER                = (struct patient *)malloc(sizeof( struct patient ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   ANOTHER_POINTER = order(VAR_1238123);
+
+   while ( ANOTHER_POINTER )
+   {
+      printf("%s\n", ANOTHER_POINTER->id);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

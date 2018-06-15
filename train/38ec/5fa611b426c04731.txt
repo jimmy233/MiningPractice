@@ -1,0 +1,51 @@
+int main()
+{
+   int VAR__53647;
+   int year[2];
+   int month[2];
+   int day[2];
+   int days = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < 2; VAR__53647++ )
+   {
+      (( cin >> year[VAR__53647] ) >> month[VAR__53647] ) >> day[VAR__53647];
+   }
+
+   days += (( year[1] - year[0] ) - 1 ) * 365;
+   for ( VAR__53647 = year[0]; VAR__53647 < year[1]; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         days++;
+      }
+   }
+
+
+   int dayofmon[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   for ( VAR__53647 = month[0]; VAR__53647 <= 12; VAR__53647++ )
+   {
+      days += dayofmon[VAR__53647];
+   }
+
+   days -= day[0];
+
+   if ((((( year[0] % 4 ) == 0 ) && (( year[0] % 100 ) != 0 )) || (( year[0] % 400 ) == 0 )) && ( month[0] > 2 ))
+   {
+      days--;
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < month[1]; VAR__53647++ )
+   {
+      days += dayofmon[VAR__53647];
+   }
+
+   days += day[1];
+
+   if ((((( year[1] % 4 ) == 0 ) && (( year[1] % 100 ) != 0 )) || (( year[1] % 400 ) == 0 )) && ( month[1] > 2 ))
+   {
+      days++;
+   }
+
+   cout << days;
+   return 0;
+}

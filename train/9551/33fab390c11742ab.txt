@@ -1,0 +1,63 @@
+int main()
+{
+   int sixty[100];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283;
+   struct patient
+   {
+      char VAR__NUM[11];
+      int  age;
+   }
+   peo[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", peo[VAR__53647].VAR__NUM, &peo[VAR__53647].age);
+
+      if ( peo[VAR__53647].age >= 60 )
+      {
+         sixty[VAR__53647] = peo[VAR__53647].age;
+      }
+      else
+      {
+         sixty[VAR__53647] = 0;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > VAR__21230; VAR__53647-- )
+      {
+         if ( sixty[VAR__53647 - 1] < sixty[VAR__53647] )
+         {
+            VAR__819283           = sixty[VAR__53647 - 1];
+            sixty[VAR__53647 - 1] = sixty[VAR__53647];
+            sixty[VAR__53647]     = VAR__819283;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if (( sixty[VAR__53647] == peo[VAR__21230].age ) && ( sixty[VAR__53647] != sixty[VAR__53647 - 1] ))
+         {
+            printf("%s\n", peo[VAR__21230].VAR__NUM);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( peo[VAR__53647].age < 60 )
+      {
+         printf("%s\n", peo[VAR__53647].VAR__NUM);
+      }
+   }
+
+   return 0;
+}

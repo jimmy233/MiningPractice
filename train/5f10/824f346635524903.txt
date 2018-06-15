@@ -1,0 +1,83 @@
+struct Ans
+{
+   char A_STRING[5];
+   int  times;
+}
+answer[260];
+int main()
+{
+   char VAR__819283[500];
+   char VAR__TEMP[5];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  LEN_OF_STH;
+   int  VAR_233 = 0;
+   int  VAR_666;
+   int  VAR__MAX = 0;
+
+   cin >> VAR_1238123;
+   cin >> VAR__819283;
+   LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__TEMP[VAR__21230] = VAR__819283[VAR__21230 + VAR__53647];
+      }
+
+      VAR__TEMP[VAR_1238123] = '\0';
+
+      if ( VAR_233 == 0 )
+      {
+         strcpy(answer[VAR_233].A_STRING, VAR__TEMP);
+         answer[VAR_233].times = 1;
+         VAR_233++;
+      }
+      else
+      {
+         for ( VAR_666 = 0; VAR_666 < VAR_233; VAR_666++ )
+         {
+            if ( strcmp(answer[VAR_666].A_STRING, VAR__TEMP) == 0 )
+            {
+               answer[VAR_666].times++;
+               VAR_666 = -1;
+               break;
+            }
+         }
+
+         if ( VAR_666 == VAR_233 )
+         {
+            strcpy(answer[VAR_233].A_STRING, VAR__TEMP);
+            answer[VAR_233].times = 1;
+            VAR_233++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      if ( answer[VAR__53647].times > VAR__MAX )
+      {
+         VAR__MAX = answer[VAR__53647].times;
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      ( cout << "NO" ) << endl;
+   }
+   else
+   {
+      ( cout << VAR__MAX ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+      {
+         if ( answer[VAR__53647].times == VAR__MAX )
+         {
+            ( cout << answer[VAR__53647].A_STRING ) << endl;
+         }
+      }
+   }
+
+   return 0;
+}

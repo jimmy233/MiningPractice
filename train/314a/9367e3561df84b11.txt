@@ -1,0 +1,92 @@
+int main()
+{
+   char x0[4000];
+   char y0[4000];
+   int  VAR__7685[1000]    = { 0 };
+   int  VAR__3918907[1000] = { 0 };
+   int  people;
+   int  VAR__53647;
+   int  VAR__21230     = 0;
+   int  VAR__NUM[1000] = { 0 };
+   int  nummax         = 0;
+   int  VAR__4857423   = 0;
+   int  VAR__MIN       = 2000;
+   int  VAR__MAX       = 0;
+
+   scanf("%s", x0);
+   scanf("%s", y0);
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(x0) - 1 ); VAR__53647++ )
+   {
+      if (( x0[VAR__53647] >= '0' ) && ( x0[VAR__53647] <= '9' ))
+      {
+         VAR__4857423 = (( VAR__4857423 * 10 ) + x0[VAR__53647] ) - '0';
+      }
+      else
+      {
+         VAR__7685[VAR__21230++] = VAR__4857423;
+         VAR__4857423            = 0;
+      }
+
+      if ( VAR__53647 == ( strlen(x0) - 1 ))
+      {
+         VAR__7685[VAR__21230++] = VAR__4857423;
+         VAR__4857423            = 0;
+      }
+   }
+
+   VAR__21230   = 0;
+   VAR__4857423 = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(y0) - 1 ); VAR__53647++ )
+   {
+      if (( y0[VAR__53647] >= '0' ) && ( y0[VAR__53647] <= '9' ))
+      {
+         VAR__4857423 = (( VAR__4857423 * 10 ) + y0[VAR__53647] ) - '0';
+      }
+      else
+      {
+         VAR__3918907[VAR__21230++] = VAR__4857423;
+         VAR__4857423 = 0;
+      }
+
+      if ( VAR__53647 == ( strlen(y0) - 1 ))
+      {
+         VAR__3918907[VAR__21230++] = VAR__4857423;
+         VAR__4857423 = 0;
+      }
+   }
+
+   people = VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 <= ( people - 1 ); VAR__53647++ )
+   {
+      if ( VAR__7685[VAR__53647] < VAR__MIN )
+      {
+         VAR__MIN = VAR__7685[VAR__53647];
+      }
+
+      if ( VAR__3918907[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__3918907[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = VAR__MIN; VAR__53647 <= VAR__MAX; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( people - 1 ); VAR__21230++ )
+      {
+         if (( VAR__53647 >= VAR__7685[VAR__21230] ) && ( VAR__53647 < VAR__3918907[VAR__21230] ))
+         {
+            VAR__NUM[VAR__53647]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 999; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > nummax )
+      {
+         nummax = VAR__NUM[VAR__53647];
+      }
+   }
+
+   printf("%d %d", people, nummax);
+}

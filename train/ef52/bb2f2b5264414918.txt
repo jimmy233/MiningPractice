@@ -1,0 +1,76 @@
+int VAR__8444594;
+int set(int VAR__53647);
+
+int VAR__NUM = 0;
+int currH    = 100000;
+int MaxNum   = 0;
+int VAR__819283[100];
+int VAR__19328[100];
+int main()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR__19328[VAR__53647] = 0;
+   }
+
+   cin >> VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      int VAR__21230;
+      cin >> VAR__21230;
+      VAR__819283[VAR__53647] = VAR__21230;
+   }
+
+   set(0);
+   cout << MaxNum;
+   return 0;
+}
+
+
+int set(int VAR__53647)
+{
+   int lastNum   = VAR__NUM;
+   int lastcurrH = currH;
+
+   if ( VAR__53647 == ( VAR__8444594 - 1 ))
+   {
+      if ( VAR__819283[VAR__53647] <= currH )
+      {
+         VAR__NUM++;
+      }
+
+      if ( VAR__NUM > MaxNum )
+      {
+         MaxNum = VAR__NUM;
+      }
+
+      VAR__NUM = lastNum;
+      currH    = lastcurrH;
+      return 0;
+   }
+
+   if ( VAR__19328[VAR__53647] == 0 )
+   {
+      set(VAR__53647 + 1);
+   }
+
+   VAR__19328[VAR__53647]++;
+
+   if ( VAR__19328[VAR__53647] == 1 )
+   {
+      if ( VAR__819283[VAR__53647] <= currH )
+      {
+         currH = VAR__819283[VAR__53647];
+         VAR__NUM++;
+      }
+
+      set(VAR__53647 + 1);
+   }
+
+   VAR__NUM = lastNum;
+   currH    = lastcurrH;
+   VAR__19328[VAR__53647] = 0;
+   return 0;
+}

@@ -1,0 +1,41 @@
+int main()
+{
+   char zfc1[100];
+   char zfc2[100];
+
+   scanf("%s %s", zfc1, zfc2);
+   char *ANOTHER_POINTER     = zfc1;
+   char *YET_ANOTHER_POINTER = zfc2;
+   int  judge  = 1;
+   int  judge2 = 0;
+   for ( ; ( *ANOTHER_POINTER ) != '\0'; ANOTHER_POINTER++ )
+   {
+      judge2 = 0;
+      for ( YET_ANOTHER_POINTER = zfc2; ( *YET_ANOTHER_POINTER ) != '\0'; YET_ANOTHER_POINTER++ )
+      {
+         if (( *ANOTHER_POINTER ) == ( *YET_ANOTHER_POINTER ))
+         {
+            *YET_ANOTHER_POINTER = ' ';
+            judge2 = 1;
+            break;
+         }
+      }
+
+      if ( judge2 != 1 )
+      {
+         judge = 0;
+         break;
+      }
+   }
+
+   if ( judge && ( strlen(zfc1) == strlen(zfc2)))
+   {
+      printf("YES");
+   }
+   else
+   {
+      printf("NO");
+   }
+
+   return 0;
+}

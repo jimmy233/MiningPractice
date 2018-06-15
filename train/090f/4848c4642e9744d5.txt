@@ -1,0 +1,87 @@
+void main()
+{
+   char A_STRING[2000];
+   int  VAR__1111;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__temp;
+   int  VAR_1238123;
+   int  VAR__819283[300] = { 0 };
+
+   gets(A_STRING);
+   VAR__1111   = strlen(A_STRING);
+   VAR_1238123 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == ',' )
+      {
+         VAR_1238123++;
+      }
+   }
+
+
+   VAR__21230 = -1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__21230++;
+      VAR__8444594 = VAR__21230;
+
+      while ( A_STRING[VAR__21230] != ',' )
+      {
+         VAR__21230++;
+      }
+
+      for ( VAR__temp = VAR__8444594; VAR__temp < VAR__21230; VAR__temp++ )
+      {
+         VAR__819283[VAR__53647] += (int)(( A_STRING[VAR__temp] - '0' ) * pow(10, ( VAR__21230 - VAR__temp ) - 1));
+      }
+   }
+
+   VAR__21230++;
+   for ( VAR__temp = VAR__21230; VAR__temp < VAR__1111; VAR__temp++ )
+   {
+      VAR__819283[VAR_1238123] += (int)(( A_STRING[VAR__temp] - '0' ) * pow(10, ( VAR__1111 - 1 ) - VAR__temp));
+   }
+
+   for ( VAR__53647 = VAR_1238123; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] )
+         {
+            VAR__8444594 = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__8444594;
+         }
+      }
+   }
+
+
+
+   VAR__temp = 1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__819283[0] )
+      {
+         VAR__temp++;
+      }
+   }
+
+
+   if (( VAR_1238123 == 0 ) || ( VAR__temp == ( VAR_1238123 + 1 )))
+   {
+      printf("No");
+   }
+   else
+   {
+      VAR__53647 = 0;
+
+      while ( VAR__819283[VAR__53647] == VAR__819283[0] )
+      {
+         VAR__53647++;
+      }
+
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+}

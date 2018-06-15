@@ -1,0 +1,109 @@
+struct num
+{
+   int        VAR_1238123;
+   struct num *VAR__NEXT;
+};
+int VAR__819283;
+struct num *creat()
+{
+   struct num *VAR__HEAD;
+   struct num *ANOTHER_POINTER;
+   struct num *YET_ANOTHER_POINTER;
+   int        VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct num *)malloc(LEN));
+   scanf("%d", &ANOTHER_POINTER->VAR_1238123);
+   VAR__HEAD = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+      ANOTHER_POINTER                = (struct num *)malloc(LEN);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      scanf("%d", &ANOTHER_POINTER->VAR_1238123);
+   }
+
+   YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = null;
+   return VAR__HEAD;
+}
+
+
+struct num *del(struct num *VAR__HEAD, int VAR__819283, int VAR__1238129)
+{
+   struct num *ANOTHER_POINTER;
+   struct num *YET_ANOTHER_POINTER;
+   int        VAR__53647;
+
+   if ( VAR__HEAD == null )
+   {
+      return VAR__HEAD;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      if (( VAR__1238129 != ANOTHER_POINTER->VAR_1238123 ) && ( ANOTHER_POINTER->VAR__NEXT != null ))
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+      else
+      if ( VAR__1238129 == ANOTHER_POINTER->VAR_1238123 )
+      {
+         if ( ANOTHER_POINTER == VAR__HEAD )
+         {
+            VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+         }
+         else
+         {
+            YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct num *VAR__HEAD)
+{
+   struct num *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != null )
+   {
+      do
+      {
+         if ( VAR_233->VAR__NEXT == null )
+         {
+            printf("%d", VAR_233->VAR_1238123);
+         }
+         else
+         {
+            printf("%d ", VAR_233->VAR_1238123);
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != null );
+   }
+}
+
+
+void main()
+{
+   struct num *creat();
+   struct num *del(struct num *VAR__HEAD, int VAR__819283, int VAR__1238129);
+
+   void print(struct num *VAR__HEAD);
+
+   struct num *VAR__HEAD;
+   int        VAR__1238129;
+   scanf("%d", &VAR__819283);
+   VAR__HEAD = creat();
+   scanf("%d", &VAR__1238129);
+   VAR__HEAD = del(VAR__HEAD, VAR__819283, VAR__1238129);
+   print(VAR__HEAD);
+}

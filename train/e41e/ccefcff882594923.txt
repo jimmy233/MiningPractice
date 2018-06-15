@@ -1,0 +1,82 @@
+int main()
+{
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  VAR__temp;
+   int  VAR__3918907;
+   int  VAR__8444594;
+   int  VAR__7685;
+   char VAR__819283[101];
+
+   gets(VAR__819283);
+   LEN_OF_STH = strlen(VAR__819283);
+   int VAR_9494[LEN_OF_STH];
+   int VAR_21983012[LEN_OF_STH];
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR_9494[VAR__53647]     = VAR__819283[VAR__53647] - '0';
+      VAR_21983012[VAR__53647] = 0;
+   }
+
+   if ( LEN_OF_STH == 1 )
+   {
+      printf("0\n");
+      printf("%d", VAR_9494[0]);
+   }
+   else
+   if (( LEN_OF_STH == 2 ) && ((( 10 * VAR_9494[0] ) + VAR_9494[1] ) < 13 ))
+   {
+      printf("0\n");
+      printf("%d", ( VAR_9494[0] * 10 ) + VAR_9494[1]);
+   }
+   else
+   {
+      for ( VAR__53647 = 0, VAR__8444594 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         VAR__temp = ( 10 * VAR_9494[VAR__53647] ) + VAR_9494[VAR__53647 + 1];
+
+         if ( VAR__temp < 13 )
+         {
+            VAR_21983012[VAR__8444594] = 0;
+            VAR__8444594++;
+            VAR_9494[VAR__53647 + 1] = VAR__temp;
+         }
+         else
+         {
+            VAR__3918907 = VAR__temp % 13;
+
+            if ( VAR__3918907 != 0 )
+            {
+               VAR__7685 = ( VAR__temp - VAR__3918907 ) / 13;
+               VAR_21983012[VAR__8444594] = VAR__7685;
+               VAR__8444594++;
+               VAR_9494[VAR__53647 + 1] = VAR__3918907;
+            }
+            else
+            {
+               VAR__7685 = VAR__temp / 13;
+               VAR_21983012[VAR__8444594] = VAR__7685;
+               VAR__8444594++;
+               VAR_9494[VAR__53647 + 1] = 0;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if ( VAR_21983012[VAR__53647] != 0 )
+         {
+            VAR__7685 = VAR__53647;
+            break;
+         }
+      }
+
+
+      for ( VAR__53647 = VAR__7685; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         printf("%d", VAR_21983012[VAR__53647]);
+      }
+
+      printf("\n%d", VAR_9494[LEN_OF_STH - 1]);
+   }
+}

@@ -1,0 +1,96 @@
+struct Inform
+{
+   char          number[30];
+   char          name[30];
+   char          gender[2];
+   char          age[4];
+   char          score[10];
+   char          address[20];
+   struct Inform *VAR__NEXT;
+};
+int VAR_1238123;
+struct Inform *creat()
+{
+   struct Inform *VAR__HEAD;
+   struct Inform *ANOTHER_POINTER;
+   struct Inform *YET_ANOTHER_POINTER;
+
+   VAR__HEAD       = NULL;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct Inform *)malloc(LEN));
+   VAR_1238123     = 0;
+   scanf("%s%s%s%s%s%s", &ANOTHER_POINTER->number, &ANOTHER_POINTER->name, &ANOTHER_POINTER->gender, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, &ANOTHER_POINTER->address);
+
+   while ( strcmp(ANOTHER_POINTER->number, "end") != 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct Inform *)malloc(LEN);
+      scanf("%s", &ANOTHER_POINTER->number);
+
+      if ( strcmp(ANOTHER_POINTER->number, "end") != 0 )
+      {
+         scanf("%s%s%s%s%s", &ANOTHER_POINTER->name, &ANOTHER_POINTER->gender, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, &ANOTHER_POINTER->address);
+      }
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct Inform *VAR_2890)
+{
+   struct Inform *VAR_233;
+
+   VAR_233 = VAR_2890;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s %s %s %s %s %s\n", VAR_233->number, VAR_233->name, VAR_233->gender, VAR_233->age, VAR_233->score, VAR_233->address);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+struct Inform *invert(struct Inform *VAR_2890)
+{
+   struct Inform *VAR_233 = VAR_2890->VAR__NEXT;
+   struct Inform *VAR_666 = VAR_233->VAR__NEXT;
+
+   VAR_2890->VAR__NEXT = NULL;
+
+   while ( VAR_666 != NULL )
+   {
+      VAR_233->VAR__NEXT = VAR_2890;
+      VAR_2890           = VAR_233;
+      VAR_233            = VAR_666;
+      VAR_666            = VAR_666->VAR__NEXT;
+      VAR_233->VAR__NEXT = VAR_2890;
+   }
+
+   VAR_233->VAR__NEXT = VAR_2890;
+   return VAR_233;
+}
+
+
+int main()
+{
+   void print(struct Inform *VAR_2890);
+   struct Inform *invert(struct Inform *VAR_2890);
+
+   struct Inform *hea;
+   hea = creat();
+   hea = invert(hea);
+   print(hea);
+   return 0;
+}

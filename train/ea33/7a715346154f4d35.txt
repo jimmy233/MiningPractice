@@ -1,0 +1,60 @@
+void main()
+{
+   void insert(char A_STRING[], char VAR__TEMP[4]);
+
+   char A_STRING[10][15] = { '\0' };
+   char VAR__TEMP[4];
+   int  VAR__53647;
+   int  VAR__21230;
+   char VAR__4857423;
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      if (( VAR__4857423 = getchar()) == EOF )
+      {
+         break;
+      }
+      else
+      {
+         A_STRING[VAR__53647][0] = VAR__4857423;
+         for ( VAR__21230 = 1; ; VAR__21230++ )
+         {
+            if (( VAR__4857423 = getchar()) == ' ' )
+            {
+               break;
+            }
+
+            A_STRING[VAR__53647][VAR__21230] = VAR__4857423;
+         }
+      }
+
+      gets(VAR__TEMP);
+      insert(A_STRING[VAR__53647], VAR__TEMP);
+      printf("%s\n", A_STRING[VAR__53647]);
+   }
+}
+
+
+void insert(char A_STRING[], char VAR__TEMP[4])
+{
+   int VAR__53647;
+   int VAR__21230 = 0;
+   int temp2      = strlen(A_STRING);
+
+   for ( VAR__53647 = 1; VAR__53647 < temp2; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] > A_STRING[VAR__21230] )
+      {
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = strlen(A_STRING) - 1; VAR__53647 > VAR__21230; VAR__53647-- )
+   {
+      A_STRING[VAR__53647 + 3] = A_STRING[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      A_STRING[( VAR__21230 + VAR__53647 ) + 1] = VAR__TEMP[VAR__53647];
+   }
+}

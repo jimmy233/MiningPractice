@@ -1,0 +1,64 @@
+int main()
+{
+   int array[100][100];
+   int col;
+   int row;
+   int cs = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__7685 = 0;
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &array[VAR__53647][VAR__21230]);
+      }
+   }
+
+   do
+   {
+      for ( VAR__53647 = cs; VAR__53647 < (( cs + col ) - 1 ); VAR__53647++ )
+      {
+         printf("%d\n", array[cs][VAR__53647]);
+      }
+
+      for ( VAR__53647 = cs; VAR__53647 < (( cs + row ) - 1 ); VAR__53647++ )
+      {
+         printf("%d\n", array[VAR__53647][( cs + col ) - 1]);
+      }
+
+      if ( VAR__53647 != cs )
+      {
+         for ( VAR__53647 = cs; VAR__53647 < (( cs + col ) - 1 ); VAR__53647++ )
+         {
+            printf("%d\n", array[( cs + row ) - 1][((( 2 * cs ) + col ) - VAR__53647 ) - 1]);
+         }
+      }
+      else
+      {
+         printf("%d\n", array[( cs + row ) - 1][( cs + col ) - 1]);
+         VAR__7685 = 1;
+      }
+
+      if ( VAR__53647 != cs )
+      {
+         for ( VAR__53647 = cs; VAR__53647 < (( cs + row ) - 1 ); VAR__53647++ )
+         {
+            printf("%d\n", array[((( 2 * cs ) + row ) - VAR__53647 ) - 1][cs]);
+         }
+      }
+      else
+      if ( VAR__7685 == 0 )
+      {
+         printf("%d\n", array[( cs + row ) - 1][cs]);
+      }
+
+
+      cs++;
+      col -= 2;
+      row -= 2;
+   } while (( col > 0 ) && ( row > 0 ));
+   return 0;
+}

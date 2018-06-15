@@ -1,0 +1,120 @@
+int run(int VAR__819283)
+{
+   int VAR__4857423;
+
+   if ((( VAR__819283 % 400 ) == 0 ) || ((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )))
+   {
+      VAR__4857423 = 1;
+   }
+   else
+   {
+      VAR__4857423 = 0;
+   }
+
+   return VAR__4857423;
+}
+
+
+int dijitian(int VAR__3918907, int VAR__1238129, int VAR__12302)
+{
+   int VAR__4857423;
+   int VAR_233 = 0;
+   int VAR__53647;
+
+   VAR__4857423 = run(VAR__3918907);
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         VAR_233 = VAR_233 + 30;
+      }
+      else
+      if (( VAR__53647 == 2 ) && ( VAR__4857423 == 1 ))
+      {
+         VAR_233 = VAR_233 + 29;
+      }
+      else
+      if (( VAR__53647 == 2 ) && ( VAR__4857423 == 0 ))
+      {
+         VAR_233 = VAR_233 + 28;
+      }
+      else
+      {
+         VAR_233 = VAR_233 + 31;
+      }
+   }
+
+   VAR_233 = VAR_233 + VAR__12302;
+   return VAR_233;
+}
+
+
+void main()
+{
+   int y1;
+   int m1;
+   int d1;
+   int y2;
+   int m2;
+   int d2;
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423 = 0;
+   int result;
+   int VAR__TEMP;
+   int VAR__53647;
+
+   scanf("%d%d%d%d%d%d", &y1, &m1, &d1, &y2, &m2, &d2);
+   VAR__819283 = dijitian(y1, m1, d1);
+   VAR__19328  = dijitian(y2, m2, d2);
+
+   if ( y1 == y2 )
+   {
+      result = VAR__819283 - VAR__19328;
+
+      if ( result < 0 )
+      {
+         result = 0 - result;
+      }
+   }
+   else
+   {
+      if ( y1 > y2 )
+      {
+         VAR__TEMP = y1;
+         y1        = y2;
+         y2        = VAR__TEMP;
+         VAR__TEMP = m1;
+         m1        = m2;
+         m2        = VAR__TEMP;
+         VAR__TEMP = d1;
+         d1        = d2;
+         d2        = VAR__TEMP;
+      }
+
+      if ( run(y1) == 1 )
+      {
+         VAR__819283 = 366 - VAR__819283;
+      }
+      else
+      {
+         VAR__819283 = 365 - VAR__819283;
+      }
+
+      for ( VAR__53647 = y1 + 1; VAR__53647 < y2; VAR__53647++ )
+      {
+         if ( run(VAR__53647) == 1 )
+         {
+            VAR__4857423 = VAR__4857423 + 366;
+         }
+         else
+         {
+            VAR__4857423 = VAR__4857423 + 365;
+         }
+      }
+
+      result = ( VAR__819283 + VAR__19328 ) + VAR__4857423;
+   }
+
+   printf("%d", result);
+}

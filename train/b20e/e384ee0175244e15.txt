@@ -1,0 +1,101 @@
+int cmp(const void *e1, const void *e2)
+{
+   return ( *((int *)e2 )) - ( *((int *)e1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int King[1000];
+   int Tian[1000];
+   int Win;
+   int Lose;
+   int begin;
+   int end;
+   int VAR__53647;
+   int VAR__21230;
+
+   while ( 1 )
+   {
+      Win  = 0;
+      Lose = 0;
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> Tian[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> King[VAR__53647];
+      }
+
+      qsort(King, VAR_1238123, sizeof( int ), cmp);
+      qsort(Tian, VAR_1238123, sizeof( int ), cmp);
+      begin      = 0;
+      end        = VAR_1238123 - 1;
+      VAR__53647 = 0;
+      VAR__21230 = VAR_1238123 - 1;
+
+      while ( VAR__53647 <= VAR__21230 )
+      {
+         if ( King[VAR__53647] < Tian[begin] )
+         {
+            Win++;
+            begin++;
+            VAR__53647++;
+         }
+         else
+         if ( King[VAR__53647] > Tian[begin] )
+         {
+            Lose++;
+            VAR__53647++;
+            end--;
+         }
+         else
+         if ( King[VAR__53647] == Tian[begin] )
+         {
+            while ((( King[VAR__21230] < Tian[end] ) && ( VAR__21230 > VAR__53647 )) && ( end > begin ))
+            {
+               Win++;
+               end--;
+               VAR__21230--;
+            }
+
+            if ( King[VAR__21230] > Tian[end] )
+            {
+               Lose++;
+               VAR__53647++;
+               end--;
+            }
+            else
+            if ( King[VAR__21230] == Tian[end] )
+            {
+               if ( King[VAR__53647] > Tian[end] )
+               {
+                  Lose++;
+                  end--;
+                  VAR__53647++;
+               }
+               else
+               if ( King[VAR__53647] == Tian[end] )
+               {
+                  end--;
+                  VAR__53647++;
+               }
+            }
+         }
+      }
+
+      ( cout << (( Win - Lose ) * 200 )) << endl;
+   }
+
+   return 0;
+}

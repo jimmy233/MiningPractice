@@ -1,0 +1,36 @@
+struct student
+{
+   char           name[50];
+   struct student *VAR__NEXT;
+   struct student *former;
+};
+void main()
+{
+   struct student *head1;
+   struct student *head2;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   gets(ANOTHER_POINTER->name);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   ANOTHER_POINTER->former    = NULL;
+   head1 = ANOTHER_POINTER;
+
+   while ( strcmp(ANOTHER_POINTER->name, "end"))
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      gets(ANOTHER_POINTER->name);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      ANOTHER_POINTER->former        = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   do
+   {
+      puts(YET_ANOTHER_POINTER->name);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->former;
+   } while ( YET_ANOTHER_POINTER != NULL );
+}

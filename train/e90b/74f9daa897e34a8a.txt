@@ -1,0 +1,161 @@
+int first[3];
+int firsti[3];
+struct stu
+{
+   int        VAR__NUM;
+   int        chinese;
+   int        math;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+}
+*ANOTHER_POINTER;
+struct stu
+{
+   int        VAR__NUM;
+   int        chinese;
+   int        math;
+   int        VAR__SUM;
+   struct stu *VAR__NEXT;
+}
+*YET_ANOTHER_POINTER;
+struct stu *creat(int VAR_1238123)
+{
+   struct stu *VAR__HEAD = NULL;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu )));
+
+   while ( VAR_1238123-- )
+   {
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->math);
+
+      if ( VAR__HEAD == NULL )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(sizeof( struct stu ));
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct stu *VAR__SUM(struct stu *VAR__HEAD, int VAR_1238123)
+{
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( VAR_1238123-- )
+   {
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->chinese + ANOTHER_POINTER->math;
+      ANOTHER_POINTER           = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        check = 0;
+   struct stu *VAR__HEAD;
+   struct stu *f1;
+   struct stu *f2;
+   struct stu *f3;
+
+   f1 = (struct stu *)malloc(sizeof( struct stu ));
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD       = creat(VAR_1238123);
+   VAR__HEAD       = VAR__SUM(VAR__HEAD, VAR_1238123);
+   ANOTHER_POINTER = VAR__HEAD;
+
+   if ( VAR_1238123 == 1 )
+   {
+      printf("%d %d\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->VAR__SUM);
+      return 0;
+   }
+
+   for ( VAR__53647 = 0, f1 = VAR__HEAD; VAR__53647 < VAR_1238123; VAR__53647++, ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if ( f1->VAR__SUM < ANOTHER_POINTER->VAR__SUM )
+      {
+         f1 = ANOTHER_POINTER;
+      }
+   }
+
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+
+      if ( VAR__HEAD == f1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+         break;
+      }
+      else
+      if ( ANOTHER_POINTER == f1 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0, f2 = VAR__HEAD; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++, ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if ( f2->VAR__SUM < ANOTHER_POINTER->VAR__SUM )
+      {
+         f2 = ANOTHER_POINTER;
+      }
+   }
+
+
+   if ( VAR_1238123 == 2 )
+   {
+      printf("%d %d\n", f1->VAR__NUM, f1->VAR__SUM);
+      printf("%d %d\n", f2->VAR__NUM, f2->VAR__SUM);
+      return 0;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+
+      if ( VAR__HEAD == f2 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+         break;
+      }
+      else
+      if ( ANOTHER_POINTER == f2 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0, f3 = VAR__HEAD; VAR__53647 < ( VAR_1238123 - 2 ); VAR__53647++, ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      if ( f3->VAR__SUM < ANOTHER_POINTER->VAR__SUM )
+      {
+         f3 = ANOTHER_POINTER;
+      }
+   }
+
+
+   printf("%d %d\n", f1->VAR__NUM, f1->VAR__SUM);
+   printf("%d %d\n", f2->VAR__NUM, f2->VAR__SUM);
+   printf("%d %d\n", f3->VAR__NUM, f3->VAR__SUM);
+   return 0;
+}

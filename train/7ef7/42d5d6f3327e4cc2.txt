@@ -1,0 +1,101 @@
+void f1(int *VAR_233, int VAR_1238123, int VAR__8444594)
+{
+   int VAR__53647;
+   int VAR__1238129 = *VAR_233;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *( VAR_233 + VAR__53647 )) < VAR__1238129 )
+      {
+         VAR__1238129 = *( VAR_233 + VAR__53647 );
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      *( VAR_233 + VAR__53647 ) = ( *( VAR_233 + VAR__53647 )) - VAR__1238129;
+   }
+
+   if ( VAR__8444594 > 1 )
+   {
+      f1(VAR_233 + 100, VAR_1238123, VAR__8444594 - 1);
+   }
+}
+
+
+void f2(int *VAR_233, int VAR_1238123, int VAR__8444594)
+{
+   int VAR__53647;
+   int VAR__1238129 = *VAR_233;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *( VAR_233 + ( VAR__53647 * 100 ))) < VAR__1238129 )
+      {
+         VAR__1238129 = *( VAR_233 + ( VAR__53647 * 100 ));
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      *( VAR_233 + ( VAR__53647 * 100 )) = ( *( VAR_233 + ( VAR__53647 * 100 ))) - VAR__1238129;
+   }
+
+   if ( VAR__8444594 > 1 )
+   {
+      f2(VAR_233 + 1, VAR_1238123, VAR__8444594 - 1);
+   }
+}
+
+
+int main()
+{
+   int *VAR_233;
+   int VAR__819283[100][100];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR__1238129;
+   int VAR_2890;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__temp = 0; VAR__temp < VAR_1238123; VAR__temp++ )
+         {
+            scanf("%d", &VAR__819283[VAR__21230][VAR__temp]);
+         }
+      }
+
+      VAR_233  = VAR__819283[0];
+      VAR_2890 = 0;
+      for ( VAR__21230 = VAR_1238123; VAR__21230 > 1; VAR__21230-- )
+      {
+         f1(VAR_233, VAR__21230, VAR__21230);
+         f2(VAR_233, VAR__21230, VAR__21230);
+         VAR_2890 += VAR__819283[1][1];
+         for ( VAR__temp = 0; VAR__temp < VAR__21230; VAR__temp++ )
+         {
+            for ( VAR__1238129 = 1; VAR__1238129 < ( VAR__21230 - 1 ); VAR__1238129++ )
+            {
+               VAR__819283[VAR__temp][VAR__1238129] = VAR__819283[VAR__temp][VAR__1238129 + 1];
+            }
+         }
+
+         for ( VAR__temp = 0; VAR__temp < ( VAR__21230 - 1 ); VAR__temp++ )
+         {
+            for ( VAR__1238129 = 1; VAR__1238129 < ( VAR__21230 - 1 ); VAR__1238129++ )
+            {
+               VAR__819283[VAR__1238129][VAR__temp] = VAR__819283[VAR__1238129 + 1][VAR__temp];
+            }
+         }
+      }
+
+      printf("%d\n", VAR_2890);
+   }
+
+   return 0;
+}

@@ -1,0 +1,79 @@
+struct a60
+{
+   char ID[10];
+   int  age;
+}
+a60[101];
+struct u60
+{
+   char ID[10];
+   int  age;
+}
+u60[100];
+void sort(int VAR_1238123)
+{
+   int        VAR__53647;
+   struct a60 *VAR__7685;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__7685 = a60; VAR__7685 < (( a60 + VAR_1238123 ) - VAR__53647 ); VAR__7685++ )
+      {
+         if ( VAR__7685->age < ( VAR__7685 + 1 )->age )
+         {
+            a60[100]           = *VAR__7685;
+            *VAR__7685         = *( VAR__7685 + 1 );
+            *( VAR__7685 + 1 ) = a60[100];
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int        VAR__819283 = 0;
+   int        VAR__19328  = 0;
+   int        VAR__1238129;
+   int        VAR_1238123;
+   int        VAR_666;
+   char       VAR_233[10];
+   struct a60 *VAR__7685;
+   struct u60 *VAR__3918907;
+
+   VAR__7685    = a60;
+   VAR__3918907 = u60;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+   {
+      scanf("%s %d", VAR_233, &VAR_666);
+
+      if ( VAR_666 >= 60 )
+      {
+         strcpy(VAR__7685->ID, VAR_233);
+         VAR__7685->age = VAR_666;
+         VAR__7685++;
+         VAR__819283++;
+      }
+      else
+      {
+         strcpy(VAR__3918907->ID, VAR_233);
+         VAR__3918907->age = VAR_666;
+         VAR__3918907++;
+         VAR__19328++;
+      }
+   }
+
+   sort(VAR__819283);
+   for ( VAR__7685 = a60; VAR__7685 < ( a60 + VAR__819283 ); VAR__7685++ )
+   {
+      printf("%s\n", VAR__7685->ID);
+   }
+
+   for ( VAR__3918907 = u60; VAR__3918907 < ( u60 + VAR__19328 ); VAR__3918907++ )
+   {
+      printf("%s\n", VAR__3918907->ID);
+   }
+
+   return 0;
+}

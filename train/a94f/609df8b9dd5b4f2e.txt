@@ -1,0 +1,120 @@
+int arr[100][100] = { 0 };
+int pos[120][120] = { 0 };
+int rr;
+int cc;
+void bianli(int, int, int, int);
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   cin >> rr;
+   cin >> cc;
+   for ( VAR__53647 = 0; VAR__53647 < rr; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < cc; VAR__21230++ )
+      {
+         cin >> arr[VAR__53647][VAR__21230];
+         pos[VAR__53647][VAR__21230] = 1;
+      }
+   }
+
+   bianli(0, 0, 0, 1);
+   return 0;
+}
+
+
+void bianli(int VAR__8444594, int ii, int jj, int VAR_9494)
+{
+   if ( pos[ii][jj] == 0 )
+   {
+      return;
+   }
+
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR__8444594 == 0 )
+   {
+      if ( VAR_9494 == 0 )
+      {
+         for ( VAR__21230 = jj; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( pos[ii][VAR__21230] == 1 )
+            {
+               ( cout << arr[ii][VAR__21230] ) << endl;
+               pos[ii][VAR__21230] = 0;
+            }
+            else
+            {
+               bianli(1, ii - 1, VAR__21230 + 1, 0);
+               return;
+            }
+         }
+
+         bianli(1, ii - 1, 0, 0);
+         return;
+      }
+      else
+      {
+         for ( VAR__21230 = jj; VAR__21230 < cc; VAR__21230++ )
+         {
+            if ( pos[ii][VAR__21230] == 1 )
+            {
+               ( cout << arr[ii][VAR__21230] ) << endl;
+               pos[ii][VAR__21230] = 0;
+            }
+            else
+            {
+               bianli(1, ii + 1, VAR__21230 - 1, 1);
+               return;
+            }
+         }
+
+         bianli(1, ii + 1, cc - 1, 1);
+         return;
+      }
+   }
+   else
+   {
+      if ( VAR_9494 == 0 )
+      {
+         for ( VAR__53647 = ii; VAR__53647 >= 0; VAR__53647-- )
+         {
+            if ( pos[VAR__53647][jj] == 1 )
+            {
+               ( cout << arr[VAR__53647][jj] ) << endl;
+               pos[VAR__53647][jj] = 0;
+            }
+            else
+            {
+               bianli(0, VAR__53647 + 1, jj + 1, 1);
+               return;
+            }
+         }
+
+         bianli(0, 0, jj + 1, 1);
+         return;
+      }
+      else
+      {
+         for ( VAR__53647 = ii; VAR__53647 < rr; VAR__53647++ )
+         {
+            if ( pos[VAR__53647][jj] == 1 )
+            {
+               ( cout << arr[VAR__53647][jj] ) << endl;
+               pos[VAR__53647][jj] = 0;
+            }
+            else
+            {
+               bianli(0, VAR__53647 - 1, jj - 1, 0);
+               return;
+            }
+         }
+
+         bianli(0, rr - 1, jj - 1, 0);
+         return;
+      }
+   }
+}

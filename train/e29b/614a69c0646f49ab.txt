@@ -1,0 +1,71 @@
+void main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__temp[1000] = { 0 };
+   int    total           = 0;
+   int    so[100]         = { 0 };
+   int    VAR__TEMP       = 0;
+   int    VAR_666         = 0;
+   int    VAR__21230      = 0;
+   double VAR__MAX        = 0.0;
+   double aver            = 0.0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__temp[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      total = total + VAR__temp[VAR__53647];
+   }
+
+   aver = ((double)total ) / ((double)VAR_1238123 );
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((( VAR__temp[VAR__53647] - aver ) > VAR__MAX ) || (( aver - VAR__temp[VAR__53647] ) > VAR__MAX ))
+      {
+         if (( VAR__temp[VAR__53647] - aver ) > 0 )
+         {
+            VAR__MAX = VAR__temp[VAR__53647] - aver;
+         }
+         else
+         {
+            VAR__MAX = aver - VAR__temp[VAR__53647];
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ((((( VAR__temp[VAR__53647] - aver ) - VAR__MAX ) < 0.00001 ) && (( VAR__MAX - ( VAR__temp[VAR__53647] - aver )) < 0.00001 )) || (((( aver - VAR__temp[VAR__53647] ) - VAR__MAX ) < 0.00001 ) && (( VAR__MAX - ( aver - VAR__temp[VAR__53647] )) < 0.00001 )))
+      {
+         so[VAR_666] = VAR__temp[VAR__53647];
+         VAR_666++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_666 - 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_666 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( so[VAR__21230] < so[VAR__21230 + 1] )
+         {
+            VAR__TEMP          = so[VAR__21230];
+            so[VAR__21230]     = so[VAR__21230 + 1];
+            so[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   printf("%d", so[0]);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_666; VAR__53647++ )
+   {
+      printf(",%d", so[VAR__53647]);
+   }
+}

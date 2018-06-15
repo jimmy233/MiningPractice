@@ -1,0 +1,72 @@
+struct money
+{
+   char name[20];
+   int  qm;
+   int  bj;
+   char gb;
+   char xb;
+   int  lw;
+}
+main()
+{
+   struct money stu[100];
+   int          VAR_1238123;
+   int          VAR__53647;
+   int          VAR_233;
+   long         VAR__819283[100] = { 0 };
+   long         VAR__MAX         = 0;
+   long         VAR__SUM         = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", stu[VAR__53647].name, &stu[VAR__53647].qm, &stu[VAR__53647].bj, &stu[VAR__53647].gb, &stu[VAR__53647].xb, &stu[VAR__53647].lw);
+
+      if (( stu[VAR__53647].qm > 80 ) && ( stu[VAR__53647].lw >= 1 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].qm > 85 ) && ( stu[VAR__53647].bj > 80 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].qm > 90 )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].qm > 85 ) && ( stu[VAR__53647].xb == 'Y' ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].bj > 80 ) && ( stu[VAR__53647].gb == 'Y' ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+
+      if ( VAR__MAX < VAR__819283[VAR__53647] )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX == VAR__819283[VAR__53647] )
+      {
+         VAR_233 = VAR__53647;
+         break;
+      }
+   }
+
+
+   printf("%s\n%ld\n%ld", stu[VAR_233].name, VAR__819283[VAR_233], VAR__SUM);
+}

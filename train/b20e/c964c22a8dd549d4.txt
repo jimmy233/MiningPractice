@@ -1,0 +1,74 @@
+int cmp(const void *e1, const void *e2)
+{
+   return ( *((int *)e2 )) - ( *((int *)e1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      int tianji[1001];
+      int qiwang[1001];
+      int VAR__53647;
+      int VAR__21230;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tianji[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qiwang[VAR__53647];
+      }
+
+      qsort(tianji, VAR_1238123, sizeof( int ), cmp);
+      qsort(qiwang, VAR_1238123, sizeof( int ), cmp);
+      VAR__53647 = 0;
+      VAR__21230 = VAR__53647;
+      int VAR__8444594 = VAR_1238123 - 1;
+      int VAR_2890     = VAR_1238123 - 1;
+      int money        = 0;
+      for ( int VAR__1238129 = 0; VAR__1238129 < VAR_1238123; VAR__1238129++ )
+      {
+         if ( tianji[VAR__53647] > qiwang[VAR__21230] )
+         {
+            VAR__53647++, VAR__21230++;
+            money += 200;
+         }
+         else
+         {
+            if ( tianji[VAR__8444594] > qiwang[VAR_2890] )
+            {
+               VAR__8444594--, VAR_2890--;
+               money += 200;
+            }
+            else
+            {
+               if ( tianji[VAR__8444594] > qiwang[VAR__21230] )
+               {
+                  money += 200;
+               }
+               else
+               if ( tianji[VAR__8444594] < qiwang[VAR__21230] )
+               {
+                  money -= 200;
+               }
+
+
+               VAR__8444594--;
+               VAR__21230++;
+            }
+         }
+      }
+
+      ( cout << money ) << endl;
+   }
+}

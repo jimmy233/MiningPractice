@@ -1,0 +1,46 @@
+int boy;
+int girl;
+int VAR__1111 = 0;
+void match(char VAR__4857423[], int left)
+{
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] == girl )
+      {
+         for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( VAR__4857423[VAR__21230] == boy )
+            {
+               ((( cout << VAR__21230 ) << " " ) << VAR__53647 ) << endl;
+               break;
+            }
+         }
+
+         VAR__4857423[VAR__53647] = '0';
+         VAR__4857423[VAR__21230] = '0';
+         left = left - 2;
+         break;
+      }
+   }
+
+   if ( left > 0 )
+   {
+      match(VAR__4857423, left);
+   }
+}
+
+
+int main()
+{
+   char A_STRING[100];
+
+   cin.getline(A_STRING, 100);
+   boy       = A_STRING[0];
+   VAR__1111 = strlen(A_STRING);
+   girl      = A_STRING[VAR__1111 - 2];
+   match(A_STRING, VAR__1111);
+   return 0;
+}

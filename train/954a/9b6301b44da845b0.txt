@@ -1,0 +1,77 @@
+struct data
+{
+   char        VAR__819283[20];
+   int         VAR__19328;
+   int         VAR__4857423;
+   char        VAR__12302[10];
+   char        VAR__112390[10];
+   int         VAR__127322;
+   int         VAR_9Q8Q90;
+   struct data *VAR__NEXT;
+};
+int main()
+{
+   struct data *VAR__HEAD;
+   struct data *VAR_233;
+   struct data *pp;
+
+   VAR__HEAD = (struct data *)malloc(sizeof( struct data ));
+   VAR_233   = VAR__HEAD;
+   int VAR_1238123;
+   int VAR__53647;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      pp             = (struct data *)malloc(sizeof( struct data ));
+      pp->VAR_9Q8Q90 = 0;
+      scanf("%s %d %d %s %s %d", pp->VAR__819283, &pp->VAR__19328, &pp->VAR__4857423, pp->VAR__12302, pp->VAR__112390, &pp->VAR__127322);
+
+      if (( pp->VAR__19328 > 80 ) && ( pp->VAR__127322 > 0 ))
+      {
+         pp->VAR_9Q8Q90 = pp->VAR_9Q8Q90 + 8000;
+      }
+
+      if (( pp->VAR__19328 > 85 ) && ( pp->VAR__4857423 > 80 ))
+      {
+         pp->VAR_9Q8Q90 = pp->VAR_9Q8Q90 + 4000;
+      }
+
+      if ( pp->VAR__19328 > 90 )
+      {
+         pp->VAR_9Q8Q90 = pp->VAR_9Q8Q90 + 2000;
+      }
+
+      if (( pp->VAR__19328 > 85 ) && ( pp->VAR__112390[0] == 'Y' ))
+      {
+         pp->VAR_9Q8Q90 = pp->VAR_9Q8Q90 + 1000;
+      }
+
+      if (( pp->VAR__4857423 > 80 ) && ( pp->VAR__12302[0] == 'Y' ))
+      {
+         pp->VAR_9Q8Q90 = pp->VAR_9Q8Q90 + 850;
+      }
+
+      VAR_233->VAR__NEXT = pp;
+      VAR_233            = pp;
+   }
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+   struct data *VAR__7685;
+   int         VAR__MAX = 0;
+   int         zz       = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_233->VAR_9Q8Q90 > VAR__MAX )
+      {
+         VAR__MAX  = VAR_233->VAR_9Q8Q90;
+         VAR__7685 = VAR_233;
+      }
+
+      zz      = zz + VAR_233->VAR_9Q8Q90;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%s\n", VAR__7685->VAR__819283);
+   printf("%d\n", VAR__7685->VAR_9Q8Q90);
+   printf("%d\n", zz);
+}

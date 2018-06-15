@@ -1,0 +1,90 @@
+int mycompare(const void *elem1, const void *elem2)
+{
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (int *)elem1;
+   YET_ANOTHER_POINTER = (int *)elem2;
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int money;
+   int khead;
+   int thead;
+   int ktail;
+   int ttail;
+   int horse[2][1005];
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      money = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> horse[0][VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> horse[1][VAR__53647];
+      }
+
+      qsort(horse[0], VAR_1238123, sizeof( int ), mycompare);
+      qsort(horse[1], VAR_1238123, sizeof( int ), mycompare);
+      khead = ( thead = 0 );
+      ktail = ( ttail = VAR_1238123 - 1 );
+
+      while (( khead <= ktail ) && ( thead <= ttail ))
+      {
+         if ( horse[0][thead] > horse[1][khead] )
+         {
+            thead++;
+            khead++;
+            money += 200;
+         }
+         else
+         if ( horse[0][thead] < horse[1][khead] )
+         {
+            khead++;
+            ttail--;
+            money -= 200;
+         }
+         else
+         {
+            while (( thead <= ttail ) && ( khead <= ktail ))
+            {
+               if ( horse[0][ttail] > horse[1][ktail] )
+               {
+                  ttail--;
+                  ktail--;
+                  money += 200;
+               }
+               else
+               {
+                  if ( horse[0][ttail] < horse[1][khead] )
+                  {
+                     money -= 200;
+                  }
+
+                  ttail--;
+                  khead++;
+                  break;
+               }
+            }
+         }
+      }
+
+      ( cout << money ) << endl;
+   }
+
+   return 0;
+}

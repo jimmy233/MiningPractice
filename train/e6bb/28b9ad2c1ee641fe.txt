@@ -1,0 +1,120 @@
+int bacteria[11][11] = { 0 };
+int VAR_FLAG[11][11] = { 0 };
+int add[11][11] = { 0 };
+void reproduce(int VAR__7685, int VAR__3918907)
+{
+   if ( VAR__7685 > 1 )
+   {
+      add[VAR__7685 - 1][VAR__3918907] += bacteria[VAR__7685][VAR__3918907] / 2;
+   }
+
+   if ( VAR__7685 < 9 )
+   {
+      add[VAR__7685 + 1][VAR__3918907] += bacteria[VAR__7685][VAR__3918907] / 2;
+   }
+
+   if ( VAR__3918907 > 1 )
+   {
+      add[VAR__7685][VAR__3918907 - 1] += bacteria[VAR__7685][VAR__3918907] / 2;
+   }
+
+   if ( VAR__3918907 < 9 )
+   {
+      add[VAR__7685][VAR__3918907 + 1] += bacteria[VAR__7685][VAR__3918907] / 2;
+   }
+
+   if (( VAR__7685 > 1 ) && ( VAR__3918907 > 1 ))
+   {
+      add[VAR__7685 - 1][VAR__3918907 - 1] += bacteria[VAR__7685][VAR__3918907] / 2;
+   }
+
+   if (( VAR__7685 < 9 ) && ( VAR__3918907 < 9 ))
+   {
+      add[VAR__7685 + 1][VAR__3918907 + 1] += bacteria[VAR__7685][VAR__3918907] / 2;
+   }
+
+   if (( VAR__7685 > 1 ) && ( VAR__3918907 < 9 ))
+   {
+      add[VAR__7685 - 1][VAR__3918907 + 1] += bacteria[VAR__7685][VAR__3918907] / 2;
+   }
+
+   if (( VAR__7685 < 9 ) && ( VAR__3918907 > 1 ))
+   {
+      add[VAR__7685 + 1][VAR__3918907 - 1] += bacteria[VAR__7685][VAR__3918907] / 2;
+   }
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   bacteria[5][5] = VAR__1238129;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 1; VAR__8444594 <= 9; VAR__8444594++ )
+         {
+            if ( bacteria[VAR__21230][VAR__8444594] != 0 )
+            {
+               VAR_FLAG[VAR__21230][VAR__8444594]  = 1;
+               bacteria[VAR__21230][VAR__8444594] *= 2;
+            }
+         }
+      }
+
+
+
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 1; VAR__8444594 <= 9; VAR__8444594++ )
+         {
+            if ( VAR_FLAG[VAR__21230][VAR__8444594] != 0 )
+            {
+               VAR_FLAG[VAR__21230][VAR__8444594] = 0;
+               reproduce(VAR__21230, VAR__8444594);
+            }
+         }
+      }
+
+
+
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 1; VAR__8444594 <= 9; VAR__8444594++ )
+         {
+            bacteria[VAR__21230][VAR__8444594] += add[VAR__21230][VAR__8444594];
+            add[VAR__21230][VAR__8444594]       = 0;
+         }
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+   {
+      for ( VAR__8444594 = 1; VAR__8444594 <= 9; VAR__8444594++ )
+      {
+         if ( VAR__8444594 == 1 )
+         {
+            cout << bacteria[VAR__21230][VAR__8444594];
+         }
+         else
+         {
+            ( cout << ' ' ) << bacteria[VAR__21230][VAR__8444594];
+
+            if ( VAR__8444594 == 9 )
+            {
+               cout << endl;
+            }
+         }
+      }
+   }
+
+
+   return 0;
+}

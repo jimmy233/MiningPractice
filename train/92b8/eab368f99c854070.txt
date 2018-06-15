@@ -1,0 +1,60 @@
+struct area
+{
+   int start;
+   int end;
+};
+void main()
+{
+   struct area area[50002];
+   struct area VAR__TEMP;
+   int         VAR_1238123;
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR_9494;
+   int         VAR__112390;
+   int         VAR_FLAG = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &area[VAR__53647].start, &area[VAR__53647].end);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( area[VAR__53647].start > area[VAR__21230].start )
+         {
+            VAR__TEMP        = area[VAR__53647];
+            area[VAR__53647] = area[VAR__21230];
+            area[VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+   VAR_9494    = area[0].start;
+   VAR__112390 = area[0].end;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( area[VAR__53647].start > VAR__112390 )
+      {
+         VAR_FLAG = 1;
+         break;
+      }
+      else
+      if (( area[VAR__53647].start <= VAR__112390 ) && ( VAR__112390 <= area[VAR__53647].end ))
+      {
+         VAR__112390 = area[VAR__53647].end;
+      }
+   }
+
+   if ( VAR_FLAG )
+   {
+      printf("no");
+   }
+   else
+   {
+      printf("%d %d\n", VAR_9494, VAR__112390);
+   }
+}

@@ -1,0 +1,48 @@
+const int maxn = 55;
+int       VAR__819283[maxn];
+int       dp[maxn][maxn];
+int main()
+{
+   int T;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int ans;
+
+   while ( scanf("%d", &VAR_1238123) != EOF )
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", VAR__819283 + VAR__53647);
+      }
+
+      memset(dp, -1, sizeof( dp ));
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         dp[VAR__53647][VAR__53647] = 1;
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= VAR__53647; VAR__21230++ )
+         {
+            dp[VAR__53647 + 1][VAR__21230] = VAR__MAX(dp[VAR__53647 + 1][VAR__21230], dp[VAR__53647][VAR__21230]);
+
+            if ( VAR__819283[VAR__53647 + 1] <= VAR__819283[VAR__21230] )
+            {
+               dp[VAR__53647 + 1][VAR__53647 + 1] = VAR__MAX(dp[VAR__53647 + 1][VAR__53647 + 1], dp[VAR__53647][VAR__21230] + 1);
+            }
+         }
+      }
+
+      ans = 0;
+      for ( VAR__53647 = VAR_1238123, VAR__21230 = 1; VAR__21230 <= VAR__53647; VAR__21230++ )
+      {
+         ans = VAR__MAX(ans, dp[VAR__53647][VAR__21230]);
+      }
+
+      printf("%d\n", ans);
+   }
+
+   return 0;
+}

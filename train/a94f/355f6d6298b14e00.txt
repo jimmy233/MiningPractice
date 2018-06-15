@@ -1,0 +1,73 @@
+int main()
+{
+   int row;
+   int col;
+   int matrix[ROW][COL];
+   int VAR__8444594[100000];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__819283 = 0;
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &matrix[VAR__53647][VAR__21230]);
+      }
+   }
+
+   int xx_row;
+   int sx_row;
+   int xx_col;
+   int sx_col;
+   xx_row = 0;
+   sx_row = row - 1;
+   xx_col = 0;
+   sx_col = col - 1;
+
+   while (( xx_row <= sx_row ) && ( xx_col <= sx_col ))
+   {
+      if (( xx_row == sx_row ) && ( xx_col == sx_col ))
+      {
+         VAR__8444594[VAR__819283] = matrix[xx_row][xx_col];
+         VAR__819283++;
+      }
+
+      for ( VAR__21230 = xx_col; VAR__21230 < sx_col; VAR__21230++ )
+      {
+         VAR__8444594[VAR__819283] = matrix[xx_row][VAR__21230];
+         VAR__819283++;
+      }
+
+      for ( VAR__53647 = xx_row; VAR__53647 < sx_row; VAR__53647++ )
+      {
+         VAR__8444594[VAR__819283] = matrix[VAR__53647][sx_col];
+         VAR__819283++;
+      }
+
+      for ( VAR__21230 = sx_col; VAR__21230 > xx_col; VAR__21230-- )
+      {
+         VAR__8444594[VAR__819283] = matrix[sx_row][VAR__21230];
+         VAR__819283++;
+      }
+
+      for ( VAR__53647 = sx_row; VAR__53647 > xx_row; VAR__53647-- )
+      {
+         VAR__8444594[VAR__819283] = matrix[VAR__53647][xx_col];
+         VAR__819283++;
+      }
+
+      xx_row++;
+      sx_row--;
+      xx_col++;
+      sx_col--;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( row * col ); VAR__53647++ )
+   {
+      printf("%d\n", VAR__8444594[VAR__53647]);
+   }
+
+   return 0;
+}

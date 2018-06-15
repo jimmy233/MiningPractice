@@ -1,0 +1,62 @@
+int  fim[255];
+int  map[37];
+char C[1000];
+int main(void)
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   char ch[100];
+
+   for ( int VAR__53647 = 0; VAR__53647 <= 36; VAR__53647++ )
+   {
+      if ( VAR__53647 <= 9 )
+      {
+         fim[VAR__53647 + 48] = VAR__53647;
+      }
+      else
+      {
+         fim[( 'a' + VAR__53647 ) - 10] = VAR__53647;
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 <= 36; VAR__53647++ )
+   {
+      if ( VAR__53647 <= 9 )
+      {
+         map[VAR__53647] = VAR__53647 + 48;
+      }
+      else
+      {
+         map[VAR__53647] = ( VAR__53647 + 'A' ) - 10;
+      }
+   }
+
+
+   scanf("%d %s %d", &VAR__819283, ch, &VAR__19328);
+   int S = 0;
+   for ( int VAR__53647 = 0; VAR__53647 < ((int)strlen(ch)); VAR__53647++ )
+   {
+      ch[VAR__53647] = tolower(ch[VAR__53647]);
+      S = ( S * VAR__819283 ) + fim[ch[VAR__53647]];
+   }
+
+   if ( S == 0 )
+   {
+      puts("0");
+   }
+   else
+   {
+      int VAR__1111 = 0;
+
+      while ( S )
+      {
+         C[VAR__1111++] = map[S % VAR__19328], S /= VAR__19328;
+      }
+
+      reverse(C, C + VAR__1111);
+      puts(C);
+   }
+
+   return 0;
+}

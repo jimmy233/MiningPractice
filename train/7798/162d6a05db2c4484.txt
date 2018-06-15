@@ -1,0 +1,55 @@
+int main()
+{
+   int  bookno[100];
+   char author[100][26];
+   int  numOfauthor[26] = { 0 };
+   int  nbook;
+   int  VAR__MAX = 0;
+   int  maxno;
+   char maxauthor;
+
+   cin >> nbook;
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 0; VAR__53647 < nbook; VAR__53647++ )
+   {
+      cin >> bookno[VAR__53647];
+      cin.get();
+      cin.getline(*( author + VAR__53647 ), 26);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nbook; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; author[VAR__53647][VAR__21230] != '\0'; VAR__21230++ )
+      {
+         numOfauthor[author[VAR__53647][VAR__21230] - 'A']++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( numOfauthor[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = numOfauthor[VAR__53647];
+         maxno    = VAR__53647;
+      }
+   }
+
+   maxauthor = maxno + 'A';
+   ( cout << maxauthor ) << endl;
+   ( cout << numOfauthor[maxno] ) << endl;
+   for ( VAR__53647 = 0; VAR__53647 < nbook; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; author[VAR__53647][VAR__21230] != '\0'; VAR__21230++ )
+      {
+         if ( author[VAR__53647][VAR__21230] == maxauthor )
+         {
+            ( cout << bookno[VAR__53647] ) << endl;
+         }
+      }
+   }
+
+
+   return 0;
+}

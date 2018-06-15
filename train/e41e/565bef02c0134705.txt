@@ -1,0 +1,72 @@
+int main()
+{
+   int  VAR__819283[100];
+   int  VAR__19328[100] = { 0 };
+   int  VAR__53647;
+   int  VAR_233;
+   int  VAR__temp;
+   char VAR__NUM[100];
+
+   cin >> VAR__NUM;
+   VAR_233 = strlen(VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_233; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR__NUM[VAR__53647] - '0';
+   }
+
+   if ( VAR_233 > 1 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < VAR_233; VAR__53647++ )
+      {
+         if ( VAR__53647 >= 2 )
+         {
+            if ( VAR__819283[VAR__53647 - 2] == 0 )
+            {
+               VAR__19328[VAR__53647] = (( VAR__819283[VAR__53647 - 1] * 10 ) + VAR__819283[VAR__53647] ) / 13;
+               VAR__temp = (( VAR__819283[VAR__53647 - 1] * 10 ) + VAR__819283[VAR__53647] ) % 13;
+               VAR__819283[VAR__53647]     = VAR__temp % 10;
+               VAR__819283[VAR__53647 - 1] = VAR__temp / 10;
+            }
+            else
+            {
+               VAR__temp = ((( VAR__819283[VAR__53647 - 2] * 100 ) + ( VAR__819283[VAR__53647 - 1] * 10 )) + VAR__819283[VAR__53647] ) % 13;
+               VAR__19328[VAR__53647]      = ((( VAR__819283[VAR__53647 - 2] * 100 ) + ( VAR__819283[VAR__53647 - 1] * 10 )) + VAR__819283[VAR__53647] ) / 13;
+               VAR__819283[VAR__53647]     = VAR__temp % 10;
+               VAR__819283[VAR__53647 - 1] = VAR__temp / 10;
+               VAR__819283[VAR__53647 - 2] = 0;
+            }
+         }
+         else
+         {
+            VAR__19328[VAR__53647] = (( VAR__819283[VAR__53647 - 1] * 10 ) + VAR__819283[VAR__53647] ) / 13;
+            VAR__temp = (( VAR__819283[VAR__53647 - 1] * 10 ) + VAR__819283[VAR__53647] ) % 13;
+            VAR__819283[VAR__53647]     = VAR__temp % 10;
+            VAR__819283[VAR__53647 - 1] = VAR__temp / 10;
+         }
+      }
+
+      if (( VAR__19328[1] == 0 ) && ( VAR_233 > 2 ))
+      {
+         VAR__53647 = 2;
+      }
+      else
+      {
+         VAR__53647 = 1;
+      }
+
+      for ( ; VAR__53647 < VAR_233; VAR__53647++ )
+      {
+         cout << VAR__19328[VAR__53647];
+      }
+
+      cout << endl;
+      ( cout << VAR__temp ) << endl;
+   }
+   else
+   {
+      ( cout << "0" ) << endl;
+      ( cout << VAR__NUM[0] ) << endl;
+   }
+
+   return 0;
+}

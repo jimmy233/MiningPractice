@@ -1,0 +1,58 @@
+int main()
+{
+   int  VAR__53647;
+   int  la;
+   int  lb;
+   int  VAR_666;
+   int  VAR_233[255];
+   char VAR__819283[255];
+   char VAR__19328[255];
+   char VAR__4857423[255];
+
+   scanf("%s%s", VAR__819283, VAR__19328);
+   la = strlen(VAR__819283);
+   lb = strlen(VAR__19328);
+
+   if ( la < lb )
+   {
+      strcpy(VAR__4857423, VAR__819283);
+      strcpy(VAR__819283, VAR__19328);
+      strcpy(VAR__19328, VAR__4857423);
+      VAR_666 = la;
+      la      = lb;
+      lb      = VAR_666;
+   }
+
+   VAR_233[0] = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= (( la - lb ) - 1 ); VAR__53647++ )
+   {
+      VAR_233[VAR__53647 + 1] = ((int)VAR__819283[VAR__53647] ) - 48;
+   }
+
+   for ( VAR__53647 = la - lb; VAR__53647 <= ( la - 1 ); VAR__53647++ )
+   {
+      VAR_233[VAR__53647 + 1] = (((int)VAR__819283[VAR__53647] ) + ((int)VAR__19328[( VAR__53647 + lb ) - la] )) - 96;
+   }
+
+   for ( VAR__53647 = la - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR_233[VAR__53647]     += VAR_233[VAR__53647 + 1] / 10;
+      VAR_233[VAR__53647 + 1] %= 10;
+   }
+
+   VAR_666 = 0;
+
+   while (( VAR_233[VAR_666] == 0 ) && ( VAR_666 < la ))
+   {
+      VAR_666++;
+   }
+
+   for ( VAR__53647 = VAR_666; VAR__53647 <= la; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647 - VAR_666] = (char)( VAR_233[VAR__53647] + 48 );
+   }
+
+   VAR__4857423[( la + 1 ) - VAR_666] = '\0';
+   printf("%s\n", VAR__4857423);
+   return 0;
+}

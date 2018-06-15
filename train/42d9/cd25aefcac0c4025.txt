@@ -1,0 +1,91 @@
+struct point
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290;
+};
+struct dis
+{
+   float        distance;
+   struct point d1;
+   struct point d2;
+};
+int main()
+{
+   void bubble(struct dis VAR__19328[100], int LEN_OF_STH);
+   float fun(struct point pt1, struct point pt2);
+
+   int          VAR_1238123;
+   int          VAR__1238129;
+   int          VAR__NUM;
+   int          VAR__53647;
+   int          up;
+   int          VAR_21983012;
+   struct dis   VAR__819283[100] = { 0, 0, 0 };
+   struct point pt[10]           = { 0, 0, 0 };
+   scanf("%d", &VAR__NUM);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      scanf("%d%d%d", &pt[VAR__53647].VAR__7685, &pt[VAR__53647].VAR__3918907, &pt[VAR__53647].VAR__9290);
+   }
+
+   VAR_21983012 = ( VAR__NUM * ( VAR__NUM - 1 )) / 2;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_21983012; )
+   {
+      for ( VAR_1238123 = 0; VAR_1238123 < ( VAR__NUM - 1 ); VAR_1238123++ )
+      {
+         for ( VAR__1238129 = VAR_1238123 + 1; VAR__1238129 < VAR__NUM; VAR__1238129++ )
+         {
+            VAR__819283[VAR__53647].distance        = fun(pt[VAR_1238123], pt[VAR__1238129]);
+            VAR__819283[VAR__53647].d1.VAR__7685    = pt[VAR_1238123].VAR__7685;
+            VAR__819283[VAR__53647].d1.VAR__3918907 = pt[VAR_1238123].VAR__3918907;
+            VAR__819283[VAR__53647].d1.VAR__9290    = pt[VAR_1238123].VAR__9290;
+            VAR__819283[VAR__53647].d2.VAR__7685    = pt[VAR__1238129].VAR__7685;
+            VAR__819283[VAR__53647].d2.VAR__3918907 = pt[VAR__1238129].VAR__3918907;
+            VAR__819283[VAR__53647].d2.VAR__9290    = pt[VAR__1238129].VAR__9290;
+            VAR__53647++;
+         }
+      }
+   }
+
+   up = VAR__53647;
+   bubble(VAR__819283, up);
+   for ( VAR__53647 = 0; VAR__53647 < up; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%3.2f\n", VAR__819283[VAR__53647].d1.VAR__7685, VAR__819283[VAR__53647].d1.VAR__3918907, VAR__819283[VAR__53647].d1.VAR__9290, VAR__819283[VAR__53647].d2.VAR__7685, VAR__819283[VAR__53647].d2.VAR__3918907, VAR__819283[VAR__53647].d2.VAR__9290, VAR__819283[VAR__53647].distance);
+   }
+
+   return 0;
+}
+
+
+float fun(struct point ANOTHER_POINTER, struct point YET_ANOTHER_POINTER)
+{
+   float result;
+   float mid;
+
+   mid    = ((( ANOTHER_POINTER.VAR__7685 - YET_ANOTHER_POINTER.VAR__7685 ) * ( ANOTHER_POINTER.VAR__7685 - YET_ANOTHER_POINTER.VAR__7685 )) + (( ANOTHER_POINTER.VAR__3918907 - YET_ANOTHER_POINTER.VAR__3918907 ) * ( ANOTHER_POINTER.VAR__3918907 - YET_ANOTHER_POINTER.VAR__3918907 ))) + (( ANOTHER_POINTER.VAR__9290 - YET_ANOTHER_POINTER.VAR__9290 ) * ( ANOTHER_POINTER.VAR__9290 - YET_ANOTHER_POINTER.VAR__9290 ));
+   result = sqrt(mid);
+   return result;
+}
+
+
+void bubble(struct dis VAR__19328[100], int LEN_OF_STH)
+{
+   int        VAR__53647;
+   int        pass;
+   struct dis VAR__TEMP;
+
+   for ( pass = 1; pass < LEN_OF_STH; pass++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - pass ); VAR__53647++ )
+      {
+         if ( VAR__19328[VAR__53647].distance < VAR__19328[VAR__53647 + 1].distance )
+         {
+            VAR__TEMP = VAR__19328[VAR__53647];
+            VAR__19328[VAR__53647]     = VAR__19328[VAR__53647 + 1];
+            VAR__19328[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}

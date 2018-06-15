@@ -1,0 +1,79 @@
+void main()
+{
+   int   male   = 0;
+   int   female = 0;
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   char  cn;
+   char  VAR__1238129;
+   char  VAR__127322;
+   char  exam1[] = "mmm";
+   char  exam2[] = "fff";
+   float an[40];
+   float bn[40];
+   float high;
+   float temp1;
+   char  VAR__TEMP[6];
+
+   VAR__1238129 = exam1[0];
+   VAR__127322  = exam2[0];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", &VAR__TEMP, &high);
+      cn = VAR__TEMP[0];
+
+      if ( cn == VAR__1238129 )
+      {
+         an[male] = high;
+         male     = male + 1;
+      }
+
+      if ( cn == VAR__127322 )
+      {
+         bn[female] = high;
+         female     = female + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < female; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( female - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( bn[VAR__21230] < bn[VAR__21230 + 1] )
+         {
+            temp1              = bn[VAR__21230];
+            bn[VAR__21230]     = bn[VAR__21230 + 1];
+            bn[VAR__21230 + 1] = temp1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < male; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( male - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( an[VAR__21230] > an[VAR__21230 + 1] )
+         {
+            temp1              = an[VAR__21230];
+            an[VAR__21230]     = an[VAR__21230 + 1];
+            an[VAR__21230 + 1] = temp1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < male; VAR__53647++ )
+   {
+      printf("%.2f", an[VAR__53647]);
+      printf(" ");
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( female - 1 ); VAR__53647++ )
+   {
+      printf("%.2f", bn[VAR__53647]);
+      printf(" ");
+   }
+
+   printf("%.2f", bn[female - 1]);
+}

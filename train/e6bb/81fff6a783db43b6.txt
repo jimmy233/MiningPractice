@@ -1,0 +1,59 @@
+int main()
+{
+   int real[9][9]  = { 0 };
+   int virtl[9][9] = { 0 };
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = 3; VAR__53647 < 6; VAR__53647++ )
+   {
+      for ( VAR__21230 = 3; VAR__21230 < 6; VAR__21230++ )
+      {
+         real[VAR__53647][VAR__21230] = VAR__1238129;
+      }
+   }
+
+
+   real[4][4] = 2 * VAR__1238129;
+   for ( VAR__8444594 = 3; VAR__8444594 > ( 4 - VAR_1238123 ); VAR__8444594-- )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 8; VAR__21230++ )
+         {
+            virtl[VAR__53647][VAR__21230] = real[VAR__53647][VAR__21230];
+            real[VAR__53647][VAR__21230]  = 0;
+         }
+      }
+
+      for ( VAR__53647 = VAR__8444594; VAR__53647 < ( 9 - VAR__8444594 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__8444594; VAR__21230 < ( 9 - VAR__8444594 ); VAR__21230++ )
+         {
+            real[VAR__53647][VAR__21230]          = real[VAR__53647][VAR__21230] + ( 2 * virtl[VAR__53647][VAR__21230] );
+            real[VAR__53647 - 1][VAR__21230 - 1] += virtl[VAR__53647][VAR__21230];
+            real[VAR__53647 - 1][VAR__21230]     += virtl[VAR__53647][VAR__21230];
+            real[VAR__53647 - 1][VAR__21230 + 1] += virtl[VAR__53647][VAR__21230];
+            real[VAR__53647][VAR__21230 - 1]     += virtl[VAR__53647][VAR__21230];
+            real[VAR__53647][VAR__21230 + 1]     += virtl[VAR__53647][VAR__21230];
+            real[VAR__53647 + 1][VAR__21230 - 1] += virtl[VAR__53647][VAR__21230];
+            real[VAR__53647 + 1][VAR__21230]     += virtl[VAR__53647][VAR__21230];
+            real[VAR__53647 + 1][VAR__21230 + 1] += virtl[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 8; VAR__21230++ )
+      {
+         printf("%d ", real[VAR__53647][VAR__21230]);
+      }
+
+      printf("%d\n", real[VAR__53647][8]);
+   }
+}

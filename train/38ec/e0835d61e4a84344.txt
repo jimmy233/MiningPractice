@@ -1,0 +1,110 @@
+int countday(int year, int month, int day)
+{
+   int VAR__COUNT;
+
+   switch ( month )
+   {
+   case 1:
+      VAR__COUNT = day;
+      break;
+
+   case 2:
+      VAR__COUNT = 31 + day;
+      break;
+
+   case 3:
+      VAR__COUNT = 60 + day;
+      break;
+
+   case 4:
+      VAR__COUNT = 91 + day;
+      break;
+
+   case 5:
+      VAR__COUNT = 121 + day;
+      break;
+
+   case 6:
+      VAR__COUNT = 152 + day;
+      break;
+
+   case 7:
+      VAR__COUNT = 182 + day;
+      break;
+
+   case 8:
+      VAR__COUNT = 213 + day;
+      break;
+
+   case 9:
+      VAR__COUNT = 244 + day;
+      break;
+
+   case 10:
+      VAR__COUNT = 274 + day;
+      break;
+
+   case 11:
+      VAR__COUNT = 305 + day;
+      break;
+
+   case 12:
+      VAR__COUNT = 335 + day;
+      break;
+   }
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return VAR__COUNT;
+   }
+   else
+   {
+      if ( month <= 2 )
+      {
+         return VAR__COUNT;
+      }
+      else
+      {
+         return VAR__COUNT - 1;
+      }
+   }
+}
+
+
+int countyear(int year)
+{
+   int VAR__53647;
+   int countyear = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 <= year; ++VAR__53647 )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         countyear++;
+      }
+   }
+
+   return ( countyear * 366 ) + (( year - countyear ) * 365 );
+}
+
+
+int main()
+{
+   int y1;
+   int y2;
+   int m1;
+   int m2;
+   int d1;
+   int d2;
+   int count1;
+   int count2;
+
+   (( cin >> y1 ) >> m1 ) >> d1;
+   (( cin >> y2 ) >> m2 ) >> d2;
+   count1  = countday(y1, m1, d1);
+   count2  = countday(y2, m2, d2);
+   count1 += countyear(y1 - 1);
+   count2 += countyear(y2 - 1);
+   ( cout << ( count2 - count1 )) << endl;
+   return 0;
+}

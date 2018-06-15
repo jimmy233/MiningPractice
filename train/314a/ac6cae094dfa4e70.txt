@@ -1,0 +1,85 @@
+void main()
+{
+   char VAR__4857423;
+   int  pre[1000][1000];
+   int  beg[1000];
+   int  en[1000];
+   int  pptt[1000];
+   int  tmax;
+   int  pmax;
+   int  VAR_233;
+   int  VAR__temp;
+   int  VAR_1238123;
+   int  sl;
+   int  VAR__53647;
+
+   VAR_1238123 = 1;
+   scanf("%d,", &beg[0]);
+   do
+   {
+      VAR_1238123++;
+      scanf("%d%c", &beg[VAR_1238123 - 1], &VAR__4857423);
+   } while (( VAR__4857423 == 44 ) && ( VAR_1238123 <= 1000 ));
+   scanf("%d", &en[0]);
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf(",%d", &en[VAR__53647]);
+   }
+
+   tmax = en[0];
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( tmax < en[VAR__53647] )
+      {
+         tmax = en[VAR__53647];
+      }
+   }
+
+   for ( VAR_233 = 0; VAR_233 <= ( VAR_1238123 - 1 ); VAR_233++ )
+   {
+      for ( VAR__temp = 0; VAR__temp <= ( tmax - 1 ); VAR__temp++ )
+      {
+         pre[VAR_233][VAR__temp] = 0;
+      }
+   }
+
+   VAR_233 = 0;
+   do
+   {
+      VAR__temp = 0;
+      do
+      {
+         if (( beg[VAR_233] <= VAR__temp ) && (( VAR__temp + 1 ) <= en[VAR_233] ))
+         {
+            pre[VAR_233][VAR__temp] = 1;
+         }
+
+         VAR__temp++;
+      } while ( VAR__temp <= ( tmax - 1 ));
+      VAR_233++;
+   } while ( VAR_233 <= ( VAR_1238123 - 1 ));
+   for ( VAR__53647 = 0; VAR__53647 <= tmax; VAR__53647++ )
+   {
+      pptt[VAR__53647] = 0;
+   }
+
+   for ( VAR__temp = 0; VAR__temp <= ( tmax - 1 ); VAR__temp++ )
+   {
+      for ( VAR_233 = 0; VAR_233 <= ( VAR_1238123 - 1 ); VAR_233++ )
+      {
+         pptt[VAR__temp] = pptt[VAR__temp] + pre[VAR_233][VAR__temp];
+      }
+   }
+
+   pmax = pptt[0];
+   for ( VAR__temp = 1; VAR__temp <= ( tmax - 1 ); VAR__temp++ )
+   {
+      if ( pmax < pptt[VAR__temp] )
+      {
+         pmax = pptt[VAR__temp];
+      }
+   }
+
+
+   printf("%d %d", VAR_1238123, pmax);
+}

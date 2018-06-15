@@ -1,0 +1,95 @@
+long change1(char VAR__819283[], int n1)
+{
+   int VAR_9494 = 0;
+   int VAR__TEMP;
+   int LEN_OF_STH;
+   int VAR__53647;
+
+   LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647] >= '0' ) && ( VAR__819283[VAR__53647] <= '9' ))
+      {
+         VAR__TEMP = VAR__819283[VAR__53647] - '0';
+      }
+
+      if (( VAR__819283[VAR__53647] >= 'a' ) && ( VAR__819283[VAR__53647] <= 'z' ))
+      {
+         VAR__TEMP = ( VAR__819283[VAR__53647] - 'a' ) + 10;
+      }
+
+      if (( VAR__819283[VAR__53647] >= 'A' ) && ( VAR__819283[VAR__53647] <= 'Z' ))
+      {
+         VAR__TEMP = ( VAR__819283[VAR__53647] - 'A' ) + 10;
+      }
+
+      VAR_9494 = ( VAR_9494 * n1 ) + VAR__TEMP;
+   }
+
+   return VAR_9494;
+}
+
+
+void change2(long VAR_9494, int n2, char VAR__19328[])
+{
+   int VAR__53647 = 0;
+   int VAR__21230;
+   int VAR__TEMP;
+   int add;
+
+   while ( VAR_9494 > 0 )
+   {
+      add = VAR_9494 % n2;
+
+      if ( add >= 10 )
+      {
+         VAR__19328[VAR__53647] = ( add - 10 ) + 'A';
+      }
+      else
+      {
+         VAR__19328[VAR__53647] = add + '0';
+      }
+
+      VAR__53647++;
+      VAR_9494 = VAR_9494 / n2;
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= (( VAR__53647 / 2 ) - 1 ); VAR__21230++ )
+   {
+      VAR__TEMP = VAR__19328[VAR__21230];
+      VAR__19328[VAR__21230] = VAR__19328[( VAR__53647 - 1 ) - VAR__21230];
+      VAR__19328[( VAR__53647 - 1 ) - VAR__21230] = VAR__TEMP;
+   }
+}
+
+
+void main()
+{
+   char VAR__819283[50] = { 0 };
+   char VAR__19328[50]  = { 0 };
+   int  n1;
+   int  n2;
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   long VAR_9494;
+
+   scanf("%d%s%d", &n1, VAR__819283, &n2);
+   VAR_9494 = change1(VAR__819283, n1);
+   change2(VAR_9494, n2, VAR__19328);
+   LEN_OF_STH = strlen(VAR__19328);
+
+   if ( LEN_OF_STH > 0 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         printf("%c", VAR__19328[VAR__53647]);
+      }
+
+      printf("\n");
+   }
+
+   if ( LEN_OF_STH == 0 )
+   {
+      printf("0\n");
+   }
+}

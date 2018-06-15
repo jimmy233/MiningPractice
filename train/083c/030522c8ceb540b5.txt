@@ -1,0 +1,95 @@
+long pow(int VAR__819283, int VAR__19328)
+{
+   long VAR__4857423;
+
+   if ( VAR__19328 == 0 )
+   {
+      VAR__4857423 = 1;
+   }
+
+   if ( VAR__19328 > 0 )
+   {
+      VAR__4857423 = pow(VAR__819283, VAR__19328 - 1) * VAR__819283;
+   }
+
+   return VAR__4857423;
+}
+
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  VAR__21230;
+   char form[1000];
+   char late[1000];
+   long ten = 0;
+
+   cin >> VAR__819283;
+   cin >> form;
+   cin >> VAR__19328;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(form); VAR__53647++ )
+   {
+      if (( form[VAR__53647] >= 97 ) && ( form[VAR__53647] <= 122 ))
+      {
+         form[VAR__53647] -= 32;
+      }
+   }
+
+
+   for ( VAR__53647 = strlen(form) - 1, VAR__21230 = 0; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      if (( form[VAR__53647] >= 48 ) && ( form[VAR__53647] <= 57 ))
+      {
+         form[VAR__53647] -= 48;
+         ten += form[VAR__53647] * pow(VAR__819283, VAR__21230);
+      }
+
+      if (( form[VAR__53647] >= 65 ) && ( form[VAR__53647] <= 90 ))
+      {
+         form[VAR__53647] -= 55;
+         ten += form[VAR__53647] * pow(VAR__819283, VAR__21230);
+      }
+   }
+
+   if ( ten == 0 )
+   {
+      ( cout << ten ) << endl;
+      return 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 1000; VAR__53647++ )
+   {
+      if (( ten % VAR__19328 ) < 10 )
+      {
+         late[VAR__53647] = ( ten % VAR__19328 ) + 48;
+      }
+
+      if (( ten % VAR__19328 ) >= 10 )
+      {
+         late[VAR__53647] = ( ten % VAR__19328 ) + 55;
+      }
+
+      if ((( ten / VAR__19328 ) == 0 ) && (( ten % VAR__19328 ) == 0 ))
+      {
+         late[VAR__53647] = '\0';
+      }
+
+      ten = ten / VAR__19328;
+   }
+
+   for ( VAR__53647 = strlen(late) - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR__53647 != 0 )
+      {
+         cout << late[VAR__53647];
+      }
+      else
+      {
+         ( cout << late[VAR__53647] ) << endl;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,79 @@
+int VAR_1238123;
+struct stu
+{
+   int        VAR__NUM;
+   char       name[27];
+   struct stu *VAR__NEXT;
+};
+struct stu *creat()
+{
+   int        VAR__53647 = 0;
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   VAR__HEAD = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ))));
+   scanf("%d %s", &YET_ANOTHER_POINTER->VAR__NUM, YET_ANOTHER_POINTER->name);
+
+   while ( VAR__53647 < ( VAR_1238123 - 1 ))
+   {
+      VAR__53647++;
+      YET_ANOTHER_POINTER = (struct stu *)malloc(sizeof( struct stu ));
+      scanf("%d %s", &YET_ANOTHER_POINTER->VAR__NUM, YET_ANOTHER_POINTER->name);
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      ANOTHER_POINTER            = YET_ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct stu *VAR_233;
+   struct stu *VAR__HEAD;
+   int        VAR__8444594;
+   int        u;
+   int        VAR__MAX = 0;
+   int        maxnum;
+   int        VAR__819283[26] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = ( VAR_233 = creat());
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( u = 0; VAR_233->name[u] != '\0'; u++ )
+      {
+         VAR__819283[VAR_233->name[u] - 'A']++;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < 26; VAR__8444594++ )
+   {
+      if ( VAR__819283[VAR__8444594] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__8444594];
+         maxnum   = VAR__8444594;
+      }
+   }
+
+
+   printf("%c\n%d\n", maxnum + 'A', VAR__MAX);
+   VAR_233 = VAR__HEAD;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      for ( u = 0; VAR_233->name[u] != '\0'; u++ )
+      {
+         if ( VAR_233->name[u] == ( maxnum + 'A' ))
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+            break;
+         }
+      }
+
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

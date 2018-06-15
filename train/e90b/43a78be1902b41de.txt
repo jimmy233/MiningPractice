@@ -1,0 +1,81 @@
+struct ace
+{
+   char id[10];
+   int  VAR__819283;
+   int  VAR__19328;
+}
+o[3];
+struct ace
+{
+   char id[10];
+   int  VAR__819283;
+   int  VAR__19328;
+}
+VAR_129012;
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR_9494[3];
+   int  VAR__1238129;
+   int  VAR__21230;
+   int  v;
+   char VAR__9290[10];
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s %d %d", o[0].id, &o[0].VAR__819283, &o[0].VAR__19328);
+   scanf("%s %d %d", o[1].id, &o[1].VAR__819283, &o[1].VAR__19328);
+   scanf("%s %d %d", o[2].id, &o[2].VAR__819283, &o[2].VAR__19328);
+   VAR_9494[0] = o[0].VAR__819283 + o[0].VAR__19328;
+   VAR_9494[1] = o[1].VAR__819283 + o[1].VAR__19328;
+   VAR_9494[2] = o[2].VAR__819283 + o[2].VAR__19328;
+   for ( VAR__53647 = 0; VAR__53647 < 2; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < 3; VAR__21230++ )
+      {
+         if ( VAR_9494[VAR__53647] < VAR_9494[VAR__21230] )
+         {
+            strcpy(VAR__9290, o[VAR__53647].id);
+            strcpy(o[VAR__53647].id, o[VAR__21230].id);
+            strcpy(o[VAR__21230].id, VAR__9290);
+            v = VAR_9494[VAR__53647];
+            VAR_9494[VAR__53647] = VAR_9494[VAR__21230];
+            VAR_9494[VAR__21230] = v;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 3 ); VAR__53647++ )
+   {
+      scanf("%s %d %d", VAR_129012.id, &VAR_129012.VAR__819283, &VAR_129012.VAR__19328);
+      VAR__1238129 = VAR_129012.VAR__819283 + VAR_129012.VAR__19328;
+
+      if ( VAR__1238129 > VAR_9494[0] )
+      {
+         o[2]        = o[1];
+         VAR_9494[2] = VAR_9494[1];
+         o[1]        = o[0];
+         VAR_9494[1] = VAR_9494[0];
+         o[0]        = VAR_129012;
+         VAR_9494[0] = VAR__1238129;
+      }
+      else
+      if (( VAR__1238129 <= VAR_9494[0] ) && ( VAR__1238129 > VAR_9494[1] ))
+      {
+         o[2]        = o[1];
+         VAR_9494[2] = VAR_9494[1];
+         o[1]        = VAR_129012;
+         VAR_9494[1] = VAR__1238129;
+      }
+      else
+      if (( VAR__1238129 <= VAR_9494[1] ) && ( VAR__1238129 > VAR_9494[2] ))
+      {
+         o[2]        = VAR_129012;
+         VAR_9494[2] = VAR__1238129;
+      }
+   }
+
+   printf("%s %d\n", o[0].id, VAR_9494[0]);
+   printf("%s %d\n", o[1].id, VAR_9494[1]);
+   printf("%s %d\n", o[2].id, VAR_9494[2]);
+}

@@ -1,0 +1,75 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   int *VAR__4857423 = (int *)VAR__819283;
+   int *VAR__12302   = (int *)VAR__19328;
+
+   return ( *VAR__4857423 ) - ( *VAR__12302 );
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         return 0;
+      }
+
+      int VAR__819283[1005];
+      int VAR__19328[1005];
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__819283[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__19328[VAR__53647];
+      }
+
+      qsort(VAR__819283, VAR_1238123, sizeof( int ), cmp);
+      qsort(VAR__19328, VAR_1238123, sizeof( int ), cmp);
+      int pi;
+      int pj;
+      int qi;
+      int qj;
+      pi = ( qi = 0 );
+      pj = ( qj = VAR_1238123 - 1 );
+      int VAR__SUM = 0;
+
+      while ( VAR_1238123-- )
+      {
+         if ( VAR__819283[pi] > VAR__19328[qi] )
+         {
+            VAR__SUM += 200;
+            pi++;
+            qi++;
+         }
+         else
+         if ( VAR__819283[pj] > VAR__19328[qj] )
+         {
+            VAR__SUM += 200;
+            pj--;
+            qj--;
+         }
+         else
+         {
+            if ( VAR__819283[pi] < VAR__19328[qj] )
+            {
+               VAR__SUM -= 200;
+            }
+
+            pi++;
+            qj--;
+         }
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

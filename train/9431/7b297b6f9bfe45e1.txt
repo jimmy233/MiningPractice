@@ -1,0 +1,128 @@
+struct arr
+{
+   char       VAR__NUM[20];
+   char       name[50];
+   char       sex;
+   int        age;
+   float      score;
+   char       address[50];
+   struct arr *VAR__NEXT;
+};
+int VAR_1238123;
+struct arr *create(void)
+{
+   struct arr *VAR__HEAD;
+   struct arr *ANOTHER_POINTER;
+   struct arr *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct arr *)malloc(LEN));
+   scanf("%s %s %c %d %f %s", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, &ANOTHER_POINTER->address);
+   VAR__HEAD = NULL;
+
+   while ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") != 0 )
+   {
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct arr *)malloc(LEN);
+      scanf("%s", &ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") == 0 )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %f %s", &ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, &ANOTHER_POINTER->address);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+struct arr *reverse(struct arr *VAR__HEAD)
+{
+   struct arr *ANOTHER_POINTER;
+   struct arr *YET_ANOTHER_POINTER;
+   struct arr *p3;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+
+   if (( ANOTHER_POINTER != NULL ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+   {
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+
+      while (( ANOTHER_POINTER != NULL ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+      {
+         p3 = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         p3->VAR__NEXT       = YET_ANOTHER_POINTER;
+         YET_ANOTHER_POINTER = p3;
+      }
+
+      VAR__HEAD = ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct arr *VAR__HEAD)
+{
+   int        VAR__19328;
+   struct arr *ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      VAR__19328 = (int)ANOTHER_POINTER->score;
+
+      if (( ANOTHER_POINTER->score - VAR__19328 ) == 0.0 )
+      {
+         printf("%s %s %c %d %d %s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, VAR__19328, ANOTHER_POINTER->address);
+      }
+      else
+      {
+         printf("%s %s %c %d %.1f %s\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->address);
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}
+
+
+void freelist(struct arr *VAR__HEAD)
+{
+   struct arr *VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      VAR__HEAD = VAR__HEAD->VAR__NEXT;
+      free(VAR_233);
+      VAR_233 = VAR__HEAD;
+   }
+}
+
+
+void main()
+{
+   struct arr *VAR__HEAD;
+
+   VAR__HEAD = create();
+   VAR__HEAD = reverse(VAR__HEAD);
+   print(VAR__HEAD);
+   freelist(VAR__HEAD);
+}

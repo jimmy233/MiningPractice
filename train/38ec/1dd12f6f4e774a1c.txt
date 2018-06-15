@@ -1,0 +1,145 @@
+int main()
+{
+   int day = 0;
+   int VAR__53647;
+   int year1;
+   int year2;
+   int m1;
+   int m2;
+   int d1;
+   int d2;
+
+   (( cin >> year1 ) >> m1 ) >> d1;
+   (( cin >> year2 ) >> m2 ) >> d2;
+   int VAR__819283[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__19328[13]  = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   if (( year2 - year1 ) == 0 )
+   {
+      if ( m1 == m2 )
+      {
+         day = d2 - d1;
+      }
+      else
+      {
+         if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+         {
+            for ( VAR__53647 = m1 + 1; VAR__53647 <= ( m2 - 1 ); VAR__53647++ )
+            {
+               day = day + VAR__19328[VAR__53647];
+            }
+
+            day = (( day + VAR__19328[m1] ) - d1 ) + d2;
+         }
+         else
+         {
+            for ( VAR__53647 = m1 + 1; VAR__53647 <= ( m2 - 1 ); VAR__53647++ )
+            {
+               day = day + VAR__819283[VAR__53647];
+            }
+
+            day = (( day + VAR__819283[m1] ) - d1 ) + d2;
+         }
+      }
+   }
+
+   if (( year2 - year1 ) == 1 )
+   {
+      day = 0;
+
+      if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = m1 + 1; VAR__53647 <= 12; VAR__53647++ )
+         {
+            day = day + VAR__19328[VAR__53647];
+         }
+
+         day = ( day + VAR__19328[m1] ) - d1;
+      }
+      else
+      {
+         for ( VAR__53647 = m1 + 1; VAR__53647 <= 12; VAR__53647++ )
+         {
+            day = day + VAR__819283[VAR__53647];
+         }
+
+         day = ( day + VAR__819283[m1] ) - d1;
+      }
+
+      if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 1; VAR__53647 <= ( m2 - 1 ); VAR__53647++ )
+         {
+            day = day + VAR__19328[VAR__53647];
+         }
+
+         day = day + d2;
+      }
+      else
+      {
+         for ( VAR__53647 = 1; VAR__53647 <= ( m2 - 1 ); VAR__53647++ )
+         {
+            day = day + VAR__819283[VAR__53647];
+         }
+
+         day = day + d2;
+      }
+   }
+
+   if (( year2 - year1 ) > 2 )
+   {
+      day = 0;
+      for ( VAR__53647 = year1 + 1; VAR__53647 <= ( year2 - 1 ); VAR__53647++ )
+      {
+         if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+         {
+            day = day + 366;
+         }
+         else
+         {
+            day = day + 365;
+         }
+      }
+
+      if (((( year1 % 4 ) == 0 ) && (( year1 % 100 ) != 0 )) || (( year1 % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = m1 + 1; VAR__53647 <= 12; VAR__53647++ )
+         {
+            day = day + VAR__19328[VAR__53647];
+         }
+
+         day = ( day + VAR__19328[m1] ) - d1;
+      }
+      else
+      {
+         for ( VAR__53647 = m1 + 1; VAR__53647 <= 12; VAR__53647++ )
+         {
+            day = day + VAR__819283[VAR__53647];
+         }
+
+         day = ( day + VAR__819283[m1] ) - d1;
+      }
+
+      if (((( year2 % 4 ) == 0 ) && (( year2 % 100 ) != 0 )) || (( year2 % 400 ) == 0 ))
+      {
+         for ( VAR__53647 = 1; VAR__53647 <= ( m2 - 1 ); VAR__53647++ )
+         {
+            day = day + VAR__19328[VAR__53647];
+         }
+
+         day = day + d2;
+      }
+      else
+      {
+         for ( VAR__53647 = 1; VAR__53647 <= ( m2 - 1 ); VAR__53647++ )
+         {
+            day = day + VAR__819283[VAR__53647];
+         }
+
+         day = day + d2;
+      }
+   }
+
+   ( cout << day ) << endl;
+   return 0;
+}

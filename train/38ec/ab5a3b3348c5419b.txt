@@ -1,0 +1,53 @@
+int main()
+{
+   int starty;
+   int startm;
+   int startd;
+   int endy;
+   int endm;
+   int endd;
+   int run   = 0;
+   int t1    = 0;
+   int t2    = 0;
+   int total = 0;
+   int VAR__53647;
+   int month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   (( cin >> starty ) >> startm ) >> startd;
+   (( cin >> endy ) >> endm ) >> endd;
+   for ( VAR__53647 = starty + 1; VAR__53647 < endy; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         run++;
+      }
+   }
+
+
+   if ((((( starty % 4 ) == 0 ) && (( starty % 100 ) != 0 )) || (( starty % 400 ) == 0 )) && ( startm <= 2 ))
+   {
+      run++;
+   }
+
+   if ((((( endy % 4 ) == 0 ) && (( endy % 100 ) != 0 )) || (( endy % 400 ) == 0 )) && ( endm >= 3 ))
+   {
+      run++;
+   }
+
+   total = 365 * ( endy - starty );
+   for ( VAR__53647 = 0; VAR__53647 < ( startm - 1 ); VAR__53647++ )
+   {
+      t1 += month[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( endm - 1 ); VAR__53647++ )
+   {
+      t2 += month[VAR__53647];
+   }
+
+   t1   += startd;
+   t2   += endd;
+   total = (( total + t2 ) - t1 ) + run;
+   cout << total;
+   return 0;
+}

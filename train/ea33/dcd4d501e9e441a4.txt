@@ -1,0 +1,55 @@
+int choose(char A_STRING[], int VAR__8444594)
+{
+   int VAR__53647;
+   int VAR__MAX;
+   int maxc;
+
+   maxc     = A_STRING[0];
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] > maxc )
+      {
+         maxc     = A_STRING[VAR__53647];
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+   return VAR__MAX;
+}
+
+
+int main()
+{
+   static char A_STRING[15];
+   static char substr[4];
+
+   while ( scanf("%s%s", A_STRING, substr) != EOF )
+   {
+      int VAR__8444594;
+      VAR__8444594 = strlen(A_STRING);
+      int VAR__MAX;
+      VAR__MAX = choose(A_STRING, VAR__8444594);
+      static char cs[11];
+      int         VAR__53647;
+      for ( VAR__53647 = VAR__MAX + 1; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         cs[VAR__53647] = A_STRING[VAR__53647];
+      }
+
+      for ( VAR__53647 = VAR__MAX + 1; VAR__53647 <= ( VAR__MAX + 3 ); VAR__53647++ )
+      {
+         A_STRING[VAR__53647] = substr[( VAR__53647 - VAR__MAX ) - 1];
+      }
+
+      for ( VAR__53647 = VAR__MAX + 4; VAR__53647 < ( VAR__8444594 + 3 ); VAR__53647++ )
+      {
+         A_STRING[VAR__53647] = cs[VAR__53647 - 3];
+      }
+
+      A_STRING[VAR__8444594 + 3] = '\0';
+      puts(A_STRING);
+   }
+
+   return 0;
+}

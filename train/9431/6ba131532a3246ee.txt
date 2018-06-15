@@ -1,0 +1,80 @@
+struct st
+{
+   char      id[20];
+   char      name[20];
+   char      sex;
+   int       age;
+   float     goal;
+   char      address[20];
+   struct st *last;
+};
+struct st *input(void)
+{
+   int       VAR_1238123;
+   struct st *end;
+   struct st *ANOTHER_POINTER;
+   struct st *YET_ANOTHER_POINTER;
+
+   VAR_1238123     = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct st *)malloc(sizeof( struct st )));
+   scanf("%s", ANOTHER_POINTER->id);
+
+   while ( strcmp(ANOTHER_POINTER->id, "end") != 0 )
+   {
+      scanf("%s %c %d %f %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->goal, ANOTHER_POINTER->address);
+
+      if ( VAR_1238123 == 0 )
+      {
+         ANOTHER_POINTER->last = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->last = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct st *)malloc(sizeof( struct st ));
+      scanf("%s", ANOTHER_POINTER->id);
+      VAR_1238123 = 1;
+   }
+
+   end = YET_ANOTHER_POINTER;
+   return end;
+}
+
+
+void output(struct st *end)
+{
+   struct st *VAR_233;
+
+   VAR_233 = end;
+
+   if ( end != NULL )
+   {
+      do
+      {
+         printf("%s %s %c %d ", VAR_233->id, VAR_233->name, VAR_233->sex, VAR_233->age);
+
+         if ( floor(VAR_233->goal) == VAR_233->goal )
+         {
+            printf("%.0f", VAR_233->goal);
+         }
+         else
+         {
+            printf("%.1f", VAR_233->goal);
+         }
+
+         printf(" %s\n", VAR_233->address);
+         VAR_233 = VAR_233->last;
+      } while ( VAR_233 != NULL );
+   }
+}
+
+
+int main()
+{
+   struct st *end;
+
+   end = input();
+   output(end);
+}

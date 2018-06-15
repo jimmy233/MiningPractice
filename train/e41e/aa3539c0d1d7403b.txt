@@ -1,0 +1,78 @@
+int strchange(char VAR_9494[], int VAR_1238123[])
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < strlen(VAR_9494); VAR__53647++ )
+   {
+      VAR_1238123[VAR__53647] = VAR_9494[VAR__53647] - '0';
+   }
+
+   return strlen(VAR_9494);
+}
+
+
+int main()
+{
+   int  VAR__819283[101];
+   int  VAR__19328[101];
+   int  VAR__4857423[101];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  yushu;
+   int  wei;
+   int  VAR__7685;
+   int  VAR__3918907;
+   char VAR_9494[101];
+
+   for ( VAR__53647 = 0; VAR__53647 < 101; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647]  = 0;
+      VAR__19328[VAR__53647]   = 0;
+      VAR__4857423[VAR__53647] = 0;
+      VAR_9494[VAR__53647]     = '\0';
+   }
+
+   scanf("%s", VAR_9494);
+   VAR_1238123 = strchange(VAR_9494, VAR__819283);
+
+   if ( VAR_1238123 == 1 )
+   {
+      printf("%d\n%d", 0, VAR__819283[0]);
+   }
+   else
+   if (( VAR_1238123 == 2 ) && ((( VAR__819283[0] * 10 ) + VAR__819283[1] ) < 13 ))
+   {
+      printf("%d\n%d%d", 0, VAR__819283[0], VAR__819283[1]);
+   }
+   else
+   {
+      VAR__7685    = VAR__819283[0];
+      VAR__3918907 = VAR__819283[1];
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         VAR__19328[VAR__53647] = (( VAR__819283[VAR__53647] * 10 ) + VAR__819283[VAR__53647 + 1] ) / 13;
+         yushu = (( VAR__819283[VAR__53647] * 10 ) + VAR__819283[VAR__53647 + 1] ) % 13;
+         VAR__819283[VAR__53647 + 1] = yushu;
+      }
+
+      if ((( VAR__7685 * 10 ) + VAR__3918907 ) >= 13 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            printf("%d", VAR__19328[VAR__53647]);
+         }
+      }
+
+      else
+      {
+         for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            printf("%d", VAR__19328[VAR__53647]);
+         }
+      }
+
+
+      printf("\n%d", yushu);
+   }
+}

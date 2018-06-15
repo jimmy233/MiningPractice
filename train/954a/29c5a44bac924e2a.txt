@@ -1,0 +1,64 @@
+int main(int argc, char *argv[])
+{
+   int  VAR_1238123;
+   char name[100][50];
+   int  qimo[100];
+   int  banji[100];
+   char ganbu[100];
+   char xibu[100];
+   int  lunwen[100];
+   int  VAR__53647    = 0;
+   int  VAR__SUM[100] = { 0 };
+   int  sumz          = 0;
+   int  VAR__8444594  = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c%d", name[VAR__53647], &qimo[VAR__53647], &banji[VAR__53647], &ganbu[VAR__53647], &xibu[VAR__53647], &lunwen[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( qimo[VAR__53647] > 80 ) && ( lunwen[VAR__53647] >= 1 ))
+      {
+         VAR__SUM[VAR__53647] += 8000;
+      }
+
+      if (( qimo[VAR__53647] > 85 ) && ( banji[VAR__53647] > 80 ))
+      {
+         VAR__SUM[VAR__53647] += 4000;
+      }
+
+      if ( qimo[VAR__53647] > 90 )
+      {
+         VAR__SUM[VAR__53647] += 2000;
+      }
+
+      if (( qimo[VAR__53647] > 85 ) && ( xibu[VAR__53647] == 'Y' ))
+      {
+         VAR__SUM[VAR__53647] += 1000;
+      }
+
+      if (( banji[VAR__53647] > 80 ) && ( ganbu[VAR__53647] == 'Y' ))
+      {
+         VAR__SUM[VAR__53647] += 850;
+      }
+   }
+
+   int summax = VAR__SUM[0];
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      sumz += VAR__SUM[VAR__53647];
+
+      if ( VAR__SUM[VAR__53647] > summax )
+      {
+         summax       = VAR__SUM[VAR__53647];
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   sumz = sumz + VAR__SUM[0];
+   printf("%s\n%d\n%d\n", name[VAR__8444594], VAR__SUM[VAR__8444594], sumz);
+   return 0;
+}

@@ -1,0 +1,70 @@
+int main()
+{
+   int VAR__7685[10];
+   int VAR__3918907[10];
+   int VAR__9290[10];
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   struct distance
+   {
+      int    x1;
+      int    y1;
+      int    z1;
+      int    x2;
+      int    y2;
+      int    z2;
+      double VAR__4857423;
+   }
+   dis[46];
+
+   cin >> VAR_1238123;
+   cout << fixed;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> VAR__7685[VAR__53647] ) >> VAR__3918907[VAR__53647] ) >> VAR__9290[VAR__53647];
+   }
+
+   int VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__8444594].x1             = VAR__7685[VAR__53647];
+         dis[VAR__8444594].y1             = VAR__3918907[VAR__53647];
+         dis[VAR__8444594].z1             = VAR__9290[VAR__53647];
+         dis[VAR__8444594].x2             = VAR__7685[VAR__21230];
+         dis[VAR__8444594].y2             = VAR__3918907[VAR__21230];
+         dis[VAR__8444594].z2             = VAR__9290[VAR__21230];
+         dis[VAR__8444594++].VAR__4857423 = sqrt(((( dis[VAR__8444594].x1 - dis[VAR__8444594].x2 ) * ( dis[VAR__8444594].x1 - dis[VAR__8444594].x2 )) + (( dis[VAR__8444594].y1 - dis[VAR__8444594].y2 ) * ( dis[VAR__8444594].y1 - dis[VAR__8444594].y2 ))) + (( dis[VAR__8444594].z1 - dis[VAR__8444594].z2 ) * ( dis[VAR__8444594].z1 - dis[VAR__8444594].z2 )));
+      }
+   }
+
+
+   int VAR__temp;
+   int t1;
+   for ( VAR__53647 = 0; VAR__53647 < ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__21230++ )
+      {
+         if (( dis[VAR__21230].VAR__4857423 - dis[VAR__53647].VAR__4857423 ) > 1e-6 )
+         {
+            dis[45] = dis[VAR__21230];
+            for ( VAR__temp = VAR__21230, t1 = VAR__21230; VAR__temp > VAR__53647; VAR__temp-- )
+            {
+               dis[VAR__temp] = dis[--t1];
+            }
+
+            dis[VAR__53647] = dis[45];
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      (((((((((((((((((( cout << "(" ) << dis[VAR__53647].x1 ) << "," ) << dis[VAR__53647].y1 ) << "," ) << dis[VAR__53647].z1 ) << ")" ) << "-" ) << "(" ) << dis[VAR__53647].x2 ) << "," ) << dis[VAR__53647].y2 ) << "," ) << dis[VAR__53647].z2 ) << ")" ) << "=" ) << setprecision(2)) << dis[VAR__53647].VAR__4857423 ) << endl;
+   }
+
+   return 0;
+}

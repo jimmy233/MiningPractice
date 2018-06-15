@@ -1,0 +1,69 @@
+struct Student
+{
+   int No;
+   int Chinese;
+   int Maths;
+   int Total;
+};
+void bubble(struct Student VAR__819283[], int VAR_1238123)
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   struct Student VAR__TEMP;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230].Total < VAR__819283[VAR__21230 + 1].Total )
+         {
+            VAR__TEMP = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct Student stu[4];
+
+   scanf("%d", &VAR_1238123);
+
+   if ( VAR_1238123 > 3 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+      {
+         scanf("%d%d%d", &stu[VAR__53647].No, &stu[VAR__53647].Chinese, &stu[VAR__53647].Maths);
+         stu[VAR__53647].Total = stu[VAR__53647].Chinese + stu[VAR__53647].Maths;
+      }
+
+      for ( VAR__53647 = 3; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d%d%d", &stu[3].No, &stu[3].Chinese, &stu[3].Maths);
+         stu[3].Total = ( +stu[3].Chinese ) + stu[3].Maths;
+         bubble(stu, 4);
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d%d%d", &stu[VAR__53647].No, &stu[VAR__53647].Chinese, &stu[VAR__53647].Maths);
+         stu[VAR__53647].Total = ( stu[VAR__53647].No + stu[VAR__53647].Chinese ) + stu[VAR__53647].Maths;
+      }
+
+      bubble(stu, VAR_1238123);
+   }
+
+   for ( VAR__53647 = 0; ( VAR__53647 < VAR_1238123 ) && ( VAR__53647 < 3 ); VAR__53647++ )
+   {
+      printf("%d %d\n", stu[VAR__53647].No, stu[VAR__53647].Total);
+   }
+
+   return 0;
+}

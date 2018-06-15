@@ -1,0 +1,68 @@
+void insert(char A_STRING[], char substr[])
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  lenstr;
+   int  lensubstr;
+   int  lentemp;
+   int  VAR__MAX;
+   char VAR__TEMP[10] = { 0 };
+
+   lenstr    = strlen(A_STRING);
+   lensubstr = strlen(substr);
+   VAR__MAX  = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( lenstr - 1 ); VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] > A_STRING[VAR__MAX] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0, VAR__21230 = VAR__MAX + 1; VAR__21230 <= ( lenstr - 1 ); VAR__53647++, VAR__21230++ )
+   {
+      VAR__TEMP[VAR__53647] = A_STRING[VAR__21230];
+   }
+
+   lentemp = strlen(VAR__TEMP);
+   for ( VAR__53647 = 0, VAR__21230 = VAR__MAX + 1; VAR__53647 <= lensubstr; VAR__53647++, VAR__21230++ )
+   {
+      A_STRING[VAR__21230] = substr[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0, VAR__8444594 = VAR__21230 - 1; VAR__53647 <= ( lentemp - 1 ); VAR__53647++, VAR__8444594++ )
+   {
+      A_STRING[VAR__8444594] = VAR__TEMP[VAR__53647];
+   }
+}
+
+
+void main()
+{
+   char A_STRING[20] = { 0 };
+   char substr[4]    = { 0 };
+   int  LEN_OF_STH;
+   int  VAR__53647;
+
+   while ( scanf("%s%s", A_STRING, substr) != EOF )
+   {
+      insert(A_STRING, substr);
+      LEN_OF_STH = strlen(A_STRING);
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - 1 ); VAR__53647++ )
+      {
+         printf("%c", A_STRING[VAR__53647]);
+      }
+
+      printf("\n");
+      for ( VAR__53647 = 0; VAR__53647 <= 19; VAR__53647++ )
+      {
+         A_STRING[VAR__53647] = 0;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= 3; VAR__53647++ )
+      {
+         substr[VAR__53647] = 0;
+      }
+   }
+}

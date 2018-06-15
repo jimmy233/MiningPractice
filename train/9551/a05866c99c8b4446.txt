@@ -1,0 +1,153 @@
+struct patient
+{
+   int            VAR__NUM;
+   char           hao[20];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+struct ans
+{
+   int        numan;
+   char       haoan[20];
+   int        agean;
+   struct ans *nextan;
+};
+void main()
+{
+   struct patient *VAR__HEAD;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+   struct ans     *headan;
+   struct ans     *ans1;
+   struct ans     *ans2;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__MAX;
+   int            VAR_1238123;
+   int            shu;
+
+   shu = 0;
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = (struct patient *)malloc(sizeof( struct patient ));
+   scanf("%s %d", ANOTHER_POINTER->hao, &ANOTHER_POINTER->age);
+   ANOTHER_POINTER->VAR__NUM = 1;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct patient *)malloc(sizeof( struct patient ));
+      scanf("%s %d", ANOTHER_POINTER->hao, &ANOTHER_POINTER->age);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      ANOTHER_POINTER->VAR__NUM      = VAR__53647 + 2;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__MAX        = 0;
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( VAR__MAX < ANOTHER_POINTER->age )
+      {
+         VAR__MAX = ANOTHER_POINTER->age;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      if ( VAR__MAX == ANOTHER_POINTER->age )
+      {
+         ans1 = (struct ans *)malloc(sizeof( struct ans ));
+         strcpy(ans1->haoan, ANOTHER_POINTER->hao);
+         printf("%s\n", ans1->haoan);
+         ans1->agean = VAR__MAX;
+         headan      = ans1;
+         ans2        = ans1;
+         ANOTHER_POINTER->VAR__NUM = -1;
+         ANOTHER_POINTER->age      = -1;
+         shu = shu + 1;
+         break;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      VAR__MAX        = 0;
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__MAX < ANOTHER_POINTER->age )
+         {
+            VAR__MAX = ANOTHER_POINTER->age;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( VAR__MAX < 60 )
+      {
+         break;
+      }
+
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__MAX == ANOTHER_POINTER->age )
+         {
+            ans1 = (struct ans *)malloc(sizeof( struct ans ));
+            strcpy(ans1->haoan, ANOTHER_POINTER->hao);
+            printf("%s\n", ans1->haoan);
+            ans1->agean = VAR__MAX;
+            headan      = ans1;
+            ans2        = ans1;
+            ANOTHER_POINTER->VAR__NUM = -1;
+            ANOTHER_POINTER->age      = -1;
+            shu = shu + 1;
+            break;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - shu ); VAR__53647++ )
+   {
+      VAR__MAX        = 101;
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if (( VAR__MAX > ANOTHER_POINTER->VAR__NUM ) && ( ANOTHER_POINTER->VAR__NUM != ( -1 )))
+         {
+            VAR__MAX = ANOTHER_POINTER->VAR__NUM;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER = VAR__HEAD;
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__MAX == ANOTHER_POINTER->VAR__NUM )
+         {
+            ans1 = (struct ans *)malloc(sizeof( struct ans ));
+            strcpy(ans1->haoan, ANOTHER_POINTER->hao);
+            printf("%s\n", ans1->haoan);
+            ans1->numan = VAR__MAX;
+            headan      = ans1;
+            ans2        = ans1;
+            ANOTHER_POINTER->VAR__NUM = -1;
+            ANOTHER_POINTER->age      = -1;
+            break;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ans2->nextan = NULL;
+   }
+}

@@ -1,0 +1,66 @@
+typedef struct
+{
+   int ID;
+   int chinese;
+   int math;
+   int VAR__SUM;
+} Student;
+Student topThree[3];
+int     studentNum;
+void initialise()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      topThree[VAR__53647].VAR__SUM = -1;
+   }
+}
+
+
+void updateTopThree(Student stu)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      if ( stu.VAR__SUM > topThree[VAR__53647].VAR__SUM )
+      {
+         for ( int VAR__21230 = 2; VAR__21230 > VAR__53647; VAR__21230-- )
+         {
+            topThree[VAR__21230] = topThree[VAR__21230 - 1];
+         }
+
+         topThree[VAR__53647] = stu;
+         break;
+      }
+   }
+}
+
+
+void getStudentData()
+{
+   Student VAR__TEMP;
+
+   scanf("%d", &studentNum);
+   for ( int VAR__53647 = 0; VAR__53647 < studentNum; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR__TEMP.ID, &VAR__TEMP.chinese, &VAR__TEMP.math);
+      VAR__TEMP.VAR__SUM = VAR__TEMP.chinese + VAR__TEMP.math;
+      updateTopThree(VAR__TEMP);
+   }
+}
+
+
+void printStudentData()
+{
+   for ( int VAR__53647 = 0; ( VAR__53647 < 3 ) && ( VAR__53647 < studentNum ); VAR__53647++ )
+   {
+      printf("%d %d\n", topThree[VAR__53647].ID, topThree[VAR__53647].VAR__SUM);
+   }
+}
+
+
+int main()
+{
+   initialise();
+   getStudentData();
+   printStudentData();
+   return 0;
+}

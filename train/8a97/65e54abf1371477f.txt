@@ -1,0 +1,57 @@
+double fangcha(double *pi, int VAR_1238123)
+{
+   int    VAR__53647;
+   double *pa;
+
+   pa = pi;
+   double VAR__SUM = 0;
+   double ave;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM += *pi;
+      pi++;
+   }
+
+   ave = VAR__SUM / VAR_1238123;
+   double VAR_9494 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_9494 += (( *pa ) - ave ) * (( *pa ) - ave );
+      *( pa++ );
+   }
+
+   VAR_9494 = VAR_9494 / ((double)VAR_1238123 );
+   VAR_9494 = sqrt(VAR_9494);
+   return VAR_9494;
+}
+
+
+int main()
+{
+   int    VAR__8444594;
+   int    VAR__53647;
+   int    VAR__21230;
+   double VAR__7685[100][100];
+   int    VAR__19328[100];
+   double xx[100];
+
+   scanf("%d", &VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      scanf("%d", &VAR__19328[VAR__53647]);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__19328[VAR__53647]; VAR__21230++ )
+      {
+         scanf("%lf", &VAR__7685[VAR__53647][VAR__21230]);
+      }
+   }
+
+   double *pi;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      pi             = &VAR__7685[VAR__53647][0];
+      xx[VAR__53647] = fangcha(pi, VAR__19328[VAR__53647]);
+      printf("%.5f\n", xx[VAR__53647]);
+   }
+
+   return 0;
+}

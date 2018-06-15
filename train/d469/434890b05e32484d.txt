@@ -1,0 +1,57 @@
+char *my_strrev(char *A_STRING);
+
+int main()
+{
+   int  VAR__temp;
+   int  VAR__53647;
+   char A_STRING[1000];
+
+   gets(A_STRING);
+   VAR__temp = 2;
+   char subStr[101];
+   char revSubStr[101];
+
+   while ( VAR__temp <= strlen(A_STRING))
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= ( strlen(A_STRING) - VAR__temp ); VAR__53647++ )
+      {
+         strncpy(subStr, A_STRING + VAR__53647, VAR__temp);
+         strncpy(revSubStr, A_STRING + VAR__53647, VAR__temp);
+         subStr[VAR__temp] = ( revSubStr[VAR__temp] = '\0' );
+         my_strrev(revSubStr);
+
+         if ( strcmp(subStr, revSubStr) == 0 )
+         {
+            ( cout << subStr ) << endl;
+         }
+      }
+
+      VAR__temp++;
+   }
+
+   return 0;
+}
+
+
+char *my_strrev(char *A_STRING)
+{
+   char *right = A_STRING;
+   char *left  = A_STRING;
+   char ch;
+
+   while ( *right )
+   {
+      right++;
+   }
+
+   right--;
+
+   while ( left < right )
+   {
+      ch           = *left;
+      *( left++ )  = *right;
+      *( right-- ) = ch;
+   }
+
+   return A_STRING;
+}

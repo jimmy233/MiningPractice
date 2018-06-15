@@ -1,0 +1,82 @@
+struct chil
+{
+   int sex;
+   int VAR__NUM;
+}
+child[100];
+struct student
+{
+   int VAR__19328;
+   int VAR_9Q8Q90;
+}
+girl[100];
+void bubble(struct student VAR__819283[], int LEN_OF_STH)
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   struct student VAR__TEMP;
+
+   for ( VAR__21230 = 1; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR__21230 ); VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647].VAR_9Q8Q90 > VAR__819283[VAR__53647 + 1].VAR_9Q8Q90 )
+         {
+            VAR__TEMP = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647]     = VAR__819283[VAR__53647 + 1];
+            VAR__819283[VAR__53647 + 1] = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR_1238123;
+   char VAR_9494[101];
+
+   gets(VAR_9494);
+   VAR_1238123       = strlen(VAR_9494);
+   child[0].sex      = 1;
+   child[0].VAR__NUM = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] == VAR_9494[0] )
+      {
+         child[VAR__53647].sex      = 1;
+         child[VAR__53647].VAR__NUM = VAR__53647;
+      }
+      else
+      {
+         child[VAR__53647].sex      = 0;
+         child[VAR__53647].VAR__NUM = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0, VAR__21230 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( child[VAR__53647].sex == 1 ) && ( child[VAR__53647 + 1].sex == 0 ))
+      {
+         girl[VAR__21230].VAR__19328 = child[VAR__53647].VAR__NUM;
+         girl[VAR__21230].VAR_9Q8Q90 = child[VAR__53647 + 1].VAR__NUM;
+         VAR__21230++;
+         for ( VAR__8444594 = VAR__53647; ( VAR__8444594 + 2 ) < VAR_1238123; VAR__8444594++ )
+         {
+            child[VAR__8444594] = child[VAR__8444594 + 2];
+         }
+
+         VAR_1238123 = VAR_1238123 - 2;
+         VAR__53647  = -1;
+      }
+   }
+
+   bubble(girl, VAR__21230);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%d %d\n", girl[VAR__53647].VAR__19328, girl[VAR__53647].VAR_9Q8Q90);
+   }
+}

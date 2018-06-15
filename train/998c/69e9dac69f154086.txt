@@ -1,0 +1,64 @@
+int  an1[LEN_OF_STH + 10];
+int  an2[LEN_OF_STH + 10];
+char szline1[LEN_OF_STH + 10];
+char szline2[LEN_OF_STH + 10];
+int Add(int maxlen, int *a1, int *a2)
+{
+   int high = 0;
+
+   for ( int VAR__53647 = 0; VAR__53647 < maxlen; VAR__53647++ )
+   {
+      a1[VAR__53647] = a1[VAR__53647] + a2[VAR__53647];
+
+      if ( a1[VAR__53647] >= 10 )
+      {
+         a1[VAR__53647] = a1[VAR__53647] - 10;
+         a1[VAR__53647 + 1]++;
+      }
+   }
+
+   for ( int VAR__53647 = maxlen - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( a1[VAR__53647] )
+      {
+         high = VAR__53647;
+         break;
+      }
+   }
+
+
+   return high;
+}
+
+
+int main()
+{
+   ( cin >> szline1 ) >> szline2;
+   int VAR__53647;
+   int VAR__21230;
+   for ( int VAR__8444594 = 0; VAR__8444594 < ( LEN_OF_STH + 10 ); VAR__8444594++ )
+   {
+      an1[VAR__8444594] = 0;
+      an2[VAR__8444594] = 0;
+   }
+
+   int len1 = strlen(szline1);
+   int len2 = strlen(szline2);
+   for ( VAR__21230 = 0, VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      an1[VAR__21230] = szline1[VAR__53647] - '0';
+   }
+
+   for ( VAR__21230 = 0, VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647--, VAR__21230++ )
+   {
+      an2[VAR__21230] = szline2[VAR__53647] - '0';
+   }
+
+   int high = Add(LEN_OF_STH, an1, an2);
+   for ( VAR__53647 = high; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << an1[VAR__53647];
+   }
+
+   cout << endl;
+}

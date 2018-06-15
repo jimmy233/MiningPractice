@@ -1,0 +1,85 @@
+int main()
+{
+   char senior[100][10];
+   char junior[100][10];
+   char VAR__TEMP[10];
+   int  list[100] = { 0 };
+   int  se[100];
+   int  ju[100];
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  nums;
+   int  numj;
+   int  year;
+
+   scanf("%d", &VAR_1238123);
+   nums = -1;
+   numj = -1;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", VAR__TEMP);
+      scanf("%d", &year);
+
+      if ( year >= 60 )
+      {
+         nums++;
+         strcpy(senior[nums], VAR__TEMP);
+         se[nums]   = year;
+         list[nums] = nums;
+      }
+      else
+      {
+         numj++;
+         strcpy(junior[numj], VAR__TEMP);
+         ju[numj] = year;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nums; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= nums; VAR__21230++ )
+      {
+         if ( se[VAR__53647] < se[VAR__21230] )
+         {
+            year             = se[VAR__53647];
+            se[VAR__53647]   = se[VAR__21230];
+            se[VAR__21230]   = year;
+            year             = list[VAR__53647];
+            list[VAR__53647] = list[VAR__21230];
+            list[VAR__21230] = year;
+            strcpy(VAR__TEMP, senior[VAR__53647]);
+            strcpy(senior[VAR__53647], senior[VAR__21230]);
+            strcpy(senior[VAR__21230], VAR__TEMP);
+         }
+         else
+         if (( se[VAR__53647] == se[VAR__21230] ) && ( list[VAR__53647] > list[VAR__21230] ))
+         {
+            year             = se[VAR__53647];
+            se[VAR__53647]   = se[VAR__21230];
+            se[VAR__21230]   = year;
+            year             = list[VAR__53647];
+            list[VAR__53647] = list[VAR__21230];
+            list[VAR__21230] = year;
+            strcpy(VAR__TEMP, senior[VAR__53647]);
+            strcpy(senior[VAR__53647], senior[VAR__21230]);
+            strcpy(senior[VAR__21230], VAR__TEMP);
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 <= nums; VAR__53647++ )
+   {
+      puts(senior[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= numj; VAR__53647++ )
+   {
+      puts(junior[VAR__53647]);
+   }
+
+   return 0;
+}

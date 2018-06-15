@@ -1,0 +1,68 @@
+void main()
+{
+   int VAR_1238123;
+   struct student
+   {
+      char           VAR__NUM[50];
+      char           name[100];
+      char           sex;
+      int            age;
+      char           score[20];
+      char           add[100];
+      struct student *before;
+   }
+   *thisNode;
+   struct student
+   {
+      char           VAR__NUM[50];
+      char           name[100];
+      char           sex;
+      int            age;
+      char           score[20];
+      char           add[100];
+      struct student *before;
+   }
+   *newNode;
+
+   for ( VAR_1238123 = 1; ; VAR_1238123++ )
+   {
+      newNode = (struct student *)malloc(sizeof( struct student ));
+
+      if ( newNode == NULL )
+      {
+         printf("error!");
+         exit(-1);
+      }
+
+      scanf("%s", newNode->VAR__NUM);
+
+      if ( VAR_1238123 == 1 )
+      {
+         newNode->before = NULL;
+      }
+      else
+      {
+         newNode->before = thisNode;
+      }
+
+      if ( newNode->VAR__NUM[0] == 'e' )
+      {
+         break;
+      }
+
+      scanf("%s %c %d %s %s", newNode->name, &newNode->sex, &newNode->age, newNode->score, newNode->add);
+      thisNode = newNode;
+   }
+
+   for ( ; ; )
+   {
+      printf("%s %s %c %d %s %s\n", thisNode->VAR__NUM, thisNode->name, thisNode->sex, thisNode->age, thisNode->score, thisNode->add);
+
+      if ( thisNode->before == NULL )
+      {
+         break;
+      }
+
+      thisNode = thisNode->before;
+   }
+}

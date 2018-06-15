@@ -1,0 +1,72 @@
+double jl(int ma, int mb, int mc, int md, int me, int mf);
+
+int main()
+{
+   int    VAR__819283[VAR__MAX];
+   int    VAR__19328[VAR__MAX];
+   int    VAR__53647;
+   int    VAR__8444594;
+   int    VAR_1238123;
+   int    VAR__21230;
+   int    VAR_2890;
+   double VAR__temp;
+   double VAR_9494[VAR__MAX];
+   struct dian
+   {
+      int VAR__7685;
+      int VAR__3918907;
+      int VAR__9290;
+   }
+   VAR__12302[VAR__MAX];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &VAR__12302[VAR__53647].VAR__7685, &VAR__12302[VAR__53647].VAR__3918907, &VAR__12302[VAR__53647].VAR__9290);
+   }
+
+   for ( VAR__8444594 = 0, VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = VAR__21230 + 1; VAR__53647 < VAR_1238123; VAR__53647++, VAR__8444594++ )
+      {
+         VAR_9494[VAR__8444594]    = jl(VAR__12302[VAR__53647].VAR__7685, VAR__12302[VAR__53647].VAR__3918907, VAR__12302[VAR__53647].VAR__9290, VAR__12302[VAR__21230].VAR__7685, VAR__12302[VAR__21230].VAR__3918907, VAR__12302[VAR__21230].VAR__9290);
+         VAR__819283[VAR__8444594] = VAR__53647;
+         VAR__19328[VAR__8444594]  = VAR__21230;
+      }
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ((( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ) - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( VAR_9494[VAR__53647 + 1] > VAR_9494[VAR__53647] )
+         {
+            VAR__temp = VAR_9494[VAR__53647 + 1];
+            VAR_9494[VAR__53647 + 1] = VAR_9494[VAR__53647];
+            VAR_2890 = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647]     = VAR__819283[VAR__53647 + 1];
+            VAR__819283[VAR__53647 + 1] = VAR_2890;
+            VAR_9494[VAR__53647]        = VAR__temp;
+            VAR__21230                 = VAR__19328[VAR__53647];
+            VAR__19328[VAR__53647]     = VAR__19328[VAR__53647 + 1];
+            VAR__19328[VAR__53647 + 1] = VAR__21230;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n", VAR__12302[VAR__19328[VAR__53647]].VAR__7685, VAR__12302[VAR__19328[VAR__53647]].VAR__3918907, VAR__12302[VAR__19328[VAR__53647]].VAR__9290, VAR__12302[VAR__819283[VAR__53647]].VAR__7685, VAR__12302[VAR__819283[VAR__53647]].VAR__3918907, VAR__12302[VAR__819283[VAR__53647]].VAR__9290, VAR_9494[VAR__53647]);
+   }
+
+   return 0;
+}
+
+
+double jl(int ma, int mb, int mc, int md, int me, int mf)
+{
+   double VAR__1111;
+
+   VAR__1111 = sqrt(((((double)( ma - md )) * ( ma - md )) + (( mb - me ) * ( mb - me ))) + (( mc - mf ) * ( mc - mf )));
+   return VAR__1111;
+}

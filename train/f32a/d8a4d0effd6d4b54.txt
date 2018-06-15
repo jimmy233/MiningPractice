@@ -1,0 +1,51 @@
+int compare(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+void main()
+{
+   char s1[100];
+   char s2[100];
+
+   scanf("%s %s", s1, s2);
+   int k1 = strlen(s1);
+   int k2 = strlen(s2);
+
+   if ( k1 != k2 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      int a1[100] = { 0 };
+      int a2[100] = { 0 };
+      int VAR__53647;
+      for ( VAR__53647 = 0; VAR__53647 < k1; VAR__53647++ )
+      {
+         a1[VAR__53647] = s1[VAR__53647] - '0';
+         a2[VAR__53647] = s2[VAR__53647] - '0';
+      }
+
+      qsort(a1, k1, sizeof( int ), compare);
+      qsort(a2, k1, sizeof( int ), compare);
+      int VAR__COUNT = 0;
+      for ( VAR__53647 = 0; VAR__53647 < k1; VAR__53647++ )
+      {
+         if ( a1[VAR__53647] == a2[VAR__53647] )
+         {
+            VAR__COUNT++;
+         }
+      }
+
+      if ( VAR__COUNT == k1 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+   }
+}

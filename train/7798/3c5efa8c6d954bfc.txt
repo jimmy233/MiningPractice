@@ -1,0 +1,69 @@
+struct book
+{
+   int  id;
+   char A_STRING[27];
+}
+bo[1000];
+struct people
+{
+   int name;
+   int number;
+   int book_number[1000];
+}
+people[26];
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__1238129;
+   int  VAR__MAX        = 0;
+   char VAR__819283[27] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '\0' };
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> bo[VAR__53647].id ) >> bo[VAR__53647].A_STRING;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      people[VAR__53647].number = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__1238129 = strlen(bo[VAR__53647].A_STRING);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < 26; VAR__8444594++ )
+         {
+            if ( bo[VAR__53647].A_STRING[VAR__21230] == VAR__819283[VAR__8444594] )
+            {
+               people[VAR__8444594].book_number[people[VAR__8444594].number] = bo[VAR__53647].id;
+               people[VAR__8444594].number++;
+            }
+         }
+      }
+   }
+
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( people[VAR__53647].number > VAR__MAX )
+      {
+         VAR__21230 = VAR__53647;
+         VAR__MAX   = people[VAR__53647].number;
+      }
+   }
+
+   ( cout << VAR__819283[VAR__21230] ) << endl;
+   ( cout << people[VAR__21230].number ) << endl;
+   for ( VAR__53647 = 0; VAR__53647 < people[VAR__21230].number; VAR__53647++ )
+   {
+      ( cout << people[VAR__21230].book_number[VAR__53647] ) << endl;
+   }
+
+   return 0;
+}

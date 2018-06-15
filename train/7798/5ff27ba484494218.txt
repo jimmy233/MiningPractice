@@ -1,0 +1,100 @@
+struct book
+{
+   int  VAR__NUM;
+   char zhuzhe[26];
+   int  let;
+};
+struct book shu[1000];
+int judge(char VAR__819283, char VAR__19328)
+{
+   if ( VAR__819283 == VAR__19328 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__3918907;
+   int  zhi;
+   int  VAR__NUM;
+   char writer1[26] = { 0 };
+   char writer2[26] = { 0 };
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      writer2[VAR__53647] = VAR__53647 + 65;
+   }
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &shu[VAR__53647].VAR__NUM);
+      gets(shu[VAR__53647].zhuzhe);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; shu[VAR__53647].zhuzhe[VAR__21230] != '\0'; VAR__21230++ )
+      {
+         for ( VAR__3918907 = 0; VAR__3918907 < 26; VAR__3918907++ )
+         {
+            if ( writer2[VAR__3918907] == shu[VAR__53647].zhuzhe[VAR__21230] )
+            {
+               writer1[VAR__3918907] = writer1[VAR__3918907] + 1;
+            }
+         }
+      }
+   }
+
+
+
+   zhi      = 0;
+   VAR__NUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( writer1[VAR__53647] > zhi )
+      {
+         zhi      = writer1[VAR__53647];
+         VAR__NUM = VAR__53647;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; shu[VAR__53647].zhuzhe[VAR__21230] != '\0'; VAR__21230++ )
+      {
+         if ( judge(shu[VAR__53647].zhuzhe[VAR__21230], writer2[VAR__NUM]) == 1 )
+         {
+            shu[VAR__53647].let = 1;
+         }
+      }
+   }
+
+
+
+   printf("%c\n", writer2[VAR__NUM]);
+   printf("%d\n", writer1[VAR__NUM]);
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( shu[VAR__53647].let == 1 )
+      {
+         printf("%d\n", shu[VAR__53647].VAR__NUM);
+      }
+   }
+
+
+   if ( shu[VAR_1238123 - 1].let == 1 )
+   {
+      printf("%d", shu[VAR_1238123 - 1].VAR__NUM);
+   }
+}

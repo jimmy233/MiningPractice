@@ -1,0 +1,52 @@
+int main()
+{
+   int VAR_1238123;
+   int year;
+   int month1;
+   int month2;
+   int leap;
+   int days = 0;
+
+   cin >> VAR_1238123;
+
+   while ( VAR_1238123-- )
+   {
+      (( cin >> year ) >> month1 ) >> month2;
+      int VAR__TEMP;
+
+      if ( month1 > month2 )
+      {
+         VAR__TEMP = month2;
+         month2    = month1;
+         month1    = VAR__TEMP;
+      }
+
+      if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+      {
+         leap = 0;
+      }
+      else
+      {
+         leap = 1;
+      }
+
+      int day[2][12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+      for ( int VAR__53647 = month1; VAR__53647 < month2; VAR__53647++ )
+      {
+         days += day[leap][VAR__53647 - 1];
+      }
+
+      if (( days % 7 ) == 0 )
+      {
+         ( cout << "YES" ) << endl;
+      }
+      else
+      {
+         ( cout << "NO" ) << endl;
+      }
+
+      days = 0;
+   }
+
+   return 0;
+}

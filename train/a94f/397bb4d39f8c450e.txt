@@ -1,0 +1,99 @@
+int main()
+{
+   int visit[105][105];
+   int VAR__NUM[105][105];
+   int VAR__53647;
+   int VAR__21230;
+   int row;
+   int col;
+
+   scanf("%d %d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         visit[VAR__53647][VAR__21230] = 0;
+         scanf("%d", &VAR__NUM[VAR__53647][VAR__21230]);
+      }
+   }
+
+   int direct       = right;
+   int VAR__7685    = 0;
+   int VAR__3918907 = 0;
+
+   while ( 1 )
+   {
+      if ((((( VAR__7685 < 0 ) || ( VAR__7685 >= row )) || ( VAR__3918907 < 0 )) || ( VAR__3918907 >= col )) || ( visit[VAR__7685][VAR__3918907] == 1 ))
+      {
+         break;
+      }
+
+      visit[VAR__7685][VAR__3918907] = 1;
+      printf("%d\n", VAR__NUM[VAR__7685][VAR__3918907]);
+      switch ( direct )
+      {
+      case up:
+
+         if ((( VAR__7685 - 1 ) < 0 ) || ( visit[VAR__7685 - 1][VAR__3918907] == 1 ))
+         {
+            direct = ( direct + 1 ) % 4;
+         }
+
+         break;
+
+      case down:
+
+         if ((( VAR__7685 + 1 ) >= row ) || ( visit[VAR__7685 + 1][VAR__3918907] == 1 ))
+         {
+            direct = ( direct + 1 ) % 4;
+         }
+
+         break;
+
+      case left:
+
+         if ((( VAR__3918907 - 1 ) < 0 ) || ( visit[VAR__7685][VAR__3918907 - 1] == 1 ))
+         {
+            direct = ( direct + 1 ) % 4;
+         }
+
+         break;
+
+      case right:
+
+         if ((( VAR__3918907 + 1 ) >= col ) || ( visit[VAR__7685][VAR__3918907 + 1] == 1 ))
+         {
+            direct = ( direct + 1 ) % 4;
+         }
+
+         break;
+
+      default:
+         break;
+      }
+
+      switch ( direct )
+      {
+      case up:
+         VAR__7685--;
+         break;
+
+      case down:
+         VAR__7685++;
+         break;
+
+      case left:
+         VAR__3918907--;
+         break;
+
+      case right:
+         VAR__3918907++;
+         break;
+
+      default:
+         break;
+      }
+   }
+
+   return 0;
+}

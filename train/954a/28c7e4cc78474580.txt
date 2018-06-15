@@ -1,0 +1,70 @@
+struct student
+{
+   char name[21];
+   int  qimo;
+   int  banji;
+   char ganbu;
+   char xibu;
+   int  paper;
+}
+stu[101];
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__SUM      = 0;
+   int VAR__MAX      = 0;
+   int VAR_SIZE[101] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s ", &stu[VAR__53647].name);
+      scanf("%d %d ", &stu[VAR__53647].qimo, &stu[VAR__53647].banji);
+      scanf("%c %c ", &stu[VAR__53647].ganbu, &stu[VAR__53647].xibu);
+      scanf("%d", &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].qimo > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         VAR_SIZE[VAR__53647] = VAR_SIZE[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].qimo > 85 ) && ( stu[VAR__53647].banji > 80 ))
+      {
+         VAR_SIZE[VAR__53647] = VAR_SIZE[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].qimo > 90 )
+      {
+         VAR_SIZE[VAR__53647] = VAR_SIZE[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].qimo > 85 ) && ( stu[VAR__53647].xibu == 'Y' ))
+      {
+         VAR_SIZE[VAR__53647] = VAR_SIZE[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].banji > 80 ) && ( stu[VAR__53647].ganbu == 'Y' ))
+      {
+         VAR_SIZE[VAR__53647] = VAR_SIZE[VAR__53647] + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR_SIZE[VAR__53647] > VAR_SIZE[VAR__MAX] )
+      {
+         VAR__MAX = VAR__53647;
+      }
+
+      VAR__SUM = VAR__SUM + VAR_SIZE[VAR__53647];
+   }
+
+   printf("%s\n", stu[VAR__MAX].name);
+   printf("%d\n", VAR_SIZE[VAR__MAX]);
+   printf("%d", VAR__SUM);
+   return 0;
+}

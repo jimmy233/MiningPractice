@@ -1,0 +1,105 @@
+struct student
+{
+   int            VAR__NUM;
+   int            score1;
+   int            score2;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+struct student *creat(int VAR__1238129)
+{
+   int            VAR__53647 = 0;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2);
+   ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->score1 + ANOTHER_POINTER->score2;
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->score1, &ANOTHER_POINTER->score2);
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->score1 + ANOTHER_POINTER->score2;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233     = VAR__HEAD;
+   struct student *VAR_666     = VAR__HEAD;
+   int            VAR__819283  = 0;
+   int            VAR__19328   = 0;
+   int            VAR__4857423 = 0;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         if ( VAR__819283 < VAR_233->VAR__SUM )
+         {
+            VAR__819283 = VAR_233->VAR__SUM;
+            VAR_666     = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+      printf("%d %d\n", VAR_666->VAR__NUM, VAR_666->VAR__SUM);
+      VAR_666->VAR__SUM = 0;
+      VAR_233           = VAR__HEAD;
+      VAR_666           = VAR__HEAD;
+      do
+      {
+         if ( VAR__19328 < VAR_233->VAR__SUM )
+         {
+            VAR__19328 = VAR_233->VAR__SUM;
+            VAR_666    = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+      printf("%d %d\n", VAR_666->VAR__NUM, VAR_666->VAR__SUM);
+      VAR_666->VAR__SUM = 0;
+      VAR_233           = VAR__HEAD;
+      VAR_666           = VAR__HEAD;
+      do
+      {
+         if ( VAR__4857423 < VAR_233->VAR__SUM )
+         {
+            VAR__4857423 = VAR_233->VAR__SUM;
+            VAR_666      = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+      printf("%d %d", VAR_666->VAR__NUM, VAR_666->VAR__SUM);
+   }
+}
+
+
+void main()
+{
+   int VAR__1238129;
+
+   scanf("%d", &VAR__1238129);
+   struct student *VAR__HEAD;
+   struct student stu;
+   VAR__HEAD = creat(VAR__1238129);
+   print(VAR__HEAD);
+}

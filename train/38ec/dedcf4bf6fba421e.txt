@@ -1,0 +1,113 @@
+int isRun(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main(int argc, char *argv[])
+{
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+   int startOffset = 0;
+   int endOffset   = 0;
+   int Month[12]   = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d%d%d", &startYear, &startMonth, &startDay);
+   scanf("%d%d%d", &endYear, &endMonth, &endDay);
+
+   if ( isRun(startYear))
+   {
+      if ( startMonth > 2 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+         {
+            startOffset += Month[VAR__53647];
+         }
+
+         startOffset += 1;
+         startOffset += startDay - 1;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+         {
+            startOffset += Month[VAR__53647];
+         }
+
+         startOffset += startDay - 1;
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+      {
+         startOffset += Month[VAR__53647];
+      }
+
+      startOffset += startDay - 1;
+   }
+
+   for ( VAR__21230 = startYear; VAR__21230 < endYear; VAR__21230++ )
+   {
+      if ( isRun(VAR__21230))
+      {
+         endOffset += 366;
+      }
+      else
+      {
+         endOffset += 365;
+      }
+   }
+
+   if ( isRun(endYear))
+   {
+      if ( endMonth > 2 )
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+         {
+            endOffset += Month[VAR__53647];
+         }
+
+         endOffset += 1;
+         endOffset += endDay - 1;
+      }
+      else
+      {
+         for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+         {
+            endOffset += Month[VAR__53647];
+         }
+
+         endOffset += endDay - 1;
+      }
+   }
+   else
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+      {
+         endOffset += Month[VAR__53647];
+      }
+
+      endOffset += endDay - 1;
+   }
+
+   if ( endOffset >= startOffset )
+   {
+      printf("%d", endOffset - startOffset);
+   }
+
+   return 0;
+}

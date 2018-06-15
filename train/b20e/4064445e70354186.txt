@@ -1,0 +1,102 @@
+int VAR_1238123;
+int tj[1000];
+int qw[1000];
+void input(int VAR__819283[])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", VAR__819283 + VAR__53647);
+      for ( VAR__21230 = VAR__53647; VAR__21230 > 0; VAR__21230-- )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR__21230 - 1] )
+         {
+            VAR__temp = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR__819283[VAR__21230 - 1];
+            VAR__819283[VAR__21230 - 1] = VAR__temp;
+         }
+         else
+         {
+            break;
+         }
+      }
+   }
+}
+
+
+int horse()
+{
+   int VAR__1238129 = 0;
+   int tf           = 0;
+   int qf           = 0;
+   int ts           = VAR_1238123 - 1;
+   int qs           = VAR_1238123 - 1;
+
+   while ( tf <= ts )
+   {
+      if ( tj[tf] > qw[qf] )
+      {
+         VAR__1238129++;
+         tf++;
+         qf++;
+      }
+      else
+      if ( tj[tf] < qw[qf] )
+      {
+         VAR__1238129--;
+         ts--;
+         qf++;
+      }
+      else
+      {
+         if ( tj[ts] > qw[qs] )
+         {
+            VAR__1238129++;
+            ts--;
+            qs--;
+         }
+         else
+         if ( tj[ts] < qw[qs] )
+         {
+            VAR__1238129--;
+            ts--;
+            qf++;
+         }
+         else
+         {
+            if ( tj[ts] < qw[qf] )
+            {
+               VAR__1238129--;
+               ts--;
+               qf++;
+            }
+            else
+            {
+               return VAR__1238129;
+            }
+         }
+      }
+   }
+
+   return VAR__1238129;
+}
+
+
+int main()
+{
+   int money;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 )
+   {
+      input(tj);
+      input(qw);
+      money = horse() * 200;
+      printf("%d\n", money);
+      scanf("%d", &VAR_1238123);
+   }
+}

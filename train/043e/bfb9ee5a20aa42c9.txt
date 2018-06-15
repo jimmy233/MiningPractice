@@ -1,0 +1,79 @@
+void main()
+{
+   char *VAR_9494;
+   char *VAR__819283;
+   char *VAR__19328;
+   char *VAR_666;
+   char *temp1;
+   char *temp2;
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  LEN_OF_STH;
+   int  lenb;
+   int  VAR__8444594;
+   int  VAR_FLAG  = 1;
+   int  VAR__HEAD = 0;
+   int  tail      = 0;
+
+   VAR_9494    = (char *)malloc(100 * ( sizeof( char )));
+   VAR__819283 = (char *)malloc(100 * ( sizeof( char )));
+   VAR__19328  = (char *)malloc(100 * ( sizeof( char )));
+   temp1       = (char *)malloc(200 * ( sizeof( char )));
+   temp2       = (char *)malloc(200 * ( sizeof( char )));
+   gets(VAR_9494);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   LEN_OF_STH = strlen(VAR_9494);
+   lenb       = strlen(VAR__19328);
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( *( VAR_9494 + VAR__53647 )) != ' ' )
+      {
+         if ( VAR_FLAG == 1 )
+         {
+            VAR__HEAD = VAR__53647;
+            VAR_FLAG  = 0;
+         }
+
+         *( temp1 + VAR__21230 ) = *( VAR_9494 + VAR__53647 );
+         VAR__21230++;
+      }
+      else
+      {
+         VAR_666  = VAR_9494 + VAR__53647;
+         tail     = VAR__53647;
+         VAR_FLAG = 1;
+         *( temp1 + VAR__21230 ) = '\0';
+         VAR__21230 = 0;
+
+         if ( !strcmp(temp1, VAR__819283))
+         {
+            strcpy(temp2, VAR_666);
+            for ( VAR__8444594 = 0; VAR__8444594 < lenb; VAR__8444594++ )
+            {
+               *(( VAR_9494 + VAR__HEAD ) + VAR__8444594 ) = *( VAR__19328 + VAR__8444594 );
+            }
+
+            *(( VAR_9494 + VAR__HEAD ) + VAR__8444594 ) = '\0';
+            strcat(VAR_9494, temp2);
+         }
+
+         strcpy(temp1, "\0");
+         strcpy(temp2, "\0");
+      }
+   }
+
+   *( temp1 + VAR__21230 ) = '\0';
+
+   if ( !strcmp(temp1, VAR__819283))
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < lenb; VAR__8444594++ )
+      {
+         *(( VAR_9494 + VAR__HEAD ) + VAR__8444594 ) = *( VAR__19328 + VAR__8444594 );
+      }
+
+      *(( VAR_9494 + VAR__HEAD ) + VAR__8444594 ) = '\0';
+   }
+
+   puts(VAR_9494);
+}

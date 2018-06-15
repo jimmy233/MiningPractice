@@ -1,0 +1,82 @@
+int main()
+{
+   int row;
+   int col;
+   int xxrow;
+   int sxrow;
+   int xxcol;
+   int sxcol;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_SIZE[100][100];
+
+   scanf("%d%d", &row, &col);
+   for ( VAR__53647 = 0; VAR__53647 < row; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < col; VAR__21230++ )
+      {
+         scanf("%d", &VAR_SIZE[VAR__53647][VAR__21230]);
+      }
+   }
+
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+   xxrow      = 0;
+   sxrow      = row - 1;
+   xxcol      = 0;
+   sxcol      = col - 1;
+
+   while (( xxrow < sxrow ) && ( xxcol < sxcol ))
+   {
+      for ( VAR__21230 = xxcol; VAR__21230 < sxcol; VAR__21230++ )
+      {
+         printf("%d\n", VAR_SIZE[xxrow][VAR__21230]);
+      }
+
+      for ( VAR__53647 = xxrow; VAR__53647 < sxrow; VAR__53647++ )
+      {
+         printf("%d\n", VAR_SIZE[VAR__53647][sxcol]);
+      }
+
+      for ( VAR__21230 = sxcol; VAR__21230 > xxrow; VAR__21230-- )
+      {
+         printf("%d\n", VAR_SIZE[sxrow][VAR__21230]);
+      }
+
+      for ( VAR__53647 = sxrow; VAR__53647 > xxrow; VAR__53647-- )
+      {
+         printf("%d\n", VAR_SIZE[VAR__53647][xxcol]);
+      }
+
+      xxrow++;
+      sxrow--;
+      xxcol++;
+      sxcol--;
+   }
+
+   if (( xxrow == sxrow ) || ( xxcol == sxcol ))
+   {
+      if (( xxrow == sxrow ) && ( xxcol != sxcol ))
+      {
+         for ( VAR__21230 = xxcol; VAR__21230 <= sxcol; VAR__21230++ )
+         {
+            printf("%d\n", VAR_SIZE[xxrow][VAR__21230]);
+         }
+      }
+
+      if (( xxrow != sxrow ) && ( xxcol == sxcol ))
+      {
+         for ( VAR__53647 = xxrow; VAR__53647 <= sxrow; VAR__53647++ )
+         {
+            printf("%d\n", VAR_SIZE[VAR__53647][xxcol]);
+         }
+      }
+
+      if (( xxrow == sxrow ) && ( xxcol == sxcol ))
+      {
+         printf("%d\n", VAR_SIZE[xxrow][xxcol]);
+      }
+   }
+
+   return 0;
+}

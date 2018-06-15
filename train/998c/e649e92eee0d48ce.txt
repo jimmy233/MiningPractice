@@ -1,0 +1,62 @@
+int main()
+{
+   const int maxlen = 250;
+   int       an1[maxlen];
+   int       an2[maxlen];
+   char      ANOTHER_STRING[maxlen + 1];
+   char      YET_ANOTHER_STRING[maxlen + 1];
+
+   cin.getline(ANOTHER_STRING, maxlen + 1);
+   cin.getline(YET_ANOTHER_STRING, maxlen + 1);
+   int len1 = strlen(ANOTHER_STRING);
+   int len2 = strlen(YET_ANOTHER_STRING);
+
+   if (((( len1 == 1 ) && ( len2 == 1 )) && ( ANOTHER_STRING[0] == '0' )) && ( YET_ANOTHER_STRING[0] == '0' ))
+   {
+      ( cout << 0 ) << endl;
+   }
+   else
+   {
+      memset(an1, 0, sizeof( an1 ));
+      memset(an2, 0, sizeof( an2 ));
+      int VAR__53647;
+      int VAR__21230 = 0;
+      for ( int VAR__53647 = len1 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         an1[VAR__21230++] = ANOTHER_STRING[VAR__53647] - '0';
+      }
+
+      VAR__21230 = 0;
+      for ( int VAR__53647 = len2 - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         an2[VAR__21230++] = YET_ANOTHER_STRING[VAR__53647] - '0';
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < maxlen; VAR__53647++ )
+      {
+         an1[VAR__53647] = an1[VAR__53647] + an2[VAR__53647];
+
+         if ( an1[VAR__53647] > 9 )
+         {
+            an1[VAR__53647] = an1[VAR__53647] - 10;
+            an1[VAR__53647 + 1]++;
+         }
+      }
+
+      VAR__53647 = maxlen - 1;
+
+      while ( an1[VAR__53647] == 0 )
+      {
+         VAR__53647--;
+      }
+
+      for ( ; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << an1[VAR__53647];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

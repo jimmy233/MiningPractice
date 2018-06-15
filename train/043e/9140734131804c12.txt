@@ -1,0 +1,96 @@
+int check(char *VAR_233, char VAR__819283[], int VAR__1111)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if (( *( VAR_233 + VAR__53647 )) != VAR__819283[VAR__53647] )
+      {
+         return 0;
+      }
+   }
+
+
+   return 1;
+}
+
+
+int main()
+{
+   char VAR_9494[200];
+   char VAR_129012[200];
+   char VAR__819283[101];
+   char VAR__19328[101];
+   int  VAR__53647 = 0;
+   int  VAR__21230;
+   int  ls;
+   int  la;
+   int  lb;
+   int  VAR__COUNT = 0;
+   int  VAR_233    = 1;
+
+   gets(VAR_9494);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   ls = strlen(VAR_9494);
+   la = strlen(VAR__819283);
+   lb = strlen(VAR__19328);
+
+   if ( VAR__819283[0] == VAR_9494[0] )
+   {
+      if (( check(&VAR_9494[0], VAR__819283, la) == 1 ) && ( VAR_9494[VAR__53647 + la] == ' ' ))
+      {
+         for ( VAR__21230 = 0; VAR__21230 < lb; VAR__21230++ )
+         {
+            VAR_129012[VAR__COUNT] = VAR__19328[VAR__21230];
+            VAR__COUNT++;
+         }
+
+         VAR_233 = VAR__53647 + la;
+      }
+      else
+      {
+         VAR_129012[VAR__COUNT] = VAR_9494[0];
+         VAR__COUNT++;
+      }
+   }
+
+   else
+   {
+      VAR_129012[VAR__COUNT] = VAR_9494[0];
+      VAR__COUNT++;
+   }
+
+   for ( VAR__53647 = VAR_233; VAR__53647 < ls; VAR__53647++ )
+   {
+      if ( VAR__819283[0] == VAR_9494[VAR__53647] )
+      {
+         if (( check(&VAR_9494[VAR__53647], VAR__819283, la) == 1 ) && (( VAR_9494[VAR__53647 - 1] == ' ' ) && (( VAR_9494[VAR__53647 + la] == ' ' ) || ( VAR_9494[VAR__53647 + la] == '\0' ))))
+         {
+            for ( VAR__21230 = 0; VAR__21230 < lb; VAR__21230++ )
+            {
+               VAR_129012[VAR__COUNT] = VAR__19328[VAR__21230];
+               VAR__COUNT++;
+            }
+
+            VAR__53647 = ( VAR__53647 + la ) - 1;
+            continue;
+         }
+         else
+         {
+            VAR_129012[VAR__COUNT] = VAR_9494[VAR__53647];
+            VAR__COUNT++;
+            continue;
+         }
+      }
+
+      else
+      {
+         VAR_129012[VAR__COUNT] = VAR_9494[VAR__53647];
+         VAR__COUNT++;
+      }
+   }
+
+   VAR_129012[VAR__COUNT] = '\0';
+   printf("%s", VAR_129012);
+}

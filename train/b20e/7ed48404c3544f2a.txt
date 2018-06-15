@@ -1,0 +1,74 @@
+const int SIZE = 1005;
+int       tianji[SIZE];
+int       qiwang[SIZE];
+int       win = 0;
+int mycmp(const void *arg1, const void *arg2)
+{
+   return ( *((int *)arg2 )) - ( *((int *)arg1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123 = 0;
+   int VAR__53647;
+   int b1;
+   int b2;
+   int e1;
+   int e2;
+
+   while (( cin >> VAR_1238123 ) && ( VAR_1238123 != 0 ))
+   {
+      win = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tianji[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qiwang[VAR__53647];
+      }
+
+      qsort(tianji, VAR_1238123, sizeof( int ), mycmp);
+      qsort(qiwang, VAR_1238123, sizeof( int ), mycmp);
+      b1 = 0, b2 = 0, e1 = VAR_1238123 - 1, e2 = VAR_1238123 - 1;
+
+      while ( true )
+      {
+         if ( tianji[b1] > qiwang[b2] )
+         {
+            b1++;
+            b2++;
+            win += 200;
+         }
+         else
+         if ( tianji[e1] > qiwang[e2] )
+         {
+            e1--;
+            e2--;
+            win += 200;
+         }
+         else
+         {
+            if ( tianji[e1] < qiwang[b2] )
+            {
+               win -= 200;
+            }
+
+            e1--;
+            b2++;
+         }
+
+
+         if ( b1 > e1 )
+         {
+            break;
+         }
+      }
+
+      ( cout << win ) << endl;
+   }
+
+   return 0;
+}

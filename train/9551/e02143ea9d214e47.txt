@@ -1,0 +1,61 @@
+struct Patient
+{
+   char id[10];
+   int  age;
+   int  arranged;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__temp = 0;
+   int            VAR__21230;
+   struct Patient pai[100];
+   struct Patient orderd[100];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cin >> pai[VAR__53647].id ) >> pai[VAR__53647].age;
+      pai[VAR__53647].arranged = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pai[VAR__53647].age >= 60 )
+      {
+         orderd[VAR__temp]        = pai[VAR__53647];
+         pai[VAR__53647].arranged = 1;
+         VAR__temp++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__temp - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( orderd[VAR__21230].age < orderd[VAR__21230 + 1].age )
+         {
+            struct Patient VAR__TEMP = orderd[VAR__21230];
+            orderd[VAR__21230]     = orderd[VAR__21230 + 1];
+            orderd[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pai[VAR__53647].arranged == 0 )
+      {
+         orderd[VAR__temp] = pai[VAR__53647];
+         VAR__temp++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ( cout << orderd[VAR__53647].id ) << endl;
+   }
+
+   return 0;
+}

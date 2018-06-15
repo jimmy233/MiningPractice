@@ -1,0 +1,60 @@
+struct student
+{
+   int VAR__NUM;
+   int VAR__SUM;
+};
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__1238129;
+   int tempSum;
+   int tempMax;
+   int rank[3] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   struct student *stu;
+   stu = (struct student *)malloc(( sizeof( struct student )) * VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      tempSum = 0;
+      scanf("%d", &stu[VAR__53647].VAR__NUM);
+      stu[VAR__53647].VAR__SUM = 0;
+      for ( VAR__21230 = 0; VAR__21230 < 2; VAR__21230++ )
+      {
+         scanf("%d", &tempSum);
+         stu[VAR__53647].VAR__SUM += tempSum;
+      }
+   }
+
+   for ( VAR__19328 = 0; VAR__19328 < 3; VAR__19328++ )
+   {
+      tempMax = 0;
+      for ( VAR__819283 = VAR__19328; VAR__819283 < VAR_1238123; VAR__819283++ )
+      {
+         if ( stu[VAR__819283].VAR__SUM > tempMax )
+         {
+            tempMax          = stu[VAR__819283].VAR__SUM;
+            rank[VAR__19328] = VAR__819283;
+         }
+      }
+
+      VAR__temp = stu[VAR__19328].VAR__NUM;
+      stu[VAR__19328].VAR__NUM       = stu[rank[VAR__19328]].VAR__NUM;
+      stu[rank[VAR__19328]].VAR__NUM = VAR__temp;
+      VAR__temp = stu[VAR__19328].VAR__SUM;
+      stu[VAR__19328].VAR__SUM       = stu[rank[VAR__19328]].VAR__SUM;
+      stu[rank[VAR__19328]].VAR__SUM = VAR__temp;
+   }
+
+   for ( VAR__819283 = 0; VAR__819283 < 3; VAR__819283++ )
+   {
+      printf("%d %d\n", stu[VAR__819283].VAR__NUM, stu[VAR__819283].VAR__SUM);
+   }
+
+   return 0;
+}

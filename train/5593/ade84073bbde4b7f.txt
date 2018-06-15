@@ -1,0 +1,119 @@
+long VAR__1238129[100000];
+long come(long VAR__4857423, long VAR_9494)
+{
+   long VAR__819283;
+   long VAR__19328 = 1;
+   long VAR__12302;
+   long VAR__112390;
+   long VAR__127322;
+   long VAR_9Q8Q90;
+
+   if ((( VAR__4857423 / 10 ) == 0 ) && ( VAR_9494 >= 2 ))
+   {
+      return 0;
+   }
+   else
+   if ((( VAR__4857423 / 10 ) == 0 ) || (((( VAR__4857423 / 10 ) - ( VAR__4857423 % 10 )) == 0 ) && ( VAR_9494 == 2 )))
+   {
+      return 1;
+   }
+   else
+   {
+      for ( VAR__819283 = 1; VAR__819283 < VAR_9494; VAR__819283++ )
+      {
+         VAR__19328 *= 10;
+      }
+
+      VAR__12302  = VAR__4857423 / VAR__19328;
+      VAR__112390 = VAR__4857423 % 10;
+
+      if ( VAR__12302 != VAR__112390 )
+      {
+         return 0;
+      }
+      else
+      {
+         VAR__127322 = ( VAR__4857423 / 10 ) - (( VAR__12302 * VAR__19328 ) / 10 );
+         return come(VAR__127322, VAR_9494 - 2);
+      }
+   }
+}
+
+
+long go(long VAR__4857423, long VAR_666)
+{
+   long VAR__819283;
+
+   for ( VAR__819283 = 3; VAR__819283 < VAR_666; VAR__819283 = VAR__819283 + 2 )
+   {
+      if (( VAR__4857423 % VAR__819283 ) == 0 )
+      {
+         return 0;
+      }
+   }
+
+
+   return 1;
+}
+
+
+void main()
+{
+   long VAR__819283;
+   long VAR__19328;
+   long VAR__4857423;
+   long VAR__12302;
+   long VAR__112390;
+   long VAR_1238123 = 0;
+   long VAR__53647;
+   long VAR__21230;
+   long VAR_233;
+   long VAR_666;
+   long VAR_9494;
+   long VAR__temp;
+
+   scanf("%ld %ld", &VAR__819283, &VAR__19328);
+   VAR__819283 = (( VAR__819283 / 2 ) * 2 ) + 1;
+   for ( VAR__4857423 = VAR__819283; VAR__4857423 <= VAR__19328; VAR__4857423 = VAR__4857423 + 2 )
+   {
+      VAR_666    = sqrt(VAR__4857423) + 1;
+      VAR__53647 = go(VAR__4857423, VAR_666);
+
+      if ( VAR__53647 == 0 )
+      {
+         continue;
+      }
+      else
+      {
+         VAR_9494  = 1;
+         VAR__temp = VAR__4857423;
+
+         while (( VAR__temp / 10 ) != 0 )
+         {
+            VAR__temp = VAR__temp / 10;
+            VAR_9494++;
+         }
+
+         VAR__21230 = come(VAR__4857423, VAR_9494);
+
+         if ( VAR__21230 == 1 )
+         {
+            VAR__1238129[VAR_1238123] = VAR__4857423;
+            VAR_1238123++;
+         }
+      }
+   }
+
+   if ( VAR_1238123 == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      printf("%ld", VAR__1238129[0]);
+      for ( VAR_233 = 1; VAR_233 < VAR_1238123; VAR_233++ )
+      {
+         printf(",%ld", VAR__1238129[VAR_233]);
+      }
+   }
+}

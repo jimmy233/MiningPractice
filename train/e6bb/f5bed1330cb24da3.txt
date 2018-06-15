@@ -1,0 +1,81 @@
+void change(int VAR__819283, int area[][11], int area0[][11])
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   if ( VAR__819283 == 0 )
+   {
+      return;
+   }
+   else
+   {
+      for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+         {
+            area0[VAR__53647][VAR__21230] = area[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+         {
+            area0[VAR__53647][VAR__21230]         += area[VAR__53647][VAR__21230];
+            area0[VAR__53647 - 1][VAR__21230]     += area[VAR__53647][VAR__21230];
+            area0[VAR__53647 + 1][VAR__21230]     += area[VAR__53647][VAR__21230];
+            area0[VAR__53647][VAR__21230 - 1]     += area[VAR__53647][VAR__21230];
+            area0[VAR__53647][VAR__21230 + 1]     += area[VAR__53647][VAR__21230];
+            area0[VAR__53647 + 1][VAR__21230 + 1] += area[VAR__53647][VAR__21230];
+            area0[VAR__53647 - 1][VAR__21230 - 1] += area[VAR__53647][VAR__21230];
+            area0[VAR__53647 + 1][VAR__21230 - 1] += area[VAR__53647][VAR__21230];
+            area0[VAR__53647 - 1][VAR__21230 + 1] += area[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+      {
+         for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+         {
+            area[VAR__53647][VAR__21230] = area0[VAR__53647][VAR__21230];
+         }
+      }
+
+      change(VAR__819283 - 1, area, area0);
+   }
+}
+
+
+int main()
+{
+   int area[11][11];
+   int area0[11][11];
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__NUM;
+   int day;
+
+   ( cin >> VAR__NUM ) >> day;
+   memset(area, 0, sizeof( area ));
+   memset(area0, 0, sizeof( area0 ));
+   area[5][5] = VAR__NUM;
+   change(day, area, area0);
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         if ( VAR__21230 == 1 )
+         {
+            cout << area[VAR__53647][VAR__21230];
+         }
+         else
+         {
+            ( cout << " " ) << area[VAR__53647][VAR__21230];
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

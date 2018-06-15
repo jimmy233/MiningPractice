@@ -1,0 +1,80 @@
+typedef struct ngram
+{
+   char A_STRING[10];
+   int  VAR__COUNT;
+} ngram;
+char  input[555];
+int   cc = 0;
+ngram array[555];
+int cmp_sort(const void *VAR__819283, const void *VAR__19328)
+{
+   ngram *pa          = (ngram *)VAR__819283;
+   ngram *pb          = (ngram *)VAR__19328;
+   int   VAR__8444594 = pb->VAR__COUNT - pa->VAR__COUNT;
+
+   if ( VAR__8444594 )
+   {
+      return VAR__8444594;
+   }
+
+   return VAR__819283 - VAR__19328;
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  LEN_OF_STH = 0;
+   int  VAR__MAX;
+   char *VAR_233;
+   char A_STRING[10];
+
+   scanf("%d", &VAR_1238123);
+   gets(input);
+   gets(VAR_233 = input);
+   LEN_OF_STH   = strlen(input);
+
+   while (( VAR_233 - input ) <= ( LEN_OF_STH - VAR_1238123 ))
+   {
+      strncpy(A_STRING, VAR_233, VAR_1238123);
+      A_STRING[VAR_1238123] = 0;
+      for ( VAR__53647 = 0; VAR__53647 < cc; VAR__53647++ )
+      {
+         if ( !strcmp(array[VAR__53647].A_STRING, A_STRING))
+         {
+            array[VAR__53647].VAR__COUNT++;
+            goto found;
+         }
+      }
+
+
+      strcpy(array[cc].A_STRING, A_STRING);
+      array[cc++].VAR__COUNT = 1;
+found:
+      VAR_233++;
+
+      continue;
+   }
+
+   qsort(array, cc, sizeof( ngram ), cmp_sort);
+   VAR__MAX = array[0].VAR__COUNT;
+
+   if ( VAR__MAX > 1 )
+   {
+      printf("%d\n%s\n", VAR__MAX, array[0].A_STRING);
+      for ( VAR__53647 = 1; VAR__53647 < cc; VAR__53647++ )
+      {
+         if ( array[VAR__53647].VAR__COUNT == VAR__MAX )
+         {
+            puts(array[VAR__53647].A_STRING);
+         }
+      }
+   }
+   else
+   {
+      puts("NO");
+   }
+
+   return 0;
+}

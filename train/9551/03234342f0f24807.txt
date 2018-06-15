@@ -1,0 +1,124 @@
+struct f
+{
+   char     *id;
+   char     id_[11];
+   int      age;
+   struct f *VAR__NEXT;
+};
+struct in
+{
+   struct f *old;
+   struct f *young;
+   int      VAR__NUM;
+};
+int main()
+{
+   int VAR_1238123;
+   int num_;
+
+   scanf("%d", &VAR_1238123);
+   struct f  *YET_ANOTHER_POINTER;
+   struct f  *p3;
+   struct in *ANOTHER_POINTER;
+   struct in *cr(int VAR__7685);
+
+   ANOTHER_POINTER = cr(VAR_1238123);
+   p3 = ANOTHER_POINTER->young;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER->old;
+   num_ = ANOTHER_POINTER->VAR__NUM;
+   void sort(struct f *VAR_233, int VAR__7685);
+
+   sort(YET_ANOTHER_POINTER, num_);
+
+   while ( YET_ANOTHER_POINTER )
+   {
+      printf("%s\n", YET_ANOTHER_POINTER->id);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   while ( p3 )
+   {
+      printf("%s\n", p3->id);
+      p3 = p3->VAR__NEXT;
+   }
+}
+
+
+struct in *cr(int VAR__7685)
+{
+   struct f  *head1;
+   struct f  *head2;
+   struct f  *VAR_233;
+   int       VAR__8444594 = 0;
+   struct in *p3;
+
+   p3        = (struct in *)malloc(sizeof( struct in ));
+   head1     = (struct f *)malloc(sizeof( struct f ));
+   head2     = (struct f *)malloc(sizeof( struct f ));
+   p3->old   = head1;
+   p3->young = head2;
+   struct f *p4;
+   struct f *p5;
+   struct f *p6;
+   struct f *p7;
+   p4 = head1;
+   p6 = head2;
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      VAR_233 = (struct f *)malloc(sizeof( struct f ));
+      scanf("%s %d", VAR_233->id_, &VAR_233->age);
+
+      if ( VAR_233->age >= 60 )
+      {
+         p4->age       = VAR_233->age;
+         p4->id        = VAR_233->id_;
+         p5            = p4;
+         p4            = (struct f *)malloc(sizeof( struct f ));
+         p5->VAR__NEXT = p4;
+         VAR__8444594++;
+      }
+      else
+      {
+         p6->age       = VAR_233->age;
+         p6->id        = VAR_233->id_;
+         p7            = p6;
+         p6            = (struct f *)malloc(sizeof( struct f ));
+         p7->VAR__NEXT = p6;
+      }
+   }
+
+   p5->VAR__NEXT = 0;
+   p7->VAR__NEXT = 0;
+   p3->VAR__NUM  = VAR__8444594;
+   return p3;
+}
+
+
+void sort(struct f *VAR_233, int VAR__7685)
+{
+   int      VAR__53647;
+   int      VAR__21230;
+   int      k1;
+   char     *k2;
+   struct f *ANOTHER_POINTER;
+   struct f *YET_ANOTHER_POINTER;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__7685 - 1 ); VAR__53647++ )
+   {
+      for ( ANOTHER_POINTER = VAR_233, VAR__21230 = 0; ( VAR__53647 + VAR__21230 ) < ( VAR__7685 - 1 ); VAR__21230++, ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+
+         if ( YET_ANOTHER_POINTER->age > ANOTHER_POINTER->age )
+         {
+            k1 = YET_ANOTHER_POINTER->age;
+            YET_ANOTHER_POINTER->age = ANOTHER_POINTER->age;
+            ANOTHER_POINTER->age     = k1;
+            k2 = YET_ANOTHER_POINTER->id;
+            YET_ANOTHER_POINTER->id = ANOTHER_POINTER->id;
+            ANOTHER_POINTER->id     = k2;
+         }
+      }
+   }
+}

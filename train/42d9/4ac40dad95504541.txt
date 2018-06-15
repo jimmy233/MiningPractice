@@ -1,0 +1,57 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   int   VAR__7685[VAR_1238123 + 1];
+   int   VAR__3918907[VAR_1238123 + 1];
+   int   VAR__9290[VAR_1238123 + 1];
+   float dst[VAR_1238123 * VAR_1238123];
+   int   sma[VAR_1238123 * VAR_1238123];
+   int   lar[VAR_1238123 * VAR_1238123];
+   int   VAR__COUNT = 0;
+   float VAR__temp;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+   {
+      (( cin >> VAR__7685[VAR__53647] ) >> VAR__3918907[VAR__53647] ) >> VAR__9290[VAR__53647];
+   }
+
+   for ( int VAR__112390 = 1; VAR__112390 <= VAR_1238123; VAR__112390++ )
+   {
+      for ( int e1 = VAR__112390 + 1; e1 <= VAR_1238123; ++e1 )
+      {
+         ++VAR__COUNT;
+         sma[VAR__COUNT] = VAR__112390;
+         lar[VAR__COUNT] = e1;
+         dst[VAR__COUNT] = sqrt(((( VAR__7685[VAR__112390] - VAR__7685[e1] ) * ( VAR__7685[VAR__112390] - VAR__7685[e1] )) + (( VAR__3918907[VAR__112390] - VAR__3918907[e1] ) * ( VAR__3918907[VAR__112390] - VAR__3918907[e1] ))) + (( VAR__9290[VAR__112390] - VAR__9290[e1] ) * ( VAR__9290[VAR__112390] - VAR__9290[e1] )));
+      }
+   }
+
+
+   for ( int VAR__112390 = 1; VAR__112390 <= ( VAR__COUNT - 1 ); ++VAR__112390 )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= ( VAR__COUNT - VAR__112390 ); ++VAR__53647 )
+      {
+         if ( dst[VAR__53647] < dst[VAR__53647 + 1] )
+         {
+            VAR__temp           = dst[VAR__53647];
+            dst[VAR__53647]     = dst[VAR__53647 + 1];
+            dst[VAR__53647 + 1] = VAR__temp;
+            VAR__temp           = sma[VAR__53647];
+            sma[VAR__53647]     = sma[VAR__53647 + 1];
+            sma[VAR__53647 + 1] = (int)VAR__temp;
+            VAR__temp           = lar[VAR__53647];
+            lar[VAR__53647]     = lar[VAR__53647 + 1];
+            lar[VAR__53647 + 1] = (int)VAR__temp;
+         }
+      }
+   }
+
+
+   for ( int VAR__112390 = 1; VAR__112390 <= VAR__COUNT; ++VAR__112390 )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", VAR__7685[sma[VAR__112390]], VAR__3918907[sma[VAR__112390]], VAR__9290[sma[VAR__112390]], VAR__7685[lar[VAR__112390]], VAR__3918907[lar[VAR__112390]], VAR__9290[lar[VAR__112390]], dst[VAR__112390]);
+   }
+
+   return 0;
+}

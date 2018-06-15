@@ -1,0 +1,169 @@
+int main()
+{
+   int yearr[13]  = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int yearp[13]  = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int sty        = 0;
+   int stm        = 0;
+   int A_STRING   = 0;
+   int eny        = 0;
+   int enm        = 0;
+   int enr        = 0;
+   int VAR__53647 = 0;
+   int VAR__temp  = 0;
+   int VAR__21230 = 0;
+   int day        = 0;
+   int year       = 0;
+   int mon        = 0;
+
+   cin >> sty;
+   cin >> stm;
+   cin >> A_STRING;
+   cin >> eny;
+   cin >> enm;
+   cin >> enr;
+   for ( VAR__53647 = 0; VAR__53647 <= ( eny - sty ); VAR__53647++ )
+   {
+      year = sty + VAR__53647;
+
+      if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+      {
+         if (( year == sty ) && ( year != eny ))
+         {
+            for ( VAR__temp = stm; VAR__temp <= 12; VAR__temp++ )
+            {
+               if ( VAR__temp == stm )
+               {
+                  day += yearr[VAR__temp] - A_STRING;
+               }
+               else
+               {
+                  day += yearr[VAR__temp];
+               }
+            }
+         }
+
+         if (( year == eny ) && ( year != sty ))
+         {
+            for ( VAR__temp = 1; VAR__temp <= enm; VAR__temp++ )
+            {
+               if ( VAR__temp == enm )
+               {
+                  day += enr;
+               }
+               else
+               {
+                  day += yearr[VAR__temp];
+               }
+            }
+         }
+
+         if (( year != eny ) && ( year != sty ))
+         {
+            for ( VAR__temp = 1; VAR__temp <= 12; VAR__temp++ )
+            {
+               day += yearr[VAR__temp];
+            }
+         }
+
+         if (( year == eny ) && ( year == sty ))
+         {
+            if ( stm == enm )
+            {
+               day += enr - A_STRING;
+            }
+            else
+            {
+               for ( VAR__temp = stm; VAR__temp <= enm; VAR__temp++ )
+               {
+                  if ( VAR__temp == stm )
+                  {
+                     day += yearr[VAR__temp] - A_STRING;
+                  }
+                  else
+                  if ( VAR__temp == enm )
+                  {
+                     day += enr;
+                  }
+                  else
+                  if (( VAR__temp != stm ) && ( VAR__temp != enm ))
+                  {
+                     day += yearr[VAR__temp];
+                  }
+               }
+            }
+         }
+      }
+      else
+      {
+         if (( year == sty ) && ( year != eny ))
+         {
+            for ( VAR__temp = stm; VAR__temp <= 12; VAR__temp++ )
+            {
+               if ( VAR__temp == stm )
+               {
+                  day += yearp[VAR__temp] - A_STRING;
+               }
+               else
+               {
+                  day += yearp[VAR__temp];
+               }
+            }
+         }
+
+         if (( year == eny ) && ( year != sty ))
+         {
+            for ( VAR__temp = 1; VAR__temp <= enm; VAR__temp++ )
+            {
+               if ( VAR__temp == enm )
+               {
+                  day += enr;
+               }
+               else
+               {
+                  day += yearp[VAR__temp];
+               }
+            }
+         }
+
+         if (( year != eny ) && ( year != sty ))
+         {
+            for ( VAR__temp = 1; VAR__temp <= 12; VAR__temp++ )
+            {
+               day += yearp[VAR__temp];
+            }
+         }
+
+         if (( year == eny ) && ( year == sty ))
+         {
+            if ( stm == enm )
+            {
+               day += enr - A_STRING;
+            }
+            else
+            {
+               for ( VAR__temp = stm; VAR__temp <= enm; VAR__temp++ )
+               {
+                  if ( VAR__temp == stm )
+                  {
+                     day += yearp[VAR__temp] - A_STRING;
+                  }
+                  else
+                  if ( VAR__temp == enm )
+                  {
+                     day += enr;
+                  }
+                  else
+                  if (( VAR__temp != stm ) && ( VAR__temp != enm ))
+                  {
+                     day += yearp[VAR__temp];
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   cout << day;
+   cin >> VAR__53647;
+   return 0;
+}

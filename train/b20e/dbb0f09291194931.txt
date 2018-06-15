@@ -1,0 +1,72 @@
+int mycompare(const void *VAR__819283, const void *VAR__19328);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_9494;
+   int VAR__temp;
+   int VAR__1238129;
+   int VAR__8444594;
+   int tian[1001];
+   int qi[1001];
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tian[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qi[VAR__53647];
+      }
+
+      qsort(tian, VAR_1238123, sizeof( int ), mycompare);
+      qsort(qi, VAR_1238123, sizeof( int ), mycompare);
+      VAR_9494 = 0;
+      for ( VAR__53647 = 0, VAR__1238129 = 0, VAR__21230 = VAR_1238123 - 1, VAR__8444594 = VAR_1238123 - 1; VAR__53647 <= VAR__8444594; )
+      {
+         if ( tian[VAR__1238129] > qi[VAR__53647] )
+         {
+            VAR_9494++;
+            VAR__1238129++;
+            VAR__53647++;
+         }
+         else
+         if ( tian[VAR__21230] > qi[VAR__8444594] )
+         {
+            VAR_9494++;
+            VAR__21230--;
+            VAR__8444594--;
+         }
+         else
+         {
+            if ( tian[VAR__21230] < qi[VAR__53647] )
+            {
+               VAR_9494--;
+            }
+
+            VAR__21230--;
+            VAR__53647++;
+         }
+      }
+
+      ( cout << ( VAR_9494 * 200 )) << endl;
+   }
+
+   return 0;
+}
+
+
+int mycompare(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}

@@ -1,0 +1,78 @@
+char VAR__819283[105];
+char VAR__19328[105];
+char VAR__4857423[105];
+void minus(int l1, int l2)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < l2; VAR__53647++ )
+   {
+      if ( VAR__19328[VAR__53647] >= VAR__4857423[VAR__53647] )
+      {
+         VAR__19328[VAR__53647] -= VAR__4857423[VAR__53647];
+      }
+      else
+      {
+         VAR__19328[VAR__53647] = ( VAR__19328[VAR__53647] + 10 ) - VAR__4857423[VAR__53647];
+         VAR__21230             = VAR__53647 + 1;
+         VAR__19328[VAR__21230]--;
+
+         while ( VAR__19328[VAR__21230] < 0 )
+         {
+            VAR__19328[VAR__21230] += 10;
+            VAR__21230++;
+            VAR__19328[VAR__21230]--;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__MAX;
+   int  VAR__21230;
+   int  l1;
+   int  l2;
+   char VAR__1238129;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s", VAR__819283);
+      l1 = strlen(VAR__819283);
+      scanf("%c", &VAR__1238129);
+      for ( VAR__21230 = 0; VAR__21230 < l1; VAR__21230++ )
+      {
+         VAR__19328[( l1 - VAR__21230 ) - 1] = VAR__819283[VAR__21230] - '0';
+      }
+
+      memset(VAR__819283, 0, sizeof( VAR__819283 ));
+      scanf("%s", VAR__819283);
+      scanf("%c", &VAR__1238129);
+      l2 = strlen(VAR__819283);
+      for ( VAR__21230 = 0; VAR__21230 < l2; VAR__21230++ )
+      {
+         VAR__4857423[( l2 - VAR__21230 ) - 1] = VAR__819283[VAR__21230] - '0';
+      }
+
+      minus(l1, l2);
+
+      while ( !VAR__19328[l1 - 1] )
+      {
+         l1--;
+      }
+
+      for ( VAR__21230 = l1 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         printf("%d", VAR__19328[VAR__21230]);
+      }
+
+      printf("\n");
+   }
+
+   return 0;
+}

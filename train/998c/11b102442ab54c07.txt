@@ -1,0 +1,61 @@
+int main()
+{
+   char up[300]     = { NULL };
+   char down[300]   = { NULL };
+   int  add1[300]   = { 0 };
+   int  add2[300]   = { 0 };
+   int  result[300] = { 0 };
+   int  uplen       = 0;
+   int  downlen     = 0;
+
+   ( cin >> up ) >> down;
+   uplen   = strlen(up);
+   downlen = strlen(down);
+   int VAR__TEMP = strlen(up);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__TEMP; VAR__53647++ )
+   {
+      add1[VAR__53647] = up[uplen - 1] - '0';
+      uplen--;
+   }
+
+   VAR__TEMP = strlen(down);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR__TEMP; VAR__53647++ )
+   {
+      add2[VAR__53647] = down[downlen - 1] - '0';
+      downlen--;
+   }
+
+   uplen   = strlen(up);
+   downlen = strlen(down);
+   for ( int VAR__53647 = 0; VAR__53647 < 290; VAR__53647++ )
+   {
+      result[VAR__53647] += add1[VAR__53647] + add2[VAR__53647];
+
+      if ( result[VAR__53647] >= 10 )
+      {
+         result[VAR__53647] %= 10;
+         result[VAR__53647 + 1]++;
+      }
+   }
+
+   int start = 0;
+   for ( int VAR__53647 = 290; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( result[VAR__53647] != 0 )
+      {
+         start = 1;
+      }
+
+      if ( start == 1 )
+      {
+         cout << result[VAR__53647];
+      }
+
+      if (( VAR__53647 == 0 ) && ( start == 0 ))
+      {
+         cout << 0;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,76 @@
+int VAR_1238123;
+int max1;
+int xue1;
+int max2;
+int xue2;
+int max3;
+int xue3;
+struct chengji
+{
+   int            xh;
+   int            yw;
+   int            sx;
+   int            zf;
+   struct chengji *VAR__NEXT;
+};
+void create()
+{
+   struct chengji *VAR__HEAD;
+   struct chengji *ANOTHER_POINTER;
+   int            VAR__53647 = 0;
+
+   while ( VAR__53647 < VAR_1238123 )
+   {
+      VAR__53647++;
+
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER = (struct chengji *)malloc(LEN_OF_STH);
+      scanf("%d %d %d", &ANOTHER_POINTER->xh, &ANOTHER_POINTER->yw, &ANOTHER_POINTER->sx);
+      ANOTHER_POINTER->zf = ANOTHER_POINTER->yw + ANOTHER_POINTER->sx;
+
+      if ( ANOTHER_POINTER->zf > max1 )
+      {
+         xue3 = xue2;
+         max3 = max2;
+         xue2 = xue1;
+         max2 = max1;
+         xue1 = ANOTHER_POINTER->xh;
+         max1 = ANOTHER_POINTER->zf;
+      }
+      else
+      {
+         if (( ANOTHER_POINTER->zf > max2 ) && ( ANOTHER_POINTER->zf <= max1 ))
+         {
+            xue3 = xue2;
+            max3 = max2;
+            xue2 = ANOTHER_POINTER->xh;
+            max2 = ANOTHER_POINTER->zf;
+         }
+         else
+         {
+            if (( ANOTHER_POINTER->zf > max3 ) && ( ANOTHER_POINTER->zf <= max2 ))
+            {
+               xue3 = ANOTHER_POINTER->xh;
+               max3 = ANOTHER_POINTER->zf;
+            }
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   scanf("%d", &VAR_1238123);
+   max1 = 0, max2 = 0, max3 = 0;
+   create();
+   printf("%d %d\n", xue1, max1);
+   printf("%d %d\n", xue2, max2);
+   printf("%d %d", xue3, max3);
+}

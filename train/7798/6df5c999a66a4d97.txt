@@ -1,0 +1,63 @@
+void main()
+{
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__MAX;
+   int  VAR__4857423[26] = { 0 };
+   char VAR__819283[26];
+   char VAR__127322;
+   char VAR__7685;
+   struct book
+   {
+      int  VAR__NUM;
+      char author[26];
+   };
+   struct book VAR__19328[1000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %s", &VAR__19328[VAR__53647].VAR__NUM, &VAR__19328[VAR__53647].author);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      strcpy(VAR__819283, VAR__19328[VAR__53647].author);
+      LEN_OF_STH = strlen(VAR__819283);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if (( 'A' <= ( VAR__7685 = VAR__819283[VAR__21230] )) && (( VAR__7685 = VAR__819283[VAR__21230] ) <= 'Z' ))
+         {
+            VAR__4857423[VAR__7685 - 'A']++;
+         }
+      }
+   }
+
+   VAR__MAX     = VAR__4857423[0];
+   VAR__8444594 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX     = VAR__4857423[VAR__53647];
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+   printf("%c\n%d\n", VAR__8444594 + 'A', VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      strcpy(VAR__819283, VAR__19328[VAR__53647].author);
+      LEN_OF_STH = strlen(VAR__819283);
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if (( VAR__127322 = VAR__819283[VAR__21230] ) == ( VAR__8444594 + 'A' ))
+         {
+            printf("%d\n", VAR__19328[VAR__53647].VAR__NUM);
+         }
+      }
+   }
+}

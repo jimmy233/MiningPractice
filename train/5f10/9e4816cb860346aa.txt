@@ -1,0 +1,83 @@
+int main()
+{
+   char VAR_9494[500];
+   char sub[500][5];
+   char subt[5];
+   int  VAR__819283[500] = { 1, 0 };
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_2890;
+   int  VAR__temp;
+
+   scanf("%d\n", &VAR_1238123);
+   gets(VAR_9494);
+   int LEN_OF_STH = strlen(VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= (( VAR__53647 + VAR_1238123 ) - 1 ); VAR__21230++ )
+      {
+         sub[VAR__53647][VAR__21230 - VAR__53647] = VAR_9494[VAR__21230];
+      }
+
+      sub[VAR__53647][VAR_1238123] = '\0';
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      VAR_2890 = 1;
+      for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+      {
+         if ( strcmp(sub[VAR__53647], sub[VAR__21230]) == 0 )
+         {
+            sub[VAR__53647][0]      = '\0';
+            VAR__819283[VAR__21230] = VAR__819283[VAR__21230] + 1;
+            VAR_2890 = 0;
+            break;
+         }
+      }
+
+      if ( VAR_2890 == 1 )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= (( LEN_OF_STH - VAR_1238123 ) - 1 ); VAR__53647++ )
+   {
+      VAR_2890 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] > VAR__819283[VAR_2890] )
+         {
+            VAR_2890 = VAR__21230;
+         }
+      }
+
+      if ( VAR_2890 != VAR__53647 )
+      {
+         strcpy(subt, sub[VAR_2890]);
+         strcpy(sub[VAR_2890], sub[VAR__53647]);
+         strcpy(sub[VAR__53647], subt);
+         VAR__temp               = VAR__819283[VAR_2890];
+         VAR__819283[VAR_2890]   = VAR__819283[VAR__53647];
+         VAR__819283[VAR__53647] = VAR__temp;
+      }
+   }
+
+   if ( VAR__819283[0] == 1 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("%d\n", VAR__819283[0]);
+      for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == VAR__819283[0] )
+         {
+            printf("%s\n", sub[VAR__53647]);
+         }
+      }
+   }
+}

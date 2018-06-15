@@ -1,0 +1,81 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int tian[1005];
+   int king[1005];
+   int tmax;
+   int tmin;
+   int kmax;
+   int kmin;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_9494;
+
+   while ( scanf("%d", &VAR_1238123), VAR_1238123 > 0 )
+   {
+      VAR_9494 = 0;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tian[VAR__53647]);
+      }
+
+      qsort(tian + 1, VAR_1238123, sizeof( int ), cmp);
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &king[VAR__21230]);
+      }
+
+      qsort(king + 1, VAR_1238123, sizeof( int ), cmp);
+      tmax = 1;
+      tmin = VAR_1238123;
+      kmax = 1;
+      kmin = VAR_1238123;
+      for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         if ( tian[tmax] > king[kmax] )
+         {
+            VAR_9494++;
+            tmax++;
+            kmax++;
+         }
+         else
+         if ( tian[tmax] < king[kmax] )
+         {
+            VAR_9494--;
+            tmin--;
+            kmax++;
+         }
+         else
+         if ( tian[tmin] > king[kmin] )
+         {
+            VAR_9494++;
+            tmin--;
+            kmin--;
+         }
+         else
+         if ( tian[tmin] < king[kmin] )
+         {
+            VAR_9494--;
+            tmin--;
+            kmax++;
+         }
+         else
+         if ( tian[tmin] < king[kmax] )
+         {
+            VAR_9494--;
+            tmin--;
+            kmax++;
+         }
+      }
+
+      printf("%d\n", VAR_9494 * 200);
+   }
+
+   return 0;
+}

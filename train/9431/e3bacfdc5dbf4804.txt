@@ -1,0 +1,62 @@
+struct stu
+{
+   char       VAR__NUM[50];
+   char       name[50];
+   char       sex;
+   int        age;
+   float      score;
+   char       add[50];
+   struct stu *forward;
+};
+void main()
+{
+   int        VAR_1238123 = 0;
+   struct stu *VAR__HEAD;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   VAR__HEAD       = NULL;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct stu *)malloc(LEN));
+
+   while ( 1 )
+   {
+      VAR_1238123++;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD          = ANOTHER_POINTER;
+         VAR__HEAD->forward = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->forward = YET_ANOTHER_POINTER;
+      }
+
+      scanf("%s", ANOTHER_POINTER->VAR__NUM);
+
+      if ( strcmp(ANOTHER_POINTER->VAR__NUM, "end") == 0 )
+      {
+         break;
+      }
+
+      scanf(" %s", ANOTHER_POINTER->name);
+      scanf(" %c", &ANOTHER_POINTER->sex);
+      scanf(" %d", &ANOTHER_POINTER->age);
+      scanf(" %f", &ANOTHER_POINTER->score);
+      scanf(" %s", ANOTHER_POINTER->add);
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct stu *)malloc(LEN);
+   }
+
+   struct stu *VAR_233;
+   VAR_233 = YET_ANOTHER_POINTER;
+
+   if ( VAR_233->forward != NULL )
+   {
+      do
+      {
+         printf("%s %s %c %d %g %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->add);
+         VAR_233 = VAR_233->forward;
+      } while ( VAR_233 != NULL );
+   }
+}

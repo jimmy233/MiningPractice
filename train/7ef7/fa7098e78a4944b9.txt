@@ -1,0 +1,95 @@
+int matrix[100][100];
+int VAR__SUM = 0;
+void SUM(int VAR_1238123)
+{
+   if ( VAR_1238123 == 1 )
+   {
+      return;
+   }
+
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__MIN;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN = matrix[VAR__53647][0];
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__MIN > matrix[VAR__53647][VAR__21230] )
+         {
+            VAR__MIN = matrix[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         matrix[VAR__53647][VAR__21230] -= VAR__MIN;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      VAR__MIN = matrix[0][VAR__21230];
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__MIN > matrix[VAR__53647][VAR__21230] )
+         {
+            VAR__MIN = matrix[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         matrix[VAR__53647][VAR__21230] -= VAR__MIN;
+      }
+   }
+
+   VAR__SUM += matrix[1][1];
+   for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      matrix[0][VAR__21230] = matrix[0][VAR__21230 + 1];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      matrix[VAR__53647][0] = matrix[VAR__53647 + 1][0];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         matrix[VAR__53647][VAR__21230] = matrix[VAR__53647 + 1][VAR__21230 + 1];
+      }
+   }
+
+   SUM(VAR_1238123 - 1);
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            cin >> matrix[VAR__21230][VAR__8444594];
+         }
+      }
+
+
+      SUM(VAR_1238123);
+      ( cout << VAR__SUM ) << endl;
+      VAR__SUM = 0;
+   }
+
+   return 0;
+}

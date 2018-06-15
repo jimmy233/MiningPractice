@@ -1,0 +1,45 @@
+struct student
+{
+   char           VAR__NUM[12];
+   char           name[20];
+   char           sex;
+   int            age;
+   float          grade;
+   char           add[12];
+   struct student *VAR__NEXT;
+};
+int VAR_1238123 = 1;
+struct student *build(void)
+{
+   struct student *pn;
+   struct student *pt;
+
+   pn = (struct student *)malloc(sizeof( struct student ));
+   scanf("%s", pn->VAR__NUM);
+   pn->VAR__NEXT = NULL;
+
+   while ( pn->VAR__NUM[0] != 'e' )
+   {
+      scanf(" %s %c %d %f %s", &pn->name, &pn->sex, &pn->age, &pn->grade, &pn->add);
+      pt            = pn;
+      pn            = (struct student *)malloc(sizeof( struct student ));
+      pn->VAR__NEXT = pt;
+      scanf("%s", pn->VAR__NUM);
+   }
+
+   return pt;
+}
+
+
+void main()
+{
+   struct student *VAR_233;
+
+   VAR_233 = build();
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s %s %c %d %g %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->grade, VAR_233->add);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

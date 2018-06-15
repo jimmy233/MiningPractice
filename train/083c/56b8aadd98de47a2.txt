@@ -1,0 +1,65 @@
+int main()
+{
+   int  number = 0;
+   int  inum[1000];
+   int  VAR__19328;
+   int  VAR__112390;
+   int  VAR_233 = 0;
+   char cnum[1000];
+
+   (( cin >> VAR__19328 ) >> cnum ) >> VAR__112390;
+   int LEN_OF_STH = strlen(cnum);
+   int VAR__53647;
+   for ( VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( cnum[VAR__53647] >= '0' ) && ( cnum[VAR__53647] <= '9' ))
+      {
+         inum[VAR_233++] = cnum[VAR__53647] - '0';
+      }
+      else
+      if (( cnum[VAR__53647] >= 'a' ) && ( cnum[VAR__53647] <= 'z' ))
+      {
+         inum[VAR_233++] = ( cnum[VAR__53647] - 'a' ) + 10;
+      }
+      else
+      {
+         inum[VAR_233++] = ( cnum[VAR__53647] - 'A' ) + 10;
+      }
+   }
+
+   for ( VAR__53647 = VAR_233 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      number = ( number + inum[VAR__53647] ) * VAR__19328;
+   }
+
+   int VAR__TEMP;
+   number += inum[0];
+
+   if ( number == 0 )
+   {
+      ( cout << "0" ) << endl;
+   }
+
+   for ( VAR__53647 = 0; number > 0; VAR__53647++ )
+   {
+      VAR__TEMP = number % VAR__112390;
+      number    = number / VAR__112390;
+
+      if (( VAR__TEMP <= 9 ) && ( VAR__TEMP >= 0 ))
+      {
+         cnum[VAR__53647] = VAR__TEMP + '0';
+      }
+      else
+      {
+         cnum[VAR__53647] = ( VAR__TEMP + 'a' ) - 42;
+      }
+   }
+
+   for ( VAR_233 = VAR__53647 - 1; VAR_233 >= 0; VAR_233-- )
+   {
+      cout << cnum[VAR_233];
+   }
+
+   cout << endl;
+   return 0;
+}

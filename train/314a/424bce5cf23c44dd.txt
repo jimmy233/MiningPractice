@@ -1,0 +1,91 @@
+int main()
+{
+   char firstline[10000];
+   char secondline[10000];
+   char VAR__TEMP[100];
+   int  enter[3000];
+   int  exit[3000];
+   int  VAR__8444594 = 0;
+   int  VAR__53647;
+   int  VAR_9Q8Q90 = 0;
+   int  VAR__21230;
+   int  VAR__NUM;
+   int  VAR__MIN    = 1000;
+   int  VAR__MAX    = 0;
+   int  point[1000] = { 0 };
+   int  result      = 0;
+
+   cin.getline(firstline, 10000);
+   cin.getline(secondline, 10000);
+   for ( VAR__53647 = 0; VAR__53647 <= strlen(firstline); VAR__53647++ )
+   {
+      if (( firstline[VAR__53647] != ',' ) && ( firstline[VAR__53647] != '\0' ))
+      {
+         VAR__TEMP[VAR__8444594] = firstline[VAR__53647];
+         VAR__8444594++;
+      }
+      else
+      {
+         enter[VAR_9Q8Q90] = atoi(VAR__TEMP);
+         memset(VAR__TEMP, 0, sizeof( VAR__TEMP ));
+         VAR_9Q8Q90++;
+         VAR__8444594 = 0;
+      }
+   }
+
+   VAR__NUM   = VAR_9Q8Q90;
+   VAR_9Q8Q90 = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= strlen(secondline); VAR__53647++ )
+   {
+      if (( secondline[VAR__53647] != ',' ) && ( secondline[VAR__53647] != '\0' ))
+      {
+         VAR__TEMP[VAR__8444594] = secondline[VAR__53647];
+         VAR__8444594++;
+      }
+      else
+      {
+         exit[VAR_9Q8Q90] = atoi(VAR__TEMP);
+         memset(VAR__TEMP, 0, sizeof( VAR__TEMP ));
+         VAR_9Q8Q90++;
+         VAR__8444594 = 0;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( enter[VAR__53647] < VAR__MIN )
+      {
+         VAR__MIN = enter[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( exit[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = exit[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = VAR__MIN; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__NUM; VAR__21230++ )
+      {
+         if (( enter[VAR__21230] <= VAR__53647 ) && ( exit[VAR__21230] > VAR__53647 ))
+         {
+            point[VAR__53647]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR__MIN; VAR__53647 < VAR__MAX; VAR__53647++ )
+   {
+      if ( point[VAR__53647] >= result )
+      {
+         result = point[VAR__53647];
+      }
+   }
+
+   (( cout << VAR__NUM ) << " " ) << result;
+   return 0;
+}

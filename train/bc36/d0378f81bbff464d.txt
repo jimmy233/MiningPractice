@@ -1,0 +1,84 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__21230;
+   double tmph;
+   int    VAR__COUNT = 0;
+   char   tmp[10];
+   int    state = 0;
+   struct info
+   {
+      char   sex[10];
+      double VAR_2890;
+   }
+   stu[50];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %lf", stu[VAR__53647].sex, &stu[VAR__53647].VAR_2890);
+
+      if ( strcmp(stu[VAR__53647].sex, "male") == 0 )
+      {
+         VAR__COUNT++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( strcmp(stu[VAR__53647].sex, stu[VAR__21230].sex) < 0 )
+         {
+            strcpy(tmp, stu[VAR__53647].sex);
+            strcpy(stu[VAR__53647].sex, stu[VAR__21230].sex);
+            strcpy(stu[VAR__21230].sex, tmp);
+            tmph = stu[VAR__53647].VAR_2890;
+            stu[VAR__53647].VAR_2890 = stu[VAR__21230].VAR_2890;
+            stu[VAR__21230].VAR_2890 = tmph;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__COUNT; VAR__21230++ )
+      {
+         if ( stu[VAR__53647].VAR_2890 < stu[VAR__21230].VAR_2890 )
+         {
+            tmph = stu[VAR__53647].VAR_2890;
+            stu[VAR__53647].VAR_2890 = stu[VAR__21230].VAR_2890;
+            stu[VAR__21230].VAR_2890 = tmph;
+         }
+      }
+   }
+
+   for ( VAR__53647 = VAR__COUNT; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__COUNT; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( stu[VAR__53647].VAR_2890 > stu[VAR__21230].VAR_2890 )
+         {
+            tmph = stu[VAR__53647].VAR_2890;
+            stu[VAR__53647].VAR_2890 = stu[VAR__21230].VAR_2890;
+            stu[VAR__21230].VAR_2890 = tmph;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( state )
+      {
+         printf(" %.2lf", stu[VAR__53647].VAR_2890);
+      }
+      else
+      {
+         printf("%.2lf", stu[VAR__53647].VAR_2890);
+         state = 1;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,67 @@
+struct s
+{
+   int      VAR__12302;
+   char     VAR__4857423[20];
+   struct s *VAR__NEXT;
+};
+void sort(struct s *VAR__HEAD)
+{
+   struct s *pre     = VAR__HEAD;
+   struct s *VAR_233 = pre->VAR__NEXT;
+   struct s *VAR_9494;
+
+   VAR_9494 = (struct s *)malloc(sizeof( struct s ));
+   scanf("%s %d", VAR_9494->VAR__4857423, &VAR_9494->VAR__12302);
+   VAR_9494->VAR__NEXT = NULL;
+
+   if ( VAR_9494->VAR__12302 >= 60 )
+   {
+      while (( VAR_233 != NULL ) && ( VAR_233->VAR__12302 >= VAR_9494->VAR__12302 ))
+      {
+         pre     = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      pre->VAR__NEXT      = VAR_9494;
+      VAR_9494->VAR__NEXT = VAR_233;
+   }
+
+   if ( VAR_9494->VAR__12302 < 60 )
+   {
+      while ( VAR_233 != NULL )
+      {
+         pre     = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      pre->VAR__NEXT      = VAR_9494;
+      VAR_9494->VAR__NEXT = VAR_233;
+   }
+}
+
+
+int main()
+{
+   struct s *VAR__HEAD;
+   struct s *VAR_233;
+   int      VAR_1238123;
+   int      VAR__53647;
+
+   VAR__HEAD = (struct s *)malloc(sizeof( struct s ));
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD->VAR__NEXT = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      sort(VAR__HEAD);
+   }
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->VAR__4857423);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return 0;
+}

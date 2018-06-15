@@ -1,0 +1,92 @@
+struct student
+{
+   int            VAR__NUM;
+   int            chinese;
+   int            maths;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+int            VAR__1238129;
+int            VAR__MAX[3]  = { 0 };
+int            VAR__temp[3] = { 0 };
+struct student *VAR__HEAD;
+struct student *ANOTHER_POINTER;
+struct student *YET_ANOTHER_POINTER;
+struct student *creat(int VAR_1238123)
+{
+   VAR__1238129    = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->maths);
+   ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->chinese + ANOTHER_POINTER->maths;
+   VAR__HEAD = NULL;
+
+   while ( VAR__1238129 < ( VAR_1238123 - 1 ))
+   {
+      VAR__1238129 = VAR__1238129 + 1;
+
+      if ( VAR__1238129 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->chinese, &ANOTHER_POINTER->maths);
+      ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->chinese + ANOTHER_POINTER->maths;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   creat(VAR_1238123);
+   struct student *ANOTHER_POINTER;
+   ANOTHER_POINTER = VAR__HEAD;
+   do
+   {
+      if ( ANOTHER_POINTER->VAR__SUM > VAR__MAX[0] )
+      {
+         VAR__MAX[0]  = ANOTHER_POINTER->VAR__SUM;
+         VAR__temp[0] = ANOTHER_POINTER->VAR__NUM;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER != NULL );
+   printf("%d %d\n", VAR__temp[0], VAR__MAX[0]);
+   ANOTHER_POINTER = VAR__HEAD;
+   do
+   {
+      if (( ANOTHER_POINTER->VAR__SUM > VAR__MAX[1] ) && ( ANOTHER_POINTER->VAR__NUM != VAR__temp[0] ))
+      {
+         VAR__MAX[1]  = ANOTHER_POINTER->VAR__SUM;
+         VAR__temp[1] = ANOTHER_POINTER->VAR__NUM;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER != NULL );
+   printf("%d %d\n", VAR__temp[1], VAR__MAX[1]);
+   ANOTHER_POINTER = VAR__HEAD;
+   do
+   {
+      if ((( ANOTHER_POINTER->VAR__SUM > VAR__MAX[2] ) && ( ANOTHER_POINTER->VAR__NUM != VAR__temp[0] )) && ( ANOTHER_POINTER->VAR__NUM != VAR__temp[1] ))
+      {
+         VAR__MAX[2]  = ANOTHER_POINTER->VAR__SUM;
+         VAR__temp[2] = ANOTHER_POINTER->VAR__NUM;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   } while ( ANOTHER_POINTER != NULL );
+   printf("%d %d\n", VAR__temp[2], VAR__MAX[2]);
+}

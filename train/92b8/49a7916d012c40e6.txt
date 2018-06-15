@@ -1,0 +1,79 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__53647;
+   int    VAR__8444594;
+   int    VAR__112390;
+   int    VAR__1238129;
+   int    VAR__4857423;
+   int    VAR__MAX;
+   int    VAR__9290;
+   int    VAR__819283;
+   double VAR__21230;
+   struct qj
+   {
+      int VAR__819283;
+      int VAR__19328;
+   }
+   qj[50000];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d", &qj[VAR__53647].VAR__819283, &qj[VAR__53647].VAR__19328);
+   }
+
+   for ( VAR__8444594 = 1; VAR__8444594 <= VAR_1238123; VAR__8444594++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__8444594 ); VAR__53647++ )
+      {
+         if ( qj[VAR__53647].VAR__819283 >= qj[VAR__53647 + 1].VAR__819283 )
+         {
+            VAR__112390 = qj[VAR__53647].VAR__819283;
+            qj[VAR__53647].VAR__819283     = qj[VAR__53647 + 1].VAR__819283;
+            qj[VAR__53647 + 1].VAR__819283 = VAR__112390;
+            VAR__1238129 = qj[VAR__53647].VAR__19328;
+            qj[VAR__53647].VAR__19328     = qj[VAR__53647 + 1].VAR__19328;
+            qj[VAR__53647 + 1].VAR__19328 = VAR__1238129;
+         }
+      }
+   }
+
+   VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__MAX < qj[VAR__53647].VAR__19328 )
+      {
+         VAR__MAX = qj[VAR__53647].VAR__19328;
+      }
+   }
+
+   VAR__4857423 = 0;
+   for ( VAR__21230 = qj[0].VAR__819283 + 0.5; VAR__21230 < VAR__MAX; VAR__21230++ )
+   {
+      VAR__9290 = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if (( VAR__21230 < qj[VAR__53647].VAR__19328 ) && ( VAR__21230 > qj[VAR__53647].VAR__819283 ))
+         {
+            VAR__9290 = 1;
+         }
+      }
+
+      if ( VAR__9290 == 1 )
+      {
+         VAR__4857423++;
+      }
+   }
+
+   if ( VAR__4857423 == ( VAR__MAX - qj[0].VAR__819283 ))
+   {
+      printf("%d %d", qj[0].VAR__819283, VAR__MAX);
+   }
+   else
+   {
+      printf("no");
+   }
+
+   return 0;
+}

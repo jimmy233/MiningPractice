@@ -1,0 +1,50 @@
+struct Student
+{
+   char           no[10];
+   char           name[20];
+   char           sex;
+   int            age;
+   char           score[7];
+   char           add[15];
+   struct Student *VAR__NEXT;
+};
+int main()
+{
+   struct Student *VAR_233[1000];
+   struct Student *VAR__HEAD;
+   int            VAR__53647;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      VAR_233[VAR__53647] = (struct Student *)malloc(LEN);
+      scanf("%s", VAR_233[VAR__53647]->no);
+
+      if ( strcmp(VAR_233[VAR__53647]->no, "end") == 0 )
+      {
+         VAR__HEAD = VAR_233[VAR__53647 - 1];
+         break;
+      }
+      else
+      {
+         getchar();
+         scanf("%s %c %d %s %s", VAR_233[VAR__53647]->name, &VAR_233[VAR__53647]->sex, &VAR_233[VAR__53647]->age, VAR_233[VAR__53647]->score, VAR_233[VAR__53647]->add);
+         getchar();
+
+         if ( VAR__53647 == 0 )
+         {
+            VAR_233[VAR__53647]->VAR__NEXT = NULL;
+         }
+         else
+         {
+            VAR_233[VAR__53647]->VAR__NEXT = VAR_233[VAR__53647 - 1];
+         }
+      }
+   }
+
+   for ( VAR__HEAD = VAR__HEAD; VAR__HEAD != NULL; VAR__HEAD = VAR__HEAD->VAR__NEXT )
+   {
+      printf("%s %s %c %d %s %s\n", VAR__HEAD->no, VAR__HEAD->name, VAR__HEAD->sex, VAR__HEAD->age, VAR__HEAD->score, VAR__HEAD->add);
+   }
+
+   return 0;
+}

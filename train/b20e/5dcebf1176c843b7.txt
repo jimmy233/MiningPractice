@@ -1,0 +1,123 @@
+void main()
+{
+   int VAR__NUM[100];
+   int speed_tian[100][1000];
+   int speed_qi[100][1000];
+   int money[100];
+   int win;
+   int lose;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int end_qi;
+   int VAR__7685;
+   int start_qi;
+   int start_tian;
+   int mid;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      scanf("%d", &VAR__NUM[VAR__53647]);
+
+      if ( VAR__NUM[VAR__53647] == 0 )
+      {
+         break;
+      }
+      else
+      {
+         for ( VAR__21230 = 0; VAR__21230 <= ( VAR__NUM[VAR__53647] - 1 ); VAR__21230++ )
+         {
+            scanf("%d", &speed_tian[VAR__53647][VAR__21230]);
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 <= ( VAR__NUM[VAR__53647] - 1 ); VAR__21230++ )
+         {
+            scanf("%d", &speed_qi[VAR__53647][VAR__21230]);
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 <= ( VAR__NUM[VAR__21230] - 1 ); VAR__8444594++ )
+      {
+         for ( VAR__1111 = 0; VAR__1111 < (( VAR__NUM[VAR__21230] - 1 ) - VAR__8444594 ); VAR__1111++ )
+         {
+            if ( speed_tian[VAR__21230][VAR__1111] < speed_tian[VAR__21230][VAR__1111 + 1] )
+            {
+               mid = speed_tian[VAR__21230][VAR__1111];
+               speed_tian[VAR__21230][VAR__1111]     = speed_tian[VAR__21230][VAR__1111 + 1];
+               speed_tian[VAR__21230][VAR__1111 + 1] = mid;
+            }
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 <= ( VAR__NUM[VAR__21230] - 1 ); VAR__8444594++ )
+      {
+         for ( VAR__1111 = 0; VAR__1111 < (( VAR__NUM[VAR__21230] - 1 ) - VAR__8444594 ); VAR__1111++ )
+         {
+            if ( speed_qi[VAR__21230][VAR__1111] < speed_qi[VAR__21230][VAR__1111 + 1] )
+            {
+               mid = speed_qi[VAR__21230][VAR__1111];
+               speed_qi[VAR__21230][VAR__1111]     = speed_qi[VAR__21230][VAR__1111 + 1];
+               speed_qi[VAR__21230][VAR__1111 + 1] = mid;
+            }
+         }
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+   {
+      start_qi   = 0;
+      start_tian = 0;
+      end_qi     = VAR__NUM[VAR__21230] - 1;
+      win        = 0;
+      lose       = 0;
+      VAR__7685  = VAR__NUM[VAR__21230] - 1;
+
+      while ( VAR__7685 >= start_tian )
+      {
+         if ( speed_tian[VAR__21230][VAR__7685] > speed_qi[VAR__21230][end_qi] )
+         {
+            win++;
+            end_qi--;
+         }
+         else
+         if ( speed_tian[VAR__21230][VAR__7685] < speed_qi[VAR__21230][end_qi] )
+         {
+            lose++;
+            start_qi++;
+         }
+         else
+         {
+            while ( speed_tian[VAR__21230][start_tian] > speed_qi[VAR__21230][start_qi] )
+            {
+               win++;
+               start_tian++;
+               start_qi++;
+            }
+
+            if ( speed_tian[VAR__21230][VAR__7685] < speed_qi[VAR__21230][start_qi] )
+            {
+               lose++;
+            }
+
+            start_qi++;
+         }
+
+
+         VAR__7685--;
+      }
+
+      money[VAR__21230] = ( win * 200 ) - ( lose * 200 );
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= ( VAR__53647 - 1 ); VAR__21230++ )
+   {
+      printf("%d\n", money[VAR__21230]);
+   }
+}

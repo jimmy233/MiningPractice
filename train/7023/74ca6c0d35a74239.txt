@@ -1,0 +1,87 @@
+char *jian(char *VAR__7685, char *VAR__3918907, int VAR__1238129, int VAR_1238123)
+{
+   char *ANOTHER_POINTER;
+   char *YET_ANOTHER_POINTER;
+   char *p3;
+
+   ANOTHER_POINTER     = (char *)malloc(VAR__1238129 * ( sizeof( char )));
+   YET_ANOTHER_POINTER = (char *)malloc(VAR__1238129 * ( sizeof( char )));
+   p3 = (char *)malloc(VAR__1238129 * ( sizeof( char )));
+   strcpy(ANOTHER_POINTER, VAR__7685);
+   strcpy(YET_ANOTHER_POINTER, VAR__3918907);
+   ANOTHER_POINTER     = ( ANOTHER_POINTER + VAR__1238129 ) - 1;
+   YET_ANOTHER_POINTER = ( YET_ANOTHER_POINTER + VAR_1238123 ) - 1;
+   int VAR__temp = VAR__1238129 - 1;
+
+   while ((( *ANOTHER_POINTER ) >= ( '0' - 1 )) && (( *ANOTHER_POINTER ) <= '9' ))
+   {
+      if (( *ANOTHER_POINTER ) < ( *YET_ANOTHER_POINTER ))
+      {
+         p3[VAR__temp] = ((( *ANOTHER_POINTER ) - ( *YET_ANOTHER_POINTER )) + 10 ) + '0';
+         ANOTHER_POINTER--;
+         *ANOTHER_POINTER = (( *ANOTHER_POINTER ) - '1' ) + '0';
+         YET_ANOTHER_POINTER--;
+      }
+      else
+      if (((( *ANOTHER_POINTER ) >= ( *YET_ANOTHER_POINTER )) && (( *YET_ANOTHER_POINTER ) >= '0' )) && (( *YET_ANOTHER_POINTER ) <= '9' ))
+      {
+         p3[VAR__temp] = (( *ANOTHER_POINTER ) - ( *YET_ANOTHER_POINTER )) + '0';
+         ANOTHER_POINTER--;
+         YET_ANOTHER_POINTER--;
+      }
+      else
+      {
+         p3[VAR__temp] = *ANOTHER_POINTER;
+         ANOTHER_POINTER--;
+      }
+
+
+      VAR__temp--;
+   }
+
+   return p3;
+}
+
+
+void main()
+{
+   int  VAR_9494;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   char *VAR__819283[10];
+   char *VAR__19328[10];
+
+   scanf("%d", &VAR_9494);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = (char *)malloc(1000 * ( sizeof( char )));
+      VAR__19328[VAR__53647]  = (char *)malloc(1000 * ( sizeof( char )));
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      scanf("%s", VAR__819283[VAR__53647]);
+      scanf("%s", VAR__19328[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9494; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < strlen(VAR__819283[VAR__53647]); VAR__21230++ )
+      {
+         if ( jian(VAR__819283[VAR__53647], VAR__19328[VAR__53647], strlen(VAR__819283[VAR__53647]), strlen(VAR__19328[VAR__53647]))[VAR__21230] != '0' )
+         {
+            VAR__8444594 = VAR__21230;
+            break;
+         }
+      }
+
+
+      for ( VAR__21230 = VAR__8444594; VAR__21230 < strlen(VAR__819283[VAR__53647]); VAR__21230++ )
+      {
+         printf("%c", jian(VAR__819283[VAR__53647], VAR__19328[VAR__53647], strlen(VAR__819283[VAR__53647]), strlen(VAR__19328[VAR__53647]))[VAR__21230]);
+      }
+
+      printf("\n");
+   }
+}

@@ -1,0 +1,106 @@
+struct pat
+{
+   char       id[30];
+   int        age;
+   int        VAR__NUM;
+   int        VAR_FLAG;
+   struct pat *VAR__NEXT;
+   struct pat *ns;
+};
+int VAR_1238123;
+void sort(struct pat *VAR__HEAD)
+{
+   int        VAR__53647;
+   int        VAR__21230;
+   struct pat *VAR_666;
+   struct pat *VAR_233;
+   struct pat *VAR__MAX;
+
+   VAR_666 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = VAR__HEAD->VAR__NEXT;
+
+      while ( 1 )
+      {
+         if ( VAR_233->VAR_FLAG )
+         {
+            break;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      VAR__MAX = VAR_233;
+
+      while ( 1 )
+      {
+         if (( VAR_233->VAR__NUM > VAR__MAX->VAR__NUM ) && VAR_233->VAR_FLAG )
+         {
+            VAR__MAX = VAR_233;
+         }
+
+         VAR_233 = VAR_233->VAR__NEXT;
+
+         if ( VAR_233 == NULL )
+         {
+            break;
+         }
+      }
+
+      VAR__MAX->VAR_FLAG = 0;
+      VAR_666->ns        = VAR__MAX;
+      VAR_666            = VAR_666->ns;
+   }
+
+   VAR_666->ns = NULL;
+}
+
+
+void main()
+{
+   int        VAR__53647;
+   struct pat *VAR__HEAD;
+   struct pat *ANOTHER_POINTER;
+   struct pat *YET_ANOTHER_POINTER;
+   struct pat *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = (struct pat *)malloc(LEN);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct pat *)malloc(LEN);
+      scanf("%s %d", ANOTHER_POINTER->id, &ANOTHER_POINTER->age);
+      ANOTHER_POINTER->VAR_FLAG = 1;
+
+      if ( ANOTHER_POINTER->age >= 60 )
+      {
+         ANOTHER_POINTER->VAR__NUM = (( 10000 * ANOTHER_POINTER->age ) + VAR_1238123 ) - VAR__53647;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NUM = VAR_1238123 - VAR__53647;
+      }
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER  = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   sort(VAR__HEAD);
+   VAR_233 = VAR__HEAD->ns;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", VAR_233->id);
+      VAR_233 = VAR_233->ns;
+   }
+}

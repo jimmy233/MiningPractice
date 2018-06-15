@@ -1,0 +1,61 @@
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__MIN;
+   float re[40];
+   float VAR__temp;
+   char  A_STRING[40][8];
+   char  tc[8];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      getchar();
+      scanf("%s%f", A_STRING[VAR__53647], &re[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__MIN = VAR__53647;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( re[VAR__21230] < re[VAR__MIN] )
+         {
+            VAR__MIN = VAR__21230;
+         }
+      }
+
+      VAR__temp = re[VAR__MIN];
+      strcpy(tc, A_STRING[VAR__MIN]);
+      re[VAR__MIN] = re[VAR__53647];
+      strcpy(A_STRING[VAR__MIN], A_STRING[VAR__53647]);
+      re[VAR__53647] = VAR__temp;
+      strcpy(A_STRING[VAR__53647], tc);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647][0] == 'm' )
+      {
+         printf("%.2f ", re[VAR__53647]);
+      }
+   }
+
+   VAR__53647 = VAR_1238123 - 1;
+
+   while ( A_STRING[VAR__53647][0] == 'm' )
+   {
+      VAR__53647--;
+   }
+
+   printf("%.2f", re[VAR__53647]);
+   for ( VAR__53647 = VAR__53647 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( A_STRING[VAR__53647][0] == 'f' )
+      {
+         printf(" %.2f", re[VAR__53647]);
+      }
+   }
+}

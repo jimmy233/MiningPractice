@@ -1,0 +1,68 @@
+struct info
+{
+   char        id[30];
+   char        name[30];
+   char        gen;
+   int         age;
+   float       grade;
+   char        add[30];
+   struct info *VAR__NEXT;
+};
+int VAR_1238123;
+struct info *creat(void)
+{
+   struct info *VAR__HEAD;
+   struct info *ANOTHER_POINTER;
+
+   VAR_1238123 = 0;
+   VAR__HEAD   = ( ANOTHER_POINTER = (struct info *)malloc(LEN));
+   scanf("%s", &ANOTHER_POINTER->id);
+
+   while ( strcmp(ANOTHER_POINTER->id, "end"))
+   {
+      scanf("%s %c %d %f %s", &ANOTHER_POINTER->name, &ANOTHER_POINTER->gen, &ANOTHER_POINTER->age, &ANOTHER_POINTER->grade, &ANOTHER_POINTER->add);
+      VAR_1238123 = VAR_1238123 + 1;
+
+      if ( VAR_1238123 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+         ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+      }
+
+      VAR__HEAD       = ANOTHER_POINTER;
+      ANOTHER_POINTER = (struct info *)malloc(LEN);
+      scanf("%s", &ANOTHER_POINTER->id);
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct info *VAR__HEAD)
+{
+   struct info *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         printf("%s %s %c %d %g %s\n", VAR_233->id, VAR_233->name, VAR_233->gen, VAR_233->age, VAR_233->grade, VAR_233->add);
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+   }
+}
+
+
+void main()
+{
+   struct info *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+}

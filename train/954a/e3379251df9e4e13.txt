@@ -1,0 +1,78 @@
+void main()
+{
+   int VAR__819283[100] = { 0 };
+   int VAR__53647;
+   int VAR__21230;
+   int VAR_1238123;
+   int VAR__SUM = 0;
+   int VAR_233;
+   struct student
+   {
+      char name[20];
+      int  qimo;
+      int  banpin;
+      char ganbu;
+      char pro;
+      int  pap;
+   }
+   stu[101];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d%d %c %c%d", stu[VAR__53647].name, &stu[VAR__53647].qimo, &stu[VAR__53647].banpin, &stu[VAR__53647].ganbu, &stu[VAR__53647].pro, &stu[VAR__53647].pap);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].qimo > 80 ) && ( stu[VAR__53647].pap >= 1 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].qimo > 85 ) && ( stu[VAR__53647].banpin > 80 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].qimo > 90 )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].qimo > 85 ) && ( stu[VAR__53647].pro == 'Y' ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].banpin > 80 ) && ( stu[VAR__53647].ganbu == 'Y' ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] < VAR__819283[VAR__21230 + 1] )
+         {
+            VAR_233 = VAR__819283[VAR__21230 + 1];
+            VAR__819283[VAR__21230 + 1] = VAR__819283[VAR__21230];
+            VAR__819283[VAR__21230]     = VAR_233;
+            stu[100]            = stu[VAR__21230 + 1];
+            stu[VAR__21230 + 1] = stu[VAR__21230];
+            stu[VAR__21230]     = stu[100];
+         }
+      }
+   }
+
+
+
+   printf("%s\n%d\n%d\n", stu[0].name, VAR__819283[0], VAR__SUM);
+}

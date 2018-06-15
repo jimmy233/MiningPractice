@@ -1,0 +1,76 @@
+int germs[4][9][9];
+void reproduction(int VAR__53647, int VAR_1238123)
+{
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__7685;
+   int VAR__3918907;
+
+   if ( VAR__53647 == VAR_1238123 )
+   {
+      return;
+   }
+
+   for ( VAR__7685 = 0; VAR__7685 <= 8; VAR__7685++ )
+   {
+      for ( VAR__3918907 = 0; VAR__3918907 <= 8; VAR__3918907++ )
+      {
+         for ( VAR__21230 = -1; VAR__21230 <= 1; VAR__21230++ )
+         {
+            for ( VAR__8444594 = -1; VAR__8444594 <= 1; VAR__8444594++ )
+            {
+               germs[VAR__53647 + 1][VAR__7685 + VAR__21230][VAR__3918907 + VAR__8444594] += germs[VAR__53647][VAR__7685][VAR__3918907];
+            }
+         }
+
+         germs[VAR__53647 + 1][VAR__7685][VAR__3918907] += germs[VAR__53647][VAR__7685][VAR__3918907];
+      }
+   }
+
+   reproduction(VAR__53647 + 1, VAR_1238123);
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 <= 4; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 <= 8; VAR__8444594++ )
+         {
+            germs[VAR__53647][VAR__21230][VAR__8444594] = 0;
+         }
+      }
+   }
+
+   germs[0][4][4] = VAR__1238129;
+   reproduction(0, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= 8; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         if ( VAR__21230 == 8 )
+         {
+            cout << germs[VAR_1238123][VAR__53647][VAR__21230];
+         }
+         else
+         {
+            ( cout << germs[VAR_1238123][VAR__53647][VAR__21230] ) << " ";
+         }
+      }
+
+      cout << endl;
+   }
+
+   cin.get();
+   cin.get();
+   return 0;
+}

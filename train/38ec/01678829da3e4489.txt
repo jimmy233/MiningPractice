@@ -1,0 +1,129 @@
+int year(int VAR__3918907)
+{
+   int VAR__819283;
+
+   if (((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 ))
+   {
+      VAR__819283 = 366;
+   }
+   else
+   {
+      VAR__819283 = 365;
+   }
+
+   return VAR__819283;
+}
+
+
+int month(int VAR__1238129)
+{
+   int VAR__12302;
+
+   switch ( VAR__1238129 )
+   {
+   case 1:
+      VAR__12302 = 31;
+      break;
+
+   case 2:
+      VAR__12302 = 28;
+      break;
+
+   case 3:
+      VAR__12302 = 31;
+      break;
+
+   case 4:
+      VAR__12302 = 30;
+      break;
+
+   case 5:
+      VAR__12302 = 31;
+      break;
+
+   case 6:
+      VAR__12302 = 30;
+      break;
+
+   case 7:
+      VAR__12302 = 31;
+      break;
+
+   case 8:
+      VAR__12302 = 31;
+      break;
+
+   case 9:
+      VAR__12302 = 30;
+      break;
+
+   case 10:
+      VAR__12302 = 31;
+      break;
+
+   case 11:
+      VAR__12302 = 30;
+      break;
+
+   case 12:
+      VAR__12302 = 31;
+      break;
+   }
+
+   return VAR__12302;
+}
+
+
+void main()
+{
+   int y1;
+   int y2;
+   int m1;
+   int m2;
+   int d1;
+   int d2;
+   int VAR__53647;
+   int ds = 0;
+
+   scanf("%d%d%d", &y1, &m1, &d1);
+   scanf("%d%d%d", &y2, &m2, &d2);
+   for ( VAR__53647 = y1; VAR__53647 < y2; VAR__53647++ )
+   {
+      ds = ds + year(VAR__53647);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < m1; VAR__53647++ )
+   {
+      ds = ds - month(VAR__53647);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < m2; VAR__53647++ )
+   {
+      ds = ds + month(VAR__53647);
+   }
+
+   ds = ( ds + d2 ) - d1;
+
+   if (( y1 == y2 ) && ( year(y1) == 366 ))
+   {
+      if (( m2 > 2 ) && ( m1 < 3 ))
+      {
+         ds = ds + 1;
+      }
+   }
+
+   if ( y1 != y2 )
+   {
+      if (( year(y1) == 366 ) && ( m1 > 2 ))
+      {
+         ds = ds - 1;
+      }
+
+      if (( year(y2) == 366 ) && ( m2 > 2 ))
+      {
+         ds = ds + 1;
+      }
+   }
+
+   printf("%d\n", ds);
+}

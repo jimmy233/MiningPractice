@@ -1,0 +1,71 @@
+int VAR__127322(unsigned int year, int month, int day)
+{
+   int VAR__temp = 0;
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      VAR__temp = 1;
+   }
+
+   int monthday[13] = { 0, 31, 28 + VAR__temp, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int summonth     = 0;
+   int VAR__SUM     = 0;
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < month; VAR__53647++ )
+   {
+      summonth += monthday[VAR__53647];
+   }
+
+   VAR__SUM = summonth + day;
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   unsigned int year;
+   unsigned int month;
+   unsigned int day;
+
+   scanf("%d %d %d", &year, &month, &day);
+   int          VAR__53647;
+   unsigned int sumyear = 0;
+   sumyear += (((( year - 1 ) / 4 ) * (( 1 * 4 ) + 1 )) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 );
+   sumyear += (( year - 1 ) % 4 ) * 1;
+   unsigned int total;
+   total = sumyear + VAR__127322(year, month, day);
+   int week;
+   week = total % 7;
+   switch ( week )
+   {
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+
+   case 0:
+      printf("Sun.");
+      break;
+   }
+
+   return 0;
+}

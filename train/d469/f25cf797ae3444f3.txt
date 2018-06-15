@@ -1,0 +1,45 @@
+char ls[MAX];
+int pafind(int start, int LEN_OF_STH);
+
+int main()
+{
+   int LEN_OF_STH;
+
+   cin >> ls;
+   LEN_OF_STH = strlen(ls);
+   for ( int ll = 2; ll <= LEN_OF_STH; ll++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - ll ); VAR__53647++ )
+      {
+         if ( pafind(VAR__53647, ll))
+         {
+            for ( int VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + ll ); VAR__21230++ )
+            {
+               cout << ls[VAR__21230];
+            }
+
+            cout << endl;
+         }
+      }
+   }
+
+   return 0;
+}
+
+
+int pafind(int start, int LEN_OF_STH)
+{
+   int maxl = LEN_OF_STH / 2;
+   int ok   = 1;
+
+   for ( int VAR__53647 = start; VAR__53647 < ( start + maxl ); VAR__53647++ )
+   {
+      if ( ls[VAR__53647] != ls[(( start + LEN_OF_STH ) - 1 ) - ( VAR__53647 - start )] )
+      {
+         ok = 0;
+         break;
+      }
+   }
+
+   return ok;
+}

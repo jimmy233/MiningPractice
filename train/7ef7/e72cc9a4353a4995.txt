@@ -1,0 +1,100 @@
+void step1(int VAR__819283[100][100], int VAR_1238123)
+{
+   int hmin;
+   int lmin;
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      hmin = VAR__819283[VAR__53647][0];
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__53647][VAR__21230] < hmin )
+         {
+            hmin = VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] -= hmin;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      lmin = VAR__819283[0][VAR__53647];
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230][VAR__53647] < lmin )
+         {
+            lmin = VAR__819283[VAR__21230][VAR__53647];
+         }
+      }
+
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__21230][VAR__53647] -= lmin;
+      }
+   }
+}
+
+
+void step2(int VAR__819283[100][100], int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__53647][VAR__21230] = VAR__819283[VAR__53647 + 1][VAR__21230];
+      }
+   }
+
+
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__819283[VAR__21230][VAR__53647] = VAR__819283[VAR__21230][VAR__53647 + 1];
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   int nn = VAR_1238123;
+
+   while ( nn-- )
+   {
+      int tn = VAR_1238123;
+      int VAR__819283[100][100];
+      for ( int VAR__53647 = 0; VAR__53647 < tn; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < tn; VAR__21230++ )
+         {
+            cin >> VAR__819283[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      int VAR__SUM = 0;
+
+      while ( tn >= 2 )
+      {
+         step1(VAR__819283, tn);
+         VAR__SUM += VAR__819283[1][1];
+         step2(VAR__819283, tn);
+         tn--;
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,113 @@
+char VAR__4857423[500][500] = { { ' ' } };
+int  VAR__819283[500]       = { 0 };
+int  VAR__COUNT             = 0;
+int  VAR_1238123;
+int  VAR__MAX = 0;
+char tp[300] = { ' ' };
+char target[501] = { ' ' };
+void getstring(int start, int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR__1238129;
+
+   strcpy(tp, " ");
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      tp[VAR__53647] = target[start + VAR__53647];
+   }
+}
+
+
+void find()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR__1238129;
+   int VAR_FLAG = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      if ( strcmp(VAR__4857423[VAR__53647], tp) == 0 )
+      {
+         VAR__819283[VAR__53647]++;
+         VAR_FLAG = 7;
+         break;
+      }
+   }
+
+
+   if ( VAR_FLAG == 0 )
+   {
+      VAR__COUNT++;
+      strcpy(VAR__4857423[VAR__COUNT], tp);
+      VAR__819283[VAR__COUNT]++;
+   }
+}
+
+
+void findmax()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR__1238129;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+      }
+   }
+}
+
+
+void print()
+{
+   int VAR__53647;
+
+   if ( VAR__MAX <= 1 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 1; VAR__53647 <= VAR__COUNT; VAR__53647++ )
+      {
+         if ( VAR__819283[VAR__53647] == VAR__MAX )
+         {
+            printf("%s\n", VAR__4857423[VAR__53647]);
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR__1238129;
+
+   scanf("%d\n", &VAR_1238123);
+   gets(target);
+   VAR__1111 = strlen(target);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__1111 - VAR_1238123 ); VAR__53647++ )
+   {
+      getstring(VAR__53647, VAR_1238123);
+      find();
+   }
+
+   findmax();
+   print();
+   return 7;
+}

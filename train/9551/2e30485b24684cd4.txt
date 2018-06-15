@@ -1,0 +1,65 @@
+struct Inf
+{
+   char VAR__4857423[10];
+   int  VAR__819283;
+};
+int main()
+{
+   int        VAR_1238123;
+   int        o            = 0;
+   int        VAR__3918907 = 0;
+   int        VAR__temp;
+   int        VAR__53647;
+   int        VAR__21230;
+   char       VAR__TEMP[10];
+   struct Inf inf[100];
+   struct Inf old[100];
+   struct Inf young[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", inf[VAR__53647].VAR__4857423, &inf[VAR__53647].VAR__819283);
+
+      if ( inf[VAR__53647].VAR__819283 >= 60 )
+      {
+         strcpy(old[o].VAR__4857423, inf[VAR__53647].VAR__4857423);
+         old[o].VAR__819283 = inf[VAR__53647].VAR__819283;
+         o++;
+      }
+      else
+      {
+         strcpy(young[VAR__3918907].VAR__4857423, inf[VAR__53647].VAR__4857423);
+         young[VAR__3918907].VAR__819283 = inf[VAR__53647].VAR__819283;
+         VAR__3918907++;
+      }
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < o; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( o - VAR__21230 ); VAR__53647++ )
+      {
+         if ( old[VAR__53647].VAR__819283 < old[VAR__53647 + 1].VAR__819283 )
+         {
+            strcpy(VAR__TEMP, old[VAR__53647].VAR__4857423);
+            strcpy(old[VAR__53647].VAR__4857423, old[VAR__53647 + 1].VAR__4857423);
+            strcpy(old[VAR__53647 + 1].VAR__4857423, VAR__TEMP);
+            VAR__temp = old[VAR__53647].VAR__819283;
+            old[VAR__53647].VAR__819283     = old[VAR__53647 + 1].VAR__819283;
+            old[VAR__53647 + 1].VAR__819283 = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < o; VAR__53647++ )
+   {
+      printf("%s\n", old[VAR__53647].VAR__4857423);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__3918907; VAR__53647++ )
+   {
+      printf("%s\n", young[VAR__53647].VAR__4857423);
+   }
+
+   return 0;
+}

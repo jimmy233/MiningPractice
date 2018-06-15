@@ -1,0 +1,70 @@
+int A[9][9][5];
+int main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR__temp;
+   int VAR__8444594;
+   int number1;
+   int number2;
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 <= 4; VAR__8444594++ )
+         {
+            A[VAR__53647][VAR__21230][VAR__8444594] = 0;
+         }
+      }
+   }
+
+   scanf("%d%d", &VAR__1238129, &VAR__temp);
+   A[4][4][0] = VAR__1238129;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__temp; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < 9; VAR__8444594++ )
+         {
+            A[VAR__21230][VAR__8444594][VAR__53647] = A[VAR__21230][VAR__8444594][VAR__53647 - 1] * 2;
+            for ( number1 = -1; number1 < 2; number1++ )
+            {
+               for ( number2 = -1; number2 < 2; number2++ )
+               {
+                  if ((((( VAR__21230 + number1 ) >= 0 ) && (( VAR__21230 + number1 ) < 9 )) && (( VAR__8444594 + number2 ) >= 0 )) && (( VAR__8444594 + number2 ) < 9 ))
+                  {
+                     if (( number1 != 0 ) || ( number2 != 0 ))
+                     {
+                        A[VAR__21230][VAR__8444594][VAR__53647] = A[VAR__21230][VAR__8444594][VAR__53647] + A[VAR__21230 + number1][VAR__8444594 + number2][VAR__53647 - 1];
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   for ( VAR__8444594 = 0; VAR__8444594 < 9; VAR__8444594++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( VAR__21230 == 0 )
+         {
+            printf("%d", A[VAR__8444594][VAR__21230][VAR__53647 - 1]);
+         }
+         else
+         {
+            printf(" %d", A[VAR__8444594][VAR__21230][VAR__53647 - 1]);
+         }
+      }
+
+      if ( VAR__53647 < 8 )
+      {
+         printf("\n");
+      }
+   }
+
+   return 0;
+}

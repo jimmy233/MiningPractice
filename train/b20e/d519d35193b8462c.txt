@@ -1,0 +1,135 @@
+int King[1000];
+int TianJi[1000];
+int Partition(int A[1000], int VAR_233, int VAR_666)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__7685 = A[VAR_233];
+   int VAR__TEMP;
+
+   VAR__53647 = VAR_233;
+   for ( VAR__21230 = VAR_233 + 1; VAR__21230 <= VAR_666; VAR__21230++ )
+   {
+      if ( A[VAR__21230] >= VAR__7685 )
+      {
+         VAR__53647   += 1;
+         VAR__TEMP     = A[VAR__21230];
+         A[VAR__21230] = A[VAR__53647];
+         A[VAR__53647] = VAR__TEMP;
+      }
+   }
+
+   VAR__TEMP     = A[VAR__53647];
+   A[VAR__53647] = A[VAR_233];
+   A[VAR_233]    = VAR__TEMP;
+   return VAR__53647;
+}
+
+
+int QuikSort(int A[1000], int VAR_233, int VAR_129012)
+{
+   int VAR_666;
+
+   if ( VAR_233 < VAR_129012 )
+   {
+      VAR_666 = Partition(A, VAR_233, VAR_129012);
+      QuikSort(A, VAR_233, VAR_666 - 1);
+      QuikSort(A, VAR_666 + 1, VAR_129012);
+   }
+
+   return 0;
+}
+
+
+int score(int A[1000], int B[1000], int VAR_1238123)
+{
+   int Money = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1238129;
+
+   VAR__53647   = 0;
+   VAR__1238129 = 0;
+
+   while (( VAR__53647 + VAR__1238129 ) != ( VAR_1238123 - 1 ))
+   {
+      if (( VAR__53647 == 0 ) && ( VAR__1238129 == 0 ))
+      {
+         VAR__21230   = 0;
+         VAR__8444594 = 0;
+      }
+
+      if ( A[VAR__21230] > B[VAR__53647] )
+      {
+         Money += 1;
+         VAR__21230++;
+         VAR__53647++;
+      }
+      else
+      if ( A[( VAR_1238123 - VAR__8444594 ) - 1] > B[( VAR_1238123 - VAR__1238129 ) - 1] )
+      {
+         Money += 1;
+         VAR__8444594++;
+         VAR__1238129++;
+      }
+      else
+      {
+         if ( A[( VAR_1238123 - VAR__8444594 ) - 1] < B[VAR__53647] )
+         {
+            Money -= 1;
+         }
+
+         VAR__8444594++;
+         VAR__53647++;
+      }
+   }
+
+   if ( A[VAR__21230] > B[VAR__53647] )
+   {
+      Money += 1;
+   }
+   else
+   if ( A[VAR__21230] < B[VAR__53647] )
+   {
+      Money -= 1;
+   }
+
+
+   return Money;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int Money;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( 1 )
+   {
+      Money = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &TianJi[VAR__53647]);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &King[VAR__53647]);
+      }
+
+      QuikSort(TianJi, 0, VAR_1238123 - 1);
+      QuikSort(King, 0, VAR_1238123 - 1);
+      Money = score(TianJi, King, VAR_1238123);
+      printf("%d\n", Money * 200);
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+   }
+}

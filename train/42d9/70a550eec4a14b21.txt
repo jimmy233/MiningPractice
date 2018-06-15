@@ -1,0 +1,53 @@
+int main()
+{
+   int   VAR__7685[10];
+   int   VAR__3918907[10];
+   int   VAR__9290[10];
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__4857423;
+   int   maxi;
+   int   maxj;
+   float VAR_9494[10][10];
+   float VAR__MAX;
+
+   VAR__MAX = 0.0f;
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &VAR__7685[VAR__53647], &VAR__3918907[VAR__53647], &VAR__9290[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR_9494[VAR__53647][VAR__21230] = sqrt(((( VAR__7685[VAR__53647] - VAR__7685[VAR__21230] ) * ( VAR__7685[VAR__53647] - VAR__7685[VAR__21230] )) + (( VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230] ) * ( VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230] ))) + (( VAR__9290[VAR__53647] - VAR__9290[VAR__21230] ) * ( VAR__9290[VAR__53647] - VAR__9290[VAR__21230] )));
+      }
+   }
+
+   for ( VAR__4857423 = 0; VAR__4857423 < (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__4857423++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( VAR_9494[VAR__53647][VAR__21230] > VAR__MAX )
+            {
+               VAR__MAX = VAR_9494[VAR__53647][VAR__21230];
+               maxi     = VAR__53647;
+               maxj     = VAR__21230;
+            }
+         }
+      }
+
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", VAR__7685[maxi], VAR__3918907[maxi], VAR__9290[maxi], VAR__7685[maxj], VAR__3918907[maxj], VAR__9290[maxj], VAR__MAX);
+      VAR_9494[maxi][maxj] = 0.0f;
+      VAR__MAX             = 0.0f;
+      maxi = VAR__53647;
+      maxj = VAR__21230;
+   }
+
+   return 0;
+}

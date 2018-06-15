@@ -1,0 +1,93 @@
+int VAR__NUM[100][100];
+int VAR_1238123;
+void modify()
+{
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int VAR__MIN = VAR__NUM[VAR__53647][0];
+      for ( int VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__53647][VAR__21230] < VAR__MIN )
+         {
+            VAR__MIN = VAR__NUM[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__NUM[VAR__53647][VAR__21230] -= VAR__MIN;
+      }
+   }
+
+   for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      int VAR__MIN = VAR__NUM[0][VAR__21230];
+      for ( int VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647][VAR__21230] < VAR__MIN )
+         {
+            VAR__MIN = VAR__NUM[VAR__53647][VAR__21230];
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647][VAR__21230] -= VAR__MIN;
+      }
+   }
+}
+
+
+void remove()
+{
+   for ( int VAR__53647 = 1; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__NUM[VAR__53647][VAR__21230] = VAR__NUM[VAR__53647 + 1][VAR__21230];
+      }
+   }
+
+   for ( int VAR__21230 = 1; VAR__21230 < ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647][VAR__21230] = VAR__NUM[VAR__53647][VAR__21230 + 1];
+      }
+   }
+}
+
+
+int main()
+{
+   int N;
+
+   cin >> N;
+   int round = N;
+
+   while ( round-- )
+   {
+      VAR_1238123 = N;
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            cin >> VAR__NUM[VAR__53647][VAR__21230];
+         }
+      }
+
+      int VAR__SUM = 0;
+
+      while ( VAR_1238123 > 1 )
+      {
+         modify();
+         VAR__SUM += VAR__NUM[1][1];
+         remove();
+         VAR_1238123--;
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

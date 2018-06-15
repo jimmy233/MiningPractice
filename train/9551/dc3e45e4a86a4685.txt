@@ -1,0 +1,82 @@
+void main()
+{
+   struct p
+   {
+      int  VAR__8444594;
+      char id[10];
+      int  age;
+   }
+   pa[100] = { 0, "", 0 };
+   struct p
+   {
+      int  VAR__8444594;
+      char id[10];
+      int  age;
+   }
+   pb[100] = { 0, "", 0 };
+   struct p
+   {
+      int  VAR__8444594;
+      char id[10];
+      int  age;
+   }
+        VAR__TEMP;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  age;
+   int  na;
+   int  nb;
+   char id[10] = { "" };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0, VAR__21230 = 0; ( VAR__53647 + VAR__21230 ) < VAR_1238123; )
+   {
+      scanf("%s%d", &id, &age);
+
+      if ( age >= 60 )
+      {
+         pa[VAR__53647].age = age;
+         strcpy(pa[VAR__53647].id, id);
+         pa[VAR__53647].VAR__8444594 = VAR__53647;
+         VAR__53647++;
+      }
+      else
+      {
+         pb[VAR__21230].age = age;
+         strcpy(pb[VAR__21230].id, id);
+         pb[VAR__21230].VAR__8444594 = VAR__21230;
+         VAR__21230++;
+      }
+   }
+
+   na = VAR__53647;
+   nb = VAR__21230;
+   for ( VAR__21230 = 1; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if ( pa[VAR__53647].age < pa[VAR__53647 + 1].age )
+         {
+            VAR__TEMP.age = pa[VAR__53647 + 1].age;
+            strcpy(VAR__TEMP.id, pa[VAR__53647 + 1].id);
+            pa[VAR__53647 + 1].age = pa[VAR__53647].age;
+            strcpy(pa[VAR__53647 + 1].id, pa[VAR__53647].id);
+            pa[VAR__53647].age = VAR__TEMP.age;
+            strcpy(pa[VAR__53647].id, VAR__TEMP.id);
+         }
+      }
+   }
+
+   printf("%s", pa[0].id);
+   for ( VAR__53647 = 1; VAR__53647 <= na; VAR__53647++ )
+   {
+      printf("\n%s", pa[VAR__53647].id);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 <= nb; VAR__21230++ )
+   {
+      puts(pb[VAR__21230].id);
+   }
+}

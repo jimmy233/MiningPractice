@@ -1,0 +1,43 @@
+int main()
+{
+   char ANOTHER_STRING[31];
+   char YET_ANOTHER_STRING[31];
+   char *ANOTHER_POINTER;
+   char *YET_ANOTHER_POINTER;
+
+   cin.getline(ANOTHER_STRING, 31);
+   int VAR_FLAG = 0;
+   for ( ANOTHER_POINTER = ANOTHER_STRING, YET_ANOTHER_POINTER = YET_ANOTHER_STRING; ( *ANOTHER_POINTER ) != '\0'; ANOTHER_POINTER++, YET_ANOTHER_POINTER++ )
+   {
+      *YET_ANOTHER_POINTER = *ANOTHER_POINTER;
+
+      if (((( *ANOTHER_POINTER ) - '0' ) < 0 ) || ((( *ANOTHER_POINTER ) - '0' ) > 9 ))
+      {
+         VAR_FLAG++;
+
+         if ( VAR_FLAG >= 2 )
+         {
+            YET_ANOTHER_POINTER--;
+         }
+      }
+      else
+      {
+         VAR_FLAG = 0;
+      }
+   }
+
+   *YET_ANOTHER_POINTER = '\0';
+   for ( YET_ANOTHER_POINTER = YET_ANOTHER_STRING; ( *YET_ANOTHER_POINTER ) != '\0'; YET_ANOTHER_POINTER++ )
+   {
+      if (((( *YET_ANOTHER_POINTER ) - '0' ) >= 0 ) && ((( *YET_ANOTHER_POINTER ) - '0' ) <= 9 ))
+      {
+         cout << ( *YET_ANOTHER_POINTER );
+      }
+      else
+      {
+         cout << endl;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,67 @@
+int main()
+{
+   int  VAR_1238123     = 0;
+   char VAR_9494[501]   = { 0 };
+   char word[501][6]    = { 0 };
+   int  VAR__COUNT[501] = { 0 };
+   int  top             = 0;
+
+   scanf("%d\n", &VAR_1238123);
+   gets(VAR_9494);
+   int VAR__53647 = 0;
+   int VAR__21230 = 0;
+   int LEN_OF_STH = strlen(VAR_9494);
+   int maxcount   = 0;
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         word[top][VAR__21230] = VAR_9494[VAR__21230 + VAR__53647];
+      }
+
+      word[top][VAR_1238123] = '\0';
+      for ( VAR__21230 = top - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ( strcmp(word[VAR__21230], word[top]) == 0 )
+         {
+            VAR__COUNT[VAR__21230]++;
+
+            if ( maxcount < VAR__COUNT[VAR__21230] )
+            {
+               maxcount = VAR__COUNT[VAR__21230];
+            }
+
+            break;
+         }
+      }
+
+      if ( VAR__21230 < 0 )
+      {
+         VAR__COUNT[top] = 1;
+
+         if ( maxcount < VAR__COUNT[top] )
+         {
+            maxcount = VAR__COUNT[top];
+         }
+
+         top++;
+      }
+   }
+
+   if ( maxcount <= 1 )
+   {
+      printf("NO");
+      return 0;
+   }
+
+   printf("%d", maxcount);
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( VAR__COUNT[VAR__53647] == maxcount )
+      {
+         printf("\n%s", word[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

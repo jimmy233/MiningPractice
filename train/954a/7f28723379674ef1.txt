@@ -1,0 +1,86 @@
+struct student
+{
+   char name[30];
+   int  qimo;
+   int  banji;
+   char gb;
+   char xb;
+   int  lw;
+};
+int VAR__8444594 = 0;
+void main()
+{
+   int money(struct student VAR__819283);
+   int cmp(int VAR__819283[], int VAR_1238123);
+
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__19328[200] = { 0 };
+   int            VAR__1238129;
+   long           VAR_666 = 0;
+   struct student VAR__819283[105];
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].qimo, &VAR__819283[VAR__53647].banji, &VAR__819283[VAR__53647].gb, &VAR__819283[VAR__53647].xb, &VAR__819283[VAR__53647].lw);
+      VAR__19328[VAR__53647] = money(VAR__819283[VAR__53647]);
+      VAR_666 = VAR_666 + VAR__19328[VAR__53647];
+   }
+
+   VAR__1238129 = cmp(VAR__19328, VAR_1238123);
+   printf("%s\n", VAR__819283[VAR__8444594].name);
+   printf("%d\n", VAR__1238129);
+   printf("%ld", VAR_666);
+}
+
+
+int money(struct student VAR__819283)
+{
+   int VAR__SUM = 0;
+
+   if (( VAR__819283.qimo > 80 ) && ( VAR__819283.lw >= 1 ))
+   {
+      VAR__SUM = 8000;
+   }
+
+   if (( VAR__819283.banji > 80 ) && ( VAR__819283.qimo > 85 ))
+   {
+      VAR__SUM = VAR__SUM + 4000;
+   }
+
+   if ( VAR__819283.qimo > 90 )
+   {
+      VAR__SUM = VAR__SUM + 2000;
+   }
+
+   if (( VAR__819283.qimo > 85 ) && ( VAR__819283.xb == 'Y' ))
+   {
+      VAR__SUM = VAR__SUM + 1000;
+   }
+
+   if (( VAR__819283.banji > 80 ) && ( VAR__819283.gb == 'Y' ))
+   {
+      VAR__SUM = VAR__SUM + 850;
+   }
+
+   return VAR__SUM;
+}
+
+
+int cmp(int VAR__819283[], int VAR_1238123)
+{
+   int VAR__MAX = VAR__819283[0];
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__MAX < VAR__819283[VAR__53647 + 1] )
+      {
+         VAR__MAX     = VAR__819283[VAR__53647 + 1];
+         VAR__8444594 = VAR__53647 + 1;
+      }
+   }
+
+
+   return VAR__MAX;
+}

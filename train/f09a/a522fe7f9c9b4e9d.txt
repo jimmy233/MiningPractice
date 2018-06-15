@@ -1,0 +1,103 @@
+struct HaHa
+{
+   int VAR__7685;
+   int VAR__3918907;
+   int VAR__9290[2][1000];
+   int VAR_9Q8Q90[2000];
+};
+struct HaHa scan()
+{
+   struct HaHa hehe;
+   int         VAR__53647;
+   int         VAR__21230;
+
+   scanf("%d%d", &hehe.VAR__7685, &hehe.VAR__3918907);
+   for ( VAR__53647 = 0; VAR__53647 < hehe.VAR__7685; VAR__53647++ )
+   {
+      scanf("%d", &hehe.VAR__9290[0][VAR__53647]);
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < hehe.VAR__3918907; VAR__21230++ )
+   {
+      scanf("%d", &hehe.VAR__9290[1][VAR__21230]);
+   }
+
+   return hehe;
+}
+
+
+struct HaHa line(struct HaHa yahoo)
+{
+   int         VAR__53647;
+   int         VAR__TEMP;
+   int         VAR__21230;
+   struct HaHa yahoo1;
+
+   for ( VAR__53647 = 0; VAR__53647 < yahoo.VAR__7685; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < yahoo.VAR__7685; VAR__21230++ )
+      {
+         if ( yahoo.VAR__9290[0][VAR__53647] > yahoo.VAR__9290[0][VAR__21230] )
+         {
+            VAR__TEMP = yahoo.VAR__9290[0][VAR__53647];
+            yahoo.VAR__9290[0][VAR__53647] = yahoo.VAR__9290[0][VAR__21230];
+            yahoo.VAR__9290[0][VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < yahoo.VAR__3918907; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < yahoo.VAR__3918907; VAR__21230++ )
+      {
+         if ( yahoo.VAR__9290[1][VAR__53647] > yahoo.VAR__9290[1][VAR__21230] )
+         {
+            VAR__TEMP = yahoo.VAR__9290[1][VAR__53647];
+            yahoo.VAR__9290[1][VAR__53647] = yahoo.VAR__9290[1][VAR__21230];
+            yahoo.VAR__9290[1][VAR__21230] = VAR__TEMP;
+         }
+      }
+   }
+
+   yahoo1 = yahoo;
+   return yahoo1;
+}
+
+
+struct HaHa combine(struct HaHa xx)
+{
+   int         VAR__53647;
+   struct HaHa xx1;
+
+   for ( VAR__53647 = 0; VAR__53647 < xx.VAR__7685; VAR__53647++ )
+   {
+      xx.VAR_9Q8Q90[VAR__53647] = xx.VAR__9290[0][VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < xx.VAR__3918907; VAR__53647++ )
+   {
+      xx.VAR_9Q8Q90[VAR__53647 + xx.VAR__7685] = xx.VAR__9290[1][VAR__53647];
+   }
+
+   xx1 = xx;
+   return xx1;
+}
+
+
+void print(struct HaHa xxx)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < (( xxx.VAR__7685 + xxx.VAR__3918907 ) - 1 ); VAR__53647++ )
+   {
+      printf("%d ", xxx.VAR_9Q8Q90[VAR__53647]);
+   }
+
+   printf("%d", xxx.VAR_9Q8Q90[( xxx.VAR__7685 + xxx.VAR__3918907 ) - 1]);
+}
+
+
+void main()
+{
+   print(combine(line(scan())));
+}

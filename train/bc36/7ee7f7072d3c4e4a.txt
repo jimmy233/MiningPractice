@@ -1,0 +1,98 @@
+struct TIME
+{
+   int start;
+   int end;
+};
+int mycp(const void *e1, const void *e2)
+{
+   return ( *((const int *)e1 )) - ( *((const int *)e2 ));
+}
+
+
+int mycp1(const void *e1, const void *e2)
+{
+   return ( *((const int *)e1 )) - ( *((const int *)e2 ));
+}
+
+
+int mycp2(const void *e1, const void *e2)
+{
+   return ( *((const int *)e2 )) - ( *((const int *)e1 ));
+}
+
+
+int main()
+{
+   int VAR_1238123 = 0;
+
+   scanf("%d", &VAR_1238123);
+   float man[40];
+   float female[40];
+   int   intman[40];
+   int   intfemale[40];
+   int   nm = 0;
+   int   nf = 0;
+   float temph;
+   char  gen[10];
+
+   while ( VAR_1238123-- )
+   {
+      scanf("%s %f", gen, &temph);
+
+      if ( gen[0] == 'm' )
+      {
+         man[nm] = temph;
+         nm++;
+      }
+      else
+      if ( gen[0] == 'f' )
+      {
+         female[nf] = temph;
+         nf++;
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < nm; VAR__53647++ )
+   {
+      intman[VAR__53647] = 1000 * man[VAR__53647];
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < nf; VAR__53647++ )
+   {
+      intfemale[VAR__53647] = 1000 * female[VAR__53647];
+   }
+
+   qsort(intman, nm, sizeof( int ), mycp1);
+   qsort(intfemale, nf, sizeof( int ), mycp2);
+   for ( int VAR__53647 = 0; VAR__53647 < nm; VAR__53647++ )
+   {
+      man[VAR__53647] = ((float)intman[VAR__53647] ) / 1000;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < nf; VAR__53647++ )
+   {
+      female[VAR__53647] = ((float)intfemale[VAR__53647] ) / 1000;
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < nm; VAR__53647++ )
+   {
+      printf("%.2f ", man[VAR__53647]);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < nf; VAR__53647++ )
+   {
+      if ( VAR__53647 == ( nf - 1 ))
+      {
+         printf("%.2f\n", female[VAR__53647]);
+      }
+      else
+      {
+         printf("%.2f ", female[VAR__53647]);
+      }
+   }
+
+
+   getchar();
+   getchar();
+   return 1;
+}

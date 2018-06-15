@@ -1,0 +1,41 @@
+struct student
+{
+   char           id[50];
+   char           VAR_9494[50];
+   char           sex;
+   int            age;
+   char           score[10];
+   char           add[20];
+   struct student *po;
+};
+int main()
+{
+   struct student *VAR_233;
+   struct student *VAR_666;
+
+   VAR_666 = (struct student *)malloc(LEN);
+   scanf("%s %s %c %d %s %s", VAR_666->id, VAR_666->VAR_9494, &VAR_666->sex, &VAR_666->age, VAR_666->score, VAR_666->add);
+   VAR_666->po = NULL;
+   VAR_233     = VAR_666;
+   VAR_666     = (struct student *)malloc(LEN);
+   scanf("%s", VAR_666->id);
+
+   while ( strcmp(VAR_666->id, "end") != 0 )
+   {
+      scanf("%s %c %d %s %s", VAR_666->VAR_9494, &VAR_666->sex, &VAR_666->age, VAR_666->score, VAR_666->add);
+      VAR_666->po = VAR_233;
+      VAR_233     = VAR_666;
+      VAR_666     = (struct student *)malloc(LEN);
+      scanf("%s", VAR_666->id);
+   }
+
+   printf("%s %s %c %d %s %s\n", VAR_233->id, VAR_233->VAR_9494, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->add);
+
+   while ( VAR_233->po != NULL )
+   {
+      VAR_233 = VAR_233->po;
+      printf("%s %s %c %d %s %s\n", VAR_233->id, VAR_233->VAR_9494, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->add);
+   }
+
+   return 0;
+}

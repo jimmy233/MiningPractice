@@ -1,0 +1,96 @@
+int main()
+{
+   int map[200][200];
+   int VAR__19328[200][200];
+   int dx[4] = { 0, -1, 0, 1 };
+   int dy[4] = { -1, 0, 1, 0 };
+   int VAR_1238123;
+   int VAR__1238129;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         char ch;
+         cin >> ch;
+
+         if ( ch == '.' )
+         {
+            map[VAR__53647][VAR__21230] = 0;
+         }
+         else
+         if ( ch == '#' )
+         {
+            map[VAR__53647][VAR__21230] = -1;
+         }
+         else
+         {
+            map[VAR__53647][VAR__21230] = 1;
+         }
+      }
+   }
+
+
+   cin >> VAR__1238129;
+   VAR__1238129--;
+
+   while ( VAR__1238129 )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            VAR__19328[VAR__53647][VAR__21230] = map[VAR__53647][VAR__21230];
+         }
+      }
+
+
+      VAR__1238129--;
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            if ( map[VAR__53647][VAR__21230] == 1 )
+            {
+               for ( int VAR__8444594 = 0; VAR__8444594 < 4; VAR__8444594++ )
+               {
+                  int tx = VAR__53647 + dx[VAR__8444594];
+                  int ty = VAR__21230 + dy[VAR__8444594];
+
+                  if ( map[tx][ty] == 0 )
+                  {
+                     VAR__19328[tx][ty] = 1;
+                  }
+               }
+            }
+         }
+      }
+
+
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+         {
+            map[VAR__53647][VAR__21230] = VAR__19328[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   int ans = 0;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         if ( map[VAR__53647][VAR__21230] == 1 )
+         {
+            ans++;
+         }
+      }
+   }
+
+
+
+   ( cout << ans ) << endl;
+   return 0;
+}

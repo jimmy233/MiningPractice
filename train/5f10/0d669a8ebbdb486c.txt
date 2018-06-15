@@ -1,0 +1,159 @@
+struct zifu
+{
+   int  tou;
+   int  VAR__NUM;
+   char VAR__112390[5];
+};
+struct chuan
+{
+   int  VAR__NUM;
+   char VAR__112390[5];
+};
+int main()
+{
+   int          VAR_1238123;
+   int          VAR__4857423;
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__8444594 = 0;
+   int          VAR__temp    = 0;
+   int          VAR_666      = 0;
+   int          VAR_21983012 = 0;
+   int          VAR__1238129 = 0;
+   int          VAR__12302;
+   int          VAR_9494 = 0;
+   int          VAR__MAX;
+   char         VAR__819283[500];
+   struct zifu  zi[1000];
+   struct zifu  VAR__TEMP;
+   struct chuan VAR__19328[1000];
+   struct chuan VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   scanf("\n");
+   for ( VAR__53647 = 0; VAR__53647 < 500; VAR__53647++ )
+   {
+      scanf("%c", &VAR__819283[VAR__53647]);
+
+      if ( VAR__819283[VAR__53647] == '\n' )
+      {
+         VAR__819283[VAR__53647] = '\0';
+         break;
+      }
+   }
+
+   VAR__4857423 = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      zi[VAR__53647].VAR__NUM = 0;
+      zi[VAR__53647].tou      = 0;
+   }
+
+   VAR__TEMP.VAR__NUM = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__4857423 - VAR_1238123 ); VAR__53647++ )
+   {
+      VAR__8444594 = 0;
+      for ( VAR__21230 = VAR__53647; VAR__21230 < ( VAR__53647 + VAR_1238123 ); VAR__21230++ )
+      {
+         VAR__19328[VAR__53647].VAR__112390[VAR__8444594] = VAR__819283[VAR__21230];
+         VAR__8444594++;
+      }
+
+      VAR__19328[VAR__53647].VAR__NUM = VAR__53647;
+      VAR__19328[VAR__53647].VAR__112390[VAR__8444594] = '\0';
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 <= ( VAR__4857423 - VAR_1238123 ); VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 <= (( VAR__4857423 - VAR_1238123 ) - 1 ); VAR__53647++ )
+      {
+         if ( strcmp(VAR__19328[VAR__53647].VAR__112390, VAR__19328[VAR__53647 + 1].VAR__112390) > 0 )
+         {
+            VAR_233 = VAR__19328[VAR__53647];
+            VAR__19328[VAR__53647]     = VAR__19328[VAR__53647 + 1];
+            VAR__19328[VAR__53647 + 1] = VAR_233;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= (( VAR__4857423 - VAR_1238123 ) - 1 ); VAR__53647++ )
+   {
+      VAR__1238129 = 0;
+      for ( VAR__12302 = 0; VAR__12302 < VAR_1238123; VAR__12302++ )
+      {
+         if ( VAR__19328[VAR__53647 + 1].VAR__112390[VAR__12302] == VAR__19328[VAR__53647].VAR__112390[VAR__12302] )
+         {
+            VAR__1238129++;
+         }
+      }
+
+      if ( VAR__1238129 == VAR_1238123 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            zi[VAR__temp].VAR__112390[VAR__21230] = VAR__19328[VAR__53647].VAR__112390[VAR__21230];
+         }
+
+         if ( VAR_9494 == 0 )
+         {
+            zi[VAR__temp].tou = VAR__19328[VAR__53647].VAR__NUM;
+            VAR_9494++;
+         }
+
+         zi[VAR__temp].VAR__NUM++;
+         VAR_21983012++;
+      }
+      else
+      {
+         VAR__temp++;
+         VAR_9494 = 0;
+      }
+   }
+
+   if ( VAR_21983012 == 0 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      VAR__TEMP = zi[0];
+      for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+      {
+         if ( zi[VAR__53647].VAR__NUM > VAR__TEMP.VAR__NUM )
+         {
+            VAR__TEMP = zi[VAR__53647];
+            VAR_666   = VAR__53647;
+         }
+      }
+
+      VAR__MAX = VAR__TEMP.VAR__NUM + 1;
+      printf("%d\n", VAR__MAX);
+      for ( VAR__21230 = 1; VAR__21230 <= VAR__temp; VAR__21230++ )
+      {
+         for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+         {
+            if ( zi[VAR__53647].tou > zi[VAR__53647 + 1].tou )
+            {
+               VAR__TEMP          = zi[VAR__53647];
+               zi[VAR__53647]     = zi[VAR__53647 + 1];
+               zi[VAR__53647 + 1] = VAR__TEMP;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= VAR__temp; VAR__53647++ )
+      {
+         if ( zi[VAR__53647].VAR__NUM == ( VAR__MAX - 1 ))
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               printf("%c", zi[VAR__53647].VAR__112390[VAR__21230]);
+            }
+
+            printf("\n");
+         }
+      }
+   }
+
+   return 0;
+}

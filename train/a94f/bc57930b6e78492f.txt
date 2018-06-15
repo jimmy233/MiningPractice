@@ -1,0 +1,103 @@
+int matrix[101][101];
+void transform(int, int);
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         scanf("%d", &matrix[VAR__53647][VAR__21230]);
+      }
+   }
+
+
+   transform(VAR__1238129, VAR_1238123);
+   return 0;
+}
+
+
+void transform(int VAR__1238129, int VAR_1238123)
+{
+   int total        = VAR__1238129 * VAR_1238123;
+   int index        = 0;
+   int dir          = 0;
+   int VAR__7685    = 0;
+   int VAR__3918907 = 0;
+   int times[4]     = { 0 };
+
+   while ( index < total )
+   {
+      switch ( dir )
+      {
+      case 0:
+         VAR__7685++;
+         VAR__3918907++;
+
+         while ( VAR__3918907 < ( VAR_1238123 - times[1] ))
+         {
+            printf("%d\n", matrix[VAR__7685][VAR__3918907]);
+            VAR__3918907++;
+            index++;
+         }
+
+         break;
+
+      case 1:
+
+         while ( VAR__7685 < ( VAR__1238129 - times[2] ))
+         {
+            printf("%d\n", matrix[VAR__7685][VAR__3918907]);
+            VAR__7685++;
+            index++;
+         }
+
+         break;
+
+      case 2:
+
+         while ( VAR__3918907 > ( times[3] + 1 ))
+         {
+            printf("%d\n", matrix[VAR__7685][VAR__3918907]);
+            VAR__3918907--;
+            index++;
+         }
+
+         break;
+
+      case 3:
+
+         while ( VAR__7685 > times[0] )
+         {
+            printf("%d\n", matrix[VAR__7685][VAR__3918907]);
+            VAR__7685--;
+            index++;
+         }
+
+         break;
+
+      default:
+         break;
+      }
+
+      if (( total - index ) == 1 )
+      {
+         if ( dir == 3 )
+         {
+            VAR__7685++, VAR__3918907++;
+         }
+
+         printf("%d\n", matrix[VAR__7685][VAR__3918907]);
+         index++;
+      }
+
+      times[dir]++;
+      dir = ( dir + 1 ) % 4;
+   }
+}

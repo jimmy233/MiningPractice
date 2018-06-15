@@ -1,0 +1,115 @@
+int VAR__21230;
+struct monkey
+{
+   int           VAR__NUM;
+   struct monkey *VAR__NEXT;
+};
+struct monkey *create(int VAR__4857423)
+{
+   struct monkey *VAR__HEAD;
+   struct monkey *ANOTHER_POINTER;
+   struct monkey *YET_ANOTHER_POINTER;
+   int           VAR__53647;
+
+   ANOTHER_POINTER     = ( YET_ANOTHER_POINTER = (struct monkey *)malloc(LEN));
+   VAR__HEAD           = ANOTHER_POINTER;
+   VAR__HEAD->VAR__NUM = 1;
+   for ( VAR__53647 = 1, ANOTHER_POINTER->VAR__NUM = 1; VAR__53647 < VAR__4857423; VAR__53647++ )
+   {
+      ANOTHER_POINTER                = (struct monkey *)malloc(LEN);
+      ANOTHER_POINTER->VAR__NUM      = VAR__53647 + 1;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+   return VAR__HEAD;
+}
+
+
+struct monkey *findout(struct monkey *start, int VAR__12302)
+{
+   int           VAR__53647;
+   struct monkey *VAR_233;
+
+   VAR_233 = start;
+   for ( VAR__53647 = 1; VAR__53647 < ( VAR__12302 - 1 ); VAR__53647++ )
+   {
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return VAR_233;
+}
+
+
+struct monkey *letout(struct monkey *last)
+{
+   struct monkey *out;
+   struct monkey *VAR__NEXT;
+
+   out             = last->VAR__NEXT;
+   last->VAR__NEXT = out->VAR__NEXT;
+   VAR__NEXT       = out->VAR__NEXT;
+   free(out);
+   return VAR__NEXT;
+}
+
+
+int main()
+{
+   int VAR_1238123[301];
+   int VAR__1238129[300];
+   int VAR__8444594 = 0;
+   int VAR__4857423;
+   int VAR__12302;
+
+   while ( 1 )
+   {
+      scanf("%d %d", &VAR_1238123[VAR__8444594], &VAR__1238129[VAR__8444594]);
+      VAR__8444594++;
+
+      if (( VAR_1238123[VAR__8444594 - 1] == 0 ) && ( VAR__1238129[VAR__8444594 - 1] == 0 ))
+      {
+         break;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR__8444594 - 1 ); VAR__21230++ )
+   {
+      int           VAR__53647;
+      int           king;
+      struct monkey *ANOTHER_POINTER;
+      struct monkey *YET_ANOTHER_POINTER;
+
+      if ( VAR_1238123[VAR__21230] == 1 )
+      {
+         king = VAR_1238123[VAR__21230];
+      }
+      else
+      if ( VAR__1238129[VAR__21230] == 1 )
+      {
+         king = VAR_1238123[VAR__21230];
+      }
+      else
+      {
+         VAR__4857423    = VAR_1238123[VAR__21230];
+         ANOTHER_POINTER = ( YET_ANOTHER_POINTER = create(VAR__4857423));
+         for ( VAR__53647 = 1; VAR__53647 < VAR__4857423; VAR__53647++ )
+         {
+            VAR__12302          = VAR__1238129[VAR__21230];
+            YET_ANOTHER_POINTER = findout(ANOTHER_POINTER, VAR__12302);
+            ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+            YET_ANOTHER_POINTER = letout(ANOTHER_POINTER);
+            ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+         }
+
+         king = YET_ANOTHER_POINTER->VAR__NUM;
+         free(YET_ANOTHER_POINTER);
+      }
+
+
+      printf("%d\n", king);
+   }
+
+   return 0;
+}

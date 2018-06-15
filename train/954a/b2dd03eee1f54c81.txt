@@ -1,0 +1,86 @@
+struct info
+{
+   char        name[20];
+   float       finalscore;
+   float       averscore;
+   char        leader;
+   char        westerner;
+   int         essay;
+   struct info *VAR__NEXT;
+};
+int VAR_1238123;
+struct info *setup(void)
+{
+   int         VAR__temp = 0;
+   struct info *VAR__HEAD;
+   struct info *ANOTHER_POINTER;
+   struct info *YET_ANOTHER_POINTER;
+
+   VAR__HEAD = ( YET_ANOTHER_POINTER = ( ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ))));
+   scanf("%s %f %f %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->finalscore, &ANOTHER_POINTER->averscore, &ANOTHER_POINTER->leader, &ANOTHER_POINTER->westerner, &ANOTHER_POINTER->essay);
+
+   while ( VAR__temp < VAR_1238123 )
+   {
+      VAR__temp++;
+      ANOTHER_POINTER = (struct info *)malloc(sizeof( struct info ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      scanf("%s %f %f %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->finalscore, &ANOTHER_POINTER->averscore, &ANOTHER_POINTER->leader, &ANOTHER_POINTER->westerner, &ANOTHER_POINTER->essay);
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   long        VAR__MAX = 0;
+   long        total    = 0;
+   long        VAR__temp;
+   long        VAR__53647 = 0;
+   struct info *VAR_233;
+   struct info *excellent;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = setup();
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__temp = 0;
+
+      if (( VAR_233->finalscore > 80 ) && ( VAR_233->essay > 0 ))
+      {
+         VAR__temp += 8000;
+      }
+
+      if (( VAR_233->finalscore > 85 ) && ( VAR_233->averscore > 80 ))
+      {
+         VAR__temp += 4000;
+      }
+
+      if ( VAR_233->finalscore > 90 )
+      {
+         VAR__temp += 2000;
+      }
+
+      if (( VAR_233->westerner == 'Y' ) && ( VAR_233->finalscore > 85 ))
+      {
+         VAR__temp += 1000;
+      }
+
+      if (( VAR_233->leader == 'Y' ) && ( VAR_233->averscore > 80 ))
+      {
+         VAR__temp += 850;
+      }
+
+      if ( VAR__temp > VAR__MAX )
+      {
+         VAR__MAX  = VAR__temp;
+         excellent = VAR_233;
+      }
+
+      total  += VAR__temp;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%s\n%ld\n%ld\n", excellent->name, VAR__MAX, total);
+}

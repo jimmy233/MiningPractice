@@ -1,0 +1,55 @@
+int prime(int VAR__8444594)
+{
+   if ( VAR__8444594 == 2 )
+   {
+      return 1;
+   }
+
+   int indct = 1;
+   int VAR__53647;
+   for ( VAR__53647 = 2; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if (( VAR__8444594 % VAR__53647 ) == 0 )
+      {
+         indct = 0;
+         break;
+      }
+   }
+
+   return indct;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+
+   if (((( VAR_1238123 == 1 ) || ( VAR_1238123 == 2 )) || ( VAR_1238123 == 3 )) || ( VAR_1238123 == 4 ))
+   {
+      printf("\nempty");
+   }
+
+   int indct[10000] = { 0, 0, 1 };
+   int VAR__53647;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( prime(VAR__53647) == 1 )
+      {
+         indct[VAR__53647] = 1;
+      }
+   }
+
+   int found = 0;
+   for ( VAR__53647 = 2; VAR__53647 <= ( VAR_1238123 - 2 ); VAR__53647++ )
+   {
+      if (( indct[VAR__53647] == 1 ) && ( indct[VAR__53647 + 2] == 1 ))
+      {
+         printf("\n%d %d", VAR__53647, VAR__53647 + 2);
+         found = 1;
+      }
+   }
+
+   return 0;
+}

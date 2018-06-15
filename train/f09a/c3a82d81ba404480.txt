@@ -1,0 +1,93 @@
+int n1;
+int n2;
+int num1[10001];
+int num2[10001];
+void init()
+{
+   int VAR__53647;
+
+   ( cin >> n1 ) >> n2;
+   for ( VAR__53647 = 0; VAR__53647 < n1; VAR__53647++ )
+   {
+      cin >> num1[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < n2; VAR__53647++ )
+   {
+      cin >> num2[VAR__53647];
+   }
+}
+
+
+void sort()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__temp;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( n1 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( n1 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( num1[VAR__21230] > num1[VAR__21230 + 1] )
+         {
+            VAR__temp            = num1[VAR__21230];
+            num1[VAR__21230]     = num1[VAR__21230 + 1];
+            num1[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( n2 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( n2 - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( num2[VAR__21230] > num2[VAR__21230 + 1] )
+         {
+            VAR__temp            = num2[VAR__21230];
+            num2[VAR__21230]     = num2[VAR__21230 + 1];
+            num2[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+}
+
+
+void merge()
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = n1, VAR__21230 = 0; VAR__21230 < n2; VAR__53647++, VAR__21230++ )
+   {
+      num1[VAR__53647] = num2[VAR__21230];
+   }
+
+   n1 += n2;
+}
+
+
+void show()
+{
+   int VAR__53647;
+
+   cout << num1[0];
+   for ( VAR__53647 = 1; VAR__53647 < n1; VAR__53647++ )
+   {
+      ( cout << ' ' ) << num1[VAR__53647];
+   }
+
+   cout << endl;
+}
+
+
+int main()
+{
+   init();
+   sort();
+   merge();
+   show();
+   return 0;
+}

@@ -1,0 +1,78 @@
+int VAR__1238129[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+struct date
+{
+   int year;
+   int month;
+   int day;
+};
+int count1(int VAR__819283, int VAR__19328)
+{
+   int VAR__53647;
+   int VAR_9494 = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      VAR_9494 = VAR_9494 + VAR__1238129[VAR__53647];
+   }
+
+   return VAR_9494 + VAR__19328;
+}
+
+
+int count2(int VAR__819283, int VAR__19328)
+{
+   int VAR__53647;
+   int VAR_9494 = 0;
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR__819283; VAR__53647++ )
+   {
+      if ( VAR__53647 == 2 )
+      {
+         VAR_9494 = ( VAR_9494 + VAR__1238129[VAR__53647] ) + 1;
+      }
+      else
+      {
+         VAR_9494 = VAR_9494 + VAR__1238129[VAR__53647];
+      }
+   }
+
+
+   return VAR_9494 + VAR__19328;
+}
+
+
+int main()
+{
+   int         VAR__53647;
+   int         VAR__7685 = 0;
+   int         day[2]    = { 0 };
+   struct date start;
+   struct date end;
+
+   (( cin >> start.year ) >> start.month ) >> start.day;
+   (( cin >> end.year ) >> end.month ) >> end.day;
+   for ( VAR__53647 = start.year; VAR__53647 < end.year; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__7685 = VAR__7685 + 366;
+      }
+      else
+      {
+         VAR__7685 = VAR__7685 + 365;
+      }
+   }
+
+
+   if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+   {
+      VAR__7685 = ( VAR__7685 + count2(end.month, end.day)) - count2(start.month, start.day);
+   }
+   else
+   {
+      VAR__7685 = ( VAR__7685 + count1(end.month, end.day)) - count1(start.month, start.day);
+   }
+
+   ( cout << VAR__7685 ) << endl;
+   return 0;
+}

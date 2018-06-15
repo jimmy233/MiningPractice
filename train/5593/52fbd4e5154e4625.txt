@@ -1,0 +1,92 @@
+int is_huiwen(long VAR__7685)
+{
+   long VAR_129012 = 0;
+   long xx;
+
+   xx = VAR__7685;
+
+   while ( xx != 0 )
+   {
+      VAR_129012 = ( VAR_129012 * 10 ) + ( xx % 10 );
+      xx         = xx / 10;
+   }
+
+   if ( VAR_129012 == VAR__7685 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int is_sushu(long VAR__7685)
+{
+   int VAR__3918907;
+   int VAR__127322 = 1;
+
+   if ( VAR__7685 == 2 )
+   {
+      return 1;
+   }
+   else
+   if (( VAR__7685 % 2 ) == 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      for ( VAR__3918907 = 3; VAR__3918907 <= ((int)sqrt(VAR__7685)); VAR__3918907 += 2 )
+      {
+         if (( VAR__7685 % VAR__3918907 ) == 0 )
+         {
+            VAR__127322 *= 0;
+         }
+      }
+
+
+      return VAR__127322;
+   }
+}
+
+
+void main()
+{
+   long VAR__1238129;
+   long VAR_1238123;
+   long VAR__819283;
+   long VAR__NUM[50];
+   int  VAR__53647;
+   int  VAR__127322 = -1;
+
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__819283 = VAR__1238129; VAR__819283 <= VAR_1238123; VAR__819283++ )
+   {
+      if ( is_sushu(VAR__819283) && is_huiwen(VAR__819283))
+      {
+         VAR__127322++;
+         VAR__NUM[VAR__127322] = VAR__819283;
+      }
+   }
+
+
+   if ( VAR__127322 == 0 )
+   {
+      printf("%d", VAR__NUM[0]);
+   }
+   else
+   if ( VAR__127322 > 0 )
+   {
+      printf("%d", VAR__NUM[0]);
+      for ( VAR__53647 = 1; VAR__53647 <= VAR__127322; VAR__53647++ )
+      {
+         printf(",%d", VAR__NUM[VAR__53647]);
+      }
+   }
+   else
+   {
+      printf("no");
+   }
+}

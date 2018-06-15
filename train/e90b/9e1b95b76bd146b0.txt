@@ -1,0 +1,90 @@
+struct student
+{
+   int            VAR__NUM;
+   int            yu;
+   int            shu;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+struct student *creat(void)
+{
+   int            VAR__53647;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   scanf("%d", &VAR_1238123);
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yu, &ANOTHER_POINTER->shu);
+   VAR__HEAD = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%d %d %d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->yu, &ANOTHER_POINTER->shu);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__8444594 = 0;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__HEAD       = creat();
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__21230 = 1; VAR__21230 <= 3; VAR__21230++ )
+   {
+      ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+      for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if (( ANOTHER_POINTER->yu + ANOTHER_POINTER->shu ) > VAR__8444594 )
+         {
+            VAR__8444594 = ANOTHER_POINTER->yu + ANOTHER_POINTER->shu;
+         }
+
+         ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER = ( YET_ANOTHER_POINTER = VAR__HEAD );
+
+      if (( VAR__HEAD->yu + VAR__HEAD->shu ) == VAR__8444594 )
+      {
+         printf("%d %d", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->yu + ANOTHER_POINTER->shu);
+         VAR__HEAD = VAR__HEAD->VAR__NEXT;
+      }
+      else
+      {
+         for ( VAR__53647 = 1; ; VAR__53647++ )
+         {
+            if (( ANOTHER_POINTER->yu + ANOTHER_POINTER->shu ) == VAR__8444594 )
+            {
+               printf("%d %d\n", ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->yu + ANOTHER_POINTER->shu);
+
+               if ( ANOTHER_POINTER->VAR__NEXT != NULL )
+               {
+                  YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+               }
+               else
+               {
+                  YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+               }
+
+               VAR__8444594 = 0;
+               break;
+            }
+
+            YET_ANOTHER_POINTER = ANOTHER_POINTER;
+            ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+         }
+      }
+   }
+}

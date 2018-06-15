@@ -1,0 +1,85 @@
+struct stu
+{
+   char name[25];
+   int  sco;
+   int  scob;
+   int  gb;
+   int  xb;
+   int  lw;
+   int  mon;
+};
+int main()
+{
+   int      VAR_1238123;
+   int      VAR__53647;
+   int      VAR__MAX = 0;
+   int      zh;
+   long int all = 0;
+   char     du1;
+   char     du2;
+
+   scanf("%d", &VAR_1238123);
+   struct stu VAR__819283[100];
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].sco, &VAR__819283[VAR__53647].scob, &du1, &du2, &VAR__819283[VAR__53647].lw);
+
+      if ( du1 == 'Y' )
+      {
+         VAR__819283[VAR__53647].gb = 1;
+      }
+      else
+      {
+         VAR__819283[VAR__53647].gb = 0;
+      }
+
+      if ( du2 == 'Y' )
+      {
+         VAR__819283[VAR__53647].xb = 1;
+      }
+      else
+      {
+         VAR__819283[VAR__53647].xb = 0;
+      }
+
+      VAR__819283[VAR__53647].mon = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647].sco > 80 ) && ( VAR__819283[VAR__53647].lw >= 1 ))
+      {
+         VAR__819283[VAR__53647].mon += 8000;
+      }
+
+      if (( VAR__819283[VAR__53647].sco > 85 ) && ( VAR__819283[VAR__53647].scob > 80 ))
+      {
+         VAR__819283[VAR__53647].mon += 4000;
+      }
+
+      if ( VAR__819283[VAR__53647].sco > 90 )
+      {
+         VAR__819283[VAR__53647].mon += 2000;
+      }
+
+      if (( VAR__819283[VAR__53647].sco > 85 ) && ( VAR__819283[VAR__53647].xb == 1 ))
+      {
+         VAR__819283[VAR__53647].mon += 1000;
+      }
+
+      if (( VAR__819283[VAR__53647].scob > 80 ) && ( VAR__819283[VAR__53647].gb == 1 ))
+      {
+         VAR__819283[VAR__53647].mon += 850;
+      }
+
+      if ( VAR__819283[VAR__53647].mon > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647].mon;
+         zh       = VAR__53647;
+      }
+
+      all += VAR__819283[VAR__53647].mon;
+   }
+
+   printf("%s\n%d\n%lu", VAR__819283[zh].name, VAR__819283[zh].mon, all);
+}

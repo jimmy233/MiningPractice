@@ -1,0 +1,71 @@
+void minus(char VAR_233[110], char VAR__819283[110])
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   VAR__1238129 = strlen(VAR_233);
+   VAR_1238123  = strlen(VAR__819283);
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if ( VAR_233[( VAR__1238129 - VAR_1238123 ) + VAR__53647] >= VAR__819283[VAR__53647] )
+      {
+         VAR_233[( VAR__1238129 - VAR_1238123 ) + VAR__53647] = ( VAR_233[( VAR__1238129 - VAR_1238123 ) + VAR__53647] - VAR__819283[VAR__53647] ) + 48;
+      }
+      else
+      {
+         for ( VAR__21230 = (( VAR__1238129 - VAR_1238123 ) + VAR__53647 ) - 1; VAR__21230 >= 0; VAR__21230-- )
+         {
+            if ( VAR_233[VAR__21230] == 48 )
+            {
+               VAR_233[VAR__21230] = 57;
+            }
+            else
+            {
+               VAR_233[VAR__21230] -= 1;
+               break;
+            }
+         }
+
+         VAR_233[( VAR__1238129 - VAR_1238123 ) + VAR__53647] = ( VAR_233[( VAR__1238129 - VAR_1238123 ) + VAR__53647] - VAR__819283[VAR__53647] ) + 58;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR_233[VAR__53647] != 48 )
+      {
+         break;
+      }
+   }
+
+
+   for ( VAR__21230 = 0; VAR__21230 < ( VAR__1238129 - VAR__53647 ); VAR__21230++ )
+   {
+      VAR_233[VAR__21230] = VAR_233[VAR__21230 + VAR__53647];
+   }
+}
+
+
+void main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   char pass[110];
+   char act[110];
+   char res[100][110];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%s", pass, act);
+      minus(pass, act);
+      strcpy(res[VAR__53647], pass);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", res[VAR__53647]);
+   }
+}

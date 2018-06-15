@@ -1,0 +1,62 @@
+struct student
+{
+   int VAR__NUM;
+   int score1;
+   int score2;
+   int total;
+};
+struct student stu[100000];
+int main()
+{
+   long VAR__53647;
+   long VAR__1238129;
+
+   scanf("%ld", &VAR__1238129);
+   struct student *VAR_233 = stu;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++, VAR_233++ )
+   {
+      scanf("%d%d%d", &VAR_233->VAR__NUM, &VAR_233->score1, &VAR_233->score2);
+      VAR_233->total = VAR_233->score1 + VAR_233->score2;
+   }
+
+   int max1;
+   int max2;
+   int max3;
+   int a1 = 0;
+   int a2 = 0;
+   int a3 = 0;
+   max1 = stu[0].total;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].total > max1 )
+      {
+         max1 = stu[VAR__53647].total;
+         a1   = VAR__53647;
+      }
+   }
+
+   max2 = stu[0].total;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].total > max2 ) && ( VAR__53647 != a1 ))
+      {
+         max2 = stu[VAR__53647].total;
+         a2   = VAR__53647;
+      }
+   }
+
+   max3 = stu[0].total;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].total > max3 ) && ( stu[VAR__53647].total < max2 ))
+      {
+         max3 = stu[VAR__53647].total;
+         a3   = VAR__53647;
+      }
+   }
+
+   printf("%d %d\n", stu[a1].VAR__NUM, stu[a1].total);
+   printf("%d %d\n", stu[a2].VAR__NUM, stu[a2].total);
+   printf("%d %d", stu[a3].VAR__NUM, stu[a3].total);
+   return 0;
+}

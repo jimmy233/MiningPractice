@@ -1,0 +1,71 @@
+int main()
+{
+   char VAR__4857423[501][5];
+   char A_STRING[501];
+   char VAR__TEMP[5];
+   int  freq[501];
+   int  maxfreq = 1;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  cnt = 0;
+
+   memset(VAR__4857423, '\0', 2505);
+   memset(A_STRING, '\0', 501);
+   cin >> VAR_1238123;
+   cin.get();
+   cin.getline(A_STRING, 501);
+   LEN_OF_STH = strlen(A_STRING);
+   memset(freq, 0, 501);
+   for ( VAR__53647 = 0; VAR__53647 <= ( strlen(A_STRING) - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         *(( *( VAR__4857423 + VAR__53647 )) + VAR__21230 ) = *(( A_STRING + VAR__53647 ) + VAR__21230 );
+      }
+
+      *(( *( VAR__4857423 + VAR__53647 )) + VAR__21230 ) = '\0';
+      *( freq + VAR__53647 ) = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( *( freq + VAR__53647 ))
+      {
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+         {
+            if ( strncmp(*( VAR__4857423 + VAR__53647 ), *( VAR__4857423 + VAR__21230 ), VAR_1238123) == 0 )
+            {
+               *( freq + VAR__53647 ) = ( *( freq + VAR__53647 )) + 1;
+               *( freq + VAR__21230 ) = 0;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if ( maxfreq < ( *( freq + VAR__53647 )))
+      {
+         maxfreq = *( freq + VAR__53647 );
+      }
+   }
+
+   if ( maxfreq == 1 )
+   {
+      ( cout << "NO" ) << endl;
+      return 0;
+   }
+
+   ( cout << maxfreq ) << endl;
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      if (( *( freq + VAR__53647 )) == maxfreq )
+      {
+         ( cout << ( *( VAR__4857423 + VAR__53647 ))) << endl;
+      }
+   }
+
+   return 0;
+}

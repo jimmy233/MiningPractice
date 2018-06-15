@@ -1,0 +1,63 @@
+int main()
+{
+   int arr[1001];
+   int left[1001];
+   int cnt;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   while ( scanf("%d", &arr[0]) != EOF )
+   {
+      cnt = 1;
+      char ch;
+
+      while (( scanf("%c", &ch) != EOF ) && ( ch == ',' ))
+      {
+         scanf("%d", &arr[cnt]);
+         cnt++;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( cnt - 1 ); VAR__53647++ )
+      {
+         scanf("%d,", &left[VAR__53647]);
+      }
+
+      scanf("%d", &left[cnt - 1]);
+      int VAR__MIN = arr[0];
+      int VAR__MAX = left[0];
+      for ( VAR__53647 = 0; VAR__53647 < cnt; VAR__53647++ )
+      {
+         if ( arr[VAR__53647] < VAR__MIN )
+         {
+            VAR__MIN = arr[VAR__53647];
+         }
+
+         if ( left[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX = left[VAR__53647];
+         }
+      }
+
+      int VAR__COUNT = 0;
+      int mcnt       = 0;
+      for ( VAR__53647 = VAR__MIN; VAR__53647 <= VAR__MAX; VAR__53647++ )
+      {
+         VAR__COUNT = 0;
+         for ( VAR__21230 = 0; VAR__21230 < cnt; VAR__21230++ )
+         {
+            if (( arr[VAR__21230] <= VAR__53647 ) && ( left[VAR__21230] > VAR__53647 ))
+            {
+               VAR__COUNT++;
+            }
+         }
+
+         if ( VAR__COUNT > mcnt )
+         {
+            mcnt = VAR__COUNT;
+         }
+      }
+
+      printf("%d %d\n", cnt, mcnt);
+   }
+}

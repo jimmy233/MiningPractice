@@ -1,0 +1,59 @@
+int main()
+{
+   struct inf
+   {
+      struct inf *pLate;
+      char       VAR__NUM[20];
+      char       nam[20];
+      char       gen;
+      int        old[20];
+      int        sco[20];
+      char       loc[20];
+      struct inf *pNext;
+   };
+   int        VAR__53647;
+   int        VAR__21230;
+   int        VAR__8444594;
+   struct inf *pHeader;
+
+   pHeader = (struct inf *)malloc(sizeof( struct inf ));
+   struct inf *VAR_233;
+   struct inf *ANOTHER_POINTER = NULL;
+   VAR_233        = pHeader;
+   pHeader->pLate = NULL;
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      VAR_233->pNext = (struct inf *)malloc(sizeof( struct inf ));
+      VAR_233        = VAR_233->pNext;
+      VAR_233->pLate = ANOTHER_POINTER;
+      scanf("%s", VAR_233->VAR__NUM);
+
+      if ( VAR_233->VAR__NUM[0] == 'e' )
+      {
+         VAR_233->pNext = NULL;
+         break;
+      }
+      else
+      {
+         scanf("%s %c %s %s %s", VAR_233->nam, &VAR_233->gen, VAR_233->old, VAR_233->sco, VAR_233->loc);
+         ANOTHER_POINTER = VAR_233;
+      }
+   }
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 >= 1; VAR__21230-- )
+   {
+      VAR_233 = VAR_233->pLate;
+      printf("%s %s %c %s %s %s\n", VAR_233->VAR__NUM, VAR_233->nam, VAR_233->gen, VAR_233->old, VAR_233->sco, VAR_233->loc);
+   }
+
+   VAR_233 = pHeader;
+   struct inf *pd;
+   for ( VAR__8444594 = 0; VAR__8444594 <= VAR__53647; VAR__8444594++ )
+   {
+      pd      = VAR_233;
+      VAR_233 = VAR_233->pNext;
+      free(pd);
+   }
+
+   free(VAR_233);
+}

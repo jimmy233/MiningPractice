@@ -1,0 +1,52 @@
+struct student
+{
+   char           all[100];
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *VAR_666;
+   int            VAR__temp = 0;
+
+   VAR__HEAD = (struct student *)malloc(sizeof( struct student ));
+   gets(VAR__HEAD->all);
+   VAR_666 = VAR__HEAD;
+   VAR__HEAD->VAR__NEXT = NULL;
+   do
+   {
+      if ( VAR__temp > 0 )
+      {
+         VAR_233->VAR__NEXT = VAR_666;
+         VAR_666            = VAR_233;
+      }
+
+      VAR_233 = (struct student *)malloc(sizeof( struct student ));
+      gets(VAR_233->all);
+      VAR__temp++;
+   } while ( strcmp(VAR_233->all, "end") != 0 );
+   return VAR_666;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+   do
+   {
+      printf("%s\n", VAR_233->all);
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != NULL );
+}
+
+
+void main()
+{
+   struct student *headnew;
+
+   headnew = creat();
+   print(headnew);
+}

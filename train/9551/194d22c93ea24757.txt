@@ -1,0 +1,67 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__819283[100];
+   int  VAR__112390;
+   char VAR_9494[100][100];
+   char A_STRING[100];
+
+   scanf("%d\n", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", VAR_9494[VAR__53647], &VAR__819283[VAR__53647]);
+   }
+
+   for ( VAR__21230 = 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - VAR__21230 ); VAR__53647++ )
+      {
+         if (( VAR__819283[VAR__53647] >= 60 ) && ( VAR__819283[VAR__53647 + 1] >= 60 ))
+         {
+            if ( VAR__819283[VAR__53647] >= VAR__819283[VAR__53647 + 1] )
+            {
+               continue;
+            }
+
+            if ( VAR__819283[VAR__53647] < VAR__819283[VAR__53647 + 1] )
+            {
+               strcpy(A_STRING, VAR_9494[VAR__53647 + 1]);
+               strcpy(VAR_9494[VAR__53647 + 1], VAR_9494[VAR__53647]);
+               strcpy(VAR_9494[VAR__53647], A_STRING);
+               VAR__112390 = VAR__819283[VAR__53647 + 1];
+               VAR__819283[VAR__53647 + 1] = VAR__819283[VAR__53647];
+               VAR__819283[VAR__53647]     = VAR__112390;
+            }
+         }
+
+         if (( VAR__819283[VAR__53647] >= 60 ) && ( VAR__819283[VAR__53647 + 1] < 60 ))
+         {
+            continue;
+         }
+
+         if (( VAR__819283[VAR__53647] < 60 ) && ( VAR__819283[VAR__53647 + 1] >= 60 ))
+         {
+            strcpy(A_STRING, VAR_9494[VAR__53647 + 1]);
+            strcpy(VAR_9494[VAR__53647 + 1], VAR_9494[VAR__53647]);
+            strcpy(VAR_9494[VAR__53647], A_STRING);
+            VAR__112390 = VAR__819283[VAR__53647 + 1];
+            VAR__819283[VAR__53647 + 1] = VAR__819283[VAR__53647];
+            VAR__819283[VAR__53647]     = VAR__112390;
+         }
+
+         if (( VAR__819283[VAR__53647] < 60 ) && ( VAR__819283[VAR__53647 + 1] < 60 ))
+         {
+            continue;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", VAR_9494[VAR__53647]);
+   }
+
+   return 0;
+}

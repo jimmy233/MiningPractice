@@ -1,0 +1,98 @@
+struct student
+{
+   int            VAR__NUM;
+   int            ch;
+   int            math;
+   int            total;
+   struct student *VAR__NEXT;
+};
+int VAR_1238123;
+int VAR__temp;
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = ( ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN)));
+   scanf("%d%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->math);
+   ANOTHER_POINTER->total = ANOTHER_POINTER->ch + ANOTHER_POINTER->math;
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%d%d%d", &ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->ch, &ANOTHER_POINTER->math);
+      ANOTHER_POINTER->total         = ANOTHER_POINTER->ch + ANOTHER_POINTER->math;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   int            VAR__MAX;
+
+   VAR_233  = VAR__HEAD;
+   VAR__MAX = VAR_233->total;
+   VAR_233  = VAR_233->VAR__NEXT;
+
+   while ( VAR_233->VAR__NEXT != NULL )
+   {
+      if ( VAR_233->total > VAR__MAX )
+      {
+         VAR__MAX  = VAR_233->total;
+         VAR__temp = VAR_233->VAR__NUM;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   printf("%d %d\n", VAR__temp, VAR__MAX);
+}
+
+
+struct student *del(struct student *VAR__HEAD, int VAR__819283)
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = VAR__HEAD;
+
+   while (( VAR__819283 != ANOTHER_POINTER->VAR__NUM ) && ( ANOTHER_POINTER->VAR__NEXT != NULL ))
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   if ( ANOTHER_POINTER == VAR__HEAD )
+   {
+      VAR__HEAD = ANOTHER_POINTER->VAR__NEXT;
+   }
+   else
+   {
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   struct student *head1;
+   struct student *head2;
+   struct student *head3;
+
+   head1 = creat();
+   print(head1);
+   head2 = del(head1, VAR__temp);
+   print(head2);
+   head3 = del(head2, VAR__temp);
+   print(head3);
+}

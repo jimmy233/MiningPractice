@@ -1,0 +1,83 @@
+int maxi(int VAR__819283, int VAR__19328)
+{
+   if ( VAR__819283 > VAR__19328 )
+   {
+      return VAR__819283;
+   }
+   else
+   {
+      return VAR__19328;
+   }
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   char VAR__819283[102];
+   char VAR__19328[102];
+   int  na[102];
+   int  nb[102];
+   int  VAR__SUM[200];
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int VAR__21230;
+      int VAR__8444594 = 0;
+      memset(VAR__819283, '\0', sizeof( VAR__819283 ));
+      memset(VAR__19328, '\0', sizeof( VAR__19328 ));
+      memset(na, 0, sizeof( na ));
+      memset(nb, 0, sizeof( na ));
+      memset(VAR__SUM, 0, sizeof( VAR__SUM ));
+      ( cin >> VAR__819283 ) >> VAR__19328;
+      int lena = strlen(VAR__819283);
+      int lenb = strlen(VAR__19328);
+      for ( VAR__21230 = lena - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         na[VAR__8444594++] = VAR__819283[VAR__21230] - '0';
+      }
+
+      VAR__8444594 = 0;
+      for ( VAR__21230 = lenb - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         nb[VAR__8444594++] = VAR__19328[VAR__21230] - '0';
+      }
+
+      int MaxLen = maxi(lena, lenb);
+      for ( VAR__21230 = 0; VAR__21230 < MaxLen; VAR__21230++ )
+      {
+         VAR__SUM[VAR__21230] += na[VAR__21230] - nb[VAR__21230];
+
+         if ( VAR__SUM[VAR__21230] < 0 )
+         {
+            VAR__SUM[VAR__21230] += 10;
+            VAR__SUM[VAR__21230 + 1]--;
+         }
+      }
+
+      int VAR_FLAG = 0;
+      for ( VAR__21230 = MaxLen - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if (( VAR__SUM[VAR__21230] == 0 ) && ( VAR_FLAG == 0 ))
+         {
+         }
+
+         if (( VAR__SUM[VAR__21230] != 0 ) && ( VAR_FLAG == 0 ))
+         {
+            VAR_FLAG = 1;
+            cout << VAR__SUM[VAR__21230];
+         }
+         else
+         if ( VAR_FLAG == 1 )
+         {
+            cout << VAR__SUM[VAR__21230];
+         }
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

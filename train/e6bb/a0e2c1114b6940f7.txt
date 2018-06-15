@@ -1,0 +1,41 @@
+int A[11][11];
+int tmp[11][11];
+int N;
+int main()
+{
+   scanf("%d %d", &A[5][5], &N);
+   for ( int VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      memset(tmp, 0, sizeof( tmp ));
+      for ( int VAR__1111 = 1; VAR__1111 <= 9; VAR__1111++ )
+      {
+         for ( int VAR_129012 = 1; VAR_129012 <= 9; VAR_129012++ )
+         {
+            tmp[VAR__1111][VAR_129012]         += 2 * A[VAR__1111][VAR_129012];
+            tmp[VAR__1111 - 1][VAR_129012]     += A[VAR__1111][VAR_129012];
+            tmp[VAR__1111 + 1][VAR_129012]     += A[VAR__1111][VAR_129012];
+            tmp[VAR__1111][VAR_129012 - 1]     += A[VAR__1111][VAR_129012];
+            tmp[VAR__1111][VAR_129012 + 1]     += A[VAR__1111][VAR_129012];
+            tmp[VAR__1111 - 1][VAR_129012 - 1] += A[VAR__1111][VAR_129012];
+            tmp[VAR__1111 - 1][VAR_129012 + 1] += A[VAR__1111][VAR_129012];
+            tmp[VAR__1111 + 1][VAR_129012 - 1] += A[VAR__1111][VAR_129012];
+            tmp[VAR__1111 + 1][VAR_129012 + 1] += A[VAR__1111][VAR_129012];
+         }
+      }
+
+
+      memcpy(A, tmp, sizeof( tmp ));
+   }
+
+   for ( int VAR__53647 = 1; VAR__53647 < 10; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+      {
+         printf("%d ", A[VAR__53647][VAR__21230]);
+      }
+
+      printf("%d\n", A[VAR__53647][9]);
+   }
+
+   return 0;
+}

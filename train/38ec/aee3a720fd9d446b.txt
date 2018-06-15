@@ -1,0 +1,89 @@
+int main()
+{
+   int VAR__21230;
+   int VAR__53647;
+   int VAR__127322[3];
+   int VAR__1111[3];
+   int leap[2]     = { 0, 0 };
+   int mth[12]     = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR_1238123 = 0;
+   int inter       = 0;
+   int df          = 0;
+   int df2         = 0;
+   int dl          = 0;
+   int dn          = 0;
+
+   int lp(int VAR__3918907);
+
+   for ( VAR__53647 = 0; VAR__53647 <= 2; VAR__53647++ )
+   {
+      scanf("%d", &VAR__127322[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= 2; VAR__53647++ )
+   {
+      scanf("%d", &VAR__1111[VAR__53647]);
+   }
+
+   leap[0]    = lp(VAR__127322[Y]);
+   leap[1]    = lp(VAR__1111[Y]);
+   VAR__53647 = VAR__127322[Y] + 1;
+
+   if ( VAR__53647 < VAR__1111[Y] )
+   {
+      for ( ; VAR__53647 < VAR__1111[Y]; VAR__53647++ )
+      {
+         inter += lp(VAR__53647) + 365;
+      }
+   }
+
+
+   VAR__21230 = 0;
+
+   while ( VAR__21230 < ( VAR__1111[M] - 1 ))
+   {
+      dl += mth[VAR__21230];
+      VAR__21230++;
+   }
+
+   dl += VAR__1111[D];
+
+   if (( leap[1] == 1 ) && ( VAR__1111[M] > 2 ))
+   {
+      dl++;
+   }
+
+   VAR__21230 = 0;
+
+   while ( VAR__21230 < ( VAR__127322[M] - 1 ))
+   {
+      df += mth[VAR__21230];
+      VAR__21230++;
+   }
+
+   df += VAR__127322[D];
+
+   if (( leap[0] == 1 ) && ( VAR__1111[M] > 2 ))
+   {
+      df++;
+   }
+
+   if ( VAR__127322[Y] <= VAR__1111[Y] )
+   {
+      df2 = ( 365 + leap[0] ) - df;
+      dn  = ( df2 + dl ) + inter;
+   }
+
+   if ( VAR__1111[Y] == VAR__127322[Y] )
+   {
+      dn = dl - df;
+   }
+
+   printf("%d", dn);
+}
+
+
+int lp(int VAR__3918907)
+{
+   return ((( VAR__3918907 % 4 ) == 0 ) && (( VAR__3918907 % 100 ) != 0 )) || (( VAR__3918907 % 400 ) == 0 );
+}

@@ -1,0 +1,61 @@
+struct DIS
+{
+   int    fir;
+   int    sec;
+   double VAR__12302;
+};
+int main()
+{
+   struct DIS   dis[50];
+   const double eps = 1e-6;
+   int          VAR__7685[11];
+   int          VAR__3918907[11];
+   int          VAR__9290[11];
+   int          VAR_1238123;
+   int          VAR__53647;
+   int          VAR__21230;
+   int          VAR__8444594 = 1;
+   struct DIS   VAR__TEMP;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> VAR__7685[VAR__53647] ) >> VAR__3918907[VAR__53647] ) >> VAR__9290[VAR__53647];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         dis[VAR__8444594].fir          = VAR__53647;
+         dis[VAR__8444594].sec          = VAR__21230;
+         dis[VAR__8444594++].VAR__12302 = sqrt(((((double)( VAR__7685[VAR__53647] - VAR__7685[VAR__21230] )) * ( VAR__7685[VAR__53647] - VAR__7685[VAR__21230] )) + (( VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230] ) * ( VAR__3918907[VAR__53647] - VAR__3918907[VAR__21230] ))) + (( VAR__9290[VAR__53647] - VAR__9290[VAR__21230] ) * ( VAR__9290[VAR__53647] - VAR__9290[VAR__21230] )));
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = ( VAR_1238123 * ( VAR_1238123 - 1 )) / 2; VAR__21230 >= ( VAR__53647 + 1 ); VAR__21230-- )
+      {
+         if ( dis[VAR__21230].VAR__12302 > ( dis[VAR__21230 - 1].VAR__12302 + eps ))
+         {
+            VAR__TEMP.VAR__12302           = dis[VAR__21230].VAR__12302;
+            VAR__TEMP.fir                  = dis[VAR__21230].fir;
+            VAR__TEMP.sec                  = dis[VAR__21230].sec;
+            dis[VAR__21230].VAR__12302     = dis[VAR__21230 - 1].VAR__12302;
+            dis[VAR__21230].fir            = dis[VAR__21230 - 1].fir;
+            dis[VAR__21230].sec            = dis[VAR__21230 - 1].sec;
+            dis[VAR__21230 - 1].VAR__12302 = VAR__TEMP.VAR__12302;
+            dis[VAR__21230 - 1].fir        = VAR__TEMP.fir;
+            dis[VAR__21230 - 1].sec        = VAR__TEMP.sec;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= (( VAR_1238123 * ( VAR_1238123 - 1 )) / 2 ); VAR__53647++ )
+   {
+      (((((((((((((((( cout << "(" ) << VAR__7685[dis[VAR__53647].fir] ) << "," ) << VAR__3918907[dis[VAR__53647].fir] ) << "," ) << VAR__9290[dis[VAR__53647].fir] ) << ")-(" ) << VAR__7685[dis[VAR__53647].sec] ) << "," ) << VAR__3918907[dis[VAR__53647].sec] ) << "," ) << VAR__9290[dis[VAR__53647].sec] ) << ")=" ) << fixed ) << setprecision(2)) << dis[VAR__53647].VAR__12302 ) << endl;
+   }
+
+   return 0;
+}

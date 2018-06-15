@@ -1,0 +1,62 @@
+struct point
+{
+   int   VAR__NUM;
+   float distance;
+};
+int main()
+{
+   struct point ans[300];
+   float        ave;
+   int          VAR_1238123;
+   int          VAR__53647;
+   int          VAR_9494 = 0;
+   int          VAR__21230;
+   struct point VAR__TEMP;
+   int          VAR__819283[300];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", &VAR__819283[VAR__53647]);
+      VAR_9494 = VAR__819283[VAR__53647] + VAR_9494;
+   }
+
+   ave = ( VAR_9494 * 1.0 ) / VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      ans[VAR__53647].VAR__NUM = VAR__819283[VAR__53647];
+
+      if ( ave > VAR__819283[VAR__53647] )
+      {
+         ans[VAR__53647].distance = ave - VAR__819283[VAR__53647];
+      }
+      else
+      {
+         ans[VAR__53647].distance = VAR__819283[VAR__53647] - ave;
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= VAR__53647; VAR__21230++ )
+      {
+         if ( ans[VAR__21230].distance < ans[VAR__21230 + 1].distance )
+         {
+            VAR__TEMP           = ans[VAR__21230];
+            ans[VAR__21230]     = ans[VAR__21230 + 1];
+            ans[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+   printf("%d", ans[1].VAR__NUM);
+   for ( VAR__53647 = 2; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if ( ans[VAR__53647].distance == ans[1].distance )
+      {
+         printf(",%d", ans[VAR__53647].VAR__NUM);
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,95 @@
+struct num1
+{
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+}
+num1[100];
+struct num
+{
+   int   x1;
+   int   x2;
+   int   x3;
+   int   x11;
+   int   x12;
+   int   x13;
+   int   l1;
+   int   l2;
+   float VAR__SUM;
+}
+VAR__NUM[5010];
+struct num
+{
+   int   x1;
+   int   x2;
+   int   x3;
+   int   x11;
+   int   x12;
+   int   x13;
+   int   l1;
+   int   l2;
+   float VAR__SUM;
+}
+VAR__8444594;
+int main()
+{
+   int VAR__temp = 0;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__SUM;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d", &num1[VAR__53647].VAR__819283, &num1[VAR__53647].VAR__19328, &num1[VAR__53647].VAR__4857423);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 <= VAR_1238123; VAR__21230++ )
+      {
+         VAR__NUM[VAR__temp].x1       = num1[VAR__53647].VAR__819283;
+         VAR__NUM[VAR__temp].x2       = num1[VAR__53647].VAR__19328;
+         VAR__NUM[VAR__temp].x3       = num1[VAR__53647].VAR__4857423;
+         VAR__NUM[VAR__temp].x11      = num1[VAR__21230].VAR__819283;
+         VAR__NUM[VAR__temp].x12      = num1[VAR__21230].VAR__19328;
+         VAR__NUM[VAR__temp].x13      = num1[VAR__21230].VAR__4857423;
+         VAR__NUM[VAR__temp].VAR__SUM = ((( VAR__NUM[VAR__temp].x1 - VAR__NUM[VAR__temp].x11 ) * ( VAR__NUM[VAR__temp].x1 - VAR__NUM[VAR__temp].x11 )) + (( VAR__NUM[VAR__temp].x2 - VAR__NUM[VAR__temp].x12 ) * ( VAR__NUM[VAR__temp].x2 - VAR__NUM[VAR__temp].x12 ))) + (( VAR__NUM[VAR__temp].x3 - VAR__NUM[VAR__temp].x13 ) * ( VAR__NUM[VAR__temp].x3 - VAR__NUM[VAR__temp].x13 ));
+         VAR__NUM[VAR__temp].l1       = VAR__53647;
+         VAR__NUM[VAR__temp].l2       = VAR__21230;
+         VAR__temp++;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < VAR__temp; VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__53647].VAR__SUM < VAR__NUM[VAR__21230].VAR__SUM )
+         {
+            VAR__8444594         = VAR__NUM[VAR__53647];
+            VAR__NUM[VAR__53647] = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230] = VAR__8444594;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 < VAR__temp; VAR__21230++ )
+      {
+         if (( VAR__NUM[VAR__53647].VAR__SUM == VAR__NUM[VAR__21230].VAR__SUM ) && (( VAR__NUM[VAR__53647].l1 > VAR__NUM[VAR__21230].l1 ) || (( VAR__NUM[VAR__53647].l1 == VAR__NUM[VAR__21230].l1 ) && ( VAR__NUM[VAR__53647].l2 > VAR__NUM[VAR__21230].l2 ))))
+         {
+            VAR__8444594         = VAR__NUM[VAR__53647];
+            VAR__NUM[VAR__53647] = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230] = VAR__8444594;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__temp; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2f\n", VAR__NUM[VAR__53647].x1, VAR__NUM[VAR__53647].x2, VAR__NUM[VAR__53647].x3, VAR__NUM[VAR__53647].x11, VAR__NUM[VAR__53647].x12, VAR__NUM[VAR__53647].x13, sqrt(VAR__NUM[VAR__53647].VAR__SUM));
+   }
+}

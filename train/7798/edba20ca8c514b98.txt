@@ -1,0 +1,76 @@
+struct book
+{
+   int         VAR__NUM;
+   char        VAR__819283[26];
+   struct book *VAR__NEXT;
+};
+void main()
+{
+   struct book *VAR__HEAD;
+   struct book *VAR_233;
+   struct book *VAR_9494;
+
+   VAR__HEAD            = (struct book *)malloc(sizeof( struct book ));
+   VAR__HEAD->VAR__NEXT = NULL;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__4857423[26] = { 0 };
+   int  VAR__MAX;
+   int  maxj;
+   char VAR__19328[26];
+   for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+   {
+      VAR__19328[VAR__21230] = 65 + VAR__21230;
+   }
+
+   scanf("%d", &VAR_1238123);
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_9494 = (struct book *)malloc(sizeof( struct book ));
+      scanf("%d %s", &VAR_9494->VAR__NUM, VAR_9494->VAR__819283);
+      VAR_9494->VAR__NEXT = NULL;
+      VAR_233->VAR__NEXT  = VAR_9494;
+      VAR_233             = VAR_9494;
+   }
+
+   for ( VAR_233 = VAR__HEAD->VAR__NEXT; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__53647 = 0; VAR_233->VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+         {
+            if ( VAR_233->VAR__819283[VAR__53647] == VAR__19328[VAR__21230] )
+            {
+               VAR__4857423[VAR__21230]++;
+            }
+         }
+      }
+   }
+
+   VAR__MAX = VAR__4857423[0];
+   maxj     = 0;
+   for ( VAR__21230 = 1; VAR__21230 < 26; VAR__21230++ )
+   {
+      if ( VAR__4857423[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = VAR__4857423[VAR__21230];
+         maxj     = VAR__21230;
+      }
+   }
+
+
+   printf("%c\n", VAR__19328[maxj]);
+   printf("%d\n", VAR__4857423[maxj]);
+   for ( VAR_233 = VAR__HEAD->VAR__NEXT; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      for ( VAR__53647 = 0; VAR_233->VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+      {
+         if ( VAR_233->VAR__819283[VAR__53647] == VAR__19328[maxj] )
+         {
+            printf("%d\n", VAR_233->VAR__NUM);
+         }
+      }
+   }
+}

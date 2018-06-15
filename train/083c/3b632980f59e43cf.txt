@@ -1,0 +1,92 @@
+char A_STRING[100];
+char res[100];
+int  VAR__819283;
+int  VAR__19328;
+int  decimal = 0;
+void fix()
+{
+   int VAR__53647 = 0;
+
+   do
+   {
+      if ( A_STRING[VAR__53647] > 96 )
+      {
+         A_STRING[VAR__53647] = A_STRING[VAR__53647] - 32;
+      }
+
+      VAR__53647++;
+   } while ( A_STRING[VAR__53647] != '\0' );
+}
+
+
+void turn1()
+{
+   int VAR__53647 = 0;
+   int VAR__temp;
+
+   do
+   {
+      if ( A_STRING[VAR__53647] > 64 )
+      {
+         VAR__temp = A_STRING[VAR__53647] - 55;
+      }
+      else
+      {
+         VAR__temp = A_STRING[VAR__53647] - 48;
+      }
+
+      decimal = ( decimal * VAR__819283 ) + VAR__temp;
+      VAR__53647++;
+   } while ( A_STRING[VAR__53647] != '\0' );
+}
+
+
+void turn2()
+{
+   int VAR__53647 = 0;
+   int VAR__21230;
+   int VAR__temp;
+
+   while ( decimal >= VAR__19328 )
+   {
+      VAR__temp = decimal % VAR__19328;
+
+      if ( VAR__temp > 9 )
+      {
+         res[VAR__53647] = VAR__temp + 55;
+      }
+      else
+      {
+         res[VAR__53647] = VAR__temp + 48;
+      }
+
+      decimal = decimal / VAR__19328;
+      VAR__53647++;
+   }
+
+   VAR__temp = decimal % VAR__19328;
+
+   if ( VAR__temp > 9 )
+   {
+      res[VAR__53647] = VAR__temp + 55;
+   }
+   else
+   {
+      res[VAR__53647] = VAR__temp + 48;
+   }
+
+   for ( VAR__21230 = VAR__53647; VAR__21230 >= 0; VAR__21230-- )
+   {
+      cout << res[VAR__21230];
+   }
+}
+
+
+int main()
+{
+   (( cin >> VAR__819283 ) >> A_STRING ) >> VAR__19328;
+   fix();
+   turn1();
+   turn2();
+   return 0;
+}

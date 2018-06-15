@@ -1,0 +1,64 @@
+int xi[11][11]  = { 0 };
+int jun[11][11] = { 0 };
+int VAR__53647;
+int VAR__21230;
+void fanzhi(int VAR__temp)
+{
+   if ( VAR__temp == 0 )
+   {
+      return;
+   }
+
+   int jun[11][11] = { 0 };
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         jun[VAR__53647 - 1][VAR__21230 - 1] += xi[VAR__53647][VAR__21230];
+         jun[VAR__53647 - 1][VAR__21230]     += xi[VAR__53647][VAR__21230];
+         jun[VAR__53647 - 1][VAR__21230 + 1] += xi[VAR__53647][VAR__21230];
+         jun[VAR__53647][VAR__21230 - 1]     += xi[VAR__53647][VAR__21230];
+         jun[VAR__53647][VAR__21230 + 1]     += xi[VAR__53647][VAR__21230];
+         jun[VAR__53647 + 1][VAR__21230 - 1] += xi[VAR__53647][VAR__21230];
+         jun[VAR__53647 + 1][VAR__21230]     += xi[VAR__53647][VAR__21230];
+         jun[VAR__53647 + 1][VAR__21230 + 1] += xi[VAR__53647][VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         xi[VAR__53647][VAR__21230] = ( 2 * xi[VAR__53647][VAR__21230] ) + jun[VAR__53647][VAR__21230];
+      }
+   }
+
+   fanzhi(VAR__temp - 1);
+}
+
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   xi[5][5] = VAR__1238129;
+   fanzhi(VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 <= 9; VAR__21230++ )
+      {
+         if ( VAR__21230 >= 2 )
+         {
+            cout << ' ';
+         }
+
+         cout << xi[VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

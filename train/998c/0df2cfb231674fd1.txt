@@ -1,0 +1,83 @@
+int str2bigint(char *A_STRING, int *VAR__819283)
+{
+   int LEN_OF_STH = (int)strlen(A_STRING);
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__819283[( LEN_OF_STH - VAR__53647 ) - 1] = A_STRING[VAR__53647] - '0';
+   }
+
+   return LEN_OF_STH;
+}
+
+
+void print_bigint(int *VAR__819283, int LEN_OF_STH)
+{
+   int VAR__8444594 = LEN_OF_STH - 1;
+   int VAR__53647;
+
+   while (( VAR__819283[VAR__8444594] == 0 ) && ( VAR__8444594 > 0 ))
+   {
+      VAR__8444594--;
+   }
+
+   for ( VAR__53647 = VAR__8444594; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+}
+
+
+int add_bigint(int *VAR__819283, int alen, int *VAR__19328, int blen, int *VAR__4857423)
+{
+   int VAR__53647;
+   int LEN_OF_STH = ( alen > blen ) ? ( alen ) : ( blen );
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__4857423[VAR__53647] = 0;
+
+      if ( VAR__53647 < alen )
+      {
+         VAR__4857423[VAR__53647] += VAR__819283[VAR__53647];
+      }
+
+      if ( VAR__53647 < blen )
+      {
+         VAR__4857423[VAR__53647] += VAR__19328[VAR__53647];
+      }
+   }
+
+   VAR__4857423[LEN_OF_STH] = 0;
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( VAR__4857423[VAR__53647] >= 10 )
+      {
+         VAR__4857423[VAR__53647 + 1] += VAR__4857423[VAR__53647] / 10;
+         VAR__4857423[VAR__53647]     %= 10;
+      }
+   }
+
+   return ( VAR__4857423[LEN_OF_STH] ) ? ( LEN_OF_STH + 1 ) : ( LEN_OF_STH );
+}
+
+
+int main()
+{
+   char s1[256];
+   char s2[256];
+   int  VAR__819283[256];
+   int  VAR__19328[256];
+   int  VAR__4857423[256];
+   int  alen;
+   int  blen;
+   int  clen;
+
+   scanf("%s%s", s1, s2);
+   alen = str2bigint(s1, VAR__819283);
+   blen = str2bigint(s2, VAR__19328);
+   clen = add_bigint(VAR__819283, alen, VAR__19328, blen, VAR__4857423);
+   print_bigint(VAR__4857423, clen);
+   return 0;
+}

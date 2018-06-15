@@ -1,0 +1,52 @@
+char stack[MAX];
+int  VAR__COUNT = 0;
+int isprime(int VAR_1238123)
+{
+   return stack[VAR_1238123];
+}
+
+
+void makechart(int VAR_1238123)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   memset(stack, 1, ( sizeof( char )) * ( VAR_1238123 + 1 ));
+   stack[1] = 0;
+   for ( VAR__53647 = 2; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stack[VAR__53647] == 0 )
+      {
+         continue;
+      }
+
+      for ( VAR__21230 = 2; ( VAR__21230 * VAR__53647 ) <= VAR_1238123; VAR__21230++ )
+      {
+         stack[VAR__53647 * VAR__21230] = 0;
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   makechart(VAR_1238123);
+   for ( VAR__53647 = 6; VAR__53647 <= VAR_1238123; VAR__53647 += 2 )
+   {
+      for ( VAR__21230 = 2; ( VAR__21230 + VAR__21230 ) <= VAR__53647; VAR__21230++ )
+      {
+         if ( isprime(VAR__21230) && isprime(VAR__53647 - VAR__21230))
+         {
+            printf("%d=%d+%d\n", VAR__53647, VAR__21230, VAR__53647 - VAR__21230);
+            break;
+         }
+      }
+   }
+
+   return 0;
+}

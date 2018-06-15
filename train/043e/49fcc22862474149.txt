@@ -1,0 +1,132 @@
+void huan(int start, char W[100], char B[100], int Len1, int Len2, int Len3, int VAR__temp)
+{
+   int  VAR__53647;
+   int  VAR__8444594;
+   char WW[100];
+
+   for ( VAR__53647 = 0; VAR__53647 < start; VAR__53647++ )
+   {
+      WW[VAR__53647] = W[VAR__53647];
+   }
+
+   for ( VAR__53647 = start, VAR__8444594 = 0; VAR__53647 < ( start + Len3 ); VAR__53647++, VAR__8444594++ )
+   {
+      WW[VAR__53647] = B[VAR__8444594];
+   }
+
+   for ( VAR__53647 = start + Len3; VAR__53647 <= ((( Len1 - ( Len2 * VAR__temp )) + ( Len3 * VAR__temp )) - 1 ); VAR__53647++ )
+   {
+      WW[VAR__53647] = W[( VAR__53647 + Len2 ) - Len3];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ((( Len1 - ( Len2 * VAR__temp )) + ( Len3 * VAR__temp )) - 1 ); VAR__53647++ )
+   {
+      W[VAR__53647] = WW[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   char whole[100];
+   char VAR__819283[100];
+   char VAR__19328[100];
+   char gai[100];
+
+   gets(whole);
+   gets(VAR__819283);
+   gets(VAR__19328);
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__temp;
+   int len1;
+   int len2;
+   int len3;
+   len1 = strlen(whole);
+   len2 = strlen(VAR__819283);
+   len3 = strlen(VAR__19328);
+   int judge;
+   int begin[100];
+   VAR__temp = 0;
+
+   if ( whole[0] != VAR__819283[0] )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < (( len1 - len2 ) + 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647, VAR__8444594 = 0; VAR__21230 < ( len2 + VAR__53647 ); VAR__21230++, VAR__8444594++ )
+         {
+            if ( whole[VAR__21230] != VAR__819283[VAR__8444594] )
+            {
+               judge = 0;
+               break;
+            }
+            else
+            {
+               judge = 1;
+            }
+         }
+
+         if (( whole[VAR__53647 - 1] == ' ' ) && ( judge == 1 ))
+         {
+            begin[VAR__temp] = VAR__53647;
+            VAR__temp++;
+         }
+      }
+   }
+   else
+   {
+      VAR__temp = 1;
+      begin[0]  = 0;
+      for ( VAR__53647 = 0; VAR__53647 < (( len1 - len2 ) + 1 ); VAR__53647++ )
+      {
+         for ( VAR__21230 = VAR__53647, VAR__8444594 = 0; VAR__21230 < ( len2 + VAR__53647 ); VAR__21230++, VAR__8444594++ )
+         {
+            if ( whole[VAR__21230] != VAR__819283[VAR__8444594] )
+            {
+               judge = 0;
+               break;
+            }
+            else
+            {
+               judge = 1;
+            }
+         }
+
+         if (( whole[VAR__53647 - 1] == ' ' ) && ( judge == 1 ))
+         {
+            begin[VAR__temp] = VAR__53647;
+            VAR__temp++;
+         }
+      }
+   }
+
+   if ( len1 >= len2 )
+   {
+      int u;
+      for ( VAR__53647 = VAR__temp - 1, u = 1; VAR__53647 >= 0; VAR__53647--, u++ )
+      {
+         huan(begin[VAR__53647], whole, VAR__19328, len1, len2, len3, u);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ((( len1 - 1 ) - ( len2 * ( u - 1 ))) + ( len3 * ( u - 1 ))); VAR__53647++ )
+      {
+         printf("%c", whole[VAR__53647]);
+      }
+   }
+   else
+   {
+      int v;
+      for ( VAR__53647 = 0, v = 1; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++, v++ )
+      {
+         huan(begin[VAR__53647], whole, VAR__19328, len1, len2, len3, v);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 <= ((( len1 - 1 ) - ( len2 * ( v - 1 ))) + ( len3 * ( v - 1 ))); VAR__53647++ )
+      {
+         printf("%c", whole[VAR__53647]);
+      }
+   }
+
+   return 0;
+}

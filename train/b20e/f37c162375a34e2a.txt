@@ -1,0 +1,90 @@
+void sort(int *array, int VAR__MAX)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < ( VAR__MAX - 1 ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__MAX; VAR__21230++ )
+      {
+         if (( *( array + VAR__53647 )) < ( *( array + VAR__21230 )))
+         {
+            int VAR__TEMP = *( array + VAR__53647 );
+            *( array + VAR__53647 ) = *( array + VAR__21230 );
+            *( array + VAR__21230 ) = VAR__TEMP;
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 )
+   {
+      int tianji[VAR_1238123];
+      int qiwang[VAR_1238123];
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &tianji[VAR__53647]);
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", &qiwang[VAR__53647]);
+      }
+
+      sort(tianji, VAR_1238123);
+      sort(qiwang, VAR_1238123);
+      int tfirst     = 0;
+      int qfirst     = 0;
+      int tlast      = VAR_1238123 - 1;
+      int qlast      = VAR_1238123 - 1;
+      int VAR__21230 = 0;
+      int win        = 0;
+      int lose       = 0;
+
+      while ( VAR__21230 < VAR_1238123 )
+      {
+         if ( tianji[tfirst] > qiwang[qfirst] )
+         {
+            win++;
+            tfirst++;
+            qfirst++;
+         }
+         else
+         if ( tianji[tfirst] < qiwang[qfirst] )
+         {
+            lose++;
+            tlast--;
+            qfirst++;
+         }
+         else
+         {
+            if ( tianji[tlast] > qiwang[qlast] )
+            {
+               win++;
+               tlast--;
+               qlast--;
+            }
+            else
+            {
+               if ( tianji[tlast] < qiwang[qfirst] )
+               {
+                  lose++;
+               }
+
+               tlast--;
+               qfirst++;
+            }
+         }
+
+
+         VAR__21230++;
+      }
+
+      printf("%d\n", ( win * 200 ) - ( lose * 200 ));
+      scanf("%d", &VAR_1238123);
+   }
+}

@@ -1,0 +1,60 @@
+int fscan(int *VAR_1238123)
+{
+   char VAR__4857423;
+
+   *VAR_1238123 = 0;
+   do
+   {
+      VAR__4857423 = getchar();
+
+      if ( VAR__4857423 == '\n' )
+      {
+         return 0;
+      }
+
+      if ( VAR__4857423 != ',' )
+      {
+         *VAR_1238123 = ((( *VAR_1238123 ) * 10 ) + VAR__4857423 ) - '0';
+      }
+   } while ( VAR__4857423 != ',' );
+   return 1;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int first  = -1;
+   int second = -1;
+   int VAR__TEMP;
+
+   VAR__TEMP = fscan(&VAR_1238123);
+   first     = VAR_1238123;
+
+   while ( VAR__TEMP )
+   {
+      VAR__TEMP = fscan(&VAR_1238123);
+
+      if ( VAR_1238123 > first )
+      {
+         second = first;
+         first  = VAR_1238123;
+      }
+      else
+      if (( VAR_1238123 > second ) && ( VAR_1238123 != first ))
+      {
+         second = VAR_1238123;
+      }
+   }
+
+   if ( second == ( -1 ))
+   {
+      printf("No");
+   }
+   else
+   {
+      printf("%d", second);
+   }
+
+   return 1;
+}

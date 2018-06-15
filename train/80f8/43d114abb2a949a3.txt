@@ -1,0 +1,73 @@
+void main()
+{
+   int h1;
+   int l1;
+   int h2;
+   int l2;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__7685;
+   int shuzu1[100][100];
+   int shuzu2[100][100];
+   int shuzu3[100][100];
+
+   int (*ANOTHER_POINTER)[100];
+   int (*YET_ANOTHER_POINTER)[100];
+   int (*p3)[100];
+   ANOTHER_POINTER     = shuzu1;
+   YET_ANOTHER_POINTER = shuzu2;
+   p3 = shuzu3;
+   scanf("%d %d", &h1, &l1);
+   for ( VAR__53647 = 0; VAR__53647 < h1; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < l1; VAR__21230++ )
+      {
+         scanf("%d", ( *( ANOTHER_POINTER + VAR__53647 )) + VAR__21230);
+      }
+   }
+
+
+   scanf("%d %d", &h2, &l2);
+   for ( VAR__53647 = 0; VAR__53647 < h2; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < l2; VAR__21230++ )
+      {
+         scanf("%d", ( *( YET_ANOTHER_POINTER + VAR__53647 )) + VAR__21230);
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < h1; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < l2; VAR__21230++ )
+      {
+         for ( p3[VAR__53647][VAR__21230] = 0, VAR__7685 = 0; VAR__7685 < l1; VAR__7685++ )
+         {
+            p3[VAR__53647][VAR__21230] = p3[VAR__53647][VAR__21230] + (( *(( *( ANOTHER_POINTER + VAR__53647 )) + VAR__7685 )) * ( *(( *( YET_ANOTHER_POINTER + VAR__7685 )) + VAR__21230 )));
+         }
+      }
+   }
+
+
+
+   for ( VAR__53647 = 0; VAR__53647 < h1; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < l2; VAR__21230++ )
+      {
+         if ( VAR__21230 != ( l2 - 1 ))
+         {
+            printf("%d ", p3[VAR__53647][VAR__21230]);
+         }
+         else
+         {
+            printf("%d", p3[VAR__53647][VAR__21230]);
+         }
+      }
+
+
+      if ( VAR__53647 != ( h1 - 1 ))
+      {
+         printf("\n");
+      }
+   }
+}

@@ -1,0 +1,97 @@
+int main()
+{
+   void sort(int [], int [], int);
+
+   char A_STRING[1000];
+   char VAR__127322;
+   char VAR_9494;
+   char stack[1000];
+   int  VAR__SUM = 0;
+   int  VAR__21230;
+   int  VAR__53647;
+   int  VAR__1111 = 0;
+   int  tot       = -1;
+   int  boy[500];
+   int  girl[500];
+   int  pair = -1;
+   int  VAR__NUM[1000];
+   gets(A_STRING);
+   VAR__1111 = strlen(A_STRING);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1111; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__127322   = A_STRING[VAR__SUM++];
+         stack[++tot]  = VAR__127322;
+         VAR__NUM[tot] = VAR__53647;
+         continue;
+      }
+
+      if (( VAR__SUM < 2 ) && ( A_STRING[VAR__53647] != VAR__127322 ))
+      {
+         VAR__SUM++;
+         VAR_9494 = A_STRING[VAR__53647];
+         printf("%c %c\n", VAR__127322, VAR_9494);
+      }
+
+      stack[++tot]  = A_STRING[VAR__53647];
+      VAR__NUM[tot] = VAR__53647;
+      for ( VAR__21230 = 0; VAR__21230 < ( tot + 1 ); VAR__21230++ )
+      {
+         printf("%c", stack[VAR__21230]);
+      }
+
+      printf("%d\n", tot);
+
+      while (((( tot > 0 ) && ( VAR__SUM > 1 )) && ( stack[tot] == VAR_9494 )) && ( VAR__127322 == stack[tot - 1] ))
+      {
+         girl[++pair] = VAR__NUM[tot--];
+         boy[pair]    = VAR__NUM[tot--];
+         printf("%d %d\n", boy[pair], girl[pair]);
+      }
+   }
+
+   sort(boy, girl, pair);
+   for ( VAR__53647 = 0; VAR__53647 < pair; VAR__53647++ )
+   {
+      printf("%d %d\n", boy[VAR__53647], girl[VAR__53647]);
+   }
+
+   printf("%d %d", boy[pair], girl[pair]);
+   return 0;
+}
+
+
+void sort(int VAR__819283[], int VAR__19328[], int VAR__4857423)
+{
+   void swap(int, int);
+
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__4857423; VAR__53647++ )
+   {
+      VAR__8444594 = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < ( VAR__4857423 + 1 ); VAR__21230++ )
+      {
+         if ( VAR__19328[VAR__21230] < VAR__19328[VAR__8444594] )
+         {
+            VAR__8444594 = VAR__21230;
+         }
+      }
+
+
+      swap(VAR__819283[VAR__53647], VAR__819283[VAR__8444594]);
+      swap(VAR__19328[VAR__53647], VAR__19328[VAR__8444594]);
+   }
+}
+
+
+void swap(int VAR__7685, int VAR__3918907)
+{
+   int VAR__temp;
+
+   VAR__temp    = VAR__7685;
+   VAR__7685    = VAR__3918907;
+   VAR__3918907 = VAR__temp;
+}

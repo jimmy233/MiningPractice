@@ -1,0 +1,83 @@
+void sort(double arr[100], int LEN_OF_STH);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int imax = 0;
+   int imin = 0;
+
+   cin >> VAR_1238123;
+   double VAR__SUM     = 0;
+   double array[301]   = { 0 };
+   double average      = 0;
+   double *VAR_233     = NULL;
+   double distant[301] = { 0 };
+   double *pdis        = distant;
+   double MAXdis       = 0;
+   double MINdis       = 100000;
+   double maxnum[100]  = { 0 };
+   double minnum[100]  = { 0 };
+   double *pmax        = maxnum;
+   double *pmin        = minnum;
+   VAR_233 = array;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> ( *( VAR_233 + VAR__53647 ));
+      VAR__SUM += *( VAR_233 + VAR__53647 );
+   }
+
+   average = VAR__SUM / ((double)VAR_1238123 );
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      *( pdis + VAR__53647 ) = abs(( *( VAR_233 + VAR__53647 )) - average);
+
+      if (( *( pdis + VAR__53647 )) > MAXdis )
+      {
+         MAXdis = *( pdis + VAR__53647 );
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( *( pdis + VAR__53647 )) == MAXdis )
+      {
+         *( pmax + imax ) = *( VAR_233 + VAR__53647 );
+         imax++;
+      }
+   }
+
+   sort(maxnum, imax);
+   return 0;
+}
+
+
+void sort(double arr[100], int LEN_OF_STH)
+{
+   double *pa       = arr;
+   double VAR__TEMP = 0;
+   int    VAR__53647;
+   int    VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( LEN_OF_STH - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if (( *( pa + VAR__21230 )) > ( *(( pa + VAR__21230 ) + 1 )))
+         {
+            VAR__TEMP                   = *( pa + VAR__21230 );
+            *( pa + VAR__21230 )        = *(( pa + VAR__21230 ) + 1 );
+            *(( pa + VAR__21230 ) + 1 ) = VAR__TEMP;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - 1 ); VAR__53647++ )
+   {
+      ( cout << ( *( pa + VAR__53647 ))) << ',';
+   }
+
+   cout << ( *(( pa + LEN_OF_STH ) - 1 ));
+   cout << endl;
+}

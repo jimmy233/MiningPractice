@@ -1,0 +1,74 @@
+int cmp(char *ANOTHER_POINTER, char *YET_ANOTHER_POINTER)
+{
+   if ( islower(*ANOTHER_POINTER))
+   {
+      *ANOTHER_POINTER -= 32;
+   }
+
+   if ( islower(*YET_ANOTHER_POINTER))
+   {
+      *YET_ANOTHER_POINTER -= 32;
+   }
+
+   while (((( *ANOTHER_POINTER ) == ( *YET_ANOTHER_POINTER )) && (( *ANOTHER_POINTER ) != '\0' )) && (( *YET_ANOTHER_POINTER ) != '\0' ))
+   {
+      ANOTHER_POINTER++;
+      YET_ANOTHER_POINTER++;
+
+      if ( islower(*ANOTHER_POINTER))
+      {
+         *ANOTHER_POINTER -= 32;
+      }
+
+      if ( islower(*YET_ANOTHER_POINTER))
+      {
+         *YET_ANOTHER_POINTER -= 32;
+      }
+   }
+
+   if ((( *ANOTHER_POINTER ) != '\0' ) && (( *YET_ANOTHER_POINTER ) != '\0' ))
+   {
+      return ( *ANOTHER_POINTER ) - ( *YET_ANOTHER_POINTER );
+   }
+   else
+   if (( *ANOTHER_POINTER ) != '\0' )
+   {
+      return 1;
+   }
+   else
+   if (( *YET_ANOTHER_POINTER ) != '\0' )
+   {
+      return -1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   char ANOTHER_STRING[100];
+   char YET_ANOTHER_STRING[100];
+
+   gets(ANOTHER_STRING);
+   gets(YET_ANOTHER_STRING);
+
+   if ( cmp(ANOTHER_STRING, YET_ANOTHER_STRING) == 0 )
+   {
+      printf("=");
+   }
+   else
+   if ( cmp(ANOTHER_STRING, YET_ANOTHER_STRING) > 0 )
+   {
+      printf(">");
+   }
+   else
+   {
+      printf("<");
+   }
+
+
+   return 0;
+}

@@ -1,0 +1,72 @@
+int main()
+{
+   char VAR_9494[1500];
+   int  VAR__temp[4];
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__4857423;
+
+   gets(VAR_9494);
+   VAR__819283 = -1;
+   VAR__19328  = -1;
+   VAR__21230  = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( strlen(VAR_9494) + 1 ); VAR__53647++ )
+   {
+      if (( VAR_9494[VAR__53647] != ',' ) && ( VAR_9494[VAR__53647] != '\0' ))
+      {
+         VAR__temp[VAR__21230] = VAR_9494[VAR__53647] - '0';
+         VAR__21230++;
+      }
+      else
+      {
+         switch ( VAR__21230 )
+         {
+         case 1:
+            VAR__4857423 = VAR__temp[0];
+            break;
+
+         case 2:
+            VAR__4857423 = ( 10 * VAR__temp[0] ) + VAR__temp[1];
+            break;
+
+         case 3:
+            VAR__4857423 = (( 100 * VAR__temp[0] ) + ( 10 * VAR__temp[1] )) + VAR__temp[2];
+            break;
+
+         case 4:
+            VAR__4857423 = ((( 1000 * VAR__temp[0] ) + ( 100 * VAR__temp[1] )) + ( 10 * VAR__temp[2] )) + VAR__temp[3];
+            break;
+
+         default:
+            break;
+         }
+
+         VAR__21230 = 0;
+
+         if ( VAR__4857423 > VAR__819283 )
+         {
+            VAR__19328  = VAR__819283;
+            VAR__819283 = VAR__4857423;
+         }
+         else
+         if (( VAR__4857423 < VAR__819283 ) && ( VAR__4857423 > VAR__19328 ))
+         {
+            VAR__19328 = VAR__4857423;
+         }
+      }
+   }
+
+   if ( VAR__19328 == ( -1 ))
+   {
+      printf("No");
+   }
+   else
+   {
+      printf("%d", VAR__19328);
+   }
+
+   return 0;
+}

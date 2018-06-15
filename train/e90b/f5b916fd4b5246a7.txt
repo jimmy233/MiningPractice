@@ -1,0 +1,70 @@
+struct student
+{
+   int VAR__NUM;
+   int chinese;
+   int math;
+   int VAR__SUM;
+}
+work[100001];
+void qsort(int left, int right)
+{
+   if ( left >= right )
+   {
+      return;
+   }
+
+   int pindex = left;
+   int rindex = right;
+   work[0] = work[left];
+
+   while ( pindex < rindex )
+   {
+      while (( pindex < rindex ) && ( work[rindex].VAR__SUM >= work[0].VAR__SUM ))
+      {
+         rindex--;
+      }
+
+      if ( pindex < rindex )
+      {
+         work[pindex] = work[rindex];
+         pindex++;
+      }
+
+      while (( pindex < rindex ) && ( work[pindex].VAR__SUM < work[0].VAR__SUM ))
+      {
+         pindex++;
+      }
+
+      if ( pindex < rindex )
+      {
+         work[rindex] = work[pindex];
+         rindex--;
+      }
+   }
+
+   work[pindex] = work[0];
+   qsort(left, pindex - 1);
+   qsort(pindex + 1, right);
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      (( cin >> work[VAR__53647].VAR__NUM ) >> work[VAR__53647].chinese ) >> work[VAR__53647].math;
+      work[VAR__53647].VAR__SUM = work[VAR__53647].chinese + work[VAR__53647].math;
+   }
+
+   qsort(1, VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= 2; VAR__53647++ )
+   {
+      ((( cout << work[VAR_1238123 - VAR__53647].VAR__NUM ) << " " ) << work[VAR_1238123 - VAR__53647].VAR__SUM ) << endl;
+   }
+
+   return 0;
+}

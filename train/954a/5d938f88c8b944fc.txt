@@ -1,0 +1,107 @@
+struct student
+{
+   char           name[20];
+   int            final;
+   int            VAR__819283;
+   char           VAR__19328;
+   char           VAR__4857423;
+   int            VAR__12302;
+   int            scholarship;
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   int      N;
+   int      VAR__53647;
+   int      VAR__21230;
+   int      money;
+   long int VAR__SUM = 0;
+   char     VAR__819283[20];
+
+   scanf("%d", &N);
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(Len);
+      ANOTHER_POINTER->scholarship = 0;
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->final, &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->VAR__4857423, &ANOTHER_POINTER->VAR__12302);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if (( ANOTHER_POINTER->final > 80 ) && ( ANOTHER_POINTER->VAR__12302 >= 1 ))
+      {
+         ANOTHER_POINTER->scholarship += 8000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->VAR__819283 > 80 ))
+      {
+         ANOTHER_POINTER->scholarship += 4000;
+      }
+
+      if ( ANOTHER_POINTER->final > 90 )
+      {
+         ANOTHER_POINTER->scholarship += 2000;
+      }
+
+      if (( ANOTHER_POINTER->final > 85 ) && ( ANOTHER_POINTER->VAR__4857423 == 'Y' ))
+      {
+         ANOTHER_POINTER->scholarship += 1000;
+      }
+
+      if (( ANOTHER_POINTER->VAR__819283 > 80 ) && ( ANOTHER_POINTER->VAR__19328 == 'Y' ))
+      {
+         ANOTHER_POINTER->scholarship += 850;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      VAR__SUM       += ANOTHER_POINTER->scholarship;
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__21230 = 0; VAR__21230 < ( N - 1 ); VAR__21230++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+      for ( VAR__53647 = 0; VAR__53647 < (( N - 1 ) - VAR__21230 ); VAR__53647++ )
+      {
+         if ( ANOTHER_POINTER->scholarship < YET_ANOTHER_POINTER->scholarship )
+         {
+            strcpy(VAR__819283, ANOTHER_POINTER->name);
+            strcpy(ANOTHER_POINTER->name, YET_ANOTHER_POINTER->name);
+            strcpy(YET_ANOTHER_POINTER->name, VAR__819283);
+            money = ANOTHER_POINTER->scholarship;
+            ANOTHER_POINTER->scholarship     = YET_ANOTHER_POINTER->scholarship;
+            YET_ANOTHER_POINTER->scholarship = money;
+         }
+
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   printf("%s\n%d\n%ld", ANOTHER_POINTER->name, ANOTHER_POINTER->scholarship, VAR__SUM);
+   return 0;
+}

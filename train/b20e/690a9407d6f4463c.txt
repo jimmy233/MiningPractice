@@ -1,0 +1,96 @@
+int mycomp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__819283 )) - ( *((int *)VAR__19328 ));
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int iw;
+   int ib;
+   int re;
+   int jw;
+   int jb;
+   int tj[1000];
+   int qw[1000];
+
+   scanf("%d", &VAR_1238123);
+
+   while ( VAR_1238123 != 0 )
+   {
+      for ( iw = 0; iw < VAR_1238123; iw++ )
+      {
+         scanf("%d", &tj[iw]);
+      }
+
+      for ( iw = 0; iw < VAR_1238123; iw++ )
+      {
+         scanf("%d", &qw[iw]);
+      }
+
+      qsort(tj, VAR_1238123, sizeof( int ), mycomp);
+      qsort(qw, VAR_1238123, sizeof( int ), mycomp);
+      iw = 0;
+      jw = 0;
+      re = 0;
+      ib = VAR_1238123 - 1;
+      jb = VAR_1238123 - 1;
+
+      while ( iw <= ib )
+      {
+         if ( tj[iw] > qw[jw] )
+         {
+            re += 200;
+            iw++;
+            jw++;
+         }
+         else
+         if ( tj[iw] < qw[jw] )
+         {
+            if ( tj[iw] < qw[jb] )
+            {
+               re -= 200;
+            }
+            else
+            if ( tj[iw] > qw[jb] )
+            {
+               re += 200;
+            }
+
+
+            iw++;
+            jb--;
+         }
+         else
+         if ( tj[ib] > qw[jb] )
+         {
+            re += 200;
+            ib--;
+            jb--;
+         }
+         else
+         if ( tj[ib] < qw[jb] )
+         {
+            re -= 200;
+            iw++;
+            jb--;
+         }
+         else
+         {
+            if ( tj[iw] < qw[jb] )
+            {
+               re -= 200;
+            }
+
+            iw++;
+            jb--;
+         }
+      }
+
+      printf("%d\n", re);
+      scanf("%d", &VAR_1238123);
+   }
+
+   return 0;
+}

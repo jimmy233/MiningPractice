@@ -1,0 +1,71 @@
+int main()
+{
+   int    VAR__53647;
+   int    nanshu = 0;
+   int    nvshu  = 0;
+   int    VAR__8444594;
+   int    zongrenshu;
+   double shengao;
+
+   scanf("%d", &zongrenshu);
+   double nanshengao[zongrenshu];
+   double nvshengao[zongrenshu];
+   double zhongjianliang;
+   char   xingbie[7];
+   char   nv[7]  = "female";
+   char   nan[5] = "male";
+   for ( VAR__53647 = 0; VAR__53647 < zongrenshu; VAR__53647++ )
+   {
+      scanf("%s %lf", xingbie, &shengao);
+
+      if ( strcmp(xingbie, nv) == 0 )
+      {
+         nvshengao[nvshu] = shengao;
+         nvshu++;
+      }
+      else
+      {
+         nanshengao[nanshu] = shengao;
+         nanshu++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= nanshu; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( nanshu - VAR__53647 ); VAR__8444594++ )
+      {
+         if ( nanshengao[VAR__8444594] > nanshengao[VAR__8444594 + 1] )
+         {
+            zhongjianliang = nanshengao[VAR__8444594 + 1];
+            nanshengao[VAR__8444594 + 1] = nanshengao[VAR__8444594];
+            nanshengao[VAR__8444594]     = zhongjianliang;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= nvshu; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( nvshu - VAR__53647 ); VAR__8444594++ )
+      {
+         if ( nvshengao[VAR__8444594] < nvshengao[VAR__8444594 + 1] )
+         {
+            zhongjianliang = nvshengao[VAR__8444594 + 1];
+            nvshengao[VAR__8444594 + 1] = nvshengao[VAR__8444594];
+            nvshengao[VAR__8444594]     = zhongjianliang;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < nanshu; VAR__53647++ )
+   {
+      printf("%.2lf ", nanshengao[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( nvshu - 1 ); VAR__53647++ )
+   {
+      printf("%.2lf ", nvshengao[VAR__53647]);
+   }
+
+   printf("%.2lf", nvshengao[nvshu - 1]);
+   return 0;
+}

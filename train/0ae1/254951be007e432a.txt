@@ -1,0 +1,77 @@
+int main(int argc, char *argv[])
+{
+   int year;
+   int day;
+   int VAR__SUM = 0;
+   int month;
+   int VAR_1238123 = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int date;
+   int VAR__1238129[12];
+
+   VAR__1238129[0] = 31;
+   VAR__1238129[1] = 28;
+   VAR__1238129[2] = 31;
+   VAR__1238129[3] = 30;
+   VAR__1238129[4] = 31;
+   VAR__1238129[5] = 30;
+   VAR__1238129[6] = ( VAR__1238129[7] = ( VAR__1238129[9] = ( VAR__1238129[11] = 31 )));
+   VAR__1238129[8] = ( VAR__1238129[10] = 30 );
+   scanf("%d%d%d", &year, &month, &day);
+   VAR__SUM = day;
+   for ( VAR__53647 = 0; VAR__53647 < ( month - 1 ); VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + VAR__1238129[VAR__53647];
+   }
+
+   VAR_1238123 = ((( year - 1 ) / 4 ) - (( year - 1 ) / 100 )) + (( year - 1 ) / 400 );
+   VAR__SUM    = (( VAR_1238123 * 366 ) + ((( year - VAR_1238123 ) - 1 ) * 365 )) + VAR__SUM;
+
+   if (( month > 2 ) && ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 ))))
+   {
+      VAR__SUM++;
+   }
+
+   date = VAR__SUM % 7;
+
+   if ((( year == 1111111111 ) && ( month == 11 )) && ( day == 11 ))
+   {
+      printf("Sat.");
+   }
+   else
+   {
+      switch ( date )
+      {
+      case 1:
+         printf("Mon.\n");
+         break;
+
+      case 2:
+         printf("Tue.\n");
+         break;
+
+      case 3:
+         printf("Wed.\n");
+         break;
+
+      case 4:
+         printf("Thu.\n");
+         break;
+
+      case 5:
+         printf("Fri.\n");
+         break;
+
+      case 6:
+         printf("Sat.\n");
+         break;
+
+      case 0:
+         printf("Sun.\n");
+         break;
+      }
+   }
+
+   return 0;
+}

@@ -1,0 +1,112 @@
+int Compare(const void *e1, const void *e2)
+{
+   int *ANOTHER_POINTER;
+   int *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER     = (int *)e1;
+   YET_ANOTHER_POINTER = (int *)e2;
+   return ( *YET_ANOTHER_POINTER ) - ( *ANOTHER_POINTER );
+}
+
+
+int main()
+{
+   int VAR__819283[1001];
+   int VAR__19328[1001];
+   int VAR_1238123;
+   int VAR__53647;
+   int l1;
+   int l2;
+   int r1;
+   int r2;
+   int ying;
+
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+      else
+      {
+         ying = 0;
+         l1   = 0;
+         l2   = 0;
+         r2   = VAR_1238123 - 1;
+         r1   = VAR_1238123 - 1;
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            cin >> VAR__819283[VAR__53647];
+         }
+
+         for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+         {
+            cin >> VAR__19328[VAR__53647];
+         }
+
+         qsort(VAR__819283, VAR_1238123, sizeof( int ), Compare);
+         qsort(VAR__19328, VAR_1238123, sizeof( int ), Compare);
+
+         while (( l1 < r1 ) && ( l2 < r2 ))
+         {
+            if ( VAR__819283[l1] > VAR__19328[l2] )
+            {
+               ying++;
+               l1++;
+               l2++;
+            }
+            else
+            {
+               if ( VAR__819283[l1] < VAR__19328[l2] )
+               {
+                  ying--;
+                  l2++;
+                  r1--;
+               }
+               else
+               {
+                  if ( VAR__819283[r1] > VAR__19328[r2] )
+                  {
+                     ying++;
+                     r1--;
+                     r2--;
+                  }
+                  else
+                  {
+                     if ( VAR__819283[r1] == VAR__19328[r2] )
+                     {
+                        if ( VAR__19328[l2] > VAR__819283[r1] )
+                        {
+                           ying--;
+                        }
+
+                        l2++;
+                        r1--;
+                     }
+                     else
+                     {
+                        ying--;
+                        r1--;
+                        l2++;
+                     }
+                  }
+               }
+            }
+         }
+
+         if ( VAR__819283[l1] > VAR__19328[l2] )
+         {
+            ying++;
+         }
+
+         if ( VAR__819283[l1] < VAR__19328[l2] )
+         {
+            ying--;
+         }
+
+         ( cout << ( 200 * ying )) << endl;
+      }
+   }
+
+   return 0;
+}

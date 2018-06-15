@@ -1,0 +1,117 @@
+int leapyearmonth[12]   = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int commonyearmonth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int dayofyear[2]        = { 365, 366 };
+int IsLeapYear(int year)
+{
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int startYear;
+   int startMonth;
+   int startDay;
+   int endYear;
+   int endMonth;
+   int endDay;
+
+   scanf("%d%d%d", &startYear, &startMonth, &startDay);
+   scanf("%d%d%d", &endYear, &endMonth, &endDay);
+   int daybetweendates = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   if ( endYear == startYear )
+   {
+      int startdate = 0;
+      int enddate   = 0;
+
+      if ( IsLeapYear(startYear) == 1 )
+      {
+         startdate += startDay;
+         for ( VAR__53647 = 0; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+         {
+            startdate += leapyearmonth[VAR__53647];
+         }
+
+         enddate += endDay;
+         for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+         {
+            enddate += leapyearmonth[VAR__53647];
+         }
+      }
+
+      if ( IsLeapYear(startYear) == 0 )
+      {
+         startdate += startDay;
+         for ( VAR__53647 = 0; VAR__53647 < ( startMonth - 1 ); VAR__53647++ )
+         {
+            startdate += commonyearmonth[VAR__53647];
+         }
+
+         enddate += endDay;
+         for ( VAR__53647 = 0; VAR__53647 < ( endMonth - 1 ); VAR__53647++ )
+         {
+            enddate += commonyearmonth[VAR__53647];
+         }
+      }
+
+      daybetweendates += enddate - startdate;
+   }
+
+   if (( endYear - startYear ) > 0 )
+   {
+      for ( VAR__53647 = 1; VAR__53647 < ( endYear - startYear ); VAR__53647++ )
+      {
+         daybetweendates += dayofyear[IsLeapYear(startYear + VAR__53647)];
+      }
+
+      if ( IsLeapYear(startYear) == 1 )
+      {
+         daybetweendates += leapyearmonth[startMonth - 1] - startDay;
+         for ( VAR__21230 = startMonth; VAR__21230 < 12; VAR__21230++ )
+         {
+            daybetweendates += leapyearmonth[VAR__21230];
+         }
+      }
+
+      if ( IsLeapYear(startYear) == 0 )
+      {
+         daybetweendates += commonyearmonth[startMonth - 1] - startDay;
+         for ( VAR__8444594 = startMonth; VAR__8444594 < 12; VAR__8444594++ )
+         {
+            daybetweendates += commonyearmonth[VAR__8444594];
+         }
+      }
+
+      if ( IsLeapYear(endYear) == 1 )
+      {
+         daybetweendates += endDay;
+         for ( VAR__21230 = 0; VAR__21230 < ( endMonth - 1 ); VAR__21230++ )
+         {
+            daybetweendates += leapyearmonth[VAR__21230];
+         }
+      }
+
+      if ( IsLeapYear(endYear) == 0 )
+      {
+         daybetweendates += endDay;
+         for ( VAR__8444594 = 0; VAR__8444594 < ( endMonth - 1 ); VAR__8444594++ )
+         {
+            daybetweendates += commonyearmonth[VAR__8444594];
+         }
+      }
+   }
+
+   printf("%d\n", daybetweendates);
+   return 0;
+}

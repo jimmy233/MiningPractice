@@ -1,0 +1,52 @@
+int judge(int VAR_1238123)
+{
+   if (((( VAR_1238123 % 4 ) == 0 ) && (( VAR_1238123 % 100 ) != 0 )) || (( VAR_1238123 % 400 ) == 0 ))
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int VAR__819283[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int year1;
+   int month1;
+   int day1;
+   int year2;
+   int day2;
+   int month2;
+
+   ((((( cin >> year1 ) >> month1 ) >> day1 ) >> year2 ) >> month2 ) >> day2;
+   int VAR__53647 = 1;
+   int time1      = 0;
+   int time2      = 0;
+   VAR__819283[1] = judge(year1) + 28;
+   for ( VAR__53647 = 1; VAR__53647 < month1; VAR__53647++ )
+   {
+      time1 += VAR__819283[VAR__53647 - 1];
+   }
+
+   time1         += day1 - 1;
+   VAR__819283[1] = judge(year2) + 28;
+   for ( VAR__53647 = 1; VAR__53647 < month2; VAR__53647++ )
+   {
+      time2 += VAR__819283[VAR__53647 - 1];
+   }
+
+   time2 += day2 - 1;
+   int time = 0;
+   for ( VAR__53647 = year1; VAR__53647 < year2; VAR__53647++ )
+   {
+      time += 365 + judge(VAR__53647);
+   }
+
+   int result;
+   result = ( time + time2 ) - time1;
+   cout << result;
+   return 0;
+}

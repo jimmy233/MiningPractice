@@ -1,0 +1,55 @@
+struct number
+{
+   unsigned int shu;
+   double       cha;
+}
+VAR__NUM[300];
+void main()
+{
+   int           VAR_1238123;
+   int           VAR__53647;
+   int           VAR__21230;
+   unsigned int  VAR__SUM = 0;
+   double        av;
+   struct number VAR__temp;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%u", &VAR__NUM[VAR__53647].shu);
+      VAR__SUM += VAR__NUM[VAR__53647].shu;
+   }
+
+   av = ((double)VAR__SUM ) / VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647].shu > av )
+      {
+         VAR__NUM[VAR__53647].cha = VAR__NUM[VAR__53647].shu - av;
+      }
+      else
+      {
+         VAR__NUM[VAR__53647].cha = av - VAR__NUM[VAR__53647].shu;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230].cha < VAR__NUM[VAR__21230 + 1].cha )
+         {
+            VAR__temp                = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__NUM[VAR__21230 + 1];
+            VAR__NUM[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+
+   printf("%d", VAR__NUM[0].shu);
+   for ( VAR__53647 = 1; VAR__NUM[VAR__53647].cha == VAR__NUM[0].cha; VAR__53647++ )
+   {
+      printf(",%d", VAR__NUM[VAR__53647].shu);
+   }
+}

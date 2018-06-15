@@ -1,0 +1,56 @@
+int getMaxCharIndex(char *A_STRING)
+{
+   int  VAR__53647 = 0;
+   int  maxIndex   = 0;
+   char maxChar    = A_STRING[0];
+
+   for ( VAR__53647 = 0; VAR__53647 < MAX_STR_LENGTH; VAR__53647++ )
+   {
+      if ( A_STRING[VAR__53647] == 0 )
+      {
+         break;
+      }
+
+      if ( maxChar < A_STRING[VAR__53647] )
+      {
+         maxChar  = A_STRING[VAR__53647];
+         maxIndex = VAR__53647;
+      }
+   }
+
+   return maxIndex;
+}
+
+
+void insertStr(char *A_STRING, int index, char *subStr)
+{
+   int VAR__53647;
+   int strLength = strlen(A_STRING);
+
+   for ( VAR__53647 = strLength; VAR__53647 > index; VAR__53647-- )
+   {
+      A_STRING[( VAR__53647 + MAX_SUBSTR_LENGTH ) - 1] = A_STRING[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( MAX_SUBSTR_LENGTH - 1 ); VAR__53647++ )
+   {
+      A_STRING[( VAR__53647 + index ) + 1] = subStr[VAR__53647];
+   }
+}
+
+
+int main()
+{
+   char A_STRING[MAX_STR_LENGTH];
+   char subStr[MAX_SUBSTR_LENGTH];
+   int  maxIndex;
+
+   while ( scanf("%s%s", A_STRING, subStr) != EOF )
+   {
+      maxIndex = getMaxCharIndex(A_STRING);
+      insertStr(A_STRING, maxIndex, subStr);
+      printf("%s\n", A_STRING);
+   }
+
+   return 0;
+}

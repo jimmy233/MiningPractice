@@ -1,0 +1,122 @@
+void main()
+{
+   int VAR__819283[3];
+   int VAR__19328[3];
+   int VAR__temp;
+
+   int year(int VAR__819283[], int VAR__19328[]);
+   int month(int VAR__819283[], int VAR__19328[]);
+
+   scanf("%d %d %d", &VAR__819283[0], &VAR__819283[1], &VAR__819283[2]);
+   scanf("%d %d %d", &VAR__19328[0], &VAR__19328[1], &VAR__19328[2]);
+   VAR__temp = 0;
+
+   if ( VAR__19328[0] >= VAR__819283[0] )
+   {
+      VAR__temp = VAR__temp + year(VAR__819283, VAR__19328);
+   }
+   else
+   {
+      VAR__temp = -1000;
+   }
+
+   if ( VAR__19328[1] > VAR__819283[1] )
+   {
+      VAR__temp = VAR__temp + month(VAR__819283, VAR__19328);
+   }
+   else
+   {
+      VAR__temp = VAR__temp - month(VAR__819283, VAR__19328);
+   }
+
+   VAR__temp = ( VAR__temp + VAR__19328[2] ) - VAR__819283[2];
+
+   if ( VAR__temp < 0 )
+   {
+      printf("wrong input");
+   }
+   else
+   {
+      printf("%d", VAR__temp);
+   }
+}
+
+
+int year(int VAR__819283[], int VAR__19328[])
+{
+   int VAR__53647;
+   int VAR__1238129;
+
+   VAR__1238129 = 0;
+   for ( VAR__53647 = VAR__819283[0]; VAR__53647 < VAR__19328[0]; VAR__53647++ )
+   {
+      if (((( VAR__53647 % 4 ) == 0 ) && (( VAR__53647 % 100 ) != 0 )) || (( VAR__53647 % 400 ) == 0 ))
+      {
+         VAR__1238129 = VAR__1238129 + 366;
+      }
+      else
+      {
+         VAR__1238129 = VAR__1238129 + 365;
+      }
+   }
+
+   return VAR__1238129;
+}
+
+
+int month(int VAR__819283[], int VAR__19328[])
+{
+   int VAR__53647;
+   int VAR__1238129;
+   int VAR__4857423[12];
+   int VAR__7685;
+   int VAR__3918907;
+
+   VAR__1238129 = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= 11; VAR__53647++ )
+   {
+      switch ( VAR__53647 )
+      {
+      case 1:
+
+      case 3:
+
+      case 5:
+
+      case 7:
+
+      case 8:
+
+      case 10:
+
+      case 12:
+         VAR__4857423[VAR__53647] = 31;
+         break;
+
+      case 2:
+         VAR__4857423[VAR__53647] = 28;
+         break;
+
+      default:
+         VAR__4857423[VAR__53647] = 30;
+      }
+   }
+
+   VAR__7685    = ( VAR__819283[1] > VAR__19328[1] ) ? ( VAR__819283[1] ) : ( VAR__19328[1] );
+   VAR__3918907 = ( VAR__819283[1] < VAR__19328[1] ) ? ( VAR__819283[1] ) : ( VAR__19328[1] );
+   for ( VAR__53647 = VAR__3918907; VAR__53647 < VAR__7685; VAR__53647++ )
+   {
+      VAR__1238129 = VAR__1238129 + VAR__4857423[VAR__53647];
+   }
+
+   if (( VAR__3918907 <= 2 ) && ( VAR__7685 > 2 ))
+   {
+      if (((( VAR__19328[0] % 4 ) == 0 ) && (( VAR__19328[0] % 100 ) != 0 )) || (( VAR__19328[0] % 400 ) == 0 ))
+      {
+         VAR__1238129++;
+      }
+   }
+
+
+   return VAR__1238129;
+}

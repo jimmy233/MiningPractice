@@ -1,0 +1,55 @@
+int main()
+{
+   int  start;
+   int  VAR__NUM[110];
+   int  mod;
+   char number[110];
+   int  VAR__53647;
+   int  LEN_OF_STH;
+
+   cin >> number;
+   LEN_OF_STH = strlen(number);
+
+   if ( LEN_OF_STH == 1 )
+   {
+      ( cout << 0 ) << endl;
+      ( cout << (( number[0] - '0' ) % 13 )) << endl;
+   }
+   else
+   if (((( LEN_OF_STH == 2 ) && ( number[0] == '1' )) && ( number[1] >= '0' )) && ( number[1] <= '2' ))
+   {
+      ( cout << 0 ) << endl;
+      ( cout << ((( 10 + number[1] ) - '0' ) % 13 )) << endl;
+   }
+   else
+   {
+      mod         = ( number[0] - '0' ) % 13;
+      VAR__NUM[0] = ( number[0] - '0' ) / 13;
+      for ( VAR__53647 = 1; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         VAR__NUM[VAR__53647] = ((( mod * 10 ) + number[VAR__53647] ) - '0' ) / 13;
+         mod = ((( mod * 10 ) + number[VAR__53647] ) - '0' ) % 13;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647] != 0 )
+         {
+            start = VAR__53647;
+            break;
+         }
+      }
+
+
+      for ( VAR__53647 = start; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+      {
+         cout << VAR__NUM[VAR__53647];
+      }
+
+      cout << endl;
+      ( cout << mod ) << endl;
+   }
+
+
+   return 0;
+}

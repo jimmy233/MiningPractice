@@ -1,0 +1,63 @@
+void char_revto_int(char *VAR_9494, int *VAR__819283, int LEN_OF_STH)
+{
+   for ( int VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__819283[( LEN_OF_STH - 1 ) - VAR__53647] = VAR_9494[VAR__53647] - '0';
+   }
+}
+
+
+void add_int(int *a1, int *a2, int *res)
+{
+   for ( int VAR__53647 = 0; VAR__53647 < MAX_LEN; VAR__53647++ )
+   {
+      res[VAR__53647] += a1[VAR__53647] + a2[VAR__53647];
+
+      if ( res[VAR__53647] >= 10 )
+      {
+         res[VAR__53647] -= 10;
+         res[VAR__53647 + 1]++;
+      }
+   }
+}
+
+
+void output_int(int *VAR__819283)
+{
+   int LEN_OF_STH = MAX_LEN;
+
+   while ( !VAR__819283[LEN_OF_STH - 1] )
+   {
+      LEN_OF_STH--;
+   }
+
+   if ( LEN_OF_STH <= 0 )
+   {
+      printf("0");
+   }
+
+   for ( int VAR__53647 = LEN_OF_STH - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%d", VAR__819283[VAR__53647]);
+   }
+
+   printf("\n");
+}
+
+
+int main()
+{
+   int  an1[210] = { 0 };
+   int  an2[210] = { 0 };
+   int  res[210] = { 0 };
+   char s1[210];
+   char s2[210];
+
+   scanf("%s", s1);
+   scanf("%s", s2);
+   char_revto_int(s1, an1, strlen(s1));
+   char_revto_int(s2, an2, strlen(s2));
+   add_int(an1, an2, res);
+   output_int(res);
+   return 0;
+}

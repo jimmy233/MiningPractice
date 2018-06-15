@@ -1,0 +1,93 @@
+int main()
+{
+   char word[600];
+   char gram[600][10];
+   char VAR__TEMP[600][10];
+   int  cnt[600];
+   int  VAR__COUNT = 0;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   int  LEN_OF_STH;
+   int  VAR__MAX = 1;
+
+   cin >> VAR_1238123;
+   cin.get();
+   cin.getline(word, 600);
+   LEN_OF_STH = strlen(word);
+   for ( VAR__53647 = 0; VAR__53647 < 600; VAR__53647++ )
+   {
+      cnt[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= (( VAR__53647 + VAR_1238123 ) - 1 ); VAR__21230++ )
+      {
+         gram[VAR__53647][VAR__COUNT] = word[VAR__21230];
+         VAR__COUNT++;
+      }
+
+      gram[VAR__53647][VAR__COUNT] = '\0';
+      VAR__COUNT = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      strcpy(VAR__TEMP[VAR__53647], gram[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__21230++ )
+      {
+         if ( strcmp(gram[VAR__53647], VAR__TEMP[VAR__21230]) == 0 )
+         {
+            cnt[VAR__53647]++;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+   {
+      if ( cnt[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = cnt[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX > 1 )
+   {
+      ( cout << VAR__MAX ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < (( LEN_OF_STH - VAR_1238123 ) + 1 ); VAR__53647++ )
+      {
+         if (( cnt[VAR__53647] == VAR__MAX ) && ( VAR__53647 == 0 ))
+         {
+            ( cout << gram[VAR__53647] ) << endl;
+         }
+
+         if (( cnt[VAR__53647] == VAR__MAX ) && ( VAR__53647 > 0 ))
+         {
+            for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+            {
+               if ( strcmp(gram[VAR__53647], gram[VAR__21230]) == 0 )
+               {
+                  break;
+               }
+
+               if ( VAR__21230 == ( VAR__53647 - 1 ))
+               {
+                  ( cout << gram[VAR__53647] ) << endl;
+               }
+            }
+         }
+      }
+   }
+   else
+   {
+      ( cout << "NO" ) << endl;
+   }
+
+   return 0;
+}

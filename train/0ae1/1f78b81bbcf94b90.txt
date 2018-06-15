@@ -1,0 +1,77 @@
+unsigned long int year;
+unsigned long int month;
+unsigned long int day;
+unsigned long int VAR__819283;
+unsigned long int VAR__19328;
+unsigned long int VAR__4857423;
+unsigned long int A;
+unsigned long int B;
+unsigned long int VAR_21983012;
+unsigned long int VAR__53647;
+int main()
+{
+   scanf("%d%d%d", &year, &month, &day);
+
+   if (((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )) || (( year % 400 ) == 0 ))
+   {
+      int VAR_666[13] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+      VAR__819283  = ((( year / 4 ) + ( year / 400 )) - ( year / 100 )) - 1;
+      A            = VAR__819283 % 7;
+      VAR__19328   = ( year - VAR__819283 ) - 1;
+      B            = VAR__19328 % 7;
+      VAR__4857423 = ( 366 * A ) + ( 365 * B );
+      for ( VAR__53647 = 0; VAR__53647 < month; VAR__53647++ )
+      {
+         VAR__4857423 += VAR_666[VAR__53647];
+      }
+
+      VAR_21983012 = ( day + VAR__4857423 ) % 7;
+   }
+   else
+   {
+      int VAR__12302[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+      VAR__819283  = (( year / 4 ) + ( year / 400 )) - ( year / 100 );
+      A            = VAR__819283 % 7;
+      VAR__19328   = ( year - VAR__819283 ) - 1;
+      B            = VAR__19328 % 7;
+      VAR__4857423 = ( 366 * A ) + ( 365 * B );
+      for ( VAR__53647 = 0; VAR__53647 < month; VAR__53647++ )
+      {
+         VAR__4857423 += VAR__12302[VAR__53647];
+      }
+
+      VAR_21983012 = ( VAR__4857423 + day ) % 7;
+   }
+
+   switch ( VAR_21983012 )
+   {
+   case 1:
+      printf("Mon.\n");
+      break;
+
+   case 2:
+      printf("Tue.\n");
+      break;
+
+   case 3:
+      printf("Wed.\n");
+      break;
+
+   case 4:
+      printf("Thu.\n");
+      break;
+
+   case 5:
+      printf("Fri.\n");
+      break;
+
+   case 6:
+      printf("Sat.\n");
+      break;
+
+   default:
+      printf("Sun.\n");
+   }
+
+   return 0;
+}

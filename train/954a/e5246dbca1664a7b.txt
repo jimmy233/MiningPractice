@@ -1,0 +1,108 @@
+struct info
+{
+   char name[20];
+   int  qm;
+   int  py;
+   char gb;
+   char xb;
+   int  lw;
+   int  money;
+}
+student[120];
+int ysj(int VAR__819283)
+{
+   if (( student[VAR__819283].qm > 80 ) && ( student[VAR__819283].lw >= 1 ))
+   {
+      return 8000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int wsj(int VAR__819283)
+{
+   if (( student[VAR__819283].qm > 85 ) && ( student[VAR__819283].py > 80 ))
+   {
+      return 4000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int cjj(int VAR__819283)
+{
+   if ( student[VAR__819283].qm > 90 )
+   {
+      return 2000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int xbj(int VAR__819283)
+{
+   if (( student[VAR__819283].qm > 85 ) && ( student[VAR__819283].xb == 'Y' ))
+   {
+      return 1000;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int bjj(int VAR__819283)
+{
+   if (( student[VAR__819283].py > 80 ) && ( student[VAR__819283].gb == 'Y' ))
+   {
+      return 850;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__8444594;
+   int  VAR__MAX = 0;
+   int  VAR__SUM = 0;
+   char ch1;
+   char ch2;
+
+   scanf("%d", &VAR_1238123);
+
+   if ( VAR_1238123 >= 0 )
+   {
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%c", &ch1);
+         scanf("%s%d%d%c%c%c%c%d", student[VAR__53647].name, &student[VAR__53647].qm, &student[VAR__53647].py, &ch1, &student[VAR__53647].gb, &ch2, &student[VAR__53647].xb, &student[VAR__53647].lw);
+         student[VAR__53647].money = ((( ysj(VAR__53647) + wsj(VAR__53647)) + cjj(VAR__53647)) + xbj(VAR__53647)) + bjj(VAR__53647);
+         VAR__SUM += student[VAR__53647].money;
+
+         if ( student[VAR__53647].money > VAR__MAX )
+         {
+            VAR__MAX     = student[VAR__53647].money;
+            VAR__8444594 = VAR__53647;
+         }
+      }
+   }
+
+
+   printf("%s\n%d\n%d\n", student[VAR__8444594].name, VAR__MAX, VAR__SUM);
+   return 0;
+}

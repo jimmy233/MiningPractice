@@ -1,0 +1,97 @@
+void main()
+{
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__819283;
+   int  VAR_FLAG;
+   int  VAR__8444594;
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__7685;
+   int  VAR__3918907;
+   int  VAR__NUM[100]  = { 0 };
+   char VAR__TEMP[100] = { '\0' };
+   char *VAR_233;
+   char *VAR_666;
+
+   VAR_233 = VAR__TEMP;
+   VAR_666 = VAR__TEMP;
+   scanf("%d", &VAR__1238129);
+   scanf("%d", &VAR_1238123);
+   for ( VAR__819283 = VAR__1238129; VAR__819283 <= VAR_1238123; VAR__819283++ )
+   {
+      VAR__8444594 = sqrt(VAR__819283);
+      for ( VAR__53647 = 2; VAR__53647 <= VAR__8444594; VAR__53647++ )
+      {
+         if (( VAR__819283 % VAR__53647 ) == 0 )
+         {
+            VAR_FLAG = 0;
+            break;
+         }
+      }
+
+      if ( VAR__53647 > sqrt(VAR__819283))
+      {
+         VAR_FLAG = 1;
+      }
+
+      if ( VAR_FLAG )
+      {
+         VAR__53647    = 0;
+         VAR__7685     = VAR__819283 % 10;
+         VAR__3918907  = VAR__819283 / 10;
+         VAR__TEMP[99] = VAR__7685 + '0';
+
+         while ( VAR__3918907 >= 10 )
+         {
+            VAR__7685    = VAR__3918907 % 10;
+            VAR__3918907 = VAR__3918907 / 10;
+            VAR__TEMP[98 - VAR__53647] = VAR__7685 + '0';
+            VAR__53647++;
+         }
+
+         VAR__TEMP[98 - VAR__53647] = VAR__3918907 + '0';
+         VAR_233 = VAR__TEMP;
+         VAR_666 = VAR__TEMP + 99;
+         for ( ; VAR_233 < VAR_666; VAR_233++ )
+         {
+            if (( *VAR_233 ) != '\0' )
+            {
+               break;
+            }
+         }
+
+         for ( ; VAR_233 <= VAR_666; VAR_233++, VAR_666-- )
+         {
+            if (( *VAR_233 ) != ( *VAR_666 ))
+            {
+               VAR_FLAG = 0;
+               break;
+            }
+         }
+      }
+
+      if ( VAR_FLAG )
+      {
+         VAR__NUM[VAR__21230] = VAR__819283;
+         VAR__21230++;
+      }
+   }
+
+   if ( VAR__NUM[0] == 0 )
+   {
+      printf("no");
+   }
+   else
+   {
+      VAR__21230 = 0;
+
+      while ( VAR__NUM[VAR__21230 + 1] != 0 )
+      {
+         printf("%d,", VAR__NUM[VAR__21230]);
+         VAR__21230++;
+      }
+
+      printf("%d", VAR__NUM[VAR__21230]);
+   }
+}

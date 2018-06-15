@@ -1,0 +1,233 @@
+struct Node;
+typedef struct Node *PNode;
+struct Node
+{
+   PNode last;
+   PNode VAR__NEXT;
+   char  VAR__819283;
+};
+PNode CreateNullList()
+{
+   PNode VAR_233 = (PNode)malloc(sizeof( struct Node ));
+
+   VAR_233->VAR__NEXT = NULL;
+   VAR_233->last      = NULL;
+   return VAR_233;
+}
+
+
+void InsertNode(PNode VAR_233, char VAR__19328)
+{
+   PNode pn = (PNode)malloc(sizeof( struct Node ));
+
+   pn->VAR__819283    = VAR__19328;
+   pn->VAR__NEXT      = VAR_233->VAR__NEXT;
+   pn->last           = VAR_233;
+   VAR_233->VAR__NEXT = pn;
+
+   if ( pn->VAR__NEXT != NULL )
+   {
+      pn->VAR__NEXT->last = pn;
+   }
+}
+
+
+int Compare(PNode ANOTHER_POINTER, PNode YET_ANOTHER_POINTER)
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   VAR__53647          = 0;
+   VAR__21230          = 0;
+   ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      VAR__53647     += 1;
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   while ( YET_ANOTHER_POINTER != NULL )
+   {
+      VAR__21230         += 1;
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   if (( VAR__53647 - VAR__21230 ) >= 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      return 2;
+   }
+}
+
+
+int Add(PNode ANOTHER_POINTER, PNode YET_ANOTHER_POINTER)
+{
+   int VAR_1238123;
+   int VAR__8444594;
+
+   VAR__8444594 = Compare(ANOTHER_POINTER, YET_ANOTHER_POINTER);
+   PNode p3;
+   ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+
+   if ( VAR__8444594 == 2 )
+   {
+      p3 = ANOTHER_POINTER;
+      ANOTHER_POINTER     = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = p3;
+   }
+
+   while (( ANOTHER_POINTER != NULL ) && ( YET_ANOTHER_POINTER != NULL ))
+   {
+      VAR_1238123 = (( ANOTHER_POINTER->VAR__819283 - '0' ) + YET_ANOTHER_POINTER->VAR__819283 ) - '0';
+
+      if ( VAR_1238123 < 10 )
+      {
+         ANOTHER_POINTER->VAR__819283 = VAR_1238123 + '0';
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__819283 = ( VAR_1238123 - 10 ) + '0';
+
+         if ( ANOTHER_POINTER->VAR__NEXT == NULL )
+         {
+            PNode VAR_233 = (PNode)malloc(sizeof( struct Node ));
+            VAR_233->VAR__819283       = '1';
+            ANOTHER_POINTER->VAR__NEXT = VAR_233;
+            VAR_233->VAR__NEXT         = NULL;
+            VAR_233->last = ANOTHER_POINTER;
+         }
+         else
+         {
+            if ( YET_ANOTHER_POINTER->VAR__NEXT != NULL )
+            {
+               ANOTHER_POINTER->VAR__NEXT->VAR__819283 = (( ANOTHER_POINTER->VAR__NEXT->VAR__819283 - '0' ) + 1 ) + '0';
+            }
+            else
+            {
+               ANOTHER_POINTER->VAR__NEXT->VAR__819283 = (( ANOTHER_POINTER->VAR__NEXT->VAR__819283 - '0' ) + 1 ) + '0';
+               ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+
+               while (( ANOTHER_POINTER->VAR__819283 - '0' ) > 9 )
+               {
+                  ANOTHER_POINTER->VAR__819283 = (( ANOTHER_POINTER->VAR__819283 - '0' ) - 10 ) + '0';
+
+                  if ( ANOTHER_POINTER->VAR__NEXT != NULL )
+                  {
+                     ANOTHER_POINTER->VAR__NEXT->VAR__819283 = (( ANOTHER_POINTER->VAR__NEXT->VAR__819283 - '0' ) + 1 ) + '0';
+                     ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+                  }
+                  else
+                  {
+                     PNode pointer = (PNode)malloc(sizeof( struct Node ));
+                     pointer->VAR__819283       = '1';
+                     ANOTHER_POINTER->VAR__NEXT = pointer;
+                     pointer->VAR__NEXT         = NULL;
+                     pointer->last = ANOTHER_POINTER;
+                  }
+               }
+            }
+         }
+      }
+
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return VAR__8444594;
+}
+
+
+int main()
+{
+   char  VAR__4857423;
+   PNode ANOTHER_POINTER     = CreateNullList();
+   PNode YET_ANOTHER_POINTER = CreateNullList();
+   PNode p3 = ANOTHER_POINTER;
+   PNode p4 = YET_ANOTHER_POINTER;
+
+   VAR__4857423 = getchar();
+
+   while ( VAR__4857423 != '\n' )
+   {
+      InsertNode(ANOTHER_POINTER, VAR__4857423);
+      VAR__4857423 = getchar();
+   }
+
+   VAR__4857423 = getchar();
+
+   while ( VAR__4857423 != '\n' )
+   {
+      InsertNode(YET_ANOTHER_POINTER, VAR__4857423);
+      VAR__4857423 = getchar();
+   }
+
+   int VAR_21983012;
+   VAR_21983012 = Add(ANOTHER_POINTER, YET_ANOTHER_POINTER);
+
+   if ( VAR_21983012 == 1 )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   }
+
+   while ( YET_ANOTHER_POINTER->VAR__NEXT != NULL )
+   {
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   VAR_21983012 = 0;
+
+   if (( YET_ANOTHER_POINTER->last->last == NULL ) && ( YET_ANOTHER_POINTER->VAR__819283 == '0' ))
+   {
+      printf("0");
+   }
+   else
+   {
+      while ( YET_ANOTHER_POINTER->last != NULL )
+      {
+         if ( YET_ANOTHER_POINTER->VAR__819283 != '0' )
+         {
+            VAR_21983012 = 1;
+            printf("%c", YET_ANOTHER_POINTER->VAR__819283);
+            YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->last;
+         }
+         else
+         {
+            if ( VAR_21983012 != 0 )
+            {
+               printf("%c", YET_ANOTHER_POINTER->VAR__819283);
+               YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->last;
+            }
+            else
+            {
+               YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->last;
+            }
+         }
+      }
+   }
+
+   printf("\n");
+
+   while ( p3 != NULL )
+   {
+      ANOTHER_POINTER = p3;
+      p3 = p3->VAR__NEXT;
+      free(ANOTHER_POINTER);
+   }
+
+   while ( p4 != NULL )
+   {
+      ANOTHER_POINTER = p4;
+      p4 = p4->VAR__NEXT;
+      free(ANOTHER_POINTER);
+   }
+
+   getchar();
+   getchar();
+   return 0;
+}

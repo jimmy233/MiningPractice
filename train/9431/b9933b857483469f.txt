@@ -1,0 +1,91 @@
+struct student
+{
+   char           xuehao[20];
+   char           name[50];
+   char           sex;
+   int            age;
+   float          score;
+   char           addr[100];
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   struct student *newhead;
+   struct student *p3;
+   int            VAR__53647  = 1;
+   long           VAR_1238123 = 0;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   VAR__HEAD       = NULL;
+   scanf("%s %s %c %d%f %s", ANOTHER_POINTER->xuehao, ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->addr);
+
+   while ( VAR__53647 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         VAR__HEAD = ( YET_ANOTHER_POINTER = ANOTHER_POINTER );
+         VAR_1238123++;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         ANOTHER_POINTER = (struct student *)malloc(LEN);
+         scanf("%s", ANOTHER_POINTER->xuehao);
+
+         if ( strcmp(ANOTHER_POINTER->xuehao, "end") == 0 )
+         {
+            VAR__53647 = 0;
+            YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+         }
+         else
+         {
+            scanf("%s %c %d%f %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->addr);
+            VAR_1238123++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ( ANOTHER_POINTER = VAR__HEAD );
+
+      while ( ANOTHER_POINTER->VAR__NEXT != NULL )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+         ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+      }
+
+      if ( VAR__53647 == 0 )
+      {
+         newhead = ( p3 = ANOTHER_POINTER );
+      }
+      else
+      {
+         p3 = ( p3->VAR__NEXT = ANOTHER_POINTER );
+      }
+
+      YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   }
+
+   YET_ANOTHER_POINTER = newhead;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s %s %c %d ", YET_ANOTHER_POINTER->xuehao, YET_ANOTHER_POINTER->name, YET_ANOTHER_POINTER->sex, YET_ANOTHER_POINTER->age);
+
+      if (( *YET_ANOTHER_POINTER ).score == ((int)YET_ANOTHER_POINTER->score ))
+      {
+         printf("%d ", (int)YET_ANOTHER_POINTER->score);
+      }
+      else
+      {
+         printf("%.1f ", YET_ANOTHER_POINTER->score);
+      }
+
+      printf("%s\n", YET_ANOTHER_POINTER->addr);
+      YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+   }
+}

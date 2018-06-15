@@ -1,0 +1,83 @@
+struct std
+{
+   char name[20];
+   int  qi;
+   int  ban;
+   char xue;
+   char xi;
+   int  lun;
+};
+int main()
+{
+   int panduan(struct std VAR__7685);
+
+   int        VAR_1238123;
+   int        VAR__53647;
+   int        *VAR__819283;
+   int        VAR__MAX;
+   int        VAR__SUM = 0;
+   struct std *VAR_233;
+   scanf("%d", &VAR_1238123);
+   VAR__819283 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   VAR_233     = (struct std *)malloc(VAR_1238123 * ( sizeof( struct std )));
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%s %d%d %c %c %d", VAR_233[VAR__53647].name, &VAR_233[VAR__53647].qi, &VAR_233[VAR__53647].ban, &VAR_233[VAR__53647].xue, &VAR_233[VAR__53647].xi, &VAR_233[VAR__53647].lun);
+      VAR__819283[VAR__53647] = panduan(VAR_233[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0, VAR__MAX = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__53647];
+      }
+
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] == VAR__MAX )
+      {
+         printf("%s\n%d\n", VAR_233[VAR__53647].name, VAR__MAX);
+         break;
+      }
+   }
+
+   printf("%d", VAR__SUM);
+   return 0;
+}
+
+
+int panduan(struct std VAR__7685)
+{
+   int VAR__SUM = 0;
+
+   if (( VAR__7685.qi > 80 ) && ( VAR__7685.lun >= 1 ))
+   {
+      VAR__SUM = VAR__SUM + 8000;
+   }
+
+   if (( VAR__7685.qi > 85 ) && ( VAR__7685.ban > 80 ))
+   {
+      VAR__SUM = VAR__SUM + 4000;
+   }
+
+   if ( VAR__7685.qi > 90 )
+   {
+      VAR__SUM = VAR__SUM + 2000;
+   }
+
+   if (( VAR__7685.xi == 'Y' ) && ( VAR__7685.qi > 85 ))
+   {
+      VAR__SUM = VAR__SUM + 1000;
+   }
+
+   if (( VAR__7685.ban > 80 ) && ( VAR__7685.xue == 'Y' ))
+   {
+      VAR__SUM = VAR__SUM + 850;
+   }
+
+   return VAR__SUM;
+}

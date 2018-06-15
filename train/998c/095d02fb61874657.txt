@@ -1,0 +1,79 @@
+int main()
+{
+   char num1[252] = { 0 };
+   char num2[252] = { 0 };
+   char num3[253] = { 0 };
+
+   ( cin >> num1 ) >> num2;
+   int maxLength;
+   int num1Length = strlen(num1);
+   int num2Length = strlen(num2);
+   int VAR__53647;
+
+   if ( num1Length >= num2Length )
+   {
+      maxLength = num1Length;
+   }
+   else
+   {
+      maxLength = num2Length;
+   }
+
+   int mark = 0;
+   for ( VAR__53647 = 0; ( VAR__53647 < maxLength ) || ( mark == 1 ); VAR__53647++ )
+   {
+      int VAR__819283 = 0;
+      int VAR__19328  = 0;
+
+      if ( VAR__53647 < num1Length )
+      {
+         VAR__819283 = num1[( num1Length - VAR__53647 ) - 1] - '0';
+      }
+
+      if ( VAR__53647 < num2Length )
+      {
+         VAR__19328 = num2[( num2Length - VAR__53647 ) - 1] - '0';
+      }
+
+      int VAR__SUM = VAR__819283 + VAR__19328;
+
+      if ( mark == 1 )
+      {
+         VAR__SUM++;
+      }
+
+      if ( VAR__SUM >= 10 )
+      {
+         VAR__SUM -= 10;
+         mark      = 1;
+      }
+      else
+      {
+         mark = 0;
+      }
+
+      num3[VAR__53647] = VAR__SUM + '0';
+   }
+
+   int begin = maxLength;
+   for ( VAR__53647 = begin; VAR__53647 > 0; VAR__53647-- )
+   {
+      if (( num3[VAR__53647] >= '1' ) && ( num3[VAR__53647] <= '9' ))
+      {
+         break;
+      }
+      else
+      {
+         begin--;
+      }
+   }
+
+
+   for ( VAR__53647 = begin; VAR__53647 >= 0; VAR__53647-- )
+   {
+      cout << num3[VAR__53647];
+   }
+
+   cout << endl;
+   return 0;
+}

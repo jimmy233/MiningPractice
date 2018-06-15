@@ -1,0 +1,94 @@
+void VAR__127322(int aa[], int bb[], int VAR__4857423[], int VAR__temp);
+
+int VAR__12302[20][101] = { 0 };
+int main()
+{
+   int VAR__53647;
+   int VAR_1238123;
+   int lens1;
+   int lens2;
+   int VAR_129012 = 0;
+   int VAR_2890   = 0;
+   int w1;
+   int w2;
+   int VAR__temp[20];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      char VAR__819283[101];
+      char VAR__19328[101];
+      int  aa[101];
+      int  bb[101];
+      int  VAR__4857423[101] = { 0 };
+      scanf("%s", VAR__819283);
+      scanf("%s", VAR__19328);
+      lens1 = strlen(VAR__819283);
+      lens2 = strlen(VAR__19328);
+      VAR__temp[VAR__53647] = ( lens1 > lens2 ) ? ( lens1 ) : ( lens2 );
+      for ( VAR_129012 = 0; VAR_129012 < strlen(VAR__819283); VAR_129012++ )
+      {
+         aa[( VAR_129012 + 101 ) - strlen(VAR__819283)] = VAR__819283[VAR_129012] - '0';
+      }
+
+      for ( VAR_129012 = 0; VAR_129012 < strlen(VAR__19328); VAR_129012++ )
+      {
+         bb[( VAR_129012 + 101 ) - strlen(VAR__19328)] = VAR__19328[VAR_129012] - '0';
+      }
+
+      for ( VAR_129012 = 101 - VAR__temp[VAR__53647]; VAR_129012 < (( 101 - VAR__temp[VAR__53647] ) + ( lens1 - lens2 )); VAR_129012++ )
+      {
+         bb[VAR_129012] = 0;
+      }
+
+      VAR__127322(aa, bb, VAR__4857423, VAR__temp[VAR__53647]);
+      for ( VAR_129012 = 100; VAR_129012 >= ( 101 - VAR__temp[VAR__53647] ); VAR_129012-- )
+      {
+         VAR__12302[VAR_2890][VAR_129012] = VAR__4857423[VAR_129012];
+      }
+
+      VAR_2890++;
+      printf("\n");
+   }
+
+   for ( VAR_129012 = 0; VAR_129012 < VAR_2890; VAR_129012++ )
+   {
+      for ( w1 = 101 - VAR__temp[VAR_129012]; w1 <= 100; w1++ )
+      {
+         if ( w1 != 0 )
+         {
+            break;
+         }
+      }
+
+
+      for ( w2 = w1; w2 <= 100; w2++ )
+      {
+         printf("%d", VAR__12302[VAR_129012][w2]);
+      }
+
+      printf("\n");
+   }
+
+   printf("\n");
+}
+
+
+void VAR__127322(int aa[], int bb[], int VAR__4857423[], int VAR__temp)
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 100; VAR__53647 >= ( 101 - VAR__temp ); VAR__53647-- )
+   {
+      VAR__4857423[VAR__53647] = aa[VAR__53647] - bb[VAR__53647];
+   }
+
+   for ( VAR__53647 = 100; VAR__53647 >= ( 101 - VAR__temp ); VAR__53647-- )
+   {
+      if ( VAR__4857423[VAR__53647] < 0 )
+      {
+         VAR__4857423[VAR__53647] = VAR__4857423[VAR__53647] + 10;
+         VAR__4857423[VAR__53647 - 1]--;
+      }
+   }
+}

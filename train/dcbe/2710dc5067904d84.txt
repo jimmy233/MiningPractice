@@ -1,0 +1,52 @@
+void delsuffix(char main[], int VAR__1238129)
+{
+   main[strlen(main) - VAR__1238129] = '\0';
+}
+
+
+int check(char main[], int len1, char suffix[], int len2)
+{
+   int VAR_1238123  = len1 - 1;
+   int VAR__1238129 = len2 - 1;
+
+   while (( VAR__1238129 >= 0 ) && ( main[VAR_1238123] == suffix[VAR__1238129] ))
+   {
+      VAR__1238129--;
+      VAR_1238123--;
+   }
+
+   if ( VAR__1238129 >= 0 )
+   {
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+}
+
+
+void main()
+{
+   int  number;
+   int  VAR__53647;
+   int  lensuffix[3] = { 2, 2, 3 };
+   char VAR_9494[30];
+   char suffix[3][4] = { "er", "ly", "ing" };
+
+   scanf("%d", &number);
+   for ( VAR__53647 = 1; VAR__53647 <= ( number + 1 ); VAR__53647++ )
+   {
+      gets(VAR_9494);
+      int VAR__1238129;
+      for ( VAR__1238129 = 0; VAR__1238129 < 3; VAR__1238129++ )
+      {
+         if ( check(VAR_9494, strlen(VAR_9494), suffix[VAR__1238129], lensuffix[VAR__1238129]))
+         {
+            delsuffix(VAR_9494, lensuffix[VAR__1238129]);
+            printf("%s\n", VAR_9494);
+            break;
+         }
+      }
+   }
+}

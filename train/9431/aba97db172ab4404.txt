@@ -1,0 +1,83 @@
+struct student
+{
+   char           id[15];
+   char           name[20];
+   char           sex;
+   int            age;
+   char           grade[20];
+   char           add[20];
+   struct student *VAR__NEXT;
+};
+struct student *set(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__HEAD           = (struct student *)malloc(LEN);
+   ANOTHER_POINTER     = VAR__HEAD;
+   YET_ANOTHER_POINTER = VAR__HEAD;
+   scanf("%s%s %c %d %s %s", VAR__HEAD->id, VAR__HEAD->name, &VAR__HEAD->sex, &VAR__HEAD->age, VAR__HEAD->grade, VAR__HEAD->add);
+   ANOTHER_POINTER = (struct student *)malloc(LEN);
+   scanf("%s%s %c %d %s %s", ANOTHER_POINTER->id, ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->grade, ANOTHER_POINTER->add);
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+
+   while ( 1 )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%s", ANOTHER_POINTER->id);
+
+      if ( strcmp(ANOTHER_POINTER->id, "end") == 0 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+         break;
+      }
+
+      scanf("%s %c %d %s %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->sex, &ANOTHER_POINTER->age, ANOTHER_POINTER->grade, ANOTHER_POINTER->add);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   struct student *VAR_233;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR_1238123 = 1;
+
+   VAR_233             = set();
+   ANOTHER_POINTER     = VAR_233;
+   ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   YET_ANOTHER_POINTER = VAR_233;
+   YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+   p3 = VAR_233;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      YET_ANOTHER_POINTER->VAR__NEXT = p3;
+      p3 = YET_ANOTHER_POINTER;
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = p3;
+   VAR_233->VAR__NEXT             = NULL;
+   ANOTHER_POINTER = YET_ANOTHER_POINTER;
+
+   while ( ANOTHER_POINTER != NULL )
+   {
+      printf("%s %s %c %d %s %s\n", ANOTHER_POINTER->id, ANOTHER_POINTER->name, ANOTHER_POINTER->sex, ANOTHER_POINTER->age, ANOTHER_POINTER->grade, ANOTHER_POINTER->add);
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   return 0;
+}

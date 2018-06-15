@@ -1,0 +1,108 @@
+int main()
+{
+   char in[10000];
+   char out[10000];
+   char *VAR_233 = in;
+   char *VAR_666 = out;
+   int  VAR__7685[1000];
+   int  VAR__3918907[1000];
+   int  temp1[5];
+   int  temp2[5];
+   int  *VAR_129012 = temp1;
+   int  *VAR_9494   = temp2;
+   int  VAR__53647  = 0;
+   int  VAR__21230;
+   int  VAR__COUNT = 0;
+   int  VAR__MAX   = 0;
+   int  period;
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      VAR__7685[VAR__53647] = ( VAR__3918907[VAR__53647] = 0 );
+   }
+
+   VAR__53647 = 0;
+   ( cin >> in ) >> out;
+
+   while (( *VAR_233 ) != 0 )
+   {
+      if (( *VAR_233 ) == ',' )
+      {
+         VAR_233++;
+      }
+      else
+      {
+         while ((( *VAR_233 ) != ',' ) && (( *VAR_233 ) != 0 ))
+         {
+            *VAR_129012 = ( *VAR_233 ) - '0';
+            VAR_233++;
+            VAR_129012++;
+         }
+
+         VAR__21230 = 0;
+
+         while ( VAR_129012 > temp1 )
+         {
+            VAR_129012--;
+            VAR__7685[VAR__53647] = VAR__7685[VAR__53647] + (( *VAR_129012 ) * pow((double)10, VAR__21230));
+            VAR__21230++;
+            *VAR_129012 = 0;
+         }
+
+         VAR__53647++;
+      }
+   }
+
+   VAR__53647 = 0;
+
+   while (( *VAR_666 ) != 0 )
+   {
+      if (( *VAR_666 ) == ',' )
+      {
+         VAR_666++;
+      }
+      else
+      {
+         while ((( *VAR_666 ) != ',' ) && (( *VAR_666 ) != 0 ))
+         {
+            *VAR_9494 = ( *VAR_666 ) - '0';
+            VAR_666++;
+            VAR_9494++;
+         }
+
+         VAR__21230 = 0;
+
+         while ( VAR_9494 > temp2 )
+         {
+            VAR_9494--;
+            VAR__3918907[VAR__53647] = VAR__3918907[VAR__53647] + (( *VAR_9494 ) * pow((double)10, VAR__21230));
+            VAR__21230++;
+            *VAR_9494 = 0;
+         }
+
+         VAR__53647++;
+      }
+   }
+
+   ( cout << VAR__53647 ) << " ";
+   for ( period = 0; period < 1000; period++ )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+      {
+         if (( VAR__7685[VAR__53647] <= period ) && ( VAR__3918907[VAR__53647] > period ))
+         {
+            VAR__COUNT++;
+         }
+      }
+
+      if ( VAR__COUNT > VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT;
+      }
+
+      VAR__COUNT = 0;
+   }
+
+   ( cout << VAR__MAX ) << endl;
+   return 0;
+}

@@ -1,0 +1,79 @@
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230;
+   int   VAR__TEMP;
+   int   VAR__NUM = 0;
+   int   *VAR__819283;
+   float ave = 0;
+   float *depart;
+   float VAR__MAX = 0;
+
+   scanf("%d", &VAR_1238123);
+   VAR__819283 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   depart      = (float *)malloc(VAR_1238123 * ( sizeof( float )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d", VAR__819283 + VAR__53647);
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if (( *( VAR__819283 + VAR__21230 )) > ( *(( VAR__819283 + VAR__21230 ) + 1 )))
+         {
+            VAR__TEMP = *( VAR__819283 + VAR__21230 );
+            *( VAR__819283 + VAR__21230 )        = *(( VAR__819283 + VAR__21230 ) + 1 );
+            *(( VAR__819283 + VAR__21230 ) + 1 ) = VAR__TEMP;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ave = ave + (((float)( *( VAR__819283 + VAR__53647 ))) / VAR_1238123 );
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      *( depart + VAR__53647 ) = ave - ( *( VAR__819283 + VAR__53647 ));
+
+      if (( *( depart + VAR__53647 )) < 0 )
+      {
+         *( depart + VAR__53647 ) = -( *( depart + VAR__53647 ));
+      }
+
+      if (( *( depart + VAR__53647 )) > VAR__MAX )
+      {
+         VAR__MAX = *( depart + VAR__53647 );
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( fabs(( *( depart + VAR__53647 )) - VAR__MAX) < 1.0e-3 )
+      {
+         VAR__NUM = VAR__NUM + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( fabs(( *( depart + VAR__53647 )) - VAR__MAX) < 1.0e-3 )
+      {
+         printf("%d", *( VAR__819283 + VAR__53647 ));
+         break;
+      }
+   }
+
+   VAR__53647 = VAR__53647 + 1;
+   for ( ; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( fabs(( *( depart + VAR__53647 )) - VAR__MAX) < 1.0e-3 )
+      {
+         printf(",%d", *( VAR__819283 + VAR__53647 ));
+      }
+   }
+}

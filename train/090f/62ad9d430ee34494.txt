@@ -1,0 +1,80 @@
+int turn(char VAR__819283[])
+{
+   int VAR__SUM = 0;
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__819283[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      VAR__SUM = (( VAR__SUM * 10 ) + VAR__819283[VAR__53647] ) - '0';
+   }
+
+   return VAR__SUM;
+}
+
+
+int main()
+{
+   char A_STRING[300][5] = { '\0' };
+   char VAR__4857423;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__NUM[300];
+   int  VAR__MAX;
+   int  nmax;
+   int  VAR__COUNT;
+
+   for ( VAR__53647 = 0, VAR__21230 = 0; ( VAR__4857423 = getchar()) != '\n'; VAR__21230++ )
+   {
+      if ( VAR__4857423 == ',' )
+      {
+         VAR__53647++;
+         VAR__21230 = -1;
+      }
+      else
+      {
+         A_STRING[VAR__53647][VAR__21230] = VAR__4857423;
+      }
+   }
+
+   VAR__COUNT = VAR__53647 + 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = turn(A_STRING[VAR__53647]);
+   }
+
+   VAR__MAX = VAR__NUM[0];
+   nmax     = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647 + 1] > VAR__MAX )
+      {
+         nmax     = VAR__MAX;
+         VAR__MAX = VAR__NUM[VAR__53647 + 1];
+      }
+      else
+      if ((( VAR__MAX - VAR__NUM[VAR__53647 + 1] ) < ( VAR__MAX - nmax )) && ( VAR__MAX != VAR__NUM[VAR__53647 + 1] ))
+      {
+         nmax = VAR__NUM[VAR__53647 + 1];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__COUNT - 1 ); VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647 + 1] != VAR__NUM[VAR__53647] )
+      {
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 == ( VAR__COUNT - 1 ))
+   {
+      printf("No\n");
+   }
+   else
+   {
+      printf("%d\n", nmax);
+   }
+
+   return 0;
+}

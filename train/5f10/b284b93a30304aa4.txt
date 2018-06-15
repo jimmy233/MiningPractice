@@ -1,0 +1,88 @@
+int main()
+{
+   int  VAR__1238129;
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594 = 0;
+   char VAR__819283[1000];
+   char VAR__19328[1000][5];
+   char VAR__4857423[5];
+   int  VAR__NUM[1000];
+
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      VAR__NUM[VAR__53647] = 0;
+   }
+
+   scanf("%d\n", &VAR_1238123);
+   gets(VAR__819283);
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647; VAR__21230 <= (( VAR__53647 + VAR_1238123 ) - 1 ); VAR__21230++ )
+      {
+         if ( VAR__819283[VAR__21230] == '\0' )
+         {
+            goto loop;
+         }
+
+         VAR__19328[VAR__8444594][VAR__21230 - VAR__53647] = VAR__819283[VAR__21230];
+      }
+
+      VAR__8444594++;
+      VAR__19328[VAR__8444594 - 1][VAR_1238123] = '\0';
+   }
+
+loop:
+   ;
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__8444594 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if ( strcmp(VAR__19328[VAR__53647], VAR__19328[VAR__21230]) == 0 )
+         {
+            VAR__NUM[VAR__53647]++;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = VAR__8444594 - 2; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( VAR__NUM[VAR__21230] < VAR__NUM[VAR__21230 + 1] )
+         {
+            strcpy(VAR__4857423, VAR__19328[VAR__21230]);
+            strcpy(VAR__19328[VAR__21230], VAR__19328[VAR__21230 + 1]);
+            strcpy(VAR__19328[VAR__21230 + 1], VAR__4857423);
+            VAR__1238129             = VAR__NUM[VAR__21230];
+            VAR__NUM[VAR__21230]     = VAR__NUM[VAR__21230 + 1];
+            VAR__NUM[VAR__21230 + 1] = VAR__1238129;
+         }
+      }
+   }
+
+
+   if ( VAR__NUM[0] == 0 )
+   {
+      printf("NO");
+   }
+   else
+   {
+      printf("%d\n", VAR__NUM[0] + 1);
+      puts(VAR__19328[0]);
+      for ( VAR__53647 = 1; ; VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647] == VAR__NUM[0] )
+         {
+            puts(VAR__19328[VAR__53647]);
+         }
+         else
+         {
+            break;
+         }
+      }
+   }
+}

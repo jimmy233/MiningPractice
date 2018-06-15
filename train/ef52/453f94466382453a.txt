@@ -1,0 +1,75 @@
+struct daodan
+{
+   int height;
+   int number;
+};
+int compare(const void *VAR__819283, const void *VAR__19328)
+{
+   struct daodan *VAR__7685    = (struct daodan *)VAR__819283;
+   struct daodan *VAR__3918907 = (struct daodan *)VAR__19328;
+
+   return ( *VAR__3918907 ).number - ( *VAR__7685 ).number;
+}
+
+
+int nextmax(struct daodan *dao, int VAR__8444594, int VAR_1238123)
+{
+   int *VAR__819283 = (int *)malloc((( VAR_1238123 - 1 ) - VAR__8444594 ) * ( sizeof( int )));
+   int VAR__COUNT   = 0;
+   int VAR__19328;
+   int VAR__4857423 = 0;
+
+   for ( int VAR__53647 = VAR__8444594 + 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( dao[VAR__53647].height <= dao[VAR__8444594].height )
+      {
+         VAR__819283[VAR__COUNT] = dao[VAR__53647].number;
+         VAR__COUNT++;
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( int VAR__21230 = 0; VAR__21230 <= ( VAR__COUNT - 1 ); VAR__21230++ )
+   {
+      if ( VAR__819283[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = VAR__819283[VAR__21230];
+      }
+   }
+
+   return VAR__MAX;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct daodan *dao = (struct daodan *)malloc(VAR_1238123 * ( sizeof( struct daodan )));
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d", &dao[VAR__53647].height);
+   }
+
+   for ( int VAR__21230 = 0; VAR__21230 <= ( VAR_1238123 - 1 ); VAR__21230++ )
+   {
+      dao[VAR__21230].number = 1;
+   }
+
+   for ( int VAR__8444594 = VAR_1238123 - 2; VAR__8444594 >= 0; VAR__8444594-- )
+   {
+      dao[VAR__8444594].number = nextmax(dao, VAR__8444594, VAR_1238123) + 1;
+   }
+
+   int VAR__MAX = dao[0].number;
+   for ( int VAR__1111 = 1; VAR__1111 <= ( VAR_1238123 - 1 ); VAR__1111++ )
+   {
+      if ( dao[VAR__1111].number > VAR__MAX )
+      {
+         VAR__MAX = dao[VAR__1111].number;
+      }
+   }
+
+   printf("%d", VAR__MAX);
+}

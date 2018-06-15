@@ -1,0 +1,83 @@
+int main()
+{
+   int sY;
+   int sM;
+   int sD;
+   int eY;
+   int eM;
+   int eD;
+
+   int DiJiTian(int VAR__3918907, int VAR__1238129, int VAR__12302);
+   int isRunNian(int year);
+
+   scanf("%d%d%d%d%d%d", &sY, &sM, &sD, &eY, &eM, &eD);
+   int VAR__7685;
+   int days = DiJiTian(eY, eM, eD) - DiJiTian(sY, sM, sD);
+   for ( VAR__7685 = sY; VAR__7685 < eY; VAR__7685++ )
+   {
+      if ( isRunNian(VAR__7685))
+      {
+         days = days + 366;
+      }
+      else
+      {
+         days = days + 365;
+      }
+   }
+
+   printf("%d", days);
+   return 0;
+}
+
+
+int DiJiTian(int VAR__3918907, int VAR__1238129, int VAR__12302)
+{
+   int isRunNian(int year);
+
+   int VAR__53647;
+   int result = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         result += 31;
+      }
+      else
+      if (((( VAR__53647 == 4 ) || ( VAR__53647 == 6 )) || ( VAR__53647 == 9 )) || ( VAR__53647 == 11 ))
+      {
+         result += 30;
+      }
+      else
+      if ( VAR__53647 == 2 )
+      {
+         if ( isRunNian(VAR__3918907))
+         {
+            result += 29;
+         }
+         else
+         {
+            result += 28;
+         }
+      }
+   }
+
+   result += VAR__12302;
+   return result;
+}
+
+
+int isRunNian(int year)
+{
+   int result1;
+
+   if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+   {
+      result1 = 1;
+   }
+   else
+   {
+      result1 = 0;
+   }
+
+   return result1;
+}

@@ -1,0 +1,95 @@
+int Cmp(const void *ANOTHER_POINTER, const void *YET_ANOTHER_POINTER)
+{
+   int *C1 = (int *)ANOTHER_POINTER;
+   int *C2 = (int *)YET_ANOTHER_POINTER;
+
+   return ( *C2 ) - ( *C1 );
+}
+
+
+int main()
+{
+   int TianJi[1005];
+   int QiKing[1005];
+   int nHorses;
+   int silver;
+
+   while (( cin >> nHorses ) && nHorses )
+   {
+      silver = 0;
+      for ( int VAR__53647 = 0; VAR__53647 < nHorses; VAR__53647++ )
+      {
+         cin >> TianJi[VAR__53647];
+      }
+
+      qsort(TianJi, nHorses, sizeof( TianJi[0] ), Cmp);
+      for ( int VAR__53647 = 0; VAR__53647 < nHorses; VAR__53647++ )
+      {
+         cin >> QiKing[VAR__53647];
+      }
+
+      qsort(QiKing, nHorses, sizeof( QiKing[0] ), Cmp);
+      int Head = 0;
+      int Tail = nHorses - 1;
+      for ( int VAR__53647 = 0; VAR__53647 < nHorses; VAR__53647++ )
+      {
+         if ( TianJi[Head] > QiKing[VAR__53647] )
+         {
+            Head++;
+            silver += 200;
+            continue;
+         }
+
+         if ( TianJi[Head] < QiKing[VAR__53647] )
+         {
+            Tail--;
+            silver -= 200;
+            continue;
+         }
+
+         if ( VAR__53647 == ( nHorses - 1 ))
+         {
+            break;
+         }
+
+         int sum1 = 0;
+         int sum2 = -200;
+         for ( int VAR__21230 = VAR__53647 + 1; VAR__21230 < nHorses; VAR__21230++ )
+         {
+            if ( TianJi[( Head + VAR__21230 ) - VAR__53647] > QiKing[VAR__21230] )
+            {
+               sum1 += 200;
+            }
+            else
+            if ( TianJi[( Head + VAR__21230 ) - VAR__53647] < QiKing[VAR__21230] )
+            {
+               sum1 -= 200;
+            }
+
+
+            if ( TianJi[(( Head + VAR__21230 ) - VAR__53647 ) - 1] > QiKing[VAR__21230] )
+            {
+               sum2 += 200;
+            }
+            else
+            if ( TianJi[(( Head + VAR__21230 ) - VAR__53647 ) - 1] < QiKing[VAR__21230] )
+            {
+               sum2 -= 200;
+            }
+         }
+
+         if ( sum1 > sum2 )
+         {
+            Head++;
+            continue;
+         }
+         else
+         {
+            Tail--;
+            silver -= 200;
+         }
+      }
+
+      ( cout << silver ) << endl;
+   }
+}

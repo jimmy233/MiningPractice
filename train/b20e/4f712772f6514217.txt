@@ -1,0 +1,112 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__TEMP;
+   int win  = 0;
+   int tie  = 0;
+   int lose = 0;
+   int tianji[1000];
+   int qiwang[1000];
+
+   while ( 1 )
+   {
+      win  = 0;
+      tie  = 0;
+      lose = 0;
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", tianji + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         scanf("%d", qiwang + VAR__53647);
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+         {
+            if ( tianji[VAR__21230] < tianji[VAR__21230 + 1] )
+            {
+               VAR__TEMP              = tianji[VAR__21230];
+               tianji[VAR__21230]     = tianji[VAR__21230 + 1];
+               tianji[VAR__21230 + 1] = VAR__TEMP;
+            }
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - VAR__53647 ) - 1 ); VAR__21230++ )
+         {
+            if ( qiwang[VAR__21230] < qiwang[VAR__21230 + 1] )
+            {
+               VAR__TEMP              = qiwang[VAR__21230];
+               qiwang[VAR__21230]     = qiwang[VAR__21230 + 1];
+               qiwang[VAR__21230 + 1] = VAR__TEMP;
+            }
+         }
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( qiwang[VAR__21230] == ( -1 ))
+         {
+            continue;
+         }
+
+         for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 0; VAR__53647-- )
+         {
+            if ( tianji[VAR__53647] == ( -1 ))
+            {
+               continue;
+            }
+
+            if ( tianji[VAR__53647] > qiwang[VAR__21230] )
+            {
+               tianji[VAR__53647] = -1;
+               qiwang[VAR__21230] = -1;
+               win++;
+               break;
+            }
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         if ( tianji[VAR__53647] == ( -1 ))
+         {
+            continue;
+         }
+
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( qiwang[VAR__21230] == ( -1 ))
+            {
+               continue;
+            }
+
+            if ( tianji[VAR__53647] == qiwang[VAR__21230] )
+            {
+               tianji[VAR__53647] == ( -1 );
+               qiwang[VAR__21230] == ( -1 );
+               tie++;
+               break;
+            }
+         }
+      }
+
+      lose = ( VAR_1238123 - win ) - tie;
+      printf("%d\n", ( win - lose ) * 200);
+   }
+
+   return 0;
+}

@@ -1,0 +1,109 @@
+char VAR__819283[252];
+char VAR__19328[252];
+int  an[252];
+int  bn[252];
+int  rn[252];
+char res[252];
+char VAR__TEMP[252];
+int  lenA;
+int  lenB;
+int  LEN_OF_STH;
+void change()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < lenA; VAR__53647++ )
+   {
+      an[VAR__53647] = VAR__819283[( lenA - VAR__53647 ) - 1] - '0';
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < lenB; VAR__53647++ )
+   {
+      bn[VAR__53647] = VAR__19328[( lenB - VAR__53647 ) - 1] - '0';
+   }
+
+   if ( lenA > lenB )
+   {
+      LEN_OF_STH = lenA;
+      for ( VAR__53647 = lenB; VAR__53647 < lenA; VAR__53647++ )
+      {
+         bn[VAR__53647] = 0;
+      }
+   }
+   else
+   if ( lenB > lenA )
+   {
+      LEN_OF_STH = lenB;
+      for ( VAR__53647 = lenA; VAR__53647 < lenB; VAR__53647++ )
+      {
+         an[VAR__53647] = 0;
+      }
+   }
+   else
+   {
+      LEN_OF_STH = lenB;
+   }
+}
+
+
+void addAB()
+{
+   int VAR__53647;
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      rn[VAR__53647] += an[VAR__53647] + bn[VAR__53647];
+
+      if ( rn[VAR__53647] > 9 )
+      {
+         rn[VAR__53647] = rn[VAR__53647] - 10;
+         rn[VAR__53647 + 1]++;
+      }
+   }
+
+   if ( rn[VAR__53647] == 1 )
+   {
+      LEN_OF_STH++;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      VAR__TEMP[VAR__53647] = rn[( LEN_OF_STH - VAR__53647 ) - 1] + '0';
+   }
+
+   int begin = 1;
+
+   while ( VAR__TEMP[begin] == 0 )
+   {
+      begin++;
+   }
+
+   if ( LEN_OF_STH == 1 )
+   {
+      begin = 0;
+   }
+
+   if ( VAR__TEMP[0] != '0' )
+   {
+      begin = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( LEN_OF_STH - begin ); VAR__53647++ )
+   {
+      res[VAR__53647] = VAR__TEMP[VAR__53647 + begin];
+   }
+}
+
+
+int main()
+{
+   cin.getline(VAR__819283, 252);
+   cin.getline(VAR__19328, 252);
+   lenA = strlen(VAR__819283);
+   lenB = strlen(VAR__19328);
+   memset(rn, 0, sizeof( rn ));
+   change();
+   addAB();
+   ( cout << res ) << endl;
+   return 0;
+}

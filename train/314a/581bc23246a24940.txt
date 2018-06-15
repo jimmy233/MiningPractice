@@ -1,0 +1,95 @@
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  cou;
+   int  VAR__SUM = 1;
+   int  VAR__MAX = 0;
+   int  sub;
+   int  VAR__NUM[1000];
+   char stra[99999];
+   char strb[99999];
+   int  VAR__819283[5000];
+   int  VAR__19328[5000];
+
+   cin.getline(stra, 99999);
+   cin.getline(strb, 99999);
+   for ( cou = 0; strb[cou] != '\0'; cou++ )
+   {
+      if ( strb[cou] == ',' )
+      {
+         VAR__SUM++;
+      }
+   }
+
+
+   VAR__53647 = 0;
+   VAR__21230 = 0;
+   for ( sub = 0; sub <= cou; sub++ )
+   {
+      if (( stra[sub] == ',' ) || ( stra[sub] == '\0' ))
+      {
+         VAR__819283[VAR__53647] = ( stra[sub - 1] - '0' ) * 1;
+
+         if (( stra[sub - 2] != ',' ) && (( sub - 2 ) >= 0 ))
+         {
+            VAR__819283[VAR__53647] += ( stra[sub - 2] - '0' ) * 10;
+
+            if (( stra[sub - 3] != ',' ) && (( sub - 3 ) >= 0 ))
+            {
+               VAR__819283[VAR__53647] += ( stra[sub - 3] - '0' ) * 100;
+
+               if (( stra[sub - 4] != ',' ) && (( sub - 4 ) >= 0 ))
+               {
+                  VAR__819283[VAR__53647] += ( stra[sub - 4] - '0' ) * 1000;
+               }
+            }
+         }
+
+         VAR__53647++;
+      }
+
+      if (( strb[sub] == ',' ) || ( strb[sub] == '\0' ))
+      {
+         VAR__19328[VAR__21230] = ( strb[sub - 1] - '0' ) * 1;
+
+         if (( strb[sub - 2] != ',' ) && (( sub - 2 ) >= 0 ))
+         {
+            VAR__19328[VAR__21230] += ( strb[sub - 2] - '0' ) * 10;
+
+            if (( strb[sub - 3] != ',' ) && (( sub - 3 ) >= 0 ))
+            {
+               VAR__19328[VAR__21230] += ( strb[sub - 3] - '0' ) * 100;
+
+               if (( strb[sub - 4] != ',' ) && (( sub - 4 ) >= 0 ))
+               {
+                  VAR__19328[VAR__21230] += ( strb[sub - 4] - '0' ) * 1000;
+               }
+            }
+         }
+
+         VAR__21230++;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < 1000; VAR__21230++ )
+   {
+      VAR__NUM[VAR__21230] = 0;
+      for ( VAR__53647 = 0; VAR__53647 < VAR__SUM; VAR__53647++ )
+      {
+         if (( VAR__819283[VAR__53647] <= VAR__21230 ) && ( VAR__19328[VAR__53647] > VAR__21230 ))
+         {
+            VAR__NUM[VAR__21230]++;
+         }
+      }
+
+
+      if ( VAR__NUM[VAR__21230] > VAR__MAX )
+      {
+         VAR__MAX = VAR__NUM[VAR__21230];
+      }
+   }
+
+   ((( cout << VAR__SUM ) << ' ' ) << VAR__MAX ) << endl;
+   return 0;
+}

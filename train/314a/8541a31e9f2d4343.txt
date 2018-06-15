@@ -1,0 +1,89 @@
+int main()
+{
+   char ANOTHER_STRING[100000];
+   char YET_ANOTHER_STRING[100000];
+   int  VAR__53647;
+   int  VAR__21230 = 0;
+   int  VAR__NUM   = 0;
+   int  VAR__COUNT = 0;
+   int  VAR__MAX   = 0;
+   int  VAR__7685[1000];
+   int  VAR__3918907[1000];
+   int  LEN_OF_STH;
+
+   memset(ANOTHER_STRING, 0, sizeof( ANOTHER_STRING ));
+   memset(YET_ANOTHER_STRING, 0, sizeof( YET_ANOTHER_STRING ));
+   memset(VAR__7685, 0, sizeof( VAR__7685 ));
+   memset(VAR__3918907, 0, sizeof( VAR__3918907 ));
+   ( cin >> ANOTHER_STRING ) >> YET_ANOTHER_STRING;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(ANOTHER_STRING); VAR__53647++ )
+   {
+      if ( ANOTHER_STRING[VAR__53647] != ',' )
+      {
+         VAR__NUM = (( VAR__NUM * 10 ) + ANOTHER_STRING[VAR__53647] ) - '0';
+
+         if ( VAR__53647 == ( strlen(ANOTHER_STRING) - 1 ))
+         {
+            VAR__7685[VAR__21230] = VAR__NUM;
+         }
+
+         continue;
+      }
+
+      if ( ANOTHER_STRING[VAR__53647] == ',' )
+      {
+         VAR__7685[VAR__21230++] = VAR__NUM;
+      }
+
+      VAR__NUM = 0;
+   }
+
+   VAR__NUM   = 0;
+   VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < strlen(YET_ANOTHER_STRING); VAR__53647++ )
+   {
+      if ( YET_ANOTHER_STRING[VAR__53647] != ',' )
+      {
+         VAR__NUM = (( VAR__NUM * 10 ) + YET_ANOTHER_STRING[VAR__53647] ) - '0';
+
+         if ( VAR__53647 == ( strlen(YET_ANOTHER_STRING) - 1 ))
+         {
+            VAR__3918907[VAR__21230] = VAR__NUM;
+         }
+
+         continue;
+      }
+
+      if ( YET_ANOTHER_STRING[VAR__53647] == ',' )
+      {
+         VAR__3918907[VAR__21230++] = VAR__NUM;
+      }
+
+      VAR__NUM = 0;
+   }
+
+   LEN_OF_STH = VAR__21230 + 1;
+   for ( VAR__53647 = 0; VAR__53647 < 1000; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < LEN_OF_STH; VAR__21230++ )
+      {
+         if ( VAR__7685[VAR__21230] == VAR__53647 )
+         {
+            VAR__COUNT++;
+         }
+
+         if ( VAR__3918907[VAR__21230] == VAR__53647 )
+         {
+            VAR__COUNT--;
+         }
+      }
+
+      if ( VAR__COUNT > VAR__MAX )
+      {
+         VAR__MAX = VAR__COUNT;
+      }
+   }
+
+   ((( cout << LEN_OF_STH ) << ' ' ) << VAR__MAX ) << endl;
+   return 0;
+}

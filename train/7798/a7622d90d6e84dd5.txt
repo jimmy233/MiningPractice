@@ -1,0 +1,74 @@
+struct book
+{
+   int  number;
+   char name[26];
+   int  VAR__NUM[26];
+};
+void mostbook(struct book *VAR_233)
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__8444594;
+
+   VAR__8444594 = strlen(VAR_233->name);
+   for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+   {
+      VAR_233->VAR__NUM[VAR__21230] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      VAR_233->VAR__NUM[VAR_233->name[VAR__53647] - 'A']++;
+   }
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   int VAR__MAX     = 0;
+   int maxi         = 0;
+   int VAR_9494[26] = { 0 };
+
+   scanf("%d", &VAR__1238129);
+   struct book *VAR_233;
+   VAR_233 = (struct book *)malloc(VAR__1238129 * ( sizeof( struct book )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      scanf("%d", &( VAR_233 + VAR__53647 )->number);
+      scanf("%s", &( VAR_233 + VAR__53647 )->name);
+      mostbook(VAR_233 + VAR__53647);
+      for ( VAR__21230 = 0; VAR__21230 < 26; VAR__21230++ )
+      {
+         VAR_9494[VAR__21230] += ( VAR_233 + VAR__53647 )->VAR__NUM[VAR__21230];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647] >= VAR__MAX )
+      {
+         VAR__MAX = VAR_9494[VAR__53647];
+         maxi     = VAR__53647;
+      }
+   }
+
+   printf("%c\n", maxi + 'A');
+   printf("%d\n", VAR__MAX);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      int VAR__8444594;
+      int VAR__21230;
+      VAR__8444594 = strlen(( VAR_233 + VAR__53647 )->name);
+      for ( VAR__21230 = 0; VAR__21230 < VAR__8444594; VAR__21230++ )
+      {
+         if (( VAR_233 + VAR__53647 )->name[VAR__21230] == ( maxi + 'A' ))
+         {
+            printf("%d\n", ( VAR_233 + VAR__53647 )->number);
+            continue;
+         }
+      }
+   }
+}

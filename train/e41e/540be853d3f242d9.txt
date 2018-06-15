@@ -1,0 +1,204 @@
+int step = 0;
+int length = 0;
+int VAR__819283 = 0;
+int sang[101] = { 0 };
+void buqi(int num1[101], int num2[101])
+{
+   int VAR__53647;
+
+   num2[0] = 1;
+   num2[1] = 3;
+   num2[2] = 0;
+
+   if (( num1[0] > num2[0] ) || (( num1[0] == num2[0] ) && ( num1[1] >= num2[1] )))
+   {
+      VAR__53647 = 1;
+   }
+   else
+   {
+      VAR__819283++;
+      num2[0] = 0;
+      num2[1] = 1;
+      num2[2] = 3;
+   }
+}
+
+
+void qingling(int num3[101], int num6[101])
+{
+   int VAR__53647;
+   int VAR__21230;
+
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      if ( num3[VAR__53647] != 0 )
+      {
+         break;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < ( length - VAR__53647 ); VAR__21230++ )
+   {
+      num3[VAR__21230] = num3[VAR__21230 + VAR__53647];
+   }
+
+   for ( VAR__21230 = length - VAR__53647; VAR__21230 < length; VAR__21230++ )
+   {
+      num3[VAR__21230] = 0;
+   }
+
+   length = length - VAR__53647;
+
+   if ( num6[0] != 0 )
+   {
+      VAR__819283 = ( VAR__819283 + VAR__53647 ) - 1;
+   }
+   else
+   {
+      VAR__819283 = ( VAR__819283 + VAR__53647 ) - 2;
+   }
+}
+
+
+void jianfa(int num4[101], int num5[101], int VAR__53647)
+{
+   int VAR__21230;
+
+   while ( true )
+   {
+      for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+      {
+         if ( num4[VAR__21230] >= num5[VAR__21230] )
+         {
+            num4[VAR__21230] = num4[VAR__21230] - num5[VAR__21230];
+         }
+         else
+         {
+            num4[VAR__21230 - 1] = num4[VAR__21230 - 1] - 1;
+            num4[VAR__21230]     = num4[VAR__21230] + 10;
+            num4[VAR__21230]     = num4[VAR__21230] - num5[VAR__21230];
+         }
+      }
+
+      if ( num5[0] == 1 )
+      {
+         if (( num4[0] > num5[0] ) || (( num4[0] == num5[0] ) && ( num4[1] >= num5[1] )))
+         {
+            VAR__21230 = VAR__21230;
+         }
+         else
+         {
+            break;
+         }
+      }
+      else
+      {
+         if ((( num4[0] > num5[0] ) || ( num4[1] > num5[1] )) || (( num4[1] == num5[1] ) && ( num4[2] >= num5[2] )))
+         {
+            VAR__21230 = VAR__21230;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      step++;
+   }
+}
+
+
+int main()
+{
+   char ANOTHER_STRING[101] = { '\0' };
+   int  num1[101]           = { 0 };
+   int  num2[101]           = { 0 };
+   int  VAR__53647;
+   int  weishu;
+   int  biaoji = 0;
+   int  VAR__21230;
+
+   cin >> ANOTHER_STRING;
+   length = strlen(ANOTHER_STRING);
+   weishu = length;
+   for ( VAR__53647 = 0; VAR__53647 < length; VAR__53647++ )
+   {
+      num1[VAR__53647] = ANOTHER_STRING[VAR__53647] - '0';
+   }
+
+   while ( true )
+   {
+      step = 0;
+
+      if ( length == 1 )
+      {
+         break;
+      }
+
+      buqi(num1, num2);
+
+      if (( length == 2 ) && ( num2[0] == 0 ))
+      {
+         num1[0]           = ( num1[0] * 10 ) + num1[1];
+         sang[VAR__819283] = 0;
+         break;
+      }
+      else
+      {
+         jianfa(num1, num2, length);
+         biaoji = 0;
+         for ( VAR__53647 = 0; VAR__53647 < weishu; VAR__53647++ )
+         {
+            if ( num1[VAR__53647] != 0 )
+            {
+               biaoji = 1;
+               break;
+            }
+         }
+
+         sang[VAR__819283] = step + 1;
+
+         if ( biaoji == 1 )
+         {
+            qingling(num1, num2);
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      VAR__819283++;
+   }
+
+   if ( weishu > 1 )
+   {
+      for ( VAR__53647 = 0; VAR__53647 < ( weishu - 1 ); VAR__53647++ )
+      {
+         if ( sang[VAR__53647] != 0 )
+         {
+            break;
+         }
+      }
+
+      if ( VAR__53647 == ( weishu - 1 ))
+      {
+         cout << sang[0];
+      }
+      else
+      {
+         for ( VAR__21230 = VAR__53647; VAR__21230 < ( weishu - 1 ); VAR__21230++ )
+         {
+            cout << sang[VAR__21230];
+         }
+      }
+   }
+   else
+   {
+      cout << sang[0];
+   }
+
+   cout << endl;
+   ( cout << num1[0] ) << endl;
+   return 0;
+}

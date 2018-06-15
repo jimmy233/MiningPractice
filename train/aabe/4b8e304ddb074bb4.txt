@@ -1,0 +1,76 @@
+int main()
+{
+   int VAR_1238123;
+   int *VAR__819283;
+   int *index;
+   int VAR__53647;
+   int VAR__21230;
+   int result;
+
+   cin >> VAR_1238123;
+   VAR__819283 = (int *)malloc(( VAR_1238123 * VAR_1238123 ) * ( sizeof( int )));
+   index       = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      *( index + VAR__53647 ) = VAR__53647;
+   }
+
+   while ( 1 )
+   {
+      ( cin >> VAR__53647 ) >> VAR__21230;
+
+      if (( VAR__53647 == 0 ) && ( VAR__21230 == 0 ))
+      {
+         break;
+      }
+      else
+      {
+         *(( VAR__819283 + ( VAR_1238123 * VAR__21230 )) + VAR__53647 ) = 1;
+      }
+   }
+
+   for ( VAR__53647 = VAR_1238123 - 1; VAR__53647 >= 1; VAR__53647-- )
+   {
+      if ( 1 == ( *(( VAR__819283 + ( VAR_1238123 * index[VAR__53647] )) + index[VAR__53647 - 1] )))
+      {
+         index[VAR__53647 - 1] = index[VAR__53647];
+      }
+   }
+
+   result = -1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( 0 == ( *(( VAR__819283 + ( VAR_1238123 * index[0] )) + VAR__53647 )))
+      {
+         if ( index[0] != VAR__53647 )
+         {
+            cout << "NOT FOUND";
+            free(VAR__819283);
+            VAR__819283 = NULL;
+            free(index);
+            index = NULL;
+            return 0;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( 1 == ( *(( VAR__819283 + ( VAR_1238123 * VAR__53647 )) + index[0] )))
+      {
+         cout << "NOT FOUND";
+         free(VAR__819283);
+         VAR__819283 = NULL;
+         free(index);
+         index = NULL;
+         return 0;
+      }
+   }
+
+   cout << index[0];
+   free(VAR__819283);
+   VAR__819283 = NULL;
+   free(index);
+   index = NULL;
+   return 0;
+}

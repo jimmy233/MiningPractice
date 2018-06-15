@@ -1,0 +1,77 @@
+struct student
+{
+   int            VAR__819283;
+   int            VAR__19328;
+   int            paper;
+   int            total;
+   char           leader;
+   char           west;
+   char           name[32];
+   struct student *VAR__NEXT;
+};
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__SUM = 0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *VAR__HEAD;
+   struct student *VAR__MAX;
+
+   scanf("%d", &VAR_1238123);
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(L);
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->leader, &ANOTHER_POINTER->west, &ANOTHER_POINTER->paper);
+      ANOTHER_POINTER->total = 0;
+
+      if (( ANOTHER_POINTER->VAR__819283 > 80 ) && ( ANOTHER_POINTER->paper >= 1 ))
+      {
+         ANOTHER_POINTER->total = ANOTHER_POINTER->total + 8000;
+      }
+
+      if (( ANOTHER_POINTER->VAR__819283 > 85 ) && ( ANOTHER_POINTER->VAR__19328 > 80 ))
+      {
+         ANOTHER_POINTER->total = ANOTHER_POINTER->total + 4000;
+      }
+
+      if ( ANOTHER_POINTER->VAR__819283 > 90 )
+      {
+         ANOTHER_POINTER->total = ANOTHER_POINTER->total + 2000;
+      }
+
+      if (( ANOTHER_POINTER->VAR__819283 > 85 ) && ( ANOTHER_POINTER->west == 'Y' ))
+      {
+         ANOTHER_POINTER->total = ANOTHER_POINTER->total + 1000;
+      }
+
+      if (( ANOTHER_POINTER->VAR__19328 > 80 ) && ( ANOTHER_POINTER->leader == 'Y' ))
+      {
+         ANOTHER_POINTER->total = ANOTHER_POINTER->total + 850;
+      }
+
+      VAR__SUM = VAR__SUM + ANOTHER_POINTER->total;
+
+      if ( VAR__53647 == 0 )
+      {
+         VAR__MAX             = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER  = ( VAR__HEAD = ANOTHER_POINTER );
+         VAR__HEAD->VAR__NEXT = NULL;
+      }
+      else
+      {
+         if ( ANOTHER_POINTER->total > VAR__MAX->total )
+         {
+            VAR__MAX = ANOTHER_POINTER;
+         }
+
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+   }
+
+   printf("%s\n%d\n%d\n", VAR__MAX->name, VAR__MAX->total, VAR__SUM);
+}

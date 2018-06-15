@@ -1,0 +1,53 @@
+int main()
+{
+   int board[9][9];
+   int VAR__TEMP[9][9];
+   int VAR_1238123;
+
+   memset(board, 0, 81 * ( sizeof( int )));
+   ( cin >> board[4][4] ) >> VAR_1238123;
+
+   while ( VAR_1238123-- )
+   {
+      memset(VAR__TEMP, 0, 81 * ( sizeof( int )));
+      for ( int VAR__53647 = 1; VAR__53647 < 8; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < 8; VAR__21230++ )
+         {
+            if ( board[VAR__53647][VAR__21230] > 0 )
+            {
+               VAR__TEMP[VAR__53647][VAR__21230]         += 2 * board[VAR__53647][VAR__21230];
+               VAR__TEMP[VAR__53647 - 1][VAR__21230 - 1] += board[VAR__53647][VAR__21230];
+               VAR__TEMP[VAR__53647 - 1][VAR__21230]     += board[VAR__53647][VAR__21230];
+               VAR__TEMP[VAR__53647 - 1][VAR__21230 + 1] += board[VAR__53647][VAR__21230];
+               VAR__TEMP[VAR__53647][VAR__21230 - 1]     += board[VAR__53647][VAR__21230];
+               VAR__TEMP[VAR__53647][VAR__21230 + 1]     += board[VAR__53647][VAR__21230];
+               VAR__TEMP[VAR__53647 + 1][VAR__21230 - 1] += board[VAR__53647][VAR__21230];
+               VAR__TEMP[VAR__53647 + 1][VAR__21230]     += board[VAR__53647][VAR__21230];
+               VAR__TEMP[VAR__53647 + 1][VAR__21230 + 1] += board[VAR__53647][VAR__21230];
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+      {
+         for ( int VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+         {
+            board[VAR__53647][VAR__21230] = VAR__TEMP[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      cout << board[VAR__53647][0];
+      for ( int VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+      {
+         ( cout << ' ' ) << board[VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}

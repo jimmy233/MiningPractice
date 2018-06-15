@@ -1,0 +1,68 @@
+struct oldpeople
+{
+   char id[20];
+   int  year;
+}
+old[100];
+struct oldpeople
+{
+   char id[20];
+   int  year;
+}
+old60[100];
+struct oldpeople
+{
+   char id[20];
+   int  year;
+}
+cache;
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", old[VAR__53647].id, &old[VAR__53647].year);
+   }
+
+   int VAR__21230 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( old[VAR__53647].year >= 60 )
+      {
+         old60[VAR__21230] = old[VAR__53647];
+         VAR__21230++;
+      }
+   }
+
+   int VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < ( VAR__21230 - VAR__53647 ); VAR__8444594++ )
+      {
+         if ( old60[VAR__8444594].year < old60[VAR__8444594 + 1].year )
+         {
+            cache = old60[VAR__8444594 + 1];
+            old60[VAR__8444594 + 1] = old60[VAR__8444594];
+            old60[VAR__8444594]     = cache;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      printf("%s\n", old60[VAR__53647].id);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( old[VAR__53647].year < 60 )
+      {
+         printf("%s\n", old[VAR__53647].id);
+      }
+   }
+
+   return 0;
+}

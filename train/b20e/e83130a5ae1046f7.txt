@@ -1,0 +1,85 @@
+int tianji[1001];
+int qiwang[1001];
+int VAR_1238123;
+int cmp(const void *e1, const void *e2)
+{
+   return ( *((int *)e2 )) - ( *((int *)e1 ));
+}
+
+
+int solve()
+{
+   int score               = 0;
+   int ANOTHER_POINTER     = 0;
+   int YET_ANOTHER_POINTER = 0;
+   int e1 = VAR_1238123 - 1;
+   int e2 = VAR_1238123 - 1;
+
+   while ( YET_ANOTHER_POINTER <= e2 )
+   {
+      if ( tianji[ANOTHER_POINTER] > qiwang[YET_ANOTHER_POINTER] )
+      {
+         score += 200;
+         ANOTHER_POINTER++;
+         YET_ANOTHER_POINTER++;
+         continue;
+      }
+
+      if ( tianji[e1] > qiwang[e2] )
+      {
+         score += 200;
+         e1--;
+         e2--;
+         continue;
+      }
+
+      if ( tianji[e1] < qiwang[YET_ANOTHER_POINTER] )
+      {
+         score -= 200;
+         e1--;
+         YET_ANOTHER_POINTER++;
+         continue;
+      }
+
+      if ( tianji[e1] == qiwang[YET_ANOTHER_POINTER] )
+      {
+         e1--;
+         YET_ANOTHER_POINTER++;
+      }
+      else
+      {
+         ( cout << "err!" ) << endl;
+         break;
+      }
+   }
+
+   return score;
+}
+
+
+int main()
+{
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> tianji[VAR__53647];
+      }
+
+      qsort(tianji, VAR_1238123, sizeof( int ), cmp);
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> qiwang[VAR__53647];
+      }
+
+      qsort(qiwang, VAR_1238123, sizeof( int ), cmp);
+      ( cout << solve()) << endl;
+   }
+
+   return 0;
+}

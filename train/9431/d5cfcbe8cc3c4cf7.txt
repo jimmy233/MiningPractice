@@ -1,0 +1,65 @@
+char VAR__819283[3] = { 'e', 'n', 'd' };
+struct student
+{
+   char           xuehao[50];
+   char           name[50];
+   char           gender;
+   int            age;
+   float          score;
+   char           add[100];
+   struct student *VAR__NEXT;
+};
+int            VAR__1238129;
+struct student *VAR__HEAD;
+struct student *creat()
+{
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   VAR__1238129    = 0;
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %s %c %d %f %s", ANOTHER_POINTER->xuehao, ANOTHER_POINTER->name, &ANOTHER_POINTER->gender, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+   VAR__HEAD = NULL;
+
+   while ( strcmp(ANOTHER_POINTER->xuehao, VAR__819283) != 0 )
+   {
+      VAR__1238129 = VAR__1238129 + 1;
+
+      if ( VAR__1238129 == 1 )
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+      }
+      else
+      {
+         ANOTHER_POINTER->VAR__NEXT = YET_ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      VAR__HEAD           = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct student *)malloc(LEN);
+      scanf("%s", ANOTHER_POINTER->xuehao);
+
+      if ( strcmp(ANOTHER_POINTER->xuehao, VAR__819283) != 0 )
+      {
+         scanf(" %s %c %d %f %s", ANOTHER_POINTER->name, &ANOTHER_POINTER->gender, &ANOTHER_POINTER->age, &ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+      }
+   }
+
+   if ( strcmp(ANOTHER_POINTER->xuehao, VAR__819283) == 0 )
+   {
+      ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   creat();
+   struct student *ANOTHER_POINTER;
+   for ( ANOTHER_POINTER = VAR__HEAD; ANOTHER_POINTER != NULL; ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT )
+   {
+      printf("%s %s %c %d %g %s\n", ANOTHER_POINTER->xuehao, ANOTHER_POINTER->name, ANOTHER_POINTER->gender, ANOTHER_POINTER->age, ANOTHER_POINTER->score, ANOTHER_POINTER->add);
+   }
+}

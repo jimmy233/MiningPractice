@@ -1,0 +1,71 @@
+int char_to_num(char VAR__4857423)
+{
+   if (( '0' <= VAR__4857423 ) && ( VAR__4857423 <= '9' ))
+   {
+      return VAR__4857423 - '0';
+   }
+
+   if (( 'a' <= VAR__4857423 ) && ( VAR__4857423 <= 'z' ))
+   {
+      return 10 + ( VAR__4857423 - 'a' );
+   }
+
+   if (( 'A' <= VAR__4857423 ) && ( VAR__4857423 <= 'Z' ))
+   {
+      return 10 + ( VAR__4857423 - 'A' );
+   }
+}
+
+
+char num_to_char(int VAR_1238123)
+{
+   if ( VAR_1238123 < 10 )
+   {
+      return VAR_1238123 + '0';
+   }
+   else
+   {
+      return ( VAR_1238123 - 10 ) + 'A';
+   }
+}
+
+
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  VAR__53647;
+   int  length;
+   char VAR_1238123[100];
+   long VAR__NUM;
+   long pow;
+
+   scanf("%d %s %d", &VAR__819283, VAR_1238123, &VAR__19328);
+   length   = strlen(VAR_1238123);
+   pow      = 1;
+   VAR__NUM = 0;
+   for ( VAR__53647 = length - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      VAR__NUM = VAR__NUM + ( char_to_num(VAR_1238123[VAR__53647]) * pow );
+      pow      = pow * VAR__819283;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      VAR_1238123[VAR__53647] = num_to_char(VAR__NUM % VAR__19328);
+      VAR__NUM = VAR__NUM / VAR__19328;
+
+      if ( VAR__NUM == 0 )
+      {
+         break;
+      }
+   }
+
+   for ( ; VAR__53647 >= 0; VAR__53647-- )
+   {
+      printf("%c", VAR_1238123[VAR__53647]);
+   }
+
+   printf("\n");
+   return 0;
+}

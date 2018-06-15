@@ -1,0 +1,155 @@
+struct Patient
+{
+   char           VAR__NUM[10];
+   int            age;
+   struct Patient *VAR__NEXT;
+};
+int main()
+{
+   void paixu(int VAR_1238123, struct Patient *VAR__HEAD);
+   struct Patient *creat(int VAR_1238123);
+
+   int            VAR_1238123;
+   int            VAR__53647;
+   struct Patient *VAR__HEAD;
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = creat(VAR_1238123);
+   paixu(VAR_1238123, VAR__HEAD);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      printf("%s\n", VAR__HEAD->VAR__NUM);
+      VAR__HEAD = VAR__HEAD->VAR__NEXT;
+   }
+}
+
+
+struct Patient *creat(int VAR_1238123)
+{
+   int            VAR__53647;
+   struct Patient *VAR__HEAD;
+   struct Patient *thispoint;
+   struct Patient *nextpoint;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         nextpoint = (struct Patient *)malloc(sizeof( struct Patient ));
+         scanf("%s %d", nextpoint->VAR__NUM, &nextpoint->age);
+         VAR__HEAD = nextpoint;
+         thispoint = VAR__HEAD;
+      }
+      else
+      {
+         nextpoint = (struct Patient *)malloc(sizeof( struct Patient ));
+         scanf("%s %d", nextpoint->VAR__NUM, &nextpoint->age);
+         thispoint->VAR__NEXT = nextpoint;
+         thispoint            = nextpoint;
+      }
+   }
+
+   thispoint->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void paixu(int VAR_1238123, struct Patient *VAR__HEAD)
+{
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__8444594;
+   int            VAR__COUNT;
+   struct Patient *ANOTHER_POINTER;
+   struct Patient *YET_ANOTHER_POINTER;
+   struct Patient *p3;
+   struct Patient *p4;
+   char           tempnum[10];
+   char           tempnum3[10];
+   char           tempnum4[10];
+   int            tempage;
+   int            tempage3;
+   int            tempage4;
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( ANOTHER_POINTER->age < 60 )
+      {
+         YET_ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+         for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            if ( YET_ANOTHER_POINTER->age > 59 )
+            {
+               strcpy(tempnum, YET_ANOTHER_POINTER->VAR__NUM);
+               tempage = YET_ANOTHER_POINTER->age;
+               p3      = ANOTHER_POINTER;
+               p4      = p3->VAR__NEXT;
+               for ( VAR__8444594 = VAR__53647; VAR__8444594 < VAR__21230; VAR__8444594++ )
+               {
+                  strcpy(tempnum4, p4->VAR__NUM);
+                  tempage4 = p4->age;
+
+                  if ( VAR__8444594 == VAR__53647 )
+                  {
+                     strcpy(p4->VAR__NUM, p3->VAR__NUM);
+                     p4->age = p3->age;
+                  }
+                  else
+                  {
+                     strcpy(p4->VAR__NUM, tempnum3);
+                     p4->age = tempage3;
+                  }
+
+                  strcpy(tempnum3, tempnum4);
+                  tempage3 = tempage4;
+                  p3       = p3->VAR__NEXT;
+                  p4       = p4->VAR__NEXT;
+               }
+
+               strcpy(ANOTHER_POINTER->VAR__NUM, tempnum);
+               ANOTHER_POINTER->age = tempage;
+               break;
+            }
+            else
+            {
+               YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+            }
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0, VAR__COUNT = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( ANOTHER_POINTER->age > 59 )
+      {
+         VAR__COUNT++;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__COUNT; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__COUNT - VAR__53647 ); VAR__21230++ )
+      {
+         p3 = YET_ANOTHER_POINTER->VAR__NEXT;
+
+         if ( YET_ANOTHER_POINTER->age < p3->age )
+         {
+            strcpy(tempnum, YET_ANOTHER_POINTER->VAR__NUM);
+            tempage = YET_ANOTHER_POINTER->age;
+            strcpy(YET_ANOTHER_POINTER->VAR__NUM, p3->VAR__NUM);
+            YET_ANOTHER_POINTER->age = p3->age;
+            strcpy(p3->VAR__NUM, tempnum);
+            p3->age = tempage;
+         }
+
+         YET_ANOTHER_POINTER = YET_ANOTHER_POINTER->VAR__NEXT;
+      }
+   }
+}

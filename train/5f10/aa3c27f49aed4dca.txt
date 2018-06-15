@@ -1,0 +1,111 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  cnt[505];
+   int  LEN_OF_STH;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  VAR__NUM = 0;
+   int  VAR_FLAG;
+   int  VAR__MAX = 0;
+   char VAR__819283[506];
+   char VAR__19328[508][6];
+   char VAR__4857423[6];
+   char *VAR_233 = VAR__819283;
+
+   cin >> VAR_1238123;
+   cin >> VAR__819283;
+   LEN_OF_STH = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 <= 500; VAR__53647++ )
+   {
+      cnt[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( LEN_OF_STH - VAR_1238123 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         VAR__4857423[VAR__21230] = *(( VAR_233 + VAR__53647 ) + VAR__21230 );
+      }
+
+      VAR__4857423[VAR_1238123] = '\0';
+
+      if ( VAR__NUM == 0 )
+      {
+         for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+         {
+            VAR__19328[0][VAR__21230] = VAR__4857423[VAR__21230];
+         }
+
+         VAR__19328[0][VAR_1238123] = '\0';
+         VAR__NUM++;
+      }
+      else
+      {
+         VAR_FLAG = 1;
+         for ( VAR__21230 = 0; VAR__21230 < VAR__NUM; VAR__21230++ )
+         {
+            if ( strcmp(VAR__19328[VAR__21230], VAR__4857423) == 0 )
+            {
+               VAR_FLAG = 0;
+            }
+         }
+
+         if ( VAR_FLAG == 1 )
+         {
+            VAR__NUM++;
+            for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+            {
+               VAR__19328[VAR__NUM - 1][VAR__21230] = VAR__4857423[VAR__21230];
+            }
+
+            VAR__19328[VAR__NUM - 1][VAR_1238123] = '\0';
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= ( LEN_OF_STH - VAR_1238123 ); VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+         {
+            VAR__4857423[VAR__8444594] = *(( VAR_233 + VAR__21230 ) + VAR__8444594 );
+         }
+
+         VAR__4857423[VAR_1238123] = '\0';
+
+         if ( strcmp(VAR__19328[VAR__53647], VAR__4857423) == 0 )
+         {
+            cnt[VAR__53647]++;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+   {
+      if ( cnt[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX = cnt[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX > 1 )
+   {
+      ( cout << VAR__MAX ) << endl;
+      for ( VAR__53647 = 0; VAR__53647 < VAR__NUM; VAR__53647++ )
+      {
+         if ( cnt[VAR__53647] == VAR__MAX )
+         {
+            ( cout << VAR__19328[VAR__53647] ) << endl;
+         }
+      }
+   }
+   else
+   {
+      cout << "NO";
+   }
+
+   return 0;
+}

@@ -1,0 +1,83 @@
+int power(int, int);
+
+int main()
+{
+   char number1[100];
+   char number2[100];
+   int  VAR__53647;
+   int  first;
+   int  second;
+   int  ten = 0;
+   int  l1;
+   int  l2 = 0;
+   int  remain;
+
+   cin >> first;
+   cin.get();
+   cin.getline(number1, 100, ' ');
+   cin >> second;
+   l1 = strlen(number1);
+   for ( VAR__53647 = 0; VAR__53647 < l1; VAR__53647++ )
+   {
+      if (( number1[VAR__53647] >= 'a' ) && ( number1[VAR__53647] <= 'z' ))
+      {
+         ten = ((( number1[VAR__53647] - 'a' ) + 10 ) * ((int)power(first, ( l1 - VAR__53647 ) - 1))) + ten;
+      }
+
+      if (( number1[VAR__53647] >= 'A' ) && ( number1[VAR__53647] <= 'Z' ))
+      {
+         ten = ((( number1[VAR__53647] - 'A' ) + 10 ) * ((int)power(first, ( l1 - VAR__53647 ) - 1))) + ten;
+      }
+
+      if (( number1[VAR__53647] >= '0' ) && ( number1[VAR__53647] <= '9' ))
+      {
+         ten = (( number1[VAR__53647] - '0' ) * ((int)power(first, ( l1 - VAR__53647 ) - 1))) + ten;
+      }
+   }
+
+   remain = ten;
+
+   while ( remain != 0 )
+   {
+      remain = remain / second;
+      l2++;
+   }
+
+   if ( ten == 0 )
+   {
+      l2 = 1;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < l2; VAR__53647++ )
+   {
+      number2[VAR__53647] = ten / ((int)power(second, ( l2 - VAR__53647 ) - 1));
+      ten = ten - ( number2[VAR__53647] * ((int)power(second, ( l2 - VAR__53647 ) - 1)));
+
+      if ( number2[VAR__53647] >= 10 )
+      {
+         number2[VAR__53647] = ( number2[VAR__53647] - 10 ) + 'A';
+      }
+      else
+      {
+         number2[VAR__53647] = number2[VAR__53647] + '0';
+      }
+   }
+
+   number2[l2] = '\0';
+   ( cout << number2 ) << endl;
+   return 0;
+}
+
+
+int power(int VAR__819283, int VAR__19328)
+{
+   int VAR__53647;
+   int VAR__SUM = 1;
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__19328; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM * VAR__819283;
+   }
+
+   return VAR__SUM;
+}

@@ -1,0 +1,96 @@
+int VAR_1238123;
+int VAR__8444594;
+int VAR_666[1000];
+int VAR__temp[1000];
+int res;
+int VAR__SUM = 1;
+int mycmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   while ( cin >> VAR_1238123 )
+   {
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_666[VAR__53647];
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( int ), mycmp);
+      qsort(VAR_666, VAR_1238123, sizeof( int ), mycmp);
+      int VAR__7685    = 0;
+      int xx           = VAR_1238123 - 1;
+      int yy           = VAR_1238123 - 1;
+      int VAR__3918907 = 0;
+      int VAR_233      = 0;
+      int VAR__SUM     = 0;
+
+      while ( VAR_233 < VAR_1238123 )
+      {
+         if ( VAR__temp[VAR__7685] < VAR_666[VAR__3918907] )
+         {
+            VAR__SUM -= 200;
+            VAR__3918907++;
+            xx--;
+         }
+         else
+         if ( VAR__temp[VAR__7685] == VAR_666[VAR__3918907] )
+         {
+            if ( VAR__temp[xx] > VAR_666[yy] )
+            {
+               xx--;
+               yy--;
+               VAR__SUM += 200;
+            }
+            else
+            if ( VAR__temp[xx] < VAR_666[yy] )
+            {
+               xx--;
+               VAR__3918907++;
+               VAR__SUM -= 200;
+            }
+            else
+            if ( VAR__temp[xx] == VAR_666[yy] )
+            {
+               if ( VAR__temp[xx] == VAR_666[VAR__3918907] )
+               {
+                  xx--;
+                  VAR__3918907++;
+               }
+               else
+               {
+                  VAR__SUM -= 200;
+                  xx--;
+                  VAR__3918907++;
+               }
+            }
+         }
+         else
+         if ( VAR__temp[VAR__7685] > VAR_666[VAR__3918907] )
+         {
+            VAR__7685++;
+            VAR__3918907++;
+            VAR__SUM += 200;
+         }
+
+
+
+         VAR_233++;
+      }
+
+      ( cout << VAR__SUM ) << endl;
+   }
+}

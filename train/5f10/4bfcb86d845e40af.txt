@@ -1,0 +1,80 @@
+int main()
+{
+   char VAR__819283[500];
+   char now[5];
+   char gram[250][5];
+   int  VAR_1238123;
+   int  VAR__NUM[250] = { 0 };
+   int  VAR__53647;
+   int  no;
+   int  VAR__8444594;
+   int  VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   scanf("%s", VAR__819283);
+   for ( VAR__53647 = 0, no = 0; VAR__819283[( VAR__53647 + VAR_1238123 ) - 1] != '\0'; VAR__53647++ )
+   {
+      for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+      {
+         now[VAR__8444594] = VAR__819283[VAR__53647 + VAR__8444594];
+      }
+
+      now[VAR__8444594] = '\0';
+
+      if ( no == 0 )
+      {
+         strcpy(gram[no], now);
+         VAR__NUM[no]++;
+         no++;
+      }
+      else
+      {
+         int VAR_FLAG = 0;
+         for ( VAR__21230 = 0; VAR__21230 < no; VAR__21230++ )
+         {
+            if ( strcmp(gram[VAR__21230], now) == 0 )
+            {
+               VAR__NUM[VAR__21230]++;
+               VAR_FLAG = 1;
+            }
+         }
+
+         if ( VAR_FLAG == 0 )
+         {
+            strcpy(gram[no], now);
+            VAR__NUM[no]++;
+            no++;
+         }
+      }
+   }
+
+   int VAR__MAX = 0;
+   for ( VAR__53647 = 0; VAR__53647 < no; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > 1 )
+      {
+         if ( VAR__NUM[VAR__53647] > VAR__MAX )
+         {
+            VAR__MAX = VAR__NUM[VAR__53647];
+         }
+      }
+   }
+
+   if ( VAR__MAX == 0 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      printf("%d\n", VAR__MAX);
+      for ( VAR__53647 = 0; VAR__53647 < no; VAR__53647++ )
+      {
+         if ( VAR__NUM[VAR__53647] == VAR__MAX )
+         {
+            printf("%s\n", gram[VAR__53647]);
+         }
+      }
+   }
+
+   return 0;
+}

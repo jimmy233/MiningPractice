@@ -1,0 +1,60 @@
+double mHeight[40];
+double fHeight[40];
+int comp(const void *VAR__819283, const void *VAR__19328)
+{
+   if (( *((double *)VAR__819283 )) > ( *((double *)VAR__19328 )))
+   {
+      return 1;
+   }
+   else
+   if (( *((double *)VAR__819283 )) < ( *((double *)VAR__19328 )))
+   {
+      return -1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+int main()
+{
+   int    VAR_1238123;
+   int    mCount = 0;
+   int    fCount = 0;
+   int    VAR__53647;
+   char   VAR__TEMP[10];
+   double height;
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> VAR__TEMP;
+      cin >> height;
+
+      if ( strcmp(VAR__TEMP, "male") == 0 )
+      {
+         mHeight[mCount++] = height;
+      }
+      else
+      {
+         fHeight[fCount++] = height;
+      }
+   }
+
+   qsort(mHeight, mCount, sizeof( double ), comp);
+   qsort(fHeight, fCount, sizeof( double ), comp);
+   for ( VAR__53647 = 0; VAR__53647 < mCount; VAR__53647++ )
+   {
+      printf("%0.2f ", mHeight[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( fCount - 1 ); VAR__53647++ )
+   {
+      printf("%0.2f ", fHeight[( fCount - 1 ) - VAR__53647]);
+   }
+
+   printf("%0.2f\n", fHeight[0]);
+   return 0;
+}

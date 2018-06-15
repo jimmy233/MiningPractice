@@ -1,0 +1,63 @@
+int VAR_1238123 = 0;
+struct student
+{
+   char           VAR_9494[200];
+   struct student *VAR__NEXT;
+};
+struct student *creat()
+{
+   char           VAR__8444594[200];
+   struct student *VAR_233;
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = ( VAR_233 = (struct student *)malloc(LEN));
+
+   while ( 1 )
+   {
+      gets(VAR__8444594);
+
+      if ( !strcmp(VAR__8444594, "end"))
+      {
+         break;
+      }
+      else
+      {
+         if ( VAR_1238123 == 0 )
+         {
+            VAR__HEAD->VAR__NEXT = NULL;
+            VAR_1238123          = 1;
+         }
+         else
+         {
+            VAR_233->VAR__NEXT = VAR__HEAD;
+         }
+
+         VAR__HEAD = VAR_233;
+         strcpy(VAR_233->VAR_9494, VAR__8444594);
+         VAR_233 = (struct student *)malloc(LEN);
+      }
+   }
+
+   free(VAR_233);
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR_233)
+{
+   if ( VAR_233 != NULL )
+   {
+      puts(VAR_233->VAR_9494);
+      print(VAR_233->VAR__NEXT);
+   }
+}
+
+
+int main()
+{
+   struct student *VAR__HEAD;
+
+   VAR__HEAD = creat();
+   print(VAR__HEAD);
+   return 0;
+}

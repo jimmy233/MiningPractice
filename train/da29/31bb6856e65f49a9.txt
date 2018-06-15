@@ -1,0 +1,98 @@
+int main()
+{
+   int VAR_1238123;
+
+   cin >> VAR_1238123;
+   char room[VAR_1238123 + 2][VAR_1238123 + 2];
+   int  room1[VAR_1238123 + 2][VAR_1238123 + 2];
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+   {
+      for ( int VAR__temp = 1; VAR__temp <= VAR_1238123; ++VAR__temp )
+      {
+         cin >> room[VAR__53647][VAR__temp];
+
+         if ( room[VAR__53647][VAR__temp] == '@' )
+         {
+            room1[VAR__53647][VAR__temp] = 1;
+         }
+         else
+         {
+            room1[VAR__53647][VAR__temp] = 0;
+         }
+      }
+   }
+
+
+   for ( int VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 + 1 ); ++VAR__53647 )
+   {
+      room[0][VAR__53647] = '#';
+      room[VAR_1238123 + 1][VAR__53647] = '#';
+      room[VAR__53647][0] = '#';
+      room[VAR__53647][VAR_1238123 + 1] = '#';
+      room1[0][VAR__53647] = 0;
+      room1[VAR_1238123 + 1][VAR__53647] = 0;
+      room1[VAR__53647][0] = 0;
+      room1[VAR__53647][VAR_1238123 + 1] = 0;
+   }
+
+   int VAR__1238129;
+   cin >> VAR__1238129;
+   for ( int day = 1; day <= ( VAR__1238129 - 1 ); ++day )
+   {
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+      {
+         for ( int VAR__temp = 1; VAR__temp <= VAR_1238123; ++VAR__temp )
+         {
+            if ( room1[VAR__53647][VAR__temp] == 1 )
+            {
+               if ( room[VAR__53647 + 1][VAR__temp] != '#' )
+               {
+                  room[VAR__53647 + 1][VAR__temp] = '@';
+               }
+
+               if ( room[VAR__53647 - 1][VAR__temp] != '#' )
+               {
+                  room[VAR__53647 - 1][VAR__temp] = '@';
+               }
+
+               if ( room[VAR__53647][VAR__temp + 1] != '#' )
+               {
+                  room[VAR__53647][VAR__temp + 1] = '@';
+               }
+
+               if ( room[VAR__53647][VAR__temp - 1] != '#' )
+               {
+                  room[VAR__53647][VAR__temp - 1] = '@';
+               }
+            }
+         }
+      }
+
+      for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+      {
+         for ( int VAR__temp = 1; VAR__temp <= VAR_1238123; ++VAR__temp )
+         {
+            if ( room[VAR__53647][VAR__temp] == '@' )
+            {
+               room1[VAR__53647][VAR__temp] = 1;
+            }
+         }
+      }
+   }
+
+   int VAR__SUM = 0;
+   for ( int VAR__53647 = 1; VAR__53647 <= VAR_1238123; ++VAR__53647 )
+   {
+      for ( int VAR__temp = 1; VAR__temp <= VAR_1238123; ++VAR__temp )
+      {
+         if ( room[VAR__53647][VAR__temp] == '@' )
+         {
+            VAR__SUM++;
+         }
+      }
+   }
+
+
+   cout << VAR__SUM;
+   return 0;
+}

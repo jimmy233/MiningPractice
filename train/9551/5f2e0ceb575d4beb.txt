@@ -1,0 +1,67 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__8444594;
+   int  slotnum;
+   char slot[100];
+
+   scanf("%d", &VAR_1238123);
+   char s1[100][100];
+   int  s2[100];
+   char a1[100][100];
+   int  a2[100];
+   int  anum = 0;
+   char b1[100][100];
+   int  b2[100];
+   int  bnum = 0;
+   for ( VAR__53647 = 0, VAR__21230 = 0, VAR__8444594 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d", s1[VAR__53647], &s2[VAR__53647]);
+
+      if ( s2[VAR__53647] >= 60 )
+      {
+         strcpy(a1[VAR__21230], s1[VAR__53647]);
+         a2[VAR__21230] = s2[VAR__53647];
+         VAR__21230++;
+         anum++;
+      }
+
+      if ( s2[VAR__53647] < 60 )
+      {
+         strcpy(b1[VAR__8444594], s1[VAR__53647]);
+         b2[VAR__8444594] = s2[VAR__53647];
+         VAR__8444594++;
+         bnum++;
+      }
+   }
+
+   for ( VAR__53647 = anum - 1; VAR__53647 > 0; VAR__53647-- )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR__53647; VAR__21230++ )
+      {
+         if ( a2[VAR__21230] < a2[VAR__21230 + 1] )
+         {
+            strcpy(slot, a1[VAR__21230]);
+            strcpy(a1[VAR__21230], a1[VAR__21230 + 1]);
+            strcpy(a1[VAR__21230 + 1], slot);
+            slotnum            = a2[VAR__21230];
+            a2[VAR__21230]     = a2[VAR__21230 + 1];
+            a2[VAR__21230 + 1] = slotnum;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < anum; VAR__53647++ )
+   {
+      printf("%s\n", a1[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < bnum; VAR__53647++ )
+   {
+      printf("%s\n", b1[VAR__53647]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,99 @@
+struct number
+{
+   int           VAR__NUM;
+   struct number *VAR__NEXT;
+};
+int VAR_1238123;
+int VAR__8444594;
+struct number *creat()
+{
+   struct number *VAR__HEAD;
+   struct number *ANOTHER_POINTER;
+   struct number *YET_ANOTHER_POINTER;
+   int           VAR__NUM = 1;
+
+   VAR__HEAD = NULL;
+
+   while ( VAR__NUM <= VAR_1238123 )
+   {
+      ANOTHER_POINTER = (struct number *)malloc(LEN);
+      scanf("%d", &ANOTHER_POINTER->VAR__NUM);
+
+      if ( VAR__NUM == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      VAR__NUM++;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void delet(struct number *pt)
+{
+   struct number *VAR_233;
+   struct number *pre;
+   int           VAR__SUM = 0;
+   int           VAR__53647;
+
+   for ( VAR_233 = pt; VAR_233; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      if ( VAR_233->VAR__NUM == VAR__8444594 )
+      {
+         VAR__SUM++;
+      }
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= VAR__SUM; VAR__53647++ )
+   {
+      for ( VAR_233 = ( pre = pt ); VAR_233; VAR_233 = VAR_233->VAR__NEXT )
+      {
+         if ( VAR_233->VAR__NUM != VAR__8444594 )
+         {
+            pre = VAR_233;
+         }
+         else
+         {
+            break;
+         }
+      }
+
+      if ( VAR_233 == pt )
+      {
+         pt = VAR_233->VAR__NEXT;
+      }
+      else
+      {
+         pre->VAR__NEXT = VAR_233->VAR__NEXT;
+      }
+
+      free(VAR_233);
+   }
+
+   for ( VAR_233 = pt; VAR_233->VAR__NEXT != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%d ", VAR_233->VAR__NUM);
+   }
+
+   printf("%d", VAR_233->VAR__NUM);
+}
+
+
+int main()
+{
+   struct number *pt;
+
+   scanf("%d", &VAR_1238123);
+   pt = creat();
+   scanf("%d", &VAR__8444594);
+   delet(pt);
+   return 0;
+}

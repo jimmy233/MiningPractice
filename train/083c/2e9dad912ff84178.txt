@@ -1,0 +1,58 @@
+int main()
+{
+   int  VAR__819283;
+   int  VAR__19328;
+   int  ten = 0;
+   char A_STRING[100];
+   char YET_ANOTHER_STRING[100];
+
+   (( cin >> VAR__819283 ) >> A_STRING ) >> VAR__19328;
+   int LEN_OF_STH = strlen(A_STRING);
+   for ( int VAR__53647 = 0; A_STRING[VAR__53647] != '\0'; VAR__53647++ )
+   {
+      if (( A_STRING[VAR__53647] >= '0' ) && ( A_STRING[VAR__53647] <= '9' ))
+      {
+         ten += ( A_STRING[VAR__53647] - '0' ) * pow((double)VAR__819283, (double)(( LEN_OF_STH - 1 ) - VAR__53647 ));
+      }
+      else
+      if (( A_STRING[VAR__53647] <= 'z' ) && ( A_STRING[VAR__53647] >= 'a' ))
+      {
+         ten += (( A_STRING[VAR__53647] - 'a' ) + 10 ) * pow((double)VAR__819283, (double)(( LEN_OF_STH - 1 ) - VAR__53647 ));
+      }
+      else
+      {
+         ten += (( A_STRING[VAR__53647] - 'A' ) + 10 ) * pow((double)VAR__819283, (double)(( LEN_OF_STH - 1 ) - VAR__53647 ));
+      }
+   }
+
+   int VAR__21230 = 0;
+
+   if ( ten == 0 )
+   {
+      cout << 0;
+   }
+   else
+   {
+      while ( ten != 0 )
+      {
+         if (( ten % VAR__19328 ) <= 9 )
+         {
+            YET_ANOTHER_STRING[VAR__21230++] = (char)(( ten % VAR__19328 ) + '0' );
+         }
+         else
+         {
+            YET_ANOTHER_STRING[VAR__21230++] = (char)((( ten % VAR__19328 ) - 10 ) + 'A' );
+         }
+
+         ten /= VAR__19328;
+      }
+
+      VAR__21230--;
+      for ( int VAR__53647 = VAR__21230; VAR__53647 >= 0; VAR__53647-- )
+      {
+         cout << YET_ANOTHER_STRING[VAR__53647];
+      }
+   }
+
+   return 0;
+}

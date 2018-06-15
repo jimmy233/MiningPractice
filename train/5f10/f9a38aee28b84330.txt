@@ -1,0 +1,56 @@
+int main(void)
+{
+   int N;
+
+   scanf("%d", &N);
+   getchar();
+   char A_STRING[550];
+   gets(A_STRING);
+   int  strl = strlen(A_STRING);
+   char strm[550][10];
+   int  strn[550] = { 0 };
+   for ( int VAR__53647 = 0; VAR__53647 <= ( strl - N ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < N; VAR__21230++ )
+      {
+         strm[VAR__53647][VAR__21230] = A_STRING[VAR__53647 + VAR__21230];
+      }
+
+      strm[VAR__53647][N] = '\0';
+   }
+
+   int VAR__MAX = 0;
+   for ( int VAR__53647 = 0; VAR__53647 <= ( strl - N ); VAR__53647++ )
+   {
+      for ( int VAR__21230 = VAR__53647; VAR__21230 <= ( strl - N ); VAR__21230++ )
+      {
+         if ( strcmp(strm[VAR__53647], strm[VAR__21230]) == 0 )
+         {
+            strn[VAR__53647]++;
+         }
+      }
+
+      if ( VAR__MAX < strn[VAR__53647] )
+      {
+         VAR__MAX = strn[VAR__53647];
+      }
+   }
+
+   if ( VAR__MAX == 1 )
+   {
+      printf("NO");
+      return 0;
+   }
+
+   printf("%d\n", VAR__MAX);
+   for ( int VAR__53647 = 0; VAR__53647 <= ( strl - N ); VAR__53647++ )
+   {
+      if ( VAR__MAX == strn[VAR__53647] )
+      {
+         puts(strm[VAR__53647]);
+      }
+   }
+
+
+   return 0;
+}

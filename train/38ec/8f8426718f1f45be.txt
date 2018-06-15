@@ -1,0 +1,144 @@
+int main()
+{
+   int date1[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int date2[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int VAR__819283;
+   int VAR__19328;
+   int VAR__4857423;
+   int VAR__12302;
+   int VAR__112390;
+   int VAR__127322;
+
+   scanf("%d %d %d", &VAR__819283, &VAR__19328, &VAR__4857423);
+   scanf("%d %d %d", &VAR__12302, &VAR__112390, &VAR__127322);
+   int result;
+   int x1;
+   int sumshou = 0;
+
+   if ( VAR__19328 != 12 )
+   {
+      for ( x1 = VAR__19328 + 1; x1 <= 12; x1++ )
+      {
+         sumshou += date1[x1 - 1];
+      }
+
+      if ( VAR__19328 == 1 )
+      {
+         sumshou += 31 - VAR__4857423;
+
+         if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+         {
+            sumshou += 1;
+         }
+      }
+
+      if ((((( VAR__19328 == 3 ) || ( VAR__19328 == 5 )) || ( VAR__19328 == 7 )) || ( VAR__19328 == 8 )) || ( VAR__19328 == 10 ))
+      {
+         sumshou += 31 - VAR__4857423;
+      }
+
+      if (((( VAR__19328 == 4 ) || ( VAR__19328 == 6 )) || ( VAR__19328 == 9 )) || ( VAR__19328 == 11 ))
+      {
+         sumshou += 30 - VAR__4857423;
+      }
+
+      if ( VAR__19328 == 2 )
+      {
+         if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+         {
+            sumshou += 30 - VAR__4857423;
+         }
+         else
+         {
+            sumshou += 28 - VAR__4857423;
+         }
+      }
+   }
+   else
+   {
+      sumshou += 31 - VAR__4857423;
+   }
+
+   sumshou = sumshou;
+   int x2;
+   int sumwei = 0;
+
+   if ( VAR__112390 == 1 )
+   {
+      sumwei = VAR__127322;
+   }
+
+   if ( VAR__112390 == 2 )
+   {
+      sumwei = 31 + VAR__127322;
+   }
+   else
+   if (( VAR__112390 != 1 ) && ( VAR__112390 != 2 ))
+   {
+      if (((( VAR__12302 % 4 ) == 0 ) && (( VAR__12302 % 100 ) != 0 )) || (( VAR__12302 % 400 ) == 0 ))
+      {
+         for ( x2 = VAR__112390 - 1; x2 >= 1; x2-- )
+         {
+            sumwei += date1[x2 - 1];
+         }
+
+         sumwei += VAR__127322 + 1;
+      }
+      else
+      {
+         for ( x2 = VAR__112390 - 1; x2 >= 1; x2-- )
+         {
+            sumwei += date1[x2 - 1];
+         }
+
+         sumwei += VAR__127322;
+      }
+   }
+
+
+   sumwei = sumwei;
+
+   if ((( VAR__819283 == VAR__12302 ) && ( VAR__19328 == VAR__112390 )) && ( VAR__4857423 == VAR__127322 ))
+   {
+      result = 0;
+   }
+
+   if ( VAR__12302 == VAR__819283 )
+   {
+      if (((( VAR__12302 % 4 ) == 0 ) && (( VAR__12302 % 100 ) != 0 )) || (( VAR__12302 % 400 ) == 0 ))
+      {
+         result = ( sumwei + sumshou ) - 366;
+      }
+      else
+      {
+         result = ( sumwei + sumshou ) - 365;
+      }
+   }
+
+   if ( VAR__12302 == ( VAR__819283 + 1 ))
+   {
+      result = sumwei + sumshou;
+   }
+
+   if ( VAR__12302 > ( VAR__819283 + 1 ))
+   {
+      int x3;
+      int sumzhong = 0;
+      for ( x3 = VAR__819283 + 1; x3 <= ( VAR__12302 - 1 ); x3++ )
+      {
+         if (((( x3 % 4 ) == 0 ) && (( x3 % 100 ) != 0 )) || (( x3 % 400 ) == 0 ))
+         {
+            sumzhong += 366;
+         }
+         else
+         {
+            sumzhong += 365;
+         }
+      }
+
+      result = ( sumwei + sumshou ) + sumzhong;
+   }
+
+   printf("%d", result);
+   return 0;
+}

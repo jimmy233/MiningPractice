@@ -1,0 +1,79 @@
+int leap(long VAR__819283)
+{
+   int VAR__9290;
+
+   if (((( VAR__819283 % 4 ) == 0 ) && (( VAR__819283 % 100 ) != 0 )) || (( VAR__819283 % 400 ) == 0 ))
+   {
+      VAR__9290 = 1;
+   }
+   else
+   {
+      VAR__9290 = 0;
+   }
+
+   return VAR__9290;
+}
+
+
+void main()
+{
+   long a0;
+   long VAR__819283;
+   long VAR_9494;
+   int  VAR__19328;
+   int  VAR__4857423;
+   int  VAR__53647;
+
+   scanf("%d %d %d", &a0, &VAR__19328, &VAR__4857423);
+   int month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   VAR__819283 = a0 % 400;
+
+   if ( VAR__819283 == 0 )
+   {
+      VAR__819283 = 400;
+   }
+
+   month[1] = 28 + leap(VAR__819283);
+   VAR_9494 = 0;
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__819283 - 1 ); VAR__53647++ )
+   {
+      VAR_9494 = ( VAR_9494 + 365 ) + leap(VAR__53647);
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR__19328 - 1 ); VAR__53647++ )
+   {
+      VAR_9494 = VAR_9494 + month[VAR__53647 - 1];
+   }
+
+   VAR_9494 = VAR_9494 + VAR__4857423;
+   switch ( VAR_9494 % 7 )
+   {
+   case 0:
+      printf("Sun.");
+      break;
+
+   case 1:
+      printf("Mon.");
+      break;
+
+   case 2:
+      printf("Tue.");
+      break;
+
+   case 3:
+      printf("Wed.");
+      break;
+
+   case 4:
+      printf("Thu.");
+      break;
+
+   case 5:
+      printf("Fri.");
+      break;
+
+   case 6:
+      printf("Sat.");
+      break;
+   }
+}

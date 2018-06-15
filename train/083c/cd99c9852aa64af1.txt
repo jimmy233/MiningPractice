@@ -1,0 +1,67 @@
+int main()
+{
+   int  j1;
+   int  j2;
+   int  VAR__53647;
+   int  an[10000];
+   int  bn[10000];
+   int  shijinzhi = 0;
+   int  changdu;
+   char VAR__819283[10000];
+   char VAR__19328[10000];
+
+   scanf("%d%s%d", &j1, VAR__819283, &j2);
+   changdu = strlen(VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < changdu; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647] < 123 ) && ( VAR__819283[VAR__53647] > 96 ))
+      {
+         an[VAR__53647] = VAR__819283[VAR__53647] - 87;
+      }
+      else
+      if (( VAR__819283[VAR__53647] < 91 ) && ( VAR__819283[VAR__53647] > 64 ))
+      {
+         an[VAR__53647] = VAR__819283[VAR__53647] - 55;
+      }
+      else
+      {
+         an[VAR__53647] = VAR__819283[VAR__53647] - 48;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < changdu; VAR__53647++ )
+   {
+      shijinzhi += an[VAR__53647] * pow(j1, ( changdu - 1 ) - VAR__53647);
+   }
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      bn[VAR__53647] = shijinzhi % j2;
+      shijinzhi      = shijinzhi / j2;
+
+      if ( shijinzhi == 0 )
+      {
+         changdu = VAR__53647 + 1;
+         break;
+      }
+   }
+
+   for ( VAR__53647 = changdu - 1; VAR__53647 >= 0; VAR__53647-- )
+   {
+      if (( bn[VAR__53647] >= 0 ) && ( bn[VAR__53647] < 10 ))
+      {
+         VAR__19328[( changdu - 1 ) - VAR__53647] = bn[VAR__53647] + 48;
+      }
+      else
+      {
+         VAR__19328[( changdu - 1 ) - VAR__53647] = bn[VAR__53647] + 55;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < changdu; VAR__53647++ )
+   {
+      printf("%c", VAR__19328[VAR__53647]);
+   }
+
+   return 0;
+}

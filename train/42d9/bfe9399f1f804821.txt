@@ -1,0 +1,86 @@
+int main()
+{
+   int    VAR__53647;
+   int    VAR__7685;
+   int    VAR_1238123;
+   int    VAR_9Q8Q90;
+   int    VAR__1111;
+   int    VAR_233;
+   int    VAR__819283;
+   int    VAR__19328;
+   int    VAR__4857423;
+   double VAR__112390;
+   double dst[45];
+   int    xz[10];
+   int    yz[10];
+   int    zz[10];
+   int    dx[45];
+   int    dy[45];
+   int    dz[45];
+   int    sx[45];
+   int    sy[45];
+   int    VAR_SIZE[45];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d %d %d ", &xz[VAR__53647], &yz[VAR__53647], &zz[VAR__53647]);
+   }
+
+   VAR_9Q8Q90 = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__7685 = VAR__53647 + 1; VAR__7685 < VAR_1238123; VAR__7685++ )
+      {
+         VAR__819283          = ( xz[VAR__53647] - xz[VAR__7685] ) * ( xz[VAR__53647] - xz[VAR__7685] );
+         VAR__19328           = ( yz[VAR__53647] - yz[VAR__7685] ) * ( yz[VAR__53647] - yz[VAR__7685] );
+         VAR__4857423         = ( zz[VAR__53647] - zz[VAR__7685] ) * ( zz[VAR__53647] - zz[VAR__7685] );
+         dst[VAR_9Q8Q90]      = pow((double)(( VAR__819283 + VAR__19328 ) + VAR__4857423 ), 0.5);
+         dx[VAR_9Q8Q90]       = xz[VAR__53647];
+         dy[VAR_9Q8Q90]       = yz[VAR__53647];
+         dz[VAR_9Q8Q90]       = zz[VAR__53647];
+         sx[VAR_9Q8Q90]       = xz[VAR__7685];
+         sy[VAR_9Q8Q90]       = yz[VAR__7685];
+         VAR_SIZE[VAR_9Q8Q90] = zz[VAR__7685];
+         VAR_9Q8Q90           = VAR_9Q8Q90 + 1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9Q8Q90; VAR__53647++ )
+   {
+      for ( VAR__7685 = 0; VAR__7685 < (( VAR_9Q8Q90 - VAR__53647 ) - 1 ); VAR__7685++ )
+      {
+         if ( dst[VAR__7685] < dst[VAR__7685 + 1] )
+         {
+            VAR__112390             = dst[VAR__7685 + 1];
+            dst[VAR__7685 + 1]      = dst[VAR__7685];
+            dst[VAR__7685]          = VAR__112390;
+            VAR__1111               = dx[VAR__7685 + 1];
+            dx[VAR__7685 + 1]       = dx[VAR__7685];
+            dx[VAR__7685]           = VAR__1111;
+            VAR__1111               = dy[VAR__7685 + 1];
+            dy[VAR__7685 + 1]       = dy[VAR__7685];
+            dy[VAR__7685]           = VAR__1111;
+            VAR__1111               = dz[VAR__7685 + 1];
+            dz[VAR__7685 + 1]       = dz[VAR__7685];
+            dz[VAR__7685]           = VAR__1111;
+            VAR__1111               = sx[VAR__7685 + 1];
+            sx[VAR__7685 + 1]       = sx[VAR__7685];
+            sx[VAR__7685]           = VAR__1111;
+            VAR__1111               = sy[VAR__7685 + 1];
+            sy[VAR__7685 + 1]       = sy[VAR__7685];
+            sy[VAR__7685]           = VAR__1111;
+            VAR__1111               = VAR_SIZE[VAR__7685 + 1];
+            VAR_SIZE[VAR__7685 + 1] = VAR_SIZE[VAR__7685];
+            VAR_SIZE[VAR__7685]     = VAR__1111;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_9Q8Q90; VAR__53647++ )
+   {
+      printf("(%d,%d,%d)-(%d,%d,%d)=%.2lf\n\n", dx[VAR__53647], dy[VAR__53647], dz[VAR__53647], sx[VAR__53647], sy[VAR__53647], VAR_SIZE[VAR__53647], dst[VAR__53647]);
+   }
+
+   return 0;
+}

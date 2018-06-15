@@ -1,0 +1,44 @@
+struct Student
+{
+   char           ID[10];
+   char           name[20];
+   char           sex;
+   int            age;
+   float          score[20];
+   char           add[20];
+   struct Student *VAR__NEXT;
+};
+int main()
+{
+   struct Student VAR__819283[1000];
+   struct Student *VAR__HEAD;
+   struct Student *VAR_233;
+   int            VAR__53647;
+   int            VAR__21230;
+
+   for ( VAR__53647 = 0; ; VAR__53647++ )
+   {
+      scanf("%s %s %c %d %s %s", VAR__819283[VAR__53647].ID, VAR__819283[VAR__53647].name, &VAR__819283[VAR__53647].sex, &VAR__819283[VAR__53647].age, VAR__819283[VAR__53647].score, VAR__819283[VAR__53647].add);
+
+      if ( VAR__819283[VAR__53647].ID[2] == 'd' )
+      {
+         printf("\n");
+         break;
+      }
+   }
+
+   for ( VAR__21230 = VAR__53647 - 1; VAR__21230 >= 0; VAR__21230-- )
+   {
+      VAR__HEAD = &VAR__819283[VAR__53647 - 1];
+      VAR__819283[VAR__21230].VAR__NEXT = &VAR__819283[VAR__21230 - 1];
+      VAR__819283[0].VAR__NEXT          = NULL;
+      VAR_233 = VAR__HEAD;
+   }
+
+   do
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->ID, VAR_233->name, VAR_233->sex, VAR_233->age, VAR_233->score, VAR_233->add);
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233 != NULL );
+   return 0;
+}

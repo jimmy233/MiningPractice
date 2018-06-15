@@ -1,0 +1,96 @@
+int main()
+{
+   char plus1[600] = { '\0' };
+   char plus2[600] = { '\0' };
+   char out[600]   = { '\0' };
+
+   out[0] = '0';
+   cin.getline(plus1, 600, '\n');
+   cin.getline(plus2, 600, '\n');
+   int VAR__53647 = 0;
+   int mark1      = strlen(plus1);
+   int mark2      = strlen(plus2);
+   int LEN_OF_STH = 0;
+   int VAR_FLAG   = 0;
+
+   if ( strlen(plus1) > strlen(plus2))
+   {
+      LEN_OF_STH = strlen(plus1);
+      for ( VAR__53647 = strlen(plus1) - 1; VAR__53647 >= ( mark1 - mark2 ); VAR__53647-- )
+      {
+         plus2[VAR__53647] = plus2[( VAR__53647 - mark1 ) + mark2];
+      }
+
+      for ( VAR__53647 = ( mark1 - mark2 ) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         plus2[VAR__53647] = '*';
+      }
+   }
+   else
+   if ( strlen(plus2) > strlen(plus1))
+   {
+      LEN_OF_STH = strlen(plus2);
+      for ( VAR__53647 = strlen(plus2) - 1; VAR__53647 >= ( mark2 - mark1 ); VAR__53647-- )
+      {
+         plus1[VAR__53647] = plus1[( VAR__53647 - mark2 ) + mark1];
+      }
+
+      for ( VAR__53647 = ( mark2 - mark1 ) - 1; VAR__53647 >= 0; VAR__53647-- )
+      {
+         plus1[VAR__53647] = '*';
+      }
+   }
+   else
+   {
+      LEN_OF_STH = strlen(plus1);
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if (( plus1[VAR__53647] == '*' ) || ( plus2[VAR__53647] == '*' ))
+      {
+         out[VAR__53647 + 1] = ( plus1[VAR__53647] + plus2[VAR__53647] ) - '*';
+      }
+      else
+      {
+         out[VAR__53647 + 1] = ( plus1[VAR__53647] + plus2[VAR__53647] ) - '0';
+      }
+   }
+
+
+   for ( VAR__53647 = LEN_OF_STH; VAR__53647 > 0; VAR__53647-- )
+   {
+      if ( out[VAR__53647] > '9' )
+      {
+         out[VAR__53647] = out[VAR__53647] - 10;
+         out[VAR__53647 - 1]++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+   {
+      if ( out[VAR__53647] != '0' )
+      {
+         VAR_FLAG = VAR__53647;
+         break;
+      }
+   }
+
+
+   if ( VAR__53647 == ( LEN_OF_STH + 1 ))
+   {
+      cout << '0';
+   }
+   else
+   {
+      for ( VAR__53647 = VAR_FLAG; VAR__53647 <= LEN_OF_STH; VAR__53647++ )
+      {
+         cout << out[VAR__53647];
+      }
+   }
+
+
+   return 0;
+}

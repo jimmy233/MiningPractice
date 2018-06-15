@@ -1,0 +1,110 @@
+int main()
+{
+   int daymonth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+   int dayyear      = 365;
+   int startyear;
+   int startmonth;
+   int startday;
+   int endyear;
+   int endmonth;
+   int endday;
+   int yearx;
+   int monthx;
+   int dayx;
+   int VAR__53647;
+   int VAR__21230;
+   int leap     = 0;
+   int VAR__SUM = 0;
+
+   (( cin >> startyear ) >> startmonth ) >> startday;
+   (( cin >> endyear ) >> endmonth ) >> endday;
+   yearx  = endyear - startyear;
+   monthx = endmonth - startmonth;
+   dayx   = endday - startday;
+
+   if ( yearx == 0 )
+   {
+      VAR__SUM = 0;
+      leap     = 0;
+
+      if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+      {
+         leap = 1;
+      }
+
+      if ( monthx == 0 )
+      {
+         VAR__SUM = dayx;
+      }
+      else
+      {
+         for ( VAR__53647 = startmonth; VAR__53647 < ( endmonth - 1 ); VAR__53647++ )
+         {
+            VAR__SUM = VAR__SUM + daymonth[VAR__53647];
+
+            if ( leap && ( VAR__53647 == 1 ))
+            {
+               VAR__SUM = VAR__SUM + 1;
+            }
+         }
+
+         VAR__SUM = (( VAR__SUM + daymonth[startmonth - 1] ) - startday ) + endday;
+      }
+
+      cout << VAR__SUM;
+   }
+   else
+   {
+      VAR__SUM = 0;
+      for ( VAR__53647 = 1; VAR__53647 < yearx; VAR__53647++ )
+      {
+         leap = 0;
+
+         if ((((( startyear + VAR__53647 ) % 4 ) == 0 ) && ((( startyear + VAR__53647 ) % 100 ) != 0 )) || ((( startyear + VAR__53647 ) % 400 ) == 0 ))
+         {
+            leap = 1;
+         }
+
+         VAR__SUM = ( VAR__SUM + dayyear ) + leap;
+      }
+
+      for ( VAR__53647 = startmonth; VAR__53647 < 12; VAR__53647++ )
+      {
+         leap = 0;
+
+         if (((( startyear % 4 ) == 0 ) && (( startyear % 100 ) != 0 )) || (( startyear % 400 ) == 0 ))
+         {
+            leap = 1;
+         }
+
+         VAR__SUM = VAR__SUM + daymonth[VAR__53647];
+
+         if (( leap == 1 ) && ( VAR__53647 == 1 ))
+         {
+            VAR__SUM = VAR__SUM + 1;
+         }
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < ( endmonth - 1 ); VAR__53647++ )
+      {
+         leap = 0;
+
+         if (((( endyear % 4 ) == 0 ) && (( endyear % 100 ) != 0 )) || (( endyear % 400 ) == 0 ))
+         {
+            leap = 1;
+         }
+
+         VAR__SUM = VAR__SUM + daymonth[VAR__53647];
+
+         if (( leap == 1 ) && ( VAR__53647 == 1 ))
+         {
+            VAR__SUM = VAR__SUM + 1;
+         }
+      }
+
+      VAR__SUM = (( VAR__SUM + daymonth[startmonth - 1] ) - startday ) + endday;
+      cout << VAR__SUM;
+   }
+
+   return 0;
+}

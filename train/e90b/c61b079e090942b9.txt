@@ -1,0 +1,49 @@
+struct Student
+{
+   int no;
+   int chinese;
+   int math;
+   int total;
+};
+int main()
+{
+   struct Student stu[100000];
+   struct Student VAR__temp;
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__MAX;
+   int            order;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%d%d%d", &stu[VAR__53647].no, &stu[VAR__53647].chinese, &stu[VAR__53647].math);
+      stu[VAR__53647].total = stu[VAR__53647].chinese + stu[VAR__53647].math;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      VAR__MAX = stu[VAR__53647].total;
+      order    = VAR__53647;
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( stu[VAR__21230].total > VAR__MAX )
+         {
+            VAR__MAX = stu[VAR__21230].total;
+            order    = VAR__21230;
+         }
+      }
+
+      if ( order != VAR__53647 )
+      {
+         VAR__temp       = stu[VAR__53647];
+         stu[VAR__53647] = stu[order];
+         stu[order]      = VAR__temp;
+      }
+
+      printf("%d %d\n", stu[VAR__53647].no, stu[VAR__53647].total);
+   }
+
+   return 0;
+}

@@ -1,0 +1,70 @@
+int asdf(int VAR_1238123, int VAR__1238129)
+{
+   int *VAR__819283 = (int *)malloc(VAR_1238123 * ( sizeof( int )));
+   int ret          = 0;
+   int VAR__53647   = 0;
+   int left         = VAR_1238123;
+   int VAR__TEMP    = 0;
+   int inc          = 0;
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR__819283[VAR__53647] = VAR__53647 + 1;
+   }
+
+   VAR__53647 = 0;
+
+   while ( VAR__819283[1] != 0 )
+   {
+      VAR__TEMP = ( VAR__53647 + VAR__1238129 ) % left;
+
+      if ( 0 == VAR__TEMP )
+      {
+         VAR__TEMP = left;
+      }
+      else
+      {
+         for ( inc = VAR__TEMP; inc < left; inc++ )
+         {
+            VAR__819283[inc - 1] = VAR__819283[inc];
+         }
+      }
+
+      VAR__53647            = VAR__TEMP - 1;
+      VAR__819283[left - 1] = 0;
+      left--;
+   }
+
+   ret = VAR__819283[0];
+   free(VAR__819283);
+   return ret;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int res[MAX_SIZE];
+   int counter = 0;
+
+   memset(res, 0, sizeof( res ));
+   for ( ; counter < MAX_SIZE; counter++ )
+   {
+      scanf("%d %d", &VAR_1238123, &VAR__1238129);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      res[counter] = asdf(VAR_1238123, VAR__1238129);
+   }
+
+   for ( counter = 0; ( counter < MAX_SIZE ) && ( res[counter] != 0 ); counter++ )
+   {
+      printf("%d\n", res[counter]);
+   }
+
+   return 0;
+}

@@ -1,0 +1,56 @@
+struct student
+{
+   char VAR__NUM[10];
+   int  yuwen;
+   int  shuxue;
+   int  VAR__SUM;
+};
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+
+   scanf("%d", &VAR_1238123);
+   struct student VAR__819283[100000];
+   struct student VAR_9494[3];
+   struct student VAR__8444594;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d", VAR__819283[VAR__53647].VAR__NUM, &VAR__819283[VAR__53647].yuwen, &VAR__819283[VAR__53647].shuxue);
+      VAR__819283[VAR__53647].VAR__SUM = VAR__819283[VAR__53647].yuwen + VAR__819283[VAR__53647].shuxue;
+   }
+
+   VAR_9494[0]          = VAR__819283[0];
+   VAR_9494[1]          = VAR__819283[0];
+   VAR_9494[1].VAR__SUM = 0;
+   VAR_9494[2]          = VAR__819283[0];
+   VAR_9494[2].VAR__SUM = 0;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( VAR__819283[VAR__53647].VAR__SUM > VAR_9494[2].VAR__SUM ) && ( VAR__819283[VAR__53647].VAR__SUM <= VAR_9494[1].VAR__SUM ))
+      {
+         VAR_9494[2] = VAR__819283[VAR__53647];
+      }
+
+      if (( VAR__819283[VAR__53647].VAR__SUM > VAR_9494[1].VAR__SUM ) && ( VAR__819283[VAR__53647].VAR__SUM <= VAR_9494[0].VAR__SUM ))
+      {
+         VAR_9494[2] = VAR_9494[1];
+         VAR_9494[1] = VAR__819283[VAR__53647];
+      }
+
+      if ( VAR__819283[VAR__53647].VAR__SUM > VAR_9494[0].VAR__SUM )
+      {
+         VAR_9494[2] = VAR_9494[1];
+         VAR_9494[1] = VAR_9494[0];
+         VAR_9494[0] = VAR__819283[VAR__53647];
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 3; VAR__53647++ )
+   {
+      printf("%s %d\n", VAR_9494[VAR__53647].VAR__NUM, VAR_9494[VAR__53647].VAR__SUM);
+   }
+
+   getchar();
+   getchar();
+}

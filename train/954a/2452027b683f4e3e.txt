@@ -1,0 +1,92 @@
+struct student
+{
+   char name[100];
+   int  n1;
+   int  n2;
+   char VAR__819283;
+   char VAR__19328;
+   int  n3;
+};
+void main()
+{
+   int      N;
+   int      VAR__53647;
+   int      VAR__21230;
+   int      VAR_9494[101][6];
+   int      VAR__MAX;
+   int      VAR__8444594 = 0;
+   long int VAR__SUM     = 0;
+
+   scanf("%d\n", &N);
+   struct student stu[101];
+   struct student *VAR_233;
+   for ( VAR_233 = stu; VAR_233 < ( stu + N ); VAR_233++ )
+   {
+      scanf("%s %d %d %c %c %d", VAR_233->name, &VAR_233->n1, &VAR_233->n2, &VAR_233->VAR__819283, &VAR_233->VAR__19328, &VAR_233->n3);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 6; VAR__21230++ )
+      {
+         VAR_9494[VAR__53647][VAR__21230] = 0;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].n1 > 80 ) && ( stu[VAR__53647].n3 >= 1 ))
+      {
+         VAR_9494[VAR__53647][0] = 8000;
+      }
+
+      if (( stu[VAR__53647].n1 > 85 ) && ( stu[VAR__53647].n2 > 80 ))
+      {
+         VAR_9494[VAR__53647][1] = 4000;
+      }
+
+      if ( stu[VAR__53647].n1 > 90 )
+      {
+         VAR_9494[VAR__53647][2] = 2000;
+      }
+
+      if (( stu[VAR__53647].n1 > 85 ) && ( stu[VAR__53647].VAR__19328 == 'Y' ))
+      {
+         VAR_9494[VAR__53647][3] = 1000;
+      }
+
+      if (( stu[VAR__53647].n2 > 80 ) && ( stu[VAR__53647].VAR__819283 == 'Y' ))
+      {
+         VAR_9494[VAR__53647][4] = 850;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      for ( VAR__21230 = 4; VAR__21230 >= 0; VAR__21230-- )
+      {
+         VAR_9494[VAR__53647][5] = VAR_9494[VAR__53647][5] + VAR_9494[VAR__53647][VAR__21230];
+      }
+   }
+
+
+   VAR__MAX = VAR_9494[0][5];
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      if ( VAR_9494[VAR__53647][5] > VAR__MAX )
+      {
+         VAR__MAX     = VAR_9494[VAR__53647][5];
+         VAR__8444594 = VAR__53647;
+      }
+   }
+
+
+   printf("%s\n%d\n", stu[VAR__8444594].name, VAR_9494[VAR__8444594][5]);
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      VAR__SUM = VAR__SUM + VAR_9494[VAR__53647][5];
+   }
+
+   printf("%ld\n", VAR__SUM);
+}

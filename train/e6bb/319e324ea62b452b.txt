@@ -1,0 +1,72 @@
+int VAR__TEMP[9][9];
+int VAR__819283[9][9];
+void proliferation(int ds, int dd)
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__21230;
+   int VAR__8444594;
+
+   if ( dd == ds )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= 8; VAR__21230++ )
+      {
+         for ( VAR__8444594 = 0; VAR__8444594 <= 8; VAR__8444594++ )
+         {
+            if ( VAR__8444594 == 0 )
+            {
+               cout << VAR__819283[VAR__21230][VAR__8444594];
+            }
+            else
+            {
+               ( cout << " " ) << VAR__819283[VAR__21230][VAR__8444594];
+            }
+         }
+
+         cout << endl;
+      }
+   }
+   else
+   if ( dd < ds )
+   {
+      for ( VAR__1238129 = 4 - dd; VAR__1238129 <= ( 4 + dd ); VAR__1238129++ )
+      {
+         for ( VAR_1238123 = 4 - dd; VAR_1238123 <= ( 4 + dd ); VAR_1238123++ )
+         {
+            for ( VAR__21230 = VAR__1238129 - 1; VAR__21230 <= ( VAR__1238129 + 1 ); VAR__21230++ )
+            {
+               for ( VAR__8444594 = VAR_1238123 - 1; VAR__8444594 <= ( VAR_1238123 + 1 ); VAR__8444594++ )
+               {
+                  VAR__TEMP[VAR__21230][VAR__8444594] += VAR__819283[VAR__1238129][VAR_1238123];
+               }
+            }
+         }
+      }
+
+      dd++;
+      for ( VAR__21230 = 4 - dd; VAR__21230 <= ( 4 + dd ); VAR__21230++ )
+      {
+         for ( VAR__8444594 = 4 - dd; VAR__8444594 <= ( 4 + dd ); VAR__8444594++ )
+         {
+            VAR__819283[VAR__21230][VAR__8444594] = VAR__TEMP[VAR__21230][VAR__8444594];
+         }
+      }
+
+      proliferation(ds, dd);
+   }
+}
+
+
+int main()
+{
+   int ds;
+   int VAR__1238129;
+
+   ( cin >> VAR__1238129 ) >> ds;
+   memset(VAR__TEMP, 0, sizeof( VAR__TEMP ));
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   VAR__819283[4][4] = VAR__1238129;
+   VAR__TEMP[4][4]   = VAR__1238129;
+   proliferation(ds, 0);
+   return 0;
+}

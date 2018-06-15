@@ -1,0 +1,42 @@
+int main()
+{
+   int VAR__819283[MAX][MAX] = { 0 };
+   int VAR__19328[MAX][MAX]  = { 0 };
+   int VAR__1238129;
+   int VAR_1238123;
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   VAR__819283[MAX / 2][MAX / 2] = VAR__1238129;
+   for ( int VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      memset(VAR__19328, 0, sizeof( VAR__19328 ));
+      for ( int VAR__53647 = 1; VAR__53647 < ( MAX - 1 ); VAR__53647++ )
+      {
+         for ( int VAR__21230 = 1; VAR__21230 < ( MAX - 1 ); VAR__21230++ )
+         {
+            VAR__19328[VAR__53647][VAR__21230] += VAR__819283[VAR__53647][VAR__21230];
+            for ( int VAR__7685 = -1; VAR__7685 <= 1; VAR__7685++ )
+            {
+               for ( int VAR__3918907 = -1; VAR__3918907 <= 1; VAR__3918907++ )
+               {
+                  VAR__19328[VAR__53647 + VAR__7685][VAR__21230 + VAR__3918907] += VAR__819283[VAR__53647][VAR__21230];
+               }
+            }
+         }
+      }
+
+      memcpy(VAR__819283, VAR__19328, sizeof( VAR__819283 ));
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < MAX; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < ( MAX - 1 ); VAR__21230++ )
+      {
+         ( cout << VAR__819283[VAR__53647][VAR__21230] ) << ' ';
+      }
+
+      ( cout << VAR__819283[VAR__53647][MAX - 1] ) << endl;
+   }
+
+   return 0;
+}

@@ -1,0 +1,134 @@
+struct student
+{
+   char           name[25];
+   int            s1;
+   int            s2;
+   char           yn1;
+   char           yn2;
+   int            VAR__temp;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+struct student *creat(int VAR_1238123)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student )));
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->s1, &ANOTHER_POINTER->s2, &ANOTHER_POINTER->yn1, &ANOTHER_POINTER->yn2, &ANOTHER_POINTER->VAR__temp);
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR__53647 == 0 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER = (struct student *)malloc(sizeof( struct student ));
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->s1, &ANOTHER_POINTER->s2, &ANOTHER_POINTER->yn1, &ANOTHER_POINTER->yn2, &ANOTHER_POINTER->VAR__temp);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   if ( VAR__HEAD != NULL )
+   {
+      do
+      {
+         printf("%s %d %d %c %c %d\n", VAR_233->name, VAR_233->s1, VAR_233->s2, VAR_233->yn1, VAR_233->yn2, VAR_233->VAR__temp);
+         VAR_233 = VAR_233->VAR__NEXT;
+      } while ( VAR_233 != NULL );
+   }
+}
+
+
+int main()
+{
+   int            VAR_1238123;
+   int            VAR__53647;
+   int            VAR__21230;
+   int            VAR__8444594;
+   int            VAR__temp;
+   int            VAR_9494;
+   int            VAR__MAX;
+   int            VAR_129012 = 0;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   struct student *p3;
+   struct student *VAR_233;
+   struct student VAR_9Q8Q90;
+
+   scanf("%d", &VAR_1238123);
+   VAR_233             = creat(VAR_1238123);
+   ANOTHER_POINTER     = VAR_233;
+   YET_ANOTHER_POINTER = VAR_233;
+   p3 = VAR_233;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER->VAR__SUM = 0;
+
+      if (( ANOTHER_POINTER->s1 > 80 ) && ( ANOTHER_POINTER->VAR__temp >= 1 ))
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 8000;
+      }
+
+      if (( ANOTHER_POINTER->s1 > 85 ) && ( ANOTHER_POINTER->s2 > 80 ))
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 4000;
+      }
+
+      if ( ANOTHER_POINTER->s1 > 90 )
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 2000;
+      }
+
+      if (( ANOTHER_POINTER->yn2 == 'Y' ) && ( ANOTHER_POINTER->s1 > 85 ))
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 1000;
+      }
+
+      if (( ANOTHER_POINTER->yn1 == 'Y' ) && ( ANOTHER_POINTER->s2 > 80 ))
+      {
+         ANOTHER_POINTER->VAR__SUM = ANOTHER_POINTER->VAR__SUM + 850;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   for ( VAR__MAX = 0, ANOTHER_POINTER = VAR_233, YET_ANOTHER_POINTER = VAR_233, VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( ANOTHER_POINTER->VAR__SUM > VAR__MAX )
+      {
+         VAR__MAX            = ANOTHER_POINTER->VAR__SUM;
+         YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0, ANOTHER_POINTER = VAR_233, VAR_9494 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_9494        = VAR_9494 + ANOTHER_POINTER->VAR__SUM;
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   printf("%s\n%d\n%d\n", YET_ANOTHER_POINTER->name, YET_ANOTHER_POINTER->VAR__SUM, VAR_9494);
+   for ( VAR__53647 = 0, ANOTHER_POINTER = VAR_233; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_233 = VAR_233->VAR__NEXT;
+      free(ANOTHER_POINTER);
+      ANOTHER_POINTER = VAR_233;
+   }
+}

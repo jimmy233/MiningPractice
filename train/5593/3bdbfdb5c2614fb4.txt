@@ -1,0 +1,75 @@
+int isreverse(int VAR__NUM)
+{
+   int num_r = 0;
+   int __num = VAR__NUM;
+
+   while ( VAR__NUM != 0 )
+   {
+      num_r     = ( num_r * 10 ) + ( VAR__NUM % 10 );
+      VAR__NUM /= 10;
+   }
+
+   if ( num_r == __num )
+   {
+      return 1;
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+
+void getprime(int prime[])
+{
+   prime[0] = 0;
+   prime[1] = 0;
+   int VAR__53647;
+   int VAR__21230;
+   for ( VAR__53647 = 2; VAR__53647 < LIMIT; VAR__53647++ )
+   {
+      prime[VAR__53647] = 1;
+   }
+
+   for ( VAR__53647 = 2; VAR__53647 < LIMIT; VAR__53647++ )
+   {
+      if ( prime[VAR__53647] )
+      {
+         for ( VAR__21230 = VAR__53647 * VAR__53647; VAR__21230 < LIMIT; VAR__21230 += VAR__53647 )
+         {
+            prime[VAR__21230] = 0;
+         }
+      }
+   }
+}
+
+
+void main()
+{
+   int VAR__53647;
+   int VAR_FLAG = 1;
+   int prime[LIMIT];
+
+   getprime(prime);
+   int VAR__1238129;
+   int VAR_1238123;
+   scanf("%d%d", &VAR__1238129, &VAR_1238123);
+   for ( VAR__53647 = VAR__1238129; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      if (( prime[VAR__53647] && isreverse(VAR__53647)) && VAR_FLAG )
+      {
+         printf("%d", VAR__53647);
+         VAR_FLAG = 0;
+      }
+      else
+      if ( prime[VAR__53647] && isreverse(VAR__53647))
+      {
+         printf(",%d", VAR__53647);
+      }
+   }
+
+   if ( VAR_FLAG == 1 )
+   {
+      printf("no");
+   }
+}

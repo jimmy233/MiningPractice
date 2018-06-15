@@ -1,0 +1,46 @@
+struct student
+{
+   char           VAR__4857423[60];
+   struct student *VAR__NEXT;
+};
+struct student *creat(void)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+
+   ANOTHER_POINTER      = (struct student *)malloc(LEN);
+   VAR__HEAD            = ANOTHER_POINTER;
+   VAR__HEAD->VAR__NEXT = NULL;
+   gets(ANOTHER_POINTER->VAR__4857423);
+
+   while ( strcmp(ANOTHER_POINTER->VAR__4857423, "end"))
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      gets(ANOTHER_POINTER->VAR__4857423);
+      ANOTHER_POINTER->VAR__NEXT = VAR__HEAD;
+      VAR__HEAD = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+void print(struct student *VAR__HEAD)
+{
+   struct student *VAR_233 = VAR__HEAD->VAR__NEXT;
+
+   do
+   {
+      puts(VAR_233->VAR__4857423);
+      VAR_233 = VAR_233->VAR__NEXT;
+   } while ( VAR_233->VAR__NEXT != NULL );
+   puts(VAR_233->VAR__4857423);
+}
+
+
+void main()
+{
+   struct student *VAR_233 = creat();
+
+   print(VAR_233);
+}

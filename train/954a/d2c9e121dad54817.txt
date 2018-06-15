@@ -1,0 +1,104 @@
+struct student
+{
+   char           name[20];
+   int            aver;
+   int            bj;
+   char           VAR__819283;
+   char           VAR__19328;
+   int            lunwen;
+   int            VAR__SUM;
+   struct student *VAR__NEXT;
+};
+struct student *creat(int VAR_1238123)
+{
+   int            VAR__53647;
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (struct student *)malloc(LEN));
+   scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->aver, &ANOTHER_POINTER->bj, &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->lunwen);
+   VAR__HEAD = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN);
+      scanf("%s %d %d %c %c %d", ANOTHER_POINTER->name, &ANOTHER_POINTER->aver, &ANOTHER_POINTER->bj, &ANOTHER_POINTER->VAR__819283, &ANOTHER_POINTER->VAR__19328, &ANOTHER_POINTER->lunwen);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   struct student *VAR__HEAD;
+   struct student *pt1;
+   struct student *pt2;
+   VAR__HEAD = creat(VAR_1238123);
+   pt1       = VAR__HEAD;
+
+   while ( pt1 != NULL )
+   {
+      pt1->VAR__SUM = 0;
+
+      if (( pt1->aver > 80 ) && ( pt1->lunwen >= 1 ))
+      {
+         pt1->VAR__SUM = pt1->VAR__SUM + 8000;
+      }
+
+      if (( pt1->aver > 85 ) && ( pt1->bj > 80 ))
+      {
+         pt1->VAR__SUM = pt1->VAR__SUM + 4000;
+      }
+
+      if ( pt1->aver > 90 )
+      {
+         pt1->VAR__SUM = pt1->VAR__SUM + 2000;
+      }
+
+      if (( pt1->aver > 85 ) && ( pt1->VAR__19328 == 'Y' ))
+      {
+         pt1->VAR__SUM = pt1->VAR__SUM + 1000;
+      }
+
+      if (( pt1->bj > 80 ) && ( pt1->VAR__819283 == 'Y' ))
+      {
+         pt1->VAR__SUM = pt1->VAR__SUM + 850;
+      }
+
+      pt1 = pt1->VAR__NEXT;
+   }
+
+   pt1 = VAR__HEAD;
+   pt2 = pt1->VAR__NEXT;
+
+   while ( pt2 != NULL )
+   {
+      if ( pt2->VAR__SUM > pt1->VAR__SUM )
+      {
+         pt1 = pt2;
+      }
+
+      pt2 = pt2->VAR__NEXT;
+   }
+
+   printf("%s\n", pt1->name);
+   printf("%d\n", pt1->VAR__SUM);
+   pt1 = VAR__HEAD;
+   long VAR_9494 = 0;
+
+   while ( pt1 != NULL )
+   {
+      VAR_9494 = VAR_9494 + pt1->VAR__SUM;
+      pt1      = pt1->VAR__NEXT;
+   }
+
+   printf("%ld", VAR_9494);
+   return 0;
+}

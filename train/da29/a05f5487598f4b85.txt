@@ -1,0 +1,69 @@
+char room[100][101] = { 0 };
+void infection(int, int);
+
+int main()
+{
+   int VAR_1238123;
+   int VAR__1238129;
+   int infector = 0;
+
+   cin >> VAR_1238123;
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      cin >> room[VAR__53647];
+   }
+
+   cin >> VAR__1238129;
+   infection(VAR__1238129, VAR_1238123);
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( room[VAR__53647][VAR__21230] == '@' )
+         {
+            infector++;
+         }
+      }
+   }
+
+
+
+   cout << infector;
+   return 0;
+}
+
+
+void infection(int day, int VAR_1238123)
+{
+   if ( day > 2 )
+   {
+      infection(day - 1, VAR_1238123);
+   }
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( room[VAR__53647][VAR__21230] == '.' )
+         {
+            if (((( room[VAR__53647][VAR__21230 - 1] == '@' ) || ( room[VAR__53647][VAR__21230 + 1] == '@' )) || ( room[VAR__53647 - 1][VAR__21230] == '@' )) || ( room[VAR__53647 + 1][VAR__21230] == '@' ))
+            {
+               room[VAR__53647][VAR__21230] = '$';
+            }
+         }
+      }
+   }
+
+
+
+   for ( int VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( room[VAR__53647][VAR__21230] == '$' )
+         {
+            room[VAR__53647][VAR__21230] = '@';
+         }
+      }
+   }
+}

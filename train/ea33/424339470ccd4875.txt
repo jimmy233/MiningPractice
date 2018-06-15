@@ -1,0 +1,121 @@
+void output(int LEN_OF_STH, char inp[1000])
+{
+   char lin1[10][10];
+   char lin2[10][3];
+   char lin3[10][13];
+   int  VAR__53647;
+   int  VAR__21230   = 0;
+   int  VAR__8444594 = 0;
+   int  ma           = 0;
+   int  VAR__MAX[10];
+   int  lenm[10];
+
+   for ( VAR__53647 = 0; VAR__53647 < 10; VAR__53647++ )
+   {
+      VAR__MAX[VAR__53647] = 0;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < LEN_OF_STH; VAR__53647++ )
+   {
+      if ( inp[VAR__53647] != 32 )
+      {
+         if ( ma == 0 )
+         {
+            lenm[VAR__8444594] = 0;
+            for ( VAR__21230 = 0; ( inp[VAR__53647] != 32 ) && ( VAR__53647 < LEN_OF_STH ); VAR__53647++, VAR__21230++ )
+            {
+               lin1[VAR__8444594][VAR__21230] = inp[VAR__53647];
+               lenm[VAR__8444594]++;
+            }
+
+            ma = 1;
+            continue;
+         }
+
+         if ( ma == 1 )
+         {
+            for ( VAR__21230 = 0; VAR__21230 < 3; VAR__53647++, VAR__21230++ )
+            {
+               lin2[VAR__8444594][VAR__21230] = inp[VAR__53647];
+            }
+
+            ma = 0;
+            VAR__8444594++;
+            VAR__53647--;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      VAR__MAX[VAR__53647] = lin1[VAR__53647][0];
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = 1; VAR__21230 < lenm[VAR__53647]; VAR__21230++ )
+      {
+         if ( lin1[VAR__53647][VAR__21230] > VAR__MAX[VAR__53647] )
+         {
+            VAR__MAX[VAR__53647] = lin1[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < lenm[VAR__53647]; VAR__21230++ )
+      {
+         lin3[VAR__53647][VAR__21230] = lin1[VAR__53647][VAR__21230];
+
+         if ( lin1[VAR__53647][VAR__21230] == VAR__MAX[VAR__53647] )
+         {
+            lin3[VAR__53647][VAR__21230 + 1] = lin2[VAR__53647][0];
+            lin3[VAR__53647][VAR__21230 + 2] = lin2[VAR__53647][1];
+            lin3[VAR__53647][VAR__21230 + 3] = lin2[VAR__53647][2];
+            for ( VAR__21230 = VAR__21230 + 1; VAR__21230 < lenm[VAR__53647]; VAR__21230++ )
+            {
+               lin3[VAR__53647][VAR__21230 + 3] = lin1[VAR__53647][VAR__21230];
+            }
+
+            break;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( lenm[VAR__53647] + 3 ); VAR__21230++ )
+      {
+         printf("%c", lin3[VAR__53647][VAR__21230]);
+      }
+
+      printf("\n");
+   }
+}
+
+
+int main()
+{
+   int  LEN_OF_STH[100];
+   int  VAR__53647;
+   int  VAR__21230;
+   char inp[100][100];
+
+   for ( VAR__53647 = 0; VAR__53647 < 100; VAR__53647++ )
+   {
+      gets(inp[VAR__53647]);
+      LEN_OF_STH[VAR__53647] = strlen(inp[VAR__53647]);
+
+      if ( LEN_OF_STH[VAR__53647] == 0 )
+      {
+         break;
+      }
+   }
+
+   VAR__21230 = VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__21230; VAR__53647++ )
+   {
+      output(LEN_OF_STH[VAR__53647], inp[VAR__53647]);
+   }
+}

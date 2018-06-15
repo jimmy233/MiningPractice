@@ -1,0 +1,65 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int year;
+   int m1;
+   int m2;
+   int VAR__TEMP;
+   int VAR_9494[12] = { 0 };
+   int VAR_2890     = 0;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 1; VAR__53647 <= 12; VAR__53647++ )
+   {
+      if ((((((( VAR__53647 == 1 ) || ( VAR__53647 == 3 )) || ( VAR__53647 == 5 )) || ( VAR__53647 == 7 )) || ( VAR__53647 == 8 )) || ( VAR__53647 == 10 )) || ( VAR__53647 == 12 ))
+      {
+         VAR_9494[VAR__53647 - 1] = 31;
+      }
+      else
+      if ( VAR__53647 != 2 )
+      {
+         VAR_9494[VAR__53647 - 1] = 30;
+      }
+   }
+
+   for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+   {
+      scanf("%d%d%d", &year, &m1, &m2);
+
+      if ( m1 > m2 )
+      {
+         VAR__TEMP = m2;
+         m2        = m1;
+         m1        = VAR__TEMP;
+      }
+
+      if ((( year % 400 ) == 0 ) || ((( year % 4 ) == 0 ) && (( year % 100 ) != 0 )))
+      {
+         VAR_9494[1] = 29;
+      }
+      else
+      {
+         VAR_9494[1] = 28;
+      }
+
+      for ( VAR__53647 = m1; VAR__53647 < m2; VAR__53647++ )
+      {
+         VAR_2890 = VAR_2890 + VAR_9494[VAR__53647 - 1];
+      }
+
+      if (( VAR_2890 % 7 ) == 0 )
+      {
+         printf("YES\n");
+      }
+      else
+      {
+         printf("NO\n");
+      }
+
+      VAR_2890 = 0;
+   }
+
+   return 0;
+}

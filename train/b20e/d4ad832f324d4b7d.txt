@@ -1,0 +1,126 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__3918907;
+   int VAR__9290;
+   int VAR__53647;
+   int VAR_9494;
+   int VAR__temp;
+   int u;
+   int VAR__21230;
+   int VAR__8444594;
+   int VAR__1111;
+   int VAR__1238129;
+   int win;
+   int lose;
+   int money;
+   int VAR__819283[1001];
+   int VAR__19328[1001];
+
+   for ( ; ; )
+   {
+      scanf("%d", &VAR_1238123);
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__1111 = 0; VAR__1111 <= ( VAR_1238123 - 1 ); VAR__1111++ )
+      {
+         scanf("%d", &VAR__819283[VAR__1111]);
+      }
+
+      for ( VAR__1111 = 0; VAR__1111 <= ( VAR_1238123 - 1 ); VAR__1111++ )
+      {
+         scanf("%d", &VAR__19328[VAR__1111]);
+      }
+
+      if ( VAR_1238123 >= 2 )
+      {
+         for ( VAR__3918907 = 0; VAR__3918907 <= ( VAR_1238123 - 2 ); VAR__3918907++ )
+         {
+            for ( VAR__9290 = VAR__3918907 + 1; VAR__9290 <= ( VAR_1238123 - 1 ); VAR__9290++ )
+            {
+               if ( VAR__819283[VAR__9290] > VAR__819283[VAR__3918907] )
+               {
+                  VAR__1238129 = VAR__819283[VAR__3918907];
+                  VAR__819283[VAR__3918907] = VAR__819283[VAR__9290];
+                  VAR__819283[VAR__9290]    = VAR__1238129;
+               }
+
+               if ( VAR__19328[VAR__9290] > VAR__19328[VAR__3918907] )
+               {
+                  VAR__1238129             = VAR__19328[VAR__3918907];
+                  VAR__19328[VAR__3918907] = VAR__19328[VAR__9290];
+                  VAR__19328[VAR__9290]    = VAR__1238129;
+               }
+            }
+         }
+      }
+
+      win  = 0;
+      lose = 0;
+
+      if ( VAR_1238123 >= 2 )
+      {
+         for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+         {
+            if ( VAR__819283[0] > VAR__19328[0] )
+            {
+               win++;
+               for ( VAR_9494 = 0; VAR_9494 <= (( VAR_1238123 - VAR__53647 ) - 1 ); VAR_9494++ )
+               {
+                  VAR__819283[VAR_9494] = VAR__819283[VAR_9494 + 1];
+                  VAR__19328[VAR_9494]  = VAR__19328[VAR_9494 + 1];
+               }
+            }
+            else
+            {
+               for ( VAR__temp = VAR_1238123 - VAR__53647; VAR__temp >= 0; VAR__temp-- )
+               {
+                  if ( VAR__819283[VAR__temp] > VAR__19328[VAR__temp] )
+                  {
+                     win++;
+                     VAR__53647++;
+
+                     if ( VAR_1238123 == VAR__53647 )
+                     {
+                        break;
+                     }
+                  }
+                  else
+                  {
+                     if ( VAR__819283[VAR_1238123 - VAR__53647] < VAR__19328[0] )
+                     {
+                        lose++;
+                     }
+
+                     for ( u = 0; u <= (( VAR_1238123 - VAR__53647 ) - 1 ); u++ )
+                     {
+                        VAR__19328[u] = VAR__19328[u + 1];
+                     }
+
+                     break;
+                  }
+               }
+            }
+         }
+      }
+
+      if ( VAR__819283[0] > VAR__19328[0] )
+      {
+         win++;
+      }
+
+      if ( VAR__819283[0] < VAR__19328[0] )
+      {
+         lose++;
+      }
+
+      money = 200 * ( win - lose );
+      printf("%d\n", money);
+   }
+
+   return 0;
+}

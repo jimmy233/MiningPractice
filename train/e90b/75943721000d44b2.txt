@@ -1,0 +1,70 @@
+int main()
+{
+   struct student
+   {
+      int id;
+      int chinese;
+      int math;
+      int total;
+   };
+   long int       VAR_1238123;
+   int            VAR__TEMP;
+   int            VAR__MAX = 0;
+   int            max_1    = 0;
+   int            max_2    = 0;
+   struct student *VAR_233;
+   struct student *p_ori;
+   struct student *p_end;
+   struct student *VAR_666;
+   struct student *p_max;
+   struct student *p_max_1;
+   struct student *p_max_2;
+
+   scanf("%ld", &VAR_1238123);
+   VAR_233 = (struct student *)malloc(VAR_1238123 * ( sizeof( struct student )));
+   p_ori   = VAR_233;
+   p_end   = VAR_233 + VAR_1238123;
+   for ( ; VAR_233 < p_end; VAR_233++ )
+   {
+      scanf("%d", &VAR_233->id);
+      scanf("%d", &VAR_233->chinese);
+      scanf("%d", &VAR_233->math);
+      VAR_233->total = VAR_233->chinese + VAR_233->math;
+   }
+
+   VAR_233 = p_ori;
+   for ( ; VAR_233 < p_end; VAR_233++ )
+   {
+      if ( VAR_233->total > VAR__MAX )
+      {
+         VAR__MAX = VAR_233->total;
+         p_max    = VAR_233;
+      }
+   }
+
+   VAR_233 = p_ori;
+   for ( ; VAR_233 < p_end; VAR_233++ )
+   {
+      if (( VAR_233->total > max_1 ) && ( VAR_233 != p_max ))
+      {
+         max_1   = VAR_233->total;
+         p_max_1 = VAR_233;
+      }
+   }
+
+   VAR_233 = p_ori;
+   for ( ; VAR_233 < p_end; VAR_233++ )
+   {
+      if ((( VAR_233->total > max_2 ) && ( VAR_233 != p_max )) && ( VAR_233 != p_max_1 ))
+      {
+         max_2   = VAR_233->total;
+         p_max_2 = VAR_233;
+      }
+   }
+
+   printf("%d %d\n", p_max->id, p_max->total);
+   printf("%d %d\n", p_max_1->id, p_max_1->total);
+   printf("%d %d\n", p_max_2->id, p_max_2->total);
+   getchar();
+   getchar();
+}

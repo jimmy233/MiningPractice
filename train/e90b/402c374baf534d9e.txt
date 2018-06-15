@@ -1,0 +1,63 @@
+int main(int argc, char *argv[])
+{
+   struct student
+   {
+      int ID;
+      int Ch;
+      int Ma;
+   }
+       VAR__TEMP;
+   int fID = 0;
+   int fG  = 0;
+   int sID = 0;
+   int sG  = 0;
+   int tID = 0;
+   int tG  = 0;
+   int VAR_1238123;
+
+   scanf("%d", &VAR_1238123);
+   int VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      int VAR__SUM = 0;
+      scanf("%d%d%d", &VAR__TEMP.ID, &VAR__TEMP.Ch, &VAR__TEMP.Ma);
+      VAR__SUM = VAR__TEMP.Ch + VAR__TEMP.Ma;
+
+      if ( VAR__SUM == fG )
+      {
+         tG  = sG;
+         tID = sID;
+         sG  = VAR__SUM;
+         sID = VAR__TEMP.ID;
+      }
+
+      if ( VAR__SUM > fG )
+      {
+         tG  = sG;
+         tID = sID;
+         sG  = fG;
+         sID = fID;
+         fG  = VAR__SUM;
+         fID = VAR__TEMP.ID;
+      }
+
+      if (( VAR__SUM < fG ) && ( VAR__SUM > sG ))
+      {
+         tG  = sG;
+         tID = sID;
+         sG  = VAR__SUM;
+         sID = VAR__TEMP.ID;
+      }
+
+      if (( VAR__SUM < sG ) && ( VAR__SUM > tG ))
+      {
+         tG  = VAR__SUM;
+         tID = VAR__TEMP.ID;
+      }
+   }
+
+   printf("%d %d\n", fID, fG);
+   printf("%d %d\n", sID, sG);
+   printf("%d %d\n", tID, tG);
+   return 0;
+}

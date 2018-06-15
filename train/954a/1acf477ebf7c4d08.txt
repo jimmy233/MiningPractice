@@ -1,0 +1,60 @@
+int main()
+{
+   int  N;
+   int  VAR__53647;
+   int  final_g;
+   int  class_g;
+   int  nPapers;
+   int  scholarship;
+   int  max_s;
+   int  VAR__SUM;
+   char isCadre;
+   char isWest;
+   char buffer[21];
+   char name[21];
+
+   scanf("%d", &N);
+   VAR__SUM = 0;
+   max_s    = 0;
+   for ( VAR__53647 = 0; VAR__53647 < N; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", buffer, &final_g, &class_g, &isCadre, &isWest, &nPapers);
+      scholarship = 0;
+
+      if (( final_g > 80 ) && ( nPapers > 0 ))
+      {
+         scholarship += 8000;
+      }
+
+      if (( final_g > 85 ) && ( class_g > 80 ))
+      {
+         scholarship += 4000;
+      }
+
+      if ( final_g > 90 )
+      {
+         scholarship += 2000;
+      }
+
+      if (( final_g > 85 ) && ( isWest == 'Y' ))
+      {
+         scholarship += 1000;
+      }
+
+      if (( class_g > 80 ) && ( isCadre == 'Y' ))
+      {
+         scholarship += 850;
+      }
+
+      if ( scholarship > max_s )
+      {
+         strcpy(name, buffer);
+         max_s = scholarship;
+      }
+
+      VAR__SUM += scholarship;
+   }
+
+   printf("%s\n%d\n%d\n", name, max_s, VAR__SUM);
+   return 0;
+}

@@ -1,0 +1,74 @@
+void main()
+{
+   int VAR_1238123;
+   int all = 0;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__1238129;
+   struct student
+   {
+      char name[20];
+      int  score1;
+      int  score2;
+      char monitor;
+      char west;
+      int  paper;
+      int  money;
+   }
+   stu[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].score1, &stu[VAR__53647].score2, &stu[VAR__53647].monitor, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      stu[VAR__53647].money = 0;
+
+      if (( stu[VAR__53647].score1 > 80 ) && ( stu[VAR__53647].paper >= 1 ))
+      {
+         stu[VAR__53647].money += 8000;
+      }
+
+      if (( stu[VAR__53647].score1 > 85 ) && ( stu[VAR__53647].score2 > 80 ))
+      {
+         stu[VAR__53647].money += 4000;
+      }
+
+      if ( stu[VAR__53647].score1 > 90 )
+      {
+         stu[VAR__53647].money += 2000;
+      }
+
+      if (( stu[VAR__53647].score1 > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         stu[VAR__53647].money += 1000;
+      }
+
+      if (( stu[VAR__53647].score2 > 80 ) && ( stu[VAR__53647].monitor == 'Y' ))
+      {
+         stu[VAR__53647].money += 850;
+      }
+   }
+
+   VAR__1238129 = stu[0].money;
+   VAR__21230   = 0;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( stu[VAR__53647].money > VAR__1238129 )
+      {
+         VAR__1238129 = stu[VAR__53647].money;
+         VAR__21230   = VAR__53647;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      all += stu[VAR__53647].money;
+   }
+
+   printf("%s\n%d\n", stu[VAR__21230].name, stu[VAR__21230].money);
+   printf("%d\n", all);
+}

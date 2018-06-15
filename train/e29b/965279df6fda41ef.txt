@@ -1,0 +1,92 @@
+void main()
+{
+   int   VAR_1238123;
+   int   VAR__53647;
+   int   VAR__21230 = 0;
+   float VAR__819283[100];
+   float total = 0;
+   float temp1;
+   float temp2;
+   float VAR__TEMP;
+   float aa[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%f", &VAR__819283[VAR__53647]);
+      total = total + VAR__819283[VAR__53647];
+   }
+
+   total = total / VAR_1238123;
+
+   if ( VAR__819283[0] >= total )
+   {
+      temp2 = VAR__819283[0] - total;
+   }
+   else
+   {
+      temp2 = total - VAR__819283[0];
+   }
+
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] >= total )
+      {
+         temp1 = VAR__819283[VAR__53647] - total;
+      }
+      else
+      {
+         temp1 = total - VAR__819283[VAR__53647];
+      }
+
+      if ( temp1 >= temp2 )
+      {
+         temp2 = temp1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( VAR__819283[VAR__53647] >= total )
+      {
+         temp1 = VAR__819283[VAR__53647] - total;
+      }
+      else
+      if ( VAR__819283[VAR__53647] < total )
+      {
+         temp1 = total - VAR__819283[VAR__53647];
+      }
+
+
+      if ( temp1 != temp2 )
+      {
+         VAR__819283[VAR__53647] = 0;
+      }
+      else
+      if ( temp1 == temp2 )
+      {
+         aa[VAR__21230] = VAR__819283[VAR__53647];
+         VAR__21230++;
+      }
+   }
+
+   VAR_1238123 = VAR__21230 - 1;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( aa[VAR__53647] > aa[VAR__21230] )
+         {
+            VAR__TEMP      = aa[VAR__21230];
+            aa[VAR__21230] = aa[VAR__53647];
+            aa[VAR__53647] = VAR__TEMP;
+         }
+      }
+   }
+
+   printf("%.0f", aa[0]);
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      printf(",%.0f", aa[VAR__53647]);
+   }
+}

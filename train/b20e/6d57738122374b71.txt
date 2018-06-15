@@ -1,0 +1,85 @@
+int cmp(const void *VAR__819283, const void *VAR__19328)
+{
+   return ( *((int *)VAR__19328 )) - ( *((int *)VAR__819283 ));
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int VAR_1238123;
+   int VAR__temp[1005];
+   int VAR_21983012[1005];
+
+   while ( 1 )
+   {
+      cin >> VAR_1238123;
+
+      if ( VAR_1238123 == 0 )
+      {
+         break;
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR__temp[VAR__53647];
+      }
+
+      for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+      {
+         cin >> VAR_21983012[VAR__53647];
+      }
+
+      qsort(VAR__temp, VAR_1238123, sizeof( VAR__temp[0] ), cmp);
+      qsort(VAR_21983012, VAR_1238123, sizeof( VAR_21983012[0] ), cmp);
+      int VAR__COUNT = 0;
+      int thead      = 0;
+      int khead      = 0;
+      int ttail      = VAR_1238123 - 1;
+      int ktail      = VAR_1238123 - 1;
+
+      while ( thead <= ttail )
+      {
+         if ( VAR__temp[thead] > VAR_21983012[khead] )
+         {
+            VAR__COUNT++;
+            thead++;
+            khead++;
+         }
+         else
+         if ( VAR__temp[thead] < VAR_21983012[khead] )
+         {
+            ttail--;
+            VAR__COUNT--;
+            khead++;
+         }
+         else
+         {
+            while ( ttail >= thead )
+            {
+               if ( VAR__temp[ttail] > VAR_21983012[ktail] )
+               {
+                  VAR__COUNT++;
+                  ttail--;
+                  ktail--;
+               }
+               else
+               {
+                  if ( VAR__temp[ttail] < VAR_21983012[khead] )
+                  {
+                     VAR__COUNT--;
+                  }
+
+                  ttail--;
+                  khead++;
+                  break;
+               }
+            }
+         }
+      }
+
+      ( cout << ( VAR__COUNT * 200 )) << endl;
+   }
+
+   return 0;
+}

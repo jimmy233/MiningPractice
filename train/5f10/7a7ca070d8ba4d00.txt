@@ -1,0 +1,76 @@
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__1111;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__1238129;
+   int  VAR__temp;
+   int  VAR__COUNT[600] = { 0 };
+   char A_STRING[600];
+   char gram[600][6];
+   char VAR__4857423[10];
+
+   scanf("%d", &VAR_1238123);
+   gets(VAR__4857423);
+   gets(A_STRING);
+   VAR__1111 = strlen(A_STRING);
+   for ( VAR__53647 = 0; ( VAR__53647 + VAR_1238123 ) <= VAR__1111; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         gram[VAR__53647][VAR__21230] = A_STRING[VAR__53647 + VAR__21230];
+      }
+
+      gram[VAR__53647][VAR_1238123] = '\0';
+   }
+
+   VAR__1238129 = VAR__53647;
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = VAR__53647 + 1; VAR__21230 < VAR__1238129; VAR__21230++ )
+      {
+         if (( gram[VAR__53647][0] != '\0' ) && ( strcmp(gram[VAR__53647], gram[VAR__21230]) == 0 ))
+         {
+            gram[VAR__21230][0]     = '\0';
+            VAR__COUNT[VAR__53647] += 1;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR__1238129 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR__1238129 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ( VAR__COUNT[VAR__21230] < VAR__COUNT[VAR__21230 + 1] )
+         {
+            VAR__temp = VAR__COUNT[VAR__21230];
+            VAR__COUNT[VAR__21230]     = VAR__COUNT[VAR__21230 + 1];
+            VAR__COUNT[VAR__21230 + 1] = VAR__temp;
+            strcpy(gram[500 + VAR__53647], gram[VAR__21230]);
+            strcpy(gram[VAR__21230], gram[VAR__21230 + 1]);
+            strcpy(gram[VAR__21230 + 1], gram[500 + VAR__53647]);
+         }
+      }
+   }
+
+
+
+   if ( VAR__COUNT[0] == 0 )
+   {
+      printf("NO\n");
+   }
+   else
+   {
+      VAR__53647 = 0;
+      printf("%d\n", VAR__COUNT[0] + 1);
+
+      while ( VAR__COUNT[VAR__53647] == VAR__COUNT[0] )
+      {
+         printf("%s\n", gram[VAR__53647]);
+         VAR__53647++;
+      }
+   }
+
+   return 0;
+}

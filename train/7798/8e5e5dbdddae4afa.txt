@@ -1,0 +1,90 @@
+int VAR__1238129;
+struct book
+{
+   int         VAR__NUM;
+   char        name[26];
+   struct book *VAR__NEXT;
+};
+struct book *create(void)
+{
+   struct book *VAR__HEAD;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   int         VAR__53647;
+
+   scanf("%d", &VAR__1238129);
+   ANOTHER_POINTER = (struct book *)malloc(LEN);
+   scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+   VAR__HEAD = NULL;
+   for ( VAR__53647 = 1; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( VAR__53647 == 1 )
+      {
+         VAR__HEAD = ANOTHER_POINTER;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      }
+
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      ANOTHER_POINTER     = (struct book *)malloc(LEN);
+      scanf("%d %s", &ANOTHER_POINTER->VAR__NUM, ANOTHER_POINTER->name);
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   ANOTHER_POINTER->VAR__NEXT     = NULL;
+   return VAR__HEAD;
+}
+
+
+void main()
+{
+   int         VAR__NUM[26] = { 0 };
+   int         VAR__53647;
+   int         VAR__21230;
+   int         VAR__MAX = 0;
+   struct book *ANOTHER_POINTER;
+   struct book *YET_ANOTHER_POINTER;
+   struct book *VAR__HEAD;
+   char        *VAR_233;
+
+   ANOTHER_POINTER = create();
+   VAR__HEAD       = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR_233 = ANOTHER_POINTER->name; ( *VAR_233 ) != '\0'; VAR_233++ )
+      {
+         VAR__NUM[( *VAR_233 ) - 'A']++;
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 26; VAR__53647++ )
+   {
+      if ( VAR__NUM[VAR__53647] > VAR__MAX )
+      {
+         VAR__MAX   = VAR__NUM[VAR__53647];
+         VAR__21230 = VAR__53647;
+      }
+   }
+
+   printf("%c\n", 'A' + VAR__21230);
+   printf("%d\n", VAR__MAX);
+   ANOTHER_POINTER = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      VAR_233 = ANOTHER_POINTER->name;
+      for ( VAR_233 = ANOTHER_POINTER->name; ( *VAR_233 ) != '\0'; VAR_233++ )
+      {
+         if (( *VAR_233 ) == ( 'A' + VAR__21230 ))
+         {
+            printf("%d\n", ANOTHER_POINTER->VAR__NUM);
+            break;
+         }
+      }
+
+      ANOTHER_POINTER = ANOTHER_POINTER->VAR__NEXT;
+   }
+}

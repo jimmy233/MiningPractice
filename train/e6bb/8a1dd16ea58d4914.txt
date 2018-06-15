@@ -1,0 +1,65 @@
+void change(int [][9]);
+
+int main()
+{
+   int VAR__1238129;
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int matrix[9][9] = { 0 };
+
+   ( cin >> VAR__1238129 ) >> VAR_1238123;
+   matrix[4][4] = VAR__1238129;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      change(matrix);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      cout << matrix[VAR__53647][0];
+      for ( VAR__21230 = 1; VAR__21230 < 9; VAR__21230++ )
+      {
+         ( cout << ' ' ) << matrix[VAR__53647][VAR__21230];
+      }
+
+      cout << endl;
+   }
+
+   return 0;
+}
+
+
+void change(int matrix[9][9])
+{
+   int VAR__53647;
+   int VAR__21230;
+   int plus[9][9] = { 0 };
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         if ( matrix[VAR__53647][VAR__21230] > 0 )
+         {
+            plus[VAR__53647][VAR__21230]         += matrix[VAR__53647][VAR__21230];
+            plus[VAR__53647 - 1][VAR__21230]     += matrix[VAR__53647][VAR__21230];
+            plus[VAR__53647][VAR__21230 - 1]     += matrix[VAR__53647][VAR__21230];
+            plus[VAR__53647 + 1][VAR__21230]     += matrix[VAR__53647][VAR__21230];
+            plus[VAR__53647][VAR__21230 + 1]     += matrix[VAR__53647][VAR__21230];
+            plus[VAR__53647 - 1][VAR__21230 - 1] += matrix[VAR__53647][VAR__21230];
+            plus[VAR__53647 - 1][VAR__21230 + 1] += matrix[VAR__53647][VAR__21230];
+            plus[VAR__53647 + 1][VAR__21230 + 1] += matrix[VAR__53647][VAR__21230];
+            plus[VAR__53647 + 1][VAR__21230 - 1] += matrix[VAR__53647][VAR__21230];
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < 9; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < 9; VAR__21230++ )
+      {
+         matrix[VAR__53647][VAR__21230] += plus[VAR__53647][VAR__21230];
+      }
+   }
+}

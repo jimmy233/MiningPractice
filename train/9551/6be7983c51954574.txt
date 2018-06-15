@@ -1,0 +1,76 @@
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__21230;
+   int VAR__TEMP;
+   int VAR__1238129 = 0;
+   int patage[100];
+   struct patient
+   {
+      char VAR__NUM[20];
+      int  age;
+   };
+   struct patient pat[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s%d", pat[VAR__53647].VAR__NUM, &pat[VAR__53647].age);
+   }
+
+   for ( VAR__53647 = 0, VAR__21230 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pat[VAR__53647].age >= 60 )
+      {
+         patage[VAR__21230] = pat[VAR__53647].age;
+         VAR__21230++;
+         VAR__1238129++;
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < ( VAR__1238129 - VAR__53647 ); VAR__21230++ )
+      {
+         if ( patage[VAR__21230] < patage[VAR__21230 + 1] )
+         {
+            VAR__TEMP              = patage[VAR__21230];
+            patage[VAR__21230]     = patage[VAR__21230 + 1];
+            patage[VAR__21230 + 1] = VAR__TEMP;
+         }
+      }
+   }
+
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      if ( patage[VAR__53647] == patage[VAR__53647 - 1] )
+      {
+         continue;
+      }
+
+      for ( VAR__21230 = 0; VAR__21230 < VAR_1238123; VAR__21230++ )
+      {
+         if ( pat[VAR__21230].age == patage[VAR__53647] )
+         {
+            printf("%s\n", pat[VAR__21230].VAR__NUM);
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if ( pat[VAR__53647].age >= 60 )
+      {
+         continue;
+      }
+      else
+      {
+         printf("%s\n", pat[VAR__53647].VAR__NUM);
+      }
+   }
+
+   return 0;
+}

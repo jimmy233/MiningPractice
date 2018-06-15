@@ -1,0 +1,40 @@
+int dp[40000][200] = { 0 };
+int main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int N;
+
+   int mm(int, int);
+
+   cin >> VAR_1238123;
+   for ( VAR__53647 = 1; VAR__53647 <= VAR_1238123; VAR__53647++ )
+   {
+      cin >> N;
+      ( cout << mm(N, 2)) << endl;
+   }
+
+   return 0;
+}
+
+
+int mm(int VAR_1238123, int VAR__53647)
+{
+   int VAR__SUM = 1;
+
+   if ( dp[VAR_1238123][VAR__53647] > 0 )
+   {
+      return dp[VAR_1238123][VAR__53647];
+   }
+
+   for ( int VAR__21230 = VAR__53647; VAR__21230 <= sqrt(VAR_1238123); VAR__21230++ )
+   {
+      if (( VAR_1238123 % VAR__21230 ) == 0 )
+      {
+         VAR__SUM += mm(VAR_1238123 / VAR__21230, VAR__21230);
+      }
+   }
+
+   dp[VAR_1238123][VAR__53647] = VAR__SUM;
+   return VAR__SUM;
+}

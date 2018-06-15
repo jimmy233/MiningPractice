@@ -1,0 +1,78 @@
+int main()
+{
+   int    VAR_1238123;
+   int    VAR__8444594;
+   int    VAR__53647;
+   int    VAR__21230;
+   char   sex[10];
+   double VAR_2890;
+   double maleH[40];
+   double femaleH[40];
+
+   cin >> VAR_1238123;
+   int numM = 0;
+   int numF = 0;
+   for ( VAR__8444594 = 0; VAR__8444594 < VAR_1238123; VAR__8444594++ )
+   {
+      cin >> sex;
+      cin >> VAR_2890;
+
+      if ( sex[0] == 'm' )
+      {
+         maleH[numM] = VAR_2890;
+         numM++;
+      }
+      else
+      if ( sex[0] == 'f' )
+      {
+         femaleH[numF] = VAR_2890;
+         numF++;
+      }
+   }
+
+   double VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 < ( numF - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( numF - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( femaleH[VAR__21230] < femaleH[VAR__21230 + 1] )
+         {
+            VAR__temp               = femaleH[VAR__21230];
+            femaleH[VAR__21230]     = femaleH[VAR__21230 + 1];
+            femaleH[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( numM - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( numM - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( maleH[VAR__21230] > maleH[VAR__21230 + 1] )
+         {
+            VAR__temp             = maleH[VAR__21230];
+            maleH[VAR__21230]     = maleH[VAR__21230 + 1];
+            maleH[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < numM; VAR__53647++ )
+   {
+      ((( cout << fixed ) << setprecision(2)) << maleH[VAR__53647] ) << " ";
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < numF; VAR__53647++ )
+   {
+      if ( VAR__53647 == ( numF - 1 ))
+      {
+         (( cout << fixed ) << setprecision(2)) << femaleH[VAR__53647];
+      }
+      else
+      {
+         ((( cout << fixed ) << setprecision(2)) << femaleH[VAR__53647] ) << " ";
+      }
+   }
+
+   return 0;
+}

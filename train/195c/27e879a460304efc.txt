@@ -1,0 +1,58 @@
+void move(int *pstart, int VAR_1238123, int VAR__1238129)
+{
+   int lastnum;
+   int *pmove;
+
+   void (*pinfunction)(int *, int, int);
+   pinfunction = move;
+
+   if ( VAR__1238129 > 0 )
+   {
+      lastnum = *(( pstart + VAR_1238123 ) - 1 );
+      for ( pmove = ( pstart + VAR_1238123 ) - 2; pmove >= pstart; pmove-- )
+      {
+         *( pmove + 1 ) = *pmove;
+      }
+
+      *pstart = lastnum;
+      ( *pinfunction )(pstart, VAR_1238123, VAR__1238129 - 1);
+   }
+}
+
+
+void main()
+{
+   int VAR_FLAG;
+   int VAR__53647;
+   int VAR_1238123;
+   int VAR__1238129;
+   int VAR__NUM[100];
+   int *pnum;
+
+   void (*pinfunction)(int *, int, int);
+   pnum = VAR__NUM;
+   scanf("%d", &VAR_1238123);
+   scanf("%d", &VAR__1238129);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      scanf("%d", pnum++);
+   }
+
+   pnum        = VAR__NUM;
+   pinfunction = move;
+   ( *pinfunction )(pnum, VAR_1238123, VAR__1238129);
+   VAR_FLAG = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( VAR_FLAG )
+      {
+         printf(" ");
+      }
+      else
+      {
+         VAR_FLAG = 1;
+      }
+
+      printf("%d", *( pnum++ ));
+   }
+}

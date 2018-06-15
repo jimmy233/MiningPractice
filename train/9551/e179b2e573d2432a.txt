@@ -1,0 +1,64 @@
+struct patient
+{
+   char           ID[10];
+   int            age;
+   struct patient *VAR__NEXT;
+};
+struct patient *creat(int VAR_1238123)
+{
+   int            VAR__53647;
+   struct patient *VAR__HEAD;
+   struct patient *ANOTHER_POINTER;
+   struct patient *YET_ANOTHER_POINTER;
+
+   YET_ANOTHER_POINTER = ( ANOTHER_POINTER = (struct patient *)malloc(LEN));
+   VAR__HEAD           = ANOTHER_POINTER;
+   scanf("%s %d", ANOTHER_POINTER->ID, &ANOTHER_POINTER->age);
+   for ( VAR__53647 = 1; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct patient *)malloc(LEN);
+      scanf("%s %d", ANOTHER_POINTER->ID, &ANOTHER_POINTER->age);
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+int main()
+{
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR_1238123;
+   char VAR__819283[10];
+
+   scanf("%d", &VAR_1238123);
+   struct patient *VAR_2890;
+   struct patient *VAR_666;
+   struct patient *VAR_233;
+   VAR_2890 = creat(VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      for ( VAR_666 = VAR_2890; VAR_666->VAR__NEXT != NULL; VAR_666 = VAR_666->VAR__NEXT )
+      {
+         if (( VAR_666->VAR__NEXT->age >= 60 ) && ( VAR_666->VAR__NEXT->age > VAR_666->age ))
+         {
+            strcpy(VAR__819283, VAR_666->ID);
+            strcpy(VAR_666->ID, VAR_666->VAR__NEXT->ID);
+            strcpy(VAR_666->VAR__NEXT->ID, VAR__819283);
+            VAR__21230              = VAR_666->age;
+            VAR_666->age            = VAR_666->VAR__NEXT->age;
+            VAR_666->VAR__NEXT->age = VAR__21230;
+         }
+      }
+   }
+
+
+
+   for ( VAR_233 = VAR_2890; VAR_233 != NULL; VAR_233 = VAR_233->VAR__NEXT )
+   {
+      printf("%s\n", VAR_233->ID);
+   }
+}

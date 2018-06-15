@@ -1,0 +1,48 @@
+const int N = 9;
+int       VAR_1238123;
+int       VAR__1238129;
+int       VAR__819283[N + 1][N + 1];
+void dfs(int VAR__7685, int VAR__3918907, int VAR_9494, int VAR__12302)
+{
+   if (((( VAR__7685 < 1 ) || ( VAR__7685 > N )) || ( VAR__3918907 < 0 )) || ( VAR__3918907 > N ))
+   {
+      return;
+   }
+
+   if ( VAR__12302 == VAR__1238129 )
+   {
+      VAR__819283[VAR__7685][VAR__3918907] += VAR_9494;
+      return;
+   }
+
+   dfs(VAR__7685, VAR__3918907, VAR_9494 * 2, VAR__12302 + 1);
+   for ( int dx = -1; dx <= 1; dx++ )
+   {
+      for ( int dy = -1; dy <= 1; dy++ )
+      {
+         if (( dx != 0 ) || ( dy != 0 ))
+         {
+            dfs(VAR__7685 + dx, VAR__3918907 + dy, VAR_9494, VAR__12302 + 1);
+         }
+      }
+   }
+}
+
+
+int main()
+{
+   scanf("%d%d", &VAR_1238123, &VAR__1238129);
+   memset(VAR__819283, 0, sizeof( VAR__819283 ));
+   dfs(5, 5, VAR_1238123, 0);
+   for ( int VAR__53647 = 1; VAR__53647 <= N; VAR__53647++ )
+   {
+      for ( int VAR__21230 = 1; VAR__21230 < N; VAR__21230++ )
+      {
+         printf("%d ", VAR__819283[VAR__53647][VAR__21230]);
+      }
+
+      printf("%d\n", VAR__819283[VAR__53647][N]);
+   }
+
+   return 0;
+}

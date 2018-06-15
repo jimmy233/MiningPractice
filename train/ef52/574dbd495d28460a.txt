@@ -1,0 +1,65 @@
+int VAR__8444594;
+int height[25];
+int route(int VAR__1238129)
+{
+   int VAR__53647;
+   int VAR__819283 = 0;
+   int VAR__MAX    = 0;
+
+   for ( VAR__53647 = VAR__1238129 + 1; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( height[VAR__53647] <= height[VAR__1238129] )
+      {
+         VAR__819283 += 1;
+      }
+   }
+
+
+   if ( VAR__819283 == 0 )
+   {
+      return 1;
+   }
+   else
+   {
+      for ( VAR__53647 = VAR__1238129 + 1; VAR__53647 < VAR__8444594; VAR__53647++ )
+      {
+         if (( height[VAR__53647] <= height[VAR__1238129] ) && ( route(VAR__53647) > VAR__MAX ))
+         {
+            VAR__MAX = route(VAR__53647);
+         }
+      }
+
+
+      return VAR__MAX + 1;
+   }
+}
+
+
+int main()
+{
+   int VAR__53647;
+   int ans[25];
+   int VAR__819283 = 0;
+
+   scanf("%d", &VAR__8444594);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      scanf("%d", &height[VAR__53647]);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      ans[VAR__53647] = route(VAR__53647);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < VAR__8444594; VAR__53647++ )
+   {
+      if ( ans[VAR__53647] > VAR__819283 )
+      {
+         VAR__819283 = ans[VAR__53647];
+      }
+   }
+
+
+   printf("%d\n", VAR__819283);
+}

@@ -1,0 +1,104 @@
+struct people
+{
+   int  order;
+   char ID[10];
+   int  age;
+}
+per[100];
+struct old
+{
+   int  orders;
+   char IDs[10];
+   int  ages;
+}
+elder[100];
+int main()
+{
+   int  VAR_1238123;
+   int  VAR__53647;
+   int  VAR__21230;
+   int  VAR__temp;
+   int  VAR__1238129;
+   int  VAR_666;
+   int  VAR_129012;
+   char VAR_233[10];
+   int  VAR__19328[100];
+   int  VAR__4857423[100];
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      per[VAR__53647].order = VAR__53647;
+      scanf("%s %d", per[VAR__53647].ID, &per[VAR__53647].age);
+      VAR__19328[VAR__53647] = strlen(per[VAR__53647].ID);
+   }
+
+   VAR__temp = 0;
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( per[VAR__53647].age >= 60 )
+      {
+         elder[VAR__temp].orders = VAR__temp;
+         strcpy(elder[VAR__temp].IDs, per[VAR__53647].ID);
+         elder[VAR__temp].ages = per[VAR__53647].age;
+         VAR__temp             = VAR__temp + 1;
+         per[VAR__53647].age   = -1;
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= (( VAR__temp - VAR__53647 ) - 1 ); VAR__21230++ )
+      {
+         if ( elder[VAR__21230].ages < elder[VAR__21230 + 1].ages )
+         {
+            VAR__1238129 = elder[VAR__21230].ages;
+            strcpy(VAR_233, elder[VAR__21230].IDs);
+            VAR_666 = elder[VAR__21230].orders;
+            strcpy(elder[VAR__21230].IDs, elder[VAR__21230 + 1].IDs);
+            elder[VAR__21230].ages     = elder[VAR__21230 + 1].ages;
+            elder[VAR__21230].orders   = elder[VAR__21230 + 1].orders;
+            elder[VAR__21230 + 1].ages = VAR__1238129;
+            strcpy(elder[VAR__21230 + 1].IDs, VAR_233);
+            elder[VAR__21230 + 1].orders = VAR_666;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 <= (( VAR__temp - 1 ) - VAR__21230 ); VAR__21230++ )
+      {
+         if ( elder[VAR__21230].ages == elder[VAR__21230 + 1].ages )
+         {
+            if ( elder[VAR__21230].orders > elder[VAR__21230 + 1].orders )
+            {
+               VAR__1238129 = elder[VAR__21230].ages;
+               strcpy(VAR_233, elder[VAR__21230].IDs);
+               VAR_666 = elder[VAR__21230].orders;
+               strcpy(elder[VAR__21230].IDs, elder[VAR__21230 + 1].IDs);
+               elder[VAR__21230].ages     = elder[VAR__21230 + 1].ages;
+               elder[VAR__21230].orders   = elder[VAR__21230 + 1].orders;
+               elder[VAR__21230 + 1].ages = VAR__1238129;
+               strcpy(elder[VAR__21230 + 1].IDs, VAR_233);
+               elder[VAR__21230 + 1].orders = VAR_666;
+            }
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR__temp - 1 ); VAR__53647++ )
+   {
+      printf("%s\n", elder[VAR__53647].IDs);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      if ( per[VAR__53647].age != ( -1 ))
+      {
+         printf("%s\n", per[VAR__53647].ID);
+      }
+   }
+
+   return 0;
+}

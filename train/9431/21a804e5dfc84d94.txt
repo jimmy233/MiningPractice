@@ -1,0 +1,129 @@
+struct stu
+{
+   char       VAR__NUM[15];
+   char       name[20];
+   char       sex;
+   int        year;
+   char       score[20];
+   char       adr[15];
+   struct stu *VAR__NEXT;
+}
+*VAR_233;
+struct stu
+{
+   char       VAR__NUM[15];
+   char       name[20];
+   char       sex;
+   int        year;
+   char       score[20];
+   char       adr[15];
+   struct stu *VAR__NEXT;
+}
+*VAR_666;
+struct stu
+{
+   char       VAR__NUM[15];
+   char       name[20];
+   char       sex;
+   int        year;
+   char       score[20];
+   char       adr[15];
+   struct stu *VAR__NEXT;
+}
+*VAR__HEAD;
+struct stu
+{
+   char       VAR__NUM[15];
+   char       name[20];
+   char       sex;
+   int        year;
+   char       score[20];
+   char       adr[15];
+   struct stu *VAR__NEXT;
+}
+*newhead;
+struct stu
+{
+   char       VAR__NUM[15];
+   char       name[20];
+   char       sex;
+   int        year;
+   char       score[20];
+   char       adr[15];
+   struct stu *VAR__NEXT;
+}
+*ne;
+struct stu *creat(void)
+{
+   char VAR__819283[15];
+
+   VAR__HEAD = null;
+   scanf("%s", &VAR__819283);
+
+   while ( strlen(VAR__819283) != 3 )
+   {
+      VAR_233 = (struct stu *)malloc(VAR__1111);
+      strcpy(VAR_233->VAR__NUM, VAR__819283);
+      scanf("%s %c %d %s %s", VAR_233->name, &VAR_233->sex, &VAR_233->year, VAR_233->score, VAR_233->adr);
+
+      if ( VAR__HEAD == null )
+      {
+         VAR_666 = ( VAR__HEAD = VAR_233 );
+      }
+      else
+      {
+         VAR_666 = ( VAR_666->VAR__NEXT = VAR_233 );
+      }
+
+      scanf("%s", VAR__819283);
+   }
+
+   VAR_666->VAR__NEXT = null;
+   return VAR__HEAD;
+}
+
+
+struct stu *change(struct stu *VAR__HEAD)
+{
+   newhead = null;
+   do
+   {
+      VAR_666 = null;
+      VAR_233 = VAR__HEAD;
+
+      while ( VAR_233->VAR__NEXT != null )
+      {
+         VAR_666 = VAR_233;
+         VAR_233 = VAR_233->VAR__NEXT;
+      }
+
+      if ( newhead == null )
+      {
+         newhead = VAR_233, ne = ( newhead->VAR__NEXT = VAR_666 );
+      }
+
+      ne = ( ne->VAR__NEXT = VAR_666 );
+      VAR_666->VAR__NEXT = null;
+   } while ( VAR__HEAD->VAR__NEXT != null );
+   return newhead;
+}
+
+
+void output(struct stu *newhead)
+{
+   VAR_233 = newhead;
+
+   while ( VAR_233 != null )
+   {
+      printf("%s %s %c %d %s %s\n", VAR_233->VAR__NUM, VAR_233->name, VAR_233->sex, VAR_233->year, VAR_233->score, VAR_233->adr);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+int main()
+{
+   VAR__HEAD = creat();
+   newhead   = change(VAR__HEAD);
+   output(newhead);
+}

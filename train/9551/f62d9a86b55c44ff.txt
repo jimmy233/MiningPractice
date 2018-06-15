@@ -1,0 +1,102 @@
+typedef struct Node
+{
+   char        ID[11];
+   int         age;
+   struct Node *VAR__NEXT;
+} node;
+node *creat(int VAR_1238123)
+{
+   node *ANOTHER_POINTER;
+   node *YET_ANOTHER_POINTER;
+   node *VAR__HEAD;
+   int  VAR__53647;
+
+   ANOTHER_POINTER = ( YET_ANOTHER_POINTER = (node *)malloc(sizeof( node )));
+   VAR__HEAD       = ANOTHER_POINTER;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = ANOTHER_POINTER;
+      scanf("%s%d", ANOTHER_POINTER->ID, &ANOTHER_POINTER->age);
+      ANOTHER_POINTER = (node *)malloc(sizeof( node ));
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+   }
+
+   YET_ANOTHER_POINTER->VAR__NEXT = NULL;
+   return VAR__HEAD;
+}
+
+
+void sort(int VAR__7685, char *VAR__819283, node *VAR__HEAD)
+{
+   node *pre     = VAR__HEAD;
+   node *VAR_233 = pre->VAR__NEXT;
+   node *VAR_9494;
+
+   VAR_9494      = (node *)malloc(sizeof( node ));
+   VAR_9494->age = VAR__7685;
+   strcpy(VAR_9494->ID, VAR__819283);
+   VAR_9494->VAR__NEXT = NULL;
+
+   while (( VAR_233 != NULL ) && ( VAR__7685 <= VAR_233->age ))
+   {
+      pre     = VAR_233;
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   pre->VAR__NEXT      = VAR_9494;
+   VAR_9494->VAR__NEXT = VAR_233;
+}
+
+
+void print(node *VAR__HEAD)
+{
+   node *VAR_233;
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 != NULL )
+   {
+      printf("%s\n", VAR_233->ID);
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}
+
+
+void main()
+{
+   int  VAR_1238123;
+   node *head1;
+   node *head2;
+   node *VAR_233;
+
+   scanf("%d", &VAR_1238123);
+   head1 = creat(VAR_1238123);
+   head2 = (node *)malloc(sizeof( node ));
+   strcpy(head2->ID, " ");
+   head2->VAR__NEXT = NULL;
+   VAR_233          = head1;
+
+   while ( VAR_233 != NULL )
+   {
+      if ( VAR_233->age >= 60 )
+      {
+         sort(VAR_233->age, VAR_233->ID, head2);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   head2 = head2->VAR__NEXT;
+   print(head2);
+   VAR_233 = head1;
+
+   while ( VAR_233 != NULL )
+   {
+      if ( VAR_233->age < 60 )
+      {
+         printf("%s\n", VAR_233->ID);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

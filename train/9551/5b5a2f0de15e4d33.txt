@@ -1,0 +1,94 @@
+struct student
+{
+   char           VAR__NUM[10];
+   int            o;
+   struct student *VAR__NEXT;
+};
+struct student *create(int VAR_1238123)
+{
+   struct student *VAR__HEAD;
+   struct student *ANOTHER_POINTER;
+   struct student *YET_ANOTHER_POINTER;
+   int            VAR__53647;
+
+   int scholar(struct student *VAR_233);
+
+   ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+   scanf("%s %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->o);
+   ANOTHER_POINTER->VAR__NEXT = NULL;
+   VAR__HEAD           = ANOTHER_POINTER;
+   YET_ANOTHER_POINTER = ANOTHER_POINTER;
+   for ( VAR__53647 = 1; VAR__53647 <= ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      ANOTHER_POINTER = (struct student *)malloc(LEN_OF_STH);
+      scanf("%s %d", ANOTHER_POINTER->VAR__NUM, &ANOTHER_POINTER->o);
+      ANOTHER_POINTER->VAR__NEXT     = NULL;
+      YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+      YET_ANOTHER_POINTER            = ANOTHER_POINTER;
+   }
+
+   return VAR__HEAD;
+}
+
+
+struct student *VAR__MAX(struct student *VAR__HEAD)
+{
+   struct student *VAR_233;
+   struct student *VAR__1238129;
+
+   VAR__1238129 = VAR__HEAD;
+   VAR_233      = VAR__HEAD->VAR__NEXT;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->o > VAR__1238129->o )
+      {
+         VAR__1238129 = VAR_233;
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+
+   return VAR__1238129;
+}
+
+
+void main()
+{
+   int            VAR_1238123;
+   struct student *VAR__HEAD;
+   struct student *VAR__1238129;
+   struct student *VAR_233;
+   struct student *create(int VAR_1238123);
+   struct student *VAR__MAX(struct student *VAR__HEAD);
+
+   scanf("%d", &VAR_1238123);
+   VAR__HEAD = create(VAR_1238123);
+   VAR_233   = VAR__HEAD;
+   for ( ; ; )
+   {
+      VAR__1238129 = VAR__MAX(VAR_233);
+
+      if ( VAR__1238129->o >= 60 )
+      {
+         printf("%s\n", VAR__1238129->VAR__NUM);
+         VAR__1238129->o = -1;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   VAR_233 = VAR__HEAD;
+
+   while ( VAR_233 )
+   {
+      if ( VAR_233->o != ( -1 ))
+      {
+         printf("%s\n", VAR_233->VAR__NUM);
+      }
+
+      VAR_233 = VAR_233->VAR__NEXT;
+   }
+}

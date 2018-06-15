@@ -1,0 +1,54 @@
+int main()
+{
+   int VAR_1238123;
+   struct photo
+   {
+      char  sex[6];
+      float VAR_2890;
+   }
+                VAR_233[40];
+   struct photo VAR__temp;
+   int          VAR__53647;
+   int          VAR__21230;
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %f", VAR_233[VAR__53647].sex, &VAR_233[VAR__53647].VAR_2890);
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      for ( VAR__21230 = 0; VAR__21230 < (( VAR_1238123 - 1 ) - VAR__53647 ); VAR__21230++ )
+      {
+         if ((( VAR_233[VAR__21230].sex[0] == 'm' ) && ( VAR_233[VAR__21230 + 1].sex[0] == 'm' )) && ( VAR_233[VAR__21230].VAR_2890 > VAR_233[VAR__21230 + 1].VAR_2890 ))
+         {
+            VAR__temp               = VAR_233[VAR__21230];
+            VAR_233[VAR__21230]     = VAR_233[VAR__21230 + 1];
+            VAR_233[VAR__21230 + 1] = VAR__temp;
+         }
+
+         if ((( VAR_233[VAR__21230].sex[0] == 'f' ) && ( VAR_233[VAR__21230 + 1].sex[0] == 'f' )) && ( VAR_233[VAR__21230].VAR_2890 < VAR_233[VAR__21230 + 1].VAR_2890 ))
+         {
+            VAR__temp               = VAR_233[VAR__21230];
+            VAR_233[VAR__21230]     = VAR_233[VAR__21230 + 1];
+            VAR_233[VAR__21230 + 1] = VAR__temp;
+         }
+
+         if (( VAR_233[VAR__21230].sex[0] == 'f' ) && ( VAR_233[VAR__21230 + 1].sex[0] == 'm' ))
+         {
+            VAR__temp               = VAR_233[VAR__21230];
+            VAR_233[VAR__21230]     = VAR_233[VAR__21230 + 1];
+            VAR_233[VAR__21230 + 1] = VAR__temp;
+         }
+      }
+   }
+
+   for ( VAR__53647 = 0; VAR__53647 < ( VAR_1238123 - 1 ); VAR__53647++ )
+   {
+      printf("%.2f ", VAR_233[VAR__53647].VAR_2890);
+   }
+
+   printf("%.2f\n", VAR_233[VAR_1238123 - 1].VAR_2890);
+   return 0;
+}

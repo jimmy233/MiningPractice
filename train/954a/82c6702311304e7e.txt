@@ -1,0 +1,65 @@
+struct student
+{
+   char name[20];
+   int  test;
+   int  judge;
+   char leader;
+   char west;
+   int  paper;
+};
+struct student stu[100];
+void main()
+{
+   int  VAR__1238129 = 0;
+   int  VAR_1238123;
+   int  VAR__53647;
+   long VAR__SUM;
+   long VAR__temp        = 0;
+   long VAR__819283[100] = { 0 };
+
+   scanf("%d", &VAR_1238123);
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      scanf("%s %d %d %c %c %d", &stu[VAR__53647].name, &stu[VAR__53647].test, &stu[VAR__53647].judge, &stu[VAR__53647].leader, &stu[VAR__53647].west, &stu[VAR__53647].paper);
+   }
+
+   for ( VAR__SUM = 0, VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      if (( stu[VAR__53647].test > 80 ) && ( stu[VAR__53647].paper > 0 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 8000;
+      }
+
+      if (( stu[VAR__53647].test > 85 ) && ( stu[VAR__53647].judge > 80 ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 4000;
+      }
+
+      if ( stu[VAR__53647].test > 90 )
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 2000;
+      }
+
+      if (( stu[VAR__53647].test > 85 ) && ( stu[VAR__53647].west == 'Y' ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 1000;
+      }
+
+      if (( stu[VAR__53647].judge > 80 ) && ( stu[VAR__53647].leader == 'Y' ))
+      {
+         VAR__819283[VAR__53647] = VAR__819283[VAR__53647] + 850;
+      }
+
+      VAR__SUM = VAR__SUM + VAR__819283[VAR__53647];
+
+      if ( VAR__819283[VAR__53647] > VAR__temp )
+      {
+         VAR__temp    = VAR__819283[VAR__53647];
+         VAR__1238129 = VAR__53647;
+      }
+   }
+
+   printf("%s\n", stu[VAR__1238129].name);
+   printf("%ld\n", VAR__temp);
+   printf("%ld\n", VAR__SUM);
+}

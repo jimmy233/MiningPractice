@@ -1,0 +1,80 @@
+struct student
+{
+   char           name[50];
+   int            mark1;
+   int            mark2;
+   char           gan;
+   char           west;
+   int            paper;
+   int            money;
+   struct student *VAR__NEXT;
+};
+void main()
+{
+   int VAR_1238123;
+   int VAR__53647;
+   int VAR__SUM = 0;
+
+   scanf("%d", &VAR_1238123);
+   struct student *VAR__HEAD;
+   struct student *VAR_233;
+   struct student *VAR_666;
+   VAR__HEAD            = (struct student *)malloc(sizeof( struct student ));
+   VAR__HEAD->VAR__NEXT = NULL;
+   VAR_233 = VAR__HEAD;
+   for ( VAR__53647 = 0; VAR__53647 < VAR_1238123; VAR__53647++ )
+   {
+      VAR_666            = (struct student *)malloc(sizeof( struct student ));
+      VAR_666->VAR__NEXT = NULL;
+      scanf("%s %d %d %c %c %d", VAR_666->name, &VAR_666->mark1, &VAR_666->mark2, &VAR_666->gan, &VAR_666->west, &VAR_666->paper);
+      VAR_666->money = 0;
+
+      if (( VAR_666->mark1 > 80 ) && ( VAR_666->paper > 0 ))
+      {
+         VAR_666->money = VAR_666->money + 8000;
+      }
+
+      if (( VAR_666->mark1 > 85 ) && ( VAR_666->mark2 > 80 ))
+      {
+         VAR_666->money = VAR_666->money + 4000;
+      }
+
+      if ( VAR_666->mark1 > 90 )
+      {
+         VAR_666->money = VAR_666->money + 2000;
+      }
+
+      if (( VAR_666->mark1 > 85 ) && ( VAR_666->west == 'Y' ))
+      {
+         VAR_666->money = VAR_666->money + 1000;
+      }
+
+      if (( VAR_666->mark2 > 80 ) && ( VAR_666->gan == 'Y' ))
+      {
+         VAR_666->money = VAR_666->money + 850;
+      }
+
+      VAR__SUM           = VAR__SUM + VAR_666->money;
+      VAR_233->VAR__NEXT = VAR_666;
+      VAR_233            = VAR_666;
+   }
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+   VAR_666 = VAR_233->VAR__NEXT;
+
+   while ( VAR_666 != NULL )
+   {
+      if ( VAR_233->money < VAR_666->money )
+      {
+         VAR__HEAD->VAR__NEXT = VAR_666;
+      }
+
+      VAR_666 = VAR_666->VAR__NEXT;
+      VAR_233 = VAR__HEAD->VAR__NEXT;
+   }
+
+   VAR_233 = VAR__HEAD->VAR__NEXT;
+   printf("%s\n", VAR_233->name);
+   printf("%d\n", VAR_233->money);
+   printf("%d\n", VAR__SUM);
+}

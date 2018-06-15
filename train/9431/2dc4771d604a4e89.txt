@@ -1,0 +1,47 @@
+struct stu
+{
+   struct stu *VAR__NEXT;
+   char       VAR__819283[100];
+};
+void print(struct stu *VAR_233, int VAR_1238123)
+{
+   if ( VAR_1238123 > 0 )
+   {
+      printf("%s", VAR_233->VAR__819283);
+      printf("\n");
+      print(VAR_233->VAR__NEXT, VAR_1238123 - 1);
+   }
+}
+
+
+int main()
+{
+   int        VAR_1238123 = 1;
+   int        VAR__53647;
+   int        VAR__1238129 = 100000;
+   struct stu *ANOTHER_POINTER;
+   struct stu *YET_ANOTHER_POINTER;
+
+   ANOTHER_POINTER = (struct stu *)malloc(LEN);
+   gets(ANOTHER_POINTER->VAR__819283);
+   for ( VAR__53647 = 0; VAR__53647 < VAR__1238129; VAR__53647++ )
+   {
+      YET_ANOTHER_POINTER = (struct stu *)malloc(LEN);
+      gets(YET_ANOTHER_POINTER->VAR__819283);
+
+      if ((( YET_ANOTHER_POINTER->VAR__819283[0] != 'e' ) && ( YET_ANOTHER_POINTER->VAR__819283[1] != 'n' )) && ( YET_ANOTHER_POINTER->VAR__819283[2] != 'd' ))
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         ANOTHER_POINTER = YET_ANOTHER_POINTER;
+         VAR_1238123    += 1;
+      }
+      else
+      {
+         YET_ANOTHER_POINTER->VAR__NEXT = ANOTHER_POINTER;
+         break;
+      }
+   }
+
+   print(YET_ANOTHER_POINTER->VAR__NEXT, VAR_1238123);
+   return 0;
+}
